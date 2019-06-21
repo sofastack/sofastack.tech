@@ -1,0 +1,62 @@
+<header class="ss-header">
+	<nav class="navbar" role="navigation" aria-label="main navigation">
+		<div class="navbar-brand">
+			<a class="logo-link" href="{{ "/" | relLangURL }}">
+				<img class="logo" src="{{ (resources.Get "img/logo.svg").Permalink }}">
+			</a>
+			<div class="-show-mobile">
+				<a id="mobile-menu-icon">
+					<svg class="icon" aria-hidden="true">
+						<use xlink:href="#icon-menu"></use>
+					</svg>
+				</a>
+				<nav id="mobile-menu">
+					{{ $currentPage := . }}
+          {{ range .Site.Menus.main }}
+            <a
+              class="{{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} -active{{end}}"
+              href="{{ .URL }}">
+              <span>
+                {{ .Name }}
+              </span>
+              <svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow"></use></svg>
+            </a>
+					{{ end }}
+					{{ if .IsTranslated }}
+            {{ range .Translations }}
+              <a href="{{ .URL }}">
+                <span>{{ i18n "translation_mobile" }}</span>
+                <svg class="icon" aria-hidden="true"><use xlink:href="#icon-transfer"></use></svg>
+              </a>
+						{{ end}}
+					{{ end }}
+				</nav>
+			</div>
+		</div>
+
+		<div class="navbar-menu -hidden-mobile">
+			<div class="navbar-start">
+				{{ $currentPage := . }}
+				{{ range .Site.Menus.main }}
+					<a class="navbar-item {{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }} -active{{end}}"
+						href="{{ .URL }}">{{ .Name }}</a>
+				{{ end }}
+			</div>
+			<div class="navbar-end">
+				<div class="navbar-item">
+					{{ if .IsTranslated }}
+						{{ range .Translations }}
+							<a class="translation" href="{{ .URL }}">{{ i18n "translation" }}</a>
+						{{ end}}
+					{{ end }}
+				</div>
+			</div>
+		</div>
+	</nav>
+</header>
+
+{{ range .Site.Menus.main }}
+	{{ if or ($currentPage.IsMenuCurrent "main" .) ($currentPage.HasMenuCurrent "main" .) }}
+		<div class="ss-title">{{ .Name }}</div>
+	{{end}}
+{{ end }}

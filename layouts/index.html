@@ -1,0 +1,90 @@
+{{ define "title" }}
+	{{ $langData := index .Site.Data .Site.Language.Lang }}
+	{{ $data := $langData.home }}
+
+	{{ .Site.Title }} · {{ $data.slogan.title }}
+{{ end }}
+
+{{ define "main" }}
+
+{{ $langData := index .Site.Data .Site.Language.Lang }}
+{{ $data := $langData.home }}
+
+{{ partial "back_legacy" . }}
+
+<div class="home-background">
+	<img src="{{ (resources.Get "/img/home/cover.png").Permalink }}" />
+	<div class="gradient"></div>
+</div>
+
+<div class="slogan">
+	<div class="home-container">
+		<h1 class="slogan-title">{{ $data.slogan.title }}</h1>
+		<p class="slogan-description">
+			{{ $data.slogan.description }}
+		</p>
+
+		<div class="button-groups">
+			<a class="home-button -shadow" href="{{ $data.slogan.quick_start_link }}">{{ $data.slogan.quick_start_text }}</a>
+			<a class="home-button -outline" href="{{ $data.slogan.github_link }}">GitHub</a>
+		</div>
+
+		<div class="feature">
+			{{ range $data.feature }}
+
+			<div class="feature-container">
+				<img class="img" src="{{ (resources.Get .img).Permalink }}" />
+				<h2 class="feature-title">{{ .title }}</h2>
+				<p class="home-description">
+					{{ .description }}
+				</p>
+			</div>
+			{{ end }}
+		</div>
+	</div>
+</div>
+
+<div class="charpter-description">
+	<div class="home-container">
+		{{ range $i,$d := $data.charpter_description }}
+			<div class="container">
+				{{ if not (modBool $i 2) }}
+					<div class="img-container">
+						<img {{if isset $d "img_width"}}style="width:{{$d.img_width}}"{{end}}
+							src="{{ (resources.Get $d.img).Permalink }}"
+						>
+					</div>
+				{{ end }}
+
+				<div class="description-container">
+					<h3 class="title">{{ $d.title }} </h3>
+					<p class="home-description">
+						{{ $d.description }}
+					</p>
+				</div>
+
+				{{ if (modBool $i 2) }}
+					<div class="img-container">
+						<img {{if isset $d "img_width"}}style="width:{{$d.img_width}}"{{end}}
+							src="{{ (resources.Get $d.img).Permalink }}"
+						>
+					</div>
+				{{ end }}
+			</div>
+		{{ end }}
+	</div>
+</div>
+
+{{ if .Site.Params.homeSubscription.enable }}
+	<div class="subscription">
+		<div class="home-container">
+			<h2>{{ $data.subscription.title }}</h2>
+			<div class="email">
+				<input placeholder="Email address" type="email" />
+				<button class="home-button">{{ $data.subscription.button }}</button>
+			</div>
+		</div>
+	</div>
+{{ end }}
+
+{{ end }}

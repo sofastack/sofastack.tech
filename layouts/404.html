@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+	<title>
+		404 · {{ .Site.Title }}
+	</title>
+	{{ partial "head" . }}
+</head>
+
+<body>
+	{{ partial "header" . }}
+	<div class="home-background -no-max-width">
+		<img src="{{ (resources.Get "/img/cover.png").Permalink }}" />
+	</div>
+
+	<main>
+		<div class="container-404">
+			<p class="text">抱歉，你访问的页面不存在</p>
+			<a class="home-button" href="{{ "/" | absURL }}">返回首页</a>
+		</div>
+	</main>
+
+	{{ partial "footer" . }}
+</body>
+
+</html>

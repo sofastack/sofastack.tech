@@ -1,0 +1,19 @@
+.container-404 {
+	position: relative;
+	height: 600px;
+
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+
+	.text {
+		color: $text-color;
+		text-align: center;
+		margin-bottom: 40px;
+	}
+
+	// .home-button {
+
+	// }
+}

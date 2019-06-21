@@ -1,0 +1,9 @@
+{{ if isset .Site.Params "legacy_website" }}
+	<div class="ss-back-legacy">
+		<a
+			class="text{{if eq .Lang "en"}} english{{end}}"
+			href="{{ .Site.Params.legacy_website }}">
+			{{ i18n "back_legacy" }}
+		</a>
+	</div>
+{{ end }}

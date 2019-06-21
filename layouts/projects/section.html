@@ -1,0 +1,7 @@
+{{ $isProjectHome := eq (path.Dir .File.Dir) "projects" }}
+
+{{ if $isProjectHome }}
+	{{ .Render "list" }}
+{{ else }}
+	{{ .Render "single" }}
+{{ end }}

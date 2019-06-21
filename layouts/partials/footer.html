@@ -1,0 +1,31 @@
+{{ $langData := index .Site.Data .Site.Language.Lang}}
+{{ $data := $langData.footer }}
+
+<footer class="ss-footer">
+	<div class="container">
+		<div class="links">
+			{{ range $data.links }}
+				<div class="cate">
+					<h2 class="cate-title">{{ .category }}</h2>
+					{{ range .link_arr  }}
+						<a class="link" href="{{ index . 1 }}">{{ index . 0 }}</a>
+					{{ end }}
+				</div>
+			{{ end }}
+		</div>
+		<div class="qrcode">
+			{{ range $data.qrcode }}
+				<div>
+					<img class="qrcode-img" src="{{ .img | absURL }}" />
+					<p class="qrcode-desc">{{ .description }}</p>
+				</div>
+			{{ end }}
+		</div>
+	</div>
+	<div class="copyright">
+		<p>
+			© 2019 The SOFAStack Authors
+			<a href="http://icp.chinaz.com/info?q=sofastack.tech">浙 ICP 备 16045294 号-3</a>
+		</p>
+	</div>
+</footer>

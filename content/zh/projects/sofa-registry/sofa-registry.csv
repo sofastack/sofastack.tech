@@ -1,0 +1,13 @@
+Home.md,overview,SOFARegistry 介绍,sofa-registry/docs/Home,sofa-registry
+Terminology.md,terminology,基础术语,sofa-registry/docs/Terminology,sofa-registry
+Server-QuickStart.md,server-quick-start,服务端部署,sofa-registry/docs/Server-QuickStart,sofa-registry
+Client-QuickStart.md,client-quick-start,客户端使用,sofa-registry/docs/Client-QuickStart,sofa-registry
+JAVA-SDK.md,java-sdk,Java SDK,sofa-registry/docs/JAVA-SDK,sofa-registry
+Deployment.md,deployment,部署,sofa-registry/docs/Deployment,sofa-registry
+Scale.md,scale,扩容与缩容,sofa-registry/docs/Scale,sofa-registry
+Management-API.md,management-api,运维命令,sofa-registry/docs/Management-API,sofa-registry
+Release-Standard.md,release-standard,版本规范,sofa-registry/docs/Release-Standard,sofa-registry
+ReleaseNotes.md,release-notes,发布说明,sofa-registry/docs/ReleaseNotes,sofa-registry
+RoadMap.md,roadmap,发展路线 & 任务认领,sofa-registry/docs/RoadMap,sofa-registry
+Contributing.md,contributing,参与贡献,sofa-registry/docs/Contributing,sofa-registry
+NOTICE.md,notice,版权声明,sofa-registry/docs/NOTICE,sofa-registry

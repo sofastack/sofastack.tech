@@ -1,0 +1,9 @@
+Home.md,overview,SOFAMesh 介绍,/sofa-mesh/docs/Home,zh
+pilot/README.md,pilot-readme,Pilot 介绍,/sofa-mesh/docs/pilot-README,zh
+pilot/setup/zookeeper/installation.md,pilot-setup-zookeeper-installation,安装指南,/sofa-mesh/docs/pilot-setup-zookeeper-installation,zh
+pilot/setup/zookeeper/quick_start_docker.md,pilot-setup-zookeeper-quick-start-docker,使用 Docker 快速开始,/sofa-mesh/docs/pilot-setup-zookeeper-quick_start_docker,zh
+pilot/zookeeper-adapter.md,pilot-zookeeper-adapter,Zookeeper Adpater,/sofa-mesh/docs/pilot-zookeeper-adapter,zh
+pilot/x-protocol.md,pilot-x-protocol,X-Protocol,/sofa-mesh/docs/pilot-x-protocol,zh
+pilot/register-agent.md,pilot-register-agent,Register Agent,/sofa-mesh/docs/pilot-register-agent,zh
+sofa-mosn/README.md,sofa-mosn-readme,SOFAMosn 介绍,/sofa-mesh/docs/sofa-mosn-README,zh
+sofa-mosn/docs/quickstart/RunWithSOFAMesh.md,sofa-mosn-docs-quick-start-run-with-sofamesh,使用 SOFAMosn 搭建 Service Mesh 平台,/sofa-mesh/docs/sofa-mosn-docs-quickstart-RunWithSOFAMesh,zh

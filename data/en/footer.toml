@@ -1,0 +1,42 @@
+# Links in footer
+
+[[links]]
+	category = "Resources"
+	link_arr = [
+		["Github", 'https://github.com/sofastack'],
+		["Gitee", 'https://gitee.com/sofastack/'],
+		["Samples", 'https://github.com/sofastack-guides'],
+	]
+
+[[links]]
+	category = "Community"
+	link_arr = [
+		["Zhihu", 'https://zhuanlan.zhihu.com/sofastack'],
+		["Weibo", 'https://weibo.com/sofastack'],
+	]
+
+[[links]]
+	category = "Help"
+	link_arr = [
+		["Report bug", 'https://github.com/sofastack/sofa-boot/issues'],
+		["SegmentFault", 'https://segmentfault.com/t/sofa'],
+	]
+
+[[links]]
+	category = "Ant Financial Open Source"
+	link_arr = [
+		["Egg.js", 'https://eggjs.org/'],
+		["Ant.Design", 'https://ant.design/'],
+		["SQLFlow", 'https://github.com/sql-machine-learning/sqlflow'],
+		["Open Source", 'https://tech.antfin.com/open-source'],
+	]
+
+# qrcode
+[[qrcode]]
+	img = "img/qrcode/qrcode_1.png"
+	description = "Wechat Official Account"
+
+[[qrcode]]
+	img = "img/qrcode/qrcode_2.png"
+	description = "DingTalk Group"
+

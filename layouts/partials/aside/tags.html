@@ -1,0 +1,10 @@
+<div class="ss-card">
+	<h2 class="card-title">
+		{{ i18n "aside_tags" }}
+	</h2>
+	<ul class="ss-aside-tags">
+		{{ range .Site.Taxonomies.tags }}
+			<li><a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a></li>
+		{{ end }}
+	</ul>
+</div>

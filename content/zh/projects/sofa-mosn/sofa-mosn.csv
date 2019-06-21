@@ -1,0 +1,6 @@
+Home.md,overview,MOSN 介绍,/sofa-mosn/docs/Home
+docs/quickstart/Setup.md,quick-start-setup,快速开始,/sofa-mosn/docs/docs-quickstart-Setup,zh
+docs/quickstart/RunSamples.md,quick-start-run-samples,工程示例,/sofa-mosn/docs/docs-quickstart-RunSamples,zh
+docs/quickstart/RunWithSOFAMesh.md,quick-start-run-with-sofamesh,使用 SOFAMosn 搭建 Service Mesh 平台,/sofa-mosn/docs/docs-quickstart-RunWithSOFAMesh,zh
+docs/reference/PerformanceReport010.md,reference-performance-report010,SOFAMosn 0.1.0 性能报告,/sofa-mosn/docs/docs-reference-PerformanceReport010,zh
+docs/reference/PerformanceReport021.md,reference-performance-report021,SOFAMosn 0.2.1 性能报告,/sofa-mosn/docs/docs-reference-PerformanceReport021,zh

@@ -1,0 +1,41 @@
+[slogan]
+	title = "Financial-level distributed architecture"
+	description = "SOFAStack™（Scalable Open Financial Architecture Stack）is a collection of middleware components designed to build financial-level distributed architecture and is also the best practice fully validated in financial scenarios."
+	quick_start_text = "Quick Start"
+	quick_start_link = "/en/guides/sofastack-quick-start"
+	github_link = "https://github.com/sofastack"
+
+[[feature]]
+	title = "Open"
+	description = "Buildpack is fully open-source, keeps community neutral and is compatible with community. SOFAStack components are pluggable and compatible with the open-source ecosystem, so they can be integrated or replaced with other open-source components."
+	img = "img/home/feat-open.png"
+
+
+[[feature]]
+	title = "Financial-level"
+	description = "Contains the components needed to build a financial-level cloud native architecture, which have been fully tempered in large-scale scenarios, especially harsh financial scenarios, thus enabling developers to focus more on service development and meeting the current and future needs of user scenarios."
+	img = "img/home/feat-financial-level.png"
+
+[[feature]]
+	title = "Cloud native"
+	description = "Based on SOFAStack, you can quickly build a cloud-native microservice system and develop cloud-native applications that are more reliable, scalable, and easier to maintain."
+	img = "img/home/feat-cloud-native.png"
+
+
+[[charpter_description]]
+	title = "Microservice system"
+	description = "SOFAStack contains multiple components for building microservice system, including development framework, RPC framework, service registry, distributed link tracking, metrics monitoring, distributed transaction framework, service governance platform and other components. In combination with outstanding open-source products in community, you can quickly build a complete microservice system."
+	img = "img/home/cd-microservice-system.png"
+	img_width = "530px"
+
+
+[[charpter_description]]
+	title = "Cloud native architecture"
+	description = "With the growth of business scale and system complexity, the traditional microservice management and operations becomes increasingly faster, and developers and operation personnel face multiple challenges. Some emerging concepts like Service Mesh and Serverless can resolve such problems. To improve the performance in large-scale deployment and cope with the actual situations in actual implementation, SOFAStack also open source the similar projects such as SOFAMesh and SOFAMosn."
+	img = "img/home/cd-cloud-native-architecture-en.png"
+	img_width = "390px"
+
+
+[subscription]
+	title = "Interested in receiving the latest SOFA news?"
+	button = "Subscribe"

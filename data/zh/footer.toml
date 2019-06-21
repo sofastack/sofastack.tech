@@ -1,0 +1,41 @@
+# Links in footer
+
+[[links]]
+	category = "资源"
+	link_arr = [
+		["Github", 'https://github.com/sofastack'],
+		["Gitee", 'https://gitee.com/sofastack/'],
+		["示例", 'https://github.com/sofastack-guides'],
+	]
+
+[[links]]
+	category = "社区"
+	link_arr = [
+		["知乎专栏", 'https://zhuanlan.zhihu.com/sofastack'],
+		["新浪微博", 'https://weibo.com/sofastack'],
+	]
+
+[[links]]
+	category = "帮助"
+	link_arr = [
+		["报告 Bug", 'https://github.com/sofastack/sofa-boot/issues'],
+		["SegmentFault", 'https://segmentfault.com/t/sofa'],
+	]
+
+[[links]]
+	category = "蚂蚁金服开源项目"
+	link_arr = [
+		["Egg.js", 'https://eggjs.org/'],
+		["Ant.Design", 'https://ant.design/'],
+		["SQLFlow", 'https://github.com/sql-machine-learning/sqlflow'],
+		["蚂蚁金融科技开源", 'https://tech.antfin.com/open-source'],
+	]
+
+# qrcode
+[[qrcode]]
+	img = "img/qrcode/qrcode_1.png"
+	description = "微信公众号"
+
+[[qrcode]]
+	img = "img/qrcode/qrcode_2.png"
+	description = "钉钉群"
