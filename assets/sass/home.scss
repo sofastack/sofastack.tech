@@ -144,7 +144,7 @@
     box-shadow: 0 4px 16px 0 rgba(190, 197, 203, 0.30);
 
     >img {
-      width: 110px;
+      height: 100px;
     }
   }
 
@@ -246,26 +246,30 @@
 .ss-back-legacy {
   position: fixed;
   right: 0;
-	bottom: 20%;
-	display: flex;
-	justify-content: center;
-	justify-items: center;
-	background-color: #f7f7f7;
-	padding: 8px 4px 6px 6px;
-	border-radius: 4px 0 0 4px;
+  bottom: 20%;
+
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  // fix bug in ios
+  width: 24px;
+  padding: 8px 4px 6px 6px;
+  border-radius: 4px 0 0 4px;
+  background-color: #f7f7f7;
 
   .text {
-		writing-mode: vertical-rl;
-		text-orientation: upright;
-		text-align: center;
-		font-size: 14px;
-		letter-spacing: 4px;
-		color: $text-color-secondary;
-	}
+    display: block;
+    writing-mode: vertical-rl;
+    // text-orientation: upright;
+    text-align: center;
+    font-size: 14px;
+    letter-spacing: 4px;
+    color: $text-color-secondary;
+  }
 
-	.english {
-		letter-spacing: 0;
-		text-orientation: mixed;
-		transform: rotate(180deg);
-	}
+  .english {
+    letter-spacing: 0;
+    text-orientation: mixed;
+    transform: rotate(180deg);
+  }
 }
