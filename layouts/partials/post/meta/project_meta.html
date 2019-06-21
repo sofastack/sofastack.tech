@@ -9,7 +9,7 @@
 			{{ .Title }}
 		</h1>
 		<a class="edit-button -hidden-mobile"
-			href="{{ path.Join $link .File.Dir | safeURL }}"
+			href="{{ path.Join $link .File.Dir "index.md" | safeURL }}"
 		>{{ i18n "edit" }}</a>
 	</div>
 	<div class="meta">
