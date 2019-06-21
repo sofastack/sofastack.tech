@@ -1,5 +1,5 @@
 [slogan]
-	title = "Financial-level distributed architecture"
+	title = "Financial-level Distributed Architecture"
 	description = "SOFAStack™（Scalable Open Financial Architecture Stack）is a collection of middleware components designed to build financial-level distributed architecture and is also the best practice fully validated in financial scenarios."
 	quick_start_text = "Quick Start"
 	quick_start_link = "/en/guides/sofastack-quick-start"
