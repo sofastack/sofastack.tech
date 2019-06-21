@@ -3,15 +3,16 @@ title: "SOFADashboard"
 description: "SOFADashboard 是 SOFAStack 生态的管控端，提供应用信息查看，服务治理，动态模块管控等功能。"
 github: "https://github.com/sofastack/sofa-acts"
 level: "incubating"
+weight: 3
 icon: "/img/icons/sofadashboard.png"
 sidebar:
-  - title: 'SOFADashboard 介绍'  	
+  - title: 'SOFADashboard 介绍'
     link: 'overview'
-  - title: '快速开始'  	
+  - title: '快速开始'
     link: 'quick-start'
   - title: '功能介绍'
     sub:
-      - title: '应用面板'  	
+      - title: '应用面板'
         link: 'dashboard-client'
       - title: '服务治理'
         link: 'governance'
@@ -19,7 +20,7 @@ sidebar:
         link: 'ark-console'
   - title: '版本发布'
     sub:
-      - title: '版本规范'  	
+      - title: '版本规范'
         link: 'version-rule'
       - title: '参与贡献'
         link: 'contribution'

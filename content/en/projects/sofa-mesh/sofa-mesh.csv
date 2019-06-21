@@ -1,9 +1,0 @@
-Home.md,overview,Overview,/sofa-mesh/docs/Home,en
-pilot/README.md,pilot-readme,Introduction to Pilot,/sofa-mesh/docs/pilot-README,en
-pilot/setup/zookeeper/installation.md,pilot-setup-zookeeper-installation,Installation guide,/sofa-mesh/docs/pilot-setup-zookeeper-installation,en
-pilot/setup/zookeeper/quick_start_docker.md,pilot-setup-zookeeper-quick-start-docker,Use Docker to get started with Istio,/sofa-mesh/docs/pilot-setup-zookeeper-quick_start_docker,en
-pilot/zookeeper-adapter.md,pilot-zookeeper-adapter,ZooKeeper Adapter,/sofa-mesh/docs/pilot-zookeeper-adapter,en
-pilot/x-protocol.md,pilot-x-protocol,X-Protocol,/sofa-mesh/docs/pilot-x-protocol,en
-pilot/register-agent.md,pilot-register-agent,Register agent,/sofa-mesh/docs/pilot-register-agent,en
-sofa-mosn/README.md,sofa-mosn-readme,Introduction to SOFAMosn,/sofa-mesh/docs/sofa-mosn-README,en
-sofa-mosn/docs/quickstart/RunWithSOFAMesh.md,sofa-mosn-docs-quick-start-run-with-sofamesh,Use SOFAMosn to build Service Mesh platform,/sofa-mesh/docs/sofa-mosn-docs-quickstart-RunWithSOFAMesh,en

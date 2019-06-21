@@ -3,6 +3,7 @@ title: "SOFALookout"
 description: "SOFALookout is a project that measures and monitors target systems using multi-dimensional metrics."
 github: "https://github.com/sofastack/sofa-lookout"
 level: "main"
+weight: 4
 icon: "/img/icons/sofalookout.png"
 sidebar:
   - title: 'Overview'
