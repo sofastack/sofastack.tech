@@ -10,12 +10,13 @@
 
 <body>
 	{{ partial "header" . }}
-	<div class="home-background -no-max-width">
-		<img src="{{ (resources.Get "/img/cover.png").Permalink }}" />
-	</div>
 
 	<main>
+		<div class="home-background">
+			<div class="gradient"></div>
+		</div>
 		<div class="container-404">
+			<img src="{{ "/img/404.png" | absURL }}" />
 			<p class="text">抱歉，你访问的页面不存在</p>
 			<a class="home-button" href="{{ "/" | absURL }}">返回首页</a>
 		</div>
