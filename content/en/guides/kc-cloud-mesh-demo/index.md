@@ -9,27 +9,27 @@ projects: [{name: "SOFAMesh", link: "https://github.com/sofastack/sofa-mesh"}]
 
 Service Mesh applies the communication capabilities between services to the infrastructure, thus decoupling and lightweighting applications.
 
-![architecture](architecture.png)
+![architecture](https://gw.alipayobjects.com/mdn/rms_631dea/afts/img/A*ApfhTbQQPAwAAAAAAAAAAABkARQnAQ)
 
 However, Service Mesh itself is still complex. CloudMesh can easily implement Service Mesh technology by hosting Service Mesh on the cloud.
 
-![component relationship](relationship.png)
+![component relationship](https://gw.alipayobjects.com/mdn/rms_631dea/afts/img/A*f8N_TaB7oVwAAAAAAAAAAABkARQnAQ)
 
 With our workshop, you can easily deploy applications developed in multiple programming languages ​​to CloudMesh, thereby experiencing the capabilities of Service Mesh. The capabilities include accessing services, monitoring traffic, experiencing service goverance, managing Sidecar, and gray release of new versions of services.
 
-![bookinfo](bookinfo.png)
+![bookinfo](https://gw.alipayobjects.com/mdn/rms_631dea/afts/img/A*A1mgR7I9RQMAAAAAAAAAAABkARQnAQ)
 
 This demo focuses on the powerful traffic control capability of CloudMesh. In the process of gray release, you can precisely control the gray traffic ratio, and monitor the actual traffic trend in CloudMesh:
 
-![gray traffic](gray-traffic.png)
+![gray traffic](https://gw.alipayobjects.com/mdn/rms_631dea/afts/img/A*SyIGTqvtIfcAAAAAAAAAAABkARQnAQ)
 
 The general gray release function occupies twice capacity in the gray process.
 
-![general gray release](general-gray-release.png)
+![general gray release](https://gw.alipayobjects.com/mdn/rms_631dea/afts/img/A*8MXfQorNe6AAAAAAAAAAAABkARQnAQ)
 
 The gray release function of CloudMesh does not need to occupy extra capacity in gray release process, and also allows pausing the release process to modify gray ratio multiple times.
 
-![cloudmesh gray release](cloudmesh-gray-release.png)
+![cloudmesh gray release](https://gw.alipayobjects.com/mdn/rms_631dea/afts/img/A*JRTmR4YUZ0kAAAAAAAAAAABkARQnAQ)
 
 ## Operation guide
 
