@@ -71,11 +71,11 @@ git clone https://github.com/sofastack-guides/kc-sofastack-demo.git
 </dependency>
 ```
 
-balance-mng 工程需要将依赖引入 balance-mng-imp 模块的 pom 文件：
+balance-mng 工程需要将依赖引入 balance-mng/balance-mng-impl/pom.xml 文件：
 
 ![pic](https://gw.alipayobjects.com/mdn/rms_c69e1f/afts/img/A*R475S7L1T3gAAAAAAAAAAABkARQnAQ)
 
-stock-mng 工程直接将依赖引入 stock-mng 模块的 pom 文件：
+stock-mng 工程需要将依赖引入 stock-mng/pom.xml 文件：
 
 ![pic](https://gw.alipayobjects.com/mdn/rms_c69e1f/afts/img/A*z5mtSLaTuN4AAAAAAAAAAABkARQnAQ)
 
@@ -92,11 +92,11 @@ com.alipay.sofa.tracer.zipkin.base-url=http://139.224.123.199:9411
 com.alipay.sofa.lookout.agent-host-address=139.224.123.35
 ```
 
-balance-mng 工程需要将配置添加至 balance-mng-bootstrap 模块的 application.properties 文件：
+balance-mng 工程需要将配置添加至 balance-mng/balance-mng-bootstrap/src/main/resources/application.properties 文件：
 
 ![pic](https://gw.alipayobjects.com/mdn/rms_c69e1f/afts/img/A*aI0nT4hu2sYAAAAAAAAAAABkARQnAQ)
 
-stock-mng 工程需要将配置添加至 stock-mng 模块的 application.properties 文件：
+stock-mng 工程需要将配置添加至 stock-mng/src/main/resources/application.properties 文件：
 
 ![pic](https://gw.alipayobjects.com/mdn/rms_c69e1f/afts/img/A*MVm1TIODuNYAAAAAAAAAAABkARQnAQ)
 
@@ -106,11 +106,11 @@ stock-mng 工程需要将配置添加至 stock-mng 模块的 application.propert
 
 KubeCon workshop 会给每个用户准备一个 SOFAStack 账号，格式为 [user0@sofastack.io](mailto:user0@sofastack.io) 到 [user99@sofastack.io](mailto:user99@sofastack.io)，去掉 @sofastack.io 部分，账户前半部分的 user0 至 user99 即可作为 unique id。
 
-balance-mng 工程需要在 balance-mng-bootstrap 模块的 application.properties 文件修改：
+balance-mng 工程需要在 balance-mng/balance-mng-bootstrap/src/main/resources/application.properties 文件修改：
 
 ![pic](https://gw.alipayobjects.com/mdn/rms_c69e1f/afts/img/A*6tsSQoNqZKQAAAAAAAAAAABkARQnAQ)
 
-stock-mng 工程需要在 stock-mng 模块的 application.properties 文件修改：
+stock-mng 工程需要在 stock-mng/src/main/resources/application.properties 文件修改：
 
 ![pic](https://gw.alipayobjects.com/mdn/rms_c69e1f/afts/img/A*0dF6R6oKJTUAAAAAAAAAAABkARQnAQ)
 
@@ -119,6 +119,10 @@ stock-mng 工程需要在 stock-mng 模块的 application.properties 文件修�
 在 BalanceMngImpl 类上加上 @SofaService 注解 和 @Service 注解，将其发布成一个 SOFARPC 服务：
 
 ```java
+import org.springframework.stereotype.Service;
+import com.alipay.sofa.runtime.api.annotation.SofaService;
+import com.alipay.sofa.runtime.api.annotation.SofaServiceBinding;
+
 @Service
 @SofaService(interfaceType = BalanceMngFacade.class, uniqueId = "${service.unique.id}", bindings = { @SofaServiceBinding(bindingType = "bolt") })
 ```
@@ -130,6 +134,10 @@ stock-mng 工程需要在 stock-mng 模块的 application.properties 文件修�
 在 StockMngImpl 类上加上 @SofaService 注解 和 @Service 注解，将其发布成一个 SOFARPC 服务：
 
 ```java
+import org.springframework.stereotype.Service;
+import com.alipay.sofa.runtime.api.annotation.SofaService;
+import com.alipay.sofa.runtime.api.annotation.SofaServiceBinding;
+
 @Service
 @SofaService(interfaceType = StockMngFacade.class, uniqueId = "${service.unique.id}", bindings = { @SofaServiceBinding(bindingType = "bolt") })
 ```
@@ -143,12 +151,18 @@ stock-mng 工程需要在 stock-mng 模块的 application.properties 文件修�
 在 BookStoreControllerImpl 类中的 stockMngFacade 变量上方加 @SofaReference 注解，用于引用 SOFARPC 服务:
 
 ```java
+import com.alipay.sofa.runtime.api.annotation.SofaReference;
+import com.alipay.sofa.runtime.api.annotation.SofaReferenceBinding;
+
 @SofaReference(interfaceType = StockMngFacade.class, uniqueId = "${service.unique.id}", binding = @SofaReferenceBinding(bindingType = "bolt"))
 ```
 
 在 BookStoreControllerImpl 类中的 balanceMngFacade 变量上方加 @SofaReference 注解，用于引用 SOFARPC 服务:
 
 ```java
+import com.alipay.sofa.runtime.api.annotation.SofaReference;
+import com.alipay.sofa.runtime.api.annotation.SofaReferenceBinding;
+
 @SofaReference(interfaceType = BalanceMngFacade.class, uniqueId = "${service.unique.id}", binding = @SofaReferenceBinding(bindingType = "bolt"))
 ```
 
@@ -162,19 +176,15 @@ stock-mng 工程需要在 stock-mng 模块的 application.properties 文件修�
 
 ![pic](https://gw.alipayobjects.com/mdn/rms_c69e1f/afts/img/A*s_pATp7OFmAAAAAAAAAAAABkARQnAQ)
 
-浏览器访问 [http://zipkin-dev.sofastack.tech:9411](http://zipkin-dev.sofastack.tech:9411/)，查看链路数据上报以链路关系图：
+浏览器访问 [http://116.62.131.134:9411](http://116.62.131.134:9411)，查看链路数据上报以及链路关系图：
 
 ![pic](https://gw.alipayobjects.com/mdn/rms_c69e1f/afts/img/A*rUxWQJ2tARAAAAAAAAAAAABkARQnAQ)
 
-浏览器访问 [http://zipkin-dev.sofastack.tech:9090](http://zipkin-dev.sofastack.tech:9090/) 即可查看上报 metrics：
+浏览器访问 [http://121.43.187.56:9090](http://121.43.187.56:9090) 即可查看上报 metrics：
 
 ![pic](https://gw.alipayobjects.com/mdn/rms_c69e1f/afts/img/A*k1kVS5N4oCQAAAAAAAAAAABkARQnAQ)
 
-- jvm.threads.totalStarted{app="stock_mng"}：可以查看 JVM 启动线程数
-- jvm.memory.heap.used{app="stock_mng"}：可以查看 JVM 使用内存
-- jvm.gc.old.count{app="stock_mng"}：可以查看 JVM 老年代 GC 次数
-- rpc.consumer.service.stats.total_count.count{app="stock_mng"}：可以查看 BalanceMngFacade 接口的调用次数
-- rpc.consumer.service.stats.total_time.elapPerExec{app="stock_mng"}：可以查看 BalanceMngFacade 平均每次调用时间
-- rpc.consumer.service.stats.total_time.max{app="stock_mng"}：可以查看 BalanceMngFacade 最大响应时间
+- `jvm.threads.totalStarted{app="stock_mng"}`：可以查看 JVM 启动线程数
+- `rpc.consumer.service.stats.total_count.count{app="stock_mng"}`：可以查看 stock_mng 应用的调用次数
 
 关于 SOFALookout 的更多用法，请参考: https://www.sofastack.tech/projects/sofa-lookout
