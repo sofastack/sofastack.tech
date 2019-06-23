@@ -1,7 +1,7 @@
-{{ $githubEdit := path.Join .Site.Params.github "/edit/master/content" }}
+{{ $github := .Site.Params.github }}
 {{ $language := .Site.Language.Lang }}
 
-{{ $link := path.Join $githubEdit $language }}
+{{ $path := path.Join "/edit/master/content" $language .File.Dir "index.md" }}
 
 <div class="ss-meta">
 	<div class="container">
@@ -9,7 +9,7 @@
 			{{ .Title }}
 		</h1>
 		<a class="edit-button -hidden-mobile"
-			href="{{ path.Join $link .File.Dir "index.md" | safeURL }}"
+			href="{{ printf "%s%s" $github $path }}"
 		>{{ i18n "edit" }}</a>
 	</div>
 	<div class="meta">
