@@ -106,11 +106,11 @@ stock-mng 工程需要将配置添加至 stock-mng/src/main/resources/applicatio
 
 KubeCon workshop 会给每个用户准备一个 SOFAStack 账号，格式为 [user0@sofastack.io](mailto:user0@sofastack.io) 到 [user99@sofastack.io](mailto:user99@sofastack.io)，去掉 @sofastack.io 部分，账户前半部分的 user0 至 user99 即可作为 unique id。
 
-balance-mng 工程需要在 balance-mng-bootstrap 模块的 application.properties 文件修改：
+balance-mng 工程需要在 balance-mng/balance-mng-bootstrap/src/main/resources/application.properties 文件修改：
 
 ![pic](https://gw.alipayobjects.com/mdn/rms_c69e1f/afts/img/A*6tsSQoNqZKQAAAAAAAAAAABkARQnAQ)
 
-stock-mng 工程需要在 stock-mng 模块的 application.properties 文件修改：
+stock-mng 工程需要在 stock-mng/src/main/resources/application.properties 文件修改：
 
 ![pic](https://gw.alipayobjects.com/mdn/rms_c69e1f/afts/img/A*0dF6R6oKJTUAAAAAAAAAAABkARQnAQ)
 
