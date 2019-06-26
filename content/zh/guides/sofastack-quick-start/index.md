@@ -191,4 +191,4 @@ import com.alipay.sofa.runtime.api.annotation.SofaReferenceBinding;
 
 ## 更多
 
-- [下载本次 Demo 幻灯片](https://gw.alipayobjects.com/os/basement_prod/2927b0a3-670a-4fd2-992c-115a6785c7c9.pdf)。
+- [下载本次 Demo 幻灯片](https://gw.alipayobjects.com/os/basement_prod/b16fd217-b82b-436e-8b0d-452e636e072b.pdf)。

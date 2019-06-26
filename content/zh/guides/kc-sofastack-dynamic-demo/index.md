@@ -209,3 +209,7 @@ git clone https://github.com/sofastack-guides/kc-sofastack-dynamic-demo.git
 
 
 > 此结果仅供参考，排序结果随商品对应的订单量而动态改变
+
+## 更多
+
+- [下载本次 Demo 幻灯片](https://gw.alipayobjects.com/os/basement_prod/763325e6-81c9-4961-9d24-5a4ba9970b36.pdf)。
