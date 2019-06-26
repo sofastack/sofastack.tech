@@ -68,3 +68,7 @@ github: "https://github.com/sofastack-guides/kc-serverless-demo"
 
 - 使用脚本模拟高并发情况，访问前端应用服务
 - 查看 Serverless 应用如何进行快速 M-N 计算实例变化
+
+## 更多
+
+- [下载本次 Demo 幻灯片]

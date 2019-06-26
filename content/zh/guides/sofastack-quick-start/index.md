@@ -187,4 +187,8 @@ import com.alipay.sofa.runtime.api.annotation.SofaReferenceBinding;
 - `jvm.threads.totalStarted{app="stock_mng"}`：可以查看 JVM 启动线程数
 - `rpc.consumer.service.stats.total_count.count{app="stock_mng"}`：可以查看 stock_mng 应用的调用次数
 
-关于 SOFALookout 的更多用法，请参考: https://www.sofastack.tech/projects/sofa-lookout
+关于 SOFALookout 的更多用法，。请参考: https://www.sofastack.tech/projects/sofa-lookout
+
+## 更多
+
+- [下载本次 Demo 幻灯片](https://gw.alipayobjects.com/os/basement_prod/2927b0a3-670a-4fd2-992c-115a6785c7c9.pdf)。

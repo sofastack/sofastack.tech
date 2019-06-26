@@ -35,5 +35,7 @@ Cloud Mesh提供的灰度发布功能，可以实现在灰度发布过程中不�
 
 为了方便参加本次demo的同学，我们准备了整个demo流程的详尽的操作指南。
 
-请 [点击此处访问](https://www.sofastack.tech/cloud-mesh-demo) 在线版本。
+## 更多
 
+- 请[点击此处访问](/cloud-mesh-demo)在线版本。
+- [下载本地 Demo 幻灯片](https://gw.alipayobjects.com/os/basement_prod/2927b0a3-670a-4fd2-992c-115a6785c7c9.pdf)。

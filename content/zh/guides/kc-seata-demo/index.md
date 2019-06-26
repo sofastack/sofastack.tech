@@ -524,3 +524,7 @@ private BalanceMngFacade balanceMngFacade;
 1. 运行BalanceMngApplication类的main方法(包含启动Seata server)
 2. 运行StockMngApplication类的main方法
 3. 浏览器打开 http://localhost:8080/index.html
+
+## 更多
+
+- [下载本次 Demo 幻灯片](
