@@ -1,7 +1,7 @@
 ---
 title: "SOFADashboard"
 description: "SOFADashboard 是 SOFAStack 生态的管控端，提供应用信息查看，服务治理，动态模块管控等功能。"
-github: "https://github.com/sofastack/sofa-acts"
+github: "https://github.com/sofastack/sofa-dashboard"
 level: "incubating"
 weight: 3
 icon: "/img/icons/sofadashboard.png"
