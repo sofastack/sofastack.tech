@@ -30,7 +30,7 @@ SOFAArk 的配置目录不是必须存在，如果需要，统一放在工程根
             └── logback-conf.xml
 ```
 
-**注意事项：如果应用中包含 SOFAArk 配置，打包时需要注意 baseDir 配置，用于指定工程根目录，具体[参考文档](../sofa-ark-ark-jar.md)**
+**注意事项：如果应用中包含 SOFAArk 配置，打包时需要注意 baseDir 配置，用于指定工程根目录，具体[参考文档](../sofa-ark-ark-jar)**
 
 上述 conf/ark 目录中可以配置 SOFAArk 容器启动配置以及日志配置，下面介绍配置的使用.
 
