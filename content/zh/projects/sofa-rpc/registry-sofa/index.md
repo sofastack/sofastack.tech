@@ -1,9 +1,7 @@
-
 ---
 title: "使用 SOFARegistry 作为注册中心"
 aliases: "/sofa-rpc/docs/Registry-SOFA"
 ---
-
 
 SOFARPC 已支持使用 SOFARegistry 作为服务注册中心。假设你已经根据 SOFARegistry 的[快速开始](../../sofa-registry/server-quick-start)在本地部署好 SOFARegistry Server，服务发现的端口默认设置在 `9603`。
 

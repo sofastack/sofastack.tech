@@ -1,13 +1,8 @@
-
 ---
-title: "Overview"
+title: "SOFAMesh overview"
 aliases: "/sofa-mesh/docs/Home"
 ---
 
-
-## SOFAMesh introduction 
-
-## Overview 
 SOFAMesh is a large-scale implementation solution for Service Mesh which is improved and extended based on [Istio](https://istio.io). Based on Istio's powerful functions and rich features, SOFAMesh has made the following improvement to meet the performance requirements in large-scale deployment and deal with the actual problems in actual implementation: 
 
 1. Replace Envoy with MOSN that is written with Golang;
@@ -17,7 +12,7 @@ SOFAMesh is a large-scale implementation solution for Service Mesh which is impr
 
 The following figure shows the architectural differences between SOFAMesh and Istio:
 
-<img alt="SOFAMesh architecture" src="./resources/sofa-mesh-arch.png" width="60%">
+![SOFAMesh architecture](sofa-mesh-arch.png)
 
 ## Main components
 
@@ -25,13 +20,13 @@ The following figure shows the architectural differences between SOFAMesh and Is
 
 In SOFAMesh, the data pane adopts Golang to write a module called MOSN (Modular Observable Smart Net-stub), and replaces Envoy with MOSN to integrate with Istio to implement the functions of Sidecar. MOSN is fully compatible with Envoy's APIs.
 
-<img alt="SOFA MOSN architecture" src="./resources/mosn-sofa-mesh-golang-sidecar.png" width="60%">
+![SOFA MOSN architecture](mosn-sofa-mesh-golang-sidecar.png)
 
-### SOFA Pilot
+### SOFAMesh Pilot
 
 SOFAMesh greatly expands and enhances the Pilot module in Istio:
 
-<img alt="SOFA Pilot Architecture" src="./resources/sofa-mesh-pilot.png" width="60%">
+![SOFAMesh Pilot Architecture](sofa-mesh-pilot.png)
 
 1. Add an Adapter for SOFA Registry to provide solutions for super large-scale service registration and discovery;
 2. Add data synchronization modules to enable data exchange between multiple service registry centers;

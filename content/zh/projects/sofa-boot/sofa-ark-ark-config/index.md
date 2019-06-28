@@ -1,9 +1,7 @@
-
 ---
 title: "SOFAArk 配置"
 aliases: "/sofa-boot/docs/sofa-ark-ark-config"
 ---
-
 
 SOFAArk 的配置目录不是必须存在，如果需要，统一放在工程根目录 `${baseDir}/conf/ark` 下，执行 sofa-ark-maven-plugin 打包，将会自动将该目录下的配置打包至 Ark 包，例如 Ark 包目录为：
 

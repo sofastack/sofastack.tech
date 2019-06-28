@@ -1,9 +1,7 @@
-
 ---
 title: "Service publishing and reference in SOFABoot"
 aliases: "/sofa-rpc/docs/RPC-Config-Xml-Explain"
 ---
-
 
 This document describes the complete SOFARPC service publishing and reference in the SOFABoot environment.
 
@@ -33,7 +31,6 @@ This document describes the complete SOFARPC service publishing and reference in
 | registry | Server registry center | |  Separated by commas|
 | timeout | Execution timeout period on the server | | |
 | serialize-type| Serialization protocol | hessian2,protobuf | |
-| timeout | Execution timeout period on the server | | |
 | thread-pool-ref | Thread pool used by the current interface of the server | None |
 | weight | Service static weight | | |
 | warm-up-weight| Service warm-up weight | | |
