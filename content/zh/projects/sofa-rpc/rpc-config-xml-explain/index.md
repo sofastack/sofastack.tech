@@ -33,8 +33,7 @@ aliases: "/sofa-rpc/docs/RPC-Config-Xml-Explain"
 | filter        | 过滤器配置别名           |                    | 多个用逗号隔开                                                               |
 | registry      | 服务端注册中心           |                    |  逗号分隔                                                                       |
 | timeout       | 服务端执行超时时间        |                    |                                                                            |
-| serialize-type| 序列化协议              | hessian2,protobuf   |                                                                            |
-| timeout       | 服务端执行超时时间        |                    |                                                                            |
+| serialize-type| 序列化协议              | hessian2,protobuf   |                                                                            |                                                                          |
 | thread-pool-ref 服务端当前接口使用的线程池 | 无                 |                    |                                                                            |
 | weight        | 服务静态权重             |                    |                                                                            |
 | warm-up-weight| 服务预热权重             |                    |                                                                            |
