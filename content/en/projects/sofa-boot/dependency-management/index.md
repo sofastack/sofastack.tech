@@ -1,4 +1,3 @@
-
 ---
 title: "Dependency management"
 aliases: "/sofa-boot/docs/DependencyManagement"

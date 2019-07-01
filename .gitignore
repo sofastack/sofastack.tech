@@ -17,3 +17,6 @@
 
 # hugo resources
 /resources
+
+# lint site
+.htmlproofer
