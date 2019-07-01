@@ -73,12 +73,25 @@ metrics-server.spring.data.jest.uri=http://localhost:9200
 > java -Dcom.alipay.sofa.ark.master.biz=lookoutall -jar lookout-all-1.6.0.snapshot.jar
 
 - 方式3: 使用docker镜像
+
+服务端默认会连接到localhost:9200的ES实例, 而我所用的开发机器是MacOS, 无法使用--net=host模式启动容器, 因此在容器内无法通过localhost:9200连接ES, 需要使用如下方式绕过去:
+
+编辑一个配置文件, 比如foo.properties
 ```
-docker run -d \
+gateway.metrics.exporter.es.host=es
+metrics-server.spring.data.jest.uri=http://es:9200
+```
+在foo.properties所在的目录下运行all-in-one镜像
+```
+docker run -it \
 --name allinone \
 --link es:es \
 -p 7200:7200 \
 -p 9090:9090 \
+-v $PWD/foo.properties:/home/admin/deploy/foo.properties \
+-e JAVA_OPTS="-Dlookoutall.config-file=/home/admin/deploy/foo.properties" \
 -e JAVA_OPTS="...定制JVM系统属性..." \
-docker.io/xzchaoo/lookout-allinone:1.6.0-SNAPSHOT
+xzchaoo/lookout-allinone:1.6.0-SNAPSHOT
 ```
+> 这里利用了docker的--link参数使得应用可以访问到ES实例
+这里做测试用, 所以不用-d参数在后台运行
