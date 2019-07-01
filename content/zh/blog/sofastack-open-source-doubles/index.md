@@ -19,19 +19,19 @@ cover: "cover.jpg"
 
 ## SOFATracer
 
-SOFATracer 是一个用于分布式系统调用跟踪的中间件，通过统一的 traceId 将调用链路中的各种网络调用信息以日志或者上报的方式记录下来，以达到透视化网络调用的目的。这些日志可用于故障的快速发现，数据统计，服务治理等。为了解决在实施大规模微服务架构时的链路跟踪问题，SOFATracer 基于 OpenTracing（http://opentracing.io） 规范并扩展其能力，包括基于 Disruptor 高性能无锁循环队列的异步落地磁盘的日志打印能力，自定义日志格式，日志自清除和滚动能力，基于 SLF4J MDC 的扩展能力，统一的配置能力等。同时 SOFATracer 也对接了开源生态，可以选择将 Tracer 数据对接到 Zipkin 等开源产品。
+SOFATracer 是一个用于分布式系统调用跟踪的中间件，通过统一的 traceId 将调用链路中的各种网络调用信息以日志或者上报的方式记录下来，以达到透视化网络调用的目的。这些日志可用于故障的快速发现，数据统计，服务治理等。为了解决在实施大规模微服务架构时的链路跟踪问题，SOFATracer 基于 OpenTracing（<http://opentracing.io>） 规范并扩展其能力，包括基于 Disruptor 高性能无锁循环队列的异步落地磁盘的日志打印能力，自定义日志格式，日志自清除和滚动能力，基于 SLF4J MDC 的扩展能力，统一的配置能力等。同时 SOFATracer 也对接了开源生态，可以选择将 Tracer 数据对接到 Zipkin 等开源产品。
 
 SOFATracer 的 Github 的地址是：https://github.com/sofastack/sofa-tracer ，欢迎大家使用反馈、贡献代码。（请将网址复制至浏览器中打开即可查看，下同。）
 
 ## SOFALookout
 
-SOFALookout 是一个利用多维度的 Metrics 对目标系统进行度量和监控的中间件。Lookout 的多维度 Metrics 参考 Metrics 2.0（http://metrics20.org/spec） 标准，提供一整套 Metrics 的处理，包括数据埋点、收集、加工、存储与查询等。SOFALookout 包括客户端与服务器端服务两部分，本次先开源客户端部分，服务端部分代码在整理中。 SOFALookout 客户端提供了一套 Metrics API 标准，通过它可以方便地对 Java 应用的 Metrics 进行埋点统计。为了方便使用，SOFALookout 客户端默认提供一些扩展模块，它们提供 JVM，OS 等基本 Metrics 信息的统计，遵循该扩展机制，我们可以自定义或集成更多的 Metrics 数据。另外，SOFALookout 客户端除了支持向 SOFALookout 服务端上报数据外，还支持与社区主流的相关产品，包括 Dropwizard,（SpringBoot）Actuator 以及 Prometheus 等进行集成和数据适配。
+SOFALookout 是一个利用多维度的 Metrics 对目标系统进行度量和监控的中间件。Lookout 的多维度 Metrics 参考 Metrics 2.0（<http://metrics20.org/spec>） 标准，提供一整套 Metrics 的处理，包括数据埋点、收集、加工、存储与查询等。SOFALookout 包括客户端与服务器端服务两部分，本次先开源客户端部分，服务端部分代码在整理中。 SOFALookout 客户端提供了一套 Metrics API 标准，通过它可以方便地对 Java 应用的 Metrics 进行埋点统计。为了方便使用，SOFALookout 客户端默认提供一些扩展模块，它们提供 JVM，OS 等基本 Metrics 信息的统计，遵循该扩展机制，我们可以自定义或集成更多的 Metrics 数据。另外，SOFALookout 客户端除了支持向 SOFALookout 服务端上报数据外，还支持与社区主流的相关产品，包括 Dropwizard,（SpringBoot）Actuator 以及 Prometheus 等进行集成和数据适配。
 
 SOFALookout 的 Github 的地址是：https://github.com/sofastack/sofa-lookout ，欢迎大家使用反馈、贡献代码。（请将网址复制至浏览器中打开即可查看，下同。）
 
 ## Eggjs 集成
 
-每种语言都有自己最擅长的领域，跨语言友好性对于分布式架构也是非常重要的。在蚂蚁内部还有一套 Nodejs 版本的 SOFA 中间件的实现，包含了绝大部分 Java 版本的功能，并将它们集成到已经开源的企业级 Nodejs 框架 Eggjs（https://eggjs.org） 中，形成了一套完整的 Web MVC 和 BFF (Backend For Frontend) 解决方案。这套架构目前广泛应用于蚂蚁的 Web 开发和多端适配等场景，让各岗位有了更清晰的职责划分，服务端（一般是 Java）提供基于领域模型的 RPC 接口，前端调用接口拿到数据后进行剪裁和格式化，并实现人机交互。领域模型与页面数据是两种思维模式，通过分层可以很好地解耦，让彼此更专业高效。后面我们也会陆续开源 SOFA 中间件的 Nodejs 版本实现，本期会先放出 SOFARPC 相关的两个模块：
+每种语言都有自己最擅长的领域，跨语言友好性对于分布式架构也是非常重要的。在蚂蚁内部还有一套 Nodejs 版本的 SOFA 中间件的实现，包含了绝大部分 Java 版本的功能，并将它们集成到已经开源的企业级 Nodejs 框架 Eggjs（<https://eggjs.org>） 中，形成了一套完整的 Web MVC 和 BFF (Backend For Frontend) 解决方案。这套架构目前广泛应用于蚂蚁的 Web 开发和多端适配等场景，让各岗位有了更清晰的职责划分，服务端（一般是 Java）提供基于领域模型的 RPC 接口，前端调用接口拿到数据后进行剪裁和格式化，并实现人机交互。领域模型与页面数据是两种思维模式，通过分层可以很好地解耦，让彼此更专业高效。后面我们也会陆续开源 SOFA 中间件的 Nodejs 版本实现，本期会先放出 SOFARPC 相关的两个模块：
 
 SOFARPC Node 的 Github 的地址是：https://github.com/sofastack/sofa-rpc-node ，
 SOFABolt Node 的 Github 的地址是：https://github.com/sofastack/sofa-bolt-node ，

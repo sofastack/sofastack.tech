@@ -193,11 +193,7 @@ SOFARegistry 与开源同类产品的比较：
 
 - GitHub 项目地址：
   https://github.com/sofastack/sofa-registry
-- 本期分享 PPT 获取地址（或点击阅读原文获取）：
-  https://www.sofastack.tech/posts/2019-03-27-01
 
 ![img](https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1553696934874-31659e4f-e9a1-431c-a487-6441923fcee5.jpeg)
 
 SOFA 开源社区，感谢有你！
-
-[SOFARegistry 服务注册中心开源-尚彧.pdf](https://gw.alipayobjects.com/os/nemopainter_prod/6a2f6a10-d6f2-4ac0-92a9-402994bddc52/sofastack-blog/resources-2019-03-SOFARegistry%E6%9C%8D%E5%8A%A1%E6%B3%A8%E5%86%8C%E4%B8%AD%E5%BF%83%E5%BC%80%E6%BA%90.pdf)

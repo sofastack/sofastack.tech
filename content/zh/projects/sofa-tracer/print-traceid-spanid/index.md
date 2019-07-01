@@ -1,4 +1,3 @@
-
 ---
 title: "应用日志打印 traceId 和 spanId"
 aliases: "/sofa-tracer/docs/PrintTraceIdSpanId"
@@ -9,7 +8,7 @@ SLF4J 提供了 MDC （Mapped Diagnostic Contexts）功能，可以支持用户�
 
 ## 使用前提
 
-为了在应用中的日志正确打印 `TraceId` 和 `SpanId` 参数，我们的日志编程接口需要面向 [`SLF4J`]((https://www.slf4j.org/manual.html)) 进行编程，即打印日志的编程接口不要依赖具体的日志实现。
+为了在应用中的日志正确打印 `TraceId` 和 `SpanId` 参数，我们的日志编程接口需要面向 [`SLF4J`](https://www.slf4j.org/manual.html) 进行编程，即打印日志的编程接口不要依赖具体的日志实现。
 
 ```xml
 <dependency>

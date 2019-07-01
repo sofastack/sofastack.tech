@@ -94,7 +94,7 @@ SOFATracer 默认采样策略使用基于固定采样率通过 BitSet 底层实�
 
 ![image.png](https://cdn.nlark.com/yuque/0/2019/png/230565/1548816164957-3a201e28-82e2-4df8-a49f-41a17df0aa4b.png)
 
-SofaTracerPercentageBasedSampler 基于固定采样比率采用时间复杂度为 O(N) 的蓄水池采样算法 [Reservoir Sampling](https://en.wikipedia.org/wiki/Reservoir_sampling) 构建随机 BitSet 检查是否采样。蓄水池采样算法从包含 n 个项目的集合 S 中选取 k 个样本，其中 n 为一很大或未知的数量，具体采样步骤包括：
+SofaTracerPercentageBasedSampler 基于固定采样比率采用时间复杂度为 O(N) 的蓄水池采样算法 Reservoir Sampling 构建随机 BitSet 检查是否采样。蓄水池采样算法从包含 n 个项目的集合 S 中选取 k 个样本，其中 n 为一很大或未知的数量，具体采样步骤包括：
 
 1. 从集合 S 中抽取首 k 项放入「水塘」中
 2. 对于每一个 S[j] 项（j ≥ k）：

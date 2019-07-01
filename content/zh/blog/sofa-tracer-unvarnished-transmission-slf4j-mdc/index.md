@@ -186,7 +186,7 @@ try{
 
 在 SOFATracer 中定义了一个 SofaTraceContext 接口，允许应用程序访问和操纵当前 Span 的状态，默认实现是 SofaTracerThreadLocalTraceContext； UML 图：
 
-![image.png](https://cdn.nlark.com/yuque/0/2019/png/230565/1548134663408-e56ec764-cac9-44fe-8d89-97a6cd03a034.png#align=left&display=inline&height=347&linkTarget=_blank&name=image.png&originHeight=418&originWidth=621&size=48139&width=516)
+![image.png](https://cdn.nlark.com/yuque/0/2019/png/230565/1548134663408-e56ec764-cac9-44fe-8d89-97a6cd03a034.png)
 
 SofaTracerThreadLocalTraceContext 实际上就是使用了 ThreadLocal 来存储当前线程 Tracer 上下文信息的。下面以 AbstractTracer#serverReceive 代码片段来看下 SOFATracer 中存入 Span 的逻辑：
 
@@ -264,7 +264,7 @@ public SofaTracerSpanContext cloneInstance() {
 
 另外，SOFATracer 还提供了 SofaTracerRunnable&SofaTracerCallable 这两个类 ，封装了底层手动将 Span 复制到被调线程的 ThreadLocal 中去的过程；需要注意的是这个传递的是 Span ，并非是 SpanContext，因此也就没有上面隔离一说，具体使用参考官方文档：[异步线程处理](https://www.sofastack.tech/sofa-tracer/docs/Async)。这里以 SofaTracerRunnable 类来进行具体实现分析，SofaTracerCallable 大家可以自己去研究下。
 
-![image.png](https://cdn.nlark.com/yuque/0/2019/png/230565/1548134524159-659cb2d3-bd01-49c4-8fd3-fc47677d9fe3.png#align=left&display=inline&height=289&linkTarget=_blank&name=image.png&originHeight=307&originWidth=434&size=25251&width=408)
+![image.png](https://cdn.nlark.com/yuque/0/2019/png/230565/1548134524159-659cb2d3-bd01-49c4-8fd3-fc47677d9fe3.png)
 
 > 关于异步线程处理的案例，可以参考 [SOFATracer 的测试用例](https://github.com/sofastack/sofa-tracer/tree/master/tracer-core/src/test/java/com/alipay/common/tracer/core/async) 。
 
@@ -291,11 +291,11 @@ private void initRunnable(Runnable wrappedRunnable, SofaTraceContext traceContex
 
 在之前的文章中对于 Span 的层级关系有过介绍，如果按照时序关系来展示大概如下：
 
-![image.png](https://cdn.nlark.com/yuque/0/2019/png/230565/1548136627435-746b3489-9286-4002-95c0-3614ca16d965.png#align=left&display=inline&height=121&linkTarget=_blank&name=image.png&originHeight=162&originWidth=763&size=15254&width=570)
+![image.png](https://cdn.nlark.com/yuque/0/2019/png/230565/1548136627435-746b3489-9286-4002-95c0-3614ca16d965.png)
 
 这里以 A、B、D 来看，三个 Span 是逐级嵌套的；如果把这个模型理解成为一个栈的话，那么各个 Span 的产生过程即为入栈的过程，如下：
 
-![image.png](https://cdn.nlark.com/yuque/0/2019/png/230565/1548137154446-c401fa31-05ae-4dda-bf11-f5b716cbc6e9.png#align=left&display=inline&height=328&linkTarget=_blank&name=image.png&originHeight=349&originWidth=593&size=15866&width=558)
+![image.png](https://cdn.nlark.com/yuque/0/2019/png/230565/1548137154446-c401fa31-05ae-4dda-bf11-f5b716cbc6e9.png)
 
 由于栈的特性是 FILO ，因此当 span C 出栈时就意味着 span C 的生命周期结束了，此时会触发 Span 数据的上报。这里其实也很好的解释了 ChildOf 这种关系的描述：父级 Span 某种程度上取决于子 Span  (子 Span 的结果可能会对父 Span 产生影响) ；父 Span 的生命周期时间是包含了子 Span 生命周期时间的。
 

@@ -3,10 +3,7 @@ title: "发展路线"
 aliases: "/sofa-tracer/docs/roadmap"
 ---
 
-
-<center>
-![roadmap](https://gw.alipayobjects.com/mdn/rms_432828/afts/img/A*3E6rQ6fE9RkAAAAAAAAAAABjARQnAQ)
-</center>
+![SOFATracker roadmap](https://gw.alipayobjects.com/mdn/rms_432828/afts/img/A*3E6rQ6fE9RkAAAAAAAAAAABjARQnAQ)
 
 ## 任务列表
 
@@ -30,7 +27,7 @@ aliases: "/sofa-tracer/docs/roadmap"
 | 代码 | SOFATracer 支持 Oracle JDBC Driver                           | 中     |              |              |              |                                                              |                                                              |
 | 代码 | SOFATracer 支持 Dubbo                                        | 中     |              |              |              |                                                              |                                                              |
 | 代码 | SOFATracer 支持 RestTemplate 和 AsyncRestTemplate            | 中     |              |              |              | 已经完成，见[使用 SOFATracer 记录 RestTemplate 链路调用数据](https://github.com/sofastack/sofa-tracer/tree/master/tracer-samples/tracer-sample-with-resttemplate) |                                                              |
-| 代码 | SOFATracer 支持标准Servlet                                   | 中     |              |              |              | 已经完成，见[对于标准 servlet 容器的支持（ tomcat/jetty 等）](https://github.com/sofastack/sofa-tracer/tree/master/tracer-samples/tracer-sample-with-springmvc#%E5%AF%B9%E4%BA%8E%E6%A0%87%E5%87%86-servlet-%E5%AE%B9%E5%99%A8%E7%9A%84%E6%94%AF%E6%8C%81-tomcatjetty-%E7%AD%89) |                                                              |
+| 代码 | SOFATracer 支持标准Servlet                                   | 中     |              |              |              | 已经完成，见对于标准 servlet 容器的支持（ tomcat/jetty 等） |                                                              |
 | 代码 | SOFATracer 支持单机版链路分析并给用户通过注解使用的埋点方式，数据汇报到 Zipkin | 中     |              |              |              |                                                              |                                                              |
 | 代码 | SOFATracer 支持 Kafka                                        | 中     |              |              |              |                                                              |                                                              |
 | 代码 | SOFATracer 支持 Redis                                        | 中     |              |              |              |                                                              |                                                              |

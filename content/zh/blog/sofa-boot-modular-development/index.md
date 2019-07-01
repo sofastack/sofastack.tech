@@ -17,7 +17,7 @@ SOFABoot 是蚂蚁金服中间件团队开源的基于 Spring Boot 的一个开�
 
 - 基于代码组织上的模块化：这是最常见的形式，在开发期，将不同功能的代码放在不同 Java 工程下，在编译期被打进不同 jar 包，在运行期，所有 Java 类都在一个 classpath 下且使用同一个 Spring 上下文，没做任何隔离；
 - 基于 Spring 上下文隔离的模块化：使用 Spring 上下文来做不同功能模块的隔离，在开发期和编译期，代码和配置也会分在不同 Java 工程中，但在运行期，不同的 Spring Bean 相互不可见，IoC 只在同一个上下文内部发生，但是所有的 Java 类还是在一个 ClassLoader 下；
-- 基于 ClassLoader 隔离的模块化：借用 ClassLoader 来做隔离，每个模块都有独立的 ClassLoader，模块与模块之间的 classpath 不同，[SOFAArk](./2018-06-04-01) 就是这种模块化的实践方式。
+- 基于 ClassLoader 隔离的模块化：借用 ClassLoader 来做隔离，每个模块都有独立的 ClassLoader，模块与模块之间的 classpath 不同，[SOFAArk](/blog/sofa-boot-class-isolation-deep-dive/) 就是这种模块化的实践方式。
 
 以上三种模块化形式的隔离化程度逐次递进，但模块化就像一把双刃剑，在降低模块间耦合的同时也给模块间交互增加了成本，本文介绍第二种模块化形式 —— 基于 Spring 上下文隔离的模块化。
 
@@ -29,7 +29,7 @@ SOFABoot 是蚂蚁金服中间件团队开源的基于 Spring Boot 的一个开�
 
 在介绍 SOFABoot 模块化开发使用之前，我们简单了解下其背后的实现原理。下图是应用运行时的逻辑视图：
 
-![SOFABoot 模块化开发](/Users/jimmysong/Workspace/github/rootsongjc/sofastack-doc/posts/resources/2018-07/2018-07-21-01-01.png)
+![SOFABoot 模块化开发](https://gw.alipayobjects.com/zos/nemopainter_prod/f6372d29-cb2f-488f-a858-46f97a610e7c/sofastack-blog/resources-2018-07-2018-07-21-01-01.png)
 
 SOFABoot 模块是模块化开发的最小单元，每个 SOFABoot 模块是一个独立的 Spring 上下文，在 SOFABoot 模块中我们可以定义Bean、发布 RPC 服务、连接数据库等等。
 

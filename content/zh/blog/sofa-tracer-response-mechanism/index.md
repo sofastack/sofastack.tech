@@ -176,7 +176,7 @@ AbstractSofaTracerStatisticReporter 的 doReportStat 方法是个抽象方法，
 
 ![image.png](https://cdn.nlark.com/yuque/0/2019/png/230565/1546951154851-b3c76870-7a11-4cfa-b5f2-c55027208095.png)
 
-可以看到 AbstractSofaTracerStatisticReporter 的实现类均是在 SOFATracer plugins 包下，也就是说统计日志打印需要由不同的扩展插件来定义实现。但是实际上不同的插件在重写 doReportStat 方法时也并非是直接将 span 数据 flush 到磁盘的，而是将 SofaTracerSpan 转换成 StatMapKey 然后塞到了 AbstractSofaTracerStatisticReporter 中的一个 map 结构对象中。具体细节详见：[AbstractSofaTracerStatisticReporter#addStat]([https://github.com/sofastack/sofa-tracer/blob/master/tracer-core/src/main/java/com/alipay/common/tracer/core/reporter/stat/AbstractSofaTracerStatisticReporter.java](https://github.com/sofastack/sofa-tracer/blob/master/tracer-core/src/main/java/com/alipay/common/tracer/core/reporter/stat/AbstractSofaTracerStatisticReporter.java))。
+可以看到 AbstractSofaTracerStatisticReporter 的实现类均是在 SOFATracer plugins 包下，也就是说统计日志打印需要由不同的扩展插件来定义实现。但是实际上不同的插件在重写 doReportStat 方法时也并非是直接将 span 数据 flush 到磁盘的，而是将 SofaTracerSpan 转换成 StatMapKey 然后塞到了 AbstractSofaTracerStatisticReporter 中的一个 map 结构对象中。具体细节详见：[AbstractSofaTracerStatisticReporter#addStat](https://github.com/sofastack/sofa-tracer/blob/master/tracer-core/src/main/java/com/alipay/common/tracer/core/reporter/stat/AbstractSofaTracerStatisticReporter.java))。
 
 ### 2.2.2、统计日志的打印模型
 

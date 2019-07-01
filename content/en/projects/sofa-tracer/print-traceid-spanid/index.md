@@ -1,4 +1,3 @@
-
 ---
 title: "Print traceId and spanId in application log"
 aliases: "/sofa-tracer/docs/PrintTraceIdSpanId"
@@ -11,7 +10,7 @@ SLF4J provides MDC (Mapped Diagnostic Contexts), which supports you to define an
 
 ## Prerequisites
 
-In order to properly print the `TraceId` and `SpanId` parameters in the logs of the application, the log programming interface needs to be programmed for [`SLF4J`]((https://www.slf4j.org/manual.html)). That is, the programming interface for printing log does not rely on specific log implementation.
+In order to properly print the `TraceId` and `SpanId` parameters in the logs of the application, the log programming interface needs to be programmed for [`SLF4J`](https://www.slf4j.org/manual.html). That is, the programming interface for printing log does not rely on specific log implementation.
 
 ```xml
 <dependency>
