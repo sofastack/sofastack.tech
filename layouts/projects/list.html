@@ -16,11 +16,16 @@
 
 {{ $main_projects := slice }}
 {{ $incubating_projects := slice }}
+{{ $tool_projects := slice }}
 {{ range $pages }}
+	{{ if eq .Params.level "main" }}
+		{{ $main_projects = $main_projects | append . }}
+	{{ end }}
 	{{ if eq .Params.level "incubating" }}
 		{{ $incubating_projects = $incubating_projects | append . }}
-	{{ else }}
-		{{ $main_projects = $main_projects | append . }}
+	{{ end }}
+	{{ if eq .Params.level "tool" }}
+		{{ $tool_projects = $tool_projects | append . }}
 	{{ end }}
 {{ end }}
 
@@ -52,6 +57,18 @@
 				</div>
 			</div>
 		{{ end }}
+		{{ if ne (len $tool_projects) 0 }}
+		<div class="ss-list">
+			<h2 class="list-title">
+				<a>{{ i18n "tool_projects" }}</a>
+			</h2>
+			<div class="list">
+				{{ range $tool_projects }}
+					{{ partial "card/project_card" . }}
+				{{ end }}
+			</div>
+		</div>
+	{{ end }}
 	</main>
 </div>
 

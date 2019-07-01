@@ -12,6 +12,9 @@ other = "Main Projects"
 [incubating_project]
 other = "Incubating Projects"
 
+[tool_projects]
+other = "Tool Projects"
+
 # guide
 
 # post

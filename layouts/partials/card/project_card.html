@@ -5,7 +5,17 @@
 				<img class="project-icon" src="{{ .Params.icon | absURL }}" />
 			{{ end }}
 			<h3 class="card-title">
-				<a href={{ path.Join .RelPermalink "overview" }}>
+				{{ $link := "" }}
+				{{ if isset .Params "link" }}
+					{{ if hasPrefix .Params.link "/" }}
+						{{ $link = path.Join .RelPermalink .Params.link }}
+					{{ else }}
+						{{ $link = .Params.link }}
+					{{ end }}
+				{{ else }}
+					{{ $link = path.Join .RelPermalink "/overview" }}
+				{{ end }}
+				<a href={{ $link }}>
 					{{ .Title }}
 				</a>
 			</h3>
