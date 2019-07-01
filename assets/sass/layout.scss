@@ -48,7 +48,7 @@
   .ss-card {
     margin: 0 24px;
     padding: 24px 0;
-    border-bottom: 1px solid $button-border-color;
+    border-bottom: 1px solid $card-border-color;
 
     &:last-child {
       border-bottom: none;
@@ -78,6 +78,6 @@
 
   &.-white {
     background-color: $background-color-card;
-    border: 1px solid $text-color-secondary-gray;
+    border: 1px solid $card-border-color;
   }
 }

@@ -1,7 +1,7 @@
 .ss-pagination {
   margin-top: 24px auto;
   padding-top: 20px;
-  border-top: 1px solid $text-color-secondary-gray;
+  border-top: 1px solid $card-border-color;
 
   .list {
     margin: 0;
@@ -37,10 +37,10 @@
 
   margin: 24px 0;
   padding: 20px 0;
-  border-top: 1px solid $text-color-secondary-gray;
+  border-top: 1px solid $card-border-color;
 
   @include mobile {
-    border-bottom: 1px solid $text-color-secondary-gray;
+    border-bottom: 1px solid $card-border-color;
   }
 
   .link-prev,
