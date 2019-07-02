@@ -6,7 +6,7 @@ description: "在本文中，我们将通过 Kubernetes 来演示 SOFABoot 的 R
 tags: ["SOFABoot","Kubernetes"]
 categories: "SOFABoot"
 aliases: "/posts/2018-05-04-01"
-cover: "kubernetes-logo.jpg"
+cover: "/kubernetes-logo.jpg"
 ---
 
 [SOFABoot](https://github.com/sofastack/sofa-boot) 是蚂蚁金服中间件团队开源的基于 Spring Boot 的一个开发框架，其在 Spring Boot 的健康检查的基础上，加上了 Readiness Check 的能力，以更好地适应大规模金融级的服务化场景，防止在应用启动有问题的情况下让外部流量进入应用。在本文中，我们将通过 Kubernetes 来演示 SOFABoot 的 Readiness Check 的能力，主要涉及到两个部分的能力的演示：

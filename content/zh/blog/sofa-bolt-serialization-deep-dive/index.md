@@ -6,7 +6,7 @@ description: "SOFABolt 是一款基于 Netty 最佳实践，通用、高效、�
 tags: ["SOFABolt"]
 categories: "SOFABolt"
 aliases: "/posts/2018-12-06-05"
-cover: "cover.jpg"
+cover: "/cover.jpg"
 ---
 
 # 前言

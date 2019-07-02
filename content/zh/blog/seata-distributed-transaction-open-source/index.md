@@ -5,7 +5,7 @@ title:  "蚂蚁金服分布式事务开源以及实践 | SOFA 开源一周年献
 tags: ["Seata"]
 categories: "Seata"
 aliases: "/posts/2019-04-09-02"
-cover: "seata.png"
+cover: "/seata.png"
 description: "上周，分布式事务 Fescar 宣布进行品牌升级：Thanks, Fescar ❤️，Hello, Seata 🚀。"
 ---
 

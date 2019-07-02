@@ -4,7 +4,7 @@ authorlink: "https://jimmysong.io"
 date: 2019-06-04T10:20:00.000Z
 title: "KubeCon China 2019 Co-Located Event SOFAStack Cloud Native Workshop"
 tags: ["KubeCon", "Workshop","Cloud Native"]
-cover: "cover.jpg"
+cover: "/cover.jpg"
 ---
 
 ![SOFAStack Cloud Native Workshop KubeCon China 2019](sofastack-cloud-native-workshop.jpg)

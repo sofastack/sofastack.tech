@@ -6,7 +6,7 @@ description: "本篇我们会依次介绍编解码的概念， TCP 粘包拆包�
 tags: ["SOFABolt"]
 categories: "SOFABolt"
 aliases: "/posts/2018-12-06-03"
-cover: "cover.jpg"
+cover: "/cover.jpg"
 ---
 
 ## 前言

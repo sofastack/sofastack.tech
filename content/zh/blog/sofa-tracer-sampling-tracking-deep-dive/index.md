@@ -6,7 +6,7 @@ description: "本文为《剖析 | SOFATracer 框架》第四篇，本篇作者�
 tags: ["SOFATracer"]
 categories: "SOFATracer"
 aliases: "/posts/2019-02-21-04"
-cover: "cover.jpg"
+cover: "/cover.jpg"
 ---
 
 > **SOFA** **S**calable **O**pen **F**inancial **A**rchitecture 是蚂蚁金服自主研发的金融级分布式中间件，包含了构建金融级云原生架构所需的各个组件，是在金融场景里锤炼出来的最佳实践。

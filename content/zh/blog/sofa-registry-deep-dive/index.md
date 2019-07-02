@@ -6,7 +6,7 @@ description: "此次，我们宣布开源蚂蚁金服注册中心 SOFARegistry �
 tags: ["SOFARegistry"]
 categories: "SOFABoot"
 aliases: "/posts/2018-05-04-01"
-cover: "cover.jpg"
+cover: "/cover.jpg"
 ---
 
 > SOFAStack

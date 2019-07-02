@@ -6,7 +6,7 @@ description: "本文将重点分析 SOFABolt 的连接管理功能。"
 tags: ["SOFABolt"]
 categories: "SOFABolt"
 aliases: "/posts/2018-12-06-02"
-cover: "cover.jpg"
+cover: "/cover.jpg"
 ---
 
 # 前言

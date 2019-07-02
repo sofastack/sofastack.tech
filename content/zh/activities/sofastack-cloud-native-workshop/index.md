@@ -4,7 +4,7 @@ authorlink: "https://jimmysong.io"
 date: 2019-06-04T10:20:00.000Z
 title: "KubeCon 上海同场活动 SOFAStack Cloud Native Workshop"
 tags: ["KubeCon", "Workshop","Cloud Native"]
-cover: "cover.jpg"
+cover: "/cover.jpg"
 descripton: "SOFAStack Cloud Native Workshop 由蚂蚁金服主办，6 月 24 日 9 点至16 点，上海世博中心 616 房间。"
 ---
 

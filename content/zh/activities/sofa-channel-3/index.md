@@ -3,7 +3,7 @@ author: "花肉"
 date: 2019-02-28T10:20:00.000Z
 title: "SOFAChannel#3：SOFARPC 性能优化（下）—— 手把手带你性能调优（含 Demo）"
 tags: ["SOFAChannel","SOFARPC"]
-cover: "cover.jpg"
+cover: "/cover.jpg"
 categories: "SOFAChannel"
 descripton: "本次为下半场，2 月 28 日晚 7 点，线上直播。"
 ---

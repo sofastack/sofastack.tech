@@ -5,7 +5,7 @@ title: "蚂蚁金服开源通信框架 SOFABolt 协议框架解析"
 tags: ["SOFABolt"]
 aliases: "posts/2018-12-06-01"
 description: "本文是对蚂蚁金服开源通信框架 SOFABolt 的协议框架解析。"
-cover: "cover.jpg"
+cover: "/cover.jpg"
 categories: "SOFABolt"
 ---
 

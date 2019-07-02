@@ -5,7 +5,7 @@ aliases: "/posts/2018-07-25-01"
 title: "蚂蚁金服的业务系统模块化之模块化隔离方案"
 tags: ["SOFABoot"]
 description: "本来将分析常见的几种模块化方案的利弊，并且介绍蚂蚁金服开源的框架 SOFA 在模块化中发挥的作用。"
-cover: "cover.jpg"
+cover: "/cover.jpg"
 categories: "SOFABoot"
 ---
 

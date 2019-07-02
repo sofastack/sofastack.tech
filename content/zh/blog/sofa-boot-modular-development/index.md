@@ -5,7 +5,7 @@ title: "基于 SOFABoot 进行模块化开发"
 tags: ["SOFABoot"]
 description: "本文是对蚂蚁金服开源的 SOFABoot 模块化开发的介绍。"
 aliases: "/posts/2018-07-21-01"
-cover: "cover.jpg"
+cover: "/cover.jpg"
 categories: "SOFABoot"
 ---
 

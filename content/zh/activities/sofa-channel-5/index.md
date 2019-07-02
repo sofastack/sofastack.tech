@@ -3,7 +3,7 @@ author: "花肉"
 date: 2019-05-08T10:20:00.000Z
 title: "SOFAChannel#5：给研发工程师的代码质量利器 —— 自动化测试框架 SOFAActs"
 tags: ["SOFAChannel","SOFAActs"]
-cover: "cover.jpg"
+cover: "/cover.jpg"
 categories: "SOFAChannel"
 descripton: "5 月 16 日周四晚 7 点，线上直播。"
 ---

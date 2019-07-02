@@ -6,7 +6,7 @@ title: "分布式事务 Seata TCC 模式深度解析 | SOFAChannel#4 直播整�
 tags: ["Seata"]
 categories: "Seata"
 description: "本文根据 SOFAChannel#4 直播分享整理，主题：分布式事务 Seata TCC 模式深度解析。"
-cover: "sofa-channel-4.jpg"
+cover: "/sofa-channel-4.jpg"
 ---
 
 > <SOFA:Channel/>，有趣实用的分布式架构频道。

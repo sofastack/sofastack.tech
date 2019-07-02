@@ -4,7 +4,7 @@ title : "Hello SOFAStack!"
 tags: ["SOFAStack"]
 categories : ["SOFAStack"]
 draft : false
-cover: "cover.jpg"
+cover: "/cover.jpg"
 description : "Say hello to SOFAStack!"
 weight : 1
 ---

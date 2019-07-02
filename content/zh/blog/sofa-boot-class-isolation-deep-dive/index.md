@@ -6,7 +6,7 @@ categories: "SOFABoot"
 tags: ["SOFAArk","SOFABoot"]
 aliases: "/posts/2018-06-04-01"
 description: "本文将介绍 SOFABoot 类隔离组件 SOFAArk 的实现原理。"
-cover: "cover.jpg"
+cover: "/cover.jpg"
 ---
 
 SOFABoot 是蚂蚁金服中间件团队开源的基于 Spring Boot 的一个开发框架，其在 Spring Boot 基础能力之上，增加了类隔离能力，以更好地解决随着工程应用变得臃肿庞大后带来的包冲突问题。类隔离能力天生带来模块化能力，同样给协作开发带来便利。

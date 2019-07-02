@@ -6,7 +6,7 @@ title: "蚂蚁金服开源 SOFAJRaft 详解| 生产级高性能 Java 实现"
 tags: ["SOFAJRaft"]
 categories: "SOFAJRaft"
 description: "本文根据 SOFAChannel#4 直播分享整理，主题：SOFAJRaft 详解。"
-cover: "cover.png"
+cover: "/cover.png"
 ---
 
 

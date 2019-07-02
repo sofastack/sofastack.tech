@@ -5,7 +5,7 @@ title:  "在 Spring Boot 中集成 SOFABoot 类隔离能力"
 tags: ["SOFABoot","SpringBoot","SOFAArk"]
 categories: "SOFABoot"
 aliases: "/posts/2018-05-16-01"
-cover: "cover.jpg"
+cover: "/cover.jpg"
 description: "本文将介绍 SOFABoot 类隔离能力的背景及其使用方式。"
 ---
 

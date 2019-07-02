@@ -6,7 +6,7 @@ title: "蚂蚁金服分布式中间件开源第二弹：丰富微服务架构体
 tags: ["SOFAStack"]
 categories: "SOFAStack"
 description: "本次 SOFA 中间件将继续开源微服务体系下的几个组件：包括分布式链路追踪（SOFATracer）客户端、Metrics监控度量（SOFALookout）客户端、SOFARPC 的 Nodejs 版实现。同时还开源了 SOFABoot 下的模块化开发框架，以及 SOFARPC 的 HTTP/2 能力等。"
-cover: "cover.jpg"
+cover: "/cover.jpg"
 ---
 
 蚂蚁金服自主研发的分布式中间件（Scalable Open Financial Architecture，以下简称 SOFA 中间件），包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，是一套分布式架构的完整的解决方案，也是在金融场景里锤炼出来的最佳实践。

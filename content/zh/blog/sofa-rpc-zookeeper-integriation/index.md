@@ -5,7 +5,7 @@ title: "SOFARPC 集成 Zookeeper 注册中心"
 tags: ["SOFARPC"]
 categories: "SOFARPC"
 description: "本文是 SOFARPC 集成 Zookeeper 的介绍。"
-cover: "cover.jpg"
+cover: "/cover.jpg"
 aliases: "/posts/2018-04-26-01"
 ---
 
