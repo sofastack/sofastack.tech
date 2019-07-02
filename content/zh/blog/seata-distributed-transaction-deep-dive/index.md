@@ -4,10 +4,12 @@ author: "绍辉"
 authorlink: "https://github.com/zhangthen"
 description: "本文整理自蚂蚁金服技术专家、分布式事务 Seata 发起者之一张森（花名：绍辉）在 GIAC 全球互联网架构大会的分享。"
 categories: "Seata"
-tags: ["分布式事务","实践","开源"]
+tags: ["分布式事务","实践","开源","Seata"]
 date: 2019-07-02T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1561967282873-aa62cf23-4717-44a3-9d19-7a00972e2ffb.jpeg"
 ---
+
+获取本次分享完整 PPT：[下载地址](https://gw.alipayobjects.com/os/basement_prod/514cacb8-a7b9-4b39-b277-5e12ecb723d3.pdf)
 
 本文整理自蚂蚁金服技术专家、分布式事务 Seata 发起者之一张森（花名：绍辉）在 GIAC 全球互联网架构大会的分享。详细讲解了在分布式架构演进中，蚂蚁金服面对的跨服务、跨数据库的业务数据一致性问题以及应对措施，并分享了分布式事务 Seata 的 AT、TCC、Saga 和 XA 四种模式。
 
@@ -96,7 +98,7 @@ Seata：[https://](https://github.com/seata/seata)[github.com/seata/seata](https
 
 ### 2.3 分布式事务 Seata 解决方案
 
-Seata 会有 4 种分布式事务解决方案，分别是 AT 模式、TCC 模式、Saga 模式和 XA 模式；
+Seata 会有 4 种分布式事务解决方案，分别是 AT 模式、TCC 模式、Saga 模式和 XA 模式。
 
 ![Seata 的 4 中分布式事务解决方案](https://cdn.nlark.com/yuque/0/2019/png/226702/1561961463555-4fbbb02b-475d-46c2-bf07-d58fa3cb6867.png)
 
@@ -110,7 +112,7 @@ Seata 会有 4 种分布式事务解决方案，分别是 AT 模式、TCC 模式
 
 - 一阶段：
 
-在一阶段，Seata 会拦截“业务 SQL”，首先解析 SQL 语义，找到“业务 SQL”要更新的业务数据，在业务数据被更新前，将其保存成“before image”，然后执行“业务 SQL”更新业务数据，在业务数据更新之后，再将其保存成“before image”，最后生成行锁。以上操作全部在一个数据库事务内完成，这样保证了一阶段操作的原子性。
+在一阶段，Seata 会拦截“业务 SQL”，首先解析 SQL 语义，找到“业务 SQL”要更新的业务数据，在业务数据被更新前，将其保存成“before image”，然后执行“业务 SQL”更新业务数据，在业务数据更新之后，再将其保存成“after image”，最后生成行锁。以上操作全部在一个数据库事务内完成，这样保证了一阶段操作的原子性。
 
 ![AT 模式 一阶段](https://cdn.nlark.com/yuque/0/2019/png/226702/1561962141714-15e9ce1c-1c2b-41cb-97e4-04fc857b482e.png)
 
@@ -245,5 +247,3 @@ XA 模式下，用户只需关注“业务 SQL”，Seata 会自动生成一阶�
 
 - 开源分布式事务 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 - 蚂蚁金服分布式事务（Distributed Transaction-eXtended）产品链接：[https://tech.antfin.com/products/DTX](https://tech.antfin.com/products/DTX)
-
-本次分享完整 PPT 下载地址：[下载地址](https://gw.alipayobjects.com/os/basement_prod/514cacb8-a7b9-4b39-b277-5e12ecb723d3.pdf)
