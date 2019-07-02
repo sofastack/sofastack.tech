@@ -2,7 +2,7 @@
 author: "蚂蚁中间件"
 date: 2018-04-19T14:22:19.000Z
 title: "蚂蚁金服启动分布式中间件开源计划，用于快速构建金融级云原生架构"
-tags: ["Open Source"]
+tags: ["开源"]
 aliases: "/posts/2018-04-19-01"
 description: "我们很高兴地宣布，今天蚂蚁金服启动分布式中间件（Scalable Open Financial Architecture，以下简称 SOFA 中间件）的开源计划！"
 cover: "/sofastack-open-source.jpg"
