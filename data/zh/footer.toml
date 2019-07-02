@@ -25,9 +25,10 @@
 [[links]]
 	category = "蚂蚁金服开源项目"
 	link_arr = [
-		["Egg.js", 'https://eggjs.org/'],
 		["Ant.Design", 'https://ant.design/'],
-		["SQLFlow", 'https://github.com/sql-machine-learning/sqlflow'],
+		["AntV","https://antv.alipay.com/"],
+		["Egg.js", 'https://eggjs.org/'],
+		["SQLFlow", 'https://sqlflow.org'],
 		["蚂蚁金融科技开源", 'https://tech.antfin.com/open-source'],
 	]
 

@@ -25,9 +25,10 @@
 [[links]]
 	category = "Ant Financial Open Source"
 	link_arr = [
-		["Egg.js", 'https://eggjs.org/'],
 		["Ant.Design", 'https://ant.design/'],
-		["SQLFlow", 'https://github.com/sql-machine-learning/sqlflow'],
+		["AntV","https://antv.alipay.com/"],
+		["Egg.js", 'https://eggjs.org/'],
+		["SQLFlow", 'https://sqlflow.org'],
 		["Open Source", 'https://tech.antfin.com/open-source'],
 	]
 
