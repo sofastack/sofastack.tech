@@ -1,7 +1,7 @@
 ---
 title: "Seata 分布式事务实践和开源详解 | GIAC 实录"
-author: "SOFAStack"
-authorlink: "https://www.sofastack.tech"
+author: "绍辉"
+authorlink: "https://github.com/zhangthen"
 description: "本文整理自蚂蚁金服技术专家、分布式事务 Seata 发起者之一张森（花名：绍辉）在 GIAC 全球互联网架构大会的分享。"
 categories: "Seata"
 tags: ["分布式事务","实践","开源"]
