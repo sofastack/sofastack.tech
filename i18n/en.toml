@@ -15,6 +15,9 @@ other = "Incubating Projects"
 [tool_projects]
 other = "Tool Projects"
 
+[ecosystem_projects]
+other = "Ecosystem Projects"
+
 # guide
 
 # post
