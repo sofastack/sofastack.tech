@@ -4,6 +4,7 @@ description: "Seata 是一款分布式事务解决方案，致力于在微服务
 github: "https://github.com/seata/seata"
 level: "ecosystem"
 weight: 1
-link: "https://github.com/seata/seata"
+link: "https://seata.io"
 icon: "/img/icons/seata.png"
 ---
+

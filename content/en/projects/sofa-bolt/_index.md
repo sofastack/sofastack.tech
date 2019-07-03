@@ -4,5 +4,5 @@ description: "SOFABolt is a network communication framework implemented based on
 github: "https://github.com/sofastack/sofa-bolt"
 level: "tool"
 weight: 1
-link: "https://github.com/sofastack/sofa-bolt"
+link: "https://github.com/sofastack/sofa-bolt/wiki"
 ---

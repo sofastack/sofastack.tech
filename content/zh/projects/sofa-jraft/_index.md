@@ -4,5 +4,5 @@ description: "SOFAJRaft 是一个基于 RAFT 一致性算法的生产级高性�
 github: "https://github.com/sofastack/sofa-jraft"
 level: "tool"
 weight: 1
-link: "https://github.com/sofastack/sofa-jraft"
+link: "https://github.com/sofastack/sofa-jraft/wiki"
 ---

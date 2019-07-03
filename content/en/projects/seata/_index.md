@@ -4,6 +4,6 @@ description: "Seata is an easy-to-use, high-performance, open source distributed
 github: "https://github.com/seata/seata"
 level: "ecosystem"
 weight: 1
-link: "https://github.com/seata/seata"
+link: "https://seata.io"
 icon: "/img/icons/seata.png"
 ---
