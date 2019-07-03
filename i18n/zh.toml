@@ -15,6 +15,9 @@ other = "孵化项目"
 [tool_projects]
 other = "工具项目"
 
+[ecosystem_projects]
+other = "生态项目"
+
 # guide
 
 # post

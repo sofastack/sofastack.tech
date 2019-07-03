@@ -3,9 +3,9 @@ draft: false
 title: "SOFAMOSN"
 description: "MOSN(Modular Observable Smart Network) is a powerful proxy acting as Service Mesh's data plane written in Golang."
 github: "https://github.com/sofastack/sofa-mosn"
-weight: 2
+weight: 3
 icon: "/img/icons/sofamosn.png"
-level: "incubating"
+level: "main"
 sidebar:
   - title: 'Overview'  	
     link: 'overview'

@@ -17,6 +17,7 @@
 {{ $main_projects := slice }}
 {{ $incubating_projects := slice }}
 {{ $tool_projects := slice }}
+{{ $ecosystem_projects := slice }}
 {{ range $pages }}
 	{{ if eq .Params.level "main" }}
 		{{ $main_projects = $main_projects | append . }}
@@ -26,6 +27,9 @@
 	{{ end }}
 	{{ if eq .Params.level "tool" }}
 		{{ $tool_projects = $tool_projects | append . }}
+	{{ end }}
+	{{ if eq .Params.level "ecosystem" }}
+		{{ $ecosystem_projects = $ecosystem_projects | append . }}
 	{{ end }}
 {{ end }}
 
@@ -68,7 +72,19 @@
 				{{ end }}
 			</div>
 		</div>
-	{{ end }}
+		{{ end }}
+		{{ if ne (len $ecosystem_projects) 0 }}
+		<div class="ss-list">
+			<h2 class="list-title">
+				<a>{{ i18n "ecosystem_projects" }}</a>
+			</h2>
+			<div class="list">
+				{{ range $ecosystem_projects }}
+					{{ partial "card/project_card" . }}
+				{{ end }}
+			</div>
+		</div>
+	    {{ end }}
 	</main>
 </div>
 
