@@ -17,20 +17,20 @@
 	img = "img/home/feat-financial-level.png"
 
 [[feature]]
-	title = "Cloud native"
+	title = "Cloud Native"
 	description = "Based on SOFAStack, you can quickly build a cloud-native microservice system and develop cloud-native applications that are more reliable, scalable, and easier to maintain."
 	img = "img/home/feat-cloud-native.png"
 
 
 [[charpter_description]]
-	title = "Microservice system"
+	title = "Microservice System"
 	description = "SOFAStack contains multiple components for building microservice system, including development framework, RPC framework, service registry, distributed link tracking, metrics monitoring, distributed transaction framework, service governance platform and other components. In combination with outstanding open-source products in community, you can quickly build a complete microservice system."
 	img = "img/home/cd-microservice-system.png"
 	img_width = "530px"
 
 
 [[charpter_description]]
-	title = "Cloud native architecture"
+	title = "Cloud Native Architecture"
 	description = "With the growth of business scale and system complexity, the traditional microservice management and operations becomes increasingly faster, and developers and operation personnel face multiple challenges. Some emerging concepts like Service Mesh and Serverless can resolve such problems. To improve the performance in large-scale deployment and cope with the actual situations in actual implementation, SOFAStack also open source the similar projects such as SOFAMesh and SOFAMosn."
 	img = "img/home/cd-cloud-native-architecture-en.png"
 	img_width = "390px"
