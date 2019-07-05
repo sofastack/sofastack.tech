@@ -16,7 +16,7 @@ cover: "/cover.jpg"
 本文为《剖析 | SOFATracer 框架》第三篇。《剖析 | SOFATracer 框架》系列由 SOFA 团队和源码爱好者们出品，项目代号：SOFA:TracerLab/**，**目前领取已经完成，感谢大家的参与。 
 SOFATracer：https://github.com/sofastack/sofa-tracer
 
-![SOFATracer-数据上报.jpg](https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1547173396825-f25c0dcc-19c3-424d-9830-cfc4d923e0a0.jpeg)
+![SOFATracer-数据上报.jpg](https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1550742047257-362367aa-5c4a-45bc-ab40-cd6fdfe74c09.jpeg)
 
 SOFATracer 是一个用于分布式系统调用跟踪的组件，其核心作用就是能够在分布式场景下将请求经过的各个的链路环节的相关数据记录下来，通过这些数据将各个调用链路相关的组件串联起来。
 
