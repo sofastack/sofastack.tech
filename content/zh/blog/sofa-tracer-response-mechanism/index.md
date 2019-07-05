@@ -21,7 +21,7 @@ SOFATracer：https://github.com/sofastack/sofa-tracer
 
 # 0、前言
 
-在《[蚂蚁金服分布式链路跟踪组件 SOFATracer 总览|剖析](https://www.yuque.com/huarou/gd4szw/tr3qab#na09ka)》一文中已经对 SOFATracer 进行了概要性的介绍。从对 SOFATracer 的定义可以了解到，SOFATracer 作为一个分布式系统调用跟踪的组件，是通过统一的 TraceId 将调用链路中的各种网络调用情况以数据上报的方式记录下来，以达到透视化网络调用的目的。
+在《[蚂蚁金服分布式链路跟踪组件 SOFATracer 总览|剖析](https://www.sofastack.tech/blog/sofa-tracer-overview/)》一文中已经对 SOFATracer 进行了概要性的介绍。从对 SOFATracer 的定义可以了解到，SOFATracer 作为一个分布式系统调用跟踪的组件，是通过统一的 TraceId 将调用链路中的各种网络调用情况以数据上报的方式记录下来，以达到透视化网络调用的目的。
 
 本篇将针对SOFATracer的数据上报方式进行详细分析，以帮助大家更好的理解 SOFATracer 在数据上报方面的扩展。
 
