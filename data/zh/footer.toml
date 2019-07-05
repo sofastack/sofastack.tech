@@ -9,30 +9,30 @@
 	]
 
 [[links]]
-	category = "社区"
+	category = "社交媒体"
 	link_arr = [
 		["知乎专栏", 'https://zhuanlan.zhihu.com/sofastack'],
 		["新浪微博", 'https://weibo.com/sofastack'],
+		["Twitter", "https://twitter.com/SOFAStackTech"]
 	]
 
 [[links]]
-	category = "帮助"
+	category = "参与进来"
 	link_arr = [
-		["报告 Bug", 'https://github.com/sofastack/sofa-boot/issues'],
-		["SegmentFault", 'https://segmentfault.com/t/sofa'],
+		["反馈", 'https://github.com/sofastack/sofastack.tech/issues/new'],
+		["社区","https://github.com/sofastack/community"],
+		["Wiki","https://github.com/sofastack/sofastack.tech.wiki"]
 	]
 
 [[links]]
 	category = "蚂蚁金服开源项目"
 	link_arr = [
 		["Ant.Design", 'https://ant.design/'],
-		["AntV","https://antv.alipay.com/"],
 		["Egg.js", 'https://eggjs.org/'],
 		["SQLFlow", 'https://sqlflow.org'],
-		["蚂蚁金融科技开源", 'https://tech.antfin.com/open-source'],
+		["更多", 'https://tech.antfin.com/open-source'],
 	]
 
-# qrcode
 [[qrcode]]
 	img = "img/qrcode/qrcode_1.png"
 	description = "微信公众号"

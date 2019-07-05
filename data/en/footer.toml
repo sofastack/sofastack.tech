@@ -9,27 +9,28 @@
 	]
 
 [[links]]
-	category = "Community"
+	category = "Social Media"
 	link_arr = [
 		["Zhihu", 'https://zhuanlan.zhihu.com/sofastack'],
 		["Weibo", 'https://weibo.com/sofastack'],
+		["Twitter", "https://twitter.com/SOFAStackTech"]
 	]
 
 [[links]]
-	category = "Help"
+	category = "Get Involved"
 	link_arr = [
-		["Report bug", 'https://github.com/sofastack/sofa-boot/issues'],
-		["SegmentFault", 'https://segmentfault.com/t/sofa'],
+		["Feedback", 'https://github.com/sofastack/sofastack.tech/issues'],
+		["Community","https://github.com/sofastack/community"],
+		["Wiki","https://github.com/sofastack/sofastack.tech.wiki"]
 	]
 
 [[links]]
 	category = "Ant Financial Open Source"
 	link_arr = [
 		["Ant.Design", 'https://ant.design/'],
-		["AntV","https://antv.alipay.com/"],
 		["Egg.js", 'https://eggjs.org/'],
 		["SQLFlow", 'https://sqlflow.org'],
-		["Open Source", 'https://tech.antfin.com/open-source'],
+		["More", 'https://tech.antfin.com/open-source'],
 	]
 
 # qrcode

@@ -1,9 +1,9 @@
 ---
 title: "SOFAActs"
-description: "ACTS (AntCoreTest) is a white-box testing framework that is based on the accumulation of testing practices for financial-grade distributed architectures."
+description: "ACTS (AntCoreTest) is a white-box testing framework."
 github: "https://github.com/sofastack/sofa-acts"
-level: "main"
-weight: 6
+level: "tool"
+weight: 3
 icon: "/img/icons/sofaacts.png"
 sidebar:
   - title: "SOFAActs introduction"
