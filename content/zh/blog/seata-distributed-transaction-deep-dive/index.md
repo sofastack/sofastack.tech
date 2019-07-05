@@ -9,8 +9,6 @@ date: 2019-07-02T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1561967282873-aa62cf23-4717-44a3-9d19-7a00972e2ffb.jpeg"
 ---
 
-本次分享完整 PPT 下载地址：[下载地址](https://gw.alipayobjects.com/os/basement_prod/514cacb8-a7b9-4b39-b277-5e12ecb723d3.pdf)
-=======
 获取本次分享完整 PPT：[下载地址](https://gw.alipayobjects.com/os/basement_prod/514cacb8-a7b9-4b39-b277-5e12ecb723d3.pdf)
 
 本文整理自蚂蚁金服技术专家、分布式事务 Seata 发起者之一张森（花名：绍辉）在 GIAC 全球互联网架构大会的分享。详细讲解了在分布式架构演进中，蚂蚁金服面对的跨服务、跨数据库的业务数据一致性问题以及应对措施，并分享了分布式事务 Seata 的 AT、TCC、Saga 和 XA 四种模式。
