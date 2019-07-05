@@ -1,7 +1,7 @@
 ---
 author: "卫恒"
 date: 2019-02-21T10:20:00.000Z
-title: "蚂蚁金服分布式链路跟踪组件 SOFATracer 数据上报机制和源码剖析"
+title: "蚂蚁金服分布式链路跟踪组件 SOFATracer 总览|剖析"
 description: "本文为《剖析 | SOFATracer 框架》第一篇。"
 tags: ["SOFATracer"]
 categories: "SOFATracer"
