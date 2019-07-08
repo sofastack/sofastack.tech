@@ -1,9 +1,9 @@
 ---
 author: "潘潘"
-date: 2019-07-08T10:20:00.000Z
+date: 2019-07-08T16:10:00+08:00
 title: "SOFAChannel#7：扩展 Kubernetes 实现金融级云原生发布部署 - 自定义资源 CAFEDeployment 的背景、实现和演进"
 tags: ["SOFAChannel","CAFEDeployment"]
-cover:"https://intranetproxy.alipay.com/skylark/lark/0/2019/jpeg/180072/1562572453165-b90b4203-a7f6-46d4-bfb5-6021e7b939ce.jpeg"
+cover: "https://intranetproxy.alipay.com/skylark/lark/0/2019/jpeg/180072/1562572453165-b90b4203-a7f6-46d4-bfb5-6021e7b939ce.jpeg"
 categories: "SOFAChannel"
 descripton: "7 月 18 日周四晚 7 点，线上直播第 7 期。"
 ---
