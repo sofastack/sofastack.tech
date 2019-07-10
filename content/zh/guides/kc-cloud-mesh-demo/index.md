@@ -5,6 +5,8 @@ github: "https://github.com/sofastack-guides/kc-cloud-mesh-demo"
 projects: [{name: "SOFAMesh", link: "https://github.com/sofastack/sofa-mesh"}]
 ---
 
+**注意：使用该指南需要开通蚂蚁金融科技账号，请访问 [蚂蚁金服科技官网](https://tech.antfin.com/)。**
+
 ## Demo内容介绍
 
 Service Mesh 将服务间通信能力下沉到基础设施，让应用解耦并轻量化。
