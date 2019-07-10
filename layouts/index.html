@@ -13,7 +13,7 @@
 {{ partial "back_legacy" . }}
 
 <div class="home-background">
-	<img src="{{ (resources.Get "/img/home/cover.png").Permalink }}" />
+	<img src="{{ (resources.Get "/img/home/cover.png").RelPermalink }}" />
 	<div class="gradient"></div>
 </div>
 
@@ -33,7 +33,7 @@
 			{{ range $data.feature }}
 
 			<div class="feature-container">
-				<img class="img" src="{{ (resources.Get .img).Permalink }}" />
+				<img class="img" src="{{ (resources.Get .img).RelPermalink }}" />
 				<h2 class="feature-title">{{ .title }}</h2>
 				<p class="home-description">
 					{{ .description }}
@@ -51,7 +51,7 @@
 				{{ if not (modBool $i 2) }}
 					<div class="img-container">
 						<img {{if isset $d "img_width"}}style="width:{{$d.img_width}}"{{end}}
-							src="{{ (resources.Get $d.img).Permalink }}"
+							src="{{ (resources.Get $d.img).RelPermalink }}"
 						>
 					</div>
 				{{ end }}
@@ -66,7 +66,7 @@
 				{{ if (modBool $i 2) }}
 					<div class="img-container">
 						<img {{if isset $d "img_width"}}style="width:{{$d.img_width}}"{{end}}
-							src="{{ (resources.Get $d.img).Permalink }}"
+							src="{{ (resources.Get $d.img).RelPermalink }}"
 						>
 					</div>
 				{{ end }}
