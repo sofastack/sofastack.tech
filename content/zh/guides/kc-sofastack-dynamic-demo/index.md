@@ -5,6 +5,8 @@ github: "https://github.com/sofastack-guides/kc-sofastack-dynamic-demo"
 projects: [{name: "SOFAMesh", link: "https://github.com/sofastack/sofa-boot"}, {name: "SOFADashboard", link: "https://github.com/sofastack/sofa-dashboard"}, {name: "SOFAArk", link: "https://github.com/sofastack/sofa-ark"}]
 ---
 
+**注意：您需要自行部署后端环境依赖，并修改示例中的服务依赖地址即可使用。**
+
 ## 实验背景
 
 [kc-sofastack-demo](https://github.com/sofastack-guides/kc-sofastack-demo) 分享中已经通过 SOFAStack 快速构建了一个电商微服务应用，
