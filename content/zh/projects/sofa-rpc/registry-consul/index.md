@@ -5,7 +5,18 @@ aliases: "/sofa-rpc/docs/Registry-Consul"
 ---
 
 
-使用 Consul 作为服务注册中心只需要在 application.properties 中如下配置即可：
+使用 Consul 作为服务注册中心需要添加如下依赖
+
+```
+<dependency>
+  <groupId>com.ecwid.consul</groupId>
+  <artifactId>consul-api</artifactId>
+  <version>1.4.2</version>
+</dependency>
+```
+
+
+然后在 application.properties 中如下配置：
 
 ```
 com.alipay.sofa.rpc.registry.address=consul://127.0.0.1:8500
