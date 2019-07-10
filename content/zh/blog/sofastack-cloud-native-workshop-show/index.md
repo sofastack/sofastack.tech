@@ -2,11 +2,11 @@
 title: "五小时构建云原生电商平台 | KubeCon SOFAStack Workshop 详解"
 author: "SOFAStack"
 authorlink: "https://github.com/sofastack"
-description: "本文根据 KubeCon China 2019 同场活动 SOFAStack Cloud Native Workshop 内容整理，文末包含文档、PPT 地址，欢迎试用和提出建议。。"
+description: "本文根据 KubeCon China 2019 同场活动 SOFAStack Cloud Native Workshop 内容整理，文末包含文档、PPT 地址，欢迎试用和提出建议。"
 categories: "SOFAStack"
-tags: ["分布式事务","SOFABoot","Service Mesh"，"开源","Seata"]
+tags: ["分布式事务","SOFABoot","Service Mesh","开源","Seata"]
 date: 2019-07-10T15:00:00+08:00
-cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1561967282873-aa62cf23-4717-44a3-9d19-7a00972e2ffb.jpeg"
+cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1561517619143-37d5188a-b04e-4476-9781-d34e25f7c8e0.jpeg"
 ---
 > 本文根据 KubeCon China 2019 同场活动 SOFAStack Cloud Native Workshop 内容整理，文末包含文档、PPT 地址，欢迎试用和提出建议。
 
