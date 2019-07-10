@@ -4,7 +4,7 @@
 	</h2>
 	<ul class="ss-aside-related">
 		{{ range .Site.Taxonomies.categories }}
-		<li><a href="{{ .Page.Permalink }}">{{ .Page.Title }}</a></li>
+		<li><a href="{{ .Page.RelPermalink }}">{{ .Page.Title }}</a></li>
 		{{ end }}
 	</ul>
 </div>

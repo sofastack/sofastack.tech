@@ -14,12 +14,12 @@
 
 {{ $options := (dict "targetPath" "style.css" "outputStyle" "compressed" "enableSourceMap" true) }}
 {{ $style := resources.Get "sass/main.scss" | resources.ToCSS $options }}
-<link href="{{ $style.Permalink }}" rel="stylesheet">
+<link href="{{ $style.RelPermalink }}" rel="stylesheet">
 
-<script src="{{ (resources.Get "js/iconfont.js").Permalink }}"></script>
-<script src="{{ (resources.Get "js/highlight.pack.js").Permalink }}"></script>
+<script src="{{ (resources.Get "js/iconfont.js").RelPermalink }}"></script>
+<script src="{{ (resources.Get "js/highlight.pack.js").RelPermalink }}"></script>
 <script>hljs.initHighlightingOnLoad();</script>
-<script src="{{ (resources.Get "js/app.js").Permalink }}"></script>
+<script src="{{ (resources.Get "js/app.js").RelPermalink }}"></script>
 
 <!-- TODO: meta -->
 <!-- 例如 twitter 的资料卡，https://github.com/servicemesher/website/blob/master/themes/hugo-universal-theme/layouts/partials/head.html -->

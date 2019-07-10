@@ -5,7 +5,7 @@
 			{{ $cover :=  slicestr .Params.cover 1 }}
 			{{ $coverImg := .Page.Resources.Match $cover }}
 			{{ if $coverImg }}
-				{{ $coverImgSrc = (index $coverImg 0).Permalink }}
+				{{ $coverImgSrc = (index $coverImg 0).RelPermalink }}
 			{{ end }}
 		{{ else }}
 			{{ $coverImgSrc = .Params.cover }}
@@ -14,7 +14,7 @@
 
 	<img class="cover" src="{{ $coverImgSrc }}" />
 	<div class="container">
-		<h2 class="title"><a href='{{ .Permalink }}'> {{ .Title }}</a></h2>
+		<h2 class="title"><a href='{{ .RelPermalink }}'> {{ .Title }}</a></h2>
 		<div class="meta">
 			{{ .Date.Format "2006-01-02" }} · {{ .Params.author }}
 		</div>
