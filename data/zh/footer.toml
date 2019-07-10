@@ -13,7 +13,7 @@
 	link_arr = [
 		["知乎专栏", 'https://zhuanlan.zhihu.com/sofastack'],
 		["新浪微博", 'https://weibo.com/sofastack'],
-		["Twitter", "https://twitter.com/SOFAStackTech"]
+		["Twitter", "https://twitter.com/sofastack_io"]
 	]
 
 [[links]]
