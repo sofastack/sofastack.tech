@@ -1,18 +1,16 @@
-
 ---
 title: "快速开始"
 aliases: "/sofa-mosn/docs/docs-quickstart-Setup"
 ---
 
-
 本文用于帮助初次接触 MOSN 项目的开发人员，快速搭建开发环境，完成构建，测试，打包和事例代码的运行。
-注：MOSN 基于 GoLang 1.9.2 研发，使用 dep 进行依赖管理
+注：MOSN 基于 Go 1.9.2 研发，使用 dep 进行依赖管理
 
 ## 准备运行环境
 
 + 如果你使用容器运行MOSN, 请先 [安装 docker](https://docs.docker.com/install/)
 + 如果你使用本地机器，请使用类 Unix 环境
-+ 安装 GoLang 的编译环境 
++ 安装 Go 的编译环境 
 + 安装 dep : 参考[官方安装文档](https://golang.github.io/dep/docs/installation.html)
 
 ## 获取代码
@@ -41,7 +39,7 @@ cd sofa-mosn
 
 ## 导入IDE
 
-使用您喜爱的Golang IDE导入 `$GOPATH/src/github.com/sofastack/sofa-mosn` 项目，推荐Goland。
+使用您喜爱的 Go IDE导入 `$GOPATH/src/github.com/sofastack/sofa-mosn` 项目，推荐Goland。
 
 ## 编译代码
 
