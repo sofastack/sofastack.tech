@@ -4,7 +4,7 @@ author: "SOFAStack"
 authorlink: "https://github.com/sofastack"
 description: "Service Mesh 数据平面代理 SOFAMosn、分布式链路跟踪系统 SOFATracer 和 RPC 服务框架 SOFARPC 加入 CNCF 云原生全景图"
 categories: "SOFAStack"
-tags: ["SOFAStack","CNCF"，"开源"]
+tags: ["SOFAStack","CNCF","开源"]
 date: 2019-07-10T17:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/156645/1562157948733-4c673075-94df-4c53-8702-266b24694820.png"
 ---
