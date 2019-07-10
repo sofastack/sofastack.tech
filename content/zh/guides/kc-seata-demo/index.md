@@ -7,6 +7,8 @@ projects: [{name: "Seata", link: "https://github.com/seata/seata"}]
 
 `SEATA Demo for SOFAStack Cloud Native Workshop on KubeCon China 2019`
 
+**注意：您需要自行部署后端环境依赖，并修改示例中的服务依赖地址即可使用。**
+
 在开始该demo之前先完成《[使用 SOFAStack 快速构建微服务](https://github.com/sofastack-guides/kc-sofastack-demo)》，该demo是在它基础上加上Seata分布式事务。但该demo不是只能应用于SOFA，可以适用于任何java技术栈应用。
 
 ## AT 模式
