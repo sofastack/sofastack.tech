@@ -1,23 +1,19 @@
-
 ---
 title: "SOFAMosn 介绍"
 aliases: "/sofa-mesh/docs/sofa-mosn-README"
 ---
-
-
-# MOSN Project
 
 [![Build Status](https://travis-ci.org/alipay/sofa-mosn.svg?branch=master)](https://travis-ci.org/alipay/sofa-mosn)
 [![codecov](https://codecov.io/gh/alipay/sofa-mosn/branch/master/graph/badge.svg)](https://codecov.io/gh/alipay/sofa-mosn)
 [![Go Report Card](https://goreportcard.com/badge/github.com/sofastack/sofa-mosn)](https://goreportcard.com/report/github.com/sofastack/sofa-mosn)
 ![license](https://img.shields.io/badge/license-Apache--2.0-green.svg)
 
-MOSN(Modular Observable Smart Network), 是一款采用 GoLang 开发的 Service Mesh 数据平面代理，
+MOSN(Modular Observable Smart Network), 是一款采用 Go 开发的 Service Mesh 数据平面代理，
 功能和定位类似 [Envoy](https://www.envoyproxy.io/)，旨在提供分布式，模块化，可观察，智能化的代理能力。
-MOSN 支持 Envoy 和 Istio 的 API，可以和 Istio 集成，在 [SOFAMesh](https://github.com/sofastack/sofa-mesh) 中，我们使用 MOSN 替代 Envoy。
-MOSN 初始版本由蚂蚁金服和阿里大文娱UC事业部携手贡献，期待社区一起来参与后续开发，共建一个开源精品项目。
 
-## [MOSN 详细介绍](docs/Introduction.md)
+MOSN 支持 Envoy 和 Istio 的 API，可以和 Istio 集成，在 [SOFAMesh](https://github.com/sofastack/sofa-mesh) 中，我们使用 MOSN 替代 Envoy。
+
+MOSN 初始版本由蚂蚁金服和阿里大文娱UC事业部携手贡献，期待社区一起来参与后续开发，共建一个开源精品项目。
 
 ## 核心能力
 
@@ -71,6 +67,6 @@ MOSN 初始版本由蚂蚁金服和阿里大文娱UC事业部携手贡献，期�
 ## 贡献
 + [代码贡献](https://www.sofastack.tech/sofa-mesh/docs/sofa-mosn-docs-develop-contributing) 
 + MOSN仍处在初级阶段，有很多能力需要补全，所以我们欢迎所有人参与进来与我们一起共建。
-   
+  
 ## 致谢
 感谢 Google、IBM、Lyft 创建了 Envoy、Istio 体系，并开源了优秀的项目，使 MOSN 有了非常好的参考，使我们能快速落地自己的想法。

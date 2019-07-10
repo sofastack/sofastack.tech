@@ -1,6 +1,6 @@
 ---
 title: "SOFAMOSN"
-description: "MOSN(Modular Observable Smart Network), 是一款采用 GoLang 开发的 Service Mesh 数据平面代理。"
+description: "MOSN(Modular Observable Smart Network), 是一款采用 Go 开发的 Service Mesh 数据平面代理。"
 github: "https://github.com/sofastack/sofa-mosn"
 level: "main"
 icon: "/img/icons/sofamosn.png"

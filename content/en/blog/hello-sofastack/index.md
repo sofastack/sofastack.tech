@@ -24,7 +24,7 @@ Source Code: [http://github.com/sofastack](http://github.com/sofastack)
 - [SOFABoot](https://github.com/sofastack/sofa-boot) is a development framework open sourced by Ant Financial which is based on Spring Boot, provides capabilities such as Readiness Check, class isolation, log space isolation and asynchronous initialization of bean.
 - [SOFARPC](https://github.com/sofastack/sofa-rpc) is a high-performance, high-extensibility, production-level Java RPC framework.
 - [SOFAMesh](https://github.com/sofastack/sofa-mesh) SOFAMesh is a large-scale implementation solution for Service Mesh which is improved and extended based on Istio.
-- [SOFAMosn](https://github.com/sofastack/sofa-mosn) SOFAMosn(Modular Observable Smart Network) is a powerful proxy acting as Service Mesh's data plane written in GoLang.
+- [SOFAMosn](https://github.com/sofastack/sofa-mosn) SOFAMosn(Modular Observable Smart Network) is a powerful proxy acting as Service Mesh's data plane written in Go.
 - [SOFATracer](https://github.com/sofastack/sofa-tracer) SOFATracer is a distributed link tracing system based on[OpenTracing specification](http://opentracing.io/documentation/pages/spec.html).
 - [SOFALookout](https://github.com/sofastack/sofa-lookout) SOFALookout is a lightweight and open source middleware service that solves the metrics and monitoring issues of the system.
 - [SOFABolt](https://github.com/sofastack/sofa-bolt) SOFABolt is a network communication framework implemented based on Netty.

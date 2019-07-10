@@ -1,26 +1,22 @@
-
 ---
 title: "Quick start guide"
 aliases: "/sofa-mosn/docs/docs-quickstart-Setup"
 ---
 
-
-# Get started 
-
 This article is intended to help developers who are new to the MOSN project to quickly build a development environment, and compile, test, package, and run sample code.
 
-Note: MOSN is developed based on GoLang 1.9.2 and uses dep for dependency management.
+Note: MOSN is developed based on Go 1.9.2 and uses dep for dependency management.
 
 ## Prepare running environment
 
 + If you use a container to run MOSN, you must [install Docker](https://docs.docker.com/install/) first.
 + If you use a local machine, you must use a Unix-like environment.
-+ Install GoLang's build environment.
++ Install Go's build environment.
 + Install dep. See the [official installation documentation](https://golang.github.io/dep/docs/installation.html).
 
 ## Get codes
 
-The codes for the MOSN project are hosted in [GitHub] (https://github.com/sofastack/sofa-mosn) and can be obtained in the following way:
+The codes for the MOSN project are hosted in [GitHub](https://github.com/sofastack/sofa-mosn) and can be obtained in the following way:
 
 
 ```bash
