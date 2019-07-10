@@ -13,7 +13,7 @@
 	link_arr = [
 		["Zhihu", 'https://zhuanlan.zhihu.com/sofastack'],
 		["Weibo", 'https://weibo.com/sofastack'],
-		["Twitter", "https://twitter.com/SOFAStackTech"]
+		["Twitter", "https://twitter.com/sofastack_io"]
 	]
 
 [[links]]
