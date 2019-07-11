@@ -21,7 +21,7 @@
 	link_arr = [
 		["Feedback", 'https://github.com/sofastack/sofastack.tech/issues'],
 		["Community","https://github.com/sofastack/community"],
-		["Wiki","https://github.com/sofastack/sofastack.tech.wiki"]
+		["Wiki","https://github.com/sofastack/sofastack.tech/wiki"]
 	]
 
 [[links]]
