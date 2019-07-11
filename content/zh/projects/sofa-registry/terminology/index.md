@@ -1,11 +1,10 @@
-
 ---
 title: "基础术语"
 aliases: "/sofa-registry/docs/Terminology"
 ---
 
-
 ## 业界通用术语
+
 | 术语 | 说明 |
 | --- | --- |
 | 服务（Service） | 通过网络提供的、具有特定业务逻辑处理能力的软件功能。 |

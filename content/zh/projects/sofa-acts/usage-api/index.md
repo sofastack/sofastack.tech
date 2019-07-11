@@ -1,9 +1,7 @@
-
 ---
 title: "扩展功能"
 aliases: "/sofa-acts/docs/Usage-API"
 ---
-
 
 ## 自定义引擎各个阶段
 
@@ -27,7 +25,6 @@ aliases: "/sofa-acts/docs/Usage-API"
 ![变量](variables.png)
 <p align="center">图60</p>
 
-
 （2）代码中给变量赋值
 
 ```java
@@ -42,10 +39,8 @@ public void beforeActsTest(ActsRuntimeContext actsRuntimeContext) {
 
 ![赋值](assign-value.png)
 <p align="center">图61</p>
-
 ![变量值](variable-value.png)
 <p align="center">图62</p>
-
 假设接口会向 2 张表插入数据
 
 | id_A | value_A |
@@ -104,7 +99,6 @@ param_components=IdGenerateComponent,NoGenerateComponent
 
 ![自动替换取值](auto-replace.png)
 <p align="center">图63</p>
-
 如上图 alis_value 值为 `@test?param=123` 则在用例运行时会自动替换 alis_value 的取值。
 
 组件的 ID 要保证唯一，否则默认调用第一个，如果声明了一个无参组件方法，调用方式为 `@test` 即可，同时支持组件化参数通过变量传入：`@test?param=$id`，实际执行时会替换 $id 的值为实际值。

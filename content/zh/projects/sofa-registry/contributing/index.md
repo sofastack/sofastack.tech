@@ -1,9 +1,7 @@
-
 ---
 title: "参与贡献"
 aliases: "/sofa-registry/docs/Contributing"
 ---
-
 
 > 可以先去 [发展路线 & 任务认领](../roadmap) 内了解下开发任务及未来规划。
 

@@ -1,9 +1,7 @@
-
 ---
 title: "参与贡献"
 aliases: "/sofa-dashboard/docs/Contribution"
 ---
-
 
 > 可以先去 [RoadMap](../roadmap) 内了解下开发任务及未来规划。
 
