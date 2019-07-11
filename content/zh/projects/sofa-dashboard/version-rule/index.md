@@ -1,9 +1,7 @@
-
 ---
 title: "版本规范"
 aliases: "/sofa-dashboard/docs/VersionRule"
 ---
-
 
 ## 版本号
 

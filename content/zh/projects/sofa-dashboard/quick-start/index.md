@@ -1,9 +1,7 @@
-
 ---
 title: "快速开始"
 aliases: "/sofa-dashboard/docs/QuickStart"
 ---
-
 
 这个快速开始可以帮您快速在您的电脑上，下载、安装并使用 SOFADashboard。
 

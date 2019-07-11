@@ -1,9 +1,7 @@
-
 ---
 title: "版权声明"
 aliases: "/sofa-dashboard/docs/Notice"
 ---
-
 
 # 依赖组件版权说明
 

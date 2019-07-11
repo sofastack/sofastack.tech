@@ -1,9 +1,7 @@
-
 ---
 title: "开发者手册"
 aliases: "/sofa-acts/docs/DeveloperGuide"
 ---
-
 
 ## 1.如何编译
 > 安装 JDK7 及以上，Maven 3.2.5 及以上。

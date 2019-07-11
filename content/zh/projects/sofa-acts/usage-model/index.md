@@ -1,9 +1,7 @@
-
 ---
 title: "一键模型化"
 aliases: "/sofa-acts/docs/Usage-Model"
 ---
-
 
 ## 快速理解 ACTS 的模型
 在写测试用例的过程中，需要预先准备一些 DB 表、方法入参的数据，或者需要校验一些 DB 表、返回结果的数据，这些数据可以以模版的形式保存下来，在编辑用例时，可以方便的导入这些数据到准备数据或者校验数据，实现数据复用。目前 ACTS 模型可以分为 DB 模型和类模型。
@@ -22,15 +20,14 @@ ACTS 的模版有可以有效应对上述问题，通过将类和表固化为 CS
 
 在 test 模块的 resource/model 目录可以查看已经存在的模型。
 ![现有模板](existing-module.png)
-<p align="center">图4</p>
 
+<p align="center">图4</p>
 ## 数据表模型生成
 
 ### 数据表模型样例
 
 ![数据表模型样例](sample.png)
 <p align="center">图5</p>
-
 1. 校验 flag 说明
     ```plain
     Y: 插入
@@ -49,19 +46,15 @@ DB 模版的使用可参考 [准备 DB 数据](../usage-ide#准备-DB-数据)。
 ![生成 DB 表结构模型](generate-db-table-model.png)
 <p align="center">图6</p>
 
-
 ![选择 test module](select-test-module.png)
 <p align="center">图7</p>
 
-
 ![选择表](select-table.png)
 <p align="center">图8</p>
-
 点击 OK 后生成模板，如图9：
 
 ![生成模型](generated-model.png)
 <p align="center">图9</p>
-
 
 同时支持不配置直连获取表结构的方式生成表模型，即在 DO 类上右键根据类生成表模型：
 DO 类上右击 -> ACTS 功能 -> 生成 DO 模型：
@@ -69,20 +62,16 @@ DO 类上右击 -> ACTS 功能 -> 生成 DO 模型：
 ![生成 DO 模型](generate-do-model.png)
 <p align="center">图10</p>
 
-
 ![生产的模型](generated-do-model.png)
 <p align="center">图11</p>
-
 ## 对象模型生成
 
 ### 对象模型样例
 
 ![对象模型样例](object-model-sample.png)
 <p align="center">图12</p>
-
 ![模型数据](model-data.png)
 <p align="center">图13</p>
-
 一个复杂对象是一个闭包，不但包含其自身模型还包含其嵌套对象的模型。
 
 ACTS 使用模型快速导入数据、编辑复杂对象（包括入参、返回结果和异常等），在 ACTS IDE 中可右键选择类模型，用于构建该类的对象并赋值以便快速编辑。
@@ -97,7 +86,6 @@ ACTS 使用模型快速导入数据、编辑复杂对象（包括入参、返回
 
 ![模板生成](generate-class-model.png)
 <p align="center">图14</p>
-
 （2）接口定义任意方法上点击，生成当前接口中，所有方法的复杂入参、复杂返回结果的模型
 
 ![接口](interface.png)

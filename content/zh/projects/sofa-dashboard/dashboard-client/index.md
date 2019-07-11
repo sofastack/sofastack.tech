@@ -1,9 +1,7 @@
-
 ---
 title: "应用面板"
 aliases: "/sofa-dashboard/docs/DashboardClient"
 ---
-
 
 SOFADashboard 支持查看应用的IP、端口、健康检查状态等基本信息。此功能依赖 SOFADashboard client ，如果一个应用需要将应用信息展示到 SOFADashboard 管控端，可以通过引入客户端依赖即可：
 
