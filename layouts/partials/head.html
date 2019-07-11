@@ -12,14 +12,13 @@
 <!-- <link href="https://unpkg.com/purecss@1.0.0/build/grids-min.css" rel="stylesheet"> -->
 <!-- <link href="https://unpkg.com/purecss@1.0.0/build/grids-responsive-min.css" rel="stylesheet"> -->
 
-{{ $options := (dict "targetPath" "style.css" "outputStyle" "compressed" "enableSourceMap" true) }}
-{{ $style := resources.Get "sass/main.scss" | resources.ToCSS $options }}
-<link href="{{ $style.RelPermalink }}" rel="stylesheet">
+<link href="{{ "/css/main.css" | relURL }}" rel="stylesheet">
 
 <script src="{{ (resources.Get "js/iconfont.js").RelPermalink }}"></script>
 <script src="{{ (resources.Get "js/highlight.pack.js").RelPermalink }}"></script>
 <script>hljs.initHighlightingOnLoad();</script>
-<script src="{{ (resources.Get "js/app.js").RelPermalink }}"></script>
+
+<script src="{{ "/js/app.js" | relURL }}"></script>
 
 <!-- TODO: meta -->
 <!-- 例如 twitter 的资料卡，https://github.com/servicemesher/website/blob/master/themes/hugo-universal-theme/layouts/partials/head.html -->

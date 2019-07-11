@@ -2,7 +2,7 @@
 	<div class="header">
 		<div class="header-first">
 			{{ if isset .Params "icon" }}
-				<img class="project-icon" src="{{ .Params.icon | absURL }}" />
+				<img class="project-icon" src="{{ .Params.icon | relURL }}" />
 			{{ end }}
 			<h3 class="card-title">
 				{{ $link := "" }}

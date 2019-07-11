@@ -16,7 +16,7 @@
 		<div class="qrcode">
 			{{ range $data.qrcode }}
 				<div>
-					<img class="qrcode-img" src="{{ .img | absURL }}" />
+					<img class="qrcode-img" src="{{ .img | relURL }}" />
 					<p class="qrcode-desc">{{ .description }}</p>
 				</div>
 			{{ end }}

@@ -21,3 +21,7 @@
 
 # lint site
 .htmlproofer
+
+# webpack output
+/static/js
+/static/css
