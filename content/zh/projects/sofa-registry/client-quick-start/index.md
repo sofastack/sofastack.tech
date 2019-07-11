@@ -1,9 +1,7 @@
-
 ---
 title: "客户端使用"
 aliases: "/sofa-registry/docs/Client-QuickStart"
 ---
-
 
 ## 1. 创建 Maven 工程
 

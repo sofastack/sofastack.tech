@@ -1,9 +1,7 @@
-
 ---
 title: "服务治理"
 aliases: "/sofa-dashboard/docs/Governance"
 ---
-
 
 SOFADashboard 服务治理主要是对 SOFARPC 的服务进行管理。
 

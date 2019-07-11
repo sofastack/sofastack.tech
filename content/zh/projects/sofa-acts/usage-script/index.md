@@ -1,11 +1,10 @@
-
 ---
 title: "一键脚本化"
 aliases: "/sofa-acts/docs/Usage-Script"
 ---
 
-
 ## 快速理解 ACTS 中的脚本
+
 如果你是一个经常编写测试用例的同学，是不是经常苦于这样的问题：
 * 不断的 assertEquals 写得快吐了，重复性编码毫无创意；
 * 少一个 assert 容易假绿，错一个败坏心情；
@@ -15,7 +14,6 @@ aliases: "/sofa-acts/docs/Usage-Script"
 左图为 TestNG 用例，右图为 ACTS 用例，重复性代码一去不回，代码体积明显缩小。区别于普通测试脚本，ACTS 脚本继承自 ActsTestBase 类，封装了数据加载、驱动、执行引擎和校验规则，无需用户来组织清理数据、准备数据、执行用例和校验结果，对于简单业务可以做到零编码，极大释放代码编写和后期维护成本。
 
 ![TestNG vs ACTS](testng-vs-acts.png)
-<p align="center">图16</p>
 
 ## 测试脚本生成
 
@@ -24,21 +22,16 @@ aliases: "/sofa-acts/docs/Usage-Script"
 接口定义的方法上点击，选择 ACTS 功能 -> 生成测试用例。
 
 ![生成测试用例](generate-test-case.png)
-<p align="center">图17</p>
-
 
 ![测试脚本生成](test-script-generation.png)
-<p align="center">图18</p>
-
 
 ![自动生成内容](generated-data.png)
-<p align="center">图19</p>
 
 ## 测试脚本运行
+
 方法：右键 ACTS 脚本中的被测方法，选择 TestNG 来执行测试脚本，如下图：
 
 ![debug](debug.png)
-<p align="center">图20</p>
 
 ## 指定测试脚本运行
 
@@ -47,20 +40,10 @@ aliases: "/sofa-acts/docs/Usage-Script"
 2. 修改要测试的用例名称，在用例名前面加 `T`，ACTS 运行时时仅执行用例名称以 `T` 开头的用例。
 
 ![修改用例名称](change-case-name.png)
-<p align="center">图21</p>
-
 
 ![输入名称](enter-case-name.png)
-<div data-type="alignment" data-value="center" style="text-align:center">
-  <div data-type="p">图22</div>
-</div>
-
 
 ![修改后](result.png)
-<div data-type="alignment" data-value="center" style="text-align:center">
-  <div data-type="p">图23</div>
-</div>
-
 
 ## 脚本用例拆分功能
 
@@ -76,32 +59,35 @@ aliases: "/sofa-acts/docs/Usage-Script"
 * 注意：拆分后，建议先给原有 YAML 重命名做备份，然后打开用例编辑器检查拆分后的文件内容是否正确，确认无误后可删除原有 YAML 文件，两者不能并存。
 
 ## 编码方式准备数据
+
 ACTS 提供了数据自定义 API 接口，封装于 ActsRuntimeContext 类中，如下：
 + 快速获取和设置自定义参数
-    
-    获取全部自定义参数：`getParamMap getParamMap()` <br/>
-    按 key 获取：`Object getParamByName(String paraName)` <br/>
-    新增自定义参数：`void addOneParam(String paraName, Object paraObj)` <br/>
-    替换自定义参数：`void setParamMap(Map<String, Object> paramMap)` <br/>
+  
+    获取全部自定义参数：`getParamMap getParamMap()` 
+    按 key 获取：`Object getParamByName(String paraName)` 
+    新增自定义参数：`void addOneParam(String paraName, Object paraObj)` 
+    替换自定义参数：`void setParamMap(Map<String, Object> paramMap)` 
     泛型方式获取自定义参数：`T getParamByNameWithGeneric(String paraName)`
 
 + 快速获取和设置用例入参
 
-    获取所有入参：`List getInputParams()` <br/>
-    按位置获取：`Object getInputParamByPos(int i)` <br/>
+    获取所有入参：`List getInputParams()` 
+    按位置获取：`Object getInputParamByPos(int i)` 
     新增用例参数：`void addInputParam(Object obj)` 
 
 + 快速获取和设置期望结果
 
-    获取期望结果：`Object getExpectResult()` <br/>
+    获取期望结果：`Object getExpectResult()` 
     设置期望结果：`Boolean setExpectResult(Object objToSet)`
 
 ## Mock 功能使用
-Mock 功能目前是采用 Mockito 的方案，具体资料见 
-[Mockito英文文档](https://static.javadoc.io/org.mockito/mockito-core/2.18.3/org/mockito/Mockito.html)和
-[Mockito中文文档](https://github.com/hehonghui/mockito-doc-zh)
+
+Mock 功能目前是采用 Mockito 的方案，具体资料见  [Mockito 英文文档](https://static.javadoc.io/org.mockito/mockito-core/2.18.3/org/mockito/Mockito.html)和 [Mockito 中文文档](https://github.com/hehonghui/mockito-doc-zh)
+
 ### 增加依赖
+
 在 test 模块增加如下依赖（如果已经引入 SOFABoot 的测试 starter 则无需重复引入）
+
 ```xml
 <dependency>
     <groupId>org.springframework.boot</groupId>

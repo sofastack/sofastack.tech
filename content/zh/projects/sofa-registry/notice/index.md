@@ -1,10 +1,10 @@
-
 ---
 title: "版权声明"
 aliases: "sofa-registry/docs/notice"
 ---
 
 ## 依赖组件版权说明
+
 SOFARegistry 使用了一些三方开源组件，他们分别是：
 
 * [Spring](https://github.com/spring-projects/spring-framework) under `Apache 2.0 license`

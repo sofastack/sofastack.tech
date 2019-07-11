@@ -1,9 +1,7 @@
-
 ---
 title: "SOFADashboard 介绍"
 aliases: "/sofa-dashboard/docs/Home"
 ---
-
 
 SOFADashboard 致力于对 SOFA 框架中组件进行统一管理，包括服务治理、SOFAArk 管控等。SOFADashboard 本身所用技术栈均基于开源社区产品来开发构建，包括：Ant Design Pro、SOFABoot、Spring、MyBatis 等。
 
