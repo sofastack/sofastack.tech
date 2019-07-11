@@ -1,11 +1,10 @@
-
 ---
 title: "版本规范"
 aliases: "/sofa-registry/docs/Release-Standard"
 ---
 
-
 ## 版本号
+
 采用三位版本号，分别是主版本号、次版本号、修订版本号。例如 5.2.0。
 
 参见: [http://semver.org/lang/zh-CN/](http://semver.org/lang/zh-CN/)

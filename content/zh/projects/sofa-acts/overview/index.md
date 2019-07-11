@@ -1,4 +1,3 @@
-
 ---
 title: "SOFAActs 介绍"
 aliases: "/sofa-acts/docs/Home"
@@ -12,12 +11,10 @@ ACTS 是基于数据模型驱动测试引擎执行的的新一代测试框架（
 
 ![SOFAActs 框架](architecture.png)
 <p align="center">图1</p>
-
 ## 运行原理
 
 ![SOFAActs 运行原理](principle.png)
 <p align="center">图2</p>
-
 1. 测试脚本启动的时，ActsDataProvider 会启动被测方法（被 @Test 注解的方法），加载对应的用例数据文件(以 YAML 文件承载)，然后转换成对应的 PrepareData 对象；
 2. runTest 开始执行时会传入 PrepareData 和用例名称，ACTS 根据这些信息组装出 ActsRuntimeContext 上下文并在整个过程中传递，同时初始化 TestUnitHandler 测试处理器。runTest -> process 方法执行期包含如下四个子流程：
 

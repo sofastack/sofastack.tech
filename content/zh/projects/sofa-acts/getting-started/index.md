@@ -1,9 +1,7 @@
-
 ---
 title: "快速开始"
 aliases: "/sofa-acts/docs/GettingStarted"
 ---
-
 
 本文档共分为四部分：
 
@@ -20,7 +18,6 @@ __推荐使用 Intellij IDEA 2017，为了您的安全，请仅从该下载源�
 
 ![安装 ACTS IDE](install-acts-ide.png)
 <p align="center">图1.1</p>
-
 ## 2.引入 ACTS 依赖
 在引入依赖之前，需要您的应用是一个多模块工程（包含 test 模块），后续 ACTS 会将全部的测试代码放置在 test 模块下以便管理 ACTS 用例。
 您可以依据应用的具体情况，选择性阅读以下内容：<br/>
@@ -53,23 +50,18 @@ __推荐使用 Intellij IDEA 2017，为了您的安全，请仅从该下载源�
 ![新建 Module](new-module.png)
 <p align="center">图2.1</p>
 
-
 ![选择 Maven](select-maven.png)
 <p align="center">图2.2</p>
-
 ![填写 ArtifactId](enter-artifactId.png)
 <p align="center">图2.3</p>
 
-
 ![Module name](module-name.png)
 <p align="center">图2.4</p>
-
 #### 第二步：管理 test 模块
 在父工程的 pom.xml 中管理刚刚新建的 test 模块。
 
 ![管理 test 模块](manage-test-module.png)
 <p align="center">图2.5</p>
-
 
 #### 第三步：依赖 ACTS 引入
 最后，找到刚刚新建的 test 模块，并在其 pom.xml 中引入 acts-bom 即可。
@@ -97,26 +89,21 @@ __推荐使用 Intellij IDEA 2017，为了您的安全，请仅从该下载源�
 
 ![pom file.png](pom-file.png)
 <p align="center">图2.6</p>
-
 #### 第二步：新建子模块
 
 新建子工程模块，将原有应用作为子工程并入父工程下，相关依赖管理提到父工程中。以新建 service 模块和 test 模块为例。
 
 ![new sub-modules](new-sub-modules.png)
 <p align="center">图2.7</p>
-
 ![ArtifactId of service module](artifactId-service.png)
 <p align="center">图2.8</p>
 
-
 ![ArtifactId of test module](artifactId-test.png)
 <p align="center">图2.9</p>
-
 #### 第三步：管理子模块
 
 ![manage sub-modules](manage-sub-modules.png)
 <p align="center">图2.10</p>
-
 #### 第四步：依赖引入
 最后，在 test 模块的 pom.xml 文件中引入 acts-bom 即可。
 ```xml
@@ -134,10 +121,8 @@ __推荐使用 Intellij IDEA 2017，为了您的安全，请仅从该下载源�
 
 ![一键初始化 ACTS](initialize-acts.png)
 <p align="center">图3.1</p>
-
 ![确定初始化](confirm.png)
 <p align="center">图3.2</p>
-
 ## 4.一键生成测试脚本
 
 ### 4.1启动类
@@ -145,7 +130,6 @@ __推荐使用 Intellij IDEA 2017，为了您的安全，请仅从该下载源�
 
 ![启动类](start-class.png)
 <p align="center">图4.1</p>
-
 ### 4.2测试脚本
 
 前提条件：__务必 mvn 编译工程和生成对象模型，否则会造成 ACTS IDE 不可预料的错误，如无法编辑、数据不正确等。__
@@ -155,10 +139,8 @@ __推荐使用 Intellij IDEA 2017，为了您的安全，请仅从该下载源�
 ![生成测试用例](generate-test-case.png)
 <p align="center">图4.2</p>
 
-
 ![测试脚本生成](test-script-generation-wizard.png)
 <p align="center">图4.3</p>
-
 
 ![生成内容](generated-content.png)
 <p align="center">图4.4</p>

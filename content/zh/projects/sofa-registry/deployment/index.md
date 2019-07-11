@@ -1,9 +1,7 @@
-
 ---
 title: "部署"
 aliases: "/sofa-registry/docs/Deployment"
 ---
-
 
 ## 环境准备
 要使用 SOFARegistry，需要先准备好基础环境，SOFARegistry 依赖以下环境：

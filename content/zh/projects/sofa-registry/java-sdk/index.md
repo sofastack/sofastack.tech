@@ -1,9 +1,7 @@
-
 ---
 title: "Java SDK"
 aliases: "/sofa-registry/docs/JAVA-SDK"
 ---
-
 
 ## 1. Maven 坐标
 

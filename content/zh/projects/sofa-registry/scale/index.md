@@ -1,9 +1,7 @@
-
 ---
 title: "扩容与缩容"
 aliases: "/sofa-registry/docs/Scale"
 ---
-
 
 ## 1. 集成部署模式
 
