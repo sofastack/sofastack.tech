@@ -217,13 +217,12 @@ SOFAStack 下的项目大概有 30 来个，每天的 PV 在 10000 以上，总 
 
 ### PPT 下载和相关地址
 
-**PPT 地址：**
-[https://gw.alipayobjects.com/os/basement_prod/ce56bcaa-7f46-46e2-99e0-a02c7cb8f980.pdf](https://gw.alipayobjects.com/os/basement_prod/ce56bcaa-7f46-46e2-99e0-a02c7cb8f980.pdf)
+**PPT 地址：** [下载地址](https://gw.alipayobjects.com/os/basement_prod/ce56bcaa-7f46-46e2-99e0-a02c7cb8f980.pdf)
 
-**SOFAStack 文档: ** [http://www.sofastack.tech/](http://www.sofastack.tech/)
+**SOFAStack 文档:**  [http://www.sofastack.tech/](http://www.sofastack.tech/)
 
 **SOFAStack 开源整体地址: ** [https://github.com/sofastack](https://github.com/sofastack)
 
 ![开源中国现场图](https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1550643892784-2013a459-a998-4d8b-9561-f974f2269dcf.jpeg)
 
-**欢迎大家共同打造 SOFAStack  [https://github.com/alipay](https://github.com/alipay) **
+欢迎大家共同打造 SOFAStack  [https://github.com/alipay](https://github.com/alipay) 
