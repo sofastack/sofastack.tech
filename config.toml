@@ -12,7 +12,7 @@ googleAnalytics = "UA-142131411-1"
 
 [params]
 	github = "https://github.com/sofastack/sofastack.tech"
-	legacy_website = "http://legacy.sofastack.tech"
+	legacyWebsite = "http://legacy.sofastack.tech"
 	description = "SOFAStack is a Scalable Open Financial Architecture for building cloud native applications"
 	favicon = "https://gw.alipayobjects.com/os/q/cms/images/jqu9346l/4ba95631-2489-4885-881f-bc7f8d787d5e_w64_h61.png"
 
