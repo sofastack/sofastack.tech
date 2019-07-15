@@ -1,8 +1,10 @@
-serve:
-	hugo server
+image := jimmysong/website-builder:2019-07-11
+docker := docker run -t -i --sig-proxy=true --rm -v $(shell pwd):/site -w /site $(image)
 build:
-	scripts/build-site.sh
+	@$(docker) scripts/build-site.sh
 lint:
-	scripts/lint-site.sh
+	@$(docker) scripts/lint-site.sh
 install:
-	npm install -g markdown-spellcheck mdl htmlproofer
+	@$(docker) scripts/install-dependency.sh
+serve:
+	@$(docker) hugo serve --bind 0.0.0.0
