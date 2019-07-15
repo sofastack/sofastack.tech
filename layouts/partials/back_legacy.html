@@ -1,4 +1,5 @@
-{{ if isset .Site.Params "legacyWebsite" }}
+{{/* https://gohugo.io/functions/isset/ */}}
+{{ if isset .Site.Params "legacywebsite" }}
 	<div class="ss-back-legacy">
 		<a
 			class="text{{if eq .Lang "en"}} english{{end}}"
