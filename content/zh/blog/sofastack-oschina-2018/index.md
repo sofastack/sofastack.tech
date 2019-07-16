@@ -3,7 +3,7 @@ title: "蚂蚁金服微服务实践- 2018 开源中国年终盛典分享实录"
 author: "余淮"
 authorlink: "https://github.com/ujjboy"
 description: "本文根据余淮在 2018 开源中国年终盛典的演讲内容整理，完整的分享 PPT 获取方式见文章底部。"
-categories: "SOFAtack"
+categories: "SOFAstack"
 tags: ["微服务","开源","实践"]
 date: 2018-12-17T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1550642831191-6bc3631d-a183-49bf-b9bc-5b2d42c9612f.jpeg"
