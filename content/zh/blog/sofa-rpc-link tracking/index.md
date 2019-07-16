@@ -1,5 +1,5 @@
 ---
-title: "【剖析|SOFARPC 框架】之 SOFARPC 链路追踪剖析"
+title: "【剖析 | SOFARPC 框架】之 SOFARPC 链路追踪剖析"
 author: "SOFARPCLab"
 description: "本文为《剖析 | SOFARPC 框架》第二篇，本篇由畅为/碧远/卓与共同出品。"
 categories: "SOFARPC"
