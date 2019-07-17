@@ -5,6 +5,8 @@ github: "https://github.com/sofastack-guides/kc-cloud-mesh-demo"
 projects: [{name: "SOFAMesh", link: "https://github.com/sofastack/sofa-mesh"}]
 ---
 
+**To run this demo, you should sign up an Ant Financial technology account. Please see [Ant Finanical Official Site](https://tech.antfin.com) to see more details.**
+
 ## Demo content
 
 Service Mesh applies the communication capabilities between services to the infrastructure, thus decoupling and lightweighting applications.
