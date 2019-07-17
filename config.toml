@@ -64,6 +64,12 @@ googleAnalytics = "UA-142131411-1"
 		name = "活动"
 		url = "/activities/"
 		weight = 4
+	[[languages.zh.menu.main]]
+		identifier = "awesome"
+		name = "Awesome SOFA"
+		url = "/awesome/"
+		weight = 5
+
 
 [menu]
 	[[menu.main]]
@@ -86,6 +92,12 @@ googleAnalytics = "UA-142131411-1"
 		name = "Activity"
 		url = "/en/activities/"
 		weight = 4
+	[[menu.main]]
+		identifier = "awesome"
+		name = "Awesome SOFA"
+		url = "/awesome/"
+		weight = 5
+
 
 [sitemap]
   changefreq = "monthly"
