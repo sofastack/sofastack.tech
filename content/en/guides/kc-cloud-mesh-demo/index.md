@@ -33,8 +33,6 @@ The gray release function of CloudMesh does not need to occupy extra capacity in
 
 ## Operation guide
 
-For convenience, we have prepared a detailed operation guide for this demo. 
+For convenience, we have prepared a detailed operation guide for this demo.
 
-Click here to [visit online version]((https://www.sofastack.tech/).
-
- 
+Click here to [visit online version](https://www.sofastack.tech/).
