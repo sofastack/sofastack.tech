@@ -31,5 +31,6 @@ workflows:
   version: 2
   workflow:
     jobs:
+    - lint-site
     - markdown-spell-check
     - markdown-style-check
