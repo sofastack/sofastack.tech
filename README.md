@@ -2,7 +2,7 @@
 
 # sofastack.tech
 
-Source for the SOFAStack website https://www.sofastack.tech
+Source for the SOFAStack website <https://www.sofastack.tech>.
 
 ## Editing and building
 
