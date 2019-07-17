@@ -25,16 +25,13 @@ title: "Awesome SOFA"
 ## 目录
 
 - [已知用户 Known Users](#knownusers)
-- [资源 Resources](#resources)
-- [项目 Projects](#projects)
-- [文章 Articles](#articles)
-- [工具 Tools](#tools)
 - [社区 Community](#community)
 - [贡献 Contributors](#contributors)
+- [用户登记 Registration](#registration)
 
 ## 已知用户{#knownusers}
 
-此处会列出我们已知的在生产环境使用了 SOFAStack 全部或者部分组件的公司或组织，大家可以通过 [SOFAStack 使用者登记](https://github.com/sofastack/sofastack-doc/issues/42) 进行登记。登记后我们会邀请加入「SOFAStack 金牌用户服务群」，以便更加快捷的沟通和更加高效的线上使用问题支持。以下排名不分先后:
+此处会列出我们已知的在生产环境使用了 SOFAStack 全部或者部分组件的公司或组织，大家可以通过 [SOFAStack 使用者登记](https://github.com/sofastack/sofastack.tech/issues/5) 进行登记。登记后我们会邀请加入「SOFAStack 金牌用户服务群」，以便更加快捷的沟通和更加高效的线上使用问题支持。以下排名不分先后:
 
 <img alt="蚂蚁金服" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*5LsoS4R5rzAAAAAAAAAAAABjARQnAQ" height="60" />
 <img alt="网商银行" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*uAmFRZQ0Z4YAAAAAAAAAAABjARQnAQ" height="60" />
@@ -73,42 +70,6 @@ title: "Awesome SOFA"
 <img alt="上扬软件" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*VsqMT7n7p0AAAAAAAAAAAABjARQnAQ" height="60" />
 <img alt="长沙点三" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*2eEzSqdPIc0AAAAAAAAAAABjARQnAQ" height="60" />
 
-## 资源{#resources}
-
-- [开源官网](https://www.sofastack.tech)
-- [Github源码](https://github.com/sofastack)
-- [蚂蚁金融科技](https://tech.antfin.com/sofa)
-
-## 项目{#projects}
-
-已开源项目：
-
-- [SOFABoot](https://github.com/sofastack/sofa-boot) 是基于 Spring Boot 的一套研发框架，完全兼容 Spring Boot 的基础上，还提供了启动期监控检查，上下文隔离，模块化开发，类隔离，日志空间隔离等能力。
-- [SOFARPC](https://github.com/sofastack/sofa-rpc) 是一个高可扩展性、高性能、生产级的 Java RPC 框架。
-- [SOFAMesh](https://github.com/sofastack/sofa-mesh) 是基于 Istio 改进和扩展而来的 Service Mesh 大规模落地实践方案。
-- [SOFAMosn](https://github.com/sofastack/sofa-mosn) 是 Golang 开发的 Service Mesh 数据平面代理，旨在提供分布式，模块化，可观察，智能化的代理能力。
-- [SOFATracer](https://github.com/sofastack/sofa-tracer) 是基于 OpenTracing 规范 的分布式链路跟踪系统。
-- [SOFALookout](https://github.com/sofastack/sofa-lookout) 是一款解决系统的度量和监控问题的轻量级中间件服务。
-- [SOFABolt](https://github.com/sofastack/sofa-bolt) 是基于 Netty 实现的网络通信框架。
-- [SOFAArk](https://github.com/sofastack/sofa-ark) 是一款基于 Java 实现的轻量级类隔离容器。
-- [SOFAJarslink](https://github.com/sofastack/sofa-jarslink) 是基于SOFAArk的动态模块和合并部署的解决方案。
-- [SOFAActs](https://github.com/sofastack/sofa-acts) 是一款白盒测试框架，旨在为企业提供高效、精细化的接口自动化测试。
-- [SOFAJraft](https://github.com/sofastack/sofa-jraft) 是生产级的 Java 版本的 raft 协议实现。
-- [SOFARegistry](https://github.com/sofastack/sofa-registry) 是一款生产级、高时效、高可用的服务注册中心。
-- [SOFADashboard](https://github.com/sofastack/sofa-dashboard) 是 SOFA 框架管控端。
-
-更多已项目直接关注：[github/sofastack](https://github.com/sofastack)
-
-未开源项目可通过[SOFAStack 使用调查问卷](https://wj.qq.com/s/2698623/5fe1)反馈。包括但不限于注册中心、消息、配置中心、熔断限流、分库分表、分布式事务等等组件。
-
-## 文章{#articles}
-
-- [SOFAStack 官网博客](https://www.sofastack.tech/blog/)
-- [SOFAStack 知乎专栏](https://zhuanlan.zhihu.com/sofastack)
-- [SOFA 公开文章](https://www.yuque.com/huarou/gd4szw)
-
-## 工具{#tools}
-
 ## 社区{#community}
 
 - [Github Community](https://github.com/sofastack/community)
@@ -122,7 +83,6 @@ title: "Awesome SOFA"
     
         <img alt="Wechat" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*LVCnR6KtEfEAAAAAAAAAAABjARQnAQ" height="250" />
   
-  - 微信群：目前十个群，四千多一线开发用户交流群体，加`蚂蚁金服科技小助手(ant-techfin02)`为好友，回复 `SOFA` 入群。
 - 钉钉
   - 钉钉交流群：
       - ~~金融级分布式架构 SOFAStack 1群，群号：23127468~~ 已满
@@ -335,4 +295,8 @@ title: "Awesome SOFA"
 </tbody>
 </table>
 
-想要参与贡献，可以直接去[项目列表](#projects)找到您关注的项目。
+想要参与贡献，可以直接去[项目列表](/projects)找到您关注的项目。
+
+## 用户登记 Registration{#registration}
+
+如果您已经在生产环境使用了 SOFAStack 相关组件，请在[这里](https://github.com/sofastack/sofastack.tech/issues/5)登记告诉我们，方便我们更好地为您服务。
