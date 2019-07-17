@@ -297,6 +297,6 @@ title: "Awesome SOFA"
 
 想要参与贡献，可以直接去[项目列表](/projects)找到您关注的项目。
 
-## 用户登记 Registration{#registration}
+## 用户登记{#registration}
 
 如果您已经在生产环境使用了 SOFAStack 相关组件，请在[这里](https://github.com/sofastack/sofastack.tech/issues/5)登记告诉我们，方便我们更好地为您服务。
