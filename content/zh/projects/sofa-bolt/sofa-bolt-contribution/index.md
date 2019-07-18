@@ -6,7 +6,7 @@ aliases: "/sofa-bolt/docs/Contribution"
 开放代码允许在签署协议之后,提交贡献代码.
 
 ##  版权协议
-对 SOFABolt 代码的修改和变更，需要遵守[版权协议](./LICENSE)
+对 SOFABolt 代码的修改和变更，需要遵守[版权协议](https://github.com/sofastack/sofa-bolt/blob/master/LICENSE)
 
 ## 准备工作
 贡献代码前需要先了解git工具的使用和GitHub网站的使用。
