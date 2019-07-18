@@ -14,3 +14,25 @@ ADD https://github.com/gohugoio/hugo/releases/download/v0.55.5/hugo_extended_0.5
 RUN tar xvf hugo_extended_0.55.5_Linux-64bit.tar.gz && rm -rf hugo_extended_0.55.5_Linux-64bit.tar.gz
 
 RUN mv /hugo /usr/local/bin/
+
+# Install html-proofer
+RUN echo 'gem: --no-document' >> /etc/gemrc
+
+RUN apk add --no-cache --virtual build-dependencies \
+  build-base \
+  libcurl \
+  libxml2-dev \
+  libxslt-dev && \
+  apk add --no-cache --update build-base libffi-dev && \
+  gem install nokogiri -- --use-system-libraries && \
+  gem install ffi && \
+  gem install etc && \
+  gem install bigdecimal && \
+  gem install html-proofer --no-ri --no-rdoc && \
+  apk del build-dependencies && \
+  apk add --no-cache bash git libcurl libxml2 libxslt && \
+  rm -rf /var/cache/apk/* && \
+  rm -rf /root/.gem/* && \
+  rm -rf /usr/local/bundle/cache/*.gem && \
+  rm -rf /usr/lib/ruby/gems/*/cache/*.gem
+
