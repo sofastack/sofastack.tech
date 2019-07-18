@@ -7,6 +7,8 @@ defaultContentLanguageInSubdir = false
 hasCJKLanguage = true
 enableGitInfo = true
 
+disableKinds = ["taxonomyTerm"]
+
 Paginate = 10
 googleAnalytics = "UA-142131411-1"
 
