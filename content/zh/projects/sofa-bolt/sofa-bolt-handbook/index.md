@@ -100,7 +100,6 @@ SOFABolt 只依赖 SLF4J 作为日志门面。同时提供了 log4j、log4j2、l
 * 重连：比如客户端发起建连后，由服务端来通过双工通信，发起请求到客户端。此时如果没有重连机制，则无法实现。
 * [使用示例](https://github.com/alipay/sofa-bolt/blob/master/src/test/java/com/alipay/remoting/rpc/connectionmanage/ScheduledDisconnectStrategyTest.java##L246)，注意考虑一个进程可能会有多个 SOFABolt 的通信实例，我们提供了全局开关以及用户开关两种开关方式：
 
-  
 ```java
   // 通过系统属性来开和关，如果一个进程有多个 RpcClient，则同时生效
   System.setProperty(Configs.CONN_MONITOR_SWITCH, "true");
@@ -129,14 +128,14 @@ SOFABolt 只依赖 SLF4J 作为日志门面。同时提供了 log4j、log4j2、l
         public <T> T deserialize(byte[] data, String classOfT) throws CodecException {
         }
    }
+   
    // 2. 注册
    public static final byte    Hessian2    = 1;
    SerializerManager.addSerializer(Hessian2, new HessianSerializer());
 
    // 3. 通过系统属性来设置生效
-    System.setProperty(Configs.SERIALIZER, String.valueOf(Hessian2));
+   System.setProperty(Configs.SERIALIZER, String.valueOf(Hessian2));
 ```
-
    
 * 自定义序列化器：实现一个 CustomSerializer 类，可以针对 Header，Content 做自定义的序列化和反序列化。同时我们在接口上提供了 InvokeContext，因此序列化和反序列化的逻辑，可以根据请求上下文来做动态的调整
 * [使用示例](https://github.com/alipay/sofa-bolt/blob/master/src/test/java/com/alipay/remoting/rpc/serializer/CustomSerializerCodecTest.java##L133)
