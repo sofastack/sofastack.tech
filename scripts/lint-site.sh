@@ -1,5 +1,7 @@
 #!/bin/bash
-
+echo "Install dependencies"
+./scripts/install-dependency.sh
+./scripts/build-site.sh
 echo -ne "mdspell "
 mdspell --version
 echo -ne "mdl "
