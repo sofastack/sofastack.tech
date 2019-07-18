@@ -212,15 +212,15 @@ SOFARPC 除了基本的调用、服务发现等之外，其它独特特性我这
 
 视频回放也给你准备好啦：
 
-[https://tech.antfin.com/activities/148]()
+<https://tech.antfin.com/activities/148>
 
 提到的地址：
 
-- SOFAStack官网：[https://sofastack.tech]()
-- SOFA Github地址：[https://github.com/alipay]()
-- SOFA 码云地址：[https://gitee.com/alipay]()
-- SOFARPC 更多特性请关注：[https://www.sofastack.tech/sofa-rpc/docs/Home ]()
-- SOFARPC Github地址：[https://github.com/alipay/sofa-rpc]()
+- SOFAStack官网：<https://www.sofastack.tech/>
+- SOFA Github地址：<https://github.com/sofastack>
+- SOFA 码云地址：<https://gitee.com/sofastack>
+- SOFARPC 更多特性请关注：<https://www.sofastack.tech/projects/sofa-rpc/overview/>
+- SOFARPC Github地址：<https://github.com/sofastack/sofa-rpc>
 
 ## 讲师观点
 
