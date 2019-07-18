@@ -99,6 +99,7 @@ SOFABolt 只依赖 SLF4J 作为日志门面。同时提供了 log4j、log4j2、l
 * 自动断连：比如通过 LVS VIP 或者 F5 建立多个连接的场景，因为网络设备的负载均衡机制，有可能某一些连接固定映射到了某几台后端的 RS 上面，此时需要自动断连，然后重连，靠建连过程的随机性来实现最终负载均衡。注意，开启了自动断连的场景，通常需要配合重连使用。
 * 重连：比如客户端发起建连后，由服务端来通过双工通信，发起请求到客户端。此时如果没有重连机制，则无法实现。
 * [使用示例](https://github.com/alipay/sofa-bolt/blob/master/src/test/java/com/alipay/remoting/rpc/connectionmanage/ScheduledDisconnectStrategyTest.java##L246)，注意考虑一个进程可能会有多个 SOFABolt 的通信实例，我们提供了全局开关以及用户开关两种开关方式：
+
   
 ```java
   // 通过系统属性来开和关，如果一个进程有多个 RpcClient，则同时生效
@@ -135,6 +136,7 @@ SOFABolt 只依赖 SLF4J 作为日志门面。同时提供了 log4j、log4j2、l
    // 3. 通过系统属性来设置生效
     System.setProperty(Configs.SERIALIZER, String.valueOf(Hessian2));
 ```
+
    
 * 自定义序列化器：实现一个 CustomSerializer 类，可以针对 Header，Content 做自定义的序列化和反序列化。同时我们在接口上提供了 InvokeContext，因此序列化和反序列化的逻辑，可以根据请求上下文来做动态的调整
 * [使用示例](https://github.com/alipay/sofa-bolt/blob/master/src/test/java/com/alipay/remoting/rpc/serializer/CustomSerializerCodecTest.java##L133)
