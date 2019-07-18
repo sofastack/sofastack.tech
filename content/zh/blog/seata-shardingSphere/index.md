@@ -35,14 +35,14 @@ ShardingSphere 已经实现了 base-seata-raw-jdbc-example，大家可以自行�
 
 操作手册：
 
-1、按照 seata-work-shop 中的步骤，下载并启动 seata server。
-[https://github.com/seata/seata-workshop](https://github.com/seata/seata-workshop)
+1. 按照 seata-work-shop 中的步骤，下载并启动 seata server。
+   [https://github.com/seata/seata-workshop](https://github.com/seata/seata-workshop)
 
-参考 Step6 和 Step7 即可。
+   参考 Step6 和 Step7 即可。
 
-2、在每一个分片数据库实例中执行 resources/sql/undo_log.sql 脚本，创建 undo_log 表
+2. 在每一个分片数据库实例中执行 resources/sql/undo_log.sql 脚本，创建 undo_log 表
 
-3、Run YamlConfigurationTransactionExample.java
+3. Run YamlConfigurationTransactionExample.java
 
 ## 关于 ShardingSphere
 
