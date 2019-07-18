@@ -1,4 +1,4 @@
-image := jimmysong/website-builder:2019-07-11
+image := jimmysong/website-builder:2019-07-18
 docker := docker run -t -i --sig-proxy=true --rm -v $(shell pwd):/site -w /site $(image)
 build:
 	@$(docker) scripts/build-site.sh

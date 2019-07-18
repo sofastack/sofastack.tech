@@ -1,8 +1,8 @@
-[![Netlify Status](https://api.netlify.com/api/v1/badges/5719bbd5-042b-47f3-8282-e7ea27de2e70/deploy-status)](https://app.netlify.com/sites/sofastack-preview/deploys)
+[![CircleCI](https://circleci.com/gh/sofastack/sofastack.tech.svg?style=svg)](https://circleci.com/gh/sofastack/sofastack.tech) [![Netlify Status](https://api.netlify.com/api/v1/badges/5719bbd5-042b-47f3-8282-e7ea27de2e70/deploy-status)](https://app.netlify.com/sites/sofastack-preview/deploys)
 
 # sofastack.tech
 
-Source for the SOFAStack website https://www.sofastack.tech
+Source for the SOFAStack website <https://www.sofastack.tech>.
 
 ## Editing and building
 

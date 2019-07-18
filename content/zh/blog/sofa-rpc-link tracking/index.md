@@ -1,10 +1,10 @@
 ---
-title: "【剖析|SOFARPC 框架】之 SOFARPC 链路追踪剖析"
+title: "【剖析 | SOFARPC 框架】之 SOFARPC 链路追踪剖析"
 author: "SOFARPCLab"
 description: "本文为《剖析 | SOFARPC 框架》第二篇，本篇由畅为/碧远/卓与共同出品。"
 categories: "SOFARPC"
 aliases: "/posts/__lgm3af"
-tags: ["SOFARPC","剖析|SOFARPC 框架"]
+tags: ["SOFARPC","剖析 | SOFARPC 框架"]
 date: 2018-08-22T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563179637220-67983326-d155-4b28-be39-c86f653727f9.png"
 ---
