@@ -184,6 +184,7 @@ Netty 设置基本 ok，协议也确定之后，连接的保持就比较重要�
 Netty 提供了一个方便的解码工具类 ByteToMessageDecoder ，如图上半部分所示，这个类具备 accumulate 批量解包能力，可以尽可能的从 socket 里读取字节，然后同步调用 decode 方法，解码出业务对象，并组成一个 List 。最后再循环遍历该 List ，依次提交到 ChannelPipeline 进行处理。改动后，如图下半部分所示，即将提交的内容从单个 command ，改为整个 List 一起提交，如此能减少 pipeline 的执行次数，同时提升吞吐量。这个模式在低并发场景下不明显，但是在高并发场景下对吞吐量有不小的性能提升。
 
 这一段是我改成开关方式的，方便大家理解改动点。
+
 ```java
 if (batchSwitch) {
     ArrayList<Object> ret = new ArrayList<Object>(size);
@@ -234,6 +235,7 @@ DEMO 链接：[https://github.com/leizhiyuan/rpcchannel](https://github.com/leiz
 [https://tech.antfin.com/activities/245](https://tech.antfin.com/activities/245)
 
 ## 相关链接
+
 视频回放也给你准备好啦：
 
 [**https://tech.antfin.com/activities/244**](https://tech.antfin.com/activities/244)
@@ -254,4 +256,3 @@ DEMO 链接：[https://github.com/leizhiyuan/rpcchannel](https://github.com/leiz
 ## 讲师观点
 
 <img src="https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1550735314469-86ef00db-418d-49cf-95dc-79b20356de60.jpeg" width=50%>
-
