@@ -2,14 +2,18 @@
 title: "SOFABolt 发展路线"
 aliases: "/sofa-bolt/docs/sofa-bolt-roadmap"
 ---
+# 发展路线
 
 ## Version 1.5.1
-- 修复项目中代码风格的问题：https://github.com/alipay/sofa-bolt/issues/85
-- 修复项目中已知的BUG：https://github.com/alipay/sofa-bolt/issues/82
-- RPC 层支持从 IO 线程派发 mesage list：https://github.com/alipay/sofa-bolt/pull/84
+
+* 修复项目中代码风格的问题：<https://github.com/alipay/sofa-bolt/issues/85>
+* 修复项目中已知的BUG：<https://github.com/alipay/sofa-bolt/issues/82>
+* RPC 层支持从 IO 线程派发 message list：<https://github.com/alipay/sofa-bolt/pull/84>
 
 ## Version 1.6.0 
+
 ### 整体目标
+
 * 统一生命周期组件
 * 抽象并沉淀网络组件的API
 * 收敛配置入口&增强配置的可扩展性
@@ -58,6 +62,6 @@ Bolt中remoting类是网络操作的主要入口，目前以抽象类的形式�
 
 期望在1.6.0版本中对配置模块做调整，在兼容当前版本配置的情况下：
 
-1. 收敛配置入口，提供统一的配置的编程界面（以类似Netty的Option的方式进行配置）
-2. 支持配置隔离，不同的Bolt实例使用不同的配置项
-3. 提升配置的可扩展性
+* 收敛配置入口，提供统一的配置的编程界面（以类似Netty的Option的方式进行配置）
+* 支持配置隔离，不同的Bolt实例使用不同的配置项
+* 提升配置的可扩展性
