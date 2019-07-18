@@ -5,4 +5,17 @@ github: "https://github.com/sofastack/sofa-bolt"
 level: "tool"
 weight: 1
 link: "https://github.com/sofastack/sofa-bolt/wiki"
+sidebar:
+  - title: 'SOFABOlt 概述'
+    link: 'overview'
+  - title: 'SOFABolt 功能介绍'
+    link: 'sofa-bolt-functions'
+  - title：'SOFABolt 用户手册'
+    link：'sofa-bolt-handbook'
+  - title: 'SOFABolt 发展路线'
+    link: 'sofa-bolt-roadMap'
+  - title: 'SOFABolt 参与贡献'
+    link: 'sofa-bolt-contribution'
+  - title: 'SOFABOlt 相关链接'
+    link：'related-links'
 ---
