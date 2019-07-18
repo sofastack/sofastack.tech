@@ -136,7 +136,7 @@ SOFABolt 只依赖 SLF4J 作为日志门面。同时提供了 log4j、log4j2、l
    // 3. 通过系统属性来设置生效
    System.setProperty(Configs.SERIALIZER, String.valueOf(Hessian2));
 ```
-   
+
 * 自定义序列化器：实现一个 CustomSerializer 类，可以针对 Header，Content 做自定义的序列化和反序列化。同时我们在接口上提供了 InvokeContext，因此序列化和反序列化的逻辑，可以根据请求上下文来做动态的调整
 * [使用示例](https://github.com/alipay/sofa-bolt/blob/master/src/test/java/com/alipay/remoting/rpc/serializer/CustomSerializerCodecTest.java##L133)
 
