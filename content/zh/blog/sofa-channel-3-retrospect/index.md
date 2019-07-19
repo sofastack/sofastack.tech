@@ -12,14 +12,14 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563455530330-f84b834e-d3f
 > <SOFA:Channel/>，有趣实用的分布式架构频道。
 > 本次是 SOFAChannel 第三期，SOFARPC 性能优化（下），进一步分享 SOFARPC 在性能上做的一些优化。
 > 本期你将收获：
+>
 > - 如何控制序列化和反序列化的时机；
 > - 如何通过线程池隔离，避免部分接口对整体性能的影响；
 > - 如何进行客户端权重调节，优化启动期和故障时的性能；
 > - 服务端 Server Fail Fast 支持，减少无效操作；
 > - 在 Netty 内存操作中，如何优化内存使用。
-> 
+>
 > 欢迎加入直播互动钉钉群：23127468，不错过每场直播。
-
 
 ![SOFAChannel#3](https://cdn.nlark.com/yuque/0/2019/png/226702/1551407093595-f455a928-2036-4a02-b189-fd8a4f5e1c5f.png)
 
@@ -72,7 +72,7 @@ serializeContent 序列化业务对象的信息，这里 RPC 框架会根据本�
 
 体现在代码的这个类中。
 
-```
+```java
 com.alipay.remoting.rpc.protocol.RpcRequestProcessor#process
 ```
 
@@ -128,7 +128,7 @@ Netty 从 4.1.x 开始，非 Android 平台默认使用池化（PooledByteBufAll
 - 另外需要注意 PooledByteBufAllocator 的 MaxDirectMemorySize 设置。本机验证的话，大概需要 96M 以上，在 Demo中有说明。
 - Demo地址： [https://github.com/leizhiyuan/rpcchannel](https://github.com/leizhiyuan/rpcchannel)
 
-```
+```java
  DEFAULT_NUM_DIRECT_ARENA = Math.max(0,
                 SystemPropertyUtil.getInt(
                         "io.netty.allocator.numDirectArenas",
@@ -143,7 +143,7 @@ Netty 从 4.1.x 开始，非 Android 平台默认使用池化（PooledByteBufAll
 
 有兴趣的同学可以通过 **Demo 3** 中的示例来 debug，断点打在如下位置，就可以看到 Netty 选择的过程。
 
-```
+```java
 io.netty.buffer.AbstractByteBufAllocator#ioBuffer(int)
 ```
 
@@ -218,7 +218,7 @@ io.netty.buffer.AbstractByteBufAllocator#ioBuffer(int)
 
 以业务线程数为例，目前默认线程池，20核心线程数，200最大线程数，0队列。可以通过以下配置项来调整：
 
-```
+```java
 com.alipay.sofa.rpc.bolt.thread.pool.core.size # bolt 核心线程数
 com.alipay.sofa.rpc.bolt.thread.pool.max.size # bolt 最大线程数
 com.alipay.sofa.rpc.bolt.thread.pool.queue.size # bolt 线程池队列
