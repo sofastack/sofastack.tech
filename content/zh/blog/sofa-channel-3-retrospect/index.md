@@ -183,6 +183,7 @@ io.netty.buffer.AbstractByteBufAllocator#ioBuffer(int)
 除了启动期间保护服务端之外，还有个情况，是服务端在运行期间假死，或者其他故障。现象会是：服务发现中心认为机器存活，仍然会给客户端推送这个地址，但是调用一直超时，或者一直有其他非业务异常。这种情况下，如果还是调用，一方面会影响链路的性能，因为线程占用等；另一方面会有持续的报错。因此，这种情况下还需要通过单机故障剔除的功能，对异常机器的权重进行调整，最终可以在负载均衡的时候生效。
 
 对于单机故障剔除，本次我们不做为重点讲解，有兴趣的同学可以看下相关文章介绍。
+
 > 附：[【剖析 | SOFARPC 框架】系列之 SOFARPC 单机故障剔除剖析](https://www.sofastack.tech/blog/sofa-rpc-single-machine-fault-culling/)
 
 ## Server Fail Fast 支持
@@ -238,6 +239,7 @@ SOFARPC 和 SOFABolt 在性能优化上做了一些工作，包括一些比较�
 关于 SOFAChannel 有想要交流的话题可以在文末留言或者在公众号留言告知我们。
 
 ### 本期视频回顾
+
 [https://tech.antfin.com/activities/245](https://yuque.antfin-inc.com/wb-pwq501303/vom0gb/vrd7un)
 
 ### 往期直播精彩回顾
