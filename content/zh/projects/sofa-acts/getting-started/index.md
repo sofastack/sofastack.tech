@@ -19,6 +19,7 @@ __推荐使用 Intellij IDEA 2017，为了您的安全，请仅从该下载源�
 ![安装 ACTS IDE](install-acts-ide.png)
 
 ## 2.引入 ACTS 依赖
+
 在引入依赖之前，需要您的应用是一个多模块工程（包含 test 模块），后续 ACTS 会将全部的测试代码放置在 test 模块下以便管理 ACTS 用例。
 
 您可以依据应用的具体情况，选择性阅读以下内容：
@@ -31,6 +32,7 @@ __推荐使用 Intellij IDEA 2017，为了您的安全，请仅从该下载源�
 ### 2.1多模块应用-包含 test 模块
 
 只需在 test 模块的 pom.xml 中引入 acts-bom 即可。
+
 ```xml
 <dependency>
     <groupId>com.alipay.sofa.acts</groupId>

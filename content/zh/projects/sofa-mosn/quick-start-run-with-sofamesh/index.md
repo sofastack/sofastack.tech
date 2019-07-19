@@ -27,7 +27,7 @@ aliases: "/sofa-mosn/docs/docs-quickstart-RunWithSOFAMesh"
 
 先安装 [docker-for-mac](https://store.docker.com/editions/community/docker-ce-desktop-mac)，之后[安装驱动](https://github.com/kubernetes/minikube/blob/master/docs/drivers.md#hyperkit-driver)
 
-#### 1.1 安装 docker 
+#### 1.1 安装 docker
 
 * 下载软件包安装，或者使用如下的命令安装
 
@@ -160,13 +160,12 @@ prometheus-84bd4b9796-nq8lg                 1/1     Running   0          5m
 
 BookInfo 是一个类似豆瓣的图书应用，它包含四个基础服务
 
-* Product Page：主页，由 python 开发，展示所有图书信息，它会调用 Reviews 和 Details 服务
-* Reviews：评论，由 java 开发，展示图书评论，会调用 Ratings 服务
-* Ratings：评分服务，由 nodejs 开发
-* Details：图书详情，由 ruby 开发
++ Product Page：主页，由 python 开发，展示所有图书信息，它会调用 Reviews 和 Details 服务
++ Reviews：评论，由 java 开发，展示图书评论，会调用 Ratings 服务
++ Ratings：评分服务，由 nodejs 开发
++ Details：图书详情，由 ruby 开发
 
 <div align=center><img src="bookinfo.png" width = "550" height = "400" /></div>
-
 ### 1. 部署 BookInfo 应用并注入 SOFA-Mosn
 
 > 详细过程可以参考 [https://istio.io/docs/examples/bookinfo/](https://istio.io/docs/examples/bookinfo/)
@@ -209,7 +208,7 @@ reviews-v3-1813607990-8ch52                 2/2       Running   0          6m
 
 ### 2. 访问 BookInfo 服务
 
-* 开启 gateway 模式
++ 开启 gateway 模式
 
 ```powershell
 $ kubectl apply -f samples/bookinfo/networking/bookinfo-gateway.yaml
@@ -218,36 +217,40 @@ NAME               AGE
 bookinfo-gateway   24m
 ```
 
-* 查看 EXTERNAL-IP 是否存在
++ 查看 EXTERNAL-IP 是否存在
+
 ```powershell
 $ kubectl get svc istio-ingressgateway -n istio-system
 NAME                   TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)                                                                                                     AGE
 istio-ingressgateway   LoadBalancer   172.19.8.162   161.117.70.217   80:31380/TCP,443:31390/TCP,31400:31400/TCP,15011:32393/TCP,8060:30940/TCP,15030:31601/TCP,15031:31392/TCP   48m
 ```
 
-* 设置 ingress IP 与 ports
++ 设置 ingress IP 与 ports
+
 ```powershell
 $ export INGRESS_HOST=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 $ export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].port}')
 $ export SECURE_INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="https")].port}')
 ```
 
-* 设置 gateway 地址
++ 设置 gateway 地址
+
 ```powershell
 $ export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
 $ echo $GATEWAY_URL   //例如我这里的地址是 161.117.70.217:80
 161.117.70.217:80
 ```
 
-* 验证 gateway 是否生效 
-```
++ 验证 gateway 是否生效 
+
+```bash
 $ curl -o /dev/null -s -w "%{http_code}\n"  http://$GATEWAY_URL/productpage   //输出 200 表示成功 
 200
 ```
 
-* 观察页面情况
++ 观察页面情况
 
-访问 http://$GATEWAY_URL/productpage (注意： $GATEWAY_URL 需要替换成你设置的地址)，正常的话通过刷新会看到如下所示 BookInfo 的界面，其中 Book Reviews 有三个版本，
+访问 `http://$GATEWAY_URL/productpage` (注意： $GATEWAY_URL 需要替换成你设置的地址)，正常的话通过刷新会看到如下所示 BookInfo 的界面，其中 Book Reviews 有三个版本，
 刷新后依次会看到(可以查看 samples/bookinfo/platform/kube/bookinfo.yaml 中的配置发现为什么是这三个版本)
 
 + 版本一 的界面
@@ -273,27 +276,30 @@ $ kubectl apply -f samples/bookinfo/networking/destination-rule-all.yaml
 $ kubectl apply -f samples/bookinfo/networking/virtual-service-all-v1.yaml
 ```
 
-访问 http://$GATEWAY_URL/productpage 发现 reviews 固定在如下版本一的页面不再变化
+访问 `http://$GATEWAY_URL/productpage` 发现 reviews 固定在如下版本一的页面不再变化
 
 ![版本一](v1.png)
 
 ### 4. 验证 MOSN 按 weight 路由能力
 
 + 我们通过下面操作将 v1 和 v3 版本各分配 50% 的流量
+
 ```bash
 $ kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-50-v3.yaml
 ```
 
-访问 http://$GATEWAY_URL/productpage 这次 v1 和 v3 各有 1/2 几率出现
+访问 `http://$GATEWAY_URL/productpage` 这次 v1 和 v3 各有 1/2 几率出现
 
 ### 5. 验证 MOSN 按照特定 header 路由能力
 
 + BookInfo 系统右上角有一个登陆的入口，登陆以后请求会带上 end-user 这个自定义，值是 user name，Mosn 支持根据这个 header 的值来做路由。比如，我们尝试将 jason 这个用户路由到 v2 版本，
 其他的路由到 v1 版本 (用户名和密码均是：jason，为什么是这个用户可以查看对应的 yaml 文件)
+
 ```bash
 $ kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-test-v2.yaml
 ```
-访问 http://$GATEWAY_URL/productpage 时：
+
+访问` http://$GATEWAY_URL/productpage` 时：
 
 + 以 jason 身份登陆，会看到 v2 版本
 ![登录](login.png)

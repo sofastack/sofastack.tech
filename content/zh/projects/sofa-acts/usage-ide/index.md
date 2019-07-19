@@ -125,7 +125,7 @@ interestRecoverTypeEnum: !!com.alipay.fc.loancore.common.util.enums.InterestReco
 
 数据依赖标记：
 
-```
+```plain
 Y: 插入
 N：不插入
 C：以此为where条件对插入后的数据进行清理
@@ -147,7 +147,7 @@ L: 大字段换行准备，准备方式为A=B;C=D
 
 ### 期望结果的 flag 说明
 
-```
+```plain
 Y: 校验
 N：不校验
 D：时间偏移值比较，如 D200

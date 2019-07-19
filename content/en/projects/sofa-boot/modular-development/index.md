@@ -15,10 +15,12 @@ SOFABoot Modular Development belongs to the second modularization form--modulari
 
 ## Feature Description
 
-![Modulardevelopment.png](modulardevelopment.png) 
+![Modulardevelopment.png](modulardevelopment.png)
 
 ### Import Dependency
+
 + To use SOFABoot module, you should import the following dependency:
+
 ```xml
 <dependency>
     <groupId>com.alipay.sofa</groupId>

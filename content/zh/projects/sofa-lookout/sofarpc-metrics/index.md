@@ -36,8 +36,8 @@ SOFARPC 目前度量了两个指标。
 | rpc.consumer.service.stats.total_time.max                      | app,service,method,protocol,invoke_type,target_app | 某个具体接口总时间最大值     |
 | rpc.consumer.service.stats.total_time.totalTime                | app,service,method,protocol,invoke_type,target_app | 某个具体接口总时间           |
 
-
 ## 服务端被调用信息
+
 | metric name                                       | metric tags                            | specification                  |
 | ---                                               | ---                                    | ---                            |
 | rpc.provider.service.stats.fail_count.count       | app,service,method,protocol,caller_app | 某个具体接口总的被调用失败次数 |

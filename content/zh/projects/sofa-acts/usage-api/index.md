@@ -44,11 +44,9 @@ public void beforeActsTest(ActsRuntimeContext actsRuntimeContext) {
 | :--- | :--- |
 | 123 | abc |
 
-
 | id_B | value_B |
 | :--- | :--- |
 | abc | efg |
-
 
 查询的时候要先通过接口返回的 A 表的 id_A 查到 value_A, 然后把 value_A 作为 B 表的查询条件，在插件上面可以这样写：
 
@@ -56,7 +54,6 @@ public void beforeActsTest(ActsRuntimeContext actsRuntimeContext) {
 | :--- | :--- | :--- |
 | id_A | C | $param1 |
 | value_A | Y | =param2 |
-
 
 | 字段 | flag | 值 |
 | :--- | :--- | :--- |
