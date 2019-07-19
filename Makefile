@@ -7,4 +7,4 @@ lint:
 install:
 	@$(docker) scripts/install-dependency.sh
 serve:
-	@$(docker) hugo serve --bind 0.0.0.0
+	@$(docker) hugo serve --bind 0.0.0.0 --disableFastRender

@@ -55,17 +55,10 @@ MOSN 初始版本由蚂蚁金服和阿里大文娱UC事业部携手贡献，期�
 ## 快速开始
 * [参考这里](../quick-start-setup) 
 
-## 文档
-* [目录](../docs-catalog)
-
 ## 社区
 * [Issues](https://github.com/sofastack/sofa-mosn/issues)
 
-## 版本
-* [变更记录](../docs-changelog)
-
 ## 贡献
-+ [代码贡献](../docs-develop-contributing) 
 + MOSN仍处在初级阶段，有很多能力需要补全，所以我们欢迎所有人参与进来与我们一起共建。
   
 ## 致谢

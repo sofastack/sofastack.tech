@@ -1,9 +1,7 @@
-
 ---
 title: "Pilot 介绍"
 aliases: "/sofa-mesh/docs/pilot-README"
 ---
-
 
 SOFA Mesh 项目 fork 了 Istio 项目，对 Pilot 的能力进行增强，目前在进行中的增强主要集中在下面三个方面：
 

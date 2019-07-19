@@ -1,9 +1,7 @@
-
 ---
 title: "使用 SOFAMosn 搭建 Service Mesh 平台"
 aliases: "/sofa-mosn/docs/docs-quickstart-RunWithSOFAMesh"
 ---
-
 
 本文将介绍如何使用 SOFAMosn 在 SOFAMesh 框架下搭建 Service Mesh 的开发环境，并验证 SOFAMosn 的一些基础路由能力、负载均衡能力等。本文介绍的内容将包括 : 
 + SOFAMosn 与 SOFAMesh 的关系
@@ -13,11 +11,13 @@ aliases: "/sofa-mosn/docs/docs-quickstart-RunWithSOFAMesh"
 
 ## SOFAMosn 与 SOFAMesh 的关系
 
-我们曾在 [《SOFAMosn Introduction》](../overview) 一文中介绍过，SOFAMosn 是一款采用 Golang 开发的 Service Mesh 数据平面代理。而 SOFAMesh 则是基于 Istio
-改进和扩展而来的 Service Mesh 大规模落地实践方案，SOFAMosn 作为 SOFAMesh 的关键组件用来完成数据面的转发。
-下图是 SOFAMesh 整体框架下，SOFAMosn 的工作示意图。[注：当前 SOFAMosn 不支持在原生的 Istio 中直接使用]
+我们曾在 [《SOFAMosn Introduction》](../overview) 一文中介绍过，SOFAMosn 是一款采用 Golang 开发的 Service Mesh 数据平面代理。而 SOFAMesh 则是基于 Istio 改进和扩展而来的 Service Mesh 大规模落地实践方案，SOFAMosn 作为 SOFAMesh 的关键组件用来完成数据面的转发。
 
-<div align=center><img src="mosn-Introduction.png" width = "450" height = "400" /></div>
+下图是 SOFAMesh 整体框架下，SOFAMosn 的工作示意图。
+
+注意：当前 SOFAMosn 不支持在原生的 Istio 中直接使用。
+
+<div align=center><img src="mosn-introduction.png" width = "450" height = "400" /></div>
 
 ## 准备工作
 
@@ -104,15 +104,15 @@ $ kubectl apply -f install/kubernetes/helm/istio/charts/certmanager/templates/cr
 之后 使用 Helm 安装 ISTIO 有两种方式，这里推荐使用第一种，如果第一种不 work，可以尝试第二种
 
    + 方式一：使用  `helm template` 安装
-   
+
     $ helm template install/kubernetes/helm/istio --name istio --namespace istio-system > $HOME/istio.yaml
     $ kubectl create namespace istio-system
     $ kubectl apply -f $HOME/istio.yaml
 
    + 如果安装成功后，需要卸载的话：
-    
+
     $ kubectl delete -f $HOME/istio.yaml
-    
+
    + 方式二：使用  `helm install 安装`
 
     $ kubectl apply -f install/kubernetes/helm/helm-service-account.yaml
@@ -120,7 +120,7 @@ $ kubectl apply -f install/kubernetes/helm/istio/charts/certmanager/templates/cr
     $ helm install install/kubernetes/helm/istio --name istio --namespace istio-system
 
    + 如果安装成功后，需要卸载的话：
-   
+
     $ helm delete --purge istio
 
 ### 3. 验证安装
@@ -166,7 +166,6 @@ BookInfo 是一个类似豆瓣的图书应用，它包含四个基础服务
 * Details：图书详情，由 ruby 开发
 
 <div align=center><img src="bookinfo.png" width = "550" height = "400" /></div>
-
 
 ### 1. 部署 BookInfo 应用并注入 SOFA-Mosn
 
@@ -244,7 +243,7 @@ $ echo $GATEWAY_URL   //例如我这里的地址是 161.117.70.217:80
 ```
 $ curl -o /dev/null -s -w "%{http_code}\n"  http://$GATEWAY_URL/productpage   //输出 200 表示成功 
 200
-``` 
+```
 
 * 观察页面情况
 

@@ -1,15 +1,13 @@
-
 ---
 title: "客户端快速开始 - SOFABoot 项目"
 aliases: "/sofa-lookout/docs/quickstart-client-boot"
 ---
 
-
 该项目演示了如何在 SOFABoot 中使用 SOFALookout 并且对接到 Spring Boot 的 Actuator 中。如果想要对接到 Prometheus 上或者其他的 Registry 中，请参考 Registry 一节。
 
 ## 新建 SpringBoot（或 SofaBoot ）项目
 
-新建一个 Spring Boot 的应用（如果是 SOFABoot 工程按照 [SOFABoot 文档--依赖管理](https://www.sofastack.tech/sofa-boot/docs/dependency-management)中的方式引入 SOFABoot 即可）。
+新建一个 Spring Boot 的应用（如果是 SOFABoot 工程按照 [SOFABoot 文档 - 依赖管理](/projects/sofa-boot/dependency-management/)中的方式引入 SOFABoot 即可）。
 
 ## 引入 Lookout 的 Starter 依赖
 
@@ -23,7 +21,6 @@ aliases: "/sofa-lookout/docs/quickstart-client-boot"
 ```
 
 如果 Spring Boot 项目需指定[版本](http://mvnrepository.com/artifact/com.alipay.sofa.lookout/lookout-sofa-boot-starter)。
-
 
 ## 新建一个 Metrics 指标
 
@@ -59,7 +56,7 @@ public void init() {
 
 添加如上的依赖之后，我们在本地启动应用，访问 `http://localhost:8080/metrics`，就可以看到前面添加的指标，如下：
 
-```
+```text
 "http_requests_total.instant-MacBook-Pro-4.local": 1,
 ```
 

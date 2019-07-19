@@ -1,11 +1,9 @@
-
 ---
 title: "Modular development"
 aliases: "/sofa-boot/docs/Modular-Development"
 ---
 
-
-﻿Since version 2.4.0, SOFABoot has started to support modular development capability based on Spring context isolation. To better understand the concept of modular development of SOFABoot, let's distinguish several common forms of modularization:
+Since version 2.4.0, SOFABoot has started to support modular development capability based on Spring context isolation. To better understand the concept of modular development of SOFABoot, let's distinguish several common forms of modularization:
 
 - Modularization based on code organization: This is the most common form. Codes with different functions are placed under different Java projects at development time and into different jar packages at compile time. At runtime, all Java classes are under the same classpath without any isolation;
 - Modularization based on Spring context isolation: Use the Spring context to perform isolation of different function modules. At development and compile time, the codes and configurations are also placed under different Java projects. At runtime, however, different Spring Beans are invisible from each other, and IoC only occurs within the same context, but all the Java classes are still under the same ClassLoader;
@@ -13,11 +11,11 @@ aliases: "/sofa-boot/docs/Modular-Development"
 
 SOFABoot Modular Development belongs to the second modularization form--modularization based on Spring context isolation. Each SOFABoot module uses an independent Spring context to avoid BeanId conflicts between different SOFABoot modules and effectively reduces the cost of communication between teams during enterprise-level multi-module development.
 
-** More details about SOFABoot module is introduced in the [article](https://www.sofastack.tech/posts/2018-07-25-01)**
+**More details about SOFABoot module is introduced in the [article](https://www.sofastack.tech/posts/2018-07-25-01).**
 
 ## Feature Description
 
-![Modulardevelopment.png](resources/Modulardevelopment.png) 
+![Modulardevelopment.png](modulardevelopment.png) 
 
 ### Import Dependency
 + To use SOFABoot module, you should import the following dependency:
