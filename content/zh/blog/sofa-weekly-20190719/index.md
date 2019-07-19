@@ -23,7 +23,7 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 
 **NO.1 社区新认证一位 Committer**
 
-**Github ID **[**@SteNicholas**](https://github.com/SteNicholas) 成为 SOFAJRaft Committer：
+**Github ID ** [@SteNicholas](https://github.com/SteNicholas) 成为 SOFAJRaft Committer：
 
 主要贡献：
 
@@ -38,8 +38,8 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 - 实现了 RheaKV 的 batch delete API
 
 目前，社区已经认证三位 Committer：
-[**@SteNicholas**](https://github.com/SteNicholas)，[**@ScienJus**](https://github.com/ScienJus)，[**@chpengzh**](https://github.com/chpengzh)
-感谢对 SOFAStack 的支持和帮助
+[@SteNicholas](https://github.com/SteNicholas)，[@ScienJus](https://github.com/ScienJus)，[@chpengzh](https://github.com/chpengzh)
+感谢对 SOFAStack 的支持和帮助~
 
 也欢迎你加入 SOFAStack community，指南：
 
@@ -63,13 +63,10 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 
 ## SOFA 项目进展
 
-**本周发布详情如下：**
+**本周发布详情如下**
 
-**1、发布 SOFAActs 1.0.1 版本，主要变更如下：**
+SOFAActs 1.0.1 版本发布，主要变更如下：
 
-i. 插件兼容性问题修复
+- 插件兼容性问题修复
 
-详细参考发布报告：
-
-[https://github.com/sofastack/sofa-acts/releases/tag/1.0.1](https://github.com/sofastack/sofa-acts/releases/tag/1.0.1)
-
+详细参考 [发布报告](https://github.com/sofastack/sofa-acts/releases/tag/1.0.1)
