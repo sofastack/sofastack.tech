@@ -18,6 +18,7 @@ aliases: "/sofa-mosn/docs/docs-quickstart-RunWithSOFAMesh"
 注意：当前 SOFAMosn 不支持在原生的 Istio 中直接使用。
 
 <div align=center><img src="mosn-introduction.png" width = "450" height = "400" /></div>
+
 ## 准备工作
 
 本文以 macOS 为例 ，其他环境可以安装对应版本的软件。
@@ -183,6 +184,7 @@ BookInfo 是一个类似豆瓣的图书应用，它包含四个基础服务
 ```bash
 $ kubectl label namespace default istio-injection=enabled
 ```
+
 - 部署 Bookinfo
 
 ```bash
