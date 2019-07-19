@@ -34,7 +34,7 @@ aliases: "/sofa-bolt/docs/Functions"
 
 ![invoke_type](invoke_types.png)
 
-* 示例 Demo 请参考我们的 [用户手册](../sofa-bolt-handbook/index.md)
+* 示例 Demo 请参考我们的 [用户手册](../sofa-bolt-handbook/)
 
 ## 用法2
 

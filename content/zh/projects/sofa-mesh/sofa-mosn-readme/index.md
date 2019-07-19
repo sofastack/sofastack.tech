@@ -51,22 +51,19 @@ MOSN 初始版本由蚂蚁金服和阿里大文娱UC事业部携手贡献，期�
 + 扩展能力
     + 支持自定义私有协议
     + 支持在 TCP IO 层，协议层面加入自定义扩展
-    
-## 快速开始
-* [参考这里](https://www.sofastack.tech/sofa-mesh/docs/sofa-mosn-docs-quick-start-setup) 
 
-## 文档
-* [目录](https://www.sofastack.tech/sofa-mesh/docs/sofa-mosn-docs-catalog)
+## 快速开始
+
++ [参考这里](../sofa-mosn-docs-quick-start-setup)
 
 ## 社区
-* [Issues](https://github.com/sofastack/sofa-mosn/issues)
 
-## 版本
-* [变更记录](https://www.sofastack.tech/sofa-mesh/docs/sofa-mosn-docs-changelog)
++ [Issues](https://github.com/sofastack/sofa-mosn/issues)
 
 ## 贡献
-+ [代码贡献](https://www.sofastack.tech/sofa-mesh/docs/sofa-mosn-docs-develop-contributing) 
+
 + MOSN仍处在初级阶段，有很多能力需要补全，所以我们欢迎所有人参与进来与我们一起共建。
-  
+
 ## 致谢
+
 感谢 Google、IBM、Lyft 创建了 Envoy、Istio 体系，并开源了优秀的项目，使 MOSN 有了非常好的参考，使我们能快速落地自己的想法。
