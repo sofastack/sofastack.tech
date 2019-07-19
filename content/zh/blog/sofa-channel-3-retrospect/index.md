@@ -154,15 +154,10 @@ io.netty.buffer.AbstractByteBufAllocator#ioBuffer(int)
 一般来说，我们不会主动去分配 ByteBuf ，只要去操作读写 ByteBuf。所以：
 
 1. 使用 Bytebuf.forEachByte() ，传入 Processor 来代替循环 ByteBuf.readByte() 的遍历操作，避免rangeCheck() 。因为每次 readByte() 都不是读一个字节这么简单，首先要判断 refCnt() 是否大于0，然后再做范围检查防止越界。getByte(i＝int) 又有一些检查函数，JVM 没有内连的时候，性能就有一定的损耗。
-
 2. 使用 CompositeByteBuf 来避免不必要的内存拷贝。在操作一些协议包数据拼接时会比较有用，比如在 Service Mesh 的场景，如果我们需要改变 Header 中的 RequestId，然后和原始的 Body 数据拼接。
-
 3. 如果要读1个 int ， 用 Bytebuf.readInt() , 不要使用 Bytebuf.readBytes(buf, 0, 4) 。这样能避免一次内存拷贝，其他 long 等同理，毕竟还要转换回来，性能也更好。在 **Demo 4** 中有体现。
-
 4. RecyclableArrayList ，在出现频繁 new ArrayList 的场景可考虑 。例如：SOFABolt 在批量解包的时候使用了 RecyClableList ，可以让 Netty 来回收。上期分享中有介绍到这个功能，详情可以见文末上期回顾链接。
-
 5. 避免拷贝，为了失败时重试，假设要保留内容稍后使用。不想 Netty 在发送完毕后把 buffer 就直接释放了，可以用 copy() 复制一个新的 ByteBuf。但是下面这样更高效，Bytebuf newBuf=oldBuf.duplicate().retain(); 只是复制出独立的读写索引, 底下的 ByteBuffer 是共享的，同时将 ByteBuffer 的计数器＋1，这样可以避免释放，而不是通过拷贝来阻止释放。
-
 6. 最后可能出现问题，使用 PooledBytebuf 时要善于利用 -Dio.netty.leakDetection.level 参数，可以定位内存泄漏出现的信息。
 
 ## 客户端权重调节
