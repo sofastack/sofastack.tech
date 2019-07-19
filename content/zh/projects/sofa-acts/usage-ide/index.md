@@ -89,7 +89,6 @@ interestRecoverTypeEnum: !!com.alipay.fc.loancore.common.util.enums.InterestReco
 2. 按位置获取：`Object getInputParamByPos(int i)`
 3. 新增用例参数：`void addInputParam(Object obj)`
 
-
 ![ActsRuntimeContext 方法](ActsRuntimeContext-method.png)
 <div data-type="alignment" data-value="center" style="text-align:center">
   <div data-type="p">图38</div>

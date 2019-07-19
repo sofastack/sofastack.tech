@@ -19,7 +19,7 @@ SOFABoot Modular Development belongs to the second modularization form--modulari
 
 ### Import Dependency
 
-+ To use SOFABoot module, you should import the following dependency:
+- To use SOFABoot module, you should import the following dependency:
 
 ```xml
 <dependency>

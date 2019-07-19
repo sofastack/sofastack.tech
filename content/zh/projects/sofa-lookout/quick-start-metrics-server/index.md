@@ -15,7 +15,7 @@ docker run -d --name es -p 9200:9200 -p 9300:9300 -e "discovery.type=single-node
 
 - 2)检查 ES 是否健康
 
-```
+```bash
 http://localhost:9200/_cat/health?v
 ```
 
@@ -23,7 +23,7 @@ http://localhost:9200/_cat/health?v
 
 执行 all-in-one-bootstrap 编译后的 fat-jar 包，[如何获得，见文末备注部分](#备注)：
 
-```
+```bash
 java -Dcom.alipay.sofa.ark.master.biz=lookoutall -jar lookout-all-in-one-bootstrap-1.6.0-executable-ark.jar
 ```
 
@@ -69,6 +69,7 @@ metrics-server.spring.data.jest.uri=http://localhost:9200
 ```bash
 ./boot/all-in-one-bootstrap/build.sh
 ```
+
 > 打包结果在`boot/all-in-one-bootstrap/target/allinone-executable.jar`
 
 **方式2：发布报告中附件获取**
