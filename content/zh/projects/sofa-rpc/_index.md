@@ -8,13 +8,13 @@ icon: "/img/icons/sofarpc.png"
 sidebar:
   - title: '快速开始'
     sub:
-      - title: 'SOFARPC 方式快速入门'  	
+      - title: 'SOFARPC 方式快速入门'
         link: 'getting-started-with-rpc'
       - title: 'SOFABoot 方式快速入门'
         link: 'getting-started-with-sofa-boot'
   - title: '编程界面'
     sub:
-      - title: '非 Spring 环境 API 使用'  	
+      - title: '非 Spring 环境 API 使用'
         link: 'programing-rpc'
       - title: 'SOFABoot 环境 XML 配置使用'
         link: 'programing-sofa-boot-xml'
@@ -24,7 +24,7 @@ sidebar:
         link: 'programing-sofa-boot-api'
   - title: '功能特性'
     sub:
-      - title: '服务发布与引用'  	
+      - title: '服务发布与引用'
         link: 'publish-and-reference'
       - title: '通信协议'
         sub:
@@ -64,7 +64,7 @@ sidebar:
             sub:
               - title: 'Http 协议基本使用'
                 link: 'http-json'
-      - title: '注册中心使用'  
+      - title: '注册中心使用'
         sub:
           - title: '使用 SOFARegistry 作为注册中心'
             link: 'registry-sofa'
@@ -108,7 +108,7 @@ sidebar:
         link: 'graceful-shutdown'
   - title: '配置参考手册'
     sub:
-      - title: 'SOFABoot 环境发布订阅说明'  	
+      - title: 'SOFABoot 环境发布订阅说明'
         link: 'rpc-config-xml-explain'
       - title: 'RPC 应用参数配置'
         link: 'application-rpc-config'
@@ -118,7 +118,7 @@ sidebar:
         link: 'configuration-fault-tolerance'
   - title: '开发者手册'
     sub:
-      - title: '如何编译 SOFARPC 工程'  	
+      - title: '如何编译 SOFARPC 工程'
         link: 'how-to-build'
       - title: 'SOFARPC 工程架构介绍'
         link: 'structure-intro'
@@ -132,13 +132,13 @@ sidebar:
         link: 'version-release'
       - title: '单元测试与性能测试'
         link: 'test'
-  - title: '发布历史'  	
+  - title: '发布历史'
     link: 'release-notes'
   - title: '常见问题'
     link: 'faq'
   - title: '发展路线'
     link: 'roadmap'
-  - title: '参与贡献'  	
+  - title: '参与贡献'
     link: 'contributing'
   - title: '依赖组件版权说明'
     link: 'notice'

@@ -1,11 +1,9 @@
-
 ---
-title: "快速开始"
+title: "快速开始指南"
 aliases: "/sofa-tracer/docs/ComponentAccess"
 ---
 
-
-SOFATracer 接入的组件列表参考：[SOFATracer 介绍](https://www.sofastack.tech/sofa-tracer/docs/overview),在使用时请注意不同组件对应的SOFATracer 版本和 JDK 版本。
+SOFATracer 接入的组件列表参考：[SOFATracer 介绍](../overview)，在使用时请注意不同组件对应的SOFATracer 版本和 JDK 版本。
 
 ### 环境准备
 
@@ -15,7 +13,7 @@ SOFATracer 接入的组件列表参考：[SOFATracer 介绍](https://www.sofasta
 
 ### 示例列表
 
-下面所有 Samples 工程均为 SOFABoot 工程(同时支持 SpringBoot 工程中使用)，关于如何创建 SOFABoot 工程请参考 [SOFABoot 快速开始](https://www.sofastack.tech/sofa-boot/docs/quick-start)。
+下面所有 Samples 工程均为 SOFABoot 工程(同时支持 SpringBoot 工程中使用)，关于如何创建 SOFABoot 工程请参考 [SOFABoot 快速开始](/projects/sofa-boot/quick-start)。
 
 * 组件接入
     * [Spring MVC 埋点接入](../usage-of-mvc)
@@ -23,7 +21,7 @@ SOFATracer 接入的组件列表参考：[SOFATracer 介绍](https://www.sofasta
     * [DataSource 埋点接入](../usage-of-datasource)
     * [RestTemplate 埋点接入](../usage-of-resttemplate)
     * [OkHttp 埋点接入](../usage-of-okhttp)
-    * [SOFARPC 埋点接入](https://www.sofastack.tech/sofa-rpc/docs/invoke-chain-pass-data)
+    * [SOFARPC 埋点接入](/projectes/sofa-rpc/invoke-chain-pass-data)
     * [Dubbo 埋点接入](../usage-of-dubbo)
     * [Spring Cloud OpenFeign 埋点接入](../usage-of-openfeign)
 * [采样](../sampler)

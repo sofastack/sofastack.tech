@@ -8,13 +8,12 @@ ACTS（AntCoreTest）源于蚂蚁金服多年金融级分布式架构工程的�
 
 ACTS 是基于数据模型驱动测试引擎执行的的新一代测试框架（如图1所示），适配 TestNg+Spring 的测试上下文环境，以 YAML 为数据载体并在此上构建数据模型驱动，实现了一站式编辑、精细化校验和高效用例管理等，可以有效提高测试效率。
 
-
 ![SOFAActs 框架](architecture.png)
-<p align="center">图1</p>
+
 ## 运行原理
 
 ![SOFAActs 运行原理](principle.png)
-<p align="center">图2</p>
+
 1. 测试脚本启动的时，ActsDataProvider 会启动被测方法（被 @Test 注解的方法），加载对应的用例数据文件(以 YAML 文件承载)，然后转换成对应的 PrepareData 对象；
 2. runTest 开始执行时会传入 PrepareData 和用例名称，ACTS 根据这些信息组装出 ActsRuntimeContext 上下文并在整个过程中传递，同时初始化 TestUnitHandler 测试处理器。runTest -> process 方法执行期包含如下四个子流程：
 
@@ -32,17 +31,27 @@ ACTS 是基于数据模型驱动测试引擎执行的的新一代测试框架（
 + 检查阶段：根据测试数据，校验返回结果、DB 数据和异常信息等内容。
 
 ## 功能描述
+
 ACTS 提供了以下能力：
+
 ### 2.1 一站式编辑
+
 框架实现了测试数据与测试代码的分离，同时配套提供可视化编辑器 ACTS IDE，通过 ACTS IDE 可以快速地录入、查看和管理用例数据，有效减少重复性编码。
+
 ### 2.2 精细化校验
+
 为了提高返回结果、DB 数据等期望数据的填写效率和减少检验点遗漏，框架提供了预跑返填功能；同时在 ACTS 校验规则标签的标记下，实现期望 DB 数据、期望结果等数据的精细化校验。
+
 ### 2.3 灵活可扩展
-ACTS 提供了丰富的 API ，其封装于 ActsRuntimeContext 类中，借助 API 可快速获取和设置自定义参数、用例入参、期望结果等，满足用户对用例数据的自定义操作；<br/>
+
+ACTS 提供了丰富的 API ，其封装于 ActsRuntimeContext 类中，借助 API 可快速获取和设置自定义参数、用例入参、期望结果等，满足用户对用例数据的自定义操作；
 
 同时，框架的 ActsTestBase 测试基类对外暴露各个执行阶段方法，包括 prepare，execute，check，clear 等，例如在测试类中通过重写 process 方法可将整个测试脚本重新编排。
+
 ### 2.4 统一配置能力
+
 配置文件中提供丰富的配置能力以定制化框架的个性需求。
 
 ## 应用场景
+
 基于 SOFABoot 搭建的应用，在 Intellij IDEA 开发环境下快速编写和执行接口测试用例。推荐使用 Intellij IDEA 2017 以便能更好地兼容 ACTS IDE。
