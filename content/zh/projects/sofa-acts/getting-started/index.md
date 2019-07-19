@@ -12,11 +12,10 @@ aliases: "/sofa-acts/docs/GettingStarted"
 
 ## 1.安装 ACTS IDE
 
-**推荐使用 Intellij IDEA 2017，为了您的安全，请仅从该下载源获取 ACTS IDE 安装包**：
-[点击下载 ACTS IDE](https://gw.alipayobjects.com/os/basement_prod/c09f3a6a-b49a-4ab9-a56e-4994e033ae7b.zip)。
+__推荐使用 Intellij IDEA 2017，为了您的安全，请仅从该下载源获取 ACTS IDE 安装包：__
+[点击下载 ACTS IDE](https://gw.alipayobjects.com/os/basement_prod/5436d6bc-0390-4db1-9ec7-54e287c731f6.zip)，
 
 本地磁盘安装：Preference -> Plugins -> Install plugin from disk -> Restart IDEA 即可。
-
 ![安装 ACTS IDE](install-acts-ide.png)
 
 ## 2.引入 ACTS 依赖
