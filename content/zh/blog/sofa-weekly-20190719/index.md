@@ -23,7 +23,7 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 
 **NO.1 社区新认证一位 Committer**
 
-**Github ID ** [@SteNicholas](https://github.com/SteNicholas) 成为 SOFAJRaft Committer：
+[@SteNicholas](https://github.com/SteNicholas) 成为 SOFAJRaft Committer。
 
 主要贡献：
 
