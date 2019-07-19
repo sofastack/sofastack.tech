@@ -222,7 +222,7 @@ docker.io/xzchaoo/lookout-allinone:1.6.0-SNAPSHOT
 docker run --name grafana -d -p 3000:3000 --link allinone:allinone grafana/grafana
 ```
 
-SOFALookout 启动之后可以访问其 9090 端口，我们打开 http://localhost:9090，有一个简单的控制台, 我们搜索一个 Metrics： `jvm.classes.loaded{app="*"}`，这是 lookout-client 扩展包自动采集的数据。执行之前写的 lookut-client demo 程序，此时应该有几个点的数据了，需要等一段时间数据点才会更多，这段时间内我们可以先到 grafana 上探索一下。
+SOFALookout 启动之后可以访问其 9090 端口，我们打开 <http://localhost:9090> ，有一个简单的控制台, 我们搜索一个 Metrics： `jvm.classes.loaded{app="*"}`，这是 lookout-client 扩展包自动采集的数据。执行之前写的 lookut-client demo 程序，此时应该有几个点的数据了，需要等一段时间数据点才会更多，这段时间内我们可以先到 grafana 上探索一下。
 
 ## 4 SOFALookout 发展规划
 
@@ -240,7 +240,6 @@ SOFALookout：[https://github.com/sofastack/sofa-lookout](https://github.com/sof
 
 - [蚂蚁金服轻量级监控分析系统 SOFALookout 服务端开源](https://mp.weixin.qq.com/s/Ql34eGaUrpm9St0yb1-hFw)
 - SOFALookout Demo [下载地址](https://github.com/sofastack/sofa-lookout/tree/master/samples/metrics/client)
-
 
 ### 本期视频回顾以及 PPT 查看地址
 
