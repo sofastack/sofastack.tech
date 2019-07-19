@@ -1,6 +1,5 @@
 ---
 title: "Maven 依赖说明"
-aliases: "/sofa-jraft/docs/maven-dependency"
 ---
 
 ## pom依赖

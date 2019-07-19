@@ -1,6 +1,5 @@
 ---
 title: "Jepsen 验证"
-aliases: "/sofa-jraft/docs/jepson-test"
 ---
 
 除了几百个单元测试以及部分 chaos 测试之外, SOFAJRaft 还使用 [jepsen](https://github.com/jepsen-io/jepsen) 这个分布式验证和故障注入测试框架模拟了很多种情况，都已验证通过：

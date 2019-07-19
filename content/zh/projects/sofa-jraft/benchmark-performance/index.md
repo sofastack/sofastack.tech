@@ -1,6 +1,5 @@
 ---
 title: "Benchmark 数据"
-aliases: "/sofa-jraft/docs/benchmark-performance"
 ---
 
 # [测试代码](https://github.com/alipay/sofa-jraft/tree/master/jraft-example/src/main/java/com/alipay/sofa/jraft/benchmark)

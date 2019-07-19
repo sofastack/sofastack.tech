@@ -1,6 +1,5 @@
 ---
 title: "版本发行日志"
-aliases: "/sofa-jraft/docs/release-log"
 ---
 
 ---

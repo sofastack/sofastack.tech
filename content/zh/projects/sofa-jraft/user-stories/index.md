@@ -1,6 +1,5 @@
 ---
 title: "用户案例"
-aliases: "/sofa-jraft/docs/user-stories"
 ---
 
 1. RheaKV：基于 JRaft 和 RocksDB 实现的嵌入式、分布式、高可用、强一致的 KV 存储类库。

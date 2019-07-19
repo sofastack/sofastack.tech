@@ -1,6 +1,5 @@
 ---
 title: "分布式一致性 Raft 与 JRaft"
-aliases: "/sofa-jraft/docs/consistency-raft-jraft"
 ---
 
 # 分布式共识算法 (Consensus Algorithm)

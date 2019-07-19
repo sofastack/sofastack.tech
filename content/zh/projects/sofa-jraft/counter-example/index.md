@@ -1,6 +1,5 @@
 ---
 title: "Counter 例子详解"
-aliases: "/sofa-jraft/docs/counter-example"
 ---
 
 本文档主要介绍一个基于 jraft 的分布式计数器的例子。

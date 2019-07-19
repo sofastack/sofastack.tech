@@ -1,6 +1,5 @@
 ---
 title: "SOFABolt 介绍"
-aliases: "/sofa-jraft/docs/overview"
 ---
 
 本介绍内容来自 [braft](https://github.com/brpc/braft) 文档，原文链接请参见[这里](https://github.com/brpc/braft/blob/master/docs/cn/overview.md)。braft 的关于算法和应用本身的文档非常优秀，由于 jraft 脱胎自 

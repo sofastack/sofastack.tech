@@ -1,6 +1,5 @@
 ---
 title: "Raft 算法解读"
-aliases: "/sofa-jraft/docs/raft-introduction"
 ---
 
 ### Raft 新特性

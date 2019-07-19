@@ -1,6 +1,5 @@
 ---
 title: "核心引擎设计"
-aliases: "/sofa-jraft/docs/engine-architecture"
 ---
 
 如图:

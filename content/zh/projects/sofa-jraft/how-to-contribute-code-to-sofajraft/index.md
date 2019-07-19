@@ -1,6 +1,5 @@
 ---
 title: "如何参与 SOFAJRaft 代码贡献"
-aliases: "/sofa-jraft/docs/how-to-contribute-code-to-sofajraft"
 ---
 
 ## 准备工作

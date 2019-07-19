@@ -1,6 +1,5 @@
 ---
 title: "JRaft RheaKV 用户指南"
-aliases: "/sofa-jraft/docs/jraft-rheakv-user-guide"
 ---
 
 Table of Contents

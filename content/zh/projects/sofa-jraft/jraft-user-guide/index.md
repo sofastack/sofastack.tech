@@ -1,6 +1,5 @@
 ---
 title: "JRaft 用户指南"
-aliases: "/sofa-jraft/docs/jraft-user-guide"
 ---
 
 Table of Contents

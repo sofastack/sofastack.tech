@@ -1,6 +1,5 @@
 ---
 title: "Road Map"
-aliases: "/sofa-jraft/docs/road-map"
 ---
 
 ## SOFAJRaft 2019 年 4-7 月开发计划
