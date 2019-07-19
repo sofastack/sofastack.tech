@@ -190,7 +190,7 @@ io.netty.buffer.AbstractByteBufAllocator#ioBuffer(int)
 
 服务端根据客户端的超时时间来决定是否丢弃已经超时的结果，并且不返回，以减少网络数据以及减少不必要的处理，带来性能提升。
 
-![image.png](https://cdn.nlark.com/yuque/0/2019/png/226702/1551407093599-28af9392-5c44-4eab-b8b4-6ecbbb937df3.png#)
+![Server FailFast 支持](https://cdn.nlark.com/yuque/0/2019/png/226702/1551407093599-28af9392-5c44-4eab-b8b4-6ecbbb937df3.png)
 
 这里面分两种。
 
