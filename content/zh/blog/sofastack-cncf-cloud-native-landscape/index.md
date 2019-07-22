@@ -19,23 +19,32 @@ CNCF(Cloud Native Computing Foundation)，是由 Google 牵头创立的云原生
 
 ## SOFAStack & CNCF Cloud Native Landscape
 
-蚂蚁金服金融级分布式架构 SOFAStack 中的 3 个项目加入这次最新版本的 Cloud Native Landscape ，分别是 Service Mesh 数据平面代理** SOFAMosn**、分布式链路跟踪系统 **SOFATracer **和 RPC 服务框架** SOFARPC**。
+蚂蚁金服金融级分布式架构 SOFAStack 中的 3 个项目加入这次最新版本的 Cloud Native Landscape ，分别是 Service Mesh 数据平面代理 **SOFAMosn** 、分布式链路跟踪系统 **SOFATracer ** 和 RPC 服务框架 **SOFARPC**。
 
 ![landscape.png](https://cdn.nlark.com/yuque/0/2019/png/226702/1562219713962-38216a3f-76f7-4ae2-af7c-5cca87f82aaa.png)
 
-### <img src="https://cdn.nlark.com/yuque/0/2019/png/226702/1562558785955-ab9590fd-a383-4830-85fa-35633599b07a.png" width=10%>  SOFAMosn
+### SOFAMosn
+
+<img src="https://cdn.nlark.com/yuque/0/2019/png/226702/1562558785955-ab9590fd-a383-4830-85fa-35633599b07a.png" width=10%>  
+
 Star 一下✨：[https://github.com/sofastack/sofa-mosn](https://github.com/sofastack/sofa-mosn)
 
 SOFAMosn(Modular Observable Smart Network)，是一款采用 GoLang 开发的 Service Mesh 数据平面代理， 功能和定位类似 [Envoy](https://www.envoyproxy.io/) ，旨在提供分布式，模块化，可观察，智能化的代理能力。 SOFAMosn 支持 Envoy 和 Istio 的 API，可以和 Istio 集成，在 [SOFAMesh](https://github.com/sofastack/sofa-mesh) 中，我们使用 SOFAMosn 替代 Envoy。 SOFAMosn 初始版本由蚂蚁金服和阿里大文娱 UC 事业部携手贡献，期待社区一起来参与后续开发，共建一个开源精品项目。
 
-### <img src="https://cdn.nlark.com/yuque/0/2019/png/226702/1562558811258-09e926eb-3863-4679-9875-868a06669813.png" width=10%>  SOFARPC
+### SOFARPC
+
+<img src="https://cdn.nlark.com/yuque/0/2019/png/226702/1562558811258-09e926eb-3863-4679-9875-868a06669813.png" width=10%>  
+
 Star 一下✨：[https://github.com/sofastack/sofa-rpc](https://github.com/sofastack/sofa-rpc)
 
 SOFARPC 是蚂蚁金服开源的一款基于 Java 实现的 RPC 服务框架，为应用之间提供远程服务调用能力，具有高可伸缩性，高容错性，目前蚂蚁金服所有业务相互间的 RPC 调用都是采用 SOFARPC。SOFARPC 为用户提供了负载均衡，流量转发，链路追踪，链路数据透传，故障剔除等功能。
 
-SOFARPC 还支持不同的协议，目前包括[ Bolt](https://www.sofastack.tech/projects/sofa-rpc/bolt/)， [RESTful](https://www.sofastack.tech/projects/sofa-rpc/restful) ， [Dubbo](https://www.sofastack.tech/projects/sofa-rpc/dubbo) ， [H2C](https://www.sofastack.tech/projects/sofa-rpc/h2c) 协议进行通信。其中 Bolt 是蚂蚁金融服务集团开放的基于 Netty 开发的网络通信框架。
+SOFARPC 还支持不同的协议，目前包括[Bolt](https://www.sofastack.tech/projects/sofa-rpc/bolt/)， [RESTful](https://www.sofastack.tech/projects/sofa-rpc/restful) ， [Dubbo](https://www.sofastack.tech/projects/sofa-rpc/dubbo) ， [H2C](https://www.sofastack.tech/projects/sofa-rpc/h2c) 协议进行通信。其中 Bolt 是蚂蚁金融服务集团开放的基于 Netty 开发的网络通信框架。
 
-### <img src="https://cdn.nlark.com/yuque/0/2019/png/226702/1562558834212-1876f2d1-48ae-49ae-9e9a-4e2f88fdb790.png" width=10%>  SOFATracer
+### SOFATracer
+
+<img src="https://cdn.nlark.com/yuque/0/2019/png/226702/1562558834212-1876f2d1-48ae-49ae-9e9a-4e2f88fdb790.png" width=10%>  
+
 Star 一下✨：[https://github.com/sofastack/sofa-tracer](https://github.com/sofastack/sofa-tracer)
 
 SOFATracer 是蚂蚁金服开发的基于 [OpenTracing 规范](http://opentracing.io/documentation/pages/spec.html) 的分布式链路跟踪系统，其核心理念就是通过一个全局的 TraceId 将分布在各个服务节点上的同一次请求串联起来。通过统一的 TraceId 将调用链路中的各种网络调用情况以日志的方式记录下来同时也提供远程汇报到 [Zipkin](https://zipkin.io/) 进行展示的能力，以此达到透视化网络调用的目的。
