@@ -379,7 +379,7 @@ void onSnapshotSave(SnapshotWriter writer, Closure done);
 boolean onSnapshotLoad(SnapshotReader reader);
 ```
 
-更具体的实现请参考[counter 例子](https://lark.alipay.com/middleware/jraft/povpb5#na2est)。
+更具体的实现请参考[counter 例子](https://github.com/sofastack/sofa-jraft/wiki/Counter-%E4%BE%8B%E5%AD%90%E8%AF%A6%E8%A7%A3)。
 
 ## 3. 客户端
 

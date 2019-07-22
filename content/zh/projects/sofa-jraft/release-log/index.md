@@ -80,7 +80,7 @@ __此版本强烈推荐升级__
     - RheaKV 实现 get/put 接口的 client batching, 有很好的性能收益。
     - 新增 module: jraft-example, 添加了丰富的用例。
     - 新增 Configured options, 方便非配置文件使用方式。
-    - 新增 benchmark 代码, 根据压测结果更新了部分配置的默认值, [压测结果见这里](https://yuque.antfin-inc.com/middleware/jraft/plb4mg)。
+    - 新增 benchmark 代码, 根据压测结果更新了部分配置的默认值, [压测结果见这里](https://github.com/sofastack/sofa-jraft/wiki/Benchmark-%E6%95%B0%E6%8D%AE)。
 * Breaking Changes
     - 项目的 groupId 由 com.alipay.jraft 变更为 com.alipay.sofa, 包名变更为 com.alipay.sofa.jraft，所以在通信层 1.2.1 版本与之前的版本不能兼容，批量发布过程中新老版本同时存在可能导致出现两个 leader 的情况，如果需要平滑升级的同学请联系我们提供平滑升级方案
 
