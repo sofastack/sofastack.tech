@@ -41,7 +41,6 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563775148920-8a801951-d4a
 
 因此，我们希望能够演化出这样一套多语言通信的方案，它能够以 Service Mesh 为基础，但是我们也会做适当地妥协去弥补因为上了 Service Mesh 之后的一些能力的缺失。首先我们希望有一个语言中立的高效的通信协议，每个语言都能够非常简单地理解这个协议，这个是在一个跨语言的 RPC 通信中避免不了的，无论是否采用 Service Mesh。然后，我们希望将大部分的能力都下沉到 Sidecar 里面去，包括服务发现，蓝绿发布，灰度发布，限流熔断，服务鉴权等等能力，然后通过统一的控制平面去控制 Sidecar。然后，因为 Service Mesh 化之后的一些能力缺失，再通过一些轻量化的客户端去实现，这些能力包括序列化，链路追踪，限流，Metrics 等等。
 
-
 ![Service Mesh](https://cdn.nlark.com/lark/0/2018/png/273/1542814123467-40e71b8e-5205-45e1-8514-13e30a2d7184.png)
 
 在 Service Mesh 的选型上，我们是基于 Istio 来做，但是用自己研发的基于 Golang 的 Sidecar 来替换掉 Envoy，一方面这个是因为 Golang 是一个云原生领域的语言，另一方面，也因为 Envoy 在协议的扩展设计上并不好。目前我们的 Sidecar SOFAMesh 和 SOFAMosn 都已经在 Github 上面开源。
