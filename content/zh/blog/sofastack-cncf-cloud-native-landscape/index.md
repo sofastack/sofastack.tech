@@ -19,7 +19,7 @@ CNCF(Cloud Native Computing Foundation)，是由 Google 牵头创立的云原生
 
 ## SOFAStack & CNCF Cloud Native Landscape
 
-蚂蚁金服金融级分布式架构 SOFAStack 中的 3 个项目加入这次最新版本的 Cloud Native Landscape ，分别是 Service Mesh 数据平面代理 **SOFAMosn** 、分布式链路跟踪系统 **SOFATracer ** 和 RPC 服务框架 **SOFARPC**。
+蚂蚁金服金融级分布式架构 SOFAStack 中的 3 个项目加入这次最新版本的 Cloud Native Landscape，分别是 Service Mesh 数据平面代理 **SOFAMosn** 、分布式链路跟踪系统 **SOFATracer** 和 RPC 服务框架 **SOFARPC**。
 
 ![landscape.png](https://cdn.nlark.com/yuque/0/2019/png/226702/1562219713962-38216a3f-76f7-4ae2-af7c-5cca87f82aaa.png)
 
