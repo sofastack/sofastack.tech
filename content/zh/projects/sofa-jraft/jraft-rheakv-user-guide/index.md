@@ -138,6 +138,7 @@ Boolean bMerge(final String key, final String value);
 ```
 
 1. 提供一个原子的 merge 操作, 代替某些先 get 再 put 的场景, 效果见下面代码:
+
     ```java
     // Writing aa under key
     db.put("key", "aa");
@@ -146,6 +147,7 @@ Boolean bMerge(final String key, final String value);
     
     assertThat(db.get("key")).isEqualTo("aa,bb");
     ```
+
 2. 目前只支持 String 类型的操作
 
 ### batch put
@@ -220,6 +222,7 @@ DistributedLock<byte[]> getDistributedLock(final String target, final long lease
 5. 还有一个需要强调的是：因为 distributedLock 是可重入锁，所以 `lock()` 与 `unlock()` 必须成对出现，比如 `lock()` 2 次却只 `unlock()` 1 次是无法释放锁成功的
 6. String​ 类型入参: 见 get 相关说明
 7. 一个简单的使用例子见下面伪代码:
+
     ```java
     DistributedLock<T> lock = ...;
     if (lock.tryLock()) {
@@ -232,6 +235,7 @@ DistributedLock<byte[]> getDistributedLock(final String target, final long lease
         // perform alternative actions
     }
     ```
+
 8. 其中 `boolean tryLock(final byte[] ctx)` 包含一个 ctx 入参， 作为当前的锁请求者的用户自定义上下文数据，如果它成功获取到锁，其他线程、进程也可以看得到它的 ctx
 9. 还有一个重要的方法 `long getFencingToken()`，当成功上锁后，可以通过该接口获取当前的 fencing token， 这是一个单调递增的数字，也就是说它的值大小可以代表锁拥有者们先来后到的顺序，可以用这个 fencing token 解决下图[这个问题](http://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html)：
 
@@ -401,7 +405,9 @@ MetadataClient 负责从 PD 获取集群元信息以及注册元信息
             private TimeInterval    interval;
         }
         ```
+
     * RegionHeartbeat
+
         ```java
         public class RegionStats implements Serializable {
             private long                regionId;
@@ -511,6 +517,7 @@ __RheaKV 可以划分为两种类型的请求，两种类型需要不同的 fail
     1. 对于多个 key 的请求，还要先对 keys 做 split，每个 region 包含一部分数量的 keys，对于每个 region 有单独 failover 处理，此时 FailoverClosure 类只能处理表①中的作为类型，处理逻辑同 __Single-Key-Operation__
     2. 对于表②中三个 region epoch 发生变更的错误，FailoverClosure 无法处理，因为在epoch发生变化时，很有可能是发生了 region split，对于先前定位的 region，分裂成了 2 个，此时不光需要重新从 PD 刷新region 信息，failover 还要处理请求的放大(多个 region 就会产生多个请求)，所以新增了几类 __FailoverFuture__ 来处理这种请求放大的逻辑
     3. 其中 __scan(startKey, endKey)__ 的 FailoverFuture 主要逻辑如下图, 可以看到整个流程是完全异步的
+
         ```java
         @Override
         public boolean completeExceptionally(final Throwable ex) {

@@ -65,7 +65,7 @@ SOFAJRaft 所有修改都在分支上进行，修改完后提交 pull request，
 
 - 代码风格保持一致
   SOFAJRaft 通过 Maven 插件来保持代码格式一致。在提交代码前，务必本地执行
-  
+
   ```text
   mvn clean compile
   ```
@@ -74,7 +74,7 @@ SOFAJRaft 所有修改都在分支上进行，修改完后提交 pull request，
 - 新有修改应该通过已有的单元测试
 - 应该提供新的单元测试来证明以前的代码存在 bug，而新的代码已经解决了这些 bug
   您可以用如下命令运行所有测试：
-  
+
   ```text
   mvn clean test
   ```
