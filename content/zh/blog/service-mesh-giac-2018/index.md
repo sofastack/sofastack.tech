@@ -6,7 +6,7 @@ categories: "Service Mesh"
 tags: ["Service Mesh"]
 aliases: "/posts/2018-12-04-01"
 date: 2018-12-04T15:00:00+08:00
-cover:"https://cdn.nlark.com/yuque/0/2019/png/226702/1563785788055-ee91a9d6-632f-4019-9fcf-5dee047d20cf.png"
+cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563785788055-ee91a9d6-632f-4019-9fcf-5dee047d20cf.png"
 ---
 
 >朵晓东，花名奕杉，蚂蚁金服高级技术专家。专注企业云计算技术及产品，蚂蚁金融云 PaaS 创始团队核心成员，Antstack 网络产品负责人。开源爱好者，Apache Kylin 创始团队核心成员；SOFAMesh 创始团队核心成员，SOFAMosn 项目负责人。
