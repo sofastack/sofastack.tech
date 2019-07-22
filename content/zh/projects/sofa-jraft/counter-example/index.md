@@ -15,7 +15,7 @@ title: "Counter 例子详解"
 
 jraft 底层使用 [bolt](https://github.com/alipay/sofa-bolt) 作为通讯框架，定义两个请求
 
-1. IncrementAndGetRequest，用于递增
+* IncrementAndGetRequest，用于递增
 
 ```java
 public class IncrementAndGetRequest implements Serializable {
@@ -34,7 +34,7 @@ public class IncrementAndGetRequest implements Serializable {
 }
 ```
 
-2. GetValueRequest，用于获取最新值：
+* GetValueRequest，用于获取最新值：
 
 ```java
 public class GetValueRequest implements Serializable {
@@ -48,6 +48,7 @@ public class GetValueRequest implements Serializable {
 ```
 
 应答结果 ValueResponse，包括：
+
 1. success　是否成功
 2. value 成功情况下返回的最新值
 3. errorMsg 失败情况下的错误信息
@@ -78,8 +79,8 @@ public class ValueResponse implements Serializable {
 }
 ```
 
-IncrementAndAddClosure 用于 Leader 服务端接收 
-IncrementAndGetRequest 请求后的回调处理：
+* IncrementAndAddClosure 用于 Leader 服务端接收 
+* IncrementAndGetRequest 请求后的回调处理：
 
 ```java
 public class IncrementAndAddClosure implements Closure {
@@ -456,6 +457,7 @@ private static void incrementAndGet(BoltCliClientService cliClientService, PeerI
 ## Snapshot 实现
 
 为了避免每次节点重启的时候，重新应用一遍所有的日志，并且避免保存所有的日志，可以使用 snapshot 机制，也就是为状态机做一个 checkpoint，保存当时状态机的状态，删除在此之前的所有日志，核心是实现 StateMachine的两个方法：
+
 1. `onSnapshotLoad`，启动或者安装 snapshot 后加载 snapshot
 2. `onSnapshotSave` ，定期保存 snapshot
 

@@ -7,6 +7,7 @@ title: "版本发行日志"
 ## 1.2.5
 
 2019-04-01
+
 * Bug Fixes
     * 修复 jmh 与 unit test 代码冲突问题
     * 修复 snapshot 过大引起的安装失败 bug，会影响新增节点的加入
@@ -23,6 +24,7 @@ __此版本强烈推荐升级__
 ## 1.2.4
 
 2019-03-20
+
 * Bug Fixes
     * [修复一种情况下 lease read 的 stale read](https://github.com/alipay/sofa-jraft/pull/34)
     * [部分 timestamp 修改为 monotonic time](https://github.com/alipay/sofa-jraft/issues/24)
@@ -52,6 +54,7 @@ __此版本强烈推荐升级__
 ## 1.2.2
 
 2019-02-21
+
 * Bug Fixes
     * PeerId 以及 Endpoint 改为不可变对象，避免 getLeaderId 等 api 的并发问题
     * sofa-commaon 升级到 1.0.12，之前依赖的 1.0.9 版本没有发布到公网仓库
@@ -67,6 +70,7 @@ __此版本强烈推荐升级__
 ## 1.2.1
 
 2019-01-28
+
 * Bug Fixes
      - 修复 RaftGroupService 关闭共享的 rpcServer。
      - 修复 RheaKV 状态机中的的 batch write 导致 apply 顺序变更。
@@ -91,6 +95,7 @@ __此版本强烈推荐升级__
 ## 1.1.0
 
 2018-11-20
+
 1. 升级bolt到1.5.2（**重要， bolt 老版本存在重连引起的死锁问题**）。<br />
 2. 新增了一个嵌入式的分布式 KV 组件(RheaKV)<br />
 3. CliServiceImpl 的 getLeader 应该在某个节点失败情况下自动重试下一个节点<br />
@@ -99,11 +104,13 @@ __此版本强烈推荐升级__
 6. 修复 Configuration 变更没有反馈到 Node 内存状态的 bug<br />
 7. 升级 RocksDB 到 5.14.2<br />
 8. 加强了用户使用 API 的参数校验。<br />
+
 ---
 
 ## 1.0.1
 
 2018-10-09
+
 1. RocksDB log 存储尊重 RaftOptions 的 sync 选项。<br />
 2. 移除 log4j 类库强依赖。<br />
 3. 修复一些 typo<br />
@@ -113,6 +120,7 @@ __此版本强烈推荐升级__
 ## 1.0.0 
 
 2018.09.13
+
 1. 日志压缩异步化，加速 snapshot 处理。<br />
 2. Replicator pipeline 优化。<br />
 3. Task 的 closure 新增 `onCommitted` 回调，在日志提交到 RAFT group 之后，应用到状态机之前回调。<br />
@@ -125,8 +133,10 @@ __此版本强烈推荐升级__
 ## 0.0.2
 
 2018-08-23:
+
 1. 增加 metrics 统计，参见文档。 <br />
 2. 改善日志压缩和内部实现部分性能。<br />
+
 ---
 
 ## 0.0.1

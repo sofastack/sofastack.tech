@@ -7,6 +7,7 @@ title: "JRaft RheaKV 用户指南"
 RheaKV 是一个轻量级的分布式的嵌入式的 KV 存储 lib， rheaKV 包含在 jraft 项目中，是 jraft 的一个子模块
 
 定位与特性
+
 1. 嵌入式: jar 包方式嵌入到应用中
 2. 强一致性: 基于 multi-raft 分布式一致性协议保证数据可靠性和一致性
 3. 自驱动 （目前未完全实现）: 自诊断, 自优化, 自决策, 自恢复
@@ -137,18 +138,17 @@ CompletableFuture<Boolean> merge(final String key, final String value);
 Boolean bMerge(final String key, final String value);
 ```
 
-1. 提供一个原子的 merge 操作, 代替某些先 get 再 put 的场景, 效果见下面代码:
+1. 目前只支持 String 类型的操作
+2. 提供一个原子的 merge 操作, 代替某些先 get 再 put 的场景, 效果见下面代码:
 
-    ```java
-    // Writing aa under key
-    db.put("key", "aa");
-    // Writing bb under key
-    db.merge("key", "bb");
+```java
+// Writing aa under key
+db.put("key", "aa");
+// Writing bb under key
+db.merge("key", "bb");
     
-    assertThat(db.get("key")).isEqualTo("aa,bb");
-    ```
-
-2. 目前只支持 String 类型的操作
+assertThat(db.get("key")).isEqualTo("aa,bb");
+```
 
 ### batch put
 
@@ -221,7 +221,8 @@ DistributedLock<byte[]> getDistributedLock(final String target, final long lease
 4. watchdog：一个自动续租的调度器，需要用户自行创建并销毁，框架内部不负责该调度器的生命周期管理，如果 watchdog 不为空，会定期（lease 的 2/3 时间为周期）主动为当前的锁不断进行续租，直到用户主动释放锁（unlock）
 5. 还有一个需要强调的是：因为 distributedLock 是可重入锁，所以 `lock()` 与 `unlock()` 必须成对出现，比如 `lock()` 2 次却只 `unlock()` 1 次是无法释放锁成功的
 6. String​ 类型入参: 见 get 相关说明
-7. 一个简单的使用例子见下面伪代码:
+7. 其中 `boolean tryLock(final byte[] ctx)` 包含一个 ctx 入参， 作为当前的锁请求者的用户自定义上下文数据，如果它成功获取到锁，其他线程、进程也可以看得到它的 ctx
+8. 一个简单的使用例子见下面伪代码:
 
     ```java
     DistributedLock<T> lock = ...;
@@ -236,8 +237,7 @@ DistributedLock<byte[]> getDistributedLock(final String target, final long lease
     }
     ```
 
-8. 其中 `boolean tryLock(final byte[] ctx)` 包含一个 ctx 入参， 作为当前的锁请求者的用户自定义上下文数据，如果它成功获取到锁，其他线程、进程也可以看得到它的 ctx
-9. 还有一个重要的方法 `long getFencingToken()`，当成功上锁后，可以通过该接口获取当前的 fencing token， 这是一个单调递增的数字，也就是说它的值大小可以代表锁拥有者们先来后到的顺序，可以用这个 fencing token 解决下图[这个问题](http://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html)：
+**Note**: 还有一个重要的方法 `long getFencingToken()`，当成功上锁后，可以通过该接口获取当前的 fencing token， 这是一个单调递增的数字，也就是说它的值大小可以代表锁拥有者们先来后到的顺序，可以用这个 fencing token 解决下图[这个问题](http://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html)：
 
 ![image.png | left | 653x237](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*ZKq8SrSGE90AAAAAAAAAAABjARQnAQ "")
 
@@ -451,6 +451,7 @@ MetadataClient 负责从 PD 获取集群元信息以及注册元信息
 可以看到，实现上图最适合的数据结构便是跳表或者二叉树（最接近匹配项查询）
 
 选择 region 的 startKey 还是 endKey 作为 RegionRouteTable 的 key 也是有讲究的，比如为什么没有使用endKey? 这主要取决于 region split 的方式:
+
 * 假设 id 为 2 的 region2 [startKey2, endKey2) 分裂
 * 它分裂后的两个 region 分别为 id 继续为 2 的 region2 [startKey2, splitKey) 和 id 为 3 的 region3 [splitKey, endKey2)
 * 可以再看上图会发现，此时只需要再往 regionRouteTable 添加一个元素 <region3, splitKey> 即可，原来region2 对应的数据是不需要修改的
@@ -466,12 +467,14 @@ MetadataClient 负责从 PD 获取集群元信息以及注册元信息
 __RheaKV 对用户端提供的是异步 api, 这就要求 failover 的处理流程必须也得是异步, 这对设计增加了一些难度，实现会绕一点__
 
 __以下问题是RheaKV必须要解决的:__
+
 1. 异步失败 retry
 2. 调用时遇到 membership change，需要刷新 membership 重试
 3. 一次操作多个 key (比如range scan) 时遭遇 region 自动 split，需要在 retry 时也能自动分裂(放大)请求，并异步合并多个响应结果
 4. 前一次操作可能是本地调用，retry 时却可能需要发起远程调用，也可能是反过来的情况，两种情况都需要兼容
 
 __RheaKV 可以划分为两种类型的请求，两种类型需要不同的 failover 逻辑：__
+
 * __Single-Key-Operation (只操作一个 key)__
     Retry 依赖一个叫做 FailoverClosure 的 callback类，大体逻辑如下:
 
@@ -514,6 +517,7 @@ __RheaKV 可以划分为两种类型的请求，两种类型需要不同的 fail
 ---
 
 * __Multi-Keys-Operation (操作多个key或一个key区间)__
+
     1. 对于多个 key 的请求，还要先对 keys 做 split，每个 region 包含一部分数量的 keys，对于每个 region 有单独 failover 处理，此时 FailoverClosure 类只能处理表①中的作为类型，处理逻辑同 __Single-Key-Operation__
     2. 对于表②中三个 region epoch 发生变更的错误，FailoverClosure 无法处理，因为在epoch发生变化时，很有可能是发生了 region split，对于先前定位的 region，分裂成了 2 个，此时不光需要重新从 PD 刷新region 信息，failover 还要处理请求的放大(多个 region 就会产生多个请求)，所以新增了几类 __FailoverFuture__ 来处理这种请求放大的逻辑
     3. 其中 __scan(startKey, endKey)__ 的 FailoverFuture 主要逻辑如下图, 可以看到整个流程是完全异步的

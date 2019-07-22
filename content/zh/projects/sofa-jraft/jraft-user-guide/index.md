@@ -104,6 +104,7 @@ Status status = new Status(RaftError.EIO, "Fail to read file from %s", filePath)
 ### 1.6 任务 Task
 
 Task 是用户使用 jraft 最核心的类之一，用于向一个 raft 复制分组提交一个任务，这个任务提交到 leader，并复制到其他 follower 节点， Task 包括：
+
 * `ByteBuffer data`  任务的数据，用户应当将要复制的业务数据通过一定序列化方式（比如 java/hessian2) 序列化成一个 ByteBuffer，放到 task 里。
 * `long expectedTerm = -1` 任务提交时预期的 leader term，如果不提供(也就是默认值 -1 )，在任务应用到状态机之前不会检查 leader 是否发生了变更，如果提供了（从状态机回调中获取，参见下文），那么在将任务应用到状态机之前，会检查 term 是否匹配，如果不匹配将拒绝该任务。
 * `Closure done` 任务的回调，在任务完成的时候通知此对象，无论成功还是失败。这个 closure 将在 `StateMachine#onApply(iterator)` 方法应用到状态机的时候，可以拿到并调用，一般用于客户端应答的返回。
@@ -137,6 +138,7 @@ public interface TaskClosure extends Closure {
 ## 2. 服务端
 
 本节主要介绍 jraft 服务端编程的主要接口和类，核心是:
+
 * 状态机 StateMachine ：业务逻辑实现的主要接口，状态机运行在每个 raft 节点上，提交的 task 如果成功，最终都会复制应用到每个节点的状态机上。
 * Raft 节点 Node ： 表示一个 raft 节点，可以提交 task，以及查询 raft group 信息，比如当前状态、当前 leader/term 等。
 * RPC 服务： raft 节点之间通过 RPC 服务通讯（选举、复制等）
@@ -166,6 +168,7 @@ while(it.hasNext()){
 ### 2.2 状态机 StateMachine
 
 提交的任务最终将会复制应用到所有 raft 节点上的状态机，状态机通过 `StateMachine` 接口表示，它的主要方法包括：
+
 * `void onApply(Iterator iter)` 最核心的方法，应用任务列表到状态机，任务将按照提交顺序应用。<strong>请注意，当这个方法返回的时候，我们就认为这一批任务都已经成功应用到状态机上，如果你没有完全应用（比如错误、异常），将会被当做一个 critical 级别的错误，报告给状态机的 </strong><code><strong>onError</strong></code><strong> 方法，错误类型为 </strong><code><strong>ERROR_TYPE_STATE_MACHINE</strong></code><strong> </strong>。关于故障和错误处理参见下面的第 6 节。
 * `void onError(RaftException e)`  当 critical 错误发生的时候，会调用此方法，RaftException 包含了 status 等详细的错误信息__；当这个方法被调用后，将不允许新的任务应用到状态机，直到错误被修复并且节点被重启__。因此对于任何在开发阶段发现的错误，都应当及时做修正，如果是 jraft 的问题，请及时报告。
 * `void onLeaderStart(long term)` 当状态机所属的 raft 节点成为 leader 的时候被调用，成为 leader 当前的 term 通过参数传入。
@@ -204,6 +207,7 @@ public TestStateMachine extends StateMachineAdapter {
 Node 接口表示一个 raft 的参与节点，他的角色可能是 leader、follower 或者 candidate，随着选举过程而转变。
 
 Node 接口最核心的几个方法如下：
+
 * `void apply(Task task)` __提交一个新任务到 raft group，此方法是线程安全并且非阻塞__，无论任务是否成功提交到 raft group，都会通过 task 关联的 closure done 通知到。如果当前节点不是 leader，会直接失败通知 done closure。
 * `PeerId getLeaderId()` 获取当前 raft group 的 leader peerId，如果未知，返回 null
 * `shutdown` 和 `join` ，前者用于停止一个 raft 节点，后者可以在 shutdown 调用后等待停止过程结束。
@@ -212,6 +216,7 @@ Node 接口最核心的几个方法如下：
 其他一些方法都是查询节点信息以及变更 raft group 节点配置，参见第 5 节。
 
 创建一个 raft 节点可以通过 `RaftServiceFactory.createRaftNode(String groupId, PeerId serverId)` 静态方法，其中
+
 * groupId 该 raft 节点的 raft group Id。
 * serverId 该 raft 节点的  PeerId 。
 
@@ -318,6 +323,7 @@ __这样可以做到一些资源复用，减少消耗，代价就是依赖了 jr
 ### 2.5 框架类 RaftGroupService
 
 总结下上文描述的创建和启动一个 raft group 节点的主要阶段：
+
 1. 实现并创建状态机实例
 2. 创建并设置好 NodeOptions 实例，指定存储路径，如果是空白启动，指定初始节点列表配置。
 3. 创建 Node 实例，并使用 NodeOptions 初始化。
@@ -351,6 +357,7 @@ public RaftGroupService(String groupId, PeerId serverId, NodeOptions nodeOptions
 ### 2.6 Snapshot 服务
 
 当一个 raft 节点重启的时候，内存中的状态机的状态将会丢失，在启动过程中将重放日志存储中的所有日志，重建整个状态机实例。这就导致两个问题：
+
 * 如果任务提交比较频繁，比如消息中间件这个场景，那么会导致整个重建过程很长，启动缓慢。
 * 如果日志很多，节点需要存储所有的日志，这对存储是一个资源占用，不可持续。
 * 如果增加一个节点，新节点需要从 leader 获取所有的日志重放到状态机，这对 leader 和网络带宽都是不小的负担。
@@ -526,6 +533,7 @@ public enum ReadOnlyOption {
 ## 6. 故障和保证
 
 这里说明下 raft group 可能遇到的故障，以及在各种故障情况下的一致性和可用性保证。这里的故障包括:
+
 1. 机器断电。
 2. 强杀应用。
 3. 节点运行缓慢，比如 OOM ，无法正常提供服务。
@@ -535,12 +543,14 @@ public enum ReadOnlyOption {
 这里讨论的情况是 raft group 至少 3 个节点，单个节点没有任何可用性的保证，也不应当在生产环境出现。
 
 并且我们将节点提供给客户端的服务分为两类：
+
 * __读服务__，可以从 leader，也可以从 follower 读取状态机数据，但是从 follower 读取的可能不是最新的数据，存在时间差，也就是存在脏读。启用线性一致读将保证线性一致，并且支持从 follower 读取，具体参见第 5 节。
 * __写服务__，更改状态机数据，只能提交到 leader 写入。
 
 ### 6.1 单个节点故障
 
 单个节点故障，对于整个 raft group 而言，可以继续提供读服务，短暂无法提供写服务，数据一致性没有影响：
+
 1. 如果节点是 leader，那么 raft group 在最多 election timeout 时间后开始选举，产生新的 leader。在产生新 leader 之前，写入服务终止，读服务继续提供，但是可能频繁遇到脏读。线性一致读也将无法服务。
 2. 如果节点是 follower，对读和写都没有影响，只是发往某个 follower 的读请求将失败，应用应当重试这些请求到其他节点。
 
@@ -557,6 +567,7 @@ public enum ReadOnlyOption {
 ### 6.4 故障与状态机
 
 当一个  raft 节点故障的时候，如果没有发生磁盘损坏等不可逆的存储故障，那么在重新启动该节点的情况下：
+
 1. 如果启用了 snapshot，加载最新 snapshot 到状态机，然后从 snapshot 数据的日志为起点开始继续回放日志到状态机，直到跟上最新的日志。
 2. 如果没有启用 snapshot，会重放所有的本地日志到状态机，然后跟上最新的日志。
 

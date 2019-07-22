@@ -121,6 +121,7 @@ __返回值__
 | success | 如果其他follower包含能够匹配上prevLogIndex和prevLogTerm的日志, 那么为真 |
 
 __接收日志的follower需要实现的__
+
 1. 如果term < currentTerm, 不接受日志并返回false
 2. 如果索引prevLogIndex处的日志的任期号与prevLogTerm不匹配, 不接受日志并返回false
 3. 如果一条已存在的日志与新的冲突(index相同但是term不同), 则删除已经存在的日志条目和他之后所有的日志条目
@@ -146,6 +147,7 @@ __返回值__
 | voteGranted | 如果候选人收到选票, 那么为true |
 
 __接收日志的follower需要实现的__
+
 1. 如果term < currentTerm, 那么拒绝投票并返回false
 2. 如果votedFor为空或者与candidateId相同, 并且候选人的日志和自己一样新或者更新, 那么就给候选人投票并返回true
 
@@ -221,6 +223,7 @@ __接收日志的follower需要实现的__
 一旦选出了leader, 它就开始接收客户端请求, 每个客户端请求都包含一条需要被复制状态机(replicated state machine)执行的命令. leader把这条命令作为新的日志条目追加到自己的日志末尾, 然后并行向其他机器发送AppendEntries RPC请求要求复制日志, 当半数以上机器复制成功后leader将当前条目应用到它的状态机并向客户端回复执行结果, 如果某个follower崩溃或者网络问题丢包, leader会无限重试AppendEntries RPC(甚至在它已经响应客户端以后)直到所有follower都成功复制了所有日志条目
 
 __Raft日志机制的特性__
+
 * 如果在不同的日志中的两个条目有着相同的索引和任期号, 那么他们存储的命令肯定是相同的
     * 源于leader在一个任期里给定的一个日志索引最多创建一条日志条目, 同时该条目在日志中的位置也从不会改变
 * 如果在不同的日志中的两个条目有着相同的索引和任期号, 那么他们之前的所有日志条目都是完全一样的
@@ -272,6 +275,7 @@ __两阶段效果图__
 ![image.png | left | 354x165](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*wcVDTo4CfrwAAAAAAAAAAABjARQnAQ)
 
 Raft采用联合一致性的方式来解决节点变更, 先提交一个包含新老节点结合的Configuration, 当这条消息commit之后再提交一个只包含新节点的Configuration, 具体流程如下:
+
 1. 首先对新节点进行CaughtUp追数据
 2. 全部新节点完成CaughtUp之后, 向新老集合发送Cold+new命令
 3. 如果新节点集合多数和老节点集合多数都应答了Cold+new, 就向新老节点集合发送Cnew命令
@@ -288,6 +292,7 @@ Raft采用联合一致性的方式来解决节点变更, 先提交一个包含�
     * 为了支持集群成员变化, 最新的配置(Configuration)也会作为一个条目被保存在快照中
 
 __快照分块传输(InstallSnapshot RPC)__
+
 * 虽然多数情况都是每个服务器独立创建快照, 但是leader有时候必须发送快照给一些落后太多的follower, 这通常发生在leader已经丢弃了下一条要发给该follower的日志条目(Log Compaction时清除掉了)的情况下
 
 | term | leader任期 |
@@ -300,6 +305,7 @@ __快照分块传输(InstallSnapshot RPC)__
 | done | 如果是最后一块数据则为真 |
 
 __接收者需要实现的__
+
 * 如果term < currentTerm立刻回复
 * 如果是第一个分块 (offset为0) 则创建新的快照
 * 在指定的偏移量写入数据
