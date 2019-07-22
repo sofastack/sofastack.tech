@@ -2,7 +2,7 @@
 title: "Benchmark 数据"
 ---
 
-# [测试代码](https://github.com/alipay/sofa-jraft/tree/master/jraft-example/src/main/java/com/alipay/sofa/jraft/benchmark)
+[测试代码](https://github.com/alipay/sofa-jraft/tree/master/jraft-example/src/main/java/com/alipay/sofa/jraft/benchmark)
 
 # 测试环境&条件
 * 3 台 16C 20G 内存的 docker 容器作为 server node (3 副本)
@@ -12,7 +12,6 @@ title: "Benchmark 数据"
 * 读比例 10%，写比例 90%
 
 目前的测试场景比较简单，以后会增加更多测试场景
-
 
 # 测试场景1
 ## 测试条件
@@ -27,9 +26,9 @@ title: "Benchmark 数据"
 
 ### 3 个 server 机器负载：
 
-server1
--------------------------------------------------
-```
+#### server1
+
+```text
 top - 20:11:14 up 10 days, 23:09,  1 user,  load average: 12.29, 6.92, 4.00
 Tasks:  36 total,   1 running,  35 sleeping,   0 stopped,   0 zombie
 %Cpu0  : 24.3 us, 17.7 sy,  0.0 ni, 50.0 id,  2.0 wa,  0.0 hi,  0.0 si,  6.0 st
@@ -55,9 +54,9 @@ KiB Swap:  2097148 total,  2097148 free,        0 used.  6854596 avail Mem
  15682 root      20   0 12.853g 8.859g  24064 S 708.7 14.8  26:49.38 java
 ```
 
-server2
--------------------------------------------------
-```
+#### server2
+
+```text
 top - 20:11:47 up 10 days, 23:03,  1 user,  load average: 17.68, 8.50, 4.56
 Tasks:  33 total,   1 running,  31 sleeping,   0 stopped,   1 zombie
 %Cpu0  : 22.7 us, 17.3 sy,  0.0 ni, 35.0 id,  8.3 wa,  0.0 hi,  0.0 si, 16.7 st
@@ -83,9 +82,9 @@ KiB Swap:  2097148 total,  2097148 free,        0 used.  6522696 avail Mem
 118164 root      20   0 12.987g 6.889g  24140 S 729.9 11.5  30:59.19 java
 ```
 
-server3
--------------------------------------------------
-```
+#### server3
+
+```text
 top - 20:12:14 up 6 days,  4:11,  1 user,  load average: 13.60, 7.80, 4.29
 Tasks:  31 total,   1 running,  30 sleeping,   0 stopped,   0 zombie
 %Cpu0  : 18.8 us, 16.8 sy,  0.0 ni, 53.0 id,  1.3 wa,  0.0 hi,  0.0 si, 10.1 st
@@ -113,9 +112,9 @@ KiB Swap:  2097148 total,  2097148 free,        0 used. 34784900 avail Mem
 
 ### 8 个 client 的 ops 数据：
 
-client1：6.6w ops
--------------------------------------------------
-```
+#### client1：6.6w ops
+
+```text
 -- Timers ----------------------------------------------------------------------
 benchmark_timer
              count = 19926351
@@ -166,9 +165,9 @@ put_benchmark_timer
               99% <= 15.94 milliseconds
             99.9% <= 495.93 milliseconds
 ```
-client2：5.6w ops
--------------------------------------------------
-```
+#### client2：5.6w ops
+
+```text
 -- Timers ----------------------------------------------------------------------
 benchmark_timer
              count = 20482649
@@ -217,9 +216,9 @@ put_benchmark_timer
             99.9% <= 566.42 milliseconds
 ```
 
-client3：5.7w ops
--------------------------------------------------
-```
+#### client3：5.7w ops
+
+```text
 -- Timers ----------------------------------------------------------------------
 benchmark_timer
              count = 17381123
@@ -271,9 +270,9 @@ put_benchmark_timer
             99.9% <= 522.46 milliseconds
 ```
 
-client4：5.3w ops
--------------------------------------------------
-```
+#### client4：5.3w ops
+
+```text
 -- Timers ----------------------------------------------------------------------
 benchmark_timer
              count = 12779528
@@ -325,9 +324,9 @@ put_benchmark_timer
             99.9% <= 581.53 milliseconds
 ```
 
-client5：4.8w ops
--------------------------------------------------
-```
+#### client5：4.8w ops
+
+```text
 -- Timers ----------------------------------------------------------------------
 benchmark_timer
              count = 8787260
@@ -379,9 +378,9 @@ put_benchmark_timer
             99.9% <= 519.11 milliseconds
 ```
 
-client6：4.5w ops
--------------------------------------------------
-```
+#### client6：4.5w ops
+
+```text
 -- Timers ----------------------------------------------------------------------
 benchmark_timer
              count = 6867485
@@ -433,9 +432,9 @@ put_benchmark_timer
             99.9% <= 552.87 milliseconds
 ```
 
-client7：4.4w ops
--------------------------------------------------
-```
+#### client7：4.4w ops
+
+```text
 -- Timers ----------------------------------------------------------------------
 benchmark_timer
              count = 7999875
@@ -484,9 +483,9 @@ put_benchmark_timer
             99.9% <= 518.07 milliseconds
 ```
 
-client8：4.2w ops
--------------------------------------------------
-```
+#### client8：4.2w ops
+
+```text
 -- Timers ----------------------------------------------------------------------
 benchmark_timer
              count = 7747941
@@ -538,7 +537,6 @@ put_benchmark_timer
             99.9% <= 511.03 milliseconds
 ```
 
-
 # 测试场景2
 ## 测试条件
 
@@ -552,10 +550,10 @@ put_benchmark_timer
 
 ### 3 个 server 机器负载：
 
-server1
--------------------------------------------------
+#### server1
 
-```
+
+```text
 top - 21:01:33 up 10 days, 23:59,  1 user,  load average: 10.52, 9.01, 5.85
 Tasks:  28 total,   1 running,  27 sleeping,   0 stopped,   0 zombie
 %Cpu0  : 16.9 us, 13.9 sy,  0.0 ni, 63.2 id,  1.3 wa,  0.0 hi,  0.0 si,  4.6 st
@@ -580,9 +578,9 @@ KiB Swap:  2097148 total,  2097148 free,        0 used.  3414404 avail Mem
    PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
  33887 root      20   0 13.831g 9.054g  24048 S 513.6 15.1  77:08.73 java
 ```
-server2
--------------------------------------------------
-```
+#### server2
+
+```text
 top - 21:02:18 up 10 days, 23:53,  1 user,  load average: 9.57, 9.66, 6.38
 Tasks:  34 total,   1 running,  33 sleeping,   0 stopped,   0 zombie
 %Cpu0  : 12.0 us,  8.7 sy,  0.0 ni, 58.7 id,  7.3 wa,  0.0 hi,  0.0 si, 13.3 st
@@ -607,9 +605,9 @@ KiB Swap:  2097148 total,  2097148 free,        0 used.  3618372 avail Mem
    PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
   5610 root      20   0 13.875g 7.683g  24144 S 397.7 12.8  78:40.24 java
 ```
-server3
--------------------------------------------------
-```
+#### server3
+
+```text
 top - 21:02:40 up 6 days,  5:01,  1 user,  load average: 10.67, 9.64, 6.02
 Tasks:  33 total,   1 running,  32 sleeping,   0 stopped,   0 zombie
 %Cpu0  : 23.3 us,  8.3 sy,  0.0 ni, 63.1 id,  1.0 wa,  0.0 hi,  0.0 si,  4.3 st
@@ -637,9 +635,9 @@ KiB Swap:  2097148 total,  2097148 free,        0 used. 25306552 avail Mem
 
 ### 8 个 client 的 ops 数据：
 
-client1：3.4w ops
--------------------------------------------------
-```
+#### client1：3.4w ops
+
+```text
 -- Timers ----------------------------------------------------------------------
 benchmark_timer
              count = 27063068
@@ -690,9 +688,9 @@ put_benchmark_timer
               99% <= 30.76 milliseconds
             99.9% <= 644.50 milliseconds
 ```
-client2：3.3w ops
--------------------------------------------------
-```
+#### client2：3.3w ops
+
+```text
 -- Timers ----------------------------------------------------------------------
 benchmark_timer
              count = 26958831
@@ -741,9 +739,9 @@ put_benchmark_timer
             99.9% <= 656.58 milliseconds
 ```
 
-client3：3.3w ops
--------------------------------------------------
-```
+#### client3：3.3w ops
+
+```text
 -- Timers ----------------------------------------------------------------------
 benchmark_timer
              count = 26253677
@@ -795,9 +793,9 @@ put_benchmark_timer
             99.9% <= 669.53 milliseconds
 ```
 
-client4：3.2w ops
--------------------------------------------------
-```
+#### client4：3.2w ops
+
+```text
 -- Timers ----------------------------------------------------------------------
 benchmark_timer
              count = 24419381
@@ -849,9 +847,9 @@ put_benchmark_timer
             99.9% <= 686.77 milliseconds
 ```
 
-client5：3.1w ops
--------------------------------------------------
-```
+#### client5：3.1w ops
+
+```text
 -- Timers ----------------------------------------------------------------------
 benchmark_timer
              count = 24433633
@@ -903,9 +901,9 @@ put_benchmark_timer
             99.9% <= 699.76 milliseconds
 ```
 
-client6：3.1w ops
--------------------------------------------------
-```
+#### client6：3.1w ops
+
+```text
 -- Timers ----------------------------------------------------------------------
 benchmark_timer
              count = 20830219
@@ -957,9 +955,9 @@ put_benchmark_timer
             99.9% <= 256.55 milliseconds
 ```
 
-client7: 2.7w ops
--------------------------------------------------
-```
+#### client7: 2.7w ops
+
+```text
 -- Timers ----------------------------------------------------------------------
 benchmark_timer
              count = 1662169
@@ -1011,9 +1009,9 @@ put_benchmark_timer
             99.9% <= 676.67 milliseconds
 ```
 
-client8：2.6w ops
--------------------------------------------------
-```
+#### client8：2.6w ops
+
+```text
 -- Timers ----------------------------------------------------------------------
 benchmark_timer
              count = 1600602
@@ -1079,10 +1077,10 @@ put_benchmark_timer
 
 ### 3 个 server 机器负载：
 
-server1
--------------------------------------------------
+#### server1
 
-```
+
+```text
 top - 22:39:42 up 11 days,  1:37,  1 user,  load average: 15.82, 8.18, 4.28
 Tasks:  33 total,   1 running,  32 sleeping,   0 stopped,   0 zombie
 %Cpu0  : 49.3 us, 18.5 sy,  0.0 ni, 24.2 id,  1.0 wa,  0.0 hi,  0.0 si,  7.0 st
@@ -1107,9 +1105,9 @@ KiB Swap:  2097148 total,  2097148 free,        0 used. 23990152 avail Mem
    PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
  93733 root      20   0 10.266g 6.475g  23748 S 968.0 10.8  13:03.22 java
 ```
-server2
--------------------------------------------------
-```
+#### server2
+
+```text
 top - 22:39:55 up 11 days,  1:31,  1 user,  load average: 17.92, 9.24, 4.61
 Tasks:  34 total,   1 running,  33 sleeping,   0 stopped,   0 zombie
 %Cpu0  : 36.5 us, 21.9 sy,  0.0 ni, 25.9 id,  0.7 wa,  0.0 hi,  0.0 si, 15.0 st
@@ -1134,9 +1132,9 @@ KiB Swap:  2097148 total,  2097148 free,        0 used. 24122012 avail Mem
    PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
  64477 root      20   0 10.243g 6.651g  24096 S  1108 11.1  15:44.10 java
 ```
-server3
--------------------------------------------------
-```
+#### server3
+
+```text
 top - 22:40:06 up 6 days,  6:39,  1 user,  load average: 18.66, 8.40, 4.05
 Tasks:  33 total,   1 running,  32 sleeping,   0 stopped,   0 zombie
 %Cpu0  : 35.1 us, 21.7 sy,  0.0 ni, 34.1 id,  1.0 wa,  0.0 hi,  0.0 si,  8.0 st
@@ -1164,9 +1162,9 @@ KiB Swap:  2097148 total,  2097148 free,        0 used. 46373164 avail Mem
 
 ### 2 个 client 的 ops 数据：
 
-client1：6.7w ops
--------------------------------------------------
-```
+#### client1：6.7w ops
+
+```text
 -- Timers ----------------------------------------------------------------------
 benchmark_timer
              count = 4179630
@@ -1217,9 +1215,9 @@ put_benchmark_timer
               99% <= 25.40 milliseconds
             99.9% <= 170.50 milliseconds
 ```
-client2：5w ops
--------------------------------------------------
-```
+#### client2：5w ops
+
+```text
 -- Timers ----------------------------------------------------------------------
 benchmark_timer
              count = 4654332
@@ -1285,10 +1283,10 @@ put_benchmark_timer
 
 ### 3 个 server 机器负载：
 
-server1
--------------------------------------------------
+#### server1
 
-```
+
+```text
 top - 23:19:52 up 11 days,  2:18,  1 user,  load average: 17.16, 9.82, 5.15
 Tasks:  28 total,   1 running,  27 sleeping,   0 stopped,   0 zombie
 %Cpu0  : 20.1 us, 13.4 sy,  0.0 ni, 60.2 id,  1.3 wa,  0.0 hi,  0.0 si,  5.0 st
@@ -1313,9 +1311,9 @@ KiB Swap:  2097148 total,  2097148 free,        0 used. 21751724 avail Mem
    PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
 112036 root      20   0 10.756g 6.728g  23928 S 556.8 11.2  33:35.32 java
 ```
-server2
--------------------------------------------------
-```
+#### server2
+
+```text
 top - 23:20:07 up 11 days,  2:11,  1 user,  load average: 11.21, 8.29, 5.24
 Tasks:  34 total,   1 running,  33 sleeping,   0 stopped,   0 zombie
 %Cpu0  : 25.5 us, 14.4 sy,  0.0 ni, 44.3 id,  1.0 wa,  0.0 hi,  0.0 si, 14.8 st
@@ -1340,9 +1338,9 @@ KiB Swap:  2097148 total,  2097148 free,        0 used. 22364924 avail Mem
    PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
  82346 root      20   0 10.710g 7.086g  23864 S 770.7 11.8  27:31.04 java
 ```
-server3
--------------------------------------------------
-```
+#### server3
+
+```text
 top - 23:20:36 up 6 days,  7:19,  1 user,  load average: 23.60, 11.37, 5.58
 Tasks:  36 total,   1 running,  35 sleeping,   0 stopped,   0 zombie
 %Cpu0  : 61.0 us, 15.3 sy,  0.0 ni, 15.3 id,  0.3 wa,  0.0 hi,  0.0 si,  8.0 st
@@ -1370,9 +1368,9 @@ KiB Swap:  2097148 total,  2097148 free,        0 used. 44333956 avail Mem
 
 ### 2 个 client 的 ops 数据：
 
-client1：5w ops
--------------------------------------------------
-```
+#### client1：5w ops
+
+```text
 -- Timers ----------------------------------------------------------------------
 -- Timers ----------------------------------------------------------------------
 benchmark_timer
@@ -1424,9 +1422,9 @@ put_benchmark_timer
               99% <= 64.29 milliseconds
             99.9% <= 194.99 milliseconds
 ```
-client2：2.6w ops
--------------------------------------------------
-```
+#### client2：2.6w ops
+
+```text
 -- Timers ----------------------------------------------------------------------
 benchmark_timer
              count = 3517274

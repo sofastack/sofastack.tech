@@ -1,5 +1,5 @@
 ---
-title: "SOFABolt 介绍"
+title: "SOFAJRaft 介绍"
 ---
 
 本介绍内容来自 [braft](https://github.com/brpc/braft) 文档，原文链接请参见[这里](https://github.com/brpc/braft/blob/master/docs/cn/overview.md)。braft 的关于算法和应用本身的文档非常优秀，由于 jraft 脱胎自 
@@ -14,16 +14,16 @@ title: "SOFABolt 介绍"
 * Agreement: 所有正常的进程选择的值都是一样的。
 
 ## 一致性状态机
+
 对于一个无限增长的序列 a[1, 2, 3…], 如果对于任意整数 i, a[i] 的值满足分布式一致性，这个系统就满足一致性状态机的要求。
 基本上所有的系统都会有源源不断的操作, 这时候单独对某个特定的值达成一致是不够的。为了真实系统保证所有的副本的一致性，通常会把操作转化为 [write-ahead-log](https://en.wikipedia.org/wiki/Write-ahead_logging)(简称WAL)。然后让系统的所有副本对WAL保持一致，这样每个进程按照顺序执行WAL里的操作，就能保证最终的状态是一致的。
-
 
 ![raft](raft.png)
 
 ## RAFT
+
 RAFT 是一种新型易于理解的分布式一致性复制协议，由斯坦福大学的 Diego Ongaro 和 John Ousterhout 提出，作为 [RAMCloud](https://ramcloud.atlassian.net/wiki/display/RAM/RAMCloud) 项目中的中心协调组件。Raft 是一种 Leader-Based 的 Multi-Paxos 变种，相比 Paxos、Zab、View Stamped Replication 等协议提供了更完整更清晰的协议描述，并提供了清晰的节点增删描述。
 Raft 作为复制状态机，是分布式系统中最核心最基础的组件，提供命令在多个节点之间有序复制和执行，当多个节点初始状态一致的时候，保证节点之间状态一致。系统只要多数节点存活就可以正常处理，它允许消息的延迟、丢弃和乱序，但是不允许消息的篡改（非拜占庭场景）。
-
 
 ![multi_raft](multi_raft.png)
 
@@ -33,8 +33,8 @@ Raft 可以解决分布式理论中的 CP，即一致性和分区容忍性，并
 * Membership Change
 * Log Compaction
 
-
 # RAFT 可以做什么
+
 通过 RAFT 提供的一致性状态机，可以解决复制、修复、节点管理等问题，极大的简化当前分布式系统的设计与实现，让开发者只关注于业务逻辑，将其抽象实现成对应的状态机即可。基于这套框架，可以构建很多分布式应用：
 * 分布式锁服务，比如 Zookeeper
 * 分布式存储系统，比如分布式消息队列、分布式块系统、分布式文件系统、分布式表格系统等

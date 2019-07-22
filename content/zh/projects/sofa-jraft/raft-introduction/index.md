@@ -41,26 +41,30 @@ title: "Raft 算法解读"
   </table>
 </div>
 
-
 ### 复制状态机
-#### ![image.png | left | 321x179](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*OiwGTZnO2uMAAAAAAAAAAABjARQnAQ)
 
+![image.png | left | 321x179](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*OiwGTZnO2uMAAAAAAAAAAABjARQnAQ)
 
 #### 1. 复制状态机通过日志实现
+
 * 每台机器一份日志
 * 每个日志条目包含一条命令
 * 状态机按顺序执行命令
+
 #### 2.应用于实际系统的一致性算法一般有以下特性
+
 * 确保安全性
 * 高可用性
 * 不依赖时序保证一致性
 * 一条命令能够尽可能快的在大多数节点对一轮RPC调用响应时完成
 
 ### Paxos 算法的不足
+
 * 算法复杂度高, 较难理解
 * 工程复杂度高, 难以在实际环境中实现
 
 ### Raft 设计原则
+
 * 概念分解
     * Leader election
     * Log replication
@@ -70,8 +74,8 @@ title: "Raft 算法解读"
     * 使用随机化时钟简化了领导选举的算法
 
 ### Raft 一致性算法
-#### __State (状态)__
 
+#### __State (状态)__
 
 ---
 
@@ -97,10 +101,9 @@ __在Leader服务器上不稳定存在的__
 | :--- | :--- |
 | matchIndex[] | 对于每一个follower, 记录已经复制完成的最大日志条目索引 |
 
-
 #### AppendEntries RPC (日志复制)
-由leader通过RPC向follower复制日志, 也会用作heartbeat
 
+由leader通过RPC向follower复制日志, 也会用作heartbeat
 
 ---
 
@@ -132,7 +135,6 @@ __接收日志的follower需要实现的__
 
 #### RequestVote RPC (投票请求)
 
-
 ---
 
 
@@ -157,6 +159,7 @@ __接收日志的follower需要实现的__
 2. 如果votedFor为空或者与candidateId相同, 并且候选人的日志和自己一样新或者更新, 那么就给候选人投票并返回true
 
 #### __服务器要遵守的规则__
+
 * __所有服务器:__
     * 如果commitIndex > lastApplied, 那么将lastApplied自增并把对应日志log[lastApplied]应用到状态机
     * 如果RPC请求或响应包含一个term T大于currentTerm, 那么将currentTerm赋值为T并立即切换状态为follower
@@ -186,6 +189,7 @@ __接收日志的follower需要实现的__
 
 
 ### Raft中的RPC通信
+
 * RequestVote RPC
 * AppendEntries RPC
     * 日志条目
@@ -194,10 +198,7 @@ __接收日志的follower需要实现的__
 
 ### 角色&状态转换
 
-
-
 ![image.png | left | 352x137](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*eTJ3SZlSpsIAAAAAAAAAAABjARQnAQ)
-
 
 * Follower: 都是被动的, 不会发送任何请求, 只是响应来自leader和candidate的请求
 * Leader: 处理来自客户端的请求, 如果一个客户端与follower进行通信, follower会帮助客户端重定向到leader
@@ -205,14 +206,12 @@ __接收日志的follower需要实现的__
 
 ### 任期逻辑时钟
 
-
-
 ![image.png | left | 327x119](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*iKWRRabaMNEAAAAAAAAAAABjARQnAQ)
-
 
 时间被划分为一个个任期(term), 每一个任期的开始都是leader选举, 在成功选举之后, 一个leader会在任期内管理整个集群, 如果选举失败, 该任期就会因为没有leader而结束, 这个转变会在不同的时间的不同的服务器上被观察到
 
 ### 领导人选举流程
+
 * follower --> candidate (选举超时触发)
     * candidate --> leader
         * 赢得了选举
@@ -222,14 +221,12 @@ __接收日志的follower需要实现的__
         * 一段时间内没有任何一台服务器赢得选举
 
 ### 选举活锁(多个节点超时同时选主)
+
 随机的选举超时时间
 
 ### 日志复制
 
-
-
 ![image.png | left | 318x233](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*Bn5lR6TAWEwAAAAAAAAAAABjARQnAQ)
-
 
 一旦选出了leader, 它就开始接收客户端请求, 每个客户端请求都包含一条需要被复制状态机(replicated state machine)执行的命令. leader把这条命令作为新的日志条目追加到自己的日志末尾, 然后并行向其他机器发送AppendEntries RPC请求要求复制日志, 当半数以上机器复制成功后leader将当前条目应用到它的状态机并向客户端回复执行结果, 如果某个follower崩溃或者网络问题丢包, leader会无限重试AppendEntries RPC(甚至在它已经响应客户端以后)直到所有follower都成功复制了所有日志条目
 
@@ -243,6 +240,7 @@ __Raft日志机制的特性__
     * leader为每一个follower维护了一个nextIndex, 用来表示将要发送给该follower的下一条日志条目索引, 当一个leader开始掌权时, 会将nextIndex初始化为它的最新日志条目索引值+1, 如果follower在一致性检查过程中发现自己的日志和leader不一致, 会在这个AppendEntries RPC请求中返回失败, leader收到响应之后会将nextIndex递减然后重试, 最终nextIndex会达到一个leader和follower日志一致的位置, 这个时候AppendEntries RPC会成功, follower中冲突的日志条目也被移除了, 此时follower和leader的日志就一致了
 
 ### 安全性
+
 * 选举限制
     * 用投票规则的限制来组织日志不全的服务器赢得选举
         * RequestVote RPC限制规则: 拒绝日志没自己新的candidate
@@ -257,10 +255,12 @@ __Raft日志机制的特性__
         * 如果一个服务器已经将给定索引位置上的日志条目应用到状态机, 那么所有其他服务器不可能在该索引位置应用不同的日志条目
 
 ### Follower和Candidate崩溃
+
 * 无限重试
 * AppendEntries RPC是幂等的
 
 ### 时序和可用性
+
 __broadcastTime << electionTimeout << MTBF__
 
 | broadcastTime | 一台服务器并行的向集群中其他节点发送RPC并且收到它们响应的平均时间 |
@@ -268,24 +268,18 @@ __broadcastTime << electionTimeout << MTBF__
 | electionTimeout | 选举的超时时间 |
 | MTBF | 是指单个服务器发生故障的时间间隔的平均数 |
 
-
 * broadcastTime应该比electionTime小一个数量级, 目的是让leader能够持续发送心跳来阻止follower们开始选举; 根据已有的随机化超时前提, 这个不等式也将瓜分选票的可能性降低到很小
 * electionTimeout也要比MTBF小一个几个数量级, 目的是能使系统稳定运行, 当leader崩溃时, 整个集群大约会在electionTimeout的时间内不可用
 
 ### 集群成员变化
+
 下图3节点集群扩展到5节点集群, 直接扩展可能导致Server1和Server2构成老集群多数派, Server3, Server4和Server5构成新集群多数派, 两者不相交从而导致决议冲突
-
-
 
 ![image.png | left | 392x232](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*YFTGRbfg8XIAAAAAAAAAAABjARQnAQ)
 
-
 __两阶段效果图__
 
-
-
 ![image.png | left | 354x165](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*wcVDTo4CfrwAAAAAAAAAAABjARQnAQ)
-
 
 Raft采用联合一致性的方式来解决节点变更, 先提交一个包含新老节点结合的Configuration, 当这条消息commit之后再提交一个只包含新节点的Configuration, 具体流程如下:
 1. 首先对新节点进行CaughtUp追数据
@@ -295,10 +289,7 @@ Raft采用联合一致性的方式来解决节点变更, 先提交一个包含�
 
 ### 日志压缩
 
-
-
 ![image.png | left | 396x242](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*77gySo2CTewAAAAAAAAAAABjARQnAQ "")
-
 
 * 每个服务器独立的创建快照, 只包含已被提交的日志
 * 快照内容主要包括
@@ -330,6 +321,7 @@ __接收者需要实现的__
 * 能够使用快照来恢复状态机 (并且装载快照中的集群配置)
 
 ### 客户端交互
+
 * 客户端只将请求发送给领导人原则
 * 线性一致读
     * 写raft log走状态机
@@ -338,9 +330,7 @@ __接收者需要实现的__
 
 ### 参考
 
-
 [braft文档](https://github.com/brpc/braft/blob/master/docs/cn/raft_protocol.md)
-
 
 [raft-paper](https://ramcloud.atlassian.net/wiki/download/attachments/6586375/raft.pdf)
 

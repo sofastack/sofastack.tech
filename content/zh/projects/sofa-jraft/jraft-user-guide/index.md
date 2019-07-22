@@ -44,28 +44,22 @@ Table of Contents
 Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
 
 
-# JRaft 用户指南 &amp; API 详解
-
 ## 0. 基本概念说明
-
 1. log index 提交到 raft group 中的任务都将序列化为一条日志存储下来，每条日志一个编号，在整个 raft group 内单调递增并复制到每个 raft 节点。
 2. term 在整个 raft group 中单调递增的一个 long 数字，可以简单地认为表示一轮投票的编号，成功选举出来的 leader 对应的 term 称为 leader term，在这个 leader 没有发生变更的阶段内提交的日志都将拥有相同的 term 编号。
-
 
 ## 1. 配置和辅助类
 
 本节主要介绍 jraft 的配置和辅助工具相关接口和类。核心包括：
-
 * Endpoint 表示一个服务地址。
 * PeerId 表示一个 raft 参与节点。
 * Configuration 表示一个 raft group 配置，也就是节点列表。
 
-
 ### 1.1 地址 Endpoint
 
 Endpoint 表示一个服务地址，包括 IP 和端口， __raft 节点不允许启动在 0.0.0.0  所有的 IPv4 上，需要明确指定启动的 IP__
-
 创建一个地址，绑定在 localhost 的 8080 端口上，如下例：
+
 ```java
   Endpoint addr = new Endpoint("localhost", 8080);
   String s = addr.toString(); // 结果为 localhost:8080
@@ -151,7 +145,6 @@ Status status = new Status(RaftError.EIO, "Fail to read file from %s", filePath)
 ### 1.6 任务 Task
 
 Task 是用户使用 jraft 最核心的类之一，用于向一个 raft 复制分组提交一个任务，这个任务提交到 leader，并复制到其他 follower 节点， Task 包括：
-
 * `ByteBuffer data`  任务的数据，用户应当将要复制的业务数据通过一定序列化方式（比如 java/hessian2) 序列化成一个 ByteBuffer，放到 task 里。
 * `long expectedTerm = -1` 任务提交时预期的 leader term，如果不提供(也就是默认值 -1 )，在任务应用到状态机之前不会检查 leader 是否发生了变更，如果提供了（从状态机回调中获取，参见下文），那么在将任务应用到状态机之前，会检查 term 是否匹配，如果不匹配将拒绝该任务。
 * `Closure done` 任务的回调，在任务完成的时候通知此对象，无论成功还是失败。这个 closure 将在 `StateMachine#onApply(iterator)` 方法应用到状态机的时候，可以拿到并调用，一般用于客户端应答的返回。
@@ -182,11 +175,9 @@ public interface TaskClosure extends Closure {
 
 当 jraft 发现  task 的 done 是 `TaskClosure` 的时候，会在 RAFT 日志提交到 RAFT group 之后（并复制到多数节点），应用到状态机之前调用 `onCommitted` 方法。
 
-
 ## 2. 服务端
 
 本节主要介绍 jraft 服务端编程的主要接口和类，核心是:
-
 * 状态机 StateMachine ：业务逻辑实现的主要接口，状态机运行在每个 raft 节点上，提交的 task 如果成功，最终都会复制应用到每个节点的状态机上。
 * Raft 节点 Node ： 表示一个 raft 节点，可以提交 task，以及查询 raft group 信息，比如当前状态、当前 leader/term 等。
 * RPC 服务： raft 节点之间通过 RPC 服务通讯（选举、复制等）
@@ -254,7 +245,6 @@ public TestStateMachine extends StateMachineAdapter {
 Node 接口表示一个 raft 的参与节点，他的角色可能是 leader、follower 或者 candidate，随着选举过程而转变。
 
 Node 接口最核心的几个方法如下：
-
 * `void apply(Task task)` __提交一个新任务到 raft group，此方法是线程安全并且非阻塞__，无论任务是否成功提交到 raft group，都会通过 task 关联的 closure done 通知到。如果当前节点不是 leader，会直接失败通知 done closure。
 * `PeerId getLeaderId()` 获取当前 raft group 的 leader peerId，如果未知，返回 null
 * `shutdown` 和 `join` ，前者用于停止一个 raft 节点，后者可以在 shutdown 调用后等待停止过程结束。
@@ -263,7 +253,6 @@ Node 接口最核心的几个方法如下：
 其他一些方法都是查询节点信息以及变更 raft group 节点配置，参见第 5 节。
 
 创建一个 raft 节点可以通过 `RaftServiceFactory.createRaftNode(String groupId, PeerId serverId)` 静态方法，其中
-
 * groupId 该 raft 节点的 raft group Id。
 * serverId 该 raft 节点的  PeerId 。
 
@@ -300,8 +289,6 @@ NodeOptions 主要配置如下：
  // Raft 内部实现的一些配置信息，特别是性能相关，参见第6节。
  private RaftOptions   raftOptions            = new RaftOptions();
 ```
-
-
 
 NodeOptions 最重要的就是设置三个存储的路径，以及应用状态机实例，__如果是第一次启动，还需要设置 initialConf 初始配置节点列表__。
 
@@ -344,6 +331,7 @@ rpcServer.start();
 ```
 
 上述创建和 start 两个步骤可以合并为一个调用：
+
 ```java
 RPCServer rpcServer = RaftRpcServerFactory.createAndStartRaftRpcServer(serverId.getEndPoint());
 ```
@@ -361,7 +349,6 @@ RaftRpcServerFactory.addRaftRequestProcessors(rpcServer);
 rpcServer.start();
 ```
 
-
 同样，应用服务器节点之间可能需要一些业务通讯，会使用到 bolt 的 RpcClient，你也可以直接使用 jraft 内部的 rpcClient:
 
 ```java
@@ -373,7 +360,6 @@ __这样可以做到一些资源复用，减少消耗，代价就是依赖了 jr
 ### 2.5 框架类 RaftGroupService
 
 总结下上文描述的创建和启动一个 raft group 节点的主要阶段：
-
 1. 实现并创建状态机实例
 2. 创建并设置好 NodeOptions 实例，指定存储路径，如果是空白启动，指定初始节点列表配置。
 3. 创建 Node 实例，并使用 NodeOptions 初始化。
@@ -407,7 +393,6 @@ public RaftGroupService(String groupId, PeerId serverId, NodeOptions nodeOptions
 ### 2.6 Snapshot 服务
 
 当一个 raft 节点重启的时候，内存中的状态机的状态将会丢失，在启动过程中将重放日志存储中的所有日志，重建整个状态机实例。这就导致两个问题：
-
 * 如果任务提交比较频繁，比如消息中间件这个场景，那么会导致整个重建过程很长，启动缓慢。
 * 如果日志很多，节点需要存储所有的日志，这对存储是一个资源占用，不可持续。
 * 如果增加一个节点，新节点需要从 leader 获取所有的日志重放到状态机，这对 leader 和网络带宽都是不小的负担。
@@ -436,7 +421,7 @@ void onSnapshotSave(SnapshotWriter writer, Closure done);
 boolean onSnapshotLoad(SnapshotReader reader);
 ```
 
-更具体的实现请参考[ counter 例子](https://lark.alipay.com/middleware/jraft/povpb5#na2est)。
+更具体的实现请参考[counter 例子](https://lark.alipay.com/middleware/jraft/povpb5#na2est)。
 
 ## 3. 客户端
 
@@ -490,9 +475,7 @@ public interface CliService extends Lifecycle<CliOptions> {
     // 触发某个节点的 snapshot
     Status snapshot(String groupId, PeerId peer);
 }
-
 ```
-
 
 使用例子，首先是创建  CliService  实例：
 
@@ -562,8 +545,6 @@ public void readFromQuorum(final String key, AsyncContext asyncContext) {
 
 ```
 
-
-
 使用 `Node#readIndex(byte [] requestContext, ReadIndexClosure done)` 发起线性一致读请求，当可以安全读取的时候， 传入的 closure 将被调用，正常情况下可以从状态机中读取数据返回给客户端， jraft 将保证读取的线性一致性。其中 `requestContext` 提供给用户作为请求的附加上下文，可以在 closure 里再次拿到继续处理。
 
 __请注意线性一致读可以在任何集群内的节点发起，并不需要强制要求放到 Leader 节点上，也可以在 Follower 执行，因此可以大大降低 Leader 的读取压力。__
@@ -582,7 +563,6 @@ public enum ReadOnlyOption {
     // in that case.
     ReadOnlyLeaseBased;
 }
-
 ```
 
 两个实现的性能差距大概在 15% 左右。
@@ -590,7 +570,6 @@ public enum ReadOnlyOption {
 ## 6. 故障和保证
 
 这里说明下 raft group 可能遇到的故障，以及在各种故障情况下的一致性和可用性保证。这里的故障包括:
-
 1. 机器断电。
 2. 强杀应用。
 3. 节点运行缓慢，比如 OOM ，无法正常提供服务。
@@ -600,14 +579,12 @@ public enum ReadOnlyOption {
 这里讨论的情况是 raft group 至少 3 个节点，单个节点没有任何可用性的保证，也不应当在生产环境出现。
 
 并且我们将节点提供给客户端的服务分为两类：
-
 * __读服务__，可以从 leader，也可以从 follower 读取状态机数据，但是从 follower 读取的可能不是最新的数据，存在时间差，也就是存在脏读。启用线性一致读将保证线性一致，并且支持从 follower 读取，具体参见第 5 节。
 * __写服务__，更改状态机数据，只能提交到 leader 写入。
 
 ### 6.1 单个节点故障
 
 单个节点故障，对于整个 raft group 而言，可以继续提供读服务，短暂无法提供写服务，数据一致性没有影响：
-
 1. 如果节点是 leader，那么 raft group 在最多 election timeout 时间后开始选举，产生新的 leader。在产生新 leader 之前，写入服务终止，读服务继续提供，但是可能频繁遇到脏读。线性一致读也将无法服务。
 2. 如果节点是 follower，对读和写都没有影响，只是发往某个 follower 的读请求将失败，应用应当重试这些请求到其他节点。
 
@@ -624,7 +601,6 @@ public enum ReadOnlyOption {
 ### 6.4 故障与状态机
 
 当一个  raft 节点故障的时候，如果没有发生磁盘损坏等不可逆的存储故障，那么在重新启动该节点的情况下：
-
 1. 如果启用了 snapshot，加载最新 snapshot 到状态机，然后从 snapshot 数据的日志为起点开始继续回放日志到状态机，直到跟上最新的日志。
 2. 如果没有启用 snapshot，会重放所有的本地日志到状态机，然后跟上最新的日志。
 
@@ -639,11 +615,9 @@ NodeOptions 有一个 `raftOptions` 选项，用于设置跟性能和数据可�
 private boolean sync = true;
 ```
 
-
 `sync` 指定了写入日志、raft 和 snapshot 元信息到节点的存储是否调用 fsync，强制刷入磁盘，通常都应该设置为 true，如果不设置为 true，那么可能在多数节点故障的情况下，__永久地丢失数据。__
 
 只有当你确信这个情况可以容忍的时候，才可以设置为 false。
-
 
 ## 7. Metrics 监控
 
@@ -707,8 +681,6 @@ append-logs
 
 
 指标含义如下：(所有指标都包含min/max/avg/p95/p99等)
-
-
 
 <div class="bi-table">
   <table>
@@ -980,13 +952,11 @@ append-logs
   </table>
 </div>
 
-
 ## 8. 性能优化建议
 
 ### 8.1 Raft 节点性能相关配置
 
 NodeOptions 有一个 `raftOptions` 选项，用于设置跟性能和数据可靠性相关的参数，包括：
-
 
 ```java
     /** 节点之间每次文件 RPC (snapshot拷贝）请求的最大大小，默认为 128 K */
@@ -1033,12 +1003,14 @@ NodeOptions 有一个 `raftOptions` 选项，用于设置跟性能和数据可�
 ### 8.2 针对应用的建议
 
 #### 8.2.1 状态机实现建议
+
 1. 优先继承 `StateMachineAdapter` 适配器，而非直接实现 `StateMachine` 接口，适配器提供了绝大部分默认实现。
 2. 启动状态机前，需要清空状态机数据，因为 jraft 将通过 snapshot 以及 raft log 回放来恢复状态机，如果你的状态机存有旧的数据并且有非幂等操作，那么将出现数据不一致
 3. 尽力优化 `onApply(Iterator)` 方法，避免阻塞，加速状态机 apply 性能。
 4. 推荐实现 snapshot，否则每次重启都将重新重放所有的日志，并且日志不能压缩，长期运行将占用空间。
 5. Snapshot 的 save/load 方法都将阻塞状态机，应该尽力优化，避免阻塞。Snapshot 的保存如果可以做到增强备份更好。
 6. `onSnapshotSave` 需要在保存后调用传入的参数 `closure.run(status)` 告知保存成功或者失败，推荐的实现类似：
+
 ```java
   @Override
     public void onSnapshotSave(SnapshotWriter writer, Closure done) {
@@ -1049,6 +1021,7 @@ NodeOptions 有一个 `raftOptions` 选项，用于设置跟性能和数据可�
 ```
 
 #### 8.2.2 RPC 建议
+
 1. 建议开启 CliService 服务，方便查询和管理 RAFT 集群。
 2. 是否复用 RPC Server取决于应用，如果都使用 bolt RPC，建议复用，减少资源占用。
 3. Task 的 data 序列化采用性能和空间相对均衡的方案，例如 protobuf 等。

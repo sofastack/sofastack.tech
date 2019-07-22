@@ -33,7 +33,9 @@ public class IncrementAndGetRequest implements Serializable {
     }
 }
 ```
+
 2. GetValueRequest，用于获取最新值：
+
 ```java
 public class GetValueRequest implements Serializable {
     private static final long serialVersionUID = 9218253805003988802L;
@@ -132,7 +134,6 @@ public class CounterStateMachine extends StateMachineAdapter {
     private AtomicLong          value      = new AtomicLong(0); 
 ```
 
-
 实现核心的 `onApply(iterator)` 方法，应用用户提交的请求到状态机：
 
 ```java
@@ -175,6 +176,7 @@ public class CounterStateMachine extends StateMachineAdapter {
 ```
 
 ### CounterServer
+
 启动一个 raft node节点，提供分布式计数器服务，内部使用 jraft 提供的 `RaftGroupService` 服务框架：
 
 ```java
@@ -281,7 +283,6 @@ public class CounterServer {
 }
 ```
 
-
 启动三个节点的参数类似：
 
  **windows 用户请注意第一个参数的数据目录设置** 
@@ -291,13 +292,14 @@ public class CounterServer {
 /tmp/server2 counter 127.0.0.1:8082 127.0.0.1:8081,127.0.0.1:8082,127.0.0.1:8083
 /tmp/server3 counter 127.0.0.1:8083 127.0.0.1:8081,127.0.0.1:8082,127.0.0.1:8083
 ```
+
 分别为 server1/server2/server3三个目录，raft group名称为 counter，节点ip也分别为
-```
+
+```text
 127.0.0.1:8081,127.0.0.1:8082,127.0.0.1:8083
 ```
 
 注册的网络请求处理器，我们看下 IncrementAndGetRequestProcessor 实现，一个普通的 bolt processor ：
-
 
 ```java
 public class IncrementAndGetRequestProcessor extends AsyncUserProcessor<IncrementAndGetRequest> {
@@ -369,7 +371,6 @@ public class IncrementAndGetRequestProcessor extends AsyncUserProcessor<Incremen
 
 客户端 CounterClient 比较简单，主要使用 jraft 提供的 `RouteTable` 来刷新获取最新的 leader 节点，然后发送请求到 leader节点即可：
 
-
 ```java
 public class CounterClient {
     public static void main(String[] args) throws Exception {        
@@ -419,7 +420,6 @@ System.out.println(n + " ops, cost : " + (System.currentTimeMillis() - start) + 
 System.exit(0);
 ```
 
-
 incrementAndGet 方法实现比较简单了：
 
 ```java
@@ -452,7 +452,6 @@ private static void incrementAndGet(BoltCliClientService cliClientService, PeerI
 }
 
 ```
-
 
 ## Snapshot 实现
 
@@ -551,6 +550,5 @@ public class CounterSnapshotFile {
         });
     }
 ```
-
 
 snapshot 的间隔可以通过 NodeOptions 的 snapshotIntervalSecs 控制，默认一个小时。
