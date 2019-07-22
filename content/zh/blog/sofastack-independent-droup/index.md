@@ -4,7 +4,7 @@ author: "SOFA 团队"
 authorlink: "https://github.com/sofastack"
 description: "SOFAStack 将启用独立 Group，社区更加开放今日。感谢大家的一路支持，未来，我们继续相伴"
 categories: "SOFAStack"
-tags: ["OFAStack"]
+tags: ["SOFAStack"]
 date: 2019-05-16T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563434064351-472db69f-36f7-4955-8925-c068cb16aac7.png"
 ---
