@@ -299,7 +299,6 @@ __快照分块传输(InstallSnapshot RPC)__
 | data[] | 快照块的原始数据 |
 | done | 如果是最后一块数据则为真 |
 
-
 __接收者需要实现的__
 * 如果term < currentTerm立刻回复
 * 如果是第一个分块 (offset为0) 则创建新的快照
