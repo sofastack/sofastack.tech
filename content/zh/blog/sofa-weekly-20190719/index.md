@@ -25,14 +25,16 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 
 [@SteNicholas](https://github.com/SteNicholas) 成为 SOFAJRaft Committer。
 
-主要贡献：
+**主要贡献**
 
-一. 贡献了 SOFAJRaft 源码剖析系列一共三篇文章
+一、贡献了 SOFAJRaft 源码剖析系列一共三篇文章
+
 - 蚂蚁金服生产级 Raft 算法库 SOFAJRaft 存储模块剖析 | SOFAJRaft 实现原理
 - SOFAJRaft-RheaKV 是如何使用 Raft 的 | SOFAJRaft 实现原理
 - SOFAJRaft 线性一致读实现剖析 | SOFAJRaft 实现原理
 
-二. 贡献了 4 个 feature PR
+二、贡献了 4 个 feature PR
+
 - Multi-raft-group 的手动集群 Leader 平衡实现
 - 实现了 RheaKV 的 CompareAndPut API
 - 实现了 RheaKV 的 putIfAbsent batch 优化
