@@ -206,7 +206,8 @@ JRaft 是从百度的 [braft](https://github.com/brpc/braft) 移植而来，做�
 
 除了功能上的完整性，JRaft 还做了很多性能方面的优化，这里有一份 KV 场景（get/put）的 [benchmark](https://github.com/alipay/sofa-jraft/wiki/Benchmark-%E6%95%B0%E6%8D%AE) 数据, 在小数据包，读写比例为 9:1，保证线性一致读的场景下，三副本最高可以达到 40w+ 的 ops。
 
-这里挑重点介绍几个优化点：
+这里挑重点介绍几个优化点:
+
 * Batch: 我们知道互联网两大优化法宝便是 cache 和 batch，JRaft 在 batch 上花了较大心思，整个链路几乎都是 batch 的，依靠 disruptor 的 MPSC 模型批量消费，对整体性能有着极大的提升，包括但不限于：
     * 批量提交 task
     * 批量网络发送
