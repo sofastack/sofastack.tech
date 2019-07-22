@@ -2,67 +2,16 @@
 title: "JRaft RheaKV 用户指南"
 ---
 
-Table of Contents
-=================
-
-   * [Jraft-rheaKV 用户指南 &amp; API 详解](#jraft-rheakv-用户指南--api-详解)
-   * [RheaKV 简介](#rheakv-简介)
-      * [架构设计](#架构设计)
-      * [功能名词](#功能名词)
-      * [存储设计](#存储设计)
-      * [使用场景](#使用场景)
-      * [API 说明](#api-说明)
-         * [get](#get)
-         * [multiGet](#multiget)
-         * [scan &amp; iterator](#scan--iterator)
-         * [getSequence &amp; resetSequence](#getsequence--resetsequence)
-         * [put](#put)
-         * [getAndPut](#getandput)
-         * [merge](#merge)
-         * [batch put](#batch-put)
-         * [putIfAbsent](#putifabsent)
-         * [delete](#delete)
-         * [deleteRange](#deleterange)
-         * [execute](#execute)
-         * [DistributedLock](#distributedlock)
-      * [快速开始](#快速开始)
-            * [启动yaml配置](#启动yaml配置)
-            * [启动代码](#启动代码)
-      * [核心设计](#核心设计)
-         * [KV模块内部处理流程](#kv模块内部处理流程)
-            * [RheaKVStore](#rheakvstore)
-            * [PlacementDriverClient](#placementdriverclient)
-            * [RegionRouteTable](#regionroutetable)
-            * [LoadBalancer](#loadbalancer)
-            * [RheaKVRpcService](#rheakvrpcservice)
-            * [RegionKVService](#regionkvservice)
-            * [MetricsRawKVStore](#metricsrawkvstore)
-            * [RaftRawKVStore](#raftrawkvstore)
-            * [KVStoreStateMachine](#kvstorestatemachine)
-            * [RocksRawKVStore](#rocksrawkvstore)
-         * [PD 模块内部处理流程](#pd-模块内部处理流程)
-            * [概述](#概述)
-            * [PlacementDriverClient -&gt; MetadataClient](#placementdriverclient-metadataclient)
-            * [StoreEngine -&gt; HeartbeatSender](#storeengine-heartbeatsender)
-            * [Pipeline](#pipeline)
-            * [MetadataStore](#metadatastore)
-         * [客户端路由](#客户端路由)
-            * [<strong>分片逻辑：RegionRouteTable</strong>](#分片逻辑regionroutetable)
-            * [Failover](#failover)
-            * [举例: 一次 scan 的流程](#举例-一次-scan-的流程)
-
-Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
-
 ## RheaKV 简介
 
 RheaKV 是一个轻量级的分布式的嵌入式的 KV 存储 lib， rheaKV 包含在 jraft 项目中，是 jraft 的一个子模块
 
-定位 & 特性
-* 嵌入式: jar 包方式嵌入到应用中
-* 强一致性: 基于 multi-raft 分布式一致性协议保证数据可靠性和一致性
-* 自驱动 （目前未完全实现）: 自诊断, 自优化, 自决策, 自恢复
-* 可监控: 基于节点自动上报到PD的元信息和状态信息
-* 基本API: get/put/delete 和跨分区 scan/batch put, distributed lock 等等
+定位与特性
+1. 嵌入式: jar 包方式嵌入到应用中
+2. 强一致性: 基于 multi-raft 分布式一致性协议保证数据可靠性和一致性
+3. 自驱动 （目前未完全实现）: 自诊断, 自优化, 自决策, 自恢复
+4. 可监控: 基于节点自动上报到PD的元信息和状态信息
+5. 基本API: get/put/delete 和跨分区 scan/batch put, distributed lock 等等
 
 ## 架构设计
 
@@ -114,6 +63,7 @@ CompletableFuture<Map<ByteArray, byte[]>> multiGet(final List<byte[]> keys, fina
 Map<ByteArray, byte[]> bMultiGet(final List<byte[]> keys);
 Map<ByteArray, byte[]> bMultiGet(final List<byte[]> keys, final boolean readOnlySafe);
 ```
+
 1. multiGet 支持跨分区查询，rheaKV 内部会自动计算每个 key 的所属分区（region）并行发起调用， 最后合并查询结果
 2. 为了可以将 byte[] 放进 HashMap，这里曲线救国，返回值中 Map 的 key 为 ByteArray 对象，是对 byte[] 的一层包装，实现了 byte[] 的 hashCode
 
@@ -134,6 +84,7 @@ RheaIterator<KVEntry> iterator(final String startKey, final String endKey, final
 RheaIterator<KVEntry> iterator(final byte[] startKey, final byte[] endKey, final int bufSize, final boolean readOnlySafe);
 RheaIterator<KVEntry> iterator(final String startKey, final String endKey, final int bufSize, final boolean readOnlySafe);
 ```
+
 1. scan 和 iterator 都会包含两个入参 `startKey`， `endKey`，范围是一个左闭右开的区间： `[startKey, endKey)`
 2. iterator 与 scan 的不同点在于 iterator 是懒汉模式，在调用 `hasNext()` 时如果本地缓冲区无数据 （bufSize 为缓冲区大小）才会触发请求数据操作
 3. 支持跨分区扫描，rheaKV 内部会自动计算 `startKey` ~ `endKey` 所覆盖的所有分区（region），并行发起调用， 对于单个分片数据量较大的情况，扫描整个分区一定是很慢的， 一定注意避免跨过多的分区
@@ -153,6 +104,7 @@ CompletableFuture<Boolean> resetSequence(final String seqKey);
 Boolean bResetSequence(final byte[] seqKey);
 Boolean bResetSequence(final String seqKey);
 ```
+
 1. 通过 `getSequence` 可以获取一个全局的单调递增序列，step 作为步长， 比如一个 step 为 10 的请求结果为 [n, n + 10)， 结果是一个左闭右开的区间，对于 sequence 的存储，是与普通 key-value 数据隔离的，所以无法使用普通 api 删除之， 所以不用担心 sequence 数据被误删除， 但是也提供了手动重置 sequence 的方法，见下一条说明
 2. 需要强调的是，通常是不建议使用 `resetSequence` 系列方法的，提供这个 api 只是为了用于一些意外场景的 sequence 重置
 
@@ -164,6 +116,7 @@ CompletableFuture<Boolean> put(final String key, final byte[] value);
 Boolean bPut(final byte[] key, final byte[] value);
 Boolean bPut(final String key, final byte[] value);
 ```
+
 1. 这个不做过多解释了，任何 kv 系统都会提供的 api，对于 String 类型的入参，请参考 get 相关说明
 
 ### getAndPut
@@ -174,6 +127,7 @@ CompletableFuture<byte[]> getAndPut(final String key, final byte[] value);
 byte[] bGetAndPut(final byte[] key, final byte[] value);
 byte[] bGetAndPut(final String key, final byte[] value);
 ```
+
 1. 提供一个原子的 'get 旧值并 put 新值' 的语义,  对于 String 类型的入参，请参考 get 相关说明
 
 ### merge
@@ -182,6 +136,7 @@ byte[] bGetAndPut(final String key, final byte[] value);
 CompletableFuture<Boolean> merge(final String key, final String value);
 Boolean bMerge(final String key, final String value);
 ```
+
 1. 提供一个原子的 merge 操作, 代替某些先 get 再 put 的场景, 效果见下面代码:
     ```java
     // Writing aa under key
@@ -199,6 +154,7 @@ Boolean bMerge(final String key, final String value);
 CompletableFuture<Boolean> put(final List<KVEntry> entries);
 boolean bPut(final List<KVEntry> entries);
 ```
+
 1. 支持跨分区操作的一个 batch put, rheakv 内部会自动计算每个 key 的所属分区并行发起调用
 2. 需要注意的是， 这个操作暂时无法提供事务保证，无法承诺 ‘要么全部成功要么全部失败’，不过由于 rheaKV 内部是支持 failover 自动重试的， 可以一定程度上减少上述情况的发生
 
@@ -210,6 +166,7 @@ CompletableFuture<byte[]> putIfAbsent(final String key, final byte[] value);
 byte[] bPutIfAbsent(final byte[] key, final byte[] value);
 byte[] bPutIfAbsent(final String key, final byte[] value);
 ```
+
 1. 提供一种原子语义： 如果该 key 不存在则 put 如果该 key 已经存在， 那么只返回这个已存在的值
 
 ### delete
@@ -220,6 +177,7 @@ CompletableFuture<Boolean> delete(final String key);
 Boolean bDelete(final byte[] key);
 Boolean bDelete(final String key);
 ```
+
 1. 删除指定 key 关联的值
 
 ### deleteRange
@@ -230,6 +188,7 @@ CompletableFuture<Boolean> deleteRange(final String startKey, final String endKe
 boolean bDeleteRange(final byte[] startKey, final byte[] endKey);
 boolean bDeleteRange(final String startKey, final String endKey);
 ```
+
 1. 移除 `[startKey, endKey)` 范围内所有的数据， 注意 key的 范围是一个左闭右开的区间，即不包含`endKey`
 2. 同样支持跨分区删除， rheaKV 内部会自动计算这个 key 区间的所覆盖的分区然后并行发起调用， 同样需要强调，这是个较危险的操作，请慎重使用
 
@@ -239,6 +198,7 @@ boolean bDeleteRange(final String startKey, final String endKey);
 CompletableFuture<Boolean> execute(final long regionId, final NodeExecutor executor);
 Boolean bExecute(final long regionId, final NodeExecutor executor);
 ```
+
 1. 唯一一个跟存储无关的接口, NodeExecutor 可以执行一些操作（比如更新当前节点的缓存），调用这个 api 能保证最终集群中所有节点都会执行这个 executor
 2. 这个 api 没有直接在 RheaKVStore 中开放，确实有类似使用场景的需要强转 `DefaultRheaKVStore`
 
@@ -252,6 +212,7 @@ DistributedLock<byte[]> getDistributedLock(final byte[] target, final long lease
 DistributedLock<byte[]> getDistributedLock(final String target, final long lease, final TimeUnit unit,
                                            final ScheduledExecutorService watchdog);
 ```
+
 1. 获取一个分布式锁实例，rheaKV 的 distributedLock 实现了: 可重入锁、自动续租以及 fencing token
 2. target：可以为理解为分布式锁的 key, 不同锁的 key 不能重复，但是锁的存储空间是与其他 kv 数据隔离的，所以只需保证 key 在 '锁空间' 内的唯一性即可
 3. lease：必须包含一个锁的租约（lease）时间，在锁到期之前，如果 watchdog 为空，那么锁会被自动释放，即没有 watchdog 配合的 lease，就是 timeout 的意思
@@ -339,9 +300,11 @@ if (rheaKVStore.init(opts)) {
     // Have fun !!!
 }
 ```
+
 除了基于 yaml 配置启动，rheaKV 也提供了一系列 XXXConfigured 类来方便设置 rheaKV 的配置参数，具体 example 可以参考 jraft-example 模块中的 demo
 
 ## 核心设计
+
 ### KV模块内部处理流程
 
 ![kv-design.png | left | 700x450](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*VsIgSqmCSQUAAAAAAAAAAABjARQnAQ)
@@ -400,10 +363,11 @@ MetadataClient 负责从 PD 获取集群元信息以及注册元信息
 
 #### StoreEngine -> HeartbeatSender
 
-1. HeartbeatSender 负责发送当前存储节点的心跳，心跳中包含一些状态信息，心跳一共分为两类：StoreHeartbeat 和 RegionHeartbeat
-2. PD 不断接受 rheaKV 集群这两类心跳消息，PD 在对 region leader 的心跳回复里面包含了具体调度指令，再以这些信息作为决策依据。除此之外，PD 还应该可以通过管理接口接收额外的运维指令，用来人为执行更准确的决策
-3. 两类心跳包含的状态信息详细内容如下：
+* HeartbeatSender 负责发送当前存储节点的心跳，心跳中包含一些状态信息，心跳一共分为两类：StoreHeartbeat 和 RegionHeartbeat
+* PD 不断接受 rheaKV 集群这两类心跳消息，PD 在对 region leader 的心跳回复里面包含了具体调度指令，再以这些信息作为决策依据。除此之外，PD 还应该可以通过管理接口接收额外的运维指令，用来人为执行更准确的决策
+* 两类心跳包含的状态信息详细内容如下：
     * StoreHeartbeat
+
         ```java
         public class StoreStats implements Serializable {
             private long            storeId;
@@ -481,16 +445,15 @@ MetadataClient 负责从 PD 获取集群元信息以及注册元信息
 可以看到，实现上图最适合的数据结构便是跳表或者二叉树（最接近匹配项查询）
 
 选择 region 的 startKey 还是 endKey 作为 RegionRouteTable 的 key 也是有讲究的，比如为什么没有使用endKey? 这主要取决于 region split 的方式:
-1. 假设 id 为 2 的 region2 [startKey2, endKey2) 分裂
-2. 它分裂后的两个 region 分别为 id 继续为 2 的 region2 [startKey2, splitKey) 和 id 为 3 的 region3 [splitKey, endKey2)
-3. 可以再看上图会发现，此时只需要再往 regionRouteTable 添加一个元素 <region3, splitKey> 即可，原来region2 对应的数据是不需要修改的
-
-* __Write-Operation__
-    * 单 key <span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)">写请求路由逻辑很简单，根据 key 查询对应的 region，再对该 region 发起请求即可。</span></span>
-    * 如果是一个批量操作写请求，比如__ __put(List)，那么会对所有 keys 进行 split，分组后再并行分别请求所属的regionEngine，要注意的是此时无法提供事务保证。
-* __Read-Operation__
-    * 单 key 读请求路由逻辑也很简单，<span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)">根据 key 查询对应的 region，再对该 region 发起请求即可。</span></span>
-    * <span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)">如果是一个批量读请求，比如 </span></span>scan(startKey, endKey)，<span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)">那么会对所有 keys 进行 split，分组后并行再分别请求所属的 regionEngine。</span></span>
+* 假设 id 为 2 的 region2 [startKey2, endKey2) 分裂
+* 它分裂后的两个 region 分别为 id 继续为 2 的 region2 [startKey2, splitKey) 和 id 为 3 的 region3 [splitKey, endKey2)
+* 可以再看上图会发现，此时只需要再往 regionRouteTable 添加一个元素 <region3, splitKey> 即可，原来region2 对应的数据是不需要修改的
+    * __Write-Operation__
+        * 单 key <span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)">写请求路由逻辑很简单，根据 key 查询对应的 region，再对该 region 发起请求即可。</span></span>
+        * 如果是一个批量操作写请求，比如__ __put(List)，那么会对所有 keys 进行 split，分组后再并行分别请求所属的regionEngine，要注意的是此时无法提供事务保证。
+    * __Read-Operation__
+        * 单 key 读请求路由逻辑也很简单，<span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)">根据 key 查询对应的 region，再对该 region 发起请求即可。</span></span>
+        * <span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)">如果是一个批量读请求，比如 </span></span>scan(startKey, endKey)，<span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)">那么会对所有 keys 进行 split，分组后并行再分别请求所属的 regionEngine。</span></span>
 
 #### Failover
 
@@ -505,6 +468,7 @@ __以下问题是RheaKV必须要解决的:__
 __RheaKV 可以划分为两种类型的请求，两种类型需要不同的 failover 逻辑：__
 * __Single-Key-Operation (只操作一个 key)__
     Retry 依赖一个叫做 FailoverClosure 的 callback类，大体逻辑如下:
+
     ```java
     public void run(final Status status) {
         if (status.isOk()) {
@@ -520,6 +484,7 @@ __RheaKV 可以划分为两种类型的请求，两种类型需要不同的 fail
         }
     }
     ```
+
     其中有以下两大类错误(表①、表②)会触发 retryRunner 运行，运行之前会先刷新 region 信息以及 group peers(路由表)
 
 ---
@@ -577,31 +542,31 @@ __RheaKV 可以划分为两种类型的请求，两种类型需要不同的 fail
             return super.completeExceptionally(ex);
         }
         ```
-        
+
 #### 举例: 一次 scan 的流程
 
 * __确定 key 区间 [startKey, endKey) 覆盖的 region list__
-    1. RegionRouteTable#findRegionsByKeyRange(startKey, endKey)
-    2. RegionRouteTable 是一个红黑树结构存储的 region 路由表，startKey 为作为红黑树的key，只要查找 [startKey, endKey) 的子视图再加上一个 floorEntry(startKey) 即可
-    3. 如下图例子，计算得出 [startKey, endKey) 横跨 region1, region2, region3 一共 3 个分区(region1 为 floor entry, region2 和 region3 为子视图部分)
+    * RegionRouteTable#findRegionsByKeyRange(startKey, endKey)
+    * RegionRouteTable 是一个红黑树结构存储的 region 路由表，startKey 为作为红黑树的key，只要查找 [startKey, endKey) 的子视图再加上一个 floorEntry(startKey) 即可
+    * 如下图例子，计算得出 [startKey, endKey) 横跨 region1, region2, region3 一共 3 个分区(region1 为 floor entry, region2 和 region3 为子视图部分)
 
-![image.png | left | 691x212](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*5gBCRJZjEqAAAAAAAAAAAABjARQnAQ "")
+![image.png | left | 691x212](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*5gBCRJZjEqAAAAAAAAAAAABjARQnAQ)
 
 * __请求分裂: scan -> multi-region scan__
-    1. region1 -> regionScan(startKey, regionEndKey1)
-    2. region2 -> regionScan(regionStartKey2, regionEndKey2)
-    3. region3 -> regionScan(regionStartKey3, endKey)
+    * region1 -> regionScan(startKey, regionEndKey1)
+    * region2 -> regionScan(regionStartKey2, regionEndKey2)
+    * region3 -> regionScan(regionStartKey3, endKey)
 
-![image.png | left | 691x214](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*BLVgSaFlAgoAAAAAAAAAAABjARQnAQ "")
+![image.png | left | 691x214](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*BLVgSaFlAgoAAAAAAAAAAABjARQnAQ)
 
 * __遭遇 region split (分裂的标志是 region epoch 发生变化)__
-    1. 刷新 RegionRouteTable，需要从 PD 获取最新的路由表，比如当前示例中 region2 分裂变成了 region2 + region5
-        1. region2 -> regnonScan(regionStartKey2, regionEndKey2)  请求分裂并重试
-            1. region2 -> regionScan(regionStartKey2, newRegionEndKey2)
-            2. region5 -> regionScan(regionStartKey5, regionEndKey5)
+    * 刷新 RegionRouteTable，需要从 PD 获取最新的路由表，比如当前示例中 region2 分裂变成了 region2 + region5
+        * region2 -> regnonScan(regionStartKey2, regionEndKey2)  请求分裂并重试
+            * region2 -> regionScan(regionStartKey2, newRegionEndKey2)
+            * region5 -> regionScan(regionStartKey5, regionEndKey5)
 
-![image.png | left | 635x201](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*Cr5gT4FFs3QAAAAAAAAAAABjARQnAQ "")
+![image.png | left | 635x201](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*Cr5gT4FFs3QAAAAAAAAAAABjARQnAQ)
 
 * __遭遇 Invalid Peer (NOT\_LEADER 等错误)__
-    1. 这个就很简单了, 重新获取当前 key 区间所属的 raft-group 的最新 leader，再次发起调用即可
+    * 这个就很简单了, 重新获取当前 key 区间所属的 raft-group 的最新 leader，再次发起调用即可
 

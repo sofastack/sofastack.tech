@@ -32,21 +32,25 @@ SOFAJRaft 所有修改都在分支上进行，修改完后提交 pull request，
   ```text
   git clone https://github.com/您的账号名/sofa-jraft
   ```
+
 - 拉分支准备修改代码
 
   ```text
   git branch add_xxx_feature
   ```
+
 - 执行完上述命令后，您的代码仓库就切换到相应分支了。执行如下命令可以看到您当前分支：
 
   ```text
   git branch -a
   ```
+
 - 如果您想切换回主干，执行下面命令：
 
   ```text
   git checkout -b master
   ```
+
 - 如果您想切换回分支，执行下面命令：
 
   ```text
@@ -65,6 +69,7 @@ SOFAJRaft 所有修改都在分支上进行，修改完后提交 pull request，
   ```text
   mvn clean compile
   ```
+
 - 补充单元测试代码
 - 新有修改应该通过已有的单元测试
 - 应该提供新的单元测试来证明以前的代码存在 bug，而新的代码已经解决了这些 bug
@@ -73,8 +78,9 @@ SOFAJRaft 所有修改都在分支上进行，修改完后提交 pull request，
   ```text
   mvn clean test
   ```
+
   也可以通过IDE来辅助运行。
-  
+
 #### 其它注意事项
 
 - 请保持您编辑的代码的原有风格，尤其是空格换行等。
@@ -88,7 +94,7 @@ SOFAJRaft 所有修改都在分支上进行，修改完后提交 pull request，
   git commit -am '(feat) 添加xx功能'
   git commit -am '(fix) 修复xx功能'
   ```
-  
+
 #### 提交代码到远程仓库
 
 在代码提交到本地后，就是与远程仓库同步代码了。执行如下命令提交本地修改到 github 上：
@@ -96,6 +102,7 @@ SOFAJRaft 所有修改都在分支上进行，修改完后提交 pull request，
 ```text
 git push origin "branchname"
 ```
+
 如果前面您是通过 fork 来做的，那么这里的 origin 是 push 到您的代码仓库，而不是 SOFAJRaft 的代码仓库。
 
 #### 提交合并代码到主干的请求
@@ -111,4 +118,3 @@ git push origin "branchname"
 #### 合并代码到主干
 
 在代码 Review 通过后，就由 SOFAJRaft 维护人员操作合入主干了。这一步不用参与，代码合并之后，您会收到合并成功的提示。
-

@@ -3,7 +3,7 @@ title: "核心引擎设计"
 ---
 
 如图:
-## ![jraft_engine](engine.png)
+![jraft_engine](engine.png)
 
 ### Node
 

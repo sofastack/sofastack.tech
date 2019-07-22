@@ -2,51 +2,10 @@
 title: "JRaft 用户指南"
 ---
 
-Table of Contents
-=================
-
-   * [JRaft 用户指南 &amp; API 详解](#jraft-用户指南--api-详解)
-      * [0. 基本概念说明](#0-基本概念说明)
-      * [1. 配置和辅助类](#1-配置和辅助类)
-         * [1.1 地址 Endpoint](#1-1-地址-endpoint)
-         * [1.2 节点 PeerId](#1-2-节点-peerid)
-         * [1.3 配置 Configuration](#1-3-配置-configuration)
-         * [1.4 工具类 JRaftUtils](#1-4-工具类-jraftutils)
-         * [1.5 回调 Closure 和状态 Status](#1-5-回调-closure-和状态-status)
-         * [1.6 任务 Task](#1-6-任务-task)
-      * [2. 服务端](#2-服务端)
-         * [2.1 迭代器 Iterator](#2-1-迭代器-iterator)
-         * [2.2 状态机 StateMachine](#2-2-状态机-statemachine)
-         * [2.3 Raft 节点 Node](#2-3-raft-节点-node)
-         * [2.4 RPC 服务](#2-4-rpc-服务)
-         * [2.5 框架类 RaftGroupService](#2-5-框架类-raftgroupservice)
-         * [2.6 Snapshot 服务](#2-6-snapshot-服务)
-      * [3. 客户端](#3-客户端)
-         * [3.1 路由表 RouteTable](#3-1-路由表-routetable)
-         * [3.2 CLI 服务](#3-2-cli-服务)
-         * [3.3 RPC 服务](#3-3-rpc-服务)
-      * [4. 节点配置变更](#4-节点配置变更)
-      * [5. 线性一致读](#5-线性一致读)
-      * [6. 故障和保证](#6-故障和保证)
-         * [6.1 单个节点故障](#6-1-单个节点故障)
-         * [6.2 少数节点故障](#6-2-少数节点故障)
-         * [6.3 多数节点故障](#6-3-多数节点故障)
-         * [6.4 故障与状态机](#6-4-故障与状态机)
-         * [6.5 故障与存储](#6-5-故障与存储)
-      * [7. Metrics 监控](#7-metrics-监控)
-      * [8. 性能优化建议](#8-性能优化建议)
-         * [8.1 Raft 节点性能相关配置](#8-1-raft-节点性能相关配置)
-         * [8.2 针对应用的建议](#8-2-针对应用的建议)
-            * [8.2.1 状态机实现建议](#8-2-1-状态机实现建议)
-            * [8.2.2 RPC 建议](#8-2-2-rpc-建议)
-            * [8.2.3 客户端建议](#8-2-3-客户端建议)
-
-Created by [gh-md-toc](https://github.com/ekalinin/github-markdown-toc)
-
-
 ## 0. 基本概念说明
-1. log index 提交到 raft group 中的任务都将序列化为一条日志存储下来，每条日志一个编号，在整个 raft group 内单调递增并复制到每个 raft 节点。
-2. term 在整个 raft group 中单调递增的一个 long 数字，可以简单地认为表示一轮投票的编号，成功选举出来的 leader 对应的 term 称为 leader term，在这个 leader 没有发生变更的阶段内提交的日志都将拥有相同的 term 编号。
+
+* log index 提交到 raft group 中的任务都将序列化为一条日志存储下来，每条日志一个编号，在整个 raft group 内单调递增并复制到每个 raft 节点。
+* term 在整个 raft group 中单调递增的一个 long 数字，可以简单地认为表示一轮投票的编号，成功选举出来的 leader 对应的 term 称为 leader term，在这个 leader 没有发生变更的阶段内提交的日志都将拥有相同的 term 编号。
 
 ## 1. 配置和辅助类
 
@@ -307,7 +266,6 @@ if(!node.init(opts))
 Node node = RaftServiceFactory.createAndInitRaftNode(groupId, serverId, nodeOpts);
 ```
 
-
 ### 2.4 RPC 服务
 
 单纯一个 raft node 是没有什么用，测试可以是单个节点，但是正常情况下一个 raft grup 至少应该是三个节点，如果考虑到异地多机房容灾，应该扩展到5个节点。
@@ -449,7 +407,6 @@ if(success){
 }
 ```
 
-
 应用如果需要向 leader 提交任务或者必须向 leader 查询最新数据，<strong>就需要定期调用 </strong><code><strong>refreshLeader</strong></code><strong> 更新路由信息，或者在服务端返回 redirect 重定向信息（自定义协议，参见 counter 例子）的情况下主动更新 leader 信息。</strong>
 
 RouteTable 还有一些查询和删除配置的方法，请直接查看接口文档。
@@ -514,7 +471,6 @@ RouteTable 更新 leader 信息同样需要传入 `CliClientService` 实例，<s
 关于线性一致读可以参考 pingcap 的这篇博客 [https://www.pingcap.com/blog-cn/lease-read/](https://www.pingcap.com/blog-cn/lease-read/)
 
 在 jraft 中发起一次线性一致读请求的调用如下：
-
 
 ```java
 // KV 存储实现线性一致读
@@ -678,7 +634,6 @@ append-logs
               99% <= 3.00 milliseconds
             99.9% <= 3.00 milliseconds
 ```
-
 
 指标含义如下：(所有指标都包含min/max/avg/p95/p99等)
 
@@ -1004,12 +959,12 @@ NodeOptions 有一个 `raftOptions` 选项，用于设置跟性能和数据可�
 
 #### 8.2.1 状态机实现建议
 
-1. 优先继承 `StateMachineAdapter` 适配器，而非直接实现 `StateMachine` 接口，适配器提供了绝大部分默认实现。
-2. 启动状态机前，需要清空状态机数据，因为 jraft 将通过 snapshot 以及 raft log 回放来恢复状态机，如果你的状态机存有旧的数据并且有非幂等操作，那么将出现数据不一致
-3. 尽力优化 `onApply(Iterator)` 方法，避免阻塞，加速状态机 apply 性能。
-4. 推荐实现 snapshot，否则每次重启都将重新重放所有的日志，并且日志不能压缩，长期运行将占用空间。
-5. Snapshot 的 save/load 方法都将阻塞状态机，应该尽力优化，避免阻塞。Snapshot 的保存如果可以做到增强备份更好。
-6. `onSnapshotSave` 需要在保存后调用传入的参数 `closure.run(status)` 告知保存成功或者失败，推荐的实现类似：
+* 优先继承 `StateMachineAdapter` 适配器，而非直接实现 `StateMachine` 接口，适配器提供了绝大部分默认实现。
+* 启动状态机前，需要清空状态机数据，因为 jraft 将通过 snapshot 以及 raft log 回放来恢复状态机，如果你的状态机存有旧的数据并且有非幂等操作，那么将出现数据不一致
+* 尽力优化 `onApply(Iterator)` 方法，避免阻塞，加速状态机 apply 性能。
+* 推荐实现 snapshot，否则每次重启都将重新重放所有的日志，并且日志不能压缩，长期运行将占用空间。
+* Snapshot 的 save/load 方法都将阻塞状态机，应该尽力优化，避免阻塞。Snapshot 的保存如果可以做到增强备份更好。
+* `onSnapshotSave` 需要在保存后调用传入的参数 `closure.run(status)` 告知保存成功或者失败，推荐的实现类似：
 
 ```java
   @Override
@@ -1022,13 +977,13 @@ NodeOptions 有一个 `raftOptions` 选项，用于设置跟性能和数据可�
 
 #### 8.2.2 RPC 建议
 
-1. 建议开启 CliService 服务，方便查询和管理 RAFT 集群。
-2. 是否复用 RPC Server取决于应用，如果都使用 bolt RPC，建议复用，减少资源占用。
-3. Task 的 data 序列化采用性能和空间相对均衡的方案，例如 protobuf 等。
-4. 业务 RPC processor 不要与 JRaft RPC processor 共用线程池，避免影响 RAFT 内部协议交互。
+* 建议开启 CliService 服务，方便查询和管理 RAFT 集群。
+* 是否复用 RPC Server取决于应用，如果都使用 bolt RPC，建议复用，减少资源占用。
+* Task 的 data 序列化采用性能和空间相对均衡的方案，例如 protobuf 等。
+* 业务 RPC processor 不要与 JRaft RPC processor 共用线程池，避免影响 RAFT 内部协议交互。
 
 #### 8.2.3 客户端建议
 
-1. 使用 `RouteTable` 管理集群信息，定期 `refreshLeader` 和 `refreshConfiguration` 获取集群最新状态。
-2. 业务协议应当内置 Redirect 重定向请求协议，当写入到非 leader 节点，返回最新的 leader 信息到客户端，客户端可以做适当重试。通过定期拉取和 redirect 协议的结合，来提升客户端的可用性。
-3. 建议使用线性一致读，将请求散列到集群内的所有节点上，降低 leader 的负荷压力。
+* 使用 `RouteTable` 管理集群信息，定期 `refreshLeader` 和 `refreshConfiguration` 获取集群最新状态。
+* 业务协议应当内置 Redirect 重定向请求协议，当写入到非 leader 节点，返回最新的 leader 信息到客户端，客户端可以做适当重试。通过定期拉取和 redirect 协议的结合，来提升客户端的可用性。
+* 建议使用线性一致读，将请求散列到集群内的所有节点上，降低 leader 的负荷压力。

@@ -5,6 +5,7 @@ title: "Benchmark 数据"
 [测试代码](https://github.com/alipay/sofa-jraft/tree/master/jraft-example/src/main/java/com/alipay/sofa/jraft/benchmark)
 
 # 测试环境&条件
+
 * 3 台 16C 20G 内存的 docker 容器作为 server node (3 副本)
 * 2 ~ 8 台 8C docker 容器 作为 client
 * 24 个 raft 复制组，平均每台 server node 上各自有 8 个 leader 负责读写请求，不开启 follower 读
@@ -14,6 +15,7 @@ title: "Benchmark 数据"
 目前的测试场景比较简单，以后会增加更多测试场景
 
 # 测试场景1
+
 ## 测试条件
 
 | Client 数量 | Client-Batching | Storage-Type | 读写比例 | Replicator-Pipeline | key 大小 | value 大小 |
@@ -21,6 +23,7 @@ title: "Benchmark 数据"
 |     8      | **开启**            | MemoryDB     | 1:9      | **开启**  | 16 字节 | 16字节 |
 
 ## 结果汇总：
+
 * 8 个 client 一共达到 40w+ ops，p95 RT 在 8ms 以内
 * 3 个 server 节点负载没达到极限 load 15 左右，cpu 40% 左右
 
@@ -165,6 +168,7 @@ put_benchmark_timer
               99% <= 15.94 milliseconds
             99.9% <= 495.93 milliseconds
 ```
+
 #### client2：5.6w ops
 
 ```text
@@ -538,6 +542,7 @@ put_benchmark_timer
 ```
 
 # 测试场景2
+
 ## 测试条件
 
 | Client 数量 | Client-Batching | Storage-Type | 读写比例 | Replicator-Pipeline | key 大小 | value 大小 |
@@ -545,13 +550,13 @@ put_benchmark_timer
 |     8      | **开启**          | RocksDB     | 1:9      | **开启**  | 16 字节 | 16字节 |
 
 ## 结果汇总
+
 * 8 个 client 一共达到 25w+ ops, p95 RT 在 20ms 以内
 * 3 个 server 节点负载没达到极限 load 10 左右，cpu 30% 左右，还可以增加 client，client 发送能力受限
 
 ### 3 个 server 机器负载：
 
 #### server1
-
 
 ```text
 top - 21:01:33 up 10 days, 23:59,  1 user,  load average: 10.52, 9.01, 5.85
@@ -578,6 +583,7 @@ KiB Swap:  2097148 total,  2097148 free,        0 used.  3414404 avail Mem
    PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
  33887 root      20   0 13.831g 9.054g  24048 S 513.6 15.1  77:08.73 java
 ```
+
 #### server2
 
 ```text
@@ -605,6 +611,7 @@ KiB Swap:  2097148 total,  2097148 free,        0 used.  3618372 avail Mem
    PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
   5610 root      20   0 13.875g 7.683g  24144 S 397.7 12.8  78:40.24 java
 ```
+
 #### server3
 
 ```text
@@ -688,6 +695,7 @@ put_benchmark_timer
               99% <= 30.76 milliseconds
             99.9% <= 644.50 milliseconds
 ```
+
 #### client2：3.3w ops
 
 ```text
@@ -1064,6 +1072,7 @@ put_benchmark_timer
 ```
 
 # 测试场景3
+
 ## 测试条件
 
 | Client 数量 | Client-Batching | Storage-Type | 读写比例 | Replicator-Pipeline | key 大小 | value 大小 |
@@ -1071,6 +1080,7 @@ put_benchmark_timer
 |     2      | **关闭**         | Memory     | 1:9      | **开启**  | 16 字节 | 16字节 |
 
 ## 结果汇总
+
 * 2 个 client 一共达到 10w+ ops，p95 RT 在 10ms 以内
 * 3 个 server 节点负载达到极限 load 接近 20，cpu 超过 50%
 * ops 降低的原因在于关闭了 client-batching 后 RPC(bolt) 层面也出现了瓶颈，所以还是建议打开 client-batching 开关，client-batching 没有副作用，完全不会影响单个消息的延迟
@@ -1078,7 +1088,6 @@ put_benchmark_timer
 ### 3 个 server 机器负载：
 
 #### server1
-
 
 ```text
 top - 22:39:42 up 11 days,  1:37,  1 user,  load average: 15.82, 8.18, 4.28
@@ -1105,6 +1114,7 @@ KiB Swap:  2097148 total,  2097148 free,        0 used. 23990152 avail Mem
    PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
  93733 root      20   0 10.266g 6.475g  23748 S 968.0 10.8  13:03.22 java
 ```
+
 #### server2
 
 ```text
@@ -1132,6 +1142,7 @@ KiB Swap:  2097148 total,  2097148 free,        0 used. 24122012 avail Mem
    PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
  64477 root      20   0 10.243g 6.651g  24096 S  1108 11.1  15:44.10 java
 ```
+
 #### server3
 
 ```text
@@ -1215,6 +1226,7 @@ put_benchmark_timer
               99% <= 25.40 milliseconds
             99.9% <= 170.50 milliseconds
 ```
+
 #### client2：5w ops
 
 ```text
@@ -1270,6 +1282,7 @@ put_benchmark_timer
 ```
 
 # 测试场景4
+
 ## 测试条件
 
 | Client 数量 | Client-Batching | Storage-Type | 读写比例 | Replicator-Pipeline | key 大小 | value 大小 |
@@ -1277,6 +1290,7 @@ put_benchmark_timer
 |     2      | **关闭**         | Memory     | 1:9      | **关闭**  | 16 字节 | 16字节 |
 
 ## 结果汇总
+
 * 2 个 client 一共达到 7.5w ops，p95 RT 在 15ms 以内
 * 3 个 server 节点负载达到极限 load 接近 20 (有一台超过 20), cpu 超过 50%
 * ops 降低的原因在于关闭了 client-batching 后 RPC(bolt) 层面也出现了瓶颈，所以还是建议打开 client-batching 开关，client-batching 没有副作用，完全不会影响单个消息的延迟
@@ -1284,7 +1298,6 @@ put_benchmark_timer
 ### 3 个 server 机器负载：
 
 #### server1
-
 
 ```text
 top - 23:19:52 up 11 days,  2:18,  1 user,  load average: 17.16, 9.82, 5.15
@@ -1311,6 +1324,7 @@ KiB Swap:  2097148 total,  2097148 free,        0 used. 21751724 avail Mem
    PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
 112036 root      20   0 10.756g 6.728g  23928 S 556.8 11.2  33:35.32 java
 ```
+
 #### server2
 
 ```text
@@ -1338,6 +1352,7 @@ KiB Swap:  2097148 total,  2097148 free,        0 used. 22364924 avail Mem
    PID USER      PR  NI    VIRT    RES    SHR S  %CPU %MEM     TIME+ COMMAND
  82346 root      20   0 10.710g 7.086g  23864 S 770.7 11.8  27:31.04 java
 ```
+
 #### server3
 
 ```text
@@ -1422,6 +1437,7 @@ put_benchmark_timer
               99% <= 64.29 milliseconds
             99.9% <= 194.99 milliseconds
 ```
+
 #### client2：2.6w ops
 
 ```text
