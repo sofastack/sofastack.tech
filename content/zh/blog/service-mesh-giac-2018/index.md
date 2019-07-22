@@ -26,7 +26,7 @@ cover:"https://cdn.nlark.com/yuque/0/2019/png/226702/1563785788055-ee91a9d6-632f
 - 技术案例
 - 总结展望
 
-## 1、背景、概览:
+## 1、背景、概览
 
 ![ServiceMesh 数据平面](https://cdn.nlark.com/lark/0/2018/png/1273/1543218438360-fd1bb4df-7b7f-45b1-a84e-b124fad9eebd.png)
 
@@ -218,7 +218,7 @@ SOFAMesh: [https://github.com/alipay/sofa-mesh](https://github.com/alipay/sofa-m
 
 SOFAMosn: [https://github.com/alipay/sofa-mosn](https://github.com/alipay/sofa-mosn)
 
-##  PPT 下载
+## PPT 下载
 
 [下载地址](https://gw.alipayobjects.com/os/basement_prod/75207926-cfd2-4543-839d-eebd301ca33f.pdf)
 
