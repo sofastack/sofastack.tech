@@ -9,7 +9,7 @@ date: 2019-01-03T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1562902599427-d421bc4c-ee82-416a-87a9-090ff3f85c98.png"
 ---
 
-> Knativ 是Google 发起的 Serverless 项目，希望通过提供一套简单易用的 Serverless 开源方案，将 Serverless 标准化。
+> Knative 是Google 发起的 Serverless 项目，希望通过提供一套简单易用的 Serverless 开源方案，将 Serverless 标准化。
 > 本文根据敖小剑在 2018 年上海 GIAC 演讲内容整理，PPT 获取地址：[下载地址](https://gw.alipayobjects.com/os/basement_prod/6be92114-b951-4d8d-972f-c39142d5fb17.pdf)
 
 ![敖小剑简介](https://cdn.nlark.com/yuque/0/2018/png/156645/1546052299933-4c074292-7d29-4c3f-b71b-ecd073cf37d6.png)
