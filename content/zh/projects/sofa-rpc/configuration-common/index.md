@@ -1,9 +1,7 @@
-
 ---
 title: "RPC 发布订阅配置"
 aliases: "/sofa-rpc/docs/Configuration-Common"
 ---
-
 
 ## ProviderConfig
 
@@ -40,7 +38,7 @@ aliases: "/sofa-rpc/docs/Configuration-Common"
 | compress      | 是否启动压缩             | false              |                                                                            |
 | cache         | 是否启用结果缓存         | false              |                                                                            |
 | parameters    | 额外属性                |                    | Map<String, String>                                                        |
-  
+
 ## ConsumerConfig
 
 | 属性 | 名称 | 默认值 | 备注 |
@@ -56,7 +54,7 @@ aliases: "/sofa-rpc/docs/Configuration-Common"
 | serialization | 序列化协议 | hessian2 |  |
 | register | 是否注册 | true | 取决于实现，可能不生效。 |
 | subscribe | 是否订阅 | true | 取决于实现，可能不生效。 |
-| proxy | 代理类型 | javassist | 还有JDK动态代理 | 
+| proxy | 代理类型 | javassist | 还有JDK动态代理 |
 | protocol | 调用的协议 | bolt | 目前支持bolt，rest，dubbo |
 | directUrl | 直连地址 |  | 直连后register |
 | generic | 是否泛化调用 | false |  |
@@ -102,7 +100,6 @@ aliases: "/sofa-rpc/docs/Configuration-Common"
 | validation | 是否开启参数验证 | null |  |
 | compress | 是否启动压缩 | null |  |
 | parameters | 额外属性 |  | Map<String, String> |
-
 
 
 ## ServerConfig
