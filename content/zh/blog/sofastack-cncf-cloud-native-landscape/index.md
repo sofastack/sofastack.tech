@@ -25,7 +25,7 @@ CNCF(Cloud Native Computing Foundation)，是由 Google 牵头创立的云原生
 
 ### SOFAMosn
 
-<img src="https://cdn.nlark.com/yuque/0/2019/png/226702/1562558785955-ab9590fd-a383-4830-85fa-35633599b07a.png" width=10%>  
+<img src="https://cdn.nlark.com/yuque/0/2019/png/226702/1562558785955-ab9590fd-a383-4830-85fa-35633599b07a.png" width=10% alt="SOFAMosn">  
 
 Star 一下✨：[https://github.com/sofastack/sofa-mosn](https://github.com/sofastack/sofa-mosn)
 
@@ -33,7 +33,7 @@ SOFAMosn(Modular Observable Smart Network)，是一款采用 GoLang 开发的 Se
 
 ### SOFARPC
 
-<img src="https://cdn.nlark.com/yuque/0/2019/png/226702/1562558811258-09e926eb-3863-4679-9875-868a06669813.png" width=10%>  
+<img src="https://cdn.nlark.com/yuque/0/2019/png/226702/1562558811258-09e926eb-3863-4679-9875-868a06669813.png" width=10% alt="SOFARPC">  
 
 Star 一下✨：[https://github.com/sofastack/sofa-rpc](https://github.com/sofastack/sofa-rpc)
 
@@ -43,7 +43,7 @@ SOFARPC 还支持不同的协议，目前包括[Bolt](https://www.sofastack.tech
 
 ### SOFATracer
 
-<img src="https://cdn.nlark.com/yuque/0/2019/png/226702/1562558834212-1876f2d1-48ae-49ae-9e9a-4e2f88fdb790.png" width=10%>  
+<img src="https://cdn.nlark.com/yuque/0/2019/png/226702/1562558834212-1876f2d1-48ae-49ae-9e9a-4e2f88fdb790.png" width=10% alt="SOFATracer">  
 
 Star 一下✨：[https://github.com/sofastack/sofa-tracer](https://github.com/sofastack/sofa-tracer)
 
