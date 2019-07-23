@@ -94,7 +94,7 @@ public class SofaJvmServiceImpl implements SofaJvmService {
 
 - 配置文件：
 
-```
+```java
 spring.application.name=biz-ark-test
 server.port=8800
 logging.path=./logs
@@ -115,7 +115,7 @@ logging.path=./logs
        <goals>
          <goal>repackage</goal>
        </goals>
-			 <!--ark-biz 包的打包配置  -->
+         <!--ark-biz 包的打包配置  -->
        <configuration>
          <!--是否打包、安装和发布 ark biz，详细参考 Ark Biz 文档，默认为false-->
          <attach>true</attach>
@@ -140,19 +140,19 @@ logging.path=./logs
 ```xml
 <!-- runtime plugin -->
 <dependency>
- 		<groupId>com.alipay.sofa</groupId>
- 		<artifactId>runtime-sofa-boot-plugin</artifactId>
+        <groupId>com.alipay.sofa</groupId>
+        <artifactId>runtime-sofa-boot-plugin</artifactId>
 </dependency>
 
 <!-- 其他依赖 -->
 <dependency>
-  	<groupId>com.alipay.sofa</groupId>
-  	<artifactId>healthcheck-sofa-boot-starter</artifactId>
+    <groupId>com.alipay.sofa</groupId>
+    <artifactId>healthcheck-sofa-boot-starter</artifactId>
 </dependency>
 
 <dependency>
- 		<groupId>com.glmapper.bridge.boot</groupId>
- 		<artifactId>sofa-dashboard-ark-facade</artifactId>
+        <groupId>com.glmapper.bridge.boot</groupId>
+        <artifactId>sofa-dashboard-ark-facade</artifactId>
 </dependency>
 
 ```
@@ -244,7 +244,7 @@ com.alipay.sofa.ark.master.biz 默认情况下是宿主应用的 artifactId。�
     <execution>
       <id>default-cli</id>
       <goals>
-      	<goal>repackage</goal>
+        <goal>repackage</goal>
       </goals>
     </execution>
   </executions>
@@ -266,8 +266,8 @@ SOFAArk 提供了 /bizState 这样一个 endpoint 用来获取当前插件的版
 ```xml
  <!-- 引用 actuator -->
  <dependency>
- 		<groupId>org.springframework.boot</groupId>
- 		<artifactId>spring-boot-starter-actuator</artifactId>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-starter-actuator</artifactId>
  </dependency>
 ```
 
@@ -284,8 +284,8 @@ SOFAArk 提供了 config-ark-plugin 对接 Zookeeper 配置中心，用于运行
 ```xml
 <!-- 引用ark 配置推送扩展插件-->
 <dependency>
-		<groupId>com.alipay.sofa</groupId>
-		<artifactId>config-ark-plugin</artifactId>
+        <groupId>com.alipay.sofa</groupId>
+        <artifactId>config-ark-plugin</artifactId>
 </dependency>
 ```
 
@@ -394,7 +394,6 @@ SOFADashboard 提供两种维度的命令推送：
 进入详情界面，切换版本到 2.0.0：
 
 ![切换版本到 2.0.0](https://cdn.nlark.com/yuque/0/2019/png/226702/1559114004530-912005d1-ec49-429e-9b87-ce7b07533f15.png)
-
 
 执行安装，此时版本 2.0.0 状态将会变为非激活状态：
 
