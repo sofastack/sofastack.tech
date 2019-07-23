@@ -15,7 +15,7 @@ SOFABoot 的类隔离能力借助单独的组件 SOFAArk 实现，遵循 Spring 
 
 在上一篇文章 [《在 Spring Boot 中集成 SOFABoot 类隔离能力》](https://zhuanlan.zhihu.com/p/36909393)中，我们详细介绍了 SOFABoot 类隔离能力的使用背景及其使用方式。本文将介绍 SOFABoot 类隔离组件 SOFAArk 的实现原理。
 
-# 理解 SOFAArk 三要素
+## 理解 SOFAArk 三要素
 
 SOFAArk 类隔离框架定义了三个概念，Ark Container，Ark Plugin，Ark Biz。
 
@@ -47,7 +47,7 @@ SOFAArk 类隔离框架定义了三个概念，Ark Container，Ark Plugin，Ark 
 - Ark Plugin: SOFAArk 定义的一种模块格式，由若干个 Jar 包组成的一个 FatJar，开发人员可以借助官方提供的 maven 打包插件将若干 Jar 包打包成一个 Ark Plugin 供应用依赖。运行时，由独立的类加载器加载，因此有隔离需求的 Jar 包建议打包成 Ark Plugin 供应用依赖。
 - Ark Biz: SOFAArk 定义的一种模块格式，是应用及其依赖的所有三方包组成的一个 FatJar，需要注意的是，Ark Biz 不会包含应用依赖的 Ark Plugin。运行时，Ark Biz由独立的类加载器加载，借助类导入导出关系表，Ark Biz 可以使用 Ark Plugin 的导出类和资源。
 
-# SOFAArk 运行时隔离
+## SOFAArk 运行时隔离
 
 根据上一节的描述可以知道 SOFABoot 类隔离关键是理解 SOFAArk 定义的三个概念，Ark Container，Ark Plugin 和 Ark Biz。下图表示的是应用启动后，运行时 Ark Container，Ark Plugin，Ark Biz 的逻辑分层图：
 
@@ -130,13 +130,13 @@ Ark Biz 和 Ark Plugin 有很大的不同，最明显的则是 Ark Biz 单向依
 
 如此，Ark 包即完成整个启动过程。
 
-# 和 OSGi 对比
+## 和 OSGi 对比
 
 作为开源界早负盛名的动态模块系统，基于 OSGi 规范的 Equinox、Felix 等同样具备类隔离能力，然而他们更多强调的是一种编程模型，面向模块化开发，有一整套模块生命周期的管理，定义模块通信机制以及复杂的类加载模型。作为专注于解决依赖冲突的隔离框架，SOFAArk 专注于类隔离，简化了类加载模型，因此显得更加轻量。
 
 其次在 OSGi 规范中，所有的模块定义成 Bundle 形式，作为应用开发者，他需要了解 OSGi 背后的工作原理，对开发者要求比较高。在 SOFAArk 中，定义了两层模块类型，Ark Plugin 和 Ark Biz，应用开发者只需要添加隔离的 Ark Plugin 依赖，对本身的开发没有任何影响，基本没有开发门槛。
 
-# 正在做的事
+## 正在做的事
 
 全文读下来，读者可能会产生这样的一个疑惑：如果在应用中引入其他应用打包的 Ark Biz 会如何呢？
 
@@ -155,12 +155,9 @@ Ark Biz 和 Ark Plugin 有很大的不同，最明显的则是 Ark Biz 单向依
 
 在这里特别感谢方腾飞， 蚂蚁内部花名 @清英 ，也是我们熟知的并发编程网([http://ifeve.com/](http://ifeve.com/))创始人。清英在蚂蚁内部开发的 Jarslink1.0 在网商银行已经落地使用很长一段时间，Jarslink2.0 是在 Jarslink1.0 基础之上，结合 SOFABoot 类隔离框架，提供了更加通用的应用(模块)隔离和通信的实现方案，敬请期待！
 
-#### 相关传送门
+## 相关传送门
 
-- Ark 包目录结构及其打包插件的使用 https://alipay.github.io/sofastack.github.io/docs/ark-jar.html
-- Ark Plugin 目录结构及其打包插件的使用 https://alipay.github.io/sofastack.github.io/docs/ark-plugin.html
-- Ark Biz 目录结构及其打包插件的使用 https://alipay.github.io/sofastack.github.io/docs/ark-biz.html
-- Ark Plugin 的工程示例 https://github.com/sofastack/sofa-ark/tree/master/sofa-ark-samples/sample-ark-plugin
-- Spring Boot 工程使用类隔离能力 https://github.com/sofastack/sofa-ark/tree/master/sofa-ark-samples/sample-springboot-ark
-- SOFABoot 类隔离使用篇 https://zhuanlan.zhihu.com/p/36909393
-- SOFAStack 知乎专栏 https://zhuanlan.zhihu.com/sofastack
+- Ark Plugin 的工程示例：<https://github.com/sofastack/sofa-ark/tree/master/sofa-ark-samples/sample-ark-plugin>
+- Spring Boot 工程使用类隔离能力：<https://github.com/sofastack/sofa-ark/tree/master/sofa-ark-samples/sample-springboot-ark>
+- SOFABoot 类隔离使用篇：<https://zhuanlan.zhihu.com/p/36909393>
+- SOFAStack 知乎专栏：<https://zhuanlan.zhihu.com/sofastack>

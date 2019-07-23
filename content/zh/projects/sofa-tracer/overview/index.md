@@ -47,10 +47,8 @@ Druid | [doc link](../log-format-datasource/) | 2.2.0
 c3p0 | [doc link](../log-format-datasource/) | 2.2.0
 HikariCP | [doc link](../log-format-datasource/) | 2.2.0
 HttpClient | [doc link](../log-format-datasource/) | 2.2.0
-RestTemplate | [doc link](../log-format-resttemplate/) | 2.3.0
 OkHttp | [doc link](../log-format-okhttp/) | 2.3.2
 Dubbo | [doc link](../log-format-dubbo/) | 2.4.0
-OpenFeign | [doc link](../sofa-tracer/log-format-openfeign/) | 3.0.4
 Redis | TODO | 
 MQ | TODO | 
 

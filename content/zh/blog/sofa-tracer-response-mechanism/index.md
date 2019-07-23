@@ -196,7 +196,7 @@ SofaTracerStatisticReporterManager 在构造函数中初始化了任务执行的
 
 ## 3.1、上报 zipkin 的流程
 
-接着上面的分析，SOFATracer 中的数据上报策略是以组合的形式共存的，这里可以结合 [第2节的第一张图](https://www.yuque.com/sofatracer/tracer/nqmt4p#fc830802) 来看。这里先给出 zipkin 上报的流程，然后再结合流程展开分析：
+接着上面的分析，SOFATracer 中的数据上报策略是以组合的形式共存的，这里可以结合第2节的第一张图来看。这里先给出 zipkin 上报的流程，然后再结合流程展开分析：
 
 ![image.png](https://cdn.nlark.com/yuque/0/2019/png/230565/1546957272356-3f4c8bdc-59fe-4a43-9012-45d816721a39.png)
 

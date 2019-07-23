@@ -21,8 +21,6 @@ SOFATracer 接入的组件列表参考：[SOFATracer 介绍](../overview)，在�
     * [DataSource 埋点接入](../usage-of-datasource)
     * [RestTemplate 埋点接入](../usage-of-resttemplate)
     * [OkHttp 埋点接入](../usage-of-okhttp)
-    * [SOFARPC 埋点接入](/projectes/sofa-rpc/invoke-chain-pass-data)
     * [Dubbo 埋点接入](../usage-of-dubbo)
-    * [Spring Cloud OpenFeign 埋点接入](../usage-of-openfeign)
 * [采样](../sampler)
 * [上报数据到 Zipkin](../report-to-zipkin)

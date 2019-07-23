@@ -29,7 +29,7 @@ aliases: "/sofa-mosn/docs/docs-quickstart-RunWithSOFAMesh"
 
 #### 1.1 安装 docker
 
-* 下载软件包安装，或者使用如下的命令安装
+- 下载软件包安装，或者使用如下的命令安装
 
 ```bash
 $ brew cask install docker
@@ -63,7 +63,7 @@ $ minikube start --memory=8192 --cpus=4 --kubernetes-version=v1.10.0 --vm-driver
 
 ### 4. 安装 kubectl 命令行工具
 
-kubectl 是用于针对 k8s 集群运行命令的命令行接口，安装参考 [https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl)
+kubectl 是用于针对 k8s 集群运行命令的命令行接口，安装参考 [https://kubernetes.io/docs/tasks/tools/install-kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl)。
 
 ```bash
 $ brew install kubernetes-cli
@@ -174,7 +174,6 @@ BookInfo 是一个类似豆瓣的图书应用，它包含四个基础服务
 - Details：图书详情，由 ruby 开发
 
 <div align=center><img src="bookinfo.png" width = "550" height = "400" /></div>
-
 ### 1. 部署 BookInfo 应用并注入 SOFA-Mosn
 
 > 详细过程可以参考 [https://istio.io/docs/examples/bookinfo/](https://istio.io/docs/examples/bookinfo/)
@@ -251,7 +250,7 @@ $ echo $GATEWAY_URL   //例如我这里的地址是 161.117.70.217:80
 161.117.70.217:80
 ```
 
-- 验证 gateway 是否生效 
+- 验证 gateway 是否生效
 
 ```bash
 $ curl -o /dev/null -s -w "%{http_code}\n"  http://$GATEWAY_URL/productpage   //输出 200 表示成功 

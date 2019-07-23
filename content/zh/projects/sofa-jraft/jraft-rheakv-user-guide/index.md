@@ -4,9 +4,9 @@ title: "JRaft RheaKV 用户指南"
 
 ## RheaKV 简介
 
-RheaKV 是一个轻量级的分布式的嵌入式的 KV 存储 lib， rheaKV 包含在 jraft 项目中，是 jraft 的一个子模块
+RheaKV 是一个轻量级的分布式的嵌入式的 KV 存储 lib， rheaKV 包含在 jraft 项目中，是 jraft 的一个子模块。
 
-定位与特性
+**定位与特性**
 
 1. 嵌入式: jar 包方式嵌入到应用中
 2. 强一致性: 基于 multi-raft 分布式一致性协议保证数据可靠性和一致性
@@ -16,7 +16,7 @@ RheaKV 是一个轻量级的分布式的嵌入式的 KV 存储 lib， rheaKV 包
 
 ## 架构设计
 
-![rheakv | left | 700x550](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*6K1mTq0z-TkAAAAAAAAAAABjARQnAQ)
+![架构设计](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*6K1mTq0z-TkAAAAAAAAAAABjARQnAQ)
 
 ## 功能名词
 
@@ -239,7 +239,7 @@ DistributedLock<byte[]> getDistributedLock(final String target, final long lease
 
 **Note**: 还有一个重要的方法 `long getFencingToken()`，当成功上锁后，可以通过该接口获取当前的 fencing token， 这是一个单调递增的数字，也就是说它的值大小可以代表锁拥有者们先来后到的顺序，可以用这个 fencing token 解决下图[这个问题](http://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html)：
 
-![image.png | left | 653x237](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*ZKq8SrSGE90AAAAAAAAAAABjARQnAQ "")
+![分布式锁](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*ZKq8SrSGE90AAAAAAAAAAABjARQnAQ)
 
 上图来自 [http://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html](http://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html)
 
@@ -311,7 +311,7 @@ if (rheaKVStore.init(opts)) {
 
 ### KV模块内部处理流程
 
-![kv-design.png | left | 700x450](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*VsIgSqmCSQUAAAAAAAAAAABjARQnAQ)
+![KV 模块内部处理流程](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*VsIgSqmCSQUAAAAAAAAAAABjARQnAQ)
 
 #### RheaKVStore
 
@@ -355,7 +355,7 @@ RheaKV 的 raft 入口，从这里开始 raft 流程
 
 ### PD 模块内部处理流程
 
-![pd-design.png | left | 700x600](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*38DLRJ_YScUAAAAAAAAAAABjARQnAQ)
+![PD 模块内部处理流程](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*38DLRJ_YScUAAAAAAAAAAABjARQnAQ)
 
 #### 概述
 
@@ -446,7 +446,7 @@ MetadataClient 负责从 PD 获取集群元信息以及注册元信息
 
 #### __分片逻辑：RegionRouteTable__
 
-![image.png | left | 747x210](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*NySFTZrZ8l4AAAAAAAAAAABjARQnAQ "")
+![分片逻辑](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*NySFTZrZ8l4AAAAAAAAAAABjARQnAQ)
 
 可以看到，实现上图最适合的数据结构便是跳表或者二叉树（最接近匹配项查询）
 
@@ -561,14 +561,14 @@ __RheaKV 可以划分为两种类型的请求，两种类型需要不同的 fail
     * RegionRouteTable 是一个红黑树结构存储的 region 路由表，startKey 为作为红黑树的key，只要查找 [startKey, endKey) 的子视图再加上一个 floorEntry(startKey) 即可
     * 如下图例子，计算得出 [startKey, endKey) 横跨 region1, region2, region3 一共 3 个分区(region1 为 floor entry, region2 和 region3 为子视图部分)
 
-![image.png | left | 691x212](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*5gBCRJZjEqAAAAAAAAAAAABjARQnAQ)
+![region list](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*5gBCRJZjEqAAAAAAAAAAAABjARQnAQ)
 
 * __请求分裂: scan -> multi-region scan__
     * region1 -> regionScan(startKey, regionEndKey1)
     * region2 -> regionScan(regionStartKey2, regionEndKey2)
     * region3 -> regionScan(regionStartKey3, endKey)
 
-![image.png | left | 691x214](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*BLVgSaFlAgoAAAAAAAAAAABjARQnAQ)
+![请求分裂](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*BLVgSaFlAgoAAAAAAAAAAABjARQnAQ)
 
 * __遭遇 region split (分裂的标志是 region epoch 发生变化)__
     * 刷新 RegionRouteTable，需要从 PD 获取最新的路由表，比如当前示例中 region2 分裂变成了 region2 + region5
@@ -576,7 +576,7 @@ __RheaKV 可以划分为两种类型的请求，两种类型需要不同的 fail
             * region2 -> regionScan(regionStartKey2, newRegionEndKey2)
             * region5 -> regionScan(regionStartKey5, regionEndKey5)
 
-![image.png | left | 635x201](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*Cr5gT4FFs3QAAAAAAAAAAABjARQnAQ)
+![region split](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*Cr5gT4FFs3QAAAAAAAAAAABjARQnAQ)
 
 * __遭遇 Invalid Peer (NOT\_LEADER 等错误)__
     * 这个就很简单了, 重新获取当前 key 区间所属的 raft-group 的最新 leader，再次发起调用即可

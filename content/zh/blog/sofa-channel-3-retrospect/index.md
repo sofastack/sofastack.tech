@@ -240,7 +240,7 @@ SOFARPC 和 SOFABolt 在性能优化上做了一些工作，包括一些比较�
 
 ### 本期视频回顾
 
-[https://tech.antfin.com/activities/245](https://yuque.antfin-inc.com/wb-pwq501303/vom0gb/vrd7un)
+[https://tech.antfin.com/activities/245](https://tech.antfin.com/activities/245)
 
 ### 往期直播精彩回顾
 
@@ -250,9 +250,9 @@ SOFARPC 和 SOFABolt 在性能优化上做了一些工作，包括一些比较�
 ### 相关参考链接
 
 - Demo 链接：[https://github.com/leizhiyuan/rpcchannel](https://github.com/leizhiyuan/rpcchannel)
-- 【剖析 | SOFARPC 框架】系列之 SOFARPC 单机故障剔除剖析：[https://mp.weixin.qq.com/s/WusXmhMnsvQ1tQh5wiCyDw](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247484241&idx=1&sn=98aa6ef6d4e1b0d4b5d4bdfa11c783fc&scene=21#wechat_redirect)
+- 【剖析 | SOFARPC 框架】系列之 SOFARPC 单机故障剔除剖析：[https://mp.weixin.qq.com/s/WusXmhMnsvQ1tQh5wiCyDw](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247484241&idx=1&sn=98aa6ef6d4e1b0d4b5d4bdfa11c783fc&scene=21)
 - bolt enable Pooled：[https://github.com/alipay/sofa-bolt/issues/78](https://github.com/alipay/sofa-bolt/issues/78)
-- Netty pooled release note：[https://netty.io/wiki/new-and-noteworthy-in-4.1.html#pooledbytebufallocator-as-the-default-allocator](https://netty.io/wiki/new-and-noteworthy-in-4.1.html#pooledbytebufallocator-as-the-default-allocator)
+- Netty pooled release note：[https://netty.io/wiki/new-and-noteworthy-in-4.1.html#pooledbytebufallocator-as-the-default-allocator](https://netty.io/wiki/new-and-noteworthy-in-4.1.html)
 
 ### 讲师观点
 

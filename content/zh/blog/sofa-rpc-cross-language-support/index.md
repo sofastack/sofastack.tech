@@ -157,7 +157,7 @@ respstatus: response status 服务端响应结果状态
 
 由于每个语言都去对接对接中心存在一定的难度，也不具备可推广性，而在蚂蚁内部，我们已经在一些跨语言的场景下，运行 SOFAMosn，通过 SOFAMosn，我们对接了站内的注册中心，其他的语言，仅需要将自己需要订阅和发布的信息，通过 Http的接口形式，通知 SOFAMosn，SOFAMosn 将会将这些信息和注册中心进行注册和订阅，并维持地址信息。
 
-这样对于其他语言来说，仅需要非常简单的 json请求，就完成了跨语言的服务注册和订阅。后续新注册中心的对接等等。其他语言都不再需要理解。相关的 sdk。我们已经开发并实现完成。对于 SOFAMosn 的更多介绍，可以参看 SOFAMosn官网：[http://www.sofastack.tech/sofa-mosn/docs/README](http://www.sofastack.tech/sofa-mosn/docs/README)
+这样对于其他语言来说，仅需要非常简单的 json请求，就完成了跨语言的服务注册和订阅。后续新注册中心的对接等等。其他语言都不再需要理解。相关的 sdk。我们已经开发并实现完成。对于 SOFAMosn 的更多介绍，可以参看 [SOFAMosn 文档](http://www.sofastack.tech/projects/sofa-mosn/overview)。
 
 | 语言 | 实现 |
 | --- | --- |
