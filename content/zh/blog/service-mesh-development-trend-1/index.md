@@ -110,7 +110,6 @@ Google 的打法则是围绕 Istio 。首先是在2018年底推出了 Istio on G
 
 > Google Traffic Director 的详细介绍，请查看我之前的博客文章 [Google Traffic Director详细介绍](https://skyao.io/post/201905-google-traffic-director-detail/)。
 
-
 微软则推出了Service Fabric Mesh。Azure Service Fabric 是Microsoft的微服务框架，设计用于公共云，内部部署以及混合和多云架构。而 Service Fabric Mesh 是 Azure 完全托管的产品，在 2018年8月 推出预览版。
 
 ![service-fabric-mesh](https://cdn.nlark.com/yuque/0/2019/png/226702/1559010587912-9668083d-21e3-4915-8084-cbd08b43615f.png)
