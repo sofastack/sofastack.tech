@@ -57,7 +57,7 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 
 - SOFAChannel#7：[自定义资源 CAFEDeployment 的背景、实现和演进 | SOFAChannel#7 直播整理](https://www.sofastack.tech/blog/sofa-channel-7-retrospect/)
 - SOFAChannel#6：[蚂蚁金服轻量级监控分析系统解析 | SOFAChannel#6 直播整理](https://www.sofastack.tech/blog/sofa-channel-6-retrospect/)
-- SOFAChannel#5：[给研发工程师的代码质量利器 | SOFAChannel#5 直播整理](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247485058&idx=1&sn=ff5c79234a34b27f694630f70593789d&chksm=faa0e958cdd7604efe5ab3600b807d5e5580b283b799bb09b6386af314f5ace8ec166e3b54f0&scene=21#wechat_redirect)
+- SOFAChannel#5：[给研发工程师的代码质量利器 | SOFAChannel#5 直播整理](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247485058&idx=1&sn=ff5c79234a34b27f694630f70593789d&chksm=faa0e958cdd7604efe5ab3600b807d5e5580b283b799bb09b6386af314f5ace8ec166e3b54f0&scene=21)
 - SOFAChannel#4：[分布式事务 Seata TCC 模式深度解析 | SOFAChannel#4 直播整理](https://www.sofastack.tech/blog/sofa-channel-4-retrospect/)
 - SOFAChannel#3：[SOFARPC 性能优化实践（下）| SOFAChannel#3 直播整理](https://www.sofastack.tech/blog/sofa-channel-3-retrospect/)
 - SOFAChannel#2：[SOFARPC 性能优化实践（上）| SOFAChannel#2 直播整理](https://www.sofastack.tech/blog/sofa-channel-2-retrospect/)

@@ -74,11 +74,6 @@ title: "Awesome SOFA"
 ## 社区{#community}
 
 - [Github Community](https://github.com/sofastack/community)
-- <SOFA:Lab /> SOFA源码研究实验室：加入我们，回到写代码最初的样子
-  
-  - [SOFARPCLab](https://www.yuque.com/sofarpclab)
-  - [SOFABoltLab](https://www.yuque.com/sofaboltlab)
-  - [SOFATracerLab](https://www.yuque.com/sofatracer)
 - 微信
   - 公众号：金融级分布式架构（Antfin_SOFA）：致力于打造一流的分布式技术在金融场景应用实践的技术交流平台，专注于交流金融科技行业内最前沿、可供参考的技术方案与实施路线。
     
