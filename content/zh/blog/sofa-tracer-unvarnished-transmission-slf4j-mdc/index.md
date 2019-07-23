@@ -62,7 +62,7 @@ SOFATracer 的 Tracer 的实现类是 SofaTracer， UML 图如下：
 
 ![img](https://cdn.nlark.com/yuque/0/2019/jpeg/111154/1547518277497-796df39e-3888-41e1-b5b9-a899c30fdd55.jpeg)
 
-从图中可以看出 SofaTracer 除了有跨进程传输的能力，还扩展了数据上报的能力( Reporter )和采样能力( Sampler )。数据上报能力可以参考 [SOFATracer 数据上报机制和源码分析|剖析 ](https://www.yuque.com/sofatracer/tracer/nqmt4p)这篇文章；采样将在下一篇文章中进行剖析。
+从图中可以看出 SofaTracer 除了有跨进程传输的能力，还扩展了数据上报的能力( Reporter )和采样能力( Sampler )。数据上报能力可以参考《SOFATracer 数据上报机制和源码分析|剖析》这篇文章；采样将在下一篇文章中进行剖析。
 
 跨进程透传的就是 SpanContext 的内容， carrier 为传输的载体， SpanContext 的实现类为 SofaTracerSpanContext， UML 图：
 

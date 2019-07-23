@@ -1,4 +1,3 @@
-
 ---
 title: "快速开始"
 aliases: "/sofa-boot/docs/QuickStart"
@@ -131,8 +130,6 @@ logging.path=./logs
 
 如果应用启动失败或者健康检查返回失败，可以通过相应的日志文件找到错误的原因，有些需要关注 `common-error.log` 日志。
 
-附此示例工程的[源代码地址](https://github.com/sofastack/sofa-boot/tree/master/sofaboot-samples/sofaboot-sample)。
-
 ## 测试
 我们知道，SpringBoot 官方提供了和 JUnit4 集成的 `SpringRunner`, 用于集成测试用例的编写； 在 SOFABoot 中，依然可以使用原生的 `SpringRunner`， 但是推荐使用 SOFABoot 自带的 `SofaBootRunner` 以及 `SofaJUnit4Runner` 编写集成测试和单元测试；应用需要额外引入如下 Starter:
 
@@ -147,7 +144,7 @@ logging.path=./logs
 
 ## 模块化开发
 
-这部分将演示如何在 SOFABoot 环境下进行模块化开发，您可以直接在工程下找到本文档的[示例代码](https://github.com/sofastack/sofa-boot/tree/master/sofaboot-samples/sofaboot-sample-with-isle)，项目一共包括四个模块：
+这部分将演示如何在 SOFABoot 环境下进行模块化开发，您可以直接在工程下找到本文档的示例代码，项目一共包括四个模块：
 
 ```text
 .

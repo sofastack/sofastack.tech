@@ -29,17 +29,17 @@ cover: "/cover.jpg"
 
 ![image.png](https://cdn.nlark.com/yuque/0/2018/png/230565/1545722681335-235fb45d-d12a-43a8-bd8d-15ff594a27ee.png)
 
-因此在面对这种<span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)">复杂的大规模分布式集群来实现的服务体系来说，就需要一些可以帮助理解各个应用的线上调用行为、并可以分析远程调用的组件。</span></span>
+因此在面对这种复杂的大规模分布式集群来实现的服务体系来说，就需要一些可以帮助理解各个应用的线上调用行为、并可以分析远程调用的组件。
 
-基于上述背景，蚂蚁金服开源了基于 [OpenTracing 规范](http://opentracing.io/documentation/pages/spec.html)<span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)"> （</span></span>[http://opentracing.io/documentation/pages/spec.html](http://opentracing.io/documentation/pages/spec.html)<span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)">）实现的 </span></span>`SOFATracer` 分布式链路跟踪组件，为实施大规模服务化体系架构场景下提供了链路跟踪的解决方案。
+基于上述背景，蚂蚁金服开源了基于 [OpenTracing 规范](http://opentracing.io/documentation/pages/spec.html)实现的 `SOFATracer` 分布式链路跟踪组件，为实施大规模服务化体系架构场景下提供了链路跟踪的解决方案。
 
 在介绍 `SOFATracer` 之前，先来了解一下 `Opentracing` 规范。
 
 # 1、Opentracing 简介
 
-首先来解释下 <span data-type="color" style="color:rgb(33, 37, 41)"><span data-type="background" style="background-color:rgb(255, 255, 255)"><code>OpenTracing</code></span></span><span data-type="color" style="color:rgb(33, 37, 41)"><span data-type="background" style="background-color:rgb(255, 255, 255)"> 是什么</span></span>`OpenTracing` 致<span data-type="color" style="color:rgb(33, 37, 41)"><span data-type="background" style="background-color:rgb(255, 255, 255)">力于为分布式跟踪创建更标准化的API和工具，它由</span></span>完整的API规范、实现该规范的框架、库以及项目文档组成。
+首先来解释下 `OpenTracing` 是什么`OpenTracing` 致力于为分布式跟踪创建更标准化的API和工具，它由完整的API规范、实现该规范的框架、库以及项目文档组成。
 
-<span data-type="color" style="color:rgb(33, 37, 41)"><span data-type="background" style="background-color:rgb(255, 255, 255)"><code>OpenTracing</code></span></span><span data-type="color" style="color:rgb(33, 37, 41)"><span data-type="background" style="background-color:rgb(255, 255, 255)"> 提供了一套</span></span><span data-type="color" style="color:rgb(79, 79, 79)"><span data-type="background" style="background-color:rgb(255, 255, 255)">平台无关、厂商无关的 </span></span><span data-type="color" style="color:rgb(79, 79, 79)"><span data-type="background" style="background-color:rgb(255, 255, 255)"><code>API</code></span></span><span data-type="color" style="color:rgb(79, 79, 79)"><span data-type="background" style="background-color:rgb(255, 255, 255)">，这样不同的组织或者开发人员就能够更加方便的添加或更换追踪系统的实现。 </span></span><span data-type="color" style="color:rgb(33, 37, 41)"><span data-type="background" style="background-color:rgb(255, 255, 255)"><code>OpenTracing API</code></span></span><span data-type="color" style="color:rgb(33, 37, 41)"><span data-type="background" style="background-color:rgb(255, 255, 255)"> 中的一些概念和术语，在不同的语言环境下都是共享的。</span></span>
+`OpenTracing` 提供了一套平台无关、厂商无关的 `API`，这样不同的组织或者开发人员就能够更加方便的添加或更换追踪系统的实现。 `OpenTracing API` 中的一些概念和术语，在不同的语言环境下都是共享的。
 
 ## 1.1、数据模型
 
@@ -53,8 +53,8 @@ cover: "/cover.jpg"
 
 - `root span` : 当前链路中的第一个 `span`
 - `ChildOf` 和 `FollowFrom` 是目前被定义的两种 `References` 类型
-  - `ChildOf` : <span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)"> </span></span><span data-type="color" style="color:#262626">父级 span某种程度上取决于子span (子span的结果可能会对父span产生影响)</span>
-  - `FollowFrom` : <span data-type="color" style="color:rgb(33, 37, 41)"><span data-type="background" style="background-color:rgb(255, 255, 255)">父 </span></span><span data-type="color" style="color:rgb(33, 37, 41)"><span data-type="background" style="background-color:rgb(255, 255, 255)"><code>Span </code></span></span><span data-type="color" style="color:rgb(33, 37, 41)"><span data-type="background" style="background-color:rgb(255, 255, 255)">不以任何方式依赖子 </span></span><span data-type="color" style="color:rgb(33, 37, 41)"><span data-type="background" style="background-color:rgb(255, 255, 255)"><code>Span</code></span></span>
+  - `ChildOf` : 父级 span某种程度上取决于子span （子span的结果可能会对父span产生影响）
+  - `FollowFrom` : 父 `Span`不以任何方式依赖子 `Span`
 
 但是为了简化 `span` 之间的这种依赖关系，在具体实现时通常会将具有嵌套关系的作为 `ChildOf`，平行执行的作为`FollowFrom`，比如：
 
@@ -170,17 +170,17 @@ __c、SpanContext & SofaTracerSpanContext__
 
 `SOFATracer` 基于 [OpenTracing 规范](http://opentracing.io/documentation/pages/spec.html)（[https://opentracing.io/specification/](https://opentracing.io/specification/)）实现，并且通过 [Disruptor](https://github.com/LMAX-Exchange/disruptor) （[https://github.com/LMAX-Exchange/disruptor](https://github.com/LMAX-Exchange/disruptor))组件实现了日志的无锁异步打印能力。
 
-- <span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)">基于 </span></span>[SLF4J 的 MDC](https://www.slf4j.org/manual.html#mdc)<span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)"> 扩展能力</span></span>
+- 基于 [SLF4J 的 MDC](https://www.slf4j.org/manual.html#mdc) 扩展能力
 
 应用在通过面向日志编程接口 SLF4J 打印应用日志时，可以只在对应的日志实现配置文件的 PatternLayout 中添加相应的参数即可，如添加 [%X{SOFA-TraceId},%X{SOFA-SpanId}] ，那么应用日志就可以在发生链路调用时打印出相应的 TraceId 和 SpanId，而无论应用具体的日志实现是 Logback、Log4j2 或者 Log4j。关于这部分的实现原理，期待大家一起编写，领取方式见文末。
 
 - `SOFATracer` 的埋点机制
 
-`SOFATracer` 目前仅提供了基于自身 `API` 埋点的方式。<span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)"><code>SOFATracer</code></span></span><span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)"> 中所有的插件均需要实现自己的 </span></span><span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)"><code>Tracer</code></span></span><span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)"> 实例，如 </span></span><span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)"><code>Mvc</code></span></span><span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)"> 的 </span></span><span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)"><code>SpringMvcTracer</code></span></span><span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)"> 、</span></span><span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)"><code>HttpClient</code></span></span><span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)"> 的 </span></span><span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)"><code>HttpClientTracer</code></span></span><span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)"> 等，如下图所示：</span></span>
+SOFATracer 目前仅提供了基于自身 API 埋点的方式。SOFATracer 中所有的插件均需要实现自己的 Tracer 实例，如 Mvc 的 SpringMvcTracer 、HttpClient 的 HttpClientTracer 等，如下图所示：
 
 ![image.png](https://cdn.nlark.com/yuque/0/2018/png/230565/1545727208409-6fc5d6d0-d46e-479e-8747-c7d07d86025f.png)
 
-<span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)"><code>SOFATracer</code></span></span><span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)"> 将不同的扩展组件分为 </span></span><span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)"><code>AbstractClientTracer</code></span></span><span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)"> 和 </span></span><span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)"><code>AbstractServerTracer</code></span></span><span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)">，再通过</span></span><span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)"><code>AbstractClientTracer</code></span></span><span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)"> 和 </span></span><span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)"><code>AbstractServerTracer</code></span></span><span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)"> 衍生出具体的组件 </span></span><span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)"><code>Tracer</code></span></span><span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)"> 实现。这种方式的好处在于，所有的插件实现均有 </span></span><span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)"><code>SOFATracer</code></span></span><span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)"> 本身来管控，对于不同的组件可以轻松的实现差异化和定制化。</span></span>
+`SOFATracer` 将不同的扩展组件分为 `AbstractClientTracer` 和 `AbstractServerTracer`，再通过`AbstractClientTracer` 和 `AbstractServerTracer` 衍生出具体的组件 `Tracer` 实现。这种方式的好处在于，所有的插件实现均有 `SOFATracer` 本身来管控，对于不同的组件可以轻松的实现差异化和定制化。
 
 但是为了能够拥抱社区，我们在后续的版本中将会提供基于 `Opentracing API` 的埋点扩展实现，从而实现与 [opentracing-contrib](https://github.com/opentracing-contrib) 的无缝对接。基于 `Opentracing API` 的插件埋点方案如下图所示：
 
@@ -194,11 +194,11 @@ __c、SpanContext & SofaTracerSpanContext__
 
 ![image.png](https://cdn.nlark.com/yuque/0/2018/png/230565/1545729496348-ff16a735-a708-463b-9a00-a64b528eb85d.png)
 
-从流程图中可以看到，此过程中涉及到了三个上报点，首先是上报到 `zipkin`，后面是落盘；<span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)">在日志记录方面，</span></span>`SOFATracer` 中为不同的组件均提供了独立的日志空间，除此之外，`SOFATracer` 在链路数据采集时提供了两种不同的日志记录模式：摘要日志和统计日志，这对于后续构建一些如<span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)">故障的快速发现、服务治理等管控端提供了强大的数据支撑。关于数据上报，</span></span>期待大家一起编写，领取方式见文末<span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)">。</span></span>
+从流程图中可以看到，此过程中涉及到了三个上报点，首先是上报到 `zipkin`，后面是落盘；在日志记录方面，`SOFATracer` 中为不同的组件均提供了独立的日志空间，除此之外，`SOFATracer` 在链路数据采集时提供了两种不同的日志记录模式：摘要日志和统计日志，这对于后续构建一些如故障的快速发现、服务治理等管控端提供了强大的数据支撑。关于数据上报，期待大家一起编写，领取方式见文末。
 
 - `SOFATracer` 的采样机制
 
-对于链路中的数据，并非所有的数据都是值得关注的。一方面是可以节约磁盘空间，另一方面可以将某些无关数据直接过滤掉。基于此，`SOFATracer` 提供了链路数据采样能力。目前我们提供了两种策略，一种是基于固定比率的采样，另一种是基于用户扩展实现的自定义采样；在自定义采样设计中，我们将 `SofaTracerSpan` 实例作为采样计算的条件，用户可以基于此实现丰富的采样规则。关于采样机制，期待大家一起编写，领取方式见文末<span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)">。</span></span>
+对于链路中的数据，并非所有的数据都是值得关注的。一方面是可以节约磁盘空间，另一方面可以将某些无关数据直接过滤掉。基于此，`SOFATracer` 提供了链路数据采样能力。目前我们提供了两种策略，一种是基于固定比率的采样，另一种是基于用户扩展实现的自定义采样；在自定义采样设计中，我们将 `SofaTracerSpan` 实例作为采样计算的条件，用户可以基于此实现丰富的采样规则。关于采样机制，期待大家一起编写，领取方式见文末。
 
 - `SOFATracer` 链路透传机制
 

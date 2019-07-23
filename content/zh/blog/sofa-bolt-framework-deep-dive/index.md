@@ -57,7 +57,7 @@ SOFABolt核心功能包括三大块：
 
 ![image.png | left | 632x534](https://cdn.nlark.com/yuque/0/2018/png/172326/1542535048013-bf091366-d7ab-489a-be0a-34d98459960c.png)
 
-CommandFactory是一个工厂类，比较简单，不展开介绍。编解码相关内容见[《SOFABolt编解码机制》](https://www.yuque.com/sofaboltlab/sofabolt/spza7y)。下面介绍一下CommandHandler对请求的分发和处理。
+CommandFactory是一个工厂类，比较简单，不展开介绍。编解码相关内容见《SOFABolt编解码机制》。下面介绍一下CommandHandler对请求的分发和处理。
 
 ![carbon (1).png | left | 747x230](https://cdn.nlark.com/yuque/0/2018/png/172326/1542680035000-1a6585d4-cdbd-462e-908b-66be63355752.png)
 

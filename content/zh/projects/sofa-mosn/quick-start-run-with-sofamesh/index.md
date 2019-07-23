@@ -18,7 +18,6 @@ aliases: "/sofa-mosn/docs/docs-quickstart-RunWithSOFAMesh"
 注意：当前 SOFAMosn 不支持在原生的 Istio 中直接使用。
 
 <div align=center><img src="mosn-introduction.png" width = "450" height = "400" /></div>
-
 ## 准备工作
 
 本文以 macOS 为例 ，其他环境可以安装对应版本的软件。
@@ -63,7 +62,7 @@ $ minikube start --memory=8192 --cpus=4 --kubernetes-version=v1.10.0 --vm-driver
 
 ### 4. 安装 kubectl 命令行工具
 
-kubectl 是用于针对 k8s 集群运行命令的命令行接口，安装参考 [https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl)
+kubectl 是用于针对 k8s 集群运行命令的命令行接口，安装参考 [https://kubernetes.io/docs/tasks/tools/install-kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl)。
 
 ```bash
 $ brew install kubernetes-cli
@@ -174,7 +173,6 @@ BookInfo 是一个类似豆瓣的图书应用，它包含四个基础服务
 - Details：图书详情，由 ruby 开发
 
 <div align=center><img src="bookinfo.png" width = "550" height = "400" /></div>
-
 ### 1. 部署 BookInfo 应用并注入 SOFA-Mosn
 
 > 详细过程可以参考 [https://istio.io/docs/examples/bookinfo/](https://istio.io/docs/examples/bookinfo/)

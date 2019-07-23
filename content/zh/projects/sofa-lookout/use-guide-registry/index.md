@@ -1,9 +1,7 @@
-
 ---
 title: "客户端 Registry 使用指南"
 aliases: "/sofa-lookout/docs/useguide-registry"
 ---
-
 
 ## Registry 的使用
 
@@ -14,12 +12,15 @@ aliases: "/sofa-lookout/docs/useguide-registry"
 
 （1）主动推模式
 
-     可以通过【客户端配置】指定远程 Agent 的IP地址，即开始上报检查，和定时上报数据。
+```plain
+ 可以通过【客户端配置】指定远程 Agent 的IP地址，即开始上报检查，和定时上报数据。
+```
 
 （2）被动拉模式
 
-     可以通过【客户端配置】启动该模式，则在 19399 端口提供 HTTP 服务。更多交互细节请参考（待补充）
-
+```plain
+ 可以通过【客户端配置】启动该模式，则在 19399 端口提供 HTTP 服务。更多交互细节请参考（待补充）
+```
 
 ### 2. 对接到 Prometheus
 
@@ -55,9 +56,9 @@ scrape_configs:
 docker run -d -p 9090:9090 -v $PWD/prometheus.yml:/etc/prometheus/prometheus.yml  --name prom prom/prometheus:master
 ```
 
-然后通过浏览器访问: http://localhost:9090，再通过 PromQL 查询即可查询到对应的 Metrics。
+然后通过浏览器访问: <http://localhost:9090>，再通过 PromQL 查询即可查询到对应的 Metrics。
 
-SOFALookout 中也提供了一个[对接 Prometheus 的样例](https://github.com/sofastack/sofa-lookout/tree/master/client/samples/lookout-client-samples-prometheus)，大家可以前往自行查看。
+SOFALookout 中也提供了一个对接 Prometheus 的样例，大家可以前往自行查看。
 
 ### 3. 对接 SpringBoot actuator
 
@@ -70,6 +71,6 @@ SOFALookout 中也提供了一个[对接 Prometheus 的样例](https://github.co
 </dependency>
 ```
 
-然后启动后访问 http://localhost:8080/metrics 既可以看到通过 SOFALookout API 埋点的数据。
+然后启动后访问 <http://localhost:8080/metrics>  既可以看到通过 SOFALookout API 埋点的数据。
 
-SOFALookout 也提供了[集成的样例工程](https://github.com/sofastack/sofa-lookout/tree/master/client/samples/lookout-client-samples-boot)，大家可以前往自行查看。
+SOFALookout 也提供了集成的样例工程，大家可以前往自行查看。
