@@ -18,6 +18,7 @@ aliases: "/sofa-mosn/docs/docs-quickstart-RunWithSOFAMesh"
 注意：当前 SOFAMosn 不支持在原生的 Istio 中直接使用。
 
 <div align=center><img src="mosn-introduction.png" width = "450" height = "400" /></div>
+
 ## 准备工作
 
 本文以 macOS 为例 ，其他环境可以安装对应版本的软件。
@@ -28,7 +29,7 @@ aliases: "/sofa-mosn/docs/docs-quickstart-RunWithSOFAMesh"
 
 #### 1.1 安装 docker
 
-* 下载软件包安装，或者使用如下的命令安装
+- 下载软件包安装，或者使用如下的命令安装
 
 ```bash
 $ brew cask install docker
@@ -249,7 +250,7 @@ $ echo $GATEWAY_URL   //例如我这里的地址是 161.117.70.217:80
 161.117.70.217:80
 ```
 
-- 验证 gateway 是否生效 
+- 验证 gateway 是否生效
 
 ```bash
 $ curl -o /dev/null -s -w "%{http_code}\n"  http://$GATEWAY_URL/productpage   //输出 200 表示成功 
