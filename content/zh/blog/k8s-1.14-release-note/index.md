@@ -1,5 +1,5 @@
 ---
-title: "K8s 1.14 发布了，Release Note 该怎么读？"
+title: "Kubernetes 1.14 发布了，Release Note 该怎么读？"
 author: "张磊、心贵、临石、徙远、衷源、浔鸣"
 description: "在本篇文章中，我们将 1.14 的 Release Note 按照主题进行了重新归纳和梳理，按照类别对重要变更进行了技术剖析和讨论。希望这种“分类解读”的方式，能够帮助大家更好的理解 1.14 这个发布的核心内容。"
 categories: "Kubernetes"
