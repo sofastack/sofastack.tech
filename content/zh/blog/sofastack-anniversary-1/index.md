@@ -6,7 +6,7 @@ description: "这一年，感谢有你。"
 categories: "SOFAStack"
 tags: ["SOFAStack"]
 date: 2019-04-15T21:00:00+08:00
-cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563791736118-6c364c51-09d7-4d31-97bd-18ac4ae601ef.png"
+cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563846224906-a960e797-9dfe-4985-bfdd-b7ef2cd83e6d.png"
 ---
 
 Hey, SOFAer！有些话想对你说：
