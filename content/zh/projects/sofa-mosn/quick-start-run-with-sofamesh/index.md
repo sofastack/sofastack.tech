@@ -4,6 +4,7 @@ aliases: "/sofa-mosn/docs/docs-quickstart-RunWithSOFAMesh"
 ---
 
 本文将介绍如何使用 SOFAMosn 在 SOFAMesh 框架下搭建 Service Mesh 的开发环境，并验证 SOFAMosn 的一些基础路由能力、负载均衡能力等。本文介绍的内容将包括 : 
+
 - SOFAMosn 与 SOFAMesh 的关系
 - 准备工作
 - 源码方式部署 SOFAMesh
@@ -17,7 +18,7 @@ aliases: "/sofa-mosn/docs/docs-quickstart-RunWithSOFAMesh"
 
 注意：当前 SOFAMosn 不支持在原生的 Istio 中直接使用。
 
-<div align=center><img src="mosn-introduction.png" width = "450" height = "400" /></div>
+<div align=center><img src="mosn-introduction.png" width = "450" height = "400" alt="SOFAMosn 介绍" /></div>
 
 ## 准备工作
 
@@ -29,7 +30,7 @@ aliases: "/sofa-mosn/docs/docs-quickstart-RunWithSOFAMesh"
 
 #### 1.1 安装 docker
 
-- 下载软件包安装，或者使用如下的命令安装
+下载软件包安装，或者使用如下的命令安装。
 
 ```bash
 $ brew cask install docker
@@ -82,7 +83,7 @@ $ brew install kubernetes-helm
 ### 1. 下载 SOFAMesh 源码
 
 ```bash
-$ git clone git@github.com:alipay/sofa-mesh.git
+$ git clone https://github.com/sofastack/sofa-mesh
 $ cd sofa-mesh
 ```
 
@@ -147,7 +148,7 @@ istio-telemetry            ClusterIP   172.16.200.109   <none>        9091/TCP,1
 prometheus                 ClusterIP   172.16.157.229   <none>        9090/TCP                                2m
 ```
 
-istio-system 命名空间下的 pod 状态都是 Running 时，说明已经部署成功
+`istio-system` 命名空间下的 pod 状态都是 Running 时，说明已经部署成功。
 
 ```bash
 $ kubectl get pods -n istio-system
@@ -166,31 +167,32 @@ prometheus-84bd4b9796-nq8lg                 1/1     Running   0          5m
 
 ## 三、BookInfo 实验
 
-BookInfo 是一个类似豆瓣的图书应用，它包含四个基础服务
+BookInfo 是一个类似豆瓣的图书应用，它包含四个基础服务：
 
-- Product Page：主页，由 python 开发，展示所有图书信息，它会调用 Reviews 和 Details 服务
-- Reviews：评论，由 java 开发，展示图书评论，会调用 Ratings 服务
-- Ratings：评分服务，由 nodejs 开发
-- Details：图书详情，由 ruby 开发
+-  Product Page：主页，由 python 开发，展示所有图书信息，它会调用 Reviews 和 Details 服务
+-  Reviews：评论，由 java 开发，展示图书评论，会调用 Ratings 服务
+-  Ratings：评分服务，由 nodejs 开发
+-  Details：图书详情，由 ruby 开发
 
-<div align=center><img src="bookinfo.png" width = "550" height = "400" /></div>
+<div align=center><img src="bookinfo.png" width = "550" height = "400" alt="bookinfo" /></div>
+
 ### 1. 部署 BookInfo 应用并注入 SOFA-Mosn
 
 > 详细过程可以参考 [https://istio.io/docs/examples/bookinfo/](https://istio.io/docs/examples/bookinfo/)
 
-- 注入 SOFAMosn
+注入 SOFAMosn。
 
 ```bash
 $ kubectl label namespace default istio-injection=enabled
 ```
 
-- 部署 Bookinfo
+部署 Bookinfo。
 
 ```bash
 $ kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
 ```
 
-- 验证部署是否成功
+验证部署是否成功。
 
 ```bash
 $ kubectl get services
@@ -202,7 +204,7 @@ ratings                    10.0.0.15    <none>        9080/TCP             6m
 reviews                    10.0.0.170   <none>        9080/TCP             6m
 ```
 
-- 等待所有的 pods 等成功运行起来
+等待所有的 pods 等成功运行起来。
 
 ```bash
 $ kubectl get pods
@@ -217,69 +219,72 @@ reviews-v3-1813607990-8ch52                 2/2       Running   0          6m
 
 ### 2. 访问 BookInfo 服务
 
-- 开启 gateway 模式
+开启 gateway 模式。
 
-```powershell
+```bash
 $ kubectl apply -f samples/bookinfo/networking/bookinfo-gateway.yaml
 $ kubectl get gateway        // 查看 gateway 是否运行起来
 NAME               AGE
 bookinfo-gateway   24m
 ```
 
-- 查看 EXTERNAL-IP 是否存在
+查看 EXTERNAL-IP 是否存在。
 
-```powershell
+```bash
 $ kubectl get svc istio-ingressgateway -n istio-system
 NAME                   TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)                                                                                                     AGE
 istio-ingressgateway   LoadBalancer   172.19.8.162   161.117.70.217   80:31380/TCP,443:31390/TCP,31400:31400/TCP,15011:32393/TCP,8060:30940/TCP,15030:31601/TCP,15031:31392/TCP   48m
 ```
 
-- 设置 ingress IP 与 ports
+设置 ingress IP 与 port。
 
-```powershell
+```bash
 $ export INGRESS_HOST=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 $ export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].port}')
 $ export SECURE_INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="https")].port}')
 ```
 
-- 设置 gateway 地址
+设置 gateway 地址。
 
-```powershell
+```bash
 $ export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
 $ echo $GATEWAY_URL   //例如我这里的地址是 161.117.70.217:80
 161.117.70.217:80
 ```
 
-- 验证 gateway 是否生效
+验证 gateway 是否生效。
 
 ```bash
 $ curl -o /dev/null -s -w "%{http_code}\n"  http://$GATEWAY_URL/productpage   //输出 200 表示成功 
 200
 ```
 
-- 观察页面情况
+**观察页面情况**
 
 访问 `http://$GATEWAY_URL/productpage` (注意： $GATEWAY_URL 需要替换成你设置的地址)，正常的话通过刷新会看到如下所示 BookInfo 的界面，其中 Book Reviews 有三个版本，
 刷新后依次会看到(可以查看 samples/bookinfo/platform/kube/bookinfo.yaml 中的配置发现为什么是这三个版本)
 
-- 版本一 的界面
+版本一的界面。
+
 ![版本一](v1.png)
 
-- 版本二 的界面
+版本二的界面。
+
 ![版本二](v2.png)
 
-- 版本三 的界面
+版本三的界面。
+
 ![版本三](v3.png)
 
 ### 3. 验证 MOSN 按 version 路由能力
 
-- 首先为 BookInfo 的 service 创建一系列的 destination rules
+首先为 BookInfo 的 service 创建一系列的 destination rules。
 
 ```bash
 $ kubectl apply -f samples/bookinfo/networking/destination-rule-all.yaml
 ```
 
-- 指定 reviews 服务只访问 v1 版本
+指定 reviews 服务只访问 v1 版本。
 
 ```bash
 $ kubectl apply -f samples/bookinfo/networking/virtual-service-all-v1.yaml
@@ -291,7 +296,7 @@ $ kubectl apply -f samples/bookinfo/networking/virtual-service-all-v1.yaml
 
 ### 4. 验证 MOSN 按 weight 路由能力
 
-- 我们通过下面操作将 v1 和 v3 版本各分配 50% 的流量
+我们通过下面操作将 v1 和 v3 版本各分配 50% 的流量。
 
 ```bash
 $ kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-50-v3.yaml
@@ -301,8 +306,7 @@ $ kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-50-v3.yam
 
 ### 5. 验证 MOSN 按照特定 header 路由能力
 
-- BookInfo 系统右上角有一个登陆的入口，登陆以后请求会带上 end-user 这个自定义，值是 user name，Mosn 支持根据这个 header 的值来做路由。比如，我们尝试将 jason 这个用户路由到 v2 版本，
-其他的路由到 v1 版本 (用户名和密码均是：jason，为什么是这个用户可以查看对应的 yaml 文件)
+BookInfo 系统右上角有一个登陆的入口，登陆以后请求会带上 end-user 这个自定义，值是 user name，Mosn 支持根据这个 header 的值来做路由。比如，我们尝试将 jason 这个用户路由到 v2 版本，其他的路由到 v1 版本（用户名和密码均是：jason，为什么是这个用户可以查看对应的 yaml 文件）。
 
 ```bash
 $ kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-test-v2.yaml
@@ -310,8 +314,10 @@ $ kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-test-v2.y
 
 访问 `http://$GATEWAY_URL/productpage` 时：
 
-- 以 jason 身份登陆，会看到 v2 版本
+以 jason 身份登陆，会看到 v2 版本。
+
 ![登录](login.png)
 
-- 以其他身份登录，始终在 v1 版本
+以其他身份登录，始终在 v1 版本。
+
 ![版本一](v1.png)
