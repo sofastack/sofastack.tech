@@ -44,26 +44,32 @@ aliases: "/sofa-bolt/docs/sofa-bolt-handbook"
 ### 1.4 基础通信模型
 
 我们提供了四种通信模型：
-* Oneway 调用
-  * 当前线程发起调用后，不关心调用结果，不做超时控制，只要请求已经发出，就完成本次调用。注意 Oneway 调用不保证成功，而且发起方无法知道调用结果。因此通常用于可以重试，或者定时通知类的场景，调用过程是有可能因为网络问题，机器故障等原因，导致请求失败。业务场景需要能接受这样的异常场景，才可以使用。
-  * [示例](https://github.com/sofastack/sofa-bolt/blob/master/src/test/java/com/alipay/remoting/demo/BasicUsageDemoByJunit.java##L101)
-* Sync 同步调用
-  * 当前线程发起调用后，需要在指定的超时时间内，等到响应结果，才能完成本次调用。如果超时时间内没有得到结果，那么会抛出超时异常。这种调用模式最常用。注意要根据对端的处理能力，合理设置超时时间。
-  * [示例](https://github.com/sofastack/sofa-bolt/blob/master/src/test/java/com/alipay/remoting/demo/BasicUsageDemoByJunit.java##L120)
-* Future调用
-  * 当前线程发起调用，得到一个 RpcResponseFuture 对象，当前线程可以继续执行下一次调用。可以在任意时刻，使用 RpcResponseFuture 对象的 get() 方法来获取结果，如果响应已经回来，此时就马上得到结果；如果响应没有回来，则会阻塞住当前线程，直到响应回来，或者超时时间到。
-  * [示例](https://github.com/sofastack/sofa-bolt/blob/master/src/test/java/com/alipay/remoting/demo/BasicUsageDemoByJunit.java##L144)
-* Callback异步调用
-  * 当前线程发起调用，则本次调用马上结束，可以马上执行下一次调用。发起调用时需要注册一个回调，该回调需要分配一个异步线程池。待响应回来后，会在回调的异步线程池，来执行回调逻辑。
-  * [示例](https://github.com/sofastack/sofa-bolt/blob/master/src/test/java/com/alipay/remoting/demo/BasicUsageDemoByJunit.java##L168)
+
+**1.Oneway 调用**
+
+当前线程发起调用后，不关心调用结果，不做超时控制，只要请求已经发出，就完成本次调用。注意 Oneway 调用不保证成功，而且发起方无法知道调用结果。因此通常用于可以重试，或者定时通知类的场景，调用过程是有可能因为网络问题，机器故障等原因，导致请求失败。业务场景需要能接受这样的异常场景，才可以使用。请参考[示例](https://github.com/sofastack/sofa-bolt/blob/master/src/test/java/com/alipay/remoting/demo/BasicUsageDemoByJunit.java##L101)。
+
+**2. Sync 同步调用**
+
+当前线程发起调用后，需要在指定的超时时间内，等到响应结果，才能完成本次调用。如果超时时间内没有得到结果，那么会抛出超时异常。这种调用模式最常用。注意要根据对端的处理能力，合理设置超时时间。请参考[示例](https://github.com/sofastack/sofa-bolt/blob/master/src/test/java/com/alipay/remoting/demo/BasicUsageDemoByJunit.java##L120)。
+
+**3. Future调用**
+
+当前线程发起调用，得到一个 RpcResponseFuture 对象，当前线程可以继续执行下一次调用。可以在任意时刻，使用 RpcResponseFuture 对象的 get() 方法来获取结果，如果响应已经回来，此时就马上得到结果；如果响应没有回来，则会阻塞住当前线程，直到响应回来，或者超时时间到。请参考[示例](https://github.com/sofastack/sofa-bolt/blob/master/src/test/java/com/alipay/remoting/demo/BasicUsageDemoByJunit.java##L144)。
+
+**4. Callback异步调用**
+
+当前线程发起调用，则本次调用马上结束，可以马上执行下一次调用。发起调用时需要注册一个回调，该回调需要分配一个异步线程池。待响应回来后，会在回调的异步线程池，来执行回调逻辑。请参考[示例](https://github.com/sofastack/sofa-bolt/blob/master/src/test/java/com/alipay/remoting/demo/BasicUsageDemoByJunit.java##L168)。
 
 ### 1.5 日志打印
 
 SOFABolt 只依赖 SLF4J 作为日志门面。同时提供了 log4j、log4j2、logback 三种日志模板，使用者只需要在运行时依赖某一种日志实现，我们依赖的 sofa-common-tools 组件，会在运行时动态感知是哪一种日志实现，同时加载正确的日志模板，进行打印。日志会打印在 `~/logs/bolt/` 目录下面，包括如下几种日志：
+
 * common-default.log：默认日志，打印一些客户端、服务器启动、关闭等通信过程的普通日志
 * common-error.log：异常日志，框架运行过程中出现的异常
 * connection-event.log：连接事件日志
 * remoting-rpc.log：RPC 协议相关的日志
+
 关于日志依赖，可以参考[日志实现依赖参考](https://github.com/sofastack/sofa-bolt/wiki/log_implementation_jar)
 
 ## 2. 进阶功能
@@ -158,6 +164,7 @@ SOFABolt 只依赖 SLF4J 作为日志门面。同时提供了 log4j、log4j2、l
 ### 3.3 请求处理超时 FailFast 机制
 
 当服务端接收到请求后，如果线程池队列的排队等待时间已经超过了客户端发起调用时设置的超时时间，那么本次调用可以直接丢弃，因为请求，对于客户端来说已经无用了（注意：oneway调用方式该机制不起作用，因为不用设置超时时间）。默认情况下，我们这个功能都是开启的；考虑到有用户可能会需要自己来做是否丢弃请求的判断，同时打印一些日志来自己做记录，我们提供了一个开关来控制这个功能：
+
 * 开关控制
 
 ```java
