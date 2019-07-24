@@ -1,12 +1,12 @@
 ---
-title: "SOFAJRaft-RheaKV multi-raft-group 实现分析 | SOFAJRaft 实现原理"
+title: "SOFAJRaft-RheaKV MULTI-RAFT-GROUP 实现分析 | SOFAJRaft 实现原理"
 author: "袖扣"
 authorlink: "https://github.com/homchou"
 description: "本文为《剖析 | SOFAJRaft 实现原理》第五篇，本篇作者袖扣，来自蚂蚁金服。"
 categories: "SOFAJRaft"
 tags: ["SOFAJRaft"]
 date: 2019-07-24T16:00:00+08:00
-cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563962762569-d4eaf5ce-b379-497f-af38-c322161f0959.png"
+cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563966737437-a3c3f5d0-69ef-4a7d-9856-fa5ef2c7e41e.png"
 ---
 
 > **SOFAStack**
@@ -25,13 +25,13 @@ SOFAJRaft ：[https://github.com/alipay/sofa-jraft](https://github.com/alipay/so
 
 ## 前言
 
-RheaKV 是首个以 JRaft 为基础实现的一个原生支持分布式的嵌入式键值（key、value）数据库，现在本文将从 RheadKV 是如何利用 Multi-Raft-Group 的方式实现 RheadKV 的高性能及容量的可扩展性的，从而进行全面的源码、实例剖析。
+RheaKV 是首个以 JRaft 为基础实现的一个原生支持分布式的嵌入式键值（key、value）数据库，现在本文将从 RheaKV 是如何利用 MULTI-RAFT-GROUP 的方式实现 RheaKV 的高性能及容量的可扩展性的，从而进行全面的源码、实例剖析。
 
-## Multi-Raft-Group
+## MULTI-RAFT-GROUP
 
 通过对 Raft 协议的描述我们知道：用户在对一组 Raft 系统进行更新操作时必须先经过 Leader，再由 Leader 同步给大多数 Follower。而在实际运用中，一组 Raft 的 Leader 往往存在单点的流量瓶颈，流量高便无法承载，同时每个节点都是全量数据，所以会受到节点的存储限制而导致容量瓶颈，无法扩展。
 
-Multi-Raft-Group 正是通过把整个数据从横向做切分，分为多个 Region 来解决磁盘瓶颈，然后每个 Region 都对应有独立的 Leader 和一个或多个 Follower 的 Raft 组进行横向扩展，此时系统便有多个写入的节点，从而分担写入压力，图如下：
+MULTI-RAFT-GROUP 正是通过把整个数据从横向做切分，分为多个 Region 来解决磁盘瓶颈，然后每个 Region 都对应有独立的 Leader 和一个或多个 Follower 的 Raft 组进行横向扩展，此时系统便有多个写入的节点，从而分担写入压力，图如下：
 
 ![multi-raft-group-开始图](https://cdn.nlark.com/yuque/0/2019/jpeg/325890/1557569369003-7d4762a0-2590-48bc-afc9-b4e53b520054.jpeg)
 
@@ -56,7 +56,7 @@ Region 是数据存储、搬迁的最小单元，对应的是 Store 里某个实
 
 ## RegionRouteTable 路由表组件
 
-Muti-Raft-Group 的多 Region 是通过 RegionRouteTable 路由表组件进行管理的，可通过 addOrUpdateRegion、removeRegion 进行添加、更新、移除 Region，也包括 Region 的拆分。目前暂时还未实现 Region 的聚合，后面会考虑实现。
+MULTI-RAFT-GROUP 的多 Region 是通过 RegionRouteTable 路由表组件进行管理的，可通过 addOrUpdateRegion、removeRegion 进行添加、更新、移除 Region，也包括 Region 的拆分。目前暂时还未实现 Region 的聚合，后面会考虑实现。
 
 ### 分区逻辑与算法 Shard
 
@@ -118,7 +118,7 @@ Region.peers：peers 则指的是当前 Region 所包含的节点信息，Peer.i
 
 ![检索相关变量定义](https://cdn.nlark.com/yuque/0/2019/png/325890/1557631506444-49f08d69-1766-4c78-93dc-9fd2462677eb.png)
 
-我们可以看到整个 RheadKV 的 range 路由表是通过 TreeMap 的进行存储的，正呼应我们前面讲过所有的 key 是通过对应字节进行排序存储。对应的 Value 为该 Region 的 RegionId，随后我们通过 Region 路由 regionTable 查出即可。
+我们可以看到整个 RheaKV 的 range 路由表是通过 TreeMap 的进行存储的，正呼应我们前面讲过所有的 key 是通过对应字节进行排序存储。对应的 Value 为该 Region 的 RegionId，随后我们通过 Region 路由 regionTable 查出即可。
 
 现在我们得到 scan 覆盖到的所有 `Region:List<Region>` 在循环查询中我们看到有一个“retryCause -> {}”的 Lambda 表达式很容易看出这里是加持异常重试处理，后面我们会讲到，接下来会通过 internalRegionScan 查询每个 Region 的结果。具体源码如下：
 
