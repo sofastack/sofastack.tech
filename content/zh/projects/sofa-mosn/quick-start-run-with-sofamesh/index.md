@@ -83,7 +83,7 @@ $ brew install kubernetes-helm
 ### 1. 下载 SOFAMesh 源码
 
 ```bash
-$ git clone https://github.com/sofastack/sofa-mesh
+$ git clone https://github.com/sofastack/sofa-mesh.git
 $ cd sofa-mesh
 ```
 
