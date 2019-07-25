@@ -1,12 +1,12 @@
 
 ---
-title: "使用 Docker 快速开始"
+title: "在 Kubernetes 中快速开始"
 aliases: "/sofa-mesh/docs/pilot-setup-zookeeper-quick_start_docker"
 ---
 
 
 
-本文旨在描述如何使用 docker compose 快速开始安装和配置 Istio。
+本文旨在描述如何在 Kubernetes 快速开始安装和配置 Istio。
 SOFA Mosn 不仅可以支持 Istio 标准的部署模式，也能支持单方面的 Inbound Sidecar，Outbound Sidecar的部署模式，满足用户的各种需求。
 
 ## 前置要求
@@ -25,30 +25,46 @@ SOFA Mosn 不仅可以支持 Istio 标准的部署模式，也能支持单方面
     ```SHELL
     export PATH=$PWD/bin;$PATH
     ```
-4. 拉起 Istio 控制平面容器：
+4. 安装helm，参考:https://github.com/helm/helm/blob/master/docs/install.md
+5. 创建命名空间
     ```SHELL
-    docker-compose -f install/zookeeper/istio.yaml up -d
+    kubectl create namespace istio-system
     ```
-5. 确认所有 docker 容器都在运行中：
+6. 使用helm安装istio CRD    
     ```SHELL
-    docker ps -a
+    helm template install/kubernetes/helm/istio-init --name istio-init --namespace istio-system | kubectl apply -f -
+    ```
+7. 使用helm安装各个组件
+    ```SHELL
+    helm template install/kubernetes/helm/istio --name istio --namespace istio-system | kubectl apply -f -
+    ```
+8. 确认所有 pod 都在运行中：
+    ```SHELL
+    kubectl get pod -n istio-system
     ```
     如果 Istio pilot 容器意外终止，确保运行 istioctl context-create 命令，并且重新执行上一个命令。
-6. 配置 istioctl 使用 Istio API server：
-    ```bash
-    istioctl context-create -context istio-local --api-server
-    ```
+
 
 ## 部署应用程序
 
-现在开始部署 SOFABoot 示例程序，示例程序包含客户端和服务端，使用 bolt 协议进行通讯。
-
+现在开始部署 Bookinfo 示例程序
+为 default 命名空间打上标签 istio-injection=enabled，实现 Sidecar 自动注入
 ```bash
-docker-compose up -f sofa-sample-spec.yaml up -d
+kubectl label namespace default istio-injection=enabled
+```
+使用 kubectl 部署Bookinfo的服务
+```bash
+kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
+```
+确认所有的服务和 Pod 都已经正确的定义和启动
+```SHELL
+kubectl get services
+kubectl get pods
 ```
 
 ## 卸载 Istio
 
 ```bash
-docker-compose up -f install/zookeeper/istio.yaml down
+helm template install/kubernetes/helm/istio --name istio --namespace istio-system | kubectl delete -f -
+kubectl delete namespace istio-system
 ```
