@@ -7,7 +7,7 @@ weight: 1
 icon: "/img/icons/sofaboot.png"
 level: "main"
 sidebar:
-  - title: 'Overview'
+  - title: 'SOFABoot overview'
     link: 'overview'
   - title: 'Quick start guide'
     link: 'quick-start'
@@ -104,7 +104,7 @@ sidebar:
       - title: 'Release notes'
         link: 'sofa-jarslink-release'
       - title: 'Roadmap'
-        link: 'ssofa-jarslink-roadmap'
+        link: 'sofa-jarslink-roadmap'
       - title: 'Contribution'
         link: 'sofa-jarslink-contribution'
   - title: 'Documentation for upgrade'
@@ -113,6 +113,4 @@ sidebar:
         link: 'upgrade_2_5_x'
       - title: 'SOFABoot 3.0 upgrade'
         link: 'upgrade_3_x'
-  - title: 'FAQ'
-    link: 'faq'
 ---

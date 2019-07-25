@@ -2,8 +2,6 @@
 title: "JRaft RheaKV 用户指南"
 ---
 
-## RheaKV 简介
-
 RheaKV 是一个轻量级的分布式的嵌入式的 KV 存储 lib， rheaKV 包含在 jraft 项目中，是 jraft 的一个子模块。
 
 **定位与特性**

@@ -1,11 +1,7 @@
-
 ---
-title: "Overview"
+title: "SOFATracker overview"
 aliases: "/sofa-tracer/docs/Home"
 ---
-
-
-# Introduction to SOFATracer
 
 SOFATracer is a distributed link tracing system based on [OpenTracing specification](http://opentracing.io/documentation/pages/spec.html) developed by Ant Financial. Its core concept is to concatenate the same request distributed on each service node with a global `TraceId`. By the unified `TraceId`, it can record the various network call information in the call link in logs, and can remotely report the call records to [Zipkin](https://zipkin.io/) for presentation, thus implementing perspective network call.
 

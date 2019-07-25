@@ -1,11 +1,7 @@
-
 ---
-title: "Overview"
+title: "SOFABoot overview"
 aliases: "/sofa-boot/docs/Home"
 ---
-
-
-# About SOFABoot
 
 SOFABoot is a development framework open sourced by Ant Financial which is based on Spring Boot, provides capabilities such as Readiness Check, class isolation, and log space isolation. In addition to enhancing the Spring Boot, SOFABoot provides users with the capability to easily use SOFA middleware in Spring Boot.
 
@@ -54,8 +50,8 @@ Based on Spring Boot, SOFABoot provides the following capabilities:
 
 * Capability of expanding the Health Check of Spring Boot: Provide the Readiness Check based on the Health Check of Spring Boot, to ensure a secure launch of application examples.
 * Capability of log space isolation: The middleware framework automatically finds the application's logs and realizes dependence on the logs and independent log printing, avoiding binding the middleware and the application logs. The capability is achieved through [sofa-common-tools](https://github.com/sofastack/sofa-common-tools).
-* Capability of providing class isolation: Provide class isolation based on the [SOFAArk](https://github.com/sofastack/sofa-Ark) framework, making it easy for users to solve various class conflicts.
-* Capability of providing modular development: Based on the Spring context isolation, provide [modular development](./Modular-Development) capability, with a separate Spring context for each SOFABoot module, to avoid BeanId conflicts between different SOFABoot modules.
+* Capability of providing class isolation: Provide class isolation based on the [SOFAArk](https://github.com/sofastack/sofa-ark) framework, making it easy for users to solve various class conflicts.
+* Capability of providing modular development: Based on the Spring context isolation, provide [modular development](../modular-development) capability, with a separate Spring context for each SOFABoot module, to avoid BeanId conflicts between different SOFABoot modules.
 * Integrated management of middleware: manage in a unified manner, provide a unified and easy-to-use programming interface for middleware, and each SOFA middleware is an independent and pluggable component.
 * Fully compatible with Spring Boot: SOFABoot is built based on and is fully compatible with Spring Boot.
 

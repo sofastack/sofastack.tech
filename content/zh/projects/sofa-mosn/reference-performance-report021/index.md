@@ -1,9 +1,7 @@
-
 ---
 title: "SOFAMosn 0.2.1 性能报告"
 aliases: "/sofa-mosn/docs/docs-reference-PerformanceReport021"
 ---
-
 
 以下性能报告的基准版本为 SOFAMosn 0.2.1。在 0.2.1 版本中，我们进行了如下一些优化手段：
 - 添加内存复用框架，涵盖 io/protocol/stream/proxy 层级，减少对象分配、内存使用和GC压力

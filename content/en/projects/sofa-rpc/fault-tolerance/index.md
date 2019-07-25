@@ -1,9 +1,7 @@
-
 ---
 title: "Fault tolerance"
 aliases: "/sofa-rpc/docs/Fault-Tolerance"
 ---
-
 
 Usually, a service have multiple service providers in a cluster. Some of the service providers may have persistent connections still survived due to network, configuration, long-term fullgc, full thread pool, hardware failure and others, but the program cannot respond properly. The stand-alone fault tolerance function can degrade the exceptional service providers so that the client requests can be pointed to the healthy node. When the exceptional nodes become normal, the standalone fault tolerance function will restore the nodes, so that the client requests can gradually distribute traffic to the nodes. The standalone fault tolerance function solves the problem that service failures continue to affect the business, avoids the avalanche effect, reduces the long response time required for manual intervention and increases system availability.
 
@@ -26,4 +24,4 @@ FaultToleranceConfigManager.putAppConfig("appName", faultToleranceConfig);
 ```
 As above, after the standalone fault tolerance switch is turned on, the application will calculate the exceptions every 20s time window. If a service + IP calling dimension is determined to be a faulty node, the weight of the service + IP will be degraded to 0.5 times.
 
-For more detailed parameters, please refer to [Standalone troubleshooting](../configuration-fault-tolerance.md)
+For more detailed parameters, please refer to [Standalone troubleshooting](../configuration-fault-tolerance)
