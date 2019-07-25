@@ -10,40 +10,40 @@ SOFA Mosn 不仅可以支持 Istio 标准的部署模式，也能支持单方面
 ## 前置要求
 
 1. Kubernetes
-2. 安装helm：参考 https://github.com/helm/helm/blob/master/docs/install.md
+2. [安装 Helm](https://github.com/helm/helm/blob/master/docs/install.md)
 
 ## 安装步骤
 
-1. 下载最新的 release 包
-1. 把 Istio 的 bin 路径添加到系统的 PATH。比如，在 Linux 系统下执行如下命令：
+Step 1. 下载最新的 release 包
+Step 2. 把 Istio 的 bin 路径添加到系统的 PATH。比如，在 Linux 系统下执行如下命令：
 
-	```bash
-	export PATH=$PWD/bin;$PATH
-	```
+```bash
+export PATH=$PWD/bin;$PATH
+```
 
-1. 创建命名空间
+Step 3. 创建命名空间
 
-	```bash
-	kubectl create namespace istio-system
-	```
+```bash
+kubectl create namespace istio-system
+```
 
-1. 使用helm安装istio CRD
+Step 4. 使用helm安装istio CRD
 
-	```bash
-	helm template install/kubernetes/helm/istio-init --name istio-init --namespace istio-system | kubectl apply -f -
-	```
+```bash
+helm template install/kubernetes/helm/istio-init --name istio-init --namespace istio-system | kubectl apply -f -
+```
 
-1. 使用helm安装各个组件
+Step 5. 使用helm安装各个组件
 
-	```bash
-	helm template install/kubernetes/helm/istio --name istio --namespace istio-system | kubectl apply -f -
-	```
+```bash
+helm template install/kubernetes/helm/istio --name istio --namespace istio-system | kubectl apply -f -
+```
 
-1. 确认所有 pod 都在运行中
+Step 6. 确认所有 pod 都在运行中
 
-	```bash
-	kubectl get pod -n istio-system
-	```
+```bash
+kubectl get pod -n istio-system
+```
 
 ## 部署应用程序
 
