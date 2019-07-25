@@ -115,4 +115,4 @@ See the sample project in the `examples` directory.
 
 ## Use MOSN to build a ServiceMesh platform
 
-+ [Integrate Istio](../quick-start-run-with-sofamesh.md)
++ [Integrate Istio](../quick-start-run-with-sofamesh)

@@ -32,7 +32,7 @@ Based on the sample project, we will describe step by step how to package a Spri
 Download a standard Spring Boot Web project from the official website [https://start.spring.io/](https://start.spring.io/) 
 
 ### Introducing sample-ark-plugin
-Configure items as follows under the main `pom.xml` of the project, and add the `Ark Plugin` dependency generated from another sample project, [reference documents](./sofa-ark-ark-plugin-demo) 
+Configure items as follows under the main `pom.xml` of the project, and add the `Ark Plugin` dependency generated from another sample project, [reference documents](./sofa-ark-ark-plugin) 
 
 ```xml
 <dependency>

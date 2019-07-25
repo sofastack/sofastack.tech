@@ -9,7 +9,7 @@ This section is intended to demonstrate how to use Jarslink 2.0 to dynamically c
 
 ## Demo
 
-With reference to [How to reform common Spring Boot applications](../sofa-jarslink-jarslink-app-demo.md), the reformed spring-boot-transform-sample project has integrated the Jarslink 2.0 component. By executing the Ark package that the application packaged and generated, you can dynamically install or uninstall the application during its running.
+With reference to [How to reform common Spring Boot applications](../sofa-jarslink-jarslink-app-demo), the reformed spring-boot-transform-sample project has integrated the Jarslink 2.0 component. By executing the Ark package that the application packaged and generated, you can dynamically install or uninstall the application during its running.
 
 + java -jar starts the spring-boot-transform-sample application Ark package.
 + telnet localhost 1234 enters the Jarslink 2.0 command interface, as follows:  
@@ -24,7 +24,7 @@ With reference to [How to reform common Spring Boot applications](../sofa-jarsli
   > bizName='spring-boot-transform-sample', bizVersion='1.0.0', bizState='activated'
   >
   > sofa-ark>
-+ With reference to [How to reform a common Spring Boot application](../sofa-jarslink-jarslink-app-demo.md), create any SOFABoot application of non-Web type, package it into a Biz package, and execute the install -b installation command, and the result is as follows:
++ With reference to [How to reform a common Spring Boot application](../sofa-jarslink-jarslink-app-demo), create any SOFABoot application of non-Web type, package it into a Biz package, and execute the install -b installation command, and the result is as follows:
   > sofa-ark>install -b file:///Users/qilong.zql/Desktop/test-ark-biz.jar  
   > Biz:'test-biz:1.0.0' is installing.
   >

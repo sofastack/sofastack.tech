@@ -11,11 +11,11 @@ Some sample projects are provided in the source project to assist in the use of 
 
   This sample project demonstrates how to use and configure the client in code form in a normal Java project.
 
-- [lookout-client-samples-boot](https://github.com/sofastack/sofa-lookout/tree/master/client/samples/lookout-client-samples-boot)
+- lookout-client-samples-boot
 
   This sample project demonstrates how to use and configure the client in a SpringBoot (or SofaBoot) project.
 
-- [lookout-client-samples-prometheus](https://github.com/sofastack/sofa-lookout/tree/master/client/samples/lookout-client-samples-prometheus)
+- lookout-client-samples-prometheus
 
   The sample project demonstrates how to use and configure the client to use prometheus in a SpringBoot (or SofaBoot) project.
 

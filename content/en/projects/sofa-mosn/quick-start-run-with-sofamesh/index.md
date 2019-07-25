@@ -12,14 +12,13 @@ This article introduces how to use SOFAMosn to build the Service Mesh developmen
 
 ## Relationship between SOFAMosn and SOFAMesh
 
-As mentioned in [SOFAMosn introduction](../introduction), SOFAMosn is a Service Mesh data plane agent developed with Golang, and SOFAMesh is a large-scale implementation solution for Service Mesh, which is improved and extended based on Istio. Serving as a critical component of SOFAMesh, SOFAMosn is used to complete data plane forwarding.
+As mentioned in [SOFAMosn introduction](../overview), SOFAMosn is a Service Mesh data plane agent developed with Golang, and SOFAMesh is a large-scale implementation solution for Service Mesh, which is improved and extended based on Istio. Serving as a critical component of SOFAMesh, SOFAMosn is used to complete data plane forwarding.
 
 The following figure shows the workflow chart of SOFAMosn based on the overall SOFAMesh framework. 
 
 Note: Currently, SOFAMosn cannot be directly used in the native Istio.
 
 <div align=center><img src="mosn-introduction.png" width = "450" height = "400" /></div>
-
 ## Preparations
 
 This guide supposes you are using macOS. For other operating systems, you can install the corresponding software.
@@ -175,7 +174,6 @@ BookInfo is a book application like Douban. It contains four basic services.
 * Details: Book details, which is developed with Ruby.
 
 <div align=center><img src="bookinfo.png" width = "550" height = "400" /></div>
-
 ### 1. Deploy BookInfo application and inject it to SOFAMosn
 
 > For the specific procedure, see [https://istio.io/docs/examples/bookinfo/](https://istio.io/docs/examples/bookinfo/).

@@ -50,7 +50,7 @@ Based on Spring Boot, SOFABoot provides extended capabilities such as health che
 | Test extension | test-Sofa-boot-starter |
 
 ## Introducing the SOFA middleware: the Ark plug-in 
-SOFABoot provides a class isolation component—[SOFAArk](./sofa-ark/overview), which enables users to package third-party packages with dependency conflicts into an Ark plug-in. At run time, the Ark plug-in is loaded with a separate classloader; it is isolated from other Ark plug-ins and business dependencies to address class conflicts. SOFABoot provides SOFARPC and SOFATracer's Ark plug-ins; the Ark plug-in SOFARPC, for example, is loaded into the application to replace SOFARPC starter, to isolate the application from SOFARPC and its indirect dependencies. The controlled Ark plug-ins are listed as follows:
+SOFABoot provides a class isolation component—[SOFAArk](../sofa-ark-readme), which enables users to package third-party packages with dependency conflicts into an Ark plug-in. At run time, the Ark plug-in is loaded with a separate classloader; it is isolated from other Ark plug-ins and business dependencies to address class conflicts. SOFABoot provides SOFARPC and SOFATracer's Ark plug-ins; the Ark plug-in SOFARPC, for example, is loaded into the application to replace SOFARPC starter, to isolate the application from SOFARPC and its indirect dependencies. The controlled Ark plug-ins are listed as follows:
 
 | Ark plug-in | plugin |
 |:---:|:---:|
