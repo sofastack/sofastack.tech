@@ -14,6 +14,8 @@ sidebar:
         link: 'pilot-readme'
       - title: '安装指南'
         link: 'pilot-setup-zookeeper-installation'
+      - title: '在 Kubernetes 中快速开始'
+        link: 'sofa-mesh-setup'        
       - title: '使用 Docker 快速开始'
         link: 'pilot-setup-zookeeper-quick-start-docker'
       - title: 'Zookeeper Adpater'
