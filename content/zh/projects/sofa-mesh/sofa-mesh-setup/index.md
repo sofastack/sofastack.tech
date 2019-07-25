@@ -1,6 +1,6 @@
 ---
 title: "在 Kubernetes 中快速开始"
-aliases: "/sofa-mesh/docs/pilot-setup-zookeeper-quick_start_docker"
+aliases: "/sofa-mesh/docs/sofa-mesh-setup"
 ---
 
 
