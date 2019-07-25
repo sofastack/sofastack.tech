@@ -341,4 +341,3 @@ Ark container started in 2720 ms.
 * SOFARPC: [https://github.com/sofastack/sofa-rpc](https://github.com/sofastack/sofa-rpc)
 * SOFARPC Ark Plugin: [https://github.com/sofastack/sofa-rpc-boot-projects](https://github.com/sofastack/sofa-rpc-boot-projects)
 * SOFAArk: [https://github.com/sofastack/sofa-ark](https://github.com/sofastack/sofa-ark)
-* Ark Plugin 目录结构及其打包插件的使用 [https://alipay.github.io/sofastack.github.io/docs/ark-plugin.html](https://alipay.github.io/sofastack.github.io/docs/ark-plugin.html)

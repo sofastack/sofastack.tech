@@ -1,10 +1,7 @@
-
 ---
 title: "Package into Ark Plugin"
 aliases: "/sofa-boot/docs/sofa-ark-ark-plugin-demo"
 ---
-
-
 
 > [Project address](https://github.com/sofastack/sofa-ark/tree/master/sofa-ark-samples/sample-ark-plugin)
 
@@ -22,7 +19,7 @@ In actual development, dependency conflicts often occur. Suppose we have develop
 * Export resource: If the resource has been imported by other plugins, it will be first loaded from this plugin;
 
 
-> [Refer to the plugin specifications for more details](./ark-plugin)
+> [Refer to the plugin specifications for more details](../sofa-ark-ark-plugin)
 
 
 ## Tools
@@ -36,7 +33,7 @@ Upon simple configurations, the officially provided `Maven` plugin `sofa-ark-plu
 </plugin>
 ```
 
-> [For more information, see the plugin configuration document](./ark-plugin)
+> [For more information, see the plugin configuration document](../sofa-ark-ark-plugin)
 
 ## Getting started
 Based on this sample project, we will describe how to build an `Ark plugin` step by step. 

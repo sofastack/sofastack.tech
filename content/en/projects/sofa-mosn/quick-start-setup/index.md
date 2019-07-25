@@ -78,6 +78,7 @@ make rpm
 After that, you can find the packaged file in the `build/bundles/${version}/rpm` directory.
 
 ## Create image
+
 Run the following command to create an image:
 
 ```bash
@@ -85,6 +86,7 @@ make image
 ```
 
 ## Obtain image
+
 Run the following command to obtain the image:
 
 ```bash
@@ -92,6 +94,7 @@ docker pull sofastack/mosn
 ```
 
 ## Run test
+
 In the project root directory, run the unit test:
 
 ```bash
@@ -108,7 +111,8 @@ make unit-test
 
 See the sample project in the `examples` directory.
 
-+ [Run samples](RunSamples.md)
++ [Run samples](../quick-start-run-samples)
 
 ## Use MOSN to build a ServiceMesh platform
-+ [Integrate Istio](RunWithSOFAMesh.md)
+
++ [Integrate Istio](../quick-start-run-with-sofamesh.md)

@@ -41,12 +41,6 @@ More projects in: [github/sofastack](https://github.com/sofastack)
 
 - [Github](https://github.com/sofastack/community)
 
-- <SOFA:Lab /> SOFA Source Research Lab
-
-  - [SOFARPCLab](https://www.yuque.com/sofarpclab)
-  - [SOFABoltLab](https://www.yuque.com/sofaboltlab)
-  - [SOFATracerLab](https://www.yuque.com/sofatracer)
-
 - WeChat
 
   - Official Account：**Antfin_SOFA** is a technology exchange platform dedicated to building first-class distributed technologies in financial scenario applications, focusing on the most cutting-edge, reference-oriented technical solutions and implementation routes in the financial technology industry.

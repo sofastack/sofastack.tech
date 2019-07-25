@@ -1,4 +1,3 @@
-
 ---
 title: "Quick start guide"
 aliases: "/sofa-boot/docs/QuickStart"
@@ -62,7 +61,7 @@ spring.application.name=SOFABoot Demo
 logging.path=./logs
 ```
 
-**Advice to refer to the [SOFABoot Module document](./Modular-Development) before learn this demo.**
+**Advice to refer to the [SOFABoot Module document](../modular-development) before learn this demo.**
 
 ## Run it
 
@@ -119,7 +118,7 @@ We can browse [http://localhost:8080/health/readiness](http://localhost:8080/hea
 
 In the above `application.properties` file, the logging directory we have configured is `./logs`, namely the application root directory (which can be configured according to our needs), where log files may have the following structure:
 
-```
+```text
 ./logs
 ├── health-check
 │   ├── sofaboot-common-default.log
@@ -132,8 +131,6 @@ In the above `application.properties` file, the logging directory we have config
 
 If the application fails to start or the Health Check fails, we can find the error cause in the corresponding log file (sometimes we need to pay attention to the `common-error.log` file)
 
-[The source code address] for this sample project is host at (https://github.com/sofastack/sofa-boot/tree/master/sofaboot-samples/sofaboot-sample)
-
 ## Testing
 As we know, SpringBoot provides the `SpringRunner` integrated with JUnit 4 for developers to write integration test cases. In SOFABoot, we can still use the native `SpringRunner`, but we recommend that you use SOFABoot's `SofaBootRunner` and `SofaJUnit4Runner` to write integration tests and unit tests; beyond that, the application requires additional import of the following Starter:
 
@@ -144,11 +141,11 @@ As we know, SpringBoot provides the `SpringRunner` integrated with JUnit 4 for d
 </dependency>
 ```
 
-Note that if you need to use SOFABoot's [class Isolation](./Classloader-Isolation), import the above dependencies, and run testing with `SofaBootRunner` and `SofaJUnit4Runner`.
+Note that if you need to use SOFABoot's [class Isolation](../classloader-isolation), import the above dependencies, and run testing with `SofaBootRunner` and `SofaJUnit4Runner`.
 
 ## Modular Development
 
-This section will focus on how we can carry out modular development under the SOFABoot environment, you can find this document's [sample code](https://github.com/sofastack/sofa-boot/tree/master/sofaboot-samples/sofaboot-sample-with-isle) under the project. The project is composed of four modules:
+This section will focus on how we can carry out modular development under the SOFABoot environment, you can find this document's sample code under the project. The project is composed of four modules:
 
 ```text
 .

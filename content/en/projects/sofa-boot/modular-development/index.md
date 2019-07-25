@@ -37,13 +37,13 @@ The modular development with SOFABoot provides developers with the following fea
 - At runtime, the Spring context of each SOFABoot module is isolated, so the defined Beans between modules will not affect each other;
 - Each SOFABoot module is full-featured and self-contained, allowing for easy migration and reuse in different SOFABoot applications. Developers only need to copy the whole SOFABoot module to the application and adjust the Maven dependence before running it.
 
-For the format definition of SOFABoot module, see: [Module Configuration](./SOFABoot-Module).
+For the format definition of SOFABoot module, see: [Module Configuration](../module-service/).
 
 ### Invocation between SOFABoot Modules
 
 After isolation of context, the Bean between modules cannot be directly injected, so the SOFA service is required for invocation between the modules. Currently, SOFABoot offers two forms of service publish and reference, to resolve calls between modules of different levels:
 
-- JVM service publish and reference: Resolve invocations between the SOFABoot modules within a SOFABoot application, [JVM Service Publish and Reference] (./Module-Service)
+- JVM service publish and reference: Resolve invocations between the SOFABoot modules within a SOFABoot application, [JVM Service Publish and Reference](../module-service)
 - RPC service publish and reference: Resolve invocations between multiple SOFABoot applications, [RPC Service Publish and Reference](https://github.com/sofastack/sofa-rpc/wiki/Publish-And-Reference).
 
 ### Module Parallel Start

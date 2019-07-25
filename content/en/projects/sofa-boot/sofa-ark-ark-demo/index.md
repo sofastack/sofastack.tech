@@ -1,9 +1,7 @@
-
 ---
 title: "Package into Ark JAR"
 aliases: "/sofa-boot/docs/sofa-ark-ark-demo"
 ---
-
 
 > [Project address](https://github.com/sofastack/sofa-ark/tree/master/sofa-ark-samples/sample-springboot-ark)
 
@@ -24,7 +22,7 @@ The `Maven plugin` of `sofa-ark-maven-plugin` is provided to build a standard `e
 </plugin>
 ```
 
-> [Refer to the document of plugin use for details](./ark-jar)
+> [Refer to the document of plugin use for details](../sofa-ark-ark-jar)
 
 
 ## Step By Step
@@ -34,7 +32,7 @@ Based on the sample project, we will describe step by step how to package a Spri
 Download a standard Spring Boot Web project from the official website [https://start.spring.io/](https://start.spring.io/) 
 
 ### Introducing sample-ark-plugin
-Configure items as follows under the main `pom.xml` of the project, and add the `Ark Plugin` dependency generated from another sample project, [reference documents](./ark-plugin-demo) 
+Configure items as follows under the main `pom.xml` of the project, and add the `Ark Plugin` dependency generated from another sample project, [reference documents](./sofa-ark-ark-plugin-demo) 
 
 ```xml
 <dependency>

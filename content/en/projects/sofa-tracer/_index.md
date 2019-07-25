@@ -6,7 +6,7 @@ level: "main"
 weight: 3
 icon: "/img/icons/sofatracer.png"
 sidebar:
-  - title: 'Overview'
+  - title: 'SOFATracer overview'
     link: 'overview'
   - title: 'Terminologies'
     link: 'explanation'
@@ -60,6 +60,4 @@ sidebar:
         link: 'log-format-dubbo'
       - title: 'OpenFeign log'
         link: 'log-format-openfeign'
-  - title: 'Roadmap'
-    link: 'roadmap'
 ---

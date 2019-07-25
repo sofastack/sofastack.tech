@@ -12,7 +12,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563868284867-44971797-275
 > **SOFA**Stack 
 > **S**calable **O**pen **F**inancial **A**rchitecture Stack 是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，是在金融场景里锤炼出来的最佳实践。
 > 为了建设更完整的 SOFAStack 微服务体系，我们计划发起 SOFADashboard 项目，计划通过社区的方式共建，将其打造为一站式的 SOFAStack 管控平台。欢迎共建~
-> SOFADashboard：[https://github.com/alipay/sofa-dashboard](https://github.com/alipay/sofa-dashboard) 
+> SOFADashboard：[https://github.com/sofastack/sofa-dashboard](https://github.com/sofastack/sofa-dashboard) 
 
 ## 背景
 
