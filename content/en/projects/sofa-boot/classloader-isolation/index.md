@@ -1,11 +1,9 @@
-
 ---
 title: "Use class isolation in SOFABoot"
 aliases: "/sofa-boot/docs/ClassLoader-Isolation"
 ---
 
-
-﻿SOFABoot provides a class isolation framework SOFAArk, giving Spring Boot a class isolation ability to resolve class or package conflicts in the development. For detailed information, please refer to:[SOFAArk](https://github.com/sofastack/sofa-ark)
+SOFABoot provides a class isolation framework SOFAArk, giving Spring Boot a class isolation ability to resolve class or package conflicts in the development. For detailed information, please refer to:[SOFAArk](https://github.com/sofastack/sofa-ark)
 
 To use this feature in SOFABoot projects, we need only two steps: configure the `sofa-ark-maven-plugin` plugins for packaging and add `sofa-ark-springboot-starter` dependencies of the class isolation framework.
 
@@ -170,6 +168,7 @@ Ark container started in 8797 ms.
 ```
 
 ## Testing
+
 To run the test cases with SOFABoot's class isolation ability, you need to add an extra dependency—SOFABoot's official `test-sofa-boot-starter`—and write integration testing and unit testing code using `SofaBootRunner` and `SofaJUnit4Runner`, which is also a coding style for test cases recommended by SOFABoot.
 
 With the two modules, the system can automatically check whether the application has used the class isolation capability. Developers can achieve this by simply adding or deleting the SOFABoot class isolation dependencies
@@ -184,6 +183,7 @@ With the two modules, the system can automatically check whether the application
 to complete the integration and separation of the SOFABoot class isolation. See the following for details:
 
 #### SofaBootRunner
+
 Sample code for integration testing:
 
 ```java
@@ -214,6 +214,7 @@ The `SofaBootRunner` will check whether the application has introduced dependenc
 In accordance with Spring Boot's dependency-as-a-service principle, if the `sofa-Ark-springboot-starter` dependency is detected, then the `SofaBootRunner` will enable SOFABoot's class isolation capability, otherwise, it will be the same as the native `SpringRunner`.
 
 #### SofaJUnit4Runner
+
 Sample code for unit testing:
 
 ```java
@@ -230,6 +231,7 @@ public class UnitTestCase {
 Likewise, `SofaJUnit4Runner` will check whether the dependency is introduced. If so, the `SofaJUnit4Runner` will enable the capability as well, or will be same as the native `JUnit4`.
 
 #### Customized Runner
+
 When writing test cases, sometimes we need to specify a special Runner. For a unified coding style, you can use `SofaBootRunner` and `SofaJUnit4Runner` with the annotation `@DelegateToRunner`. Here is some sample code:
 
 ```java

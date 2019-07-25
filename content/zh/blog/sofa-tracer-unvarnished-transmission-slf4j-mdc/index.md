@@ -395,7 +395,6 @@ SOFATracer 对 MDC 的扩展在 com.alipay.common.tracer.extensions.log.MDCSpanE
 **文中涉及到的所有链接：**
 
 - 在 OT 原文描述 传送门 https://opentracing.io/docs/overview/inject-extract/
-- SOFATracer 数据上报机制和源码分析|剖析：https://www.yuque.com/sofatracer/tracer/nqmt4p
 - SOFATracer 源码：https://github.com/sofastack/sofa-tracer
 - SOFAtrace的异步处理：https://www.sofastack.tech/sofa-tracer/docs/Async
 - SOFATracer 的测试用例 :https://github.com/sofastack/sofa-tracer/tree/master/tracer-core/src/test/java/com/alipay/common/tracer/core/async

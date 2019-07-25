@@ -1,11 +1,9 @@
-
 ---
 title: "Contribution"
 aliases: "/sofa-boot/docs/sofa-jarslink-contribution"
 ---
 
-
-> You can go into the [development route](./roadmap) to learn more about development tasks and future planning.
+> You can go into the [development route](../sofa-jarslink-roadmap) to learn more about development tasks and future planning.
 
 ## Preparations
 
@@ -98,7 +96,7 @@ After a branch is pulled, you can modify the code.
 * Update documents in a timely manner.
 
 After the code is modified, execute the following command to submit all modifications to the local repository:
-  
+
   ```
   git commit -am 'Add xx feature'
   ```

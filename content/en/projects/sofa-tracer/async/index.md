@@ -1,11 +1,7 @@
-
 ---
 title: "Asynchronous thread processing"
 aliases: "/sofa-tracer/docs/Async"
 ---
-
-
-# Asynchronous thread processing
 
 ### Use `java.lang.Runnable` in thread
 

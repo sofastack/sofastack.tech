@@ -1,11 +1,7 @@
-
 ---
 title: "Use SOFAMosn to build Service Mesh platform"
 aliases: "/sofa-mosn/docs/docs-quickstart-RunWithSOFAMesh"
 ---
-
-
-# Use SOFAMosn to build Service Mesh platform
 
 This article introduces how to use SOFAMosn to build the Service Mesh development environment based on SOFAMesh framework, and verify some basic capabilities of SOFAMosn, such as routing and load balancing. This article includes the following content:
 
@@ -16,17 +12,13 @@ This article introduces how to use SOFAMosn to build the Service Mesh developmen
 
 ## Relationship between SOFAMosn and SOFAMesh
 
-As mentioned in [SOFAMosn introduction](../Introduction.md), SOFAMosn is a Service Mesh data plane agent developed with Golang, and SOFAMesh is a large-scale implementation solution for Service Mesh, which is improved and extended based on Istio. Serving as a critical component of SOFAMesh, SOFAMosn is used to complete data plane forwarding.
+As mentioned in [SOFAMosn introduction](../overview), SOFAMosn is a Service Mesh data plane agent developed with Golang, and SOFAMesh is a large-scale implementation solution for Service Mesh, which is improved and extended based on Istio. Serving as a critical component of SOFAMesh, SOFAMosn is used to complete data plane forwarding.
 
+The following figure shows the workflow chart of SOFAMosn based on the overall SOFAMesh framework. 
 
-The following figure shows the workflow chart of SOFAMosn based on the overall SOFAMesh framework. <br>
-[Note: Currently, SOFAMosn cannot be directly used in the native Istio].
+Note: Currently, SOFAMosn cannot be directly used in the native Istio.
 
-
-<div align=center><img src="../images/MOSNIntroduction.png" width = "450" height = "400" /></div>
-
-
-
+<div align=center><img src="mosn-introduction.png" width = "450" height = "400" /></div>
 ## Preparations
 
 This guide supposes you are using macOS. For other operating systems, you can install the corresponding software.
@@ -71,7 +63,7 @@ $ minikube start --memory=8192 --cpus=4 --kubernetes-version=v1.10.0 --vm-driver
 
 ### 4. Install kubectl command line tool
 
-kubectl is a command line interface used to run commands for k8s cluster. For how to install it, see [https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/#install-kubectl).
+kubectl is a command line interface used to run commands for k8s cluster. For how to install it, see [https://kubernetes.io/docs/tasks/tools/install-kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl).
 
 ```bash
 $ brew install kubernetes-cli
@@ -137,7 +129,7 @@ There are two methods to use Helm to install Istio. The first one is recommended
 
        ```
     $ helm delete --purge istio
-    ```
+       ```
 
 ### 3. Verify installation
 
@@ -181,9 +173,7 @@ BookInfo is a book application like Douban. It contains four basic services.
 * Ratings: Rating service, which is developed with Nodejs.
 * Details: Book details, which is developed with Ruby.
 
-<div align=center><img src="../images/bookinfo.png" width = "550" height = "400" /></div>
-
-
+<div align=center><img src="bookinfo.png" width = "550" height = "400" /></div>
 ### 1. Deploy BookInfo application and inject it to SOFAMosn
 
 > For the specific procedure, see [https://istio.io/docs/examples/bookinfo/](https://istio.io/docs/examples/bookinfo/).
@@ -259,7 +249,7 @@ $ echo $GATEWAY_URL   //For example, the address here is 161.117.70.217:80
 ```
 $ curl -o /dev/null -s -w "%{http_code}\n"  http://$GATEWAY_URL/productpage   //If 200 is output, it means a success 
 200
-``` 
+```
 
 * Observe the page status
 
@@ -267,13 +257,13 @@ $ curl -o /dev/null -s -w "%{http_code}\n"  http://$GATEWAY_URL/productpage   //
 Visit http://$GATEWAY_URL/productpage. Note that, you need to replace `$GATEWAY_URL` with the address you set. Normally, you can see the following BookInfo interface after refreshing the page. There are three versions of Book Reviews. After refreshing, you can see them in turn. To learn why these three versions appear, view the configuration in `samples/bookinfo/platform/kube/bookinfo.yaml`.
 
 + Interface of version 1
-![](../images/v1.png)
+![](v1.png)
 
 + Interface of version 2
-![](../images/v2.png)
+![](v2.png)
 
 + Interface of version 3
-![](../images/v3.png)
+![](v3.png)
 
 ### 3. Verify MOSN's capability of routing by version
 
@@ -291,7 +281,7 @@ $ kubectl apply -f samples/bookinfo/networking/virtual-service-all-v1.yaml
 
 Visit http://$GATEWAY_URL/productpage, and find that the reviews are fixed in the following version 1 page and no longer change.
 
-![](../images/v1.png)
+![](v1.png)
 
 ### 4. Verify MOSN's capability of routing by weight
 
@@ -313,7 +303,7 @@ Access http://$GATEWAY_URL/productpage, and find that the probability for v1 and
 When you access http://$GATEWAY_URL/productpage:
 
 + Log in with the account of Jason and you will see the v2 interface.
-![](../images/login.png)
+![](login.png)
 
 + Log in with the account of another user, you are always on v1 interface.
-![](../images/v1.png)
+![](v1.png)

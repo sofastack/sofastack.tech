@@ -1,11 +1,7 @@
-
 ---
 title: "TraceId and spanId generation rule"
 aliases: "/sofa-tracer/docs/TraceIdGeneratedRule"
 ---
-
-
-# TraceId And SpanId Generation Rule
 
 ### TraceId generation rule
 
@@ -29,10 +25,6 @@ The SpanId in SOFATracer represents where the current call is in the entire call
 
 We assume that the TraceId generated in a distributed call is `0a1234` (much longer in practice). Then, according to the generation process of SpanId, the call link tree is as shown in the following figure:
 
-<center>
-
 ![traceId](https://gw.alipayobjects.com/mdn/rms_432828/afts/img/A*bF9uQJdD2v4AAAAAAAAAAABjARQnAQ) 
-
-</center>
 
 > Currently, SpanId's generated rules refer to Taobao's Hawkeye components. 

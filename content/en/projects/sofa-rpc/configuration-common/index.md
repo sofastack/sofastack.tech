@@ -1,9 +1,7 @@
-
 ---
 title: "RPC publishing and reference configuration"
 aliases: "/sofa-rpc/docs/Configuration-Common"
 ---
-
 
 ## ProviderConfig
 
@@ -11,7 +9,7 @@ aliases: "/sofa-rpc/docs/Configuration-Common"
 |:--------------|:-----------------------|:-------------------|:--------------------------------------------|
 | id | ID | Generated automatically | |
 | application | Application object | Empty ApplicationConfig | |
-| interfaceId | Service interface (unique identifier) | | Use the actual interface class for both normal calls and return calls.
+| interfaceId | Service interface (unique identifier) | | Use the actual interface class for both normal calls and return calls.|
 | uniqueId | Service tag (unique identifier) | | |
 | filterRef | Filter configuration example | | List |
 | filter | Filter configuration alias | | separated by commas |
@@ -47,7 +45,7 @@ aliases: "/sofa-rpc/docs/Configuration-Common"
 |:---|:-----|:---|-----:|
 | id | ID | Generated automatically | |
 | application | Application object | Empty ApplicationConfig | |
-| interfaceId | Service interface (unique identifier) | | Use the actual interface class for both normal calls and return calls.
+| interfaceId | Service interface (unique identifier) | | Use the actual interface class for both normal calls and return calls.|
 | uniqueId | Service tag (Unique identifier) | | |
 | filterRef | Filter configuration example | | List |
 | filter | Filter configuration alias | | List |
@@ -66,7 +64,7 @@ aliases: "/sofa-rpc/docs/Configuration-Common"
 | connectionHolder | Connection manager implementation | all | |
 | loadBalancer | Load balancing algorithm | random |
 | lazy | Whether to delay establishing a persistent connection | false |
-Sticky | Whether to use sticky connection | false | Skip load balancing algorithm and use previous address |
+| Sticky | Whether to use sticky connection | false | Skip load balancing algorithm and use previous address |
 | inJVM | Whether to switch to JVM call | true | JVM discovers service provider and turns to local |
 | check | Whether to check for strong dependencies | false | Startup failure due to no server available |
 | Heartbeat | Heartbeat Interval | 30000 | The client sends heartbeat interval to the server. It depends on the implementation and may not take effect. |
@@ -103,8 +101,6 @@ Sticky | Whether to use sticky connection | false | Skip load balancing algorith
 | compress | Whether to start compression | null | |
 | parameters | Extra attributes | | Map<String, String> |
 
-
-
 ## ServerConfig
 
 | id | Id | Default value | Comment |
@@ -127,14 +123,13 @@ Sticky | Whether to use sticky connection | false | Skip load balancing algorith
 | virtualHost | Virtual host address | | preferred when registering to the registry center |
 | virtualPort | virtual host port | | preferred when registering to the registry center |
 | epoll | Using | false | It depends on the implementation and may not take effect. |
-Daemon | Whether to guard the port | true | If true, exit with the main thread exit; if false, exit actively. |
+| Daemon | Whether to guard the port | true | If true, exit with the main thread exit; if false, exit actively. |
 | adaptivePort | Whether to adjust the port | false | When the port is occupied, +1 automatically to adapt |
 | transport | Transport layer implementation | bolt (cover netty4) | It depends on the implementation and may not take effect. |
 | autoStart | Whether to automatically start the port | true | |
 | stopTimeout | Timeout period (ms) for graceful shutdown | 10000(override 20000) | |
 | boundHost | Bound Address | | It defaults to the host value. |
 | parameters | Extra attribute | | Map<String, String> |
-
 
 ## RegistryConfig
 

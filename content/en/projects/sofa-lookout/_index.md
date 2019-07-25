@@ -34,6 +34,4 @@ sidebar:
     sub:
       - title: 'Development guide'
         link: 'development-use-guide'
-      - title: 'Development plan'
-        link: 'plan'
 ---
