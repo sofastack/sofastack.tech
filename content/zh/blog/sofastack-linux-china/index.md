@@ -18,9 +18,9 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1564109791455-c1485dbc-846
 
 ## SOFA 与开源
 
-继去年开始开源 SOFAStack 以来，今年上半年他们又开源了分布式事务框架 Seata 和服务注册中心 SOFARegistry，之前我曾经向蚂蚁金服中间件负责人杨冰了解过为什么要将 SOFA 开源的背后思考，以及 SOFA 发展迭代的历程，详情可以看之前的文章《[蚂蚁金服技术总监杨冰：金融科技公司为什么要拥抱开源？](https://mp.weixin.qq.com/s?__biz=MzI0Nzc3MTQyMw==&mid=2247487956&idx=1&sn=342121bca34384ffa95b9cabb4c18821&scene=21#wechat_redirect) 》进行了解。
+继去年开始开源 SOFAStack 以来，今年上半年他们又开源了分布式事务框架 Seata 和服务注册中心 SOFARegistry，之前我曾经向蚂蚁金服中间件负责人杨冰了解过为什么要将 SOFA 开源的背后思考，以及 SOFA 发展迭代的历程，详情可以看之前的文章《[蚂蚁金服技术总监杨冰：金融科技公司为什么要拥抱开源？](https://mp.weixin.qq.com/s?__biz=MzI0Nzc3MTQyMw==&mid=2247487956&idx=1&sn=342121bca34384ffa95b9cabb4c18821&scene=21) 》进行了解。
 
-目前，SOFA 的架构已经发展到 SOFA 5 阶段，在今年 2 月，前任 SOFA 开源负责人鲁直还向我分享了 SOFA 5 中重点推进的方向，主要包括 Service Mesh 和 Serverless，以及分布式事务 Seata 的落地，具体内容见文章《[蚂蚁金服开源负责人鲁直：不只是中间件，未来会开源更多](https://mp.weixin.qq.com/s?__biz=MzI0Nzc3MTQyMw==&mid=2247488258&idx=1&sn=2ffba58220d46d648e0203de6b9dd23a&scene=21#wechat_redirect)》。
+目前，SOFA 的架构已经发展到 SOFA 5 阶段，在今年 2 月，前任 SOFA 开源负责人鲁直还向我分享了 SOFA 5 中重点推进的方向，主要包括 Service Mesh 和 Serverless，以及分布式事务 Seata 的落地，具体内容见文章《[蚂蚁金服开源负责人鲁直：不只是中间件，未来会开源更多](https://mp.weixin.qq.com/s?__biz=MzI0Nzc3MTQyMw==&mid=2247488258&idx=1&sn=2ffba58220d46d648e0203de6b9dd23a&scene=21)》。
 
 作为一个成功的开源核心模式的项目，我非常关注 SOFA 开源的实操是如何进行的，是如何进行开源治理的，作为 SOFA 团队的老朋友，我们话题就直接从 SOFA 的开源治理聊起。
 
