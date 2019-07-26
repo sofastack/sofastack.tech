@@ -16,7 +16,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563456011284-3294de2d-77a
 
 Kubernetes 原生社区 Deployment 和 StatefulSet 解决了“服务节点版本一致性”的问题，并且通过 Rolling Update 实现了滚动升级，提供了基本的回滚策略。对于高可用建设要求不高的“年轻”业务，是一个不错的选择。
 
-但是，在金融场景下，要解决的场景复杂得多。因此我们在金融分布式架构-云应用引擎（**SOFAStack-CAFE**，参见[金融级云原生探索实践系列 - 开篇](https://www.yuque.com/huarou/gd4szw/ikxyhv)）中提出了 **CafeDeployment **的云原生模型，致力于解决以下问题：
+但是，在金融场景下，要解决的场景复杂得多。因此我们在金融分布式架构-云应用引擎（**SOFAStack-CAFE**，参见《金融级云原生探索实践系列——开篇》）中提出了 **CafeDeployment **的云原生模型，致力于解决以下问题：
 
 **1. IP 不可变**
 

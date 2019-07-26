@@ -1,17 +1,13 @@
-
 ---
 title: "Quick start guide for SOFABoot project"
 aliases: "/sofa-lookout/docs/quickstart-client-boot"
 ---
 
-
-# Quick start
-
 This project demonstrates how to use SOFALookout in SOFABoot and connect to the Actuator of Spring Boot. If you want to connect to Prometheus or other Registry, see the Registry section.
 
 ## Create a SpringBoot (or SofaBoot) project
 
-Create a new Spring Boot application (In case of SOFABoot project, import to SOFABoot as described in [SOFABoot Documentation - Dependency Management](http://www.sofastack.tech/sofa-boot/docs/DependencyManagement)).
+Create a new Spring Boot application (In case of SOFABoot project, import to SOFABoot as described in SOFABoot Documentation - Dependency Management.
 
 ## Introduce Lookout's Starter dependency
 

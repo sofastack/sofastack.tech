@@ -357,7 +357,7 @@ CoreDNS 将会在Kubernetes 1.13 之后成为 Kubernetes 的默认的DNS服务�
 
 **相关链接**：
 
-- **SOFA 文档: ** [http://www.sofastack.tech/](http://www.sofastack.tech/)
+- **SOFA 文档: ** [https://www.sofastack.tech/](https://www.sofastack.tech/)
 
 - **SOFA: ** [https://github.com/alipay](https://github.com/alipay)
 

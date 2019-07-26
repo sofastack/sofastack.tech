@@ -14,7 +14,7 @@ aliases: "/sofa-rpc/docs/Configuration-Common"
 | filterRef | Filter configuration example | | List |
 | filter | Filter configuration alias | | separated by commas |
 | registry | Registry center on the server| | List |
-| methods | Method-level configuration | | Map<String, MethodConfig> |
+| methods | Method-level configuration | | `Map<String, MethodConfig>` |
 | serialization | Serialization protocol | hessian2 | |
 | register | Whether to register | true | It depends on the implementation and may not take effect. |
 | subscribe | Whether to subscribe | true | It depends on the implementation and may not take effect. |
@@ -34,10 +34,10 @@ aliases: "/sofa-rpc/docs/Configuration-Common"
 | cacheRef | Result cache implementation class | | |
 | mockRef | Mock implementation class | | |
 | mock | Whether to enable Mock | | |
-| validation | Whether to enable parameter verification (jsr303) |
+| validation | Whether to enable parameter verification (jsr303) |||
 | compress | Whether to start compression | false | |
 | cache | Whether to enable result caching | false | |
-| parameters | Extra attributes | | Map<String, String> |
+| parameters | Extra attributes | | `Map<String, String>` |
 
 ## ConsumerConfig
 
@@ -50,7 +50,7 @@ aliases: "/sofa-rpc/docs/Configuration-Common"
 | filterRef | Filter configuration example | | List |
 | filter | Filter configuration alias | | List |
 | registry | Registry center on the server | | List |
-| methods | Method-level configuration | | Map<String, MethodConfig> |
+| methods | Method-level configuration | | `Map<String, MethodConfig>` |
 | serialization | Serialization protocol | hessian2 | |
 | register | Whether to register | true | It depends on the implementation and may not take effect. |
 | subscribe | Whether to subscribe | true | It depends on the implementation and may not take effect. |
@@ -62,8 +62,8 @@ aliases: "/sofa-rpc/docs/Configuration-Common"
 | disconnectTimeout | Timeout period for disconnection | 5000(cover 10000) | |
 | cluster | Cluster mode | failover | |
 | connectionHolder | Connection manager implementation | all | |
-| loadBalancer | Load balancing algorithm | random |
-| lazy | Whether to delay establishing a persistent connection | false |
+| loadBalancer | Load balancing algorithm | random ||
+| lazy | Whether to delay establishing a persistent connection | false ||
 | Sticky | Whether to use sticky connection | false | Skip load balancing algorithm and use previous address |
 | inJVM | Whether to switch to JVM call | true | JVM discovers service provider and turns to local |
 | check | Whether to check for strong dependencies | false | Startup failure due to no server available |
@@ -71,7 +71,7 @@ aliases: "/sofa-rpc/docs/Configuration-Common"
 | reconnect | Reconnection interval | 10000 | The interval at which the client rebuilds the persistent connection of the port. It depends on the implementation and may not take effect. |
 | router | Router configuration alias ​​| | List |
 | routerRef | Router configuration example | | List |
-| bootstrap | Service reference starter | bolt |
+| bootstrap | Service reference starter | bolt ||
 | addressWait | Waiting time for address acquisition | -1 | It depends on the implementation and may not take effect. |
 | timeout | Call timeout period | 3000(cover 5000) | |
 | retries | Number of retries after failure | 0 | It is related to cluster mode and is read in failover mode. |
@@ -83,7 +83,7 @@ aliases: "/sofa-rpc/docs/Configuration-Common"
 | mock | Whether to enable Mock | | |
 | validation | Whether to enable parameter verification | | Based on JSR303 |
 | compress | Whether to start compression | false | |
-| parameters | Extra attributes | | Map<String, String> |
+| parameters | Extra attributes | | `Map<String, String>` |
 
 
 ## MethodConfig
@@ -99,7 +99,7 @@ aliases: "/sofa-rpc/docs/Configuration-Common"
 | concurrent | Number of concurrent execution requests | null | Maximum number of concurrently executeable requests per method under interface. -1 indicates turning off concurrent filters, and 0 means that filtering is enabled but not restricted. |
 | validation | Whether to enable parameter verification | null | |
 | compress | Whether to start compression | null | |
-| parameters | Extra attributes | | Map<String, String> |
+| parameters | Extra attributes | | `Map<String, String>` |
 
 ## ServerConfig
 
@@ -129,7 +129,7 @@ aliases: "/sofa-rpc/docs/Configuration-Common"
 | autoStart | Whether to automatically start the port | true | |
 | stopTimeout | Timeout period (ms) for graceful shutdown | 10000(override 20000) | |
 | boundHost | Bound Address | | It defaults to the host value. |
-| parameters | Extra attribute | | Map<String, String> |
+| parameters | Extra attribute | | `Map<String, String>` |
 
 ## RegistryConfig
 
