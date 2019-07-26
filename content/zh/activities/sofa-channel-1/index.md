@@ -29,7 +29,6 @@ SOFAChannel#1 《从蚂蚁金服微服务实践谈起》<br>时间：2019-01-17 
 <td width="20%">19:00-20:00	</td>
 <td>
 <b>《从蚂蚁金服微服务实践谈起》</b>
-
 章耿 花名余淮（蚂蚁金服高级技术专家。目前在蚂蚁金服中间件服务与框架组负责应用框架及 SOFAStack 相关的工作）</tr>
 </table>
 
@@ -39,4 +38,5 @@ SOFAChannel#1 《从蚂蚁金服微服务实践谈起》<br>时间：2019-01-17 
 
 ## 视频回顾地址
 
-https://tech.antfin.com/activities/148
+<https://tech.antfin.com/community/activities/148>
+
