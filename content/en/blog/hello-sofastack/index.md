@@ -15,9 +15,9 @@ weight : 1
 
 ## Links
 
-Home Page: [https://www.sofastack.tech](https://www.sofastack.tech/?lang=en)
+Home Page: [https://www.sofastack.tech](https://www.sofastack.tech)
 
-Source Code: [http://github.com/sofastack](http://github.com/sofastack)
+Source Code: [https://github.com/sofastack](https://github.com/sofastack)
 
 ## Projects
 

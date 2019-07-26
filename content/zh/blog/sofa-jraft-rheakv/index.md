@@ -180,5 +180,5 @@ TiKV 使用 Raft 一致性算法来保证数据的安全，默认提供的是
 
 ### 系列阅读
 
-- [SOFAJRaft 实现原理 - 蚂蚁金服生产级 Raft 算法库 SOFAJRaft 存储模块剖析](https://www.sofastack.tech/blog/sofa-jraft-algorithm-storage-module-deep-dive/)
-- [蚂蚁金服开源 SOFAJRaft：生产级 Java Raft 算法库](https://www.sofastack.tech/blog/sofa-jraft-deep-dive/)
+- [SOFAJRaft 实现原理 - 蚂蚁金服生产级 Raft 算法库 SOFAJRaft 存储模块剖析](/blog/sofa-jraft-algorithm-storage-module-deep-dive/)
+- [蚂蚁金服开源 SOFAJRaft：生产级 Java Raft 算法库](/blog/sofa-jraft-deep-dive/)

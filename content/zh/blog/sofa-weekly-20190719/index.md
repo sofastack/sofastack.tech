@@ -50,7 +50,7 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 ## SOFARegistryLab 系列阅读
 
 - [蚂蚁金服服务注册中心 SOFARegistry 解析 | 服务发现优化之路](https://www.sofastack.tech/blog/sofa-registry-service-discovery-optimization/)
-- [海量数据下的注册中心 - SOFARegistry 架构介绍](https://www.sofastack.tech/blog/sofa-registry-introduction/)
+- [海量数据下的注册中心 - SOFARegistry 架构介绍](/blog/sofa-registry-introduction/)
 - [蚂蚁金服开源服务注册中心 SOFARegistry | SOFA 开源一周年献礼](https://www.sofastack.tech/blog/sofa-registry-deep-dive/)
 
 ## SOFAChannel 回顾集合
