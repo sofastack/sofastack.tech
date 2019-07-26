@@ -18,7 +18,8 @@ The following figure shows the workflow chart of SOFAMosn based on the overall S
 
 Note: Currently, SOFAMosn cannot be directly used in the native Istio.
 
-<div align=center><img src="mosn-introduction.png" width = "450" height = "400" /></div>
+<img src="mosn-introduction.png" width = "450" height = "400">
+
 ## Preparations
 
 This guide supposes you are using macOS. For other operating systems, you can install the corresponding software.
@@ -173,7 +174,8 @@ BookInfo is a book application like Douban. It contains four basic services.
 * Ratings: Rating service, which is developed with Nodejs.
 * Details: Book details, which is developed with Ruby.
 
-<div align=center><img src="bookinfo.png" width = "550" height = "400" /></div>
+<img src="bookinfo.png" width = "550" height = "400">
+
 ### 1. Deploy BookInfo application and inject it to SOFAMosn
 
 > For the specific procedure, see [https://istio.io/docs/examples/bookinfo/](https://istio.io/docs/examples/bookinfo/).
@@ -217,36 +219,41 @@ reviews-v3-1813607990-8ch52                 2/2       Running   0          6m
 ### 2. Access BookInfo service
 
 * Enable gateway mode
-    ```powershell
-    $ kubectl apply -f samples/bookinfo/networking/bookinfo-gateway.yaml
-    $ kubectl get gateway        // Check if the gateway runs
-    NAME               AGE
-    bookinfo-gateway   24m
-    ```
+
+```bash
+$ kubectl apply -f samples/bookinfo/networking/bookinfo-gateway.yaml
+$ kubectl get gateway        // Check if the gateway runs
+NAME               AGE
+bookinfo-gateway   24m
+```
 
 * Check if EXTERNAL-IP exists
-```powershell
+
+```bash
 $ kubectl get svc istio-ingressgateway -n istio-system
 NAME                   TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)                                                                                                     AGE
 istio-ingressgateway   LoadBalancer   172.19.8.162   161.117.70.217   80:31380/TCP,443:31390/TCP,31400:31400/TCP,15011:32393/TCP,8060:30940/TCP,15030:31601/TCP,15031:31392/TCP   48m
 ```
 
 * Set ingress IP and ports
-```powershell
+
+```bash
 $ export INGRESS_HOST=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
 $ export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].port}')
 $ export SECURE_INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="https")].port}')
 ```
 
 * Set gateway address
-```powershell
+
+```bash
 $ export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
 $ echo $GATEWAY_URL   //For example, the address here is 161.117.70.217:80
 161.117.70.217:80
 ```
 
 * Verify if the gateway takes effect 
-```
+
+```bash
 $ curl -o /dev/null -s -w "%{http_code}\n"  http://$GATEWAY_URL/productpage   //If 200 is output, it means a success 
 200
 ```
@@ -269,9 +276,9 @@ Visit http://$GATEWAY_URL/productpage. Note that, you need to replace `$GATEWAY_
 
 + Firstly, create a series of destination rules for BookInfo's services.
 
-    ```bash
-    $ kubectl apply -f samples/bookinfo/networking/destination-rule-all.yaml
-    ```
+```bash
+$ kubectl apply -f samples/bookinfo/networking/destination-rule-all.yaml
+```
 
 + Specify reviews service to access v1 only.
 
@@ -285,10 +292,11 @@ Visit http://$GATEWAY_URL/productpage, and find that the reviews are fixed in th
 
 ### 4. Verify MOSN's capability of routing by weight
 
-+ Allocate 50% traffic respectively to v1 and v3.
-    ```bash
-    $ kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-50-v3.yaml
-    ```
++ Allocate 50% traffic respectively to v1 and v3
+
+```bash
+$ kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-50-v3.yaml
+```
 
 Access http://$GATEWAY_URL/productpage, and find that the probability for v1 and v3 to appear respectively is 1/2.
 
@@ -296,9 +304,9 @@ Access http://$GATEWAY_URL/productpage, and find that the probability for v1 and
 
 + There is a login entrance in the upper right corner of the BookInfo system. After you log in, the request carries the custom parameter `end-user` of which the value is user name. Mosn supports routing by the value of this header. For example, route the user Jason to the v2 while other users to v1 (both username and password are Jason, why this user can view the corresponding yaml file).
 
-    ```bash
-    $ kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-test-v2.yaml
-    ```
+```bash
+$ kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-test-v2.yaml
+```
 
 When you access http://$GATEWAY_URL/productpage:
 

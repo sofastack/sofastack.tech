@@ -145,9 +145,9 @@ __c、SpanContext & SofaTracerSpanContext__
 
 `SpanContext` 中只有一个接口：
 
-| 接口                                                | 描述                            |
-| :-------------------------------------------------- | :------------------------------ |
-| Iterable<Map.Entry<String, String>> baggageItems(); | 拿到所有的baggageItems 透传数据 |
+| 接口                                                  | 描述                            |
+| :---------------------------------------------------- | :------------------------------ |
+| `Iterable<Map.Entry<String, String>> baggageItems();` | 拿到所有的baggageItems 透传数据 |
 
 `SofaTracerSpanContext` 实现了 `SpanContext` 接口，扩展了构建 `SpanContext`、序列化 `baggageItems` 以及`SpanContext`等新的能力，除此之外，`SpanContext` 在跨进行透传时携带的信息进行了规范：
 

@@ -3,7 +3,7 @@ title: "SOFARPC Metrics 指标"
 aliases: "/sofa-lookout/docs/SOFARPC-Metrics"
 ---
 
-SOFARPC 目前度量了两个指标。
+> SOFARPC 目前度量了两个指标。
 
 ## 服务端线程池
 
