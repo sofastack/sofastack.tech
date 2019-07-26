@@ -453,7 +453,7 @@ MetadataClient 负责从 PD 获取集群元信息以及注册元信息
 
 * 假设 id 为 2 的 region2 [startKey2, endKey2) 分裂
 * 它分裂后的两个 region 分别为 id 继续为 2 的 region2 [startKey2, splitKey) 和 id 为 3 的 region3 [splitKey, endKey2)
-* 可以再看上图会发现，此时只需要再往 regionRouteTable 添加一个元素 <region3, splitKey> 即可，原来region2 对应的数据是不需要修改的
+* 可以再看上图会发现，此时只需要再往 regionRouteTable 添加一个元素 `<region3, splitKey>` 即可，原来region2 对应的数据是不需要修改的
     * __Write-Operation__
         * 单 key 写请求路由逻辑很简单，根据 key 查询对应的 region，再对该 region 发起请求即可。
         * 如果是一个批量操作写请求，比如 `put(List)`，那么会对所有 keys 进行 split，分组后再并行分别请求所属的regionEngine，要注意的是此时无法提供事务保证。
