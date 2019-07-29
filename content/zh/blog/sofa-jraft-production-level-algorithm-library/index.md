@@ -329,4 +329,4 @@ public void readFromQuorum(String key, AsyncContext asyncContext) {
 
 ## 招聘
 
-蚂蚁金服中间件团队持续在寻找对于基础中间件（如消息、数据中间件以及分布式计算等）以及下一代高性能面向实时分析的时序数据库等方向充满热情的小伙伴加入，有意者请联系 [boyan@antfin.com](boyan@antfin.com)。
+蚂蚁金服中间件团队持续在寻找对于基础中间件（如消息、数据中间件以及分布式计算等）以及下一代高性能面向实时分析的时序数据库等方向充满热情的小伙伴加入，有意者请联系 [boyan@antfin.com](mailto:boyan@antfin.com)。
