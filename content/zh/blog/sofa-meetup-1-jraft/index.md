@@ -1,7 +1,7 @@
 ---
 title: "详解蚂蚁金服 SOFAJRaft | 生产级高性能 Java 实现"
 author: "力鲲"
-authorlink: "https://github.com/zhuyanli99"
+authorlink: "https://github.com/masaimu/"
 description: "本文根据 SOFA Meetup#1 北京站 现场分享整理，完整的分享视频回顾获取方式见文章底部。"
 categories: "SOFAJRaft"
 tags: ["SOFAJRaft","SOFAMeetup"]
@@ -170,6 +170,6 @@ SOFAJRaft 定位是生产级的 Raft 算法实现，所以除了几百个单元�
 
 欢迎 Star SOFAJRaft 帮助我们改进。
 
-**SOFAJRaft：**https://github.com/alipay/sofa-jraft
+**SOFAJRaft：**<https://github.com/alipay/sofa-jraft>
 
 本次分享现场视频回顾：[点击这里](https://tech.antfin.com/community/activities/382/review/712?brandId=6)
