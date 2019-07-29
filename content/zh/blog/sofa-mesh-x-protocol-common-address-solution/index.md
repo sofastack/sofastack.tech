@@ -13,7 +13,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1564375901298-923f4310-51f
 
 ## 前言
 
-在2018年上半年，蚂蚁金服决定基于 Istio 订制自己的 ServiceMesh 解决方案，在6月底对外公布了 SOFAMesh，详情请见之前的文章: [大规模微服务架构下的Service Mesh探索之路](https://skyao.io/publication/201806-service-mesh-explore/) 。
+在2018年上半年，蚂蚁金服决定基于 Istio 订制自己的 ServiceMesh 解决方案，在6月底对外公布了 SOFAMesh，详情请见之前的文章: [大规模微服务架构下的Service Mesh探索之路](https://mp.weixin.qq.com/s/JQ0PPAsO6qiAW-q-rI-Bsg) 。
 
 在 SOFAMesh 的开发过程中，针对遇到的实际问题，我们给出了一套名为 x-protocol 的解决方案，定位是云原生、高性能、低侵入性的通用 Service Mesh 落地方案，依托 Kubernetes 基座，利用其原生的服务注册和服务发现机制，支持各种私有 RPC 协议低成本、易扩展的接入，快速享受 Service Mesh 所带来的红利。
 
