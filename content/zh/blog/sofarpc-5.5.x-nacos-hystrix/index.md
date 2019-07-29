@@ -13,8 +13,8 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1564392994334-a78d9821-c56
 > **S**calable **O**pen **F**inancial **A**rchitecture
 > 是蚂蚁金服自主研发的金融级分布式中间件，包含了构建金融级云原生架构所需的各个组件，是在金融场景里锤炼出来的最佳实践。
 > 
-> SOFA 文档: http://www.sofastack.tech/
-> SOFA: https://github.com/alipay
+> SOFA 文档: <http://www.sofastack.tech/>
+> SOFA: <https://github.com/alipay>
 
 ![SOFARPC & Nacos & Hystrix](https://cdn.nlark.com/yuque/0/2019/png/226702/1551773737627-2d027afc-9b4c-4983-9eae-c4811cca5f37.png)
 
@@ -35,6 +35,7 @@ SOFARPC 5.5.0 开始提供对 Nacos 的集成，以下介绍两种使用方式�
 SOFABoot 从 2.5.3 开始已集成 SOFARPC 对 Nacos 的配置支持，假如开发者本机已经根据 [Nacos 快速开始](https://nacos.io/zh-cn/docs/quick-start.html)安装并启动 Nacos Server。
 
 根据 RPC 的[示例工程](https://github.com/alipay/sofa-rpc-boot-projects/tree/master/sofa-boot-samples)创建一个 SOFABoot 工程，SOFABoot 工程使用 2.5.3。
+
 ```bash
 $ git clone git@github.com:alipay/sofa-rpc-boot-projects.git
 $ git checkout 5.x
@@ -79,9 +80,9 @@ SOFARPC 独立使用集成 Nacos 也很简单，只需要将注册中心地址�
 
 ```xml
 <dependency>
-	<groupId>com.alipay.sofa</groupId>
-	<artifactId>sofa-rpc-all</artifactId>
-	<version>5.5.1</version>
+    <groupId>com.alipay.sofa</groupId>
+    <artifactId>sofa-rpc-all</artifactId>
+    <version>5.5.1</version>
 </dependency>
 ```
 
@@ -106,7 +107,7 @@ ProviderConfig<HelloService> providerConfig = new ProviderConfig<HelloService>()
     .setInterfaceId(HelloService.class.getName())
     .setRef(new HelloServiceImpl())
     .setServer(serverConfig)
-	  .setRegister(true)
+       .setRegister(true)
     .setRegistry(Lists.newArrayList(registryConfig));
 providerConfig.export();
 ```
