@@ -4,7 +4,7 @@ author: "墨睿"
 authorlink: "https://github.com/luyiisme"
 description: "本文给大家介绍下 SOFALookout 服务器端主要提供的特性以及使用方式。"
 categories: "SOFALookout"
-tags: ["SOFALookout""]
+tags: ["SOFALookout"]
 date: 2019-06-06T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1564373492723-263b709a-4af8-452d-ba85-ec40bb359881.png"
 ---
