@@ -73,7 +73,7 @@ SOA标准的服务注册，服务发现和调用流程如下：
 
 ![Kubernetes下的DNS寻址方式](https://raw.githubusercontent.com/servicemesher/website/master/content/blog/x-protocol-common-address-solution/006tNbRwly1fw0u1crhhoj30zz0grad5.jpg)
 
-当部署在Kubernetes下的某个充当客户端的应用发起请求时，如图中的HTTP GET请求，目标URL地址为 “<http://userservice/id/1000221>"。请求的寻址方式和过程如下：
+当部署在Kubernetes下的某个充当客户端的应用发起请求时，如图中的HTTP GET请求，目标URL地址为 `http://userservice/id/1000221`。请求的寻址方式和过程如下：
 
 - 首先进行域名解析，分别尝试解析”userservice”/“userservie.default.svc.cluster.local”等域名，得到ClusterIP
 - 然后客户端发出请求的报文，目标地址为ClusterIP，源地址为当前客户端所在的pod IP（简单起见，端口先忽略）
@@ -107,7 +107,7 @@ kube-proxy在客户端和服务器端之间拦截并修改请求和应答的报�
 1. 在拦截并修改请求报文之后，kube-proxy会保存报文修改的5元组对应关系（5元组指源IP地址，源端口，协议，目的地IP地址，目的地端口）
 2. 在收到应答报文后，根据应答报文中的5元组，在保存的5元组对应关系中，找到对应信息，得到原有的ClusterIP和端口，然后修改应答报文
 
-总结，通过上述Kubernetes下的寻址方式，客户端只需发送带简单寻址信息的请求（如 “[http://userservice/id/1000221"](http://userservice/id/1000221%22) 中的”userservice” ），就可以寻址到正确的服务器端。这期间有两个关注点：
+总结，通过上述Kubernetes下的寻址方式，客户端只需发送带简单寻址信息的请求（如 `http://userservice/id/1000221` 中的”userservice” ），就可以寻址到正确的服务器端。这期间有两个关注点：
 
 1. 通过DNS，建立了域名和ClusterIP的关系。
 
@@ -180,7 +180,7 @@ domains中，除了列出域名外，还有一个特殊的IP地址，这个就�
 
 ![通过CoreDNS注册接口名称](https://raw.githubusercontent.com/servicemesher/website/master/content/blog/x-protocol-common-address-solution/006tNbRwly1fw0u6rzjygj30lb0dc75f.jpg)
 
-详细的实现方案，不在本文中重复讲述，请参阅我们之前的分享文章 [SOFAMesh 的通用协议扩展](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247484175&idx=1&sn=5cb26b1afe615ac7e06b2ccbee6235b3&chksm=faa0ecd5cdd765c3f285bcb3b23f4f1f3e27f6e99021ad4659480ccc47f9bf25a05107f4fee2&mpshare=1&scene=1&srcid=0828t5isWXmyeWhTeoAoeogw&pass_ticket=DqnjSkiuBZW9Oe68Fjiq%2Bqa6fFCyysQTR7Qgd8%2BX9FfooybAg7NXVAQdLmfG6gRX#rd) 中的DNS寻址方案一节。
+详细的实现方案，不在本文中重复讲述，请参阅我们之前的分享文章 [SOFAMesh 的通用协议扩展](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247484175&idx=1&sn=5cb26b1afe615ac7e06b2ccbee6235b3&chksm=faa0ecd5cdd765c3f285bcb3b23f4f1f3e27f6e99021ad4659480ccc47f9bf25a05107f4fee2&mpshare=1&scene=1&srcid=0828t5isWXmyeWhTeoAoeogw&pass_ticket=DqnjSkiuBZW9Oe68Fjiq%2Bqa6fFCyysQTR7Qgd8%2BX9FfooybAg7NXVAQdLmfG6gRX) 中的DNS寻址方案一节。
 
 > 备注：暂时修改 CoreDNS 记录的方式是直接修改 CoreDNS 的底层数据，不够优雅。未来将修改为通过 CoreDNS 的 Dynamic updates API 接口进行，不过 CoreDNS 的这个API还在开发中，需要等待完成。详情见[这里](https://github.com/coredns/coredns/pull/1822) 。
 
