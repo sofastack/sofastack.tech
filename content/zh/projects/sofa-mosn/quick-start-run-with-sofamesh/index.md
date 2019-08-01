@@ -59,7 +59,13 @@ $ brew cask install minikube
 注意，pilot 至少需要 2G 内存，所以在启动的时候，可以通过加参数的方法给 minikube 添加分配的资源，如果你机器的资源不够，推荐使用商业版本的 k8s 集群。
 
 ```bash
-$ minikube start --memory=8192 --cpus=4 --kubernetes-version=v1.10.0 --vm-driver=hyperkit
+$ minikube start --memory=8192 --cpus=4 --kubernetes-version=v1.15.0 --vm-driver=hyperkit
+```
+
+创建istio 命名空间
+
+```
+$ kubectl create namespace istio-system
 ```
 
 ### 4. 安装 kubectl 命令行工具
@@ -84,71 +90,25 @@ $ brew install kubernetes-helm
 
 ```bash
 $ git clone https://github.com/sofastack/sofa-mesh.git
-$ cd sofa-mesh
 ```
 
 ### 2. 通过 Helm 安装 SOFAMesh
 
-使用 Helm 安装之前，需要先查看 Helm 的版本
+
+**使用 `helm template` 安装**
+
+首先需要切换到SOFAMesh源码所在目录，然后使用Helm安装istio CRD以及各个组件 
 
 ```bash
-$ helm version
-```
-
-如果版本在 2.10 之前，需要手动 安装 istio 的 CRD，否则不需要。(在笔者写此文的时候，安装的 helm 已经是v2.11.0，所以下面的步骤可以直接跳过)
-
-```bash
-$ kubectl apply -f install/kubernetes/helm/istio/templates/crds.yaml
-$ kubectl apply -f install/kubernetes/helm/istio/charts/certmanager/templates/crds.yaml
-```
-
-之后 使用 Helm 安装 ISTIO 有两种方式，这里推荐使用第一种，如果第一种不 work，可以尝试第二种
-
-**方式一：使用 `helm template` 安装**
-
-```bash
-$ helm template install/kubernetes/helm/istio --name istio --namespace istio-system > $HOME/istio.yaml
-$ kubectl create namespace istio-system
-$ kubectl apply -f $HOME/istio.yaml
-```
-
-如果安装成功后，需要卸载的话：
-
-```bash
-$ kubectl delete -f $HOME/istio.yaml
-```
-
-**方式二：使用 `helm install 安装`**
-
-```bash
-$ kubectl apply -f install/kubernetes/helm/helm-service-account.yaml
-$ helm init --service-account tiller
-$ helm install install/kubernetes/helm/istio --name istio --namespace istio-system
-```
-
-如果安装成功后，需要卸载的话：
-
-```bash
-$ helm delete --purge istio
+$ cd sofa-mesh 
+$ helm template install/kubernetes/helm/istio-init --name istio-init --namespace istio-system | kubectl apply -f -
+$ helm template install/kubernetes/helm/istio --name istio --namespace istio-system | kubectl apply -f -
 ```
 
 ### 3. 验证安装
 
-```bash
-$ kubectl get svc -n istio-system
-NAME                       TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                                 AGE
-istio-citadel              ClusterIP   172.16.113.0     <none>        8060/TCP,9093/TCP                       2m
-istio-egressgateway        ClusterIP   172.16.93.234    <none>        80/TCP,443/TCP                          2m
-istio-galley               ClusterIP   172.16.199.113   <none>        443/TCP,9093/TCP                        2m
-istio-pilot                ClusterIP   172.16.94.105    <none>        15010/TCP,15011/TCP,8080/TCP,9093/TCP   2m
-istio-policy               ClusterIP   172.16.152.158   <none>        9091/TCP,15004/TCP,9093/TCP             2m
-istio-sidecar-injector     ClusterIP   172.16.226.86    <none>        443/TCP                                 2m
-istio-statsd-prom-bridge   ClusterIP   172.16.18.241    <none>        9102/TCP,9125/UDP                       2m
-istio-telemetry            ClusterIP   172.16.200.109   <none>        9091/TCP,15004/TCP,9093/TCP,42422/TCP   2m
-prometheus                 ClusterIP   172.16.157.229   <none>        9090/TCP                                2m
-```
-
 `istio-system` 命名空间下的 pod 状态都是 Running 时，说明已经部署成功。
+如果仅仅是为了运行bookinfo，只需要pilot,injector,citadel这三个pods运行成功就可以满足最低要求
 
 ```bash
 $ kubectl get pods -n istio-system
@@ -163,6 +123,15 @@ istio-sidecar-injector-7f5f586bc7-2sdx6     1/1     Running   0          5m
 istio-statsd-prom-bridge-7f44bb5ddb-stcf6   1/1     Running   0          5m
 istio-telemetry-55ff8c77f4-q8d8q            1/1     Running   0          5m
 prometheus-84bd4b9796-nq8lg                 1/1     Running   0          5m
+```
+
+### 4. 卸载安装
+
+卸载SOFAMesh
+
+```bash
+$ helm template install/kubernetes/helm/istio --name istio --namespace istio-system | kubectl delete -f -
+$ kubectl delete namespace istio-system
 ```
 
 ## 三、BookInfo 实验
@@ -228,28 +197,13 @@ NAME               AGE
 bookinfo-gateway   24m
 ```
 
-查看 EXTERNAL-IP 是否存在。
+设置GATEWAY_URL,参考文档 https://istio.io/docs/tasks/traffic-management/ingress/ingress-control/#determining-the-ingress-ip-and-ports
 
 ```bash
-$ kubectl get svc istio-ingressgateway -n istio-system
-NAME                   TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)                                                                                                     AGE
-istio-ingressgateway   LoadBalancer   172.19.8.162   161.117.70.217   80:31380/TCP,443:31390/TCP,31400:31400/TCP,15011:32393/TCP,8060:30940/TCP,15030:31601/TCP,15031:31392/TCP   48m
-```
-
-设置 ingress IP 与 port。
-
-```bash
-$ export INGRESS_HOST=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
-$ export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].port}')
-$ export SECURE_INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="https")].port}')
-```
-
-设置 gateway 地址。
-
-```bash
+$ export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].nodePort}')
+$ export SECURE_INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="https")].nodePort}')
+$ export INGRESS_HOST=$(minikube ip)
 $ export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
-$ echo $GATEWAY_URL   //例如我这里的地址是 161.117.70.217:80
-161.117.70.217:80
 ```
 
 验证 gateway 是否生效。
