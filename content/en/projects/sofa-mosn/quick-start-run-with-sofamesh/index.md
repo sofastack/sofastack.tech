@@ -59,7 +59,13 @@ $ brew cask install minikube
 Note that Pilot requires at least 2G memory, so you can add resources to Minikube by adding parameters at startup. If your machine has insufficient resources, it is recommended to use the commercial version of the k8s cluster.
 
 ```bash
-$ minikube start --memory=8192 --cpus=4 --kubernetes-version=v1.10.0 --vm-driver=hyperkit
+$ minikube start --memory=8192 --cpus=4 --kubernetes-version=v1.15.0 --vm-driver=hyperkit
+```
+
+Create Istio namespace
+
+```bash
+$ kubectl create namespace istio-system
 ```
 
 ### 4. Install kubectl command line tool
@@ -83,72 +89,31 @@ $ brew install kubernetes-helm
 ### 1. Download SOFAMesh source codes
 
 ```bash
-$ git clone git@github.com:alipay/sofa-mesh.git
-$ cd sofa-mesh
+$ git clone git@github.com:sofastack/sofa-mesh.git
 ```
 
 ### 2. Use Helm to install SOFAMesh
 
-Before you use Helm to install SOFAMesh, you must check the version of Helm.
 
-```bash
-$ helm version
-```
-
-If the version is earlier than 2.10, you need to manually install the CRD of Istio, otherwise you don't have to do it. In this guide, the installed Helm is V2.11.0, so the following steps can be skipped directly.
-
-```bash
-$ kubectl apply -f install/kubernetes/helm/istio/templates/crds.yaml
-$ kubectl apply -f install/kubernetes/helm/istio/charts/certmanager/templates/crds.yaml
-```
-
-There are two methods to use Helm to install Istio. The first one is recommended. If the first one does not work, try the second one.
-
-+ Method 1: Use `helm template` to install
+You should change directory to sofa-mesh source code, and then use helm template to install isito crd and istio
 
     ```
-    $ helm template install/kubernetes/helm/istio --name istio --namespace istio-system > $HOME/istio.yaml
-    $ kubectl create namespace istio-system
-    $ kubectl apply -f $HOME/istio.yaml
+    $ cd sofa-mesh
+    $ helm template install/kubernetes/helm/istio-init --name istio-init --namespace istio-system | kubectl apply -f -
+    $ helm template install/kubernetes/helm/istio --name istio --namespace istio-system | kubectl apply -f -
     ```
 
-    If you want to uninstall the installed Istio, run the following command:
+Uninstall 
 
     ```
-    $ kubectl delete -f $HOME/istio.yaml
-    ```
-    
-+ Method 2: Use `helm install` to install
-
-    ```
-    $ kubectl apply -f install/kubernetes/helm/helm-service-account.yaml
-    $ helm init --service-account tiller
-    $ helm install install/kubernetes/helm/istio --name istio --namespace istio-system
-    ```
-
-    If you want to uninstall the installed Istio, run the following command:
-
-       ```
-    $ helm delete --purge istio
-       ```
+    $ helm template install/kubernetes/helm/istio --name istio --namespace istio-system | kubectl delete -f -
+    $ kubectl delete namespace istio-system
+    ```    
 
 ### 3. Verify installation
 
-```bash
-$ kubectl get svc -n istio-system
-NAME                       TYPE        CLUSTER-IP       EXTERNAL-IP   PORT(S)                                 AGE
-istio-citadel              ClusterIP   172.16.113.0     <none>        8060/TCP,9093/TCP                       2m
-istio-egressgateway        ClusterIP   172.16.93.234    <none>        80/TCP,443/TCP                          2m
-istio-galley               ClusterIP   172.16.199.113   <none>        443/TCP,9093/TCP                        2m
-istio-pilot                ClusterIP   172.16.94.105    <none>        15010/TCP,15011/TCP,8080/TCP,9093/TCP   2m
-istio-policy               ClusterIP   172.16.152.158   <none>        9091/TCP,15004/TCP,9093/TCP             2m
-istio-sidecar-injector     ClusterIP   172.16.226.86    <none>        443/TCP                                 2m
-istio-statsd-prom-bridge   ClusterIP   172.16.18.241    <none>        9102/TCP,9125/UDP                       2m
-istio-telemetry            ClusterIP   172.16.200.109   <none>        9091/TCP,15004/TCP,9093/TCP,42422/TCP   2m
-prometheus                 ClusterIP   172.16.157.229   <none>        9090/TCP                                2m
-```
-
 When the pods in the istio-system namespace are Running,  it means SOFAMesh has been successfully deployed.
+If you just want to run 'bookinfo' example, you only need 'citadel', 'pilot', and 'sidecar-injector' are Running.
 
 ```bash
 $ kubectl get pods -n istio-system
@@ -227,28 +192,15 @@ NAME               AGE
 bookinfo-gateway   24m
 ```
 
-* Check if EXTERNAL-IP exists
-
-```bash
-$ kubectl get svc istio-ingressgateway -n istio-system
-NAME                   TYPE           CLUSTER-IP     EXTERNAL-IP      PORT(S)                                                                                                     AGE
-istio-ingressgateway   LoadBalancer   172.19.8.162   161.117.70.217   80:31380/TCP,443:31390/TCP,31400:31400/TCP,15011:32393/TCP,8060:30940/TCP,15030:31601/TCP,15031:31392/TCP   48m
-```
-
-* Set ingress IP and ports
-
-```bash
-$ export INGRESS_HOST=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.status.loadBalancer.ingress[0].ip}')
-$ export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].port}')
-$ export SECURE_INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="https")].port}')
-```
-
 * Set gateway address
 
+See the details for set gateway address in https://istio.io/docs/tasks/traffic-management/ingress/ingress-control/#determining-the-ingress-ip-and-ports
+
 ```bash
+$ export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].nodePort}')
+$ export SECURE_INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="https")].nodePort}')
+$ export INGRESS_HOST=$(minikube ip)
 $ export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
-$ echo $GATEWAY_URL   //For example, the address here is 161.117.70.217:80
-161.117.70.217:80
 ```
 
 * Verify if the gateway takes effect 
