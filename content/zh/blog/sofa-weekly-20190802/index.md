@@ -87,7 +87,7 @@ vii. racer 模块实现重构，支持更完善的扩展机制
 
 详细发布报告：
 
-[https://github.com/alipay/sofa-mosn/releases/tag/0.6.0](https://github.com/alipay/sofa-mosn/releases/tag/0.6.0)
+[https://github.com/sofastack/sofa-mosn/releases/tag/0.6.0](https://github.com/sofastack/sofa-mosn/releases/tag/0.6.0)
 
 ## SOFA 活动推荐
 
