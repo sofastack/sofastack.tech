@@ -1,0 +1,53 @@
+{{ define "title" }}
+{{ "Search" }} · {{ .Site.Title }}
+{{ end }}
+
+{{ define "main" }}
+
+<div class="home-background -no-max-width">
+	<img src="{{ (resources.Get "/img/cover.png").RelPermalink }}" />
+</div>
+
+<div class="ss-layout-container">
+	<main class="ss-layout-main -card -noaside">
+		<div class="ss-search">
+			<div class="input-wrapper">
+				<div class="search-icon">
+					<svg class="icon" aria-hidden="true">
+						<use xlink:href="#icon-search"></use>
+					</svg>
+				</div>
+				<input id="js-search-input" class="input" placeholder="请输入要搜索的关键词" />
+				<div id="js-search-button" class="button">搜索</div>
+			</div>
+			<div id="js-result-container" class="search-container">
+				<div class="ss-summary">
+					<div class="title">
+						SOFABolt 功能介绍
+					</div>
+					<div class="summary">
+						SOFABoot 是蚂蚁金服开源的基于 Spring Boot 的研发框架，它在 Spring Boot 的基础上，提供了诸如 Readiness Check，类隔离，日志空间隔离等能力。在增强了 Spring
+						Boot 的同时，SOFABo...
+					</div>
+					<div class="meta">
+						来自 · 文档
+					</div>
+				</div>
+				<div class="ss-summary">
+					<div class="title">
+						SOFABolt 功能介绍
+					</div>
+					<div class="summary">
+						SOFABoot 是蚂蚁金服开源的基于 Spring Boot 的研发框架，它在 Spring Boot 的基础上，提供了诸如 Readiness Check，类隔离，日志空间隔离等能力。在增强了 Spring
+						Boot 的同时，SOFABo...
+					</div>
+					<div class="meta">
+						来自 · 文档
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+</div>
+
+{{ end }}
