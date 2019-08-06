@@ -20,14 +20,14 @@ aliases: "/sofa-bolt/docs/sofa-bolt-roadmap"
 
 ### 统一生命周期组件
 
-在当前的Bolt版本中，管理组件的生命周期相关的API命名并不统一，比如：
+在1.5.x的Bolt版本中，管理组件的生命周期相关的API命名并不统一，比如：
 
 * ReconnectManager不需要启动或者初始化，关闭方法为stop
 * DefaultConnectionMonitor初始化方法为start，关闭的方法为destroy
 * RpcClient初始化方法为init，关闭的方法为shutdown
 * RpcTaskScanner初始化的方法为start，关闭方法为shutdown
 
-期望在1.6.0版本里，统一所有组件的生命周期接口：
+在1.6.0版本里，统一了所有组件的生命周期接口：
 
 * 对于有生命周期的组件，即使用前需要进行初始化，使用完毕需要释放资源的，统一提供startup/shutdown接口
 
@@ -39,16 +39,16 @@ Bolt中remoting类是网络操作的主要入口，目前以抽象类的形式�
 * 沉淀接口，保持稳定
 * 收敛入口，便于内部的代码迭代
 
-比如当前ReconnectManager类，提供了public的addCancelUrl方法，但是这个方法在Bolt项目中没有调用：
+在1.5.x的版本中，ReconnectManager类尽管提供了public的addCancelUrl方法，但是这个方法在Bolt项目中没有调用：
 
 * IDE会给出警告
 * 给用户造成困惑：这个方法可否删除？
 
-期望在1.6.0版本中解决以上的问题，抽象出一套稳定的API，便于用户使用、提升代码可读性，同时也为后续的迭代打下基础。
+在1.6.0版本中解决了以上的问题，抽象出一套稳定的API，便于用户使用、提升代码可读性，同时也为后续的迭代打下基础。
 
 ### 收敛配置入口&增强配置的可扩展性
 
-当前版本的Bolt配置入口有以下几个：
+1.5.x版本的Bolt配置入口有以下几个：
 
 * ProtocolSwitch：协议配置（是否开启CRC校验），通过静态的方法创建配置对象
 * GlobalSwitch：实例级配置，每个AbstractConfigurableInstance拥有自己的GlobalSwitch配置，默认值取自SystemProperty，可以通过API调整配置
@@ -60,7 +60,7 @@ Bolt中remoting类是网络操作的主要入口，目前以抽象类的形式�
 
 且Bolt配置项存在相互影响的问题，比如一个产品同时使用了RPC和消息，而RPC和消息底层都依赖于Bolt，那么基于SystemProperty的配置将无法做到RPC和消息的配置隔离。
 
-期望在1.6.0版本中对配置模块做调整，在兼容当前版本配置的情况下：
+在1.6.0版本中对配置模块进行了调整，在兼容当前版本配置的情况下：
 
 * 收敛配置入口，提供统一的配置的编程界面（以类似Netty的Option的方式进行配置）
 * 支持配置隔离，不同的Bolt实例使用不同的配置项
