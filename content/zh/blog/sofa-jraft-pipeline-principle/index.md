@@ -5,7 +5,7 @@ authorlink: "https://github.com/homchou"
 description: "本文为《剖析 | SOFAJRaft 实现原理》第六篇，本篇作者徐家锋、力鲲。"
 categories: "SOFAJRaft"
 tags: ["SOFAJRaft"]
-date: 2019-08-06T18:00:00+08:00
+date: 2019-08-06T16:30:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1564559733423-fa87d46b-9c14-4945-aca6-4e157a368611.jpeg"
 ---
 
