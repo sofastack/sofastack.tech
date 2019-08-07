@@ -5,6 +5,12 @@ other = "En"
 [translation_mobile]
 other = "English"
 
+[search]
+other = "搜索"
+
+[search_placeholder]
+other = "请输入要搜索的关键词"
+
 # project
 [main_project]
 other = "主要项目"

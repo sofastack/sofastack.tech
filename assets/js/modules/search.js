@@ -4,6 +4,25 @@ import qs from 'query-string'
 import algoliasearch from 'algoliasearch'
 
 export default function searchFunc() {
+
+  // menu search input
+  if ($("#js-menu-search")) {
+    function jump2Search() {
+      const query = $("#js-menu-search .input").value
+      window.location.href = `/search/?query=${encodeURIComponent(query)}`
+    }
+
+    $("#js-menu-search .input").addEventListener('keydown', function(event) {
+      if (event.key === 'Enter') {
+        jump2Search()
+      }
+    })
+
+    $("#js-menu-search .icon").addEventListener('click', function() {
+      jump2Search()
+    })
+  }
+
   if (!$(".ss-search")) {
     return
   }
@@ -18,9 +37,9 @@ export default function searchFunc() {
   const searchFunc = (query) => {
     index.search({ query }, (err, { hits } = {}) => {
       if (err) {
-        console.log(err);
-        console.log(err.debugData);
-        return;
+        // console.log(err)
+        // console.log(err.debugData)
+        return
       }
 
       const highlight = (str) => {
@@ -40,7 +59,7 @@ export default function searchFunc() {
 					</div>
 				</div>
 			`).join('')
-    });
+    })
   }
 
   const query = qs.parseUrl(location.href).query

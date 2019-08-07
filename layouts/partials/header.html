@@ -44,6 +44,14 @@
 			</div>
 			<div class="navbar-end">
 				<div class="navbar-item">
+					<div id="js-menu-search" class="navbar-search">
+						<input class="input" placeholder="{{ i18n "search_placeholder"}}">
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#icon-search"></use>
+						</svg>
+					</div>
+				</div>
+				<div class="navbar-item">
 					{{ if .IsTranslated }}
 						{{ range .Translations }}
 							<a class="translation" href="{{ .URL }}">{{ i18n "translation" }}</a>

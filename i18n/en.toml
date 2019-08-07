@@ -5,6 +5,13 @@ other = "中"
 [translation_mobile]
 other = "中文"
 
+[search]
+other = "Search"
+
+# TODO:
+[search_placeholder]
+other = "Keyword"
+
 # project
 [main_project]
 other = "Main Projects"
