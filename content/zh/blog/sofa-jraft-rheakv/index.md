@@ -4,7 +4,7 @@ author: "米麒麟"
 authorlink: "https://github.com/SteNicholas"
 description: "本文为《剖析 | SOFAJRaft 实现原理》第二篇，本篇作者米麒麟，来自陆金所。"
 categories: "SOFAJRaft"
-tags: ["SOFAJRaft"]
+tags: ["SOFAJRaft","SOFALab","剖析 | SOFAJRaft 实现原理"]
 date: 2019-05-24T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1562833089057-7d279c27-aeb6-475f-b3c1-407dca499338.png"
 ---
@@ -57,6 +57,7 @@ SOFAJRaft-RheaKV 存储层为可插拔设计，实现 RawKVStore 存储接口
 - RocksRawKVStore：RocksDB 在存储容量上只受磁盘限制，适合更大数据量的场景。
 
 SOFAJRaft-RheaKV 存储引擎基于 MemoryDB 和 RocksDB 实现 KV 存储入口：
+
 ```java
 com.alipay.sofa.jraft.rhea.storage.RawKVStore
 com.alipay.sofa.jraft.rhea.storage.MemoryRawKVStore
@@ -118,16 +119,19 @@ RaftRawKVStore 是 RheaKV 基于 Raft 复制状态机 KVStoreStateMachine�
 1. KVStoreStateMachine 状态机迭代状态输出列表积攒键值状态列表批量申请 RocksRawKVStore 调用 batch(kvStates) 方法运行相应键值操作存储到 RocksDB，为啥 Batch 批量存储呢？ 刷盘常用伎俩，攒批刷盘优于多次刷盘。通过 RecycleUtil 回收器工具回收状态输出列表，其中KVStateOutputList 是 Pooled ArrayList 实现，RecycleUtil 用于释放列表对象池化复用避免每次创建 List。
 
 RheaKV 基于状态机 KVStoreStateMachine 的 RaftRawKVStore 存储 Raft 实现入口：
+
 ```java
 com.alipay.sofa.jraft.rhea.storage.RaftRawKVStore
 ```
 
 RheaKV 运行在每个 Raft 节点上面的状态机 KVStoreStateMachine 实现入口：
+
 ```java
 com.alipay.sofa.jraft.rhea.storage.KVStoreStateMachine 
 ```
 
 RheaKV 是一个要保证线性一致性的分布式 KV 存储引擎，所谓线性一致性，一个简单的例子是在 T1 的时间写入一个值，那么在 T1 之后读一定能读到这个值，不可能读到 T1 之前的值。因为 Raft 协议是为了实现分布式环境下面线性一致性的算法，所以通过 Raft 非常方便的实现线性 Read，即将任何的读请求走一次 Raft Log，等 Log 日志提交之后在 apply 的时候从状态机里面读取值，一定能够保证此读取到的值是满足线性要求的。因为每次 Read 都需要走 Raft 流程，所以性能是非常的低效的，SOFAJRaft 实现 Raft 论文提到 ReadIndex 和 Lease Read 优化，提供基于 Raft 协议的 ReadIndex 算法的更高效率的线性一致读实现，ReadIndex 省去磁盘的开销，结合 SOFAJRaft 的 Batch + Pipeline Ack + 全异步机制大幅度提升吞吐。RaftRawKVStore 接收 get/multiGet/scan/getSequence 读请求都使用 `Node``#``readIndex``(``requestContext``, ``readIndexClosure``)` 发起一次线性一致读请求，当能够安全读取的时候传入的 ReadIndexClosure 将被调用，正常情况从状态机中读取数据返回给客户端，readIndex 读取失败尝试应用键值读操作申请任务于 Leader 节点的状态机 KVStoreStateMachine，SOFAJRaft 保证读取的线性一致性。线性一致读在任何集群内的节点发起，并不需要强制要求放到 Leader 节点上面，将请求散列到集群内的所有节点上，降低 Leader 节点的读取压力。RaftRawKVStore 的 get 读操作发起一次线性一致读请求的调用：
+
 ```java
 // KV 存储实现线性一致读
 public void get(final byte[] key, final boolean readOnlySafe, final KVStoreClosure closure) {
@@ -135,7 +139,7 @@ public void get(final byte[] key, final boolean readOnlySafe, final KVStoreClosu
             this.kvStore.get(key, false, closure);
             return;
         }
-  			// 调用 readIndex 方法，等待回调执行
+          // 调用 readIndex 方法，等待回调执行
         this.node.readIndex(BytesUtil.EMPTY_BYTES, new ReadIndexClosure() {
 
             @Override
@@ -176,6 +180,7 @@ TiDB 是 PingCAP 公司设计的开源分布式 HTAP (Hybrid Transactional 
 TiKV 使用 Raft 一致性算法来保证数据的安全，默认提供的是三个副本支持，这三个副本形成了一个 Raft Group。当 Client 需要写入 TiKV 数据的时候，Client 将操作发送给 Raft Leader，在 TiKV 里面称做 Propose，Leader 将操作编码成一个 Entry，写入到自己的 Raft Log 里面，称做 Append。Leader 也会通过 Raft 算法将 Entry 复制到其他的 Follower 上面，叫做 Replicate。Follower 收到这个 Entry 之后也会同样进行 Append 操作，顺带告诉 Leader Append 成功。当 Leader 发现此 Entry 已经被大多数节点 Append，认为此 Entry 已经是 Committed 的，然后将 Entry 里面的操作解码出来，执行并且应用到状态机里面，叫做 Apply。TiKV 提供 Lease Read，对于 Read 请求直接发给 Leader，如果 Leader 确定自身的 Lease 没有过期，那么直接提供 Read 服务不用执行一次 Raft 流程。如果 Leader 发现 Lease 已经过期，就会强制执行一次 Raft 流程进行续租然后再提供 Read 服务。TiKV 是以 Region 为单位做数据的复制，也就是一个 Region 的数据保存多个副本，将每一个副本叫做一个 Replica。Replica 之间是通过 Raft 来保持数据的一致，一个 Region 的多个 Replica 保存在不同的节点上构成一个 Raft Group，其中一个 Replica 作为此 Group 的 Leader，其他的 Replica 作为 Follower。所有的读和写都是通过 Leader 进行，再由 Leader 复制给 Follower。
 
 ## 总结
+
 本文围绕 SOFAJRaft-RheaKV 架构存储，模块流程以及基于 Raft 实现细节方面阐述 SOFAJRaft-RheaKV 基本原理，剖析 SOFAJRaft-RheaKV 如何使用 JRaft 一致性协议日志复制功能保证数据的安全和容灾，参考 TiKV 基于 Raft 算法实现了分布式环境数据的强一致性。
 
 ### 系列阅读
