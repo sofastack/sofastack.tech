@@ -3,7 +3,7 @@ author: "卫恒"
 date: 2019-02-21T10:20:00.000Z
 title: "蚂蚁金服分布式链路跟踪组件 SOFATracer 数据上报机制和源码剖析"
 description: "本文为《剖析 | SOFATracer 框架》第二篇。"
-tags: ["SOFATracer"]
+tags: ["SOFATracer","SOFALab","剖析 | SOFATracer 框架"]
 categories: "SOFATracer"
 aliases: "/posts/2019-02-21-02"
 cover: "/cover.jpg"

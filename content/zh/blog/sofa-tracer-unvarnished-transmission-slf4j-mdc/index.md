@@ -3,7 +3,7 @@ author: "J. Queue"
 date: 2019-02-21T10:20:00.000Z
 title:  "蚂蚁金服开源分布式链路跟踪组件 SOFATracer 链路透传原理与SLF4J MDC 的扩展能力剖析"
 description: "本文为《剖析 | SOFATracer 框架》第三篇。"
-tags: ["SOFATracer"]
+tags: ["SOFATracer","SOFALab","剖析 | SOFATracer 框架"]
 categories: "SOFATracer"
 aliases: "/posts/2019-02-21-03"
 cover: "/cover.jpg"

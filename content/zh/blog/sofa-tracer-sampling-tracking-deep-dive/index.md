@@ -3,7 +3,7 @@ author: "米麒麟"
 date: 2019-02-21T10:20:00.000Z
 title:  "蚂蚁金服开源分布式链路跟踪组件 SOFATracer 采样策略和源码剖析"
 description: "本文为《剖析 | SOFATracer 框架》第四篇，本篇作者米麒麟，来自陆金所。"
-tags: ["SOFATracer"]
+tags: ["SOFATracer","SOFALab","剖析 | SOFATracer 框架"]
 categories: "SOFATracer"
 aliases: "/posts/2019-02-21-04"
 cover: "/cover.jpg"
