@@ -4,7 +4,7 @@ author: "米麒麟"
 authorlink: "https://github.com/SteNicholas"
 description: "本文为《剖析 | SOFAJRaft 实现原理》第二篇，本篇作者米麒麟，来自陆金所。"
 categories: "SOFAJRaft"
-tags: ["SOFAJRaft"]
+tags: ["SOFAJRaft","SOFALab","剖析 | SOFAJRaft 实现原理"]
 date: 2019-05-24T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1562833089057-7d279c27-aeb6-475f-b3c1-407dca499338.png"
 ---

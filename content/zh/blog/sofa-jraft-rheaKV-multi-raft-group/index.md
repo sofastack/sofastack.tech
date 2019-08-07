@@ -4,7 +4,7 @@ author: "袖扣"
 authorlink: "https://github.com/homchou"
 description: "本文为《剖析 | SOFAJRaft 实现原理》第五篇，本篇作者袖扣，来自蚂蚁金服。"
 categories: "SOFAJRaft"
-tags: ["SOFAJRaft"]
+tags: ["SOFAJRaft","SOFALab","剖析 | SOFAJRaft 实现原理"]
 date: 2019-07-24T16:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563966737437-a3c3f5d0-69ef-4a7d-9856-fa5ef2c7e41e.png"
 ---
