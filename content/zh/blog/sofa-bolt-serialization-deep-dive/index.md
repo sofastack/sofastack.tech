@@ -3,7 +3,7 @@ author: "鲁道"
 date: 2018-12-06T10:20:00.000Z
 title:  "蚂蚁金服开源通信框架SOFABolt解析之序列化机制"
 description: "SOFABolt 是一款基于 Netty 最佳实践，通用、高效、稳定的通信框架，本文将重点分析 SOFABolt 的序列化机制。"
-tags: ["SOFABolt"]
+tags: ["SOFABolt","SOFALab","剖析 | SOFABolt 框架"]
 categories: "SOFABolt"
 aliases: "/posts/2018-12-06-05"
 cover: "/cover.jpg"

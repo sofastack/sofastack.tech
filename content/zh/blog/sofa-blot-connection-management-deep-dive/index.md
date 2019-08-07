@@ -3,7 +3,7 @@ author: "任展"
 date: 2018-12-06T10:20:00.000Z
 title: "蚂蚁金服开源通信框架SOFABolt解析之连接管理剖析"
 description: "本文将重点分析 SOFABolt 的连接管理功能。"
-tags: ["SOFABolt"]
+tags: ["SOFABolt","SOFALab","剖析 | SOFABolt 框架"]
 categories: "SOFABolt"
 aliases: "/posts/2018-12-06-02"
 cover: "/cover.jpg"

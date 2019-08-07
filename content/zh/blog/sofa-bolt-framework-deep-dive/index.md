@@ -2,7 +2,7 @@
 author: "颜洄、丞一"
 date: 2018-12-06T10:20:00.000Z
 title: "蚂蚁金服开源通信框架 SOFABolt 协议框架解析"
-tags: ["SOFABolt"]
+tags: ["SOFABolt","SOFALab","剖析 | SOFABolt 框架"]
 aliases: "posts/2018-12-06-01"
 description: "本文是对蚂蚁金服开源通信框架 SOFABolt 的协议框架解析。"
 cover: "/cover.jpg"
