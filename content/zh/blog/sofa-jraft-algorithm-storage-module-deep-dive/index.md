@@ -4,7 +4,7 @@ authorlink: "https://github.com/SteNicholas"
 date: 2019-05-05T14:30:00.000Z
 aliases: "/posts/2019-05-05-01"
 title: "SOFAJRaft 实现原理 - 生产级 Raft 算法库存储模块剖析"
-tags: ["SOFAJRaft"]
+tags: ["SOFAJRaft","剖析 | SOFAJRaft 实现原理"]
 categories: "SOFAJRaft"
 description: "本文为《剖析 | SOFAJRaft 实现原理》第一篇，本篇作者米麒麟，来自陆金所。。"
 cover: "https://cdn.nlark.com/yuque/0/2019/png/156670/1556492476096-9300c652-29e2-4698-b5ef-435c294e00c6.png"
