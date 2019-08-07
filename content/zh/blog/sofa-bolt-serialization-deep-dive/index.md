@@ -9,7 +9,7 @@ aliases: "/posts/2018-12-06-05"
 cover: "/cover.jpg"
 ---
 
-# 前言
+## 前言
 
 SOFABolt 是一款基于 Netty 最佳实践，通用、高效、稳定的通信框架。目前已经运用在了蚂蚁中间件的微服务，消息中心，分布式事务，分布式开关，配置中心等众多产品上。
 
@@ -23,7 +23,7 @@ SOFABolt 是一款基于 Netty 最佳实践，通用、高效、稳定的通信�
 
 下面我们将先从 SOFABolt 的设计及实现入手，进而分析 SOFABolt 详细的序列化与分序列化流程，最后介绍 SOFABolt 序列化扩展。
 
-# 设计及实现
+## 设计及实现
 
 一个优秀的网络通信框架，必然要有一个灵活的，高性能的序列化机制。那么，SOFABolt 序列化机制的设计目标是什么呢？具体又是如何设计的呢？
 
@@ -35,7 +35,7 @@ SOFABolt 是一款基于 Netty 最佳实践，通用、高效、稳定的通信�
 
 我们现在可以看看 SOFABolt 序列化设计。
 
-## 接口设计
+### 接口设计
 
 SOFABolt 设计了两个接口：
 
@@ -72,7 +72,7 @@ UML 设计图如下：
 
 看完了设计，再看看实现。
 
-## 接口实现
+### 接口实现
 
 我们可以看看这两个接口的实现。
 
@@ -104,7 +104,7 @@ __注意，如果用户已经自己实现了 CustomSerializer 接口，那么 SO
 
 让我们再谈谈序列化的高性能部分 。
 
-# 性能优化
+## 性能优化
 
 上文提到，序列化和反序列化是重量级操作。通常，对性能敏感的框架都会对这一块进行性能优化。
 
@@ -161,7 +161,7 @@ __注意，如果用户已经自己实现了 CustomSerializer 接口，那么 SO
 
 ![伪代码](https://cdn.nlark.com/yuque/0/2018/png/157705/1542012932226-f2edb5a9-ad28-464b-a511-96a561a5e1f3.png)
 
-# 流程分析
+## 流程分析
 
 为了直观的描述 SOFABolt 序列化与反序列化流程， 我们将会给出对象处理的时序图。实际上，应该有 4 种序列图：
 
@@ -182,17 +182,17 @@ __注意，如果用户已经自己实现了 CustomSerializer 接口，那么 SO
 
 注意，上图 “处理器根据用户设置进行精细反序列化” 步骤，就是 SOFABolt 对序列化优化的核心步骤。
 
-# 扩展设计
+## 扩展设计
 
 为了方便用户自定义序列化需求，SOFABolt 提供了两种扩展方式设计：
 
-##### 1. 简单的对象序列化扩展，例如 hessian，json，protostuff
+### 1. 简单的对象序列化扩展，例如 hessian，json，protostuff
 
 如上文所述，如果没有自定义 header 和 content 的需求，那么直接使用 SOFABolt 的默认序列化即可，你可以通过以下方式来更换不同的序列化器（默认 hessian）：
 
 ![简单的对象序列化扩展](https://cdn.nlark.com/yuque/0/2018/png/157705/1542012983071-4b152db0-9c38-4a24-a397-abef619b4400.png)
 
-##### 2. 扩展 CustomSerializer 接口，自定义序列化 header，content
+### 2. 扩展 CustomSerializer 接口，自定义序列化 header，content
 
 如果你需要自定义序列化，那么你可以参考 SOFARPC 的方式，自己实现 CustomSerializer 接口，然后将其注册到 SOFABolt 中，示例代码：
 
@@ -200,7 +200,7 @@ __注意，如果用户已经自己实现了 CustomSerializer 接口，那么 SO
 
 同时，SOFABolt 源码中有更详细的示例代码，地址：[使用示例](https://github.com/sofastack/sofa-bolt/blob/master/src/test/java/com/alipay/remoting/rpc/serializer/CustomSerializerCodecTest.java#L133)
 
-# 总结
+## 总结
 
 上文阐述了 SOFABolt 序列化的设计与实现，以及 SOFABolt 的序列化详细机制，这里再做一下总结：
 
@@ -212,4 +212,3 @@ __注意，如果用户已经自己实现了 CustomSerializer 接口，那么 SO
    SOFABolt 的序列化器，用户可以自定义扩展，无论是简单的修改对象序列化器，还是自定义整个 header 和 content 的序列化，都是非常简单的。让用户可以方便的扩展。因此，无论你是 RPC 中间件，还是消息队列中间件，使用 SOFABolt 来进行序列化都是非常的方便。
 
 好了，本文到这里，关于 SOFABolt 的序列化机制部分就介绍完毕了，读者如果对序列化机制有什么疑问，可在下方评论与作者沟通 ，期待共同交流 :-)
-

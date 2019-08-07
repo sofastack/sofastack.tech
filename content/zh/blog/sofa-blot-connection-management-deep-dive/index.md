@@ -9,7 +9,7 @@ aliases: "/posts/2018-12-06-02"
 cover: "/cover.jpg"
 ---
 
-# 前言
+## 前言
 
 SOFABolt 是一款基于 Netty 最佳实践，通用、高效、稳定的通信框架。目前已经运用在了蚂蚁中间件的微服务，消息中心，分布式事务，分布式开关，配置中心等众多产品上。
 
@@ -19,11 +19,11 @@ SOFABolt 是一款基于 Netty 最佳实践，通用、高效、稳定的通信�
 
 下面我们将介绍 SOFABolt 在连接管理的实现，包括连接生命周期管理、定时断连及自动重连等。
 
-# 设计抽象
+## 设计抽象
 
 首先我们将会介绍 SOFABolt 对连接的封装抽象。
 
-## 连接封装
+### 连接封装
 
 SOFABolt 中定义了一个基础的连接类 -- `Connection`:
 
@@ -39,7 +39,7 @@ SOFABolt 中定义了一个基础的连接类 -- `Connection`:
 
 这里提一下 protocolCode 和 version，版本信息会被携带至对端，用于连接的协商。总的来说，通过对于 Channel 的包装，Connection 提供了丰富的上下文及引用信息，是 SOFABolt 连接管理的直接对象。
 
-## 连接事件
+### 连接事件
 
 SOFABolt 定义了连接事件和事件监听器用于处理连接对象。ConnectionEventType 定义了三种事件类型：CONNECT, CLOSE 和 EXCEPTION. 针对不同的连接事件类型，我们可以通过事件监听器 -- ConnectionEventListener 来进行处理，下面来看一下 ConnectionEventListener 类：
 
@@ -71,7 +71,7 @@ hannelInactive 方法是在连接断开前触发的方法，在 SOFABolt 里的�
 
 在连接建立触发 fireUserEventTriggered 方法后，我们就开始执行对应此方法中的逻辑，也可以看到，在判定是 CONNECT 事件后，通过attr得到绑定在Channel的Connection对象，然后就同 channelInactive 方法一样，触发 CONNECT 事件异步执行对应的处理器逻辑。
 
-# 连接管理
+## 连接管理
 
 下面来介绍 ConnectionManager，SOFABolt 提供了默认的实现类 DefaultConnectionManager类。顾名思义，主要负责连接对象的管理：
 
@@ -80,22 +80,22 @@ hannelInactive 方法是在连接断开前触发的方法，在 SOFABolt 里的�
 - 管理创建和添加的 Connection 对象和 ConnectionPool 连接池对象（包括检查 Connection 对象、维护 ConnectionPool 的健壮性）
 - 控制 Connection 对象的心跳打开与关闭
 
-## 创建连接
+### 创建连接
 
 ConnectionFactory 用于创建连接对象，SOFABolt 提供了两个实现类： DefaultConnectionFactory 和 RpcConnectionFactory。这个工厂类执行了客户端所有 Connection 对象的创建工作，代码也比较简单：
 
-![代码](https://cdn.nlark.com/lark/0/2018/png/590/1543359416713-cd4e8e92-84c4-4266-9858-8b20e2c57654.png "")
+![代码](https://cdn.nlark.com/lark/0/2018/png/590/1543359416713-cd4e8e92-84c4-4266-9858-8b20e2c57654.png)
 
 注意到了吗，在创建完毕 Connection 对象后，执行了 fireUserEventTriggered 方法，这样就保证了每一个 Connection 对象在创建之后都会去触发 CONNECT 事件。
 
-## 选择连接
+### 选择连接
 
 ConnectionSelectStrategy 选择策略的默认实现是随机策略 RandomSelectStrategy, 在执行选择连接时大致分为两步：
 
 - 在开启CONN\_MONITOR\_SWITCH监控时，会从该连接池所有的连接中做一个简单的filter操作，把CONN\_SERVICE\_STATUS为ON的连接挑选出来，作为选择池。如果没有开启监控，那么选择池就是连接池。
 - 执行挑选策略，获取选择池中的一个连接。
 
-## 管理连接和连接池
+### 管理连接和连接池
 
 管理连接和连接池是 ConnectionManager 最主要的作用，用来进行连接和连接池的生命周期管理，包括添加、删除、检查健康、恢复连接数等功能。下面先看一个在添加中常见的方法，用来获取一个连接池对象或者创建一个，限于篇幅，这里不贴代码，有兴趣的同学可以在 GitHub 上查看源码。在执行创建连接池对象时，会有两种逻辑:
 
@@ -116,7 +116,7 @@ ConnectionManager 提供了 check 方法用来检查单个连接对象是否健�
 
 在维护连接池的工作上来说，SOFABolt 主要采用自动重连和定时断连两种方式。运行时对连接池的维护十分重要。其一，爆发式调用是不稳定因素，如果连接数一旦增多，在峰值流量过去后会产生大量冗余的连接数；其二，可调用的服务往往是会变化的，如果服务不可用那么我们就需要将这些连接清理掉；因此，对于这两种情况就需要我们能够检查出多余的连接并且进行释放，这也就是自动断连的适用场景。对于重连的情况，则是为了保证整个连接池中连接数量的稳定性，使得在调用连接的时候整个QPS是较为稳定的，不会出现很大的波动，这一点也是为了保证通信的稳定性。定时断连和自动重连两者互相平衡，使得连接池中的数量趋于稳定，整个通信系统也会十分稳定。
 
-### 自动重连
+#### 自动重连
 
 自动重连机制是通过 GlobalSwitch#CONN\_RECONNECT\_SWITCH 来控制开闭。具体的重连策略在 ReconnectManager 中实现，它的主要逻辑如下：
 
@@ -128,7 +128,7 @@ ConnectionManager 提供了 check 方法用来检查单个连接对象是否健�
 
 整个重连任务的添加是在每一次链接断开的 channelInactive 方法中执行。
 
-### 定时断连
+#### 定时断连
 
 定时重连机制是通过 DefaultConnectionMonitor 实现，通过特定的ConnectionMonitorStrategy 来对所有的链接池对象进行监控，内部维护了一个ScheduledThreadPoolExecutor来定时的执行MonitorTask。在 SOFABolt 里ConnectionMonitorStrategy的实现是ScheduledDisconnectStrategy类，顾名思义，这是一个每次调度会执行关闭连接的监控策略，它的主要逻辑如下：
 
@@ -138,6 +138,6 @@ ConnectionManager 提供了 check 方法用来检查单个连接对象是否健�
   - 服务的可用连接数 <= CONNECTION\_THRESHOLD：连接数尚未占用过多的资源，只需取出上一次缓存在该集合中的“不可用”链接，然后执行closeFreshSelectConnections方法
 - 关闭服务不可用的链接
 
-# 最后
+## 最后
 
 SOFABolt 建立了一套完善的连接管理机制，从连接的创建到选择再到运行时监控都有着良好的实现。使用自动重连和定时断连机制，平衡运行时各个连接池的数量并且有效地优化资源占用，这些都为它的高性能打下了坚实的基础。
