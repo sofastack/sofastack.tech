@@ -72,23 +72,23 @@ Region 和 RegionEpoch 结构如下：
 
 ```java
 class Region {
-		long              id;            // region id
+        long              id;            // region id
     // Region key range [startKey, endKey)
-		byte[]            startKey;      // inclusive
-		byte[]            endKey;        // exclusive
-		RegionEpoch       regionEpoch;   // region term
-		List<Peer>        peers;         // all peers in the region
+        byte[]            startKey;      // inclusive
+        byte[]            endKey;        // exclusive
+        RegionEpoch       regionEpoch;   // region term
+        List<Peer>        peers;         // all peers in the region
 }
 class RegionEpoch {
-		// Conf change version, auto increment when add or remove peer
-  	long              confVer;
-  	// Region version, auto increment when split or merge
-  	long              version;
+     // Conf change version, auto increment when add or remove peer
+     long              confVer;
+     // Region version, auto increment when split or merge
+     long              version;
 }
 class Peer {
-		long              id;
-    long              storeId;
-    Endpoint          endpoint;
+      long              id;
+      long              storeId;
+      Endpoint          endpoint;
 }
 ```
 
