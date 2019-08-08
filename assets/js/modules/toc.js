@@ -62,16 +62,14 @@ export default function() {
     function callback() {
       const rect = iconDOM.getBoundingClientRect()
 
-      if (showFlag) {
-        document.body.removeChild(containerDOM)
-        containerDOM.classList.remove('-active')
-
-      } else {
+      if (showFlag === false) {
         containerDOM.classList.add('-active')
 
         containerDOM.style.top = `${rect.top}px`
         containerDOM.style.left = `${rect.left + rect.width + 10}px`
         document.body.appendChild(containerDOM)
+
+        showFlag = true
       }
     }
 
@@ -79,10 +77,12 @@ export default function() {
 
     // https://techstacker.com/posts/yz6e9Ksz6ARbNpQAZ/vanilla-javascript-how-to-detect-clicks-outside-of-an
     document.addEventListener('click', function(event) {
-      if (showFlag === false || event.target.closest(".ss-tooltip")) 
-        return
-      
-      // callback()
+      if (showFlag === true && !event.target.closest(".ss-tooltip")) {
+        document.body.removeChild(containerDOM)
+        containerDOM.classList.remove('-active')
+
+        showFlag = false
+      }
     })
 
     // for DEBUG

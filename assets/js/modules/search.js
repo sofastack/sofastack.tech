@@ -39,7 +39,10 @@ export default function searchFunc() {
     // update URL but no need to refresh
     history.pushState(null, `${query} · SOFAStack`, `/search/?query=${encodeURIComponent(query)}`)
 
-    index.search({ query }, (err, { hits } = {}) => {
+    index.search({ 
+      query,
+      facets:"type"
+    }, (err, { hits } = {}) => {
       if (err) {
         // console.log(err)
         // console.log(err.debugData)
