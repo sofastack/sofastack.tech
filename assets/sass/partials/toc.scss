@@ -73,6 +73,13 @@
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    .ss-project_list_card {
+      margin-left: 12px;
+    }
   }
 
   .body {
@@ -137,6 +144,64 @@
 
       &.link:hover {
         color: $menu-link-color-bg;
+      }
+    }
+  }
+}
+
+
+.ss-toc-list-card {
+  position: relative;
+
+  .icon {
+    cursor: pointer;
+  }
+}
+
+.ss-tooltip {
+  display: none;
+  padding: 16px 24px;
+
+  background: #fff;
+  box-shadow: 0 2px 8px 0 rgba(0, 0, 0, 0.20);
+  border-radius: 2px;
+
+  &.-active {
+    display: block;
+    position: absolute;
+    // top
+    // left
+  }
+
+  .toc-list {
+    min-width: 130px;
+
+    margin-bottom: 24px;
+    &:last-of-type {
+      margin-bottom: 0;
+    }
+
+    .title {
+      margin: 0;
+      padding-bottom: 8px;
+      font-size: 16px;
+      border-bottom: 1px solid $card-border-color;
+    }
+
+    .list {
+      margin: 0;
+      margin-top: 8px;
+      padding: 0;
+      list-style: none;
+    }
+
+    .item {
+      margin-top: 8px;
+      font-size: 14px;
+      cursor: pointer;
+
+      &:hover {
+        color: $text-color-hover;
       }
     }
   }

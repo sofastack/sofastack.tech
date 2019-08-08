@@ -1,17 +1,10 @@
-{{ define "title" }}
-	{{ i18n "title_project" }} · {{ .Site.Title }}
-{{ end }}
-
-{{ define "main" }}
-
-{{ $allPages := (where .Site.Pages "Section" .Section).ByWeight }}
-{{ $parent := .Page }}
+{{ $allPages := (where .Pages "Section" "projects").ByWeight }}
+{{ $parent := .GetPage "projects" }}
 
 {{ $pages := slice }}
 {{ range $allPages }}
 	{{ if eq .Parent $parent }}{{ $pages = $pages | append . }}{{ end }}
 {{ end }}
-
 
 {{ $main_projects := where $pages ".Params.level" "main" }}
 {{ $incubating_projects := where $pages ".Params.level" "incubating" }}
@@ -21,29 +14,24 @@
 {{ $title_list := slice "main_project" "incubating_project" "tool_projects" "ecosystem_projects" }}
 {{ $list := slice $main_projects $incubating_projects $tool_projects $ecosystem_projects }}
 
-<div class="home-background -no-max-width">
-	<img src="{{ (resources.Get "/img/cover.png").RelPermalink }}" />
-</div>
-
-<div class="ss-layout-container">
-	<main class="ss-layout-main -noaside">
+<div class="ss-toc-list-card -hidden-mobile">
+  <svg class="icon -hidden-mobile" aria-hidden="true">
+    <use xlink:href="#icon-menu1"></use>
+  </svg>
+  <div class="ss-tooltip">
 		{{ range $idx, $val := $list }}
 			{{ if ne (len $val) 0 }}
-				<div class="ss-list">
-					<h2 class="list-title">
-						<a>{{ i18n (index $title_list $idx) }}</a>
-					</h2>
-					<div class="list">
+				<div class="toc-list">
+					<h4 class="title">{{ i18n (index $title_list $idx) }}</h4>
+					<ul class="list">
 						{{ range $val }}
-							{{ partial "card/project_card" . }}
+							<li class="item">
+                <a>{{ .Params.title }}</a>
+              </li>
 						{{ end }}
-					</div>
+					</ul>
 				</div>
 			{{ end }}
 		{{ end }}
-	</main>
+  </div>
 </div>
-
-<script async defer src="https://buttons.github.io/buttons.js"></script>
-
-{{ end }}

@@ -29,16 +29,28 @@ export default function searchFunc() {
 
   const input = $('#js-search-input')
   const button = $('#js-search-button')
+  // const type = $('#js-result-type')
   const list = $('#js-result-container')
 
   const client = algoliasearch('G2HVBB5ERN', '4b161290c268b4eeb154171c562aa1e4')
   const index = client.initIndex('sofastack')
 
   const searchFunc = (query) => {
+    // update URL but no need to refresh
+    history.pushState(null, `${query} · SOFAStack`, `/search/?query=${encodeURIComponent(query)}`)
+
     index.search({ query }, (err, { hits } = {}) => {
       if (err) {
         // console.log(err)
         // console.log(err.debugData)
+        return
+      }
+
+      if (hits.length === 0) {
+        // TODO: i18n 
+        list.innerHTML = `
+          <div class="not-found">未找到搜索结果</div>
+        `
         return
       }
 
@@ -62,9 +74,10 @@ export default function searchFunc() {
     })
   }
 
-  const query = qs.parseUrl(location.href).query
-  if (query.query) {
-    searchFunc(query.query)
+  const query = qs.parseUrl(location.href).query.query
+  if (query) {
+    input.value = query
+    searchFunc(query)
   }
 
   button.addEventListener('click', () => {

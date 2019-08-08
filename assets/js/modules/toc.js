@@ -49,4 +49,43 @@ export default function() {
       }
     })
   }
+
+  if ($('.ss-toc-list-card .icon')) {
+    const iconDOM = $('.ss-toc-list-card .icon')
+    const containerDOM = $('.ss-toc-list-card .ss-tooltip')
+
+    // containerDOM.remove() // IE 11 not support this
+    containerDOM.parentElement.removeChild(containerDOM)
+
+    let showFlag = false
+
+    function callback() {
+      const rect = iconDOM.getBoundingClientRect()
+
+      if (showFlag) {
+        document.body.removeChild(containerDOM)
+        containerDOM.classList.remove('-active')
+
+      } else {
+        containerDOM.classList.add('-active')
+
+        containerDOM.style.top = `${rect.top}px`
+        containerDOM.style.left = `${rect.left + rect.width + 10}px`
+        document.body.appendChild(containerDOM)
+      }
+    }
+
+    $('.ss-toc-list-card .icon').addEventListener('click', callback)
+
+    // https://techstacker.com/posts/yz6e9Ksz6ARbNpQAZ/vanilla-javascript-how-to-detect-clicks-outside-of-an
+    document.addEventListener('click', function(event) {
+      if (showFlag === false || event.target.closest(".ss-tooltip")) 
+        return
+      
+      // callback()
+    })
+
+    // for DEBUG
+    // callback()
+  }
 }
