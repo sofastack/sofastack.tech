@@ -26,7 +26,19 @@
 					<ul class="list">
 						{{ range $val }}
 							<li class="item">
-                <a>{{ .Params.title }}</a>
+								{{ $link := "" }}
+								{{ if isset .Params "link" }}
+									{{ if hasPrefix .Params.link "/" }}
+										{{ $link = path.Join .RelPermalink .Params.link }}
+									{{ else }}
+										{{ $link = .Params.link }}
+									{{ end }}
+								{{ else }}
+									{{ $link = path.Join .RelPermalink "/overview" }}
+								{{ end }}
+								<a href={{ $link }}>
+									{{ .Title }}
+								</a>
               </li>
 						{{ end }}
 					</ul>
