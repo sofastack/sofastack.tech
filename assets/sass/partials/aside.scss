@@ -109,6 +109,22 @@
       border-left: none;
       border-radius: 0 4px 4px 0;
       cursor: pointer;
+
+      .copy {
+        display: block;
+      }
+      .tick {
+        display: none;
+      }
+
+      &.-copyed {
+        .copy {
+          display: none;
+        }
+        .tick {
+          display: block;
+        }
+      }
     }
 
     .icon {
@@ -152,5 +168,30 @@
     font-size: 14px;
     color: $text-color-link;
     cursor: pointer;
+  }
+}
+
+.ss-aside-toc {
+
+  #TableOfContents > ul,
+  #TableOfContents > ul > li > ul {
+    margin: 0;
+  }
+
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    margin-left: 8px;
+  }
+
+  a {
+    display: inline-block;
+    width: 100%;
+    margin-bottom: 8px;
+    font-size: 14px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
   }
 }

@@ -47,8 +47,8 @@ other = "下载 ZIP"
 [aside_categories]
 other = "分类"
 
-[aside_tags]
-other = "标签"
+[aside_toc]
+other = "目录"
 
 [aside_get_the_code]
 other = "获取代码"

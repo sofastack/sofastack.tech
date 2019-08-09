@@ -27,13 +27,24 @@ export default function() {
     input.value = `${github.replace('https:', 'git@github.com:')}.git`
   })
 
+  let timer = null
+
   copyBtn.addEventListener('click', () => {
+    if (timer) {
+      window.clearTimeout(timer)
+    }
+
     input.focus()
     input.select()
     try {
       document.execCommand('copy');
     } catch (err) {}
     input.blur()
+
+    copyBtn.classList.add('-copyed')
+    timer = window.setTimeout(() => {
+      copyBtn.classList.remove('-copyed')
+    }, 3000)
   })
 
   httpBtn.click()

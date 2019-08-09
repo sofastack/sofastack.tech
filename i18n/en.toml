@@ -60,6 +60,9 @@ other = "Porject"
 [aside_related_recommend]
 other = "Related"
 
+[aside_toc]
+other = "Table of contents"
+
 # site title
 [title_project]
 other = "Project"
