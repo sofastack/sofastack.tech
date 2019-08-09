@@ -19,7 +19,7 @@
               <span>
                 {{ .Name }}
               </span>
-              <svg class="icon" aria-hidden="true"><use xlink:href="#icon-arrow"></use></svg>
+              <svg class="icon" aria-hidden="true"><use xlink:href="#icon-ARROW"></use></svg>
             </a>
 					{{ end }}
 					{{ if .IsTranslated }}
@@ -43,6 +43,14 @@
 				{{ end }}
 			</div>
 			<div class="navbar-end">
+				<div class="navbar-item">
+					<div id="js-menu-search" class="navbar-search">
+						<input class="input" placeholder="{{ i18n "search_placeholder"}}">
+						<svg class="icon" aria-hidden="true">
+							<use xlink:href="#icon-search"></use>
+						</svg>
+					</div>
+				</div>
 				<div class="navbar-item">
 					{{ if .IsTranslated }}
 						{{ range .Translations }}

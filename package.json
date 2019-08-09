@@ -8,11 +8,17 @@
   ],
   "scripts": {
     "dev": "webpack --mode=development --watch",
+    "hugo": "hugo serve --watch",
     "build": "webpack --mode=production"
+  },
+  "dependencies": {
+    "algoliasearch": "^3.33.0",
+    "query-string": "^6.8.2"
   },
   "devDependencies": {
     "@babel/core": "^7.5.4",
     "@babel/preset-env": "^7.5.4",
+    "@types/algoliasearch": "^3.30.16",
     "babel-loader": "^8.0.6",
     "file-loader": "^4.0.0",
     "node-sass": "^4.12.0",

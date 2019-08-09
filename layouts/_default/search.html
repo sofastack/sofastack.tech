@@ -1,0 +1,35 @@
+{{ define "title" }}
+{{ "Search" }} · {{ .Site.Title }}
+{{ end }}
+
+{{ define "main" }}
+
+<div class="home-background -no-max-width">
+	<img src="{{ (resources.Get "/img/cover.png").RelPermalink }}" />
+</div>
+
+<div class="ss-layout-container">
+	<main class="ss-layout-main -card -noaside">
+		<div class="ss-search">
+			<div class="input-wrapper">
+				<div class="search-icon">
+					<svg class="icon" aria-hidden="true">
+						<use xlink:href="#icon-search"></use>
+					</svg>
+				</div>
+				<input id="js-search-input" class="input" placeholder="{{ i18n "search_placeholder"}}" />
+				<div id="js-search-button" class="button">{{ i18n "search" }}</div>
+			</div>
+			<!-- <div id="js-result-type" class="search-type"> -->
+				<!-- <div class="item">全部 (20)</div>
+				<div class="item -selected">博客 (20)</div>
+				<div class="item">文档 (20)</div> -->
+			<!-- </div> -->
+			<div id="js-result-container" class="search-container">
+				<!-- see js/modules/search.js -->
+			</div>
+		</div>
+	</main>
+</div>
+
+{{ end }}

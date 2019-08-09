@@ -9,29 +9,17 @@
 
 {{ $pages := slice }}
 {{ range $allPages }}
-	{{ if eq .Parent $parent }}
-		{{ $pages = $pages | append . }}
-	{{ end }}
+	{{ if eq .Parent $parent }}{{ $pages = $pages | append . }}{{ end }}
 {{ end }}
 
-{{ $main_projects := slice }}
-{{ $incubating_projects := slice }}
-{{ $tool_projects := slice }}
-{{ $ecosystem_projects := slice }}
-{{ range $pages }}
-	{{ if eq .Params.level "main" }}
-		{{ $main_projects = $main_projects | append . }}
-	{{ end }}
-	{{ if eq .Params.level "incubating" }}
-		{{ $incubating_projects = $incubating_projects | append . }}
-	{{ end }}
-	{{ if eq .Params.level "tool" }}
-		{{ $tool_projects = $tool_projects | append . }}
-	{{ end }}
-	{{ if eq .Params.level "ecosystem" }}
-		{{ $ecosystem_projects = $ecosystem_projects | append . }}
-	{{ end }}
-{{ end }}
+
+{{ $main_projects := where $pages ".Params.level" "main" }}
+{{ $incubating_projects := where $pages ".Params.level" "incubating" }}
+{{ $tool_projects := where $pages ".Params.level" "tool" }}
+{{ $ecosystem_projects := where $pages ".Params.level" "ecosystem" }}
+
+{{ $title_list := slice "main_project" "incubating_project" "tool_projects" "ecosystem_projects" }}
+{{ $list := slice $main_projects $incubating_projects $tool_projects $ecosystem_projects }}
 
 <div class="home-background -no-max-width">
 	<img src="{{ (resources.Get "/img/cover.png").RelPermalink }}" />
@@ -39,52 +27,20 @@
 
 <div class="ss-layout-container">
 	<main class="ss-layout-main -noaside">
-		<div class="ss-list">
-			<h2 class="list-title">
-				<a>{{ i18n "main_project" }}</a>
-			</h2>
-			<div class="list">
-				{{ range $main_projects }}
-					{{ partial "card/project_card" . }}
-				{{ end }}
-			</div>
-		</div>
-		{{ if ne (len $incubating_projects) 0 }}
-			<div class="ss-list">
-				<h2 class="list-title">
-					<a>{{ i18n "incubating_project" }}</a>
-				</h2>
-				<div class="list">
-					{{ range $incubating_projects }}
-						{{ partial "card/project_card" . }}
-					{{ end }}
+		{{ range $idx, $val := $list }}
+			{{ if ne (len $val) 0 }}
+				<div class="ss-list">
+					<h2 class="list-title">
+						<a>{{ i18n (index $title_list $idx) }}</a>
+					</h2>
+					<div class="list">
+						{{ range $val }}
+							{{ partial "card/project_card" . }}
+						{{ end }}
+					</div>
 				</div>
-			</div>
+			{{ end }}
 		{{ end }}
-		{{ if ne (len $tool_projects) 0 }}
-		<div class="ss-list">
-			<h2 class="list-title">
-				<a>{{ i18n "tool_projects" }}</a>
-			</h2>
-			<div class="list">
-				{{ range $tool_projects }}
-					{{ partial "card/project_card" . }}
-				{{ end }}
-			</div>
-		</div>
-		{{ end }}
-		{{ if ne (len $ecosystem_projects) 0 }}
-		<div class="ss-list">
-			<h2 class="list-title">
-				<a>{{ i18n "ecosystem_projects" }}</a>
-			</h2>
-			<div class="list">
-				{{ range $ecosystem_projects }}
-					{{ partial "card/project_card" . }}
-				{{ end }}
-			</div>
-		</div>
-	    {{ end }}
 	</main>
 </div>
 
