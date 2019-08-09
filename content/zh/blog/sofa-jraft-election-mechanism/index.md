@@ -4,7 +4,7 @@ author: "力鲲"
 authorlink: "https://github.com/masaimu/"
 description: "本文为《剖析 | SOFAJRaft 实现原理》第四篇，本篇作者力鲲，来自蚂蚁金服"
 categories: "SOFAJRaft"
-tags: ["SOFAJRaft","SOFALab"]
+tags: ["SOFAJRaft","SOFALab","剖析 | SOFAJRaft 实现原理"]
 date: 2019-07-10T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563870717229-9271da3d-8aba-4e9c-bd19-ca66636f9cdc.png"
 ---

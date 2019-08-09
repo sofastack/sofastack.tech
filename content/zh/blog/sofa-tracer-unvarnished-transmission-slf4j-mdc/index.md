@@ -3,7 +3,7 @@ author: "J. Queue"
 date: 2019-02-21T10:20:00.000Z
 title:  "蚂蚁金服开源分布式链路跟踪组件 SOFATracer 链路透传原理与SLF4J MDC 的扩展能力剖析"
 description: "本文为《剖析 | SOFATracer 框架》第三篇。"
-tags: ["SOFATracer"]
+tags: ["SOFATracer","SOFALab","剖析 | SOFATracer 框架"]
 categories: "SOFATracer"
 aliases: "/posts/2019-02-21-03"
 cover: "/cover.jpg"
@@ -14,7 +14,7 @@ cover: "/cover.jpg"
 > SOFATracer 是一个用于分布式系统调用跟踪的组件，通过统一的 TraceId 将调用链路中的各种网络调用情况以日志的方式记录下来，以达到透视化网络调用的目的，这些链路数据可用于故障的快速发现，服务治理等。
 >
 本文为《剖析 | SOFATracer 框架》第三篇。《剖析 | SOFATracer 框架》系列由 SOFA 团队和源码爱好者们出品，项目代号：SOFA:TracerLab/**，**目前领取已经完成，感谢大家的参与。 
-SOFATracer：https://github.com/sofastack/sofa-tracer
+SOFATracer：<https://github.com/sofastack/sofa-tracer>
 
 ![SOFATracer-数据上报.jpg](https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1550742047257-362367aa-5c4a-45bc-ab40-cd6fdfe74c09.jpeg)
 
@@ -28,7 +28,7 @@ SOFATracer 是一个用于分布式系统调用跟踪的组件，其核心作用
 
 带着这些问题，让我们先来看看 SOFATracer 的链路透传以及支持 SLF4J MDC 扩展能力。
 
-# SOFATracer 链路透传原理
+## SOFATracer 链路透传原理
 
 SOFATracer 的链路透传具体包括两个点：
 
@@ -37,11 +37,11 @@ SOFATracer 的链路透传具体包括两个点：
   - 当前请求跨进程调用结束之后，当前如何恢复 tracer 上下文信息
   - 如何实现跨线程的透传，如在当前线程中起一个异步线程的场景
 
-## 跨进程链路透传原理
+### 跨进程链路透传原理
 
 跨进程透传就是将上游系统的链路数据透传到下游系统中，以便于提取出全局的链路标记，如 TracerId 、采样标记等，来实现将服务串联起来并且保持传输过程中某些属性的一致性。SOFATracer 基于 Opentracing 规范实现，因此在链路透传部分，也是基于此规范；下面就先从 Opentracing 规范中的透传开始说起。
 
-### Opentracing 中的定义
+#### Opentracing 中的定义
 
 在 OT 原文有这么一段描述 [传送门](https://opentracing.io/docs/overview/inject-extract/)
 
@@ -56,7 +56,7 @@ SOFATracer 的链路透传具体包括两个点：
 | void inject(SpanContext spanContext, Formatformat, C carrier); | 把 spanContext 以指定的 format 的格式注入到 carrier 中 |
 | SpanContext extract(Format format, C carrier);               | 以指定的 format 的格式从 carrier 中解析出 SpanContext  |
 
-### 进程透传实现分析
+#### 进程透传实现分析
 
 SOFATracer 的 Tracer 的实现类是 SofaTracer， UML 图如下：
 
@@ -68,7 +68,7 @@ SOFATracer 的 Tracer 的实现类是 SofaTracer， UML 图如下：
 
 ![image.png](https://cdn.nlark.com/yuque/0/2019/png/230565/1548139911703-100f709b-9878-4fab-a0d1-dfc6d486b0d8.png)
 
-### 跨进程透传处理流程
+#### 跨进程透传处理流程
 
 SOFATracer 中跨进程传输的总体流程如下图所示：
 
@@ -87,7 +87,7 @@ SOFATracer 中跨进程传输的总体流程如下图所示：
 透传链路如下： 
 ![img](https://cdn.nlark.com/yuque/0/2019/jpeg/111154/1547518277511-75574ab0-6f9e-4d7e-9bc7-431710822416.jpeg)
 
-#### 1、客户端
+##### 1、客户端
 
 首先找到客户端拦截的入口类 com.alipay.sofa.tracer.plugins.httpclient.interceptor.SofaTracerHttpInterceptor & com.alipay.sofa.tracer.plugins.httpclient.interceptor.SofaTracerAsyncHttpInterceptor
 以 SofaTracerHttpInterceptor 为例:
@@ -131,14 +131,14 @@ public Span start() {
 
 > 关于数据注入载体和从载体中提取数据可以参考 com.alipay.common.tracer.core.registry.AbstractTextB3Formatter 类的实现。
 
-#### 2、服务端
+##### 2、服务端
 
 找到服务端的拦截入口 SpringMvcSofaTracerFilter ，功能很简单：
 
 - 获取上游传来的 SpanContext
 - 构建服务端的 Span，在这里和客户端做了同样的判断， 判断当前 Span 是否为 RootSpan，这个操作很重要，如果是 RootSpan 则意味着一条新的链路要被构建；如果不是 RootSpan ，则会将当前服产生的 Span 通过 tracerId 关联到当前链路中来。
 
-## 线程透传原理
+### 线程透传原理
 
 在介绍线程透传原理之前先来看个例子；对于 MVC 组件来说，如果我们想使用一个 Span 来记录 mvc 的执行过程。一般我可以把 Span 的开始放在 Filter 中，filterChain.doFilter 方法执行之前产生，然后再 finally 块中来结束这个 Span，大概如下：
 
@@ -158,12 +158,12 @@ try{
 
 假如现在有个问题是，在 serverReceive 和 serverSend 这段过程中涉及到了其他组件也产生了 Span，比如说发起了一次 httpclient 调用。大概对应的 tracer 如下：
 
-```
+```java
 |mvcSpan|
- 	.
- 	|httpclientSpan|
-    		...
- 	|httpclientSpan|
+    .
+    |httpclientSpan|
+          ...
+    |httpclientSpan|
   .
 |mvcSpan|
 ```
@@ -182,7 +182,7 @@ try{
 
 下面就针对这两个问题，来分析下 SOFATracer 的线程透传实现。
 
-### 线程透传实现分析
+#### 线程透传实现分析
 
 在 SOFATracer 中定义了一个 SofaTraceContext 接口，允许应用程序访问和操纵当前 Span 的状态，默认实现是 SofaTracerThreadLocalTraceContext； UML 图：
 
@@ -221,7 +221,7 @@ public void serverSend(String resultCode) {
     // 取出 span 信息，这里相当于就是恢复 tracer上下文状态信息
     SofaTracerSpan serverSpan = sofaTraceContext.pop();
     if (serverSpan == null) {
-    	return;
+        return;
     }
     //log
     serverSpan.log(LogData.SERVER_SEND_EVENT_VALUE);
@@ -239,7 +239,7 @@ public void serverSend(String resultCode) {
 
 > PS：SofaTraceContext  中封装了一系列用于操作 threadlocal 的工具方法，上面提到的 getCurrentSpan 和 pop 的区别在于，getCurrentSpan 从 threadlocal 中取出 Span 信息之后不会清理，也就是后面还可以通过getCurrentSpan 拿到当前线程上下文中的 Span 数据，因此在业务处理过程中，如果需要向 Span 中添加一些链路数据，可以通过 getCurrentSpan 方法进行设置。pop 方法与 getCurrentSpan 实际上都是通过 threadlocal#get 来取数据的，当时 pop 取完之后会进行 clear 操作，因此 pop 一般用于在请求结束时使用。 SpringMvcSofaTracerFilter 中在 finally 块中调用了 serverSend ，serverSend 中就是使用的 pop 方法。
 
-### 跨线程透传
+#### 跨线程透传
 
 前一小节介绍了 tarcer 上下文 如何实现在线程中透传及恢复，那么对于另外一种场景，即在当前线程处理过程中新起了子线程的情况，父线程如何将当前 tracer 上下文信息传递到子线程中去呢？对于这种情况，SOFATracer 也提供了支持，下面就来看下，SOFATracer 是如何实现跨线程传递的。
 
@@ -276,16 +276,16 @@ private void initRunnable(Runnable wrappedRunnable, SofaTraceContext traceContex
   this.traceContext = traceContext;
   if (!traceContext.isEmpty()) {
     // 将当前上下文中的 span 赋值给子线程
-  	this.currentSpan = traceContext.getCurrentSpan();
+    this.currentSpan = traceContext.getCurrentSpan();
   } else {
-  	this.currentSpan = null;
+    this.currentSpan = null;
   }
 }
 ```
 
 这上面这段代码片段来看，在构建 SofaTracerRunnable 对象实例时，会把当前父线程中的 traceContext 、currentSpan 等传递到子线程中。SofaTracerRunnable#run 方法中，会根据线程 ID 进行判断，如果与父线程的线程ID不等，则会将 currentSpan push 到 traceContext (注：currentSpan 和 traceContext 均是子线程属性)，run 方法则是委托给用户传递进来的 wrappedRunnable 来执行。
 
-### Opentracing 0.30.x 版本对于线程透传的支持
+#### Opentracing 0.30.x 版本对于线程透传的支持
 
 > 对于在低版本 Opentracing 规范中并没有对线程传递的支持，但是在 0.30.0 版本以后有支持。SOFATracer 目前是基于 Opentracing 0.22.0 版本实现的；但是对于 Opentracing 新 API 中提供的线程透传的特性的理解也会有助于 SOFATracer 在线程透传方面的改进
 
@@ -304,7 +304,7 @@ private void initRunnable(Runnable wrappedRunnable, SofaTraceContext traceContex
 - 使用 ThreadLocal 来存储不同线程的 Scope 对象，在多线程环境下可以通过获取到当前线程的 Scope 来获取当前线程的活动的 Span。
 - 管理着当前线程所有曾被激活还未释放的 Span（处于生命周期内的 Span ）
 
-#### ThreadLocalScopeManager & ThreadLocalScope 的设计
+##### ThreadLocalScopeManager & ThreadLocalScope 的设计
 
 ScopeManager 解决的是 Span 在线程中传递的问题。但是 ScopeManager 本身直接操作 Span 又会显得有些不彻底。这个不彻底怎么理解呢？结合 SOFATracer 的实现，我的理解是：
 
@@ -317,11 +317,11 @@ ThreadLocalScope 的设计使用了栈的思想，这个怎么理解呢？在一
 
 相比于 SOFATracer 的实现来看，Opentracing 提供的线程透传实现更具有全局性；ThreadLocalScope 为 Span 在线程中传递提供了新的设计思路，但是如果仅基于 Span + ThreadLocal 来实现，是很难的。
 
-# MDC 的扩展能力分析
+## MDC 的扩展能力分析
 
 SLF4J 提供了 MDC（Mapped Diagnostic Contexts）功能，可以支持用户定义和修改日志的输出格式以及内容。SOFATracer 集成了 SLF4J MDC 功能，方便用户在只简单修改日志配置文件的情况下就可以输出当前 Tracer 上下文的 TraceId 和 SpanId。
 
-## SLF4J MDC 机制
+### SLF4J MDC 机制
 
 MDC ( Mapped Diagnostic Contexts )，这个接口是为了便于我们诊断线上问题而出现的方法工具类。 MDC 的实现也是利用了 ThreadLocal 机制。 在代码中，只需要将指定的值 put 到线程上下文的 Map 中，然后在对应的地方使用 get 方法获取对应的值。
 
@@ -337,7 +337,7 @@ MDC ( Mapped Diagnostic Contexts )，这个接口是为了便于我们诊断线�
 
 在日志模板 logback.xml 中，使用 %X{} 来占位，内容替换为对应的 MDC 中 key 的值，在模板解析时会从 MDC 中去取 key 对应的 value 来替换占位符以达到自定义日志格式的效果。
 
-## MDC 在 SOFATracer 中的应用
+### MDC 在 SOFATracer 中的应用
 
 SOFATracer 对 MDC 的扩展在 com.alipay.common.tracer.extensions.log.MDCSpanExtension，这个类利用了 SpanExtension 的扩展功能来实现。MDC 扩展的代码也比较简单，就是对 MDC 线程上下文值的存储和删除操作，看两段主要的：
 
@@ -380,9 +380,9 @@ SOFATracer 对 MDC 的扩展在 com.alipay.common.tracer.extensions.log.MDCSpanE
 </appender>
 ```
 
-对应的 Demo 在 [tracer-samples/tracer-sample-with-slf4j ](https://github.com/sofastack/sofa-tracer/tree/master/tracer-samples/tracer-sample-with-slf4j)下。
+对应的 Demo 在 [tracer-samples/tracer-sample-with-slf4j](https://github.com/sofastack/sofa-tracer/tree/master/tracer-samples/tracer-sample-with-slf4j)下。
 
-# 小结
+## 小结
 
 回头看文章开头的两个问题，基于 SOFATracer 的数据透传和 MDC 扩展能力已经有了解决方案：
 
@@ -394,8 +394,8 @@ SOFATracer 对 MDC 的扩展在 com.alipay.common.tracer.extensions.log.MDCSpanE
 
 **文中涉及到的所有链接：**
 
-- 在 OT 原文描述 传送门 https://opentracing.io/docs/overview/inject-extract/
-- SOFATracer 源码：https://github.com/sofastack/sofa-tracer
-- SOFAtrace的异步处理：https://www.sofastack.tech/sofa-tracer/docs/Async
-- SOFATracer 的测试用例 :https://github.com/sofastack/sofa-tracer/tree/master/tracer-core/src/test/java/com/alipay/common/tracer/core/async
-- SOFATracer 对 MDC 的扩展 demo ：https://github.com/sofastack/sofa-tracer/tree/master/tracer-samples/tracer-sample-with-slf4j
+- 在 OT 原文描述 传送门 <https://opentracing.io/docs/overview/inject-extract/>
+- SOFATracer 源码：<https://github.com/sofastack/sofa-tracer>
+- SOFAtrace的异步处理：<https://www.sofastack.tech/sofa-tracer/docs/Async>
+- SOFATracer 的测试用例 :<https://github.com/sofastack/sofa-tracer/tree/master/tracer-core/src/test/java/com/alipay/common/tracer/core/async>
+- SOFATracer 对 MDC 的扩展 demo ：<https://github.com/sofastack/sofa-tracer/tree/master/tracer-samples/tracer-sample-with-slf4j>

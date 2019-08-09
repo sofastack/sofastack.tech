@@ -4,7 +4,7 @@ authorlink: "https://github.com/SteNicholas"
 date: 2019-05-05T14:30:00.000Z
 aliases: "/posts/2019-05-05-01"
 title: "SOFAJRaft 实现原理 - 生产级 Raft 算法库存储模块剖析"
-tags: ["SOFAJRaft"]
+tags: ["SOFAJRaft","SOFALab","剖析 | SOFAJRaft 实现原理"]
 categories: "SOFAJRaft"
 description: "本文为《剖析 | SOFAJRaft 实现原理》第一篇，本篇作者米麒麟，来自陆金所。。"
 cover: "https://cdn.nlark.com/yuque/0/2019/png/156670/1556492476096-9300c652-29e2-4698-b5ef-435c294e00c6.png"
@@ -140,7 +140,6 @@ LocalRaftMetaStorage 基于 ProtoBuf 本地存储 Raft 元信息实现入�
 - 如果任务提交比较频繁，例如消息中间件场景导致整个重建过程很长启动缓慢；
 - 如果日志非常多并且节点需要存储所有的日志，对存储来说是资源占用不可持续；
 - 如果增加 Node 节点，新节点需要从 Leader 获取所有的日志重新存放至状态机，对于 Leader 和网络带宽都是不小的负担。 
-
 
 因此通过引入 Snapshot 机制来解决此三个问题，所谓快照 Snapshot 即对数据当前值的记录，是为当前状态机的最新状态构建"镜像"单独保存，保存成功删除此时刻之前的日志减少日志存储占用；启动的时候直接加载最新的 Snapshot 镜像，然后重放在此之后的日志即可，如果 Snapshot 间隔合理，整个重放到状态机过程较快，加速启动过程。最后新节点的加入先从 Leader 拷贝最新的 Snapshot 安装到本地状态机，然后只要拷贝后续的日志即可，能够快速跟上整个 Raft Group 的进度。Leader 生成快照有几个作用：
 
