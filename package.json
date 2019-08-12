@@ -13,7 +13,8 @@
   },
   "dependencies": {
     "algoliasearch": "^3.33.0",
-    "query-string": "^6.8.2"
+    "query-string": "^6.8.2",
+    "zoom-image": "^0.1.4"
   },
   "devDependencies": {
     "@babel/core": "^7.5.4",
