@@ -305,7 +305,7 @@ RPCServer rpcServer = RaftRpcServerFactory.createAndStartRaftRpcServer(serverId.
 
 ```java
 RpcServer rpcServer = ... // 业务的 RPCServer 对象
-...注册了业务的处理器...
+...注册业务的处理器...
 // 注册 Raft 内部协议处理器
 RaftRpcServerFactory.addRaftRequestProcessors(rpcServer);
 // 启动，共用了端口
@@ -356,7 +356,7 @@ public RaftGroupService(String groupId, PeerId serverId, NodeOptions nodeOptions
 
 ### 2.6 Snapshot 服务
 
-当一个 raft 节点重启的时候，内存中的状态机的状态将会丢失，在启动过程中将重放日志存储中的所有日志，重建整个状态机实例。这就导致两个问题：
+当一个 raft 节点重启的时候，内存中的状态机的状态将会丢失，在启动过程中将重放日志存储中的所有日志，重建整个状态机实例。这就导致 3 个问题：
 
 * 如果任务提交比较频繁，比如消息中间件这个场景，那么会导致整个重建过程很长，启动缓慢。
 * 如果日志很多，节点需要存储所有的日志，这对存储是一个资源占用，不可持续。
@@ -416,7 +416,7 @@ if(success){
 
 应用如果需要向 leader 提交任务或者必须向 leader 查询最新数据，<strong>就需要定期调用 </strong><code><strong>refreshLeader</strong></code><strong> 更新路由信息，或者在服务端返回 redirect 重定向信息（自定义协议，参见 counter 例子）的情况下主动更新 leader 信息。</strong>
 
-RouteTable 还有一些查询和删除配置的方法，请直接查看接口文档。
+RouteTable 还有一些查询和删除配置的方法，请直接查看接口注释。
 
 ### 3.2 CLI 服务
 
@@ -908,7 +908,7 @@ append-logs
         </td>
         <td rowspan="1" colSpan="1">
           <div data-type="p">append-entries-times:  复制请求次数</div>
-          <div data-type="p">hearbeat-times:            心跳请求次数</div>
+          <div data-type="p">heartbeat-times:            心跳请求次数</div>
           <div data-type="p">install-snapshot-times: 安装snapshot请求次数</div>
           <div data-type="p">log-lags:    日志复制延迟个数</div>
           <div data-type="p">next-index: 正在复制的 log index</div>
@@ -938,7 +938,7 @@ NodeOptions 有一个 `raftOptions` 选项，用于设置跟性能和数据可�
     /** 选举定时器间隔会在指定时间之外随机的最大范围，默认1秒*/
     private int     maxElectionDelayMs      = 1000;
     /** 
-     * leader/follower 心跳的时间间隔和选举间隔的因子，心跳间隔等于 
+     * 指定选举超时时间和心跳间隔时间之间的比值。心跳间隔等于 
      * electionTimeoutMs/electionHeartbeatFactor，默认10分之一。
     */
     private int     electionHeartbeatFactor = 10;
