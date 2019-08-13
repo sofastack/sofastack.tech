@@ -57,7 +57,7 @@ __此版本强烈推荐升级__
 
 * Bug Fixes
     * PeerId 以及 Endpoint 改为不可变对象，避免 getLeaderId 等 api 的并发问题
-    * sofa-commaon 升级到 1.0.12，之前依赖的 1.0.9 版本没有发布到公网仓库
+    * sofa-common 升级到 1.0.12，之前依赖的 1.0.9 版本没有发布到公网仓库
 * Features
     * Jraft-rheakv 完成了 auto range split，在启用 placementDriver（pd）的情况下，pd 可根据每个节点上报的状态信息计算并下发 range split 指令；不启用 pd 的情况下也提供了 RheaKVCliService，可以使用 cli 手动触发 range split
     * LogExceptionHandler 泛型支持
