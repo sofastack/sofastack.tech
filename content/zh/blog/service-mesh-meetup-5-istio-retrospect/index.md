@@ -3,7 +3,7 @@ title: "企业服务行业如何试水 Istio | Service Mesh Meetup 分享实录"
 author: "崔秀龙"
 authorlink: "https://blog.fleeto.us/"
 description: "本文根据崔秀龙在 2019 广州 Service Mesh Meetup#5 分享整理，完整的分享 PPT 获取方式见文章底部。"
-categories: Service Mesh"
+categories: "Service Mesh"
 tags: ["Service Mesh"]
 date: 2019-01-10T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1564389345682-0d130dcb-468f-4b1d-bd19-d61f62e817e7.png"
