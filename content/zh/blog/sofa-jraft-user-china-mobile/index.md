@@ -174,6 +174,7 @@ SOFAJRaft 中默认只有 Leader 节点能够被客户端访问到，所有的�
 ## 五、参考文献
 
 [1]  [Diego Ongaro and John Ousterhout. Raft Paper. 2013](https://ramcloud.stanford.edu/raft.pdf)
+
 [2]  [详解蚂蚁金服 SOFAJRaft | 生产级高性能 Java 实现](https://mp.weixin.qq.com/s/zDusnG6WJGP0EX8UmbqtxQ)
 
 作者介绍：
