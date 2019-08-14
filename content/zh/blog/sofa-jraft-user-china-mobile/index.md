@@ -17,7 +17,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1565321758346-d4932120-eb
 
 对于消息队列服务来说，考虑到故障切换和业务感知等问题，传统的高可用方式（冷备或者热备）一般都不太适用。在经过多种技术方案对比后，我们发现采用基于 Raft 共识算法的多副本设计方案可以满足我们产品的要求，因此在鉴权认证组件和API计量服务组件中，我们集成了蚂蚁金服开源的 SOFAJRaft 库，实现这两个组件应对单点故障的高可用。
 
-GitHub 地址：<https://github.com/alipay/sofa-jraft>
+GitHub 地址：<https://github.com/sofastack/sofa-jraft>
 
 ## 一、背景知识：Raft 共识性算法是什么？
 
