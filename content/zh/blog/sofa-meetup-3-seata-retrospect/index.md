@@ -1,5 +1,5 @@
 ---
-title: "分布式事务 Seata 及其三种模式详解 | Meetup#3 回顾"
+title: "分布式事务 Seata Saga 模式首秀以及三种模式详解 |  Meetup#3 回顾"
 author: "屹远"
 authorlink: "https://github.com/long187"
 description: "本文根据 8月11日 SOFA Meetup#3 广州站 《分布式事务 Seata 及其三种模式详解》主题分享整理，文中包含本次分享视频回顾以及 PPT 查看地址。"
@@ -66,7 +66,7 @@ Saga 正向服务与补偿服务也需要业务开发者实现。
 
 ### 3.1 分布式事务 Seata 介绍
 
-Seata（Simple Extensible Autonomous Transaction Architecture，简单可扩展自治事务框架）是 2019 年 1 月份蚂蚁金服和阿里巴巴共同开源的分布式事务解决方案。Seata 开源半年左右，目前已经有超过 1.1 万 star，社区非常活跃。我们热忱欢迎大家参与到 Seata 社区建设中，一同将 Seata 打造成开源分布式事务标杆产品。
+Seata（Simple Extensible Autonomous Transaction Architecture，一站式分布式事务解决方案）是 2019 年 1 月份蚂蚁金服和阿里巴巴共同开源的分布式事务解决方案。Seata 开源半年左右，目前已经有超过 1.1 万 star，社区非常活跃。我们热忱欢迎大家参与到 Seata 社区建设中，一同将 Seata 打造成开源分布式事务标杆产品。
 
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
