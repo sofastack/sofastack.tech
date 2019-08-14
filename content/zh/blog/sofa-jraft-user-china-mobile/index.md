@@ -23,7 +23,6 @@ GitHub 地址：<https://github.com/alipay/sofa-jraft>
 
 Raft 是一种分布式系统中易于理解的共识算法，该协议本质上是 Paxos 算法的精简版，而不同的是依靠 Raft 模块化的拆分以及更加简化的设计，其实现起来更加容易和方便。[1]
 
-
 模块化的拆分主要体现在 Raft 把一致性协议划分为如下几部分：
 
 1. Leader 选举；
