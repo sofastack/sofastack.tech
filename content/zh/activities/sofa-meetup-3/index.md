@@ -1,7 +1,7 @@
 ---
 author: "潘潘"
 date: 2019-07-25T15:00:00+08:00
-title: "（活动进行中）SOFA Meetup#3 广州站-从开源技术到产品能力"
+title: "SOFA Meetup#3 广州站-从开源技术到产品能力"
 tags: ["Meetup","SOFAStack"]
 cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1564043239238-532d985c-148a-4919-adc9-4307c30e3c8f.jpeg"
 categories: "SOFAMeetup"
