@@ -56,7 +56,7 @@ SOFAJRaft 是对 Raft 共识算法的 Java 实现。既然是共识算法，就�
 
 为此我们要作出一些优化，为每个场外的直播平台安排一个专门的记录员，这样 “赛局-记录员-旗童-直播局” 就构成了单线模式，专人专职高效可靠。
 
-![图5 - “赛局-记录员-旗童-直播棋局”](https://cdn.nlark.com/yuque/0/2019/png/307286/1564467312469-4c943bfc-7cd4-4152-aa57-0034b451ae0d.png#align=left&display=inline&height=294&name=image.png&originHeight=738&originWidth=1138&size=238216&status=done&width=454)
+![图5 - “赛局-记录员-旗童-直播棋局”](https://cdn.nlark.com/yuque/0/2019/png/307286/1564467312469-4c943bfc-7cd4-4152-aa57-0034b451ae0d.png)
 
 图5 - “赛局-记录员-旗童-直播棋局”
 
@@ -66,7 +66,7 @@ SOFAJRaft 是对 Raft 共识算法的 Java 实现。既然是共识算法，就�
 
 所以我们做出改进，要求旗童每次多记几步棋，这样记录员不会积攒太多的待直播信息，观众也能一次看到好几步，而这对于聪明的旗童来说并不是什么难事，如此改进达到了共赢的局面。
 
-![图6 - 旗童批量携带信息](https://cdn.nlark.com/yuque/0/2019/png/307286/1564467409470-32fbb639-2f16-4120-9b47-fa643efb573d.png#align=left&display=inline&height=390&name=image.png&originHeight=954&originWidth=1120&size=360416&status=done&width=458)
+![图6 - 旗童批量携带信息](https://cdn.nlark.com/yuque/0/2019/png/307286/1564467409470-32fbb639-2f16-4120-9b47-fa643efb573d.png)
 
 图6 - 旗童批量携带信息
 
