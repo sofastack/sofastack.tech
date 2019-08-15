@@ -184,7 +184,7 @@ Leader 维护一个 queue，每发出一批 logEntry 就向 queue 中 添加一�
 
 1. 在 Replicator 端，通过 uniqueKey 对日志传输所用的 Url 进行特殊标识 ，这样 SOFABolt (SOFAJRaft 底层所采用的通信框架) 就会为这种 Url 建立单一的连接，也就是发送端的 Connection Pool 中只有一条可用连接。
 
-![图20 - 通过 uniqueKey 定制 Url](https://cdn.nlark.com/yuque/0/2019/png/307286/1564546088416-c93bccc6-a15e-4b04-ad58-99c95995975f.png#align=left&display=inline&height=328&name=JRaftRpcAddressParser.png&originHeight=511&originWidth=1024&size=96969&status=done&width=657)
+![图20 - 通过 uniqueKey 定制 Url](https://cdn.nlark.com/yuque/0/2019/png/307286/1564546088416-c93bccc6-a15e-4b04-ad58-99c95995975f.png)
 
 图20 - 通过 uniqueKey 定制 Url
 
