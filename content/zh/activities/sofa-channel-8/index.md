@@ -62,4 +62,4 @@ SOFAGirl 主持人
 - SOFAGirl  主持人
 - 力鲲 SOFAJRaft 开源负责人
 
-<img src="https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1565837593487-8bb7c5e9-ac18-48f6-9744-2d22d618e277.jpeg" width=50%>
+![SOFAChannel#8](https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1565837593487-8bb7c5e9-ac18-48f6-9744-2d22d618e277.jpeg)
