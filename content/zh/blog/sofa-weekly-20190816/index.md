@@ -26,7 +26,6 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 - [中国移动苏州研发中心消息队列高可用设计之谈 | SOFAStack 用户说](https://www.sofastack.tech/blog/sofa-jraft-user-china-mobile/)
 - [溢米教育推荐平台的效率与稳定性建设 | SOFAStack 用户说](https://www.sofastack.tech/blog/sofastack-user-yimi/)
 
-
 ### SOFA 项目进展
 
 **本周发布详情如下：**
