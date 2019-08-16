@@ -76,8 +76,8 @@
     color: $text-color;
   }
 
-  &.-white {
-    background-color: $background-color-card;
+  &.-bg-opacity {
+    background-color: rgba($color: #fff, $alpha: 0.7);
     border: 1px solid $card-border-color;
   }
 }
