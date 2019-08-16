@@ -48,7 +48,7 @@ aliases: "/sofa-acts/docs/Usage-IDE"
 ### map
 
 以示例2为例（Set 与此类似）
-图32中，演示示例2的方法入参为 `Map<String, Object>` 类型。由于 Object 不是具体类型，如果要设置 Object 为复杂对象，则需要去编辑 YAML。例如设置 Object 为 AccountTransResult 类型，则按照如下编辑：
+图32中，演示示例2的方法入参为 `Map<String,Object>` 类型。由于 Object 不是具体类型，如果要设置 Object 为复杂对象，则需要去编辑 YAML。例如设置 Object 为 AccountTransResult 类型，则按照如下编辑：
 
 ![Map 示例](map-example.png)
 
@@ -205,7 +205,7 @@ R：正则匹配校验
 1. 获取全部自定义参数：`getParamMap getParamMap()`
 2. 按 key 获取：`Object getParamByName(String paraName)`
 3. 新增自定义参数：`void addOneParam(String paraName, Object paraObj)`
-4. 替换自定义参数：`void setParamMap(Map<String, Object> paramMap)`
+4. 替换自定义参数：`void setParamMap(Map<String,Object> paramMap)`
 5. 以范型方式获取自定义参数：`T getParamByNameWithGeneric(String paraName)`
 
 ## 不同数据类型编辑方式
