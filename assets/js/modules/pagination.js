@@ -5,7 +5,7 @@ const MAX_AD_LINKS = 2
 const DOT = -98
 
 export default function() {
-  if (!$$('.ss-pagination')) {
+  if ($$('.ss-pagination').length === 0) {
     return
   }
 
