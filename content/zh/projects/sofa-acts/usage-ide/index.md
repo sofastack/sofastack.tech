@@ -35,7 +35,6 @@ aliases: "/sofa-acts/docs/Usage-IDE"
 ![编辑复杂对象](edit-complex-object.png)
 
 <p align="center">图28</p>
-
 如果生成测试脚本时没有识别出方法的入参和返回结果模版，可先生成复杂入参和结果模版（具体操作参考[对象模型生成](../usage-model/#对象模型生成)），然后打开 ACTS IDE 编辑器，在入参设置上右键 -> 模版选择 -> 复杂类型，添加后可以看到复杂对象，直接进行编辑。
 
 ![复杂类型](complex-type.png)
@@ -49,12 +48,11 @@ aliases: "/sofa-acts/docs/Usage-IDE"
 ### map
 
 以示例2为例（Set 与此类似）
-图32中，演示示例2的方法入参为 `Map<String, Object>` 类型。由于 Object 不是具体类型，如果要设置 Object 为复杂对象，则需要去编辑 YAML。例如设置 Object 为 AccountTransResult 类型，则按照如下编辑：
+图32中，演示示例2的方法入参为 `Map<String,Object>` 类型。由于 Object 不是具体类型，如果要设置 Object 为复杂对象，则需要去编辑 YAML。例如设置 Object 为 AccountTransResult 类型，则按照如下编辑：
 
 ![Map 示例](map-example.png)
 
 <p align="center">图32</p>
-
 ![修改类型](change-type.png)
 
 ![设置属性值](set-value.png)
@@ -80,7 +78,6 @@ interestRecoverTypeEnum: !!com.alipay.fc.loancore.common.util.enums.InterestReco
 ![YAML 数据](yaml-data.png)
 
 <p align="center">图37</p>
-
 ### 编码方式准备入参
 
 覆盖 prepare 方法，通过 ActsRuntimeContext 的方法，快速获取和设置用例入参，如图38所示：
@@ -92,7 +89,6 @@ interestRecoverTypeEnum: !!com.alipay.fc.loancore.common.util.enums.InterestReco
 ![ActsRuntimeContext 方法](ActsRuntimeContext-method.png)
 
 <p align="center">图 38</p>
-
 ## 准备 DB 数据
 
 ### 准备 DB 数据-单列场景{#db-single}
@@ -102,15 +98,12 @@ interestRecoverTypeEnum: !!com.alipay.fc.loancore.common.util.enums.InterestReco
 ![选择模板](select-module.png)
 
 <p align="center">图39</p>
-
 ![选择类型](select-type.png)
 
 <p align="center">图40</p>
-
 ![修改值](modify-value.png)
 
 <p align="center">图41</p>
-
 ### 准备 DB 数据-多列场景{#db-multi}
 
 选中一列数据，点击复制，按此方法可复制多列数据，然后进行编辑即可：
@@ -118,7 +111,6 @@ interestRecoverTypeEnum: !!com.alipay.fc.loancore.common.util.enums.InterestReco
 ![复制数据](copy-value.jpeg)
 
 <p align="center">图42</p>
-
 ### 准备 DB 数据-flag说明
 
 数据依赖标记：
@@ -134,7 +126,6 @@ L: 大字段换行准备，准备方式为A=B;C=D
 ![数据依赖标记](mark.png)
 
 <p align="center">图43</p>
-
 ## 准备期望结果数据
 
 生成期望结果的对象模型后，在 ACTS IDE 界面中，期望结果设置右键 -> 模版选择，见下图。
@@ -142,7 +133,6 @@ L: 大字段换行准备，准备方式为A=B;C=D
 ![期望结果设置](expected-result.png)
 
 <p align="center">图44</p>
-
 ### 期望结果的 flag 说明
 
 ```plain
@@ -198,7 +188,6 @@ R：正则匹配校验
 ![编写异常脚本](exception-script.png)
 
 <p align="center">图45</p>
-
 ## 准备自定义数据
 
 ### 自定义数据-用途
@@ -216,7 +205,7 @@ R：正则匹配校验
 1. 获取全部自定义参数：`getParamMap getParamMap()`
 2. 按 key 获取：`Object getParamByName(String paraName)`
 3. 新增自定义参数：`void addOneParam(String paraName, Object paraObj)`
-4. 替换自定义参数：`void setParamMap(Map<String, Object> paramMap)`
+4. 替换自定义参数：`void setParamMap(Map<String,Object> paramMap)`
 5. 以范型方式获取自定义参数：`T getParamByNameWithGeneric(String paraName)`
 
 ## 不同数据类型编辑方式
@@ -228,21 +217,17 @@ R：正则匹配校验
 ![自定义参数设置](custom-parameter.png)
 
 <p align="center">图46</p>
-
 ![new custom variable](new-custom-variable.png)
 
 <p align="center">图47</p>
-
 选择 String 类型，在下方编辑框填写值即可，生成后也可自行编辑：
 
 ![填写值](enter-value.png)
 
 <p align="center">图48</p>
-
 ![完成](complete.png)
 
 <p align="center">图49</p>
-
 ### 复杂对象编辑
 
 以自定义参数设置添加复杂对象数据为例
@@ -252,13 +237,11 @@ R：正则匹配校验
 ![添加复杂对象数据](add-complex-object.png)
 
 <p align="center">图50</p>
-
 如果该复杂对象中还包含复杂对象，选中该行，点击展开（如果没反应，尝试光标定位 value 列，然后点击展开），则数据会展开至当前右边的编辑区。如果还有复杂对象，可做类似操作继续进行展开。
 
 ![展开复杂对象](span.png)
 
 <p align="center">图51</p>
-
 ### list 编辑
 
 以自定义参数设置添加 `List<String>` 为例，模板选择 list 模板：
@@ -266,13 +249,11 @@ R：正则匹配校验
 ![选择 List 模板](select-list-module.png)
 
 <p align="center">图52</p>
-
 自行编辑，然后可选中第一列进行复制，如图53：
 
 ![复制](copy-list.png)
 
 <p align="center">图53</p>
-
 ### map 编辑
 
 可参照入参中有关 [map](#map) 部分。
@@ -288,13 +269,11 @@ R：正则匹配校验
 ![复制节点](copy-node.png)
 
 <p align="center">图54</p>
-
 ### 删除当前节点
 
 ![删除节点](delete-node.png)
 
 <p align="center">图55</p>
-
 ## 修改用例名称
 
 在用例名上右键，修改用例名称：
@@ -302,7 +281,6 @@ R：正则匹配校验
 ![修改用例名称](modify-use-case-name.png)
 
 <p align="center">图56</p>
-
 ## 复制用例
 
 在用例名上右键，复制当前用例：
@@ -310,7 +288,6 @@ R：正则匹配校验
 ![复制用例](copy-use-case.png)
 
 <p align="center">图57</p>
-
 ## 预跑返填
 
 为了提高期望数据值（返回结果和 DB 数据）的快速填写，框架提供了预跑返填功能，一个用例准备好入参、准备数据等，用例执行的基本数据后，可先不必填写期望数据，用例运行起来后，框架可自动捕捉返回结果、DB 变更数据等，运行后打开编辑器点击 __预跑返填__，可填充指定用例的期望数据。具体使用案例：
@@ -323,7 +300,6 @@ R：正则匹配校验
 ![选中要操作的那一行](select-target-line.png)
 
 <p align="center">图58</p>
-
 这一步只是框架提供的便捷特性，在预跑结果反填之后请严格测试每一条数据的正确性，避免代码缺陷产生遗漏。
 
 ### 一键返填
