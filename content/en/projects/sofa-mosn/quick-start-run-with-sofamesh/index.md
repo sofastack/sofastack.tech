@@ -26,7 +26,7 @@ This guide supposes you are using macOS. For other operating systems, you can in
 
 ### 1. Install HyperKit
 
-Install [docker-for-mac](https://store.docker.com/editions/community/docker-ce-desktop-mac), and then  [install driver](https://github.com/kubernetes/minikube/blob/master/docs/drivers.md#hyperkit-driver).
+Install [docker-for-mac](https://store.docker.com/editions/community/docker-ce-desktop-mac), and then  [install driver](https://github.com/kubernetes/minikube/blob/master/docs/drivers.md).
 
 #### 1.1 Install Docker 
 
