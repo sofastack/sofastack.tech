@@ -440,9 +440,9 @@ public interface CliService extends Lifecycle<CliOptions> {
     Status snapshot(String groupId, PeerId peer);
     // 获取某个节点的 leader 节点
     Status getLeader(final String groupId, final Configuration conf, final PeerId leaderId);
-    // 获取某个 replication group 的所有 follower 节点
+    // 获取某个 replication group 的所有节点
     List<PeerId> getPeers(final String groupId, final Configuration conf);
-    // 获取某个 replication group 的所有存活 follower 节点
+    // 获取某个 replication group 的所有存活节点
     List<PeerId> getAlivePeers(final String groupId, final Configuration conf);
     // 手动负载均衡 leader 节点
     Status rebalance(final Set<String> balanceGroupIds, final Configuration conf, final Map<String, PeerId> balancedLeaderIds);
@@ -1091,7 +1091,6 @@ public @interface SPI {
   </table>
 </div>
 
-
 ```text
 nodeId: <rhea_example--1/127.0.0.1:8181>
 state: STATE_FOLLOWER
@@ -1127,7 +1126,6 @@ replicatorGroup:
   replicators: []
   failureReplicators: []
 ```
-
 
 ```text
 -- rheakv 19-7-13 15:28:15 ===============================================================

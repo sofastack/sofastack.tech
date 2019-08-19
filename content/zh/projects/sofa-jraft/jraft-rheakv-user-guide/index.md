@@ -116,7 +116,7 @@ Boolean bPut(final byte[] key, final byte[] value);
 Boolean bPut(final String key, final byte[] value);
 ```
 
-1. 这个不做过多解释了，任何 kv 系统都会提供的 api，对于 String 类型的入参，请参考 get 相关说明
+1. 这个不做过多解释了，任何 kv 系统都会提供的 api，对于 String 类型的入参，请参考 get 相关说明。
 
 ### getAndPut
 
@@ -127,7 +127,7 @@ byte[] bGetAndPut(final byte[] key, final byte[] value);
 byte[] bGetAndPut(final String key, final byte[] value);
 ```
 
-1. 提供一个原子的 'get 旧值并 put 新值' 的语义,  对于 String 类型的入参，请参考 get 相关说明
+1. 提供一个原子的 'get 旧值并 put 新值' 的语义,  对于 String 类型的入参，请参考 get 相关说明。
 
 ### compareAndPut
 ```java
@@ -136,7 +136,7 @@ CompletableFuture<Boolean> compareAndPut(final String key, final byte[] expect, 
 Boolean bCompareAndPut(final byte[] key, final byte[] expect, final byte[] update);
 Boolean bCompareAndPut(final String key, final byte[] expect, final byte[] update);
 ```
-1. 提供一个原子的 'compare 旧值并 put 新值' 的语义, 其中 compare 语义表示 equals 而不是 ==。 对于 String 类型的入参，请参考 get 相关说明
+1. 提供一个原子的 'compare 旧值并 put 新值' 的语义, 其中 compare 语义表示 equals 而不是 ==。 对于 String 类型的入参，请参考 get 相关说明。
 
 ### merge
 
