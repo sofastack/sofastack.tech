@@ -1089,7 +1089,7 @@ public @interface SPI {
   </table>
 </div>
 
-```
+```text
 nodeId: <rhea_example--1/127.0.0.1:8181>
 state: STATE_FOLLOWER
 term: 16
@@ -1124,7 +1124,7 @@ replicatorGroup:
   replicators: []
   failureReplicators: []
 ```
-```
+```text
 -- rheakv 19-7-13 15:28:15 ===============================================================
 
 -- rheakv -- Histograms ------------------------------------------------------------------
