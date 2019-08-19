@@ -1015,6 +1015,7 @@ NodeOptions 有一个 `raftOptions` 选项，用于设置跟性能和数据可�
 
 * 实现 `com.alipay.sofa.jraft.JRaftServiceFactory` 创建服务工厂接口。
 * 添加注解 `@SPI` 到 `LogEntryCodecFactory` 实现类，设置优先级 `priorty` 注解属性。
+
 ```java
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
@@ -1026,6 +1027,7 @@ public @interface SPI {
     int priority() default 0;
 }
 ```
+
 * 需要在自己的工程目录(META-INF.services)添加 `com.alipay.sofa.jraft.JRaftServiceFactory` 指定自定义实现。
 * 实现 `com.alipay.sofa.jraft.entity.codec.LogEntryCodecFactory` LogEntry 编/解码工厂接口。
 * `JRaftServiceFactory` 自定义实现指定新的 `LogEntryCodecFactory` 。
@@ -1089,6 +1091,7 @@ public @interface SPI {
   </table>
 </div>
 
+
 ```text
 nodeId: <rhea_example--1/127.0.0.1:8181>
 state: STATE_FOLLOWER
@@ -1124,6 +1127,8 @@ replicatorGroup:
   replicators: []
   failureReplicators: []
 ```
+
+
 ```text
 -- rheakv 19-7-13 15:28:15 ===============================================================
 
