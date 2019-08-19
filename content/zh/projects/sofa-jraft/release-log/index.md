@@ -25,7 +25,7 @@ title: "版本发行日志"
     * [默认关闭 RheaKV rocksdb 的 fsync 和 WAL，依靠 raft log 和 snapshot 确保数据一致性](https://github.com/alipay/sofa-jraft/pull/159)
     * [当 raft node 过载时拒绝新的请求](https://github.com/alipay/sofa-jraft/pull/144)
 * Breaking Changes
-	* 无
+    * 无
 * 致谢（排名不分先后）
     * @SteNicholas @zongtanghu
 
