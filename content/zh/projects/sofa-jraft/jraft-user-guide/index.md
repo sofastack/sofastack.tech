@@ -438,7 +438,7 @@ public interface CliService extends Lifecycle<CliOptions> {
     Status transferLeader(String groupId, Configuration conf, PeerId peer);
     // 触发某个节点的 snapshot
     Status snapshot(String groupId, PeerId peer);
-    // 获取某个节点的 leader 节点
+    // 获取某个 replication group 的 leader 节点
     Status getLeader(final String groupId, final Configuration conf, final PeerId leaderId);
     // 获取某个 replication group 的所有节点
     List<PeerId> getPeers(final String groupId, final Configuration conf);
