@@ -9,29 +9,29 @@ icon: "/img/icons/sofadashboard.png"
 sidebar:
 
 - title: 'SOFADashboard overview'
-link: 'overview'
+  link: 'overview'
 - title: 'Quick start'
-link: 'quick-start'
+  link: 'quick-start'
 - title: 'Features'
-sub:
-   - title: 'Dashboard client'
-link: 'dashboard-client'
-   - title: 'Service governance'
-link: 'governance'
-   - title: 'SOFAArk control'
-link: 'ark-console'
+  sub:
+    - title: 'Dashboard client'
+      link: 'dashboard-client'
+    - title: 'Service governance'
+      link: 'governance'
+    - title: 'SOFAArk control'
+      link: 'ark-console'
 - title: 'Version release'
-sub:
-   - title: 'Version rules'
-link: 'version-rule'
-   - title: 'How to contribute'
-link: 'contribution'
-   - title: 'Release notes'
-link: 'release-node'
+  sub:
+    - title: 'Version rules'
+      link: 'version-rule'
+    - title: 'How to contribute'
+      link: 'contribution'
+    - title: 'Release notes'
+      link: 'release-node'
 - title: 'Copyright statement'
-link: 'notice'
+  link: 'notice'
 - title: 'Roadmap and task claim'
-link: 'roadmap'
+  link: 'roadmap'
 
 ---
 

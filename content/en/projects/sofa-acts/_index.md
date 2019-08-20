@@ -9,29 +9,29 @@ icon: "/img/icons/sofaacts.png"
 sidebar:
 
 - title: "SOFAActs overview"
-link: "overview"
+  link: "overview"
 - title: "User guide"
-sub:
-   - title: "Quick start"
-link: "getting-started"
-   - title: "Framework preparation"
-link: "usage-ready"
-   - title: "Features"
-sub:
-      - title: "Models"
-link: "usage-model"
-      - title: "Scripts"
-link: "usage-script"
-      - title: "All-in-one editor"
-link: "usage-ide"
-   - title: "Extensions"
-link: "usage-api"
+  sub:
+    - title: "Quick start"
+      link: "getting-started"
+    - title: "Framework preparation"
+      link: "usage-ready"
+    - title: "Features"
+      sub:
+        - title: "Models"
+          link: "usage-model"
+        - title: "Scripts"
+          link: "usage-script"
+        - title: "All-in-one editor"
+          link: "usage-ide"
+    - title: "Extensions"
+      link: "usage-api"
 - title: "Developer guide"
-link: "developer-guide"
+  link: "developer-guide"
 - title: "How to contribute"
-link: "contributing"
+  link: "contributing"
 - title: "FAQ"
-link: "faq"
+  link: "faq"
 
 ---
 

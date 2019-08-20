@@ -8,39 +8,39 @@ weight: 1
 sidebar:
 
 - title: 'SOFAJRaft overview'
-link: 'overview'
+  link: 'overview'
 - title: 'Engine architecture'
-link: 'engine-architecture'
+  link: 'engine-architecture'
 - title: 'Jepsen tests'
-link: 'jepson-test'
+  link: 'jepson-test'
 - title: 'User guide'
-sub:
-   - title: 'JRaft user guide'
-link: 'jraft-user-guide'
-   - title: 'JRaft RheaKV user guide'
-link: 'jraft-rheakv-user-guide'
-   - title: 'Counter example'
-link: 'counter-example'
+  sub:
+    - title: 'JRaft user guide'
+      link: 'jraft-user-guide'
+    - title: 'JRaft RheaKV user guide'
+      link: 'jraft-rheakv-user-guide'
+    - title: 'Counter example'
+      link: 'counter-example'
 - Title: Maven dependency description'
-link: 'maven-dependency'
+  link: 'maven-dependency'
 - title: 'Release notes'
-link: 'release-log'
+  link: 'release-log'
 - title: 'Benchmark data'
-link: 'benchmark-performance'
+  link: 'benchmark-performance'
 - title: 'User stories'
-link: 'user-stories'
+  link: 'user-stories'
 - title: 'Roadmap'
-link: 'road-map'
+  link: 'road-map'
 - title: 'Related articles'
-sub:
-   - title: 'Introduction to Raft algorithms'
-link: 'raft-introduction'
-   - title: 'Distributed consensus - Raft and JRaft'
-link: 'consistency-raft-jraft'
+  sub:
+    - title: 'Introduction to Raft algorithms'
+      link: 'raft-introduction'
+    - title: 'Distributed consensus - Raft and JRaft'
+      link: 'consistency-raft-jraft'
 - title: 'Other'
-sub:
-   - title: 'How to contribute to SOFAJRaft'
-link: 'how-to-contribute-code-to-sofajraft'
+  sub:
+    - title: 'How to contribute to SOFAJRaft'
+      link: 'how-to-contribute-code-to-sofajraft'
 
 ---
 

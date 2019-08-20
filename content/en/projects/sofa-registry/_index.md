@@ -10,21 +10,21 @@ icon: "/img/icons/sofaregistry.png"
 sidebar:
 
 - title: 'Introduction'
-sub:
-   - title: 'Overview'
-link: 'overview'
-   - title: 'Terminology'
-link: 'terminology'
+  sub:
+    - title: 'Overview'
+      link: 'overview'
+    - title: 'Terminology'
+      link: 'terminology'
 - title: 'Quick start'
-sub:
-   - title: 'Server deployment'
-link: 'server-quick-start'
-   - title: 'Client usage'
-link: 'client-quick-start'
+  sub:
+    - title: 'Server deployment'
+      link: 'server-quick-start'
+    - title: 'Client usage'
+      link: 'client-quick-start'
 - title: 'Developer guide'
-sub:
-   - title: 'JAVA SDK'
-link: 'java-sdk'
+  sub:
+    - title: 'JAVA SDK'
+      link: 'java-sdk'
 
 ---
 
