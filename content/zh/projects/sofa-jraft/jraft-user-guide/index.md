@@ -438,6 +438,14 @@ public interface CliService extends Lifecycle<CliOptions> {
     Status transferLeader(String groupId, Configuration conf, PeerId peer);
     // 触发某个节点的 snapshot
     Status snapshot(String groupId, PeerId peer);
+    // 获取某个 replication group 的 leader 节点
+    Status getLeader(final String groupId, final Configuration conf, final PeerId leaderId);
+    // 获取某个 replication group 的所有节点
+    List<PeerId> getPeers(final String groupId, final Configuration conf);
+    // 获取某个 replication group 的所有存活节点
+    List<PeerId> getAlivePeers(final String groupId, final Configuration conf);
+    // 手动负载均衡 leader 节点
+    Status rebalance(final Set<String> balanceGroupIds, final Configuration conf, final Map<String, PeerId> balancedLeaderIds);
 }
 ```
 
@@ -956,12 +964,14 @@ NodeOptions 有一个 `raftOptions` 选项，用于设置跟性能和数据可�
      */
     private int     disruptorBufferSize     = 16384;
     /** 是否启用复制的 pipeline 请求优化，默认打开*/
-    private boolean  replicatorPipeline        = true;
+    private boolean replicatorPipeline      = true;
     /** 在启用 pipeline 请求情况下，最大 in-flight 请求数，默认256*/
-    private int            maxReplicatorInflightMsgs = 256;
+    private int   maxReplicatorInflightMsgs = 256;
+    /** 是否启用 LogEntry checksum*/
+    private boolean enableLogEntryChecksum  = false;
     
     /** ReadIndex 请求级别，默认 ReadOnlySafe，具体含义参见线性一致读章节*/
-    private ReadOnlyOption readOnlyOptions           = ReadOnlyOption.ReadOnlySafe;
+    private ReadOnlyOption readOnlyOptions  = ReadOnlyOption.ReadOnlySafe;
 ```
 
 对于重度吞吐量的应用，需要适当调整缓冲区大小、批次大小等参数，以实际测试性能为准。
@@ -998,3 +1008,275 @@ NodeOptions 有一个 `raftOptions` 选项，用于设置跟性能和数据可�
 * 使用 `RouteTable` 管理集群信息，定期 `refreshLeader` 和 `refreshConfiguration` 获取集群最新状态。
 * 业务协议应当内置 Redirect 重定向请求协议，当写入到非 leader 节点，返回最新的 leader 信息到客户端，客户端可以做适当重试。通过定期拉取和 redirect 协议的结合，来提升客户端的可用性。
 * 建议使用线性一致读，将请求散列到集群内的所有节点上，降低 leader 的负荷压力。
+
+## 9. 如何基于 SPI 扩展
+
+如果基于 SPI 扩展支持适配新 LogEntry 编/解码器，需要下面的步骤:
+
+* 实现 `com.alipay.sofa.jraft.JRaftServiceFactory` 创建服务工厂接口。
+* 添加注解 `@SPI` 到 `LogEntryCodecFactory` 实现类，设置优先级 `priorty` 注解属性。
+
+```java
+@Documented
+@Retention(RetentionPolicy.RUNTIME)
+@Target({ ElementType.TYPE })
+public @interface SPI {
+
+    String name() default "";
+
+    int priority() default 0;
+}
+```
+
+* 需要在自己的工程目录(META-INF.services)添加 `com.alipay.sofa.jraft.JRaftServiceFactory` 指定自定义实现。
+* 实现 `com.alipay.sofa.jraft.entity.codec.LogEntryCodecFactory` LogEntry 编/解码工厂接口。
+* `JRaftServiceFactory` 自定义实现指定新的 `LogEntryCodecFactory` 。
+
+## 10. 排查故障工具
+
+在程序运行时，可以利用 Linux 平台的 SIGUSR2 信号输出节点的状态信息以及 metric 数据，具体执行方式: `kill -s SIGUSR2 pid`
+相关信息会输出到指定目录，默认在程序工作目录（cwd:  lsof -p $pid | grep cwd）生成 2 个文件：node_describe.log 和 node_describe.log，其中 node_describe.log 存储节点 metric 数据，node_describe.log 存储节点状态信息。
+
+<div class="bi-table">
+  <table>
+    <colgroup>
+      <col width="auto" />
+      <col width="auto" />
+      <col width="auto" />
+    </colgroup>
+    <tbody>
+      <tr height="34px">
+        <td rowspan="1" colSpan="1">
+          <div data-type="p">目录变量</div>
+        </td>
+        <td rowspan="1" colSpan="1">
+          <div data-type="p">默认目录</div>
+        </td>
+        <td rowspan="1" colSpan="1">
+          <div data-type="p">文件名称</div>
+        </td>
+        <td rowspan="1" colSpan="1">
+          <div data-type="p">文件描述</div>
+        </td>
+      </tr>
+      <tr height="34px">
+        <td rowspan="1" colSpan="1">
+          <div data-type="p">jraft.signal.node.metrics.dir</div>
+        </td>
+        <td rowspan="1" colSpan="1">
+          <div data-type="p">cwd:  lsof -p $pid | grep cwd</div>
+        </td>
+        <td rowspan="1" colSpan="1">
+          <div data-type="p">node_metrics.log</div>
+        </td>
+        <td rowspan="1" colSpan="1">
+          <div data-type="p">节点 metric 数据</div>
+        </td>
+      </tr>
+     <tr height="34px">
+        <td rowspan="1" colSpan="1">
+          <div data-type="p">jraft.signal.node.describe.dir</div>
+        </td>
+        <td rowspan="1" colSpan="1">
+          <div data-type="p">cwd:  lsof -p $pid | grep cwd</div>
+        </td>
+        <td rowspan="1" colSpan="1">
+          <div data-type="p">node_describe.log</div>
+        </td>
+        <td rowspan="1" colSpan="1">
+          <div data-type="p">节点状态信息</div>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+```text
+nodeId: <rhea_example--1/127.0.0.1:8181>
+state: STATE_FOLLOWER
+term: 16
+conf: ConfigurationEntry [id=LogId [index=59, term=16], conf=127.0.0.1:8181,127.0.0.1:8182,127.0.0.1:8183, oldConf=]
+electionTimer: 
+  RepeatedTimer [timerTask=com.alipay.sofa.jraft.util.RepeatedTimer$1@519d2775, stopped=false, running=true, destroyed=false, invoking=false, timeoutMs=1000]
+voteTimer: 
+  RepeatedTimer [timerTask=null, stopped=true, running=false, destroyed=false, invoking=false, timeoutMs=1000]
+stepDownTimer: 
+  RepeatedTimer [timerTask=null, stopped=true, running=false, destroyed=false, invoking=false, timeoutMs=500]
+snapshotTimer: 
+  RepeatedTimer [timerTask=com.alipay.sofa.jraft.util.RepeatedTimer$1@3a3b5443, stopped=false, running=true, destroyed=false, invoking=false, timeoutMs=3600000]
+logManager: 
+  storage: [1, 136]
+  diskId: LogId [index=136, term=16]
+  appliedId: LogId [index=136, term=16]
+  lastSnapshotId: LogId [index=0, term=0]
+fsmCaller: 
+  StateMachine [Idle]
+ballotBox: 
+  lastCommittedIndex: 136
+  pendingIndex: 0
+  pendingMetaQueueSize: 0
+snapshotExecutor: 
+  lastSnapshotTerm: 0
+  lastSnapshotIndex: 0
+  term: 16
+  savingSnapshot: false
+  loadingSnapshot: false
+  stopped: false
+replicatorGroup: 
+  replicators: []
+  failureReplicators: []
+```
+
+```text
+-- rheakv 19-7-13 15:28:15 ===============================================================
+
+-- rheakv -- Histograms ------------------------------------------------------------------
+rhea-st-batch-write_-1
+             count = 12
+               min = 1
+               max = 10
+              mean = 2.36
+            stddev = 3.22
+            median = 1.00
+              75% <= 1.00
+              95% <= 10.00
+              98% <= 10.00
+              99% <= 10.00
+            99.9% <= 10.00
+send_batching_get_bytes
+             count = 0
+               min = 0
+               max = 0
+              mean = 0.00
+            stddev = 0.00
+            median = 0.00
+              75% <= 0.00
+              95% <= 0.00
+              98% <= 0.00
+              99% <= 0.00
+            99.9% <= 0.00
+send_batching_get_keys
+             count = 0
+               min = 0
+               max = 0
+              mean = 0.00
+            stddev = 0.00
+            median = 0.00
+              75% <= 0.00
+              95% <= 0.00
+              98% <= 0.00
+              99% <= 0.00
+            99.9% <= 0.00
+send_batching_get_only_safe_bytes
+             count = 0
+               min = 0
+               max = 0
+              mean = 0.00
+            stddev = 0.00
+            median = 0.00
+              75% <= 0.00
+              95% <= 0.00
+              98% <= 0.00
+              99% <= 0.00
+            99.9% <= 0.00
+send_batching_get_only_safe_keys
+             count = 0
+               min = 0
+               max = 0
+              mean = 0.00
+            stddev = 0.00
+            median = 0.00
+              75% <= 0.00
+              95% <= 0.00
+              98% <= 0.00
+              99% <= 0.00
+            99.9% <= 0.00
+send_batching_put_bytes
+             count = 0
+               min = 0
+               max = 0
+              mean = 0.00
+            stddev = 0.00
+            median = 0.00
+              75% <= 0.00
+              95% <= 0.00
+              98% <= 0.00
+              99% <= 0.00
+            99.9% <= 0.00
+send_batching_put_keys
+             count = 0
+               min = 0
+               max = 0
+              mean = 0.00
+            stddev = 0.00
+            median = 0.00
+              75% <= 0.00
+              95% <= 0.00
+              98% <= 0.00
+              99% <= 0.00
+            99.9% <= 0.00
+
+-- rheakv -- Meters ----------------------------------------------------------------------
+rhea-st-apply-qps_-1
+             count = 30
+         mean rate = 1.09 events/second
+     1-minute rate = 0.40 events/second
+     5-minute rate = 0.10 events/second
+    15-minute rate = 0.03 events/second
+rhea-st-apply-qps_-1_PUT
+             count = 30
+         mean rate = 1.50 events/second
+     1-minute rate = 3.25 events/second
+     5-minute rate = 3.84 events/second
+    15-minute rate = 3.94 events/second
+
+-- rheakv -- Timers ----------------------------------------------------------------------
+rhea-db-timer_BATCH_PUT
+             count = 2
+         mean rate = 0.10 calls/second
+     1-minute rate = 0.31 calls/second
+     5-minute rate = 0.38 calls/second
+    15-minute rate = 0.39 calls/second
+               min = 0.06 milliseconds
+               max = 2.12 milliseconds
+              mean = 1.09 milliseconds
+            stddev = 1.03 milliseconds
+            median = 2.12 milliseconds
+              75% <= 2.12 milliseconds
+              95% <= 2.12 milliseconds
+              98% <= 2.12 milliseconds
+              99% <= 2.12 milliseconds
+            99.9% <= 2.12 milliseconds
+rhea-db-timer_PUT
+             count = 10
+         mean rate = 0.87 calls/second
+     1-minute rate = 1.84 calls/second
+     5-minute rate = 1.97 calls/second
+    15-minute rate = 1.99 calls/second
+               min = 0.01 milliseconds
+               max = 0.58 milliseconds
+              mean = 0.09 milliseconds
+            stddev = 0.17 milliseconds
+            median = 0.03 milliseconds
+              75% <= 0.04 milliseconds
+              95% <= 0.58 milliseconds
+              98% <= 0.58 milliseconds
+              99% <= 0.58 milliseconds
+            99.9% <= 0.58 milliseconds
+rhea-rpc-request-timer_-1
+             count = 0
+         mean rate = 0.00 calls/second
+     1-minute rate = 0.00 calls/second
+     5-minute rate = 0.00 calls/second
+    15-minute rate = 0.00 calls/second
+               min = 0.00 milliseconds
+               max = 0.00 milliseconds
+              mean = 0.00 milliseconds
+            stddev = 0.00 milliseconds
+            median = 0.00 milliseconds
+              75% <= 0.00 milliseconds
+              95% <= 0.00 milliseconds
+              98% <= 0.00 milliseconds
+              99% <= 0.00 milliseconds
+            99.9% <= 0.00 milliseconds
+```
