@@ -21,7 +21,7 @@ sidebar:
       link: 'jraft-rheakv-user-guide'
     - title: 'Counter example'
       link: 'counter-example'
-- Title: Maven dependency description'
+- title: Maven dependency description'
   link: 'maven-dependency'
 - title: 'Release notes'
   link: 'release-log'

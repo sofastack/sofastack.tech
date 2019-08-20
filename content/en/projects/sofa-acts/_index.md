@@ -4,7 +4,7 @@ title: "SOFAActs"
 description: "AntCoreTest (ACTS) is a white-box testing framework designated for providing enterprises with highly efficient, precise, and automated interface testing services."
 GitHub: "https://github.com/sofastack/sofa-acts"
 level: "tool"
-weight: 6
+weight: 3
 icon: "/img/icons/sofaacts.png"
 sidebar:
 
