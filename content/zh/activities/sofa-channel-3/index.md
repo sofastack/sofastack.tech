@@ -5,7 +5,7 @@ title: "SOFAChannel#3：SOFARPC 性能优化（下）—— 手把手带你性�
 tags: ["SOFAChannel","SOFARPC"]
 cover: "/cover.jpg"
 categories: "SOFAChannel"
-descripiton: "本次为下半场，2 月 28 日晚 7 点，线上直播。"
+description: "本次为下半场，2 月 28 日晚 7 点，线上直播。"
 ---
 
 ## 介绍
