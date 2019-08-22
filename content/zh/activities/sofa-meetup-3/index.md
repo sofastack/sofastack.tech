@@ -2,7 +2,7 @@
 author: "潘潘"
 date: 2019-07-25T15:00:00+08:00
 title: "SOFA Meetup#3 广州站-从开源技术到产品能力"
-tags: ["Meetup","SOFAStack"]
+tags: ["SOFAMeetup","SOFAStack"]
 cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1564043239238-532d985c-148a-4919-adc9-4307c30e3c8f.jpeg"
 categories: "SOFAMeetup"
 description: "SOFA Meetup#3 广州站-从开源技术到产品能力，8 月 11 日周日下午 13 点，广州市广电平云 B 塔 15F 等你。"
