@@ -5,7 +5,7 @@ title: "SOFAChannel#2：SOFARPC 性能优化（上）—— 详解优化设计�
 tags: ["SOFAChannel","SOFARPC"]
 cover: "/cover.jpg"
 categories: "SOFAChannel"
-descripton: "本次为上半场，2 月 21 日晚 7 点，线上直播。"
+description: "本次为上半场，2 月 21 日晚 7 点，线上直播。"
 ---
 
 # 介绍

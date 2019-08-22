@@ -5,7 +5,7 @@ title: "SOFA Meetup#2 上海站——使用 SOFAStack 快速构建微服务"
 tags: ["Meetup","SOFAStack"]
 cover: "/cover.jpg"
 categories: "SOFAMeetup"
-descripton: "SOFA Meetup#2 上海站-使用 SOFAStack 快速构建微服务，5 月 26 日周日下午 13 点，上海市徐汇区田林路200号A7栋一楼。"
+description: "SOFA Meetup#2 上海站-使用 SOFAStack 快速构建微服务，5 月 26 日周日下午 13 点，上海市徐汇区田林路200号A7栋一楼。"
 ---
 
 # 概要

@@ -5,7 +5,7 @@ title: "SOFAChannel#5：给研发工程师的代码质量利器 —— 自动化
 tags: ["SOFAChannel","SOFAActs"]
 cover: "/cover.jpg"
 categories: "SOFAChannel"
-descripton: "5 月 16 日周四晚 7 点，线上直播。"
+description: "5 月 16 日周四晚 7 点，线上直播。"
 ---
 
 # 概要
