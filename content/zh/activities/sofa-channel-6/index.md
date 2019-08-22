@@ -1,22 +1,22 @@
 ---
 author: "潘潘"
-date: 2019-04-09T12:10:00+08:00
-title: "SOFAChannel#6：分布式事务 Seata TCC 模式深度解析"
-tags: ["SOFAChannel","Seata"]
-cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1566446254443-ae9832f9-0164-481f-8ca7-bed86a3501d2.png"
+date: 2019-06-12T12:00:00+08:00
+title: "SOFAChannel#6：轻量级监控分析系统 SOFALookout 原理讲解和功能演示"
+tags: ["SOFAChannel","SOFALookout"]
+cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563420074562-4edb7587-1564-473a-97d8-20e84a0e15c5.png"
 categories: "SOFAChannel"
-descripton: "4 月 18 日周四晚 7 点，线上直播第 4 期。"
+description: "6 月 12 日周四晚 7 点，线上直播第 6 期。"
 ---
 
 ## 概要
 
-- 活动主题：SOFAChannel#4：分布式事务 Seata TCC 模式深度解析
+- 活动主题：SOFAChannel#6：轻量级监控分析系统 SOFALookout 原理讲解和功能演示
 
-- 活动时间：4 月 18 日周四晚 7 点
+- 活动时间：6 月 12 日周四晚 7 点
 
 - 活动形式：线上直播
 
-- 报名方式：<https://tech.antfin.com/community/live/462>
+- 报名方式：<https://tech.antfin.com/community/live/687>
 
 ## 介绍
 
@@ -26,19 +26,19 @@ descripton: "4 月 18 日周四晚 7 点，线上直播第 4 期。"
 
 `<SOFA:Channel/>` 将作为 SOFA 所有在线内容的承载，包含直播/音视频教程，集中体现 SOFAStack 的能力全景图。
 
-### | SOFAChannel#4：分布式事务 Seata TCC 模式深度解析
+### | SOFAChannel#6：**轻量级监控分析系统 SOFALookout 原理讲解和功能演示**
 
-4月初，分布式事务 Fescar 宣布进行品牌升级为 Seata，Seata 意为：Simple Extensible Autonomous Transaction Architecture，是一套一站式分布式事务解决方案。蚂蚁金服在 Seata 0.4.0 版本加入了 TCC 模式，后续也会持续输入。
+6 月 27 日周四晚 7 点，将邀请 蚂蚁金服 SOFALookout 开源负责人 响风 为大家分享，通过对多个模块的剖析，详解 SOFALookout 服务端以及客户端，带你了解 SOFALookout 具体是如何支持主流 Metrics协议的数据收集、存储、查询计算和可视化的。欢迎报名参加~
 
-本期为 SOFAChannel 线上直播第 4 期，将邀请 蚂蚁金服 技术专家 & Seata Committer 觉生 和大家一起探讨 《分布式事务 Seata  TCC 模式深度解析》。
+SOFALookout 是蚂蚁金服开源的一款解决系统的度量和监控问题的轻量级中间件服务，提供的服务包括：Metrics 的埋点、收集、加工、存储与查询等。该开源项目包括了两个独立部分，分别是客户端与服务器端服务。
 
-本期分享大纲：
+**本期分享大纲：**
 
-- TCC 模式基本原理解析
-- 分布式事务并发控制解析
-- 分布式事务空回滚与幂等解析
-- 分布式事务防悬挂解析
-- 分布式事务异步化解析
+- 监控预警基本概念介绍
+- SOFALookout 客户端使用
+- Gateway - 多协议数据收集与处理的设计与实现
+- Server - PromQL 与多种存储层的设计与实现
+- SOFALookout 发展路线
 
 ### | 加入 SOFA 钉钉互动群
 
@@ -46,7 +46,7 @@ descripton: "4 月 18 日周四晚 7 点，线上直播第 4 期。"
 
 ### | 点击即可报名
 
-<https://tech.antfin.com/community/live/462>
+<https://tech.antfin.com/community/live/687>
 
 ## 议程
 
@@ -54,19 +54,19 @@ descripton: "4 月 18 日周四晚 7 点，线上直播第 4 期。"
 
 SOFAGirl 主持人
 
-### 19:05-20:00  分布式事务 Seata TCC 模式深度解析
+### 19:05-20:00  轻量级监控分析系统 SOFALookout 原理讲解和功能演示
 
-觉生 蚂蚁金服 技术专家 / Seata Committer
+响风 蚂蚁金服轻量级监控分析系统 SOFALookout 开源负责人
 
 ### 本期分享大纲：
 
-- TCC 模式基本原理解析
-- 分布式事务并发控制解析
-- 分布式事务空回滚与幂等解析
-- 分布式事务防悬挂解析
-- 分布式事务异步化解析
+- 监控预警基本概念介绍
+- SOFALookout 客户端使用
+- Gateway - 多协议数据收集与处理的设计与实现
+- Server - PromQL 与多种存储层的设计与实现
+- SOFALookout 发展路线
 
 ## 嘉宾
 
 - SOFAGirl  主持人
-- 觉生 蚂蚁金服 技术专家 / Seata Committer
+- 响风 蚂蚁金服轻量级监控分析系统 SOFALookout 开源负责人
