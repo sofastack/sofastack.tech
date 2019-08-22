@@ -11,12 +11,10 @@ description: "4 月 18 日周四晚 7 点，线上直播第 4 期。"
 ## 概要
 
 - 活动主题：SOFAChannel#4：分布式事务 Seata TCC 模式深度解析
-
 - 活动时间：4 月 18 日周四晚 7 点
-
 - 活动形式：线上直播
-
-- 报名方式：<https://tech.antfin.com/community/live/462>
+- [直播视频回顾](https://tech.antfin.com/community/live/462)
+- [直播回顾文章](https://www.sofastack.tech/blog/sofa-channel-4-retrospect/)
 
 ## 介绍
 
@@ -39,7 +37,6 @@ description: "4 月 18 日周四晚 7 点，线上直播第 4 期。"
 - 分布式事务空回滚与幂等解析
 - 分布式事务防悬挂解析
 - 分布式事务异步化解析
-
 
 ### | 加入 SOFA 钉钉互动群
 
