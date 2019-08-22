@@ -5,7 +5,7 @@ title: "SOFAChannel#4：分布式事务 Seata TCC 模式深度解析"
 tags: ["SOFAChannel","Seata"]
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1566446254443-ae9832f9-0164-481f-8ca7-bed86a3501d2.png"
 categories: "SOFAChannel"
-descripton: "4 月 18 日周四晚 7 点，线上直播第 4 期。"
+description: "4 月 18 日周四晚 7 点，线上直播第 4 期。"
 ---
 
 ## 概要

@@ -5,7 +5,7 @@ title: "（活动报名中）SOFAChannel#8：从一个例子开始体验 SOFAJRa
 tags: ["SOFAChannel","SOFAJRaft"]
 cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1565849645792-928b7f33-25b8-429e-82c7-b12fdc303de2.jpeg"
 categories: "SOFAChannel"
-descripton: "8 月 29 日周四晚 7 点，线上直播第 8 期。"
+description: "8 月 29 日周四晚 7 点，线上直播第 8 期。"
 ---
 
 ## 概要

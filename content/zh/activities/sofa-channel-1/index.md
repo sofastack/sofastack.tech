@@ -5,7 +5,7 @@ title: "SOFAChannel#1——从蚂蚁金服微服务实践谈起"
 tags: ["SOFAChannel","SOFARPC"]
 cover: "/cover.jpg"
 categories: "SOFAChannel"
-descripton: "本次为上半场，2 月 21 日晚 7 点，线上直播。"
+description: "本次为上半场，2 月 21 日晚 7 点，线上直播。"
 ---
 
 ## 介绍

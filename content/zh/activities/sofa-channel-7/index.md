@@ -5,7 +5,7 @@ title: "SOFAChannel#7：扩展 Kubernetes 实现金融级云原生发布部署 -
 tags: ["SOFAChannel","CAFEDeployment"]
 cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1562661745338-383eac84-8e5e-43e3-9ab7-e3d93690e8af.jpeg"
 categories: "SOFAChannel"
-descripton: "7 月 18 日周四晚 7 点，线上直播第 7 期。"
+description: "7 月 18 日周四晚 7 点，线上直播第 7 期。"
 ---
 
 ## 概要
