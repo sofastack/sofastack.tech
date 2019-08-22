@@ -2,7 +2,7 @@
 author: "花肉"
 date: 2019-05-21T11:20:00.000Z
 title: "SOFA Meetup#2 上海站——使用 SOFAStack 快速构建微服务"
-tags: ["Meetup","SOFAStack"]
+tags: ["SOFAMeetup","SOFAStack"]
 cover: "/cover.jpg"
 categories: "SOFAMeetup"
 description: "SOFA Meetup#2 上海站-使用 SOFAStack 快速构建微服务，5 月 26 日周日下午 13 点，上海市徐汇区田林路200号A7栋一楼。"
