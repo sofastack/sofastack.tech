@@ -11,12 +11,10 @@ description: "6 月 12 日周四晚 7 点，线上直播第 6 期。"
 ## 概要
 
 - 活动主题：SOFAChannel#6：轻量级监控分析系统 SOFALookout 原理讲解和功能演示
-
 - 活动时间：6 月 12 日周四晚 7 点
-
 - 活动形式：线上直播
-
-- 报名方式：<https://tech.antfin.com/community/live/687>
+- [直播视频回顾](https://tech.antfin.com/community/live/687)
+- [直播回顾文章](https://www.sofastack.tech/blog/sofa-channel-6-retrospect/)
 
 ## 介绍
 
