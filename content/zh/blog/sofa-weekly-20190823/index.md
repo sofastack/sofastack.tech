@@ -25,7 +25,7 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 欢迎大家向公众号留言提问或在群里与我们互动
 我们会筛选重点问题通过 " SOFA WEEKLY " 的形式回复
 
-**1、@廖春涛 **提问：
+**1、@廖春涛** 提问：
 
 > 在 SOFAJRaft 中，snapshot load 后应该会有个日志重放的实现，但是我目前看代码没看到说 snapshot 和 LogEntry 有关联的地方，请问是什么关系呢？
 
