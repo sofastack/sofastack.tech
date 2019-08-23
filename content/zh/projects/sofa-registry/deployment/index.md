@@ -132,7 +132,7 @@ tar -zxvf registry-data.tgz -C registry-data
 # 将3台 meta 机器的 ip 或 hostname 配置到下方(填入的 hostname 会被内部解析为 ip 地址)
 nodes.metaNode=DefaultDataCenter:<meta_hostname1>,<meta_hostname2>,<meta_hostname3>
 nodes.localDataCenter=DefaultDataCenter
-data.server.numberOfReplicas=1
+data.server.numberOfReplicas=1000
 ```
 
 * 启动 registry-data
