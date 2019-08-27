@@ -53,6 +53,7 @@ aliases: "/sofa-acts/docs/Usage-IDE"
 ![Map 示例](map-example.png)
 
 <p align="center">图32</p>
+
 ![修改类型](change-type.png)
 
 ![设置属性值](set-value.png)
@@ -98,9 +99,11 @@ interestRecoverTypeEnum: !!com.alipay.fc.loancore.common.util.enums.InterestReco
 ![选择模板](select-module.png)
 
 <p align="center">图39</p>
+
 ![选择类型](select-type.png)
 
 <p align="center">图40</p>
+
 ![修改值](modify-value.png)
 
 <p align="center">图41</p>
@@ -217,6 +220,7 @@ R：正则匹配校验
 ![自定义参数设置](custom-parameter.png)
 
 <p align="center">图46</p>
+
 ![new custom variable](new-custom-variable.png)
 
 <p align="center">图47</p>
@@ -225,6 +229,7 @@ R：正则匹配校验
 ![填写值](enter-value.png)
 
 <p align="center">图48</p>
+
 ![完成](complete.png)
 
 <p align="center">图49</p>
@@ -232,7 +237,7 @@ R：正则匹配校验
 
 以自定义参数设置添加复杂对象数据为例
 
-参照[简单类型编辑](#简单类型编辑)，在弹框填写好入参名字。然后在模板选择列表中（如果找不到想要的复杂对象，请先生成相应的数据模板），选择一个复杂对象，然后 add，点击 OK 确认。
+参照 [简单类型编辑](#简单类型编辑)，在弹框填写好入参名字。然后在模板选择列表中（如果找不到想要的复杂对象，请先生成相应的数据模板），选择一个复杂对象，然后 add，点击 OK 确认。
 
 ![添加复杂对象数据](add-complex-object.png)
 
