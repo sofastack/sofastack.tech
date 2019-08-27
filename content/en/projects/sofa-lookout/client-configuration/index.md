@@ -1,18 +1,14 @@
-
 ---
 title: "Client configuration"
 aliases: "/sofa-lookout/docs/client-configuration"
 ---
 
-
-# Client configuration
-
 ## Client configuration example
 
-```Java
+```java
 lookoutConfig.setProperty(LookoutConfig.LOOKOUT_AGENT_HOST_ADDRESS,"127.0.0.1");
-
 ```
+
 ## Description of server configuration item 
 
 | Configuration item | Corresponding SpringBoot configuration item | Default value | Description |
@@ -33,7 +29,8 @@ Lookout.agent.host.address| com.alipay.sofa.lookout.agent-host-address | - | Pro
 ## Custom client configuration (suitable for SpringBoot technology stack mode)
 
 Use configuration custom extensions: MetricConfigCustomizerConfig
-```
+
+```java
 @Configuration
 public class MetricConfigCustomizerConfig {
 

@@ -2,14 +2,14 @@
 author: "颜洄、丞一"
 date: 2018-12-06T10:20:00.000Z
 title: "蚂蚁金服开源通信框架 SOFABolt 协议框架解析"
-tags: ["SOFABolt"]
+tags: ["SOFABolt","SOFALab","剖析 | SOFABolt 框架"]
 aliases: "posts/2018-12-06-01"
 description: "本文是对蚂蚁金服开源通信框架 SOFABolt 的协议框架解析。"
 cover: "/cover.jpg"
 categories: "SOFABolt"
 ---
 
-##  1. 前言
+## 1. 前言
 
 为了让中间件开发者们将更多的精力投入到产品的功能特性上，而不是重复的写通信层框架，蚂蚁中间件团队设计并实现了SOFABolt。 Bolt 名字取自迪士尼动画-闪电狗，是一个基于 Netty 最佳实践的轻量、易用、高性能、易扩展的通信框架。蚂蚁中间件的同学这些年在微服务和消息中间件上解决了很多网络通信的问题，积累了很多经验，并将这些经验、解决方案沉淀到了SOFABolt这个项目中，希望能让更多需要使用网络通信的团队、开发者受益。目前SOFABolt已经运行在蚂蚁中间件的微服务 ([SOFARPC](https://github.com/sofastack/sofa-rpc))、消息中心、分布式事务、分布式开关、以及配置中心等众多产品上。
 
@@ -57,7 +57,7 @@ SOFABolt核心功能包括三大块：
 
 ![image.png | left | 632x534](https://cdn.nlark.com/yuque/0/2018/png/172326/1542535048013-bf091366-d7ab-489a-be0a-34d98459960c.png)
 
-CommandFactory是一个工厂类，比较简单，不展开介绍。编解码相关内容见[《SOFABolt编解码机制》](https://www.yuque.com/sofaboltlab/sofabolt/spza7y)。下面介绍一下CommandHandler对请求的分发和处理。
+CommandFactory是一个工厂类，比较简单，不展开介绍。编解码相关内容见《SOFABolt编解码机制》。下面介绍一下CommandHandler对请求的分发和处理。
 
 ![carbon (1).png | left | 747x230](https://cdn.nlark.com/yuque/0/2018/png/172326/1542680035000-1a6585d4-cdbd-462e-908b-66be63355752.png)
 
@@ -71,7 +71,7 @@ CommandFactory是一个工厂类，比较简单，不展开介绍。编解码相
 
 ![carbon (2).png | left | 747x603](https://cdn.nlark.com/yuque/0/2018/png/172326/1542680327753-f10704cd-3dde-4588-924b-f40cd7d06cfe.png)
 
-上面是CommandHandler的代码片段，透露出的信息是SOFABolt支持批量提交请求，这在[《SOFABolt编解码机制》](https://www.yuque.com/sofaboltlab/sofabolt/spza7y)一文中也有部分介绍。而具体的process流程如下：
+上面是CommandHandler的代码片段，透露出的信息是SOFABolt支持批量提交请求，这在《SOFABolt编解码机制》一文中也有部分介绍。而具体的process流程如下：
 
 ![carbon (3).png | left | 747x256](https://cdn.nlark.com/yuque/0/2018/png/172326/1542680393299-4bde1ad6-d0a5-4672-958d-271c1274fe7c.png)
 

@@ -1,8 +1,8 @@
-@import "./variables";
-@import "./mixins";
+@import "./utils/variables";
+@import "./utils/mixins";
 
+// global style & reset
 @import "./global";
-@import "./layout";
 
 @import "./partials/header";
 @import "./partials/footer";
@@ -13,8 +13,11 @@
 @import "./partials/aside";
 @import "./partials/toc";
 
-@import "./list";
-@import "./home";
-@import "./404";
+// some specific page
+@import "./pages/home";
+@import "./pages/search";
+@import "./pages/404";
 
-@import "./overlay";
+@import "./components/layout";
+@import "./components/list";
+@import "./components/overlay";

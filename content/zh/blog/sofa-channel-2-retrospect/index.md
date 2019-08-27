@@ -23,7 +23,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563455530176-33c9e266-2be
 
 **SOFARPC 源码解析系列：**（点击【剖析 | SOFARPC 框架】即可查看）
 
-[https://www.sofastack.tech/posts](https://www.sofastack.tech/posts)  
+[https://www.sofastack.tech/blog/](https://www.sofastack.tech/blog/)  
 
 今年，基于源码解析的基础，我们来多讲讲实践，如何应用到大家的业务，来帮助大家解决实际问题。在直播过程中有相关的问题想提问，可以在钉钉群互动。
 

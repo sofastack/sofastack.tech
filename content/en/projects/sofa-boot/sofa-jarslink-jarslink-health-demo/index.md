@@ -1,14 +1,12 @@
-
 ---
 title: "Integrate SOFABoot health check"
 aliases: "/sofa-boot/docs/sofa-jarslink-jarslink-health-demo"
 ---
 
-
 > [Project address](https://github.com/sofastack/sofa-jarslink/tree/master/sofa-jarslink-samples/biz-health-check-sample)
 
 ## Introduction
-SOFABoot extends the Health Check of Spring Boot. For detailed information, see [SOFABoot Documentation](../HealthCheck). This sample project is intended to demonstrate how to integrate the Health Check component of SOFABoot during merged deployment. Differences between the Health Check in merged deployment and that of a single SOFABoot application are as follows:
+SOFABoot extends the Health Check of Spring Boot. For detailed information, see [SOFABoot Documentation](../health-check). This sample project is intended to demonstrate how to integrate the Health Check component of SOFABoot during merged deployment. Differences between the Health Check in merged deployment and that of a single SOFABoot application are as follows:
 + During static merged deployment, all Biz packages must pass the Health Check before the Ark package can be started normally.
 + When deploying the Biz packages dynamically in Jarslink2.0, all packages must pass the Health Check before successful deployment.
 + In merged deployment, a new check item named multiApplicationHealthChecker will be added when you access Spring Boot's default /health. The item is used to check the health of all Biz packages. Only after all Biz packages pass the Health Check can the merged package pass the Health Check.

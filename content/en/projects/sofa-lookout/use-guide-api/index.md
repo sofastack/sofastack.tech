@@ -1,11 +1,7 @@
-
 ---
 title: "Use API"
 aliases: "/sofa-lookout/docs/useguide-api"
 ---
-
-
-# User guide
 
 ## Use client API
 
@@ -69,7 +65,7 @@ counter.inc();
 ```
 
 #### Timer
-- Scenario: Statistical tasks, method time-consuming, support [bucket statistics](./useguide-buckets)
+- Scenario: Statistical tasks, method time-consuming, support bucket statistics
 - Actively reported data includes: elapPerExec (single execution time), total time-consuming, Max time-consuming, in seconds;
 - How to use:
 
@@ -79,7 +75,7 @@ timer.record(2, TimeUnit.SECONDS);
 ```
 
 #### DistributionSummary
-- Scenario: such as IO traffic, support [bucket statistics](./useguide-buckets)
+- Scenario: such as IO traffic, support bucket statistics
 - Actively reported data includes: count, total(size), max(size);
 - How to use:
 

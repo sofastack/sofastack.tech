@@ -1,12 +1,11 @@
-{{ $thisPagerNum := .Paginator.PageNumber}}
+{{ $thisPagerNum := .Paginator.PageNumber }}
 
 {{ if gt .Paginator.TotalPages 1 }}
-	<nav class="ss-pagination">
-		<ul class="list">
-			<!-- TODO: 限制最大数量 -->
-			{{ range .Paginator.Pagers  }}
-				<a href={{ .URL }}><li class="item {{ if eq .PageNumber $thisPagerNum }}-active{{ end }}">{{ .PageNumber }}</li></a>
-			{{ end }}
-		</ul>
+	<nav class="ss-pagination" 
+		data-total="{{ .Paginator.TotalPages }}" 
+		data-current="{{ .Paginator.PageNumber }}"
+		data-baseurl="{{ .Section }}"
+	>
+		<!-- see js/modeules/pagination.js -->
 	</nav>
 {{ end }}

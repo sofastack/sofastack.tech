@@ -1,9 +1,7 @@
-
 ---
 title: "SOFATracer 介绍"
 aliases: "/sofa-tracer/docs/Home"
 ---
-
 
 SOFATracer 是蚂蚁金服开发的基于 [OpenTracing 规范](http://opentracing.io/documentation/pages/spec.html) 的分布式链路跟踪系统，其核心理念就是通过一个全局的 `TraceId` 将分布在各个服务节点上的同一次请求串联起来。通过统一的 `TraceId` 将调用链路中的各种网络调用情况以日志的方式记录下来同时也提供远程汇报到 [Zipkin](https://zipkin.io/) 进行展示的能力，以此达到透视化网络调用的目的。
 
@@ -43,16 +41,14 @@ SOFATracer 可以将链路跟踪数据远程上报到开源产品 [Zipkin](https
 
 支持组件 | 接入文档 | 支持版本
 --------- | -------------  | -------------
-Spring MVC | [doc link](http://www.sofastack.tech/sofa-tracer/docs/usage-of-mvc) | 2.1.0
-DBCP | [doc link](http://www.sofastack.tech/sofa-tracer/docs/usage-of-datasource) | 2.2.0
-Druid | [doc link](http://www.sofastack.tech/sofa-tracer/docs/usage-of-datasource) | 2.2.0
-c3p0 | [doc link](http://www.sofastack.tech/sofa-tracer/docs/usage-of-datasource) | 2.2.0
-HikariCP | [doc link](http://www.sofastack.tech/sofa-tracer/docs/usage-of-datasource) | 2.2.0
-HttpClient | [doc link](http://www.sofastack.tech/sofa-tracer/docs/usage-of-datasource) | 2.2.0
-RestTemplate | [doc link](http://www.sofastack.tech/sofa-tracer/docs/usage-of-resttemplate) | 2.3.0
-OkHttp | [doc link](http://www.sofastack.tech/sofa-tracer/docs/usage-of-okhttp) | 2.3.2
-Dubbo | [doc link](http://www.sofastack.tech/sofa-tracer/docs/usage-of-dubbo) | 2.4.0
-OpenFeign | [doc link](http://www.sofastack.tech/sofa-tracer/docs/usage-of-dubbo) | 3.0.4
+Spring MVC | [doc link](../log-format-springmvc/) | 2.1.0
+DBCP | [doc link](../log-format-datasource/) | 2.2.0
+Druid | [doc link](../log-format-datasource/) | 2.2.0
+c3p0 | [doc link](../log-format-datasource/) | 2.2.0
+HikariCP | [doc link](../log-format-datasource/) | 2.2.0
+HttpClient | [doc link](../log-format-datasource/) | 2.2.0
+OkHttp | [doc link](../log-format-okhttp/) | 2.3.2
+Dubbo | [doc link](../log-format-dubbo/) | 2.4.0
 Redis | TODO | 
 MQ | TODO | 
 

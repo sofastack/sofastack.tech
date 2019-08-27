@@ -1,12 +1,9 @@
-
 ---
 title: "通信协议"
 aliases: "/sofa-rpc/docs/Protocol"
 ---
 
-
 SOFARPC 支持不同的通信协议，目前支持 Bolt, RESTful 和 Dubbo，详细的事情请参考各个协议对应的文档：
-
 * [Bolt 协议](../bolt)
     * [基本使用](../bolt-usage)
     * [调用方式](../invoke-type)

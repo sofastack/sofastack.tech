@@ -46,4 +46,8 @@ sofa-dashboard-front 是 SOFADashboard 的前端代码工程，基于蚂蚁金
 > npm start
 ```
 
+## 案例工程
+
+* [sofastack-dashboard-guides](https://github.com/sofastack-guides/sofastack-dashboard-guides)
+
 

@@ -6,20 +6,18 @@ weight: 1
 icon: "/img/icons/sofamesh.png"
 level: "incubating"
 sidebar:
-  - title: 'SOFAMesh 介绍'  	
+  - title: 'SOFAMesh 介绍'
     link: 'overview'
   - title: 'Pilot'
     sub:
-      - title: 'Pilot 介绍'  	
+      - title: 'Pilot 介绍'
         link: 'pilot-readme'
-      - title: '安装指南'  	
+      - title: '安装指南'
         link: 'pilot-setup-zookeeper-installation'
-      - title: '使用 Docker 快速开始'  	
-        link: 'pilot-setup-zookeeper-quick-start-docker'
-      - title: 'Zookeeper Adpater'  	
-        link: 'pilot-zookeeper-adapter'
-      - title: 'X-Protocol'  	
+      - title: '在 Kubernetes 中快速开始'
+        link: 'sofa-mesh-setup'        
+      - title: 'X-Protocol'
         link: 'pilot-x-protocol'
-      - title: 'Register Agent'  	
-        link: 'pilot-register-agent'      
+      - title: 'Register Agent'
+        link: 'pilot-register-agent'
 ---

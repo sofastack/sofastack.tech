@@ -3,18 +3,27 @@ title: "服务治理"
 aliases: "/sofa-dashboard/docs/Governance"
 ---
 
-SOFADashboard 服务治理主要是对 SOFARPC 的服务进行管理。
+SOFADashboard 服务治理主要是对 SOFARpc 的服务进行管理。 目前已经支持基于 ZK 和 SofaRegistry 两个注册中心。
 
-## 管控台
+## 功能展示
 
-![governance-console.png](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*KgoRQbi_0fQAAAAAAAAAAABjARQnAQ)
+### 1、基于服务维度
 
-服务治理管控台部分，主要包括基于服务名查询和服务信息列表展示两个基础能力。当点击 服务ID 对应的超链接时，会进入到当前服务的详情页。
+* 服务列表
 
-## 服务提供者详情页
+![](https://gw.alipayobjects.com/mdn/rms_9959bb/afts/img/A*3KHDRJ0VqsQAAAAAAAAAAABkARQnAQ)
 
-![governance-provide.png](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*JrroR4qVOcAAAAAAAAAAAABjARQnAQ)
+* 服务提供者详情：
 
-## 服务消费者详情页
+![](https://gw.alipayobjects.com/mdn/rms_9959bb/afts/img/A*N6h8QK7B8g0AAAAAAAAAAABkARQnAQ)
 
-![governance-consumer.png](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*_-9ZQrQNCQ0AAAAAAAAAAABjARQnAQ)
+### 2、基于应用维度
+
+* 应用列表
+
+![](https://gw.alipayobjects.com/mdn/rms_9959bb/afts/img/A*YW0UT6k6pCQAAAAAAAAAAABkARQnAQ)
+
+* 应用服务详情
+
+![](https://gw.alipayobjects.com/mdn/rms_9959bb/afts/img/A*R5ajSoQsx2oAAAAAAAAAAABkARQnAQ)
+

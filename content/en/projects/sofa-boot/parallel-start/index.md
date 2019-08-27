@@ -1,13 +1,11 @@
-
 ---
 title: "Module parallel startup"
 aliases: "/sofa-boot/docs/parallel-start"
 ---
 
+SOFABoot will calculate the dependency tree based on the Require-Module. For example, the following dependency tree represents that Modules B and C depend on Module A, Module E depends on Module D, and Module F depends on Module E:
 
-﻿SOFABoot will calculate the dependency tree based on the Require-Module. For example, the following dependency tree represents that Modules B and C depend on Module A, Module E depends on Module D, and Module F depends on Module E:
-
-![undefined](resources/module-parallel.png) 
+![undefined](module-parallel.png) 
 
 The dependency tree guarantees that Module A starts before Modules B and C, Module D before Module E, and Module E before Module F, but without defining the start orders between Modules B and C, or Modules B, C and Modules D, E and F, which can start either in serial or parallel.
 
