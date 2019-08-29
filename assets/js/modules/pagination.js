@@ -14,7 +14,16 @@ export default function() {
 
   const total = parseInt(dataset.total)
   const current = parseInt(dataset.current)
-  const baseurl = dataset.baseurl
+
+  /**
+   * example: 
+   * '/tags/sofa/page/1/ -> '/tags/sofa'
+   * */
+  const pathArr = location.pathname.split('/').filter(str => str !== "")
+  const pageIndex = pathArr.indexOf('page')
+  const basePathArr = pathArr.slice(0, pageIndex === -1 ? undefined : pageIndex)
+
+  const baseurl = basePathArr.join('/')
 
   const paginations = []
 
