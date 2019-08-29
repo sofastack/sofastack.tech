@@ -1,7 +1,5 @@
 {{ $thisPagerNum := .Paginator.PageNumber }}
 
-{{ .File }}
-
 {{ if gt .Paginator.TotalPages 1 }}
 	<nav class="ss-pagination" 
 		data-total="{{ .Paginator.TotalPages }}" 
