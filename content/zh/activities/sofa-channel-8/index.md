@@ -1,7 +1,7 @@
 ---
 author: "潘潘"
 date: 2019-08-15T12:10:00+08:00
-title: "（活动报名中）SOFAChannel#8：从一个例子开始体验 SOFAJRaft"
+title: "SOFAChannel#8：从一个例子开始体验 SOFAJRaft"
 tags: ["SOFAChannel","SOFAJRaft"]
 cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1565849645792-928b7f33-25b8-429e-82c7-b12fdc303de2.jpeg"
 categories: "SOFAChannel"
@@ -16,7 +16,7 @@ description: "8 月 29 日周四晚 7 点，线上直播第 8 期。"
 
 - 活动形式：线上直播
 
-- 报名方式：<https://tech.antfin.com/community/live/821>
+- 视频回顾：<https://tech.antfin.com/community/live/821>
 
 ## 介绍
 
