@@ -123,7 +123,7 @@ SOFAJRaft 需要用户去实现两部分：StateMachine 和 Client。
 ![图10 - 架构 3.0：SOFAJRaft 实现 Leader 选举、日志复制](https://cdn.nlark.com/yuque/0/2019/png/307286/1567322241973-263d22ab-624c-45d8-9602-b0a021ac795c.png)
 图10 - 架构 3.0：SOFAJRaft 实现 Leader 选举、日志复制
 
-##  使用 SOFAJRaft
+## 使用 SOFAJRaft
 
 那么怎么使用 SOFAJRaft 呢？我们之前说过，SOFAJRaft 主要暴露了两个地方给我们去实现，一是 Cilent，另一个是 StateMachine，所以我们的计数器也就是要去做这两部分。
 
