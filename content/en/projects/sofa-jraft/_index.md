@@ -1,10 +1,9 @@
 ---
-
 title: "SOFAJRaft"
 description: "SOFAJRaft is a production-level high-performance Java implementation based on the RAFT consensus algorithm. It supports MULTI-RAFT-GROUP and is suitable for high-load and low-latency scenarios. "
-GitHub: "https://github.com/sofastack/sofa-jraft"
+gitHub: "https://github.com/sofastack/sofa-jraft"
 level: "tool"
-weight: 1
+weight: 2
 sidebar:
 
 - title: 'SOFAJRaft overview'
