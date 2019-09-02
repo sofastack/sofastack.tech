@@ -3,7 +3,7 @@ title: "SOFAActs"
 description: "ACTS（AntCoreTest）是一款白盒测试框架，旨在为企业提供高效、精细化的接口自动化测试。"
 github: "https://github.com/sofastack/sofa-acts"
 level: "tool"
-weight: 6
+weight: 3
 icon: "/img/icons/sofaacts.png"
 sidebar:
   - title: "SOFAActs 介绍"
