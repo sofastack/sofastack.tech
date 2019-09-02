@@ -5,7 +5,7 @@ authorlink: "https://github.com/masaimu/"
 description: "本文根据 SOFAChannel#8 直播分享整理，以 Counter 为例，介绍 SOFAJRaft 的概念，并从需求提出开始，一步步完善架构，明确业务要实现哪些接口，最后启动日志观察 SOFAJRaft 如何支撑业务执行。"
 categories: "SOFAJRaft"
 tags: ["SOFAJRaft","SOFAChannel"]
-date: 2019-09-20T13:00:00+08:00
+date: 2019-09-02T13:00:00+08:00
 cover: "(https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1567402146443-3b98269c-d69c-4f83-b827-35c9d6f72d86.jpeg"
 ---
 
