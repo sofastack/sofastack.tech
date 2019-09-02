@@ -6,7 +6,7 @@ description: "本文根据 SOFAChannel#8 直播分享整理，以 Counter 为例
 categories: "SOFAJRaft"
 tags: ["SOFAJRaft","SOFAChannel"]
 date: 2019-09-02T13:00:00+08:00
-cover: "(https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1567402146443-3b98269c-d69c-4f83-b827-35c9d6f72d86.jpeg"
+cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1567402146443-3b98269c-d69c-4f83-b827-35c9d6f72d86.jpeg"
 ---
 
 > <SOFA:Channel/>，有趣实用的分布式架构频道。
