@@ -15,7 +15,7 @@ sidebar:
     link: 'traceid-generated-rule'
   - title: '快速开始'
     sub:
-      - tilte: '快速开始指南'
+      - title: '快速开始指南'
         link: 'component-access'
       - title: 'Spring MVC 埋点接入'
         link: 'usage-of-mvc'
