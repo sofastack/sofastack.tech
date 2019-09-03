@@ -1,4 +1,3 @@
-
 ---
 title: "SOFATracer 配置项"
 aliases: "/sofa-tracer/docs/Configuration"
@@ -25,9 +24,11 @@ com.alipay.sofa.tracer.springmvc.filterOrder | SOFATracer 集成在 SpringMVC �
 com.alipay.sofa.tracer.springmvc.urlPatterns | SOFATracer 集成在 SpringMVC 的 Filter 生效的 URL Pattern 路径 | `/*` 全部生效
 com.alipay.sofa.tracer.jsonOutput | 是否以json格式输出日志 | true，如果期望较少日志空间占用，可以使用非 json 格式输出（日志顺序与JSON 格式顺序一致）
 
+
 ### 非SpringBoot 工程配置
 
 在非 SpringBoot 工程中，可以通过在 classpath 下新建一个 sofa.tracer.properties 配置文件，配置项如下：
+
 SOFATracer 配置项 | 说明 | 默认值
 ----|------|----
 disable_middleware_digest_log | 是否关闭中间件组件摘要日志打印  | false
