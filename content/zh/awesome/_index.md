@@ -26,6 +26,7 @@ title: "Awesome SOFA"
 
 - [已知用户 Known Users](#knownusers)
 - [社区 Community](#community)
+- [SOFALab](#SOFALab)
 - [贡献 Contributors](#contributors)
 - [用户登记 Registration](#registration)
 
@@ -93,6 +94,16 @@ title: "Awesome SOFA"
   - 钉钉交流群：SOFAStack 金牌用户服务群，如果您已经在生产环境使用了 SOFAStack 相关组件，还请告知我们，我们将会邀请您加入到此群中，以便更加快捷的沟通和更加高效的线上使用问题支持。
 - [新浪微博](https://weibo.com/sofastack)
 - [掘金](https://juejin.im/user/5a42596ff265da43062b06e8)
+
+## SOFALab{#SOFALab}
+
+<SOFA:Lab/> SOFAStack 源码解析系列（SOFAStack Source Research Lab）
+
+- [SOFARegistry(欢迎参与共建)](/activities/sofa-registry-lab/)
+- [SOFAJRaft(共建中)](/tags/剖析-sofajraft-实现原理/)
+- [SOFARPCLab(已完结)](/tags/剖析-sofarpc-框架/)
+- [SOFABoltLab(已完结)](/tags/剖析-sofabolt-框架/)
+- [SOFATracerLab(已完结)](/tags/剖析-sofatracer-框架/)
 
 ## 贡献{#contributors}
 
