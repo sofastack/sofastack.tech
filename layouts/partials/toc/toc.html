@@ -1,5 +1,6 @@
 {{ $project := .File.Dir | replaceRE "^(projects/[^/]+).*" "$1" }}
 {{ $page := .Site.GetPage $project }}
+{{ $Site := .Site}}
 
 {{ $currentDir := .File.Dir }}
 
@@ -16,6 +17,7 @@
 		<div class="drawer-body">
 			<div class="header" title="{{ .description }}">
 				{{- .title -}}
+				{{ partial "card/toc_list_card.html" $Site }}
 			</div>
 			<div class="body">
 				{{ partial "toc/toc_leaf.html" (dict "sidebar" .sidebar "project" $project "currentDir" $currentDir) }}

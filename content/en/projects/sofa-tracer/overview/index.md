@@ -1,11 +1,7 @@
-
 ---
-title: "Overview"
+title: "SOFATracker overview"
 aliases: "/sofa-tracer/docs/Home"
 ---
-
-
-# Introduction to SOFATracer
 
 SOFATracer is a distributed link tracing system based on [OpenTracing specification](http://opentracing.io/documentation/pages/spec.html) developed by Ant Financial. Its core concept is to concatenate the same request distributed on each service node with a global `TraceId`. By the unified `TraceId`, it can record the various network call information in the call link in logs, and can remotely report the call records to [Zipkin](https://zipkin.io/) for presentation, thus implementing perspective network call.
 
@@ -44,15 +40,15 @@ At present, SOFATracer supports Spring MVC, database connection pool (DBCP, Drui
 
 Component | Document| Version
 --------- | ------------- | -------------
-Spring MVC | [doc link](http://www.sofastack.tech/sofa-tracer/docs/Usage_Of_MVC) | 2.1.0
-DBCP | [doc link](http://www.sofastack.tech/sofa-tracer/docs/Usage_Of_Datasource) | 2.2.0
-Druid | [doc link](http://www.sofastack.tech/sofa-tracer/docs/Usage_Of_Datasource) | 2.2.0
-C3p0 | [doc link](http://www.sofastack.tech/sofa-tracer/docs/Usage_Of_Datasource) | 2.2.0
-HikariCP | [doc link](http://www.sofastack.tech/sofa-tracer/docs/Usage_Of_Datasource) | 2.2.0
-HttpClient | [doc link](http://www.sofastack.tech/sofa-tracer/docs/Usage_Of_Datasource) | 2.2.0
-RestTemplate | [doc link](http://www.sofastack.tech/sofa-tracer/docs/Usage_Of_RestTemplate) | 2.3.0
-OkHttp | [doc link](http://www.sofastack.tech/sofa-tracer/docs/Usage_Of_OkHttp) | 2.3.2
-Dubbo | [doc link](http://www.sofastack.tech/sofa-tracer/docs/Usage_Of_Dubbo) | 2.4.0
-OpenFeign | [doc link](http://www.sofastack.tech/sofa-tracer/docs/Usage_Of_Dubbo) | 3.0.4
+Spring MVC | [doc link](../usage-of-mvc) | 2.1.0
+DBCP | [doc link](../usage-of-datasource) | 2.2.0
+Druid | [doc link](../usage-of-datasource) | 2.2.0
+C3p0 | [doc link](../usage-of-datasource) | 2.2.0
+HikariCP | [doc link](../usage-of-datasource) | 2.2.0
+HttpClient | [doc link](../usage-of-datasource) | 2.2.0
+RestTemplate | [doc link](../usage-of-resttemplate) | 2.3.0
+OkHttp | [doc link](../usage-of-okhttp) | 2.3.2
+Dubbo | [doc link](../usage-of-dubbo) | 2.4.0
+OpenFeign | [doc link](../usage-of-dubbo) | 3.0.4
 Redis | TODO | 
 MQ | TODO | 

@@ -47,21 +47,5 @@ MOSN, the short name of Modular Observable Smart Network, is a powerful proxy ac
     + Support custom private protocols
     + Support adding custom extensions in protocol at the TCP IO layer
 
-## Get started
-* See [Quick start guide](docs/quickstart/Setup.md).
-
-## Documentation
-* [Catalog](docs/Catalog.md)
-
-## Community
-* [Issues](https://github.com/sofastack/sofa-mosn/issues)
-
-## Versions
-* [Change history](docs/CHANGELOG.md)
-
-## Contribute
-+ [Contribute codes](docs/develop/CONTRIBUTING.md)
-+ MOSN is still in the primary stage, and there are many capabilities that need to be supplemented and improved. We welcome you to join us to build a better MOSN.
-
 ## Acknowledgement
 Thank Google, IBM and Lyft for creating the Envoy and Istio systems and enabling many excellent projects open-sourced, which provides good reference for MOSN so that we can quickly implement our own ideas.

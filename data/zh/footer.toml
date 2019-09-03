@@ -21,7 +21,8 @@
 	link_arr = [
 		["反馈", 'https://github.com/sofastack/sofastack.tech/issues/new'],
 		["社区","https://github.com/sofastack/community"],
-		["Wiki","https://github.com/sofastack/sofastack.tech/wiki"]
+		["Wiki","https://github.com/sofastack/sofastack.tech/wiki"],
+		["Email","mailto:sofa@alipay.cloud.com"]
 	]
 
 [[links]]

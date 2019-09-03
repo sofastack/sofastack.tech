@@ -5,8 +5,16 @@ title: "SOFAChannel#3：SOFARPC 性能优化（下）—— 手把手带你性�
 tags: ["SOFAChannel","SOFARPC"]
 cover: "/cover.jpg"
 categories: "SOFAChannel"
-descripton: "本次为下半场，2 月 28 日晚 7 点，线上直播。"
+description: "本次为下半场，2 月 28 日晚 7 点，线上直播。"
 ---
+
+## 概要
+
+- 活动主题：SOFAChannel#3：SOFARPC 性能优化（下）—— 手把手带你性能调优（含 Demo）
+- 活动时间：2 月 28 日周四晚 7 点
+- 活动形式：线上直播
+- [直播视频回顾](https://tech.antfin.com/community/live/245)
+- [直播回顾文章](https://www.sofastack.tech/blog/sofa-channel-3-retrospect/)
 
 ## 介绍
 

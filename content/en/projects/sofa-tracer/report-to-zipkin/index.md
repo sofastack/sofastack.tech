@@ -1,19 +1,14 @@
-
 ---
 title: "Report data to Zipkin"
 aliases: "/sofa-tracer/docs/ReportToZipkin"
 ---
 
-
-# Remotely report data to Zipkin using SOFATracer
-
-This example demonstrates how to remotely report link data to [Zipkin] (https://zipkin.io/) by configuring SOFATracer in an application that integrates SOFATracer.
+This example demonstrates how to remotely report link data to [Zipkin](https://zipkin.io/) by configuring SOFATracer in an application that integrates SOFATracer.
 
 The following examples demonstrate how to use them in SOFABoot/SpringBoot projects and non-SOFABoot/SpringBoot projects, respectively.
 
 ## Prepare environment
 To use SOFABoot, you need to prepare the basic environment first. SOFABoot relies on the following environments:
-
 + JDK7 or JDK8
 + Apache Maven 3.2.5+ required for compilation
 
@@ -39,6 +34,7 @@ Replace the above with the followings:
     <version>${sofa.boot.version}</version>
 </parent>
 ```
+
 The `${sofa.boot.version}` specifies the latest version of SOFABoot. For more about SOFABoot versions, see [Release notes](https://github.com/sofastack/sofa-boot/releases). 
 
 ## Add SOFATracer starter
@@ -79,7 +75,8 @@ Considering that Zipkin's data reporting capability is not the ability of SOFATr
     <artifactId>zipkin-reporter</artifactId>
     <version>2.7.13</version>
 </dependency>	
-```	
+```
+
 ## Start the Zipkin server
 
 Start the Zipkin server to receive the link data reported by SOFATracer and display it. Zipkin Server can be configured with reference to [this document](https://zipkin.io/).
@@ -92,7 +89,7 @@ You can import the project into IDE and run the `main` method in the project to 
 2018-05-12 13:12:05.868  INFO 76572 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'SpringMvcSofaTracerFilter' to urls: [/*]
 2018-05-12 13:12:06.543  INFO 76572 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/helloZipkin]}" onto public java.util.Map<java.lang.String, java.lang.Object> com.alipay.sofa.tracer.examples.zipkin.controller.SampleRestController.helloZipkin(java.lang.String)
 2018-05-12 13:12:07.164  INFO 76572 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
-```	
+```
 
 You can access the REST service by typing [http://localhost:8080/helloZipkin](http://localhost:8080/helloZipkin) into your browser. The result is similar to the following:
 
@@ -102,7 +99,7 @@ You can access the REST service by typing [http://localhost:8080/helloZipkin](ht
 	id: 1,
 	success: true
 }
-```	
+```
 
 ## View Zipkin UI
 

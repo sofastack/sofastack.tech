@@ -3,21 +3,21 @@ author: "卫恒"
 date: 2019-02-21T10:20:00.000Z
 title: "蚂蚁金服分布式链路跟踪组件 SOFATracer 总览|剖析"
 description: "本文为《剖析 | SOFATracer 框架》第一篇。"
-tags: ["SOFATracer"]
+tags: ["SOFATracer","SOFALab","剖析 | SOFATracer 框架"]
 categories: "SOFATracer"
 aliases: "/posts/2019-02-21-01"
 cover: "/cover.jpg"
 ---
 
 > **SOFA** **S**calable **O**pen **F**inancial **A**rchitecture 是蚂蚁金服自主研发的金融级分布式中间件，包含了构建金融级云原生架构所需的各个组件，是在金融场景里锤炼出来的最佳实践。
-
+> 
 > SOFATracer 是一个用于分布式系统调用跟踪的组件，通过统一的 TraceId 将调用链路中的各种网络调用情况以日志的方式记录下来，以达到透视化网络调用的目的，这些链路数据可用于故障的快速发现，服务治理等。
 >
-> **SOFATracer**：__https://github.com/sofastack/sofa-tracer
+> **SOFATracer**：<https://github.com/sofastack/sofa-tracer>
 >
 > 本文为《剖析 | SOFATracer 框架》第一篇。《剖析 | SOFATracer 框架》系列由 SOFA 团队和源码爱好者们出品，项目代号：**<SOFA:TracerLab/>**，目前领取已经完成，感谢大家的参与。
 
-# 0、前言
+## 0、前言
 
 在单体应用时代，我们不需要花费时间去关心调用链路这个东西。但是链路跟踪不仅仅是在分布式场景下才会有，即使是单体应用，同样也会存在调用链路。例如，我们把应用中的每个服务接口作为一个链路节点，那么从请求进来到返回响应，把这个过程中多历经的所有的方法接口串联起来，就能组成一条完整的链路，如下图所示：
 
@@ -35,13 +35,13 @@ cover: "/cover.jpg"
 
 在介绍 `SOFATracer` 之前，先来了解一下 `Opentracing` 规范。
 
-# 1、Opentracing 简介
+## 1、Opentracing 简介
 
 首先来解释下 `OpenTracing` 是什么`OpenTracing` 致力于为分布式跟踪创建更标准化的API和工具，它由完整的API规范、实现该规范的框架、库以及项目文档组成。
 
 `OpenTracing` 提供了一套平台无关、厂商无关的 `API`，这样不同的组织或者开发人员就能够更加方便的添加或更换追踪系统的实现。 `OpenTracing API` 中的一些概念和术语，在不同的语言环境下都是共享的。
 
-## 1.1、数据模型
+### 1.1、数据模型
 
 `Opentracing` 规范中，一条 `trace` 链路是由多个与之关联的 `span` 组成，一条链路整体可以看做是一张有向无环图，各个`span`之间的边缘关系被称之为“`References`”。下面是官方提供的示例：
 
@@ -93,7 +93,7 @@ method(){
 
 这种关系一般会 表示为 `SpanB FollowFrom SpanA` 。
 
-## 1.2、API 
+### 1.2、API 
 
 `Opentracing API` 是对分布式链路中涉及到的一些列操作的高度抽象集合。`Opentracing` 中将所有核心的组件都声明为接口，例如 `Tracer`、`Span`、`SpanContext`、`Format`（高版本中还包括 `Scope` 和 `ScopeManager`）等。`SOFATracer` 使用的版本是 0.22.0 ，主要是对 `Tracer`、`Span`、`SpanContext` 三个概念模型的实现。下面就针对这三个组件结合 `SOFATracer` 来分析。
 
@@ -105,19 +105,19 @@ method(){
 
 > 由于篇幅原因，下面的介绍过程中一些点不会展开说明，有兴趣的同学可以自行官网查看完整的 [OpenTracing-api 规范](http://opentracing.io/documentation/pages/spec.html) （[https://opentracing.io/specification/](https://opentracing.io/specification/)）。
 
-__a、Tracer & SofaTracer__
+**a、Tracer & SofaTracer**
 
 `Tracer` 是一个简单、广义的接口，它的作用就是构建 `span` 和传输 `span` 。核心接口列表如下：
 
 | 接口                                                         | 描述                                             |
 | ------------------------------------------------------------ | ------------------------------------------------ |
 | SpanBuilder buildSpan(String operationName)                  | 根据指定的operationName构建一个新的span          |
-| <C> void inject(SpanContext spanContext, Format<C> format, C carrier); | 将 spanContext 以 format 的格式注入到 carrier 中 |
-| <C> SpanContext extract(Format<C> format, C carrier);        | 以 format 的格式从carrier中解析出 SpanContext    |
+|void inject(SpanContext spanContext, Format format, C carrier); | 将 spanContext 以 format 的格式注入到 carrier 中 |
+| SpanContext extract(Format  format, C carrier);        | 以 format 的格式从carrier中解析出 SpanContext    |
 
 `SofaTracer` 实现了 `Tracer` 接口，并扩展了采样、数据上报等能力。
 
-__b、Span & SofaTracerSpan __
+**b、Span & SofaTracerSpan**
 
 `Span` 是一个跨度单元，在实际的应用过程中，`Span` 就是一个完整的数据包，其包含的就是当前节点所需要上报的数据。核心接口列表如下：
 
@@ -137,7 +137,7 @@ __b、Span & SofaTracerSpan __
 
  `SofaTracerSpan` 在实现 `Span` 接口，并扩展了对 `Reference`、`tags`、线程异步处理以及插件扩展中所必须的 `logType `和产生当前 `span `的 `Tracer `类型等处理的能力。
 
-__c、SpanContext & SofaTracerSpanContext__
+**c、SpanContext & SofaTracerSpanContext**
 
 `SpanContext` 对于 `OpenTracing` 实现是至关重要的，通过 `SpanContext` 可以实现跨进程的链路透传，并且可以通过 `SpanContext` 中携带的信息将整个链路串联起来。
 
@@ -145,9 +145,9 @@ __c、SpanContext & SofaTracerSpanContext__
 
 `SpanContext` 中只有一个接口：
 
-| 接口                                                | 描述                            |
-| :-------------------------------------------------- | :------------------------------ |
-| Iterable<Map.Entry<String, String>> baggageItems(); | 拿到所有的baggageItems 透传数据 |
+| 接口                                                  | 描述                            |
+| :---------------------------------------------------- | :------------------------------ |
+| `Iterable<Map.Entry<String, String>> baggageItems();` | 拿到所有的baggageItems 透传数据 |
 
 `SofaTracerSpanContext` 实现了 `SpanContext` 接口，扩展了构建 `SpanContext`、序列化 `baggageItems` 以及`SpanContext`等新的能力，除此之外，`SpanContext` 在跨进行透传时携带的信息进行了规范：
 
@@ -160,15 +160,15 @@ __c、SpanContext & SofaTracerSpanContext__
 | sysBaggage | 系统透传数据         |
 | bizBaggage | 业务透传数据         |
 
-# 2、SOFATracer 扩展
+## 2、SOFATracer 扩展
 
 为了满足在复杂场景下的链路跟踪需求，`SOFATracer` 在 `Opentracing` 规范基础上又提供了丰富的扩展能力。
 
-## 2.1、SOFATracer 架构及功能扩展
+### 2.1、SOFATracer 架构及功能扩展
 
 ![image.png](https://cdn.nlark.com/yuque/0/2018/png/230565/1545726398274-7a93d437-3dad-4608-a175-5e408685a05b.png)
 
-`SOFATracer` 基于 [OpenTracing 规范](http://opentracing.io/documentation/pages/spec.html)（[https://opentracing.io/specification/](https://opentracing.io/specification/)）实现，并且通过 [Disruptor](https://github.com/LMAX-Exchange/disruptor) （[https://github.com/LMAX-Exchange/disruptor](https://github.com/LMAX-Exchange/disruptor))组件实现了日志的无锁异步打印能力。
+`SOFATracer` 基于 [OpenTracing 规范](http://opentracing.io/documentation/pages/spec.html)实现，并且通过 [Disruptor](https://github.com/LMAX-Exchange/disruptor)组件实现了日志的无锁异步打印能力。
 
 - 基于 [SLF4J 的 MDC](https://www.slf4j.org/manual.html#mdc) 扩展能力
 
@@ -204,7 +204,7 @@ SOFATracer 目前仅提供了基于自身 API 埋点的方式。SOFATracer 中�
 
 关于透传机制，我们不仅需要考虑线程内传递，还需要考虑跨线程以及异步线程场景，对于分布式链路来说，最核心还有如何实现跨进程的数据透传。关于 `SOFATracer` 链路透传 以及 `OpenTracing` 新规范中对线程传递的支持，期待大家一起编写，领取方式见文末。
 
-## 2.2、SOFATracer RoadMap
+### 2.2、SOFATracer RoadMap
 
 首先介绍下目前的现状和一些正在做的事情。
 
@@ -217,7 +217,7 @@ SOFATracer 版本说明：
 
 欢迎对相关功能和 `feature` 有兴趣的同学，一起参与开发~
 
-# 3、欢迎加入 <SOFA:TracerLab/>，参与 SOFATracer 源码解析
+## 3、欢迎加入 <SOFA:TracerLab/>，参与 SOFATracer 源码解析
 
 本文作为《剖析 | `SOFATracer` 组件系列》第一篇，主要还是希望大家对`SOFATracer` 组件有一个认识和了解，之后，我们会逐步详细介绍每部分的代码设计和实现，预计会按照如下的目录进行：
 
@@ -234,5 +234,4 @@ SOFATracer 版本说明：
 
 除了源码解析，也欢迎提交 issue 和 PR：
 
-SOFATracer: https://github.com/sofastack/sofa-tracer
-
+SOFATracer: <https://github.com/sofastack/sofa-tracer>

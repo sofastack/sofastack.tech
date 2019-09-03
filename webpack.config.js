@@ -4,9 +4,9 @@ const join = (...paths) => path.join(__dirname, ...paths);
 
 module.exports = {
   entry: {
-		app: "./assets/js/app.js",
-		main: "./assets/sass/main.scss",
-	},
+    app: "./assets/js/app.js",
+    main: "./assets/sass/main.scss",
+  },
   output: {
     filename: "[name].js",
     path: join("static/js"),
@@ -23,6 +23,16 @@ module.exports = {
           options: {
             presets: ["@babel/preset-env"],
           },
+        },
+      },
+      {
+        test: /\.css$/,
+        use: {
+          loader: 'file-loader',
+          options: {
+            name: '[name].css',
+            outputPath: '../css/'
+          }
         },
       },
       {
