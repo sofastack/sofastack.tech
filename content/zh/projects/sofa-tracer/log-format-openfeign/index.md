@@ -17,26 +17,25 @@ key | 表达含义
  local.app | 当前应用名
  traceId | TraceId
  spanId | SpanId
- request.url | 请求 URL
- method | 请求 HTTP 方法
- result.code | HTTP 返回状态码
- error | 错误信息
- req.size.bytes | Request Body 大小
- resp.size.bytes | Response Body 大小
- time.cost.milliseconds | 请求耗时（ms）
+ span.kind | Span 类型
+ result.code | 状态码
  current.thread.name | 当前线程名
- remote.host | 目标主机
- remote.port | 目标端口
- component.client.impl | 组件名称
- baggage | 透传的 baggage 数据
+ time.cost.milliseconds | span 耗时
+ request.url | 请求地址
+ method | http method
+ error | 错误信息
+ req.size.bytes | 请求大小
+ resp.size.bytes| 响应大小
+ sys.baggage | 系统透传的 baggage 数据
+ biz.baggage | 业务透传的 baggage 数据
 
 样例：
 
 ```json
-{"time":"2019-03-28 18:08:06.800","local.app":"tracer-consumer","traceId":"0a0fe88f1553767685981100124403","spanId":"0.1","request.url":"http://10.15.232.143:8800/feign","method":"GET","result.code":"200","error":"","req.size.bytes":0,"resp.size.bytes":18,"time.cost.milliseconds":206,"current.thread.name":"http-nio-8082-exec-1","remote.host":"10.15.232.143","remote.port":"8800","component.client.impl":"open-feign","baggage":""}
+{"time":"2019-09-03 10:28:52.363","local.app":"tracer-consumer","traceId":"0a0fe9271567477731347100110969","spanId":"0.1","span.kind":"client","result.code":"200","current.thread.name":"http-nio-8082-exec-1","time.cost.milliseconds":"219ms","request.url":"http://10.15.233.39:8800/feign","method":"GET","error":"","req.size.bytes":0,"resp.size.bytes":18,"remote.host":"10.15.233.39","remote.port":"8800","sys.baggage":"","biz.baggage":""}
 ```
 
-### Spring Cloud OpenFeign 统计日志（feign-stat.log）
+### Spring Cloud OpenFeign 统计日志（feign-stat.log）ls
 
 `stat.key` 即本段时间内的统计关键字集合，统一关键字集合唯一确定一组统计数据，包含local.app、request.url、和 method 字段.
 
@@ -83,5 +82,5 @@ key | 表达含义
 样例：
 
 ```json
-{"time":"2019-03-28 18:09:06.800","stat.key":{"request.url":"http://10.15.232.143:8800/feign","local.app":"tracer-consumer","method":"GET"},"count":1,"total.cost.milliseconds":206,"success":"Y","load.test":"F"}
+{"time":"2019-09-03 10:29:34.528","stat.key":{"method":"GET","local.app":"tracer-consumer","request.url":"http://10.15.233.39:8800/feign"},"count":2,"total.cost.milliseconds":378,"success":"true","load.test":"F"}
 ```

@@ -167,5 +167,5 @@ http://localhost:8082/ 。然后查看日志：
 示例中通过 SpringMvc 提供的 Controller 作为请求入口，然后使用 openfeign client 发起向下游资源的访问调用，日志大致如下：
 
 ```json
-{"time":"2019-03-28 18:08:06.800","local.app":"tracer-consumer","traceId":"0a0fe88f1553767685981100124403","spanId":"0.1","request.url":"http://10.15.232.143:8800/feign","method":"GET","result.code":"200","error":"","req.size.bytes":0,"resp.size.bytes":18,"time.cost.milliseconds":206,"current.thread.name":"http-nio-8082-exec-1","remote.host":"10.15.232.143","remote.port":"","component.client.impl":"open-feign","baggage":""}
+{"time":"2019-09-03 10:28:52.363","local.app":"tracer-consumer","traceId":"0a0fe9271567477731347100110969","spanId":"0.1","span.kind":"client","result.code":"200","current.thread.name":"http-nio-8082-exec-1","time.cost.milliseconds":"219ms","request.url":"http://10.15.233.39:8800/feign","method":"GET","error":"","req.size.bytes":0,"resp.size.bytes":18,"remote.host":"10.15.233.39","remote.port":"8800","sys.baggage":"","biz.baggage":""}
 ```

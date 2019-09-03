@@ -149,12 +149,14 @@ public class SimpleRestController {
 启动应用，访问 `localhost:8080/create` 执行上述 Rest 服务，可以在 `./logs/datasource-client-digest.log` 和 `./logs/datasource-client-stat.log` 看到 sql 执行的 tracer 日志：
 + datasource-client-digest.log
 ```json
-{"time":"2018-09-05 11:48:16.917","local.app":"SOFATracerDataSource","traceId":"1e323a031536119296795100182779","spanId":"0.1.2","database.name":"test","sql":"DROP TABLE IF EXISTS TEST;CREATE TABLE TEST(ID INT PRIMARY KEY%2C NAME VARCHAR(255));","result.code":"success","total.time":"103ms","connection.establish.span":"92ms","db.execute.cost":"8ms","database.type":"h2","database.endpoint":"jdbc:h2:~/test:-1","current.thread.name":"http-nio-8080-exec-1","baggage":""}
+{"time":"2019-09-02 21:31:31.566","local.app":"SOFATracerDataSource","traceId":"0a0fe91d156743109138810017302","spanId":"0.1","span.kind":"client","result.code":"00","current.thread.name":"http-nio-8080-exec-1","time.cost.milliseconds":"15ms","database.name":"test","sql":"DROP TABLE IF EXISTS TEST;
+CREATE TABLE TEST(ID INT PRIMARY KEY%2C NAME VARCHAR(255));","connection.establish.span":"128ms","db.execute.cost":"15ms","database.type":"h2","database.endpoint":"jdbc:h2:~/test:-1","sys.baggage":"","biz.baggage":""}
 ```
 
 + datasource-client-stat.log (默认60s打印一次，)
 ```json
-{"time":"2018-09-05 11:49:10.117","stat.key":{"local.app":"SOFATracerDataSource","database.name":"test"},"count":1,"total.cost.milliseconds":103,"success":"true","load.test":"F"}
+{"time":"2019-09-02 21:31:50.435","stat.key":{"local.app":"SOFATracerDataSource","database.name":"test","sql":"DROP TABLE IF EXISTS TEST;
+CREATE TABLE TEST(ID INT PRIMARY KEY%2C NAME VARCHAR(255));"},"count":1,"total.cost.milliseconds":15,"success":"true","load.test":"F"}
 ```
 
 ## 其他

@@ -17,19 +17,21 @@ key | 表达含义
  local.app | 当前应用名
  traceId | TraceId
  spanId | SpanId
- request.url | 请求 URL
- method | 请求 HTTP 方法
- result.code | HTTP 调用返回状态码
- resp.size.bytes | Response Body 大小
- time.cost.milliseconds | 请求耗时（ms）
- current.thread.name | 线程名
- remote.app | 被调用的应用名称
- baggage | 透传的 baggage 数据
+ span.kind | Span 类型
+ result.code | 状态码
+ current.thread.name | 当前线程名
+ time.cost.milliseconds | span 耗时
+ request.url | 请求地址
+ method | http method
+ req.size.bytes | 请求大小
+ resp.size.bytes| 响应大小
+ sys.baggage | 系统透传的 baggage 数据
+ biz.baggage | 业务透传的 baggage 数据
 
 样例：
 
 ```json
-{"time":"2018-10-24 10:45:28.977","local.app":"RestTemplateDemo","traceId":"0a0fe8b3154034912878910015081","spanId":"0","request.url":"http://sac.alipay.net:8080/rest","method":"GET","result.code":"200","resp.size.bytes":0,"time.cost.milliseconds":188,"current.thread.name":"main","remote.app":"","baggage":""}
+{"time":"2019-09-03 10:33:10.336","local.app":"RestTemplateDemo","traceId":"0a0fe9271567477985327100211176","spanId":"0","span.kind":"client","result.code":"200","current.thread.name":"SimpleAsyncTaskExecutor-1","time.cost.milliseconds":"5009ms","request.url":"http://localhost:8801/asyncrest","method":"GET","req.size.bytes":0,"resp.size.bytes":0,"sys.baggage":"","biz.baggage":""}
 ```
 
 ### RestTemplate 统计日志（resttemplate-stat.log）
@@ -79,6 +81,6 @@ key | 表达含义
 样例：
 
 ```json
-{"time":"2018-10-24 10:46:28.769","stat.key":{"method":"GET","local.app":"RestTemplateDemo","request.url":"http://sac.alipay.net:8080/rest"},"count":1,"total.cost.milliseconds":5009,"success":"true","load.test":"F"}
+{"time":"2019-09-03 10:34:04.130","stat.key":{"method":"GET","local.app":"RestTemplateDemo","request.url":"http://localhost:8801/asyncrest"},"count":1,"total.cost.milliseconds":5009,"success":"true","load.test":"F"}
 ```
 

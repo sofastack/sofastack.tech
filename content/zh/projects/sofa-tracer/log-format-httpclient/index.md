@@ -17,20 +17,21 @@ key | 表达含义
  local.app | 当前应用名
  traceId | TraceId
  spanId | SpanId
- request.url | 请求 URL
- method | 请求 HTTP 方法
- result.code | HTTP 调用返回状态码
- req.size.bytes | Request Body 大小
- resp.size.bytes | Response Body 大小
- time.cost.milliseconds | 请求耗时（ms）
- current.thread.name | 线程名
- remote.app | 被调用的应用名称
- baggage | 透传的 baggage 数据
+ span.kind | Span 类型
+ result.code | 状态码
+ current.thread.name | 当前线程名
+ time.cost.milliseconds | span 耗时
+ request.url | 请求地址
+ method | http method
+ req.size.bytes | 请求大小
+ resp.size.bytes| 响应大小
+ sys.baggage | 系统透传的 baggage 数据
+ biz.baggage | 业务透传的 baggage 数据
 
 样例：
 
 ```json
-{"time":"2018-09-27 21:58:43.067","local.app":"HttpClientDemo","traceId":"0a0fe8801538056723034100235072","spanId":"0","request.url":"http://localhost:8080/httpclient","method":"GET","result.code":"200","req.size.bytes":0,"resp.size.bytes":-1,"time.cost.milliseconds":33,"current.thread.name":"I/O dispatcher 1","remote.app":"","baggage":""}
+{"time":"2019-09-02 23:43:13.191","local.app":"HttpClientDemo","traceId":"1e27a79c1567438993170100210107","spanId":"0","span.kind":"client","result.code":"200","current.thread.name":"I/O dispatcher 1","time.cost.milliseconds":"21ms","request.url":"http://localhost:8080/httpclient","method":"GET","req.size.bytes":0,"resp.size.bytes":-1,"remote.app":"","sys.baggage":"","biz.baggage":""}
 ```
 
 备注：应用名称可以通过 `SofaTracerHttpClientBuilder` 构造 HttpClient 实例时以入参的形式传入。
@@ -82,6 +83,7 @@ key | 表达含义
 样例：
 
 ```json
-{"time":"2018-09-27 21:59:42.233","stat.key":{"request.url":"http://localhost:8080/httpclient","local.app":"HttpClientDemo","method":"GET"},"count":2,"total.cost.milliseconds":562,"success":"true","load.test":"F"}
+{"time":"2019-09-02 23:44:11.785","stat.key":{"method":"GET","local.app":"HttpClientDemo","request.url":"http://localhost:8080/httpclient"},"count":2,"total.cost.milliseconds":229,"success":"true","load.test":"F"}
+
 ```
 
