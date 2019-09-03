@@ -99,7 +99,7 @@ title: "Awesome SOFA"
 
 <SOFA:Lab/> SOFAStack 源码解析系列（SOFAStack Source Research Lab）
 
-- SOFARegistry(欢迎参与共建)
+- [SOFARegistry(欢迎参与共建)](https://www.sofastack.tech/activities/sofa-registry-lab/)
 - [SOFAJRaft(共建中)](https://www.sofastack.tech/tags/%E5%89%96%E6%9E%90-sofajraft-%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/)
 - [SOFARPCLab(已完结)](https://www.sofastack.tech/tags/%E5%89%96%E6%9E%90-sofarpc-%E6%A1%86%E6%9E%B6/)
 - [SOFABoltLab(已完结)](https://www.sofastack.tech/tags/%E5%89%96%E6%9E%90-sofabolt-%E6%A1%86%E6%9E%B6/)
