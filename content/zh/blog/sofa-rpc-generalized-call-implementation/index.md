@@ -98,6 +98,7 @@ Object $genericInvoke(String methodName, String[] argTypes, Object[] args);
 从上面的流程可以看出，序列化器在泛化调用中，占了极大的篇幅和作用。而 SOFARPC 针对泛化调用，对 hessian3 进行了改造，使其支持泛化调用所需要的序列化功能。[SOFA-Hessian](https://github.com/alipay/sofa-hessian)的改动可以参考这里。
 
 ### Hessian 泛化实现
+
 SOFA-Hessian 在 hessian 的包中加入了 com.alipay.hessian.generic 包，此包的作用就是处理泛化调用，重写的关键是实现或继承 SerializerFactory 类和 Serializer、Deserializer 等接口。在这里，设计了一下几个类，来描述对应的类型信息，同时实现这几个类的序列化和反序列化。对应关系如下：
 
 ![Hessian 泛化实现](https://cdn.nlark.com/yuque/0/2018/png/156121/1537830528237-8f6c181f-ed46-4815-8e4c-42a38122e10e.png)
@@ -126,6 +127,7 @@ public class TestObj {
 此时，GenericObjectSerializer 就可以通过这些信息，将 GenericObject 对象转成 TestObj 对象的字节流。服务提供方就可以通过普通的 hessian2 反序列化得到对象。
 
 相比较其他 RPC 框架两端都需要对泛化进行支持，SOFARPC 显得要友好的多。也就是说，如果应用想要支持泛化，只需要升级客户端（消费者）即可，服务端（提供者）是无感知的。因为在服务端看来，收到的对象是完全一致的。你可能觉得对于复杂类型，写出这样一个构造是很困难的。SOFA-Hessian中已经提供了一个工具类
+
 ```plain
 com.alipay.hessian.generic.util.GenericUtils
 ```
