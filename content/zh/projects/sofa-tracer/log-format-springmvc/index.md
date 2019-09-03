@@ -17,19 +17,21 @@ key | 表达含义
  local.app | 当前应用名
  traceId | TraceId
  spanId | SpanId
- request.url | 请求 URL
- method | 请求 HTTP 方法
- result.code | HTTP 返回状态码
- req.size.bytes | Request Body 大小
- resp.size.bytes | Response Body 大小
- time.cost.milliseconds | 请求耗时（ms）
+ span.kind | Span 类型
+ result.code | 状态码
  current.thread.name | 当前线程名
- baggage | 透传的 baggage 数据
+ time.cost.milliseconds | span 耗时
+ request.url | 请求地址
+ method | http method
+ req.size.bytes | 请求大小
+ resp.size.bytes| 响应大小
+ sys.baggage | 系统透传的 baggage 数据
+ biz.baggage | 业务透传的 baggage 数据
 
 样例：
 
 ```json
-{"time":"2018-06-03 16:44:05.829","local.app":"SpringMvcJsonOutput","traceId":"c0a80d9e1528015445828101064625","spanId":"0","request.url":"http://localhost:63933/greeting","method":"GET","result.code":"200","req.size.bytes":0,"resp.size.bytes":50,"time.cost.milliseconds":1,"current.thread.name":"http-nio-auto-1-exec-10","baggage":""}
+{"time":"2019-09-03 10:33:10.336","local.app":"RestTemplateDemo","traceId":"0a0fe9271567477985327100211176","spanId":"0.1","span.kind":"server","result.code":"200","current.thread.name":"http-nio-8801-exec-2","time.cost.milliseconds":"5006ms","request.url":"http://localhost:8801/asyncrest","method":"GET","req.size.bytes":-1,"resp.size.bytes":0,"sys.baggage":"","biz.baggage":""}
 ```
 
 ### Spring MVC 统计日志（spring-mvc-stat.log）
@@ -79,5 +81,5 @@ key | 表达含义
 样例：
 
 ```json
-{"time":"2018-06-03 16:44:02.473","stat.key":{"request.url":"http://localhost:63933/greeting","local.app":"SpringMvcJsonOutput","method":"GET"},"count":5,"total.cost.milliseconds":149,"success":"Y","load.test":"F"}
+{"time":"2019-09-03 10:34:04.129","stat.key":{"method":"GET","local.app":"RestTemplateDemo","request.url":"http://localhost:8801/asyncrest"},"count":1,"total.cost.milliseconds":5006,"success":"true","load.test":"F"}
 ```

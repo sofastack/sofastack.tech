@@ -30,7 +30,7 @@ key | 表达含义
 样例：
 
 ```json
-{"time":"2019-04-12 13:38:10.187","local.app":"OkHttpDemo","traceId":"0a0fe85a1555047489980100151193","spanId":"0","request.url":"http://localhost:8081/okhttp?name=sofa","method":"GET","result.code":"200","req.size.bytes":0,"resp.size.bytes":0,"time.cost.milliseconds":207,"current.thread.name":"main","remote.app":"","baggage":""}
+{"time":"2019-09-03 11:35:28.429","local.app":"OkHttpDemo","traceId":"0a0fe9271567481728265100112783","spanId":"0","span.kind":"client","result.code":"200","current.thread.name":"main","time.cost.milliseconds":"164ms","request.url":"http://localhost:8081/okhttp?name=sofa","method":"GET","result.code":"200","req.size.bytes":0,"resp.size.bytes":0,"remote.app":"","sys.baggage":"","biz.baggage":""}
 ```
 
 ### OkHttp 统计日志（okhttp-stat.log）
@@ -80,5 +80,5 @@ key | 表达含义
 样例：
 
 ```json
-{"time":"2019-04-12 13:39:09.720","stat.key":{"method":"GET","local.app":"OkHttpDemo","request.url":"http://localhost:8081/okhttp?name=sofa"},"count":1,"total.cost.milliseconds":207,"success":"true","load.test":"F"}
+{"time":"2019-09-03 11:43:06.975","stat.key":{"method":"GET","local.app":"OkHttpDemo","request.url":"http://localhost:8081/okhttp?name=sofa"},"count":1,"total.cost.milliseconds":174,"success":"true","load.test":"F"}
 ```

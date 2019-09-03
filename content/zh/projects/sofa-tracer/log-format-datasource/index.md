@@ -17,21 +17,24 @@ key | 表达含义
  local.app | 当前应用名
  traceId | TraceId
  spanId | SpanId
+ span.kind | Span 类型
+ result.code | 状态码
+ current.thread.name | 当前线程名
+ time.cost.milliseconds | span 耗时
  database.name | 数据库名称
  sql | sql执行语句
- result.code | sql执行状态码
- total.time | sql语句执行总时间
  connection.establish.span | sql执行建连时间
  db.execute.cost | sql执行时间
  database.type | 数据库类型
  database.endpoint | 数据库url
- current.thread.name | 当前线程名
- baggage | 透传的 baggage 数据
+ sys.baggage | 系统透传的 baggage 数据
+ biz.baggage | 业务透传的 baggage 数据
 
 样例：
 
 ```json
-{"time":"2018-09-28 01:11:56.715","local.app":"SOFATracerDataSource","traceId":"1e1bcab91538068316462100111113","spanId":"0.1.2","database.name":"test","sql":"CREATE TABLE TEST(ID INT PRIMARY KEY%2C NAME VARCHAR(255));","result.code":"success","total.time":"228ms","connection.establish.span":"220ms","db.execute.cost":"3ms","database.type":"h2","database.endpoint":"jdbc:h2:~/test:-1","current.thread.name":"http-nio-8080-exec-1","baggage":""}
+{"time":"2019-09-02 21:31:31.566","local.app":"SOFATracerDataSource","traceId":"0a0fe91d156743109138810017302","spanId":"0.1","span.kind":"client","result.code":"00","current.thread.name":"http-nio-8080-exec-1","time.cost.milliseconds":"15ms","database.name":"test","sql":"DROP TABLE IF EXISTS TEST;
+CREATE TABLE TEST(ID INT PRIMARY KEY%2C NAME VARCHAR(255));","connection.establish.span":"128ms","db.execute.cost":"15ms","database.type":"h2","database.endpoint":"jdbc:h2:~/test:-1","sys.baggage":"","biz.baggage":""}
 ```
 
 ### DataSource 统计日志（datasource-client-stat.log）
@@ -81,5 +84,6 @@ key | 表达含义
 样例：
 
 ```json
-{"time":"2018-09-28 01:12:43.647","stat.key":{"local.app":"SOFATracerDataSource","database.name":"test", "sql":"CREATE TABLE TEST(ID INT PRIMARY KEY%2C NAME VARCHAR(255));"},"count":1,"total.cost.milliseconds":228,"success":"true","load.test":"F"}
+{"time":"2019-09-02 21:31:50.435","stat.key":{"local.app":"SOFATracerDataSource","database.name":"test","sql":"DROP TABLE IF EXISTS TEST;
+CREATE TABLE TEST(ID INT PRIMARY KEY%2C NAME VARCHAR(255));"},"count":1,"total.cost.milliseconds":15,"success":"true","load.test":"F"}
 ```

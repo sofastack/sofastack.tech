@@ -129,6 +129,6 @@ CloseableHttpAsyncClient asyncHttpclient = httpAsyncClientBuilder.setDefaultRequ
 示例中通过构造两个 HttpClient（一个同步一个异步） 发起对同一个 RESTful 服务的调用，调用完成后可以在 httpclient-digest.log 中看到类似如下的日志，而对于每一个输出字段的含义可以看 SOFATracer 的说明文档：
 
 ```json
-{"time":"2018-09-27 20:31:22.328","local.app":"HttpClientDemo","traceId":"0a0fe8801538051482054100133277","spanId":"0","request.url":"http://localhost:8080/httpclient","method":"GET","result.code":"200","req.size.bytes":0,"resp.size.bytes":-1,"time.cost.milliseconds":274,"current.thread.name":"main","remote.app":"","baggage":""}
-{"time":"2018-09-27 20:31:22.443","local.app":"HttpClientDemo","traceId":"0a0fe8801538051482410100233277","spanId":"0","request.url":"http://localhost:8080/httpclient","method":"GET","result.code":"200","req.size.bytes":0,"resp.size.bytes":-1,"time.cost.milliseconds":33,"current.thread.name":"I/O dispatcher 1","remote.app":"","baggage":""}
+{"time":"2019-09-02 23:43:13.190","local.app":"HttpClientDemo","traceId":"1e27a79c1567438993141100210107","spanId":"0","span.kind":"client","result.code":"200","current.thread.name":"main","time.cost.milliseconds":"21ms","request.url":"http://localhost:8080/httpclient","method":"GET","req.size.bytes":0,"resp.size.bytes":-1,"remote.app":"","sys.baggage":"","biz.baggage":""}
+{"time":"2019-09-02 23:43:13.191","local.app":"HttpClientDemo","traceId":"1e27a79c1567438993170100210107","spanId":"0","span.kind":"client","result.code":"200","current.thread.name":"I/O dispatcher 1","time.cost.milliseconds":"21ms","request.url":"http://localhost:8080/httpclient","method":"GET","req.size.bytes":0,"resp.size.bytes":-1,"remote.app":"","sys.baggage":"","biz.baggage":""}
 ```

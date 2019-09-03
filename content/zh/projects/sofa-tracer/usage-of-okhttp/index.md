@@ -108,5 +108,5 @@ String responseStr = httpClient.executeGet(httpGetUrl);
 示例中通过构造 OkHttp 对象发起 RESTful 服务的调用，调用完成后可以在 okhttp-digest.log 中看到类似如下的日志:
 
 ```json
-{"time":"2019-04-12 13:38:10.187","local.app":"OkHttpDemo","traceId":"0a0fe85a1555047489980100151193","spanId":"0","request.url":"http://localhost:8081/okhttp?name=sofa","method":"GET","result.code":"200","req.size.bytes":0,"resp.size.bytes":0,"time.cost.milliseconds":207,"current.thread.name":"main","remote.app":"","baggage":""}
+{"time":"2019-09-03 11:35:28.429","local.app":"OkHttpDemo","traceId":"0a0fe9271567481728265100112783","spanId":"0","span.kind":"client","result.code":"200","current.thread.name":"main","time.cost.milliseconds":"164ms","request.url":"http://localhost:8081/okhttp?name=sofa","method":"GET","result.code":"200","req.size.bytes":0,"resp.size.bytes":0,"remote.app":"","sys.baggage":"","biz.baggage":""}
 ```
