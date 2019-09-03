@@ -1,11 +1,9 @@
-
 ---
 title: "Lifecycle"
 aliases: "/sofa-boot/docs/sofa-jarslink-jarslink-lifecycle"
 ---
 
-
-In the [Interactive Instructions](./jarslink-instruction.md) section, we have described the set of instructions that Jarslink2.0 supports. In this section, we will focus on all the possible state transitions behind these instructions in the following diagram of a Biz package being loaded from a static file to the runtime and to being uninstalled.
+In the [Interactive Instructions](../sofa-jarslink-jarslink-instruction) section, we have described the set of instructions that Jarslink2.0 supports. In this section, we will focus on all the possible state transitions behind these instructions in the following diagram of a Biz package being loaded from a static file to the runtime and to being uninstalled.
 
 ![undefined](../resources/jarslink-lifecycle.png) 
 

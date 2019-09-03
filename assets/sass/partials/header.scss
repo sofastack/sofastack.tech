@@ -59,9 +59,33 @@
     }
   }
 
-  // .navbar-end {
-  // 	display: flex;
-  // }
+  .navbar-end {
+    display: flex;
+    align-items: center;
+
+    .navbar-search {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin: 16px;
+      padding: 4px 16px;
+      width: 200px;
+      height: 32px;
+      border: 1px solid $text-color-secondary;
+      border-radius: 16px;
+      color: $text-color-secondary;
+    }
+    
+    .input {
+      outline: none;
+      border: none;
+      font-size: 12px;
+    }
+
+    .icon {
+      cursor: pointer;
+    }
+  }
 
   .translation {
     display: inline-flex;

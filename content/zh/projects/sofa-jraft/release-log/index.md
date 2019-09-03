@@ -3,6 +3,33 @@ title: "版本发行日志"
 ---
 
 ---
+## 1.2.6
+
+2019-08-15
+
+* Bug Fixes
+    * [修复 ReadIndex 并发情况下可能出现的读超时](https://github.com/alipay/sofa-jraft/pull/121)
+    * [保存 raft meta 失败后终止状态机](https://github.com/alipay/sofa-jraft/pull/96)
+    * [修复 windows 环境中无法原子 move 文件的问题](https://github.com/alipay/sofa-jraft/pull/104)
+    * [当 RheaKV apply 失败时终止状态机避免出现数据不一致情况](https://github.com/alipay/sofa-jraft/pull/137)
+* Features
+    * [增加 LogEntry checksum validation](https://github.com/alipay/sofa-jraft/pull/123)
+    * [优化 log replication 线程模型减少锁竞争](https://github.com/alipay/sofa-jraft/pull/170)
+    * [优化 RheaKV multi group snapshot](https://github.com/alipay/sofa-jraft/pull/42)
+    * [对于 multi-raft-group 场景，提供 manual rebalance API 在无 PD 模式手动平衡各节点 leader 数量](https://github.com/alipay/sofa-jraft/pull/176)
+    * CliService 提供获取存活 follower 节点的 API
+    * 引入 SPI 扩展机制，LogStorage、SnapshotStorage、RaftMetaStorage、LogEntryCodec 均可基于 SPI 扩展
+    * [Linux 平台 SIGUSR2 信号输出节点状态以及 metric 信息](https://github.com/alipay/sofa-jraft/pull/208)
+    * RheaKV 增加 CompareAndPut 原子更新 API
+    * [新增 pooled buf allocator 解决 log replication 时大量分配 byte[] 频繁触发 fullgc](https://github.com/alipay/sofa-jraft/pull/161)
+    * [默认关闭 RheaKV rocksdb 的 fsync 和 WAL，依靠 raft log 和 snapshot 确保数据一致性](https://github.com/alipay/sofa-jraft/pull/159)
+    * [当 raft node 过载时拒绝新的请求](https://github.com/alipay/sofa-jraft/pull/144)
+* Breaking Changes
+    * 无
+* 致谢（排名不分先后）
+    * @SteNicholas @zongtanghu
+
+---
 
 ## 1.2.5
 
@@ -57,7 +84,7 @@ __此版本强烈推荐升级__
 
 * Bug Fixes
     * PeerId 以及 Endpoint 改为不可变对象，避免 getLeaderId 等 api 的并发问题
-    * sofa-commaon 升级到 1.0.12，之前依赖的 1.0.9 版本没有发布到公网仓库
+    * sofa-common 升级到 1.0.12，之前依赖的 1.0.9 版本没有发布到公网仓库
 * Features
     * Jraft-rheakv 完成了 auto range split，在启用 placementDriver（pd）的情况下，pd 可根据每个节点上报的状态信息计算并下发 range split 指令；不启用 pd 的情况下也提供了 RheaKVCliService，可以使用 cli 手动触发 range split
     * LogExceptionHandler 泛型支持

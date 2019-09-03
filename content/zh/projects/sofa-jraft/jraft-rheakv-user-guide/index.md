@@ -2,8 +2,6 @@
 title: "JRaft RheaKV 用户指南"
 ---
 
-## RheaKV 简介
-
 RheaKV 是一个轻量级的分布式的嵌入式的 KV 存储 lib， rheaKV 包含在 jraft 项目中，是 jraft 的一个子模块。
 
 **定位与特性**
@@ -118,7 +116,7 @@ Boolean bPut(final byte[] key, final byte[] value);
 Boolean bPut(final String key, final byte[] value);
 ```
 
-1. 这个不做过多解释了，任何 kv 系统都会提供的 api，对于 String 类型的入参，请参考 get 相关说明
+1. 这个不做过多解释了，任何 kv 系统都会提供的 api，对于 String 类型的入参，请参考 get 相关说明。
 
 ### getAndPut
 
@@ -129,7 +127,18 @@ byte[] bGetAndPut(final byte[] key, final byte[] value);
 byte[] bGetAndPut(final String key, final byte[] value);
 ```
 
-1. 提供一个原子的 'get 旧值并 put 新值' 的语义,  对于 String 类型的入参，请参考 get 相关说明
+1. 提供一个原子的 'get 旧值并 put 新值' 的语义,  对于 String 类型的入参，请参考 get 相关说明。
+
+### compareAndPut
+
+```java
+CompletableFuture<Boolean> compareAndPut(final byte[] key, final byte[] expect, final byte[] update);
+CompletableFuture<Boolean> compareAndPut(final String key, final byte[] expect, final byte[] update);
+Boolean bCompareAndPut(final byte[] key, final byte[] expect, final byte[] update);
+Boolean bCompareAndPut(final String key, final byte[] expect, final byte[] update);
+```
+
+1. 提供一个原子的 'compare 旧值并 put 新值' 的语义, 其中 compare 语义表示 equals 而不是 ==。 对于 String 类型的入参，请参考 get 相关说明。
 
 ### merge
 
@@ -220,11 +229,11 @@ DistributedLock<byte[]> getDistributedLock(final String target, final long lease
 3. lease：必须包含一个锁的租约（lease）时间，在锁到期之前，如果 watchdog 为空，那么锁会被自动释放，即没有 watchdog 配合的 lease，就是 timeout 的意思
 4. watchdog：一个自动续租的调度器，需要用户自行创建并销毁，框架内部不负责该调度器的生命周期管理，如果 watchdog 不为空，会定期（lease 的 2/3 时间为周期）主动为当前的锁不断进行续租，直到用户主动释放锁（unlock）
 5. 还有一个需要强调的是：因为 distributedLock 是可重入锁，所以 `lock()` 与 `unlock()` 必须成对出现，比如 `lock()` 2 次却只 `unlock()` 1 次是无法释放锁成功的
-6. String​ 类型入参: 见 get 相关说明
+6. String 类型入参: 见 get 相关说明
 7. 其中 `boolean tryLock(final byte[] ctx)` 包含一个 ctx 入参， 作为当前的锁请求者的用户自定义上下文数据，如果它成功获取到锁，其他线程、进程也可以看得到它的 ctx
 8. 一个简单的使用例子见下面伪代码:
 
-    ```java
+```java
     DistributedLock<T> lock = ...;
     if (lock.tryLock()) {
         try {
@@ -235,7 +244,7 @@ DistributedLock<byte[]> getDistributedLock(final String target, final long lease
     } else {
         // perform alternative actions
     }
-    ```
+```
 
 **Note**: 还有一个重要的方法 `long getFencingToken()`，当成功上锁后，可以通过该接口获取当前的 fencing token， 这是一个单调递增的数字，也就是说它的值大小可以代表锁拥有者们先来后到的顺序，可以用这个 fencing token 解决下图[这个问题](http://martin.kleppmann.com/2016/02/08/how-to-do-distributed-locking.html)：
 
@@ -370,45 +379,46 @@ MetadataClient 负责从 PD 获取集群元信息以及注册元信息
 * HeartbeatSender 负责发送当前存储节点的心跳，心跳中包含一些状态信息，心跳一共分为两类：StoreHeartbeat 和 RegionHeartbeat
 * PD 不断接受 rheaKV 集群这两类心跳消息，PD 在对 region leader 的心跳回复里面包含了具体调度指令，再以这些信息作为决策依据。除此之外，PD 还应该可以通过管理接口接收额外的运维指令，用来人为执行更准确的决策
 * 两类心跳包含的状态信息详细内容如下：
-    * StoreHeartbeat
 
-        ```java
-        public class StoreStats implements Serializable {
-            private long            storeId;
-            // Store总容量(磁盘)
-            private long            capacity;
-            // Store可用容量
-            private long            available;
-            // Store承载的region数量
-            private int             regionCount;
-            // 正在发送的snapshot数量
-            private int             sendingSnapCount;
-            // 正在接收的snapshot数量
-            private int             receivingSnapCount;
-            // 有多少region正在apply snapshot
-            private int             applyingSnapCount;
-            // Store的启动时间 (unix timestamp in milliseconds)
-            private long            startTime;
-            // Store是否忙碌
-            private boolean         isBusy;
-            // 被Store实际使用的磁盘大小
-            private long            usedSize;
-            // 当前一个周期内的写入数据量
-            private long            bytesWritten;
-            // 当前一个周期内的读取数据量
-            private long            bytesRead;
-            // 当前一个周期内写入的key的个数
-            private long            keysWritten;
-            // 当前一个周期内读取的key的个数
-            private long            keysRead;
-            // 一个周期的具体时间长度
-            private TimeInterval    interval;
-        }
-        ```
+**StoreHeartbeat**
 
-    * RegionHeartbeat
+```java
+   public class StoreStats implements Serializable {
+       private long            storeId;
+       // Store总容量(磁盘)
+       private long            capacity;
+       // Store可用容量
+       private long            available;
+       // Store承载的region数量
+       private int             regionCount;
+       // 正在发送的snapshot数量
+       private int             sendingSnapCount;
+       // 正在接收的snapshot数量
+       private int             receivingSnapCount;
+       // 有多少region正在apply snapshot
+       private int             applyingSnapCount;
+       // Store的启动时间 (unix timestamp in milliseconds)
+       private long            startTime;
+       // Store是否忙碌
+       private boolean         isBusy;
+       // 被Store实际使用的磁盘大小
+       private long            usedSize;
+       // 当前一个周期内的写入数据量
+       private long            bytesWritten;
+       // 当前一个周期内的读取数据量
+       private long            bytesRead;
+       // 当前一个周期内写入的key的个数
+       private long            keysWritten;
+       // 当前一个周期内读取的key的个数
+       private long            keysRead;
+       // 一个周期的具体时间长度
+       private TimeInterval    interval;
+   }
+```
 
-        ```java
+**RegionHeartbeat**
+
+```java
         public class RegionStats implements Serializable {
             private long                regionId;
             // Region的leader位置, 负责发送心跳
@@ -432,7 +442,7 @@ MetadataClient 负责从 PD 获取集群元信息以及注册元信息
             // 一个周期的具体时间长度
             private TimeInterval        interval;
         }
-        ```
+```
 
 #### Pipeline
 
@@ -450,17 +460,17 @@ MetadataClient 负责从 PD 获取集群元信息以及注册元信息
 
 可以看到，实现上图最适合的数据结构便是跳表或者二叉树（最接近匹配项查询）
 
-选择 region 的 startKey 还是 endKey 作为 RegionRouteTable 的 key 也是有讲究的，比如为什么没有使用endKey? 这主要取决于 region split 的方式:
+选择 region 的 startKey 还是 endKey 作为 RegionRouteTable 的 key 也是有讲究的，比如为什么没有使用endKey? 这主要取决于 region split 的方式：
 
 * 假设 id 为 2 的 region2 [startKey2, endKey2) 分裂
 * 它分裂后的两个 region 分别为 id 继续为 2 的 region2 [startKey2, splitKey) 和 id 为 3 的 region3 [splitKey, endKey2)
-* 可以再看上图会发现，此时只需要再往 regionRouteTable 添加一个元素 <region3, splitKey> 即可，原来region2 对应的数据是不需要修改的
+* 可以再看上图会发现，此时只需要再往 regionRouteTable 添加一个元素 `<region3, splitKey>` 即可，原来region2 对应的数据是不需要修改的
     * __Write-Operation__
-        * 单 key <span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)">写请求路由逻辑很简单，根据 key 查询对应的 region，再对该 region 发起请求即可。</span></span>
-        * 如果是一个批量操作写请求，比如__ __put(List)，那么会对所有 keys 进行 split，分组后再并行分别请求所属的regionEngine，要注意的是此时无法提供事务保证。
+        * 单 key 写请求路由逻辑很简单，根据 key 查询对应的 region，再对该 region 发起请求即可。
+        * 如果是一个批量操作写请求，比如 `put(List)`，那么会对所有 keys 进行 split，分组后再并行分别请求所属的regionEngine，要注意的是此时无法提供事务保证。
     * __Read-Operation__
-        * 单 key 读请求路由逻辑也很简单，<span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)">根据 key 查询对应的 region，再对该 region 发起请求即可。</span></span>
-        * <span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)">如果是一个批量读请求，比如 </span></span>scan(startKey, endKey)，<span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)">那么会对所有 keys 进行 split，分组后并行再分别请求所属的 regionEngine。</span></span>
+        * 单 key 读请求路由逻辑也很简单，根据 key 查询对应的 region，再对该 region 发起请求即可。
+        * 如果是一个批量读请求，比如 scan(startKey, endKey)，那么会对所有 keys 进行 split，分组后并行再分别请求所属的 regionEngine。
 
 #### Failover
 
@@ -478,7 +488,7 @@ __RheaKV 可以划分为两种类型的请求，两种类型需要不同的 fail
 * __Single-Key-Operation (只操作一个 key)__
     Retry 依赖一个叫做 FailoverClosure 的 callback类，大体逻辑如下:
 
-    ```java
+```java
     public void run(final Status status) {
         if (status.isOk()) {
             // 成功
@@ -492,9 +502,9 @@ __RheaKV 可以划分为两种类型的请求，两种类型需要不同的 fail
             failure(getError());
         }
     }
-    ```
+```
 
-    其中有以下两大类错误(表①、表②)会触发 retryRunner 运行，运行之前会先刷新 region 信息以及 group peers(路由表)
+其中有以下两大类错误(表①、表②)会触发 retryRunner 运行，运行之前会先刷新 region 信息以及 group peers(路由表)
 
 ---
 
@@ -516,13 +526,13 @@ __RheaKV 可以划分为两种类型的请求，两种类型需要不同的 fail
 
 ---
 
-* __Multi-Keys-Operation (操作多个key或一个key区间)__
+**Multi-Keys-Operation (操作多个key或一个key区间)**
 
-    1. 对于多个 key 的请求，还要先对 keys 做 split，每个 region 包含一部分数量的 keys，对于每个 region 有单独 failover 处理，此时 FailoverClosure 类只能处理表①中的作为类型，处理逻辑同 __Single-Key-Operation__
-    2. 对于表②中三个 region epoch 发生变更的错误，FailoverClosure 无法处理，因为在epoch发生变化时，很有可能是发生了 region split，对于先前定位的 region，分裂成了 2 个，此时不光需要重新从 PD 刷新region 信息，failover 还要处理请求的放大(多个 region 就会产生多个请求)，所以新增了几类 __FailoverFuture__ 来处理这种请求放大的逻辑
-    3. 其中 __scan(startKey, endKey)__ 的 FailoverFuture 主要逻辑如下图, 可以看到整个流程是完全异步的
+1. 对于多个 key 的请求，还要先对 keys 做 split，每个 region 包含一部分数量的 keys，对于每个 region 有单独 failover 处理，此时 FailoverClosure 类只能处理表①中的作为类型，处理逻辑同 __Single-Key-Operation__
+2. 对于表②中三个 region epoch 发生变更的错误，FailoverClosure 无法处理，因为在epoch发生变化时，很有可能是发生了 region split，对于先前定位的 region，分裂成了 2 个，此时不光需要重新从 PD 刷新region 信息，failover 还要处理请求的放大(多个 region 就会产生多个请求)，所以新增了几类 __FailoverFuture__ 来处理这种请求放大的逻辑
+3. 其中 __scan(startKey, endKey)__ 的 FailoverFuture 主要逻辑如下图, 可以看到整个流程是完全异步的
 
-        ```java
+```java
         @Override
         public boolean completeExceptionally(final Throwable ex) {
             if (this.retriesLeft > 0 && ApiExceptionHelper.isInvalidEpoch(ex)) {
@@ -552,7 +562,7 @@ __RheaKV 可以划分为两种类型的请求，两种类型需要不同的 fail
             // 剩余重试为 0，或者当前的异常类型不需要重试
             return super.completeExceptionally(ex);
         }
-        ```
+```
 
 #### 举例: 一次 scan 的流程
 

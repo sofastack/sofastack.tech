@@ -1,12 +1,9 @@
-
 ---
 title: "Spring MVC Integration"
 aliases: "/sofa-tracer/docs/Usage_Of_MVC"
 ---
 
-
-# SpringMVC Integration
-In this document will demonstrate how to use SOFATracer to track of SpringMVC, this example [address] (https://github.com/sofastack/sofa-tracer/tree/master/tracer-samples/tracer-sample-with-springmvc).
+In this document will demonstrate how to use SOFATracer to track of SpringMVC, this example [address](https://github.com/sofastack/sofa-tracer/tree/master/tracer-samples/tracer-sample-with-springmvc).
 
 Assuming you have built a simple Spring Web project based on SOFABoot, Then you can be operated by the following steps:
 
@@ -92,7 +89,7 @@ In the `application.properties`, the log printing directory we configured is `./
     └── tracer-self.log
 ```
 
-Every time you visit [http://localhost:8080/springmvc](http://localhost:8080/springmvc), SOFATracer will log the digest log. You can open the `spring-mvc-digest.log` file to see the specific log content. As for the meaning of each output field, you [can refer to here](https://www.sofastack.tech/sofa-tracer/docs/SpringMVC).
+Every time you visit [http://localhost:8080/springmvc](http://localhost:8080/springmvc), SOFATracer will log the digest log. You can open the `spring-mvc-digest.log` file to see the specific log content. As for the meaning of each output field, you [can refer to here](../usage-of-mvc).
 
 ```json
 {"time":"2018-05-17 22:20:34.279","local.app":"SOFATracerSpringMVC","traceId":"0a0fe9391526566833985100139443","spanId":"0","request.url":"http://localhost:8080/springmvc","method":"GET","result.code":"200","req.size.bytes":-1,"resp.size.bytes":69,"time.cost.milliseconds":284,"current.thread.name":"http-nio-8080-exec-1","baggage":""}

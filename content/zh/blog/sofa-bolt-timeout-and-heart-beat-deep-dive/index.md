@@ -3,7 +3,7 @@ author: "胡萝卜、丞一"
 date: 2018-12-06T10:20:00.000Z
 title: "蚂蚁金服开源通信框架SOFABolt解析之超时控制机制及心跳机制"
 description: "本篇我们会依次介绍编解码的概念， TCP 粘包拆包问题，SOFABolt 私有通信协议的设计，以及SOFABolt 编解码原理，最后还会介绍一下相较于 Netty，我们做出的优化。"
-tags: ["SOFABolt"]
+tags: ["SOFABolt","SOFALab","剖析 | SOFABolt 框架"]
 categories: "SOFABolt"
 aliases: "/posts/2018-12-06-03"
 cover: "/cover.jpg"

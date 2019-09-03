@@ -1,11 +1,9 @@
-
 ---
 title: "Health check"
 aliases: "/sofa-boot/docs/HealthCheck"
 ---
 
-
-﻿SOFABoot provides Readiness Check to enhance Spring Boot's Health Check. If you need to use the SOFA middleware, you are advised to use the Health Check extension of SOFABoot to launch application examples in a more elegant way.
+SOFABoot provides Readiness Check to enhance Spring Boot's Health Check. If you need to use the SOFA middleware, you are advised to use the Health Check extension of SOFABoot to launch application examples in a more elegant way.
 
 ## Enable Health Check
 
@@ -23,7 +21,7 @@ To enable the Health Check feature in SOFABoot, you only need to import the foll
 
 ## Security alert
 
-From SOFABoot 2.3.0 on, the Health Check depends on the `Actuator` component in SpringBoot 1.4.x, and the component opens a lot of [EndPoint](https://docs.spring.io/spring-boot/docs/1.4.2. RELEASE/reference/html/production-ready-endpoints.html) such as '/dump ' and '/trace'. So there may be a security risk. Refer to the [Security Recommendations](https://docs.spring.io/spring-boot/docs/1.4.2.RELEASE/reference/html/production-ready-endpoints.html#_security_with_healthindicators) in the official document for settings.
+From SOFABoot 2.3.0 on, the Health Check depends on the `Actuator` component in SpringBoot 1.4.x, and the component opens a lot of [EndPoint](https://docs.spring.io/spring-boot/docs/1.4.2.RELEASE/reference/html/production-ready-endpoints.html) such as '/dump ' and '/trace'. So there may be a security risk. Refer to the [Security Recommendations](https://docs.spring.io/spring-boot/docs/1.4.2.RELEASE/reference/html/production-ready-endpoints.html#_security_with_healthindicators) in the official document for settings.
 
 SpringBoot 1.5.x and SpringBoot 2.x. have fixed some security issues. SOFABoot will be supported by upgrading the SpringBoot kernel.
 

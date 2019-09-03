@@ -14,7 +14,7 @@ aliases: "/sofa-rpc/docs/Configuration-Common"
 | filterRef     | 过滤器配置实例           |                    | List                                                                       |
 | filter        | 过滤器配置别名           |                    | 多个用逗号隔开                                                               |
 | registry      | 服务端注册中心           |                    | List                                                                       |
-| methods       | 方法级配置              |                    | Map<String, MethodConfig>                                                  |
+| methods       | 方法级配置              |                    | `Map<String, MethodConfig>`                                               |
 | serialization | 序列化协议              | hessian2           |                                                                            |
 | register      | 是否注册                | true               | 取决于实现，可能不生效。                                                      |
 | subscribe     | 是否订阅                | true               | 取决于实现，可能不生效。                                                      |
@@ -37,7 +37,7 @@ aliases: "/sofa-rpc/docs/Configuration-Common"
 | validation    | 是否开启参数验证(jsr303) |                    |                                                                            |
 | compress      | 是否启动压缩             | false              |                                                                            |
 | cache         | 是否启用结果缓存         | false              |                                                                            |
-| parameters    | 额外属性                |                    | Map<String, String>                                                        |
+| parameters    | 额外属性                |                    | `Map<String, String>`                                                      |
 
 ## ConsumerConfig
 
@@ -50,7 +50,7 @@ aliases: "/sofa-rpc/docs/Configuration-Common"
 | filterRef | 过滤器配置实例 |  | List |
 | filter | 过滤器配置别名 |  | List |
 | registry | 服务端注册中心 |  | List |
-| methods | 方法级配置 |  | Map<String, MethodConfig> |
+| methods | 方法级配置 |  | `Map<String, MethodConfig>` |
 | serialization | 序列化协议 | hessian2 |  |
 | register | 是否注册 | true | 取决于实现，可能不生效。 |
 | subscribe | 是否订阅 | true | 取决于实现，可能不生效。 |
@@ -83,7 +83,7 @@ aliases: "/sofa-rpc/docs/Configuration-Common"
 | mock | 是否开启Mock | |  |
 | validation | 是否开启参数验证 | | 基于JSR303 |
 | compress | 是否启动压缩 | false |  |
-| parameters | 额外属性 | | Map<String, String> |
+| parameters | 额外属性 | | `Map<String, String>` |
 
 
 ## MethodConfig
@@ -99,7 +99,7 @@ aliases: "/sofa-rpc/docs/Configuration-Common"
 | concurrent | 并发执行请求数 | null | 接口下每方法的最大可并行执行请求数，配置-1关闭并发过滤器，等于0表示开启过滤但是不限制。 |
 | validation | 是否开启参数验证 | null |  |
 | compress | 是否启动压缩 | null |  |
-| parameters | 额外属性 |  | Map<String, String> |
+| parameters | 额外属性 |  | `Map<String, String>` |
 
 
 ## ServerConfig
@@ -130,7 +130,7 @@ aliases: "/sofa-rpc/docs/Configuration-Common"
 | autoStart      | 是否自动启动端口        | true                   |                                                     |
 | stopTimeout    | 优雅关闭超时时间（毫秒） | 10000(override 20000)  |                                                     |
 | boundHost      | 绑定的地址             |                        | 默认取host值。                                        |
-| parameters     | 额外属性               |                        | Map<String, String>                                 |
+| parameters     | 额外属性               |                        | `Map<String, String>`                                 |
 
 
 ## RegistryConfig

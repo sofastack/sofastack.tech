@@ -1,11 +1,9 @@
-
 ---
 title: "Module configuration"
 aliases: "/sofa-boot/docs/SOFABoot-Module"
 ---
 
-
-﻿The SOFABoot module combines a regular JAR with some SOFABoot-specific configurations, which enables a JAR to be identified by SOFABoot and modularized.
+The SOFABoot module combines a regular JAR with some SOFABoot-specific configurations, which enables a JAR to be identified by SOFABoot and modularized.
 
 There are two differences between a complete SOFABoot module and a regular JAR: 
 
@@ -37,14 +35,13 @@ In most cases, you do not have to define the Require-Module for a module. It is 
 
 In a SOFABoot application, each SOFABoot module has a separate Spring context, and these Spring contexts are isolated from each other. Although this modular approach has many benefits, it can still cause some inconveniences in certain scenarios. For these scenarios, you can use the Spring-Parent to connect the Spring contexts of two SOFABoot modules. The name of a module can be configured with the Spring-Parent property. For example, in the preceding configuration, the Spring context of com.alipay.test.common.dal is set to the parent of the current module's Spring context.
 
+**Due to Spring's limitations, a module's Spring-Parent contains only one module**
 
-** Due to Spring's limitations, a module's Spring-Parent contains only one module**
-
-As to the role of Spring parent context, please refer to Spring's BeanFactory description:[http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/beans/factory/BeanFactory.html](http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/beans/factory/BeanFactory.html)
+As to the role of Spring parent context, please refer to [Spring's BeanFactory description](http://docs.spring.io/spring/docs/current/javadoc-api/org/springframework/beans/factory/BeanFactory.html).
 
 #### Module-Profile
 
-Support SOFABoot Profile: [SOFABootProfile](./SOFABoot-Profile)
+Support SOFABoot Profile: [SOFABootProfile](../sofaboot-profile).
 
 ## Spring Configuration Files
 

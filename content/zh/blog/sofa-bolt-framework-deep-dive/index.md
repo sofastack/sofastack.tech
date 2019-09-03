@@ -2,7 +2,7 @@
 author: "颜洄、丞一"
 date: 2018-12-06T10:20:00.000Z
 title: "蚂蚁金服开源通信框架 SOFABolt 协议框架解析"
-tags: ["SOFABolt"]
+tags: ["SOFABolt","SOFALab","剖析 | SOFABolt 框架"]
 aliases: "posts/2018-12-06-01"
 description: "本文是对蚂蚁金服开源通信框架 SOFABolt 的协议框架解析。"
 cover: "/cover.jpg"
@@ -71,7 +71,7 @@ CommandFactory是一个工厂类，比较简单，不展开介绍。编解码相
 
 ![carbon (2).png | left | 747x603](https://cdn.nlark.com/yuque/0/2018/png/172326/1542680327753-f10704cd-3dde-4588-924b-f40cd7d06cfe.png)
 
-上面是CommandHandler的代码片段，透露出的信息是SOFABolt支持批量提交请求，这在[《SOFABolt编解码机制》](https://www.yuque.com/sofaboltlab/sofabolt/spza7y)一文中也有部分介绍。而具体的process流程如下：
+上面是CommandHandler的代码片段，透露出的信息是SOFABolt支持批量提交请求，这在《SOFABolt编解码机制》一文中也有部分介绍。而具体的process流程如下：
 
 ![carbon (3).png | left | 747x256](https://cdn.nlark.com/yuque/0/2018/png/172326/1542680393299-4bde1ad6-d0a5-4672-958d-271c1274fe7c.png)
 

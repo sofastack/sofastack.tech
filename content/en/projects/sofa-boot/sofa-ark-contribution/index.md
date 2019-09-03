@@ -1,11 +1,9 @@
-
 ---
 title: "Contribution"
 aliases: "/sofa-boot/docs/sofa-ark-contribution"
 ---
 
-
-﻿> You can visit [Development Route](./roadmap) first to learn more about development tasks and future planning.
+> You can visit [Development Route](../sofa-ark-roadmap) first to learn more about development tasks and future planning.
 
 ## Preparations
 
@@ -46,20 +44,21 @@ Therefore, after getting the introduction to source code steps, you need to:
   git branch add_xxx_feature
   ```
   
+
 After the preceding command is executed, your code repository will switch to the corresponding branch. To view the current branch, execute the following command:
-  
+
 ```text
 git branch -a
 ```
 
 If you want to switch back to the trunk, execute the following command:
-  
+
 ```text
 git checkout -b master
 ```
-  
+
 If you want to switch back to the branch, execute the following command:
-  
+
 ```text
 git checkout -b "branchName"
 ```
@@ -91,7 +90,7 @@ After a branch is pulled, you can modify the code.
 * Update documents in a timely manner.
 
 After the code is modified, run the following command to submit all modifications to the local repository:
-  
+
   ```
   git commit -am 'comment'
   ```

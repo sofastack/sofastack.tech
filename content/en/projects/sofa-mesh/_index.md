@@ -6,26 +6,24 @@ weight: 1
 icon: "/img/icons/sofamesh.png"
 level: "incubating"
 sidebar:
-  - title: 'Overview'  	
+  - title: 'SOFAMesh overview'
     link: 'overview'
   - title: 'Pilot'
     sub:
-      - title: 'Introduction to Pilot'  	
+      - title: 'Introduction to Pilot'
         link: 'pilot-readme'
-      - title: 'Installation guide'  	
+      - title: 'Installation guide'
         link: 'pilot-setup-zookeeper-installation'
-      - title: 'Use Docker to get started with Istio'  	
+      - title: 'Use Docker to get started with Istio'
         link: 'pilot-setup-zookeeper-quick-start-docker'
-      - title: 'Zookeeper Adpater'  	
+      - title: 'Zookeeper Adpater'
         link: 'pilot-zookeeper-adapter'
-      - title: 'X-Protocol'  	
+      - title: 'X-Protocol'
         link: 'pilot-x-protocol'
-      - title: 'Register Agent'  	
+      - title: 'Register Agent'
         link: 'pilot-register-agent'
   - title: 'SOFAMosn'
     sub:
-      - title: 'Introduction to SOFAMosn'  	
+      - title: 'Introduction to SOFAMosn'
         link: 'sofa-mosn-readme'
-      - title: 'Use SOFAMosn to build Service Mesh platform'  	
-        link: 'sofa-mosn-docs-quick-start-run-with-sofamesh' 
 ---

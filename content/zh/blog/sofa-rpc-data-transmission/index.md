@@ -154,8 +154,6 @@ future 模式在 SOFARPC 内部会被转化为 callback 的方式进行调用，
 
 ## 参考
 
-- [SOFARPC 用户手册](http://www.sofastack.tech/sofa-rpc/docs/Invoke-Chain-Pass-Data)
-
 - [SOFARPC 线程模型剖析](https://mp.weixin.qq.com/s/yEu1RedULcljHsyY--F0Ww)
 
 - [SOFARPC 同步异步实现剖析](https://mp.weixin.qq.com/s/446N2dA0gA17EO0D5wteNw)
