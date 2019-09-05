@@ -47,7 +47,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1563455530059-b90e96a5-b1
 
 这里我们示例看下，SOFAActs 对测试代码和效率的优化。这里以 Credit 接口为例，业务处理开始之前会检查传参，构造上下文、随后发起业务处理，涉及对三张表的读取或变更，并在数据库事物结束之后，返回业务处理结果。
 
-<video id="Credit 接口的完整测试用例" controls="" preload="none" alt="title"> <source id="mp4" src="https://gw.alipayobjects.com/mdn/rms_95b965/afts/file/A*40JMT4iGEokAAAAAAAAAAABkARQnAQ" type="video/mp4"> </video>
+<video id="Credit 接口的完整测试用例" controls="" preload="none" alt="title"> <source id="mp41" src="https://gw.alipayobjects.com/mdn/rms_95b965/afts/file/A*40JMT4iGEokAAAAAAAAAAABkARQnAQ" type="video/mp4"> </video>
 针对这一业务逻辑，这里我们构造一个 Credit 接口的完整测试用例，在代码驱动测试时，它需要一下 9 个步骤，手动准备依赖数据、构造请求参数、执行业务逻辑、校验业务结果以及数据清理等等，人工介入成本居高，尤其当存在多个用例时，测试代码可复用性低，测试效率是难以得到有效提升。而与之对比，在模型驱动测试下，Credit 接口的 SOFAActs 测试脚本会对固有的测试模式进行封装，用例复杂度得到极大精简，众多用例数据可以得到高效的可视化管理。
 
 ### 1.2 执行原理
@@ -82,7 +82,7 @@ SOFAActs 分为两部分，其一是可视化编辑器，在 [SOFAStack 官�
 
 这里我们示例看下，如何操作一键初始化以及一键初始化做哪些内容。首先一键初始化框架只需要 3 个鼠标点击步骤。在 Package 视图下选中测试模块并右键选择 SOFAActs 功能，一键初始化，输入该应用的应用名称和工程编码格式。在一键初始化完成后，SOFAActs 将会在 test 模块写入 SOFAActs 配置文件，DB 连接配置文件，测试套件配置文件以及创建模型存储目录等。
 
-<video id="如何操作一键初始化" controls="" preload="none" alt="title"> <source id="mp4" src="https://gw.alipayobjects.com/mdn/rms_95b965/afts/file/A*p7OuQ4M6qsEAAAAAAAAAAABkARQnAQ" type="video/mp4"> </video>
+<video id="如何操作一键初始化" controls="" preload="none" alt="title"> <source id="mp42" src="https://gw.alipayobjects.com/mdn/rms_95b965/afts/file/A*p7OuQ4M6qsEAAAAAAAAAAABkARQnAQ" type="video/mp4"> </video>
 acts-config 配置文件是 SOFAActs 的核心配置，提供了测试环境切换、数据库连接切换、冒烟测试以及预跑反填等配置，来开关 SOFAActs 的相关功能；model 目录用于存放对象模型、数据模型，以便对模型进行统一管理；DB 配置文件指明了数据库连接信息，用于生成数据模型时自动填充表结构和模版数据。
 
 **一键生成测试脚本**
@@ -121,14 +121,14 @@ SOFAActs 中的模型主要分为：数据模型和对象模型。
 
 为了更好地理解数据模型， 在model／dbModel 下的 csv 文件中，我们可以看到某一张表的全部字段、取值以及校验规则。数据模型聚合了表的结构、数据和校验规则，结合可视化编辑器可快速创建、复制 DB 数据，一次编辑多次使用。这里我们来看下示例，在编辑器如何使用数据模型。
 
-<video id="如何使用数据模型" controls="" preload="none" alt="title"> <source id="mp4" src="https://gw.alipayobjects.com/mdn/rms_95b965/afts/file/A*oQuwRYktDckAAAAAAAAAAABkARQnAQ" type="video/mp4"> </video>
+<video id="如何使用数据模型" controls="" preload="none" alt="title"> <source id="mp43" src="https://gw.alipayobjects.com/mdn/rms_95b965/afts/file/A*oQuwRYktDckAAAAAAAAAAABkARQnAQ" type="video/mp4"> </video>
 #### 3.2.2 对象模型
 
 对象模型，它是方法入参、出参等对象在 SOFAActs 中的映射，可以在 model／objModel 目录下查看生成的对象模型。对象模型的结构和数据模型相似，是属性、取值、校验规则的聚合，与数据模型不同的是，对象模型可能存在多层嵌套，因为类的某一属性可以是 map、集合、类等引用类型。
 
 在 SOFAActs 编辑器中可以为一个新的用例添加入参数据，如果入参是简单类型，如 int、String 等可以选择简单类型填充，这里示例下复杂类型，即业务对象的模型使用，在左侧的列表中选择目标对象，添加至右侧，如果有多个入参可以一并添加到右侧后，再点击确定，即可以在入参设置中看到入参数据并可进行编辑。对于有多个入参的方法，入参设置中从上之下的顺序和方法声明入参顺序是需要一致的。
 
-<video id="一键脚本生成" controls="" preload="none" alt="title"> <source id="mp4" src="https://gw.alipayobjects.com/mdn/rms_95b965/afts/file/A*CsRxTpwXIv0AAAAAAAAAAABkARQnAQ" type="video/mp4"> </video>
+<video id="一键脚本生成" controls="" preload="none" alt="title"> <source id="mp44" src="https://gw.alipayobjects.com/mdn/rms_95b965/afts/file/A*CsRxTpwXIv0AAAAAAAAAAABkARQnAQ" type="video/mp4"> </video>
 ### 3.3 精细化校验
 
 下面我们介绍精细化校验，在一开始时，我们提及到复杂业务场景下极易出现校验遗漏，形成校验假绿。为此，SOFAActs 内置了精细化校验，从校验规则和行为还原两点，来保证复杂场景的校验覆盖。

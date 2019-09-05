@@ -1,5 +1,4 @@
 ---
-
 title: "Quick start"
 aliases: "/sofa-acts/docs/GettingStarted"
 ---
@@ -126,7 +125,7 @@ Import acts-bom to the pom.xml file of the test module.
 
 You can complete the initialization with a few clicks as shown in the following figures. In figure 3.2, correctly enter the **application name** and select the **encoding format** that is suitable for your application.
 
-For more information about the usage of files generated during initialization, see [Framework preparation](../usage-ready/#Quick configuration description) in the ACTS documentation.
+For more information about the usage of files generated during initialization, see Framework preparation in the ACTS documentation.
 
 ![Initialize ACTS](initialize-acts.png)
 

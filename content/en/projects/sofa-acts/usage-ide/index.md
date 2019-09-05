@@ -1,5 +1,4 @@
 ---
-
 title: "All-in-one editor"
 aliases: "/sofa-acts/docs/Usage-IDE"
 ---
@@ -49,7 +48,7 @@ If the models of the method's request parameters and responses are not identifie
 ### Map
 
 See example 2 (the Set type is similar).
-In Figure 32, request parameters of the method shown in sample 2 is the Map<String, Object> type. Objects do not belong to a specific type. If you want to set an object as a complex one, edit the YAML file. For example, if you want to set an object as the AccountTransResult class, edit the YAML file as follows:
+In Figure 32, request parameters of the method shown in sample 2 is the `Map<String, Object>` type. Objects do not belong to a specific type. If you want to set an object as a complex one, edit the YAML file. For example, if you want to set an object as the AccountTransResult class, edit the YAML file as follows:
 
 ![Map examples](map-example.png)
 
@@ -79,7 +78,6 @@ interestRecoverTypeEnum: !!com.alipay.fc.loancore.common.util.enums.InterestReco
 ![YAML data](yaml-data.png)
 
 <p align="center">Figure 37</p>
-
 ### Coding for request parameter preparation
 
 You can override the prepare method, and use the ActsRuntimeContext method to quickly get and set test case request parameters. See Figure 38.
@@ -91,7 +89,6 @@ You can override the prepare method, and use the ActsRuntimeContext method to qu
 ![ActsRuntimeContext method](ActsRuntimeContext-method.png)
 
 <p align="center">Figure 38</p>
-
 ## Prepare database data
 
 ### Prepare database data - single column database{#db-single}
@@ -101,15 +98,12 @@ As shown in Figure 39, right click Database Preparation, select the desired data
 ![Select a model](select-module.png)
 
 <p align="center">Figure 39</p>
-
 ![Select type](select-type.png)
 
 <p align="center">Figure 40</p>
-
 ![Edit value](modify-value.png)
 
 <p align="center">Figure 41</p>
-
 ### Prepare DB data - multi-column DB{#db-multi}
 
 Select a column and click Copy. You can use this method to copy multiple columns and then edit the columns.
@@ -117,7 +111,6 @@ Select a column and click Copy. You can use this method to copy multiple columns
 ![Copy data](copy-value.jpeg)
 
 <p align="center">Figure 42</p>
-
 ### Prepare database data - flag description
 
 Data dependency flags:
@@ -133,7 +126,6 @@ L: indicates that a large field data record requires line wrap. The preparation 
 ![Data dependency flags](mark.png)
 
 <p align="center">Figure 43</p>
-
 ## Prepare response expectation data
 
 After generating the object model of response expectations, you can right click Response Expectation in ACTS IDE and choose Select Model as shown in the following figure.
@@ -141,7 +133,6 @@ After generating the object model of response expectations, you can right click 
 ![Response expectation](expected-result.png)
 
 <p align="center">Figure 44</p>
-
 ### Flag description of response expectations
 
 ```plain
@@ -228,7 +219,6 @@ Take adding simple type data to Custom Parameters as an example. As shown in Fig
 ![Custom parameters](custom-parameter.png)
 
 <p align="center">Figure 46</p>
-
 ![ new custom variable](new-custom-variable.png)
 
 <p align="center">Figure 47</p>
@@ -237,27 +227,23 @@ Select java.lang.String and enter the value in the editing area. You can also ed
 ![Enter the value](enter-value.png)
 
 <p align="center">Figure 48</p>
-
 ![ Complete](complete.png)
 
 <p align="center">Figure 49</p>
-
 ### Edit complex type data
 
 Take adding complex type data to Coustom Parameters as an example.
 
-Refer to [Edit simple type data](#Edit simple type data) and enter the name of the request parameter in the dialog box. Select a complex object from the model selection list (if no complex object meets your needs, create the corresponding data model first), click add, and then click OK.
+Refer to Edit simple type data and enter the name of the request parameter in the dialog box. Select a complex object from the model selection list (if no complex object meets your needs, create the corresponding data model first), click add, and then click OK.
 
 ![Add complex object data](add-complex-object.png)
 
 <p align="center">Figure 50</p>
-
 If the complex object contains one or more context objects, select the row and click Span to expand the data in the editing area on the right side of the page. If nothing happens, move your pointer to the value column, and then click Span again. If more context objects exist, repeat this operation to expand the objects.
 
 ![Expand complex object](span.png)
 
 <p align="center">Figure 51</p>
-
 ### Edit the list model
 
 Take adding `List<String>` to Custom Parameters as an example. Select the list model as shown in the following figure.
@@ -265,20 +251,18 @@ Take adding `List<String>` to Custom Parameters as an example. Select the list m
 ![Select the list model](select-list-module.png)
 
 <p align="center">Figure 52</p>
-
 Edit the list and select and copy the first column as shown in Figure 53.
 
 ![Copy](copy-list.png)
 
 <p align="center">Figure 53</p>
-
 ### Edit the map model
 
-For details, see the [Map](#map) section in Request parameters.
+For details, see the Map section in Request parameters.
 
 ### Edit the enum model
 
-For details, see the [enum](#enum) section in Request parameters.
+For details, see the enum section in Request parameters.
 
 ## Right click functions
 
@@ -287,13 +271,11 @@ For details, see the [enum](#enum) section in Request parameters.
 ![Copy node](copy-node.png)
 
 <p align="center">Figure 54</p>
-
 ### Delete the current node
 
 ![Delete node](delete-node.png)
 
 <p align="center">Figure 55</p>
-
 ## Modify the current use case name
 
 Right click a test case, and select Modify the current use case name.
@@ -301,7 +283,6 @@ Right click a test case, and select Modify the current use case name.
 ![Modify the current use case name](modify-use-case-name.png)
 
 <p align="center">Figure 56</p>
-
 ## Copy the test case
 
 Right click a test case, and select Copy Current Test Case.
@@ -309,7 +290,6 @@ Right click a test case, and select Copy Current Test Case.
 ![Copy test case](copy-use-case.png)
 
 <p align="center">Figure 57</p>
-
 ## Run and backfill
 
 To improve the fill-in efficiency of the expectation data, such as the response expectation and the DB data expectation, the ACTS framework provides the Run and Backfill function. When you have prepared request parameters and database data for your test case, as well as the basic data to run the test case, you can run the test case without filling in the expectation data. The ACTS framework automatically captures the responses and database change data. After running the test case, you can open ACTS IDE and click __Run and Backfill__ to automatically fill in the expectation data of the specified test case. Specific use case:
@@ -322,7 +302,6 @@ Prerequisite: ACTS log function is configured.
 ![Select the desired row](select-target-line.png)
 
 <p align="center">Figure 58</p>
-
 This feature is designed to provide users with convenience. After the backfill, strictly test each data record to ensure the accuracy and avoid omission.
 
 ### Backfill
@@ -332,4 +311,3 @@ As shown in Figure 59, select the test case for which you need to backfill the e
 ![Backfill](converse-input.png)
 
 <p align="center">Figure 59</p>
-
