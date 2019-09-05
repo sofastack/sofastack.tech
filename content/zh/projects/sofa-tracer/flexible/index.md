@@ -33,6 +33,7 @@ private void testManual(){
     }
 }
 ```
+
 这种方式在使用上没有直接使用注解方便，但是可以直观的了解到 span 的生命周期，另外手动埋点也是对基于注解方式埋点的一种补充，下面介绍。
 
 ### 基于注解方式
@@ -74,6 +75,5 @@ SpanTags 是 SOFATracer 中提供的工具类，在使用注解或者手动埋�
 
 * 非 json 格式
 
-```
-2019-09-05 10:25:50.992,flexible-sample,0a0fe9291567650350953100130778,0.2,client,,http-nio-8080-exec-1,4ms,hello,param.types=java.lang.String&author=glmapper&,,
-```
+> 2019-09-05 10:25:50.992,flexible-sample,0a0fe9291567650350953100130778,0.2,client,,http-nio-8080-exec-1,4ms,hello,param.types=java.lang.String&author=glmapper&,,
+

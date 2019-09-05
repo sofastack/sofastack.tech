@@ -3,7 +3,6 @@ title: "应用日志打印 traceId 和 spanId"
 aliases: "/sofa-tracer/docs/PrintTraceIdSpanId"
 ---
 
-
 SLF4J 提供了 MDC （Mapped Diagnostic Contexts）功能，可以支持用户定义和修改日志的输出格式以及内容。本文将介绍 SOFATracer 集成的 SLF4J MDC功能，方便用户在只简单修改日志配置文件的前提下输出当前 SOFATracer 上下文 `TraceId` 以及 `SpanId` 。
 
 ## 使用前提
@@ -29,6 +28,7 @@ SLF4J 提供了 MDC （Mapped Diagnostic Contexts）功能，可以支持用户�
     <artifactId>spring-boot-starter-logging</artifactId>
 </dependency>
 ```
+
 * Log4j2 实现引入：
 
 ```xml
@@ -48,7 +48,7 @@ SLF4J 提供了 MDC （Mapped Diagnostic Contexts）功能，可以支持用户�
 //引入接口
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-	
+
 //构造日志打印实例
 private static final Logger logger = LoggerFactory.getLogger(XXX.class);
 ```
@@ -71,6 +71,7 @@ private static final Logger logger = LoggerFactory.getLogger(XXX.class);
 <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %5p 
 [%X{SOFA-TraceId},%X{SOFA-SpanId}] ---- %m%n " />
 ```
+
 [Log4j 配置 PatternLayout 样例](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/PatternLayout.html)：
 
 ```xml
@@ -79,6 +80,7 @@ private static final Logger logger = LoggerFactory.getLogger(XXX.class);
      [%X{SOFA-TraceId},%X{SOFA-SpanId}] - %m%n"/>
  </layout>
 ```
+
 > 需要注意的是：`[%X{SOFA-TraceId},%X{SOFA-SpanId}]` 使我们推荐的打印格式，用户可以根据自己的实际需求场景进行定制
 
 [附:基于 Logback 示例工程的源代码地址](https://github.com/sofastack/sofa-tracer/tree/master/tracer-samples/tracer-sample-with-slf4j)。
