@@ -1,10 +1,9 @@
-
 ---
 title: "自定义 Reporter"
 ---
 在使用自定义埋点组件的情况下，用户可以选择自定义 Reporter。
 
-### 自定义 Reporter 实现
+## 自定义 Reporter 实现
 
 ```java
 public class MyReporter implements Reporter {
@@ -27,7 +26,7 @@ public class MyReporter implements Reporter {
 }
 ```
 
-### 配置
+## 配置
 
 ```properties
 com.alipay.sofa.tracer.reporter-name=com.glmapper.bridge.boot.flexible.MyReporter

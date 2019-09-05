@@ -64,7 +64,7 @@ private String helloInner(String word){
 
 SpanTags 是 SOFATracer 中提供的工具类，在使用注解或者手动埋点的情况下，可以通过此类提供的静态方法来设置 tag 。
 
-### 日志格式
+## 日志格式
 
 * json 格式
 
