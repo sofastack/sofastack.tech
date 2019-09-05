@@ -3,7 +3,6 @@
 title: "自定义 Reporter"
 aliases: "/sofa-tracer/docs/ReporterCustom"
 ---
-
 在使用自定义埋点组件的情况下，用户可以选择自定义 Reporter。
 
 ### 自定义 Reporter 实现
