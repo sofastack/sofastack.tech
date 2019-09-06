@@ -31,7 +31,7 @@ SOFARegistry:<https://github.com/sofastack/sofa-registry>
   - 【已领取】SOFARegistry MetaServer 功能介绍和实现剖析
   - 【已领取】SOFARegistry 数据推送机制详解
   - 【已领取】SOFARegistry 如何实现秒级服务上下线通知
-  - **【待领取】SOFARegistry 如何实现 DataServer 平滑扩缩容**
+  - 【已领取】SOFARegistry 如何实现 DataServer 平滑扩缩容
 
 - 参与方式：关注**「金融级分布式架构」**回复可领取的文章标题，会有相关同学联系进行确认。
 
