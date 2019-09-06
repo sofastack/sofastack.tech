@@ -84,12 +84,15 @@ A：TCC 的代理会代理二种类型的分支：在本地标注为 localTcc，
 详细发布报告：
 
 [https://github.com/sofastack/sofa-boot/releases/tag/v3.2.0](https://github.com/sofastack/sofa-boot/releases/tag/v3.2.0)
+
 官方文档：
 
 [https://www.sofastack.tech/projects/sofa-boot/overview/](https://www.sofastack.tech/projects/sofa-boot/overview/)
 
 ### SOFA 用户召集
 
-如果您已经在生产环境使用了 SOFAStack 相关组件，请在下方链接登记告诉我们，方便我们更好地为您服务，我们将会把您加入到 “SOFAStack金牌用户服务群【邀约制】”里面，以便更加快捷的沟通和更加高效的线上使用问题支持。[https://github.com/sofastack/sofastack.tech/issues/5](https://github.com/sofastack/sofastack.tech/issues/5) 
+如果您已经在生产环境使用了 SOFAStack 相关组件，请在下方链接登记告诉我们，方便我们更好地为您服务，我们将会把您加入到 “SOFAStack金牌用户服务群【邀约制】”里面，以便更加快捷的沟通和更加高效的线上使用问题支持。
+[https://github.com/sofastack/sofastack.tech/issues/5](https://github.com/sofastack/sofastack.tech/issues/5) 
 
-已有用户查看：[https://www.sofastack.tech/awesome](https://www.sofastack.tech/awesome)
+已有用户查看：
+[https://www.sofastack.tech/awesome](https://www.sofastack.tech/awesome)
