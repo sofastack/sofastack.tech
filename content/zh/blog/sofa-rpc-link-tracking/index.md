@@ -227,19 +227,12 @@ SOFA 整体开源框架对日志做了很好地分类，将不同类型的日志
 SOFARPC 的依靠集成 SOFATrace 来实现链路追踪技术，SOFARPC 作为公共组件在整个链路追踪技术系统中负责数据埋点工作。依赖 SOFARPC 自身强大的可扩展性设计，如微内核设计和事件总线设计，使得 SOFARPC 在不破坏开发封闭原则的基础上快速实现了链路追踪埋点工作。 SOFARPC 的链路追踪技术具有以下特点：
 
 1. 作为公共基础的通讯组件，SOFARPC的链路追踪埋点对业务代码实现零侵入。
-
 2. 采用日志数据异步刷新机制，不影响正常业务性能。
-
 3. 采用了自适应采样设计，巧妙平衡了数据采集和性能的问题。
-
 4. 支持数据上报zipkin, 通过与zipkin结合可以快速构建一个完整的连续追踪系统。
-
 5. 解决了异步线程链路调用数据问题。
-
 6. 采用了[OpenTracing 规范](http://opentracing.io/documentation/pages/spec.html)，因此可以和其他链路追踪手机和展示的技术框架快速整合。
 
 ## 五. 参考资料
 
 - [1] [《Dapper, a Large-Scale Distributed Systems Tracing Infrastructure》](https://www.researchgate.net/profile/Luiz_Barroso/publication/239595848_Dapper_a_Large-Scale_Distributed_Systems_Tracing_Infrastructure/links/5474acdc0cf29afed60f9031/Dapper-a-Large-Scale-Distributed-Systems-Tracing-Infrastructure.pdf?origin=publication_detail) 
-
-- [2] [全链路稳定性背后的数字化支撑：阿里巴巴鹰眼技术解密](http://www.infoq.com/cn/presentations/alibaba-hawk-eye-technology-decryption)

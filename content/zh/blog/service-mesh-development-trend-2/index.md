@@ -130,7 +130,7 @@ Mixer 带来的性能问题，以及 Mixer Cache 的失效，导致为了得到�
 
 具体内容请见地址：
 
-[https://docs.google.com/document/d/1QKmtem5jU_2F3Lh5SqLp0IuPb80_70J7aJEYu4_gS-s/edit#heading=h.hvvcgepdykro](https://docs.google.com/document/d/1QKmtem5jU_2F3Lh5SqLp0IuPb80_70J7aJEYu4_gS-s/edit#heading=h.hvvcgepdykro)
+[https://docs.google.com/document/d/1QKmtem5jU_2F3Lh5SqLp0IuPb80_70J7aJEYu4_gS-s/edit](https://docs.google.com/document/d/1QKmtem5jU_2F3Lh5SqLp0IuPb80_70J7aJEYu4_gS-s/edit)
 
 也可以看我之前对这个内容的摘要翻译：[https://skyao.io/learning-istio/mixer/design/v2.html](https://skyao.io/learning-istio/mixer/design/v2.html)
 
