@@ -95,7 +95,6 @@ SOFAStack：[https://github.com/sofastack](https://github.com/sofastack)
 
 - [蚂蚁金服 Service Mesh 落地实践与挑战 | GIAC 实录](https://www.sofastack.tech/blog/service-mesh-giac-2019/)
 
-
 ### 2018 年技术大会实录集合
 
 - [企业实施分布式架构的挑战以及应对建议 | 上海 ATEC 大会实录](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247484631&idx=1&sn=fd4005f2f2ace3947323ecfcfbb4d778&chksm=faa0eb0dcdd7621b302f293a710f460adfb8c78c885e00903f24076b4e2a53148f41006fc12f&scene=21)
