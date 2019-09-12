@@ -18,82 +18,82 @@ SOFAStack：[https://github.com/sofastack](https://github.com/sofastack)
 
 ### SOFAChannel#8
 
-- [从一个例子开始体验 SOFAJRaft | SOFAChannel#8 直播整理](https://www.sofastack.tech/blog/sofa-channel-8-retrospect/)
+- [从一个例子开始体验 SOFAJRaft | SOFAChannel#8 直播整理](/blog/sofa-channel-8-retrospect/)
 - [视频回顾资料](https://tech.antfin.com/community/live/821)
 
 ### SOFAChannel#7
 
-- [自定义资源 CAFEDeployment 的背景、实现和演进 | SOFAChannel#7 直播整理](https://www.sofastack.tech/blog/sofa-channel-7-retrospect/)
+- [自定义资源 CAFEDeployment 的背景、实现和演进 | SOFAChannel#7 直播整理](/blog/sofa-channel-7-retrospect/)
 - [视频回顾资料](https://tech.antfin.com/community/live/737)
 
 ### SOFAChannel#6
 
-- [蚂蚁金服轻量级监控分析系统解析 | SOFAChannel#6 直播整理](https://www.sofastack.tech/blog/sofa-channel-6-retrospect/)
+- [蚂蚁金服轻量级监控分析系统解析 | SOFAChannel#6 直播整理](/blog/sofa-channel-6-retrospect/)
 - [视频回顾资料](https://tech.antfin.com/community/live/687)
 
 ### SOFAChannel#5
 
-- [给研发工程师的代码质量利器 | SOFAChannel#5 直播整理](https://www.sofastack.tech/blog/sofa-channel-5-retrospect/)
+- [给研发工程师的代码质量利器 | SOFAChannel#5 直播整理](/blog/sofa-channel-5-retrospect/)
 - [视频回顾资料](https://tech.antfin.com/community/live/552)
 
 ### SOFAChannel#4
 
-- [分布式事务 Seata TCC 模式深度解析 | SOFAChannel#4 直播整理](https://www.sofastack.tech/blog/sofa-channel-4-retrospect/)
+- [分布式事务 Seata TCC 模式深度解析 | SOFAChannel#4 直播整理](/blog/sofa-channel-4-retrospect/)
 - [视频回顾资料](https://tech.antfin.com/community/live/462)
 
 ### SOFAChannel#3
 
-- [SOFARPC 性能优化实践（下）| SOFAChannel#3 直播整理](https://www.sofastack.tech/blog/sofa-channel-3-retrospect/)
+- [SOFARPC 性能优化实践（下）| SOFAChannel#3 直播整理](/blog/sofa-channel-3-retrospect/)
 - [视频回顾资料](https://tech.antfin.com/community/live/245)
 
 ### SOFAChannel#2
 
-- [SOFARPC 性能优化实践（上）| SOFAChannel#2 直播整理](https://www.sofastack.tech/blog/sofa-channel-2-retrospect/)
+- [SOFARPC 性能优化实践（上）| SOFAChannel#2 直播整理](/blog/sofa-channel-2-retrospect/)
 - [视频回顾资料](https://tech.antfin.com/community/live/244)
 
 ### SOFAChannel#1
 
-- [从蚂蚁金服微服务实践谈起 | SOFAChannel#1 直播整理](https://www.sofastack.tech/blog/sofa-channel-1-retrospect/)
+- [从蚂蚁金服微服务实践谈起 | SOFAChannel#1 直播整理](/blog/sofa-channel-1-retrospect/)
 - [视频回顾资料](https://tech.antfin.com/community/live/148)
 
 ## / SOFAMeetup 系列 /
 
 ### SOFAMeetup#3<广州站>
 
-- [分布式事务 Seata Saga 模式首秀以及三种模式详解 |  Meetup#3 回顾](https://www.sofastack.tech/blog/sofa-meetup-3-seata-retrospect/)
+- [分布式事务 Seata Saga 模式首秀以及三种模式详解 |  Meetup#3 回顾](/blog/sofa-meetup-3-seata-retrospect/)
 [视频回顾资料](https://tech.antfin.com/community/activities/779/review/901)
 
-- [蚂蚁金服在云原生架构下的可观察性的探索和实践 | Meetup#3 回顾](https://www.sofastack.tech/blog/sofa-meetup-3-cloud-original-retrospect/)
+- [蚂蚁金服在云原生架构下的可观察性的探索和实践 | Meetup#3 回顾](/blog/sofa-meetup-3-cloud-original-retrospect/)
 [视频回顾资料](https://tech.antfin.com/community/activities/779/review/900)
 
 ### SOFAMeetup#2<上海站>
 
-- [当 Spring Cloud 遇上 SOFAStack | Meetup#2 回顾](https://www.sofastack.tech/blog/sofa-meetup-2-1-retrospect/)
+- [当 Spring Cloud 遇上 SOFAStack | Meetup#2 回顾](/blog/sofa-meetup-2-1-retrospect/)
 [视频回顾资料](https://tech.antfin.com/community/activities/576/review/817)
 
-- [基于 SOFAArk 和 SOFADashboard 实现动态模块管控 | Meetup#2 回顾](https://www.sofastack.tech/blog/sofa-meetup-2-2-retrospect/)
+- [基于 SOFAArk 和 SOFADashboard 实现动态模块管控 | Meetup#2 回顾](/blog/sofa-meetup-2-2-retrospect/)
 [视频回顾资料](https://tech.antfin.com/community/activities/576/review/819)
 
 ### SOFAMeetup#1<北京站>
 
-- [蚂蚁金服开源服务注册中心 SOFARegistry | SOFA 开源一周年献礼](https://www.sofastack.tech/blog/sofa-meetup-1-registry/)
+- [蚂蚁金服开源服务注册中心 SOFARegistry | SOFA 开源一周年献礼](/blog/sofa-meetup-1-registry/)
 [视频回顾资料](https://tech.antfin.com/community/activities/382/review/710)
 
-- [蚂蚁金服分布式事务开源以及实践 | SOFA 开源一周年献礼](https://www.sofastack.tech/blog/sofa-meetup-1-seata/)
+- [蚂蚁金服分布式事务开源以及实践 | SOFA 开源一周年献礼](/blog/sofa-meetup-1-seata/)
 [视频回顾资料](https://tech.antfin.com/community/activities/382/review/711)
 
-- [详解蚂蚁金服 SOFAJRaft | 生产级高性能 Java 实现](https://www.sofastack.tech/blog/sofa-meetup-1-jraft/)
+- [详解蚂蚁金服 SOFAJRaft | 生产级高性能 Java 实现](/blog/sofa-meetup-1-jraft/)
 [视频回顾资料](https://tech.antfin.com/community/activities/382/review/712)
 
 ## / 技术大会系列 /
 
 ### 2019 年技术大会实录集合
 
-- [五小时构建云原生电商平台 | KubeCon SOFAStack Workshop 详解](https://www.sofastack.tech/blog/sofastack-cloud-native-workshop-show/)
+- [五小时构建云原生电商平台 | KubeCon SOFAStack Workshop 详解](/blog/sofastack-cloud-native-workshop-show/)
 
-- [蚂蚁金服大规模分布式事务实践和开源历程 | GIAC 实录](https://www.sofastack.tech/blog/seata-distributed-transaction-deep-dive/)
+- [蚂蚁金服大规模分布式事务实践和开源历程 | GIAC 实录](/blog/seata-distributed-transaction-deep-dive/)
 
-- [蚂蚁金服 Service Mesh 落地实践与挑战 | GIAC 实录](https://www.sofastack.tech/blog/service-mesh-giac-2019/)
+- [蚂蚁金服 Service Mesh 落地实践与挑战 | GIAC 实录](/blog/service-mesh-giac-2019/)
 
 ### 2018 年技术大会实录集合
 
