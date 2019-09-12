@@ -1,7 +1,7 @@
 ---
 title: "（含视频回顾）SOFAStack 活动回顾整理集合"
 author: "潘潘"
-description: "本文为《剖析 | SOFARPC 框架》第十一篇，作者敏古。"
+description: "本文为 SOFAStack 相关线上线下活动的回顾集合，并且会不定时更新。"
 categories: "SOFAStack"
 tags: ["SOFAStack"]
 date: 2019-09-12T12:00:00+08:00
