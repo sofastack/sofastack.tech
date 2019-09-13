@@ -45,4 +45,4 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 
 ### Hey，中秋快乐呀
 
-![中秋快乐](https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1568279276123-a7cf146a-ca67-43df-a29f-bab6de783791.jpeg)
+![中秋快乐](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*WWRkR7J5VyEAAAAAAAAAAABkARQnAQ)
