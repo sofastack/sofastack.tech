@@ -111,6 +111,7 @@ if (lock.tryLock()) {
     // perform alternative actions
 }
 ```
+
 详情请参考 github 仓库中下面这个类：
 
 ```java
@@ -133,7 +134,6 @@ RheaKV 调用 tryLock(ctx) 方法尝试设置分布式锁，其中入参 ctx �
   - 锁持有者未超出租约即剩余时间大于或者等于0，检查之前锁持有者的锁获取器与当前锁获取器 acquirer 是否相同：
     - 锁获取器相同表示此分布式锁为重入锁，锁持有者构造器设置锁持有者 id 为之前锁持有者 id，更新截止时间戳保持续租，指定租约剩余时间为重入成功 REENTRANT_SUCCESS 即-4，保持锁持有者 prevOwner 的 fencing token，修改锁重入 acquires 自增1，更新锁持有者上下文为锁获取器 acquirer 的上下文，设置上锁成功构建锁持有者 owner 基于分布式锁 key 键值对方式插入 RocksDB 存储；
     - 此锁已存在且之前锁持有者与当前锁请求者不同表示非重入锁，表示其他锁请求者在尝试上已存在的锁，锁持有者构造器设置锁持有者 id 为之前锁持有者 id，更新租约剩余时间为当前锁持有者的租约剩余时间，指定锁持有者上下文为锁持有者 prevOwner 的上下文，设置上锁失败构建锁持有者 owner；
-
 
 ![捕获](https://cdn.nlark.com/yuque/0/2019/png/156670/1568697945565-97c007fd-13b8-40c7-b0b8-1d681a4af1cc.png)
 
