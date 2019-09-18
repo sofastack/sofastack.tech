@@ -13,7 +13,9 @@
   },
   "dependencies": {
     "algoliasearch": "^3.33.0",
+    "lodash-es": "^4.17.15",
     "query-string": "^6.8.2",
+    "svg.js": "^2.7.1",
     "zoom-image": "^0.1.4"
   },
   "devDependencies": {
@@ -23,6 +25,7 @@
     "babel-loader": "^8.0.6",
     "file-loader": "^4.0.0",
     "node-sass": "^4.12.0",
+    "raw-loader": "^3.1.0",
     "sass-loader": "^7.1.0",
     "webpack": "^4.35.3",
     "webpack-cli": "^3.3.5"

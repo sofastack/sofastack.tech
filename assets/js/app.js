@@ -3,6 +3,7 @@ import tocFunc from './modules/toc'
 import asideFunc from './modules/aside'
 import searchFunc from './modules/search'
 import paginationFunc from './modules/pagination'
+import animitionFunc from './modules/animition'
 
 import zoom from 'zoom-image'
 import 'zoom-image/css/zoom-image.css'
@@ -10,6 +11,10 @@ import 'zoom-image/css/zoom-image.css'
 import { $$ } from './modules/utils'
 
 const main = () => {
+
+  // Animition
+  animitionFunc()
+
   // Menu
   menuFunc()
 
