@@ -1,10 +1,10 @@
 ---
-title: "SOFAJRaft-RheaKV 分布式锁实现剖析"
+title: "SOFAJRaft-RheaKV 分布式锁实现剖析　| SOFAJRaft 实现原理"
 author: "米麒麟"
 authorlink: "https://github.com/SteNicholas"
 description: "本文为《剖析 | SOFAJRaft 实现原理》第七篇，本篇作者米麒麟。"
 categories: "SOFAJRaft"
-tags: ["SOFAJRaft"]
+tags: ["SOFAJRaft","剖析 | SOFAJRaft 实现原理"]
 date: 2019-09-17T20:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1568724694999-7ae0e484-4de4-43c7-91e7-4b1f9a38a602.jpeg"
 ---
