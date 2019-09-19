@@ -1,4 +1,5 @@
-import { $ } from './utils'
+import { $, $$, i18n } from './utils'
+import { createPagination } from './pagination'
 
 import qs from 'query-string'
 import algoliasearch from 'algoliasearch'
@@ -9,7 +10,7 @@ export default function searchFunc() {
   if ($("#js-menu-search")) {
     function jump2Search() {
       const query = $("#js-menu-search .input").value
-      window.location.href = `/search/?query=${encodeURIComponent(query)}`
+      window.location.href = `/search/?${qs.stringify({query})}`
     }
 
     $("#js-menu-search .input").addEventListener('keydown', function(event) {
@@ -29,36 +30,80 @@ export default function searchFunc() {
 
   const input = $('#js-search-input')
   const button = $('#js-search-button')
-  // const type = $('#js-result-type')
+  const typeRadio = $$('#js-result-type input')
   const list = $('#js-result-container')
 
   const client = algoliasearch('G2HVBB5ERN', '4b161290c268b4eeb154171c562aa1e4')
   const index = client.initIndex('sofastack')
+  // index.setSettings({
+  //   hitsPerPage: 10
+  // })
 
-  const searchFunc = (query) => {
+  let searchParam = {
+    query: '',
+    type: 'all',
+
+    page: 1,
+  }
+
+  const setType = (type) => {
+    if (!type) {
+      return
+    }
+
+    if (searchParam.type !== type) {
+      searchParam.page = 1
+    }
+    searchParam.type = type
+
+    typeRadio.forEach(radio => {
+      if (radio.value === type) {
+        radio.parentNode.classList.add('-selected')
+      } else {
+        radio.parentNode.classList.remove('-selected')
+      }
+    })
+
+    searchFunc(input.value)
+  }
+
+  typeRadio.forEach(radio => {
+    radio.addEventListener('click', function() {
+      setType(this.value)
+    })
+  })
+
+  const searchFunc = () => {
+    const { query, type } = searchParam
+    if (query === '') {
+      return
+    }
+
     // update URL but no need to refresh
-    history.pushState(null, `${query} · SOFAStack`, `/search/?query=${encodeURIComponent(query)}`)
+    history.pushState(null, `${query} · SOFAStack`, `/search/?${qs.stringify(searchParam)}`)
+
+    console.log(searchParam)
 
     index.search({ 
       query,
-      facets:"type"
-    }, (err, { hits } = {}) => {
+      facets:"type",
+      facetFilters: type === 'all' ? undefined : `type:${type}`,
+      page: searchParam.page - 1,
+    }, (err, res) => {
       if (err) {
         // console.log(err)
         // console.log(err.debugData)
         return
       }
+      
+      console.log(res)
+      const { hits } = res
 
       if (hits.length === 0) {
-        // TODO: i18n 
         list.innerHTML = `
-          <div class="not-found">未找到搜索结果</div>
+          <div class="not-found">${i18n('noSearchResults')}</div>
         `
         return
-      }
-
-      const highlight = (str) => {
-        return str.replace(new RegExp(query, 'gi'), '<span class="highlight">$&</span>')
       }
 
       list.innerHTML = hits.map((hit) => `
@@ -67,29 +112,52 @@ export default function searchFunc() {
 						<a href=${hit.permalink}>${hit.title}</a>
 					</div>
 					<div class="summary">
-						${highlight(hit.summary)}...
+						${hit._highlightResult.summary.value}...
 					</div>
 					<div class="meta">
-						来自 · ${hit.type}
+						${i18n('from')} · ${i18n(hit.type)}
 					</div>
 				</div>
-			`).join('')
+      `).join('') + `
+        <nav class="ss-pagination" 
+          data-total="${res.nbPages}" 
+          data-current="${res.page + 1}"
+        ></nav>
+      `
+
+      createPagination((number) => {
+        searchParam.page = number - 1
+        return `/search/?${qs.stringify(searchParam)}`
+      })
     })
   }
 
-  const query = qs.parseUrl(location.href).query.query
-  if (query) {
-    input.value = query
-    searchFunc(query)
+  const urlQueryParam = qs.parseUrl(location.href).query
+  if (urlQueryParam) {
+    searchParam = {
+      ...searchParam,
+      ...urlQueryParam,
+    }
+
+    if (urlQueryParam.page) {
+      searchParam.page = parseInt(urlQueryParam.page)
+    }
+
+    input.value = searchParam.query
+    setType(searchParam.type)
   }
 
-  button.addEventListener('click', () => {
-    searchFunc(input.value)
+  input.addEventListener('input', function() {
+    searchParam.query = this.value
   })
 
-  input.addEventListener('keydown', (event) => {
+  input.addEventListener('keydown', function(event) {
     if (event.key === 'Enter') {
-      searchFunc(input.value)
+      searchFunc()
     }
+  })
+
+  button.addEventListener('click', () => {
+    searchFunc()
   })
 }

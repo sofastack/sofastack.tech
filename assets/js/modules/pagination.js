@@ -4,26 +4,13 @@ const MAX_AD_LINKS = 2
 // a magic number
 const DOT = -98
 
-export default function() {
-  if ($$('.ss-pagination').length === 0) {
-    return
-  }
 
+export function createPagination(hrefFn) {
   const paginationDOM = $$('.ss-pagination')[0]
   const dataset = paginationDOM.dataset
 
   const total = parseInt(dataset.total)
   const current = parseInt(dataset.current)
-
-  /**
-   * example: 
-   * '/tags/sofa/page/1/ -> '/tags/sofa'
-   * */
-  const pathArr = location.pathname.split('/').filter(str => str !== "")
-  const pageIndex = pathArr.indexOf('page')
-  const basePathArr = pathArr.slice(0, pageIndex === -1 ? undefined : pageIndex)
-
-  const baseurl = basePathArr.join('/')
 
   const paginations = []
 
@@ -62,7 +49,7 @@ export default function() {
   paginationDOM.innerHTML = `
   <ul class="list">
     ${paginations.map(number =>
-      `<a href="/${baseurl}/page/${number}"}>
+      `<a href="${hrefFn(number)}"}>
         <li class="item ${number === current ? '-active' : ''}">
           ${number === DOT ? '...' : number}
         </li>
@@ -70,4 +57,26 @@ export default function() {
     ).join('')}
   </ul>
   `
+}
+
+
+export default function() {
+  if ($$('.ss-pagination').length === 0) {
+    return
+  }
+
+  /**
+   * example: 
+   * '/tags/sofa/page/1/ -> '/tags/sofa'
+   * */
+  const pathArr = location.pathname.split('/').filter(str => str !== "")
+  const pageIndex = pathArr.indexOf('page')
+  const basePathArr = pathArr.slice(0, pageIndex === -1 ? undefined : pageIndex)
+
+  const baseurl = basePathArr.join('/')
+
+  const hrefFn = (number) => {
+    return `/${baseurl}/page/${number}`
+  }
+  createPagination(hrefFn)
 }

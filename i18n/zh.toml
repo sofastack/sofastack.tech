@@ -11,6 +11,9 @@ other = "搜索"
 [search_placeholder]
 other = "请输入要搜索的关键词"
 
+[all]
+other = "全部"
+
 # project
 [main_project]
 other = "主要项目"
