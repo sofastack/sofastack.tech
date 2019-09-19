@@ -19,6 +19,8 @@
 <script src="{{ (resources.Get "js/highlight.pack.js").RelPermalink }}"></script>
 <script>hljs.initHighlightingOnLoad();</script>
 
+
+<script>window.SITE_LANGUAGE = "{{ .Site.Language.Lang }}"</script>
 <script src="{{ "/js/app.js" | relURL }}"></script>
 
 <!-- TODO: meta -->
