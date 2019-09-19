@@ -4,8 +4,11 @@ const MAX_AD_LINKS = 2
 // a magic number
 const DOT = -98
 
-
 export function createPagination(hrefFn) {
+  const wrapHrefFn = (number) => {
+    return number === DOT ? '' : hrefFn(number)
+  }
+
   const paginationDOM = $$('.ss-pagination')[0]
   const dataset = paginationDOM.dataset
 
@@ -18,11 +21,11 @@ export function createPagination(hrefFn) {
   let right = Math.min(total, current + MAX_AD_LINKS)
 
   if (right - left !== MAX_AD_LINKS * 2) {
-      let l = MAX_AD_LINKS * 2 - (right - current)
-      let r = MAX_AD_LINKS * 2 - (current - left)
+    let l = MAX_AD_LINKS * 2 - (right - current)
+    let r = MAX_AD_LINKS * 2 - (current - left)
 
-      left = Math.max(1, current - l)
-      right = Math.min(total, current + r)
+    left = Math.max(1, current - l)
+    right = Math.min(total, current + r)
   }
 
   for (let page = left; page <= right; page++) {
@@ -48,13 +51,14 @@ export function createPagination(hrefFn) {
 
   paginationDOM.innerHTML = `
   <ul class="list">
-    ${paginations.map(number =>
-      `<a href="${hrefFn(number)}"}>
+    ${paginations.map(number => {
+      const href = wrapHrefFn(number) === "" ? "" : ` href="${wrapHrefFn(number)}"`
+      return `<a${href}>
         <li class="item ${number === current ? '-active' : ''}">
           ${number === DOT ? '...' : number}
         </li>
       </a>`
-    ).join('')}
+    }).join('')}
   </ul>
   `
 }

@@ -82,8 +82,6 @@ export default function searchFunc() {
     // update URL but no need to refresh
     history.pushState(null, `${query} · SOFAStack`, `/search/?${qs.stringify(searchParam)}`)
 
-    console.log(searchParam)
-
     index.search({ 
       query,
       facets:"type",
@@ -96,7 +94,6 @@ export default function searchFunc() {
         return
       }
       
-      console.log(res)
       const { hits } = res
 
       if (hits.length === 0) {
