@@ -100,6 +100,25 @@ export default function() {
     g.animate(config).move(len * 0.7, -len * 0.5)
   }
 
+  (function debrisFloatAnimate() {
+    SVG.select('#debris1 svg g').animate({
+      ease: '<>', 
+      duration: 5000, 
+    }).move(-Math.random() * 200, Math.random() * 70)
+
+    SVG.select('#debris2 svg g').animate({
+      ease: '<>', 
+      duration: 5000, 
+    }).move(Math.random() * 140, Math.random() * 100)
+
+    SVG.select('#debris3 svg g').animate({
+      ease: '<>', 
+      duration: 5000, 
+    }).move(Math.random() * 100, Math.random() * 100)
+
+    setTimeout(debrisFloatAnimate, 8000)
+  })()
+
   // vars
   const processDom = document.getElementsByClassName('home-container')[0]
   let boxRect = calcBoxRect()
