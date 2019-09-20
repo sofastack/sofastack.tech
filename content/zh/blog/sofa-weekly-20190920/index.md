@@ -26,7 +26,7 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 我们会筛选重点问题
 通过 " SOFA WEEKLY " 的形式回复
 
-**@wy223170 **提问：
+**@wy223170** 提问：
 
 > 你好，请问下 SOFAJRaft 如何在虚拟化环境下使用，比如部署三个实例，三个实例都是 docker 的。因为虚拟化实例可能漂移，怎么保证 snapshot 的迁移呢？另外怎么控制多个实例的同时漂移，导致集群不可用的问题？
 
