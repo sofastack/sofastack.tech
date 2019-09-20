@@ -74,6 +74,15 @@
     margin-bottom: 16px;
     font-size: 20px;
     color: $text-color;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+
+    .card-extra {
+      color: $text-color-link;
+      font-size: 12px;
+      cursor: pointer;
+    }
   }
 
   &.-bg-opacity {

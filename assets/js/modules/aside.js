@@ -1,7 +1,36 @@
-import { $, $$ } from './utils'
+import { $, $$, i18n } from './utils'
 
-export default function() {
+function tags() {
+  if (!$(".ss-aside-tags")) {
+    return
+  }
 
+  const button = $(".ss-aside-tags .card-extra")
+  button.innerHTML = i18n('expand')
+
+  let show = false
+
+  button.addEventListener('click', function() {
+    show = !show
+    this.innerHTML = i18n(!show ? 'collapse' : 'expand')
+
+    const tags = [].slice.call($$('.ss-aside-tags .tag'), 10)
+
+    if (show) {
+      tags.forEach(tag => {
+        tag.style.display = 'none'
+      })
+    } else {
+      tags.forEach(tag => {
+        tag.style.display = 'inline-block'
+      })
+    }
+  })
+
+  button.click()
+}
+
+function getCode() {
   if (!$("#js-code")) {
     return
   }
@@ -48,4 +77,9 @@ export default function() {
   })
 
   httpBtn.click()
+}
+
+export default function() {
+  tags()
+  getCode()
 }

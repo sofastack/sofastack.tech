@@ -1,16 +1,19 @@
 // adide-tags
 .ss-aside-tags {
-  display: flex;
-  flex-wrap: wrap;
 
-  margin: 0;
-  padding: 0;
-  list-style: none;
+  .tag-list {
+    display: flex;
+    flex-wrap: wrap;
+  
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
 
-  >li {
+  .tag {
     font-size: 12px;
     color: $text-color-tag;
-    background-color: $background-color-tag;
+    background-color: rgba($background-color-tag, .5);
     padding: 5px 8px;
     margin: 0 8px 6px 0;
     border-radius: 4px;

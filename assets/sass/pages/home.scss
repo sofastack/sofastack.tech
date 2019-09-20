@@ -1,3 +1,45 @@
+#js-home-animition {
+  position: relative;
+  margin: auto;
+  height: 100vh;
+  display: flex;
+  justify-content: flex-end;
+  // align-items: center;
+  // background-color: rgba($color: #fff, $alpha: 0.5);
+  z-index: 100;
+  max-width: $content-max-width;
+
+  @include mobile {
+    justify-content: center;
+  }
+
+  svg {
+    overflow: visible;
+  }
+
+  #debris1 {
+    position: absolute;
+    right: 400px;
+  }
+
+  #debris2 {
+    position: absolute;
+    top: 200px;
+    right: 500px;
+  }
+
+  #debris3 {
+    position: absolute;
+    // top: 400px;
+    right: 0px;
+  }
+
+  // #box {
+  //   // position: absolute;
+  //   // right: 0;
+  // }
+}
+
 .home-background {
   position: absolute;
   top: 64px;

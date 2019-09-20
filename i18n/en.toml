@@ -8,9 +8,11 @@ other = "中文"
 [search]
 other = "Search"
 
-# TODO:
 [search_placeholder]
-other = "Keyword"
+other = "Search"
+
+[all]
+other = "All"
 
 # project
 [main_project]
