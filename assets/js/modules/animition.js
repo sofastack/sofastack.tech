@@ -76,9 +76,9 @@ export default function() {
   function animate(fraction, animateConfig) {
     const len = interpolate(fraction) * 700
 
-    const config = { 
-      ease: '<>', 
-      duration: 1, 
+    const config = {
+      ease: '<>',
+      duration: 1,
       // delay: 0,
       ...animateConfig,
     }
@@ -100,72 +100,61 @@ export default function() {
     g.animate(config).move(len * 0.7, -len * 0.5)
   }
 
+  ;
   (function debrisFloatAnimate() {
     SVG.select('#debris1 svg g').animate({
-      ease: '<>', 
-      duration: 5000, 
+      duration: 5000,
     }).move(-Math.random() * 200, Math.random() * 70)
 
     SVG.select('#debris2 svg g').animate({
-      ease: '<>', 
-      duration: 5000, 
+      duration: 5000,
     }).move(Math.random() * 140, Math.random() * 100)
 
     SVG.select('#debris3 svg g').animate({
-      ease: '<>', 
-      duration: 5000, 
+      duration: 5000,
     }).move(Math.random() * 100, Math.random() * 100)
 
     setTimeout(debrisFloatAnimate, 8000)
   })()
 
-  // vars
-  const processDom = document.getElementsByClassName('home-container')[0]
-  let boxRect = calcBoxRect()
 
-  let hover = false
-  let isBreak = false
-
-  function calcBoxRect() {
-    const rect = processDom.getBoundingClientRect()
-    return rect
+  function calcDuration(percent) {
+    return percent * 5000
   }
 
-  function onMousemove(evt) {
-    const { clientX } = evt
-    animate((clientX - boxRect.left) / boxRect.width)
-  }
+  // init state
+  animate(0.3)
 
-  window.addEventListener('resize', () => {
-    boxRect = calcBoxRect()
-  })
+  ;
+  (function boxAnimate() {
+    animate(0.7, {
+      duration: calcDuration(0.4),
+    })
 
-  processDom.addEventListener('mouseenter', () => {
-    hover = true
-  })
-  processDom.addEventListener('mouseleave', () => {
-    hover = false
-  })
-  processDom.addEventListener('mousemove', onMousemove)
+    animate(0.3, {
+      duration: calcDuration(0.4),
+    })
 
+    animate(0.8, {
+      duration: calcDuration(0.5),
+    })
 
-  setInterval(() => {
+    animate(0.4, {
+      duration: calcDuration(0.4),
+    })
 
-    if (hover) {
-      return
-    }
+    animate(1, {
+      duration: calcDuration(0.6),
+    })
 
-    if (!isBreak) {
-      animate(1, {
-        duration: 2500,
-      })
-    } else {
-      animate(0, {
-        duration: 3000,
-      })
-    }
+    animate(0, {
+      ease: '-',
+      duration: 400,
+      delay: 100,
+    })
 
-    isBreak = !isBreak
+    // total = 2.3 * 5 + 0.4
 
-  }, 4000)
+    setTimeout(boxAnimate, 1000 * 16)
+  })()
 }
