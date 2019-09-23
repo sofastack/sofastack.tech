@@ -5,7 +5,7 @@ authorlink: "https://github.com/zongtanghu"
 description: "本文为《剖析 | SOFAJRaft 实现原理》最后一篇，本篇作者胡宗棠。"
 categories: "SOFAJRaft"
 tags: ["SOFAJRaft","SOFALab","剖析 | SOFAJRaft 实现原理"]
-date: 2019-09-23T20:00:00+08:00
+date: 2019-09-23T18:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1569229317568-a8fe041b-1bfe-4448-8fca-d9b974015de0.jpeg"
 ---
 
