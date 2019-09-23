@@ -25,7 +25,6 @@ SOFAJRaft：[https://github.com/sofastack/sofa-jraft](https://github.com/sofasta
 
 ## 一、快照的概念与特点
 
-
 SOFAJRaft 是对 Raft 共识算法的 Java 实现。既然是共识算法，就不可避免的要对需要达成共识的内容，在多个服务器节点之间进行传输，一般将这些共识的内容称之为日志块（LogEntry）。如果读过《剖析 | SOFAJRaft 实现原理》系列前面几篇文章的同学，应该了解到在 SOFAJRaft 中，可以通过“节点之间并发复制日志”、“批量化复制日志”和“复制日志pipeline机制”等优化手段来保证服务器节点之间日志复制效率达到最大化。
 
 但如果遇到下面的两个场景，仅依靠上面的优化方法并不能有效地根本解决问题：
