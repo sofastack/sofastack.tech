@@ -29,11 +29,13 @@
 	img_width = "530px"
 
 
-[[charpter_description]]
+[cloud_native]
 	title = "Cloud Native Architecture"
 	description = "With the growth of business scale and system complexity, the traditional microservice management and operations becomes increasingly faster, and developers and operation personnel face multiple challenges. Some emerging concepts like Service Mesh and Serverless can resolve such problems. To improve the performance in large-scale deployment and cope with the actual situations in actual implementation, SOFAStack also open source the similar projects such as SOFAMesh and SOFAMosn."
-	img = "img/home/cd-cloud-native-architecture-en.png"
-	img_width = "390px"
+
+[[cloud_native_sub]]
+	title = "Microservice"
+	description = "Applications that are managed and deployed as single entities are often called monoliths."
 
 
 [subscription]

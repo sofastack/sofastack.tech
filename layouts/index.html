@@ -14,7 +14,7 @@
 
 <div class="home-background">
 	<!-- <img src="{{ (resources.Get "/img/home/cover.png").RelPermalink }}" /> -->
-	<div id="js-home-animition"></div>
+	<div id="js-home-animation"></div>
 	<!-- <div class="gradient"></div> -->
 </div>
 
@@ -73,6 +73,29 @@
 				{{ end }}
 			</div>
 		{{ end }}
+		<div id="js-arch" class="container">
+			<div class="img-container">
+				<div id="js-arch-animation"></div>
+			</div>
+
+			<div class="description-container INIT">
+				{{ $d := $data.cloud_native }}
+				<h3 class="title">{{ $d.title }} </h3>
+				<p class="home-description">
+					{{ $d.description }}
+				</p>
+			</div>
+
+			{{ range $i,$d := $data.cloud_native_sub }}
+				<div class="description-container {{$d.position}} -hidden" >
+					<h3 class="title">{{ $d.title }} </h3>
+					<p class="home-description">
+						{{ $d.description }}
+					</p>
+				</div>
+			{{ end }}
+
+		</div>
 	</div>
 </div>
 

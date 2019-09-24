@@ -1,11 +1,10 @@
-#js-home-animition {
+#js-home-animation {
   position: relative;
   margin: auto;
   height: 100vh;
   display: flex;
   justify-content: flex-end;
   // align-items: center;
-  // background-color: rgba($color: #fff, $alpha: 0.5);
   z-index: 100;
   max-width: $content-max-width;
 
@@ -38,6 +37,22 @@
   //   // position: absolute;
   //   // right: 0;
   // }
+}
+
+#js-arch-animation {
+  // position: absolute;
+  // left: 0;
+  // right: 0;
+  // height: 70vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+
+  svg {
+    overflow: visible;
+  }
 }
 
 .home-background {
@@ -212,6 +227,10 @@
 
   .description-container {
     width: 48%;
+    
+    &.-hidden {
+      display: none;
+    }
 
     @include mobile {
       width: 100%;
