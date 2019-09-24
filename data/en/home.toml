@@ -36,6 +36,22 @@
 [[cloud_native_sub]]
 	title = "Microservice"
 	description = "Applications that are managed and deployed as single entities are often called monoliths."
+	position = "TR"
+
+[[cloud_native_sub]]
+	title = "Immutable Infrastructure"
+	description = "Immutable infrastructure is the practice of creating change through replacing rather than modifying."
+	position = "BL"
+
+[[cloud_native_sub]]
+	title = "Service Mesh"
+	description = "Service Mesh is a dedicated infrastructure layer for handling service-to-service communication."
+	position = "TL"
+
+[[cloud_native_sub]]
+	title = "Declarative API"
+	description = "We declare the final state of the system and the system will continue to drive to that state."
+	position = "BR"
 
 
 [subscription]
