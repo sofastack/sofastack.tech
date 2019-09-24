@@ -11,6 +11,12 @@
 					</svg>
 				</a>
 				<nav id="mobile-menu">
+						<div id="js-menu-search-mobile" class="navbar-search-mobile">
+							<input class="input" placeholder="{{ i18n "search_placeholder"}}">
+							<svg class="icon" aria-hidden="true">
+								<use xlink:href="#icon-search"></use>
+							</svg>
+						</div>
 					{{ $currentPage := . }}
           {{ range .Site.Menus.main }}
             <a

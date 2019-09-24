@@ -36,7 +36,12 @@ function interpolate(x) {
 }
 
 function boxAnimation() {
-  SVG.select('#box svg').first().size(600, 600)
+  if (window.innerWidth <= 568) {
+    SVG.select('#box svg').first().size(400, 400)
+  } else {
+    SVG.select('#box svg').first().size(600, 600)
+  }
+
   SVG.select('#debris1 svg').first().size(200, 200)
   SVG.select('#debris2 svg').first().size(200, 200)
   SVG.select('#debris3 svg').first().size(200, 200)
