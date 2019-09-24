@@ -23,7 +23,7 @@ function archAnimation() {
   }
 
   if (window.innerWidth <= 568) {
-    SVG.select('#arch svg').first().size(400, 250)
+    SVG.select('#arch svg').first().size(320, 220)
   } else {
     SVG.select('#arch svg').first().size(600, 440)
   }
@@ -316,15 +316,19 @@ function archAnimation() {
 
   Object.keys(cirMap).forEach(dir => {
     groupMap[dir].on('mouseenter', makeListener(dir))
+    groupMap[dir].on('touchstart', makeListener(dir))
     // cirMap[dir].on('mouseleave', animateReset)
   })
 
-  textCloud.on('mouseenter', () => {
+  const resetListener = () => {
     animateReset()
     state = 'INIT'
 
     setDescription('INIT')
-  })
+  }
+
+  textCloud.on('mouseenter', resetListener)
+  textCloud.on('touchstart', resetListener)
 }
 
 export {
