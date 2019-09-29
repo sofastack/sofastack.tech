@@ -10,6 +10,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563524226806-e93607a3-1b7
 ---
 
 **SOFA WEEKLY | 每周精选，筛选每周精华问答**
+
 **同步开源进展，欢迎留言互动**
 
 ![weekly.jpg](https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1562925824761-fc720f21-9622-437b-a783-0b0729eda119.jpeg)
@@ -97,7 +98,8 @@ SOFAJRaft：[https://github.com/sofastack/sofa-jraft](https://github.com/sofasta
 
 **本周发布详情如下：**
 
-1、发布 SOFARegistry v5.3.0，主要变更如下：
+**1、发布 SOFARegistry v5.3.0，主要变更如下：**
+
 - session 和 data 数据一致性增强，定期数据比对和失效数据能力
 - 支持 Publisher 和 Subscriber 黑名单顾虑和数据清理能力
 - 修正 dataserver 启动期在节点数量较多时候无法达到 working 状态问题
