@@ -106,4 +106,4 @@ SOFAJRaft：[https://github.com/sofastack/sofa-jraft](https://github.com/sofasta
 - 优化任务确认逻辑线程占用时间较大导致阻塞问题
 - 优化 meta 启动期一些 leader 失败问题
 
-详细发布报告：https://github.com/sofastack/sofa-registry/releases/tag/v5.3.0
+详细发布报告：<https://github.com/sofastack/sofa-registry/releases/tag/v5.3.0>
