@@ -57,6 +57,7 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 - [蚂蚁金服分布式链路跟踪组件埋点机制 | 剖析](https://www.sofastack.tech/blog/sofa-tracer-event-tracing-deep-dive/)
 
 #### <SOFA:JRaftLab/> 系列文章
+
 - [SOFAJRaft Snapshot 原理剖析 | SOFAJRaft 实现原理](https://www.sofastack.tech/blog/sofa-jraft-snapshot-principle-analysis/)
 - [SOFAJRaft-RheaKV 分布式锁实现剖析　| SOFAJRaft 实现原理](https://www.sofastack.tech/blog/sofa-jraft-rheakv-distributedlock/)
 - [SOFAJRaft 日志复制 - pipeline 实现剖析 | SOFAJRaft 实现原理](https://www.sofastack.tech/blog/sofa-jraft-pipeline-principle/)
