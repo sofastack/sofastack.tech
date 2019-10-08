@@ -21,16 +21,16 @@ aliases: "/sofa-rpc/docs/Getting-Started-with-SOFA-Boot"
     <relativePath/>
 </parent>
 ```
-  替换为：
+替换为：
 ```xml
 <parent>
     <groupId>com.alipay.sofa</groupId>
     <artifactId>sofaboot-dependencies</artifactId>
-    <version>3.0.0</version>
+    <version>${sofa.boot.version}</version>
 </parent>
 ```
-4. 配置 application.properties ：
-application.properties 是 SOFABoot 工程中的配置文件。这里需要配置一个必不可少的配置项，即应用名。
+这里的 `${sofa.boot.version}` 指定具体的 SOFABoot 版本，参考[发布历史](https://github.com/sofastack/sofa-boot/releases)
+4. 配置 application.properties ：application.properties 是 SOFABoot 工程中的配置文件。这里需要配置一个必不可少的配置项，即应用名。
 ```
 spring.application.name=AppName
 ```
@@ -41,8 +41,7 @@ spring.application.name=AppName
      <artifactId>rpc-sofa-boot-starter</artifactId>
 </dependency>
 ```
-6. 声明 SOFABoot 的 xsd 文件：
-  在要使用的 XML 配置文件中将头部 xsd 文件的声明设置为如下。这样就能够使用 SOFABoot 定义的 XML 元素进行开发。
+6. 声明 SOFABoot 的 xsd 文件：在要使用的 XML 配置文件中将头部 xsd 文件的声明设置为如下。这样就能够使用 SOFABoot 定义的 XML 元素进行开发。
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
