@@ -1,7 +1,7 @@
 ---
 title: "服务注册中心数据分片和同步方案详解 | SOFARegistry 解析"
 author: "明不二"
-authorlink: "www.github.com/mingxing47"
+authorlink: "https://github.com/mingxing47"
 description: " 本文为《剖析 |  SOFARegistry 框架》第四篇，作者明不二"
 categories: "SOFARegistry"
 tags: ["SOFARegistry","剖析 | SOFARegistry 框架","SOFALab"]
