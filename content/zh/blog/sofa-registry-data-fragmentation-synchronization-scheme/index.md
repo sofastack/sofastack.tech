@@ -263,8 +263,8 @@ Client 端在本地内存内已经存储了需要订阅和发布的服务数据�
 
 在海量服务注册场景下，为保障 DataServer 能否无限扩容面对海量数据的业务场景，与其他服务注册中心不同的是，SOFARegistry 采用了一致性 Hash 算法进行数据分片，保障了数据的可扩展性。同时，通过在 DataServer 内存里以 dataInfoId 的粒度记录操作日志，并且在 DataServer 之间也是以 dataInfoId 的粒度去做数据同步，保障了数据的一致性。
 
-## 参考资料
+## SOFARegistryLab 系列阅读
 
-- _[Consistent hashing and random trees: distributed caching protocols for relieving hot spots on the World Wide Web](https://www.akamai.com/us/en/multimedia/documents/technical-publication/consistent-hashing-and-random-trees-distributed-caching-protocols-for-relieving-hot-spots-on-the-world-wide-web-technical-publication.pdf)：_[https://www.akamai.com/us/en/multimedia/documents/technical-publication/consistent-hashing-and-random-trees-distributed-caching-protocols-for-relieving-hot-spots-on-the-world-wide-web-technical-publication.pdf](https://www.akamai.com/us/en/multimedia/documents/technical-publication/consistent-hashing-and-random-trees-distributed-caching-protocols-for-relieving-hot-spots-on-the-world-wide-web-technical-publication.pdf)
-- [《海量数据下的注册中心 - SOFARegistry 架构介绍》](https://www.sofastack.tech/blog/sofa-registry-introduction/)
-- [《蚂蚁金服开源服务注册中心 SOFARegistry | SOFA 开源一周年献礼》](https://www.sofastack.tech/blog/sofa-registry-deep-dive/)
+- [服务注册中心 MetaServer 功能介绍和实现剖析 | SOFARegistry 解析](/blog/sofa-registry-metaserver-function-introduction/)
+- [服务注册中心 SOFARegistry 解析 | 服务发现优化之路](/blog/sofa-registry-service-discovery-optimization/)
+- [海量数据下的注册中心 - SOFARegistry 架构介绍](/blog/sofa-registry-introduction/)
