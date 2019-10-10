@@ -4,7 +4,7 @@ author: "明不二"
 authorlink: "www.github.com/mingxing47"
 description: " 本文为《剖析 |  SOFARegistry 框架》第四篇，作者明不二"
 categories: "SOFARegistry"
-tags: ["SOFARegistry","剖析 | SOFARegistry 框架]
+tags: ["SOFARegistry","剖析 | SOFARegistry 框架","SOFALab"]
 date: 2019-10-10T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1570697312166-2572aeac-1f43-4136-b1f1-75caf0ee15b0.png"
 ---
