@@ -129,8 +129,8 @@ export default function searchFunc() {
       `
 
       createPagination((number) => {
-        searchParam.page = number - 1
-        return `/search/?${qs.stringify(searchParam)}`
+        const param = { ...searchParam, page: number }
+        return `/search/?${qs.stringify(param)}`
       })
     })
   }

@@ -3,7 +3,7 @@ import tocFunc from './modules/toc'
 import asideFunc from './modules/aside'
 import searchFunc from './modules/search'
 import paginationFunc from './modules/pagination'
-import animationFunc from './modules/animation'
+import animationFunc from './modules/animition'
 
 import zoom from 'zoom-image'
 import 'zoom-image/css/zoom-image.css'

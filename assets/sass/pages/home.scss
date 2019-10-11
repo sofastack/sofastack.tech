@@ -1,10 +1,11 @@
-#js-home-animation {
+#js-home-animition {
   position: relative;
   margin: auto;
   height: 100vh;
   display: flex;
   justify-content: flex-end;
   // align-items: center;
+  // background-color: rgba($color: #fff, $alpha: 0.5);
   z-index: 100;
   max-width: $content-max-width;
 
