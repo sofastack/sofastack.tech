@@ -293,10 +293,10 @@ function archAnimation() {
   }
 
   function setDescription(dir) {
-    $$(`#js-arch .description-container`).forEach(it => {
-      it.classList.add('-hidden')
+    $$(`#js-arch .row`).forEach(it => {
+      it.classList.remove('-selected')
     })
-    $(`#js-arch .${dir}`).classList.remove('-hidden')
+    $(`#js-arch .${dir}`).classList.add('-selected')
   }
 
   function makeListener(dir) {

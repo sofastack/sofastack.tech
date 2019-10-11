@@ -26,7 +26,14 @@
 
 [cloud_native]
 	title = "云原生架构"
+	img = "img/home/cd-cloud-native-architecture.png"
+	img_width = "530px"
+
+[[cloud_native_sub]]
+	title = "云原生架构"
 	description = "随着业务规模和系统复杂性的增长，传统的微服务管理运维也变得越来越快，开发人员和运维人员面临诸多挑战。Service Mesh 和 Serverless 等新兴概念的出现可以解决此类问题。SOFAStack 为满足大规模部署下的性能要求以及应对落地实践中的实际情况，也开源了类似 SOFAMesh 和 SOFAMosn 等项目。"
+	img = "img/home/cd-cloud-native-architecture.png"
+	position = "INIT"
 
 [[cloud_native_sub]]
 	title = "微服务"
