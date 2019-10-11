@@ -286,12 +286,23 @@
         line-height: 20px;
       }
 
-      &.-selected {
+      &:hover {
         .col-1 {
           color: #fff;
           background-color: #4990f0;
           transform: scale(1.1, 1.05);
           box-shadow: 0 4px 16px 0 rgba(24, 144, 255, 0.30);
+        }
+
+        .col-2 {
+          background-color: #e2ecfa;
+        }
+      }
+
+      &.-selected {
+        .col-1 {
+          color: #fff;
+          background-color: #4990f0;
         }
 
         .col-2 {
