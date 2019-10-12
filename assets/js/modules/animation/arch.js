@@ -38,6 +38,13 @@ function archAnimation() {
     duration: 400,
   }
 
+  const groupMap = {
+    TR: SVG.select('#arch #tr').first(),
+    TL: SVG.select('#arch #tl').first(),
+    BL: SVG.select('#arch #bl').first(),
+    BR: SVG.select('#arch #br').first(),
+  }
+
   const cirMap = {
     TR: SVG.select('#arch #cir-tr').first(),
     TL: SVG.select('#arch #cir-tl').first(),
@@ -72,10 +79,6 @@ function archAnimation() {
   const shadow = SVG.select('#arch #cir-shadow').first()
   const textCloud = SVG.select('#arch #text-cloud').first()
 
-  // TODO: line-cross
-
-  console.log(TLstate)
-
   let dir_last = 'INIT'
 
   const STATE_MAP = {
@@ -107,10 +110,6 @@ function archAnimation() {
         })
     })
 
-    // eachDir(d => {
-    //   console.log(iconMap[d].cx(), iconMap[d].cy())
-    // })
-
     eachDir(d => {
       const s = STATE[d].icon
       iconMap[d]
@@ -141,8 +140,9 @@ function archAnimation() {
         textBG.attr({
           x: bbox.x - padding * 2,
           y: bbox.y - padding,
-          width: 0,
+          width: bbox.width + padding * 4,
           height: bbox.height + padding * 2,
+          opacity: 0,
         });
 
         textBG
@@ -150,7 +150,7 @@ function archAnimation() {
           .dmove(...dmoveArr)
           .attr({
             fill: BGColor,
-            width: bbox.width + padding * 4,
+            opacity: 1,
           });
 
       } else {
@@ -160,6 +160,7 @@ function archAnimation() {
           y: 0,
           width: 0,
           height: 0,
+          opacity: 0,
         });
       }
 
@@ -216,42 +217,49 @@ function archAnimation() {
         .move(90)
     }
 
-    let move = dir[1] === 'L' ? -60 : 60
+    let moveX = dir[1] === 'R' ? -440 : 100
+    let moveY = dir[0] === 'T' ? 30 : -60
     if (dir === 'INIT') {
-      move = 0
+      moveX = 0
+      moveY = 0
     }
 
     textCloud
       .animate(animateConfig)
-      .move(move)
+      .move(moveX, moveY)
       .opacity(dir === 'INIT' ? 1 : 0.6)
 
     dir_last = dir
   }
 
-  function setDescription(dir, dom) {
+  function setDescription(dir) {
     $$(`#js-arch .row`).forEach(it => {
       it.classList.remove('-selected');
     })
-    if (dom) {
-      dom.classList.add('-selected')
-    } else {
-      $(`#js-arch .${dir}`).classList.add('-selected')
-    }
+    $(`#js-arch .${dir}`).classList.add('-selected')
   }
 
   $$(`#js-arch .row`).forEach(it => {
     it.addEventListener('click', function() {
-      setDescription(null, this)
-    })
-  })
+      const dir = Array.from(this.classList).filter(n => n === n.toUpperCase())[0]
 
-  Object.keys(cirMap).forEach(dir => {
-    textMap[dir].on('mouseenter', () => {
       setState(dir)
       setDescription(dir)
     })
   })
+
+  Object.keys(cirMap).forEach(dir => {
+    groupMap[dir].on('mouseenter', () => {
+      setState(dir)
+      setDescription(dir)
+    })
+  })
+
+  // const centerCir = SVG.select('#arch #center-circle').first()
+
+  // centerCir.on('mousemove', function(e) {
+  //   console.log(e, centerCir.bbox())
+  // })
 
   textCloud.on('mouseenter', () => {
     setState('INIT')
