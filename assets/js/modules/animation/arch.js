@@ -232,18 +232,36 @@ function archAnimation() {
     dir_last = dir
   }
 
-  function setDescription(dir) {
+  function setDescription(dir, isHover) {
+    const className = isHover ? '-hover' : '-selected'
+
     $$(`#js-arch .row`).forEach(it => {
+      it.classList.remove('-hover');
       it.classList.remove('-selected');
     })
-    $(`#js-arch .${dir}`).classList.add('-selected')
+    $(`#js-arch .${dir}`).classList.add(className)
   }
 
   $$(`#js-arch .row`).forEach(it => {
+
+    function getDir(dom) {
+      return Array.from(dom.classList).filter(n => n === n.toUpperCase())[0]
+    }
+
     it.addEventListener('click', function() {
-      const dir = Array.from(this.classList).filter(n => n === n.toUpperCase())[0]
+      const dir = getDir(this)
 
       setState(dir)
+      setDescription(dir)
+    })
+
+    // hover
+    it.addEventListener('mouseenter', function() {
+      const dir = getDir(this)
+      setDescription(dir, true)
+    })
+    it.addEventListener('mouseleave', function() {
+      const dir = getDir(this)
       setDescription(dir)
     })
   })

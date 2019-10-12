@@ -264,6 +264,8 @@
 
   .intro-table {
     .row {
+      cursor: pointer;
+
       .col-1,
       .col-2 {
         padding: 16px;
@@ -281,12 +283,13 @@
 
       .col-2 {
         @extend .home-description;
-        text-align: center;
+        text-align: left;
+        font-size: 13px;
         border-right: none;
         line-height: 20px;
       }
 
-      &:hover {
+      &.-hover {
         .col-1 {
           color: #fff;
           background-color: #4990f0;
