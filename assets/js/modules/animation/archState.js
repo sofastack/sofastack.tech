@@ -33,6 +33,9 @@ const CIRCLE_SELECTED = {
   r: 110,
   fill: BGColor,
 }
+const CIRCLE_SMALL = {
+  r: 45,
+}
 
 const ICON_DEFAULT = {
   fill: '#000',
@@ -70,7 +73,7 @@ export const INITstate = {
       ...ICON_DEFAULT,
     },
     text: {
-      dmove: [110, 0],
+      dmove: [70, 0],
       ...TEXT_DEFAULT,
     },
   },
@@ -84,7 +87,7 @@ export const INITstate = {
       ...ICON_DEFAULT,
     },
     text: {
-      dmove: [-140, 0],
+      dmove: [-40, -50],
       ...TEXT_DEFAULT,
     },
   },
@@ -98,7 +101,7 @@ export const INITstate = {
       ...ICON_DEFAULT,
     },
     text: {
-      dmove: [-800, -60],
+      dmove: [-300, 160],
       ...TEXT_DEFAULT,
     },
   },
@@ -112,7 +115,7 @@ export const INITstate = {
       ...ICON_DEFAULT,
     },
     text: {
-      dmove: [620, -80],
+      dmove: [155, 180],
       ...TEXT_DEFAULT,
     },
   },
@@ -134,7 +137,7 @@ export const TLstate = extendState(INITstate, {
   },
   TR: {
     circle: {
-      pos: val => [val[0] - 40, val[1] + 40],
+      pos: val => [val[0] - 40, val[1] + 30],
     },
     icon: {
       ...ICON_NOT_SELECTED
@@ -145,7 +148,8 @@ export const TLstate = extendState(INITstate, {
   },
   BR: {
     circle: {
-      pos: val => [val[0] - 100, val[1] - 100],
+      pos: val => [val[0] - 70, val[1] - 160],
+      ...CIRCLE_SMALL,
     },
     icon: {
       ...ICON_NOT_SELECTED
@@ -156,7 +160,7 @@ export const TLstate = extendState(INITstate, {
   },
   BL: {
     circle: {
-      pos: val => [val[0] + 50, val[1] - 50],
+      pos: val => [val[0] + 120, val[1] + 10],
     },
     icon: {
       ...ICON_NOT_SELECTED
@@ -170,11 +174,11 @@ export const TLstate = extendState(INITstate, {
 export const TRstate = extendState(INITstate, {
   TR: {
     circle: {
-      pos: val => [val[0] + 100, val[1] - 100],
+      pos: val => [val[0] + 300, val[1] - 150],
       ...CIRCLE_SELECTED,
     },
     icon: {
-      pos: (_, val) => [val.circle.pos[0] + 100, val.circle.pos[1] - 100],
+      pos: (_, val) => [val.circle.pos[0] + 300, val.circle.pos[1] - 150],
       ...ICON_SELECTED,
     },
     text: {
@@ -183,7 +187,7 @@ export const TRstate = extendState(INITstate, {
   },
   TL: {
     circle: {
-      pos: val => [val[0] + 50, val[1] + 50],
+      pos: val => [val[0] + 270, val[1] + 50],
     },
     icon: {
       ...ICON_NOT_SELECTED
@@ -194,7 +198,7 @@ export const TRstate = extendState(INITstate, {
   },
   BR: {
     circle: {
-      pos: val => [val[0] - 100, val[1] - 100],
+      pos: val => [val[0] - 100, val[1] + 70],
     },
     icon: {
       ...ICON_NOT_SELECTED
@@ -205,7 +209,8 @@ export const TRstate = extendState(INITstate, {
   },
   BL: {
     circle: {
-      pos: val => [val[0] + 50, val[1] - 50],
+      pos: val => [val[0] - 50, val[1] - 100],
+      ...CIRCLE_SMALL,
     },
     icon: {
       ...ICON_NOT_SELECTED
@@ -232,7 +237,7 @@ export const BRstate = extendState(INITstate, {
   },
   TR: {
     circle: {
-      pos: val => [val[0] - 60, val[1] + 60],
+      pos: val => [val[0] + 60, val[1] + 20],
     },
     icon: {
       ...ICON_NOT_SELECTED
@@ -243,7 +248,8 @@ export const BRstate = extendState(INITstate, {
   },
   TL: {
     circle: {
-      pos: val => [val[0] + 100, val[1] + 100],
+      pos: val => [val[0] + 270, val[1] + 20],
+      ...CIRCLE_SMALL,
     },
     icon: {
       ...ICON_NOT_SELECTED
@@ -254,7 +260,7 @@ export const BRstate = extendState(INITstate, {
   },
   BL: {
     circle: {
-      pos: val => [val[0] + 60, val[1] - 60],
+      pos: val => [val[0] - 65, val[1] - 100],
     },
     icon: {
       ...ICON_NOT_SELECTED
@@ -282,6 +288,7 @@ export const BLstate = extendState(INITstate, {
   TR: {
     circle: {
       pos: val => [val[0] - 60, val[1] + 60],
+      ...CIRCLE_SMALL,
     },
     icon: {
       ...ICON_NOT_SELECTED

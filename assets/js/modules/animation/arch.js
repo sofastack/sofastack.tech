@@ -35,7 +35,7 @@ function archAnimation() {
   SVG.select('#arch svg').first().size(600, 440)
 
   const animateConfig = {
-    duration: 400,
+    duration: 500,
   }
 
   const groupMap = {
@@ -112,13 +112,31 @@ function archAnimation() {
 
     eachDir(d => {
       const s = STATE[d].icon
-      iconMap[d]
-        .animate(animateConfig)
+
+      if (d === dir) {
+        iconMap[d]
         .center(s.pos[0], s.pos[1])
         .attr({
-          fill: s.fill
+          fill: s.fill,
+          opacity: 0,
+        })
+        .animate({
+          delay: animateConfig.duration,
+          duration: 200,
+        })
+        .attr({
+          opacity: 1
+        })
+      }
+
+      iconMap[d]
+        .center(s.pos[0], s.pos[1])
+        .animate(animateConfig)
+        .attr({
+          fill: s.fill,
         })
     })
+
     eachDir(d => {
       const s = STATE[d].text
 
@@ -142,12 +160,18 @@ function archAnimation() {
           y: bbox.y - padding,
           width: bbox.width + padding * 4,
           height: bbox.height + padding * 2,
+          fill: '#fff',
           opacity: 0,
         });
 
         textBG
-          .animate(animateConfig)
+          .animate({
+            duration: 5
+          })
           .dmove(...dmoveArr)
+          .animate({
+            duration: animateConfig.duration
+          })
           .attr({
             fill: BGColor,
             opacity: 1,
@@ -165,7 +189,9 @@ function archAnimation() {
       }
 
       text
-        .animate(animateConfig)
+        .animate({
+          duration: 5
+        })
         .dmove(...dmoveArr)
         .attr({
           fill: s.fill
@@ -232,14 +258,11 @@ function archAnimation() {
     dir_last = dir
   }
 
-  function setDescription(dir, isHover) {
-    const className = isHover ? '-hover' : '-selected'
-
+  function setDescription(dir) {
     $$(`#js-arch .row`).forEach(it => {
-      it.classList.remove('-hover');
       it.classList.remove('-selected');
     })
-    $(`#js-arch .${dir}`).classList.add(className)
+    $(`#js-arch .${dir}`).classList.add('-selected')
   }
 
   $$(`#js-arch .row`).forEach(it => {
@@ -256,14 +279,14 @@ function archAnimation() {
     })
 
     // hover
-    it.addEventListener('mouseenter', function() {
-      const dir = getDir(this)
-      setDescription(dir, true)
-    })
-    it.addEventListener('mouseleave', function() {
-      const dir = getDir(this)
-      setDescription(dir)
-    })
+    // it.addEventListener('mouseenter', function() {
+    //   const dir = getDir(this)
+    //   setDescription(dir, true)
+    // })
+    // it.addEventListener('mouseleave', function() {
+    //   const dir = getDir(this)
+    //   setDescription(dir)
+    // })
   })
 
   Object.keys(cirMap).forEach(dir => {
@@ -273,16 +296,12 @@ function archAnimation() {
     })
   })
 
-  // const centerCir = SVG.select('#arch #center-circle').first()
-
-  // centerCir.on('mousemove', function(e) {
-  //   console.log(e, centerCir.bbox())
-  // })
-
   textCloud.on('mouseenter', () => {
     setState('INIT')
     setDescription('INIT')
   })
+
+  // setState('BR')
 }
 
 export {
