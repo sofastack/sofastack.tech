@@ -1,7 +1,6 @@
 import SVG from 'svg.js'
 import { $, $$ } from '../utils'
 import { mountSVG } from './index.js'
-// import debounce from 'lodash-es/debounce'
 
 import arch from '../../../svg/arch.svg'
 
@@ -35,7 +34,7 @@ function archAnimation() {
   SVG.select('#arch svg').first().size(600, 440)
 
   const animateConfig = {
-    duration: 500,
+    duration: 300,
   }
 
   const groupMap = {
@@ -89,7 +88,7 @@ function archAnimation() {
     BR: BRstate,
   }
 
-  function setState(dir) {
+  function _setState(dir) {
     if (dir_last === dir) {
       return
     }
@@ -98,6 +97,19 @@ function archAnimation() {
 
     eachDir(d => {
       const s = STATE[d].circle
+
+      if (d === dir) {
+        cirMap[d]
+          .style({
+            filter: "url(#dropshadow)",
+          })
+      } else {
+        cirMap[d]
+        .style({
+          filter: "none",
+        })
+      }
+
       cirMap[d]
         .animate(animateConfig)
         .attr({
@@ -106,7 +118,7 @@ function archAnimation() {
           r: s.r,
         })
         .style({
-          fill: s.fill
+          fill: s.fill,
         })
     })
 
@@ -115,18 +127,18 @@ function archAnimation() {
 
       if (d === dir) {
         iconMap[d]
-        .center(s.pos[0], s.pos[1])
-        .attr({
-          fill: s.fill,
-          opacity: 0,
-        })
-        .animate({
-          delay: animateConfig.duration,
-          duration: 200,
-        })
-        .attr({
-          opacity: 1
-        })
+          .center(s.pos[0], s.pos[1])
+          .attr({
+            fill: s.fill,
+            opacity: 0,
+          })
+          .animate({
+            delay: animateConfig.duration,
+            duration: 200,
+          })
+          .attr({
+            opacity: 1
+          })
       }
 
       iconMap[d]
@@ -265,28 +277,45 @@ function archAnimation() {
     $(`#js-arch .${dir}`).classList.add('-selected')
   }
 
-  $$(`#js-arch .row`).forEach(it => {
+  let isAnimate = false
+  let nextDir = 'NONE'
 
+  const setState = (dir) => {
+    nextDir = dir
+    if (isAnimate === false) {
+      _setState(nextDir)
+      isAnimate = true
+
+      setTimeout(() => {
+        isAnimate = false
+        _setState(nextDir)
+      }, 500)
+    }
+  }
+
+  $$(`#js-arch .row`).forEach(it => {
     function getDir(dom) {
       return Array.from(dom.classList).filter(n => n === n.toUpperCase())[0]
     }
 
-    it.addEventListener('click', function() {
-      const dir = getDir(this)
+    // click
+    // it.addEventListener('click', function() {
+    //   const dir = getDir(this)
+    //   setState(dir)
+    //   setDescription(dir)
+    // })
 
+    // hover
+    it.addEventListener('mouseenter', function() {
+      const dir = getDir(this)
+      setState(dir)
+      setDescription(dir, true)
+    })
+    it.addEventListener('mouseleave', function() {
+      const dir = getDir(this)
       setState(dir)
       setDescription(dir)
     })
-
-    // hover
-    // it.addEventListener('mouseenter', function() {
-    //   const dir = getDir(this)
-    //   setDescription(dir, true)
-    // })
-    // it.addEventListener('mouseleave', function() {
-    //   const dir = getDir(this)
-    //   setDescription(dir)
-    // })
   })
 
   Object.keys(cirMap).forEach(dir => {
