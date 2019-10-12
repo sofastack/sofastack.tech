@@ -1,18 +1,13 @@
-import { $ } from './utils'
 import SVG from 'svg.js'
-// import debounce from 'lodash-es/debounce'
+import { mountSVG } from './index.js'
 
-// import a from '../../svg/a.svg'
-// import b from '../../svg/b.svg'
+import box from '../../../svg/box.svg'
+import debris1 from '../../../svg/float/debris-1.svg'
+import debris2 from '../../../svg/float/debris-2.svg'
+import debris3 from '../../../svg/float/debris-3.svg'
 
-import box from '../../svg/box.svg'
-import debris1 from '../../svg/float/debris-1.svg'
-import debris2 from '../../svg/float/debris-2.svg'
-import debris3 from '../../svg/float/debris-3.svg'
-
-function loadSVG() {
-
-  const svgMap = {
+function loadBoxSVG() {
+  const boxSvgMap = {
     // a: {
     //   svg: a,
     //   // transform: 'tranlateX(45)'
@@ -31,28 +26,22 @@ function loadSVG() {
     },
   }
 
-  Object.keys(svgMap).forEach(val => {
-    const div = document.createElement('div')
-    $("#js-home-animition").appendChild(div)
-    div.innerHTML = svgMap[val].svg
-    div.setAttribute("id", val)
-    // div.style.position = 'absolute'
-    // div.style.transform = svgMap[val].transform
-  })
+  mountSVG("#js-home-animation", boxSvgMap)
 }
+
+
 
 function interpolate(x) {
   return x
 }
 
-export default function() {
-  if (!$("#js-home-animition")) {
-    return
+function boxAnimation() {
+  if (window.innerWidth <= 568) {
+    SVG.select('#box svg').first().size(400, 400)
+  } else {
+    SVG.select('#box svg').first().size(600, 600)
   }
 
-  loadSVG()
-
-  SVG.select('#box svg').first().size(600, 600)
   SVG.select('#debris1 svg').first().size(200, 200)
   SVG.select('#debris2 svg').first().size(200, 200)
   SVG.select('#debris3 svg').first().size(200, 200)
@@ -157,4 +146,9 @@ export default function() {
 
     setTimeout(boxAnimate, 1000 * 16)
   })()
+}
+
+export {
+  loadBoxSVG,
+  boxAnimation,
 }

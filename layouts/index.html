@@ -14,7 +14,7 @@
 
 <div class="home-background">
 	<!-- <img src="{{ (resources.Get "/img/home/cover.png").RelPermalink }}" /> -->
-	<div id="js-home-animition"></div>
+	<div id="js-home-animation"></div>
 	<!-- <div class="gradient"></div> -->
 </div>
 
@@ -49,14 +49,6 @@
 	<div class="home-container">
 		{{ range $i,$d := $data.charpter_description }}
 			<div class="container">
-				{{ if not (modBool $i 2) }}
-					<div class="img-container">
-						<img {{if isset $d "img_width"}}style="width:{{$d.img_width}}"{{end}}
-							src="{{ (resources.Get $d.img).RelPermalink }}"
-						>
-					</div>
-				{{ end }}
-
 				<div class="description-container">
 					<h3 class="title">{{ $d.title }} </h3>
 					<p class="home-description">
@@ -64,15 +56,38 @@
 					</p>
 				</div>
 
-				{{ if (modBool $i 2) }}
-					<div class="img-container">
-						<img {{if isset $d "img_width"}}style="width:{{$d.img_width}}"{{end}}
-							src="{{ (resources.Get $d.img).RelPermalink }}"
-						>
-					</div>
-				{{ end }}
+				<div class="img-container">
+					<img {{if isset $d "img_width"}}style="width:{{$d.img_width}}"{{end}}
+						src="{{ (resources.Get $d.img).RelPermalink }}"
+					>
+				</div>
 			</div>
 		{{ end }}
+		<div id="js-arch" class="container">
+			<div class="img-container">
+				<h3 class="title">{{ $data.cloud_native.title }} </h3>
+				<div id="js-arch-animation" class="-hidden-mobile"></div>
+			</div>
+
+			<div class="description-container">
+				<table class="intro-table">
+					{{ range $i,$d := $data.cloud_native_sub }}
+						<tr class="row {{ $d.position }}">
+							<td class="col-1">{{ $d.title }}</td>
+							<td class="col-2">{{ $d.description }}</td>
+						</tr>
+					{{ end }}
+				</table>
+			</div>
+
+			<div class="img-container -show-mobile">
+				{{ $d := $data.cloud_native }}
+				<img {{if isset $d "img_width"}}style="width:{{$d.img_width}}"{{end}}
+					src="{{ (resources.Get $d.img).RelPermalink }}"
+				>
+			</div>
+
+		</div>
 	</div>
 </div>
 

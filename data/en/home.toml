@@ -29,11 +29,31 @@
 	img_width = "530px"
 
 
-[[charpter_description]]
+[cloud_native]
+	title = "Cloud Native Architecture"
+	img = "img/home/cd-cloud-native-architecture.png"
+	img_width = "530px"
+
+[[cloud_native_sub]]
 	title = "Cloud Native Architecture"
 	description = "With the growth of business scale and system complexity, the traditional microservice management and operations becomes increasingly faster, and developers and operation personnel face multiple challenges. Some emerging concepts like Service Mesh and Serverless can resolve such problems. To improve the performance in large-scale deployment and cope with the actual situations in actual implementation, SOFAStack also open source the similar projects such as SOFAMesh and SOFAMosn."
-	img = "img/home/cd-cloud-native-architecture-en.png"
-	img_width = "390px"
+	img = "img/home/cd-cloud-native-architecture.png"
+	position = "INIT"
+
+[[cloud_native_sub]]
+	title = "Immutable Infrastructure"
+	description = "Immutable infrastructure is the practice of creating change through replacing rather than modifying."
+	position = "BL"
+
+[[cloud_native_sub]]
+	title = "Service Mesh"
+	description = "Service Mesh is a dedicated infrastructure layer for handling service-to-service communication."
+	position = "TL"
+
+[[cloud_native_sub]]
+	title = "Declarative API"
+	description = "We declare the final state of the system and the system will continue to drive to that state."
+	position = "BR"
 
 
 [subscription]

@@ -8,20 +8,26 @@ export default function searchFunc() {
 
   // menu search input
   if ($("#js-menu-search")) {
-    function jump2Search() {
-      const query = $("#js-menu-search .input").value
+
+    function jump2Search(id) {
+      const query = $(`#${id} .input`).value
       window.location.href = `/search/?${qs.stringify({query})}`
     }
 
-    $("#js-menu-search .input").addEventListener('keydown', function(event) {
-      if (event.key === 'Enter') {
-        jump2Search()
-      }
-    })
+    const bindListener = (id) => {
+      $(`#${id} .input`).addEventListener('keydown', function(event) {
+        if (event.key === 'Enter') {
+          jump2Search(id)
+        }
+      })
+  
+      $(`#${id} .icon`).addEventListener('click', function() {
+        jump2Search(id)
+      })
+    }
 
-    $("#js-menu-search .icon").addEventListener('click', function() {
-      jump2Search()
-    })
+    bindListener('js-menu-search')
+    bindListener('js-menu-search-mobile')
   }
 
   if (!$(".ss-search")) {

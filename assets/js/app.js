@@ -3,7 +3,7 @@ import tocFunc from './modules/toc'
 import asideFunc from './modules/aside'
 import searchFunc from './modules/search'
 import paginationFunc from './modules/pagination'
-import animitionFunc from './modules/animition'
+import animationFunc from './modules/animation'
 
 import zoom from 'zoom-image'
 import 'zoom-image/css/zoom-image.css'
@@ -13,7 +13,7 @@ import { $$ } from './modules/utils'
 const main = () => {
 
   // Animition
-  animitionFunc()
+  animationFunc()
 
   // Menu
   menuFunc()
@@ -30,7 +30,7 @@ const main = () => {
   // pagination page
   paginationFunc()
 
-  // image zoon
+  // image zoom
   $$('.typo img').forEach(imgElem => {
     zoom(imgElem)
   })

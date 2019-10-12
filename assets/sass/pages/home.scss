@@ -1,11 +1,10 @@
-#js-home-animition {
+#js-home-animation {
   position: relative;
   margin: auto;
   height: 100vh;
   display: flex;
   justify-content: flex-end;
   // align-items: center;
-  // background-color: rgba($color: #fff, $alpha: 0.5);
   z-index: 100;
   max-width: $content-max-width;
 
@@ -38,6 +37,22 @@
   //   // position: absolute;
   //   // right: 0;
   // }
+}
+
+#js-arch-animation {
+  // position: absolute;
+  // left: 0;
+  // right: 0;
+  // height: 70vh;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+
+  svg {
+    overflow: visible;
+  }
 }
 
 .home-background {
@@ -217,32 +232,86 @@
       width: 100%;
     }
 
-    .title {
-      font-size: 30px;
-      margin: 20px 0;
-      font-weight: 450;
-    }
-
     .home-description {
       line-height: 28px;
       margin-bottom: 20px;
     }
   }
 
+  .title {
+    font-size: 30px;
+    margin: 20px 0;
+    font-weight: 450;
+  }
+
   .img-container {
     width: 48%;
     display: flex;
+    flex-direction: column;
     justify-content: center;
-    align-items: center;
 
     @include mobile {
       width: 100%;
-      order: -1;
-      margin-bottom: 20px;
+      >img {
+        margin-top: 32px;
+      }
     }
 
     >img {
       max-width: 100%;
+    }
+  }
+
+  .intro-table {
+    .row {
+      cursor: pointer;
+
+      .col-1,
+      .col-2 {
+        padding: 16px;
+        text-align: center;
+        border: 1px solid $button-border-color;
+      }
+
+      .col-1 {
+        width: 36%;
+        font-size: 16px;
+        font-weight: 400;
+        border-left: none;
+        background-color: #f8f8f8;
+      }
+
+      .col-2 {
+        @extend .home-description;
+        text-align: left;
+        font-size: 13px;
+        border-right: none;
+        line-height: 20px;
+      }
+
+      &.-selected {
+        .col-1 {
+          color: #000;
+          background-color: #e7e8e8;
+        }
+
+        .col-2 {
+          background-color: #f8f8f8;
+        }
+      }
+
+      &:hover {
+        .col-1 {
+          color: #fff;
+          background-color: #4990f0;
+          transform: scale(1.1, 1.05);
+          box-shadow: 0 4px 16px 0 rgba(24, 144, 255, 0.30);
+        }
+
+        .col-2 {
+          background-color: #e2ecfa;
+        }
+      }
     }
   }
 }
