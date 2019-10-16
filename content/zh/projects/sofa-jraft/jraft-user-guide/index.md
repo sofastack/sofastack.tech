@@ -1280,3 +1280,27 @@ rhea-rpc-request-timer_-1
               99% <= 0.00 milliseconds
             99.9% <= 0.00 milliseconds
 ```
+
+## 11. Rocksdb 配置更改
+
+SOFJRaft 的 log storage 默认实现基于 rocksdb 存储，默认的 rocksdb 配置为吞吐优先原则，可能不适合所有场景以及机器规格，比如 4G 内存的机器建议缩小 block_size 以避免过多的内存占用。
+
+
+```java
+final BlockBasedTableConfig conf = new BlockBasedTableConfig() //
+            // Begin to use partitioned index filters
+            // https://github.com/facebook/rocksdb/wiki/Partitioned-Index-Filters#how-to-use-it
+            .setIndexType(IndexType.kTwoLevelIndexSearch) //
+            .setFilter(new BloomFilter(16, false)) //
+            .setPartitionFilters(true) //
+            .setMetadataBlockSize(8 * SizeUnit.KB) //
+            .setCacheIndexAndFilterBlocks(false) //
+            .setCacheIndexAndFilterBlocksWithHighPriority(true) //
+            .setPinL0FilterAndIndexBlocksInCache(true) //
+            // End of partitioned index filters settings.
+            .setBlockSize(4 * SizeUnit.KB)//
+            .setBlockCacheSize(64 * SizeUnit.MB) //
+            .setCacheNumShardBits(8);
+
+StorageOptionsFactory.registerRocksDBTableFormatConfig(RocksDBLogStorage.class, conf);
+```
