@@ -150,7 +150,7 @@ SOFARegistry 服务端在接收到“服务发布（PublisherRegister）”和�
 
 ![eureka 的核心模型](https://cdn.nlark.com/yuque/0/2019/png/226702/1556089042666-6bd10df3-6040-45e4-a59a-3436b249cf9f.png)
 
-（图片摘自 [https://www.jianshu.com/p/0356b7e9bc42](https://www.jianshu.com/p/0356b7e9bc42)）
+（图片摘自简书）
 
 最后再展示一下 SOFARPC 基于 Zookeeper 作为服务注册中心时，在 Zookeeper 中的数据结构（如下图），Provider/Consumer 和 SOFARegistry 的 Publisher/Subscriber 类似，最大的区别是 SOFARegistry 在订阅的维度上支持 scope（zone/datacenter），即订阅范围。
 
