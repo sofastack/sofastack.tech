@@ -3,8 +3,6 @@ title: "Package into Ark Plugin"
 aliases: "/sofa-boot/docs/sofa-ark-ark-plugin-demo"
 ---
 
-> [Project address](https://github.com/sofastack/sofa-ark/tree/master/sofa-ark-samples/sample-ark-plugin)
-
 ## Introduction
 This sample project demonstrates how to use Maven plugins to package a general Java project into an `Ark plugin` that meets the standard specifications. 
 

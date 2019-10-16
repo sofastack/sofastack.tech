@@ -157,7 +157,5 @@ Ark Biz 和 Ark Plugin 有很大的不同，最明显的则是 Ark Biz 单向依
 
 ## 相关传送门
 
-- Ark Plugin 的工程示例：<https://github.com/sofastack/sofa-ark/tree/master/sofa-ark-samples/sample-ark-plugin>
-- Spring Boot 工程使用类隔离能力：<https://github.com/sofastack/sofa-ark/tree/master/sofa-ark-samples/sample-springboot-ark>
 - SOFABoot 类隔离使用篇：<https://zhuanlan.zhihu.com/p/36909393>
 - SOFAStack 知乎专栏：<https://zhuanlan.zhihu.com/sofastack>
