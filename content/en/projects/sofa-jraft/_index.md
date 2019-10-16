@@ -4,8 +4,8 @@ description: "SOFAJRaft is a production-level high-performance Java implementati
 gitHub: "https://github.com/sofastack/sofa-jraft"
 level: "tool"
 weight: 2
+icon: "/img/icons/sofajraft.png"
 sidebar:
-
 - title: 'SOFAJRaft overview'
   link: 'overview'
 - title: 'Engine architecture'

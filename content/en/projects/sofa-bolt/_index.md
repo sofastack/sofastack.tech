@@ -1,12 +1,11 @@
 ---
-
 title: "SOFABolt"
 description: "SOFABolt is a Netty-based network communication framework."
 GitHub: "https://github.com/sofastack/sofa-bolt"
 level: "tool"
 weight: 1
+icon: "/img/icons/sofabolt.png"
 sidebar:
-
 - title: 'SOFABolt overview'
   link: 'overview'
 - title: 'Features'
@@ -19,6 +18,5 @@ sidebar:
   link: 'sofa-bolt-contribution'
 - title: 'Related articles'
   link: 'related-links'
-
 ---
 
