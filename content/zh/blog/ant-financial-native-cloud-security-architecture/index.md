@@ -42,7 +42,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1571295410250-183069b1-613
 
 SOFAMesh 是基于 Istio 改进和扩展而来的 Service Mesh 大规模落地实践方案。在继承 Istio 强大功能和丰富特性的基础上，为满足大规模部署下的性能要求以及应对落地实践中的实际情况，所做的改进包括采用 Golang 编写的 SOFAMosn 取代  Envoy，极大降低了 Mesh 本身的开发难度，并做了一些创新性工作，例如合并Mixer到数据平面以解决性能瓶颈，增强 Pilot 以实现更灵活的服务发现机制，增加对 SOFARPC、Dubbo 的支持，等等。
 
-更多详情可查看 SOFAMesh 的 GitHub 主页：https://github.com/sofastack/sofa-mesh
+更多详情可查看 SOFAMesh 的 GitHub 主页：<https://github.com/sofastack/sofa-mesh>
 
 蚂蚁金服率先在生产环境中大规模落地 SOFAMesh，超过 10W+ 容器做到了 Mesh 化，平稳支撑了 618 大促，给我们带来了多协议支持、UDPA、平滑升级、安全等多方面的好处，并且对性能仅有轻微的影响，单跳 CPU 增加 5% 损耗，RT增加不到 0.2ms，甚至部分业务经过 Mesh 化改造将业务链路下沉，RT 反而下降 7%。
 
@@ -113,7 +113,7 @@ SOFAMosn(Modular Observable Smart Network)，是一款采用 GoLang 开发的 Se
 
 ### ElasticDL
 
-[http://elasticdl.org](http://elasticdl.org/)
+<http://elasticdl.org](http://elasticdl.org/>
 
 ElasticDL 是蚂蚁金服发布的新一代基于云原生的开源 AI 学习平台，它的架构基于原生的 Kubernetes 体系，因此具有强大的容错能力和弹性调度能力。另外，ElasticDL 能够支持新一代的 TensorFlow 2.0 框架，也希望引领 AI 开发者走向新一代的机器学习。
 
