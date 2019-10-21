@@ -4,7 +4,7 @@ author: "水寒"
 description: "本文为《剖析 | SOFARPC 框架》第八篇，作者水寒，目前就职于网易。"
 categories: "SOFARPC"
 aliases: "/posts/__dr07w9"
-tags: ["SOFARPC","剖析 | SOFARPC 框架"]
+tags: ["SOFARPC","剖析 | SOFARPC 框架","SOFALab"]
 date: 2018-10-03T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563274331359-e7803f14-caec-4d52-ac68-95deadf3f8ab.png"
 ---

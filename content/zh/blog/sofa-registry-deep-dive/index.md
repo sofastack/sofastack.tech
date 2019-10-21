@@ -3,8 +3,8 @@ author: "尚彧"
 date: 2019-03-27T14:30:00.000Z
 title:  "蚂蚁金服开源服务注册中心 SOFARegistry | SOFA 开源一周年献礼"
 description: "此次，我们宣布开源蚂蚁金服注册中心 SOFARegistry 作为一周年的礼物之一，本文为根据现场分享整理的详细介绍。"
-tags: ["SOFARegistry"]
-categories: "SOFABoot"
+tags: ["SOFARegistry","SOFAMeetup"]
+categories: "SOFARegistry"
 aliases: "/posts/2018-05-04-01"
 cover: "/cover.jpg"
 ---

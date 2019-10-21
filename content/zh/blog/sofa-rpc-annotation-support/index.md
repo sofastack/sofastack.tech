@@ -4,7 +4,7 @@ author: "敏古"
 description: "本文为《剖析 | SOFARPC 框架》第十一篇，作者敏古。"
 categories: "SOFARPC"
 aliases: "/posts/__xcon7k"
-tags: ["SOFARPC","剖析 | SOFARPC 框架"]
+tags: ["SOFARPC","剖析 | SOFARPC 框架","SOFALab"]
 date: 2018-10-25T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563351799427-65a125ce-a514-48e3-857f-f3f39615e66c.png"
 ---

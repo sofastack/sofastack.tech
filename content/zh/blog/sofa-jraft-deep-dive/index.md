@@ -3,7 +3,7 @@ author: "力鲲"
 date: 2019-04-25T14:30:00.000Z
 aliases: "/posts/2019-04-25-01"
 title: "蚂蚁金服开源 SOFAJRaft 详解| 生产级高性能 Java 实现"
-tags: ["SOFAJRaft","剖析 | SOFAJRaft 实现原理"]
+tags: ["SOFAJRaft","剖析 | SOFAJRaft 实现原理","SOFALab"]
 categories: "SOFAJRaft"
 description: "本文根据 SOFAChannel#4 直播分享整理，主题：SOFAJRaft 详解。"
 cover: "/cover.png"

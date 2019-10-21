@@ -5,7 +5,7 @@ authorlink: "https://github.com/SteNicholas"
 description: "本文为《剖析 | SOFARPC 框架》第九篇，作者米麒麟，目前就职于陆金所。"
 categories: "SOFARPC"
 aliases: "/posts/__saaygu"
-tags: ["SOFARPC","剖析 | SOFARPC 框架"]
+tags: ["SOFARPC","剖析 | SOFARPC 框架","SOFALab"]
 date: 2018-10-10T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563340692982-43f3fc47-5624-4259-97a8-e26d3701f86c.png"
 ---

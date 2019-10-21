@@ -4,7 +4,7 @@ author: "琪祥"
 authorlink: "https://github.com/atellwu"
 description: "本文为《剖析 | SOFARegistry 框架》第一篇，本篇作者琪祥。"
 categories: "SOFARegistry"
-tags: ["SOFARegistry","剖析 | SOFARegistry 框架"]
+tags: ["SOFARegistry","剖析 | SOFARegistry 框架","SOFALab"]
 date: 2019-04-25T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563516448245-2113c18e-d1a2-4700-ab03-d7e70a9ec23f.png"
 ---

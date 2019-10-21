@@ -3,7 +3,7 @@ title: "【剖析 | SOFARPC 框架】之总体设计与扩展机制"
 author: "碧远"
 authorlink: "https://github.com/leizhiyuan"
 date: 2018-08-02T15:00:00+08:00
-tags: ["SOFARPC","剖析 | SOFARPC 框架"]
+tags: ["SOFARPC","剖析 | SOFARPC 框架","SOFALab"]
 description: "本文为  剖析 SOFARPC 框架第一篇。"
 aliases: "/posts/__brb090"
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563179637220-67983326-d155-4b28-be39-c86f653727f9.png"

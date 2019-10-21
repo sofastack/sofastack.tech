@@ -5,7 +5,7 @@ authorlink: "https://www.simonming.com"
 description: "本文为《剖析 | SOFARPC 框架》最后一篇，作者明不二，就职于华为。"
 categories: "SOFARPC"
 aliases: "/posts/__iyivm9"
-tags: ["SOFARPC","剖析 | SOFARPC 框架"]
+tags: ["SOFARPC","剖析 | SOFARPC 框架","SOFALab"]
 date: 2018-11-01T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563354968685-1ef6100b-3cee-4117-992a-f565652aef05.png"
 ---

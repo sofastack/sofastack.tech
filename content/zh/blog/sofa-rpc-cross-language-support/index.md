@@ -5,7 +5,7 @@ authorlink: "https://github.com/SteNicholas"
 description: "本文为《剖析 | SOFARPC 框架》第十二篇，作者鸥波。"
 categories: "SOFARPC"
 aliases: "/posts/__nuo9ph"
-tags: ["SOFARPC","剖析 | SOFARPC 框架"]
+tags: ["SOFARPC","剖析 | SOFARPC 框架","SOFALab"]
 date: 2018-10-31T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563353611064-bb8307b1-ebfc-4fc8-a7df-cc78665d6823.png"
 ---

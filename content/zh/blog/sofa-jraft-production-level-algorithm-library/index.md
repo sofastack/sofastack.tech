@@ -4,7 +4,7 @@ author: "家纯"
 authorlink: "https://github.com/fengjiachun"
 description: "本文为 SOFAJRaft 的基础解析，欢迎阅读~"
 categories: "SOFAJRaft"
-tags: ["SOFAJRaft"]
+tags: ["SOFAJRaft","SOFALab"]
 date: 2019-03-12T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1564366619384-9412bd5f-5167-4e2e-8a32-966fc556faef.png"
 ---
