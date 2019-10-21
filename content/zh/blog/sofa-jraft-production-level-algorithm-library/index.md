@@ -90,8 +90,8 @@ SOFAJRaft 是从百度的 [braft](https://github.com/brpc/braft) 移植而来�
 
   - Log replication 就是要保证已经被 commit 的数据一定不会丢失，即一定要成功复制到多数派。
   - Log recovery 包含两个方面：
-     - Current term 日志恢复：主要针对一些 Follower 节点重启加入集群或者是新增 Follower 节点后如何追日志；
-     - Prev term 日志恢复：主要针对 Leader 切换前后的日志一致性。
+    - Current term 日志恢复：主要针对一些 Follower 节点重启加入集群或者是新增 Follower 节点后如何追日志；
+    - Prev term 日志恢复：主要针对 Leader 切换前后的日志一致性。
 
 3. Snapshot and log compaction：定时生成 snapshot，实现 log compaction 加速启动和恢复，以及 InstallSnapshot 给 Followers 拷贝数据，如下图：
 

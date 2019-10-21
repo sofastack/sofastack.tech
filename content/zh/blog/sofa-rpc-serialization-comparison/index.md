@@ -109,7 +109,7 @@ public class Person {
 
 一般这种类型的序列化主要用于跨语言当中，比如 `Protobuf`以及 `thrift `等等。在使用时都需要事先定义一个中间格式的文件（IDL 文件），然后根据不同语言的生成工具生成一个相应语言的可序列化类。以下是一个简单的 Proto的描述文件
 
-```
+```java
 message SofaApp{
     string appName = 1;
     repeated string authList = 2;
