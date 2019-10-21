@@ -3,12 +3,11 @@ author: "力鲲"
 date: 2019-04-25T14:30:00.000Z
 aliases: "/posts/2019-04-25-01"
 title: "蚂蚁金服开源 SOFAJRaft 详解| 生产级高性能 Java 实现"
-tags: ["SOFAJRaft","剖析 | SOFAJRaft 实现原理"]
+tags: ["SOFAJRaft","剖析 | SOFAJRaft 实现原理","SOFALab"]
 categories: "SOFAJRaft"
 description: "本文根据 SOFAChannel#4 直播分享整理，主题：SOFAJRaft 详解。"
 cover: "/cover.png"
 ---
-
 
 ![124.png](https://cdn.nlark.com/yuque/0/2019/png/226702/1554089277212-766e7837-a493-4608-9468-da02e6d631c6.png)
 
@@ -20,7 +19,7 @@ cover: "/cover.png"
 
 SOFAJRaft 是一个基于 Raft 一致性算法的生产级高性能 Java 实现，支持 MULTI-RAFT-GROUP，适用于高负载低延迟的场景。SOFAJRaft 是从百度的 braft 移植而来，做了一些优化和改进，感谢百度 braft 团队开源了如此优秀的 C++ Raft 实现。
 
-GitHub 地址：https://github.com/sofastack/sofa-jraft
+GitHub 地址：<https://github.com/sofastack/sofa-jraft>
 
 之前，我们有一篇介绍 SOFAJRaft 的文章，可在文末获得链接，延续这个内容，今天的演讲分为三部分，先简要介绍 Raft 算法，然后介绍 SOFAJRaft 的设计，最后说说它的优化。
 
@@ -175,9 +174,9 @@ SOFAJRaft 定位是生产级的 Raft 算法实现，所以除了几百个单元�
 
 ## 文中涉及到的相关链接
 
-- 本文 PPT 下载地址：https://tech.antfin.com/activities/382
-- GitHub 地址：https://github.com/sofastack/sofa-jraft
-- SOFAJRaft wiki：https://github.com/sofastack/sofa-jraft/wiki
-- 《蚂蚁金服开源 SOFAJRaft：生产级 Java Raft 算法库》：https://www.yuque.com/huarou/gd4szw/zon6t9
+- 本文 PPT 下载地址：<https://tech.antfin.com/activities/382>
+- GitHub 地址：<https://github.com/sofastack/sofa-jraft>
+- SOFAJRaft wiki：<https://github.com/sofastack/sofa-jraft/wiki>
+- 《蚂蚁金服开源 SOFAJRaft：生产级 Java Raft 算法库》：<https://www.yuque.com/huarou/gd4szw/zon6t9>
 
 [SOFAJRaft 蚂蚁金服基于 RAFT 一致性算法的 JAVA 实现-力鲲.pdf](https://gw.alipayobjects.com/os/basement_prod/c168f0d5-5c72-43a4-8674-53f57804a1d1.pdf)

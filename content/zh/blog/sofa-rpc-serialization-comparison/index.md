@@ -5,7 +5,7 @@ authorlink: "https://www.simonming.com"
 description: "本文为《剖析 | SOFARPC 框架》最后一篇，作者明不二，就职于华为。"
 categories: "SOFARPC"
 aliases: "/posts/__iyivm9"
-tags: ["SOFARPC","剖析 | SOFARPC 框架"]
+tags: ["SOFARPC","剖析 | SOFARPC 框架","SOFALab"]
 date: 2018-11-01T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563354968685-1ef6100b-3cee-4117-992a-f565652aef05.png"
 ---
@@ -109,7 +109,7 @@ public class Person {
 
 一般这种类型的序列化主要用于跨语言当中，比如 `Protobuf`以及 `thrift `等等。在使用时都需要事先定义一个中间格式的文件（IDL 文件），然后根据不同语言的生成工具生成一个相应语言的可序列化类。以下是一个简单的 Proto的描述文件
 
-```
+```java
 message SofaApp{
     string appName = 1;
     repeated string authList = 2;

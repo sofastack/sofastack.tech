@@ -4,7 +4,7 @@ author: "莫那·鲁道"
 authorlink: "https://github.com/stateIs0"
 description: " 本文为《剖析 | SOFARPC 框架》第七篇，作者莫那·鲁道 ，来自 E签宝。"
 categories: "SOFARPC"
-tags: ["SOFARPC","剖析 | SOFARPC 框架"]
+tags: ["SOFARPC","剖析 | SOFARPC 框架","SOFALab"]
 aliases: "/posts/__oqi4gw"
 date: 2018-09-26T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563272762674-c4f3a637-e5a8-4284-a5e2-4abf8c460800.png"

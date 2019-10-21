@@ -4,7 +4,7 @@ author: "敏古"
 description: "本文为《剖析 | SOFARPC 框架》第十一篇，作者敏古。"
 categories: "SOFARPC"
 aliases: "/posts/__xcon7k"
-tags: ["SOFARPC","剖析 | SOFARPC 框架"]
+tags: ["SOFARPC","剖析 | SOFARPC 框架","SOFALab"]
 date: 2018-10-25T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563351799427-65a125ce-a514-48e3-857f-f3f39615e66c.png"
 ---
@@ -51,20 +51,20 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563351799427-65a125ce-a51
 
 1. @Target：注解的作用目标，也就是指明，你的注解到底是用来修饰方法的？修饰类的？还是用来修饰字段属性的，有以下几种类型：
 
-  - ElementType.TYPE：允许被修饰的注解作用在类、接口和枚举上
-  - ElementType.FIELD：允许作用在属性字段上
-  - ElementType.METHOD：允许作用在方法上
-  - ElementType.PARAMETER：允许作用在方法参数上
-  - ElementType.CONSTRUCTOR：允许作用在构造器上
-  - ElementType.LOCAL_VARIABLE：允许作用在本地局部变量上
-  - ElementType.ANNOTATION_TYPE：允许作用在注解上
-  - ElementType.PACKAGE：允许作用在包上
+- ElementType.TYPE：允许被修饰的注解作用在类、接口和枚举上
+- ElementType.FIELD：允许作用在属性字段上
+- ElementType.METHOD：允许作用在方法上
+- ElementType.PARAMETER：允许作用在方法参数上
+- ElementType.CONSTRUCTOR：允许作用在构造器上
+- ElementType.LOCAL_VARIABLE：允许作用在本地局部变量上
+- ElementType.ANNOTATION_TYPE：允许作用在注解上
+- ElementType.PACKAGE：允许作用在包上
 
 2. @Retention：指定了被修饰的注解的生命周期，分以下三种类型：
 
-  - RetentionPolicy.SOURCE：该注解只保留在一个源文件当中，当编译器将源文件编译成class文件时，它不会将源文件中定义的注解保留在class文件中。
-  - RetentionPolicy.CLASS：该注解只保留在一个class文件当中，当加载class文件到内存时，虚拟机会将注解去掉，从而在程序中不能访问。
-  - RetentionPolicy.RUNTIME：该注解在程序运行期间都会存在内存当中。此时，我们可以通过反射来获得定义在某个类上的所有注解。
+- RetentionPolicy.SOURCE：该注解只保留在一个源文件当中，当编译器将源文件编译成class文件时，它不会将源文件中定义的注解保留在class文件中。
+- RetentionPolicy.CLASS：该注解只保留在一个class文件当中，当加载class文件到内存时，虚拟机会将注解去掉，从而在程序中不能访问。
+- RetentionPolicy.RUNTIME：该注解在程序运行期间都会存在内存当中。此时，我们可以通过反射来获得定义在某个类上的所有注解。
 
 3. @Documented：当我们执行 JavaDoc 文档打包时会被保存进 doc 文档，反之将在打包时丢弃。
 
@@ -144,7 +144,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563351799427-65a125ce-a51
 
 #### 3.2.2、服务发布
 
-`@SofaService` 的目标是将一个类注册到 SOFA Context 中。发布到 SofaRuntimeContext 的过程其实就是把服务组件对象塞到 `ConcurrentMap`_`<`_`ComponentName, ComponentInfo`_`> `_`registry` 对象中，当有其他地方需要查找服务组件的时候，可以通过 registry 进行查找。主要包含以下几个步骤：
+`@SofaService` 的目标是将一个类注册到 SOFA Context 中。发布到 SofaRuntimeContext 的过程其实就是把服务组件对象塞到 `ConcurrentMap`<`ComponentName, ComponentInfo`> `registry` 对象中，当有其他地方需要查找服务组件的时候，可以通过 registry 进行查找。主要包含以下几个步骤：
 
 1. 会遍历 SOFA 绑定关系，通过 handleSofaServiceBinding 方法进行不同类型的 RPC Binding。
 

@@ -4,7 +4,7 @@ author: "明不二"
 authorlink: "https://www.simonming.com"
 description: "本文为《剖析 | SOFARPC 框架》第十篇，作者明不二，就职于华为。"
 categories: "SOFARPC"
-tags: ["SOFARPC","剖析 | SOFARPC 框架"]
+tags: ["SOFARPC","剖析 | SOFARPC 框架","SOFALab"]
 date: 2018-10-10T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563350511865-c6797637-2a4b-408c-90cb-6e3ebefe7758.png"
 ---
@@ -167,6 +167,7 @@ ConsumerConfig<HelloService> consumer = new ConsumerConfig<HelloService>()
 ![一致性 hash](https://cdn.nlark.com/yuque/0/2018/png/156121/1539687461330-e4ea81be-1184-4e20-9466-3c64a841fc41.png)
 
 ### 权重一致性 Hash(WeightConsistentHashLoadBalancer)
+
 带权重的一致性 hash 算法。在一致性 Hash的基础上，设置虚拟节点的时候，权重大的 ProviderInfo 会生成更多的节点。这样被选中的概率就更高。这里不再做详细说明。大家有兴趣可以从代码中进行阅读。
 
 ### 负载均衡比较

@@ -4,7 +4,7 @@ author: "水寒"
 description: "本文为《剖析 | SOFARPC 框架》第八篇，作者水寒，目前就职于网易。"
 categories: "SOFARPC"
 aliases: "/posts/__dr07w9"
-tags: ["SOFARPC","剖析 | SOFARPC 框架"]
+tags: ["SOFARPC","剖析 | SOFARPC 框架","SOFALab"]
 date: 2018-10-03T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563274331359-e7803f14-caec-4d52-ac68-95deadf3f8ab.png"
 ---
@@ -49,12 +49,15 @@ SOFARPC 提供的数据透传支持请求数据透传（客户端向服务端）
 我们知道，SOFARPC 目前支持四种调用模式，如果没有阅读过之前文章的同学，可以阅读一下 [SOFARPC 同步异步实现剖析](https://www.sofastack.tech/blog/sofa-rpc-synchronous-asynchronous-implementation)，请求透传数据的原理都是一样的，服务端设置响应透传数据的原理也是一样的，只是客户端获取响应透传数据的方式有所不同（后三种模式只介绍客户端获取响应透传数据的原理）。因此我们会介绍下不同调用方式的透传细节，并介绍其使用方式，方便大家理解。以下为了方便说明，我们会使用如下的接口示例：
 
 #### 接口服务
+
 ```
 public interface HelloService {
     String sayHello(String string);
 }
 ```
+
 #### 服务实现
+
 ```
 public class HelloServiceImpl implements HelloService {
     @Override

@@ -5,7 +5,7 @@ authorlink: "https://github.com/SteNicholas"
 description: "本文为《剖析 | SOFARPC 框架》第九篇，作者米麒麟，目前就职于陆金所。"
 categories: "SOFARPC"
 aliases: "/posts/__saaygu"
-tags: ["SOFARPC","剖析 | SOFARPC 框架"]
+tags: ["SOFARPC","剖析 | SOFARPC 框架","SOFALab"]
 date: 2018-10-10T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563340692982-43f3fc47-5624-4259-97a8-e26d3701f86c.png"
 ---
@@ -16,7 +16,6 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563340692982-43f3fc47-562
 > 本文为《剖析 | SOFARPC 框架》第九篇，作者米麒麟，目前就职于陆金所。
 > 《剖析 | SOFARPC 框架》系列由 SOFA 团队和源码爱好者们出品，
 > 项目代号：<SOFA:RPCLab/>，官方目录目前已经全部认领完毕，文末提供了已完成的文章目录。
-
 
 ## 前言
 
@@ -163,6 +162,7 @@ com.alipay.sofa.rpc.context.RpcRuntimeContext#destroy()
 ```
 
 ### 作为客户端
+
 作为客户端，SOFARPC 通过实现 DestroyHook 销毁钩子接口提供优雅关闭的钩子，把 GracefulDestroyHook 关闭钩子注册到长连接管理器销毁客户端连接方法。客户端优雅关闭连接实际上是 Cluster 的关闭，关闭调用的服务实现入口：
 
 ```java

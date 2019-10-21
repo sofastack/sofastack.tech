@@ -3,7 +3,7 @@ title: "【剖析 | SOFARPC 框架】之总体设计与扩展机制"
 author: "碧远"
 authorlink: "https://github.com/leizhiyuan"
 date: 2018-08-02T15:00:00+08:00
-tags: ["SOFARPC","剖析 | SOFARPC 框架"]
+tags: ["SOFARPC","剖析 | SOFARPC 框架","SOFALab"]
 description: "本文为  剖析 SOFARPC 框架第一篇。"
 aliases: "/posts/__brb090"
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563179637220-67983326-d155-4b28-be39-c86f653727f9.png"
@@ -24,21 +24,17 @@ RPC 框架作为分布式技术的基石，在分布式和微服务环境下，�
 
 RPC 这个概念术语在上世纪 80 年代由 [Bruce Jay Nelson](https://en.wikipedia.org/wiki/Bruce_Jay_Nelson) 提出，在 Nelson 的论文 ["Implementing Remote Procedure Calls"](http://birrell.org/andrew/papers/ImplementingRPC.pdf) 中他提到了几点：
 
-```
 1. 简单：RPC 概念的语义清晰,简单，方便建立分布式计算。
 2. 高效：在使用方看来,十分简单而且高效。
 3. 通用：通用,适用于各种不同的远程通信调用。
-```
 
 这里面Nelson提出了一个 RPC框架应该包含的几个部分。
 
-```
 1. User
 2. User-stub
 3. RPC-Runtime
 4. Server-stub
 5. Server
-```
 
 如下图示，为了和现在我们通用的术语一致，我将 User 改成 Client 了。
 
@@ -47,7 +43,6 @@ RPC 这个概念术语在上世纪 80 年代由 [Bruce Jay Nelson](https://en.w
 当 Client 想发起一个远程调用时，实际是通过本地调用 Client-stub，而 Client-stub 负责将调用的接口、方法和参数通过约定的协议规范进行编码并通过本地的 RPC-Runtime 实例传输到远端的实例。远端 RPC-Runtime 实例收到请求后交给 Server-stub 进行解码后发起本地端调用，在 Java中可以认为就是反射调用,调用结果再返回给 Client 端。
 
 从上文可以看到，一个典型的 RPC 调用过程还是相对简单的。但是实际上，一个真正的 RPC 框架要做的远不止这些。
-
 
 ## 通用 RPC 框架原理
 
@@ -84,6 +79,7 @@ RPC 这个概念术语在上世纪 80 年代由 [Bruce Jay Nelson](https://en.w
 ## SOFARPC框架设计
 
 ### SOFARPC RoadMap
+
 首先介绍下目前 SOFARPC 的现状和一些正在做的事情。
 
 ![SOFARPC RoadMap](https://cdn.nlark.com/lark/0/2018/png/886/1533125859357-61bdcd77-c8cb-4049-b1b9-3c1622ea2249.png)
@@ -167,12 +163,11 @@ RPC 这个概念术语在上世纪 80 年代由 [Bruce Jay Nelson](https://en.w
 
 5. 如果 ExtensionLoaderListener 不为空，则通知 Listener。
 
-
 最终，将会构造出各个不同的 Filter，Invoker 等等。
 
 其中我们首先设计了一个扩展，代表这个类或者接口是可扩展的，默认单例、不需要编码。
 
-```
+```java
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ ElementType.TYPE })
@@ -203,7 +198,7 @@ public @interface Extensible {
 
 同时，针对具体的扩展实现，定义一个扩展注解
 
-```
+```java
 @Documented
 @Retention(RetentionPolicy.RUNTIME)
 @Target({ ElementType.TYPE })
@@ -278,7 +273,7 @@ failover=com.aliapy.sofa.rpc.client.FailoverClient
 
 当这些准备完成后，直接调用即可。
 
-```
+```java
 Client failoverClient = ExtensionLoaderFactory.getExtensionLoader(Client.class).getExtension("failover");
 ```
 
@@ -311,6 +306,5 @@ Client failoverClient = ExtensionLoaderFactory.getExtensionLoader(Client.class).
 11. SOFARPC 跨语言支持剖析
 
 12. SOFARPC 泛化调用实现剖析
-
 
 以上有对某个主题特别感兴趣的同学，可以留言讨论，我们会适当根据大家的反馈调整文章的顺序，也请大家继续支持 SOFA ，支持 [SOFARPC](https://github.com/sofastack/sofa-rpc) 。

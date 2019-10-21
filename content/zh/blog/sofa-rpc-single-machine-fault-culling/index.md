@@ -4,7 +4,7 @@ author: "畅为"
 authorlink: "https://github.com/zhengjianglong915"
 description: "本文为《剖析 | SOFARPC 框架》第六篇，作者畅为。"
 categories: "SOFARPC"
-tags: ["SOFARPC","剖析 | SOFARPC 框架"]
+tags: ["SOFARPC","剖析 | SOFARPC 框架","SOFALab"]
 date: 2018-09-17T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563266309201-6f7fea77-5241-4cf2-93ba-668c31c47794.png"
 ---
@@ -15,7 +15,6 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563266309201-6f7fea77-524
 > 本文为《剖析 | SOFARPC 框架》第六篇，作者畅为。
 > 《剖析 | SOFARPC 框架》系列由 SOFA 团队和源码爱好者们出品，
 > 项目代号：<SOFA:RPCLab/>，官方目录目前已经全部认领完毕。
-
 
 ## 一. 前言
 

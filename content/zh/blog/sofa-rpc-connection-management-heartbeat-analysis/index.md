@@ -4,7 +4,7 @@ author: "SOFARPCLab"
 description: "本文为《剖析 | SOFARPC 框架》第三篇，本篇由米麒麟/碧远共同出品。"
 categories: "SOFARPC"
 aliases: "/posts/__hnppce"
-tags: ["SOFARPC","剖析 | SOFARPC 框架"]
+tags: ["SOFARPC","剖析 | SOFARPC 框架","SOFALab"]
 date: 2018-08-29T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563244106168-2650a0d4-4f83-4b2d-b49b-5a58a4f474ed.png"
 ---
@@ -127,7 +127,7 @@ Java 程序只能做到设置 SO_KEEPALIVE 选项，至于 TCP_KEEPCNT，TCP_KEE
 查看 tcp 连接 tcp_keepalive 状态
 
 ```
-我们可以用 `netstat -no|grep keepalive` 命令来查看当前哪些 tcp 连接开启了 tcp keepalive.
+我们可以用 netstat -no|grep keepalive 命令来查看当前哪些 tcp 连接开启了 tcp keepalive.
 ```
 
 ![tcp_keepalive 状态](https://cdn.nlark.com/yuque/0/2018/png/156121/1534919046315-385e6336-a8c7-43af-af63-0aa7a29405c9.png)
@@ -167,6 +167,7 @@ socks proxy 只是一个例子，真实的网络很复杂，可能会有各种�
 4.数据包将更为紧凑。
 
 #### 应用 keep-alive 优势:
+
 关闭 TCP 的 keepalive，完全使用业务层面心跳保活机制。完全应用掌管心跳，灵活和可控，比如每一个连接心跳周期的可根据需要减少或延长。
 
 1.应用的心跳包,具有更大的灵活性，可以自己控制检测的间隔，检测的方式等等。

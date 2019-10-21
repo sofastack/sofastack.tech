@@ -3,8 +3,8 @@ author: "尚彧"
 date: 2019-03-27T14:30:00.000Z
 title:  "蚂蚁金服开源服务注册中心 SOFARegistry | SOFA 开源一周年献礼"
 description: "此次，我们宣布开源蚂蚁金服注册中心 SOFARegistry 作为一周年的礼物之一，本文为根据现场分享整理的详细介绍。"
-tags: ["SOFARegistry"]
-categories: "SOFABoot"
+tags: ["SOFARegistry","SOFAMeetup"]
+categories: "SOFARegistry"
 aliases: "/posts/2018-05-04-01"
 cover: "/cover.jpg"
 ---
@@ -20,7 +20,7 @@ cover: "/cover.jpg"
 此次，我们宣布开源蚂蚁金服注册中心 SOFARegistry 作为一周年的礼物之一，本文为根据现场分享整理的详细介绍。
 SOFARegistry 是蚂蚁金服开源的具有承载海量服务注册和订阅能力的、高可用的服务注册中心，最早源自于淘宝的初版 ConfigServer，在支付宝/蚂蚁金服的业务发展驱动下，近十年间已经演进至第五代。
 
-GitHub 地址：https://github.com/sofastack/sofa-registry
+GitHub 地址：<https://github.com/sofastack/sofa-registry>
 
 # 概念
 
@@ -191,8 +191,7 @@ SOFARegistry 与开源同类产品的比较：
 
 以上就是本期分享的所有内容。当前，代码已开源托管在 GitHub 上，欢迎关注，同时也欢迎业界爱好者共同创造更好的 SOFARegistry。
 
-- GitHub 项目地址：
-  https://github.com/sofastack/sofa-registry
+GitHub 项目地址：<https://github.com/sofastack/sofa-registry>
 
 ![img](https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1553696934874-31659e4f-e9a1-431c-a487-6441923fcee5.jpeg)
 

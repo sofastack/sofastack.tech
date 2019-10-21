@@ -4,7 +4,7 @@ author: "SOFARPCLab"
 description: "本文为《剖析 | SOFARPC 框架》第五篇。"
 categories: "SOFARPC"
 aliases: "/posts/__cimv6r"
-tags: ["SOFARPC","剖析 | SOFARPC 框架"]
+tags: ["SOFARPC","剖析 | SOFARPC 框架","SOFALab"]
 date: 2018-09-12T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563258249846-ad05300b-dab2-4977-a288-c5991351ad60.png"
 ---

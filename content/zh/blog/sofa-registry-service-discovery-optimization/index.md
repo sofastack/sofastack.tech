@@ -4,7 +4,7 @@ author: "尚彧"
 authorlink: "https://github.com/Synex-wh"
 description: "本文为《剖析 | SOFARegistry 框架》第二篇，本篇作者尚彧，来自蚂蚁金服。"
 categories: "SOFARegistry"
-tags: ["SOFARegistry","剖析 | SOFARegistry 框架"]
+tags: ["SOFARegistry","剖析 | SOFARegistry 框架","SOFALab"]
 date: 2019-07-18T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563457737862-12f2f3ed-6c57-44c4-b7b6-1960b1614ae5.png"
 ---

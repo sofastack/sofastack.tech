@@ -4,7 +4,7 @@ author: "SOFARPCLab"
 description: "本文为《剖析 | SOFARPC 框架》第四篇。"
 categories: "SOFARPC"
 aliases: "/posts/__ktnzp9"
-tags: ["SOFARPC","剖析 | SOFARPC 框架"]
+tags: ["SOFARPC","剖析 | SOFARPC 框架","SOFALab"]
 date: 2018-09-05T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563249691294-5265aab0-50ad-4391-aab6-7f6eede1f179.png"
 ---
@@ -110,6 +110,7 @@ com.alipay.sofa.rpc.transport.bolt.BoltClientTransport
 ### Sync 同步调用
 
 SOFARPC 中的的同步调用是由 Bolt 通信框架来实现的。核心代码实现在
+
 ```java
 com.alipay.remoting.BaseRemoting#invokeSync
 com.alipay.remoting.rpc.protocol.RpcResponseProcessor#doProcess
@@ -170,9 +171,11 @@ RpcInvokeContext.getContext().setResponseCallback(sofaResponseCallbackImpl);
 ### Oneway 单向调用
 
 使用 Oneway 单向调用 SOFABoot 配置服务引用需要设置
+
 ```xml
 <sofa:global-attrs type="oneway"/>
 ```
+
 元素的type属性声明调用方式 oneway
 
 ![Oneway 单向调用](https://cdn.nlark.com/yuque/0/2018/png/156121/1533737145316-35f516ae-45cc-4ad8-b54b-4b16b7750aa0.png)

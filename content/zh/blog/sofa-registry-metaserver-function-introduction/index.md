@@ -4,7 +4,7 @@ author: "Yavin"
 authorlink: "https://github.com/imsunv"
 description: " 本文为《剖析 |  SOFARegistry 框架》第三篇，作者 Yavin ，来自考拉海购。"
 categories: "SOFARegistry"
-tags: ["SOFARegistry","剖析 | SOFARegistry 框架"]
+tags: ["SOFARegistry","剖析 | SOFARegistry 框架","SOFALab"]
 date: 2019-09-12T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1568277810087-8104b576-d797-4e6a-8f13-0e2ecefdf466.jpeg"
 ---
