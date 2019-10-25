@@ -21,7 +21,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563874034945-7e7f9e20-215
 
 [SOFAArk](https://www.sofastack.tech/sofa-boot/docs/sofa-ark-readme) 是一款基于 Java 实现的轻量级类隔离容器，主要提供类隔离和应用（模块）合并部署能力，由蚂蚁金服开源贡献。[SOFAArk](https://www.sofastack.tech/sofa-boot/docs/sofa-ark-readme) 在 [0.6.0 版本](https://github.com/alipay/sofa-ark/releases/tag/v0.6.0) 提供了非常丰富的功能特性，其中最核心的当属多应用（模块）合并部署这个能力。[SOFAArk](https://www.sofastack.tech/sofa-boot/docs/sofa-ark-readme) 本身提供了多种方式来支持多应用（模块）合并部署 ，包括基于命令行的管控，基于 API 的管控等。本篇将结合 SOFA 开源的管控端组件 [SOFADashboard](https://github.com/sofastack/sofa-dashboard)，来实现 [SOFAArk](https://www.sofastack.tech/sofa-boot/docs/sofa-ark-readme) 提供的合并部署和动态模块推送的功能。
 
-[案例工程地址](https://github.com/sofastack-guides/sofa-dashbaord-samples-parent)
+[案例工程地址](https://github.com/sofastack-guides/sofastack-dashboard-guides)
 
 ## 背景
 
