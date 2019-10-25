@@ -1,4 +1,3 @@
-
 ---
 title: "OpenFeign Integration"
 aliases: "/sofa-tracer/docs/Usage_Of_openfeign"
@@ -7,7 +6,7 @@ aliases: "/sofa-tracer/docs/Usage_Of_openfeign"
 
 # OpenFeign Integration
 
-In this document will demonstrate how to use SOFATracer to track of OpenFeign, this example [address] (https://github.com/sofastack/sofa-tracer/tree/3.x/tracer-samples/tracer-sample-with-openfeign)。
+In this document will demonstrate how to use SOFATracer to track of OpenFeign.
 
 ## Prepare Environment
 

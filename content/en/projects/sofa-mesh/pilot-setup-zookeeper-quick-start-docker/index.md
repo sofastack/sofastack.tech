@@ -1,11 +1,7 @@
-
 ---
 title: "Use Docker to get started with Istio"
 aliases: "/sofa-mesh/docs/pilot-setup-zookeeper-quick_start_docker"
 ---
-
-
-# Use Docker to get started with Istio
 
 This article describes how to quickly start installing and configuring Istio by using Docker Compose.
 
@@ -23,21 +19,21 @@ SOFAMosn can not only support the standard Istio deployment mode, but also suppo
     - Sample application path `samples/`.
     - The istioctl client executable file which is in the `/bin` path. The istioctl can be used to create routing rules and policies.
     - Configuration file `istion.VERSION`.
-3. Add the Istio's `bin` path to your system's `PATH`. For example, execute the following command in the MacOS or Linux operating system:<br>
+3. Add the Istio's `bin` path to your system's `PATH`. For example, execute the following command in the MacOS or Linux operating system:
 
     ```SHELL
     export PATH=$PWD/bin;$PATH
     ```
-4. Pull up the Istio control plane container:<br>
+4. Pull up the Istio control plane container:
     ```SHELL
     docker-compose -f install/zookeeper/istio.yaml up -d
     ```
-5. Ensure that all Docker containers are running:<br>
+5. Ensure that all Docker containers are running:
    ```SHELL
    docker ps -a
    ```
-   <br> If the Istio pilot container terminates unexpectedly, you can run the `istioctl context-create` command and re-execute the previous command.
-6. Configure istioctl to use the Istio API server:<br>
+    If the Istio pilot container terminates unexpectedly, you can run the `istioctl context-create` command and re-execute the previous command.
+6. Configure istioctl to use the Istio API server:
     ```bash
     istioctl context-create -context istio-local --api-server
     ```

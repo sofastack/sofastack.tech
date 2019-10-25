@@ -10,7 +10,7 @@ SOFA Mosn 不仅可以支持 Istio 标准的部署模式，也能支持单方面
 ## 前置要求
 
 1. Kubernetes
-2. [安装 Helm](https://github.com/helm/helm/blob/master/docs/install.md)
+2. 安装 Helm
 
 ## 安装步骤
 

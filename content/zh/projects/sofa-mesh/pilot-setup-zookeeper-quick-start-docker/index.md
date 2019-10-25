@@ -1,10 +1,7 @@
-
 ---
 title: "在 Kubernetes 中快速开始"
 aliases: "/sofa-mesh/docs/pilot-setup-zookeeper-quick_start_docker"
 ---
-
-
 
 本文旨在描述如何在 Kubernetes 快速开始安装和配置 Istio。
 SOFA Mosn 不仅可以支持 Istio 标准的部署模式，也能支持单方面的 Inbound Sidecar，Outbound Sidecar的部署模式，满足用户的各种需求。
@@ -25,7 +22,7 @@ SOFA Mosn 不仅可以支持 Istio 标准的部署模式，也能支持单方面
     ```SHELL
     export PATH=$PWD/bin;$PATH
     ```
-4. 安装helm，参考:https://github.com/helm/helm/blob/master/docs/install.md
+4. 安装helm
 5. 创建命名空间
     ```SHELL
     kubectl create namespace istio-system

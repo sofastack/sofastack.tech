@@ -113,7 +113,7 @@ SOFAMosn(Modular Observable Smart Network)，是一款采用 GoLang 开发的 Se
 
 ### ElasticDL
 
-<http://elasticdl.org](http://elasticdl.org/>
+<https://github.com/sql-machine-learning/elasticdl/>
 
 ElasticDL 是蚂蚁金服发布的新一代基于云原生的开源 AI 学习平台，它的架构基于原生的 Kubernetes 体系，因此具有强大的容错能力和弹性调度能力。另外，ElasticDL 能够支持新一代的 TensorFlow 2.0 框架，也希望引领 AI 开发者走向新一代的机器学习。
 
