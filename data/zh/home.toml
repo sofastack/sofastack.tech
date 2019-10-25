@@ -7,7 +7,7 @@
 
 [[feature]]
 	title = "开放"
-	description = "技术栈全面开源共建、保存社区中立、兼容社区 兼容开源生态，组件可插拔， SOFAStack 组件与其它开源组件可相互集成或替换"
+	description = "技术栈全面开源共建、 保持社区中立、兼容社区 兼容开源生态，组件可插拔， SOFAStack 组件与其它开源组件可相互集成或替换"
 	img = "img/home/feat-open.png"
 [[feature]]
 	title = "金融级"
