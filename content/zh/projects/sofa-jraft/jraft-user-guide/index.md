@@ -177,7 +177,7 @@ while(it.hasNext()){
 * `void onStopFollowing(LeaderChangeContext ctx)` 当一个 raft follower 停止 follower 一个 leader 节点的时候调用，这种情况一般是发生了 leadership 转移，比如重新选举产生了新的 leader，或者进入选举阶段等。同样 `LeaderChangeContext` 描述了停止 follow 的 leader 的信息，其中 status 描述了停止 follow 的原因。
 * `void onConfigurationCommitted(Configuration conf)` 当一个 raft group 的节点配置提交到 raft group 日志的时候调用，通常不需要实现此方法，或者打印个日志即可。
 * `void onShutdown()` 当状态机所在 raft 节点被关闭的时候调用，可以用于一些状态机的资源清理工作，比如关闭文件等。
-* `onSnapshotSave` 和 `onSnapshotLoad` Snapshot 的保存和加载，见 2.6 小节。
+* `onSnapshotSave` 和 `onSnapshotLoad` Snapshot 的保存和加载，见 3.6 小节。
 
 因为 StateMachine 接口的方法比较多，并且大多数方法可能不需要做一些业务处理，因此 jraft 提供了一个 StateMachineAdapter 桥接类，方便适配实现状态机，除了强制要实现 `onApply` 方法外，其他方法都提供了默认实现，也就是简单地打印日志，用户可以选择实现特定的方法：
 
@@ -381,8 +381,13 @@ node.snapshot(done);
 
 ```java
 // 保存状态的最新状态，保存的文件信息可以写到 SnapshotWriter 中，保存完成切记调用 done.run(status) 方法。
+// 通常情况下，每次 `onSnapshotSave` 被调用都应该阻塞状态机（同步调用）以保证用户可以捕获当前状态机的状态，如果想通过异步 snapshot 来提升性能，
+// 那么需要用户状态机支持快照读，并先同步读快照，再异步保存快照数据。
 void onSnapshotSave(SnapshotWriter writer, Closure done);
 // 加载或者安装 snapshot，从 SnapshotReader 读取 snapshot 文件列表并使用。
+// 需要注意的是:
+//   程序启动会调用 `onSnapshotLoad` 方法，也就是说业务状态机的数据一致性保障全权由 jraft 接管，业务状态机的启动时应保持状态为空，
+// 如果状态机持久化了数据那么应该在启动时先清除数据，并依赖 raft snapshot + replay raft log 来恢复状态机数据。
 boolean onSnapshotLoad(SnapshotReader reader);
 ```
 
