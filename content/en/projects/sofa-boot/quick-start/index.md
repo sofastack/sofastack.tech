@@ -145,7 +145,7 @@ Note that if you need to use SOFABoot's [class Isolation](../classloader-isolati
 
 ## Modular Development
 
-This section will focus on how we can carry out modular development under the SOFABoot environment, you can find this document's sample code under the project. The project is composed of four modules:
+This section will focus on how we can carry out modular development under the SOFABoot environment, you can find this document's [sample code](https://github.com/sofastack-guides/sofa-boot-guides) under the project. The project is composed of four modules:
 
 ```text
 .
