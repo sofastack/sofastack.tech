@@ -144,7 +144,7 @@ logging.path=./logs
 
 ## 模块化开发
 
-这部分将演示如何在 SOFABoot 环境下进行模块化开发，您可以直接在工程下找到本文档的示例代码，项目一共包括四个模块：
+这部分将演示如何在 SOFABoot 环境下进行模块化开发，您可以直接在工程下找到本文档的[示例代码](https://github.com/sofastack-guides/sofa-boot-guides)，项目一共包括四个模块：
 
 ```text
 .
