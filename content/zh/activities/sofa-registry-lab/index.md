@@ -25,11 +25,11 @@ SOFARegistry:<https://github.com/sofastack/sofa-registry>
 ### | SOFA:RegistryLab
 
 - 认领列表：
-  - 【已完成】[海量数据下的注册中心 - SOFARegistry 架构介绍](https://www.sofastack.tech/blog/sofa-registry-introduction/)
-  - 【已完成】[SOFARegistry 服务发现优化之路](https://www.sofastack.tech/blog/sofa-registry-service-discovery-optimization/)
-  - 【已领取】SOFARegistry 数据分片和同步方案详解
-  - 【已领取】SOFARegistry MetaServer 功能介绍和实现剖析
-  - 【已领取】SOFARegistry 数据推送机制详解
+  - 【已完成】[海量数据下的注册中心 - SOFARegistry 架构介绍](/blog/sofa-registry-introduction/)
+  - 【已完成】[SOFARegistry 服务发现优化之路](/blog/sofa-registry-service-discovery-optimization/)
+  - 【已完成】[SOFARegistry 数据分片和同步方案详解](/blog/sofa-registry-data-fragmentation-synchronization-scheme/)
+  - 【已完成】[SOFARegistry MetaServer 功能介绍和实现剖析](/blog/sofa-registry-metaserver-function-introduction/)
+  - 【已完成】[SOFARegistry Session 存储策略](/blog/sofa-registry-session-storage/)
   - 【已领取】SOFARegistry 如何实现秒级服务上下线通知
   - 【已领取】SOFARegistry 如何实现 DataServer 平滑扩缩容
 
