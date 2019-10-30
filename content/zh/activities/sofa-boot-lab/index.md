@@ -25,7 +25,7 @@ SOFABoot :<https://github.com/sofastack/sofa-boot>
 ### | SOFA:Boot Lab
 
 - 认领列表：
-  - 【已完成】《SOFABoot 总览》
+  - 【已认领】《SOFABoot 总览》
   - **【待认领】《SOFABoot runtime 机制解析》**
   - 【已认领】《SOFABoot HealthCheck 机制解析》
   - 【已认领】《SOFABoot 日志隔离解析》
