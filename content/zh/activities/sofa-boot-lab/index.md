@@ -2,7 +2,7 @@
 author: "潘潘"
 date: 2019-10-30T12:00:00+08:00
 title: "<SOFA:BootLab/>"
-tags: ["SOFALab","SOFABoot","剖析|SOFABoot 实现原理"]
+tags: ["SOFALab","SOFABoot","剖析|SOFABoot 框架"]
 cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1567496342189-26f60811-c007-45c8-83fd-df6080926f03.jpeg"
 categories: "SOFALab"
 descripton: "欢迎参与 SOFABoot 源码解析系列文章共建。"
@@ -14,7 +14,7 @@ descripton: "欢迎参与 SOFABoot 源码解析系列文章共建。"
 
 `<SOFA:Lab/>` 源码研究实验室，由 SOFA 团队和源码爱好者们出品，欢迎你的加入~
 
-`<SOFA:BootLab/>`是《剖析 | SOFABoot  实现原理》系列，会逐步详细介绍 SOFABoot 各个部分的代码设计和实现，欢迎领取文章进行共建。
+`<SOFA:BootLab/>`是《剖析 | SOFABoot  框架》系列，会逐步详细介绍 SOFABoot 各个部分的代码设计和实现，欢迎领取文章进行共建。
 
 ### | SOFABoot 
 
@@ -36,7 +36,7 @@ SOFABoot :<https://github.com/sofastack/sofa-boot>
 如果有同学对以上某个主题特别感兴趣的，可以留言讨论，我们会适当根据大家的反馈调整文章的顺序，谢谢大家关注 SOFAStack ，关注 SOFABoot，我们会一直与大家一起成长的。
 
 除了源码解析，也欢迎提交 issue 和 PR：
-SOFABoot：https://github.com/sofastack/sofa-boot
+SOFABoot：<https://github.com/sofastack/sofa-boot>
 
 ![金融级分布式架构公众号二维码](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*LVCnR6KtEfEAAAAAAAAAAABjARQnAQ)
 
