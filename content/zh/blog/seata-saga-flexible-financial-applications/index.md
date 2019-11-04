@@ -5,7 +5,7 @@ authorlink: "https://github.com/long187"
 description: " 一起来解读 Seata Saga 模式到底解决了什么问题。"
 categories: "Seata"
 tags: ["Seata"]
-date: 2019-11-4T18:00:00+08:00
+date: 2019-11-04T18:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1564390261585-2797b11c-6652-4102-ac30-b556548be203.png"
 ---
 
@@ -369,7 +369,7 @@ public interface InventoryService {
 
 状态语言在一定程度上参考了 [AWS Step Functions](https://docs.aws.amazon.com/zh_cn/step-functions/latest/dg/tutorial-creating-lambda-state-machine.html)。
 
-#### "状态机" 属性简介:
+#### "状态机" 属性简介
 
 - Name: 表示状态机的名称，必须唯一；
 - Comment: 状态机的描述；
@@ -377,7 +377,7 @@ public interface InventoryService {
 - StartState: 启动时运行的第一个"状态"；
 - States: 状态列表，是一个 map 结构，key 是"状态"的名称，在状态机内必须唯一；
 
-#### "状态" 属性简介:
+#### "状态" 属性简介
 
 - Type："状态" 的类型，比如有：
   - ServiceTask: 执行调用服务任务；
@@ -400,7 +400,7 @@ public interface InventoryService {
 
 更多详细的状态语言解释请看[《Seata Saga 官网文档》](http://seata.io/zh-cn/docs/user/saga.html)。
 
-### 状态机引擎原理:
+### 状态机引擎原理
 
 ![Saga状态机原理](https://intranetproxy.alipay.com/skylark/lark/0/2019/png/65674/1571379068261-005d6269-5d12-4ac0-96ab-032e0f70a086.png)
 
@@ -411,7 +411,7 @@ public interface InventoryService {
 - 当一个"状态"执行完成后会记录"状态实例"执行结束事件到本地数据库, 然后调用 Seata Server 上报分支事务的状态；
 - 当整个状态机执行完成，会记录"状态机实例"执行完成事件到本地数据库, 然后调用 Seata Server 提交或回滚分布式事务；
 
-### 状态机引擎设计:
+### 状态机引擎设计
 
 ![Saga engine](https://intranetproxy.alipay.com/skylark/lark/0/2019/png/65674/1571379152888-a1f1d72a-684b-44c9-9883-a37bc3e6c065.png)
 
