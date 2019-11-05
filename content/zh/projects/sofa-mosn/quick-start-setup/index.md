@@ -25,13 +25,13 @@ go get -u sofastack.io/sofa-mosn
 如果您的 go get 下载存在问题，请手动创建项目工程
 
 ```bash
-# 进入GOPATH下的src目录
+# 进入 GOPATH 下的 src 目录
 cd $GOPATH/src
-# 创建 sofastack.io/sofa-mosn 目录
-mkdir -p sofastack.io/sofa-mosn
-cd sofastack.io/sofa-mosn
+# 创建 sofastack.io 目录
+mkdir -p sofastack.io
+cd sofastack.io
 
-# clone mosn代码
+# 克隆 SOFAMosn 代码
 git clone git@github.com:sofastack/sofa-mosn.git
 cd sofa-mosn
 ```
