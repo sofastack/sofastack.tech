@@ -32,7 +32,7 @@ cd $GOPATH/src
 mkdir -p sofastack.io
 cd sofastack.io
 
-# clone mosn codes
+# clone SOFAMosn codes
 git clone git@github.com:sofastack/sofa-mosn.git
 cd sofa-mosn
 ```
@@ -47,24 +47,28 @@ Use the Golang IDE to import the `$GOPATH/src/sofastack.io/sofa-mosn` project. G
 
 In the project root directory, select the following command to compile the SOFAMosn binary file according to your machine type and the environment where you want to execute binary:
 
-+ Compile with Docker image
+**Compile with Docker image**
+
 ```bash
 make build // compile linux 64bit executable binary
 ```
-+ non-docker, local compilation
-     + Compile local executable binary files
-     ```bash
-     make build-local
-     ```
-     + Non-Linux machine compiles Linux 64-bit executable binary files crosswise
-     
-     ```bash
-     make build-linux64
-     ```
-     + Non-Linux machine compiles Linux 32-bit executable binary files crosswise
-     ```bash
-     make build-linux32
-     ```
+**non-docker, local compilation**
+
+Compile local executable binary files.
+
+```bash
+make build-local
+```
+Non-Linux machine compiles Linux 64-bit executable binary files crosswise.
+
+```bash
+make build-linux64
+```
+Non-Linux machine compiles Linux 32-bit executable binary files crosswise.
+
+```bash
+make build-linux32
+```
 Once compiled, the compiled binary files can be found in the `build/bundles/${version}/binary` directory.
 
 ## Create image
@@ -97,10 +101,8 @@ make integrate
 
 ## Start SOFAMosn forwarding sample program
 
-See the sample project in the `examples` directory.
-
-+ [Run samples](../quick-start-run-samples)
+See the [sample project](../quick-start-run-samples) in the `examples` directory.
 
 ## Use SOFAMosn to build a ServiceMesh platform
 
-+ [Integrate Istio](../quick-start-run-with-sofamesh)
+See [Integrate Istio](../quick-start-run-with-sofamesh).
