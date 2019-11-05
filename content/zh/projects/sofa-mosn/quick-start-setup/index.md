@@ -111,7 +111,7 @@ make integrate
 运行下面的命令使用配置文件启动 SOFAMosn。
 
 ```bash
- ./mosn start -c '$CONFIG_FILE'
+./mosn start -c '$CONFIG_FILE'
 ```
 
 ## 开启 SOFAMosn 转发事例程序

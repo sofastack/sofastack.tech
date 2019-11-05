@@ -12,7 +12,7 @@ aliases: "/sofa-mosn/docs/docs-quickstart-RunWithSOFAMesh"
 
 ## SOFAMosn 与 SOFAMesh 的关系
 
-我们曾在 [《SOFAMosn Introduction》](../overview) 一文中介绍过，SOFAMosn 是一款采用 Golang 开发的 Service Mesh 数据平面代理。而 SOFAMesh 则是基于 Istio 改进和扩展而来的 Service Mesh 大规模落地实践方案，SOFAMosn 作为 SOFAMesh 的关键组件用来完成数据面的转发。
+我们曾在 [SOFAMosn 介绍](../overview)中介绍过，SOFAMosn 是一款采用 Go 语言开发的 Service Mesh 数据平面代理。而 SOFAMesh 则是基于 Istio 改进和扩展而来的 Service Mesh 大规模落地实践方案，SOFAMosn 作为 SOFAMesh 的关键组件用来完成数据面的转发。
 
 下图是 SOFAMesh 整体框架下，SOFAMosn 的工作示意图。
 
@@ -133,7 +133,7 @@ $ helm template install/kubernetes/helm/istio --name istio --namespace istio-sys
 $ kubectl delete namespace istio-system
 ```
 
-## 三、BookInfo 实验
+## BookInfo 实验
 
 BookInfo 是一个类似豆瓣的图书应用，它包含四个基础服务：
 
