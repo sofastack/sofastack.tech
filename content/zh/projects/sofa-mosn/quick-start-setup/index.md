@@ -36,11 +36,11 @@ git clone git@github.com:sofastack/sofa-mosn.git
 cd sofa-mosn
 ```
 
-最终 SOFAMosn 的源代码代码路径为 `$GOPATH/src/sofastack.io/sofastack/sofa-mosn`
+最终 SOFAMosn 的源代码代码路径为 `$GOPATH/src/sofastack.io/sofa-mosn`
 
 ## 导入IDE
 
-使用您喜爱的 Go IDE 导入 `$GOPATH/src/sofastack.io/sofastack/sofa-mosn` 项目，推荐 Goland。
+使用您喜爱的 Go IDE 导入 `$GOPATH/src/sofastack.io/sofa-mosn` 项目，推荐 Goland。
 
 ## 编译代码
 
