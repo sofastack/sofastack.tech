@@ -2,7 +2,7 @@
 title: "诗和远方：蚂蚁金服 Service Mesh 深度实践 | QCon 实录"
 author: "敖小剑
 authorlink: "https://github.com/skyao"
-description: " 本文整理自蚂蚁金服高级技术专家敖小剑在 QCon 全球软件开发大会（上海站）2019 上的演讲，他介绍了 Service Mesh 在蚂蚁金服的落地情况和即将来临的双十一大考，以及大规模落地时遇到的困难和解决方案，助你了解 Service Mesh 的未来发展方向和前景"
+description: " 本文整理自蚂蚁金服高级技术专家敖小剑在 QCon 全球软件开发大会（上海站）2019 上的演讲。"
 categories: "Service mesh"
 tags: ["Service mesh"]
 date: 2019-11-05T11:00:00+08:00
