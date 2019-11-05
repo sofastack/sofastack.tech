@@ -148,7 +148,7 @@ RPC 这个概念术语在上世纪 80 年代由 [Bruce Jay Nelson](https://en.w
 
 我们实现了一套自己的 SPI 机制。整个流程如下：
 
-![SPI 机制](https://cdn.nlark.com/lark/0/2018/png/886/1533125074589-43358c6b-6609-4fff-bc94-745336f6a442.png)
+![SPI 机制](https://tva1.sinaimg.cn/large/006y8mN6ly1g8n8jj6lnaj30rz0l8dgm.jpg)
 
 在启动加载阶段，RPC 会根据对应的配置，加载需要调用方法`ExtensionLoader(Class<T> interfaceClass, ExtensionLoaderListener<T> listener)`
 逻辑如下：

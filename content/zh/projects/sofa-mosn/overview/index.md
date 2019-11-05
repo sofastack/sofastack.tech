@@ -3,12 +3,11 @@ title: "SOFAMosn 介绍"
 aliases: "/sofa-mosn/docs/Home"
 ---
 
-[![Build Status](https://travis-ci.org/alipay/sofa-mosn.svg?branch=master)](https://travis-ci.org/alipay/sofa-mosn)
-[![codecov](https://codecov.io/gh/alipay/sofa-mosn/branch/master/graph/badge.svg)](https://codecov.io/gh/alipay/sofa-mosn)
-[![Go Report Card](https://goreportcard.com/badge/github.com/sofastack/sofa-mosn)](https://goreportcard.com/report/github.com/sofastack/sofa-mosn)
-![license](https://img.shields.io/badge/license-Apache--2.0-green.svg)
+SOFAMson 是一款使用 Go 语言开发的 Service Mesh 数据平面代理，旨在为服务提供分布式、模块化、可观察和智能化的代理能力。SOFAMosn 是 [SOFAStack](https://www.sofastack.tech) 中的一个项目，其中 MOSN 是 Modular Observable Smart Network 的简称。SOFAMosn 可以与任何支持 xDS API 的 Service Mesh 集成，亦可以作为独立的四、七层负载均衡使用。未来 SOFAMosn 将支持更多云原生场景，并支持 Nginx 的核心转发功能。
 
-SOFAMosn(Modular Observable Smart Network), 是一款采用 GoLang 开发的 Service Mesh 数据平面代理，旨在为服务提供分布式、模块化、可观察、智能化的代理能力。 SOFAMosn 通过 XDS API 与 SOFAMesh 集成，同时 SOFAMosn 可以作为独立的4、7层负载均衡使用，未来 SOFAMosn 将支持更多云原生场景，并支持 nginx 的核心转发功能。
+## 快速开始
+
+请参考[快速开始](../quick-start-setup)。
 
 ## 核心能力
 
@@ -47,17 +46,11 @@ SOFAMosn(Modular Observable Smart Network), 是一款采用 GoLang 开发的 Ser
     + 支持自定义私有协议
     + 支持在 TCP IO 层，协议层面加入自定义扩展
 
-## 快速开始
-
-+ [参考这里](../quick-start-setup) 
-
 ## 社区
 
-+ [Issues](https://github.com/sofastack/sofa-mosn/issues)
+SOFAMosn 仍处在初级阶段，有很多能力需要补全，所以我们欢迎所有人参与进来与我们一起共建。
 
-## 贡献
-
-+ SOFAMosn 仍处在初级阶段，有很多能力需要补全，所以我们欢迎所有人参与进来与我们一起共建。
+如有任何疑问欢迎[提交 Issue](https://github.com/sofastack/sofa-mosn/issues)。
 
 ## 致谢
 
