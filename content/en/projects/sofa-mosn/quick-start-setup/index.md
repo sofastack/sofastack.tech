@@ -49,21 +49,21 @@ In the project root directory, select the following command to compile the SOFAM
 
 + Compile with Docker image
 ```bash
-     make build // compile linux 64bit executable binary
+make build // compile linux 64bit executable binary
 ```
 + non-docker, local compilation
      + Compile local executable binary files
      ```bash
-         make build-local
+     make build-local
      ```
      + Non-Linux machine compiles Linux 64-bit executable binary files crosswise
      
      ```bash
-         make build-linux64
+     make build-linux64
      ```
      + Non-Linux machine compiles Linux 32-bit executable binary files crosswise
      ```bash
-         make build-linux32
+     make build-linux32
      ```
 Once compiled, the compiled binary files can be found in the `build/bundles/${version}/binary` directory.
 

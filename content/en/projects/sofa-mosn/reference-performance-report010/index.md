@@ -1,4 +1,3 @@
-
 ---
 title: "SOFAMosn 0.1.0 performance report"
 aliases: "/sofa-mosn/docs/docs-reference-PerformanceReport010"
@@ -65,9 +64,9 @@ For single-core TCP forwarding, there is little difference between SOFAMosn 0.1.
 
 ## HTTP/1.1 test result
 Since the HTTP/1.1 request response model is PING-PONG, QPS is positively correlated with the number of concurrences. The following tests are performed for different concurrence counts.
- 
+
  ### Concurrences - 20
- | Indicators | SOFAMosn | Envoy|
+| Indicators | SOFAMosn | Envoy|
 | -------- | -------- | -------- |
 | QPS | 5600 |5600 |
 |RT (mean) | 3.549ms |3.545ms |
@@ -76,20 +75,20 @@ Since the HTTP/1.1 request response model is PING-PONG, QPS is positively correl
 |RT (P95) | 4ms |4ms |
 | MEM | 24m |23m |
 | CPU | 40% |20% |
- 
+
  ### Concurrences - 40
- | Indicators | SOFAMosn | Envoy
+| Indicators | SOFAMosn | Envoy |
 | -------- | -------- | -------- |
 | QPS | 11150 |11200 |
-RT (mean) | 3.583ms |3.565ms |
-RT (P99) | 4ms |4ms |
-RT (P98) | 4ms |4ms |
-RT (P95) | 4ms |4ms |
+| RT (mean) | 3.583ms |3.565ms |
+| RT (P99) | 4ms |4ms |
+| RT (P98) | 4ms |4ms |
+| RT (P95) | 4ms |4ms |
 | MEM | 34m |24m |
 | CPU | 70% |40% |
- 
+
  ### Concurrences - 200
- | Indicators | SOFAMosn | Envoy|
+| Indicators | SOFAMosn | Envoy|
 | -------- | -------- | -------- |
 | QPS | 29670 |38800 |
 |RT (mean) | 5.715ms |5.068ms |
@@ -101,7 +100,7 @@ RT (P95) | 4ms |4ms |
 
  ### Concurrences - 220
 
-| Indicators | SOFAMosn | Envoy
+| Indicators | SOFAMosn | Envoy |
 | -------- | -------- | -------- |
 | QPS | 30367 |41070 |
 |RT (mean) | 8.201ms |5.369ms |
@@ -114,15 +113,15 @@ RT (P95) | 4ms |4ms |
 ### Conclusion
 When the upper-layer protocol is HTTP/1.X., a certain gap exists between SOFAMosn and Envoy in terms of performance.
 
-The preliminary conclusion is that in the PING-PONG package delivery model, MOSN cannot merge the read/write system calls. In the scenario where SOFARPC can merge the calls, SOFAMosn's HTTP performance is weaker than that of Envoy because the syscall count significantly increases. 
+The preliminary conclusion is that in the PING-PONG package delivery model, SOFAMosn cannot merge the read/write system calls. In the scenario where SOFARPC can merge the calls, SOFAMosn's HTTP performance is weaker than that of Envoy because the syscall count significantly increases. 
 
 This problem will be optimized in version 0.2.0.
 
 # Appendix
 
 ## Envoy version information
-version:1.7
-Tag:1ef23d481a4701ad4a414d1ef98036bd2ed322e7
+- version:1.7
+- Tag:1ef23d481a4701ad4a414d1ef98036bd2ed322e7
 
 
 ## Envoy TCP test configuration
