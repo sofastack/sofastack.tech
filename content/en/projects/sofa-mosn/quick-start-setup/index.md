@@ -5,7 +5,7 @@ aliases: "/sofa-mosn/docs/docs-quickstart-Setup"
 
 This article is intended to help developers who are new to the MOSN project to quickly build a development environment, and compile, test, package, and run sample code.
 
-Note: MOSN is developed based on Go 1.9.2 and uses dep for dependency management.
+Note: MOSN is developed based on Go 1.12.7 and uses dep for dependency management.
 
 ## Prepare running environment
 
@@ -20,7 +20,7 @@ The codes for the MOSN project are hosted in [GitHub](https://github.com/sofasta
 
 
 ```bash
-go get github.com/alipay/sofa-mosn
+go get sofastack.io/sofa-mosn
 ```
 
 If an error occurs when run "go get", just create the project manually.
@@ -28,20 +28,20 @@ If an error occurs when run "go get", just create the project manually.
 ```bash
 # Enter src dirctory under GOPATH
 cd $GOPATH/src
-# Create github.com/alipay dirctory
-mkdir -p github.com/alipay
-cd github.com/alipay
+# Create sofastack.io dirctory
+mkdir -p sofastack.io
+cd sofastack.io
 
 # clone mosn codes
-git clone git@github.com:alipay/sofa-mosn.git
+git clone git@github.com:sofastack/sofa-mosn.git
 cd sofa-mosn
 ```
 
-The final path of MOSN source codes is `$GOPATH/src/github.com/sofastack/sofa-mosn`.
+The final path of MOSN source codes is `$GOPATH/src/sofastack.io/sofa-mosn`.
 
 ## Import by using IDE
 
-Use the Golang IDE to import the `$GOPATH/src/github.com/sofastack/sofa-mosn` project. Goland is recommended.
+Use the Golang IDE to import the `$GOPATH/src/sofastack.io/sofa-mosn` project. Goland is recommended.
 
 ## Compile codes
 
@@ -67,16 +67,6 @@ In the project root directory, select the following command to compile the MOSN 
      ```
 Once compiled, the compiled binary files can be found in the `build/bundles/${version}/binary` directory.
 
-## Package files
-
-+ Execute the following command in the project root directory to package files:
-
-```bash
-make rpm
-```
-
-After that, you can find the packaged file in the `build/bundles/${version}/rpm` directory.
-
 ## Create image
 
 Run the following command to create an image:
@@ -85,20 +75,18 @@ Run the following command to create an image:
 make image
 ```
 
-## Obtain image
-
-Run the following command to obtain the image:
-
-```bash
-docker pull sofastack/mosn
-```
-
 ## Run test
 
 In the project root directory, run the unit test:
 
 ```bash
 make unit-test
+```
+
+In the project root directory, run the integrate test(slow):
+
+```bash
+make integrate
 ```
 
 ## Start MOSN from configuration file
