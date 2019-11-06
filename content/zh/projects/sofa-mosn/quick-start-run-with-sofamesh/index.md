@@ -12,14 +12,13 @@ aliases: "/sofa-mosn/docs/docs-quickstart-RunWithSOFAMesh"
 
 ## SOFAMosn 与 SOFAMesh 的关系
 
-我们曾在 [《SOFAMosn Introduction》](../overview) 一文中介绍过，SOFAMosn 是一款采用 Golang 开发的 Service Mesh 数据平面代理。而 SOFAMesh 则是基于 Istio 改进和扩展而来的 Service Mesh 大规模落地实践方案，SOFAMosn 作为 SOFAMesh 的关键组件用来完成数据面的转发。
+我们曾在 [SOFAMosn 介绍](../overview)中介绍过，SOFAMosn 是一款采用 Go 语言开发的 Service Mesh 数据平面代理。而 SOFAMesh 则是基于 Istio 改进和扩展而来的 Service Mesh 大规模落地实践方案，SOFAMosn 作为 SOFAMesh 的关键组件用来完成数据面的转发。
 
 下图是 SOFAMesh 整体框架下，SOFAMosn 的工作示意图。
 
 注意：当前 SOFAMosn 不支持在原生的 Istio 中直接使用。
 
 <div align=center><img src="mosn-introduction.png" width = "450" height = "400" alt="SOFAMosn 介绍" /></div>
-
 ## 准备工作
 
 本文以 macOS 为例 ，其他环境可以安装对应版本的软件。
@@ -134,7 +133,7 @@ $ helm template install/kubernetes/helm/istio --name istio --namespace istio-sys
 $ kubectl delete namespace istio-system
 ```
 
-## 三、BookInfo 实验
+## BookInfo 实验
 
 BookInfo 是一个类似豆瓣的图书应用，它包含四个基础服务：
 
@@ -144,7 +143,6 @@ BookInfo 是一个类似豆瓣的图书应用，它包含四个基础服务：
 -  Details：图书详情，由 ruby 开发
 
 <div align=center><img src="bookinfo.png" width = "550" height = "400" alt="bookinfo" /></div>
-
 ### 1. 部署 BookInfo 应用并注入 SOFA-Mosn
 
 > 详细过程可以参考 [https://istio.io/docs/examples/bookinfo/](https://istio.io/docs/examples/bookinfo/)
@@ -230,7 +228,7 @@ $ curl -o /dev/null -s -w "%{http_code}\n"  http://$GATEWAY_URL/productpage   //
 
 ![版本三](v3.png)
 
-### 3. 验证 MOSN 按 version 路由能力
+### 3. 验证 SOFAMosn 按 version 路由能力
 
 首先为 BookInfo 的 service 创建一系列的 destination rules。
 
@@ -248,7 +246,7 @@ $ kubectl apply -f samples/bookinfo/networking/virtual-service-all-v1.yaml
 
 ![版本一](v1.png)
 
-### 4. 验证 MOSN 按 weight 路由能力
+### 4. 验证 SOFAMosn 按 weight 路由能力
 
 我们通过下面操作将 v1 和 v3 版本各分配 50% 的流量。
 
@@ -258,7 +256,7 @@ $ kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-50-v3.yam
 
 访问 `http://$GATEWAY_URL/productpage` 这次 v1 和 v3 各有 1/2 几率出现
 
-### 5. 验证 MOSN 按照特定 header 路由能力
+### 5. 验证 SOFAMosn 按照特定 header 路由能力
 
 BookInfo 系统右上角有一个登陆的入口，登陆以后请求会带上 end-user 这个自定义，值是 user name，Mosn 支持根据这个 header 的值来做路由。比如，我们尝试将 jason 这个用户路由到 v2 版本，其他的路由到 v1 版本（用户名和密码均是：jason，为什么是这个用户可以查看对应的 yaml 文件）。
 

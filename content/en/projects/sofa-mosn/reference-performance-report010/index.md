@@ -1,42 +1,48 @@
-
 ---
 title: "SOFAMosn 0.1.0 performance report"
 aliases: "/sofa-mosn/docs/docs-reference-PerformanceReport010"
 ---
 
 
-# Instructions on performance report 
+## Instructions on performance report 
+
 The following performance report presents the performance comparison data of SOFAMosn 0.1.0 with envoy in terms of pure TCP forwarding for Bolt and HTTP1.x protocols, mainly including QPS, RTT, failure rate, success rate and other indicators.
 
 It is significant to note the following optimizations in v0.1.0 which are intended to improve the forwarding performance of SOFAMosn. 
 
-+ For thread model, SOFAMosn uses the worker goroutine pool to handle stream events, and uses two independent goroutines to handle read and write IO separately.
-+ For single-core forwarding, in the case of specifying `P=1`, SOFAMosn binds CPU with cores to improve the call execution efficiency of the system and the locality affinity of cache.
-+ For memory, in the case of binding single core, SOFAMosn uses SLAB-style recycling mechanism to improve reuse and reduce memory copy.
-+ For IO, SOFAMosn mainly implements optimization by controlling the read/write buffer size, read/write timing, read/write frequency and other parameters.
+- For thread model, SOFAMosn uses the worker goroutine pool to handle stream events, and uses two independent goroutines to handle read and write IO separately.
+- For single-core forwarding, in the case of specifying `P=1`, SOFAMosn binds CPU with cores to improve the call execution efficiency of the system and the locality affinity of cache.
+- For memory, in the case of binding single core, SOFAMosn uses SLAB-style recycling mechanism to improve reuse and reduce memory copy.
+- For IO, SOFAMosn mainly implements optimization by controlling the read/write buffer size, read/write timing, read/write frequency and other parameters.
 
 The performance test data is as follows:
 
-# TCP proxy performance data
+## TCP proxy performance data
+
 For the same deployment mode, this report compares SOFAMosn 0.1.0 and envoy for the upper-layer protocol Bolt (SOFARPC related protocol) and HTTP1.1 respectively.
 
-## Deployment mode
+### Deployment mode
+
 The pressure test is deployed in a pure proxy mode. The client process accesses the server process through the SOFAMosn process and serves as a forwarding proxy. The client process, SOFAMosn process, and server process run on the machines which belong to different network segments. The network delay of the direct access from the client to server is about 2.5ms.
 
-## Client
-### Bolt protocol (send 1K string)
+### Client
+
+#### Bolt protocol (send 1K string)
+
 The client that sends the Bolt protocol data uses the online pressure generators developed by Ant Financial and deploys the SOFARPC client.
 
 On the pressure generator performance page, you can see the QPS, success/failure counts, RT and other parameters.
 
-### HTTP1.1 protocol (send 1K string)
+#### HTTP1.1 protocol (send 1K string)
+
 Use ApacheBench/2.3. The test instructions are:
 
 ```bash
 ab -n $RPC -c $CPC -p 1k.txt -T "text/plain" -k http://11.166.161.136:12200/tcp_bench > ab.log.$CPU_IDX &
 ```
 
-## Mesh machine specifications
+### Mesh machine specifications
+
 The mesh runs in a container where the CPU is an exclusive logical core. The specifications are as follows:
 
 | Category | Information |
@@ -44,14 +50,16 @@ The mesh runs in a container where the CPU is an exclusive logical core. The spe
 | OS | 3.10.0-327.ali2008.alios7.x86_64 |
 | CPU | Intel(R) Xeon(R) CPU E5-2650 v2 @ 2.60GHz X 1 |
 
-## Upstream machine specifications
+### Upstream machine specifications
+
 | Category | Information |
 | -------- | -------- |
 | OS | 2.6.32-431.17.1.el6.FASTSOCKET |
 | CPU | Intel(R) Xeon(R) CPU E5620 @ 2.40GHz X 16 |
 
-## Bolt protocol test result
-### Performance data
+### Bolt protocol test result
+
+#### Performance data
 
 | Indicators | SOFAMosn | Envoy|
 | -------- | -------- | -------- |
@@ -60,14 +68,17 @@ The mesh runs in a container where the CPU is an exclusive logical core. The spe
 | MEM | 31m |18m |
 | CPU | 100% |100% |
 
-### Conclusion
+#### Conclusion
+
 For single-core TCP forwarding, there is little difference between SOFAMosn 0.1.0 and Envoy 1.7 in terms of performance in the condition with full load, such as QPS, RTT and success/failure counts. We will continue to optimize in the subsequent versions.
 
-## HTTP/1.1 test result
+### HTTP/1.1 test result
+
 Since the HTTP/1.1 request response model is PING-PONG, QPS is positively correlated with the number of concurrences. The following tests are performed for different concurrence counts.
- 
- ### Concurrences - 20
- | Indicators | SOFAMosn | Envoy|
+
+#### Concurrences - 20
+
+| Indicators | SOFAMosn | Envoy|
 | -------- | -------- | -------- |
 | QPS | 5600 |5600 |
 |RT (mean) | 3.549ms |3.545ms |
@@ -76,20 +87,22 @@ Since the HTTP/1.1 request response model is PING-PONG, QPS is positively correl
 |RT (P95) | 4ms |4ms |
 | MEM | 24m |23m |
 | CPU | 40% |20% |
- 
- ### Concurrences - 40
- | Indicators | SOFAMosn | Envoy
+
+#### Concurrences - 40
+
+| Indicators | SOFAMosn | Envoy |
 | -------- | -------- | -------- |
 | QPS | 11150 |11200 |
-RT (mean) | 3.583ms |3.565ms |
-RT (P99) | 4ms |4ms |
-RT (P98) | 4ms |4ms |
-RT (P95) | 4ms |4ms |
+| RT (mean) | 3.583ms |3.565ms |
+| RT (P99) | 4ms |4ms |
+| RT (P98) | 4ms |4ms |
+| RT (P95) | 4ms |4ms |
 | MEM | 34m |24m |
 | CPU | 70% |40% |
- 
- ### Concurrences - 200
- | Indicators | SOFAMosn | Envoy|
+
+#### Concurrences - 200
+
+| Indicators | SOFAMosn | Envoy|
 | -------- | -------- | -------- |
 | QPS | 29670 |38800 |
 |RT (mean) | 5.715ms |5.068ms |
@@ -99,9 +112,9 @@ RT (P95) | 4ms |4ms |
 | MEM | 96m |24m |
 | CPU | 100% |95% |
 
- ### Concurrences - 220
+#### Concurrences - 220
 
-| Indicators | SOFAMosn | Envoy
+| Indicators | SOFAMosn | Envoy |
 | -------- | -------- | -------- |
 | QPS | 30367 |41070 |
 |RT (mean) | 8.201ms |5.369ms |
@@ -111,21 +124,22 @@ RT (P95) | 4ms |4ms |
 | MEM | 100m |24m |
 | CPU | 100% |100% |
 
-### Conclusion
+#### Conclusion
+
 When the upper-layer protocol is HTTP/1.X., a certain gap exists between SOFAMosn and Envoy in terms of performance.
 
-The preliminary conclusion is that in the PING-PONG package delivery model, MOSN cannot merge the read/write system calls. In the scenario where SOFARPC can merge the calls, SOFAMosn's HTTP performance is weaker than that of Envoy because the syscall count significantly increases. 
+The preliminary conclusion is that in the PING-PONG package delivery model, SOFAMosn cannot merge the read/write system calls. In the scenario where SOFARPC can merge the calls, SOFAMosn's HTTP performance is weaker than that of Envoy because the syscall count significantly increases. 
 
 This problem will be optimized in version 0.2.0.
 
-# Appendix
+## Appendix
 
-## Envoy version information
-version:1.7
-Tag:1ef23d481a4701ad4a414d1ef98036bd2ed322e7
+### Envoy version information
 
+- version:1.7
+- Tag:1ef23d481a4701ad4a414d1ef98036bd2ed322e7
 
-## Envoy TCP test configuration
+### Envoy TCP test configuration
 
 ``` yaml
 static_resources:
