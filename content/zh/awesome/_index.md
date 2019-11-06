@@ -144,7 +144,7 @@ title: "Awesome SOFA"
 <tr>
 <td><a href="https://github.com/dawxy" target="_blank"><img src="https://avatars1.githubusercontent.com/u/11092308?v=4&s=40" height="20" /> @dawxy</a></td>
 <td><a href="https://github.com/dbl-x" target="_blank"><img src="https://avatars3.githubusercontent.com/u/3138469?v=4&s=40" height="20" /> @dbl-x</a></td>
-<td><a href="https://github.com/dependabot[bot]" target="_blank"><img src="https://avatars0.githubusercontent.com/in/29110?v=4&s=40" height="20" /> @dependabot[bot]</a></td>
+<td><a href="https://github.com/dependabot" target="_blank"><img src="https://avatars0.githubusercontent.com/in/29110?v=4&s=40" height="20" /> @dependabot[bot]</a></td>
 <td><a href="https://github.com/detailyang" target="_blank"><img src="https://avatars3.githubusercontent.com/u/3370345?v=4&s=40" height="20" /> @detailyang</a></td>
 <td><a href="https://github.com/Deturium" target="_blank"><img src="https://avatars0.githubusercontent.com/u/19731097?v=4&s=40" height="20" /> @Deturium</a></td>
 </tr>

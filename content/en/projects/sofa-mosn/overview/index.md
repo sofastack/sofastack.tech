@@ -3,12 +3,7 @@ title: "Overview"
 aliases: "/sofa-mosn/docs/Home"
 ---
 
-[![Build Status](https://travis-ci.org/alipay/sofa-mosn.svg?branch=master)](https://travis-ci.org/alipay/sofa-mosn)
-[![codecov](https://codecov.io/gh/alipay/sofa-mosn/branch/master/graph/badge.svg)](https://codecov.io/gh/alipay/sofa-mosn)
-[![Go Report Card](https://goreportcard.com/badge/github.com/sofastack/sofa-mosn)](https://goreportcard.com/report/github.com/sofastack/sofa-mosn)
-![license](https://img.shields.io/badge/license-Apache--2.0-green.svg)
-
-MOSN, the short name of Modular Observable Smart Network, is a powerful proxy acting as Service Mesh's data plane like [Envoy](https://www.envoyproxy.io/) but written in Go. MOSN supports Envoy and Istio's APIs and can be integrated with [Istio](https://istio.io/), so we use MOSN instead of Envoy in [SOFAMesh](https://github.com/sofastack/sofa-mesh). The initial version of MOSN was jointly contributed by Ant Financial and UC Business Unit of Alibaba, and we look forward to the community to participate in the follow-up development and build an open source excellent project together.
+SOFAMosn is a powerful proxy written in Go that can be used as a Service Mesh's data plane. SOFAMosn is a project in [SOFAStack](https://www.sofastack.tech) and MOSN is the short name of Modular Observable Smart Network. SOFAMosn can be integrated with any Service Mesh wich support xDS API, also used as a standalone load balancer on layer 4 or 7. In the future, SOFAMosn will support more cloud native scenarios and the core forwarding function of Nginx.
 
 ## Core competence
 
@@ -48,4 +43,4 @@ MOSN, the short name of Modular Observable Smart Network, is a powerful proxy ac
     + Support adding custom extensions in protocol at the TCP IO layer
 
 ## Acknowledgement
-Thank Google, IBM and Lyft for creating the Envoy and Istio systems and enabling many excellent projects open-sourced, which provides good reference for MOSN so that we can quickly implement our own ideas.
+SOFAMosn builds on open source projects such as [Envoy](https://github.com/envoyproxy/envoy) and [Istio](https://github.com/istio/istio), thanks to the efforts of the open source community.
