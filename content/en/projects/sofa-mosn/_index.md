@@ -21,4 +21,6 @@ sidebar:
     sub:
       - title: 'SOFAMosn 0.1.0 performance report'
         link: 'reference-performance-report010'
+  - title: 'Release notes'
+    link: 'release-notes' 
 ---
