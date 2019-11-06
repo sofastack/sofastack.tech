@@ -22,4 +22,6 @@ sidebar:
         link: 'reference-performance-report010'
       - title: 'SOFAMosn 0.2.1 性能报告'
         link: 'reference-performance-report021'
+  - title: '发布历史'
+    link: 'release-notes'
 ---
