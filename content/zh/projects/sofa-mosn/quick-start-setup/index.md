@@ -105,11 +105,6 @@ make unit-test
 ```bash
 make integrate
 ```
-在项目根目录下执行如下命令运行集成测试（较慢):
-
-```bash
-make integrate
-```
 
 ## 从配置文件启动 SOFAMosn
 
