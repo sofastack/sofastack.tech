@@ -8,6 +8,8 @@ categories: "Service Mesh"
 description: "11月24日，Service Mesh Meetup#8 双十一特别场邀您参加，本期联合 CNCF、阿里巴巴及蚂蚁金服共同举办。"
 ---
 
+![Kubernetes & Cloud Native X Service Mesh Meetup](https://cdn.nlark.com/yuque/0/2019/png/226702/1573646486595-ad0c5f6f-53f2-4182-a450-fce52ebe1337.png)
+
 ## 概要
 
 - 活动主题：Kubernetes & Cloud Native X Service Mesh Meetup
@@ -20,7 +22,7 @@ description: "11月24日，Service Mesh Meetup#8 双十一特别场邀您参加�
 
 ## Service Mesh Meetup#8 特别场
 
-本期为 Service Mesh Meetup#8 特别场后面加上，联合 CNCF、阿里巴巴及蚂蚁金服 共同举办。
+本期为 Service Mesh Meetup#8 特别场，联合 CNCF、阿里巴巴及蚂蚁金服 共同举办。
 
 不是任何一朵云都撑得住双 11。
 
