@@ -5,7 +5,7 @@ description: "业界首个基于 TensorFlow 实现弹性深度学习的开源系
 categories: "ElasticDL"
 tags: ["ElasticDL"]
 date: 2019-09-16T20:00:00+08:00
-cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1568628377315-e172d617-981e-45c4-b17b-30ccfb092e7f.png"
+cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1573812723435-55069daf-6efe-49ba-80d3-8785d83ed6ee.jpeg"
 ---
 
 9 月 11 日，蚂蚁金服在2019谷歌开发者大会上海站上开源了 ElasticDL 项目，这是业界首个基于 TensorFlow 实现弹性深度学习的开源系统。
