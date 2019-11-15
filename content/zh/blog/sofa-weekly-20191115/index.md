@@ -139,7 +139,6 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 - 蚂蚁金服首次 Service Mesh 大规模落地经验
 - 阿里巴巴超大规模神龙裸金属 K8s 集群运维实践经验
 
-
 时间：2019年11月24日（周日）9:30-16:30
 
 地点：北京市朝阳区大望京科技商务园区宏泰东街浦项中心B座2层多功能厅
