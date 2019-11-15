@@ -41,19 +41,19 @@ Service Mesh 带来的好处不再赘述，我们来看下蚂蚁金服的数据�
 
 ## 基础能力建设
 
-#### SOFAMosn 的能力大图
+### SOFAMosn 的能力大图
 
 SOFAMosn 主要划分为如下模块，包括了网络代理具备的基础能力，也包含了 XDS 等云原生能力。
 
 ![SOFAMosn 的能力大图](https://cdn.nlark.com/yuque/0/2019/png/226702/1573700732557-8cbee731-113a-479a-a532-595aa9d87348.png)
 
-#### 业务支持
+### 业务支持
 
 SOFAMosn 作为底层的高性能安全网络代理，支撑了 RPC，MSG，GATEWAY 等业务场景。
 
 ![业务支持](https://cdn.nlark.com/yuque/0/2019/png/226702/1573700732603-2044a13c-fc2d-4c4f-a153-80a70aaa9129.png)
 
-#### IO 模型
+### IO 模型
 
 SOFAMosn 支持两种 IO 模型，一个是 Golang 经典模型，goroutine-per-connection；一个是 RawEpoll 模型，也就是 Reactor 模式，I/O 多路复用(I/O multiplexing) + 非阻塞 I/O(non-blocking I/O)的模式。
 
@@ -63,7 +63,7 @@ SOFAMosn 支持两种 IO 模型，一个是 Golang 经典模型，goroutine-per-
 
 ![RawEpoll 模型](https://cdn.nlark.com/yuque/0/2019/png/226702/1573700732590-c76fe44f-0811-40a3-896f-1c2764df450a.png)
 
-#### 协程模型
+### 协程模型
 
 ![协程模型](https://cdn.nlark.com/yuque/0/2019/png/226702/1573700732655-ab4984ac-6245-495f-b5ca-5ba4bb89cded.png)
 
@@ -72,7 +72,7 @@ SOFAMosn 支持两种 IO 模型，一个是 Golang 经典模型，goroutine-per-
 
 常规模型一个 TCP 连接将有 Read/Write 两个协程，我们取消了单独的 Write 协程，让 workerpool 工作协程代替，减少了调度延迟和内存占用。
 
-#### 能力扩展
+### 能力扩展
 
 **协议扩展**
 
@@ -96,7 +96,7 @@ SOFAMosn 通过提供 stream filter 注册机制以及统一的 stream send/rece
 - 流量镜像；
 - RBAC鉴权；
 
-#### TLS 安全链路
+### TLS 安全链路
 
 作为金融科技公司，资金安全是最重要的一环，链路加密又是其中最基础的能力，在 TLS 安全链路上我们进行了大量的调研测试。
 
@@ -113,7 +113,7 @@ SOFAMosn 通过提供 stream filter 注册机制以及统一的 stream send/rece
 
 ![能力对比](https://cdn.nlark.com/yuque/0/2019/png/226702/1573700732619-2df9b732-78ae-4d78-839e-5e5e3037e448.png)
 
-#### 平滑升级能力
+### 平滑升级能力
 
 为了让 SOFAMosn 的发布对应用无感知，我们调研开发了平滑升级方案，类似 Nginx 的二进制热升级能力，但是有个最大的区别就是 SOFAMosn 老进程的连接不会断，而是迁移给新的进程，包括底层的 socket FD 和上层的应用数据，保证整个二进制发布过程中业务不受损，对业务无感知。除了支持 SOFARPC、Dubbo、消息等协议，我们还支持 TLS 加密链路的迁移。
 
@@ -135,7 +135,7 @@ SOFAMosn 通过提供 stream filter 注册机制以及统一的 stream send/rece
 
 ![SOFAMosn 的 Metric 迁移](https://cdn.nlark.com/yuque/0/2019/png/226702/1573700732636-0975a128-8e0b-43b9-8cfc-1e9e78e4f7a1.png)
 
-#### 内存复用机制
+### 内存复用机制
 
 - 基于 sync.Pool；
 - slice 复用使用 slab 细粒度，提高复用率；
@@ -145,7 +145,7 @@ SOFAMosn 通过提供 stream filter 注册机制以及统一的 stream send/rece
 
 线上复用率可以达到90%以上，当然 sync.Pool 并不是银弹，也有自己的一些问题，但是随着 Runtime 对 sync.Pool 的持续优化，比如 go1.13 就使用 lock-free 结构减少锁竞争和增加了 victim cache 机制，以后会越来越完善。
 
-#### XDS（UDPA）
+### XDS（UDPA）
 
 支持云原生统一数据面 API，全动态配置更新。
 
@@ -153,7 +153,7 @@ SOFAMosn 通过提供 stream filter 注册机制以及统一的 stream send/rece
 
 ## 前期准备
 
-#### 性能压测和优化
+### 性能压测和优化
 
 在上线前的准备过程中，我们在灰度环境针对核心收银台应用进行了大量的压测和优化，为后面的落地打下了坚实的基础。
 
@@ -165,7 +165,6 @@ SOFAMosn 通过提供 stream filter 注册机制以及统一的 stream send/rece
 | --- | --- | --- | --- |
 | **优化前** | 20% | 0.8ms | 2365M |
 | **优化后** | 6% | 0.2ms | 253M |
-
 
 - 部分优化措施
 
@@ -179,7 +178,7 @@ SOFAMosn 通过提供 stream filter 注册机制以及统一的 stream send/rece
 
 SOFAMosn 做的大量核心优化和 Route Cache 等业务逻辑优化的下沉，更快带来了架构的红利。
 
-#### Go 版本选择
+### Go 版本选择
 
 版本的升级都需要做一系列测试，新版本并不是都最适合你的场景。我们项目最开始使用的 Go 1.9.2，在经过一年迭代之后，我们开始调研当时 Go 的最新版 1.12.6，我们测试验证了新版很多好的优化，也修改了内存回收的默认策略，更好的满足我们的项目需求。
 
@@ -208,7 +207,7 @@ Go 1.12.6
 
 ![使用 Go1.12 默认的 MADV_FREE 策略](https://cdn.nlark.com/yuque/0/2019/png/226702/1573700732675-c4f876ae-ba72-481b-86c7-b79949cf0737.png)
 
-#### Go Runtime Bug 修复
+### Go Runtime Bug 修复
 
 在前期灰度验证时，SOFAMosn 线上出现了较严重的内存泄露，一天泄露了1G 内存，最终排查是 Go Runtime 的 Writev 实现存在缺陷，导致 slice 的内存地址被底层引用，GC 不能释放。
 
