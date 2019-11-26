@@ -1,7 +1,7 @@
 ---
 author: "潘潘"
 date: 2019-11-13T18:00:00+08:00
-title: "【报名中】Kubernetes & Cloud Native X Service Mesh Meetup"
+title: "Kubernetes & Cloud Native X Service Mesh Meetup"
 tags: ["Meetup","Service Mesh","Kubernetes"]
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1573646486595-ad0c5f6f-53f2-4182-a450-fce52ebe1337.png"
 categories: "Service Mesh"
