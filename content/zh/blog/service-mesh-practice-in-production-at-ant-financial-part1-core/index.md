@@ -6,7 +6,7 @@ description: " 当 Service Mesh 遇到双十一又会迸发出怎样的火花？
 categories: "Service mesh"
 tags: ["Service mesh","Service Mesh 落地实践"]
 date: 2019-11-15T09:00:00+08:00
-cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1573712635719-3e2c8f1d-496e-4f47-9cff-2a5c94f3e5bc.jpeg"
+cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1573812723435-55069daf-6efe-49ba-80d3-8785d83ed6ee.jpeg"
 ---
 
 ![Service Mesh 落地实践-核心篇](https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1573714591702-61c57653-e199-40a0-b594-fb910e84213f.jpeg)
