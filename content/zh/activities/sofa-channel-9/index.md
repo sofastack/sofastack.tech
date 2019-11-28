@@ -3,7 +3,7 @@ author: "潘潘"
 date: 2019-11-26T12:10:00+08:00
 title: "（活动报名中）SOFAChannel#9：蚂蚁金服 Service Mesh 双十一落地详解"
 tags: ["SOFAChannel","Service Mesh"]
-cover: "(https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1574752043333-4ac0aab6-5c46-495b-845a-ed2a36099ccb.jpeg"
+cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1574752043333-4ac0aab6-5c46-495b-845a-ed2a36099ccb.jpeg"
 categories: "SOFAChannel"
 description: "12 月 5 日周四晚 7 点，线上直播第 9 期。"
 ---
