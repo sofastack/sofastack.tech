@@ -123,5 +123,5 @@ MOSN：[https://github.com/sofastack/sofa-mosn](https://github.com/sofastack/sof
 
 ### 往期系列阅读
 
-- [蚂蚁金服 Service Mesh 大规模落地系列 - 核心篇](/service-mesh-practice-in-production-at-ant-financial-part1-core/)
-- [Service Mesh 落地负责人亲述：蚂蚁金服双十一四大考题](/service-mesh-practice-antfinal-shopping-festival-big-exam/)
+- [蚂蚁金服 Service Mesh 大规模落地系列 - 核心篇](/blog/service-mesh-practice-in-production-at-ant-financial-part1-core/)
+- [Service Mesh 落地负责人亲述：蚂蚁金服双十一四大考题](/blog/service-mesh-practice-antfinal-shopping-festival-big-exam/)
