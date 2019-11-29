@@ -22,7 +22,7 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 
 ### 社区 Big News
 
-**NO.1 **社区新认证一位 Committer**
+**NO.1 社区新认证一位 Committer**
 
 **Github ID **[**@zongtanghu**](https://github.com/zongtanghu) 成为 SOFAJRaft Committer：
 
@@ -128,5 +128,7 @@ Service Mesh 是蚂蚁金服下一代架构的核心，本期直播主要分享�
 - 从核心、RPC、消息等模块分享蚂蚁金服 Service Mesh 落地实践细节；
 
 时间：2019年12月5日（周四）19:00-20:00
+
 形式：线上直播
+
 报名方式：点击“[这里](https://tech.antfin.com/community/live/1021)”即可报名
