@@ -3,6 +3,35 @@ title: "版本发行日志"
 ---
 
 ---
+## 1.3.0
+
+2019-11-29
+
+* Bug Fixes
+    * [删除数据并重启且期间没有新的 task 提交的情况下 prev log index 紊乱的修复](https://github.com/sofastack/sofa-jraft/pull/255)
+    * [修复一些选举和线性一致读相关的 corner case](https://github.com/sofastack/sofa-jraft/pull/361)
+    * [Recyclers 多个线程 recycle 资源时的 NPE 修复](https://github.com/sofastack/sofa-jraft/pull/355)
+* Features
+    * [新增 Read-only member(learner) 角色，支持 learner 节点上的线性一致读](https://github.com/sofastack/sofa-jraft/pull/312)
+    * [实现优先级选举](https://github.com/sofastack/sofa-jraft/pull/334)
+    * [在 multi raft group 的场景中，随机打散每个 group 的第一次 snapshot timeout 时间，避免一个进程内多个 group 同时 snapshot](https://github.com/sofastack/sofa-jraft/pull/358)
+    * [RheaKV 新增 containsKey API](https://github.com/sofastack/sofa-jraft/pull/302)
+    * [RheaKV 实现 snapshot checksum 以及异步 snapshot](https://github.com/sofastack/sofa-jraft/pull/287)
+    * [新增 replicator 的 state 监听器： ReplicatorStateListener](https://github.com/sofastack/sofa-jraft/pull/256)
+    * [RepeatedTimer 的默认实现替换为 HashedWheelTimer](https://github.com/sofastack/sofa-jraft/pull/258)
+    * [修复 windows 上定时器 CPU 消耗偏高的问题](https://github.com/sofastack/sofa-jraft/issues/311)
+    * kill -s SIGUSR2 pid 中增加打印 rocksdb stats 和所有 ThreadPool 指标统计信息
+    * 升级 rocksdb 版本到 5.18.3
+    * [新增实验性质的 RocksDBSegmentLogStorage，适合 value 较大的数据存储](https://github.com/sofastack/sofa-jraft/pull/156)
+    * Counter 例子改进，演示 ReadIndex 线性一致读
+    * [当优化 checksum 中多余的 mem copy](https://github.com/sofastack/sofa-jraft/pull/293)
+* Breaking Changes
+    * 无
+* 致谢（排名不分先后）
+    * @zongtanghu @devYun @masaimu @SteNicholas @yetingsky
+
+---
+
 ## 1.2.6
 
 2019-08-15
