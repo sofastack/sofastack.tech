@@ -28,7 +28,7 @@ title: "版本发行日志"
 * Breaking Changes
     * 无
 * 致谢（排名不分先后）
-    * @zongtanghu @devYun @masaimu @SteNicholas@yetingsky
+    * @zongtanghu @devYun @masaimu @SteNicholas @yetingsky
 
 ---
 
