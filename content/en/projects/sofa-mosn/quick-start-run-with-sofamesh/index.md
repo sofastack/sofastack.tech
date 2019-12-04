@@ -1,24 +1,24 @@
 ---
-title: "Use SOFAMosn to build Service Mesh platform"
+title: "Use MOSN to build Service Mesh platform"
 aliases: "/sofa-mosn/docs/docs-quickstart-RunWithSOFAMesh"
 ---
 
-This article introduces how to use SOFAMosn to build the Service Mesh development environment based on SOFAMesh framework, and verify some basic capabilities of SOFAMosn, such as routing and load balancing. This article includes the following content:
+This article introduces how to use MOSN to build the Service Mesh development environment based on SOFAMesh framework, and verify some basic capabilities of MOSN, such as routing and load balancing. This article includes the following content:
 
-+ Relationship between SOFAMosn and SOFAMesh
++ Relationship between MOSN and SOFAMesh
 + Preparations
 + Deploy SOFAMesh with source codes
 + Bookinfo experiment
 
-## Relationship between SOFAMosn and SOFAMesh
+## Relationship between MOSN and SOFAMesh
 
-As mentioned in [SOFAMosn introduction](../overview), SOFAMosn is a Service Mesh data plane agent developed with Golang, and SOFAMesh is a large-scale implementation solution for Service Mesh, which is improved and extended based on Istio. Serving as a critical component of SOFAMesh, SOFAMosn is used to complete data plane forwarding.
+As mentioned in [MOSN introduction](../overview), MOSN is a Service Mesh data plane agent developed with Golang, and SOFAMesh is a large-scale implementation solution for Service Mesh, which is improved and extended based on Istio. Serving as a critical component of SOFAMesh, MOSN is used to complete data plane forwarding.
 
-The following figure shows the workflow chart of SOFAMosn based on the overall SOFAMesh framework. 
+The following figure shows the workflow chart of MOSN based on the overall SOFAMesh framework. 
 
-Note: Currently, SOFAMosn cannot be directly used in the native Istio.
+Note: Currently, MOSN cannot be directly used in the native Istio.
 
-<img src="mosn-introduction.png" width = "450" height = "400">
+<img src="mosn-with-service-mesh.png" width = "450" height = "400">
 
 ## Preparations
 
@@ -141,11 +141,11 @@ BookInfo is a book application like Douban. It contains four basic services.
 
 <img src="bookinfo.png" width = "550" height = "400">
 
-### 1. Deploy BookInfo application and inject it to SOFAMosn
+### 1. Deploy BookInfo application and inject it to MOSN
 
 > For the specific procedure, see [https://istio.io/docs/examples/bookinfo/](https://istio.io/docs/examples/bookinfo/).
 
-+ Inject to SOFAMosn
++ Inject to MOSN
 
 ```bash
 $ kubectl label namespace default istio-injection=enabled

@@ -1,9 +1,9 @@
 ---
-title: "SOFAMosn 0.2.1 性能报告"
-aliases: "/sofa-SOFAMosn/docs/docs-reference-PerformanceReport021"
+title: "MOSN 0.2.1 性能报告"
+aliases: "/sofa-MOSN/docs/docs-reference-PerformanceReport021"
 ---
 
-以下性能报告的基准版本为 SOFAMosn 0.2.1。在 0.2.1 版本中，我们进行了如下一些优化手段：
+以下性能报告的基准版本为 MOSN 0.2.1。在 0.2.1 版本中，我们进行了如下一些优化手段：
 - 添加内存复用框架，涵盖 io/protocol/stream/proxy 层级，减少对象分配、内存使用和 GC 压力。
 - 针对大量链接场景，新增 Raw Epoll 模式，该模式使用了事件回调机制 + IO 协程池，规避了海量协程带来的堆栈内存消耗以及调度开销。
 
@@ -35,7 +35,7 @@ aliases: "/sofa-SOFAMosn/docs/docs-reference-PerformanceReport021"
 | -------- | -------- | -------- |
 | 11.166.190.224 | 3.10.0-327.ali2010.rc7.alios7.x86_64 | Intel（R） Xeon（R） CPU E5-2640 v3 @ 2.60GHz |
 | 11.166.136.110 | 3.10.0-327.ali2010.rc7.alios7.x86_64 | Intel（R） Xeon（R） CPU E5-2430 0 @ 2.20GHz |
-| bolt client |  client 为压力平台，有 5 台压力机，共计与client SOFAMosn 之间会建立 500 条链接  ||
+| bolt client |  client 为压力平台，有 5 台压力机，共计与client MOSN 之间会建立 500 条链接  ||
 | http1 client（10.210.168.5） | ApacheBench/2.3  | -n 2000000 -c 500 -k |
 | http2 client（10.210.168.5） | nghttp.h2load  | -n1000000 -c5 -m100 -t4 |
 
@@ -43,14 +43,14 @@ aliases: "/sofa-SOFAMosn/docs/docs-reference-PerformanceReport021"
 
 | 压测模式 | 部署结构                                                     |
 | -------- | ------------------------------------------------------------ |
-| 串联     | client --> SOFAMosn（11.166.190.224） --> SOFAMosn（11.166.136.110） --> server（11.166.136.110） |
+| 串联     | client --> MOSN（11.166.190.224） --> MOSN（11.166.136.110） --> server（11.166.136.110） |
 
 #### 网络时延
 
 | 节点 | PING |
 | -------- | -------- |
-| client --> SOFAMosn（11.166.190.224） | 1.356ms |
-| SOFAMosn（11.166.190.224） --> SOFAMosn（11.166.136.110） | 0.097 ms |
+| client --> MOSN（11.166.190.224） | 1.356ms |
+| MOSN（11.166.190.224） --> MOSN（11.166.136.110） | 0.097 ms |
 
 #### 请求模式
 
@@ -77,7 +77,7 @@ aliases: "/sofa-SOFAMosn/docs/docs-reference-PerformanceReport021"
 | -------- | -------- | -------- |
 | 11.166.190.224 | 3.10.0-327.ali2010.rc7.alios7.x86_64 | Intel（R） Xeon（R） CPU E5-2640 v3 @ 2.60GHz |
 | 11.166.136.110 | 3.10.0-327.ali2010.rc7.alios7.x86_64 | Intel（R） Xeon（R） CPU E5-2430 0 @ 2.20GHz |
-| bolt client |  client为压力平台，有5台压力机，共计与client SOFAMosn之间会建立500条链接  ||
+| bolt client |  client为压力平台，有5台压力机，共计与client MOSN之间会建立500条链接  ||
 | http1 client（10.210.168.5） | ApacheBench/2.3  | -n 2000000 -c 500 -k |
 | http2 client（10.210.168.5） | nghttp.h2load  | -n1000000 -c5 -m100 -t4 |
 
@@ -85,14 +85,14 @@ aliases: "/sofa-SOFAMosn/docs/docs-reference-PerformanceReport021"
 
 | 压测模式 | 部署结构                                                     |
 | -------- | ------------------------------------------------------------ |
-| 直连     | client --> SOFAMosn（11.166.190.224） --> server（11.166.136.110） |
+| 直连     | client --> MOSN（11.166.190.224） --> server（11.166.136.110） |
 
 #### 网络时延
 
 | 节点 | PING |
 | -------- | -------- |
-| client --> SOFAMosn（11.166.190.224） | 1.356ms |
-| SOFAMosn（11.166.190.224） --> SOFAMosn（11.166.136.110） | 0.097 ms |
+| client --> MOSN（11.166.190.224） | 1.356ms |
+| MOSN（11.166.190.224） --> MOSN（11.166.136.110） | 0.097 ms |
 
 #### 请求模式
 
@@ -123,14 +123,14 @@ aliases: "/sofa-SOFAMosn/docs/docs-reference-PerformanceReport021"
 
 | 压测模式 | 部署结构                                                     |
 | -------- | ------------------------------------------------------------ |
-| 直连     | client --> SOFAMosn（11.166.190.224） --> server（11.166.136.110） |
+| 直连     | client --> MOSN（11.166.190.224） --> server（11.166.136.110） |
 
 #### 网络时延
 
 | 节点 | PING |
 | -------- | -------- |
-| client --> SOFAMosn（11.166.190.224） | 1.356ms |
-| SOFAMosn（11.166.190.224） --> SOFAMosn（11.166.136.110） | 0.097 ms |
+| client --> MOSN（11.166.190.224） | 1.356ms |
+| MOSN（11.166.190.224） --> MOSN（11.166.136.110） | 0.097 ms |
 
 #### 请求模式
 
@@ -148,9 +148,9 @@ aliases: "/sofa-SOFAMosn/docs/docs-reference-PerformanceReport021"
 
 ## 总结
 
-SOFAMosn `0.2.1`引入了`内存复用框架`，相比`0.1.0`，在 `bolt 协议转发`场景性能表现得到了大幅优化。在提升了**20**% 的 QPS 的同时，还优化了 **30**% 的内存占用。
+MOSN `0.2.1`引入了`内存复用框架`，相比`0.1.0`，在 `bolt 协议转发`场景性能表现得到了大幅优化。在提升了**20**% 的 QPS 的同时，还优化了 **30**% 的内存占用。
 
-与此同时，我们对 HTTP/1.1 及 HTTP/2 的场景也进行了初步的性能测试，目前来看性能表现比较一般。这主要是由于目前 HTTP 协议族的 IO、Stream 都由三方库进行处理，与 SOFAMosn 现有的处理框架整合度较差。我们会在后续迭代进行专项优化，提升 SOFAMosn 处理 HTTP 协议族的表现。
+与此同时，我们对 HTTP/1.1 及 HTTP/2 的场景也进行了初步的性能测试，目前来看性能表现比较一般。这主要是由于目前 HTTP 协议族的 IO、Stream 都由三方库进行处理，与 MOSN 现有的处理框架整合度较差。我们会在后续迭代进行专项优化，提升 MOSN 处理 HTTP 协议族的表现。
 
 此外，针对大量链接场景（例如长连接网关），我们引入了 Raw Epoll + 协程池的模式来应对协程暴增的问题，从而大幅优化了该场景下的 QPS 和内存表现。
 
