@@ -1,29 +1,29 @@
 ---
-title: "SOFAMosn 0.1.0 performance report"
+title: "MOSN 0.1.0 performance report"
 aliases: "/sofa-mosn/docs/docs-reference-PerformanceReport010"
 ---
 
 
 ## Instructions on performance report 
 
-The following performance report presents the performance comparison data of SOFAMosn 0.1.0 with envoy in terms of pure TCP forwarding for Bolt and HTTP1.x protocols, mainly including QPS, RTT, failure rate, success rate and other indicators.
+The following performance report presents the performance comparison data of MOSN 0.1.0 with envoy in terms of pure TCP forwarding for Bolt and HTTP1.x protocols, mainly including QPS, RTT, failure rate, success rate and other indicators.
 
-It is significant to note the following optimizations in v0.1.0 which are intended to improve the forwarding performance of SOFAMosn. 
+It is significant to note the following optimizations in v0.1.0 which are intended to improve the forwarding performance of MOSN. 
 
-- For thread model, SOFAMosn uses the worker goroutine pool to handle stream events, and uses two independent goroutines to handle read and write IO separately.
-- For single-core forwarding, in the case of specifying `P=1`, SOFAMosn binds CPU with cores to improve the call execution efficiency of the system and the locality affinity of cache.
-- For memory, in the case of binding single core, SOFAMosn uses SLAB-style recycling mechanism to improve reuse and reduce memory copy.
-- For IO, SOFAMosn mainly implements optimization by controlling the read/write buffer size, read/write timing, read/write frequency and other parameters.
+- For thread model, MOSN uses the worker goroutine pool to handle stream events, and uses two independent goroutines to handle read and write IO separately.
+- For single-core forwarding, in the case of specifying `P=1`, MOSN binds CPU with cores to improve the call execution efficiency of the system and the locality affinity of cache.
+- For memory, in the case of binding single core, MOSN uses SLAB-style recycling mechanism to improve reuse and reduce memory copy.
+- For IO, MOSN mainly implements optimization by controlling the read/write buffer size, read/write timing, read/write frequency and other parameters.
 
 The performance test data is as follows:
 
 ## TCP proxy performance data
 
-For the same deployment mode, this report compares SOFAMosn 0.1.0 and envoy for the upper-layer protocol Bolt (SOFARPC related protocol) and HTTP1.1 respectively.
+For the same deployment mode, this report compares MOSN 0.1.0 and envoy for the upper-layer protocol Bolt (SOFARPC related protocol) and HTTP1.1 respectively.
 
 ### Deployment mode
 
-The pressure test is deployed in a pure proxy mode. The client process accesses the server process through the SOFAMosn process and serves as a forwarding proxy. The client process, SOFAMosn process, and server process run on the machines which belong to different network segments. The network delay of the direct access from the client to server is about 2.5ms.
+The pressure test is deployed in a pure proxy mode. The client process accesses the server process through the MOSN process and serves as a forwarding proxy. The client process, MOSN process, and server process run on the machines which belong to different network segments. The network delay of the direct access from the client to server is about 2.5ms.
 
 ### Client
 
@@ -61,7 +61,7 @@ The mesh runs in a container where the CPU is an exclusive logical core. The spe
 
 #### Performance data
 
-| Indicators | SOFAMosn | Envoy|
+| Indicators | MOSN | Envoy|
 | -------- | -------- | -------- |
 | QPS | 103500 |104000 |
 | RT | 16.23ms |15.88ms |
@@ -70,7 +70,7 @@ The mesh runs in a container where the CPU is an exclusive logical core. The spe
 
 #### Conclusion
 
-For single-core TCP forwarding, there is little difference between SOFAMosn 0.1.0 and Envoy 1.7 in terms of performance in the condition with full load, such as QPS, RTT and success/failure counts. We will continue to optimize in the subsequent versions.
+For single-core TCP forwarding, there is little difference between MOSN 0.1.0 and Envoy 1.7 in terms of performance in the condition with full load, such as QPS, RTT and success/failure counts. We will continue to optimize in the subsequent versions.
 
 ### HTTP/1.1 test result
 
@@ -78,7 +78,7 @@ Since the HTTP/1.1 request response model is PING-PONG, QPS is positively correl
 
 #### Concurrences - 20
 
-| Indicators | SOFAMosn | Envoy|
+| Indicators | MOSN | Envoy|
 | -------- | -------- | -------- |
 | QPS | 5600 |5600 |
 |RT (mean) | 3.549ms |3.545ms |
@@ -90,7 +90,7 @@ Since the HTTP/1.1 request response model is PING-PONG, QPS is positively correl
 
 #### Concurrences - 40
 
-| Indicators | SOFAMosn | Envoy |
+| Indicators | MOSN | Envoy |
 | -------- | -------- | -------- |
 | QPS | 11150 |11200 |
 | RT (mean) | 3.583ms |3.565ms |
@@ -102,7 +102,7 @@ Since the HTTP/1.1 request response model is PING-PONG, QPS is positively correl
 
 #### Concurrences - 200
 
-| Indicators | SOFAMosn | Envoy|
+| Indicators | MOSN | Envoy|
 | -------- | -------- | -------- |
 | QPS | 29670 |38800 |
 |RT (mean) | 5.715ms |5.068ms |
@@ -114,7 +114,7 @@ Since the HTTP/1.1 request response model is PING-PONG, QPS is positively correl
 
 #### Concurrences - 220
 
-| Indicators | SOFAMosn | Envoy |
+| Indicators | MOSN | Envoy |
 | -------- | -------- | -------- |
 | QPS | 30367 |41070 |
 |RT (mean) | 8.201ms |5.369ms |
@@ -126,9 +126,9 @@ Since the HTTP/1.1 request response model is PING-PONG, QPS is positively correl
 
 #### Conclusion
 
-When the upper-layer protocol is HTTP/1.X., a certain gap exists between SOFAMosn and Envoy in terms of performance.
+When the upper-layer protocol is HTTP/1.X., a certain gap exists between MOSN and Envoy in terms of performance.
 
-The preliminary conclusion is that in the PING-PONG package delivery model, SOFAMosn cannot merge the read/write system calls. In the scenario where SOFARPC can merge the calls, SOFAMosn's HTTP performance is weaker than that of Envoy because the syscall count significantly increases. 
+The preliminary conclusion is that in the PING-PONG package delivery model, MOSN cannot merge the read/write system calls. In the scenario where SOFARPC can merge the calls, MOSN's HTTP performance is weaker than that of Envoy because the syscall count significantly increases. 
 
 This problem will be optimized in version 0.2.0.
 

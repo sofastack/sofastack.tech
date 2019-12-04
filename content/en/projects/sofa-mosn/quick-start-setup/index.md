@@ -3,20 +3,20 @@ title: "Quick start guide"
 aliases: "/sofa-mosn/docs/docs-quickstart-Setup"
 ---
 
-This article is intended to help developers who are new to the SOFAMosn project to quickly build a development environment, and compile, test, package, and run sample code.
+This article is intended to help developers who are new to the MOSN project to quickly build a development environment, and compile, test, package, and run sample code.
 
-Note: SOFAMosn is developed based on Go 1.12.7 and uses dep for dependency management.
+Note: MOSN is developed based on Go 1.12.7 and uses dep for dependency management.
 
 ## Prepare running environment
 
-+ If you use a container to run SOFAMosn, you must [install Docker](https://docs.docker.com/install/) first.
++ If you use a container to run MOSN, you must [install Docker](https://docs.docker.com/install/) first.
 + If you use a local machine, you must use a Unix-like environment.
 + Install Go's build environment.
 + Install dep. See the [official installation documentation](https://golang.github.io/dep/docs/installation.html).
 
 ## Get codes
 
-The codes for the SOFAMosn project are hosted in [GitHub](https://github.com/sofastack/sofa-mosn) and can be obtained in the following way:
+The codes for the MOSN project are hosted in [GitHub](https://github.com/sofastack/sofa-mosn) and can be obtained in the following way:
 
 
 ```bash
@@ -32,12 +32,12 @@ cd $GOPATH/src
 mkdir -p sofastack.io
 cd sofastack.io
 
-# clone SOFAMosn codes
+# clone MOSN codes
 git clone git@github.com:sofastack/sofa-mosn.git
 cd sofa-mosn
 ```
 
-The final path of SOFAMosn source codes is `$GOPATH/src/sofastack.io/sofa-mosn`.
+The final path of MOSN source codes is `$GOPATH/src/sofastack.io/sofa-mosn`.
 
 ## Import by using IDE
 
@@ -45,7 +45,7 @@ Use the Golang IDE to import the `$GOPATH/src/sofastack.io/sofa-mosn` project. G
 
 ## Compile codes
 
-In the project root directory, select the following command to compile the SOFAMosn binary file according to your machine type and the environment where you want to execute binary:
+In the project root directory, select the following command to compile the MOSN binary file according to your machine type and the environment where you want to execute binary:
 
 **Compile with Docker image**
 
@@ -93,16 +93,16 @@ In the project root directory, run the integrate test(slow):
 make integrate
 ```
 
-## Start SOFAMosn from configuration file
+## Start MOSN from configuration file
 
 ```bash
  ./mosn start -c '$CONFIG_FILE'
 ```
 
-## Start SOFAMosn forwarding sample program
+## Start MOSN forwarding sample program
 
 See the [sample project](../quick-start-run-samples) in the `examples` directory.
 
-## Use SOFAMosn to build a ServiceMesh platform
+## Use MOSN to build a Service Mesh platform
 
 See [Integrate Istio](../quick-start-run-with-sofamesh).
