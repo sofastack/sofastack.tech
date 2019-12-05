@@ -1,6 +1,6 @@
 
 ---
-title: "Bean 异步初始化"
+title: "Spring Bean 异步初始化"
 aliases: "/sofa-boot/docs/bean-async-init"
 ---
 
