@@ -42,6 +42,7 @@ SOFABoot 提供了模块并行启动以及 Spring Bean 异步初始化能力，�
 
 ## 属性配置
 SOFABoot 异步初始化能力提供两个属性配置，用于指定负责异步执行 Bean 初始化方法（init-method）的线程池大小：
+
 - `com.alipay.sofa.boot.asyncInitBeanCoreSize`：线程池基本大小，默认值为 CPU 核数加一。
 - `com.alipay.sofa.boot.asyncInitBeanMaxSize`：线程池中允许的最大线程数大小，默认值为 CPU 核数加一。
 
