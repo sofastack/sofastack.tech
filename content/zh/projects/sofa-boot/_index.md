@@ -28,7 +28,7 @@ sidebar:
         link: 'module-service'
       - title: '模块并行化启动'  	
         link: 'parallel-start'
-	  - title: Bean 异步初始化'
+	  - title: 'Bean 异步初始化'
 	    link: 'bean-async-init'
       - title: 'SOFABoot Profile'  	
         link: 'sofaboot-profile'
