@@ -1,7 +1,5 @@
-
 ---
 title: "Spring Bean 异步初始化"
-aliases: "/sofa-boot/docs/bean-async-init"
 ---
 
 SOFABoot 提供了模块并行启动以及 Spring Bean 异步初始化能力，用于加快应用启动速度。本文介绍如何使用 SOFABoot 异步初始化 Spring Bean 能力以提高应用启动速度。
