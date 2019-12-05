@@ -1,11 +1,11 @@
 ---
-title: "SOFAMosn 0.1.0 性能报告"
+title: "MOSN 0.1.0 性能报告"
 aliases: "/sofa-mosn/docs/docs-reference-PerformanceReport010"
 ---
 
-以下的的性能报告为 SOFAMosn 0.1.0 在做 Bolt 与 HTTP1.x 协议的纯 TCP 转发上与 envoy 的一些性能对比数据，主要表现在 QPS、RTT、失败率/成功率等。
+以下的的性能报告为 MOSN 0.1.0 在做 Bolt 与 HTTP1.x 协议的纯 TCP 转发上与 envoy 的一些性能对比数据，主要表现在 QPS、RTT、失败率/成功率等。
 
-这里需要强调的是，为了提高 SOFAMosn 的转发性能，在 0.1.0 版本中，我们做了如下的一些优化手段：
+这里需要强调的是，为了提高 MOSN 的转发性能，在 0.1.0 版本中，我们做了如下的一些优化手段：
 
 - 在线程模型优化上，使用 worker 协程池处理 stream 事件，使用两个独立的协程分别处理读写 IO
 - 在单核转发优化上，在指定 `P=1` 的情况下，我们通过使用 CPU 绑核的形式来提高系统调用的执行效率以及 cache 的 locality affinity
@@ -20,7 +20,7 @@ aliases: "/sofa-mosn/docs/docs-reference-PerformanceReport010"
 
 ### 部署模式
 
-压测采用纯代理模式部署，client 进程通过 SOFAMosn 进程作为转发代理访问server进程。其中，client 进程，SOFAMosn 进程，server 进程分别运行在属于不同网段的机器中。client 直连访问 server 网络延时为 2.5ms 左右。
+压测采用纯代理模式部署，client 进程通过 MOSN 进程作为转发代理访问server进程。其中，client 进程，MOSN 进程，server 进程分别运行在属于不同网段的机器中。client 直连访问 server 网络延时为 2.5ms 左右。
 
 ## 客户端
 
@@ -54,7 +54,7 @@ Service mesh 运行在容器中，其中 CPU 为独占的一个逻辑核，具�
 
 ### 性能数据
 
-| 指标 | SOFAMosn | Envoy  |
+| 指标 | MOSN | Envoy  |
 | -------- | -------- | -------- |
 | QPS      | 103500    |104000   |
 | RT       | 16.23ms     |15.88ms      |
@@ -63,7 +63,7 @@ Service mesh 运行在容器中，其中 CPU 为独占的一个逻辑核，具�
 
 ### 结论
 
-可以看到，在单核 TCP 转发场景下，SOFAMosn 0.1.0 版本和 Envoy 1.7版本，在满负载情况下的 QPS、RTT、成功数/失败数等性能数据上相差不大，后续版本我们会继续优化。
+可以看到，在单核 TCP 转发场景下，MOSN 0.1.0 版本和 Envoy 1.7版本，在满负载情况下的 QPS、RTT、成功数/失败数等性能数据上相差不大，后续版本我们会继续优化。
 
 ## HTTP/1.1 测试结果
 
@@ -71,7 +71,7 @@ Service mesh 运行在容器中，其中 CPU 为独占的一个逻辑核，具�
 
 ### 并发20
 
-| 指标 | SOFAMosn | Envoy|
+| 指标 | MOSN | Envoy|
 | -------- | -------- | -------- |
 | QPS      | 5600    |5600   |
 | RT(mean)       | 3.549ms     |3.545ms      |
@@ -83,7 +83,7 @@ Service mesh 运行在容器中，其中 CPU 为独占的一个逻辑核，具�
 
 ### 并发40
 
-| 指标 | SOFAMosn | Envoy|
+| 指标 | MOSN | Envoy|
 | -------- | -------- | -------- |
 | QPS      | 11150    |11200   |
 | RT(mean)       | 3.583ms     |3.565ms      |
@@ -95,7 +95,7 @@ Service mesh 运行在容器中，其中 CPU 为独占的一个逻辑核，具�
 
 ### 并发200
 
-| 指标 | SOFAMosn | Envoy|
+| 指标 | MOSN | Envoy|
 | -------- | -------- | -------- |
 | QPS      | 29670    |38800   |
 | RT(mean)       | 5.715ms     |5.068ms      |
@@ -107,7 +107,7 @@ Service mesh 运行在容器中，其中 CPU 为独占的一个逻辑核，具�
 
 ### 并发220
 
-| 指标 | SOFAMosn | Envoy |
+| 指标 | MOSN | Envoy |
 | -------- | -------- | -------- |
 | QPS      | 30367    |41070   |
 | RT(mean)       | 8.201ms     |5.369ms      |
@@ -119,7 +119,7 @@ Service mesh 运行在容器中，其中 CPU 为独占的一个逻辑核，具�
 
 ### 结论
 
-可以看到，在上层协议为 HTTP/1.X 时，SOFAMosn 的性能和 Envoy 的性能存在一定差距，对于这种现象我们的初步结论为：在 PING-PONG 的发包模型下，SOFAMosn 无法进行 read/write 系统调用合并，相比 SOFARPC 可以合并的场景，syscall 数量大幅上升，因此导致相比 SOFARPC 的场景，HTTP 性能上相比 Envoy 会存在差距。针对这个问题，在 0.2.0 版本中，我们会进行相应的优化。
+可以看到，在上层协议为 HTTP/1.X 时，MOSN 的性能和 Envoy 的性能存在一定差距，对于这种现象我们的初步结论为：在 PING-PONG 的发包模型下，MOSN 无法进行 read/write 系统调用合并，相比 SOFARPC 可以合并的场景，syscall 数量大幅上升，因此导致相比 SOFARPC 的场景，HTTP 性能上相比 Envoy 会存在差距。针对这个问题，在 0.2.0 版本中，我们会进行相应的优化。
 
 ## 附录
 
