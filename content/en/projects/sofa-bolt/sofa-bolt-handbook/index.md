@@ -1,5 +1,4 @@
 ---
-
 title: "User guide"
 aliases: "/sofa-bolt/docs/sofa-bolt-handbook"
 ---
@@ -81,7 +80,7 @@ During the call process, we provide the InvokeContext API and pass it down. It c
 
 * Client-side: The user can set some parameters valid for this request, such as serializer type or whether CRC (or other mechanisms) is enabled. At the same time, they can acquire information from the context like the time taken to establish a connection, connection information, etc.
 * Server-side: The user can acquire the queuing time after the request arrival, connection information, and other such information from the user request processor.
-* Note: The online texts of the client side and server side are independent. That is to say, the context set on the client side is only visible on the client side, and vice versa.
+* Note: The contexts of the client side and server side are independent. That is to say, the context set on the client side is only visible on the client side, and vice versa.
 * [Examples](https://github.com/sofastack/sofa-bolt/blob/master/src/test/java/com/alipay/remoting/rpc/invokecontext/BasicUsage_InvokeContext_Test.java##L128)
 
 ### 2.2 Duplex communication

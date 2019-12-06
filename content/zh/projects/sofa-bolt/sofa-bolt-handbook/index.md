@@ -80,7 +80,7 @@ SOFABolt 只依赖 SLF4J 作为日志门面。同时提供了 log4j、log4j2、l
 
 * 客户端：用户可以设置一些针对本次请求生效的参数，比如序列化类型，是否开启crc等机制。同时可以从上下文中获取建连耗时，连接信息等。
 * 服务端：用户可以从用户请求处理器中获得请求到达后的排队耗时，连接信息等
-* 注意：客户端与服务端的上线文是独立的，即客户端设置的上下文只在客户端可见，对服务端不可见；反之同理。
+* 注意：客户端与服务端的上下文是独立的，即客户端设置的上下文只在客户端可见，对服务端不可见；反之同理。
 * [使用示例](https://github.com/sofastack/sofa-bolt/blob/master/src/test/java/com/alipay/remoting/rpc/invokecontext/BasicUsage_InvokeContext_Test.java##L128)
 
 ### 2.2 双工通信
