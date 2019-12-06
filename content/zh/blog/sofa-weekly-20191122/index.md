@@ -89,9 +89,9 @@ A：所谓双模，是指 SOFA 微服务和 Service Mesh 技术的双剑合璧�
 
 ### 双十一落地实践特辑阅读
 
-- [蚂蚁金服 Service Mesh 大规模落地系列 - 消息篇](/service-mesh-practice-in-production-at-ant-financial-part2-mesh/)
-- [蚂蚁金服 Service Mesh 大规模落地系列 - 核心篇](/service-mesh-practice-in-production-at-ant-financial-part1-core/)
-- [Service Mesh 落地负责人亲述：蚂蚁金服双十一四大考题](/service-mesh-practice-antfinal-shopping-festival-big-exam/)
+- [蚂蚁金服 Service Mesh 大规模落地系列 - 消息篇](/blog/service-mesh-practice-in-production-at-ant-financial-part2-mesh/)
+- [蚂蚁金服 Service Mesh 大规模落地系列 - 核心篇](/blog/service-mesh-practice-in-production-at-ant-financial-part1-core/)
+- [Service Mesh 落地负责人亲述：蚂蚁金服双十一四大考题](/blog/service-mesh-practice-antfinal-shopping-festival-big-exam/)
 
 ###  SOFA 项目进展
 
