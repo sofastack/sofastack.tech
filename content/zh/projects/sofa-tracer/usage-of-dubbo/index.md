@@ -1,11 +1,10 @@
-
 ---
 title: "Dubbo 埋点接入"
 aliases: "/sofa-tracer/docs/Usage_Of_Dubbo"
 ---
 
 
-在本文档将演示如何使用 SOFATracer 对 Dubbo 进行埋点，本示例[工程地址](https://github.com/sofastack/sofa-tracer/tree/master/tracer-samples/tracer-sample-with-dubbo)。
+在本文档将演示如何使用 SOFATracer 对 Dubbo 进行埋点，本示例[工程地址](https://github.com/sofastack-guides/sofa-tracer-guides/tree/master/tracer-sample-with-dubbo)。
 
 ## 基础环境
 
@@ -110,7 +109,7 @@ public interface HelloService {
         }
     }
     ```
- 
+
 ## 新建 tracer-sample-with-dubbo-consumer
 
 * 在工程模块的 pom 文件中添加 SOFATracer 依赖
