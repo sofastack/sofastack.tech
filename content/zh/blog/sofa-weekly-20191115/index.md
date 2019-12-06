@@ -102,7 +102,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 ### 双十一落地实践特辑阅读
 
-- [蚂蚁金服 Service Mesh 大规模落地系列 - 核心篇](/service-mesh-practice-in-production-at-ant-financial-part1-core/)
+- [蚂蚁金服 Service Mesh 大规模落地系列 - 核心篇](/blog/service-mesh-practice-in-production-at-ant-financial-part1-core/)
 - [万字长文丨1分36秒，100亿，支付宝技术双11答卷：没有不可能](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247485556&idx=1&sn=7eb759d359ded477aee58ed287b5bf98&chksm=faa0e7aecdd76eb891bed7c82e91849a3b7560108147ebd7aab2dfed0e0cad2e6d874a5ada2e&scene=21)
 
 ### SOFA 项目进展
