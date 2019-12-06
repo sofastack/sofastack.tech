@@ -1,4 +1,3 @@
-
 ---
 title: "RestTemplate Integration"
 aliases: "/sofa-tracer/docs/Usage_Of_RestTemplate"
@@ -7,7 +6,7 @@ aliases: "/sofa-tracer/docs/Usage_Of_RestTemplate"
 
 # RestTemplate Integration
 
-In this document will demonstrate how to use SOFATracer to track of RestTemplate, this example [address] (https://github.com/sofastack/sofa-tracer/tree/master/tracer-samples/tracer-sample-with-resttemplate)).
+In this document will demonstrate how to use SOFATracer to track of RestTemplate, this example [address](https://github.com/sofastack-guides/sofa-tracer-guides/tree/sofaboot-2.x/tracer-sample-with-resttemplate).
 
 Assuming you have built a simple Spring Web project based on SOFABoot, Then you can be operated by the following steps:
 
