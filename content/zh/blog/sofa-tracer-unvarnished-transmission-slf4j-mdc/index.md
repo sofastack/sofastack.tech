@@ -396,4 +396,3 @@ SOFATracer 对 MDC 的扩展在 com.alipay.common.tracer.extensions.log.MDCSpanE
 - SOFATracer 源码：<https://github.com/sofastack/sofa-tracer>
 - SOFAtrace的异步处理：<https://www.sofastack.tech/sofa-tracer/docs/Async>
 - SOFATracer 的测试用例 :<https://github.com/sofastack/sofa-tracer/tree/master/tracer-core/src/test/java/com/alipay/common/tracer/core/async>
-- SOFATracer 对 MDC 的扩展 demo ：<https://github.com/sofastack/sofa-tracer/tree/master/tracer-samples/tracer-sample-with-slf4j>
