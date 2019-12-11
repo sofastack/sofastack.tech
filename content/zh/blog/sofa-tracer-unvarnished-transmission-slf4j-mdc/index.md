@@ -380,8 +380,6 @@ SOFATracer 对 MDC 的扩展在 com.alipay.common.tracer.extensions.log.MDCSpanE
 </appender>
 ```
 
-对应的 Demo 在 [tracer-samples/tracer-sample-with-slf4j](https://github.com/sofastack/sofa-tracer/tree/master/tracer-samples/tracer-sample-with-slf4j)下。
-
 ## 小结
 
 回头看文章开头的两个问题，基于 SOFATracer 的数据透传和 MDC 扩展能力已经有了解决方案：
