@@ -80,7 +80,7 @@ MOSN：[https://github.com/sofastack/sofa-mosn](https://github.com/sofastack/sof
 
 ### 平滑升级
 
-为了达到 Sidecar 这一类基础设施的变更升级对业务完全无感知的目的，就需要使 MOSN 具备平滑升级的能力。在平滑升级过程中，新的 MOSN 首先会被注入，并通过共享卷的 UnixSocket 去检查是否存在老的 MOSN，若存在，则利用内核 Socket 的迁移实现老 MOSN 的连接全部迁移给新 MOSN，如下图所示，最终再让老 MOSN 优雅退出，从而实现 MOSN 在整个升级和发布过程中对业务无任何打扰，关于 MOSN 本身平滑升级更多的内容，可以参考 Service Mesh 系列文章中的[核心篇](/service-mesh-practice-in-production-at-ant-financial-part1-core/)。
+为了达到 Sidecar 这一类基础设施的变更升级对业务完全无感知的目的，就需要使 MOSN 具备平滑升级的能力。在平滑升级过程中，新的 MOSN 首先会被注入，并通过共享卷的 UnixSocket 去检查是否存在老的 MOSN，若存在，则利用内核 Socket 的迁移实现老 MOSN 的连接全部迁移给新 MOSN，如下图所示，最终再让老 MOSN 优雅退出，从而实现 MOSN 在整个升级和发布过程中对业务无任何打扰，关于 MOSN 本身平滑升级更多的内容，可以参考 Service Mesh 系列文章中的[核心篇](/blog/service-mesh-practice-in-production-at-ant-financial-part1-core/)。
 
 ![平滑升级](https://cdn.nlark.com/yuque/0/2019/png/226702/1574330485555-bde80989-9d39-4656-9956-339902898587.png)
 

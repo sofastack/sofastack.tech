@@ -189,4 +189,3 @@ SOFATracer 提供基于用户自定义扩展的采样接口，采样模式需实
 - Drapper 论文原文地址：<https://ai.google/research/pubs/pub36356>
 - 时间复杂度为 O(N) 的蓄水池采样算法 Reservoir Sampling <https://en.wikipedia.org/wiki/Reservoir_sampling>
 - 随机 BitSet 来源 StackOverflow：<https://stackoverflow.com/questions/12817946/generate-a-random-bitset-with-n-1s>
-- tracer-sample-with-springmvc：<https://github.com/sofastack/sofa-tracer/tree/master/tracer-samples/tracer-sample-with-springmvc>

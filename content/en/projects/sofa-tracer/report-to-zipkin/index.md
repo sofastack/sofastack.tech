@@ -109,7 +109,6 @@ Open the Zipkin server interface, assuming that the address of the Zipkin server
 
 For a typical Spring project, we usually use tomcat/jetty as the servlet container to launch the application. Specific project reference [Use SOFATracer in Spring project](https://github.com/glmapper/tracer-zipkin-plugin-demo)
 
-Attachment: [Source code](https://github.com/sofastack/sofa-tracer/tree/master/tracer-samples/tracer-sample-with-zipkin) for remote data reporting to Zipkin. 
 Prerequisite: You need to configure and set up the Zipkin server with reference to [this document](https://zipkin.io/).
 
 
