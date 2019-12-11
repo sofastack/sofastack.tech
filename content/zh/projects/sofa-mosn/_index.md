@@ -8,6 +8,10 @@ weight: 3
 sidebar:
   - title: 'MOSN 介绍'
     link: 'overview'
+  - title: '架构原理'
+    sub:
+      - title: '核心概念'
+        link: 'core-concept'
   - title: '开发文档'
     sub:
       - title: '快速开始'
