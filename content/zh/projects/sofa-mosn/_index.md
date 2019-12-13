@@ -12,6 +12,8 @@ sidebar:
     sub:
       - title: '核心概念'
         link: 'core-concept'
+      - title: 'Sidecar 模式'
+        link: 'sidecar-pattern'
   - title: '开发文档'
     sub:
       - title: '快速开始'
