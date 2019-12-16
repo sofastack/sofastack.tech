@@ -139,7 +139,7 @@ SOFAStack 部分开源项目地址：
 - [蚂蚁金服 Service Mesh 大规模落地系列 - 核心篇](https://www.sofastack.tech/blog/service-mesh-practice-in-production-at-ant-financial-part1-core/)
 - [Service Mesh 落地负责人亲述：蚂蚁金服双十一四大考题](https://www.sofastack.tech/blog/service-mesh-practice-antfinal-shopping-festival-big-exam/)
 
-###  Service Mesh 相关活动报名中
+### Service Mesh 相关活动报名中
 
 ![Service Mesh Meetup#9](https://cdn.nlark.com/yuque/0/2019/png/226702/1576469907431-7bfc401e-fe31-46a7-9c90-391e8aace845.png)
 
