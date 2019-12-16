@@ -127,7 +127,7 @@ MOSN：[https://github.com/sofastack/sofa-mosn](https://github.com/sofastack/sof
 详细发布报告：
 [https://github.com/sofastack/sofa-boot/releases/tag/v3.2.1](https://github.com/sofastack/sofa-boot/releases/tag/v3.2.1)
 
-###  社区活动预告
+### 社区活动预告
 
 ![Service Mesh Meetup#9](https://cdn.nlark.com/yuque/0/2019/png/226702/1576469907431-7bfc401e-fe31-46a7-9c90-391e8aace845.png)
 
