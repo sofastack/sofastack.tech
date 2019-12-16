@@ -43,9 +43,11 @@ A：有一个优雅的办法：你实现 StateLogStore 接口，然后代理 Sea
 **2、@Purge yao** 提问：
 
 > Saga 状态机在线设计器： [http://seata.io/saga_designer/index.html](http://seata.io/saga_designer/index.html)  这个状态机可以让流程引擎用吗？
+
 A：不可以当工作流用，没有人工节点。
 
 > Seata  用这个流程是干嘛用的？
+
 A：事实上 Seata Saga 模式 是一个具备“服务编排”和“Saga 分布式事务”能力的产品，总结下来它的适用场景是：
 
 - 适用于微服务架构下的“长事务”处理；
