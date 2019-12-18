@@ -34,7 +34,6 @@ ElasticSearch 广泛应用于蚂蚁金服内部的日志分析、多维分析、
 
 ![ZSearch 通用搜索平台](https://cdn.nlark.com/yuque/0/2019/png/226702/1576651958123-bbe53373-ff2d-4650-96a0-050365e89100.png)
 
-
 ## 向量检索需求
 
 基于 ElasticSearch 的通用搜索平台 ZSearch 日趋完善，用户越来越多，场景更加丰富。
@@ -218,7 +217,7 @@ HNSW 算法是 NSW 算法的分层优化，借鉴了 skiplist 算法的思想，
 
 #### 对比
 
-sift-128-euclidean 100w 数据集(https://github.com/erikbern/ann-benchmarks)
+sift-128-euclidean 100w 数据集(<https://github.com/erikbern/ann-benchmarks>)
 
 |  | HNSW 插件 | ZSearch-HNSW 插件 |
 | --- | --- | --- |
