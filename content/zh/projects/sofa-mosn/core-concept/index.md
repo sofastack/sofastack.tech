@@ -47,7 +47,7 @@ MOSN 的 netpoll 模型如上图所示，协程数量与链接数量成正比，
 ![MOSN RawEpoll 模型](raw-epoll-model.jpg) 
 
 RawEpoll 模型如上图所示，使用 epoll 感知到可读事件之后，再从协程池中为其分配协程进行处理，步骤如下：
-1. 链接建立后，想 Epoll 注册 oneshot 可读事件监听；并且此时不允许有协程调用 conn.read，避免与 runtime netpoll 冲突。
+1. 链接建立后，向 Epoll 注册 oneshot 可读事件监听；并且此时不允许有协程调用 conn.read，避免与 runtime netpoll 冲突。
 2. 可读事件到达，从 goroutine pool 挑选一个协程进行读事件处理；由于使用的是 oneshot 模式，该 fd 后续可读事件不会再触发。
 3. 请求处理过程中，协程调度与经典 netpoll 模式一致。
 4. 请求处理完成，将协程归还给协程池；同时将 fd 重现添加到 RawEpoll 中。
@@ -67,7 +67,7 @@ MOSN 的协程模型如下图所示。
 
 ### 协议扩展
 
-MOSN 通过使用同一的编解码引擎以及编/解码器核心接口，提供协议的 plugin 机制，包括支持：
+MOSN 通过使用统一的编解码引擎以及编/解码器核心接口，提供协议的 plugin 机制，包括支持：
 
 - SOFARPC
 - HTTP1.x/HTTP2.0
