@@ -27,10 +27,9 @@ title: 'connection_manager'
 
 - `name`，字符串。用作 virtual host 的唯一标识。
 - `domains`，字符串数组。表示一组可以匹配到该 virtual host 的 domain，支持配置通配符。domain 的匹配优先级如下：
-- 首先匹配精确的，如 `www.foo.com`
-  - 其次匹配最长后缀的通配符，如 `*.foo.com`、`*-bar.foo.com`，其中如果一个 domain 是 `foo-bar.foo.com`，那么会优先匹配 `*-bar.foo.com`
-  - 最后匹配任意domain的通配符 `*`
-  
+  - 首先匹配精确的，如 `www.foo.com`。
+  - 其次匹配最长后缀的通配符，如 `*.foo.com`、`*-bar.foo.com`，其中如果一个 domain 是 `foo-bar.foo.com`，那么会优先匹配 `*-bar.foo.com`。
+  - 最后匹配任意domain的通配符 `*` 。
 - `routers`，一组具体的路由匹配规则。
 
 ## Router
@@ -62,11 +61,10 @@ title: 'connection_manager'
 
 - 路径（path）匹配
   - `prefix`，表示路由会匹配 path 的前缀，该配置的优先级高于 path 和 regex。 如果 prefix 被配置，那么请求首先要满足 path 的前缀与 prefix 配置相符合。
-  - `path`，表示路由会匹配精确的 path，该配置的优先级高于 regex。如果path被配置，那么请求首先要满足path与path配置相符合。
+  - `path`，表示路由会匹配精确的 path，该配置的优先级高于 regex。如果 path被配置，那么请求首先要满足 path 与 path 配置相符合。
   - `regex`，表示路由会按照正则匹配的方式匹配 path。如果 regex 被配置，那么请求首先要满足 path 与 regex 配置相符合。
   - 路径匹配配置同时存在时，只有高优先级的配置会生效。
 - Heaer 匹配
-
   - headers，表示一组请求需要匹配的 header。请求需要满足配置中所有的 Header 配置条件才算匹配成功。
 
 ## header
