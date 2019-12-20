@@ -30,7 +30,7 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 **1、@番番** 提问：
 
 > MOSN 的配置信息在哪里呢？
-> 
+
 A：MOSN 配置信息已更新到文档中：[https://www.sofastack.tech/projects/sofa-mosn/configuration/overview/](https://www.sofastack.tech/projects/sofa-mosn/configuration/overview/)
 
 **2、@古月** 提问：
