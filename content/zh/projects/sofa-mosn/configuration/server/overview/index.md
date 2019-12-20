@@ -54,7 +54,7 @@ title: "Server 配置说明"
 
 ## graceful_timeout
 
-- [Duration String ](https://yuque.antfin-inc.com/mesh/mosn-open-doc/gcy3lc#0bb2G)的字符串配置，表示 MOSN 在进行平滑升级时，等待连接关闭的最大时间
+- [Duration String ](../../custom#duration-string)的字符串配置，表示 MOSN 在进行平滑升级时，等待连接关闭的最大时间
 - 如果没有配置，默认为 30s
 
 ### processor
