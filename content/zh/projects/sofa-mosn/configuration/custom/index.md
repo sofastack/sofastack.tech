@@ -46,16 +46,16 @@ title: "自定义配置说明"
 }
 ```
 
-- `status`，bool类型，表示是否开启 TLS，默认是 false
-- `type`，字符串类型，描述 tls_context 的类型。tls_context 支持扩展实现，不同的 type 对应不同的实现方式，默认实现方式对应的 type 是空字符串
-- `server_name`，当没有配置 insecure_skip 时，用于校验服务端返回证书的 hostname。作为Cluster配置时有效
-- `ca_cert`，证书签发的根 CA 证书
-- `cert_chain`，TLS 证书链配置
-- `private_key`，证书私钥配置
+- `status`，bool类型，表示是否开启 TLS，默认是 false。
+- `type`，字符串类型，描述 tls_context 的类型。tls_context 支持扩展实现，不同的 type 对应不同的实现方式，默认实现方式对应的 type 是空字符串。
+- `server_name`，当没有配置 insecure_skip 时，用于校验服务端返回证书的 hostname。作为Cluster配置时有效。
+- `ca_cert`，证书签发的根 CA 证书。
+- `cert_chain`，TLS 证书链配置。
+- `private_key`，证书私钥配置。
 - `verify_client`，bool 类型，作为 Listener 配置时有效，表示是否要校验 Client 端证书
-- `require_client_cert`，bool 类型，表示是否强制 Client 端必须携带证书
-- `insecure_skip`，bool 类型，作为 Cluster 配置时有效，表示是否要忽略 Server 端的证书校验
-- `cipher_suites`，如果配置了该配置，那么 TLS 连接将只支持配置了的密码套件，并且会按照配置的顺序作为优先级使用，支持的套件类型如下
+- `require_client_cert`，bool 类型，表示是否强制 Client 端必须携带证书。
+- `insecure_skip`，bool 类型，作为 Cluster 配置时有效，表示是否要忽略 Server 端的证书校验。
+- `cipher_suites`，如果配置了该配置，那么 TLS 连接将只支持配置了的密码套件，并且会按照配置的顺序作为优先级使用，支持的套件类型如下：
 
 ```
 ECDHE-ECDSA-AES256-GCM-SHA384
@@ -78,25 +78,25 @@ ECDHE-ECDSA-SM4-SM3
 
 - `ecdh_curves`，如果配置了该配置，那么 TLS 连接将只支持配置了的曲线。
 
-- - 支持 x25519、p256、p384、p521
+- - 支持 x25519、p256、p384、p521。
 
-- `min_version`，最低的 TLS 协议版本，默认是 TLS1.0
+- `min_version`，最低的 TLS 协议版本，默认是 TLS1.0。
 
-- - 支持 TLS1.0、TLS1.1、TLS1.2
-  - 默认会自动识别可用的 TLS 协议版本
+- - 支持 TLS1.0、TLS1.1、TLS1.2。
+  - 默认会自动识别可用的 TLS 协议版本。
 
-- `max_version`，最高的 TLS 协议版本，默认是 TLS1.2
+- `max_version`，最高的 TLS 协议版本，默认是 TLS1.2。
 
-- - 支持 TLS1.0、TLS1.1、TLS1.2
-  - 默认会自动识别可用的 TLS 协议版本
+- - 支持 TLS1.0、TLS1.1、TLS1.2。
+  - 默认会自动识别可用的 TLS 协议版本。
 
-- `alpn`，TLS 的 ALPN 配置
+- `alpn`，TLS 的 ALPN 配置。
 
-- - 支持 h2、http/1.1、 sofa
+- - 支持 h2、http/1.1、 sofa。
 
-- `fall_back`，bool类型，当配置为 true 时，如果证书解析失败，不会报错而是相当于没有开启 TLS
-- `extend_verify`，任意 json 类型，当 type 为非空时，作为扩展的配置参数
-- `sds_source`，访问 SDS API 的配置，如果配置了这个配置，`ca_cert`、`cert_chain` 和 `private_key` 都会被忽略，但是其余的配置依然有效
+- `fall_back`，bool类型，当配置为 true 时，如果证书解析失败，不会报错而是相当于没有开启 TLS。
+- `extend_verify`，任意 json 类型，当 type 为非空时，作为扩展的配置参数。
+- `sds_source`，访问 SDS API 的配置，如果配置了这个配置，`ca_cert`、`cert_chain` 和 `private_key` 都会被忽略，但是其余的配置依然有效。
 
 ### sds_source
 
@@ -107,6 +107,6 @@ ECDHE-ECDSA-SM4-SM3
 }
 ```
 
-- `CertificateConfig` 描述了如何获取 cert_chain 和 private_key 的配置
-- `ValidationConfig` 描述了如何获取 `ca_cert` 的配置
-- 详细的 Config 内容参考 [envoy: sdssecretconfig](https://www.envoyproxy.io/docs/envoy/latest/api-v2/api/v2/auth/cert.proto#envoy-api-msg-auth-sdssecretconfig)
+- `CertificateConfig` 描述了如何获取 cert_chain 和 private_key 的配置。
+- `ValidationConfig` 描述了如何获取 `ca_cert` 的配置。
+- 详细的 Config 内容参考 [envoy: sdssecretconfig](https://www.envoyproxy.io/docs/envoy/latest/api-v2/api/v2/auth/cert.proto#envoy-api-msg-auth-sdssecretconfig)。

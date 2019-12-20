@@ -4,8 +4,8 @@ title: "Listener 配置"
 
 本文描述的是 MOSN listener 配置。
 
-- Listener 配置详细描述了 MOSN 启动时监听的端口，以及对应的端口对应不同逻辑的配置
-- Listener 的配置可以通过Listener动态接口进行添加和修改
+- Listener 配置详细描述了 MOSN 启动时监听的端口，以及对应的端口对应不同逻辑的配置。
+- Listener 的配置可以通过Listener动态接口进行添加和修改。
 
 ```json
 {
@@ -52,7 +52,7 @@ bool 类型，用于透明代理。
 
 ## stream_filters
 
-一组 `stream_filter` 配置，目前只在 `filter_chain` 中配置了 filter 包含 `proxy` 时生效
+一组 `stream_filter` 配置，目前只在 `filter_chain` 中配置了 filter 包含 `proxy` 时生效。
 
 ## inspector
 
