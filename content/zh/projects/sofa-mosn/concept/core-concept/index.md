@@ -1,10 +1,11 @@
 ---
 title: "核心概念"
+aliases: "/projects/sofa-mosn/core-concept/"
 ---
 
 MOSN 主要划分为如下模块，包括了网络代理具备的基础能力，也包含了 [xDS](https://www.servicemesher.com/blog/envoy-xds-protocol/) 等云原生能力。
 
-![MOSN 模块大图](mosn-modules-arch.jpg) 
+![MOSN 模块大图](mosn-modules-arch.jpg)
 
 ## xDS（UDPA）支持
 

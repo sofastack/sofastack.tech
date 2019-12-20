@@ -1,5 +1,6 @@
 ---
 title: "Sidecar 模式"
+aliases: "/projects/sofa-mosn/sidecar-pattern/"
 ---
 
 Sidecar 模式是 Service Mesh 中习惯采用的模式，是容器设计模式的一种，在 Service Mesh 出现之前该模式就一直存在，本文将为您讲解 Sidecar 模式。
