@@ -11,9 +11,31 @@ sidebar:
   - title: '架构原理'
     sub:
       - title: '核心概念'
-        link: 'core-concept'
+        link: 'concept/core-concept'
       - title: 'Sidecar 模式'
-        link: 'sidecar-pattern'
+        link: 'concept/sidecar-pattern'
+  - title: '配置说明'
+    sub:
+      - title: '配置概览'
+        link: 'configuration/overview'
+      - title: 'Server'
+        sub:
+          - title: "Server 配置"
+            link: 'configuration/server/overview'
+      - title: 'Listener'
+        sub:
+          - title: 'Listener 配置'
+            link: 'configuration/listener/overview'
+          - title: 'FilterChain 配置'
+            link: 'configuration/listener/filter-chain'
+          - title: 'Network Filter'
+            sub:
+              - title: 'proxy'
+                link: 'configuration/listener/network-filter/proxy'
+              - title: 'connection_manager'
+                link: 'configuration/listener/network-filter/connection-manager'
+      - title: '自定义配置说明'
+        link: 'configuration/custom'
   - title: '开发文档'
     sub:
       - title: '快速开始'
