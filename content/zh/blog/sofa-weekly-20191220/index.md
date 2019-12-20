@@ -126,7 +126,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 ### 社区活动预告
 
-!Service Mesh Meetup#9](https://cdn.nlark.com/yuque/0/2019/png/226702/1576469907431-7bfc401e-fe31-46a7-9c90-391e8aace845.png)
+![Service Mesh Meetup#9](https://cdn.nlark.com/yuque/0/2019/png/226702/1576469907431-7bfc401e-fe31-46a7-9c90-391e8aace845.png)
 
 下周六 Service Mesh Meetup 第9期杭州站来啦，本期与滴滴联合举办，将深入 Service Mesh 的落地实践，并带领大家探索 Service Mesh 在更广阔领域的应用。欢迎参加~
 
