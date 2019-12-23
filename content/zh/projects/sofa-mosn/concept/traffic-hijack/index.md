@@ -17,7 +17,7 @@ MOSN 作为 Sidecar 和业务容器部署在同一个 Pod 中时，需要使得�
 1. 调用端的 Sidecar 会向服务注册中心（如 SOFA Registry）发起服务订阅请求，告知需要订阅的服务信息；
 1. 服务注册中心（如 SOFA Registry）向调用端的 Sidecar 推送服务地址（1.2.3.4:20881）
 
-![undefined](https://intranetproxy.alipay.com/skylark/lark/0/2019/png/96942/1576563526942-e1c01d59-37a6-48bf-8335-23a9562e15e1.png) 
+![流量接管示意图](traffic-hijacking.jpg) 
 
 ### 服务调用过程
 
@@ -27,7 +27,7 @@ MOSN 作为 Sidecar 和业务容器部署在同一个 Pod 中时，需要使得�
 1. 调用端的 Sidecar 接收到请求后，通过解析请求头，可以得知具体要调用的服务信息，然后获取之前从服务注册中心返回的地址后就可以发起真实的调用（`1.2.3.4:20881`）
 1. 服务端的 Sidecar 接收到请求后，经过一系列处理，最终会把请求发送给服务端（`127.0.0.1:20880`）
 
-![undefined](https://intranetproxy.alipay.com/skylark/lark/0/2019/png/96942/1576563816894-6732ac75-d1e8-4a00-9975-5389aa929b34.png) 
+![服务调用过程示意图](service-call-process.png) 
 
 ## 透明劫持
 
