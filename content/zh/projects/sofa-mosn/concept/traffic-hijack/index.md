@@ -35,7 +35,7 @@ MOSN 作为 Sidecar 和业务容器部署在同一个 Pod 中时，需要使得�
 
 ### 使用 iptables 做流量劫持
 
-iptables 通过 NT 表的 redirect 动作执行流量重定向，通过 syn 包触发新建 nefilter 层的连接，后续报文到来时查找连接转换目的地址与端口。新建连接时同时会记录下原始目的地址，应用程序可以通过(`SOL_IP`、`SO_ORIGINAL_DST`)获取到真实的目的地址。
+iptables 通过 NAT 表的 redirect 动作执行流量重定向，通过 syn 包触发新建 nefilter 层的连接，后续报文到来时查找连接转换目的地址与端口。新建连接时同时会记录下原始目的地址，应用程序可以通过(`SOL_IP`、`SO_ORIGINAL_DST`)获取到真实的目的地址。
 
 iptables 劫持原理如下图所示：
 
