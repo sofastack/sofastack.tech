@@ -44,16 +44,17 @@ Raft 可以解决分布式理论中的 CP，即一致性和分区容忍性，并
 
 一个纯 Java 的 [Raft](https://raft.github.io/) 算法实现库, 基于百度 [braft](https://github.com/brpc/braft) 实现而来, 使用 Java 重写了所有功能, 支持:
 
-1. Leader election.
+1. Leader election and priority-based semi-deterministic leader election.
 2. Replication and recovery.
 3. Snapshot and log compaction.
-4. Membership management.
-5. Fully concurrent replication.
-6. Fault tolerance.
-7. Asymmetric network partition tolerance.
-8. Workaround when quorate peers are dead.
-9. Replication pipeline optimistic
-10. Linearizable read,  ReadIndex/LeaseRead.
+4. Read-only member (learner).
+5. Membership management.
+6. Fully concurrent replication.
+7. Fault tolerance.
+8. Asymmetric network partition tolerance.
+9. Workaround when quorate peers are dead.
+10. Replication pipeline optimistic
+11. Linearizable read,  ReadIndex/LeaseRead.
 
 ## 联系我们
 
