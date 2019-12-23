@@ -14,6 +14,8 @@ sidebar:
         link: 'concept/core-concept'
       - title: 'Sidecar 模式'
         link: 'concept/sidecar-pattern'
+      - title: '流量劫持'
+        link: 'concept/traffic-hijack'
   - title: '配置说明'
     sub:
       - title: '配置概览'
