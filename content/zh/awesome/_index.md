@@ -45,10 +45,11 @@ title: "Awesome SOFA"
 <img alt="南京银行" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*q9PMQI7hs8sAAAAAAAAAAABjARQnAQ" height="60" />
 <img alt="民生银行" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*GnUuSKmOtS4AAAAAAAAAAABjARQnAQ" height="60" />
 <img alt="重庆农商行" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*FKrxSYhdi2wAAAAAAAAAAABjARQnAQ" height="60" />
+<img alt="中信证券" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*t-xbQb3WSjcAAAAAAAAAAABkARQnAQ" height="60" />
 <img alt="挖财" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*lVrVT4dpSDEAAAAAAAAAAABjARQnAQ" height="60" />
 <img alt="拍拍贷" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*TAePS6j56LsAAAAAAAAAAABjARQnAQ" height="60" />
-<img alt="运满满" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*_kBbQYUYdIQAAAAAAAAAAABjARQnAQ" height="60" />
 <img alt="OPPO金融" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*mU40QaJkwZYAAAAAAAAAAABjARQnAQ" height="60" />
+<img alt="运满满" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*_kBbQYUYdIQAAAAAAAAAAABjARQnAQ" height="60" />
 <img alt="译筑科技" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*wuKSTpZSEkEAAAAAAAAAAABjARQnAQ" height="60" />
 <img alt="杭州米雅信息科技" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*b-o5SITMKu0AAAAAAAAAAABjARQnAQ" height="60" />
 <img alt="邦道科技" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*nsw1S5bt9DkAAAAAAAAAAABjARQnAQ" height="60" />
@@ -89,11 +90,11 @@ title: "Awesome SOFA"
   - 钉钉交流群：
       - ~~金融级分布式架构 SOFAStack 1群，群号：23127468~~ 已满
       - ~~金融级分布式架构 SOFAStack 2群，群号：23195297~~ 已满
-      - 金融级分布式架构 SOFAStack 3群，群号：23390449
-
-        <img alt="DingTalk" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*ysJoQ78q3ewAAAAAAAAAAABkARQnAQ" height="250" />
-
+      - ~~金融级分布式架构 SOFAStack 3群，群号：23390449~~ 已满
       - 金融级分布式架构 SOFAStack 4群，群号：23372465
+
+        <img alt="DingTalk" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*SIG5TJGjc0oAAAAAAAAAAABkARQnAQ" height="250" />
+
   - 钉钉交流群：SOFAStack 金牌用户服务群，如果您已经在生产环境使用了 SOFAStack 相关组件，还请告知我们，我们将会邀请您加入到此群中，以便更加快捷的沟通和更加高效的线上使用问题支持。
 - [新浪微博](https://weibo.com/sofastack)
 - [掘金](https://juejin.im/user/5a42596ff265da43062b06e8)
