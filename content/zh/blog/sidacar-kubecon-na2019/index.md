@@ -137,7 +137,6 @@ Pod 内容器的启动顺序按照：初始化容器->Sidecar 容器->业务容�
 
 ![对容器的启动顺序做 DAG 编排](https://cdn.nlark.com/yuque/0/2019/png/226702/1576647445090-c7a2141f-953c-4475-9420-449c7de06986.png)
 
-
 ### 蚂蚁金服及阿里巴巴如何应对
 
 为了解决 Sidecar 的管理工作，我们需要一个更**细粒度**的 workload 方便我们进行管理。这个 workload 我们命名为 SidecarSet，目前已经开源，生产可用。大家可以访问 [OpenKruise](https://openkruise.io/) 这个项目，可以在项目的 [roadmap](https://github.com/openkruise/kruise/projects) 里了解我们目前的一些新进展。OpenKruise 这个项目目前有三个生产可用的 workload，分别是 Advanced StatefulSet、
@@ -150,37 +149,37 @@ BroadcastJob、SidecarSet。另外2个 workload（AdvancedHPA 和 PodHealer）�
 ```go
 // SidecarSetSpec defines the desired state of SidecarSet
 type SidecarSetSpec struct {
-	// selector is a label query over pods that should be injected
-	Selector *metav1.LabelSelector `json:"selector,omitempty"`
+    // selector is a label query over pods that should be injected
+    Selector *metav1.LabelSelector `json:"selector,omitempty"`
 
-	// Containers is the list of sidecar containers to be injected into the selected pod
-	Containers []SidecarContainer `json:"containers,omitempty"`
+    // Containers is the list of sidecar containers to be injected into the selected pod
+    Containers []SidecarContainer `json:"containers,omitempty"`
 
-	// List of volumes that can be mounted by sidecar containers
-	Volumes []corev1.Volume `json:"volumes,omitempty"`
+    // List of volumes that can be mounted by sidecar containers
+    Volumes []corev1.Volume `json:"volumes,omitempty"`
 
-	// Paused indicates that the sidecarset is paused and will not be processed by the sidecarset controller.
-	Paused bool `json:"paused,omitempty"`
+    // Paused indicates that the sidecarset is paused and will not be processed by the sidecarset controller.
+    Paused bool `json:"paused,omitempty"`
 
-	// The sidecarset strategy to use to replace existing pods with new ones.
-	Strategy SidecarSetUpdateStrategy `json:"strategy,omitempty"`
+    // The sidecarset strategy to use to replace existing pods with new ones.
+    Strategy SidecarSetUpdateStrategy `json:"strategy,omitempty"`
 }
 
 // SidecarContainer defines the container of Sidecar
 type SidecarContainer struct {
-	corev1.Container
+    corev1.Container
 }
 
 // SidecarSetUpdateStrategy indicates the strategy that the SidecarSet
 // controller will use to perform updates. It includes any additional parameters
 // necessary to perform the update for the indicated strategy.
 type SidecarSetUpdateStrategy struct {
-	RollingUpdate *RollingUpdateSidecarSet `json:"rollingUpdate,omitempty"`
+    RollingUpdate *RollingUpdateSidecarSet `json:"rollingUpdate,omitempty"`
 }
 
 // RollingUpdateSidecarSet is used to communicate parameter
 type RollingUpdateSidecarSet struct {
-	MaxUnavailable *intstr.IntOrString `json:"maxUnavailable,omitempty"`
+    MaxUnavailable *intstr.IntOrString `json:"maxUnavailable,omitempty"`
 }
 ```
 
