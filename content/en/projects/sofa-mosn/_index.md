@@ -2,7 +2,7 @@
 draft: false
 title: "MOSN"
 description: "MOSN is a powerful proxy acting as Service Mesh's data plane written in Golang."
-github: "https://github.com/sofastack/sofa-mosn"
+github: "https://github.com/mosn/mosn"
 weight: 3
 icon: "/img/icons/sofamosn.png"
 level: "main"

@@ -3,7 +3,7 @@ title: "快速开始"
 aliases: "/sofa-mosn/docs/docs-quickstart-Setup"
 ---
 
-本文用于帮助初次接触 MOSN 项目的开发人员，快速搭建开发环境，完成构建，测试，打包和事例代码的运行。
+本文用于帮助初次接触 MOSN 项目的开发人员，快速搭建开发环境，完成构建，测试，打包和示例代码的运行。
 
 **注**：MOSN 基于 Go 1.12.7 开发，使用 dep 进行依赖管理。
 
@@ -114,7 +114,7 @@ make integrate
 ./mosn start -c '$CONFIG_FILE'
 ```
 
-## 开启 MOSN 转发事例程序
+## 开启 MOSN 转发示例程序
 
 参考 `examples` 目录下的示例工程[运行 Samples](../quick-start-run-samples)。
 

@@ -1,7 +1,7 @@
 ---
 title: "MOSN"
 description: "MOSN 是一款采用 Go 开发的 Service Mesh 数据平面代理。"
-github: "https://github.com/sofastack/sofa-mosn"
+github: "https://github.com/mosn/mosn"
 level: "main"
 icon: "/img/icons/sofamosn.png"
 weight: 3
@@ -16,6 +16,8 @@ sidebar:
         link: 'concept/sidecar-pattern'
       - title: '流量劫持'
         link: 'concept/traffic-hijack'
+      - title: 'TLS 安全链路'
+        link: 'concept/tls'
   - title: '配置说明'
     sub:
       - title: '配置概览'
