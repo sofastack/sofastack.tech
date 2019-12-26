@@ -1,9 +1,7 @@
 ---
 layout: singlepage
-title: "community"
+title: "SOFAStack 社区"
 ---
-
-# SOFA Community
 
 Hello~欢迎来到 SOFAStack 开源社区，首先感谢一直以来支持 SOFAStack 的你们❤
 
@@ -45,7 +43,7 @@ Hello~欢迎来到 SOFAStack 开源社区，首先感谢一直以来支持 SOFAS
 
 有想要交流的话题或者想要举办的城市，非常欢迎告诉我们，加入互动钉钉群：群号 23372465 与我们交流。
 
-## SOFAStack Community Organzation
+## SOFAStack 社区组织架构
 
 ![Community Organzation](https://cdn.nlark.com/yuque/0/2019/png/226702/1577327906629-43c94574-2f7e-4c49-b27a-de9a836a54f2.png)
 
