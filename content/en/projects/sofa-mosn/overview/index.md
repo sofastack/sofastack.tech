@@ -3,7 +3,9 @@ title: "Overview"
 aliases: "/sofa-mosn/docs/Home"
 ---
 
-MOSN is a powerful proxy written in Go that can be used as a Service Mesh's data plane. MOSN is a project in [SOFAStack](https://www.sofastack.tech) and MOSN is the short name of Modular Observable Smart Network. MOSN can be integrated with any Service Mesh wich support xDS API, also used as a standalone load balancer on layer 4 or 7. In the future, MOSN will support more cloud native scenarios and the core forwarding function of Nginx.
+**MOSN's official website [mosn.io](http://mosn.io) is under construction. The documents are temporarily hosted here.**
+
+MOSN is a powerful proxy written in Go that can be used as a Service Mesh's data plane. MOSN is the short name of Modular Observable Smart Network. MOSN can be integrated with any Service Mesh wich support xDS API, also used as a standalone load balancer on layer 4 or 7. In the future, MOSN will support more cloud native scenarios and the core forwarding function of Nginx.
 
 ## Core competence
 
