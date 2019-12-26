@@ -3,6 +3,8 @@ layout: singlepage
 title: "community"
 ---
 
+# SOFA Community
+
 Hello~欢迎来到 SOFAStack 开源社区，首先感谢一直以来支持 SOFAStack 的你们❤
 
 本方案为 SOFA Community 试运行方案，有任何建议欢迎与我们交流 <sofa@cloud.alipay.com>。
@@ -11,7 +13,7 @@ Hello~欢迎来到 SOFAStack 开源社区，首先感谢一直以来支持 SOFAS
 
 项目地址：[https://github.com/sofastack](https://github.com/sofastack)
 
-#### 从哪里开始入手？
+## 从哪里开始入手？
 
 当您在使用 SOFAStack 相关组件时**遇到困难**，可以到[相关组件文档](/projects/)下查看解决方案；同时社区鼓励所有同学通过 [Github](https://github.com/sofastack) issue 提交反馈，当您遇到以下情况，欢迎第一时间提交 issue：
 
@@ -20,7 +22,7 @@ Hello~欢迎来到 SOFAStack 开源社区，首先感谢一直以来支持 SOFAS
 - help wanted
 - feature design
 
-#### 参与开源共建
+## 参与开源共建
 
 欢迎参与 SOFAStack 开源社区共建，您可以通过以下的方式参与共建：
 
@@ -35,7 +37,7 @@ Hello~欢迎来到 SOFAStack 开源社区，首先感谢一直以来支持 SOFAS
   - Push，push 已经 commit 的分支到远程 Github 账户；
   - PR，创建新的 pull request 完成贡献；
 
-#### 参加开源活动
+## 参加开源活动
 
 - SOFAGift：关注【金融级分布式架构】微信公众号，每周我们将进行一次福利抽奖活动，送出 SOFAStack 相关周边，感谢一直支持 SOFAStack 的 SOFAer；
 - [SOFAMeetup](/tags/sofameetup/)：线下高质量的云原生架构面基活动，将以每2月一场的频次，在全国各个城市站，举行线下技术交流会；
