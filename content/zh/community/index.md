@@ -1,11 +1,11 @@
 ---
 layout: singlepage
-title: "Community"
+title: "community"
 ---
 
 Hello~欢迎来到 SOFAStack 开源社区，首先感谢一直以来支持 SOFAStack 的你们❤
 
-本方案为 SOFA Community 试运行方案，有任何建议欢迎反馈我们 <sofa@@cloud.alipay.com>。
+本方案为 SOFA Community 试运行方案，有任何建议欢迎与我们交流 <sofa@@cloud.alipay.com>。
 
 社区随时都欢迎各种贡献，无论是**简单的错别字修正**、**bug 修复**还是**增加新功能**，欢迎提 issue 或 pull request 至 Github 社区，也可以加入钉钉群：群号 23372465 联系我们。
 
@@ -42,7 +42,6 @@ Hello~欢迎来到 SOFAStack 开源社区，首先感谢一直以来支持 SOFAS
 - [SOFAChannel](/tags/sofachannel/)：有趣实用的分布式架构频道，将以每月一场的频次，在线上展开直播活动，分享技术干货；
 
 有想要交流的话题或者想要举办的城市，非常欢迎告诉我们，加入互动钉钉群：群号 23372465 与我们交流。
-
 
 ## SOFAStack Community Organzation
 
@@ -112,7 +111,6 @@ Hello~欢迎来到 SOFAStack 开源社区，首先感谢一直以来支持 SOFAS
 **权限：**
 
 - 加入 SOFAStack GItHub 组织，成为 SOFAStack 开源社区的一员。
-
 
 ### User Group（社区层面）
 
