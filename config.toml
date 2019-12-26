@@ -71,7 +71,11 @@ googleAnalytics = "UA-142131411-1"
 		name = "Awesome SOFA"
 		url = "/awesome/"
 		weight = 5
-
+	[[languages.zh.menu.main]]
+		identifier = "community"
+		name = "社区"
+		url = "/community/"
+		weight = 6
 
 [menu]
 	[[menu.main]]
@@ -99,7 +103,11 @@ googleAnalytics = "UA-142131411-1"
 		name = "Awesome SOFA"
 		url = "/awesome/"
 		weight = 5
-
+	[[languages.zh.menu.main]]
+		identifier = "community"
+		name = "Community"
+		url = "/community/"
+		weight = 6
 
 [sitemap]
   changefreq = "monthly"
