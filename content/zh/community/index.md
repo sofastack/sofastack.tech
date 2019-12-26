@@ -5,7 +5,7 @@ title: "community"
 
 Hello~欢迎来到 SOFAStack 开源社区，首先感谢一直以来支持 SOFAStack 的你们❤
 
-本方案为 SOFA Community 试运行方案，有任何建议欢迎与我们交流 <sofa@@cloud.alipay.com>。
+本方案为 SOFA Community 试运行方案，有任何建议欢迎与我们交流 <sofa@cloud.alipay.com>。
 
 社区随时都欢迎各种贡献，无论是**简单的错别字修正**、**bug 修复**还是**增加新功能**，欢迎提 issue 或 pull request 至 Github 社区，也可以加入钉钉群：群号 23372465 联系我们。
 
