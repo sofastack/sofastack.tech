@@ -27,7 +27,7 @@ Hello~欢迎来到 SOFAStack 开源社区，首先感谢一直以来支持 SOFAS
 - **参与 SOFALab 源码共建**：
   - <SOFA:Lab/> 源码研究实验室，由 SOFA 团队和源码爱好者们出品；
   - 目前 [SOFABootLab](/activities/sofa-boot-lab/) 以及 [SOFAArkLab](/activities/sofa-ark-lab/) 正在文章认领中，欢迎你的加入~
-  - [SOFABoltLab](/tags/%E5%89%96%E6%9E%90-sofabolt-%E6%A1%86%E6%9E%B6/)、[SOFAJRaftLab](/tags/%E5%89%96%E6%9E%90-sofajraft-%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/)、[SOFARegistryLab](/tags/%E5%89%96%E6%9E%90-sofaregistry-%E6%A1%86%E6%9E%B6/)、[SOFATracerLab](/tags/%E5%89%96%E6%9E%90-sofatracer-%E6%A1%86%E6%9E%B6/)、[SOFARPCLab](/tags/%E5%89%96%E6%9E%90-sofarpc-%E6%A1%86%E6%9E%B6/) 系列已经完结；
+  - [SOFARegistryLab](/tags/%E5%89%96%E6%9E%90-sofaregistry-%E6%A1%86%E6%9E%B6/) 共建中、[SOFABoltLab](/tags/%E5%89%96%E6%9E%90-sofabolt-%E6%A1%86%E6%9E%B6/)、[SOFAJRaftLab](/tags/%E5%89%96%E6%9E%90-sofajraft-%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/)、[SOFATracerLab](/tags/%E5%89%96%E6%9E%90-sofatracer-%E6%A1%86%E6%9E%B6/)、[SOFARPCLab](/tags/%E5%89%96%E6%9E%90-sofarpc-%E6%A1%86%E6%9E%B6/) 系列已经完结；
 - **参与代码或文档贡献**： 
   - Fork，fork 项目到自己的 Github 账户；
   - Clone，clone 项目到本地开发环境；
