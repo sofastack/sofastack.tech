@@ -8,6 +8,8 @@ weight: 3
 sidebar:
   - title: 'MOSN 介绍'
     link: 'overview'
+  - title: '快速开始'
+    link: 'quick-start-setup'
   - title: '架构原理'
     sub:
       - title: '核心概念'
@@ -40,10 +42,8 @@ sidebar:
                 link: 'configuration/listener/network-filter/connection-manager'
       - title: '自定义配置说明'
         link: 'configuration/custom'
-  - title: '开发文档'
+  - title: '开发指南'
     sub:
-      - title: '快速开始'
-        link: 'quick-start-setup'
       - title: '工程示例'
         link: 'quick-start-run-samples'
       - title: '使用 MOSN 搭建 Service Mesh 平台'
