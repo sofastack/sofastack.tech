@@ -2,4 +2,4 @@
 title: "Release notes"
 ---
 
-To learn more, see [https://github.com/sofastack/sofa-mosn/blob/master/CHANGELOG_EN.md](https://github.com/sofastack/sofa-mosn/blob/master/CHANGELOG_EN.md).
+To learn more, see [https://github.com/mos/mosn/blob/master/CHANGELOG.md](https://github.com/mosn/mosn/blob/master/CHANGELOG.md).

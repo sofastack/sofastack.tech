@@ -9,9 +9,10 @@ title: "SOFAJRaft 介绍"
 
 分布式一致性 (distributed consensus) 是分布式系统中最基本的问题，用来保证一个分布式系统的可靠性以及容灾能力。简单的来讲，就是如何在多个机器间对某一个值达成一致, 并且当达成一致之后，无论之后这些机器间发生怎样的故障，这个值能保持不变。
 抽象定义上， 一个分布式系统里的所有进程要确定一个值 v，如果这个系统满足如下几个性质， 就可以认为它解决了分布式一致性问题, 分别是:
-* Termination: 所有正常的进程都会决定 v 具体的值，不会出现一直在循环的进程。
-* Validity: 任何正常的进程确定的值 v', 那么 v' 肯定是某个进程提交的。比如随机数生成器就不满足这个性质。
-* Agreement: 所有正常的进程选择的值都是一样的。
+
+- Termination: 所有正常的进程都会决定 v 具体的值，不会出现一直在循环的进程。
+- Validity: 任何正常的进程确定的值 v', 那么 v' 肯定是某个进程提交的。比如随机数生成器就不满足这个性质。
+- Agreement: 所有正常的进程选择的值都是一样的。
 
 ## 一致性状态机
 
@@ -28,32 +29,35 @@ Raft 作为复制状态机，是分布式系统中最核心最基础的组件，
 ![multi_raft](multi_raft.png)
 
 Raft 可以解决分布式理论中的 CP，即一致性和分区容忍性，并不能解决 Available 的问题。其中包含分布式系统中一些通常的功能：
-* Leader Election
-* Log Replication
-* Membership Change
-* Log Compaction
 
-# RAFT 可以做什么
+- Leader Election
+- Log Replication
+- Membership Change
+- Log Compaction
+
+## RAFT 可以做什么
 
 通过 RAFT 提供的一致性状态机，可以解决复制、修复、节点管理等问题，极大的简化当前分布式系统的设计与实现，让开发者只关注于业务逻辑，将其抽象实现成对应的状态机即可。基于这套框架，可以构建很多分布式应用：
-* 分布式锁服务，比如 Zookeeper
-* 分布式存储系统，比如分布式消息队列、分布式块系统、分布式文件系统、分布式表格系统等
-* 高可靠元信息管理，比如各类 Master 模块的 HA
+
+- 分布式锁服务，比如 Zookeeper
+- 分布式存储系统，比如分布式消息队列、分布式块系统、分布式文件系统、分布式表格系统等
+- 高可靠元信息管理，比如各类 Master 模块的 HA
 
 ## JRAFT
 
 一个纯 Java 的 [Raft](https://raft.github.io/) 算法实现库, 基于百度 [braft](https://github.com/brpc/braft) 实现而来, 使用 Java 重写了所有功能, 支持:
 
-1. Leader election.
+1. Leader election and priority-based semi-deterministic leader election.
 2. Replication and recovery.
 3. Snapshot and log compaction.
-4. Membership management.
-5. Fully concurrent replication.
-6. Fault tolerance.
-7. Asymmetric network partition tolerance.
-8. Workaround when quorate peers are dead.
-9. Replication pipeline optimistic
-10. Linearizable read,  ReadIndex/LeaseRead.
+4. Read-only member (learner).
+5. Membership management.
+6. Fully concurrent replication.
+7. Fault tolerance.
+8. Asymmetric network partition tolerance.
+9. Workaround when quorate peers are dead.
+10. Replication pipeline optimistic
+11. Linearizable read,  ReadIndex/LeaseRead.
 
 ## 联系我们
 

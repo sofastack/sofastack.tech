@@ -1040,7 +1040,7 @@ public @interface SPI {
 ## 11. 排查故障工具
 
 在程序运行时，可以利用 Linux 平台的 SIGUSR2 信号输出节点的状态信息以及 metric 数据，具体执行方式: `kill -s SIGUSR2 pid`
-相关信息会输出到指定目录，默认在程序工作目录（cwd:  lsof -p $pid | grep cwd）生成 2 个文件：node_describe.log 和 node_describe.log，其中 node_describe.log 存储节点 metric 数据，node_describe.log 存储节点状态信息。
+相关信息会输出到指定目录，默认在程序工作目录（cwd:  lsof -p $pid | grep cwd）生成 2 个文件：node_metrics.log 和 node_describe.log，其中 node_metrics.log 存储节点 metric 数据，node_describe.log 存储节点状态信息。
 
 <div class="bi-table">
   <table>

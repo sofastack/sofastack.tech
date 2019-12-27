@@ -1,4 +1,3 @@
-
 ---
 title: "HttpClient Integration"
 aliases: "/sofa-tracer/docs/Usage_Of_HttpClient"
@@ -7,7 +6,7 @@ aliases: "/sofa-tracer/docs/Usage_Of_HttpClient"
 
 # HttpClient Integration
 
-In this document will demonstrate how to use SOFATracer to track of HttpClient, this example [address] (https://github.com/sofastack/sofa-tracer/tree/master/tracer-samples/tracer-sample-with-httpclient).
+In this document will demonstrate how to use SOFATracer to track of HttpClient, this example [address] (https://github.com/sofastack-guides/sofa-tracer-guides/tree/master/tracer-sample-with-httpclient).
 
 Assuming you have built a simple Spring Web project based on SOFABoot, Then you can be operated by the following steps:
 

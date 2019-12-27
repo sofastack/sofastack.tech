@@ -3,7 +3,7 @@ title: "Spring MVC Integration"
 aliases: "/sofa-tracer/docs/Usage_Of_MVC"
 ---
 
-In this document will demonstrate how to use SOFATracer to track of SpringMVC, this example [address](https://github.com/sofastack/sofa-tracer/tree/master/tracer-samples/tracer-sample-with-springmvc).
+In this document will demonstrate how to use SOFATracer to track of SpringMVC, this example [address](https://github.com/sofastack-guides/sofa-tracer-guides/tree/master/tracer-sample-with-springmvc).
 
 Assuming you have built a simple Spring Web project based on SOFABoot, Then you can be operated by the following steps:
 

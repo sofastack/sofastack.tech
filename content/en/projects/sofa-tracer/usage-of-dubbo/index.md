@@ -1,4 +1,3 @@
-
 ---
 title: "Dubbo Integration"
 aliases: "/sofa-tracer/docs/Usage_Of_Dubbo"
@@ -7,7 +6,7 @@ aliases: "/sofa-tracer/docs/Usage_Of_Dubbo"
 
 # Dubbo Integration
 
-In this document will demonstrate how to use SOFATracer to track of Dubbo, this example [address] (https://github.com/sofastack/sofa-tracer/tree/master/tracer-samples/tracer-sample-with-dubbo).
+In this document will demonstrate how to use SOFATracer to track of Dubbo, this example [address] (https://github.com/sofastack-guides/sofa-tracer-guides/tree/master/tracer-sample-with-dubbo).
 
 ## Prepare Environment
 
@@ -94,7 +93,7 @@ public interface HelloService {
         }
     }
     ```
- 
+
 ## New tracer-sample-with-dubbo-consumer Module
 
 * provider SOFATracer dependency

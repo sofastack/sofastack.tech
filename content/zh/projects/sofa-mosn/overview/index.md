@@ -1,9 +1,11 @@
 ---
-title: "SOFAMosn 介绍"
+title: "MOSN 介绍"
 aliases: "/sofa-mosn/docs/Home"
 ---
 
-SOFAMson 是一款使用 Go 语言开发的 Service Mesh 数据平面代理，旨在为服务提供分布式、模块化、可观察和智能化的代理能力。SOFAMosn 是 [SOFAStack](https://www.sofastack.tech) 中的一个项目，其中 MOSN 是 Modular Observable Smart Network 的简称。SOFAMosn 可以与任何支持 xDS API 的 Service Mesh 集成，亦可以作为独立的四、七层负载均衡使用。未来 SOFAMosn 将支持更多云原生场景，并支持 Nginx 的核心转发功能。
+**MOSN 的官方网站 [mosn.io](http://mosn.io) 正在建设中，文档临时托管在这里。**
+
+MOSN 是一款使用 Go 语言开发的 Service Mesh 数据平面代理，旨在为服务提供分布式、模块化、可观察和智能化的代理能力。MOSN 是 Modular Observable Smart Network 的简称。MOSN 可以与任何支持 xDS API 的 Service Mesh 集成，亦可以作为独立的四、七层负载均衡使用。未来 MOSN 将支持更多云原生场景，并支持 Nginx 的核心转发功能。
 
 ## 快速开始
 
@@ -48,10 +50,6 @@ SOFAMson 是一款使用 Go 语言开发的 Service Mesh 数据平面代理，�
 
 ## 社区
 
-SOFAMosn 仍处在初级阶段，有很多能力需要补全，所以我们欢迎所有人参与进来与我们一起共建。
+MOSN 仍处在初级阶段，有很多能力需要补全，所以我们欢迎所有人参与进来与我们一起共建。
 
-如有任何疑问欢迎[提交 Issue](https://github.com/sofastack/sofa-mosn/issues)。
-
-## 致谢
-
-感谢 Google、IBM、Lyft 创建了 Envoy、Istio 体系，并开源了优秀的项目，使 SOFAMosn 有了非常好的参考，使我们能快速落地自己的想法。
+如有任何疑问欢迎[提交 Issue](https://github.com/mosn/mosn/issues)。

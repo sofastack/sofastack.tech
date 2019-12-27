@@ -3,20 +3,20 @@ title: "快速开始"
 aliases: "/sofa-mosn/docs/docs-quickstart-Setup"
 ---
 
-本文用于帮助初次接触 SOFAMosn 项目的开发人员，快速搭建开发环境，完成构建，测试，打包和事例代码的运行。
+本文用于帮助初次接触 MOSN 项目的开发人员，快速搭建开发环境，完成构建，测试，打包和示例代码的运行。
 
-**注**：SOFAMosn 基于 Go 1.12.7 开发，使用 dep 进行依赖管理。
+**注**：MOSN 基于 Go 1.12.7 开发，使用 dep 进行依赖管理。
 
 ## 准备运行环境
 
-+ 如果您使用容器运行 SOFAMosn，请先 [安装 docker](https://docs.docker.com/install/)
++ 如果您使用容器运行 MOSN，请先 [安装 docker](https://docs.docker.com/install/)
 + 如果您使用本地机器，请使用类 Unix 环境
 + 安装 Go 的编译环境 
 + 安装 dep : 参考[官方安装文档](https://golang.github.io/dep/docs/installation.html)
 
 ## 获取代码
 
-SOFAMosn 项目的代码托管在 [Github](https://github.com/sofastack/sofa-mosn)，获取方式如下：
+MOSN 项目的代码托管在 [Github](https://github.com/sofastack/sofa-mosn)，获取方式如下：
 
 ```bash
 go get -u sofastack.io/sofa-mosn
@@ -31,12 +31,12 @@ cd $GOPATH/src
 mkdir -p sofastack.io
 cd sofastack.io
 
-# 克隆 SOFAMosn 代码
+# 克隆 MOSN 代码
 git clone git@github.com:sofastack/sofa-mosn.git
 cd sofa-mosn
 ```
 
-最终 SOFAMosn 的源代码代码路径为 `$GOPATH/src/sofastack.io/sofa-mosn`
+最终 MOSN 的源代码代码路径为 `$GOPATH/src/sofastack.io/sofa-mosn`
 
 ## 导入IDE
 
@@ -44,7 +44,7 @@ cd sofa-mosn
 
 ## 编译代码
 
-在项目根目录下，根据自己机器的类型以及欲执行二进制的环境，选择以下命令编译 SOFAMosn 的二进制文件。
+在项目根目录下，根据自己机器的类型以及欲执行二进制的环境，选择以下命令编译 MOSN 的二进制文件。
 
 ### 使用 docker 镜像编译
 
@@ -106,18 +106,18 @@ make unit-test
 make integrate
 ```
 
-## 从配置文件启动 SOFAMosn
+## 从配置文件启动 MOSN
 
-运行下面的命令使用配置文件启动 SOFAMosn。
+运行下面的命令使用配置文件启动 MOSN。
 
 ```bash
 ./mosn start -c '$CONFIG_FILE'
 ```
 
-## 开启 SOFAMosn 转发事例程序
+## 开启 MOSN 转发示例程序
 
 参考 `examples` 目录下的示例工程[运行 Samples](../quick-start-run-samples)。
 
-## 使用 SOFAMosn 搭建 Service Mesh 平台
+## 使用 MOSN 搭建 Service Mesh 平台
 
 请参考[与 Istio 集成](../quick-start-run-with-sofamesh)。
