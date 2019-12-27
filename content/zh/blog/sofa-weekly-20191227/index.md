@@ -21,7 +21,7 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 
 **SOFAStack: **[https://github.com/sofastack](https://github.com/sofastack)
 
-###  社区 Big News
+### 社区 Big News
 
 SOFAStack 社区上线了 SOFA Community 试运行方案，欢迎社区内更多的同学参与我们，加入共建❤
 
