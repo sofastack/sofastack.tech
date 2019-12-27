@@ -17,7 +17,7 @@ MOSN 作为 Sidecar 和业务容器部署在同一个 Pod 中时，需要使得�
 1. 调用端的 Sidecar 会向服务注册中心（如 SOFA Registry）发起服务订阅请求，告知需要订阅的服务信息；
 1. 服务注册中心（如 SOFA Registry）向调用端的 Sidecar 推送服务地址（1.2.3.4:20881）
 
-![流量接管示意图](traffic-hijacking.jpg) 
+![流量接管示意图](traffic-hijacking.png) 
 
 ### 服务调用过程
 
