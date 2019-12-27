@@ -16,11 +16,11 @@ Note: MOSN is developed based on Go 1.12.7 and uses dep for dependency managemen
 
 ## Get codes
 
-The codes for the MOSN project are hosted in [GitHub](https://github.com/sofastack/sofa-mosn) and can be obtained in the following way:
+The codes for the MOSN project are hosted in [GitHub](https://github.com/mosn/mosn) and can be obtained in the following way:
 
 
 ```bash
-go get sofastack.io/sofa-mosn
+go get mosn.io/mosn
 ```
 
 If an error occurs when run "go get", just create the project manually.
@@ -28,20 +28,20 @@ If an error occurs when run "go get", just create the project manually.
 ```bash
 # Enter src dirctory under GOPATH
 cd $GOPATH/src
-# Create sofastack.io dirctory
-mkdir -p sofastack.io
-cd sofastack.io
+# Create mosn.io dirctory
+mkdir -p mosn.io
+cd mosn.io
 
 # clone MOSN codes
-git clone git@github.com:sofastack/sofa-mosn.git
+git clone git@github.com:mosn/mosn.git
 cd sofa-mosn
 ```
 
-The final path of MOSN source codes is `$GOPATH/src/sofastack.io/sofa-mosn`.
+The final path of MOSN source codes is `$GOPATH/src/mosn.io/mosn`.
 
 ## Import by using IDE
 
-Use the Golang IDE to import the `$GOPATH/src/sofastack.io/sofa-mosn` project. Goland is recommended.
+Use the Golang IDE to import the `$GOPATH/src/mosn.io/mosn` project. Goland is recommended.
 
 ## Compile codes
 
