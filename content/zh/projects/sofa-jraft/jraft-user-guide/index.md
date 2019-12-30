@@ -10,6 +10,7 @@ title: "JRaft 用户指南"
 ## 2. 配置和辅助类
 
 本节主要介绍 jraft 的配置和辅助工具相关接口和类。核心包括：
+
 * Endpoint 表示一个服务地址。
 * PeerId 表示一个 raft 参与节点。
 * Configuration 表示一个 raft group 配置，也就是节点列表。
