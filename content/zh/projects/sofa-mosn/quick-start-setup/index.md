@@ -3,7 +3,7 @@ title: "快速开始"
 aliases: "/sofa-mosn/docs/docs-quickstart-Setup"
 ---
 
-本文用于帮助初次接触 MOSN 项目的开发人员，快速搭建开发环境，完成构建，测试，打包和事例代码的运行。
+本文用于帮助初次接触 MOSN 项目的开发人员，快速搭建开发环境，完成构建，测试，打包和示例代码的运行。
 
 **注**：MOSN 基于 Go 1.12.7 开发，使用 dep 进行依赖管理。
 
@@ -16,10 +16,10 @@ aliases: "/sofa-mosn/docs/docs-quickstart-Setup"
 
 ## 获取代码
 
-MOSN 项目的代码托管在 [Github](https://github.com/sofastack/sofa-mosn)，获取方式如下：
+MOSN 项目的代码托管在 [Github](https://github.com/mosn/mosn)，获取方式如下：
 
 ```bash
-go get -u sofastack.io/sofa-mosn
+go get -u mosn.io/mosn
 ```
 
 如果您的 go get 下载存在问题，请手动创建项目工程
@@ -27,20 +27,20 @@ go get -u sofastack.io/sofa-mosn
 ```bash
 # 进入 GOPATH 下的 src 目录
 cd $GOPATH/src
-# 创建 sofastack.io 目录
-mkdir -p sofastack.io
-cd sofastack.io
+# 创建 mosn.io 目录
+mkdir -p mosn.io
+cd mosn.io
 
 # 克隆 MOSN 代码
-git clone git@github.com:sofastack/sofa-mosn.git
-cd sofa-mosn
+git clone git@github.com:mosn/mosn.git
+cd mosn
 ```
 
-最终 MOSN 的源代码代码路径为 `$GOPATH/src/sofastack.io/sofa-mosn`
+最终 MOSN 的源代码代码路径为 `$GOPATH/src/mosn.io/mosn`
 
 ## 导入IDE
 
-使用您喜爱的 Go IDE 导入 `$GOPATH/src/sofastack.io/sofa-mosn` 项目，推荐 Goland。
+使用您喜爱的 Go IDE 导入 `$GOPATH/src/mosn.io/mosn` 项目，推荐 Goland。
 
 ## 编译代码
 
@@ -114,7 +114,7 @@ make integrate
 ./mosn start -c '$CONFIG_FILE'
 ```
 
-## 开启 MOSN 转发事例程序
+## 开启 MOSN 转发示例程序
 
 参考 `examples` 目录下的示例工程[运行 Samples](../quick-start-run-samples)。
 

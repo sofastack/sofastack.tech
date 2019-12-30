@@ -1,6 +1,6 @@
 ---
 layout: singlepage
-title: "community"
+title: "SOFAStack 社区"
 ---
 
 Hello~欢迎来到 SOFAStack 开源社区，首先感谢一直以来支持 SOFAStack 的你们❤
@@ -11,7 +11,7 @@ Hello~欢迎来到 SOFAStack 开源社区，首先感谢一直以来支持 SOFAS
 
 项目地址：[https://github.com/sofastack](https://github.com/sofastack)
 
-#### 从哪里开始入手？
+## 从哪里开始入手？
 
 当您在使用 SOFAStack 相关组件时**遇到困难**，可以到[相关组件文档](/projects/)下查看解决方案；同时社区鼓励所有同学通过 [Github](https://github.com/sofastack) issue 提交反馈，当您遇到以下情况，欢迎第一时间提交 issue：
 
@@ -20,7 +20,7 @@ Hello~欢迎来到 SOFAStack 开源社区，首先感谢一直以来支持 SOFAS
 - help wanted
 - feature design
 
-#### 参与开源共建
+## 参与开源共建
 
 欢迎参与 SOFAStack 开源社区共建，您可以通过以下的方式参与共建：
 
@@ -35,7 +35,7 @@ Hello~欢迎来到 SOFAStack 开源社区，首先感谢一直以来支持 SOFAS
   - Push，push 已经 commit 的分支到远程 Github 账户；
   - PR，创建新的 pull request 完成贡献；
 
-#### 参加开源活动
+## 参加开源活动
 
 - SOFAGift：关注【金融级分布式架构】微信公众号，每周我们将进行一次福利抽奖活动，送出 SOFAStack 相关周边，感谢一直支持 SOFAStack 的 SOFAer；
 - [SOFAMeetup](/tags/sofameetup/)：线下高质量的云原生架构面基活动，将以每2月一场的频次，在全国各个城市站，举行线下技术交流会；
@@ -43,7 +43,7 @@ Hello~欢迎来到 SOFAStack 开源社区，首先感谢一直以来支持 SOFAS
 
 有想要交流的话题或者想要举办的城市，非常欢迎告诉我们，加入互动钉钉群：群号 23372465 与我们交流。
 
-## SOFAStack Community Organzation
+## SOFAStack 社区组织架构
 
 ![Community Organzation](https://cdn.nlark.com/yuque/0/2019/png/226702/1577327906629-43c94574-2f7e-4c49-b27a-de9a836a54f2.png)
 
