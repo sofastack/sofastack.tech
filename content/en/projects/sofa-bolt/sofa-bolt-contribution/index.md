@@ -1,5 +1,4 @@
 ---
-
 title: "How to contribute to SOFABolt"
 aliases: "/sofa-bolt/docs/Contribution"
 ---
@@ -15,7 +14,9 @@ Alterations and modifications made to SOFABolt's code must comply with the [Cont
 ## Prerequisites
 
 Before contributing any code, you need to know how to use the Git tool and the GitHub website.
+
 For the use of Git tools, refer to the official Pro Git book and get familiar with the tools by reading the first few chapters.
+
 For the Git collaboration process, refer to Git Workflows.
 
 ## GitHub Code Contribution Process
@@ -23,9 +24,10 @@ For the Git collaboration process, refer to Git Workflows.
 ### Submit an issue
 
 Regardless of whether you are fixing a Bolt bug or adding a Bolt feature, submit an issue on the Bolt GitHub address to describe the bug you are going to fix or the feature you intend to add before you submit the code. There are several advantages of doing so:
-There will not be any conflict with other developers or their plans for this project. This avoids repetitive work.
-The Bolt maintenance personnel will discuss the issue or new feature you submitted to determine whether the modification is necessary, or if there is any room for improvement or a better solution.
-Start developing and submitting code after agreement to reduce the cost of communication between both parties as well as the number of rejected pull requests.
+
+- There will not be any conflict with other developers or their plans for this project. This avoids repetitive work.
+- The Bolt maintenance personnel will discuss the issue or new feature you submitted to determine whether the modification is necessary, or if there is any room for improvement or a better solution.
+- Start developing and submitting code after agreement to reduce the cost of communication between both parties as well as the number of rejected pull requests.
 
 ### Get the source code
 
@@ -38,8 +40,8 @@ Therefore, after getting familiar with the getting source code step, you need to
 
 * Download the code locally. You may select the git/https mode in this step.
 
-```java
-git clone https://github.com/ant-tech-alliance/bolt.git
+```bash
+git clone https://github.com/sofastack/sofa-bolt.git
 ```
 
 * Pull a branch to prepare for code modification.
