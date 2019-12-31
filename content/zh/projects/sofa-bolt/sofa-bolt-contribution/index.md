@@ -8,22 +8,22 @@ aliases: "/sofa-bolt/docs/Contribution"
 
 ## 版权协议
 
-对 SOFABolt 代码的修改和变更，需要遵守[版权协议](https://github.com/sofastack/sofa-bolt/blob/master/LICENSE)
+对 SOFABolt 代码的修改和变更，需要遵守[版权协议](https://github.com/sofastack/sofa-bolt/blob/master/LICENSE)。
 
 ## 准备工作
 
-贡献代码前需要先了解git工具的使用和GitHub网站的使用。
-git 工具用法可以查看git官方书籍,需要阅读前几章来熟悉。
-git 协作流程可以查看这篇文章Git协作流程
+- 贡献代码前需要先了解git工具的使用和GitHub网站的使用。
+- git 工具用法可以查看git官方书籍,需要阅读前几章来熟悉。
+- git 协作流程可以查看这篇文章Git协作流程
 
 ## GitHub 贡献代码流程
 
 ### 提issue
 
 不论你是修复 Bolt 的bug还是新增 Bolt 的功能，在你提交代码之前，在 Bolt 的GitHub上提交一个 issue, 描述你要修复的问题或者要增加的功能。这么做有几个好处:
-不会与其它开发者或是他们对这个项目的计划发生冲突,产生重复工作.
-Bolt 的维护人员会对你提的bug或者新增功能进行相关讨论，确定该修改是不是必要，有没有提升的空间或更好的办法。
-在达成一致后再开发,并提交代码，减少双方沟通成本，也减少pull request被拒绝的情况。
+
+- 不会与其它开发者或是他们对这个项目的计划发生冲突,产生重复工作。Bolt 的维护人员会对你提的bug或者新增功能进行相关讨论，确定该修改是不是必要，有没有提升的空间或更好的办法。
+- 在达成一致后再开发,并提交代码，减少双方沟通成本，也减少pull request被拒绝的情况。
 
 ### 获取源码
 
@@ -33,10 +33,11 @@ Bolt 的维护人员会对你提的bug或者新增功能进行相关讨论，确
 
 Bolt 所有修改都在分支上进行，修改完后提交 pull request ， 在code review 后由项目维护人员 merge 到主干。
 因此，在获取源码步骤介绍后，你需要：
+
 * 下载代码到本地,这一步你可以选择git/https方式.
 
-```java
-git clone https://github.com/ant-tech-alliance/bolt.git
+```bash
+git clone https://github.com/sofastack/sofa-bolt.git
 ```
 
 * 拉分支准备修改代码
