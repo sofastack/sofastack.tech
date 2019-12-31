@@ -321,6 +321,60 @@ RpcClient rpcClient = ((AbstractBoltClientService) (((NodeImpl) node).getRpcServ
 
 __这样可以做到一些资源复用，减少消耗，代价就是依赖了 jraft 的内部实现和缺少一些可自定义配置。__
 
+如果基于 Bolt 依赖支持 raft node 之间 RPC 服务 SSL/TLS，需要下面的步骤:
+
+* 服务端 `RpcServer` 配置以下环境变量：
+
+```
+// RpcServer init
+bolt.server.ssl.enable = true // 是否开启服务端 SSL 支持，默认为 false
+bolt.server.ssl.clientAuth = true // 是否开启服务端 SSL 客户端认证，默认为 false
+bolt.server.ssl.keystore = bolt.pfx // 服务端 SSL keystore 文件路径
+bolt.server.ssl.keystore.password = sfbolt // 服务端 SSL keystore 密码
+bolt.server.ssl.keystore.type = pkcs12 // 服务端 SSL keystore 类型，例如 JKS 或者 pkcs12
+bolt.server.ssl.kmf.algorithm = SunX509 // 服务端 SSL kmf 算法
+
+// RpcServer stop
+bolt.server.ssl.enable = false
+bolt.server.ssl.clientAuth = false 
+```
+
+* 客户端 `RpcClient` 配置环境变量如下：
+
+```
+// RpcClient init
+bolt.client.ssl.enable = true // 是否开启客户端 SSL 支持，默认为 false
+bolt.client.ssl.keystore = cbolt.pfx // 客户端 SSL keystore 文件路径
+bolt.server.ssl.keystore.password = sfbolt // 客户端 SSL keystore 密码
+bolt.client.ssl.keystore.type = pkcs12 // 客户端 SSL keystore 类型，例如 JKS 或者 pkcs12
+bolt.client.ssl.tmf.algorithm = SunX509 // 客户端 SSL tmf 算法
+
+// RpcClient stop
+bolt.client.ssl.enable = false
+```
+
+其中服务端 SSL keystore 文件 `bolt.pfx` 和客户端 SSL keystore 文件 `cbolt.pfx` 按照以下步骤生成：
+
+* 首先生成 keystore 并且导出其认证文件。
+  
+```sh
+keytool -genkey -alias securebolt -keysize 2048 -validity  365 -keyalg RSA -dname "CN=localhost" -keypass sfbolt -storepass sfbolt -keystore bolt.pfx -deststoretype pkcs12
+  
+keytool -export -alias securebolt -keystore bolt.pfx -storepass sfbolt -file bolt.cer
+```
+  
+* 接着生成客户端 keystore。
+  
+```sh
+keytool -genkey -alias smcc -keysize 2048 -validity 365 -keyalg RSA -dname "CN=localhost" -keypass sfbolt -storepass sfbolt -keystore cbolt.pfx -deststoretype pkcs12
+```
+  
+* 最后导入服务端认证文件到客户端 keystore。
+  
+```sh
+keytool -import -trustcacerts -alias securebolt -file bolt.cer -storepass sfbolt -keystore cbolt.pfx
+```
+
 ### 3.5 框架类 RaftGroupService
 
 总结下上文描述的创建和启动一个 raft group 节点的主要阶段：
