@@ -32,7 +32,7 @@ Service Mesh Meetup 是由蚂蚁金服联合 CNCF 官方共同出品，ServiceMe
 
 本期 Meetup 与滴滴联合举办，将深入 Service Mesh 的落地实践，并带领大家探索 Service Mesh 在更广阔领域的应用。
 
-###　活动议程
+### 活动议程
 
 | 时间 | 环节（分享主题） | 分享嘉宾 |
 | --- | --- | --- |
