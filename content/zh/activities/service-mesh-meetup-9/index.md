@@ -1,7 +1,7 @@
 ---
 author: "潘潘"
 date: 2019-12-11T16:00:00+08:00
-title: "【报名中】Service Mesh Meetup#9 杭州站：To Infinity and Beyond"
+title: "Service Mesh Meetup#9 杭州站：To Infinity and Beyond"
 tags: ["Meetup","Service Mesh"]
 cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1576053715741-4235957d-65e6-44d5-a8e0-58654f9120e0.jpeg"
 categories: "Service Mesh"
@@ -14,7 +14,7 @@ description: "本次 Meetup 与滴滴联合举办，将深入 Service Mesh 的�
 - 活动时间：时间：2019 年 12 月 28 日（周六）13:00-17:30
 - 活动地点：杭州西湖区紫霞路西溪谷G座8楼
 - 活动形式：线下活动
-- 活动报名：[请戳这里](https://tech.antfin.com/community/activities/1056?chInfo=sofa)
+- 活动回顾：[请戳这里](https://tech.antfin.com/community/activities/1056?chInfo=sofa)
 
 ## 活动介绍
 
@@ -32,7 +32,7 @@ Service Mesh Meetup 是由蚂蚁金服联合 CNCF 官方共同出品，ServiceMe
 
 本期 Meetup 与滴滴联合举办，将深入 Service Mesh 的落地实践，并带领大家探索 Service Mesh 在更广阔领域的应用。
 
-###　活动议程
+### 活动议程
 
 | 时间 | 环节（分享主题） | 分享嘉宾 |
 | --- | --- | --- |
