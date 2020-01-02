@@ -3,7 +3,7 @@ author: "潘潘"
 date: 2019-12-31T12:10:00+08:00
 title: "（活动报名中）SOFAChannel#10：分布式事务 Seata 长事务解决方案 Saga 模式详解"
 tags: ["SOFAChannel","Seata"]
-cover: "(https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1577955420020-6130e41b-14b0-46cc-a25e-e10fe19310ee.jpeg"
+cover: "https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1577955420020-6130e41b-14b0-46cc-a25e-e10fe19310ee.jpeg"
 categories: "SOFAChannel"
 description: "1 月 9 日周四晚 7 点，线上直播第 10 期。"
 ---
