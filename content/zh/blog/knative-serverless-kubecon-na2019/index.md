@@ -3,7 +3,7 @@ title: " 基于 Knative 打造生产级 Serverless 平台 | KubeCon NA2019"
 author: "董一韬、王轲"
 description: " 本文基于 Knative 构建一个优秀的 Serverless 计算平台，详细分析如何用独特的技术，解决性能、容量、成本三大问题。"
 tags: ["Knative","Serverless"]
-date: 2019-12-24T20:00:00+08:00
+date: 2019-12-30T20:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1577785178712-fcf84a03-60f5-4080-b6bf-34bd6cfa7626.jpeg"
 ---
 
