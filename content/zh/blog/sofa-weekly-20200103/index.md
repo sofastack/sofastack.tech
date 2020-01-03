@@ -21,7 +21,6 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 
 **SOFAStack: **[https://github.com/sofastack](https://github.com/sofastack)
 
-
 ### 每周读者问答提炼
 
 欢迎大家向公众号留言提问或在群里与我们互动
@@ -69,17 +68,17 @@ A：嗯嗯。你尝试用 XML 方法注册一个 Bean 看看行不行，机制�
 
 ### 本周推荐阅读
 
-- [基于 Knative 打造生产级 Serverless 平台 | KubeCon NA2019](https://www.sofastack.tech/blog/knative-serverless-kubecon-na2019/)
-- [将 Sidecar 容器带入新的阶段 | KubeCon NA 2019](https://www.sofastack.tech/blog/sidacar-kubecon-na2019/)
+- [基于 Knative 打造生产级 Serverless 平台 | KubeCon NA2019](/blog/knative-serverless-kubecon-na2019/)
+- [将 Sidecar 容器带入新的阶段 | KubeCon NA 2019](/blog/sidacar-kubecon-na2019/)
 
-###  SOFARegistryLab 系列
+### SOFARegistryLab 系列
 
-- [服务注册中心如何实现秒级服务上下线通知 | SOFARegistry 解析](https://www.sofastack.tech/blog/sofa-registry-service-offline-notification/)
-- [蚂蚁金服服务注册中心 Session 存储策略 | SOFARegistry 解析](https://www.sofastack.tech/blog/sofa-registry-session-storage/)
-- [蚂蚁金服服务注册中心数据分片和同步方案详解 | SOFARegistry 解析](https://www.sofastack.tech/blog/sofa-registry-data-fragmentation-synchronization-scheme/)
-- [蚂蚁金服服务注册中心 MetaServer 功能介绍和实现剖析 | SOFARegistry 解析](https://www.sofastack.tech/blog/sofa-registry-metaserver-function-introduction/)
-- [蚂蚁金服服务注册中心 SOFARegistry 解析 | 服务发现优化之路](https://www.sofastack.tech/blog/sofa-registry-service-discovery-optimization/)
-- [海量数据下的注册中心 - SOFARegistry 架构介绍](https://www.sofastack.tech/blog/sofa-registry-introduction/)
+- [服务注册中心如何实现秒级服务上下线通知 | SOFARegistry 解析](/blog/sofa-registry-service-offline-notification/)
+- [蚂蚁金服服务注册中心 Session 存储策略 | SOFARegistry 解析](/blog/sofa-registry-session-storage/)
+- [蚂蚁金服服务注册中心数据分片和同步方案详解 | SOFARegistry 解析](/blog/sofa-registry-data-fragmentation-synchronization-scheme/)
+- [蚂蚁金服服务注册中心 MetaServer 功能介绍和实现剖析 | SOFARegistry 解析](/blog/sofa-registry-metaserver-function-introduction/)
+- [蚂蚁金服服务注册中心 SOFARegistry 解析 | 服务发现优化之路](/blog/sofa-registry-service-discovery-optimization/)
+- [海量数据下的注册中心 - SOFARegistry 架构介绍](/blog/sofa-registry-introduction/)
 
 ### SOFA 项目进展
 
@@ -94,7 +93,7 @@ v. 修复 HTTP2 Stream 计数错误的 bug；
 
 详细发布报告：[https://github.com/mosn/mosn/releases/tag/0.9.0](https://github.com/mosn/mosn/releases/tag/0.9.0)
 
-###  社区直播预告
+### 社区直播预告
 
 ![SOFAChannel#10](https://cdn.nlark.com/yuque/0/2020/png/226702/1578042193692-cf1f9429-7dcb-44b7-93fc-fa335c7eeb02.png)
 
