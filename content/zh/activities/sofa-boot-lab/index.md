@@ -2,7 +2,7 @@
 author: "潘潘"
 date: 2019-10-30T12:00:00+08:00
 title: "<SOFA:BootLab/>"
-tags: ["SOFALab","SOFABoot","剖析|SOFABoot 框架"]
+tags: ["SOFALab","SOFABoot","剖析 | SOFABoot 框架"]
 cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1567496342189-26f60811-c007-45c8-83fd-df6080926f03.jpeg"
 categories: "SOFALab"
 descripton: "欢迎参与 SOFABoot 源码解析系列文章共建。"
