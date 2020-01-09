@@ -5,7 +5,7 @@ aliases: "/sofa-mosn/docs/Home"
 
 **MOSN 的官方网站 [mosn.io](http://mosn.io) 正在建设中，文档临时托管在这里。**
 
-MOSN 是一款使用 Go 语言开发的 Service Mesh 数据平面代理，旨在为服务提供分布式、模块化、可观察和智能化的代理能力。MOSN 是 Modular Observable Smart Network 的简称。MOSN 可以与任何支持 xDS API 的 Service Mesh 集成，亦可以作为独立的四、七层负载均衡使用。未来 MOSN 将支持更多云原生场景，并支持 Nginx 的核心转发功能。
+MOSN 是一款使用 Go 语言开发的网络代理软件，作为云原生的网络数据平面，旨在为服务提供多协议，模块化，智能化，安全的代理能力。MOSN 是 Modular Open Smart Network-proxy 的简称。MOSN 可以与任何支持 xDS API 的 Service Mesh 集成，亦可以作为独立的四、七层负载均衡，API Gateway，云原生 Ingress 等使用。
 
 ## 快速开始
 
