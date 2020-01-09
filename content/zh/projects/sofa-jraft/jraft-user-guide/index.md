@@ -170,7 +170,7 @@ while(it.hasNext()){
 
 提交的任务最终将会复制应用到所有 raft 节点上的状态机，状态机通过 `StateMachine` 接口表示，它的主要方法包括：
 
-* `void onApply(Iterator iter)` 最核心的方法，应用任务列表到状态机，任务将按照提交顺序应用。<strong>请注意，当这个方法返回的时候，我们就认为这一批任务都已经成功应用到状态机上，如果你没有完全应用（比如错误、异常），将会被当做一个 critical 级别的错误，报告给状态机的 </strong><code><strong>onError</strong></code><strong> 方法，错误类型为 </strong><code><strong>ERROR_TYPE_STATE_MACHINE</strong></code><strong> </strong>。关于故障和错误处理参见下面的第 6 节。
+* `void onApply(Iterator iter)` 最核心的方法，应用任务列表到状态机，任务将按照提交顺序应用。<strong>请注意，当这个方法返回的时候，我们就认为这一批任务都已经成功应用到状态机上，如果你没有完全应用（比如错误、异常），将会被当做一个 critical 级别的错误，报告给状态机的 </strong><code><strong>onError</strong></code><strong> 方法，错误类型为 </strong><code><strong>ERROR_TYPE_STATE_MACHINE</strong></code><strong> </strong>。关于故障和错误处理参见下面的第 7 节。
 * `void onError(RaftException e)`  当 critical 错误发生的时候，会调用此方法，RaftException 包含了 status 等详细的错误信息__；当这个方法被调用后，将不允许新的任务应用到状态机，直到错误被修复并且节点被重启__。因此对于任何在开发阶段发现的错误，都应当及时做修正，如果是 jraft 的问题，请及时报告。
 * `void onLeaderStart(long term)` 当状态机所属的 raft 节点成为 leader 的时候被调用，成为 leader 当前的 term 通过参数传入。
 * `void onLeaderStop(Status status)` 当前状态机所属的 raft 节点失去 leader 资格时调用，`status` 字段描述了详细的原因，比如主动转移 leadership、重新发生选举等。
@@ -212,9 +212,9 @@ Node 接口最核心的几个方法如下：
 * `void apply(Task task)` __提交一个新任务到 raft group，此方法是线程安全并且非阻塞__，无论任务是否成功提交到 raft group，都会通过 task 关联的 closure done 通知到。如果当前节点不是 leader，会直接失败通知 done closure。
 * `PeerId getLeaderId()` 获取当前 raft group 的 leader peerId，如果未知，返回 null
 * `shutdown` 和 `join` ，前者用于停止一个 raft 节点，后者可以在 shutdown 调用后等待停止过程结束。
-* `void snapshot(Closure done)` 触发当前节点执行一次 snapshot 保存操作，结果通过 done 通知，参见 2.6 节。
+* `void snapshot(Closure done)` 触发当前节点执行一次 snapshot 保存操作，结果通过 done 通知，参见 3.6 节。
 
-其他一些方法都是查询节点信息以及变更 raft group 节点配置，参见第 5 节。
+其他一些方法都是查询节点信息以及变更 raft group 节点配置，参见第 6 节。
 
 创建一个 raft 节点可以通过 `RaftServiceFactory.createRaftNode(String groupId, PeerId serverId)` 静态方法，其中
 
@@ -362,13 +362,13 @@ keytool -genkey -alias securebolt -keysize 2048 -validity  365 -keyalg RSA -dnam
   
 keytool -export -alias securebolt -keystore bolt.pfx -storepass sfbolt -file bolt.cer
 ```
-  
+
 * 接着生成客户端 keystore。
   
 ```sh
 keytool -genkey -alias smcc -keysize 2048 -validity 365 -keyalg RSA -dname "CN=localhost" -keypass sfbolt -storepass sfbolt -keystore cbolt.pfx -deststoretype pkcs12
 ```
-  
+
 * 最后导入服务端认证文件到客户端 keystore。
   
 ```sh
@@ -531,7 +531,7 @@ RouteTable 更新 leader 信息同样需要传入 `CliClientService` 实例，<s
 
 ## 5. 节点配置变更
 
-参见 3.2 节。可以通过 CliService，也可以通过 Leader 节点 Node 的系列方法来变更，实质上 CliService 都是转发到 leader 节点执行。
+参见 4.2 节。可以通过 CliService，也可以通过 Leader 节点 Node 的系列方法来变更，实质上 CliService 都是转发到 leader 节点执行。
 
 ## 6. 线性一致读
 
@@ -612,7 +612,7 @@ public enum ReadOnlyOption {
 
 并且我们将节点提供给客户端的服务分为两类：
 
-* __读服务__，可以从 leader，也可以从 follower 读取状态机数据，但是从 follower 读取的可能不是最新的数据，存在时间差，也就是存在脏读。启用线性一致读将保证线性一致，并且支持从 follower 读取，具体参见第 5 节。
+* __读服务__，可以从 leader，也可以从 follower 读取状态机数据，但是从 follower 读取的可能不是最新的数据，存在时间差，也就是存在脏读。启用线性一致读将保证线性一致，并且支持从 follower 读取，具体参见第 6 节。
 * __写服务__，更改状态机数据，只能提交到 leader 写入。
 
 ### 7.1 单个节点故障
