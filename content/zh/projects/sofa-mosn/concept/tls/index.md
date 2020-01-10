@@ -13,6 +13,7 @@ MOSN 支持通过 Istio Citadel 的证书签发方案，基于 Istio 社区的 [
 ![MOSN 证书方案](mosn-certificate-arch.png) 
 
 各组件职能如下：
+
 - Pilot：负责 Policy、SDS 配置下发，为简化复杂度，图中未标出
 - Citadel：Citadel 作为 Certificate Provider ，同时作为 MCP Server 为 Citadel Agent 提供 Pod、CR等资源
 - Citadel Agent：提供 SDS Server 服务，为MOSN、DB Sidecar、Security Sidecar 提供Certificate和CR下发能力
