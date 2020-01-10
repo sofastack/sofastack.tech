@@ -96,4 +96,4 @@ MOSN：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 - ReadinessCheckListener 的 Order 过高
 - 删除 jaxrs-api 依赖项
 
-详细发布报告：https://github.com/sofastack/sofa-boot/releases/tag/v3.2.2
+详细发布报告：<https://github.com/sofastack/sofa-boot/releases/tag/v3.2.2>
