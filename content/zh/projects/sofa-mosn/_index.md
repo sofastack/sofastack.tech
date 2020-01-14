@@ -1,6 +1,6 @@
 ---
 title: "MOSN"
-description: "MOSN 是一款采用 Go 开发的 Service Mesh 数据平面代理。"
+description: "MOSN 是一款使用 Go 语言开发的网络代理。"
 github: "https://github.com/mosn/mosn"
 level: "main"
 icon: "/img/icons/sofamosn.png"
@@ -20,6 +20,10 @@ sidebar:
         link: 'concept/traffic-hijack'
       - title: 'TLS 安全链路'
         link: 'concept/tls'
+      - title: 'MOSN 平滑升级原理解析'
+        link: 'concept/smooth-upgrade'
+      - title: "Nginx vs Envoy vs MOSN 平滑升级原理解析"
+        link: 'concept/nginx-envoy-mosn-hot-upgrade'
   - title: '配置说明'
     sub:
       - title: '配置概览'
