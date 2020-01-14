@@ -22,6 +22,8 @@ sidebar:
         link: 'concept/tls'
       - title: 'MOSN 平滑升级原理解析'
         link: 'concept/smooth-upgrade'
+      - title: "Nginx vs Envoy vs MOSN 平滑升级原理解析"
+        link: 'concept/nginx-envoy-mosn-hot-upgrade'
   - title: '配置说明'
     sub:
       - title: '配置概览'

@@ -6,7 +6,7 @@ Service Mesh 中 Sidecar 运维一直是一个比较棘手的问题，数据平�
 
 ## 背景
 
-本文介绍 MOSN 支持平滑升级的原因和解决方案，对于平滑升级的一些基础概念，大家可以通过 [Nginx vs Enovy vs Mosn 平滑升级原理解析](https://ms2008.github.io/2019/12/28/hot-upgrade/)了解。
+本文介绍 MOSN 支持平滑升级的原因和解决方案，对于平滑升级的一些基础概念，大家可以通过 [Nginx vs Enovy vs Mosn 平滑升级原理解析](../nginx-envoy-mosn-hot-upgrade/)了解。
 
 先简单介绍一下为什么 Nginx 和 Envoy 不需要具备 MOSN 这样的连接无损迁移方案，主要还是跟业务场景相关，Nginx 和 Envoy 主要支持的是 HTTP1 和 HTTP2 协议，HTTP1使用 connection: Close，HTTP2 使用 Goaway Frame 都可以让 Client 端主动断链接，然后新建链接到新的 New process，但是针对 Dubbo、SOFA PRC 等常见的多路复用协议，它们是没有控制帧，Old process 的链接如果断了就会影响请求的。
 
