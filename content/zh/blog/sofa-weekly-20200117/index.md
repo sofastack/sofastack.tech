@@ -65,7 +65,7 @@ MOSN：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 - [蚂蚁金服消息队列 SOFAMQ 加入 OpenMessaging 开源标准社区](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247485771&idx=1&sn=e76fc52d9dfe71fcd2832e41298c159e&chksm=faa0e691cdd76f87374992934ef6d0cf41e11e2aa6d9f7f8dc156e8f2885921922fcc9eb8b7f&scene=21)
 - [蚂蚁金服 API Gateway Mesh 思考与实践](/blog/service-mesh-meetup-9-retrospect-api-gateway-mesh/)
 
-###  社区直播预告
+### 社区直播预告
 
 ![SOFAChannel#11](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1579250928699-3e807134-c0df-4138-8967-a71e5eb9bcc9.jpeg)
 
