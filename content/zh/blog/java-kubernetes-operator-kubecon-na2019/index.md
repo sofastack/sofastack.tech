@@ -4,7 +4,7 @@ author: "何子波、金敏"
 description: " 本文介绍了如何快速上手使用 Java 开发 Operator，感兴趣的读者可以根据官方实例在本地开发环境体验。"
 tags: ["Kubernetes"]
 date: 2020-01-16T20:00:00+08:00
-cover: "(https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1579248978867-b6f341d3-0f1c-40dc-afd2-b076e57d5ec6.jpeg"
+cover: "https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1579248978867-b6f341d3-0f1c-40dc-afd2-b076e57d5ec6.jpeg"
 ---
 
 本篇分享的内容难度为“初学者/Beginner”级别，以下是阅读本文前推荐您了解的背景知识：
@@ -81,4 +81,5 @@ _(yue9944882@github) _Kubernetes SIG API-Machinery 维护者及其子领域 Owne
 ![现场图](https://cdn.nlark.com/yuque/0/2020/png/226702/1578553929450-5042a25c-9f6c-4b62-a667-6906da0f5195.png)
 
 [1] 更多上下文参考：[https://github.com/kubernetes/client-go/issues/374](https://github.com/kubernetes/client-go/issues/374)
+
 [2] 通过 CRD Yaml 生成 Java 模型参考：[https://github.com/kubernetes-client/java/blob/master/docs/generate-model-from-third-party-resources.md](https://github.com/kubernetes-client/java/blob/master/docs/generate-model-from-third-party-resources.md)
