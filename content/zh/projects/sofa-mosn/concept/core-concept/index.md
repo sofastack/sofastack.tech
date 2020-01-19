@@ -30,7 +30,9 @@ MOSN 作为底层的高性能安全网络代理，支撑了 RPC、消息（Messa
 ## IO 模型
 
 MOSN 支持以下两种 IO 模型：
+
 -  **Golang 经典 netpoll 模型**：goroutine-per-connection，适用于在连接数不是瓶颈的情况。
+
 -  **RawEpoll 模型**：也就是 Reactor 模式，I/O 多路复用（I/O multiplexing）+ 非阻塞 I/O（non-blocking I/O）的模式。对于接入层和网关有大量长链接的场景，更加适合于 RawEpoll 模型。
 
 ### netpoll 模型
@@ -48,10 +50,11 @@ MOSN 的 netpoll 模型如上图所示，协程数量与链接数量成正比，
 ![MOSN RawEpoll 模型](raw-epoll-model.jpg) 
 
 RawEpoll 模型如上图所示，使用 epoll 感知到可读事件之后，再从协程池中为其分配协程进行处理，步骤如下：
+
 1. 链接建立后，向 Epoll 注册 oneshot 可读事件监听；并且此时不允许有协程调用 conn.read，避免与 runtime netpoll 冲突。
-2. 可读事件到达，从 goroutine pool 挑选一个协程进行读事件处理；由于使用的是 oneshot 模式，该 fd 后续可读事件不会再触发。
-3. 请求处理过程中，协程调度与经典 netpoll 模式一致。
-4. 请求处理完成，将协程归还给协程池；同时将 fd 重现添加到 RawEpoll 中。
+1. 可读事件到达，从 goroutine pool 挑选一个协程进行读事件处理；由于使用的是 oneshot 模式，该 fd 后续可读事件不会再触发。
+1. 请求处理过程中，协程调度与经典 netpoll 模式一致。
+1. 请求处理完成，将协程归还给协程池；同时将 fd 重现添加到 RawEpoll 中。
 
 ## 协程模型
 
