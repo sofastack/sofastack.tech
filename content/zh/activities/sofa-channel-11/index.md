@@ -20,7 +20,6 @@ description: "2 月 13 日周四晚 7 点，线上直播第 11 期。"
 
 ## 介绍
 
-
 ### | SOFAChannel
 
 `<SOFA:Channel/>` 有趣实用的分布式架构频道，前沿技术、直播 Coding、观点“抬杠”，多种形式。
@@ -70,4 +69,4 @@ SOFAGirl 主持人
 - SOFAGirl  主持人
 - 玄北，蚂蚁金服技术专家 、SOFAArk 开源负责人
 
-<img src="https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1579428676896-bee642d9-2ab4-4acb-ba87-8eb32ad19f3e.jpeg" width=50%>
+![SOFAChannel#11](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1579428676896-bee642d9-2ab4-4acb-ba87-8eb32ad19f3e.jpeg)
