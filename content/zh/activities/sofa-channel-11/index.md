@@ -1,6 +1,6 @@
 ---
 author: "潘潘"
-date: 20120-01-17T17:00:00+08:00
+date: 2020-01-17T17:00:00+08:00
 title: "（活动报名中）SOFAChannel#11：从一个例子开始体验轻量级类隔离容器 SOFAArk"
 tags: ["SOFAChannel","SOFAArk"]
 cover: "https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1579428984201-7e413fcb-3741-4475-aebf-2172706aac39.jpeg"
