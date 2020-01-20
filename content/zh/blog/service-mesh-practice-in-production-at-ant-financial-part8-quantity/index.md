@@ -79,21 +79,21 @@ Mesh 化测试架构
 这里可以举一个 RPC 路由的例子来详细讲述。我们知道，业务在做跨 IDC 路由时，主要通过跨域 VIP 实现，这就需要业务在自己的代码中设置 VIP 地址，例如：
 
 ```go
-	<sofa:reference interface="com.alipay.APPNAME.facade.SampleService" id="sampleRpcService">
-		<sofa:binding.tr>
-			<sofa:vip url="APPNAME-pool.zone.alipay.net:12200"/>
-		</sofa:binding.tr>
-	</sofa:reference>
+     <sofa:reference interface="com.alipay.APPNAME.facade.SampleService" id="sampleRpcService">
+        <sofa:binding.tr>
+            <sofa:vip url="APPNAME-pool.zone.alipay.net:12200"/>
+        </sofa:binding.tr>
+     </sofa:reference>
 ```
 
 这时候假如业务配置了不合法的 URL，如：
 
 ```go
-	<sofa:reference interface="com.alipay.APPNAME.facade.SampleService" id="sampleRpcService">
-		<sofa:binding.tr>
-			<sofa:vip url="http://APPNAME-pool.zone.alipay.net:12200?_TIMEOUT=3000"/>
-		</sofa:binding.tr>
-	</sofa:reference>
+    <sofa:reference interface="com.alipay.APPNAME.facade.SampleService" id="sampleRpcService">
+        <sofa:binding.tr>
+            <sofa:vip url="http://APPNAME-pool.zone.alipay.net:12200?_TIMEOUT=3000"/>
+        </sofa:binding.tr>
+    </sofa:reference>
 ```
 
 上述 VIP URL 指定了 12200 端口，却又同时指定了 http，这种配置是不合法的，就会出现问题，这时候测试环境就需要跨 zone、跨  LDC 的测试环境。我们在多数复杂产品测试里都会遇到，极度复杂测试场景无法 100% 分析充分。一般对于这种场景，我们可以借助于线上流量回放的能力，将线上的真实流量复制到线下，作为我们测试场景的补充。这也需要非常仿真的测试环境做 MOSN 的流量回放支撑。
