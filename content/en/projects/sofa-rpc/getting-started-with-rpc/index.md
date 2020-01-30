@@ -31,7 +31,7 @@ Step 1: Create interface
 /**
  * Quick Start demo interface
  */
-Public interface HelloService {
+public interface HelloService {
     String sayHello(String string);
 }
 ```
