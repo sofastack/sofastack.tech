@@ -31,7 +31,7 @@ Step 1: Create interface
 /**
  * Quick Start demo interface
  */
-Public interface HelloService {
+public interface HelloService {
     String sayHello(String string);
 }
 ```
@@ -91,8 +91,8 @@ public class QuickStartClient {
     public static void main(String[] args) {
         ConsumerConfig<HelloService> consumerConfig = new ConsumerConfig<HelloService>()
             .setInterfaceId(HelloService.class.getName()) // Specify the interface
-            . setProtocol("bolt") // Specify the protocol.setDirectUrl
-            ("bolt://127.0.0.1:12200"); // Specify the direct connection address
+            .setProtocol("bolt") // Specify the protocol.setDirectUrl
+            .setDirectUrl("bolt://127.0.0.1:12200"); // Specify the direct connection address
         // Generate the proxy class
         HelloService helloService = consumerConfig.refer();
         while (true) {
