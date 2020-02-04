@@ -72,7 +72,7 @@ Mesh 化测试架构
 
 应对 MOSN 测试场景复杂性，我们搭建了一套高仿真测试环境，这里以 MOSN 中的 RPC 功能为例，阐述这套环境的构成要素及环境部署架构。
 
-![集成测试环境构成要素](https://cdn.nlark.com/yuque/0/2020/png/226702/1578910155248-c92687ce-c08a-4fd0-bea9-daf5a90dacd2.png)
+![集成测试环境构成要素](https://cdn.nlark.com/yuque/0/2020/png/226702/1580709153122-933ae3f6-2105-4064-884d-73a5a6fbb0ad.png)
 
 集成测试环境构成要素
 
@@ -100,7 +100,7 @@ Mesh 化测试架构
 
 ### 兼容性测试
 
-![MOSN 兼容性验证](https://cdn.nlark.com/yuque/0/2020/png/226702/1578910155238-1b35ec70-697c-41ba-b3f3-13cf50156b8c.png)
+![MOSN 兼容性验证](https://cdn.nlark.com/yuque/0/2020/png/226702/1580709153098-54637945-923a-4670-8e8c-a343c7dd29df.png)
 
 MOSN 兼容性验证
 
@@ -121,7 +121,7 @@ MOSN 兼容性验证
 
 从 MOSN 的视角来看，其外部依赖如下：
 
-![MOSN 外部依赖图](https://cdn.nlark.com/yuque/0/2020/png/226702/1578910155220-28fb1503-7edd-4211-8ddf-c24f994bc7bf.png)
+![MOSN 外部依赖图](https://cdn.nlark.com/yuque/0/2020/png/226702/1580813967171-d1a2985a-e158-4e9e-8148-69191b383a2e.png)
 
 MOSN 外部依赖图
 
