@@ -1,7 +1,7 @@
 ---
 author: "潘潘"
 date: 2020-01-17T17:00:00+08:00
-title: "（活动报名中）SOFAChannel#11：从一个例子开始体验轻量级类隔离容器 SOFAArk"
+title: "SOFAChannel#11：从一个例子开始体验轻量级类隔离容器 SOFAArk"
 tags: ["SOFAChannel","SOFAArk"]
 cover: "https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1579428984201-7e413fcb-3741-4475-aebf-2172706aac39.jpeg"
 categories: "SOFAChannel"
@@ -16,7 +16,7 @@ description: "2 月 13 日周四晚 7 点，线上直播第 11 期。"
 
 - 活动形式：线上直播
 
-- 报名方式：[戳这里](https://tech.antfin.com/community/live/1096)
+- 直播回顾：[戳这里](https://tech.antfin.com/community/live/1096)
 
 ## 介绍
 
