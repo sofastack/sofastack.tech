@@ -1,8 +1,8 @@
 ---
 title: "蚂蚁金服研发框架日志隔离解析 | SOFABoot 框架剖析"
-author: "SOFA 团队"
-authorlink: "https://github.com/sofastack"
-description: "SOFA WEEKLY | 每周精选，筛选每周精华问答，同步开源进展，欢迎留言互动。"
+author: "盲僧"
+authorlink: "https://github.com/masteryourself"
+description: "本文将从 Java 的日志体系谈起，对 JCL、SLF4J 两个经典的日志框架做一个阐述，引出 SOFABoot 开源的日志隔离框架 sofa-common-tools，并且有实战 Demo，能够帮助我们快速上手和了解这款框架的使用和作用，最后从源码角度对其进行分析，不仅知其然，还要知其所以然。"
 categories: "SOFABoot"
 tags: ["SOFABoot","剖析 | SOFABoot 框架","SOFALab"]
 date: 2020-02-18T17:00:00+08:00
