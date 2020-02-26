@@ -3,12 +3,18 @@ title: "SOFAMesh overview"
 aliases: "/sofa-mesh/docs/Home"
 ---
 
-SOFAMesh is a large-scale implementation solution for Service Mesh which is improved and extended based on [Istio](https://istio.io). Based on Istio's powerful functions and rich features, SOFAMesh has made the following improvement to meet the performance requirements in large-scale deployment and deal with the actual problems in actual implementation: 
+**This project is deprecated. It will contribute to istio directly instead of developing in a forked repo.**
 
-1. Replace Envoy with MOSN that is written with Golang;
-2. Merge Mixer into the data plane to address the  performance bottlenecks;
-3. Enhance Pilot for a more flexible service discovery mechanism;
-4. Add support for SOFARPC and Dubbo.
+---
+
+SOFAMesh is a large-scale implementation scheme of Service Mesh based on [Istio](https://istio.io). On the basis of inheriting the powerful functions and rich features of Istio, in order to meet the performance requirements in large-scale deployments and to respond to the actual situation in the implementation, the following improvements are made:
+
+- [MOSN](https://github.com/mosn/mosn) written in Golang instead of [Envoy](https://github.com/envoyproxy/envoy)
+- Merge Mixer to data plane to resolve performance bottlenecks
+- Enhance Pilot for more flexible service discovery mechanism
+- Added support for [SOFA RPC](https://github.com/sofastack/sofa-rpc), Dubbo
+
+The initial version was contributed by Ant Financial and Alibaba UC Business Unit.
 
 The following figure shows the architectural differences between SOFAMesh and Istio:
 
@@ -33,7 +39,3 @@ SOFAMesh greatly expands and enhances the Pilot module in Istio:
 3. Add Open Service Registry API to provide standardized service registration.
 
 Together with Pilot and MOSN, SOFAMesh provides the ability to enable traditional intrusive frameworks (such as Spring Cloud, Dubbo and SOFARPC) and Service Mesh products to communicate with each other, thus it can smoothly evolve and transit to Service Mesh.
-
-## Open source co-construction
-
-The initial version of SOFAMesh was jointly built by Ant Financial and Alibaba Digital Media & Entertainment Group UC Business Group. You are welcome  to participate in the follow-up development and build an open source boutique project together with us.
