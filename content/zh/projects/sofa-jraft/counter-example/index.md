@@ -461,7 +461,7 @@ private static void incrementAndGet(BoltCliClientService cliClientService, PeerI
 1. `onSnapshotLoad`，启动或者安装 snapshot 后加载 snapshot
 2. `onSnapshotSave` ，定期保存 snapshot
 
-我们先为 Counter实现一个snapsho t数据文件：
+我们先为 Counter实现一个snapshot数据文件：
 
 ```java
 public class CounterSnapshotFile {
