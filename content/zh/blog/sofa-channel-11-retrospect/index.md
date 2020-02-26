@@ -208,8 +208,7 @@ A：可以看下这个：[https://mp.weixin.qq.com/s/PmB72OB3iALsyqRJztbpWA](htt
 - 【待认领】SOFAArk 动态配置机制解析
 - 【待认领】SOFAArk maven 打包插件解析
 - 【待认领】（实践）SOFAArk 插件化机制解析与实践
-- 【待认领】（实践）SOFAServerless POC 实践
 
 ### 领取方式
 
-欢迎参与共建，在公众号后台或者评论区回复【想认领的文章名称】，我们将会主动联系你，确认资质后，即可加入，It's your show time！
+欢迎参与共建，在【金融级分布式架构】公众号后台回复【想认领的文章名称】，我们将会主动联系你，确认资质后，即可加入，It's your show time！
