@@ -35,7 +35,7 @@ Import the project into IDEA or Eclipse. After import, the interface is as follo
 - balance-mng: account management system, providing deduction balance service
 - stock-mng: account system, providing deduction inventory service
 
-#### 2、Introduce dependencies
+#### 2. Introduce dependencies
 
 Add the following dependencies into the `pom.xml` files of balance-mng and stock-mng project modules.
 
