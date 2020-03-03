@@ -1,4 +1,3 @@
-
 ---
 title: "Hystrix fault tolerance"
 aliases: "/sofa-rpc/docs/Fault-Hystrix"
@@ -11,7 +10,8 @@ Next, let's talk about how to experience the fuse capability of Hystrix. The fol
 
 ### Work preparation
 
-1. The Hystrix module is not loaded directly as an optional module by default. If you need to use it, you need to actively add the Hystrix maven dependency:
+The Hystrix module is not loaded directly as an optional module by default. If you need to use it, you need to actively add the Hystrix maven dependency:
+
 ```xml
 <dependency>
         <groupId>com.netflix.hystrix</groupId>
@@ -19,7 +19,9 @@ Next, let's talk about how to experience the fuse capability of Hystrix. The fol
         <version>1.5.12</version>
 </dependency>
 ```
-2. By explicitly opening `Hystrix` by configuration, `HystrixFilter` will be loaded automatically:
+
+By explicitly opening `Hystrix` by configuration, `HystrixFilter` will be loaded automatically:
+
 ```java
 // Open globally
 RpcConfigs.putValue(HystrixConstants.SOFA_HYSTRIX_ENABLED, true);
@@ -33,7 +35,8 @@ ConsumerConfig<HelloService> consumerConfig = new ConsumerConfig<HelloService>()
 
 The `FallbackFactory` interface mainly provides the injection capability of the `Fallback` implementation, which is used to automatically perform the degraded logic when `Hystrix` executes an exception (throws an exception, timeout, thread pool rejection, and blown).
 
-1. Define the interface `Fallback` implementation:
+Define the interface `Fallback` implementation:
+
 ```java
 public class HelloServiceFallback implements HelloService {
     @Override
@@ -42,7 +45,9 @@ public class HelloServiceFallback implements HelloService {
     }
 }
 ```
-2. Inject `Fallback` implementation:
+
+Inject `Fallback` implementation:
+
 ```java
 ConsumerConfig<HelloService> consumerConfig = new ConsumerConfig<HelloService>()
         .setInterfaceId(HelloService.class.getName())
@@ -52,11 +57,13 @@ SofaHystrixConfig.registerFallback(consumerConfig, new HelloServiceFallback());
 // You can also customize FallbackFactory to directly inject FallbackFactory
 SofaHystrixConfig.registerFallbackFactory(consumerConfig, new HelloServiceFallbackFactory());
 ```
-3. When the server responds with a failure, the client automatically triggers the `Fallback` logic execution.
+
+When the server responds with a failure, the client automatically triggers the `Fallback` logic execution.
 
 ### SetterFactory
 
 `SetterFactory` provides `Hystrix` fine-grained configuration capabilities. SOFARPC has provided the default `DefaultSetterFactory` to generate the `Setter` for each caller. If there is a more customized description, it can also be provided for each `ConsumerConfig`. Customize `SetterFactory`.
+
 ```java
 SofaHystrixConfig.registerSetterFactory(consumerConfig, new CustomSetterFactory());
 ```
