@@ -6,7 +6,7 @@ description: " 本文为《剖析 | SOFARegistry 框架》第七篇，作者明�
 categories: "SOFARegistry"
 tags: ["SOFARegistry","剖析 | SOFARegistry 框架","SOFALab"]
 date: 2020-03-03T16:30:00+08:00
-cover: "https://cdn.nlark.com/yuque/0/2020/png/226702/1583222425554-55380dd1-8546-46e0-9e1f-c328bae0de68.png"
+cover: "https://cdn.nlark.com/yuque/0/2020/png/226702/1583228665289-7787b23a-5892-4b20-9474-f17d7091e29c.png"
 ---
 
 > SOFAStack （Scalable Open Financial  Architecture Stack） 是蚂蚁金服自主研发的金融级云原生架构，包含了构建金融级云原生架构所需的各个组件，是在金融场景里锤炼出来的最佳实践。
