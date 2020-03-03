@@ -1,6 +1,6 @@
 ---
 author: "潘潘"
-date: 2019-10-30T12:00:00+08:00
+date: 2020-03-03T12:00:00+08:00
 title: "<SOFA:BootLab/>"
 tags: ["SOFALab","SOFABoot","剖析 | SOFABoot 框架"]
 cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1567496342189-26f60811-c007-45c8-83fd-df6080926f03.jpeg"
@@ -26,12 +26,12 @@ SOFABoot :<https://github.com/sofastack/sofa-boot>
 
 - 认领列表：
   - 【已认领】《SOFABoot 总览》
-  - **【待认领】《SOFABoot runtime 机制解析》**
+  - 【已认领】《SOFABoot runtime 机制解析》
   - 【已认领】《SOFABoot HealthCheck 机制解析》
   - 【已认领】《SOFABoot 日志隔离解析》
-  - **【待认领】《SOFABoot 上下文隔离机制解析》**
+  - 【已认领】《SOFABoot 上下文隔离机制解析》
 
-- 领取方式：关注**「金融级分布式架构」**回复可领取的文章标题，我们将会主动联系你，确认资质后，即可加入 <SOFA:BootLab/>，It's your show time！
+- 领取方式：关注 **「金融级分布式架构」** 回复可领取的文章标题，我们将会主动联系你，确认资质后，即可加入 <SOFA:BootLab/>，It's your show time！
 
 如果有同学对以上某个主题特别感兴趣的，可以留言讨论，我们会适当根据大家的反馈调整文章的顺序，谢谢大家关注 SOFAStack ，关注 SOFABoot，我们会一直与大家一起成长的。
 
