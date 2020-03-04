@@ -30,10 +30,9 @@ SOFAArk :<https://github.com/sofastack/sofa-ark>
   - **【已认领】** SOFAArk 类加载模型机制解析
   - **【已认领】** SOFAArk 合并部署能力解析
   - **【已认领】** SOFAArk SPI 机制和 ClassLoaderHook 机制解析
-  - 【待认领】SOFAArk 动态配置机制解析
-  - 【待认领】SOFAArk maven 打包插件解析
-  - 【待认领】（实践）SOFAArk 插件化机制解析与实践
-  - 【待认领】（实践）SOFAServerless POC 实践
+  - **【已认领】** SOFAArk 动态配置机制解析
+  - **【已认领】** SOFAArk maven 打包插件解析
+  - **【已认领】** （实践）SOFAArk 插件化机制解析与实践
 
 - 领取方式：关注**「金融级分布式架构」** 回复可领取的文章标题，我们将会主动联系你，确认资质后，即可加入 <SOFA:ArkLab/>，It's your show time！
 
