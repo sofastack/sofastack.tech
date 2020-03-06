@@ -1,5 +1,5 @@
 ---
-title: "SOFA Weekly | MOSN 发布、直播系列整理、0312直播预告"
+title: "SOFA Weekly | SOFARegistry 发版以及源码系列合辑、SOFAArk 发版、3/12直播预告"
 author: "SOFA 团队"
 authorlink: "https://github.com/sofastack"
 description: "SOFA WEEKLY | 每周精选，筛选每周精华问答，同步开源进展，欢迎留言互动。"
