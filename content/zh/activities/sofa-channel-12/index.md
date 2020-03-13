@@ -1,7 +1,7 @@
 ---
 author: "潘潘"
 date: 2020-02-12T17:00:00+08:00
-title: "（活动报名中）SOFAChannel#12：蚂蚁金服分布式事务实践解析"
+title: "SOFAChannel#12：蚂蚁金服分布式事务实践解析"
 tags: ["SOFAChannel","分布式事务"]
 cover: "https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1581506019925-c870b568-4cb3-4cf2-b18e-c0b0ccbb13e9.jpeg"
 categories: "SOFAChannel"
@@ -16,7 +16,7 @@ description: "3 月 12 日周四晚 7 点，线上直播第 12 期。"
 
 - 活动形式：线上直播
 
-- 报名方式：[戳这里](https://tech.antfin.com/community/live/1119)
+- 直播回顾：[戳这里](https://tech.antfin.com/community/live/1119)
 
 ## 介绍
 
