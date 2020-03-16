@@ -6,7 +6,7 @@ description: " 本文为《剖析 | SOFAArk 源码》第一篇，作者卫恒"
 categories: "SOFAArk"
 tags: ["SOFAArk","剖析 | SOFAArk 源码 ","SOFALab"]
 date: 2020-01-07T20:00:00+08:00
-cover: "https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1577954736330-d5e1dc33-c58e-4b2f-9223-d79ed01810f7.jpeg"
+cover: "https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1584349295120-caa915c6-3a74-4c11-b903-efe79f560293.jpeg"
 ---
 
 ![SOFAArkLab-概述](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1578385856782-5ade1571-be6a-4970-aa72-8f4189885c47.jpeg)
