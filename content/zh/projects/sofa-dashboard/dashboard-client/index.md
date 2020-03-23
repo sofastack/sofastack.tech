@@ -68,7 +68,7 @@ SOFADashboard 支持查看应用的IP、端口、健康检查状态等基本信�
 * zookeeper , prefix : com.alipay.sofa.dashboard.zookeeper
 
 | 属性                  | 名称                | 默认值 | 备注 |
-| :---                 | :---                | :- | :-----|
+| --- | --- | --- | --- |
 | address               | 地址             | true |  |
 | baseSleepTimeMs           | 客户端错误重试间隔(ms).  | 1000 |   |
 | maxRetries    | 客户端最大重试次数          |  3 |  |
@@ -78,7 +78,7 @@ SOFADashboard 支持查看应用的IP、端口、健康检查状态等基本信�
 * redis , prefix : com.alipay.sofa.dashboard.redis
 
 | 属性                  | 名称                | 默认值 | 备注 |
-| :---                 | :---                | :- | :-----|
+| --- | --- | --- | --- |
 | enble               | 是否可用            | true | 当开启时，dashboard会使用redis作为存储 |
 | recordTtl           | 上报周期(ms).  | 3600 |   |
 | url    | redis对应url          |   | 例如：redis://user:password@example.com:6379 |
