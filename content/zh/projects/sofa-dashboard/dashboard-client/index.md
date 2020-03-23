@@ -51,10 +51,10 @@ SOFADashboard 支持查看应用的IP、端口、健康检查状态等基本信�
 
 ## 配置
 
-* client , prefix : com.alipay.sofa.dashboard.client
+**client , prefix : com.alipay.sofa.dashboard.client**
 
 | 属性                  | 名称                | 默认值 | 备注 |
-| :---                 | :---                | :- | :-----|
+| ----                 | ----                | ---- | -----|
 | enable               | 是否可用             | true |  当开启时，dashboard client 的相应功能才会作用|
 | instanceIp           | 指定当前实例的IP 地址  | "" | 一般用于测试或者需要指定 IP 的场景  |
 | storeInitDelayExp    | 初始上报延迟          |  30s | Dashboard度量数据存储上报延迟期望(s) |
@@ -63,22 +63,23 @@ SOFADashboard 支持查看应用的IP、端口、健康检查状态等基本信�
 | virutalPort         | 虚拟端口             | "" | 服务发布虚拟port（同SofaRpc中相同定义），可使用-Dcom.alipay.sofa.rpc.virtual.port引入|
 | internalHost        | 内部地址             | "" | 容器内部地址（例如podIp等)，可使用-Dcom.alipay.sofa.rpc.virtual.internal.host引入|
 | arkEnable           | 是否启用ark管理      |true | 当开启时，dashboard client的相应功能才会作用|
+
 注：virtualHost，virutalPort 如果通过com.alipay.sofa.rpc指定了相应参数，则不需要通过dashborad再次指定
 
-* zookeeper , prefix : com.alipay.sofa.dashboard.zookeeper
+**zookeeper , prefix : com.alipay.sofa.dashboard.zookeeper**
 
 | 属性                  | 名称                | 默认值 | 备注 |
-| :---                 | :---                | :- | :-----|
+| ----                 | ----                | ---- | -----|
 | address               | 地址             | true |  |
 | baseSleepTimeMs           | 客户端错误重试间隔(ms).  | 1000 |   |
 | maxRetries    | 客户端最大重试次数          |  3 |  |
 | sessionTimeoutMs | 客户端会话超时时间(ms) | 6000      | |
 | connectionTimeoutMs | 客户端超时时间(ms) | 6000       |  |
 
-* redis , prefix : com.alipay.sofa.dashboard.redis
+**redis , prefix : com.alipay.sofa.dashboard.redis**
 
 | 属性                  | 名称                | 默认值 | 备注 |
-| :---                 | :---                | :- | :-----|
+| ----                 | ----                | ---- | -----|
 | enble               | 是否可用            | true | 当开启时，dashboard会使用redis作为存储 |
 | recordTtl           | 上报周期(ms).  | 3600 |   |
 | url    | redis对应url          |   | 例如：redis://user:password@example.com:6379 |
@@ -89,4 +90,3 @@ SOFADashboard 支持查看应用的IP、端口、健康检查状态等基本信�
 | Sentinel.nodes | Sentinel模式节点地址 |        |  例如host1:port1;host2:port2;host3:port3   |
 | Cluster.nodes | Cluster模式节点地址 |        |  例如host1:port1;host2:port2;host3:port3  |
 | Cluster.maxRedirects | Cluster模式重定向次数 |   0    |  建议给值，例如10 |
-
