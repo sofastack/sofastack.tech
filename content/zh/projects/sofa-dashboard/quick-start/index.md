@@ -43,7 +43,7 @@ sofa-dashboard-front 是 SOFADashboard 的前端代码工程，基于蚂蚁金
 ```bash
 > cd sofa-dashboard-front
 > npm i
-> npm start
+> npm run dev
 ```
 
 ## 案例工程
