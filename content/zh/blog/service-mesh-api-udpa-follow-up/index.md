@@ -6,7 +6,7 @@ description: "本文收集并整理了一下 UDPA 目前的情况和信息，给
 categories: "Service Mesh"
 tags: ["Service Mesh"]
 date: 2020-03-25T18:00:00+08:00
-cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563524226806-e93607a3-1b77-4ca2-8c3c-0384ab966154.png"
+cover: "https://cdn.nlark.com/yuque/0/2020/png/226702/1585189900989-0ae555ff-5258-4cd3-b288-b8f9895a1e8c.png"
 
 ---
 
