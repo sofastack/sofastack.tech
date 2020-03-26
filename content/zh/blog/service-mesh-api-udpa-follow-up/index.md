@@ -7,7 +7,6 @@ categories: "Service Mesh"
 tags: ["Service Mesh"]
 date: 2020-03-25T18:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2020/png/226702/1585189900989-0ae555ff-5258-4cd3-b288-b8f9895a1e8c.png"
-
 ---
 
 在2019年5月，CNCF 筹建通用数据平面 API 工作组（Universal Data Plane API Working Group / UDPA-WG)，以制定数据平面的标准 API。
