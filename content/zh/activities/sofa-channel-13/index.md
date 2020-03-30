@@ -1,7 +1,7 @@
 ---
 author: "潘潘"
 date: 2020-03-16T17:00:00+08:00
-title: "（活动报名中）SOFAChannel#13：云原生网络代理 MOSN 的多协议机制解析"
+title: "SOFAChannel#13：云原生网络代理 MOSN 的多协议机制解析"
 tags: ["SOFAChannel","MOSN"]
 cover: "https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1584350858191-cb9a29fd-c5a0-48dd-a1da-498bc7333a06.jpeg"
 categories: "SOFAChannel"
@@ -12,11 +12,11 @@ description: "3 月 26 日周四晚 7 点，线上直播第 13 期。"
 
 - 活动主题：SOFAChannel#13：云原生网络代理 MOSN 的多协议机制解析
 
-- 活动时间：3 月 13 日周四晚 7 点
+- 活动时间：3 月 26 日周四晚 7 点
 
 - 活动形式：线上直播
 
-- 报名方式：[戳这里](https://tech.antfin.com/community/live/1131)
+- 直播回顾：[戳这里](https://tech.antfin.com/community/live/1131)
 
 ## 介绍
 
