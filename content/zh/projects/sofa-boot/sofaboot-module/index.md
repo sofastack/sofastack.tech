@@ -14,7 +14,7 @@ SOFABoot 模块是一个普通的 Jar 包加上一些 SOFABoot 特有的配置�
 
 ## sofa-module.properties 文件详解
 
-先来看一份完整的 sofa-module.properties 文件：
+先来看一份完整的 sofa-module.properties 文件（src/main/resources 目录下）：
 
 ```properties
 Module-Name=com.alipay.test.biz.service.impl
