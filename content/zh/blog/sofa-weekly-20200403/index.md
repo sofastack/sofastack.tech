@@ -1,5 +1,5 @@
 ---
-title: "SOFA Weekly | MOSN 直播预告 &amp; 发布更新、Service Mesh 落地实践解析合辑"
+title: "SOFA Weekly | MOSN 直播预告 & 发布更新、Service Mesh 落地实践解析合辑"
 author: "SOFA 团队"
 authorlink: "https://github.com/sofastack"
 description: "【03/30-04/03】| 每周精选，筛选每周精华问答，同步开源进展，欢迎留言互动。"
