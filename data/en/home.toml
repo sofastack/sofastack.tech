@@ -36,7 +36,7 @@
 
 [[cloud_native_sub]]
 	title = "Cloud Native Architecture"
-	description = "With the growth of business scale and system complexity, the traditional microservice management and operations becomes increasingly faster, and developers and operation personnel face multiple challenges. Some emerging concepts like Service Mesh and Serverless can resolve such problems. To improve the performance in large-scale deployment and cope with the actual situations in actual implementation, SOFAStack also open source the similar projects such as SOFAMesh and SOFAMosn."
+	description = "With the growth of business scale and system complexity, the traditional microservice management and operations becomes increasingly faster, and developers and operation personnel face multiple challenges. Some emerging concepts like Service Mesh and Serverless can resolve such problems."
 	img = "img/home/cd-cloud-native-architecture.png"
 	position = "INIT"
 
