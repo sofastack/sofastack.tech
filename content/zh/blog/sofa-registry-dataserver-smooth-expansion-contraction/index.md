@@ -183,7 +183,7 @@ DataServer 的核心启动类是 DataServerBootstrap，该类主要包含了三
 public Object doHandle(Channel channel, GetDataRequest request) {
     String dataInfoId = request.getDataInfoId();
     if (forwardService.needForward()) {  
-   		// ...  如果不是WORKING状态，则需要转发读操作
+       // ...  如果不是WORKING状态，则需要转发读操作
         return forwardService.forwardRequest(dataInfoId, request);
     }
 }
@@ -232,8 +232,8 @@ public Object forwardRequest(String dataInfoId, Object request) throws RemotingE
 public Object doHandle(Channel channel, PublishDataRequest request) {
     if (forwardService.needForward()) {
         // ...
-		response.setSuccess(false);
-       	response.setMessage("Request refused, Server status is not working");
+        response.setSuccess(false);
+        response.setMessage("Request refused, Server status is not working");
         return response;
     }
 }        
@@ -265,9 +265,9 @@ MetaServer 会通过网络连接感知到新节点上线或者下线，所有的
 
 ```java
 public class LocalDataServerChangeEventHandler {
-	// 同一集群数据同步器
-	private class LocalClusterDataSyncer implements Runnable {
-    	public void run() {
+    // 同一集群数据同步器
+    private class LocalClusterDataSyncer implements Runnable {
+       public void run() {
             if (LocalServerStatusEnum.WORKING == dataNodeStatus.getStatus()) {
                 //if local server is working, compare sync data
                 notifyToFetch(event, changeVersion);
