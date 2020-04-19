@@ -1,4 +1,3 @@
-
 ---
 title: "Ark 事件机制"
 aliases: "/sofa-boot/docs/sofa-ark-ark-event"
@@ -11,7 +10,6 @@ SOFAArk 从 1.1.0 版本开始提供了全新的事件模型，囊括了 SOFAArk
 ## 事件概览
 
 ### biz 生命周期事件
-
 | 事件名 | 描述 |
 | --- | --- |
 | AfterBizStartupEvent | biz 启动之后发送的事件 |
@@ -23,7 +21,6 @@ SOFAArk 从 1.1.0 版本开始提供了全新的事件模型，囊括了 SOFAArk
 
 
 ### plugin 生命周期事件
-
 | 事件名 | 描述 |
 | --- | --- |
 | AfterPluginStartupEvent | plugin 启动之后发送的事件 |
@@ -33,7 +30,6 @@ SOFAArk 从 1.1.0 版本开始提供了全新的事件模型，囊括了 SOFAArk
 
 
 ### 容器级别生命周期事件
-
 | 事件名 | 描述 |
 | --- | --- |
 | AfterFinishDeployEvent | 执行完 DeployStage 阶段之后发送的事件 |
@@ -43,7 +39,6 @@ SOFAArk 从 1.1.0 版本开始提供了全新的事件模型，囊括了 SOFAArk
 ## 事件监听
 
 ### 监听指定类型的事件
-
 上述提到的各个阶段的事件，我们可以通过编写 EventHandler 来处理，例如，希望监听类型为 BeforeBizStartupEvent 的事件，则可以通过以下方式实现监听：
 
 ```java
@@ -104,7 +99,6 @@ public class AfterBizStartupEventHandler implements EventHandler<AfterBizStartup
 ```
 
 ### 监听不指定类型的事件
-
 某些情况下，如果期望监听所有 biz 或者 plugin 生命周期事件，可以使用以下方式：
 
 ```java
@@ -142,7 +136,6 @@ public class AbstractArkEventHandler implements EventHandler<AbstractArkEvent> {
 所以这些事件都可以被 AbstractArkEventHandler 处理到。
 
 ### 发送自定义事件
-
 1、自定义事件
 
 ```java

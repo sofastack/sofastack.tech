@@ -1,9 +1,7 @@
-
 ---
 title: "Ark 扩展机制"
 aliases: "/sofa-boot/docs/sofa-ark-ark-extension"
 ---
-
 
 Ark  容器和 Ark Plugin 在运行时由不同的类加载器加载，不能使用常规的 ServiceLoader 提供 SPI 扩展，SOFAArk 自定义扩展点 SPI 机制， Ark Plugin 实现 SPI 机制，考虑到 Biz 卸载问题，Ark Biz 暂时不支持该 SPI 机制，只适用于 Ark Plugin 之间。
 
@@ -219,13 +217,11 @@ public class DelegateMasterBizClassLoaderHook implements ClassLoaderHook<Biz> {
 
 ### 通过 plugin 提供 hook 实现
 
-不支持，会出现循环应引用问题。
+不支持，会出现循环应引用问题。模块 BizClassLoader getResources 过程描述：
 
-模块 BizClassLoader getResources 过程描述：
-
-- preFindResource： 当前模块没有实现 hook，所以 preFindResource 不会执行，返回是 null
-- getInternalResouces
-  - getJdkResource：加载不到
-  - getExportResource：这里会尝试使用插件 pluginClassLoader 来加载
-    - pluginClassLoader.getResources
-      - preFindResource: 这里委托给宿主 bizClassLoader 加载，bizClassLoader.getResources -> getInternalResouces->getExportResource->pluginClassLoader.getResources->hook preFindResource -> 委托给宿主 bizClassLoader 加载 -> ....
+- 1、preFindResource: 当前模块没有实现 hook，所以 preFindResource 不会执行，返回是 null
+- 2、getInternalResouces
+- 3、getJdkResource: 加载不到
+- 4、getExportResource: 这里会尝试使用插件 pluginClassLoader 来加载
+- 5、pluginClassLoader.getResources
+- 6、preFindResource: 这里委托给宿主 bizClassLoader 加载，bizClassLoader.getResources -> getInternalResouces->getExportResource->pluginClassLoader.getResources->hook preFindResource -> 委托给宿主 bizClassLoader 加载 -> ....
