@@ -1,9 +1,7 @@
-
 ---
 title: "Ark 扩展机制"
 aliases: "/sofa-boot/docs/sofa-ark-ark-extension"
 ---
-
 
 Ark  容器和 Ark Plugin 在运行时由不同的类加载器加载，不能使用常规的 ServiceLoader 提供 SPI 扩展，SOFAArk 自定义扩展点 SPI 机制， Ark Plugin 实现 SPI 机制，考虑到 Biz 卸载问题，Ark Biz 暂时不支持该 SPI 机制，只适用于 Ark Plugin 之间。
 
@@ -130,3 +128,100 @@ public class TestPluginClassLoaderHook implements ClassLoaderHook<Plugin> {
 public class TestBizClassLoaderHook implements ClassLoaderHook<Biz> {
 }
 ```
+
+## ClassLoaderHook 使用案例
+
+这里以 BizClassLoaderHook 为例，来实现 **模块中的类委托给基座加载 **，这种可以完全将所有依赖都打在基座（宿主）应用中，模块中可以什么依赖都不带，完全是纯的业务代码；带来的好处是，一个模块最终打出的包大小会非常小，在动态操作模块时，可以极大的提高性能。
+
+例如有一个 sofa-dashboard-ark-facade 包，这个包本身就是由宿主应用提供，那么模块在引入这个包时就可以不再需要将 sofa-dashboard-ark-facade 打在自己的 biz 包里面。
+这里将 sofa-dashboard-ark-facade 的 dependency 的 scope 改为 provided，使得打包时，不将 sofa-dashboard-ark-facade 打到模块 biz 中。然后通过 ClassLoaderHook 机制将 
+sofa-dashboard-ark-facade 包中提供的类委托给宿主来加载。具体过程如下：
+
+```xml
+<dependency>
+    <groupId>com.glmapper.bridge.boot</groupId>
+    <artifactId>sofa-dashboard-ark-facade</artifactId>
+    <!-- sofa-dashboard-ark-facade 不打包进去，使用宿主里面提供的-->
+    <scope>provided</scope>
+</dependency>
+```
+
+### 在模块中提供 hook 实现
+
+在模块代码中新建一个 DelegateMasterBizClassLoaderHook 类，如下：
+
+```java
+@Extension("biz-classloader-hook")
+public class DelegateMasterBizClassLoaderHook implements ClassLoaderHook<Biz> {
+
+    @Override
+    public Class<?> preFindClass(String name, ClassLoaderService classLoaderService, Biz biz) throws ClassNotFoundException {
+        return null;
+    }
+
+    @Override
+    public Class<?> postFindClass(String name, ClassLoaderService classLoaderService, Biz biz) throws ClassNotFoundException {
+        // 按包名组织
+        if (name.startsWith("io.sofastack.ark.biz.facade")){
+            ClassLoader masterBizClassLoader = ArkClient.getMasterBiz().getBizClassLoader();
+            return bizClassLoader.loadClass(name);
+        }
+        return null;
+    }
+
+    @Override
+    public URL preFindResource(String name, ClassLoaderService classLoaderService, Biz biz) {
+        // 资源也要委托
+        if (name.startsWith("io/sofastack/ark/biz/facade")) {
+            ClassLoader masterBizClassLoader = ArkClient.getMasterBiz().getBizClassLoader();
+            try {
+                return bizClassLoader.getResource(name);
+            } catch (Exception e) {
+                return null;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public URL postFindResource(String name, ClassLoaderService classLoaderService, Biz biz) {
+        return null;
+    }
+
+    @Override
+    public Enumeration<URL> preFindResources(String name, ClassLoaderService classLoaderService, Biz biz) throws IOException {
+        if (name.startsWith("io/sofastack/ark/biz/facade")){
+           ClassLoader masterBizClassLoader = ArkClient.getMasterBiz().getBizClassLoader();
+            try {
+                return bizClassLoader.getResources(name);
+            } catch (Exception e) {
+                return null;
+            }
+        }
+        return null;
+    }
+
+    @Override
+    public Enumeration<URL> postFindResources(String name, ClassLoaderService classLoaderService, Biz biz) throws IOException {
+        return null;
+    }
+}
+
+```
+
+在 resources 目录下添加 /META-INF/services/sofa-ark/ 目录，再在 /META-INF/services/sofa-ark/ 添加一个 名为 com.alipay.sofa.ark.spi.service.classloader.ClassLoaderHook 的文件，文件里面内容为 hook 类的全限定名：
+
+> io.sofastack.ark.biz.provider.hooks.DelegateMasterBizClassLoaderHook
+
+重新打包，打包之后验证下模块 biz 包，里面已经没有 sofa-dashboard-ark-facade 包，然后重新验证下执行是否正常。
+
+### 通过 plugin 提供 hook 实现
+
+不支持，会出现循环应引用问题。模块 BizClassLoader getResources 过程描述：
+
+- 1、preFindResource: 当前模块没有实现 hook，所以 preFindResource 不会执行，返回是 null
+- 2、getInternalResouces
+- 3、getJdkResource: 加载不到
+- 4、getExportResource: 这里会尝试使用插件 pluginClassLoader 来加载
+- 5、pluginClassLoader.getResources
+- 6、preFindResource: 这里委托给宿主 bizClassLoader 加载，bizClassLoader.getResources -> getInternalResouces->getExportResource->pluginClassLoader.getResources->hook preFindResource -> 委托给宿主 bizClassLoader 加载 -> ....
