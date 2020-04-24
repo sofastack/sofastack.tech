@@ -1,7 +1,7 @@
 ---
 author: "潘潘"
 date: 2020-03-27T17:00:00+08:00
-title: "（活动报名中）SOFAChannel#14：云原生网络代理 MOSN 的扩展机制解析"
+title: "SOFAChannel#14：云原生网络代理 MOSN 的扩展机制解析"
 tags: ["SOFAChannel","MOSN"]
 cover: "https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1585544894349-8be1db03-e0ab-4569-9c66-53ba2079d6dd.jpeg"
 categories: "SOFAChannel"
@@ -16,7 +16,7 @@ description: "4 月 9 日周四晚 7 点，线上直播第 14 期。"
 
 - 活动形式：线上直播
 
-- 报名方式：[戳这里](https://tech.antfin.com/community/live/1152)
+- 直播回顾：[戳这里](https://tech.antfin.com/community/live/1152)
 
 ## 介绍
 
