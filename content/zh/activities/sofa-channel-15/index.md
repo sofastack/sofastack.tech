@@ -1,7 +1,7 @@
 ---
 author: "潘潘"
 date: 2020-04-17T17:00:00+08:00
-title: "（活动报名中）SOFAChannel#15：分布式链路组件 SOFATracer 埋点机制解析"
+title: "SOFAChannel#15：分布式链路组件 SOFATracer 埋点机制解析"
 tags: ["SOFAChannel","SOFATracer"]
 cover: "https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1587624983028-cf812798-a686-4ea4-87c3-00810d69aa94.jpeg"
 categories: "SOFAChannel"
@@ -16,7 +16,7 @@ description: "4 月 23 日周四晚 7 点，线上直播第 15 期。"
 
 - 活动形式：线上直播
 
-- 报名方式：[戳这里](https://tech.antfin.com/community/live/1167)
+- 直播回顾：[戳这里](https://tech.antfin.com/community/live/1167)
 
 ## 介绍
 
