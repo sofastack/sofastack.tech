@@ -3,7 +3,7 @@ title: "SOFAMesh overview"
 aliases: "/sofa-mesh/docs/Home"
 ---
 
-**This project is deprecated. It will contribute to istio directly instead of developing in a forked repo.**
+**This repository is deprecated. It will contribute to istio directly instead of developing in a forked repo. Please go to see [Istio’s doc](https://istio.io).**
 
 ---
 
@@ -22,9 +22,9 @@ The following figure shows the architectural differences between SOFAMesh and Is
 
 ## Main components
 
-### SOFAMosn
+### MOSN
 
-In SOFAMesh, the data pane adopts Golang to write a module called MOSN (Modular Observable Smart Net-stub), and replaces Envoy with MOSN to integrate with Istio to implement the functions of Sidecar. MOSN is fully compatible with Envoy's APIs.
+In SOFAMesh, the data pane adopts Golang to write a module called MOSN (Modular Open Smart Network), and replaces Envoy with MOSN to integrate with Istio to implement the functions of Sidecar. MOSN is fully compatible with Envoy's APIs.
 
 ![SOFA MOSN architecture](mosn-sofa-mesh-golang-sidecar.png)
 

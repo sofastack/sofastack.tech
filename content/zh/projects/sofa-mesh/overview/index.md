@@ -3,7 +3,7 @@ title: "SOFAMesh 介绍"
 aliases: "/sofa-mesh/docs/Home"
 ---
 
-**该项目已弃用。该项目将直接向 Istio 贡献，而不是在 fork 的仓库中开发。**
+**该项目仓库已弃用。该项目将直接向 Istio 贡献，不会继续在 fork 的仓库中开发，请转至 [Istio 官网](https://istio.io)。**
 
 ---
 
@@ -22,10 +22,9 @@ SOFAMesh 是基于 [Istio](https://istio.io) 改进和扩展而来的 Service Me
 
 ## 主要组件
 
-### SOFA MOSN
+### MOSN
 
-在 SOFAMesh 中，数据面我们采用 Golang 语言编写了名为 MOSN（Modular Observable Smart Net-stub）的模块来替代 Envoy 与 Istio 集成以实现 Sidecar 的功能，
-同时 MOSN 完全兼容 Envoy 的 API。
+在 SOFAMesh 中，数据面我们采用 Golang 语言编写了名为 [MOSN](https://mosn.io/zh)（Modular Open Smart Network）的模块来替代 Envoy 与 Istio 集成以实现 Sidecar 的功能，同时 MOSN 完全兼容 Envoy 的 API。
 
 <img alt="SOFA MOSN 架构图" src="mosn-sofa-mesh-golang-sidecar.png" width="60%">
 
