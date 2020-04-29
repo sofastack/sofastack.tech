@@ -1,7 +1,7 @@
 ---
 title: "Service Mesh 和 API Gateway 关系深度探讨"
 author: "敖小剑"
-authorlink: "https://github.com/sofastack"
+authorlink: "https://skyao.io/"
 description: "Service Mesh 和 API Gateway 之间的关系，是“泾渭分明”还是“兼容并进”？"
 categories: "Service Mesh"
 tags: ["Service Mesh","API Gateway "]
