@@ -3,6 +3,27 @@ title: "版本发行日志"
 ---
 
 ---
+## 1.3.1
+
+2020-04-17
+
+* Bug Fixes
+    * [修复 bolt rpc callback 默认的任务饱和丢弃策略，改为抛出异常](https://github.com/sofastack/sofa-jraft/pull/413)
+    * [修复 learner 启动晚于 leader 选举成功时无法复制日志的 bug](https://github.com/sofastack/sofa-jraft/pull/385)
+* Features
+    * [multi raft group 之间共享 timer 和 scheduler 等较重的线程资源，优化 multi group 场景中的多余资源占用](https://github.com/sofastack/sofa-jraft/pull/414)
+    * [提供 RPC adapter，用户可基于 SPI 扩展不同的 RPC 实现](https://github.com/sofastack/sofa-jraft/pull/402)
+    * [正式提供稳定的 RocksDBSegmentLogStorage，适合 value 较大的数据存储](https://github.com/sofastack/sofa-jraft/pull/399)
+    * [sofa-bolt 升级到 1.6.1，支持 SSL 以及具有更好的小数据包传输能力](https://github.com/sofastack/sofa-jraft/pull/161)
+    * [引入一个新的数据结构 segment list 来解决 LogManager 中过多的 log memory copy](https://github.com/sofastack/sofa-jraft/pull/377)
+    * [采纳 nacos 的建议，对 raft Task 增加 join API](https://github.com/sofastack/sofa-jraft/pull/403)
+* Breaking Changes
+    * 无
+* 致谢（排名不分先后）
+    * @jovany-wang @SteNicholas @zongtanghu @OpenOpened
+
+---
+
 ## 1.3.0
 
 2019-11-29
