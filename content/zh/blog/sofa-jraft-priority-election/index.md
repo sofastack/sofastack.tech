@@ -6,8 +6,7 @@ description: "继源码解析系列后，推出特性解析系列，本文为 SO
 categories: "SOFAJRaft"
 tags: ["SOFAJRaft","SOFAJRaft 特性解析"]
 date: 2020-05-06T18:00:00+08:00
-cover:
-"https://cdn.nlark.com/yuque/0/2020/png/226702/1588821353366-4cae13d0-b1cf-45c2-a491-48af5ccbf3e2.png"
+cover:"https://cdn.nlark.com/yuque/0/2020/png/226702/1588821353366-4cae13d0-b1cf-45c2-a491-48af5ccbf3e2.png"
 ---
 
 > SOFAStack（Scalable Open Financial Architecture Stack） 是蚂蚁金服自主研发的金融级云原生架构，包含了构建金融级云原生架构所需的各个组件，是在金融场景里锤炼出来的最佳实践。
