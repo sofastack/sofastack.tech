@@ -5,7 +5,7 @@ authorlink: "https://github.com/bergwolf"
 description: "本文根据线上直播整理，一起来看看云原生场景下容器隔离性的需求以及我们如何运用 Kata Containers 来提升容器的隔离性。欢迎阅读"
 categories: "Kata Containers"
 tags: ["Kata Containers","SOFAChannel"]
-date: 2019-10-18T15:00:00+08:00
+date: 2020-05-22T13:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1588146836458-cf1c9e0e-4c83-4780-8bc5-e524d4ee1f40.jpeg"
 ---
 
