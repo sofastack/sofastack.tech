@@ -7,5 +7,8 @@ levels:
       - "kc-seata-demo"
       - "kc-serverless-demo"
       - "kc-cloud-mesh-demo"
+  - level: "其他"
+    links:
+      - "sofastack-demos"
 ---
 
