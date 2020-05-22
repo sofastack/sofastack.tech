@@ -1,4 +1,4 @@
-```
+---
 title: "SOFAStack Demos"
 description: "本指南为 SOFAStack 多个组件的 Demo 合集，欢迎使用"
 github: "https://github.com/sofastack-guides/sofastack-demos"
@@ -12,4 +12,4 @@ projects: [
   {name: "SOFALookout", link: "https://github.com/sofastack/sofa-lookout"},
   {name: "SOFARPC", link: "https://github.com/sofastack/sofa-rpc"}, 
 ]
-```
+---
