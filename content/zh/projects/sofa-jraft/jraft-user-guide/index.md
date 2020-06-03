@@ -247,7 +247,7 @@ NodeOptions 主要配置如下：
  private String        raftMetaUri;
  // Raft 节点的 snapshot 存储路径，可选，不提供就关闭了 snapshot 功能。
  private String        snapshotUri;
- // 是否关闭 Cli 服务，参见 3.2 节，默认不关闭
+ // 是否关闭 Cli 服务，参见 4.2 节，默认不关闭
  private boolean       disableCli = false; 
  // 内部定时线程池大小，默认按照 cpu 个数计算，需要根据应用实际情况适当调节。
  private int           timerPoolSize          = Utils.cpus() * 3 > 20 ? 20 : Utils.cpus() * 3;
@@ -302,7 +302,7 @@ RPCServer rpcServer = RaftRpcServerFactory.createAndStartRaftRpcServer(serverId.
 
 这样就为了本节点提供了 RPC Server 服务，其他节点可以连接本节点进行通讯，比如发起选举、心跳和复制等。
 
-但是大部分应用的服务端也会同时提供 RPC 服务给用户使用，__ jraft 允许 raft 节点使用业务提供的 RPCServer 对象，也就是和业务共用同一个服务端口__，这就需要为业务的 RPCServer 注册 raft 特有的通讯协议处理器：
+但是大部分应用的服务端也会同时提供 RPC 服务给用户使用，__jraft 允许 raft 节点使用业务提供的 RPCServer 对象，也就是和业务共用同一个服务端口__，这就需要为业务的 RPCServer 注册 raft 特有的通讯协议处理器：
 
 ```java
 RpcServer rpcServer = ... // 业务的 RPCServer 对象
@@ -578,7 +578,7 @@ public void readFromQuorum(final String key, AsyncContext asyncContext) {
 
 使用 `Node#readIndex(byte [] requestContext, ReadIndexClosure done)` 发起线性一致读请求，当可以安全读取的时候， 传入的 closure 将被调用，正常情况下可以从状态机中读取数据返回给客户端， jraft 将保证读取的线性一致性。其中 `requestContext` 提供给用户作为请求的附加上下文，可以在 closure 里再次拿到继续处理。
 
-__请注意线性一致读可以在任何集群内的节点发起，并不需要强制要求放到 Leader 节点上，也可以在 Follower 执行，因此可以大大降低 Leader 的读取压力。__
+__请注意线性一致读可以在集群内的任何节点发起，并不需要强制要求放到 Leader 节点上，也可以在 Follower 执行，因此可以大大降低 Leader 的读取压力。__
 
 默认情况下，jraft 提供的线性一致读是基于 RAFT 协议的 ReadIndex 实现的，性能已经可以接受，在一些更高性能的场景下，并且可以保证集群内机器的 CPU 时钟同步，那么可以采用 Clock + Heartbeat 的 Lease Read 优化，这个可以通过服务端设置 `RaftOptions` 的 `ReadOnlyOption` 为 `ReadOnlyLeaseBased` 来实现。
 
