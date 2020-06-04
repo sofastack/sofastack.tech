@@ -21,7 +21,7 @@ SOFABoot 在 v2.6.0 开始提供异步初始化 Spring Bean 能力，引入如�
 在实际使用 Spring/Spring Boot 开发中，会有一些 Bean 在初始化过程中执行准备操作，如拉取远程配置、初始化数据源等等；在应用启动期间，这类 Bean 会增加 Spring 上下文刷新时间，导致应用启动耗时变长。为了加速应用启动，SOFABoot 通过配置可选项，将 Bean 的初始化方法(init-method) 使用单独线程异步执行，加快 Spring 上下文加载过程，提高应用启动速度。
 
 ## 使用方法
-异步初始化 Bean 的原理是开启单独线程负责执行 Bean 的初始化方法(init-method)，因此在使用过程中，除了引入上述依赖管理，还需要在 Bean 的 xml 定义中配置 `async-init="true"` 属性，用于指定是否异步执行该 Bean 的初始化方法，例如：
+异步初始化 Bean 的原理是开启单独线程负责执行 Bean 的初始化方法(init-method)，因此在使用过程中，除了引入上述依赖管理，还需要在 Bean 的 xml 定义中配置 `sofa:async-init="true"` 属性，用于指定是否异步执行该 Bean 的初始化方法，例如：
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
@@ -33,7 +33,7 @@ SOFABoot 在 v2.6.0 开始提供异步初始化 Spring Bean 能力，引入如�
             http://sofastack.io/schema/sofaboot   http://sofastack.io/schema/sofaboot.xsd"
        default-autowire="byName">
     <!-- async init  test -->
-    <bean id="testBean" class="com.alipay.sofa.runtime.beans.TimeWasteBean" init-method="init" async-init="true"/>
+    <bean id="testBean" class="com.alipay.sofa.runtime.beans.TimeWasteBean" init-method="init" sofa:async-init="true"/>
 </beans>
 ```
 
