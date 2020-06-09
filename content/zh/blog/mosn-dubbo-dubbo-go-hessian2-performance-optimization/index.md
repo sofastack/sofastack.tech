@@ -6,7 +6,7 @@ description: "本文将重点描述在基于 Go 语言库 dubbo-go-hessian2、Du
 categories: "MOSN"
 tags: ["MOSN"]
 date: 2020-06-09T15:00:00+08:00
-cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563524226806-e93607a3-1b77-4ca2-8c3c-0384ab966154.png"
+cover: "https://cdn.nlark.com/yuque/0/2020/png/226702/1591703787275-1d0224b4-abc0-4cb9-9bd7-e87a6324dd11.png"
 ---
 
 ### 背景
