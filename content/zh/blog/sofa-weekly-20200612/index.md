@@ -16,8 +16,8 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563524226806-e93607a3-1b7
 
 SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 
-- **SOFAStack 官网: **[https://www.sofastack.tech](https://www.sofastack.tech/)
-- **SOFAStack: **[https://github.com/sofastack](https://github.com/sofastack)
+- **SOFAStack 官网:** [https://www.sofastack.tech](https://www.sofastack.tech/)
+- **SOFAStack:** [https://github.com/sofastack](https://github.com/sofastack)
 
 ### 这里有个机会和 SOFAStack 一起玩，你要不要来？
 
@@ -25,7 +25,7 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 
 **今年 SOFAStack 开源社区也加入了选题，有兴趣的同学可以尝试下以下 feature：**
 
-**SOFAJRaft **
+**SOFAJRaft**
 
 是基于 RAFT 一致性算法的生产级高性能 Java 实现，支持 MULTI-RAFT-GROUP，适用于高负载低延迟的场景。 使用 SOFAJRaft 你可以专注于自己的业务领域，由 SOFAJRaft 负责处理所有与 RAFT 相关的技术难题，并且 SOFAJRaft 非常易于使用。
 
@@ -52,7 +52,7 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 A：原生 RabbitMQ API ，Tracer 是没有埋点的；如果和 Spring 集成的，可以基于 Spring Message 方式埋点。使用最新版本即可。
 SOFATracer：[https://github.com/sofastack/sofa-tracer](https://github.com/sofastack/sofa-tracer)
 
-**2、@雷霆 **提问：
+**2、@雷霆** 提问：
 
 > 请问一下，如果 TCC 在提交全局事务时失败了，比如网络或者 TC 服务异常，导致 TC 压根没有收到全局事务提交的通知，此时 TM 会抛一个异常，导致整个业务处理失败，这个时候已经在一阶段冻结的资源还会回滚吗？看了 Seata 源码，对于这种情况没有看到有触发回滚的操作。
 
