@@ -5,7 +5,7 @@ authorlink: "https://github.com/sofastack"
 description: "作为目前规模最大的 Service Mesh 集群，本文从监控的领域对 Service Mesh 落地进行经验总结"
 categories: "Service Mesh"
 tags: ["Service Mesh","智能运维"]
-date: 2020-106-15T15:00:00+08:00
+date: 2020-06-15T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2020/png/226702/1592298369471-f97a2072-9eee-4a68-af65-af91e9c2b6dd.png"
 ---
 
