@@ -72,7 +72,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 [@zongtanghu ](https://yuque.antfin-inc.com/zongtanghu)
 
 详细发布报告：
-[https://github.com/sofastack/sofa-jraft/issues/468](https://github.com/sofastack/sofa-jraft/issues/468)
+[https://github.com/sofastack/sofa-jraft/releases/tag/1.3.2](https://github.com/sofastack/sofa-jraft/releases/tag/1.3.2)
 
 **2、发布 Occlum v0.13.0 版本，主要变更如下：**
 
