@@ -66,10 +66,10 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 - read-index 线性一致读请求提供请求超时（timeout）配置；
 - 几个 corner case 修复，比如 replicate logs 如果比 appliedIndex（follower）更小，那么可以认为是成功的；
 - 致谢（排名不分先后）
-[@shibd ](https://yuque.antfin-inc.com/shibd) 
-[@SteNicholas ](https://yuque.antfin-inc.com/SteNicholas) 
-[@killme2008 ](https://yuque.antfin-inc.com/killme2008) 
-[@zongtanghu ](https://yuque.antfin-inc.com/zongtanghu)
+[@shibd ](https://github.com/shibd) 
+[@SteNicholas ](https://github.com/SteNicholas) 
+[@killme2008 ](https://github.com/killme2008) 
+[@zongtanghu ](https://github.com/zongtanghu)
 
 详细发布报告：
 [https://github.com/sofastack/sofa-jraft/releases/tag/1.3.2](https://github.com/sofastack/sofa-jraft/releases/tag/1.3.2)
