@@ -17,8 +17,8 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563524226806-e93607a3-1b7
 
 SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 
-- **SOFAStack 官网: **[https://www.sofastack.tech](https://www.sofastack.tech/)
-- **SOFAStack: **[https://github.com/sofastack](https://github.com/sofastack)
+- **SOFAStack 官网:** [https://www.sofastack.tech](https://www.sofastack.tech/)
+- **SOFAStack:** [https://github.com/sofastack](https://github.com/sofastack)
 
 ### 每周读者问答提炼
 
@@ -66,9 +66,9 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 - read-index 线性一致读请求提供请求超时（timeout）配置；
 - 几个 corner case 修复，比如 replicate logs 如果比 appliedIndex（follower）更小，那么可以认为是成功的；
 - 致谢（排名不分先后）
-[@shibd ](https://github.com/shibd) 
-[@SteNicholas ](https://github.com/SteNicholas) 
-[@killme2008 ](https://github.com/killme2008) 
+[@shibd ](https://github.com/shibd)
+[@SteNicholas ](https://github.com/SteNicholas)
+[@killme2008 ](https://github.com/killme2008)
 [@zongtanghu ](https://github.com/zongtanghu)
 
 详细发布报告：
