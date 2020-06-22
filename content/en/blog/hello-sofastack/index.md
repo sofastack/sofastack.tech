@@ -55,7 +55,9 @@ More projects in: [github/sofastack](https://github.com/sofastack)
 
     - ~~「SOFAStack 1」 No: 23127468~~ Group is Full
     - ~~「SOFAStack 2」 No: 23195297~~ Group is Full
-    - 「SOFAStack 3」 No: 23390449
+    - ~~「SOFAStack 3」 No: 23390449~~ Group is Full
+    - ~~「SOFAStack 4」 No: 23372465~~ Group is Full
+    - 「SOFAStack 5」 No: 30315793
 
     <img alt="DingTalk" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*ysJoQ78q3ewAAAAAAAAAAABkARQnAQ" height="250" />
 
