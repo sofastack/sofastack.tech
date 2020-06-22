@@ -3,6 +3,27 @@ title: "版本发行日志"
 ---
 
 ---
+## 1.3.2
+
+2020-06-19
+
+* Bug Fixes
+    * [移除对 bolt address parser 的扩展，避免 check connection 返回结果不符合预期](https://github.com/sofastack/sofa-jraft/pull/425)
+    * [SPI 组件 JRaftServiceLoader 改为延迟加载策略规避多余对象的创建](https://github.com/sofastack/sofa-jraft/pull/447)
+    * [几个 corner case 修复，比如 replicate logs 如果比 appliedIndex（follower）更小，那么可以认为是成功的](https://github.com/sofastack/sofa-jraft/pull/462)
+    * [关闭 Recyclers 时的 IndexOutOfBoundsException 问题修复](https://github.com/sofastack/sofa-jraft/pull/463)
+* Features
+    * [抽象出网络通信层，增加 GRPC 实现并支持 Replication Pipeline，用户亦可自行对通信层进行其他实现的扩展](https://github.com/sofastack/sofa-jraft/pull/433)
+    * [RheaKV 增加 reverseScan API](https://github.com/sofastack/sofa-jraft/pull/422)
+    * [提供 Replicator 与 RPC 的线程池隔离，避免相互影响](https://github.com/sofastack/sofa-jraft/pull/462)
+    * [read-index 线性一致读请求提供请求超时（timeout）配置](https://github.com/sofastack/sofa-jraft/pull/465)
+* Breaking Changes
+    * 无
+* 致谢（排名不分先后）
+    * @shibd @SteNicholas @killme2008 @zongtanghu
+
+---
+
 ## 1.3.1
 
 2020-04-17
