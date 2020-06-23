@@ -51,7 +51,7 @@ aliases: "/sofa-boot/docs/sofa-ark-ark-plugin"
                 <goals>
                     <goal>ark-plugin</goal>
                 </goals>
-            </excution>
+            </execution>
         </executions>
         <configuration>
             <!-- 配置信息 -->
