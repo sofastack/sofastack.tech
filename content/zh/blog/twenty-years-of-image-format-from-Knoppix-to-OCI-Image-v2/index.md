@@ -6,7 +6,7 @@ description: "众所周知，Docker 始于2013年的 dotCloud，迄今刚刚七�
 categories: "镜像"
 tags: ["镜像"]
 date: 2020-06-23T15:00:00+08:00
-cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563524226806-e93607a3-1b77-4ca2-8c3c-0384ab966154.png"
+cover: "https://cdn.nlark.com/yuque/0/2020/png/226702/1592909440630-84f63d0f-41be-4caf-a969-f8e3dbea84fd.png?"
 ---
 
 > 众所周知，Docker 始于2013年的 dotCloud，迄今刚刚七年，如果你刚好在圈中经历了2013-2015年这段早期岁月的话，自然应该知道，最初的 Docker = LXC + aufs，前者就是所谓的 Linux 容器了，而后者则是我今天要聊的镜像。
