@@ -59,6 +59,7 @@ This document describes the complete SOFARPC service publishing and reference in
 | jvm-first | Whether to call the service of local machine first | true | |
 | interface | Service interface (unique identifier) | | Use actual interface class for both normal calls and return calls |
 | unique-id | Service tag (unique identifier) |
+| local-first | whether refer to the service via jvm call | true | set it to false if this is to call a remote service via rpc |
 | type | Calling type | sync | callback,sync,future,oneway |
 | filter | Filter configuration alias | | List |
 | registry | Server registry center | | List |
