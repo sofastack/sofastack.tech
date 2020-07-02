@@ -3,7 +3,7 @@ author: "潘潘"
 date: 2020-06-12T15:00:00+08:00
 title: "SOFAChannel#17：网络通信框架 SOFABolt 的功能介绍及协议框架解析"
 tags: ["SOFAChannel","SOFABolt"]
-cover: "https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1588146836458-cf1c9e0e-4c83-4780-8bc5-e524d4ee1f40.jpeg"
+cover: "https://cdn.nlark.com/yuque/0/2020/png/226702/1593658384563-9e1e47c1-35a1-4fe5-8043-36dfe494b7bc.png"
 categories: "SOFAChannel"
 description: "7 月 2 日周四晚 7 点，线上直播第 17 期。"
 ---
