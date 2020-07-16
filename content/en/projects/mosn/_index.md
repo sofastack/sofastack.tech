@@ -6,5 +6,5 @@ github: "https://github.com/mosn/mosn"
 weight: 1
 icon: "/img/icons/mosn.png"
 level: "ecosystem"
-link: "https://mosn.io"
+link: "https://mosn.io/en"
 ---
