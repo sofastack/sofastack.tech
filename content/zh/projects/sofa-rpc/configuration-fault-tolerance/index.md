@@ -7,7 +7,7 @@ aliases: "/sofa-rpc/docs/Configuration-Fault-Tolerance"
 
 自动故障剔除会自动监控 RPC 调用的情况，对故障节点进行权重降级，并在节点恢复健康时进行权重恢复。目前支持 bolt 协议。
 
-在 SOFABoot 中，只需要配置自动故障剔除的参数到 application.properties 即可。可以不完全配置，只配置自己关心的参数，其余参数会取默认值。需要注意的是 rpc.aft.regulation.effective 是该功能的全局开关，如果关闭则该功能不会运行，其他参数也都不生效。
+在 SOFABoot 中，只需要配置自动故障剔除的参数到 application.properties 即可。可以不完全配置，只配置自己关心的参数，其余参数会取默认值。需要注意的是 com.alipay.sofa.rpc.aft.regulation.effective 是该功能的全局开关，如果关闭则该功能不会运行，其他参数也都不生效。
 
 
 | 属性 | 描述 | 默认值 |
@@ -28,13 +28,12 @@ aliases: "/sofa-rpc/docs/Configuration-Fault-Tolerance"
 ```
 com.alipay.sofa.rpc.aft.time.window=20
 com.alipay.sofa.rpc.aft.least.window.count=30
-com.alipay.sofa.rpc.aft.least.window.exception.rate.multiple=6
+com.alipay.sofa.rpc.aft.least.window.exception.rate.multiple=1.4
 com.alipay.sofa.rpc.aft.weight.degrade.rate=0.5
 com.alipay.sofa.rpc.aft.weight.recover.rate=1.2
-com.alipay.sofa.rpc.aft.degrade.effective=ture
+com.alipay.sofa.rpc.aft.degrade.effective=true
 com.alipay.sofa.rpc.aft.degrade.least.weight=1
 com.alipay.sofa.rpc.aft.degrade.max.ip.count=2
 com.alipay.sofa.rpc.aft.regulation.effective=true
 ```
-如上配置，打开了自动故障剔除功能和降级开关，当节点出现故障时会被进行权重降级，在恢复时会被进行权重恢复。每隔 20s 进行一次节点健康状态的度量，20s 内调用次数超过 30 次的节点才被作为计算数据，如果单个节点的异常率超过了所有节点的平均异常率的 6 倍则对该节点进行权重降级，降级的比率为 0.5 。权重最小降级到 1 。如果单个节点的异常率低于了平均异常率的 6 倍则对该节点进行权重恢复，恢复的比率为1.2 。单个服务最多降级
- 2 个ip。
+如上配置，打开了自动故障剔除功能和降级开关，当节点出现故障时会被进行权重降级，在恢复时会被进行权重恢复。每隔 20s 进行一次节点健康状态的度量，20s 内调用次数超过 30 次的节点才被作为计算数据，如果单个节点的异常率超过了所有节点的平均异常率的 1.4 倍则对该节点进行权重降级，降级的比率为 0.5 。权重最小降级到 1 。如果单个节点的异常率低于了平均异常率的 1.4 倍则对该节点进行权重恢复，恢复的比率为1.2 。单个服务最多降级 2 个ip。
