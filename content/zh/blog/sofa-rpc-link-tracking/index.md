@@ -234,7 +234,7 @@ SOFARPC 的依靠集成 SOFATrace 来实现链路追踪技术，SOFARPC 作为�
 3. 采用了自适应采样设计，巧妙平衡了数据采集和性能的问题。
 4. 支持数据上报zipkin, 通过与zipkin结合可以快速构建一个完整的连续追踪系统。
 5. 解决了异步线程链路调用数据问题。
-6. 采用了[OpenTracing 规范](http://opentracing.io/documentation/pages/spec.html)，因此可以和其他链路追踪手机和展示的技术框架快速整合。
+6. 采用了[OpenTracing 规范](http://opentracing.io/documentation/pages/spec.html)，因此可以和其他链路追踪收集和展示的技术框架快速整合。
 
 ## 五. 参考资料
 
