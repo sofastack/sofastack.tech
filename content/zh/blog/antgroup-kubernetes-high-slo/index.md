@@ -48,7 +48,7 @@ cover: "https://cdn.nlark.com/yuque/0/2020/png/226702/1597808027743-3e1fed17-c1b
 
 自顶向下而看，蚂蚁集团 SLO 的分层架构包括 SLO、Trace system、Increase of SLO、Target 和 The unhealthy node。
 
-其中，顶层组件主要面向各种指标数据， 如集群健康状态、pod 创建、删除、升级成功率、残留 pods 数量、不健康节点数量等指标。其中 Display Board 是指监控大盘，可能不会实时查看，为避免错过处理紧急事件的最佳时机，同时构建了 Alert 告警子系统，支持配置多种告警方式；Analysis System 通过分析指标历史数据以及采集到的节点 metrics 和 master 组件指标，给出更详细的集群运营报告；Weekly Report 子系统给出当前集群本周 pod 创建 / 删除 / 升级的数据统计，以及失败案例原因汇总；Terminating Pods Number 给出一段时间内集群内新增的无法通过 Kubernetes 机制删除的 Pods 列表和 Pods 残留原因；Unhealthy Nodes 则给出一个周期内集群所有节点的总可用时间占比，每个节点的可用时间、运维记录、以及不能自动恢复，需要人工介入恢复的节点列表。
+其中，顶层组件主要面向各种指标数据，如集群健康状态、pod 创建、删除、升级成功率、残留 pods 数量、不健康节点数量等指标。其中 Display Board 是指监控大盘，可能不会实时查看，为避免错过处理紧急事件的最佳时机，同时构建了 Alert 告警子系统，支持配置多种告警方式；Analysis System 通过分析指标历史数据以及采集到的节点 metrics 和 master 组件指标，给出更详细的集群运营报告；Weekly Report 子系统给出当前集群本周 pod 创建 / 删除 / 升级的数据统计，以及失败案例原因汇总；Terminating Pods Number 给出一段时间内集群内新增的无法通过 Kubernetes 机制删除的 Pods 列表和 Pods 残留原因；Unhealthy Nodes 则给出一个周期内集群所有节点的总可用时间占比，每个节点的可用时间、运维记录、以及不能自动恢复，需要人工介入恢复的节点列表。
 
 为了支撑上述这些功能，蚂蚁集团还开发了 Trace System，用来分析展示单个 pod 创建 / 删除 / 升级失败的具体原因。其中包含日志和事件采集、数据分析、pod 生命周期展示三个模块。日志和事件采集模块采集各 master 组件以及节点组件的运行日志和 pod、node 事件，分别以 pod/node 为索引存储日志和事件；数据分析模块分析还原出 pod 生命周期中各阶段用时，判断 pod 失败原因，节点不可用原因。最后，由 Report 模块向终端用户暴露接口和 UI，向终端用户展示 pod 生命周期以及出错原因。
 
