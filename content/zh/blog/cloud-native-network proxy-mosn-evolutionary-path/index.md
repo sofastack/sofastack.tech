@@ -5,7 +5,7 @@ authorlink: "https://github.com/wangfakang"
 description: "MOSN 在蚂蚁集团的 Service Mesh 大规模落地后，通过对接 UDPA 打造为 Istio 的数据面之一，本文就其在演进过程中遇到的问题及思考进行展开。"
 categories: "MOSN"
 tags: ["MOSN","Service Mesh"]
-date: 2020-09-02T15:00:00+08:00
+date: 2020-09-02T13:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2020/png/226702/1599019085079-98978cc1-a0c8-43e1-a950-bbc8c45c138c.png"
 ---
 
