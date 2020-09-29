@@ -110,7 +110,7 @@ Hello~欢迎来到 SOFAStack 开源社区，首先感谢一直以来支持 SOFAS
 
 **权限：**
 
-- 加入 SOFAStack GItHub 组织，成为 SOFAStack 开源社区的一员。
+- 加入 SOFAStack GitHub 组织，成为 SOFAStack 开源社区的一员。
 
 ### User Group（社区层面）
 
