@@ -168,7 +168,7 @@ SOFARegistry 服务端在接收到“服务发布（PublisherRegister）”和�
 
 ![基于 twemproxy 的 redis 集群部署架构](https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1556089042632-5db00416-4327-406f-b60f-b488fc84a85b.jpeg)
 
-（图片摘自 `http://www.hanzhicaoa.com/1.php`）
+（图片摘自网络）
 
 当然也有一些分布式 KV 存储系统，没有任何连接代理层。比如 Tair （Alibaba 开源的分布式 KV 存储系统），只有 Client、DataServer、ConfigServer 这 3 个角色，Client 直接根据数据分片连接多台 DataServer。但蚂蚁金服内部在使用 Tair 时本身会按业务功能垂直划分出不同的 Tair 集群，所部署的机器配置也比较高，而且 Tair 的 Client 与 data server 的长连接通常在空闲一段时间后会关闭，这些都有助于缓解连接数的问题。当然，即便如此，Tair 的运维团队也在时刻监控着连接数的总量。
 
