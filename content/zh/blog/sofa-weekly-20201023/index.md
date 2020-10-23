@@ -5,7 +5,7 @@ authorlink: "https://github.com/sofastack"
 description: "【10/19-10/23】 | 每周精选，筛选每周精华问答，同步开源进展，欢迎留言互动。"
 categories: "SOFA Weekly"
 tags: ["SOFA Weekly"]
-date: 202--10-23T15:00:00+08:00
+date: 2020-10-23T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563524226806-e93607a3-1b77-4ca2-8c3c-0384ab966154.png"
 ---
 
