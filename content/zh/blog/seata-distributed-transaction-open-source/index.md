@@ -223,4 +223,4 @@ XA 模式有以下特点：
 - 现场视频以及详细 PPT 回顾地址：[https://tech.antfin.com/activities/382](https://tech.antfin.com/activities/382)
 - GitHub 地址：[https://github.com/seata/seata](https://github.com/seata/seata)
 
-[蚂蚁金服分布式事务开源以及实践-绍辉.pdf](https://gw.alipayobjects.com/os/basement_prod/c842924e-8dd7-4c4f-97b6-bd9364f5b709.pdf)
+[蚂蚁金服分布式事务开源以及实践-绍辉.pdf](https://gw.alipayobjects.com/os/basement_prod/c168f0d5-5c72-43a4-8674-53f57804a1d1.pdf)
