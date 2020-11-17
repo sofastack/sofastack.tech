@@ -291,7 +291,7 @@ Second, create a Raft-specific RPC server, which is built in with a set of proce
 ```java
 RPCServer rpcServer = RaftRpcServerFactory.createRaftRpcServer(serverId.getEndPoint());
 // Start the RPC service.
-rpcServer.start();
+rpcServer.init(null);
 ```
 
 You can combine the RPC server creation and startup steps into one operation.
@@ -310,7 +310,7 @@ RpcServer rpcServer = ... // Specify the RPCServer object of the application.
 // Register processors with the RPC server for processing Raft protocols.
 RaftRpcServerFactory.addRaftRequestProcessors(rpcServer);
 // Start the RPC server with the same server port as that of the application server.
-rpcServer.start();
+rpcServer.init(null);
 ```
 
 Service communication between application server nodes may also be implemented by RpcClient of SOFABolt. You can also directly use the rpcClient object of JRaft to meet this requirement:
