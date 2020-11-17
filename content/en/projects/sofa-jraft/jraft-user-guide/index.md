@@ -154,7 +154,7 @@ Iterator it = ....
 // Traverse the iteration task list
 while(it.hasNext()){
   ByteBuffer data = it.getData(); // Get the current task data
-  Closure done = it.getDone();  // Get the closure callback of the current task
+  Closure done = it.done();  // Get the closure callback of the current task
   long index = it.getIndex();  // Get the unique log number of the task, which monotonically increases, and is automatically assigned by JRaft
   long term = it.getTerm();  // Get the leader term of the task
   ... Logical processing... 

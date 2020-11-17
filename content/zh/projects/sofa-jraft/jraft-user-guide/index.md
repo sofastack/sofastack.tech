@@ -155,7 +155,7 @@ Iterator it = ....
 //遍历迭代任务列表
 while(it.hasNext()){
   ByteBuffer data = it.getData(); // 获取当前任务数据
-  Closure done = it.getDone();  // 获取当前任务的 closure 回调
+  Closure done = it.done();  // 获取当前任务的 closure 回调
   long index = it.getIndex();  // 获取任务的唯一日志编号，单调递增， jraft 自动分配
   long term = it.getTerm();  // 获取任务的 leader term
   ...逻辑处理... 
