@@ -23,7 +23,8 @@ Endpoint 表示一个服务地址，包括 IP 和端口， __raft 节点不允�
 ```java
   Endpoint addr = new Endpoint("localhost", 8080);
   String s = addr.toString(); // 结果为 localhost:8080
-  boolean success = addr.parse(s);  // 可以从字符串解析出地址，结果为 true
+  PeerId peer = new PeerId();
+  boolean success = peer.parse(s);  // 可以从字符串解析出地址，结果为 true
 ```
 
 ### 2.2 节点 PeerId

@@ -22,9 +22,10 @@ Endpoint refers to a service address, including the IP address and the port numb
 Create a address, and bind it to port 8080 of the local host, as shown in the following example:
 
 ```java
-Endpoint addr = new Endpoint("localhost", 8080);
+  Endpoint addr = new Endpoint("localhost", 8080);
   String s = addr.toString(); // The result is localhost:8080
-  boolean success = addr.parse(s);  // Specifies whether parsing the endpoint from a string is supported. The result is true.
+  PeerId peer = new PeerId();
+  boolean success = peer.parse(s);  // Specifies whether parsing the endpoint from a string is supported. The result is true.
 ```
 
 ### 1.2 PeerId
