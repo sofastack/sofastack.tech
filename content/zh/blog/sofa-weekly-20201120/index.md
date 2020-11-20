@@ -43,7 +43,7 @@ A: 保证一致性，幂等用的。比如a->b，因为特殊原因，比如全�
 A：目前的 Master 支持 1.5._，但是上次看1.5._的时候有一些注入的问题，你可以看一下 feature-istio_adapter 这个分支，最近应该会合并一些pr进来，到时候可以直接适配1.7._，理论上1.6._也是可以支持的，需要测试一下。
 > Docker image 会同步更新吗？
 
-A：主要是看你的需求，如果你是只要 MOSN，不要 Envoy，就直接使用[https://github.com/istio/istio/issues/23753](https://github.com/istio/istio/issues/23753) 这个来打包，如果你都需要的话或者说不介意多一个 Envoy，就直接使用 proxyv2 打一个就好了。
+A：主要是看你的需求，如果你是只要 MOSN ，不要 Envoy，就直接使用[https://github.com/istio/istio/issues/23753](https://github.com/istio/istio/issues/23753) 这个来打包，如果你都需要的话或者说不介意多一个 Envoy，就直接使用 proxyv2 打一个就好了。
 MOSN：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 
 ### 本周推荐阅读
