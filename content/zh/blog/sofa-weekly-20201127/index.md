@@ -1,5 +1,5 @@
 ---
-title: "SOFA Weekly | 每周精选【11/23 - 11/27】SOFA Weekly | SOFAJRaft 、SOFABoot发布新版本 ，SOFAStack 获优秀 Gitee 组织奖"
+title: "SOFA Weekly | 每周精选【11/23 - 11/27】SOFA Weekly | SOFAJRaft 、SOFABoot发布新版本，SOFAStack 获优秀 Gitee 组织奖"
 author: "SOFA 团队"
 authorlink: "https://github.com/sofastack"
 description: "SOFA WEEKLY | 每周精选，筛选每周精华问答，同步开源进展，欢迎留言互动。"
@@ -7,9 +7,10 @@ categories: "SOFA Weekly"
 tags: ["SOFA Weekly"]
 date: 2020-11-27T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563524226806-e93607a3-1b77-4ca2-8c3c-0384ab966154.png"
-
+---
 
 **SOFA WEEKLY | 每周精选，筛选每周精华问答**
+
 **同步开源进展，欢迎留言互动**
 
 ![weekly.jpg](https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1562925824761-fc720f21-9622-437b-a783-0b0729eda119.jpeg)
