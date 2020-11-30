@@ -23,7 +23,8 @@ Endpoint 表示一个服务地址，包括 IP 和端口， __raft 节点不允�
 ```java
   Endpoint addr = new Endpoint("localhost", 8080);
   String s = addr.toString(); // 结果为 localhost:8080
-  boolean success = addr.parse(s);  // 可以从字符串解析出地址，结果为 true
+  PeerId peer = new PeerId();
+  boolean success = peer.parse(s);  // 可以从字符串解析出地址，结果为 true
 ```
 
 ### 2.2 节点 PeerId
@@ -154,7 +155,7 @@ Iterator it = ....
 //遍历迭代任务列表
 while(it.hasNext()){
   ByteBuffer data = it.getData(); // 获取当前任务数据
-  Closure done = it.getDone();  // 获取当前任务的 closure 回调
+  Closure done = it.done();  // 获取当前任务的 closure 回调
   long index = it.getIndex();  // 获取任务的唯一日志编号，单调递增， jraft 自动分配
   long term = it.getTerm();  // 获取任务的 leader term
   ...逻辑处理... 
@@ -291,7 +292,7 @@ NodeManager 的 address 集合表示本进程提供的 RPC 服务地址列表。
 ```java
 RPCServer rpcServer = RaftRpcServerFactory.createRaftRpcServer(serverId.getEndPoint());
 // 启动 RPC 服务
-rpcServer.start();
+rpcServer.init(null);
 ```
 
 上述创建和 start 两个步骤可以合并为一个调用：
@@ -310,7 +311,7 @@ RpcServer rpcServer = ... // 业务的 RPCServer 对象
 // 注册 Raft 内部协议处理器
 RaftRpcServerFactory.addRaftRequestProcessors(rpcServer);
 // 启动，共用了端口
-rpcServer.start();
+rpcServer.init(null);
 ```
 
 同样，应用服务器节点之间可能需要一些业务通讯，会使用到 bolt 的 RpcClient，你也可以直接使用 jraft 内部的 rpcClient:

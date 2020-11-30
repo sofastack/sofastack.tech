@@ -22,9 +22,10 @@ Endpoint refers to a service address, including the IP address and the port numb
 Create a address, and bind it to port 8080 of the local host, as shown in the following example:
 
 ```java
-Endpoint addr = new Endpoint("localhost", 8080);
+  Endpoint addr = new Endpoint("localhost", 8080);
   String s = addr.toString(); // The result is localhost:8080
-  boolean success = addr.parse(s);  // Specifies whether parsing the endpoint from a string is supported. The result is true.
+  PeerId peer = new PeerId();
+  boolean success = peer.parse(s);  // Specifies whether parsing the endpoint from a string is supported. The result is true.
 ```
 
 ### 1.2 PeerId
@@ -153,7 +154,7 @@ Iterator it = ....
 // Traverse the iteration task list
 while(it.hasNext()){
   ByteBuffer data = it.getData(); // Get the current task data
-  Closure done = it.getDone();  // Get the closure callback of the current task
+  Closure done = it.done();  // Get the closure callback of the current task
   long index = it.getIndex();  // Get the unique log number of the task, which monotonically increases, and is automatically assigned by JRaft
   long term = it.getTerm();  // Get the leader term of the task
   ... Logical processing... 
@@ -290,7 +291,7 @@ Second, create a Raft-specific RPC server, which is built in with a set of proce
 ```java
 RPCServer rpcServer = RaftRpcServerFactory.createRaftRpcServer(serverId.getEndPoint());
 // Start the RPC service.
-rpcServer.start();
+rpcServer.init(null);
 ```
 
 You can combine the RPC server creation and startup steps into one operation.
@@ -309,7 +310,7 @@ RpcServer rpcServer = ... // Specify the RPCServer object of the application.
 // Register processors with the RPC server for processing Raft protocols.
 RaftRpcServerFactory.addRaftRequestProcessors(rpcServer);
 // Start the RPC server with the same server port as that of the application server.
-rpcServer.start();
+rpcServer.init(null);
 ```
 
 Service communication between application server nodes may also be implemented by RpcClient of SOFABolt. You can also directly use the rpcClient object of JRaft to meet this requirement:
