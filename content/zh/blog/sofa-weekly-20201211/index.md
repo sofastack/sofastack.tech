@@ -26,14 +26,14 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 我们会筛选重点问题
 通过 " SOFA WEEKLY " 的形式回复
 
-#### 1、@bruce 提问：
+**1、@bruce **提问：
 > SOFAJRaft  可以实现在三个节点中选出一个 leader , 其他逻辑由自己实现吗?
 
 A：可以，可以不用状态机，也不用加载和持久化快照, 只需要选个 leader。
 > 各个节点如何知道自己是主还是从?
 
 A：示例
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/2883938/1607673338953-07cc1ecc-1ab5-445d-a971-91d17d210e2f.png)
+![image.png](https://cdn.nlark.com/yuque/0/2020/png/2883938/1607673338953-07cc1ecc-1ab5-445d-a971-91d17d210e2f.png#align=left&display=inline&height=635&margin=%5Bobject%20Object%5D&name=image.png&originHeight=635&originWidth=795&size=79429&status=done&style=none&width=795)
 
 **2、@李明** 提问:
 > 全局事务执行过程中，有其他线程操作数据库，这时全局事务执行失败，在回滚的时校验数据发现数据被修改过，导致回滚失败，这种情况怎么避免?
@@ -46,8 +46,8 @@ A：其他线程也加上 global transactional 注解。分布式事务下，没
 **3、@ 尚攀** 提问:
 > Raft 是为了解决目前的什么问题？
 
- A: 依赖外部存储。AT 有 before 镜像、after 镜像，after 镜像是在 undo_log 表里存储，那么 before 在哪里存着了？未来的 Raft 模式，集群支持动态扩缩容，事务信息存储在内存中（测试下来比 redis 快），现在的全局事务信息，分支事务信息，全局锁都是持久化到 db，或者 redis 去的。如果这个时候持久化用的 db 宕机了，Seata-Server会不可用，而集成了 Raft ，leader 宕机后自动选举新 leader，继续运转。所以，利用 raft 一致性算法，可以让多个Seata集群内存中的数据保持一致。
- 
+A: 依赖外部存储。AT 有 before 镜像、after 镜像，after 镜像是在 undo_log 表里存储，那么 before 在哪里存着了？未来的 Raft 模式，集群支持动态扩缩容，事务信息存储在内存中（测试下来比 redis 快），现在的全局事务信息，分支事务信息，全局锁都是持久化到 db，或者 redis 去的。如果这个时候持久化用的 db 宕机了，Seata-Server会不可用，而集成了 Raft ，leader 宕机后自动选举新 leader，继续运转。所以，利用 raft 一致性算法，可以让多个Seata集群内存中的数据保持一致。
+
 ### 相关推荐阅读
 
 - [基于 RAFT 的生产级高性能 Java 实现 - SOFAJRaft 系列内容合辑](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247486702&idx=1&sn=6fd48197893a8dd5546a8c7669430297&chksm=faa0e334cdd76a229640d3b3d8f779ada8ba706ccf1b0a89b8d0786e025e2f1da4400cb5bd35&scene=21)
