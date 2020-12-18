@@ -48,7 +48,7 @@ A：全局事务要在本地事务的外层,就是包裹本地事务，不能由
 
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
-### ****SOFAChannel 部分合辑****
+### SOFAChannel 部分合辑
 
 - [人人都可以“机密计算”：Occlum 使用入门和技术揭秘 | 开源](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247486732&idx=1&sn=d379f362145a485f4c4e02e05697b001&chksm=faa0e2d6cdd76bc03a8a71fbf78395c12279dd491825b2b0b94401e5ac226b4db4b9dd041bae&scene=21)
 - [蚂蚁集团网络通信框架 SOFABolt 功能介绍及协议框架解析 | 开源](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247486515&idx=1&sn=243e63a0d53433ebc118a27b9de2bb0c&chksm=faa0e3e9cdd76affad2357f98ebf1362743f5eb595720169a46dba8ce60dc8aba2884a6432af&scene=21)
