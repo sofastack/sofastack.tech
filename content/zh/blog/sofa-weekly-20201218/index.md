@@ -5,7 +5,7 @@ authorlink: "https://github.com/sofastack"
 description: "SOFA WEEKLY | 每周精选，筛选每周精华问答，同步开源进展，欢迎留言互动。"
 categories: "SOFA Weekly"
 tags: ["SOFA Weekly"]
-date: 2020-10-18T15:00:00+08:00
+date: 2020-12-18T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563524226806-e93607a3-1b77-4ca2-8c3c-0384ab966154.png"
 ---
 
@@ -27,20 +27,25 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 通过 " SOFA WEEKLY " 的形式回复
 
 **1、@缪文** 提问:
+
 > SOFA-Boot 框架，模块隔离时，子 module 中引入 mybatis 框架，@MapperScan 注解是在RootContext 中扫描，还是在子 module 中扫描？
 
 A:  非 auto 的 configuration 都是在对应模块进行解析的。
+
 SOFABoot：[https://github.com/sofastack/sofa-boot](https://github.com/sofastack/sofa-boot)
 
 **2、@李扬** 提问：
+
 > 分支事务被回滚是同步还是异步的,如果是异步的,能加监听方法吗?
 
 A：可以实现 transactionhook 这个类，然后在 tm 发起者里加入到 Transaction HookManager#registerHook 。这样在二阶段决议后，可以做一些小动作，比如二阶段提交的时候，再执行 redis ，mongo 的数据插入。
 
 **3、@吴国柱** 提问：
+
 > 本地事务与全局事务一起开启会有问题吗？
 
 A：全局事务要在本地事务的外层,就是包裹本地事务，不能由本地事务包裹全局事务。本地事务出异常都不会进行注册，也就代表本地事务如果出问题本地事务自行会回滚(基础知识)，如果本地事务提交了，其它服务的本地事务出现异常，或者业务代码出现异常，将有 Seata来负责把已提交的事务回滚。
+
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 ### ****SOFAChannel 部分合辑****
