@@ -1,5 +1,5 @@
 ---
-title: "SOFA Weekly | 【12/14 - 12/18】线上直播合辑整理，QA 整理"
+title: "SOFA Weekly | 线上直播合辑整理，QA 整理"
 author: "SOFA 团队"
 authorlink: "https://github.com/sofastack"
 description: "SOFA WEEKLY | 每周精选，筛选每周精华问答，同步开源进展，欢迎留言互动。"
