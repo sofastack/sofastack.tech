@@ -53,6 +53,7 @@ Seata：https://github.com/seata/seata
 ### SOFA 项目进展
 
 **本周发布详情如下：**
+
 **SOFA-Common-Tools 发布1.3.0 版本，主要变更如下：**
 
 - SOFA 线程池支持 ScheduledThreadPoolExecutor 与 ThreadPoolTaskScheduler
