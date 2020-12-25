@@ -64,3 +64,7 @@ Seata：https://github.com/seata/seata
 - 修复配置日志输出到控制台时不生效的问题
 
 详细参考：[https://github.com/sofastack/sofa-common-tools/releases/tag/v1.3.0](https://github.com/sofastack/sofa-common-tools/releases/tag/v1.3.0)
+
+![image.png](https://cdn.nlark.com/yuque/0/2020/png/2883938/1608884712024-bd98053b-d84d-4b4d-b06e-ac13504d0e59.png)
+
+祝大家圣诞节快乐！
