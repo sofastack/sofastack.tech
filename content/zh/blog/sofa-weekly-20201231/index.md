@@ -65,6 +65,7 @@ A：图 1 图 2 属于两种模型。Rawpoll 模型的话就是自己做 epoll_w
 ### SOFA项目进展
 
 **本周发布详情如下：**
+
 **1、SOFA-Common-Tools 发布 1.3.1 版本：**
 
 - 修复多 classloader 场景下 commons-logging 的兼容性
