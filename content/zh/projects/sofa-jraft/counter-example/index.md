@@ -79,8 +79,8 @@ public class ValueResponse implements Serializable {
 }
 ```
 
-* IncrementAndGetRequest 用于 Leader 服务端接收：
-* IncrementAndAddClosure 请求后的回调处理 
+* IncrementAndGetRequest 用于 Leader 服务端接收
+* IncrementAndAddClosure 请求后的回调处理：
 
 ```java
 public class IncrementAndAddClosure implements Closure {
