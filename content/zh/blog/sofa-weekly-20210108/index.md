@@ -38,6 +38,7 @@ A：Occlum 对硬件也是有要求的。这个机器需要支持 Intel SGX 技�
 > Occlum 相对于 Docker 有哪些优势，比 Docker 快吗?
 
  A：Occlum 的优势是安全。外界无法探测运行在 Occlum 中的程序和这个程序使用的内存以及寄存器。也就是说，可以把机密信息（比如密钥）放在 Occlum 中而不用担心信息泄露。
+ 
 Occlum：[https://github.com/occlum/occlum](https://github.com/occlum/occlum)
 
 **2、@李天宇** 提问：
@@ -65,6 +66,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 ### MOSN 项目进展
 
 **本周发布详情如下：**
+
 **1、MOSN 发布  v0.20.0 版本，主要变更如下：**
 
 -  路由模块进行了优化与重构，支持变量机制与可配置的扩展模式
