@@ -49,10 +49,12 @@ A：Select for update 的时候，首先 Seata 会代理这个语句，去查询
 
 ### Occlum 项目进展
 
-**Occlum 发布 v0.19.0 版本，主要变更如下：**
+**Occlum 发布 v0.19.1 版本，主要变更如下：**
 
 i.同时兼容 Glibc 和 musl libc的应用
+
 ii. 支持基于 DCAP (Intel SGX Data Center Attestation Primitives) 的远程验证
+
 iii. 修复了内存泄漏问题
 
 详细发布报告：
