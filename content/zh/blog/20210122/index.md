@@ -34,6 +34,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 > 请教下 SOFARegistry 数据持久化在哪里啊?
 
 A：SOFARegistry 的元数据（注册中心自身的 IP 列表之类的数据）存储在 meta 角色内，使用 JRaft 进行存储。 应用的发布数据保存在 data 角色的内存中，采用三副本（可配置）的方式实现高可用。
+
 SOFARegistry：[https://github.com/sofastack/sofa-registry](https://github.com/sofastack/sofa-registry)
 
 **@叶毅威** 提问：
@@ -41,6 +42,7 @@ SOFARegistry：[https://github.com/sofastack/sofa-registry](https://github.com/s
 > 我用 SDK 调用注册了一个 datainfo 但是关掉之后 这个并没有下线，是哪里需要配置么，不是默认链接断开就下线么？
 
 A：session 上采用 HTTP 方式获取的数据都是当前节点的注册数据，只有 data 上才会做数据聚合。 dataInfo 是不会被删除的，连接断开后对应 dataInfo 下的对应 Publisher 会被自动移除。
+
 SOFARegistry：[https://github.com/sofastack/sofa-registry](https://github.com/sofastack/sofa-registry)
 
 **@田冲** 提问：
@@ -49,6 +51,7 @@ SOFARegistry：[https://github.com/sofastack/sofa-registry](https://github.com/s
 > 疑问：seata-at 模式-两阶段提交的设计会出现 MySQL 先生成了 binlog 日志，后提交事务的情况吗？
 
 A：这个问题其实很简单，你 canal 读不到，那你自己应用本地事务提交后马上读这个 insert 的数据看能不能读到；如果读到，理论上来说这个过程不可能超过一秒，所以如果你应用能查到，你canal查不到，排查canal的问题，而不是 Seata 的问题；Seata 最后也只不过做了 connection.commit；最后事务的提交落库是数据库方本地事务流程落库，Seata 不会起到任何干扰，Seata 代理的是 jdbc 层的处理；redo 后写 binlog 时马上就会广播的，而不是事务提交才把 binlog 广播出去；所以内 xa 的二阶段没提交你就去查主库，由于隔离级别不一定查得到。
+
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 
@@ -64,4 +67,3 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 -  [开箱即用的 Java Kubernetes Operator 运行时](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247485792&idx=1&sn=dd7201a60249b5c2946e2f398928f4a1&chksm=faa0e6bacdd76fac685ec5a202b217f5c6c14338f8fc37effdc001375a0942b18eca8091cc26&scene=21)
 
 
-### **
