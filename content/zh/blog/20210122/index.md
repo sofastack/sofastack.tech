@@ -27,8 +27,6 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 我们会筛选重点问题
 通过 " SOFA WEEKLY " 的形式回复
 
-
-
 **@叶毅威** 提问：
 
 > 请教下 SOFARegistry 数据持久化在哪里啊?
@@ -54,8 +52,6 @@ A：这个问题其实很简单，你 canal 读不到，那你自己应用本地
 
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
-
-
 ### 本周推荐阅读
 
 -  [Kubernetes 是下一代操作系统 | 面向 Kubernetes 编程](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247484759&idx=1&sn=25df16461d0ea9f49fd5c36101f8b2ea&chksm=faa0ea8dcdd7639b1e2439f2fc3ddbdd3c690ea016069b77a842ddb9b02b85f4a7ce5f5f6790&scene=21)
@@ -65,5 +61,3 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 -  [蚂蚁集团服务注册中心 MetaServer 功能介绍和实现剖析 | SOFARegistry 解析](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247485415&idx=1&sn=7e006e90d8ca713fa560921a1c2c06e6&chksm=faa0e83dcdd7612b1d6269b25dcde34541a42782b519e4a9f942fbf0f8d7d7967dadbec8bfa9&scene=21)
 
 -  [开箱即用的 Java Kubernetes Operator 运行时](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247485792&idx=1&sn=dd7201a60249b5c2946e2f398928f4a1&chksm=faa0e6bacdd76fac685ec5a202b217f5c6c14338f8fc37effdc001375a0942b18eca8091cc26&scene=21)
-
-
