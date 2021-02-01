@@ -34,6 +34,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 >  ![](https://cdn.nlark.com/yuque/0/2021/png/12405317/1611911810538-0a3d61c9-11fc-4398-9dbe-b1d1033e79d8.png)
 
 A：看错误是把 session 发向 data 的处理队列打满了，可以排查一下，检查一下使用的版本，data 的资源使用和common-error.log 下的错误日志。
+
 SOFARegistry：[https://github.com/sofastack/sofa-registry](https://github.com/sofastack/sofa-registry)
 
 **@刘达** 提问：
@@ -43,6 +44,7 @@ SOFARegistry：[https://github.com/sofastack/sofa-registry](https://github.com/s
 
 A：配置 Auto，支持协议自动识别，转发不同的集群，那就看路由了；用新版本，然后这样配置。
 ![](https://cdn.nlark.com/yuque/0/2021/png/12405317/1611911810600-e3ddbdee-0077-4f94-bc67-b9c9afcc5243.png)
+
 MOSN：https://github.com/mosn/mosn
 
 
@@ -59,8 +61,8 @@ MOSN：https://github.com/mosn/mosn
 ### SOFABolt 项目进展
 
 **本周发布详情如下：**
-**1、******SOFABolt 发布 v1.5.7 版本********，******主要变更如下****：**
 
+**1、SOFABolt 发布 v1.5.7 版本，主要变更如下：**
 
 - 优化 log4j2 日志配置，解决在异常场景下的性能问题
 
@@ -68,10 +70,11 @@ MOSN：https://github.com/mosn/mosn
 
 
 ### sofa-common-tools  项目进展
+
 **本周发布详情如下：**
-**1、********sofa**********-common-tools 发布 v1.3.2 版本********，******主要变更如下****：**
+
+**1、sofa-common-tools 发布 v1.3.2 版本，主要变更如下：**
 
 - 修复 LogCode2Description 性能问题
-
 
 详细参考：[https://github.com/sofastack/sofa-common-tools/releases/tag/v1.3.2](https://github.com/sofastack/sofa-common-tools/releases/tag/v1.3.2)
