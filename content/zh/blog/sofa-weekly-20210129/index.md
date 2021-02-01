@@ -26,8 +26,6 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 我们会筛选重点问题
 通过 " SOFA WEEKLY " 的形式回复
 
-
-
 **@潘麒安** 提问：
 
 > 请教下 session-server 报这个错，是需要扩更多的 session 么，但是 session进程本身 CPU 和内存占用不高。
@@ -46,7 +44,6 @@ A：配置 Auto，支持协议自动识别，转发不同的集群，那就看�
 ![](https://cdn.nlark.com/yuque/0/2021/png/12405317/1611911810600-e3ddbdee-0077-4f94-bc67-b9c9afcc5243.png)
 
 MOSN：https://github.com/mosn/mosn
-
 
 ### 本周推荐阅读
 
@@ -67,7 +64,6 @@ MOSN：https://github.com/mosn/mosn
 - 优化 log4j2 日志配置，解决在异常场景下的性能问题
 
 详细参考：[https://github.com/sofastack/sofa-bolt/releases/tag/v1.5.7](https://github.com/sofastack/sofa-bolt/releases/tag/v1.5.7)
-
 
 ### sofa-common-tools  项目进展
 
