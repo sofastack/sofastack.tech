@@ -100,9 +100,10 @@ title: "Awesome SOFA"
     - ~~金融级分布式架构 SOFAStack 2群，群号：23195297~~ 已满
     - ~~金融级分布式架构 SOFAStack 3群，群号：23390449~~ 已满
     - ~~金融级分布式架构 SOFAStack 4群，群号：23372465~~ 已满
-    - 金融级分布式架构 SOFAStack 5群，群号：30315793
+    - ~~金融级分布式架构 SOFAStack 5群，群号：30315793~~ 已满
+    - 金融级分布式架构 SOFAStack 6群，群号：34197075
 
-      <img alt="DingTalk" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*SgvwRaQSI6IAAAAAAAAAAABkARQnAQ" height="250" />
+      <img alt="DingTalk" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*1DklS7SZFNMAAAAAAAAAAAAAARQnAQ" height="250" />
 
   - 钉钉交流群：SOFAStack 金牌用户服务群，如果您已经在生产环境使用了 SOFAStack 相关组件，还请告知我们，我们将会邀请您加入到此群中，以便更加快捷的沟通和更加高效的线上使用问题支持。
 - [新浪微博](https://weibo.com/sofastack)
