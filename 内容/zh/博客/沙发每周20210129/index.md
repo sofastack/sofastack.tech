@@ -43,7 +43,7 @@ SOFARegistry：[https://github.com/sofastack/sofa-registry](https://github.com/s
 A：配置 Auto，支持协议自动识别，转发不同的集群，那就看路由了；用新版本，然后这样配置。
 ![](https://cdn.nlark.com/yuque/0/2021/png/12405317/1611911810600-e3ddbdee-0077-4f94-bc67-b9c9afcc5243.png)
 
-MOSN：https://github.com/mosn/mosn
+MOSN：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 
 ### 本周推荐阅读
 
