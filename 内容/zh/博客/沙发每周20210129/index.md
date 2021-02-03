@@ -29,7 +29,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 **@潘麒安** 提问：
 
 > 请教下 session-server 报这个错，是需要扩更多的 session 么，但是 session进程本身 CPU 和内存占用不高。
->  ![](https://cdn.nlark.com/yuque/0/2021/png/12405317/1611911810538-0a3d61c9-11fc-4398-9dbe-b1d1033e79d8.png)
+> ![](https://cdn.nlark.com/yuque/0/2021/png/12405317/1611911810538-0a3d61c9-11fc-4398-9dbe-b1d1033e79d8.png)
 
 A：看错误是把 session 发向 data 的处理队列打满了，可以排查一下，检查一下使用的版本，data 的资源使用和common-error.log 下的错误日志。
 
@@ -38,7 +38,7 @@ SOFARegistry：[https://github.com/sofastack/sofa-registry](https://github.com/s
 **@刘达** 提问：
 
 > MOSN 怎么配置监听一个端口，这个端口上会接受有多种协议的数据，根据协议转发到不同的集群地址。ISTIO+MOSN， 用户 http 请求 gateway，通过 gateway 调 dubbo，每个应用自动注入 sidecar，测试没跑起来。
->  ![](https://cdn.nlark.com/yuque/0/2021/png/12405317/1611911810599-43c28bd7-b920-4bf1-b5b7-07f3c625a17c.png)
+> ![](https://cdn.nlark.com/yuque/0/2021/png/12405317/1611911810599-43c28bd7-b920-4bf1-b5b7-07f3c625a17c.png)
 
 A：配置 Auto，支持协议自动识别，转发不同的集群，那就看路由了；用新版本，然后这样配置。
 ![](https://cdn.nlark.com/yuque/0/2021/png/12405317/1611911810600-e3ddbdee-0077-4f94-bc67-b9c9afcc5243.png)
@@ -74,3 +74,4 @@ MOSN：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 - 修复 LogCode2Description 性能问题
 
 详细参考：[https://github.com/sofastack/sofa-common-tools/releases/tag/v1.3.2](https://github.com/sofastack/sofa-common-tools/releases/tag/v1.3.2)
+
