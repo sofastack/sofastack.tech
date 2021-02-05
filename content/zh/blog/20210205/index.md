@@ -63,7 +63,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 ### MOSN 项目进展
 
-本月我们还认证了一位新的 committer，是来自字节跳动的 郑泽超 同学，感谢 郑泽超 同学为 MOSN 社区做出的贡献。
+本月我们还认证了一位新的 Committer，是来自字节跳动的 郑泽超 同学，感谢 郑泽超 同学为 MOSN 社区做出的贡献。
 
 **本周发布详情如下：**
 
