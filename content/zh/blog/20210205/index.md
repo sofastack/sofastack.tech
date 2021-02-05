@@ -33,7 +33,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 A：SOFAArk 的项目里面 controller 层不限制的，biz 包部署普通的依赖包，它是一个可执行的 jar，ark包 = biz + plugin + container，动态部署你可以通过 telnet 指令的方式去动态安装，不建议直接塞到 pom 里面去。
 
-SOFAArk：[https://www.sofastack.tech/projects/sofa-boot/sofa-ark-readme/](https://www.sofastack.tech/projects/sofa-boot/sofa-ark-readme/)
+SOFAArk：[https://github.com/sofastack/sofa-ark](https://github.com/sofastack/sofa-ark)
 
 **@王盛** 提问：
 
