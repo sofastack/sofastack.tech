@@ -72,5 +72,5 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 - 修复了Rest中，当请求经过代理源IP获取不准确的问题
 - 修复了内置 Protobuf Compiler 的 BUG
 
-详细参考：[https://github.com/sofastack/sofa-rpc/releases](https://github.com/sofastack/sofa-rpc/releases)
+详细参考：[https://github.com/sofastack/sofa-rpc/releases/tag/v5.7.7](https://github.com/sofastack/sofa-rpc/releases/tag/v5.7.7)
 
