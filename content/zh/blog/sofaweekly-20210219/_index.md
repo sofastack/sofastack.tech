@@ -29,18 +29,25 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 **@王盛** 提问：
 
 >这个配置在 sidecar 里面怎么改，这个怎么配到 Istio 里面?
+>
 >![](https://cdn.nlark.com/yuque/0/2021/png/12405317/1613725206693-8ab5ef99-3fbe-4367-aa10-c7d107ef2b33.png)
+
 A：在 Istio 中关于 tracing 这块的 driver 目前是通过配置 xxx_bootstrap.json 静态配置的，然后通过 istioctl 命令参数来选择使用哪个 driver。当前由于 skywalking 自身配置还没作为 bootstrap 的静态默认配置，所以需要你自己修改下 xxx_bootstrap.json，这个配置就好了（即把上面的那个配置加进去）。简单说就是修改下 sidecar 的静态默认配置文件，增加 skywalking 为 tracing 的 driver 配置。
+
 https://github.com/mosn/mosn(https://github.com/mosn/mosn)
 
 **@卞平超** 提问：
 > TCC 多阶段；rollback 可以设置顺序吗？比如被调用的服务，先回滚，再回滚主服务的，A->B，想先回滚 B 的数据，commit 和 rollback；方法中的业务代码有异常，是会不断的重复执行。
+
 A：TC 的表字段 datetime 看下精度，二阶段都决议了，没有从 commit 异常，直接到 rollback。如果 10 个参与方，就 1 个 commit 异常，不去重试保证最终一致的话，数据不就乱了；已经决议了，就要保证起码能最终一致，而不应该串改结果，参考消息队列设计，为什么消费异常要重试。
+
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 **@方舟** 提问：
 > 请问一下，在 TCC 模式中，如果 TM 和 TC 断开连接，能够保证全局事务的回滚吗，重连超时后，全局事务会回滚吗？
+
 A：会重连，然后重试；需要你自己保证幂等和悬挂，会等你连上之后再重试。
+
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 ### 本周推荐阅读
@@ -64,5 +71,6 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 - 升级 junit 到 4.13.1
 - 修复了Rest中，当请求经过代理源IP获取不准确的问题
 - 修复了内置 Protobuf Compiler 的 BUG
+
 详细参考：[https://github.com/sofastack/sofa-rpc/releases](https://github.com/sofastack/sofa-rpc/releases)
 
