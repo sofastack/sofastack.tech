@@ -34,7 +34,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 A：在 Istio 中关于 tracing 这块的 driver 目前是通过配置 xxx_bootstrap.json 静态配置的，然后通过 istioctl 命令参数来选择使用哪个 driver。当前由于 skywalking 自身配置还没作为 bootstrap 的静态默认配置，所以需要你自己修改下 xxx_bootstrap.json，这个配置就好了（即把上面的那个配置加进去）。简单说就是修改下 sidecar 的静态默认配置文件，增加 skywalking 为 tracing 的 driver 配置。
 
-https://github.com/mosn/mosn(https://github.com/mosn/mosn)
+MOSN：https://github.com/mosn/mosn(https://github.com/mosn/mosn)
 
 **@卞平超** 提问：
 > TCC 多阶段；rollback 可以设置顺序吗？比如被调用的服务，先回滚，再回滚主服务的，A->B，想先回滚 B 的数据，commit 和 rollback；方法中的业务代码有异常，是会不断的重复执行。
