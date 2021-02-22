@@ -62,7 +62,7 @@
 ![image.png](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*qjchSrnoaykAAAAAAAAAAAAAARQnAQ)
 
 朴素的解释就是，触发限流后一边观察系统整体水位，一边秒级按比例调节流量的策略，用一张图来解释具体的原理：
-![image.png](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*qjchSrnoaykAAAAAAAAAAAAAARQnAQ)
+![image.png](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*WHtzRaccTHIAAAAAAAAAAAAAARQnAQ)
 **1.系统资源检测**：秒级检测系统资源占用情况，如果连续超过阈值N秒则触发基线计算，同时开始拒绝压测流量进入；
 **2.基线计算**：将当前所有的接口统计数据遍历一遍，通过一系列算法找出资源消耗大户，再把这些大户里明显上涨的流量找出来，把他们当前的资源占用做个快照存入基线数据中；
 **3.基线调节器**：将上一步骤存入的基线数据根据实际情况进行调整，根据系统资源检测的结果秒级的调整基线值，若系统水位超过阈值则按比例下调基线值，否则按比例恢复基线值，如此反复；
