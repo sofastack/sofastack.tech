@@ -1,18 +1,21 @@
 # Service Mesh 双十一后的探索和思考(上)
 
-# 引言
+## 引言
+
 2019 年 Service Mesh 在蚂蚁大规模落地并完美支撑双十一核心链路，对于落地过程在去年已经有系列文章解读。而在此之后的一年多时间，Service Mesh 在蚂蚁又在如何演进呢。本文介绍蚂蚁 Service Mesh 在双十一落地之后所做的探索和思考。
 
+## 能力建设
 
-# 能力建设
 得益于 Service Mesh 将业务和基础设施解耦，在过去一年中我们的基础设施能力得到了飞快的发展。大量能力大规模落地蚂蚁。例如链路加密，可信身份认证，服务鉴权，自适应限流，集群限流，精细化引流，服务自愈等。这里先对四个能力进行解读，其它能力后续再有文章讲述。
 
 
-## 链路加密
+### 链路加密
+
 为了达到一个更高的安全水位，我们预期在蚂蚁内部所有的通信 100% 加密覆盖，这就是链路加密。
 
 
-### 设计
+#### 设计
+
 链路加密落地最大的挑战就是加密对业务不能造成影响，包括几个问题：
 
 1. 必须简化大规模场景下的运维复杂度问题，需要具备可灰度、可回滚的能力；
@@ -27,11 +30,11 @@
 1. 相比于明文通信，基于 TLS 加密的通信主要消耗在连接建立的握手期间，服务端和客户端采用长连接的方式，减少连接的建立，以减少开启加密对性能的影响；
 1. 客户端在感知到服务端明文和加密状态变化以后，需要在不同的长连接之间进行稳定的切换，后文会详细介绍；
 
-![tls.png](https://intranetproxy.alipay.com/skylark/lark/0/2021/png/16102/1612522649200-b9850486-66e6-4987-9fed-84e70c00a737.png#align=left&display=inline&height=339&margin=%5Bobject%20Object%5D&name=tls.png&originHeight=339&originWidth=695&size=26033&status=done&style=none&width=695)
+![tls.png](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*6hrqQYvUcDoAAAAAAAAAAAAAARQnAQ)
 完整的一个加密开启流程如图所示，首先运维人员在管控面选择需要开启加密的应用，通过 XDS 完成配置下发。MOSN 在收到配置以后，会基于 SDS 机制获取到证书和私钥在内存中，证书和私钥由统一的 Secret 进行管理，应用侧不持久化保存。收到证书和私钥以后，会向注册中心发布本机已经支持了加密，注册中心会向所有订阅的客户端进行推送，客户端收到推送以后，与服务端的通信切换到加密状态。
 
 
-### 加密状态热切换：连接淘汰机制
+#### 加密状态热切换：连接淘汰机制
 我们的加密通信是基于 TLS 进行的实现，一个连接在建立好并且开始传输数据以后，连接上的数据是 TLS 加密的还是明文的就已经固定了，不存在将一个明文通信的连接变成 TLS 加密连接的情况。基于 TLS 这个机制，通信从明文切换到加密时，一定是需要新建一个连接，并且成功完成 TLS 握手。
 
 
@@ -40,15 +43,18 @@
 
 
 那么是如何淘汰旧连接的呢？这里就要讲到 MOSN 的长连接保持机制了。为了避免因为异常断网等导致连接“假死”的情况，在连接空闲时，会主动发起心跳请求，确保连接处于活跃状态，而如果服务端一段时间内都没有收到心跳，则会主动将连接断开。连接淘汰就是利用这个机制，对于准备淘汰的连接，我们将停止该连接的心跳发送，当连接上的请求处理结束后，这个连接上就不再会有任何数据的传输，经过一段时间后，服务端就会主动将这个连接断开，此时连接断开是安全的，不会影响任何请求。
-![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2021/png/16102/1612523137809-801dcbc5-3eba-4ba0-bf02-d172137a59c4.png#align=left&display=inline&height=390&margin=%5Bobject%20Object%5D&name=image.png&originHeight=780&originWidth=1686&size=150218&status=done&style=none&width=843)
-### 优化
+![image.png](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*G1V6QJz0DlgAAAAAAAAAAAAAARQnAQ)
+
+#### 优化
+
 对应用无感知开启加密，除了指开启过程中不需要重启、请求无损等，还包括在开启以后的资源消耗、RT 影响也需要是无感知的。在实际落地应用过程中，由于我们都是使用长连接，TLS 握手带来的建连消耗只占用了很少一部分，在长连接通信过程中的对称加密消耗经过实际测试几乎可以忽略不计，看上去链路加密对性能的指标没有什么问题。
 
 
 但是在实际大规模落地以后，我们发现部分应用开启了加密以后，内存占用有显著的上涨，经过排查，定位到属于Golang TLS 标准库实现问题（ MOSN 是使用 Golang 编写的），我们自行优化以后，也向 Golang 官方提了 PR回馈社区，目前该 PR 已经被 Golang 官方所接受，预计在 go1.16 中发布，具体实现可以见 [crypto/tls: pool Conn's outBuf to reduce memory cost of idle connections](https://github.com/golang/go/commit/22312437ee1e72451c70b79c90e36ad0b849e3f6?spm=ata.13261165.0.0.34404085zztvWZ)
 
 
-## 自适应限流
+### 自适应限流
+
 流量管理本身就是 Mesh 架构最为核心的功能之一，我们在 MOSN 中实现了多种策略的限流能力，包括单机 QPS限流、集群限流、热点限流、接口熔断、自适应限流等，其中自适应限流是一大亮点。
 
 
@@ -58,16 +64,17 @@
 我们希望即使在系统漏配错配限流的情况下，在系统资源严重不足时 MOSN 能够精准的找到导致系统资源不足的罪魁祸首，并实时根据系统水位自动调节异常流量。这就是自适应限流想要实现的效果。
 
 
-### 技术原理
-![采访.png](https://intranetproxy.alipay.com/skylark/lark/0/2020/png/210853/1605766504272-366694d2-2c35-451e-8457-faf684585909.png#align=left&display=inline&height=120&margin=%5Bobject%20Object%5D&name=%E9%87%87%E8%AE%BF.png&originHeight=239&originWidth=241&size=8148&status=done&style=none&width=121)
+#### 技术原理
+
+![采访.png](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*DHYrSa6A-ScAAAAAAAAAAAAAARQnAQ)
 能用一句话说清楚你们的技术原理吗？
-![各類人（金館長） - 表情包下载- 污表情(Wubiaoqing.com).png](https://intranetproxy.alipay.com/skylark/lark/0/2020/png/210853/1605766522333-1d15174b-de2f-472b-8746-89e9d5549b08.png#align=left&display=inline&height=113&margin=%5Bobject%20Object%5D&name=%E5%90%84%E9%A1%9E%E4%BA%BA%EF%BC%88%E9%87%91%E9%A4%A8%E9%95%B7%EF%BC%89%20-%20%E8%A1%A8%E6%83%85%E5%8C%85%E4%B8%8B%E8%BD%BD-%20%E6%B1%A1%E8%A1%A8%E6%83%85%28Wubiaoqing.com%29.png&originHeight=225&originWidth=225&size=6339&status=done&style=none&width=113)
+![各類人（金館長） - 表情包下载- 污表情(Wubiaoqing.com).png](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*KzhcSKWmp7oAAAAAAAAAAAAAARQnAQ)
 类 PID 控制流量闭环自适应调节
-![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2021/png/210853/1612669558476-31b219e9-69a5-47c1-883c-ca7c873e211c.png#align=left&display=inline&height=150&margin=%5Bobject%20Object%5D&name=image.png&originHeight=300&originWidth=300&size=71377&status=done&style=none&width=150)
+![image.png](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*qjchSrnoaykAAAAAAAAAAAAAARQnAQ)
 
 
 朴素的解释就是，触发限流后一边观察系统整体水位，一边秒级按比例调节流量的策略，用一张图来解释具体的原理：
-![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2021/png/210853/1612426350584-f9a86038-dbe0-415b-9f8a-52cde60b241b.png#align=left&display=inline&height=409&margin=%5Bobject%20Object%5D&name=image.png&originHeight=442&originWidth=636&size=31543&status=done&style=none&width=589)
+![image.png](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*qjchSrnoaykAAAAAAAAAAAAAARQnAQ)
 **1.系统资源检测**：秒级检测系统资源占用情况，如果连续超过阈值N秒则触发基线计算，同时开始拒绝压测流量进入；
 **2.基线计算**：将当前所有的接口统计数据遍历一遍，通过一系列算法找出资源消耗大户，再把这些大户里明显上涨的流量找出来，把他们当前的资源占用做个快照存入基线数据中；
 **3.基线调节器**：将上一步骤存入的基线数据根据实际情况进行调整，根据系统资源检测的结果秒级的调整基线值，若系统水位超过阈值则按比例下调基线值，否则按比例恢复基线值，如此反复；
@@ -77,7 +84,8 @@
 自适应限流已在全站线上应用中大规模启用，成功防范了多起业务故障。为新春红包压测和线上业务保驾护航。
 
 
-### 技术优势
+#### 技术优势
+
 相较于传统的限流组件，MOSN 中的自适应限流具备很多优势，MOSN 架构天然的流量劫持让应用无需逐个接入SDK，也无需为特定语言开发不同版本的限流组件，同时给业务同学降低了配置的难度，也为业务实现了兜底保护。在研发效能和研发成本上都取得了明显的收益。
 
 |  | MOSN 自适应限流 | 传统 QPS 限流组件 |
@@ -90,13 +98,15 @@
 
 
 
-## 精细化引流
+### 精细化引流
+
 随着业务发展，应用面对越来越多的场景和问题，而我们发现很多应用在各自的业务场景和解决问题的过程中对流量的调度能力有了越来越强的诉求。MOSN 的精细化引流正是为满足这样的诉求而生，它将应用的流量调度以原子能力的方式透出，然后控制面和各个平台对这些原子能力进行场景化的编排使用。基于该能力，目前已支撑灰度发布，容灾，机房建设和容量压测等诸多场景。
 
 
-### 单应用引流
+#### 单应用引流
+
 单应用切流是指在单元化的架构下，利用 MOSN 对流量的代理和调度能力，将应用粒度的流量从当前部署单元引流到另外的部署单元。
-![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2021/png/592/1612534205568-1ae51610-e47b-491c-bee8-e854756b7992.png#align=left&display=inline&height=459&margin=%5Bobject%20Object%5D&name=image.png&originHeight=679&originWidth=745&size=75624&status=done&style=none&width=504)
+![image.png](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*lUmkQ4aO7FEAAAAAAAAAAAAAARQnAQ)
 如图应用 A 和应用 B 是上下游关系，它们对等部署在单元 1 和单元 2 两个部署单元。应用 B 将自己的地址注册到注册中心。应用 A 通过注册中心发现应用 B 的地址，然后发起 RPC 调用，调用收敛在单元内。单元 2 内应用 B 的 MOSN 根据切流规则将来自上游的流量转发到单元 1 的应用B。单应用引流的方式可用于多种场景，如：
 **1.灰度发布**：当应用 B 需要做新的迭代发布，可以先将流量都 100% 切到单元 1，然后完成单元 2 集群的发布，再将单元 1 的流量逐量回切回来，中间有问题随时回切。
 **2.容灾**：当应用 B 的其中一个单元因为代码配置变更或其它原因导致长时间不可用时，可将流量都切到其它部署单元。
@@ -106,18 +116,20 @@
 另外 MOSN 的单应用切流还支持接口级别的切流，支持部署单元之间的多到一，一到多，多到多的方式。这样灵活的切流方式，为业务带来了很大的想象空间，相信未来会有越来越多有价值的解决案例在此基础上生长出来。
 
 
-### 引流压测
+#### 引流压测
+
 随着业务发展，应用不断发布，在多次迭代之后，应用的性能水位离之前的基线已经走远多少了呢。如果没有一个好的性能管理方式，日常机器集群不断扩容，增加成本。每次大促临近，大家开始梳理变更，设计压测方案，然后反复压测发现性能问题，再迭代发布解决问题，时间存在风险，问题的积累不可控。引流压测利用 MOSN 的精细化引流能力，将线上集群流量引流到单机进行性能压测。每天自动回归，常态化地绘制出应用的性能基线。
-![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2021/png/592/1612585012027-e4d140ae-d0fe-4ae7-9d88-14daae73192d.png#align=left&display=inline&height=339&margin=%5Bobject%20Object%5D&name=image.png&originHeight=569&originWidth=914&size=71119&status=done&style=none&width=545)
+![image.png](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*MTlGSpCpmhUAAAAAAAAAAAAAARQnAQ)
 如图应用 A 是应用 B 的上游，应用 A 均衡地调用应用B的集群。我们希望让 Server_1 承担整个集群 80% 的流量，以此进行性能压测。平台会将该流量规则经过计算后下发到应用 B 的 MOSN，Server_2 和 Server_3 的 MOSN 得知应将接收到的流量分别以 23.3% 的比例转发到 Server_1。当然，实际引流中这是一个过程，配合监控侧的机器负载数据和调用指标逐渐调整引流比例或熔断。
 
 
 同样 MOSN 的引流压测也支持接口粒度的引流，这给构建特定场景下的压测模型提供了支持。例如某些应用在大促下交易接口的流量会激增，而离线任务的接口流量会趋近于零。
 
 
-### 业务链路隔离
+#### 业务链路隔离
+
 当你给别人转账，这笔流量其实会经过一条具有 n 个应用的链路的处理。微服务的架构带来了诸多好处，也会带来如稳定性的一些挑战。如这笔转账流量所涉及到链路中的 n 个应用，任意一个应用出现了不可用，就会导致这笔支付失败。是否可以让这些应用都识别出如支付这样重要的链路，为其提供高可用的保证。基于 MOSN 的引流能力我们做到了业务链路隔离的方案。
-![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2021/png/592/1612600126724-f7c68ed7-0606-4b69-8e8e-ad9a3808c9cb.png#align=left&display=inline&height=494&margin=%5Bobject%20Object%5D&name=image.png&originHeight=668&originWidth=741&size=73240&status=done&style=none&width=548)
+![image.png](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*5zlMRYP8pOkAAAAAAAAAAAAAARQnAQ)
 
 
 如图有 A，B，C 三个应用。A->B->C 的链路承担了一笔转账的完整处理，另外还有应用 X，Y，Z 等应用和用户会向 A，B 应用发起调用。A，B，C 应用被分为了 GROUP_1 和 GROUP_2 两个分组，各自分组的机器在向注册中心注册自己地址时会将该分组信息带上，上游在发起调用时因此而能区分出下游不同分组的集群。再根据流量的标识而选择将流量路由到哪一个集群。所以平台下发给 MOSN 的规则如下：
@@ -128,7 +140,8 @@ Action: Group = Group_2
 请求头中含有 transfer 的流量始终路由到 GROUP_2 分组，其它流量都路由到 GROUP_1 分组。这样就可以将重要流量隔离于其它流量，避免被其它流量导致的限流熔断等影响。在机器资源，发布策略，灰度策略上会有更优先的考虑。当重要分组的集群出现不可用时，还可将流量切换到其它分组集群以容灾。
 
 
-## 服务自愈
+### 服务自愈
+
 传统的服务自愈，需要依赖于外部的探针（ probe ）。这个探针可以是监控系统，可以是 k8s liveness probe。实现的方式主要是主动的服务探活，和被动的日志采集分析。这些方式都存在时延与准确性的问题。主动的探测可能由于网络或探测器负载等原因误判，导致业务被误自愈；被动的日志分析，则需要长链路的日志采集分析系统，时间以分钟级计。
 
 
@@ -136,14 +149,15 @@ Action: Group = Group_2
 
 
 简单来说，我们在 MOSN 内部实现了一个异常计数器，来统计筛选并剔除异常的节点，同时上报给自愈中心，对涉及的节点进行进一步自愈动作。
-![image.png](https://intranetproxy.alipay.com/skylark/lark/0/2021/png/3057/1612672359360-4fc2d3f9-5a6d-40e9-bce3-a91027c5c484.png#align=left&display=inline&height=514&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1028&originWidth=1944&size=251618&status=done&style=none&width=972)
+![image.png](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*R-FpQ6CGGacAAAAAAAAAAAAAARQnAQ)
 首先我们在 MOSN 内部对于每个服务的异常请求做了统计计数。当统计视角可以区分出有明显问题的远端节点时，可以暂时的将该节点放入本机的调用黑名单中，避免问题持续。依赖于调用请求的频率，统计的时间窗口可以从亚分钟级到秒级。对于高频的重要服务，单机问题的待续时间也被限制在了秒级，实现了服务的秒级自愈。
 
 
 被黑名单的节点还需要进一步的处理。当节点被放入黑名单的同时，它的信息也会上报到自愈中心，并开始经历数分钟的冷却时间，等待问题的进一步确认。自愈中心基于上报的黑名单节点再做二次聚合，并可以结合被动监控和主动探测等方式，在分钟级的时间内使用重启或下线等手段完成恢复动作。最终自愈中心确认为没有问题的节点，也会在冷却时间后恢复服务。
 
 
-# Service Mesh 的价值
+## Service Mesh 的价值
+
 以上只是例举的几个能力建设，实际上还有许多能力和落地场景这里就不再一一展开。Service Mesh 在蚂蚁落地之后，我们的基础组件能力得到了飞速的发展。这得益于 Service Mesh 将业务和基础设施解耦之后所带来的红利。
 
 
@@ -158,7 +172,8 @@ Action: Group = Group_2
 
 
 
-# 小结
+## 小结
+
 在过去的一年多时间里，蚂蚁在 Service Mesh 上建设了大量能力，这些能力在性能，效能，安全，稳定性和可用率等多个方面为业务带来了帮助，也为基础设施带来了快速的演进。而这些最终正是得益于 Service Mesh 将业务和基础设施的解耦。
 
 在 Service Mesh 落地之后，我们曾设想过 Service Mesh 再向前探索可能会遇到的种种困难，包括资源利用率，性能损耗等等，但是未曾想到其中最先到来也是过去一年中最大的挑战竟然是它。这里先留个悬念，待下期文章进行分享。
