@@ -5,7 +5,7 @@ authorlink: "https://github.com/sofastack"
 description: "如何实现任务调度和存量应用的 Serverless 化，本文为大家介绍 Serverless Task 是如何实现这一解决方案。"
 categories: "MOSN"
 tags: ["Serverless", "任务调度","弹性伸缩","ServerlessTask","Service Mesh"]
-date: 2021-03-05T15:00:00+08:00
+date: 2021-03-02T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2020/png/226702/1589942213698-2550b402-6e7e-4b2d-9cb0-cddb1ef3f8a0.png"
 ---
 
