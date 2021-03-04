@@ -4,6 +4,8 @@ author: "李唯"
 description: "本文介绍蚂蚁 Service Mesh 在双十一落地之后所做的探索和思考。"
 categories: "云原生"
 tags: ["云原生"]
+date: 2021-02-17T16:00:00+08:00
+cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*A4bcQoXf5ZkAAAAAAAAAAAAAARQnAQ"
 ---
 
 # Service Mesh 双十一后的探索和思考(上)
