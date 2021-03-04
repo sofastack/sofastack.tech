@@ -1,4 +1,4 @@
---
+---
 title: "Special Weekly | SOFAStack 社区牛年展望，Let's have fun together!"
 author: "SOFA 团队"
 authorlink: "https://github.com/sofastack"
@@ -8,6 +8,7 @@ tags: ["SOFA Weekly"]
 date: 2021-02-12T15:00:00+08:00
 cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*T6yDTKfrBaAAAAAAAAAAAAAAARQnAQ"
 ---
+
 
 > 本文作者：蚂蚁集团黄挺（花名鲁直），SOFAStack 社区主理人，同时负责蚂蚁集团云原生方向的推动和落地，包括 Service Mesh、Serverless、消息、微服务等领域，带领 SOFA 团队扎根技术完成很多落地实践。
 
