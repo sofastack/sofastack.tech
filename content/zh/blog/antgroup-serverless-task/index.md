@@ -6,7 +6,7 @@ description: "如何实现任务调度和存量应用的 Serverless 化，本文
 categories: "MOSN"
 tags: ["Serverless", "任务调度","弹性伸缩","ServerlessTask","Service Mesh"]
 date: 2021-03-02T15:00:00+08:00
-cover: "https://cdn.nlark.com/yuque/0/2020/png/226702/1589942213698-2550b402-6e7e-4b2d-9cb0-cddb1ef3f8a0.png"
+cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*A4bcQoXf5ZkAAAAAAAAAAAAAARQnAQ"
 ---
 
 > Serverless Task 是蚂蚁集团在分布式调度和批处理中间件发展而来的解决方案。通过 ServiceMesh 的精细化引流能力，再利用研发框架的“服务分组”配置能力，将 Serverless Task 流量全部收敛在指定的“服务分组”集群内。结合定时任务本身具备的周期、可预测等特点，根据任务执行情况弹性伸缩“服务分组”内的机器资源从而提升资源利用率和系统稳定性。
