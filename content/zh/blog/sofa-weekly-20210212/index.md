@@ -12,13 +12,13 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*T6yDTKfrBaAAAAAAA
 > 本文作者：蚂蚁集团黄挺（花名鲁直），SOFAStack 社区主理人，同时负责蚂蚁集团云原生方向的推动和落地，包括 Service Mesh、Serverless、消息、微服务等领域，带领 SOFA 团队扎根技术完成很多落地实践。
 
 大家好，我是鲁直，有段时间没有和大家见面，今天是农历一年的起点，首先祝大家新年快乐，在新的一年牛气冲天！在这样特别的日子里，我想和大家分享对于 Service Mesh 未来方向的思考，再谈谈 SOFAStack 社区接下来计划做的一些事情，希望大家接下来能够在社区里面玩得开心，let's have fun together!
-![https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Cl6LR4AMi0AAAAAAAAAAAAAAARQnAQ](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Cl6LR4AMi0AAAAAAAAAAAAAAARQnAQ)
+!<https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Cl6LR4AMi0AAAAAAAAAAAAAAARQnAQ>
 
 ### 
 
 **Service Mesh 是否已经解决了所有问题？**
 2020 年， SOFA 团队宋顺（花名齐天，当前蚂蚁集团 Service Mesh 负责人）在 QCon 上海站分享了《蚂蚁 Service Mesh 大规模落地实践与展望》，详细讲述了 Service Mesh 在蚂蚁集团的进展和未来规划。
-![https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*xY4zToCg8a8AAAAAAAAAAAAAARQnAQ](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*xY4zToCg8a8AAAAAAAAAAAAAARQnAQ)
+!<https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*xY4zToCg8a8AAAAAAAAAAAAAARQnAQ>
 在过去的几年里面，Service Mesh 在整个云原生社区如火如荼地发展，从刚开始的 Linkerd，到后面的 Istio，不断地有大公司加入到 Service Mesh 的领域的开拓之中，随着小剑、净超等同学在国内布道 Service Mesh，Service Mesh 从 2017 开始在国内火热程度也不断升温，SOFA 团队也在这个时候开始关注到 Service Mesh 这个领域，并且开始在内部尝试做落地的事情，也和业界的很多朋友一起举办了一场又一场的 Service Mesh Meetup。
 
 应该说我们是幸运的，成功在 2019 年实现了 Service Mesh 在蚂蚁大促业务链路上的全面落地，获得了大规模落地 Service Mesh 的经验，并且在这之后持续应对 Service Mesh 大规模落地之后的遇到的各种挑战，截止到 2020 年底，蚂蚁集团已经基本上实现了**在线业务的全面 Service Mesh 化，在一部分网关场景上，也采用了 Service Mesh 的架构，实现了南北向和东西向流量架构的统一**。
