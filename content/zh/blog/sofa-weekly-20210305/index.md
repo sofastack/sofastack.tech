@@ -27,6 +27,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 通过 " SOFA WEEKLY " 的形式回复
 
 **@刘嘉伟** 提问：
+
 > 请教一下：我在纯 TCC 事务 a、b、c个服务调用中 c 服务异常了，b 服务回滚日志是
 > rm handle undo log process:
 > UndoLogDeleteRequest{resourceId='insert', saveDays=7, branchType=AT}
@@ -37,6 +38,7 @@ A：这个理论上来说是没影响的，定时触发的，跟你本身的回�
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 **@刘嘉伟** 提问：
+
 > 请问 AT 模式中如何防止事务回滚时，系统中一闪而过的脏数据，有时页面刚好打开，被用户感知到这些脏数据了；人工处理很麻烦，触发异常因为回滚操作有耗时，脏数据通常怎么处理；TCC 就没有这个问题，隔离的资源用户感知不到。
 
 A：数据在数据库，在数据库写被隔离的；前端本身就会有脏读出现，要靠后端保证。
@@ -44,6 +46,7 @@ A：数据在数据库，在数据库写被隔离的；前端本身就会有脏�
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 **@赵勇** 提问：
+
 > 比如这个图：A、B、C 各自都有自己的代码、自己的数据库，分开部署的；A 调用 B、C 提供的服务，那 undo_log 要在 db-a、db-b、db-c 里都建一份，然后 A、B、C 的代码里都要引入全局事务相关的类、包， 再加上把 GlobalTransaction 标到 A 的代码上，是这样实现吗；我看 GTS 的文档，感觉 undo_log 是 A 的代码引入的类包去写的，不是 B、C 自己写的，B、C 的代码还是该怎么写怎么写，不需要接全局事务相关的东西。
 >![](https://cdn.nlark.com/yuque/0/2021/png/12405317/1614935011044-ea523d0e-dbd4-43ff-ac91-97686c4bbe4f.png)
 
@@ -52,6 +55,7 @@ A：Undo_log 是每一个微服务的业务数据库都要建立，各自维护�
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 **@吴宗杰** 提问：
+
 > 2020 年 4 月份 Seata 从 1.2.0 支持 XA 协议，Mycat 支持 XA 分布式事务，是不是说明 Seata 和 Mycat 可以一起用？不过看到 19 年 slievrly 有和 Mycat 方沟通，后面应该也会支持的吧。
 
 A：可以试试，因为 Seata 所谓的 XA 模式是对支持了 XA 协议的数据库的 API 进行自动化的，XA 事务开启和统一提交回滚，Mycat 是属于一种 proxy，伪装的数据库层来代理背后的数据库，不知道这种结合会不会有什么问题存在，特别是 XA 这种出现中间层和 Seata 的兼容问题导致 XA 死锁就麻烦大了。
@@ -59,6 +63,7 @@ A：可以试试，因为 Seata 所谓的 XA 模式是对支持了 XA 协议的�
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 **@谭玖鹏** 提问：
+
 > 请教一个问题，这个 LoadLevel 注解有什么作用
 > 
 > ![](https://cdn.nlark.com/yuque/0/2021/png/12405317/1614935011072-8fbfd6e6-ce2a-46a6-85a5-092f68ee1978.png)
@@ -69,6 +74,7 @@ EnhancedServiceLoader#getUnloadedExtensionDefinition 这个函数，跟一下 sp
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 **@winyQ** 提问：
+
 > 不用 Seata 事务的数据操作方法里用的 datasource 还是代理数据源对象，这个没办法改吗，一旦设置 datasourceproxy，好像就一直只能用这个了。
 
 A：虽然拿到的都是 datasourceproxy，但是没有 globaltransational 和线程中没有 xid 的时候都是不会干预的；内部还是原来的 datasource 做操作，如果你确定没有 2 个服务以上参与的函数，可以用 globallock+ 对要修改的数据进行 for update 先再做写操作，会比直接加 globaltransational 注解效率高，但是相对而言入侵也高了。
