@@ -36,7 +36,6 @@ A：这个理论上来说是没影响的，定时触发的，跟你本身的回�
 
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
-
 **@刘嘉伟** 提问：
 > 请问 AT 模式中如何防止事务回滚时，系统中一闪而过的脏数据，有时页面刚好打开，被用户感知到这些脏数据了；人工处理很麻烦，触发异常因为回滚操作有耗时，脏数据通常怎么处理；TCC 就没有这个问题，隔离的资源用户感知不到。
 
@@ -68,7 +67,6 @@ A：看一下
 EnhancedServiceLoader#getUnloadedExtensionDefinition 这个函数，跟一下 spi 那块加载的代码就知道了，跟 dubbo 那边差不多，dubbo 有个博客解析：[https://dubbo.apache.org/zh/docs/v2.7/dev/source/dubbo-spi/](https://dubbo.apache.org/zh/docs/v2.7/dev/source/dubbo-spi/)。
 
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
-
 
 **@winyQ** 提问：
 > 不用 Seata 事务的数据操作方法里用的 datasource 还是代理数据源对象，这个没办法改吗，一旦设置 datasourceproxy，好像就一直只能用这个了。
