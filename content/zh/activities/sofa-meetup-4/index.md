@@ -16,7 +16,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*PGCEQL8Cb_IAAAAAA
 - 活动地点：浙江杭州西湖区学院路77号黄龙万科中心-I座
 - 活动形式：线下活动
 
-## 活动介绍**
+### 活动介绍**
 SOFAMeetup 牛年首站：**3月21日 杭州见！**
 
 久别重逢，朋友们，SOFAMeetup 回来了。
@@ -25,15 +25,15 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁集团自主�
 适合自身企业的技术架构才是最佳的方案，SOFAStack 提供了一套的金融级解决方案，提供多种场景下需要的多种组件。
 
 本期 SOFA Meetup 将带来 Service Mesh专题： Service Mesh 在蚂蚁、美团的落地后，如何开展能力及基础设施的建设？如何更好的支撑业务发展？在Service Mesh 大规模落地后，MOSN 如何解决变更风险和效率问题？ 如何支撑 Service Mesh 的演进与优化？本次分享将会提供我们一些思考和实践！
-### 活动议程
+**活动议程**
 
 ![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*ObmcSaU1vksAAAAAAAAAAAAAARQnAQ)
 
-### 本期议题以及嘉宾详解
+**本期议题以及嘉宾详解**
+
 **《Service Mesh 在蚂蚁落地后的探索与实践》**
 **嘉宾介绍**
 李唯，蚂蚁集团技术专家，2017 年加入蚂蚁集团中间件团队。参与了 Service Mesh 在蚂蚁的落地建设，目前主要负责 MOSN 在蚂蚁内部的设计开发。
-
 
 **议题简介**
 
@@ -93,7 +93,7 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁集团自主�
 
 - 了解 MOSN 后续规划，与 Envoy 社区的合作进展等
 
-## 了解更多技术干货
+#### 了解更多技术干货**
 使用钉钉搜索群号：**34197075**，即可加入，获取一手开源技术干货；或微信扫码关注“金融级分布式架构”微信公众号👇
 ![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*s3UzR6VeQ6cAAAAAAAAAAAAAARQnAQ)
 ## 
