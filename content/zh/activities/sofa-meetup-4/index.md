@@ -9,14 +9,14 @@ date: 2021-03-09T15:00:00+08:00
 cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*PGCEQL8Cb_IAAAAAAAAAAAAAARQnAQ"
 ---
 
-## 概要
+## 概要 ##
 活动主题：SOFAMeetup#4 杭州站 Service Mesh 领域的最新生产实践和未来展望
 
 - 活动时间：2021 年 03 月 21 日（周日）14:00-17:00
 - 活动地点：浙江杭州西湖区学院路77号黄龙万科中心-I座
 - 活动形式：线下活动
 
-### 活动介绍**
+### 活动介绍 ###
 SOFAMeetup 牛年首站：**3月21日 杭州见！**
 
 久别重逢，朋友们，SOFAMeetup 回来了。
@@ -93,7 +93,7 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁集团自主�
 
 - 了解 MOSN 后续规划，与 Envoy 社区的合作进展等
 
-#### 了解更多技术干货**
+#### 了解更多技术干货 ####
 使用钉钉搜索群号：**34197075**，即可加入，获取一手开源技术干货；或微信扫码关注“金融级分布式架构”微信公众号👇
 ![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*s3UzR6VeQ6cAAAAAAAAAAAAAARQnAQ)
 ## 
