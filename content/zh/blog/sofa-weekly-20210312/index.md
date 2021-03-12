@@ -85,8 +85,9 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 ### 本周发布
 
-**本周发布详情如下：
-**1**、**sofa-common-tools** 发布 v**1.3.3 版本，主要变更如下：**
+**本周发布详情如下：**
+
+**1**、**sofa-common-tools** **发布 v1.3.3 版本，主要变更如下：**
 
 - 修复 log space factory 的懒初始化模型问题
 
