@@ -14,7 +14,9 @@ SOFA WEEKLY | 每周精选，筛选每周精华问答
 SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主研发的金融级云原生架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 SOFAStack 官网: [https://www.sofastack.tech](https://www.sofastack.tech/)
 SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
+
 ### 每周读者问答提炼
+
 欢迎大家向公众号留言提问或在群里与我们互动
 我们会筛选重点问题
 通过 " SOFA WEEKLY " 的形式回复
@@ -82,6 +84,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 - [Service Mesh 双十一后的探索和思考(下)](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247487357&idx=1&sn=f9a8d34452c4b777fe8094cddb17ad7e&chksm=faa0e0a7cdd769b1c767cf15ca736ceca6fb5626b0363db908f4ead7e814e275fecd3037a13e&scene=21)
 
 ### 本周发布
+
 **本周发布详情如下：
 **1**、**sofa-common-tools** 发布 v**1.3.3 版本，主要变更如下：**
 
