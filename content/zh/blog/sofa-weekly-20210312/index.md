@@ -34,6 +34,7 @@ SOFAJRaft：[https://github.com/sofastack/sofa-jraft](https://github.com/sofasta
 **@戚金奎** 提问：
 
 > 请教一个问题：如图，目前服务都是通过 openfeign 远程调用，如果 setScore 所在的服务抛出了异常，是能直接出发事务回滚吗（我本地的无法出发回滚），还是需要在这个 seata1 里面接受一下返回值然后抛出异常才可以回滚吗（目前我这边是这种可以回滚）？
+
 >![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*hZ8aTowSkB8AAAAAAAAAAAAAARQnAQ)
 
 A：决议全局提交/回滚的只能是<br />@GlobalTransactional 注解的发起者，它 catch 到异常才会触发回滚；远端的异常应该是没抛给调用者，或者被框架拦截了异常。
