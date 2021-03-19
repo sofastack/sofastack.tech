@@ -52,7 +52,7 @@ SOFAStack：[https://github.com/sofastack/sofastack.tech](https://github.com/sof
 > Snapshot 的 save/load 方法都将阻塞状态机，应该尽力优化，避免阻塞。Snapshot 的保存如果可以做到增强备份更好。
 onSnapshotSave 需要在保存后调用传入的参数 closure.run(status) 告知保存成功或者失败，推荐的实现类似：
 
-```
+```java
 
 @Override
 
