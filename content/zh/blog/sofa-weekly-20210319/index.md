@@ -33,7 +33,8 @@ SOFAJRaft：[https://github.com/sofastack/sofa-jraft](https://github.com/sofasta
 **2、@孙军超** 提问：
 
 > 请教个问题：我现在直接跑 jraft-example 的 rheakv 的测试代码 PutExample，第一次调用 Rocksdb put 函数总会先阻塞整整 5 秒钟，server 端也没有任何报错。
->![]（https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*n0MIToHxoNgAAAAAAAAAAAAAARQnAQ)
+![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*n0MIToHxoNgAAAAAAAAAAAAAARQnAQ)
+
 A：猜测是 DefaultChannelId 里的 getProcessId() 太慢了，或者是 NetUtil 里获取 loopback 地址太慢，有一个办法可以证实：在 main 方法最开始提前 Class.forName 去加载这俩个类，应该会先卡住 5 秒，等到 rheakv 的逻辑执行时就不会卡住了；试一下我上面说的方法，猜测就是这两个类其中之一导致的：[https://stackoverflow.com/questions/33289695/inetaddress-getlocalhost-slow-to-run-30-seconds](https://stackoverflow.com/questions/33289695/inetaddress-getlocalhost-slow-to-run-30-seconds)； 配 etc/hosts 生效后可以解决。
 
 SOFAJRaft：[https://github.com/sofastack/sofa-jraft](https://github.com/sofastack/sofa-jraft)
@@ -50,12 +51,16 @@ SOFAStack：[https://github.com/sofastack/sofastack.tech](https://github.com/sof
 
 > Snapshot 的 save/load 方法都将阻塞状态机，应该尽力优化，避免阻塞。Snapshot 的保存如果可以做到增强备份更好。
 onSnapshotSave 需要在保存后调用传入的参数 closure.run(status) 告知保存成功或者失败，推荐的实现类似：
-> @Override
- >  public void onSnapshotSave(SnapshotWriter writer, Closure done) {
- >     // 同步获取状态机的当前镜像状态 state
- >     // 异步保存 state
- >    // 保存成功或者失败都通过 done.run(status) 通知到 jraft
- >  }
+```
+@Override
+
+  public void onSnapshotSave(SnapshotWriter writer, Closure done) {
+     // 同步获取状态机的当前镜像状态 state
+     // 异步保存 state
+    // 保存成功或者失败都通过 done.run(status) 通知到 jraft
+  }
+  
+```
 >官网上说的，异步保存也会阻塞？
 
 A：没有问题，安全的；你截取的内容其实已经说得很清楚了，异步是指存储操作，同步是指获取当前状态机的镜像必须是同步操作；就是说：你必须在状态机被后续的 raft log 更改之前，拿到镜像，也就是拿镜像和 apply 是串行操作，一旦拿到镜像，你可以用异步的方式把镜像保存的磁盘上，甚至再压缩一下。
