@@ -51,6 +51,7 @@ SOFAStack：[https://github.com/sofastack/sofastack.tech](https://github.com/sof
 
 > Snapshot 的 save/load 方法都将阻塞状态机，应该尽力优化，避免阻塞。Snapshot 的保存如果可以做到增强备份更好。
 onSnapshotSave 需要在保存后调用传入的参数 closure.run(status) 告知保存成功或者失败，推荐的实现类似：
+
 ```
 @Override
 
@@ -61,6 +62,7 @@ onSnapshotSave 需要在保存后调用传入的参数 closure.run(status) 告�
   }
   
 ```
+
 >官网上说的，异步保存也会阻塞？
 
 A：没有问题，安全的；你截取的内容其实已经说得很清楚了，异步是指存储操作，同步是指获取当前状态机的镜像必须是同步操作；就是说：你必须在状态机被后续的 raft log 更改之前，拿到镜像，也就是拿镜像和 apply 是串行操作，一旦拿到镜像，你可以用异步的方式把镜像保存的磁盘上，甚至再压缩一下。
