@@ -19,6 +19,8 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*PGCEQL8Cb_IAAAAAA
 
 - 活动形式：线下活动
 
+- 资料地址：[点击链接](https://gw.alipayobjects.com/os/bmw-prod/9e025683-6099-4927-acbc-393013d7d83c.pdf)
+
 ## 活动介绍
 
 SOFAMeetup 牛年首站：**3月21日 杭州见！**
