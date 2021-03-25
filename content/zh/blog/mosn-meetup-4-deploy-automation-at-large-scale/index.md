@@ -6,6 +6,7 @@ description: " 本文主要是介绍 MOSN 在无人值守变更上的实践以�
 categories: "Service mesh"
 tags: ["Service mesh","Service Mesh 落地实践"]
 date: 2021-03-25T21:00:00+08:00
+cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*A4bcQoXf5ZkAAAAAAAAAAAAAARQnAQ"
 ---
 
 > 本文主要是介绍 MOSN 在无人值守变更上的实践以及过程中的一些思考。主要分为 3 个部分：
