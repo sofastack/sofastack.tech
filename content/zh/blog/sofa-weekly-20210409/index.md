@@ -74,6 +74,7 @@ A：可以的，跟本地事务注解一样，支持事务传播。
 - [SOFAGW 网关：安全可信的跨域 RPC/消息 互通解决方案](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247487444&idx=1&sn=1d55a7c68e105f305198eae65f587e2e&chksm=faa0e00ecdd76918b5cf4b5f4102347581de6c6f5154551d57dabfbfe16b45309f021e150a6f&scene=21)
 
 ### 本周发布
+
 **本周发布详情如下：**<br />
 **1、SOFAJRaft  发布 v1.3.6 版本，主要变更如下：**
 
