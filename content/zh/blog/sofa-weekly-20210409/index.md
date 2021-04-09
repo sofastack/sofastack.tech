@@ -1,11 +1,11 @@
 ---
-？title: "SOFA Weekly | QA 整理"
+？title: "SOFA Weekly | SOFAJRaft 发布新版本，QA 整理"
 author: "SOFA 团队"
 authorlink: "https://github.com/sofastack"
-description: "SOFA WEEKLY | QA 整理"
+description: "SOFA WEEKLY | SOFAJRaft 发布新版本，QA 整理"
 categories: "SOFA Weekly"
 tags: ["SOFA Weekly"]
-date: 2021-04-02T15:00:00+08:00
+date: 2021-04-09T15:00:00+08:00
 cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAAAAAAAAAARQnAQ"
 ---
 SOFA WEEKLY | 每周精选，筛选每周精华问答
@@ -13,7 +13,7 @@ SOFA WEEKLY | 每周精选，筛选每周精华问答
 ![weekly.jpg](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*ARgKS6SuU7YAAAAAAAAAAAAAARQnAQ)
 SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主研发的金融级云原生架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 
-SOFAStack 官网: [https://www.sofastack.tech](https://www.sofastack.tech/)
+SOFAStack 官网: [https://www.sofastack.tech](https://www.sofastack.tech/)<br />
 SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 ### 每周读者问答提炼
@@ -26,8 +26,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 >问下 SOFARPC 注册到 nacos 上，可以指定 group 的名字吗？想用于不同租户的隔离的功能。<br />
 
-A：可以用这里的命名空间：<br />namespace :com.alipay.sofa.rpc.registry.nacos.NacosRegistry。<br />![]
-(https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*EnAeR57WiW4AAAAAAAAAAAAAARQnAQ)
+A：可以用这里的命名空间：<br />namespace :com.alipay.sofa.rpc.registry.nacos.NacosRegistry。<br />![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*EnAeR57WiW4AAAAAAAAAAAAAARQnAQ)
 <br /> SOFAJRaft：[https://github.com/sofastack/sofa-jraft](https://github.com/sofastack/sofa-jraft)<br />
 
 **2、@霂白** 提问：
@@ -48,29 +47,23 @@ A：那就用 localtcc，一开始的 TCC 不支持 spring cloud，后续开发�
 **4、@冯明明** 提问：
 
 >我用的是最新版的 spring-cloud-ablibaba rpc 使用的 Dubbo 。截图中这种依赖方式，必须在接口上增加@LocalTcc 才能应用 TCC 模式。我看源码 这种依赖生成的是 xxx.proxy0 这种实现类不能被 RemotingParser解析，接口提供者倒是能被解析，但 DubboRemotingParser 生成的 RemoteSpec 的 protocol 属性是 Dubbo，源码中只有 injvm 能走 TCC 的相关逻辑，请问我是哪里没有配置正确吗 ?<br />
-![]（https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*wmiTRZxN9oMAAAAAAAAAAAAAARQnAQ）
+![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*wmiTRZxN9oMAAAAAAAAAAAAAARQnAQ)
+
 A：1.方便以后出控制台可以实时查看分支事务状态； 2.比如某些分支吞了异常后，有 report 的情况下方便判断。比如：a 调 b 再调 c，b 其实已经出现异常并且本地事务下已经回滚了，此时 c 响应给 a，a 做后续处理的时候异常，此时 TC 发现 b 已经由本地事务回滚了，就无需驱动了，这样就减少了下发的数量。<br />
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 **5、@张红亮** 提问：
 
 >能在 service 实现里再次调用的方法上加 @GlobalTransactional 吗？<br />
-![]（https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*WcvTTZsXge0AAAAAAAAAAAAAARQnAQ）
-![]（https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*R59sQJyrxo4AAAAAAAAAAAAAARQnAQ）
+![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*WcvTTZsXge0AAAAAAAAAAAAAARQnAQ)
+![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*R59sQJyrxo4AAAAAAAAAAAAAARQnAQ)
 
 A：可以的，跟本地事务注解一样，支持事务传播。<br />
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
-**5、@王译锌** 提问：
-
->请教一下：既然回滚依赖于异常上报给 TM，那为什么分支事务的状态还要上报给 TC 呢？一直没想通这个问题。<br />
-
-A：1.方便以后出控制台可以实时查看分支事务状态； 2.比如某些分支吞了异常后，有 report 的情况下方便判断。比如：a 调 b 再调 c，b 其实已经出现异常并且本地事务下已经回滚了，此时 c 响应给 a，a 做后续处理的时候异常，此时 TC 发现 b 已经由本地事务回滚了，就无需驱动了，这样就减少了下发的数量。<br />
-Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
-
 ### 本周推荐阅读
 
-- [Protocol Extension Base On Wasm——协议扩展篇](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247487546&idx=1&sn=72c3f1ede27ca4ace7988e11ca20d5f9&chksm=faa0ffe0cdd776f6d17323466b500acee50a371663f18da34d8e4cbe32304d7681cf58ff9b45&scene=21）
+- [Protocol Extension Base On Wasm——协议扩展篇](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247487546&idx=1&sn=72c3f1ede27ca4ace7988e11ca20d5f9&chksm=faa0ffe0cdd776f6d17323466b500acee50a371663f18da34d8e4cbe32304d7681cf58ff9b45&scene=21)
 
 - [WebAssembly 在 MOSN 中的实践 - 基础框架篇](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247487508&idx=1&sn=4b725ef4d19372f1711c2eb066611acf&chksm=faa0ffcecdd776d81c3d78dbfff588d12ef3ec3c5607036e3994fee3e215695279996c045dbc&scene=21)
 
