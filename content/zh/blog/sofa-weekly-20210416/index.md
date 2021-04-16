@@ -68,4 +68,5 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 **本周发布详情如下：**<br />**1**、SOFATracer **** 发布 **v3.1.1 版本，主要变更如下：**
 
 - 添加数据脱敏扩展点，默认无对应的开源实现，用户可以自定义；商业版则提供了该实现 。<br />
-详细参考：<br />https://github.com/sofastack/sofa-tracer/releases/tag/v3.1.1
+详细参考：<br />
+(https://github.com/sofastack/sofa-tracer/releases/tag/v3.1.1)
