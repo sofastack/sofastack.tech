@@ -19,7 +19,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*qXgbSYotC-oAAAAAA
 
 - 活动形式：线下活动
 
-- 报名方式：点击“[直播链接](http://hdxu.cn/S7eZt)”，即可报名
+- 报名方式：点击“[报名链接](http://hdxu.cn/S7eZt)”，即可报名
 
 - B站直播间地址：[直播链接](http://live.bilibili.com/21954520)
 
