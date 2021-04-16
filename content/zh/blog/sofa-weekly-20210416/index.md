@@ -34,7 +34,8 @@ SOFATracer：[https://github.com/sofastack/sofa-tracer](https://github.com/sofas
 > 请问下 select * for update,  在 Seata 的事务中，除了会加一个全局的锁，还会加数据库锁吗？
 > 如果一条记录在分布式事务中，已经加了 for update 读。 那么这条记录再在数据库本地事务中，不加 @GlobalLock，加 for update 读，能读到吗？<br />
 
-A：不会加全局锁，先加本地锁。<br />A：如果要根据读的结果来写，为了得到分布式事务下的已提交数据，需要 for update。数据库层面可以快照读，但是无法当前读（for update 会阻塞），上了分布式事务后，结果都是二阶段后才是准确的，因为有了分布式事务的概念，在此之下的所有本地事务，也就是数据库方的数据已经不能算是准确的了，因为在 AT 模式下随时都有会回滚数据。<br />
+A：不会加全局锁，先加本地锁。<br />
+A：如果要根据读的结果来写，为了得到分布式事务下的已提交数据，需要 for update。数据库层面可以快照读，但是无法当前读（for update 会阻塞），上了分布式事务后，结果都是二阶段后才是准确的，因为有了分布式事务的概念，在此之下的所有本地事务，也就是数据库方的数据已经不能算是准确的了，因为在 AT 模式下随时都有会回滚数据。<br />
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)<br />
 
 **3、@姜广兴** 提问：
@@ -54,7 +55,6 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 ### 本周推荐阅读
 
-
 - [Rust 大展拳脚的新兴领域：机密计算](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247487576&idx=1&sn=0d0575395476db930dab4e0f75e863e5&chksm=faa0ff82cdd77694a6fc42e47d6f20c20310b26cedc13f104f979acd1f02eb5a37ea9cdc8ea5&scene=21)
 
 - [Protocol Extension Base On Wasm——协议扩展篇](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247487546&idx=1&sn=72c3f1ede27ca4ace7988e11ca20d5f9&chksm=faa0ffe0cdd776f6d17323466b500acee50a371663f18da34d8e4cbe32304d7681cf58ff9b45&scene=21)
@@ -64,6 +64,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 - [MOSN 的无人值守变更实践](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247487479&idx=1&sn=e5972cbc1d8c04cff843380117158539&chksm=faa0e02dcdd7693b965e35014cfef4dc3be84e477e0c74694421658a2570162ad73883e7b054&scene=21)
 
 ### 本周发布
+
 **本周发布详情如下：**<br />**1**、SOFATracer **** 发布 **v3.1.1 版本，主要变更如下：**
 
 - 添加数据脱敏扩展点，默认无对应的开源实现，用户可以自定义；商业版则提供了该实现 。<br />
