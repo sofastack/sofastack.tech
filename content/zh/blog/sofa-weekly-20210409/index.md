@@ -1,5 +1,5 @@
 ---
-？title: "SOFA Weekly | SOFAJRaft 发布新版本，QA 整理"
+title: "SOFA Weekly | SOFAJRaft 发布新版本，QA 整理"
 author: "SOFA 团队"
 authorlink: "https://github.com/sofastack"
 description: "SOFA WEEKLY | SOFAJRaft 发布新版本，QA 整理"
