@@ -34,6 +34,8 @@ sidebar:
         link: 'print-traceid-spanid'
       - title: 'Asynchronous thread processing'
         link: 'async'
+      - title: 'Functional interface support'
+        link: 'functional-interface-support'
       - title: 'Sampling modes'
         link: 'sampler'
       - title: 'Report data to Zipkin'
