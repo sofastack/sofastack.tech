@@ -4,7 +4,6 @@ title: "RPC 应用参数配置"
 aliases: "sofa-rpc/docs/Application-RPC-Config"
 ---
 
-
 在 SOFABoot 的使用场景下，RPC 框架在应用层面，提供一些配置参数，支持的应用级别的参数配置，如端口，线程池等信息，都是通过
 Spring Boot的`@ConfigurationProperties` 进行的绑定。绑定属性类是`com.alipay.sofa.rpc.boot.config.SofaBootRpcProperties`，配置前缀是
 
