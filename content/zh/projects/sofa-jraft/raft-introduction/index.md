@@ -166,7 +166,7 @@ __接收日志的follower需要实现的__
     * 如果收到了来自新leader的AppendEntries RPC(Heartbeat), 转换状态为follower
     * 如果选举超时, 开始新一轮的选举
 * __Leader:__
-    * 一旦成为leader, 想其他所有服务器发送空的AppendEntries RPC(Heartbeat), 并在空闲时间重复发送以防选举超时
+    * 一旦成为leader, 向其他所有服务器发送空的AppendEntries RPC(Heartbeat), 并在空闲时间重复发送以防选举超时
     * 如果收到来自客户端的请求, 向本地日志追加条目并向所有服务器发送AppendEntries RPC, 在收到大多数响应后将该条目应用到状态机并回复响应给客户端
     * 如果leader上一次收到的日志索引大于一个follower的nextIndex, 那么通过AppendEntries RPC将nextIndex之后的所有日志发送出去; 如果发送成功, 将follower的nextIndex和matchIndex更新, 如果由于日志不一致导致失败, 那么将nextIndex递减并重新发送
     * 如果存在一个N > commitIndex和半数以上的matchIndex[i] >= N并且log[N].term == currentTerm, 将commitIndex赋值为N
@@ -229,7 +229,7 @@ __Raft日志机制的特性__
 * 如果在不同的日志中的两个条目有着相同的索引和任期号, 那么他们之前的所有日志条目都是完全一样的
     * 源于AppendEntries RPC的一个简单的一致性检查: 当发送一个AppendEntries RPC时leader会把新日志之前的一个日志条目的索引位置和任期号都包含在里面, follower会检查是否与自己的日志中的索引和任期号是否匹配, 如果不匹配就会拒绝这个日志条目, 接下来就是归纳法来证明了
 * leader通过强制follower复制它的日志来处理日志的不一致
-    * 为了是follower的日志同自己的一致, leader需要找到follower与它日志一致的索引位置并让follower删除该位置之后的条目, 然后再讲自己再该索引位置之后的条目发送给follower, 这些操作都在AppendEntries RPC进行一致性检查时完成
+    * 为了使follower的日志同自己的一致, leader需要找到follower与它日志一致的索引位置并让follower删除该位置之后的条目, 然后再将自己在该索引位置之后的条目发送给follower, 这些操作都在AppendEntries RPC进行一致性检查时完成
     * leader为每一个follower维护了一个nextIndex, 用来表示将要发送给该follower的下一条日志条目索引, 当一个leader开始掌权时, 会将nextIndex初始化为它的最新日志条目索引值+1, 如果follower在一致性检查过程中发现自己的日志和leader不一致, 会在这个AppendEntries RPC请求中返回失败, leader收到响应之后会将nextIndex递减然后重试, 最终nextIndex会达到一个leader和follower日志一致的位置, 这个时候AppendEntries RPC会成功, follower中冲突的日志条目也被移除了, 此时follower和leader的日志就一致了
 
 ### 安全性
