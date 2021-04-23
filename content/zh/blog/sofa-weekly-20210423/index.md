@@ -84,3 +84,14 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 - [Protocol Extension Base On Wasm——协议扩展篇](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247487546&idx=1&sn=72c3f1ede27ca4ace7988e11ca20d5f9&chksm=faa0ffe0cdd776f6d17323466b500acee50a371663f18da34d8e4cbe32304d7681cf58ff9b45&scene=21)
 
 - [WebAssembly 在 MOSN 中的实践 - 基础框架篇](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247487508&idx=1&sn=4b725ef4d19372f1711c2eb066611acf&chksm=faa0ffcecdd776d81c3d78dbfff588d12ef3ec3c5607036e3994fee3e215695279996c045dbc&scene=21)
+
+### 本周发布
+
+**本周发布详情如下：**<br />
+**1、Occlum 发布了 0.22.0 版本，主要变更如下：**<br />
+
+- **三个新的 demo：redis，Flink 和 Enclave RA_TLS**
+- **支持 /dev/shm 文件子系统**
+- **支持 golang1.16.3**
+
+详细参考：<br />[https://github.com/occlum/occlum/releases/tag/0.22.0](https://github.com/occlum/occlum/releases/tag/0.22.0)
