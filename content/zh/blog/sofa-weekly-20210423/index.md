@@ -1,5 +1,5 @@
 ---
-？title: "SOFA Weekly |QA 整理"
+title: "SOFA Weekly |QA 整理"
 author: "SOFA 团队"
 authorlink: "https://github.com/sofastack"
 description: "SOFA WEEKLY |QA 整理"
