@@ -19,11 +19,17 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*qXgbSYotC-oAAAAAA
 
 - 活动形式：线下活动
 
-- 报名方式：点击“[报名链接](http://hdxu.cn/S7eZt)”，即可报名
+- 资料下载：
 
-- B站直播间地址：[直播链接](http://live.bilibili.com/21954520)
+- [《SOFAStack 三周年分享》下载链接](https://gw.alipayobjects.com/os/bmw-prod/1950a766-ad37-417b-b1e1-83c291143376.pdf)
 
-- B站直播ID：21954520
+- [《Enabling Financial-Grade Secure Infrastructure with Confidential Computing》下载链接](https://gw.alipayobjects.com/os/bmw-prod/1950a766-ad37-417b-b1e1-83c291143376.pdf)
+
+- [《云原生网络代理 MOSN 新的助推器—Envoy》下载链接](https://gw.alipayobjects.com/os/bmw-prod/decd8c79-7367-4956-a0c0-58d4db09add4.pdf)
+
+- [《注册中心 6.0 新特性》下载链接](https://gw.alipayobjects.com/os/bmw-prod/e621666e-14e7-431b-9bb0-b09ce75cc139.pdf)
+
+- [《服务网格在企业落地的典型场景与实践》下载链接](https://gw.alipayobjects.com/os/bmw-prod/c8053d67-35f6-479f-95f1-da392853c391.pdf)
 
 ## 活动介绍
 
