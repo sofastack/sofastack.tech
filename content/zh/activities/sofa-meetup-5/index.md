@@ -23,7 +23,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*qXgbSYotC-oAAAAAA
 
 - [《SOFAStack 三周年分享》下载链接](https://gw.alipayobjects.com/os/bmw-prod/1950a766-ad37-417b-b1e1-83c291143376.pdf)
 
-- [《Enabling Financial-Grade Secure Infrastructure with Confidential Computing》下载链接](https://gw.alipayobjects.com/os/bmw-prod/1950a766-ad37-417b-b1e1-83c291143376.pdf)
+- [《Enabling Financial-Grade Secure Infrastructure with Confidential Computing》下载链接](https://gw.alipayobjects.com/os/bmw-prod/83a8bfcc-b08d-475e-9bbe-7aa28009d6a5.pdf)
 
 - [《云原生网络代理 MOSN 新的助推器—Envoy》下载链接](https://gw.alipayobjects.com/os/bmw-prod/decd8c79-7367-4956-a0c0-58d4db09add4.pdf)
 
