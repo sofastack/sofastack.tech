@@ -33,7 +33,7 @@ SOFAJRaft 所有修改都在分支上进行，修改完后提交 pull request，
   git clone https://github.com/您的账号名/sofa-jraft
   ```
 
-- 拉分支准备修改代码
+- 拉分支准备修改代码:
 
   ```text
   git branch add_xxx_feature
