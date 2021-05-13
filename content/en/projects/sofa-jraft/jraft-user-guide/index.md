@@ -998,9 +998,11 @@ For applications with high throughput, you need to appropriately adjust the valu
 * We recommend that you implement linearizable read to distribute read requests to all nodes to shift burden from the leader.
 
 ### 8.3 Suggestions for system parameter
+
 Refer to etcd tune, https://etcd.io/docs/v3.4/tuning
 
 #### 8.3.1 Disk
+
 An jraft cluster is very sensitive to disk latencies. Since jraft must persist raft log and snapshot, disk activity from other processes may cause long fsync latencies, causing request timeouts and temporary leader loss. An jraft server can sometimes stably run alongside these processes when given a high disk priority.
 
 On Linux, jraft’s disk priority can be configured with `ionice`:
@@ -1011,6 +1013,7 @@ $ sudo ionice -c2 -n0 -p pid
 ```
 
 #### 8.3.2 Network
+
 If the jraft leader serves a large number of concurrent client requests, it may delay processing follower peer requests due to network congestion. It may be resolved by prioritizing jraft’s peer traffic over its client traffic.
 
 On Linux, peer traffic can be prioritized by using the traffic control mechanism `tc`:
