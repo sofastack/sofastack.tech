@@ -326,7 +326,7 @@ __这样可以做到一些资源复用，减少消耗，代价就是依赖了 jr
 
 * 服务端 `RpcServer` 配置以下环境变量：
 
-```
+```config
 // RpcServer init
 bolt.server.ssl.enable = true // 是否开启服务端 SSL 支持，默认为 false
 bolt.server.ssl.clientAuth = true // 是否开启服务端 SSL 客户端认证，默认为 false
@@ -342,7 +342,7 @@ bolt.server.ssl.clientAuth = false
 
 * 客户端 `RpcClient` 配置环境变量如下：
 
-```
+```config
 // RpcClient init
 bolt.client.ssl.enable = true // 是否开启客户端 SSL 支持，默认为 false
 bolt.client.ssl.keystore = cbolt.pfx // 客户端 SSL keystore 文件路径
@@ -357,7 +357,7 @@ bolt.client.ssl.enable = false
 其中服务端 SSL keystore 文件 `bolt.pfx` 和客户端 SSL keystore 文件 `cbolt.pfx` 按照以下步骤生成：
 
 * 首先生成 keystore 并且导出其认证文件。
-  
+
 ```sh
 keytool -genkey -alias securebolt -keysize 2048 -validity  365 -keyalg RSA -dname "CN=localhost" -keypass sfbolt -storepass sfbolt -keystore bolt.pfx -deststoretype pkcs12
   
@@ -365,7 +365,7 @@ keytool -export -alias securebolt -keystore bolt.pfx -storepass sfbolt -file bol
 ```
 
 * 接着生成客户端 keystore。
-  
+
 ```sh
 keytool -genkey -alias smcc -keysize 2048 -validity 365 -keyalg RSA -dname "CN=localhost" -keypass sfbolt -storepass sfbolt -keystore cbolt.pfx -deststoretype pkcs12
 ```
@@ -1072,7 +1072,7 @@ NodeOptions 有一个 `raftOptions` 选项，用于设置跟性能和数据可�
 
 ### 9.3 系统参数建议
 
-参考自etcd中的一些优化，https://etcd.io/docs/v3.4/tuning
+参考自etcd中的一些优化，[https://etcd.io/docs/v3.4/tuning](https://etcd.io/docs/v3.4/tuning)
  
 #### 9.3.1 磁盘
 
@@ -1080,7 +1080,7 @@ jraft群集对磁盘延迟比较敏感。由于raft log以及snapshot需要进�
 
 在Linux上，可以使用`ionice`命令来配置jraft进程的磁盘优先级:
 
-```
+```sh
 # pid 为jraft应用进程id
 $ sudo ionice -c2 -n0 -p pid
 ```
@@ -1091,7 +1091,7 @@ $ sudo ionice -c2 -n0 -p pid
 
 在Linux上，可以使用流量控制机制`tc`来设置不同流量的优先级:
 
-```
+```sh
 # 这里使用8001来作为jraft节点间的通信端口，9001作为提供给客户端的请求端口
 tc qdisc add dev eth0 root handle 1: prio bands 3
 tc filter add dev eth0 parent 1: protocol ip prio 1 u32 match ip sport 8001 0xffff flowid 1:1
@@ -1279,7 +1279,6 @@ rhea-rpc-request-timer_-1
 ## 12. Rocksdb 配置更改
 
 SOFJRaft 的 log storage 默认实现基于 rocksdb 存储，默认的 rocksdb 配置为吞吐优先原则，可能不适合所有场景以及机器规格，比如 4G 内存的机器建议缩小 block_size 以避免过多的内存占用。
-
 
 ```java
 final BlockBasedTableConfig conf = new BlockBasedTableConfig() //

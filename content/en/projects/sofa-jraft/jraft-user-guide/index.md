@@ -999,7 +999,7 @@ For applications with high throughput, you need to appropriately adjust the valu
 
 ### 8.3 Suggestions for system parameter
 
-Refer to etcd tune, https://etcd.io/docs/v3.4/tuning
+Refer to etcd tune, [https://etcd.io/docs/v3.4/tuning](https://etcd.io/docs/v3.4/tuning)
 
 #### 8.3.1 Disk
 
@@ -1007,7 +1007,7 @@ An jraft cluster is very sensitive to disk latencies. Since jraft must persist r
 
 On Linux, jraft’s disk priority can be configured with `ionice`:
 
-```
+```sh
 # pid value is jraft process id
 $ sudo ionice -c2 -n0 -p pid
 ```
@@ -1018,7 +1018,7 @@ If the jraft leader serves a large number of concurrent client requests, it may 
 
 On Linux, peer traffic can be prioritized by using the traffic control mechanism `tc`:
 
-```
+```sh
 # This situation use port 8001 as the peer traffic, use 9001 as the client traffic.
 tc qdisc add dev eth0 root handle 1: prio bands 3
 tc filter add dev eth0 parent 1: protocol ip prio 1 u32 match ip sport 8001 0xffff flowid 1:1
