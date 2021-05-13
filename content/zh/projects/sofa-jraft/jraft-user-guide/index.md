@@ -371,7 +371,7 @@ keytool -genkey -alias smcc -keysize 2048 -validity 365 -keyalg RSA -dname "CN=l
 ```
 
 * 最后导入服务端认证文件到客户端 keystore。
-  
+
 ```sh
 keytool -import -trustcacerts -alias securebolt -file bolt.cer -storepass sfbolt -keystore cbolt.pfx
 ```
@@ -1073,7 +1073,7 @@ NodeOptions 有一个 `raftOptions` 选项，用于设置跟性能和数据可�
 ### 9.3 系统参数建议
 
 参考自etcd中的一些优化，[https://etcd.io/docs/v3.4/tuning](https://etcd.io/docs/v3.4/tuning)
- 
+
 #### 9.3.1 磁盘
 
 jraft群集对磁盘延迟比较敏感。由于raft log以及snapshot需要进行磁盘io操作，因此其他进程的磁盘活动可能会导致较长的fsync延迟，从而导致请求超时和重新选举。当给予较高的磁盘优先级时，jraft应用有时可以与其他进程一起稳定运行。
