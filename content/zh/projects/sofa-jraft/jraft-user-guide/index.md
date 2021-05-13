@@ -1071,7 +1071,8 @@ NodeOptions 有一个 `raftOptions` 选项，用于设置跟性能和数据可�
 * 建议使用线性一致读，将请求散列到集群内的所有节点上，降低 leader 的负荷压力。
 
 ### 9.3 系统参数建议
-参考自etcd中的一些优化，https://etcd.io/docs/v3.4/tuning 
+参考自etcd中的一些优化，https://etcd.io/docs/v3.4/tuning
+ 
 #### 9.3.1 磁盘
 jraft群集对磁盘延迟比较敏感。由于raft log以及snapshot需要进行磁盘io操作，因此其他进程的磁盘活动可能会导致较长的fsync延迟，从而导致请求超时和重新选举。当给予较高的磁盘优先级时，jraft应用有时可以与其他进程一起稳定运行。
 
