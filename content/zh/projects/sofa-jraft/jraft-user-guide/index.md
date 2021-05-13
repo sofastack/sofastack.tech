@@ -1070,6 +1070,32 @@ NodeOptions 有一个 `raftOptions` 选项，用于设置跟性能和数据可�
 * 业务协议应当内置 Redirect 重定向请求协议，当写入到非 leader 节点，返回最新的 leader 信息到客户端，客户端可以做适当重试。通过定期拉取和 redirect 协议的结合，来提升客户端的可用性。
 * 建议使用线性一致读，将请求散列到集群内的所有节点上，降低 leader 的负荷压力。
 
+### 9.3 系统参数建议
+参考自etcd中的一些优化，https://etcd.io/docs/v3.4/tuning 
+#### 9.3.1 磁盘
+jraft群集对磁盘延迟比较敏感。由于raft log以及snapshot需要进行磁盘io操作，因此其他进程的磁盘活动可能会导致较长的fsync延迟，从而导致请求超时和重新选举。当给予较高的磁盘优先级时，jraft应用有时可以与其他进程一起稳定运行。
+
+在Linux上，可以使用`ionice`命令来配置jraft进程的磁盘优先级:
+
+```
+# pid 为jraft应用进程id
+$ sudo ionice -c2 -n0 -p pid
+```
+
+#### 9.3.2 网络
+当jraft leader处理大量并发的客户端请求时，由于网络拥塞，可能会延迟处理与follower的请求。可以尝试通过设置jraft节点间通信流量优先级高于客户端请求流量优先级来进行解决。
+
+在Linux上，可以使用流量控制机制`tc`来设置不同流量的优先级:
+
+```
+# 这里使用8001来作为jraft节点间的通信端口，9001作为提供给客户端的请求端口
+tc qdisc add dev eth0 root handle 1: prio bands 3
+tc filter add dev eth0 parent 1: protocol ip prio 1 u32 match ip sport 8001 0xffff flowid 1:1
+tc filter add dev eth0 parent 1: protocol ip prio 1 u32 match ip dport 8001 0xffff flowid 1:1
+tc filter add dev eth0 parent 1: protocol ip prio 2 u32 match ip sport 9001 0xffff flowid 1:1
+tc filter add dev eth0 parent 1: protocol ip prio 2 u32 match ip dport 9001 0xffff flowid 1:1
+```
+
 ## 10. 如何基于 SPI 扩展
 
 如果基于 SPI 扩展支持适配新 LogEntry 编/解码器，需要下面的步骤:
