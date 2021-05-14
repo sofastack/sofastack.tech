@@ -1072,24 +1072,24 @@ NodeOptions 有一个 `raftOptions` 选项，用于设置跟性能和数据可�
 
 ### 9.3 系统参数建议
 
-参考自etcd中的一些优化，[https://etcd.io/docs/v3.4/tuning](https://etcd.io/docs/v3.4/tuning)
+参考自 etcd 中的一些优化，[https://etcd.io/docs/v3.4/tuning](https://etcd.io/docs/v3.4/tuning)
 
 #### 9.3.1 磁盘
 
-jraft群集对磁盘延迟比较敏感。由于raft log以及snapshot需要进行磁盘io操作，因此其他进程的磁盘活动可能会导致较长的fsync延迟，从而导致请求超时和重新选举。当给予较高的磁盘优先级时，jraft应用有时可以与其他进程一起稳定运行。
+jraft 群集对磁盘延迟比较敏感。由于 raft log 以及 snapshot 需要进行磁盘 io 操作，因此其他进程的磁盘活动可能会导致较长的 fsync 延迟，从而导致请求超时和重新选举。当给予较高的磁盘优先级时，jraft 应用有时可以与其他进程一起稳定运行。
 
-在Linux上，可以使用`ionice`命令来配置jraft进程的磁盘优先级:
+在 Linux 上，可以使用 `ionice` 命令来配置 jraft 进程的磁盘优先级:
 
 ```sh
-# pid 为jraft应用进程id
+# pid 为 jraft 应用进程id
 $ sudo ionice -c2 -n0 -p pid
 ```
 
 #### 9.3.2 网络
 
-当jraft leader处理大量并发的客户端请求时，由于网络拥塞，可能会延迟处理与follower的请求。可以尝试通过设置jraft节点间通信流量优先级高于客户端请求流量优先级来进行解决。
+当 jraft leader 处理大量并发的客户端请求时，由于网络拥塞，可能会延迟处理与 follower 的请求。可以尝试通过设置 jraft 节点间通信流量优先级高于客户端请求流量优先级来进行解决。
 
-在Linux上，可以使用流量控制机制`tc`来设置不同流量的优先级:
+在 Linux 上，可以使用流量控制机制 `tc` 来设置不同流量的优先级:
 
 ```sh
 # 这里使用8001来作为jraft节点间的通信端口，9001作为提供给客户端的请求端口
