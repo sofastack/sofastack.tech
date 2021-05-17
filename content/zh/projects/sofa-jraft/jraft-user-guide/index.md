@@ -326,7 +326,7 @@ __这样可以做到一些资源复用，减少消耗，代价就是依赖了 jr
 
 * 服务端 `RpcServer` 配置以下环境变量：
 
-```
+```config
 // RpcServer init
 bolt.server.ssl.enable = true // 是否开启服务端 SSL 支持，默认为 false
 bolt.server.ssl.clientAuth = true // 是否开启服务端 SSL 客户端认证，默认为 false
@@ -342,7 +342,7 @@ bolt.server.ssl.clientAuth = false
 
 * 客户端 `RpcClient` 配置环境变量如下：
 
-```
+```config
 // RpcClient init
 bolt.client.ssl.enable = true // 是否开启客户端 SSL 支持，默认为 false
 bolt.client.ssl.keystore = cbolt.pfx // 客户端 SSL keystore 文件路径
@@ -357,7 +357,7 @@ bolt.client.ssl.enable = false
 其中服务端 SSL keystore 文件 `bolt.pfx` 和客户端 SSL keystore 文件 `cbolt.pfx` 按照以下步骤生成：
 
 * 首先生成 keystore 并且导出其认证文件。
-  
+
 ```sh
 keytool -genkey -alias securebolt -keysize 2048 -validity  365 -keyalg RSA -dname "CN=localhost" -keypass sfbolt -storepass sfbolt -keystore bolt.pfx -deststoretype pkcs12
   
@@ -365,13 +365,13 @@ keytool -export -alias securebolt -keystore bolt.pfx -storepass sfbolt -file bol
 ```
 
 * 接着生成客户端 keystore。
-  
+
 ```sh
 keytool -genkey -alias smcc -keysize 2048 -validity 365 -keyalg RSA -dname "CN=localhost" -keypass sfbolt -storepass sfbolt -keystore cbolt.pfx -deststoretype pkcs12
 ```
 
 * 最后导入服务端认证文件到客户端 keystore。
-  
+
 ```sh
 keytool -import -trustcacerts -alias securebolt -file bolt.cer -storepass sfbolt -keystore cbolt.pfx
 ```
@@ -1070,6 +1070,36 @@ NodeOptions 有一个 `raftOptions` 选项，用于设置跟性能和数据可�
 * 业务协议应当内置 Redirect 重定向请求协议，当写入到非 leader 节点，返回最新的 leader 信息到客户端，客户端可以做适当重试。通过定期拉取和 redirect 协议的结合，来提升客户端的可用性。
 * 建议使用线性一致读，将请求散列到集群内的所有节点上，降低 leader 的负荷压力。
 
+### 9.3 系统参数建议
+
+参考自 etcd 中的一些优化，[https://etcd.io/docs/v3.4/tuning](https://etcd.io/docs/v3.4/tuning)
+
+#### 9.3.1 磁盘
+
+jraft 群集对磁盘延迟比较敏感。由于 raft log 以及 snapshot 需要进行磁盘 io 操作，因此其他进程的磁盘活动可能会导致较长的 fsync 延迟，从而导致请求超时和重新选举。当给予较高的磁盘优先级时，jraft 应用有时可以与其他进程一起稳定运行。
+
+在 Linux 上，可以使用 `ionice` 命令来配置 jraft 进程的磁盘优先级:
+
+```sh
+# pid 为 jraft 应用进程id
+$ sudo ionice -c2 -n0 -p pid
+```
+
+#### 9.3.2 网络
+
+当 jraft leader 处理大量并发的客户端请求时，由于网络拥塞，可能会延迟处理与 follower 的请求。可以尝试通过设置 jraft 节点间通信流量优先级高于客户端请求流量优先级来进行解决。
+
+在 Linux 上，可以使用流量控制机制 `tc` 来设置不同流量的优先级:
+
+```sh
+# 这里使用8001来作为jraft节点间的通信端口，9001作为提供给客户端的请求端口
+tc qdisc add dev eth0 root handle 1: prio bands 3
+tc filter add dev eth0 parent 1: protocol ip prio 1 u32 match ip sport 8001 0xffff flowid 1:1
+tc filter add dev eth0 parent 1: protocol ip prio 1 u32 match ip dport 8001 0xffff flowid 1:1
+tc filter add dev eth0 parent 1: protocol ip prio 2 u32 match ip sport 9001 0xffff flowid 1:1
+tc filter add dev eth0 parent 1: protocol ip prio 2 u32 match ip dport 9001 0xffff flowid 1:1
+```
+
 ## 10. 如何基于 SPI 扩展
 
 如果基于 SPI 扩展支持适配新 LogEntry 编/解码器，需要下面的步骤:
@@ -1249,7 +1279,6 @@ rhea-rpc-request-timer_-1
 ## 12. Rocksdb 配置更改
 
 SOFJRaft 的 log storage 默认实现基于 rocksdb 存储，默认的 rocksdb 配置为吞吐优先原则，可能不适合所有场景以及机器规格，比如 4G 内存的机器建议缩小 block_size 以避免过多的内存占用。
-
 
 ```java
 final BlockBasedTableConfig conf = new BlockBasedTableConfig() //

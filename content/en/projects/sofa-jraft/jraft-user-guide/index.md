@@ -997,3 +997,32 @@ For applications with high throughput, you need to appropriately adjust the valu
 * The service protocol should include the redirect protocol to allow the Raft group to return the latest leader information to the client when the client sends a write request to a non-leader node. Then the client can send the write request to the leader node. In addition to the redirect protocol, the clients can proactively refresh the leader information on a regularly basis. The combined use of the redirect protocol and proactive refresh can improve the clients' availability.
 * We recommend that you implement linearizable read to distribute read requests to all nodes to shift burden from the leader.
 
+### 8.3 Suggestions for system parameter
+
+Refer to etcd tune, [https://etcd.io/docs/v3.4/tuning](https://etcd.io/docs/v3.4/tuning)
+
+#### 8.3.1 Disk
+
+An jraft cluster is very sensitive to disk latencies. Since jraft must persist raft log and snapshot, disk activity from other processes may cause long fsync latencies, causing request timeouts and temporary leader loss. An jraft server can sometimes stably run alongside these processes when given a high disk priority.
+
+On Linux, jraft’s disk priority can be configured with `ionice`:
+
+```sh
+# pid value is jraft process id
+$ sudo ionice -c2 -n0 -p pid
+```
+
+#### 8.3.2 Network
+
+If the jraft leader serves a large number of concurrent client requests, it may delay processing follower peer requests due to network congestion. It may be resolved by prioritizing jraft’s peer traffic over its client traffic.
+
+On Linux, peer traffic can be prioritized by using the traffic control mechanism `tc`:
+
+```sh
+# This situation use port 8001 as the peer traffic, use 9001 as the client traffic.
+tc qdisc add dev eth0 root handle 1: prio bands 3
+tc filter add dev eth0 parent 1: protocol ip prio 1 u32 match ip sport 8001 0xffff flowid 1:1
+tc filter add dev eth0 parent 1: protocol ip prio 1 u32 match ip dport 8001 0xffff flowid 1:1
+tc filter add dev eth0 parent 1: protocol ip prio 2 u32 match ip sport 9001 0xffff flowid 1:1
+tc filter add dev eth0 parent 1: protocol ip prio 2 u32 match ip dport 9001 0xffff flowid 1:1
+```
