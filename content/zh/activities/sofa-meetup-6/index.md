@@ -15,7 +15,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*XB9ESa8q8PwAAAAAA
 
 - 活动时间：2021 年 05 月 22 日（周六）14:00-17:00
 
-- 活动地点：上海黄浦外马路618号蚂蚁H空间 613
+- 活动地点：上海市浦东新区蚂蚁 S 空间 南泉北路 447 号 201
 
 - 活动形式：线下活动
 
@@ -25,7 +25,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*XB9ESa8q8PwAAAAAA
 
 ### 活动议程
 
-![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*oJA9Q7yCVXUAAAAAAAAAAAAAARQnAQ)
+![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*gtzbRpciFa8AAAAAAAAAAAAAARQnAQ)
 
 ### 本期议题以及嘉宾详解
 
