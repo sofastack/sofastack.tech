@@ -18,7 +18,7 @@ SOFAStack 官网: [https://www.sofastack.tech](https://www.sofastack.tech/)<br/>
 
 SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
-**每周读者问答提炼 **
+**每周读者问答提炼**
 
 欢迎大家向公众号留言提问或在群里与我们互动
 我们会筛选重点问题通过 
@@ -67,7 +67,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 A：seata 没有执行二阶段回滚，不会消失数据，数据丢失要么是本地事务发生异常，你们捕获异常了，用 spring API 来回滚了本地事务，导致异常没抛出去，事务回滚了，要么发生异常，被你们的全局异常捕获器捕获了，导致决议了提交，实际上数据已经被本地事务回滚，seata 在二阶段不是 rollback 相关状态的时候不会干预业务数据。<br/>
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
-**本周推荐阅读 **
+**本周推荐阅读**
 
 - [稳定性大幅度提升：SOFARegistry v6 新特性介绍](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247487799&idx=1&sn=3f2c120cd6d6e653e0d7c2805e2935ae&chksm=faa0feedcdd777fbebe262adc8ce044455e2056945460d06b5d3af3588dfd3403ca2a976fa37&scene=21)
 
@@ -77,7 +77,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 - [积跬步至千里：QUIC 协议在蚂蚁集团落地之综述](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247487717&idx=1&sn=ca9452cdc10989f61afbac2f012ed712&chksm=faa0ff3fcdd77629d8e5c8f6c42af3b4ea227ee3da3d5cdf297b970f51d18b8b1580aac786c3&scene=21)
 
-## **本周发布**
+## 本周发布
 
 **本周发布详情如下：**
 
