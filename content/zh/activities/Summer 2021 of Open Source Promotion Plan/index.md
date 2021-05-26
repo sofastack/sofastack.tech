@@ -1,8 +1,8 @@
 ---
-title: "开源之夏” SOFAStack 社区 9 个项目任务上线，学生申请正式开始！"
+title: "“开源之夏” SOFAStack 社区 9 个项目任务上线，学生申请正式开始！"
 author: "SOFAStack社区"
 authorlink: "https://github.com/sofastack"
-description: "开源之夏” SOFAStack 社区 9 个项目任务上线，学生申请正式开始！"
+description: "“开源之夏” SOFAStack 社区 9 个项目任务上线，学生申请正式开始！"
 categories: "Summer 2021"
 tags: ["Summer 2021"]
 date: 2021-05-24T15:00:00+08:00
