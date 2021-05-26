@@ -59,7 +59,7 @@ sofastack 学生指南：[https://summer.iscas.ac.cn/help/student/](https://summ
 
 **STEP 5**：完成开发，获得项目奖金和证书。
 
-详情可进一步阅读暑期 2021 学生指南：https://summer.iscas.ac.cn/help/student/
+详情可进一步阅读暑期 2021 学生指南：[https://summer.iscas.ac.cn/help/student/](https://summer.iscas.ac.cn/help/student/)
 
 **暑期 2021 面向人群**
 本活动面向年满 18 周岁在校学生，不限国籍暑期即将毕业的学生，只要在申请时学生证处在有效期内，就可以提交申请海外学生可提供录取通知书/学生卡/在读证明证明学生身份
