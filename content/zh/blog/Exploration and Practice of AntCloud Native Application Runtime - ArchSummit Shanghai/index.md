@@ -103,9 +103,13 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*nergRo8-RI0AAAAAA
 >![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*iqQoTYAma4YAAAAAAAAAAAAAARQnAQ)
 
 云原生应用运行时设计里核心的几个点如下：
+
 **第一**，由于有了 MOSN 规模化落地的经验和配套的运维体系，我们决定基于 MOSN 内核去开发我们的云原生应用运行时。
+
 **第二**，面向能力，而不是面向组件，统一定义出这个运行时的 API 能力。
+
 **第三**，业务代码和 Runtime API 之间的交互采用统一的 gRPC 协议，这样的话，业务端侧可以直接通过 proto 文件去反向生成一个客户端，直接进行调用。
+
 **第四**，能力后面对应的组件实现是可以替换的，例如注册服务的提供者可以是 SOFARegistry，也可以是 Nacos 或者 Zookeeper。
 
 
@@ -176,9 +180,13 @@ FaaS 冷启预热池也是我们近期在探索的一个场景，大家知道 Fa
 **最后做一下小结：**
 
 1.Service Mesh 模式的引入是实现应用原云生的关键路径；
+
 2.任何中间件兼可 Mesh 化，但研发效率问题依然部分存在；
+
 3.Mesh 大规模落地是工程化的事情，需要完整的配套体系；
+
 4.云原生应用运行时将是中间件等基础技术的未来形态，进一步解耦应用与分布式能力；
+
 5.云原生应用运行时核心是 API，期望社区共建一个标准。
 
 延伸阅读
