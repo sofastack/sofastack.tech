@@ -12,12 +12,14 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*TSIGQ7MiwSAAAAAAA
 ### 什么是安全计算？   
 
 Linux 基金会旗下的安全计算联盟对安全计算下了一个定义：
+
 >Confidential Computing protects data in use by performing computation in a hardware-based Trusted Execution Environment.
 Confidential Computing Consortium
 
 在这个定义中强调了这么几点：
 
 1.安全计算保护的是运算过程中的数据安全;
+
 2.安全计算需要借助硬件的能力。
 
 下面就对这两点做一个阐述：
