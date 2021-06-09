@@ -32,7 +32,6 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*cldlRrChctIAAAAAA
 >![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*-LFYSJdsu_QAAAAAAAAAAAAAARQnAQ)
 >![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*s3UzR6VeQ6cAAAAAAAAAAAAAARQnAQ)
 
-
 **报名方式：**
 
 1、 扫描海报二维码，立即报名；
