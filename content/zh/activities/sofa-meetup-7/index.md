@@ -36,6 +36,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*cldlRrChctIAAAAAA
 
 
 **报名方式：**
+
 1、 扫描海报二维码，立即报名
 
 2、 点击[http://hdxu.cn/Iq6Ef](http://hdxu.cn/Iq6Ef)，即可报名。
