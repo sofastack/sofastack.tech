@@ -40,4 +40,5 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*cldlRrChctIAAAAAA
 2、 点击[http://hdxu.cn/Iq6Ef](http://hdxu.cn/Iq6Ef) 即可报名。
 
 在活动现场不仅仅可以和**讲师面对面交流**
+
 还有**精美礼品**发放，快来现场吧~
