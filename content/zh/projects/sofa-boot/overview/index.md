@@ -66,6 +66,6 @@ SOFABoot 在 Spring Boot 基础上，提供了以下能力：
 
 ## 应用场景
 
-SOFABoot 本身就脱胎于蚂蚁金服内部对于 Spring Boot 的实践，补充了 Spring Boot 在大规模金融级生产场景下一些不足的地方，所以 SOFABoot 特别适合于这样的场景。
+SOFABoot 脱胎于蚂蚁金服内部对于 Spring Boot 的实践，补充了 Spring Boot 在大规模金融级生产场景下一些不足的地方，所以 SOFABoot 特别适合于这样的场景。
 
 当然，SOFABoot 的每个组件都是可选的，用户可以灵活选择其中的功能来使用，比如如果仅仅想在 Spring Boot 下面引入 SOFA 中间件，可以不需引入 SOFABoot 中的类隔离能力。
