@@ -35,7 +35,7 @@ PeerId 表示一个 raft 协议的参与者（leader/follower/candidate etc.)，
 
 ```java
 PeerId peer = new PeerId("localhost", 8080);
-EndPoint addr = peer.getEndpoint(); // 获取节点地址
+Endpoint addr = peer.getEndpoint(); // 获取节点地址
 int index = peer.getIdx(); // 获取节点序号，目前一直为 0
 
 String s = peer.toString(); // 结果为 localhost:8080
@@ -116,8 +116,8 @@ Task 是用户使用 jraft 最核心的类之一，用于向一个 raft 复制�
 ```java
 Closure done = ...;
 Task task = new Task();
-task.setData(ByteBuffer.wrap("hello".getBytes());
-task.setClosure(done);
+task.setData(ByteBuffer.wrap("hello".getBytes()));
+task.setDone(done);
 ```
 
 任务的 closure 还可以使用特殊的 `TaskClosure` 接口，额外提供了一个 `onCommitted` 回调方法：
@@ -184,7 +184,7 @@ while(it.hasNext()){
 因为 StateMachine 接口的方法比较多，并且大多数方法可能不需要做一些业务处理，因此 jraft 提供了一个 StateMachineAdapter 桥接类，方便适配实现状态机，除了强制要实现 `onApply` 方法外，其他方法都提供了默认实现，也就是简单地打印日志，用户可以选择实现特定的方法：
 
 ```java
-public TestStateMachine extends StateMachineAdapter {
+public class TestStateMachine extends StateMachineAdapter {
     private AtomicLong          leaderTerm = new AtomicLong(-1);
     @Override
     public void onApply(Iterator iter) {
