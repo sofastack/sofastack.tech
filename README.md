@@ -22,7 +22,7 @@ Before you begin, you should install the follow components:
 hugo server
 ```
 
-Run the site locally with `hugo server`, you will see the site running on <http://localhost:1313>.
+Run the site locally with `hugo server`, and you will see the site running on <http://localhost:1313>.
 
 ### Docker
 
