@@ -9,13 +9,7 @@ date: 2021-07-06T15:00:00+08:00
 cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*lKqNRIy3iDEAAAAAAAAAAAAAARQnAQ"
 ---
 
->注：本文是王发康（毅松）在 2021 GopherChina 上演讲的文字稿，相关分享 PPT 可自行到 MOSN meetup 下载。
-
->MOSN meetup 地址：[https://github.com/mosn/meetup](https://github.com/mosn/meetup)
-
->MOSN 官方 Github 地址：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
-
->GitHub 地址：[https://github.com/sofastack](https://github.com/sofastack)
+>注：本文是王发康（毅松）在 2021 GopherChina 上演讲的文字稿，相关分享 PPT 可自行到 MOSN meetup 下载。[MOSN meetup 地址](https://github.com/mosn/meetup)；[MOSN 官方 Github 地址](https://github.com/mosn/mosn)；[GitHub 地址](https://github.com/sofastack)。
 
 ## 前言
 
@@ -224,7 +218,6 @@ MOE 借助 CGO 通道不仅将 Envoy 和 MOSN 二者优势融为一体，而且�
 ## 总结
 
 MOE 技术方案使得 MOSN/GoLang 和 Envoy 相互融合成为了可能，打破了 MOSN/GoLang 和 Envoy 割裂的社区生态现状，为将来 Proxy 的持续演进奠定了坚实的技术基础。随着在经济体互通蚂蚁侧网关的落地实践，其 MOE 技术方案的稳定性、可靠性、易用性等方面都得到了一定的考验。同时秉着对技术的高标准要求以及能够更好的服务好我们的用户，我们也会持续探索和优化 MOE，如果该方案能也够解决你业务上遇到的问题，欢迎联系我们，最后感谢正在关注此项技术的用户，欢迎和我们交流和讨论！MOSN 用户交流群钉钉群号：33547952。
-
 
 ### 本周推荐阅读
 
