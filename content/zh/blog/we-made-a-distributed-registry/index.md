@@ -1,8 +1,8 @@
 ---
-title: "SOFA注册中心-SOFARegistry"
+title: "我们做出了一个分布式注册中心"
 author: "祝辰（忘禅）"
 authorlink: "https://github.com/sofastack"
-description: "SOFA注册中心-SOFARegistry"
+description: "我们做出了一个分布式注册中心"
 categories: "SOFAStack"
 tags: ["SOFAStack"]
 date: 2021-07-27T15:00:00+08:00
