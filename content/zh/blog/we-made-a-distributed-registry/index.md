@@ -186,7 +186,6 @@ Data节点发布难的问题，说到底是一个影响范围的问题，如何�
 这样，在data发布过程中，可以控制数据的迁移以slot为单位（单个data节点多个slot，可配置）
 
 >![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Au44TqT7gHsAAAAAAAAAAAAAARQnAQ)
-
 >![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*IOVIR4baf7IAAAAAAAAAAAAAARQnAQ)
 
 同时，为了解决迁移或是宕机期间，数据写入不一致的场景，我们引入了数据回放的补偿机制，data在promotion为slot的master之后，会主动地去和所有的session完成一次数据比对/校验，增量同步新增数据
@@ -226,7 +225,6 @@ SOFARegistry从项目早期就开始了开源的进程，与目前主流的注�
 ## 欢迎加入我们
 
 > 一个人可以走得很快，但一群人可以走的更远
->                                                             -- 题记
 
 SOFARegistry是一个开源项目，也是开源社区SOFA重要的一环，我们希望用社区的力量推动SOFARegistry的前进，而不是只有蚂蚁的工程师去开发。我们在今年也启动了两个项目，用于支持更多的开发者参与进来：
 
