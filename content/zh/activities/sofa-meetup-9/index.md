@@ -5,7 +5,7 @@ authorlink: "https://github.com/sofastack"
 description: "SOFAStack Meetup#7 合肥站-SOFA 微服务架构技术生态与实践"
 categories: "SOFAMeetup"
 tags: ["SOFAMeetup"]
-date: 2021-05-07T15:00:00+08:00
+date: 2021-07-24T15:00:00+08:00
 cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*IcnvSK-tBssAAAAAAAAAAAAAARQnAQ"
 ---
 
