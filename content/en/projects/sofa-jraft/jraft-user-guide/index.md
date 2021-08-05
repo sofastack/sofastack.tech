@@ -1027,7 +1027,7 @@ tc filter add dev eth0 parent 1: protocol ip prio 2 u32 match ip sport 9001 0xff
 tc filter add dev eth0 parent 1: protocol ip prio 2 u32 match ip dport 9001 0xffff flowid 1:1
 ```
 
-If user want to cancel `tc`, just execute:
+If user want to cancel `tc`, execute:
 
 ```sh
 tc qdisc del dev eth0 root
