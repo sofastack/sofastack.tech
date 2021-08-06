@@ -522,7 +522,7 @@ __RheaKV 可以划分为两种类型的请求，两种类型需要不同的 fail
 | INVALID\_REGION\_MEMBERSHIP | 当前Region Group已经发生了成员变化, 比如新增或删除了节点 |
 | :--- | :--- |
 | INVALID\_REGION\_VERSION | 当前Region分裂(split)了 |
-| INVALID\_REGION\_EPOCH | 表示可能为INVALID\_REGION\_MEMBERSHIP或INVALID\_REGION\_EPOCH任意一个 |
+| INVALID\_REGION\_EPOCH | 表示可能为INVALID\_REGION\_MEMBERSHIP或INVALID\_REGION\_VERSION任意一个 |
 
 ---
 

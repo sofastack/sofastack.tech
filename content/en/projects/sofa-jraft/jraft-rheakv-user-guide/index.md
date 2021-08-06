@@ -519,7 +519,7 @@ Table 2
 | INVALID\_REGION\_MEMBERSHIP | The current region group has undergone a membership change, for example a node is added or deleted. |
 | :--- | :--- |
 | INVALID\_REGION\_VERSION | The current region has been split. |
-| INVALID\_REGION\_EPOCH | It can either be INVALID\_REGION\_MEMBERSHIP or INVALID\_REGION\_EPOCH. |
+| INVALID\_REGION\_EPOCH | It can either be INVALID\_REGION\_MEMBERSHIP or INVALID\_REGION\_VERSION. |
 
 ---
 
