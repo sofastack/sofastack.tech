@@ -19,8 +19,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 ### 每周读者问答提炼
 
-欢迎大家向公众号留言提问或在群里与我们互动
-
+欢迎大家向公众号留言提问或在群里与我们互动，
 我们会筛选重点问题
 
 通过 " SOFA WEEKLY " 的形式回复
