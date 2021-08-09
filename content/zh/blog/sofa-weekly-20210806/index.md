@@ -24,7 +24,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 我们会筛选重点问题
 
-通过 " SOFA WEEKLY " 的形式回复
+通过"SOFA WEEKLY"的形式回复
 
 1、@叶翔宇 提问：
 
