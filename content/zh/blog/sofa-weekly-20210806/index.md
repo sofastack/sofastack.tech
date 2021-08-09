@@ -79,7 +79,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 详细发布报告：
 [https://github.com/mosn/mosn/releases/tag/v0.24.0](https://github.com/mosn/mosn/releases/tag/v0.24.0)
 
-本月我们还认证了一位新的 **Commiter**，是来自京东的付建豪同学，感谢付建豪同学为 MOSN 社区做出的贡献。
+本月我们还认证了一位新的 Commiter，是来自京东的付建豪同学，感谢付建豪同学为 MOSN 社区做出的贡献。
 
 ### 本周推荐阅读
 
