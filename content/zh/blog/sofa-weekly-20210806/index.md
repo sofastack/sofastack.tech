@@ -26,7 +26,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 通过 " SOFA WEEKLY " 的形式回复
 
-**1、@叶翔宇** 提问：
+**1、@飒** 提问：
 
 >我有个需求，就是我们有自己的配置中心，我的配置加载不想用默认的文件配置，这里如果我要开发的话应该怎么样加会比较漂亮？
 
