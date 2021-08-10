@@ -1,8 +1,8 @@
 ---
 author: "泡椒"
 date: 2021-08-09T15:00:00+08:00
-title: "SOFAChannel#21：走进下一代互联网：HTTP3.0"
-tags: ["SOFAChannel","HTTP3.0"]
+title: "SOFAChannel#21：走进下一代互联网：HTTP/3"
+tags: ["SOFAChannel","HTTP/3"]
 cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*sbwkS4TvkTcAAAAAAAAAAAAAARQnAQ"
 categories: "SOFAChannel"
 description: "08 月 18 日周三晚 19 点，线上直播第 21 期。"
@@ -10,7 +10,7 @@ description: "08 月 18 日周三晚 19 点，线上直播第 21 期。"
 
 ## 概要
 
-- 活动主题：SOFAChannel#21：走进下一代互联网：HTTP3.0
+- 活动主题：SOFAChannel#21：走进下一代互联网：HTTP/3
 
 - 活动时间：08 月 18 日周三晚 19 点
 
@@ -28,9 +28,9 @@ description: "08 月 18 日周三晚 19 点，线上直播第 21 期。"
 
 `<SOFA:Channel/>` 将作为 SOFA 所有在线内容的承载，包含直播/音视频教程，集中体现 SOFAStack 的能力全景图。
 
-### | SOFAChannel#21：走进下一代互联网：HTTP3.0
+### | SOFAChannel#21：走进下一代互联网：HTTP/3
 
-近年来，具备优秀基因的 QUIC 协议成为互联网领域炙手可热的传输技术。基于 QUIC 承载的 HTTP2.0 也被正式命名为下一代传输协议： HTTP3.0。这次直播会给大家介绍 QUIC，HTTP3.0 的核心设计理念，以及在蚂蚁的应用实践。
+近年来，具备优秀基因的 QUIC 协议成为互联网领域炙手可热的传输技术。基于 QUIC 承载的 HTTP/2 也被正式命名为下一代传输协议： HTTP/3。这次直播会给大家介绍 QUIC，HTTP/3 的核心设计理念，以及在蚂蚁的应用实践。
 
 ### | 加入 SOFA 钉钉互动群
 
@@ -44,13 +44,13 @@ description: "08 月 18 日周三晚 19 点，线上直播第 21 期。"
 
 ### 19:00-19:05  开场
 
-### 19:05-20:00 走进下一代互联网：HTTP3.0
+### 19:05-20:00 走进下一代互联网：HTTP/3
 
 孔令涛（花名：伯琴），蚂蚁集团技术专家，主要从事四七层协议优化，网关开发等工作。
 
 ### 你将收获
 
-你将了解 QUIC/HTTP3.0 协议的前世今生、优良特性、落地实践、普及情况、与未来发展趋势等。
+你将了解 QUIC/HTTP/3 协议的前世今生、优良特性、落地实践、普及情况、与未来发展趋势等。
 
 ## 了解更多技术干货
 
