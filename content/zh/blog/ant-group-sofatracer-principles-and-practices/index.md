@@ -65,7 +65,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*qxhbQ7tFYjYAAAAAAA
 
 TraceId 收集一次请求中的所有服务节点。其生成规则需要避免不同 TraceId 之间的冲突，并且开销不能很高，毕竟 Trace 链路的生成是业务逻辑之外的额外开销。SOFATracer 中的 TraceId 生成规则是：服务器 IP + 产生 ID 时候的时间 + 自增序列 + 当前进程号，比如：
 
-```
+```bash
 0ad1348f1403169275002100356696
 ```
 
@@ -75,7 +75,7 @@ TraceId 收集一次请求中的所有服务节点。其生成规则需要避免
 
 伪代码如下：
 
-```
+```java
 TraceIdStr.append(ip).append(System.currentTimeMillis())
 append(getNextId()).append(getPID());
 ```
