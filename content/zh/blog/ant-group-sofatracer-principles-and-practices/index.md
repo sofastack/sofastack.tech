@@ -27,11 +27,11 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*qxhbQ7tFYjYAAAAAAA
 
 以上这几个问题其实都是应用的可观测性问题：
 
-1. Log
+1. Log；
 
-2. Trace
+2. Trace；
 
-3. Metrics 
+3. Metrics。
 
 本文将会专注于 Trace 方面，完整地说是分布式链路跟踪 (Distributed tracing)。2010 年谷歌发表了 Dapper 的论文，分享了他们的解决方案，算是业界比较早的分布式链路追踪系统。之后各大互联网公司纷纷参照 Dapper 的思想推出各自的链路跟踪系统，包括 Twitter 的 Zipkin、阿里的鹰眼，还有 PinPoint，Apache 的 HTrace 和 Uber 的 Jaeger；当然，也有我们的本文的主角：SOFATracer。分布式链路的实现有多种多样，因此也催生了分布式链路追踪的规范：OpenTracing，2019 年 OpenTracing 和 OpenCensus 合并成为了 OpenTelemetry。
 
