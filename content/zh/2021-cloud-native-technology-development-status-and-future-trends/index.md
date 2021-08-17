@@ -58,7 +58,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*kv85Q4jbFvwAAAAAAA
 
   通过持续内化的混沌工程实践，提前踩雷，尽量减少 “故障点”，提升系统可靠性。
   
-## 使用 SkyWalking 监控 Kubernetes 事件
+## 使用SkyWalking监控Kubernetes事件
 
 这个议题虽然被安排在第三场演讲，属于云原生交付运维体系，但是与上个议题关联性比较强，所以先在此记述。
 
