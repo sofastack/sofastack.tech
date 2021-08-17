@@ -66,7 +66,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*kv85Q4jbFvwAAAAAAA
 
 >![](https://ata2-img.oss-cn-zhangjiakou.aliyuncs.com/neweditor/6eefe6dc-90e1-417d-9054-1368701c5579.png)
 
-SkyWalking 提供了 logging/metrics/tracing 等多维度可观测性能力，原来只是被用于观测微服务系统，今年提供了 skywalking-kubernetes-event-exporter 接口，专门用于监听 K8s 的 event，对事件进行提纯、收集、发送至 SkyWalking 后端进行分析和存储。
+SkyWalking 提供了 logging/metrics/tracing 等多维度可观测性能力，原来只是被用于观测微服务系统，今年提供了 skywalking-kubernetes-event-exporter 接口，专门用于监听 K8s 的 event，对事件进行提纯、收集，发送至 SkyWalking 后端进行分析和存储。
 
 >![](https://ata2-img.oss-cn-zhangjiakou.aliyuncs.com/neweditor/73bef546-9393-47b1-97a9-3247e64a4694.png)
 
