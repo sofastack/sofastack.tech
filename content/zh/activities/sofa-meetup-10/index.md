@@ -1,8 +1,8 @@
 ---
-title: "「成都站」SOFAStack & Erda 邀你聊一聊云原生的基础设施建设"
+title: "【成都站】SOFAStack & Erda 邀你聊一聊云原生的基础设施建设"
 author: "SOFA 团队"
 authorlink: "https://github.com/sofastack"
-description: "「成都站」SOFAStack & Erda 邀你聊一聊云原生的基础设施建设"
+description: "【成都站】SOFAStack & Erda 邀你聊一聊云原生的基础设施建设"
 categories: "Meetup"
 tags: ["SOFAMetup"]
 date: 2021-08-30T15:00:00+08:00
@@ -20,6 +20,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*kvWHQ5NzzsUAAAAAA
 我们这次的 Meetup 举办城市是哪里了吧？
 
 上面的几句歌词是不是又把你带入了回忆之中?
+
 没错～
 
 成都我们来啦！不过这次我们可不是自己来的哦～
@@ -53,7 +54,6 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*kvWHQ5NzzsUAAAAAA
 《Erda 关于云原生数据开发平台的思考与实践》
 
 >![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*zQgtRpn1vHsAAAAAAAAAAAAAARQnAQ)
-
 
 更多文章请扫码关注“金融级分布式架构”公众号
 
