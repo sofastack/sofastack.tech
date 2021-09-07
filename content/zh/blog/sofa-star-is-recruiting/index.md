@@ -54,15 +54,19 @@ SOFA 陆续在全国各地组织了多场 Meetup 活动，活动全程直播，�
 目前在北京、上海、杭州、合肥举办过 Meetup 活动，后续的还会点亮更多城市（成都、深圳、广州、南京等），欢迎你作为 SOFA 星途者加入我们的征途。
 
 **杭州站**
+
 >![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*FgLlQ6jJ86wAAAAAAAAAAAAAARQnAQ)
 
 **上海站**
+
 >![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*FPv3SoeBf84AAAAAAAAAAAAAARQnAQ)
 
 **北京站**
+
 >![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*PnGoRovUKvAAAAAAAAAAAAAAARQnAQ)
 
 **合肥站**
+
 >![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*-iy2QqHprZgAAAAAAAAAAAAAARQnAQ)
 
 ### 召唤装备！
