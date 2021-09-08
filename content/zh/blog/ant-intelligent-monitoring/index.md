@@ -129,7 +129,7 @@ AntMonitor 日常服务于蚂蚁全站 100+ 业务域，分钟峰值数据清洗
 
 对于常规的业务域租户，AntMonitor 提供机房级的容灾能力，各子系统的机房级容灾方案实现如下。
 
-###  产品系统 
+### 产品系统 
 
 >![](https://oscimg.oschina.net/oscnet/up-96dbeabc4f0a93ce5bea3daa6fb85ddbc17.jpg)
 
@@ -155,7 +155,7 @@ AntMonitor 日常服务于蚂蚁全站 100+ 业务域，分钟峰值数据清洗
 
 ### 告警系统 
 
-![](https://oscimg.oschina.net/oscnet/up-79ba60877a961106239b01b9c24eb455600.jpg)
+>![](https://oscimg.oschina.net/oscnet/up-79ba60877a961106239b01b9c24eb455600.jpg)
 
 告警系统由于与计算系统架构的相似性，稳定性架构上也大同小异。
 
@@ -165,7 +165,7 @@ AntMonitor 日常服务于蚂蚁全站 100+ 业务域，分钟峰值数据清洗
 
 - alarm-gateway 为同城三机房无状态组件，基于 vip + dns 实现机房级容灾能力。
 
-### 存储系统 
+### 存储系统
 
 >![](https://oscimg.oschina.net/oscnet/up-b45596f68b9a183b485b8403f007ec8bc3d.jpg)
 
