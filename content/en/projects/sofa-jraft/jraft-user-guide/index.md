@@ -1034,6 +1034,7 @@ tc qdisc del dev eth0 root
 ```
 
 ## 9. Troubleshooting Tools
+
 When the program is running, you can use the SIGUSR2 signal of the Linux platform to output the status information and metric data of the node. The specific execution method: `kill -s SIGUSR2 pid`
 Relevant information will be output to the specified directory. By default, 3 files are generated in the program working directory (cwd: lsof -p $pid | grep cwd): node_metrics.log, node_describe.log and thread_pool_metrics.log, node_metrics.log stores node metric data , node_describe.log stores node status information, thread_pool_metrics.log stores thread pool information
 
