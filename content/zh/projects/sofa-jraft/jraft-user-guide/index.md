@@ -1132,7 +1132,7 @@ public @interface SPI {
 ## 11. 排查故障工具
 
 在程序运行时，可以利用 Linux 平台的 SIGUSR2 信号输出节点的状态信息以及 metric 数据，具体执行方式: `kill -s SIGUSR2 pid`
-相关信息会输出到指定目录，默认在程序工作目录（cwd:  lsof -p $pid | grep cwd）生成 2 个文件：node_metrics.log 和 node_describe.log，其中 node_metrics.log 存储节点 metric 数据，node_describe.log 存储节点状态信息。
+相关信息会输出到指定目录，默认在程序工作目录（cwd:  lsof -p $pid | grep cwd）生成 3 个文件：node_metrics.log，node_describe.log以及  thread_pool_metrics.log， 其中 node_metrics.log 存储节点 metric 数据，node_describe.log 存储节点状态信息， thread_pool_metrics.log 存储线程池信息
 
 <div class="bi-table">
   <table>
@@ -1182,6 +1182,20 @@ public @interface SPI {
         </td>
         <td rowspan="1" colSpan="1">
           <div data-type="p">节点状态信息</div>
+        </td>
+      </tr>
+     <tr height="34px">
+        <td rowspan="1" colSpan="1">
+          <div data-type="p">jraft.signal.thread.pool.metrics.dir</div>
+        </td>
+        <td rowspan="1" colSpan="1">
+          <div data-type="p">cwd:  lsof -p $pid | grep cwd</div>
+        </td>
+        <td rowspan="1" colSpan="1">
+          <div data-type="p">thread_pool_metrics.log</div>
+        </td>
+        <td rowspan="1" colSpan="1">
+          <div data-type="p">线程池信息</div>
         </td>
       </tr>
     </tbody>
@@ -1279,6 +1293,152 @@ rhea-rpc-request-timer_-1
 
 ...
 
+
+```
+
+```text
+9/11/21 12:36:43 AM ============================================================
+
+-- Timers ----------------------------------------------------------------------
+scheduledThreadPool.JRaft-Global-ElectionTimer
+             count = 18815
+         mean rate = 0.67 calls/second
+     1-minute rate = 0.66 calls/second
+     5-minute rate = 0.67 calls/second
+    15-minute rate = 0.67 calls/second
+               min = 0.01 milliseconds
+               max = 1.72 milliseconds
+              mean = 0.04 milliseconds
+            stddev = 0.12 milliseconds
+            median = 0.02 milliseconds
+              75% <= 0.03 milliseconds
+              95% <= 0.04 milliseconds
+              98% <= 0.18 milliseconds
+              99% <= 0.18 milliseconds
+            99.9% <= 1.72 milliseconds
+scheduledThreadPool.JRaft-Global-SnapshotTimer
+             count = 15
+         mean rate = 0.00 calls/second
+     1-minute rate = 0.00 calls/second
+     5-minute rate = 0.00 calls/second
+    15-minute rate = 0.00 calls/second
+               min = 0.06 milliseconds
+               max = 1.94 milliseconds
+              mean = 0.18 milliseconds
+            stddev = 0.00 milliseconds
+            median = 0.18 milliseconds
+              75% <= 0.18 milliseconds
+              95% <= 0.18 milliseconds
+              98% <= 0.18 milliseconds
+              99% <= 0.18 milliseconds
+            99.9% <= 0.18 milliseconds
+threadPool.JRAFT_CLOSURE_EXECUTOR
+             count = 33
+         mean rate = 0.00 calls/second
+     1-minute rate = 0.00 calls/second
+     5-minute rate = 0.00 calls/second
+    15-minute rate = 0.00 calls/second
+               min = 0.08 milliseconds
+               max = 22.36 milliseconds
+              mean = 0.18 milliseconds
+            stddev = 0.05 milliseconds
+...skipping...
+scheduledThreadPool.JRaft-Global-ElectionTimer
+             count = 18815
+         mean rate = 0.67 calls/second
+     1-minute rate = 0.66 calls/second
+     5-minute rate = 0.67 calls/second
+    15-minute rate = 0.67 calls/second
+               min = 0.01 milliseconds
+               max = 1.72 milliseconds
+              mean = 0.04 milliseconds
+            stddev = 0.12 milliseconds
+            median = 0.02 milliseconds
+              75% <= 0.03 milliseconds
+              95% <= 0.04 milliseconds
+              98% <= 0.18 milliseconds
+              99% <= 0.18 milliseconds
+            99.9% <= 1.72 milliseconds
+scheduledThreadPool.JRaft-Global-SnapshotTimer
+             count = 15
+         mean rate = 0.00 calls/second
+     1-minute rate = 0.00 calls/second
+     5-minute rate = 0.00 calls/second
+    15-minute rate = 0.00 calls/second
+               min = 0.06 milliseconds
+               max = 1.94 milliseconds
+              mean = 0.18 milliseconds
+            stddev = 0.00 milliseconds
+            median = 0.18 milliseconds
+              75% <= 0.18 milliseconds
+              95% <= 0.18 milliseconds
+              98% <= 0.18 milliseconds
+              99% <= 0.18 milliseconds
+            99.9% <= 0.18 milliseconds
+threadPool.JRAFT_CLOSURE_EXECUTOR
+             count = 33
+         mean rate = 0.00 calls/second
+     1-minute rate = 0.00 calls/second
+     5-minute rate = 0.00 calls/second
+    15-minute rate = 0.00 calls/second
+               min = 0.08 milliseconds
+               max = 22.36 milliseconds
+              mean = 0.18 milliseconds
+            stddev = 0.05 milliseconds
+            median = 0.17 milliseconds
+              75% <= 0.23 milliseconds
+              95% <= 0.23 milliseconds
+              98% <= 0.23 milliseconds
+              99% <= 0.23 milliseconds
+            99.9% <= 0.23 milliseconds
+threadPool.JRAFT_RPC_CLOSURE_EXECUTOR
+             count = 1
+         mean rate = 0.00 calls/second
+     1-minute rate = 0.00 calls/second
+     5-minute rate = 0.00 calls/second
+    15-minute rate = 0.00 calls/second
+               min = 7.00 milliseconds
+               max = 7.00 milliseconds
+              mean = 7.00 milliseconds
+            stddev = 0.00 milliseconds
+            median = 7.00 milliseconds
+              75% <= 7.00 milliseconds
+              95% <= 7.00 milliseconds
+              98% <= 7.00 milliseconds
+              99% <= 7.00 milliseconds
+            99.9% <= 7.00 milliseconds
+threadPool.JRaft-RPC-Processor
+             count = 23795
+         mean rate = 0.84 calls/second
+     1-minute rate = 0.85 calls/second
+     5-minute rate = 0.84 calls/second
+    15-minute rate = 0.84 calls/second
+               min = 0.01 milliseconds
+               max = 59.44 milliseconds
+              mean = 1.01 milliseconds
+            stddev = 6.46 milliseconds
+            median = 0.02 milliseconds
+              75% <= 0.03 milliseconds
+              95% <= 0.04 milliseconds
+              98% <= 34.92 milliseconds
+              99% <= 41.59 milliseconds
+            99.9% <= 55.83 milliseconds
+threadPool.grpc-default-executor
+             count = 1
+         mean rate = 0.00 calls/second
+     1-minute rate = 0.00 calls/second
+     5-minute rate = 0.00 calls/second
+    15-minute rate = 0.00 calls/second
+               min = 0.58 milliseconds
+               max = 0.58 milliseconds
+              mean = 0.58 milliseconds
+            stddev = 0.00 milliseconds
+            median = 0.58 milliseconds
+              75% <= 0.58 milliseconds
+              95% <= 0.58 milliseconds
+              98% <= 0.58 milliseconds
+              99% <= 0.58 milliseconds
+            99.9% <= 0.58 milliseconds
 
 ```
 
