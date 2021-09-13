@@ -31,13 +31,14 @@ A：迁移连接之后，创建连接最后就会 start 了。
 
 这篇文章里面有写的。
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*O1JwQrgCiV4AAAAAAAAAAAAAARQnAQ) 
+>![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*O1JwQrgCiV4AAAAAAAAAAAAAARQnAQ) <br/>
 
 3. **@汪晓涛** 提问：  
 
->镜像地址有吗？可以对接 dapr 吗？ 
+>镜像地址有吗？可以对接 dapr 吗？ <br/>
+A：目前是七层扩展哈，对接 dapr 是四层，这个月底应该就可以支持了。 
 
-A：目前是七层扩展哈，对接 dapr 是四层，这个月底应该就可以支持了。 https://github.com/mosn/mosn/issues/1563 
+[https://github.com/mosn/mosn/issues/1563](https://github.com/mosn/mosn/issues/1563)
 
 4. **@徐泽唯** 提问：
 
