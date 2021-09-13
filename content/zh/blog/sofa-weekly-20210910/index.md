@@ -21,15 +21,17 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 
 A：迁移连接之后，创建连接最后就会 start 了。
 
->![](/img/bVcUPhE)
+>![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*HJ5PT68n_7kAAAAAAAAAAAAAARQnAQ)
 
 2. **@胡希国** 提问：  
 
 >父进程的每个长连接 connection fd 里面都有一个 readloop 逻辑是吗？ 一旦 WaitConnectionsDone() 触发了 stopchan 那个条件，就自动做迁移了是吧。 A：是的，每个连接都有 readloop 的， WaitConnectionsDone 就是等他们迁移完。
 
-https://mosn.io/docs/concept/smooth-upgrade/ ， 这篇文章里面有写的。
+[https://mosn.io/docs/concept/smooth-upgrade/ ](https://mosn.io/docs/concept/smooth-upgrade/)
 
->![](/img/bVcUPhV) 
+这篇文章里面有写的。
+
+>![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*O1JwQrgCiV4AAAAAAAAAAAAAARQnAQ) 
 
 3. **@汪晓涛** 提问：  
 
