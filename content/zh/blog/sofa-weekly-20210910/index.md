@@ -17,7 +17,9 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 
 1. **@胡希国** 提问：
 
->这个 start 函数在父进程执行完 WaitConnectionsDone()之后在哪调用的，新的子进程在迁移长连接的时候监听 conn.sock 等着老进程调 startRWloop 去连接和发送 connfd，看源码一直到 WaitConnectionsDone() 就断了，实在没找到接下来在哪执行的 ReadLoop 和 WriteLoop。 https://github.com/mosn/mosn/blob/0ea3e3b4b2abfde2a845edc006a3e866ff0b1201/pkg/network/connection.go#L186 
+>这个 start 函数在父进程执行完 WaitConnectionsDone()之后在哪调用的，新的子进程在迁移长连接的时候监听 conn.sock 等着老进程调 startRWloop 去连接和发送 connfd，看源码一直到 WaitConnectionsDone() 就断了，实在没找到接下来在哪执行的 ReadLoop 和 WriteLoop。 
+
+[https://github.com/mosn/mosn/blob/0ea3e3b4b2abfde2a845edc006a3e866ff0b1201/pkg/network/connection.go#L186 ](https://github.com/mosn/mosn/blob/0ea3e3b4b2abfde2a845edc006a3e866ff0b1201/pkg/network/connection.go#L186 )
 
 A：迁移连接之后，创建连接最后就会 start 了。
 
@@ -27,7 +29,7 @@ A：迁移连接之后，创建连接最后就会 start 了。
 
 >父进程的每个长连接 connection fd 里面都有一个 readloop 逻辑是吗？ 一旦 WaitConnectionsDone() 触发了 stopchan 那个条件，就自动做迁移了是吧。 A：是的，每个连接都有 readloop 的， WaitConnectionsDone 就是等他们迁移完。
 
-[https://mosn.io/docs/concept/smooth-upgrade/ ](https://mosn.io/docs/concept/smooth-upgrade/)
+[https://mosn.io/docs/concept/smooth-upgrade/](https://mosn.io/docs/concept/smooth-upgrade/)
 
 这篇文章里面有写的。
 
