@@ -19,7 +19,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 
 >这个 start 函数在父进程执行完 WaitConnectionsDone()之后在哪调用的，新的子进程在迁移长连接的时候监听 conn.sock 等着老进程调 startRWloop 去连接和发送 connfd，看源码一直到 WaitConnectionsDone() 就断了，实在没找到接下来在哪执行的 ReadLoop 和 WriteLoop。 
 
-[https://github.com/mosn/mosn/blob/0ea3e3b4b2abfde2a845edc006a3e866ff0b1201/pkg/network/connection.go#L186 ](https://github.com/mosn/mosn/blob/0ea3e3b4b2abfde2a845edc006a3e866ff0b1201/pkg/network/connection.go#L186 )
+[https://github.com/mosn/mosn/blob/0ea3e3b4b2abfde2a845edc006a3e866ff0b1201/pkg/network/connection.go#L186](https://github.com/mosn/mosn/blob/0ea3e3b4b2abfde2a845edc006a3e866ff0b1201/pkg/network/connection.go#L186)
 
 A：迁移连接之后，创建连接最后就会 start 了。
 
