@@ -1099,7 +1099,7 @@ Relevant information will be output to the specified directory. By default, 3 fi
           <div data-type="p">thread_pool_metrics.log</div>
         </td>
         <td rowspan="1" colSpan="1">
-          <div data-type="thread pool info</div>
+          <div data-type="p">thread pool info</div>
         </td>
       </tr>
     </tbody>
