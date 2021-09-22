@@ -55,8 +55,6 @@ Mesh 架构下，sidecar 对流量管理具备天然的优势，业务无需在�
 
 基于这样的背景下，我们在 MOSN 中进行了统一限流能力建设。
 
-
-
 ## 站在巨人肩膀上
 
 在建设统一限流能力的过程中，我们调研了许多成熟的产品，既包括我们自己的 Guardian、Shiva、都江堰等，也包括开源社区的 concurrency-limits 、Hystrix、Sentinel 等产品。
@@ -87,14 +85,9 @@ MOSN 作为一款蚂蚁自研的基于 Golang 技术建设的 Mesh 开源框架�
 
 最终我们在 MOSN 里将各种能力都完成了建设，下表展示了 MOSN 限流和其他限流组件的能力对比：
 
-
-
 ![图片](https://mmbiz.qpic.cn/mmbiz_png/nibOZpaQKw0ib4hT03JTkibpYDjcicib5fnLyNMssZWAkvyfLzicQic3TLETVZbf1FxEPDHICrk32SCBaqDams5EEU7Cg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
-
-
 ## 奥卡姆剃刀
-
 
 *Pluralitas non est ponenda sine necessitate.*
 
@@ -110,12 +103,9 @@ MOSN 作为一款蚂蚁自研的基于 Golang 技术建设的 Mesh 开源框架�
 
 **-** *流量控制的管控台全部收口到统一限流中心*
 
-
-
 >![](https://mmbiz.qpic.cn/mmbiz_png/nibOZpaQKw0ib4hT03JTkibpYDjcicib5fnLyGAoKiavqbrqoJ9lt7L4voOkIeibNOG0mic9RKWvkyfaqooFVI6hk4MF3A/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
 这应该是我们造的最后一个限流轮子了吧
-
 
 **青出于蓝而胜于蓝**
 
@@ -134,8 +124,6 @@ MOSN 作为一款蚂蚁自研的基于 Golang 技术建设的 Mesh 开源框架�
 我们希望即使在系统漏配错配限流的情况下，在系统资源严重不足时 MOSN 能够精准的找到导致系统资源不足的罪魁祸首，并实时根据系统水位自动调节异常流量。
 
 在此需求背景下我们实现了一套符合成熟云原生定义的自检测、自调节的限流策略。
-
-
 
 >![](https://mmbiz.qpic.cn/mmbiz_png/nibOZpaQKw0ib4hT03JTkibpYDjcicib5fnLyYNM4e7WsibiajbicyHOBAqfgqzNmeHTBVMTkZF63g0iaEwGJreaoprem9A/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
