@@ -41,8 +41,6 @@ A：有开源，有个镜像可以玩。
 
 A：在开源，内部的做了一些业务相关的扩展。
 
-
-
 **3、@Glennxu** 提问：
 
 > **请问下现在统一限流中心能使用么？**
@@ -111,7 +109,7 @@ jraft 也开放了设置。
 
 https://github.com/sofastack/sofa-boot/releases/tag/v3.9.0
 
-**SOFARPC 发布 v5.7.10 版本代码，**\主要更新如下\：
+**SOFARPC 发布 v5.7.10 版本代码，主要更新如下：
 
 - SOFARPC 支持接口中静态方法的使用；
 
