@@ -181,7 +181,7 @@ StateMachine 提供了状态回调的接口，我们在回调中对接内部的�
 
 *关于 read-index read 可以参考 pingcap 的这篇博客：*
 
-*https://pingcap.com/zh/blog/lease-read*
+*[https://pingcap.com/zh/blog/lease-read](https://pingcap.com/zh/blog/lease-read)*
 
 com.alipay.sofa.jraft.Node#readIndex(final byte[] requestContext, final ReadIndexClosure done)
 
@@ -342,7 +342,6 @@ Slf4jReporter reporter = Slf4jReporter         .forRegistry(node.getNodeMetrics(
 除此之外，还可以利用 **kill - s SIGUSR2 pid** 给 SOFAJRaft 进程发送信号量，进程收到信号量后，会在进程的启动目录中生成指标数据数据文件。
 
 这里我个人比较关注 node_describe.log 中 log manager 的 diskId 和 appliedId，前者是 Raft log 写到磁盘中的位置，后者是状态机当前应用到 Raft log 的位置，可以通过对比这两个数据，用来观察状态机的吞吐是否正常，一旦两者相差很多，说明状态机出问题了。
-
 
 **「后续演进」**
 
