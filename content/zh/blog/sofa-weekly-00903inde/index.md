@@ -32,8 +32,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 A：***pkg/server/handler.go\***，这里面可以看到设置进去的。
 
->![](https://mmbiz.qpic.cn/mmbiz_jpg/nibOZpaQKw09kEd22ZjeedX2r4ktrj8EpjRWtNT7VDyss86vjqfJldfzSeJLbKPIJ1k79ObcfhIQmEzg3hvgwXA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
-
+>![](https://mmbiz.qpic.cn/mmbiz_jpg/nibOZpaQKw09kEd22ZjeedX2r4ktrj8EpjRWtNT7VDyss86vjqfJldfzSeJLbKPIJ1k79ObcfhIQmEzg3hvgwXA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)<br/>
 >![](https://mmbiz.qpic.cn/mmbiz_jpg/nibOZpaQKw09kEd22ZjeedX2r4ktrj8EpX1SCwvGiaAVy2M6jEZ8w7ibLtqfNficIahpE29s6I6WqYl08c0ibRNS9Hg/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
 **2、@黄润良** 提问：
