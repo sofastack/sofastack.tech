@@ -6,7 +6,7 @@ description: "SOFA WEEKLY | sofa-common-tools 发布新版本，QA 整理"
 categories: "SOFA Weekly"
 tags: ["SOFA Weekly"]
 date: 2021-09-03T15:00:00+08:00
-cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAAAAAAAAAARQnAQ"
+cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*_ewiQbuzeOQAAAAAAAAAAAAAARQnAQ"
 ---
 SOFA WEEKLY | 每周精选，筛选每周精华问答
 
