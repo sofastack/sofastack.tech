@@ -37,9 +37,7 @@ A：迁移连接之后，创建连接最后就会 start 了。
 
 **2、@胡希国** 提问：
 
-> 父进程的每个长连接 connection fd 里面都有一个 readloop 逻辑是吗？
-
-> 一旦 WaitConnectionsDone() 触发了 stopchan 那个条件，就自动做迁移了是吧。
+> 父进程的每个长连接 connection fd 里面都有一个 readloop 逻辑是吗？一旦 WaitConnectionsDone() 触发了 stopchan 那个条件，就自动做迁移了是吧。
 
 A：是的，每个连接都有 readloop 的， WaitConnectionsDone 就是等他们迁移完。
 
