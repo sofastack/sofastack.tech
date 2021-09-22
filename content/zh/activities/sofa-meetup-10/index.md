@@ -6,7 +6,7 @@ description: "【活动回顾】SOFAMeetup#8 成都站 云原生基础设施建�
 categories: "SOFAMeetup"
 tags: ["SOFAMeetup"]
 date: 2021-09-11T15:00:00+08:00
-cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*-iy2QqHprZgAAAAAAAAAAAAAARQnAQ"
+cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*kvWHQ5NzzsUAAAAAAAAAAAAAARQnAQ"
 ---
 
 ## 概要
