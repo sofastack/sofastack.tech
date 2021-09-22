@@ -6,7 +6,7 @@ description: "技术风口上的限流"
 categories: "SOFAStack"
 tags: ["SOFAStack"]
 date: 2021-09-14T15:00:00+08:00
-cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*PhN5Sp2T9NYAAAAAAAAAAAAAARQnAQ"
+cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*baLOSbaZb1UAAAAAAAAAAAAAARQnAQ"
 ---
 
 ## 站在风口上
