@@ -101,7 +101,9 @@ jraft 也开放了设置。
 
 - 优化 Spring 上下文并行启动的线程池配置。
 
-**详细参考：**[https://github.com/sofastack/sofa-boot/releases/tag/v3.9.0](https://github.com/sofastack/sofa-boot/releases/tag/v3.9.0）
+**详细参考：**
+
+[https://github.com/sofastack/sofa-boot/releases/tag/v3.9.0](https://github.com/sofastack/sofa-boot/releases/tag/v3.9.0)
 
 **SOFARPC 发布 v5.7.10 版本代码，主要更新如下：
 
@@ -117,4 +119,6 @@ jraft 也开放了设置。
 
 - 修复 ProviderInfo中getAttr 类型转换问题。
 
-**详细参考：**[https://github.com/sofastack/sofa-rpc/releases/tag/v5.7.10](https://github.com/sofastack/sofa-rpc/releases/tag/v5.7.10）
+**详细参考：**
+
+[https://github.com/sofastack/sofa-rpc/releases/tag/v5.7.10](https://github.com/sofastack/sofa-rpc/releases/tag/v5.7.10)
