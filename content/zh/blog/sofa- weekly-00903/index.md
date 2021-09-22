@@ -27,17 +27,16 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **1、@黄润良** 提问：
 
->  **在写 filter 扩展的时候，如何获取一些请求的信息？比如请求 ip 之类的。**
+> 在写 filter 扩展的时候，如何获取一些请求的信息？比如请求 ip 之类的。
 
 A：***pkg/server/handler.go\***，这里面可以看到设置进去的。
 
 >![](https://mmbiz.qpic.cn/mmbiz_jpg/nibOZpaQKw09kEd22ZjeedX2r4ktrj8EpjRWtNT7VDyss86vjqfJldfzSeJLbKPIJ1k79ObcfhIQmEzg3hvgwXA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
-
 >![](https://mmbiz.qpic.cn/mmbiz_jpg/nibOZpaQKw09kEd22ZjeedX2r4ktrj8EpX1SCwvGiaAVy2M6jEZ8w7ibLtqfNficIahpE29s6I6WqYl08c0ibRNS9Hg/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
 **2、@黄润良** 提问：
 
->  **一些 filter 只能用于某些协议的，但从配置来看，filter 应该是对所有协议都生效的吧？那我在设计 filter 的是需要考虑协议的兼容性吗？**
+> 一些 filter 只能用于某些协议的，但从配置来看，filter 应该是对所有协议都生效的吧？那我在设计 filter 的是需要考虑协议的兼容性吗？
 
 A：你配置的 listener 块里面有协议，就可以和 filter 对应上了。
 
@@ -47,7 +46,7 @@ A：你配置的 listener 块里面有协议，就可以和 filter 对应上了�
 
 **3、@黄润良** 提问：
 
->  **目前有方法可以控制 filter 的执行的先后顺序吗？**
+> 目前有方法可以控制 filter 的执行的先后顺序吗？
 
 A：按照配置的顺序。
 
@@ -55,7 +54,7 @@ A：按照配置的顺序。
 
 **4、@楼政浩** 提问：
 
->  **往 raft 集群提交数据，都得通过 RPC 吗？**
+> 往 raft 集群提交数据，都得通过 RPC 吗？
 >
 > **如果我的 raft 节点的 fsm 又输出了 log，我想往集群提交这个 log，可以通过什么接口？**
 
@@ -63,7 +62,7 @@ A：jraft 通过 raft log 将数据复制到你各个节点的 fsm，fsm 的输�
 
 **5、@陈华洋** 提问：
 
->  **SOFABoot 的模块化是怎么解决数据库链接的问题。**
+> SOFABoot 的模块化是怎么解决数据库链接的问题。
 >
 > **就是 SOFABoot 模块化之后，我把 mybatis 配置到了公共模块里面，然后其他模块父上下文指定为公共模块，但是其他模块内的 @Mapper 在项目启动的时候都扫描不到****。**
 
@@ -71,19 +70,19 @@ A：建议把所有数据库相关的操作都放同一个模块，封装成 dal
 
 **6、@Z** 提问：
 
->  **请问在大数据量操作的时候，配置上有什么建议吗？**
+> 请问在大数据量操作的时候，配置上有什么建议吗？
 
 A：把 6000 多条数据的操作在一个本地事务中完成，合并成一个分支注册。
 
 **7、@金箍** 提问：
 
->  **请问全局事务提交成功或者失败之后，有回调方法可以用吗？**
+> 请问全局事务提交成功或者失败之后，有回调方法可以用吗？
 
 A：tm 有个 hook，其他没有。源码搜索***「transactionlHook」***有相关的文档。
 
 **8、@仪式** 提问：
 
->  **如果事务进行的过程中事务发起者（TM）宕机了，Seata 会怎么做故障处理呀。**
+> 如果事务进行的过程中事务发起者（TM）宕机了，Seata 会怎么做故障处理呀。
 
 A：超时回滚，如果 TM 是决议提交给了 TC，那么“是”提交，“否”就只能等待超时回滚。TC 里的定时任务来做超时回滚。
 
