@@ -44,7 +44,6 @@ A：在开源，内部的做了一些业务相关的扩展。
 **3、@Glennxu** 提问：
 
 > **请问下现在统一限流中心能使用么？**
-
 >![](https://mmbiz.qpic.cn/mmbiz_jpg/nibOZpaQKw0ibnqPSQY2DiaTkYvIJ96Macjicf7UxYf0j4ldTISQ4bKZaY4w5nlZzKbk67w4wN0tCXsO0tfAZRaNcA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
 A：现在开源版本还用不了集群限流，自适应限流的实现也和我们的有一些差异,后面我们会考虑移植到开源版本的。
@@ -68,7 +67,6 @@ A：其实 lua 也可以， 比如用 go 你可以启动一个 zk，然后去调
 **6、@茄子** 提问：
 
 > 请教一下，在使用 rheakv 的过程中出现这个问题要怎么排查?
-
 >![](https://mmbiz.qpic.cn/mmbiz_jpg/nibOZpaQKw0ibnqPSQY2DiaTkYvIJ96Macj2vUkDNkYuxiaKQ3owRZiaHRQ5SdrqaCI4uZ6n5cnaqibtQeZbJsYMYqtw/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
 A：可以看下 bolt 怎么设置写入的高低水位线，这应该是触发了 netty 的 channel 写入水位线。
@@ -101,9 +99,7 @@ jraft 也开放了设置。
 
 - 优化 Spring 上下文并行启动的线程池配置。
 
-**详细参考：**
-
-[https://github.com/sofastack/sofa-boot/releases/tag/v3.9.0](https://github.com/sofastack/sofa-boot/releases/tag/v3.9.0）
+**详细参考：**[https://github.com/sofastack/sofa-boot/releases/tag/v3.9.0](https://github.com/sofastack/sofa-boot/releases/tag/v3.9.0）
 
 **SOFARPC 发布 v5.7.10 版本代码，主要更新如下：
 
@@ -119,6 +115,4 @@ jraft 也开放了设置。
 
 - 修复 ProviderInfo中getAttr 类型转换问题。
 
-**详细参考：**
-
-[https://github.com/sofastack/sofa-rpc/releases/tag/v5.7.10](https://github.com/sofastack/sofa-rpc/releases/tag/v5.7.10）
+**详细参考：**[https://github.com/sofastack/sofa-rpc/releases/tag/v5.7.10](https://github.com/sofastack/sofa-rpc/releases/tag/v5.7.10）
