@@ -78,7 +78,7 @@ com.alipay.remoting.config.BoltGenericOption#NETTY_BUFFER_LOW_WATER_MARK
 
 刚才找了下，你看些这个类的 options。
 
->![图片](https://mmbiz.qpic.cn/mmbiz_jpg/nibOZpaQKw0ibnqPSQY2DiaTkYvIJ96MacjFr97FKe9hLx3vMQibZneib0NnL7jDOhUC1QZMzgh1tKrOX46utjIw5ew/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+>![](https://mmbiz.qpic.cn/mmbiz_jpg/nibOZpaQKw0ibnqPSQY2DiaTkYvIJ96MacjFr97FKe9hLx3vMQibZneib0NnL7jDOhUC1QZMzgh1tKrOX46utjIw5ew/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
 
 com.alipay.sofa.jraft.rpc.impl.BoltRaftRpcFactory#CHANNEL_WRITE_BUF_LOW_WATER_MARK
 com.alipay.sofa.jraft.rpc.impl.BoltRaftRpcFactory#CHANNEL_WRITE_BUF_HIGH_WATER_MARK
@@ -103,7 +103,7 @@ jraft 也开放了设置。
 
 **详细参考：**
 
-https://github.com/sofastack/sofa-boot/releases/tag/v3.9.0
+[https://github.com/sofastack/sofa-boot/releases/tag/v3.9.0](https://github.com/sofastack/sofa-boot/releases/tag/v3.9.0）
 
 **SOFARPC 发布 v5.7.10 版本代码，主要更新如下：
 
@@ -121,4 +121,4 @@ https://github.com/sofastack/sofa-boot/releases/tag/v3.9.0
 
 **详细参考：**
 
-https://github.com/sofastack/sofa-rpc/releases/tag/v5.7.10
+[https://github.com/sofastack/sofa-rpc/releases/tag/v5.7.10](https://github.com/sofastack/sofa-rpc/releases/tag/v5.7.10）
