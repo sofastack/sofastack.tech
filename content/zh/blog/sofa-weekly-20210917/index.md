@@ -6,11 +6,13 @@ description: "SOFA WEEKLY | sofa-common-tools 发布新版本，QA 整理"
 categories: "SOFA Weekly"
 tags: ["SOFA Weekly"]
 date: 2021-09-17T15:00:00+08:00
-cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAAAAAAAAAARQnAQ"
+cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*_ewiQbuzeOQAAAAAAAAAAAAAARQnAQ"
 ---
 SOFA WEEKLY | 每周精选，筛选每周精华问答
 
 同步开源进展，欢迎留言互动
+
+>![weekly.jpg](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAAAAAAAAARQnAQ)
 
 SOFAStack（Scalable Open Financial Architecture Stack)是蚂蚁金服自主研发的金融级云原生架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 
@@ -46,7 +48,7 @@ A：在开源，内部的做了一些业务相关的扩展。
 
 **请问下现在统一限流中心能使用么？**
 
->![](https://mmbiz.qpic.cn/mmbiz_jpg/nibOZpaQKw0ibnqPSQY2DiaTkYvIJ96Macjicf7UxYf0j4ldTISQ4bKZaY4w5nlZzKbk67w4wN0tCXsO0tfAZRaNcA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+>![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*NZczR6FTwMAAAAAAAAAAAAAAARQnAQ)
 
 A：现在开源版本还用不了集群限流，自适应限流的实现也和我们的有一些差异,后面我们会考虑移植到开源版本的。
 
@@ -70,7 +72,7 @@ A：其实 lua 也可以， 比如用 go 你可以启动一个 zk，然后去调
 
 请教一下，在使用 rheakv 的过程中出现这个问题要怎么排查?
 
->![](https://mmbiz.qpic.cn/mmbiz_jpg/nibOZpaQKw0ibnqPSQY2DiaTkYvIJ96Macj2vUkDNkYuxiaKQ3owRZiaHRQ5SdrqaCI4uZ6n5cnaqibtQeZbJsYMYqtw/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+>![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*OLCrSbMK6XsAAAAAAAAAAAAAARQnAQ)
 
 A：可以看下 bolt 怎么设置写入的高低水位线，这应该是触发了 netty 的 channel 写入水位线。
 
@@ -79,7 +81,7 @@ com.alipay.remoting.config.BoltGenericOption#NETTY_BUFFER_LOW_WATER_MARK
 
 刚才找了下，你看些这个类的 options。
 
->![](https://mmbiz.qpic.cn/mmbiz_jpg/nibOZpaQKw0ibnqPSQY2DiaTkYvIJ96MacjFr97FKe9hLx3vMQibZneib0NnL7jDOhUC1QZMzgh1tKrOX46utjIw5ew/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+>![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*oHFPR7eiw78AAAAAAAAAAAAAARQnAQ)
 
 com.alipay.sofa.jraft.rpc.impl.BoltRaftRpcFactory#CHANNEL_WRITE_BUF_LOW_WATER_MARK
 com.alipay.sofa.jraft.rpc.impl.BoltRaftRpcFactory#CHANNEL_WRITE_BUF_HIGH_WATER_MARK
@@ -123,3 +125,17 @@ jraft 也开放了设置。
 **详细参考：**
 
 [https://github.com/sofastack/sofa-rpc/releases/tag/v5.7.10](https://github.com/sofastack/sofa-rpc/releases/tag/v5.7.10)
+
+### 本周推荐阅读
+
+- [2021 年云原生技术发展现状及未来趋势](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247492248&idx=1&sn=c26d93b04b2ee8d06d8d495e114cb960&chksm=faa30d42cdd48454b4166a29efa6c0e775ff443f972bd74cc1eb057ed4f0878b2cb162b356bc&token=1414725197)
+
+- [蚂蚁集团 SOFATracer 原理与实践](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247491935&idx=1&sn=75421dd34ec84d5889d7a4306f1c6a03&chksm=faa30e85cdd4879335726d670e94c5b360e53a1f3f74f41c66c0c6221d5e8459c35a653e94b6&token=1414725197)
+
+- [KCL：声明式的云原生配置策略语言](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247491634&idx=1&sn=8359805abd97c598c058c6b5ad573d0d&chksm=faa30fe8cdd486fe421da66237bdacb11d83c956b087823808ddaaff52c1b1900c02dbf80c07&token=1414725197)
+
+- [蚂蚁集团万级规模 K8s 集群 etcd 高可用建设之路](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247491409&idx=1&sn=d6c0722d55b772aedb6ed8e34979981d&chksm=faa0f08bcdd7799dabdb3b934e5068ff4e171cffb83621dc08b7c8ad768b8a5f2d8668a4f57e&token=1414725197)
+
+更多文章请扫码关注“金融级分布式架构”公众号
+
+>![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*5aK0RYuH9vgAAAAAAAAAAAAAARQnAQ)
