@@ -1,11 +1,11 @@
 ---
-title: "技术风口上的限流"
+title: "SOFAJRaft 在同程旅游中的实践"
 author: "赵延"
 authorlink: "https://github.com/sofastack"
 description: "SOFAJRaft 在同程旅游中的实践"
 categories: "SOFAStack"
 tags: ["SOFAStack"]
-date: 2021-09-14T15:00:00+08:00
+date: 2021-09-21T15:00:00+08:00
 cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*RzWkR4udP3gAAAAAAAAAAAAAARQnAQ"
 ---
 
