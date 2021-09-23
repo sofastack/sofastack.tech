@@ -6,7 +6,7 @@ description: "技术风口上的限流"
 categories: "SOFAStack"
 tags: ["SOFAStack"]
 date: 2021-09-14T15:00:00+08:00
-cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*PhN5Sp2T9NYAAAAAAAAAAAAAARQnAQ"
+cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*bUt_RJfLnRkAAAAAAAAAAAAAARQnAQ"
 ---
 
 ## 站在风口上
@@ -29,7 +29,7 @@ Service Mesh 作为 sidecar 运行，对应用程序来说是透明，所有应�
 
 在实践中，Service Mesh 通常**以轻量级网络代理阵列**的形式实现，这些代理与应用程序代码部署在一起，对应用程序来说无需感知代理的存在。
 
->![](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)
+>![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*dz-fRImoXD4AAAAAAAAAAAAAARQnAQ)
 
 相较于传统的限流组件，Mesh 限流具备很多优势，在研发效能和研发成本上都取得了明显的收益：
 
@@ -41,7 +41,7 @@ Service Mesh 作为 sidecar 运行，对应用程序来说是透明，所有应�
 
 **「背景业务」**
 
->![](https://mmbiz.qpic.cn/mmbiz_png/nibOZpaQKw0ib4hT03JTkibpYDjcicib5fnLyZm8bFa83iaSunFlDElbaRUYPpzAuuO0dEUwA3fqT8xx8lfSBSN1ET4w/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+>![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*kGiuT4VDNxIAAAAAAAAAAAAAARQnAQ)
 
 在 Mesh 统一限流实现前，蚂蚁集团内部存在多个不同的限流产品，分别提供不同的流量控制策略：
 
@@ -87,11 +87,11 @@ MOSN 作为一款蚂蚁自研的基于 Golang 技术建设的 Mesh 开源框架�
 
 基于 Sentinel 良好的扩展能力，我们对单机限流、服务熔断、集群限流、自适应限流等都做了蚂蚁自己的实现，也将部分通用的改动反哺到了开源社区，同时配套建设了统一的日志监控报警、统一限流中心。
 
-![图片](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)
+>![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*61VEQrkG6y4AAAAAAAAAAAAAARQnAQ)
 
 最终我们在 MOSN 里将各种能力都完成了建设，下表展示了 MOSN 限流和其他限流组件的能力对比：
 
-![图片](https://mmbiz.qpic.cn/mmbiz_png/nibOZpaQKw0ib4hT03JTkibpYDjcicib5fnLyNMssZWAkvyfLzicQic3TLETVZbf1FxEPDHICrk32SCBaqDams5EEU7Cg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+>![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Tte4RauXe6oAAAAAAAAAAAAAARQnAQ)
 
 ## 奥卡姆剃刀
 
@@ -99,7 +99,7 @@ MOSN 作为一款蚂蚁自研的基于 Golang 技术建设的 Mesh 开源框架�
 
 *如无必要，勿增实体* 
 
-![图片](https://mmbiz.qpic.cn/mmbiz_png/nibOZpaQKw0ib4hT03JTkibpYDjcicib5fnLyGAoKiavqbrqoJ9lt7L4voOkIeibNOG0mic9RKWvkyfaqooFVI6hk4MF3A/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+>![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*BecDSaGdDXQAAAAAAAAAAAAAARQnAQ)
 
 一个限流策略就配套一个 SDK 和一个管理后台七零八落，交互体验参差不齐，文档和操作手册质量也良莠不齐，交由不同的团队维护和答疑，如果你全都体验过一遍一定会深恶痛绝。
 
@@ -109,7 +109,7 @@ MOSN 作为一款蚂蚁自研的基于 Golang 技术建设的 Mesh 开源框架�
 
 **-** *流量控制的管控台全部收口到统一限流中心*
 
->![](https://mmbiz.qpic.cn/mmbiz_png/nibOZpaQKw0ib4hT03JTkibpYDjcicib5fnLyGAoKiavqbrqoJ9lt7L4voOkIeibNOG0mic9RKWvkyfaqooFVI6hk4MF3A/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+>![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*fHE-SYAWyLYAAAAAAAAAAAAAARQnAQ)
 
 这应该是我们造的最后一个限流轮子了吧
 
@@ -131,7 +131,7 @@ MOSN 作为一款蚂蚁自研的基于 Golang 技术建设的 Mesh 开源框架�
 
 在此需求背景下我们实现了一套符合成熟云原生定义的自检测、自调节的限流策略。
 
->![](https://mmbiz.qpic.cn/mmbiz_png/nibOZpaQKw0ib4hT03JTkibpYDjcicib5fnLyYNM4e7WsibiajbicyHOBAqfgqzNmeHTBVMTkZF63g0iaEwGJreaoprem9A/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+>![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*r7b5RIrIZ28AAAAAAAAAAAAAARQnAQ)
 
 自适应限流的实现原理并不复杂，朴素的解释就是，***触发限流后实时检测系统整体水位，同时秒级按比例调节流量***。
 
@@ -149,7 +149,7 @@ MOSN 作为一款蚂蚁自研的基于 Golang 技术建设的 Mesh 开源框架�
 
 如果有基线数据则对比当前并发是否超过基线数据，根据实际情况决策是否允许该请求通过。
 
->![](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)
+>![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*sTquSrlyqJcAAAAAAAAAAAAAARQnAQ)
 
 这套自主实现的自适应限流有如下几点优势:
 
@@ -175,7 +175,7 @@ MOSN 作为一款蚂蚁自研的基于 Golang 技术建设的 Mesh 开源框架�
 
 计算机科学领域的任何问题都可以通过增加一个间接的中间层来解决，我们很容易想到通过一个统一的外部的计数器来存储限流统计数据，这就是集群限流的基本思想。
 
->![](https://mmbiz.qpic.cn/mmbiz_png/nibOZpaQKw0ib4hT03JTkibpYDjcicib5fnLybnnccoia77wWPKDoe4R0uVEyUY68rBtEWVdIB71cOjlj19D03nkxrNg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+>![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*4I6KQol6T58AAAAAAAAAAAAAARQnAQ)
 
 不过每个请求都去同步请求缓存存在一些问题：
 
@@ -185,7 +185,7 @@ MOSN 作为一款蚂蚁自研的基于 Golang 技术建设的 Mesh 开源框架�
 
 **- **我们在集群限流中提供了同步限流和异步限流两种模式。针对流量很大或耗时敏感的情况我们设计了一个二级缓存方案，不再每次都请求缓存，而是在本地做一个累加，达到一定的份额后或者达到一定时间间隔后再咨询缓存，如果远端份额已扣减完，则将阻止流量再进入，直到下一个时间窗口后恢复。异步限流模式在大流量场景下对集群限流的性能和精度实现了尽可能的平衡。
 
->![](https://mmbiz.qpic.cn/mmbiz_png/nibOZpaQKw0ib4hT03JTkibpYDjcicib5fnLyWcAlsNJ9n0YZb5lc1AibVFMAUqxMVS68EaoLSk9kjVqf9kLcNrSu2Mg/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+>![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*SHgsTIxniMMAAAAAAAAAAAAAARQnAQ)
 
 **精细化限流**
 
@@ -193,7 +193,7 @@ MOSN 作为一款蚂蚁自研的基于 Golang 技术建设的 Mesh 开源框架�
 
 **精细化限流就是为了解决这样的复杂限流配置而设计的。**
 
->![](https://mmbiz.qpic.cn/mmbiz_png/nibOZpaQKw0ib4hT03JTkibpYDjcicib5fnLy6C5SNIoOWaFqG0H6wShGOmYflMjLxKZx9MA3rBZ3AcO5NINGDo8aXQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+>![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*mxBPT7CRB7cAAAAAAAAAAAAAARQnAQ)
 
 我们先梳理一下业务同学可能希望支持的条件有哪些，基本上概括起来有几类：
 
@@ -217,7 +217,7 @@ MOSN 作为一款蚂蚁自研的基于 Golang 技术建设的 Mesh 开源框架�
 
 流量条件规则就是让基本信息、业务信息等支持基本的逻辑运算，根据运算结果生成独立的子资源点。
 
->![](https://mmbiz.qpic.cn/mmbiz_png/nibOZpaQKw0ib4hT03JTkibpYDjcicib5fnLyahgItB9rlkrRialDCXwJ6AyVkvENkhemcic0wQLtw3RXIFqdMF3wCjHw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+>![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*mPyUR75CuYgAAAAAAAAAAAAAARQnAQ)
 
 根据业务配置的条件规则将流量拆分成若干个子资源点，再针对“子资源点”配置独立的限流规则，从而实现了精细化限流的需求。
 
@@ -231,7 +231,7 @@ MOSN 作为一款蚂蚁自研的基于 Golang 技术建设的 Mesh 开源框架�
 
 限流解决的是总体的容量问题，对于强依赖的服务限流后业务仍然表现为失败，更好的办法是将流量快速转移到其他健康机器。
 
->![](https://mmbiz.qpic.cn/mmbiz_png/nibOZpaQKw0ib4hT03JTkibpYDjcicib5fnLyY0fBnjTM8zr3eOrjoe9HCx2wWURC1ACTIicPKic3JMYf4oC2f2Ep2rgw/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+>![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*hOb2Trn0rH8AAAAAAAAAAAAAARQnAQ)
 
 传统的自愈平台都是通过监控发现机器故障，继而执行后续的自愈动作，监控通常会有 2～3 分钟的数据延迟，如果在自适应限流触发后立即上报数据给自愈平台，自愈平台再进行判断确认是否是单机问题，随后执行自愈处理，则可以提高自愈的实效性，进一步提高业务可以率。
 
@@ -243,7 +243,7 @@ MOSN 作为一款蚂蚁自研的基于 Golang 技术建设的 Mesh 开源框架�
 
 更好的办法是**将请求转发到提前准备好的降级服务中**。
 
->![](https://mmbiz.qpic.cn/mmbiz_png/nibOZpaQKw0ib4hT03JTkibpYDjcicib5fnLydicljSMaEC0XxCaXKSLdSOVWucibmXmykBzIGN2iabCJHIj83KpTF17uQ/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+>![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Kks2S6XXyfIAAAAAAAAAAAAAARQnAQ)
 
 基于 Serverless 平台实现的降级中台，可以将降级的一些通用逻辑下沉到基座中（例如：缓存记账、异步恢复等），业务可以根据实际需求实现自己的 Serverless 业务降级模块，这样即使在服务完全不可用的状态下，MOSN 仍然可以将请求转发到降级服务中，从而实现更高的业务可用率。
 
@@ -254,3 +254,21 @@ MOSN 作为一款蚂蚁自研的基于 Golang 技术建设的 Mesh 开源框架�
 以上就是我们 Mesh 限流实践与落地的一些经验分享，希望大家能通过这些分享对 Service Mesh 能有更深入的认识和了解，也期待大家更多的关注 MOSN ，让我们能得到更多社区的反馈，帮助我们做得更好。
 
 希望大家一起努力, 共同进步。
+
+>![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*bUt_RJfLnRkAAAAAAAAAAAAAARQnAQ)
+
+开源项目 MOSN 核心成员「张稀虹」，在 8 月 11 日 SOFAMeetup 「成都站」进行了《技术风口上的限流》分享，带领大家了解 Mesh 限流熔断未来的探索方向。
+
+### 本周推荐阅读
+
+- [2021 年云原生技术发展现状及未来趋势](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247492248&idx=1&sn=c26d93b04b2ee8d06d8d495e114cb960&chksm=faa30d42cdd48454b4166a29efa6c0e775ff443f972bd74cc1eb057ed4f0878b2cb162b356bc&token=1414725197)
+
+- [蚂蚁集团 SOFATracer 原理与实践](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247491935&idx=1&sn=75421dd34ec84d5889d7a4306f1c6a03&chksm=faa30e85cdd4879335726d670e94c5b360e53a1f3f74f41c66c0c6221d5e8459c35a653e94b6&token=1414725197)
+
+- [KCL：声明式的云原生配置策略语言](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247491634&idx=1&sn=8359805abd97c598c058c6b5ad573d0d&chksm=faa30fe8cdd486fe421da66237bdacb11d83c956b087823808ddaaff52c1b1900c02dbf80c07&token=1414725197)
+
+- [蚂蚁集团万级规模 K8s 集群 etcd 高可用建设之路](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247491409&idx=1&sn=d6c0722d55b772aedb6ed8e34979981d&chksm=faa0f08bcdd7799dabdb3b934e5068ff4e171cffb83621dc08b7c8ad768b8a5f2d8668a4f57e&token=1414725197)
+
+更多文章请扫码关注“金融级分布式架构”公众号
+
+>![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*5aK0RYuH9vgAAAAAAAAAAAAAARQnAQ)
