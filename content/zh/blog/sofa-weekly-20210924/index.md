@@ -44,8 +44,7 @@ MOSN：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 
 **@王夕** 提问：
 
->咨询一个问题，TCC 的嵌套子事务，如果发生重试的话，如下图中的 2、6，会产生不同的 branch 记录吗？
-
+>咨询一个问题，TCC 的嵌套子事务，如果发生重试的话，如下图中的 2、6，会产生不同的 branch 记录吗？<br/>
 >![](https://gw.alipayobjects.com/zos/bmw-prod/da0db886-3ee6-4211-82cf-c8701685af95.webp)
 
 A：有可能,要么关了重试,要么做幂等
@@ -58,12 +57,9 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 **@江培泉** 提问：
 
->请教下，oracle 用户没获取到行信息，导致 undo_log 无法插入，也无法回滚。
-
->![](https://gw.alipayobjects.com/zos/bmw-prod/6a31f501-f439-4e31-b627-30978e8dfab3.webp)
-
->主键字段类型和 JAVA 的类型：
-
+>请教下，oracle 用户没获取到行信息，导致 undo_log 无法插入，也无法回滚。<br/>
+>![](https://gw.alipayobjects.com/zos/bmw-prod/6a31f501-f439-4e31-b627-30978e8dfab3.webp)<br/>
+>主键字段类型和 JAVA 的类型：<br/>
 >![](https://gw.alipayobjects.com/zos/bmw-prod/e6f4d8c1-5eec-42a8-963d-ae2bd79e7e49.webp)
 >![](https://gw.alipayobjects.com/zos/bmw-prod/c7a152da-57c8-4994-a628-5b40ad6b9c6c.webp)
 
