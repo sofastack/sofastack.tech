@@ -13,7 +13,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*_ewiQbuzeOQAAAAAA
 SOFA WEEKLY | 每周精选，筛选每周精华问答
 同步开源进展，欢迎留言互动
 
->![https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*_ewiQbuzeOQAAAAAAAAAAAAAARQnAQ]
+>![weekly.jpg](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*_ewiQbuzeOQAAAAAAAAAAAAAARQnAQ)
 
 SOFAStack（Scalable Open Financial Architecture Stack)是蚂蚁金服自主研发的金融级云原生架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 
@@ -28,16 +28,17 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **@证道者** 提问：
 
->MOSN 怎么将 HTTP 转到 Dubbo 的数据,怎么实现新的协议？
->A：这个你要写个 filter ，因为每个 HTTP 字段怎么对应 Dubbo 的字段，是没有固定标准的。
+>MOSN 怎么将 HTTP 转到 Dubbo 的数据,怎么实现新的协议？<br/>
 
+A：这个你要写个 filter ，因为每个 HTTP 字段怎么对应 Dubbo 的字段，是没有固定标准的。
 「HTTP 转 SOFA 的例子」
 [https://www.github.com/mosn/mosn/tree/master/pkg%2Ffilter%2Fstream%2Ftranscoder%2Fhttp2bolt](https://www.github.com/mosn/mosn/tree/master/pkg%2Ffilter%2Fstream%2Ftranscoder%2Fhttp2bolt)
 
 这个需要 client 满足这个字段对应规范，所以一般就自己实现了。
 
-> 公司很多这种 RPC 的接口，每一个接口都要写一下 filter 吗？没有通用的转换吗？
-> A：一个协议就一个吧，比如 HTTP 的 header：service 对应 Dubbo 的 service。你也可以用其他的 HTTP header 来对应，比如用 dubbo-service，所以没有一个标准，就需要自己简单做个对应关系。
+>公司很多这种 RPC 的接口，每一个接口都要写一下 filter 吗？没有通用的转换吗？
+
+A：一个协议就一个吧，比如 HTTP 的 header：service 对应 Dubbo 的 service。你也可以用其他的 HTTP header 来对应，比如用 dubbo-service，所以没有一个标准，就需要自己简单做个对应关系。
 
 **@王夕** 提问：
 
@@ -45,23 +46,24 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 >![](https://gw.alipayobjects.com/zos/bmw-prod/da0db886-3ee6-4211-82cf-c8701685af95.webp)
 
->A：有可能,要么关了重试,要么做幂等。
+A：有可能,要么关了重试,要么做幂等。
 
 >也就是说根据 xid 做幂等，而不要根据 branchid 做幂等对吗？
->A：branchid 进来一次就变一次,肯定不行,该分支同入参同 xid 一般就可以作为幂等的校验条件。
+
+A：branchid 进来一次就变一次,肯定不行,该分支同入参同 xid 一般就可以作为幂等的校验条件。
 
 **@江培泉** 提问：
 
-> 请教下，oracle 用户没获取到行信息，导致 undo_log 无法插入，也无法回滚。
+>请教下，oracle 用户没获取到行信息，导致 undo_log 无法插入，也无法回滚。
 
 >![](https://gw.alipayobjects.com/zos/bmw-prod/6a31f501-f439-4e31-b627-30978e8dfab3.webp)
 
-> 主键字段类型和 JAVA 的类型：
+主键字段类型和 JAVA 的类型：
 
 >![](https://gw.alipayobjects.com/zos/bmw-prod/e6f4d8c1-5eec-42a8-963d-ae2bd79e7e49.webp)
 >![](https://gw.alipayobjects.com/zos/bmw-prod/c7a152da-57c8-4994-a628-5b40ad6b9c6c.webp)
 
-> A：主键的 Long 改成 BigDecimal，Oracle 的 number 长度超过 19 之后，用 Long 的话，setObject 会查不出数据来。
+A：主键的 Long 改成 BigDecimal，Oracle 的 number 长度超过 19 之后，用 Long 的话，setObject 会查不出数据来。
 
 ### 本周推荐阅读
 
