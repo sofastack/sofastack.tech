@@ -37,7 +37,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*RzWkR4udP3gAAAAAA
 
 该系统大体架构如图 -1 所示:
 
->![](https://gw.alipayobjects.com/zos/bmw-prod/3209e44f-b7c9-4c35-8583-73393222ccec.webp)
+>![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*21YqTpZXf_kAAAAAAAAAAAAAARQnAQ)
 
 图-1：原来的架构
 
@@ -73,7 +73,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*RzWkR4udP3gAAAAAA
 
 改造过后的架构如图-2所示:
 
->![](https://mmbiz.qpic.cn/mmbiz_png/nibOZpaQKw0ib9Bgj8rrHtkKQnlBU7jNnVvmpZdaDtdw2ag2N2Z6fBibWfspnfkdWaibet2SlI7DmvDg8w1siaG4x5A/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+>![](https://gw.alipayobjects.com/zos/bmw-prod/db254f89-b153-42f4-9de9-539ece66bb21.webp)
 
 图-2：重构后的架构
 
@@ -91,7 +91,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*RzWkR4udP3gAAAAAA
 
 大体逻辑如图 -3 所示，
 
->![](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)
+>![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*RX5_QboDXGsAAAAAAAAAAAAAARQnAQ)
 
 图-3：通常的编程模型
 
@@ -108,7 +108,7 @@ task 中包含两个属性是需要关注的，一个是 done，一个是 data�
 
 大体逻辑如图 -4 所示，
 
->![](https://mmbiz.qpic.cn/mmbiz_png/nibOZpaQKw0ib9Bgj8rrHtkKQnlBU7jNnVrW6AbpYKa8DpJ7h7qlsGVG4trY1JISMoQR69fh8UwtSXiafEb57urng/640?wx_fmt=png&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+>![](https://gw.alipayobjects.com/zos/bmw-prod/e1ec1e80-1570-4543-8b26-59704a968c7b.webp)
 
 图-4：SOFAJRaft 的编程模型
 
@@ -291,7 +291,7 @@ message GrpcResponse {  //这里的 data 保存的是业务 Processor 处理完 
 
 read-index read 大概逻辑如图-5所示，
 
->![](https://gw.alipayobjects.com/zos/bmw-prod/338f3e81-da8b-4eed-86e2-fadf85098484.webp)
+>![](https://gw.alipayobjects.com/zos/bmw-prod/fd718f8f-28d4-4cc6-be2c-e569a079b8f1.webp)
 
 图-5：read-index read 处理逻辑
 
@@ -369,7 +369,7 @@ Slf4jReporter reporter = Slf4jReporter         .forRegistry(node.getNodeMetrics(
 
 感谢 SOFAStack 提供的一个如此优秀的 Java 框架。 
 
->![](https://mmbiz.qpic.cn/mmbiz_jpg/nibOZpaQKw0ib9Bgj8rrHtkKQnlBU7jNnVO71e92WBZqFYtauicNAj5JFctd626QUoibbiaiaqwMY1hQogdhMemNjf6w/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+>![](https://gw.alipayobjects.com/zos/bmw-prod/c6f2a1fc-62ed-4185-8fe6-0ac47f803641.webp)
 
 \-
 
