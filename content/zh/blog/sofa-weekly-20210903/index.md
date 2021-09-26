@@ -56,10 +56,8 @@ MOSN：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 A：按照配置的顺序。
 
 >![](https://gw.alipayobjects.com/zos/bmw-prod/514c5ac5-2afa-4ebe-a3fe-13184579995e.webp)<br/>
-**4、@楼政浩** 提问：
-
-> 往 raft 集群提交数据，都得通过 RPC 吗？
-
+**4、@楼政浩** 提问：<br/>
+> 往 raft 集群提交数据，都得通过 RPC 吗？<br/>
 > **如果我的 raft 节点的 fsm 又输出了 log，我想往集群提交这个 log，可以通过什么接口？**
 
 A：jraft 通过 raft log 将数据复制到你各个节点的 fsm，fsm 的输入数据全部来自 raft log，你说的 fsm 又输出了 log 如果我没理解错的话，就是说本质上 fsm log 的输入全部来自 raft log，那么你这个所谓 log 就存在你自己的 fsm 就行，本来就是每个节点都会有的，不要再提交。
@@ -68,8 +66,7 @@ SOFAJRaft：[https://github.com/sofastack/sofa-jraft](https://github.com/sofasta
 
 **5、@陈华洋** 提问：
 
-> SOFABoot 的模块化是怎么解决数据库链接的问题。
-
+> SOFABoot 的模块化是怎么解决数据库链接的问题。<br/>
 > **就是 SOFABoot 模块化之后，我把 mybatis 配置到了公共模块里面，然后其他模块父上下文指定为公共模块，但是其他模块内的 @Mapper 在项目启动的时候都扫描不到****。**
 
 A：建议把所有数据库相关的操作都放同一个模块，封装成 dal 层。可以配一个配置,让一个 spring 上下文里的 bean 暴露出来、能给别的 Spring 上下文用。
