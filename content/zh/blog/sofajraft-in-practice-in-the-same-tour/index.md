@@ -103,7 +103,11 @@ task 中包含两个属性是需要关注的，一个是 done，一个是 data�
 
 **-** **data** 就是 Raft log 中的具体数据，比如要执行一条插入元数据的命令。data 就会包含本次操作的类型（插入），以及本次操作的具体数据。
 
-```public class Task implements Serializable {    private ByteBuffer        data             = LogEntry.EMPTY_DATA;    private Closure           done;    /// 省略部分代码}
+```public class Task implements Serializable {
+    private ByteBuffer        data             = LogEntry.EMPTY_DATA;
+    private Closure           done;
+    /// 省略部分代码
+}
 ```
 
 大体逻辑如图 -4 所示，
@@ -118,12 +122,28 @@ task 中包含两个属性是需要关注的，一个是 done，一个是 data�
 
 **·** **抽象过后的实体类**
 
-```class Operation<T> {    //操作类型，比如增删改查    int type;    //操作的哪个表，某些类型不需要此字段    String table;    //具体的操作数据，根据 type 的不同，数据类型也会不同    T params;}
+```class Operation<T> {
+    //操作类型，比如增删改查
+    int type;
+    //操作的哪个表，某些类型不需要此字段
+    String table;    
+//具体的操作数据，根据 type 的不同，数据类型也会不同    
+T params;}
 ```
 
 **·** **构建 task 并通过 node 提交给状态机**
 
-```final Task task = new Task();//定义回调的逻辑，当该 Raft log 被状态机应用后，会进行回调task.setDone(new StoreClosure(operation, status -> {    StoreStatus storageStatus = (StoreStatus) status;    closure.setThrowable(storageStatus.getThrowable());    closure.setResponse(storageStatus.getResponse());    closure.run(storageStatus);}));//将 operation 进行序列化，在状态机中会将该值反序列化还原，再交给 processor 处理task.setData(ByteBuffer.wrap(serializer.serialize(operation)));node.apply(task);
+```final Task task = new Task();
+//定义回调的逻辑，当该 Raft log 被状态机应用后，会进行回调
+task.setDone(new StoreClosure(operation, status -> {
+    StoreStatus storageStatus = (StoreStatus) status;
+    closure.setThrowable(storageStatus.getThrowable());
+    closure.setResponse(storageStatus.getResponse());
+    closure.run(storageStatus);
+}));
+//将 operation 进行序列化，在状态机中会将该值反序列化还原，再交给 processor 处理
+task.setData(ByteBuffer.wrap(serializer.serialize(operation)));
+node.apply(task);
 ```
 
 ***状态机的实现*** 
@@ -134,7 +154,37 @@ onApply 是状态机的核心功能，其目的就是接收入参中的 Raft log
 
 处理完成之后，触发 done 的回调，这里就和 Node.apply(task) 关联上了。
 
-```  while (iter.hasNext()) {                Status status = Status.OK();                try {                    if (iter.done() != null) {                        // 说明当前状态机是 Leader，可以直接从 closure 中获取操作数据                        closure = (MdbStoreClosure) iter.done();                        operation = closure.getOperation();                    } else {                        // 当前状态机不是 Leader，通过对 Raft log 中的数据进行反序列化操作，还原操作数据                        ByteBuffer data = iter.getData();                        operation = serializer.deserialize(data.array(), Operation.class);                    }                    //业务处理器进行业务处理，业务处理器中会判断 operation 的类型，选择不同的处理逻辑                    OperationResponse result = mdbStoreProcessor.processOperation(operation);                    //将 result 序列化                    GrpcResponse response = GrpcResponse.newBuilder().setSuccess(true)                            .setData(ByteString.copyFrom(serializer.serialize(result))).build();                              Optional.ofNullable(closure)                            .ifPresent(closure1 -> closure1.setResponse(response));                } catch (Throwable e) {                    status.setError(RaftError.UNKNOWN, e.toString());                    Optional.ofNullable(closure).ifPresent(closure1 -> closure1.setThrowable(e));                    throw e;                } finally {                    //对 task 中的 done 进行回调                    Optional.ofNullable(closure).ifPresent(closure1 -> closure1.run(status));                }                //将 Raft log 的消费位置 +1，表示当前这个 Raft log 已经被成功应用了                iter.next();            }
+```  while (iter.hasNext()) {
+                Status status = Status.OK();
+                try {
+                    if (iter.done() != null) {
+                        // 说明当前状态机是 Leader，可以直接从 closure 中获取操作数据
+                        closure = (MdbStoreClosure) iter.done();
+                        operation = closure.getOperation();
+                    } else {
+                        // 当前状态机不是 Leader，通过对 Raft log 中的数据进行反序列化操作，还原操作数据
+                        ByteBuffer data = iter.getData();
+                        operation = serializer.deserialize(data.array(), Operation.class);
+                    } 
+                   //业务处理器进行业务处理，业务处理器中会判断 operation 的类型，选择不同的处理逻辑
+                    OperationResponse result = mdbStoreProcessor.processOperation(operation);
+                    //将 result 序列化
+                    GrpcResponse response = GrpcResponse.newBuilder().setSuccess(true)
+                            .setData(ByteString.copyFrom(serializer.serialize(result))).build();
+
+                              Optional.ofNullable(closure)
+                            .ifPresent(closure1 -> closure1.setResponse(response));
+                } catch (Throwable e) {
+                    status.setError(RaftError.UNKNOWN, e.toString());
+                    Optional.ofNullable(closure).ifPresent(closure1 -> closure1.setThrowable(e));
+                    throw e;
+                } finally {
+                    //对 task 中的 done 进行回调
+                    Optional.ofNullable(closure).ifPresent(closure1 -> closure1.run(status));
+                }
+                //将 Raft log 的消费位置 +1，表示当前这个 Raft log 已经被成功应用了
+                iter.next();
+            }
 ```
 
 **·** **onSnapshotSave**
@@ -155,7 +205,22 @@ onApply 是状态机的核心功能，其目的就是接收入参中的 Raft log
 
 **Processor 的最终态 =** **snapshot + Raft log**
 
-```MdbStoreStoreSnapshotFileImpl mdbStoreStoreSnapshotFile = (MdbStoreStoreSnapshotFileImpl) snapshotFile;        String tempPath = snapshotPath + "_temp";        File tempFile = new File(tempPath);        FileUtils.deleteDirectory(tempFile);        FileUtils.forceMkdir(tempFile);        //记录总共的 table 数量        mdbStoreStoreSnapshotFile                .writeToFile(tempPath, "tailIndex", new TailIndex(persistData.size()));        //将每一个 table 中的数据都进行持久化        for (int i = 0; i < persistData.size(); i++) {            mdbStoreStoreSnapshotFile.writeToFile(tempPath, combineDataFile(i),                    new TablePersistence(persistData.get(i)));        }        File destinationPath = new File(snapshotPath);        FileUtils.deleteDirectory(destinationPath);        FileUtils.moveDirectory(tempFile, destinationPath);
+```MdbStoreStoreSnapshotFileImpl mdbStoreStoreSnapshotFile = (MdbStoreStoreSnapshotFileImpl) snapshotFile;
+        String tempPath = snapshotPath + "_temp";
+        File tempFile = new File(tempPath);
+        FileUtils.deleteDirectory(tempFile);
+        FileUtils.forceMkdir(tempFile);
+        //记录总共的 table 数量
+        mdbStoreStoreSnapshotFile
+                .writeToFile(tempPath, "tailIndex", new TailIndex(persistData.size()));
+        //将每一个 table 中的数据都进行持久化
+        for (int i = 0; i < persistData.size(); i++) {
+            mdbStoreStoreSnapshotFile.writeToFile(tempPath, combineDataFile(i),
+                    new TablePersistence(persistData.get(i)));
+        }
+        File destinationPath = new File(snapshotPath);
+        FileUtils.deleteDirectory(destinationPath);
+        FileUtils.moveDirectory(tempFile, destinationPath);
 ```
 
 **·** **onSnapshotLoad**
@@ -168,9 +233,27 @@ onSnapshotLoad 的几个触发场景。
 
 onSnapshotLoad 和上面的 onSnapshotSave 是成对的，这里只需要把之前保存的文件中的内存读取，然后再进行反序列化，添加到 processor 中的数据容器即可。
 
-```        MdbStoreStoreSnapshotFileImpl mdbStoreStoreSnapshotFile = (MdbStoreStoreSnapshotFileImpl) snapshotFile;        //读取总共的文件数        TailIndex tailIndex = mdbStoreStoreSnapshotFile                .readFromFile(snapshotPath, TAIL_INDEX, TailIndex.class);
+```        MdbStoreStoreSnapshotFileImpl mdbStoreStoreSnapshotFile = (MdbStoreStoreSnapshotFileImpl) snapshotFile;
+        //读取总共的文件数
+        TailIndex tailIndex = mdbStoreStoreSnapshotFile
+                .readFromFile(snapshotPath, TAIL_INDEX, TailIndex.class);
+
         int size = tailIndex.data();
-        for (int i = 0; i < size; i++)             //挨个读取文件，将文件内容进行反序列化            TablePersistence tablePersistence = mdbStoreStoreSnapshotFile                    .readFromFile(snapshotPath, combineDataFile(i), TablePersistence.class);            TableDataDTO data = tablePersistence.data();                        Table table = new Table(data.getName(), new HashSet<>(data.getIndexNames()),                    data.getRetryCount());            for (Record dataData : data.getDatas()) {                table.addRecord(dataData);            }            //将数据丢给 processor 中的数据容器            dataComponent.putData(table.getName(), table);        }
+
+        for (int i = 0; i < size; i++)
+             //挨个读取文件，将文件内容进行反序列化
+            TablePersistence tablePersistence = mdbStoreStoreSnapshotFile
+                    .readFromFile(snapshotPath, combineDataFile(i), TablePersistence.class);
+            TableDataDTO data = tablePersistence.data();
+
+            Table table = new Table(data.getName(), new HashSet<>(data.getIndexNames()),
+                    data.getRetryCount());
+            for (Record dataData : data.getDatas()) {
+                table.addRecord(dataData);
+            }
+            //将数据丢给 processor 中的数据容器
+            dataComponent.putData(table.getName(), table);
+        }
 ```
 
 **·** **状态机的其他状态变更的方法**
@@ -198,7 +281,49 @@ StateMachine 提供了状态回调的接口，我们在回调中对接内部的�
 
 **·** **read-index read 编程模型**
 
-``` CompletableFuture future = new CompletableFuture<>();            node.readIndex(BytesUtil.EMPTY_BYTES, new ReadIndexClosure() {                @Override                public void run(Status status, long index, byte[] reqCtx) {                    //状态 ok，说明可以通过 read-index 去进行读取                    if (status.isOk()) {                        try {                            //直接使用 processor 查询数据，不通过状态机                            OperationResponse<T> res = (OperationResponse<T>) mdbStoreProcessor                                    .processOperation(operation);                            future.complete(res);                        } catch (Throwable t) {                            future.completeExceptionally(                                    new IllegalStateException("Fail to read data from processor",                                            t));                        }                    } else {                        //状态不 ok，可能是超时，也可能是状态机异常等其他原因                        if (Operation.ALL_DATA == operation.getType()) {                            //这里判断是不是读取全量的数据，读取全量数据的话，需要快速失败，不能转到 leader 走 raft log读取，                                                        //原因见 4.3                            future.completeExceptionally(new IllegalStateException(                                    "Fail to get all data by read-index read, status: " + status                                            .getErrorMsg()));                        } else {                            //通过将本次请求转发到 Leader 中，走 raft log，在 Leader 的状态机中把本条 raft log 应用后，再                                                         //返回数据给 Follower                            LOGGER.warn("ReadIndex read failed, status: {}, go to Leader read.",                                    status.getErrorMsg());                            readFromLeader(operation, future);                        }                    }                }            }                               Object o = future.get(5_000L, TimeUnit.MILLISECONDS);        if (o instanceof GrpcResponse) {            //返回类型的 GrpcResponse，说明本次请求是通过 Raft log 转到 Leader 处理并返回的，需要将数据反序列化            return serializer                    .deserialize(((GrpcResponse) o).getData().toByteArray(), OperationResponse.class);        } else {            //直接在本地通过 read-index read 读本地内存            return (OperationResponse<T>) o;        }
+``` CompletableFuture future = new CompletableFuture<>();
+            node.readIndex(BytesUtil.EMPTY_BYTES, new ReadIndexClosure() {
+                @Override
+                public void run(Status status, long index, byte[] reqCtx) {
+                    //状态 ok，说明可以通过 read-index 去进行读取
+                    if (status.isOk()) {
+                        try {
+                            //直接使用 processor 查询数据，不通过状态机
+                            OperationResponse<T> res = (OperationResponse<T>) mdbStoreProcessor
+                                    .processOperation(operation);
+                            future.complete(res);
+                        } catch (Throwable t) {
+                            future.completeExceptionally(
+                                    new IllegalStateException("Fail to read data from processor",
+                                            t));
+                        }
+                    } else {
+                        //状态不 ok，可能是超时，也可能是状态机异常等其他原因
+                        if (Operation.ALL_DATA == operation.getType()) {
+                            //这里判断是不是读取全量的数据，读取全量数据的话，需要快速失败，不能转到 leader 走 raft log读取，
+                            //原因见 4.3
+                            future.completeExceptionally(new IllegalStateException(
+                                    "Fail to get all data by read-index read, status: " + status
+                                            .getErrorMsg()));
+                        } else {
+                            //通过将本次请求转发到 Leader 中，走 raft log，在 Leader 的状态机中把本条 raft log 应用后，再
+                            //返回数据给 Follower
+                            LOGGER.warn("ReadIndex read failed, status: {}, go to Leader read.",
+                                    status.getErrorMsg()); 
+                           readFromLeader(operation, future);
+                        }
+                    }
+                }
+            }
+        Object o = future.get(5_000L, TimeUnit.MILLISECONDS);
+        if (o instanceof GrpcResponse) {
+            //返回类型的 GrpcResponse，说明本次请求是通过 Raft log 转到 Leader 处理并返回的，需要将数据反序列化
+            return serializer
+                    .deserialize(((GrpcResponse) o).getData().toByteArray(), OperationResponse.class);
+        } else {
+            //直接在本地通过 read-index read 读本地内存
+            return (OperationResponse<T>) o;
+        }
 ```
 
  ***Follower 请求转发*** 
@@ -217,7 +342,11 @@ SOFAJRaft 默认提供了两种通信方式，一种是 sofa-bolt，还有一种
 
 使用 GrpcRaftRpcFactory 需要注意的是，需要引入依赖。
 
-```<dependency>    <groupId>com.alipay.sofa</groupId>    <artifactId>rpc-grpc-impl</artifactId>    <version>${jraft.grpc.version}</version></dependency>
+```<dependency>
+<groupId>com.alipay.sofa</groupId>
+<artifactId>rpc-grpc-impl</artifactId>
+<version>${jraft.grpc.version}</version>
+</dependency>
 ```
 
 并且需要通过 spi 指定使用 GrpcRaftRpcFactory。
@@ -228,31 +357,118 @@ SOFAJRaft 默认提供了两种通信方式，一种是 sofa-bolt，还有一种
 
 **·** **创建 RpcServer 并注册处理器**
 
-```//获取 GrpcRaftRpcFactory        GrpcRaftRpcFactory raftRpcFactory = (GrpcRaftRpcFactory) RpcFactoryHelper.rpcFactory();        //GrpcRequest 是自己的 Processor 通信使用，这里使用 proto 去生成 GrpcRequest 和 GrpcResponse        raftRpcFactory.registerProtobufSerializer(GrpcRequest.class.getName(),                GrpcRequest.getDefaultInstance());        raftRpcFactory.registerProtobufSerializer(GrpcResponse.class.getName(),                GrpcResponse.getDefaultInstance());                MarshallerRegistry registry = raftRpcFactory.getMarshallerRegistry();         //注册 GrpcRequest 对应的 response 的默认对象        registry.registerResponseInstance(GrpcRequest.class.getName(),                GrpcResponse.getDefaultInstance());        //创建 GrpcServer        final RpcServer rpcServer = raftRpcFactory.createRpcServer(peerId.getEndpoint());         //注册 sofa-jraft 中自带的处理器        RaftRpcServerFactory.addRaftRequestProcessors(rpcServer, RaftExecutor.getRaftCoreExecutor(),                RaftExecutor.getRaftCliServiceExecutor());        //注册自己业务的处理器        rpcServer.registerProcessor(new GrpcRequestProcessor(server));
+```//获取 GrpcRaftRpcFactory
+           GrpcRaftRpcFactory raftRpcFactory = (GrpcRaftRpcFactory) RpcFactoryHelper.rpcFactory();
+           //GrpcRequest 是自己的 Processor 通信使用，这里使用 proto 去生成 GrpcRequest 和 GrpcResponse                     
+           raftRpcFactory.registerProtobufSerializer(GrpcRequest.class.getName(),
+                       GrpcRequest.getDefaultInstance());
+           
+MarshallerRegistry registry = raftRpcFactory.getMarshallerRegistry();
+//注册 GrpcRequest 对应的 response 的默认对象
+registry.registerResponseInstance(GrpcRequest.class.getName(),
+GrpcResponse.getDefaultInstance());        
+//创建 GrpcServer        
+final RpcServer rpcServer = raftRpcFactory.createRpcServer(peerId.getEndpoint());         
+//注册 sofa-jraft 中自带的处理器
+RaftRpcServerFactory.addRaftRequestProcessors(rpcServer,
+RaftExecutor.getRaftCoreExecutor(),
+RaftExecutor.getRaftCliServiceExecutor());        
+//注册自己业务的处理器        
+rpcServer.registerProcessor(new GrpcRequestProcessor(server));
         return rpcServer;
 ```
 
 **·** **proto file**
 
-```syntax = "proto3";option java_multiple_files = true;package com.xxx.mdb.store.raft.entity;
-message GrpcRequest {  //这里的 data 保存的就是 Operation 序列化过后的二进制流  bytes data =1;}
-message GrpcResponse {  //这里的 data 保存的是业务 Processor 处理完 Operation 过后，并且经过序列化后的二进制流  bytes data = 1;  //异常信息  string errMsg = 2;  //标志位，请求是否 ok  bool success = 3;}
+```syntax = 
+"proto3";option java_multiple_files = true;
+package com.xxx.mdb.store.raft.entity;
+
+message GrpcRequest {
+//这里的 data 保存的就是 Operation 序列化过后的二进制流
+bytes data =1;
+}
+message GrpcResponse {
+ //这里的 data 保存的是业务 Processor 处理完 Operation 过后，并且经过序列化后的二进制流  bytes data = 1;
+ //异常信息
+ string errMsg = 2;
+ //标志位，请求是否 ok
+ bool success = 3;
+ }
 ```
 
 **·** **自己的处理器，用于接收 Follower 过来的转发请求。**
 
-```  //如果当前节点不是 Leader，不进行处理        if (!jRaftServer.getNode().isLeader()) {            return;        }        //定义 done，状态机应用 Raft log 后，会回调这个 done        FailoverClosure done = new FailoverClosure() {
-            GrpcResponse data;
-            Throwable ex;
-            @Override            public void setResponse(GrpcResponse data) {                //Follwer 在状态机中执行成功后，会将 result 封装成 GrpcResponse，然后在这里设置                this.data = data;            }
-            @Override            public void setThrowable(Throwable throwable) {                //在异常时，会进行调用                this.ex = throwable;            }
-            @Override            public void run(Status status) {                if (Objects.nonNull(ex)) {                    LOGGER.error("execute has error", ex);                    //ex 不为 null，说明发生了异常，将异常返回给 Follower                    rpcCtx.sendResponse(                            GrpcResponse.newBuilder().setErrMsg(ex.toString()).setSuccess(false)                                    .build());                } else {                    //将请求返回 Follower                    rpcCtx.sendResponse(data);                }            }        };        //将从 Follower 过来的请求提交给状态机，在内部会把 request 的 data 字段给反序列化为 Operation        jRaftServer.applyOperation(jRaftServer.getNode(), request, done);
+```  //如果当前节点不是 Leader，不进行处理
+if (!jRaftServer.getNode().isLeader()) {
+return;
+}
+//定义 done，状态机应用 Raft log 后，会回调这个 done
+FailoverClosure done = new FailoverClosure() {
+           
+           GrpcResponse data;
+            
+           Throwable ex;
+            
+           @Override
+           public void setResponse(GrpcResponse data) {
+                 //Follwer 在状态机中执行成功后，会将 result 封装成 GrpcResponse，然后在这里设置
+                 this.data = data;            }
+            @Override            public void setThrowable(Throwable throwable) {
+            //在异常时，会进行调用
+            this.ex = throwable;            }
+            @Override
+            public void run(Status status) {
+            if (Objects.nonNull(ex)) {
+            LOGGER.error("execute has error", ex);
+            //ex 不为 null，说明发生了异常，将异常返回给 Follower
+            rpcCtx.sendResponse(
+            GrpcResponse.newBuilder().setErrMsg(ex.toString()).setSuccess(false)
+            .build());
+            } else {
+            //将请求返回 Follower
+            rpcCtx.sendResponse(data);
+            }
+           }
+          };
+          //将从 Follower 过来的请求提交给状态机，在内部会把 request 的 data 字段给反序列化为 Operation
+          jRaftServer.applyOperation(jRaftServer.getNode(), request, done);
 ```
 
 **·** **Follower 中的转发逻辑**
 
-```  try {            //将 operation 序列化成 byte 数组，然后构建 GrpcRequest.            GrpcRequest request = GrpcRequest.newBuilder()                    .setData(ByteString.copyFrom(serializer.serialize(operation))).build();            //从缓存获取当前 Leader 节点的地址，如果 Leader 为空，抛出异常。这里的 Leader 需要动态刷新，每隔5秒中就去刷新一次                             //Leader，保证 Leader 是最新的。可以通过 RouteTable#refreshLeader 去定时刷新。            final Endpoint leaderIp = Optional.ofNullable(getLeader())                    .orElseThrow(() -> new IllegalStateException("Not find leader")).getEndpoint();            //通过 grpc 将请求发送给自己的处理器            cliClientService.getRpcClient().invokeAsync(leaderIp, request, new InvokeCallback() {                @Override                public void complete(Object o, Throwable ex) {                    if (Objects.nonNull(ex)) {                        //存在异常，将异常进行回调                        closure.setThrowable(ex);                        //进行 fail 的回调，回调中会将 exception 返回给客户端                        closure.run(new Status(RaftError.UNKNOWN, ex.getMessage()));                        return;                    }                    //将 grpc response 设置给回调类                    closure.setResponse((GrpcResponse) o);                    //进行 success 的回调，回调中会将数据返回给客户端                    closure.run(Status.OK());                }
-                @Override                public Executor executor() {                    return RaftExecutor.getRaftCliServiceExecutor();                }            }, timeoutMillis);        } catch (Exception e) {            closure.setThrowable(e);            closure.run(new Status(RaftError.UNKNOWN, e.toString()));        }
+```  try {
+//将 operation 序列化成 byte 数组，然后构建 GrpcRequest.
+GrpcRequest request = GrpcRequest.newBuilder()
+.setData(ByteString.copyFrom(serializer.serialize(operation))).build();
+//从缓存获取当前 Leader 节点的地址，如果 Leader 为空，抛出异常。这里的 Leader 需要动态刷新，每隔5秒中就去刷新一次
+//Leader，保证 Leader 是最新的。可以通过 RouteTable#refreshLeader 去定时刷新。
+final Endpoint leaderIp = Optional.ofNullable(getLeader())
+.orElseThrow(() -> new IllegalStateException("Not find leader")).getEndpoint();
+//通过 grpc 将请求发送给自己的处理器
+cliClientService.getRpcClient().invokeAsync(leaderIp, request, new InvokeCallback() {
+@Override
+public void complete(Object o, Throwable ex) {
+if (Objects.nonNull(ex)) {
+//存在异常，将异常进行回调
+closure.setThrowable(ex);
+//进行 fail 的回调，回调中会将 exception 返回给客户端
+closure.run(new Status(RaftError.UNKNOWN, ex.getMessage()));
+return;
+}
+//将 grpc response 设置给回调类
+closure.setResponse((GrpcResponse) o);
+//进行 success 的回调，回调中会将数据返回给客户端
+closure.run(Status.OK());
+}
+                @Override
+                public Executor executor() {
+                return RaftExecutor.getRaftCliServiceExecutor();
+                }
+            }, timeoutMillis);
+     } catch (Exception e) {
+         closure.setThrowable(e);
+         closure.run(new Status(RaftError.UNKNOWN, e.toString()));        }
 ```
 
 ***PART. 4***
@@ -349,8 +565,20 @@ SOFAJRaft 需要保存 Raft log 以及 snapshot file。
 
 将指标输出到日志文件:
 
-```Node node = ...NodeOptions nodeOpts =  ...//打开监控指标nodeOpts.setEnableMetrics(true);node.init(nodeOpts);
-Slf4jReporter reporter = Slf4jReporter         .forRegistry(node.getNodeMetrics().getMetricRegistry())         //获取到日志的输出对象         .outputTo(LoggerFactory.getLogger("com.jraft.metrics"))         .convertRatesTo(TimeUnit.SECONDS)         .convertDurationsTo(TimeUnit.MILLISECONDS)         .build();reporter.start(30, TimeUnit.SECONDS);
+```Node node = ...
+NodeOptions nodeOpts =  ...
+//打开监控指标
+nodeOpts.setEnableMetrics(true);
+node.init(nodeOpts);
+
+Slf4jReporter reporter = Slf4jReporter
+.forRegistry(node.getNodeMetrics().getMetricRegistry())
+//获取到日志的输出对象
+.outputTo(LoggerFactory.getLogger("com.jraft.metrics"))
+.convertRatesTo(TimeUnit.SECONDS)
+.convertDurationsTo(TimeUnit.MILLISECONDS)
+.build();
+reporter.start(30, TimeUnit.SECONDS);
 ```
 
 除此之外，还可以利用 **kill - s SIGUSR2 pid** 给 SOFAJRaft 进程发送信号量，进程收到信号量后，会在进程的启动目录中生成指标数据数据文件。
@@ -390,3 +618,21 @@ Slf4jReporter reporter = Slf4jReporter         .forRegistry(node.getNodeMetrics(
 **·** alibaba Nacos 中关于 SOFAJRaft 的使用 
 
 · JRaft-rheakv 中关于 SOFAJRaft 的使用 
+
+>![图片](https://gw.alipayobjects.com/zos/bmw-prod/8a09120c-232f-4063-9091-1581d48c487b.webp)
+
+[SOFAJRaft 在同程旅游中的实践](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247495260&idx=1&sn=a56b0f82159e551dec4752b7290682cd&chksm=faa30186cdd488908a73792f9a1748cf74c127a792c5c484ff96a21826178e2aa35c279c41b3&scene=21#wechat_redirect)
+
+>![图片](https://gw.alipayobjects.com/zos/bmw-prod/5930ca07-3a49-4d7e-b4cb-60441899b67b.webp)
+
+[技术风口上的限流](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247494701&idx=1&sn=f9a2b71de8b5ade84c77b87a8649fa3a&chksm=faa303f7cdd48ae1b1528ee903a0edc9beb691608efd924189bcf025e462ea8be7bc742772e1&scene=21#wechat_redirect)
+
+>![图片](https://gw.alipayobjects.com/zos/bmw-prod/5a638c3f-4d7e-46f5-a296-e8afae0d0930.webp)
+
+[蚂蚁集团万级规模 k8s 集群 etcd 高可用建设之路](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247491409&idx=1&sn=d6c0722d55b772aedb6ed8e34979981d&chksm=faa0f08bcdd7799dabdb3b934e5068ff4e171cffb83621dc08b7c8ad768b8a5f2d8668a4f57e&scene=21#wechat_redirect)
+
+>![图片](https://gw.alipayobjects.com/zos/bmw-prod/998a92fe-ff8d-4f50-82f0-c74cc721d9cc.webp)
+
+[2021 年云原生技术发展现状及未来趋势](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247492248&idx=1&sn=c26d93b04b2ee8d06d8d495e114cb960&chksm=faa30d42cdd48454b4166a29efa6c0e775ff443f972bd74cc1eb057ed4f0878b2cb162b356bc&scene=21#wechat_redirect)
+
+![图片](https://gw.alipayobjects.com/zos/bmw-prod/6cea061a-33ed-4997-a022-640132d7fa13.webp)
