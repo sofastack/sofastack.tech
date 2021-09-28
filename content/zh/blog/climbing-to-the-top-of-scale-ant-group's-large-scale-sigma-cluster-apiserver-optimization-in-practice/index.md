@@ -18,7 +18,7 @@ cover:"https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*9RzaQYsl9pYAAAAAAA
 
 ▼
 
-蚂蚁集团运行着全球最大的 Kubernetes*（内部称为 Sigma）* 集群之一。Kubernetes 社区官方以 5K node 作为 Kubernetes 规模化的事实标准，而蚂蚁集团在 2019 年的时候，就已经维护着单集群规模超过 1W node 的 Kubernetes 集群。
+蚂蚁集团运行着全球最大的 Kubernetes（内部称为 Sigma) 集群之一。Kubernetes 社区官方以 5K node 作为 Kubernetes 规模化的事实标准，而蚂蚁集团在 2019 年的时候，就已经维护着单集群规模超过 1W node 的 Kubernetes 集群。
 
 这不仅仅是单集群节点量级上的差异，更是业务规模的差异，业务多样化和复杂度上的差异。
 
@@ -54,9 +54,9 @@ cover:"https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*9RzaQYsl9pYAAAAAAA
 
 如计算机学科的古老格言所说：
 
-*「* *All problems in computer science can be solved by another level of indirection, except for the problem of too many layers of indirection... and the performance problems. 」*
+「 All problems in computer science can be solved by another level of indirection, except for the problem of too many layers of indirection... and the performance problems. 」
 
-*大规模集群既是照妖镜，也是试金石。*
+大规模集群既是照妖镜，也是试金石。
 
 ## PART. 2 大规模集群的收益
 
@@ -98,17 +98,17 @@ Sigma apiserver 组件是 Kubernetes 集群的所有外部请求访问入口，�
 
 构建一个大规模的 Kubernetes 集群以及性能优化不是一件容易的事，如 Google Kubernetes Engine K8s 规模化文章所言：
 
-*「The scale of a Kubernetes cluster is like a multidimensional object composed of all the cluster’s resources—and scalability is an envelope that limits how much you can stretch that cube. The number of pods and containers, the frequency of scheduling events, the number of services and endpoints in each service—these and many others are good indicators of a cluster’s scale.* 
+「The scale of a Kubernetes cluster is like a multidimensional object composed of all the cluster’s resources—and scalability is an envelope that limits how much you can stretch that cube. The number of pods and containers, the frequency of scheduling events, the number of services and endpoints in each service—these and many others are good indicators of a cluster’s scale. 
 
-*The control plane must also remain available and workloads must be able to execute their tasks.* 
+The control plane must also remain available and workloads must be able to execute their tasks.
 
-*What makes operating at a very large scale harder is that there are dependencies between these dimensions. 」*
+What makes operating at a very large scale harder is that there are dependencies between these dimensions. 」
 
 也就是说，集群的规模化和性能优化需要考虑集群中各个维度的信息，包括 pod、node，configmap、service、endpoint 等资源的数量，pod 创建/调度的频率，集群内各种资源的变化率等等，同时需要考虑这些不同维度之间的互相的依赖关系，不同维度的因素彼此之间构成了一个多维的空间。
 
 >![图片](https://gw.alipayobjects.com/zos/bmw-prod/56328339-77a8-4a9c-90d2-7fa2805cd195.webp)
 
-为了应对如此多的变量对大规模集群带来的复杂影响，我们采用了探索问题本质以不变应万变的方法。为了可以全面而且系统化地对 apiserver 进行优化，我们由下到上把 apiserver 整体分为三个层面，分别为存储层*（storage）*、缓存层*（cache）*、访问层*（registry/handler）*。
+为了应对如此多的变量对大规模集群带来的复杂影响，我们采用了探索问题本质以不变应万变的方法。为了可以全面而且系统化地对 apiserver 进行优化，我们由下到上把 apiserver 整体分为三个层面，分别为存储层（storage）、缓存层（cache）、访问层（registry/handler）。
 
 **-** 底层的 etcd 是 Kubernetes 元数据的存储服务，是 apiserver 的基石。存储层提供 apiserver 对 etcd 访问功能，包括 apiserver 对 etcd 的 list watch，以及 CRUD 操作。
 
@@ -136,21 +136,21 @@ Sigma apiserver 组件是 Kubernetes 集群的所有外部请求访问入口，�
 
 **「watchCache size 自适应」**
 
-在资源变化率*（churn rate）*比较大的集群中，apiserver 的 watchCache 大小对 apiserver 的整体稳定性和客户端访问量多少起着很大的作用。
+在资源变化率（ churn rate）比较大的集群中，apiserver 的 watchCache 大小对 apiserver 的整体稳定性和客户端访问量多少起着很大的作用。
 
 太小的 watchCache 会使得客户端的 watch 操作因为在 watchCache 里面查找不到相对应的 resource vesion 的内容而触发 too old resource version 错误，从而触发客户端进行重新 list 操作。而这些重新 list 操作又会进一步对于 apiserver 的性能产生负面的反馈，对整体集群造成影响。极端情况下会触发 **list -> watch -> too old resource version -> list** 的恶性循环。相应地，太大的 watchCache 又会对于 apiserver 的内存使用造成压力。
 
 因此，动态地调整 apiserver watchCache 的大小，并且选择一个合适的 watchCache size 的上限对于大规模大规模集群来说非常重要。
 
-我们对于 watchCache size 进行了动态的调整，根据同一种资源*（pod/node/configmap)* 的变化率*(create/delete/update 操作的频次)* 来动态调整 watchCache 的大小；并且根据集群资源的变化频率以及 list 操作的耗时计算了 watchCache size 大小的上限。
+我们对于 watchCache size 进行了动态的调整，根据同一种资源（pod/node/configmap) 的变化率(create/delete/update 操作的频次)* 来动态调整 watchCache 的大小；并且根据集群资源的变化频率以及 list 操作的耗时计算了 watchCache size 大小的上限。
 
-在这些优化和改动之后，客户端的 watch error*（too old resource version）*几乎消失了。
+在这些优化和改动之后，客户端的 watch error（too old resource version）几乎消失了。
 
 >![图片](https://gw.alipayobjects.com/zos/bmw-prod/55fee62e-a37f-4594-8d11-0abfdb4c3967.webp)
 
 **「增加 watchCache index」**
 
-在分析蚂蚁集团的业务之后发现，新计算*（大数据实时/离线任务，机器学习离线任务）*的业务对于各种资源的 list 有特定的访问模式，spark 和 blink 等业务方有大量的 list by label 操作，也就是通过标签来查找 pod 的访问量很多。
+在分析蚂蚁集团的业务之后发现，新计算（大数据实时/离线任务，机器学习离线任务）的业务对于各种资源的 list 有特定的访问模式，spark 和 blink 等业务方有大量的 list by label 操作，也就是通过标签来查找 pod 的访问量很多。
 
 通过对 apiserver 日志进行分析，我们提取出了各个业务方 list by label 比较多的操作，并且在 watchCache 增加了相应地增加了相关 label 的索引。在对同等规模的资源进行 list by label 操作时，客户端 RT 可以有 4-5 倍的提升。
 
@@ -180,9 +180,9 @@ Golang profiling 一直是用于对 Go 语言编写的应用的优化利器。�
 
 **-** Sigma apiserver 对于鉴权模型采用的是 Node、RBAC、Webhook，对于节点鉴权，apiserver 会在内存当中构建一个相对来说很大的图结构，用来对 Kubelet 对 apiserver 的访问进行鉴权。
 
-当集群出现大量的资源*（pod/secret/configmap/pv/pvc）*创建或者变更时，这个图结构会进行更新；当 apiserver 进行重启之后，图结构会进行重建。在大规模集群中，我们发现在 apiserver 重启过程中，Kubelet 会因为 apiserver 的 node authorizer graph 还在构建当中而导致部分 Kubelet 请求会因为权限问题而受阻。定位到是 node authorizer 的问题后，我们也发现了社区的修复方案，并 cherry-pick 回来进行了性能上的修复提升。
+当集群出现大量的资源（pod/secret/configmap/pv/pvc）创建或者变更时，这个图结构会进行更新；当 apiserver 进行重启之后，图结构会进行重建。在大规模集群中，我们发现在 apiserver 重启过程中，Kubelet 会因为 apiserver 的 node authorizer graph 还在构建当中而导致部分 Kubelet 请求会因为权限问题而受阻。定位到是 node authorizer 的问题后，我们也发现了社区的修复方案，并 cherry-pick 回来进行了性能上的修复提升。
 
-etcd 对于每个存储的资源都会有 1.5MB 大小的限制，并在请求大小超出之后返回 etcdserver: request is too large；为了防止 apiserver 将大于限制的资源写入 etcd，apiserver 通过 limitedReadBody 函数对于大于资源限制的请求进行了限制。我们对 limitedReadBody 函数进行了改进，从 http header 获取 Content-Length 字段来判断 http request body 是否超过了 etcd 的单个资源*（pod，node 等）*的 1.5MB 的存储上限。
+etcd 对于每个存储的资源都会有 1.5MB 大小的限制，并在请求大小超出之后返回 etcdserver: request is too large；为了防止 apiserver 将大于限制的资源写入 etcd，apiserver 通过 limitedReadBody 函数对于大于资源限制的请求进行了限制。我们对 limitedReadBody 函数进行了改进，从 http header 获取 Content-Length 字段来判断 http request body 是否超过了 etcd 的单个资源（pod，node 等）的 1.5MB 的存储上限。
 
 当然也不是所有方案都会有所提升。例如，我们进行了一些其它编码方案测试，把 encoding/json 替换成为了 jsoniter。相比之下，apiserver 的 CPU util 虽有降低但是 memory 使用有很大的增高，因此会继续使用默认的 encoding/json。
 
@@ -196,7 +196,7 @@ etcd 对于每个存储的资源都会有 1.5MB 大小的限制，并在请求�
 
 除此之外为了保障 apiserver 的高可用，蚂蚁 Kubernetes apiserver 进行了分层分级别的限流，采用了 sentinel-go 加 APF 的限流方案。其中 sentinel-go 来限制总量，进行了 ua 维度，verb 维度等多维度混合限流，防止服务被打垮，APF 来保障不同业务方之间的流量可以公平介入。然而，sentinel-go 中自带了周期性内存采集功能，我们将其关闭之后带来了一定的 CPU 利用率的提升。
 
-另外，我们也在和客户端一起优化 apiserver 的访问行为。截止目前，Sigma 和业务方一起对 blink operator*（flink on K8s）* / tekton pipeline / spark operator 等服务进行了 apiserver 使用方式方法上的代码优化。
+另外，我们也在和客户端一起优化 apiserver 的访问行为。截止目前，Sigma 和业务方一起对 blink operator（flink on K8s）/ tekton pipeline / spark operator 等服务进行了 apiserver 使用方式方法上的代码优化。
 
 ### 优化效果
 
@@ -206,7 +206,7 @@ etcd 对于每个存储的资源都会有 1.5MB 大小的限制，并在请求�
 
 ### 基础资源 
 
-在各类型的流量随着业务增长有不同程度的上升的情况下，经过优化，apiserver CPU 利用率下降了约 7%。但是在内存上，增多了 20% 左右，这是因为 watchCache 在开启动态调整后相比之前缓存了更多的不同类别资源*（node/pod等）*的对象。
+在各类型的流量随着业务增长有不同程度的上升的情况下，经过优化，apiserver CPU 利用率下降了约 7%。但是在内存上，增多了 20% 左右，这是因为 watchCache 在开启动态调整后相比之前缓存了更多的不同类别资源（node/pod等）的对象。
 
 缓存更多资源对象带来的收益是，减少了客户端的重连并且降低了 list 操作个数，同时也间接减少了客户端各类操作的 RT，提升了整体集群和运行的业务的稳定性。当然后续也会继续针对减少 apiserver 的内存使用量进行优化。
 
@@ -218,7 +218,7 @@ etcd 对于每个存储的资源都会有 1.5MB 大小的限制，并在请求�
 
 >![图片](https://gw.alipayobjects.com/zos/bmw-prod/34482827-5e0f-40af-8de7-8b94d7aaa0b2.webp)
 
-*（注：RT 对比在包括 etcd 拆分之后进行）*
+（注：RT 对比在包括 etcd 拆分之后进行）
 
 ### Watch error 和 list 个数
 
@@ -254,10 +254,7 @@ etcd 对于每个存储的资源都会有 1.5MB 大小的限制，并在请求�
 
 同时，我们也将进一步提升方法论，从缓存、异步化、水平拆分/可扩展性、合并操作、缩短资源创建链路等大方向上进行下一步的优化。随着集群规模的继续增长，性能优化的重要性也会日益凸显，我们将朝着构建和维护对于用户来说高效可靠高保障的大规模 Kubernetes 集群这一目标继续努力，就像 Kubernetes 这个名字的寓意一样，为应用程序保驾护航！
 
-\-
-
-*「参考资料」*
-
+「参考资料」
 
 .【Kubernetes Scalability thresholds】
 
@@ -279,9 +276,7 @@ etcd 对于每个存储的资源都会有 1.5MB 大小的限制，并在请求�
 
 *https://docs.openstack.org/developer/performance-docs/test_results/container_cluster_systems/kubernetes/API_testing/index.html*
 
-*-*
-
-*「求贤若渴」*
+「求贤若渴」
 
 蚂蚁集团 Kubernetes 集群调度系统支撑了蚂蚁集团在线、实时业务的百万级容器资源调度, 向上层各类金融业务提供标准的容器服务及动态资源调度能力, 肩负蚂蚁集团资源成本优化的责任。我们有业界规模最大 Kubernetes 集群，最深入的云原生实践，最优秀的调度技术。欢迎有意在 Kubernetes/云原生/容器/内核隔离混部/调度/集群管理深耕的同学加入，北京、上海、杭州期待大家的加入。
 
