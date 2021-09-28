@@ -1,14 +1,17 @@
 ---
-title: "SOFA Weekly | SOFAJRaft 发布新版本，QA 整理"
+title: "SOFA Weekly | QA 整理"
 author: "SOFA 团队"
 authorlink: "https://github.com/sofastack"
-description: "SOFA WEEKLY | sofa-common-tools 发布新版本，QA 整理"
+description: "SOFA WEEKLY | QA 整理"
 categories: "SOFA Weekly"
 tags: ["SOFA Weekly"]
 date: 2021-09-10T15:00:00+08:00
 cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*_ewiQbuzeOQAAAAAAAAAAAAAARQnAQ"
 ---
+
 SOFA WEEKLY | 每周精选，筛选每周精华问答
+
+>![weekly.jpg](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAAAAAAAAARQnAQ)
 
 同步开源进展，欢迎留言互动
 
@@ -34,7 +37,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 A：迁移连接之后，创建连接最后就会 start 了。
 
->![](https://mmbiz.qpic.cn/mmbiz_jpg/nibOZpaQKw0ichqkNY05FmiaQyRDUMGc9IDKVs3onKk07Mup2VEbSvRArN0Ml9SEtl1AiaD6m5DaNQ0PlUoEVeiaMmA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+>![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*lVjzSLZiztAAAAAAAAAAAAAAARQnAQ)
 
 **2、@胡希国** 提问：
 
@@ -46,7 +49,7 @@ A：是的，每个连接都有 readloop 的， WaitConnectionsDone 就是等他
 
 这篇文章里面有写的。
 
->![](https://mmbiz.qpic.cn/mmbiz_jpg/nibOZpaQKw0ichqkNY05FmiaQyRDUMGc9IDLVq1BAjoftDLCOibI9EyOK71b8fsn36t2LHibeaeLHXiaQlOibNHKicyutA/640?wx_fmt=jpeg&tp=webp&wxfrom=5&wx_lazy=1&wx_co=1)
+>![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*u4reRpA5n30AAAAAAAAAAAAAARQnAQ)
 
 **3、@汪晓涛** 提问：
 
@@ -71,3 +74,17 @@ A：没有实际的业务场景，结果出入比较大。RPC 开销应该是最
 > 咱们这个 Seata-Server 的回查和提交都是异步的吧，会对 RPC 本身的耗时产生影响吗？
 
 A：你算 RPC 一次 1ms tm begin 1ms rmregisty 1ms 如果有 3 个 rm，就是 4ms。然后 tm 决议发给 tc，5ms。如果是 tcc，那么就是 5ms + tc 下发到 3 个 rm 执行，rm 执行二阶段业务也要时间。
+
+### 本周推荐阅读
+
+- [2021 年云原生技术发展现状及未来趋势](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247492248&idx=1&sn=c26d93b04b2ee8d06d8d495e114cb960&chksm=faa30d42cdd48454b4166a29efa6c0e775ff443f972bd74cc1eb057ed4f0878b2cb162b356bc&token=1414725197)
+
+- [蚂蚁集团 SOFATracer 原理与实践](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247491935&idx=1&sn=75421dd34ec84d5889d7a4306f1c6a03&chksm=faa30e85cdd4879335726d670e94c5b360e53a1f3f74f41c66c0c6221d5e8459c35a653e94b6&token=1414725197)
+
+- [KCL：声明式的云原生配置策略语言](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247491634&idx=1&sn=8359805abd97c598c058c6b5ad573d0d&chksm=faa30fe8cdd486fe421da66237bdacb11d83c956b087823808ddaaff52c1b1900c02dbf80c07&token=1414725197)
+
+- [蚂蚁集团万级规模 K8s 集群 etcd 高可用建设之路](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247491409&idx=1&sn=d6c0722d55b772aedb6ed8e34979981d&chksm=faa0f08bcdd7799dabdb3b934e5068ff4e171cffb83621dc08b7c8ad768b8a5f2d8668a4f57e&token=1414725197)
+
+更多文章请扫码关注“金融级分布式架构”公众号
+
+>![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*weuLRqbBWEkAAAAAAAAAAAAAARQnAQ)
