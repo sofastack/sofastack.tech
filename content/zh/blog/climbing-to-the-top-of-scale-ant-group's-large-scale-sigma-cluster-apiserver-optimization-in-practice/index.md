@@ -257,23 +257,24 @@ etcd 对于每个存储的资源都会有 1.5MB 大小的限制，并在请求�
 
 .【Kubernetes Scalability thresholds】
 
-*https://github.com/kubernetes/community/blob/master/sig-scalability/configs-and-limits/thresholds.md*
+[https://github.com/kubernetes/community/blob/master/sig-scalability/configs-and-limits/thresholds.md](https://github.com/kubernetes/community/blob/master/sig-scalability/configs-and-limits/thresholds.md)
 
 .【Kubernetes scalability and performance SLIs/SLOs】
 
-*https://github.com/kubernetes/community/blob/master/sig-scalability/slos/slos.md*
+[https://github.com/kubernetes/community/blob/master/sig-scalability/slos/slos.md](https://github.com/kubernetes/community/blob/master/sig-scalability/slos/slos.md)
 
 .【Watch latency SLI details】
 
-*https://github.com/kubernetes/community/blob/master/sig-scalability/slos/watch_latency.md*
+[https://github.com/kubernetes/community/blob/master/sig-scalability/slos/watch_latency.md](https://github.com/kubernetes/community/blob/master/sig-scalability/slos/watch_latency.md)
 
 .【Bayer Crop Science seeds the future with 15000-node GKE clusters】
 
-*https://cloud.google.com/blog/products/containers-kubernetes/google-kubernetes-engine-clusters-can-have-up-to-15000-nodes*
+[https://cloud.google.com/blog/products/containers-kubernetes/google-kubernetes-engine-clusters-can-have-up-to-15000-nodes](https://cloud.google.com/blog/products/containers-kubernetes/google-kubernetes-engine-clusters-can-have-up-to-15000-nodes)
 
 .【Openstack benchmark】
 
-*https://docs.openstack.org/developer/performance-docs/test_results/container_cluster_systems/kubernetes/API_testing/index.html*
+[https://docs.openstack.org/developer/performance-docs/test_results/container_cluster_systems/kubernetes/API_testing/index.html](https://docs.openstack.org/developer/performance-docs/test_results/container_cluster_systems/kubernetes/API_testing/index.html)
+
 
 「求贤若渴」
 
