@@ -275,7 +275,6 @@ etcd 对于每个存储的资源都会有 1.5MB 大小的限制，并在请求�
 
 [https://docs.openstack.org/developer/performance-docs/test_results/container_cluster_systems/kubernetes/API_testing/index.html](https://docs.openstack.org/developer/performance-docs/test_results/container_cluster_systems/kubernetes/API_testing/index.html)
 
-
 「求贤若渴」
 
 蚂蚁集团 Kubernetes 集群调度系统支撑了蚂蚁集团在线、实时业务的百万级容器资源调度, 向上层各类金融业务提供标准的容器服务及动态资源调度能力, 肩负蚂蚁集团资源成本优化的责任。我们有业界规模最大 Kubernetes 集群，最深入的云原生实践，最优秀的调度技术。欢迎有意在 Kubernetes/云原生/容器/内核隔离混部/调度/集群管理深耕的同学加入，北京、上海、杭州期待大家的加入。
