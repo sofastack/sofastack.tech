@@ -281,7 +281,7 @@ etcd 对于每个存储的资源都会有 1.5MB 大小的限制，并在请求�
 
 联系邮箱 ***xiaoyun.maoxy@antgroup.com***
 
-#### 本周推荐阅读
+## 本周推荐阅读
 
 [SOFAJRaft 在同程旅游中的实践](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247495260&idx=1&sn=a56b0f82159e551dec4752b7290682cd&chksm=faa30186cdd488908a73792f9a1748cf74c127a792c5c484ff96a21826178e2aa35c279c41b3&scene=21)
 
