@@ -6,7 +6,7 @@ description: "攀登规模化的高峰 - 蚂蚁集团大规模 Sigma 集群 ApiS
 categories: "SOFAStack"
 tags: ["SOFAStack"]
 date: 2021-09-28T15:00:00+08:00
-cover:"https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*9RzaQYsl9pYAAAAAAAAAAAAAARQnAQ"
+cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*9RzaQYsl9pYAAAAAAAAAAAAAARQnAQ"
 ---
 
 文｜唐博（花名：**博易** 蚂蚁集团技术专家)
