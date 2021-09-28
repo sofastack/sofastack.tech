@@ -273,7 +273,6 @@ StateMachine 提供了状态回调的接口，我们在回调中对接内部的�
 *[https://pingcap.com/zh/blog/lease-read](https://pingcap.com/zh/blog/lease-read)*
 
 ```com.alipay.sofa.jraft.Node#readIndex(final byte[] requestContext, final ReadIndexClosure done)
-
 ```
 
 第一个参数是发起 read-index read 时的上下文，可以在回调中使用。
