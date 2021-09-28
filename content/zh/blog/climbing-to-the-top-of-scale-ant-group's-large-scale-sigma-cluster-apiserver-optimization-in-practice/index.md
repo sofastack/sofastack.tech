@@ -97,7 +97,7 @@ Sigma apiserver 组件是 Kubernetes 集群的所有外部请求访问入口，�
 
 构建一个大规模的 Kubernetes 集群以及性能优化不是一件容易的事，如 Google Kubernetes Engine K8s 规模化文章所言：
 
-「The scale of a Kubernetes cluster is like a multidimensional object composed of all the cluster’s resources—and scalability is an envelope that limits how much you can stretch that cube. The number of pods and containers, the frequency of scheduling events, the number of services and endpoints in each service—these and many others are good indicators of a cluster’s scale. 
+>「The scale of a Kubernetes cluster is like a multidimensional object composed of all the cluster’s resources—and scalability is an envelope that limits how much you can stretch that cube. The number of pods and containers, the frequency of scheduling events, the number of services and endpoints in each service—these and many others are good indicators of a cluster’s scale. 
 
 The control plane must also remain available and workloads must be able to execute their tasks.
 
@@ -155,7 +155,7 @@ What makes operating at a very large scale harder is that there are dependencies
 
 下图为上述 watchCache 优化内容简介:
 
->![图片](https://gw.alipayobjects.com/zos/bmw-prod/846c757e-1660-40f2-8cc9-2dafc6981070.webp)
+>![](https://gw.alipayobjects.com/zos/bmw-prod/846c757e-1660-40f2-8cc9-2dafc6981070.webp)
 
 ### 存储层优化 
 
@@ -239,7 +239,7 @@ etcd 对于每个存储的资源都会有 1.5MB 大小的限制，并在请求�
 
 对应到 apiserver 的性能优化来说，未来我们还将从以下几个方面继续深入：
 
->![图片](https://gw.alipayobjects.com/zos/bmw-prod/82717309-8f99-45c2-9031-4136e65f5a15.webp)
+>![](https://gw.alipayobjects.com/zos/bmw-prod/82717309-8f99-45c2-9031-4136e65f5a15.webp)
 
 1. 针对 apiserver 自身，一些可能的优化点包括：优化 apiserver 启动总时间，提升 watchCache 构建速度；threadSafeStore 数据结构优化；对 get 操作采用缓存；对 apiserver 存入 etcd 的数据进行压缩，减小数据大小，借此提升 etcd 性能 等等。
 
@@ -255,23 +255,23 @@ etcd 对于每个存储的资源都会有 1.5MB 大小的限制，并在请求�
 
 「参考资料」
 
-.【Kubernetes Scalability thresholds】
+【Kubernetes Scalability thresholds】
 
 [https://github.com/kubernetes/community/blob/master/sig-scalability/configs-and-limits/thresholds.md](https://github.com/kubernetes/community/blob/master/sig-scalability/configs-and-limits/thresholds.md)
 
-.【Kubernetes scalability and performance SLIs/SLOs】
+【Kubernetes scalability and performance SLIs/SLOs】
 
 [https://github.com/kubernetes/community/blob/master/sig-scalability/slos/slos.md](https://github.com/kubernetes/community/blob/master/sig-scalability/slos/slos.md)
 
-.【Watch latency SLI details】
+【Watch latency SLI details】
 
 [https://github.com/kubernetes/community/blob/master/sig-scalability/slos/watch_latency.md](https://github.com/kubernetes/community/blob/master/sig-scalability/slos/watch_latency.md)
 
-.【Bayer Crop Science seeds the future with 15000-node GKE clusters】
+【Bayer Crop Science seeds the future with 15000-node GKE clusters】
 
 [https://cloud.google.com/blog/products/containers-kubernetes/google-kubernetes-engine-clusters-can-have-up-to-15000-nodes](https://cloud.google.com/blog/products/containers-kubernetes/google-kubernetes-engine-clusters-can-have-up-to-15000-nodes)
 
-.【Openstack benchmark】
+【Openstack benchmark】
 
 [https://docs.openstack.org/developer/performance-docs/test_results/container_cluster_systems/kubernetes/API_testing/index.html](https://docs.openstack.org/developer/performance-docs/test_results/container_cluster_systems/kubernetes/API_testing/index.html)
 
@@ -281,14 +281,14 @@ etcd 对于每个存储的资源都会有 1.5MB 大小的限制，并在请求�
 
 联系邮箱 ***xiaoyun.maoxy@antgroup.com***
 
- **本周推荐阅读** 
+#### 本周推荐阅读
 
-[SOFAJRaft 在同程旅游中的实践](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247495260&idx=1&sn=a56b0f82159e551dec4752b7290682cd&chksm=faa30186cdd488908a73792f9a1748cf74c127a792c5c484ff96a21826178e2aa35c279c41b3&scene=21#wechat_redirect)
+[SOFAJRaft 在同程旅游中的实践](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247495260&idx=1&sn=a56b0f82159e551dec4752b7290682cd&chksm=faa30186cdd488908a73792f9a1748cf74c127a792c5c484ff96a21826178e2aa35c279c41b3&scene=21)
 
-[技术风口上的限流](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247494701&idx=1&sn=f9a2b71de8b5ade84c77b87a8649fa3a&chksm=faa303f7cdd48ae1b1528ee903a0edc9beb691608efd924189bcf025e462ea8be7bc742772e1&scene=21#wechat_redirect)
+[技术风口上的限流](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247494701&idx=1&sn=f9a2b71de8b5ade84c77b87a8649fa3a&chksm=faa303f7cdd48ae1b1528ee903a0edc9beb691608efd924189bcf025e462ea8be7bc742772e1&scene=21)
 
-[蚂蚁集团万级规模 k8s 集群 etcd 高可用建设之路](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247491409&idx=1&sn=d6c0722d55b772aedb6ed8e34979981d&chksm=faa0f08bcdd7799dabdb3b934e5068ff4e171cffb83621dc08b7c8ad768b8a5f2d8668a4f57e&scene=21#wechat_redirect)
+[蚂蚁集团万级规模 k8s 集群 etcd 高可用建设之路](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247491409&idx=1&sn=d6c0722d55b772aedb6ed8e34979981d&chksm=faa0f08bcdd7799dabdb3b934e5068ff4e171cffb83621dc08b7c8ad768b8a5f2d8668a4f57e&scene=21)
 
-[2021 年云原生技术发展现状及未来趋势](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247492248&idx=1&sn=c26d93b04b2ee8d06d8d495e114cb960&chksm=faa30d42cdd48454b4166a29efa6c0e775ff443f972bd74cc1eb057ed4f0878b2cb162b356bc&scene=21#wechat_redirect)
+[2021 年云原生技术发展现状及未来趋势](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247492248&idx=1&sn=c26d93b04b2ee8d06d8d495e114cb960&chksm=faa30d42cdd48454b4166a29efa6c0e775ff443f972bd74cc1eb057ed4f0878b2cb162b356bc&scene=21)
 
-![图片](https://gw.alipayobjects.com/zos/bmw-prod/6cea061a-33ed-4997-a022-640132d7fa13.webp)
+>![](https://gw.alipayobjects.com/zos/bmw-prod/6cea061a-33ed-4997-a022-640132d7fa13.webp)
