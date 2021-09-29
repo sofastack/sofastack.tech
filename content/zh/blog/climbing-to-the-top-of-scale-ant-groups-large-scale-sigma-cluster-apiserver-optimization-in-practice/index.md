@@ -25,11 +25,11 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*9RzaQYsl9pYAAAAAA
 
 蚂蚁集团的 Kubernetes 的演进，从 2018 年至今已经走过了 3 年多的岁月，虽然在 2019 年的时候就构建了万台集群的规模，但时至今日，无论是业务形态还是集群的服务器都发生了巨大的变化。
 
-**-** 首先，当时的集群万台节点，主要还是偏小规格的服务器，而如今都是大机型，虽然机器的数量也是万台，实际管理的 CPU 数量已经成倍增长。
+- 首先，当时的集群万台节点，主要还是偏小规格的服务器，而如今都是大机型，虽然机器的数量也是万台，实际管理的 CPU 数量已经成倍增长。
 
-**-** 其次是当时集群里面几乎全量是 Long running 的在线业务，Pod 的创建频率每天只有几千个，如今我们的集群上几乎跑满了流式计算和离线计算业务等按需分配的 Pod，因此在 Pod 数量上成倍增长，实际管理的 Pod 数量超过了百万。
+- 其次是当时集群里面几乎全量是 Long running 的在线业务，Pod 的创建频率每天只有几千个，如今我们的集群上几乎跑满了流式计算和离线计算业务等按需分配的 Pod，因此在 Pod 数量上成倍增长，实际管理的 Pod 数量超过了百万。
 
-**-** 最后，是 Serverless 的业务快速发展，Serverless Pod 的生命周期基本在分钟级甚至是秒级，集群每天的 Pod 创建量也超过了几十万，伴随着大量的 Kubernetes list watch 和 CRUD 请求，集群的 apiserver 承受了数倍于以往的压力。
+- 最后，是 Serverless 的业务快速发展，Serverless Pod 的生命周期基本在分钟级甚至是秒级，集群每天的 Pod 创建量也超过了几十万，伴随着大量的 Kubernetes list watch 和 CRUD 请求，集群的 apiserver 承受了数倍于以往的压力。
 
 因此在业务 Serverless 的大背景下，我们在蚂蚁启动了大规模 Sigma 集群的性能优化方案，根据业务的增长趋势，我们设定的目标是，构建 1.4W 个节点规模的集群，同时通过技术优化，期望达成在请求延迟上不会因为规模的原因有所下降，能够对齐社区标准，即 create/update/delete 请求的天级别 P99 RT 在 1s 之内。
 
@@ -39,17 +39,17 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*9RzaQYsl9pYAAAAAA
 
 毋庸置疑，大规模集群带来了很多挑战：
 
-**-** 随着集群规模增大，故障的爆炸半径也将扩大。Sigma 集群承载了蚂蚁集团诸多重要应用，保障集群的稳定和业务的稳定是最基础也是优先级最高的要求。
+- 随着集群规模增大，故障的爆炸半径也将扩大。Sigma 集群承载了蚂蚁集团诸多重要应用，保障集群的稳定和业务的稳定是最基础也是优先级最高的要求。
 
-**-** 用户大量的 list 操作，包括 list all，list by namespace，list by label 等，均会随着集群的规模增大而开销变大。这些合理或者不合理的 list 请求，将让 apiserver 的内存在短时间内快速增长，出现 OOM 异常，无法对外响应请求。此外，业务方的 list 请求也会因为 apiserver 无法处理请求而不断重试，造成 apiserver 重启后因过载不可恢复服务能力，影响整个集群的可用性。
+- 用户大量的 list 操作，包括 list all，list by namespace，list by label 等，均会随着集群的规模增大而开销变大。这些合理或者不合理的 list 请求，将让 apiserver 的内存在短时间内快速增长，出现 OOM 异常，无法对外响应请求。此外，业务方的 list 请求也会因为 apiserver 无法处理请求而不断重试，造成 apiserver 重启后因过载不可恢复服务能力，影响整个集群的可用性。
 
-**-** 大量 List 请求透过 apiserver 直接访问 etcd 服务，也会让 etcd 实例的内存剧增而出现 OOM 异常。
+- 大量 List 请求透过 apiserver 直接访问 etcd 服务，也会让 etcd 实例的内存剧增而出现 OOM 异常。
 
-**-** 随着业务量的增长，特别是离线任务的增多，create/update/delete 等请求的数量也迅速增加，导致客户端请求 apiserver 的 RT 极速上升，进而使得调度器和一些控制器因为选主请求超时而丢主。
+- 随着业务量的增长，特别是离线任务的增多，create/update/delete 等请求的数量也迅速增加，导致客户端请求 apiserver 的 RT 极速上升，进而使得调度器和一些控制器因为选主请求超时而丢主。
 
-**-** 业务量增长将加剧 etcd 由于 compact 等操作自身存在的性能问题，而使 etcd 的 P99 RT 暴涨，进而导致 apiserver 无法响应请求。
+- 业务量增长将加剧 etcd 由于 compact 等操作自身存在的性能问题，而使 etcd 的 P99 RT 暴涨，进而导致 apiserver 无法响应请求。
 
-**-** 集群中的控制器服务，包括 Kubernetes 社区自带的控制器例如 service controller，cronjob controller 以及业务的 operator 等，自身存在的性能问题都将在大规模集群面前被进一步放大。这些问题将进一步传导到线上业务，导致业务受损。
+- 集群中的控制器服务，包括 Kubernetes 社区自带的控制器例如 service controller，cronjob controller 以及业务的 operator 等，自身存在的性能问题都将在大规模集群面前被进一步放大。这些问题将进一步传导到线上业务，导致业务受损。
 
 如计算机学科的古老格言所说：
 
@@ -61,37 +61,37 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*9RzaQYsl9pYAAAAAA
 
 诚然，构建一个大规模的 Kubernetes 集群也提供了诸多收益：
 
-**-** 为运行大型服务提供更为便利的基础设施 ，便于应对业务扩容时大幅飙升的资源需求。例如在双十一等电商大促活动期间，可以通过扩展现有集群而不是新建其它小集群来应对业务的增长。同时集群管理者可以管理更少的集群，并且以此来简化基础架构管理 。
+- 为运行大型服务提供更为便利的基础设施 ，便于应对业务扩容时大幅飙升的资源需求。例如在双十一等电商大促活动期间，可以通过扩展现有集群而不是新建其它小集群来应对业务的增长。同时集群管理者可以管理更少的集群，并且以此来简化基础架构管理 。
 
-**-** 为大数据和机器学习的离线计算任务提供更多的资源，为分时复用/分时调度等调度手段提供更大的施展空间，让离线的计算任务在在线业务的低峰期时可以使用更多的资源进行计算，享受极致弹性和极速交付。
+- 为大数据和机器学习的离线计算任务提供更多的资源，为分时复用/分时调度等调度手段提供更大的施展空间，让离线的计算任务在在线业务的低峰期时可以使用更多的资源进行计算，享受极致弹性和极速交付。
 
-**-** 还有非常重要的一点，在更大的集群中可以通过更加丰富的编排调度手段来更为有效地提升集群整体的资源利用率。
+- 还有非常重要的一点，在更大的集群中可以通过更加丰富的编排调度手段来更为有效地提升集群整体的资源利用率。
 
 ## PART. 3 SigmaApiServer性能优化
 
 Sigma apiserver 组件是 Kubernetes 集群的所有外部请求访问入口，以及 Kubernetes 集群内部所有组件的协作枢纽。apiserver 具备了以下几方面的功能:
 
-**-** 屏蔽后端数据持久化组件 etcd 的存储细节，并且引入了数据缓存，在此基础上对于数据提供了更多种类的访问机制。
+- 屏蔽后端数据持久化组件 etcd 的存储细节，并且引入了数据缓存，在此基础上对于数据提供了更多种类的访问机制。
 
-**-** 通过提供标准 API，使外部访问客户端可以对集群中的资源进行 CRUD 操作。
+- 通过提供标准 API，使外部访问客户端可以对集群中的资源进行 CRUD 操作。
 
-**-** 提供了 list-watch 原语，使客户端可以实时获取到资源中资源的状态。
+- 提供了 list-watch 原语，使客户端可以实时获取到资源中资源的状态。
 
 我们对于 apiserver 性能提升来说可以从两个层面进行拆解，分别是 apiserver 的启动阶段和 apiserver 的运行阶段。
 
 **apiserver** **启动阶段** **的性能优化有助于**：
 
-**-** 减少升级变更影响时长/故障恢复时长，减少用户可感知的不可用时间，给 Sigma 终端用户提供优质的服务体验（面向业务的整体目标是 Sigma 月度可用性 SLO 达到 99.9%，单次故障不可用时间 < 10min）。
+- 减少升级变更影响时长/故障恢复时长，减少用户可感知的不可用时间，给 Sigma 终端用户提供优质的服务体验（面向业务的整体目标是 Sigma 月度可用性 SLO 达到 99.9%，单次故障不可用时间 < 10min）。
 
-**-** 减少因为发布时客户端重新 list 全量资源而导致的 apiserver 压力过大情况出现。
+- 减少因为发布时客户端重新 list 全量资源而导致的 apiserver 压力过大情况出现。
 
 **apiserver** **运行阶段** **的性能优化的意义在于：**
 
-**-** 稳定支持更大规模的 Kubernetes 集群。
+- 稳定支持更大规模的 Kubernetes 集群。
 
-**-** 提高 apiserver 在正常平稳运行的状态中，单位资源的服务能力；即提高可以承受的请求并发和 qps， 降低请求 RT。
+- 提高 apiserver 在正常平稳运行的状态中，单位资源的服务能力；即提高可以承受的请求并发和 qps， 降低请求 RT。
 
-**-** 减少客户端的超时以及超时导致的各种问题；在现有资源下提供更多的流量接入能力；
+- 减少客户端的超时以及超时导致的各种问题；在现有资源下提供更多的流量接入能力；
 
  **整体优化思路** 
 
@@ -103,17 +103,17 @@ The control plane must also remain available and workloads must be able to execu
 
 What makes operating at a very large scale harder is that there are dependencies between these dimensions. 」
 
-也就是说，集群的规模化和性能优化需要考虑集群中各个维度的信息，包括 pod、node，configmap、service、endpoint 等资源的数量，pod 创建/调度的频率，集群内各种资源的变化率等等，同时需要考虑这些不同维度之间的互相的依赖关系，不同维度的因素彼此之间构成了一个多维的空间。
+也就是说，集群的规模化和性能优化需要考虑集群中各个维度的信息，包括 pod、node、configmap、service、endpoint 等资源的数量，pod 创建/调度的频率，集群内各种资源的变化率等等，同时需要考虑这些不同维度之间的互相的依赖关系，不同维度的因素彼此之间构成了一个多维的空间。
 
 >![图片](https://gw.alipayobjects.com/zos/bmw-prod/56328339-77a8-4a9c-90d2-7fa2805cd195.webp)
 
 为了应对如此多的变量对大规模集群带来的复杂影响，我们采用了探索问题本质以不变应万变的方法。为了可以全面而且系统化地对 apiserver 进行优化，我们由下到上把 apiserver 整体分为三个层面，分别为存储层（storage）、缓存层（cache）、访问层（registry/handler）。
 
-**-** 底层的 etcd 是 Kubernetes 元数据的存储服务，是 apiserver 的基石。存储层提供 apiserver 对 etcd 访问功能，包括 apiserver 对 etcd 的 list watch，以及 CRUD 操作。
+- 底层的 etcd 是 Kubernetes 元数据的存储服务，是 apiserver 的基石。存储层提供 apiserver 对 etcd 访问功能，包括 apiserver 对 etcd 的 list watch，以及 CRUD 操作。
 
-**-** 中间的缓存层相当于是对 etcd 进行了一层封装，提供了一层对来自客户端且消耗资源较大的 list-watch 请求的数据缓存，以此提升了 apiserver 的服务承载能力。同时，缓存层也提供了按条件搜索的能力。
+- 中间的缓存层相当于是对 etcd 进行了一层封装，提供了一层对来自客户端且消耗资源较大的 list-watch 请求的数据缓存，以此提升了 apiserver 的服务承载能力。同时，缓存层也提供了按条件搜索的能力。
 
-**-** 上面的访问层提供了处理 CRUD 请求的一些特殊逻辑，同时对客户端提供各种资源操作服务。
+- 上面的访问层提供了处理 CRUD 请求的一些特殊逻辑，同时对客户端提供各种资源操作服务。
 
 针对上面提出的不同层面，一些可能的优化项如下：
 
@@ -169,15 +169,15 @@ Golang profiling 一直是用于对 Go 语言编写的应用的优化利器。�
 
 例如：
 
-**-** 在用户 list event 时可以看到 events.GetAttrs/ToSelectableFields 会占用很多的 CPU，我们修改了 ToSelectableFields， 单体函数的 CPU util 提升 30%，这样在 list event 时候 CPU util 会有所提升。
+- 在用户 list event 时可以看到 events.GetAttrs/ToSelectableFields 会占用很多的 CPU，我们修改了 ToSelectableFields， 单体函数的 CPU util 提升 30%，这样在 list event 时候 CPU util 会有所提升。
 
 >![图片](https://gw.alipayobjects.com/zos/bmw-prod/11c89953-0858-49cf-b140-53f3a0e99081.webp)
 
-**-** 另外，通过 profiling 可以发现，当 metrics 量很大的时候会占用很多 CPU，在削减了 apiserver metrics 的量之后，大幅度降低了 CPU util。
+- 另外，通过 profiling 可以发现，当 metrics 量很大的时候会占用很多 CPU，在削减了 apiserver metrics 的量之后，大幅度降低了 CPU util。
 
 >![图片](https://gw.alipayobjects.com/zos/bmw-prod/2f42ffbc-9357-44d1-aee8-e7a821442588.webp)
 
-**-** Sigma apiserver 对于鉴权模型采用的是 Node、RBAC、Webhook，对于节点鉴权，apiserver 会在内存当中构建一个相对来说很大的图结构，用来对 Kubelet 对 apiserver 的访问进行鉴权。
+- Sigma apiserver 对于鉴权模型采用的是 Node、RBAC、Webhook，对于节点鉴权，apiserver 会在内存当中构建一个相对来说很大的图结构，用来对 Kubelet 对 apiserver 的访问进行鉴权。
 
 当集群出现大量的资源（pod/secret/configmap/pv/pvc）创建或者变更时，这个图结构会进行更新；当 apiserver 进行重启之后，图结构会进行重建。在大规模集群中，我们发现在 apiserver 重启过程中，Kubelet 会因为 apiserver 的 node authorizer graph 还在构建当中而导致部分 Kubelet 请求会因为权限问题而受阻。定位到是 node authorizer 的问题后，我们也发现了社区的修复方案，并 cherry-pick 回来进行了性能上的修复提升。
 
@@ -283,12 +283,12 @@ etcd 对于每个存储的资源都会有 1.5MB 大小的限制，并在请求�
 
  **本周推荐阅读** 
 
-[SOFAJRaft 在同程旅游中的实践](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247495260&idx=1&sn=a56b0f82159e551dec4752b7290682cd&chksm=faa30186cdd488908a73792f9a1748cf74c127a792c5c484ff96a21826178e2aa35c279c41b3&scene=21#wechat_redirect)
+[SOFAJRaft 在同程旅游中的实践](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247495260&idx=1&sn=a56b0f82159e551dec4752b7290682cd&chksm=faa30186cdd488908a73792f9a1748cf74c127a792c5c484ff96a21826178e2aa35c279c41b3&scene=21)
 
-[技术风口上的限流](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247494701&idx=1&sn=f9a2b71de8b5ade84c77b87a8649fa3a&chksm=faa303f7cdd48ae1b1528ee903a0edc9beb691608efd924189bcf025e462ea8be7bc742772e1&scene=21#wechat_redirect)
+[技术风口上的限流](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247494701&idx=1&sn=f9a2b71de8b5ade84c77b87a8649fa3a&chksm=faa303f7cdd48ae1b1528ee903a0edc9beb691608efd924189bcf025e462ea8be7bc742772e1&scene=21)
 
-[蚂蚁集团万级规模 k8s 集群 etcd 高可用建设之路](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247491409&idx=1&sn=d6c0722d55b772aedb6ed8e34979981d&chksm=faa0f08bcdd7799dabdb3b934e5068ff4e171cffb83621dc08b7c8ad768b8a5f2d8668a4f57e&scene=21#wechat_redirect)
+[蚂蚁集团万级规模 k8s 集群 etcd 高可用建设之路](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247491409&idx=1&sn=d6c0722d55b772aedb6ed8e34979981d&chksm=faa0f08bcdd7799dabdb3b934e5068ff4e171cffb83621dc08b7c8ad768b8a5f2d8668a4f57e&scene=21)
 
-[2021 年云原生技术发展现状及未来趋势](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247492248&idx=1&sn=c26d93b04b2ee8d06d8d495e114cb960&chksm=faa30d42cdd48454b4166a29efa6c0e775ff443f972bd74cc1eb057ed4f0878b2cb162b356bc&scene=21#wechat_redirect)
+[2021 年云原生技术发展现状及未来趋势](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247492248&idx=1&sn=c26d93b04b2ee8d06d8d495e114cb960&chksm=faa30d42cdd48454b4166a29efa6c0e775ff443f972bd74cc1eb057ed4f0878b2cb162b356bc&scene=21)
 
 ![图片](https://gw.alipayobjects.com/zos/bmw-prod/6cea061a-33ed-4997-a022-640132d7fa13.webp)
