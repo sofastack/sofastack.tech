@@ -77,9 +77,7 @@ OCM 还能够利用 Kubernetes 本身的发展来提高自身的能力。例如�
 
 >“展望未来，在红帽、蚂蚁集团、阿里云等参与者的共同努力下，Open Cluster Management 项目将成为构建基于 Kubernetes 的多集群解决方案的标准和背板”。
 
-无论如何，有一件事很清楚：
-
- >您现在可以在 Kubernetes 上运行整个星球 
+无论如何，有一件事很清楚：您现在可以在 Kubernetes 上运行整个星球 
 
 要了解有关云原生主题的更多信息，请在KubeCon+CloudNativeCon North America ，2021 – 2021 年 10 月 11-15 日加入云原生计算基金会和云原生社区。
 
