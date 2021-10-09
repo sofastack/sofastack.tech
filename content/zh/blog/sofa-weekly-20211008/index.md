@@ -43,10 +43,8 @@ A：发布 RPC 服务的时候做配置，uniqueId 是服务的唯一标识，�
 
 **@郑楚齐** 提问：
 
->我在 K8s 上测试将使用 spring-cloud-feign 的服务接入 MOSN Proxy，但是目前 consumer 端一直访问不到 provider，我还在排查问题，想问一下，如果要调用的话，FeignClient 这边是不是需要直接将 URL 指向代理？
-
->![weekly.jpg](https://gw.alipayobjects.com/zos/bmw-prod/1c4d440e-0972-4a13-82fb-8d3237966e6b.webp)
-
+>我在 K8s 上测试将使用 spring-cloud-feign 的服务接入 MOSN Proxy，但是目前 consumer 端一直访问不到 provider，我还在排查问题，想问一下，如果要调用的话，FeignClient 这边是不是需要直接将 URL 指向代理？<br/>
+>![weekly.jpg](https://gw.alipayobjects.com/zos/bmw-prod/1c4d440e-0972-4a13-82fb-8d3237966e6b.webp)<br/>
 >![weekly.jpg](https://gw.alipayobjects.com/zos/bmw-prod/457a5411-41a6-4e37-9b37-50589987e639.webp)
 
 A：不是透明劫持的话，就要直接指向 Proxy 的端口。
@@ -59,8 +57,7 @@ A：不是透明劫持的话，就要直接指向 Proxy 的端口。
 
 A：参考下图，
 
->![weekly.jpg](https://gw.alipayobjects.com/zos/bmw-prod/db92b023-2934-4042-8838-4ae58ec2f7a4.webp)
-
+>![weekly.jpg](https://gw.alipayobjects.com/zos/bmw-prod/db92b023-2934-4042-8838-4ae58ec2f7a4.webp)<br/>
 >![weekly.jpg](https://gw.alipayobjects.com/zos/bmw-prod/b7110a54-fee9-429d-95bf-acd7656c91f1.webp)
 
 「MOSN」：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
@@ -71,8 +68,7 @@ A：参考下图，
 
 A：debug 到 b 的时候看下 TC 的 global table 里面数据存不存在。可能是服务重试或者网络超时造成，自己看下 tm 的决议是什么?
 
-> java.time.LocalDateTime 序列化失败，这样的情况一般如何解决呢?
-
+> java.time.LocalDateTime 序列化失败，这样的情况一般如何解决呢?<br/>
 >![weekly.jpg](https://gw.alipayobjects.com/zos/bmw-prod/71154451-798b-4730-b5e1-90e3f6a4d803.webp)
 
 A：改数据库类型，mkyro + datatime 改为时间戳类型，或者等 1.5。
