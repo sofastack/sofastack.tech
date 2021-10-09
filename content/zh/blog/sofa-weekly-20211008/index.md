@@ -1,6 +1,5 @@
 ---
-title: "SOFA Weekly | Layotto 本周 Contributor、QA 整理、Layotto 发布新版本
-"
+title: "SOFA Weekly | Layotto 本周 Contributor、QA 整理、Layotto 发布新版本"
 author: "SOFA 团队"
 authorlink: "https://github.com/sofastack"
 description: "SOFA Weekly | Layotto 本周 Contributor、QA 整理、Layotto 发布新版本"
