@@ -5,7 +5,7 @@ authorlink: "https://github.com/sofastack"
 description: "蚂蚁集团技术风险代码化平台实践（MaaS）"
 categories: "SOFAStack"
 tags: ["SOFAStack"]
-date: 2021-09-07T15:00:00+08:00
+date: 2021-10-12T15:00:00+08:00
 cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*PhN5Sp2T9NYAAAAAAAAAAAAAARQnAQ"
 ---
 
