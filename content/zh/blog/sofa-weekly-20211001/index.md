@@ -47,11 +47,7 @@ MOSN：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 
 >MOSN 执行的这个 config.json 是如何使用呢？因为目前 Istio 的这个配置 DestinationRule VirsualService 是不满足需求的，或者说 MOSN 收到我们订制的DestinationRule VirsualService，会自动转为 config.json 供给 MOSN 使用呢？
 
-A：cluster subset 配置目前 Istio 的 Destination Rule 还不支持：
-
-[https://github.com/istio/istio/issues/29322 ](https://github.com/istio/istio/issues/29322)
-
-不过目前是可以通过 Envoy Filter 来给对应的 cluster 打 patch 实现（比较麻烦点）。
+A：cluster subset 配置目前 Istio 的 Destination Rule 还不支持，不过目前是可以通过 Envoy Filter 来给对应的 cluster 打 patch 实现（比较麻烦点）。
 
 MOSN：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 
