@@ -61,8 +61,7 @@ SOFAArk 有相关的适应样例：[https://github.com/sofastack-guides](https:/
 
 **@春少** 提问：
 
->这一段逻辑，是为了避免在执行 add peer 的时候，出现 raft 选举的情况吗？
-
+>这一段逻辑，是为了避免在执行 add peer 的时候，出现 raft 选举的情况吗？<br/>
 >![weekly.jpg](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*UKtPTJkE_qwAAAAAAAAAAAAAARQnAQ)
 
 A：是的，所以这个时候就交给新的 leader 负责继续推进新的成员节点变更。
