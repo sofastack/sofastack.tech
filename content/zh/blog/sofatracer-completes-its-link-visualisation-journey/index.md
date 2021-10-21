@@ -39,7 +39,7 @@ SOFATracer 提供了异步落地磁盘的日志打印能力和将链路跟踪数
 
 上图是 SOFATracer 中的链路上报流程，Span#finish 是 span 生命周期的最后一个执行方法，这是整个数据上报的入口，SOFATracer 的 report span 方法中含有上报链路展示端和日志落盘两个部分。SOFATracer 中没有把上报数据采集器和日志落盘分开只是在日志落盘之前调用 SOFATracer#invokeReporListeners 方法，找到系统中所有实现了 SpanReportListener 接口并加入了 SpanReportListenersHolder 的实例，调用其 onSpanReport 方法完成链路数据上报至数据采集器。下面的代码片段是 invokeReportListeners 方法的具体实现。
 
-```
+```python
  protected void invokeReportListeners(SofaTracerSpan sofaTracerSpan) {
     List<SpanReportListener> listeners = SpanReportListenerHolder
         .getSpanReportListenersHolder();
@@ -124,9 +124,8 @@ Jaeger Agent 被设计成一种基本组件部署到主机上，能够将路由�
 
 SkyWalking 是分布式系统的应用程序性能监视工具，专为微服务、云原生架构和基于容器架构而设计，提供分布式追踪、服务网格遥测分析、度量聚合和可视化的一体化解决方案。SkyWalking 采用字节码注入的方式实现代码的无侵入，且性能表现优秀。SkyWalking 的 receiver-trace 模块可以通过 gRPC 和 HTTPRestful 服务接受 SkyWalking 格式的 trace 数据，在实现上报 SkyWalking 中选择的上报方式是通过 HTTPRestful 服务上报。
 
-### 模型转换对照 
-
-![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*CuTTQpIuL98AAAAAAAAAAAAAARQnAQ)
+### 模型转换对照
+>![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*CuTTQpIuL98AAAAAAAAAAAAAARQnAQ)
 
 ### SegmentId、SpanId、PatentSpanID 的转换 
 
