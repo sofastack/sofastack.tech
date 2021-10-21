@@ -108,7 +108,7 @@ TraceId 的转换：
 
 - 解决办法这个问题的解决办法同之前已有的转化为 Zipkin 中的 SpanId 的解决办法一样，也是使用 FNV Hash 将 String 映射成冲突较小的 Long 型。
 
-###  两种上传方式 
+### 两种上传方式 
 
 #### 配合 Jaeger Agent
 
@@ -160,7 +160,7 @@ client span ：parentSegmentId = traceId + parentId 哈希值 + server(0)
 
 可以通过 local.host、local.port 组成 SOFARPC 中不能直接从 span 中获取到本机的 IP，使用的是获取本机的第一个有效 IPv4 地址，但是没有端口号，所以在上面的 peer 字段中也只用了 IP。
 
- ### 展示拓扑图 
+### 展示拓扑图 
 
 在构建链路的过程中几个比较关键的字段是 peer、networkAddressUsedAtPeer 、parentService、parentServiceInstance、parentEndpoint。其中 Peer 和 networkAddressUsedAtPeer 分别表示对端地址以及 client 端调用当前实例使用的地址，这两个字段的作用是将链路中的实例连接起来，如果这两个字段缺失会导致链路断开，在转换过程中这两个字段通过在 span 的 tag 中寻找或获取本机第一个合法的 IPv4 地址获得。后三个字段的作用是指出对应的父实例节点，如果不设置这三个字段会产生一个空的实例信息，如下图所示。目前 SOFATracer 中在能在上下文中传播的只有 TraceIdSpanId、parentId、sysBaggage、bizBaggage 从其中无法得到以上的三个字段，为了能展示拓扑图在 SOFATracer 的上下文中增加了七个字段 service、serviceInstance、endpoint、parentService、parentServiceInstance、parentEndpoint、peer 这样就能够在转换的过程中获得父服务的相关信息。
 
