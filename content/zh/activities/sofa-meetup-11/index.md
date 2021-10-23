@@ -1,8 +1,8 @@
 ---
-title: "【活动回顾】SOFAMeetup#9 上海站 云原生开放日（Cloud Native Open Day）"
+title: "SOFAMeetup#9 上海站 云原生开放日 Cloud Native Open Day"
 author: "SOFA 团队"
 authorlink: "https://github.com/sofastack"
-description: "【活动回顾】SOFAMeetup#9 上海站 云原生开放日（Cloud Native Open Day）"
+description: "SOFAMeetup#9 上海站 云原生开放日 Cloud Native Open Day"
 categories: "SOFAMeetup"
 tags: ["SOFAMeetup"]
 date: 2021-10-23T15:00:00+08:00
