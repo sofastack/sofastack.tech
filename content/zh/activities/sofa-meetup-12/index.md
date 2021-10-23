@@ -22,9 +22,6 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*kvWHQ5NzzsUAAAAAA
 - 资料下载：<br/>
 [《攀登规模化的高峰蚂蚁集团大规模 Sigma 集 ApiServer 优化实践》](https://gw.alipayobjects.com/os/bmw-prod/75201cac-3aff-499b-8715-8809c00ae977.pdf)<br/>
 
-## 活动议程
-
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*0mx0SYmi5yQAAAAAAAAAAAAAARQnAQ)
 ## 活动回顾 
 
 **《攀登规模化的高峰蚂蚁集团大规模 Sigma 集 ApiServer 优化实践》**
