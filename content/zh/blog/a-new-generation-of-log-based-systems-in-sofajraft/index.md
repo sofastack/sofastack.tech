@@ -39,7 +39,7 @@ Github 地址：
 
 ### 1.2 任务要求
 
-**目标：**当前 LogStorage 的实现，采用 index 与 data 分离的设计，我们将 key 和 value 的 offset 作为索引写入 rocksdb，同时日志条目*（data）*写入 Segment Log。因为使用 SOFAJRaft 的用户经常也使用了不同版本的 rocksdb，这就要求用户不得不更换自己的 rocksdb 版本来适应 SOFAJRaft， 所以我们希望做一个改进：移除对 rocksdb 的依赖，构建出一个纯 Java 实现的索引模块。
+目标：当前 LogStorage 的实现，采用 index 与 data 分离的设计，我们将 key 和 value 的 offset 作为索引写入 rocksdb，同时日志条目（data）写入 Segment Log。因为使用 SOFAJRaft 的用户经常也使用了不同版本的 rocksdb，这就要求用户不得不更换自己的 rocksdb 版本来适应 SOFAJRaft， 所以我们希望做一个改进：移除对 rocksdb 的依赖，构建出一个纯 Java 实现的索引模块。
 
 ## PART. 2 前置知识
 
@@ -47,7 +47,7 @@ Github 地址：
 
 如果学习过类似 Kafka 等消息队列的同学，对日志型系统应该并不陌生。
 
-如图所示，我们可以在单机磁盘上存储一些日志型文件，这些文件中一般包含了旧文件和新文件的集合。区别在于 Active Data File 一般是映射到内存中的并且正在写入的新文件*(基于 mmap 内存映射技术)*，而 Older Data File 是已经写完了，并且都 Flush 到磁盘上的旧文件，当一块 Active File 写完之后，就会将其关闭，并打开一个新的 Active File 继续写。
+如图所示，我们可以在单机磁盘上存储一些日志型文件，这些文件中一般包含了旧文件和新文件的集合。区别在于 Active Data File 一般是映射到内存中的并且正在写入的新文件(基于 mmap 内存映射技术)，而 Older Data File 是已经写完了，并且都 Flush 到磁盘上的旧文件，当一块 Active File 写完之后，就会将其关闭，并打开一个新的 Active File 继续写。
 
 ![img](https://gw.alipayobjects.com/zos/bmw-prod/bced55f8-dfe4-443a-a100-246e8d7d862c.webp)
 
@@ -63,7 +63,7 @@ Github 地址：
 
 \- **Value_sz** : LogEntry 的数据大小
 
- *(注: LogEntry 是被序列化后, 以二进制的方式存储的)*
+ (注: LogEntry 是被序列化后, 以二进制的方式存储的)
 
 \- **Value_pos**: 存储在对应 File 中的哪个位置开始
 
@@ -107,15 +107,15 @@ Github 地址：
 
 **第二种方式就是使用内存映射的方式**
 
-具体操作方式是：Open 一个文件，然后调用 mmap 系统调用，将文件内容的全部或一部分直接映射到进程的地址空间*(直接将用户进程私有地址空间中的一块区域与文件对象建立映射关系)*，映射完成后，**进程可以像访问普通内存一样做其他的操作**，比如 memcpy 等等。mmap 并不会预先分配物理地址空间，它只是占有进程的虚拟地址空间。
+具体操作方式是：Open 一个文件，然后调用 mmap 系统调用，将文件内容的全部或一部分直接映射到进程的地址空间(直接将用户进程私有地址空间中的一块区域与文件对象建立映射关系)，映射完成后，**进程可以像访问普通内存一样做其他的操作**，比如 memcpy 等等。mmap 并不会预先分配物理地址空间，它只是占有进程的虚拟地址空间。
 
 当第一个进程访问内核中的缓冲区时，因为并没有实际拷贝数据，这时 MMU 在地址映射表中是无法找到与地址空间相对应的物理地址的，也就是 MMU 失败，就会触发缺页中断。内核将文件的这一页数据读入到内核高速缓冲区中，并更新进程的页表，使页表指向内核缓冲中 Page Cache 的这一页。之后有其他的进程再次访问这一页的时候，该页已经在内存中了，内核只需要将进程的页表登记并且指向内核的页高速缓冲区即可，如下图所示：
 
-对于容量较大的文件来说*（文件大小一**般需要限制在 1.5~2G 以下）*，采用 mmap 的方式其读/写的效率和性能都非常高。
+对于容量较大的文件来说（文件大小一般需要限制在 1.5~2G 以下），采用 mmap 的方式其读/写的效率和性能都非常高。
 
 ![img](https://gw.alipayobjects.com/zos/bmw-prod/5eba51d4-d246-414a-805d-f68908ff607b.webp)
 
-当然，需要如果采用了 mmap 内存映射，此时调用 Write 并不是写入磁盘，而是写入 Page Cache 里。因此，如果想让写入的数据保存到硬盘上，我们还需要考虑在什么时间点 Flush 最合适 *(后文会讲述)*。
+当然，需要如果采用了 mmap 内存映射，此时调用 Write 并不是写入磁盘，而是写入 Page Cache 里。因此，如果想让写入的数据保存到硬盘上，我们还需要考虑在什么时间点 Flush 最合适(后文会讲述)。
 
 ![img](https://gw.alipayobjects.com/zos/bmw-prod/4c492107-2593-4798-9cbf-d980beb28640.webp)
 
@@ -129,8 +129,30 @@ Github 地址：
 
 其中 LogManager 提供了和日志相关的接口，如:
 
-```
-/*** Append log entry vector and wait until it's stable (NOT COMMITTED!)** @param entries log entries* @param done    callback*/void appendEntries(final Listentries, StableClosure done);/*** Get the log entry at index.** @param index the index of log entry* @return the log entry with {@code index}*/LogEntry getEntry(final long index);/*** Get the log term at index.** @param index the index of log entry* @return the term of log entry*/long getTerm(final long index);
+```java
+/**
+* Append log entry vector and wait until it's stable (NOT COMMITTED!)
+*
+* @param entries log entries
+* @param done    callback
+*/
+void appendEntries(final Listentries, StableClosure done);
+
+/**
+* Get the log entry at index.
+*
+* @param index the index of log entry
+* @return the log entry with {@code index}
+*/
+LogEntry getEntry(final long index);
+
+/**
+* Get the log term at index.
+*
+* @param index the index of log entry
+* @return the term of log entry
+*/
+long getTerm(final long index);
 ```
 
 实际上，当上层的 Node 调用这些方法时，LogManager 并不会直接处理，而是通过 OfferEvent*( done, EventType )* 将事件发布到高性能的并发队列 Disruptor 中等待调度执行。
@@ -147,8 +169,22 @@ Github 地址：
 
 而 LogStorage 也是一个接口:
 
-```
-/*** Append entries to log.*/boolean appendEntry(final LogEntry entry);/*** Append entries to log, return append success number.*/int appendEntries(final Listentries);/*** Delete logs from storage's head, [first_log_index, first_index_kept) will* be discarded.*/boolean truncatePrefix(final long firstIndexKept);/*** Delete uncommitted logs from storage's tail, (last_index_kept, last_log_index]* will be discarded.*/boolean truncateSuffix(final long lastIndexKept);
+```java
+/**
+* Append entries to log.
+*/
+boolean appendEntry(final LogEntry entry);
+
+/**
+* Append entries to log, return append success number.
+*/
+int appendEntries(final Listentries);
+
+/**
+* Delete logs from storage's head, [first_log_index, first_index_kept) will
+* be discarded.
+*/
+boolean truncatePrefix(final long firstIndexKept);/*** Delete uncommitted logs from storage's tail, (last_index_kept, last_log_index]* will be discarded.*/boolean truncateSuffix(final long lastIndexKept);
 ```
 
 在原有体系中，其默认的实现类是 RocksDBLogStorage，并且采用了索引和日志分离存储的设计，索引存储在 RocksDB 中，而日志存储在 SegmentFile 中。
@@ -219,7 +255,7 @@ Github 地址：
 
 \- 测试代码：
 
-```
+```java
 #DefaultLogStorageBenchmark
 ```
 
@@ -235,8 +271,19 @@ Total size 代表总共写入了 8589934592 *(8G)* 大小的数据
 
 读取耗时 *(5s)*
 
-```
-Test write: Log number   :524288 Log Size     :16384 Cost time(s) :45 Total size   :8589934592  Test read: Log number   :524288 Log Size     :16384 Cost time(s) :5 Total size   :8589934592Test done!
+```java
+Test write:
+ Log number   :524288
+ Log Size     :16384
+ Cost time(s) :45
+ Total size   :8589934592
+ 
+ Test read:
+ Log number   :524288
+ Log Size     :16384
+ Cost time(s) :5
+ Total size   :8589934592
+Test done!
 ```
 
 ## PART. 4 系统亮点
@@ -255,8 +302,12 @@ Test write: Log number   :524288 Log Size     :16384 Cost time(s) :45 Total size
 
 而 FileHeader 存储了一块文件的基本元信息:
 
-```
-// 第一个存储元素的索引 : 对应图中的 StartIndexdprivate volatile long       FirstLogIndex      = BLANK_OFFSET_INDEX;// 该文件的偏移量，对应图中的 BaseOffsetprivate long                FileFromOffset     = -1;
+```java
+// 第一个存储元素的索引 : 对应图中的 StartIndexd
+private volatile long       FirstLogIndex      = BLANK_OFFSET_INDEX;
+
+// 该文件的偏移量，对应图中的 BaseOffset
+private long                FileFromOffset     = -1;
 ```
 
 因此，FileManager 就能根据这两个基本的元信息，对所有的 File 进行统一的管理，这么做有以下的好处:
@@ -265,8 +316,20 @@ Test write: Log number   :524288 Log Size     :16384 Cost time(s) :45 Total size
 
 \- 方便根据 LogIndex 查找具体的日志在哪个文件中, 因为所有文件都是根据 FirstLogIndex 排列的，很显然在这里可以基于二分算法查找:
 
-```
-int lo = 0, hi = this.files.size() - 1;while (lo <= hi) {   final int mid = (lo + hi) >>> 1;   final AbstractFile file = this.files.get(mid);   if (file.getLastLogIndex() < logIndex) {       lo = mid + 1;   } else if (file.getFirstLogIndex() > logIndex) {       hi = mid - 1;   } else {       return this.files.get(mid);   }}
+```java
+nt lo = 0, hi = this.files.size() - 1;
+while (lo <= hi) {
+   final int mid = (lo + hi) >>> 1;
+   final AbstractFile file = this.files.get(mid);
+   if (file.getLastLogIndex() < logIndex) {
+       lo = mid + 1;
+   } else if (file.getFirstLogIndex() > logIndex) {
+       hi = mid - 1;
+   } else {
+       return this.files.get(mid);
+   }
+}
+
 ```
 
 \- 方便 Flush 刷盘*(4.2 节中会提到)*
@@ -285,14 +348,51 @@ int lo = 0, hi = this.files.size() - 1;while (lo <= hi) {   final int mid = (lo 
 
 \- DefaultLogStorage 注册一个 FlushRequest 到对应 DB 的 FlushService 中，并阻塞等待，FlushRequest 包含了期望刷盘的位置 ExpectedFlushPosition。
 
-```
-private boolean waitForFlush(final AbstractDB logDB, final long exceptedLogPosition,                            final long exceptedIndexPosition) {   try {       final FlushRequest logRequest = FlushRequest.buildRequest(exceptedLogPosition);       final FlushRequest indexRequest = FlushRequest.buildRequest(exceptedIndexPosition);       // 注册 FlushRequest       logDB.registerFlushRequest(logRequest);       this.indexDB.registerFlushRequest(indexRequest);   // 阻塞等待唤醒       final int timeout = this.storeOptions.getWaitingFlushTimeout();       CompletableFuture.allOf(logRequest.getFuture(), indexRequest.getFuture()).get(timeout, TimeUnit.MILLISECONDS);   } catch (final Exception e) {       LOG.error(.....);       return false;   }}
+```java
+private boolean waitForFlush(final AbstractDB logDB, final long exceptedLogPosition,
+                            final long exceptedIndexPosition) {
+   try {
+       final FlushRequest logRequest = FlushRequest.buildRequest(exceptedLogPosition);
+       final FlushRequest indexRequest = FlushRequest.buildRequest(exceptedIndexPosition);
+
+       // 注册 FlushRequest
+       logDB.registerFlushRequest(logRequest);
+       this.indexDB.registerFlushRequest(indexRequest);
+
+   // 阻塞等待唤醒
+       final int timeout = this.storeOptions.getWaitingFlushTimeout();
+       CompletableFuture.allOf(logRequest.getFuture(), indexRequest.getFuture()).get(timeout, TimeUnit.MILLISECONDS);
+
+
+   } catch (final Exception e) {
+       LOG.error(.....);
+       return false;
+   }
+}
+
 ```
 
 \- FlushService 刷到 expectedFlushPosition 后，通过 doWakeupConsumer() 唤醒阻塞等待的 DefaultLogStorage
 
-```
-while (!isStopped()) {   // 阻塞等待刷盘请求   while ((size = this.requestQueue.blockingDrainTo(this.tempQueue, QUEUE_SIZE, WAITING_TIME,       TimeUnit.MILLISECONDS)) == 0) {       if (isStopped()) {           break;       }   }   if (size > 0) {       .......       // 执行刷盘       doFlush(maxPosition);       // 唤醒 DefaultLogStorage       doWakeupConsumer();       .....   }}
+```java
+while (!isStopped()) {
+
+   // 阻塞等待刷盘请求
+   while ((size = this.requestQueue.blockingDrainTo(this.tempQueue, QUEUE_SIZE, WAITING_TIME,
+       TimeUnit.MILLISECONDS)) == 0) {
+       if (isStopped()) {
+           break;
+       }
+   }
+   if (size > 0) {
+       .......
+       // 执行刷盘
+       doFlush(maxPosition);
+       // 唤醒 DefaultLogStorage
+       doWakeupConsumer();
+       .....
+   }
+}
 ```
 
 那么 FlushService 到底是如何配合 FileManager 进行刷盘的呢? 或者应该问 FlushService 是如何找到对应的文件进行刷盘?
@@ -307,14 +407,53 @@ while (!isStopped()) {   // 阻塞等待刷盘请求   while ((size = this.reque
 
 当日志系统写满一个文件，想要打开一个新文件时，往往是一个比较耗时的过程。所谓文件预分配，就是事先通过 mmap 映射一些空文件存在容器中，当下一次想要 Append 一条 Log 并且前一个文件用完了，我们就可以直接到这个容器里面取一个空文件，在这个项目中直接使用即可。有一个后台的线程 AllocateFileService 在这个 Allocator 中，我采用的是典型的生产者消费者模式，即用了 ReentrantLock + Condition 实现了文件预分配。
 
-```
-// Pre-allocated filesprivate final ArrayDequeblankFiles = new ArrayDeque<>();private final Lock                        allocateLock      private final Condition                   fullCond          private final Condition                   emptyCond
+```java
+// Pre-allocated files
+private final ArrayDequeblankFiles = new ArrayDeque<>();
+
+private final Lock                        allocateLock      
+private final Condition                   fullCond          
+private final Condition                   emptyCond
 ```
 
 其中 fullCond 用于代表当前的容器是否满了，emptyCond 代表当前容器是否为空。
 
-```
-private void doAllocateAbstractFileInLock() throws InterruptedException {   this.allocateLock.lock();   try {     // 如果容器满了, 则阻塞等待, 直到被唤醒       while (this.blankAbstractFiles.size() >= this.storeOptions.getPreAllocateFileCount()) {           this.fullCond.await();       }       // 分配文件       doAllocateAbstractFile0();    // 容器不为空, 唤醒阻塞的消费者       this.emptyCond.signal();   } finally {       this.allocateLock.unlock();   }}public AbstractFile takeEmptyFile() throws Exception {   this.allocateLock.lock();   try {       // 如果容器为空, 当前消费者阻塞等待       while (this.blankAbstractFiles.isEmpty()) {           this.emptyCond.await();       }       final AllocatedResult result = this.blankAbstractFiles.pollFirst();       // 唤醒生产者       this.fullCond.signal();         return result.abstractFile;   } finally {       this.allocateLock.unlock();   }}
+```java
+private void doAllocateAbstractFileInLock() throws InterruptedException {
+   this.allocateLock.lock();
+   try {
+     // 如果容器满了, 则阻塞等待, 直到被唤醒
+       while (this.blankAbstractFiles.size() >= this.storeOptions.getPreAllocateFileCount()) {
+           this.fullCond.await();
+       }
+
+       // 分配文件
+       doAllocateAbstractFile0();
+
+    // 容器不为空, 唤醒阻塞的消费者
+       this.emptyCond.signal();
+   } finally {
+       this.allocateLock.unlock();
+   }
+}
+
+public AbstractFile takeEmptyFile() throws Exception {
+   this.allocateLock.lock();
+   try {
+       // 如果容器为空, 当前消费者阻塞等待
+       while (this.blankAbstractFiles.isEmpty()) {
+           this.emptyCond.await();
+       }
+
+       final AllocatedResult result = this.blankAbstractFiles.pollFirst();
+
+       // 唤醒生产者
+       this.fullCond.signal();  
+       return result.abstractFile;
+   } finally {
+       this.allocateLock.unlock();
+   }
+}
 ```
 
 ### 4.4 文件预热
