@@ -55,7 +55,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*72x1QKc1bQMAAAAAA
 
 下面是 demo 工程的依赖：
 
-```
+```java
 [dependencies]
 jemallocator = "0.3.2"
 jemalloc-ctl = "0.3.2"
@@ -70,7 +70,7 @@ debug = true
 
 然后 demo 的 src/main.rs 的代码如下：
 
-```
+```java
 use jemallocator;
 use jemalloc_ctl::{AsName, Access};
 use std::collections::HashMap;
@@ -114,7 +114,7 @@ export MALLOC_CONF=prof:true
 
 这样就可以将其可视化，从下图中，我们可以清晰地看到所有的内存来源：
 
-![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*NtDHQ78grjoAAAAAAAAAAAAAARQnAQ）
+![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*NtDHQ78grjoAAAAAAAAAAAAAARQnAQ)
 
 这个 demo 的整体流程就完成了，距离应用到生产的话，只差一些 trivial 的工作，下面是我们在生产的实践：
 
@@ -161,7 +161,7 @@ export MALLOC_CONF=prof:true
 
 下面是 demo 工程的依赖:
 
-```
+```java
 [dependencies]
 jemallocator = "0.3.2"
 jemalloc-ctl = "0.3.2"
@@ -174,7 +174,7 @@ debug = true
 
 demo 的 src/main.rs 的代码：
 
-```
+```java
 use jemallocator;
 use jemalloc_ctl::{epoch, stats};
 #[global_allocator]
@@ -208,7 +208,7 @@ fn main() {
 
 下面是我的编译后运行的输出信息：
 
-```
+```java
 cache_0 size:1048576B
 cache_1 size:1038336B
 current heap size:80488B
@@ -224,8 +224,7 @@ jemalloc 提供的 stats 数据不一定是完全准确的，因为他为了更�
 另外，其实还有更简单的方案，就是通过释放缓存，直接观察机器的内存变化，不过需要知道的是内存不一定是立即还给 OS 的，而且靠眼睛观察也比较累，更好的方案还是将这样的内存分布检查功能集成到自己的 Rust 应用之中。
 
 ## 其他通用方案
-
-#### metrics
+**metrics
 
 另外还有一个非常有效、我们一直都在使用的方案，就是在产生大量内存分配的时候，将分配的内存大小记录成指标，供后续采集、观察。
 
@@ -239,7 +238,7 @@ jemalloc 提供的 stats 数据不一定是完全准确的，因为他为了更�
 
 - 配置 Grafana，连接 Prometheus server，进行可视化展示
 
-#### 内存排查工具
+**内存排查工具
 
 在内存占用过高的排查过程中，也尝试过其他的强大工具，比如 heaptrack、valgrind 等工具，但是这些工具有一个巨大的弊端，就是会带来非常大的 overhead。
 
