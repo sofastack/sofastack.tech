@@ -56,6 +56,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*72x1QKc1bQMAAAAAA
 下面是 demo 工程的依赖：
 
 ``` java
+
 [dependencies]
 jemallocator = "0.3.2"
 jemalloc-ctl = "0.3.2"
@@ -64,6 +65,7 @@ version = "0.3.2"
 features = ["stats", "profiling", "unprefixed_malloc_on_supported_platforms"]
 [profile.release]
 debug = true
+
 ```
 
 其中比较关键的是``` jemalloc-sys``` 的几个 features 需要打开，否则后续的 profile 会遇到失败的情况，另外需要强调的是 demo 的运行环境是在 Linux 环境下运行的。
@@ -71,6 +73,7 @@ debug = true
 然后 demo 的 src/main.rs 的代码如下：
 
 ``` java
+
 use jemallocator;
 use jemalloc_ctl::{AsName, Access};
 use std::collections::HashMap;
@@ -96,6 +99,7 @@ fn main() {
     set_prof_active(false);
     dump_profile();
 }
+
 ```
 
 demo 已经是非常简化的测试用例了，主要做如下的说明：
