@@ -23,7 +23,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*72x1QKc1bQMAAAAAA
 
 > 本文最先发表于 RustMagazine 中文月刊
 > 
-> (https://rustmagazine.github.io/rust_magazine_2021/chapter_5/rust-memory-troubleshootting.html）
+> ([https://rustmagazine.github.io/rust_magazine_2021/chapter_5/rust-memory-troubleshootting.html](https://rustmagazine.github.io/rust_magazine_2021/chapter_5/rust-memory-troubleshootting.html)）
 
 ## 内存分配器
 
@@ -39,7 +39,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*72x1QKc1bQMAAAAAA
 
 不过这里分为两种情况：可以复现以及难以复现，对于两种情况的处理手段是不一样的，下面对于这两种情况分别给出可操作的方案。
 
-#### 可以复现
+**可以复现
 
 可以复现的场景其实是最容易的解决的问题，因为我们可以在复现期间采用动态打开 profile，在短时间内的获得大量的内存分配信息即可。
 
@@ -55,7 +55,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*72x1QKc1bQMAAAAAA
 
 下面是 demo 工程的依赖：
 
-```java
+``` java
 [dependencies]
 jemallocator = "0.3.2"
 jemalloc-ctl = "0.3.2"
@@ -70,7 +70,7 @@ debug = true
 
 然后 demo 的 src/main.rs 的代码如下：
 
-```java
+``` java
 use jemallocator;
 use jemalloc_ctl::{AsName, Access};
 use std::collections::HashMap;
@@ -126,7 +126,7 @@ export MALLOC_CONF=prof:true
 
 说到这里，这个方案其实有一个好处一直没有提到，就是它的动态性。因为开启内存 profile 功能，势必是会对性能产生一定的影响（虽然这里开启的影响并不是特别大），我们自然是希望在没有问题的时候，避免开启这个 profile 功能，因此这个动态开关还是非常实用的。
 
-#### 难以复现
+**难以复现
 
 事实上，可以稳定复现的问题都不是问题。生产上，最麻烦的问题是难以复现的问题，难以复现的问题就像是一个定时炸弹，复现条件很苛刻导致难以精准定位问题，但是问题又会冷不丁地出现，很是让人头疼。
 
@@ -224,6 +224,7 @@ jemalloc 提供的 stats 数据不一定是完全准确的，因为他为了更�
 另外，其实还有更简单的方案，就是通过释放缓存，直接观察机器的内存变化，不过需要知道的是内存不一定是立即还给 OS 的，而且靠眼睛观察也比较累，更好的方案还是将这样的内存分布检查功能集成到自己的 Rust 应用之中。
 
 ## 其他通用方案
+
 **metrics
 
 另外还有一个非常有效、我们一直都在使用的方案，就是在产生大量内存分配的时候，将分配的内存大小记录成指标，供后续采集、观察。
@@ -246,19 +247,19 @@ jemalloc 提供的 stats 数据不一定是完全准确的，因为他为了更�
 
 也正因如此，在生产的环境下，我们很少使用这类工具排查内存的问题。
 
-#### 总结
+**总结
 
 虽然 Rust 已经帮我们避免掉了内存泄漏的问题，但是内存占用过高的问题，我想不少在生产长期运行的程序还是会有非常大的概率出现的。本文主要分享了我们在生产环境中遇到的几种内存占用过高的问题场景，以及目前我们在不影响生产正常服务的情况下，一些常用的、快速定位问题的排查方案，希望能给大家带来一些启发和帮助。
 
 当然可以肯定的是，还有其他我们没有遇到过的内存问题，也还有更好的、更方便的方案去做内存问题的定位和排查，希望知道的同学可以一起多多交流。
 
-#### 参考
+**参考
 
 [1] Experimental Study of Memory Allocation forHigh-Performance Query Processing
 [2] jemalloc 使用文档
 [3] jemallocator
 
-#### 关于我们
+**关于我们
 
 我们是蚂蚁智能监控技术中台的时序存储团队，我们正在使用 Rust 构建高性能、低成本并具备实时分析能力的新一代时序数据库。
 
