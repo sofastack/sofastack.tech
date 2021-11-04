@@ -6,7 +6,7 @@ description: "【活动回顾】SOFAMeetup#9 上海站 云原生开放日（Clou
 categories: "SOFAMeetup"
 tags: ["SOFAMeetup"]
 date: 2021-10-23T15:00:00+08:00
-cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*kvWHQ5NzzsUAAAAAAAAAAAAAARQnAQ"
+cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*1wsAR44ALTEAAAAAAAAAAAAAARQnAQ"
 ---
 
 ## 概要
