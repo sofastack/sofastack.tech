@@ -54,7 +54,7 @@ A：站在 MOSN 角度，给我发请求的就是 downStream。
 
 >怎么将实现的 Eventhandler 注册进容器中，监听容器启动和停止事件？
 
-A：这里有具体讲解，[https://www.sofastack.tech/projects/sofa-boot/sofa-ark-ark-event/ ](https://www.sofastack.tech/projects/sofa-boot/sofa-ark-ark-event/ )
+A：这里有具体讲解，[https://www.sofastack.tech/projects/sofa-boot/sofa-ark-ark-event/](https://www.sofastack.tech/projects/sofa-boot/sofa-ark-ark-event/)
 
 >事件能传播吗？比如 master 传播给子模块内。<br/>
 A：容器级别的会传播。
