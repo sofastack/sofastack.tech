@@ -5,8 +5,8 @@ authorlink: "https://github.com/sofastack"
 description: "SOFA WEEKLY |Layotto 本周 Contributor、QA 整理、 SOFARPC 本周发布"
 categories: "SOFA Weekly"
 tags: ["SOFA Weekly"]
-date: 2021-10-09 T15:00:00+08:00
-cover:"https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*_ewiQbuzeOQAAAAAAAAAAAAAARQnAQ"
+date: 2021-10-09T15:00:00+08:00
+cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*_ewiQbuzeOQAAAAAAAAAAAAAARQnAQ"
 ---
 
 SOFA WEEKLY | 每周精选，筛选每周精华问答
@@ -119,7 +119,7 @@ A：还是有区别的，这个是把 host 置为失败了，是全局的，其�
 
 升级由 rust 开发的 wasm demo
 
-### SOFARPC本周发布
+### SOFARPC 本周发布
 
 本周 SOFARPC 发布 v5.8.0 版本代码。
 
