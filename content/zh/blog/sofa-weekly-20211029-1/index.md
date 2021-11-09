@@ -33,7 +33,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 通过 " SOFA WEEKLY " 的形式回复
 
-1.**@崔伟协 ** 提问：
+1.**@崔伟协** 提问：
 
 >PingPong 是类似 HTTP 的 req/resp 吗? Multiplex 是类似 HTTP2.0 的没有队头阻塞吗？
 
@@ -47,7 +47,7 @@ A：downstream 不用感知，这个访问你的 client 就决定他的行为。
 
 「MOSN」：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 
-2.**@玄灭 ** 提问：
+2.**@玄灭** 提问：
 
 >请教下 MOSN 可以同时支持多个协议吗？比如同时支持 HTTP1.1、rocketmq 协议。
 
@@ -55,7 +55,7 @@ A：可以的，一个端口都可以。协议可以做自动识别，协议配�
 
 「MOSN」：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 
-3.**@玄灭 ** 提问：
+3.**@玄灭** 提问：
 
 >业务层的 SDK 用的什么协议呢？比如 mq 用的是私有协议，还是和 RPC 统一是一个协议啊？
 
@@ -67,7 +67,7 @@ A：私有协议你认为是 Mesh 了，现有业务的支持；统一协议就�
 
 「MOSN」：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 
-4.**@晓辰  ** 提问：
+4.**@晓辰** 提问：
 
 >请问一下 MOSN 有支持 windows 的计划吗？
 
@@ -75,7 +75,7 @@ A：Go 语言跨平台应该支持的，你提个 pr 看看，是不是有些 Li
 
 「MOSN」：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 
-5.**@王磊  ** 提问：
+5.**@王磊** 提问：
 
 >MOSN 目前支持的 Istio 版本是 1.5.2 吗？更高的 Istio 版本支持有计划吗？
 
@@ -85,7 +85,7 @@ A：这个分支，近期会合到 Master。
 
 「MOSN」：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 
-6.**@孙力  ** 提问：
+6.**@孙力** 提问：
 
 >MOSN 有剔除上游故障节点的功能吗? 比如上游服务有 5 台服务器，访问其中一台总报错，下次就不选这台了。
 
@@ -142,7 +142,6 @@ A：还是有区别的，这个是把 host 置为失败了，是全局的，其�
 8. httpclient 版本从 4.5.11 升级到 4.5.13
 
 9. commons-io 版本从 2.4 升级到 2.7
-
 
 「详细参考」：[https://github.com/sofastack/sofa-rpc/releases/tag/v5.8.0](ttps://github.com/sofastack/sofa-rpc/releases/tag/v5.8.0)
 
