@@ -36,7 +36,6 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 1.**@崔伟协** 提问：
 
 >PingPong 是类似 HTTP 的 req/resp 吗? Multiplex 是类似 HTTP2.0 的没有队头阻塞吗？
-
 >![weekly.jpg](https://gw.alipayobjects.com/zos/bmw-prod/ac9c0a46-5061-45f8-a418-44a1fddbb4d1.webp)
 
 A：是的。
