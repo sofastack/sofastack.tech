@@ -6,7 +6,7 @@ description: "新一代日志型系统在 SOFAJRaft 中的应用"
 categories: "SOFAStack"
 tags: ["SOFAStack"]
 date: 2021-11-02T15:00:00+08:00
-cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*72x1QKc1bQMAAAAAAAAAAAAAARQnAQ"
+cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*G6AeQZFaW6MAAAAAAAAAAAAAARQnAQ"
 ---
 
 📄
