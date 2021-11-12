@@ -88,7 +88,7 @@ A：MULTI-RAFT-GROUP 主要用于解决 SIGLE-RAFT-GROUP 单点瓶颈问题（�
 
 JFR 埋点
 
-「详细参考」：[https://github.com/sofastack/sofa-rpc/issues/1127]9](https://github.com/sofastack/sofa-rpc/issues/1127]9)
+「详细参考」：[https://github.com/sofastack/sofa-rpc/issues/1127](https://github.com/sofastack/sofa-rpc/issues/1127)
 
 **Layotto**
 
