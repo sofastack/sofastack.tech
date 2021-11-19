@@ -62,8 +62,7 @@ SOFAJRaft：[https://github.com/sofastack/sofa-jraft](https://github.com/sofasta
 
 **@爱德华** 提问：
 
->我请教一下关于 follower 截断日志的问题。leader 拥有日志：101,102,103，它们的 term 为 2；follower 拥有日志：101,102,103,104，它们的 term 为 2；按照正常逻辑，follower 应该截断 104 的日志。根据上面的代码，在探测消息中，这种情况，follower 会返回了 success=true，并携带 lastLogIndex=104。那么 follower 是在什么时候截断 104 的呢？
-
+>我请教一下关于 follower 截断日志的问题。leader 拥有日志：101,102,103，它们的 term 为 2；follower 拥有日志：101,102,103,104，它们的 term 为 2；按照正常逻辑，follower 应该截断 104 的日志。根据上面的代码，在探测消息中，这种情况，follower 会返回了 success=true，并携带 lastLogIndex=104。那么 follower 是在什么时候截断 104 的呢？<br>
 >![weekly.jpg](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*lJZfTpxjNkoAAAAAAAAAAAAAARQnAQ)
 
 A：checkAndResolveConflict 方法。
