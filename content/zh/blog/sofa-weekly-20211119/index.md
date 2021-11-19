@@ -35,7 +35,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 >有什么办法可以获取日志的这两个值吗？
 
->![weekly.jpg](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*9ve_QatXBYEAAAAAAAAAAAAAARQnAQ)
+![weekly.jpg](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*9ve_QatXBYEAAAAAAAAAAAAAARQnAQ)
 
 A：可以参考下图
 
@@ -62,11 +62,7 @@ SOFAJRaft：[https://github.com/sofastack/sofa-jraft](https://github.com/sofasta
 
 **@爱德华** 提问：
 
->我请教一下关于 follower 截断日志的问题。
-leader 拥有日志：101,102,103，它们的 term 为 2
-follower 拥有日志：101,102,103,104，它们的 term 为 2
-按照正常逻辑，follower 应该截断 104 的日志。
-根据上面的代码，在探测消息中，这种情况，follower 会返回了 success=true，并携带 lastLogIndex=104。那么 follower 是在什么时候截断 104 的呢？
+>我请教一下关于 follower 截断日志的问题。leader 拥有日志：101,102,103，它们的 term 为 2；follower 拥有日志：101,102,103,104，它们的 term 为 2；按照正常逻辑，follower 应该截断 104 的日志。根据上面的代码，在探测消息中，这种情况，follower 会返回了 success=true，并携带 lastLogIndex=104。那么 follower 是在什么时候截断 104 的呢？
 
 >![weekly.jpg](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*lJZfTpxjNkoAAAAAAAAAAAAAARQnAQ)
 
@@ -126,7 +122,7 @@ fail fast，让 Layotto 启动报错时自杀
 
 「详细参考」：
 
-https://github.com/mosn/layotto/issues/108#issuecomment-872779356
+[https://github.com/mosn/layotto/issues/108#issuecomment-872779356](https://github.com/mosn/layotto/issues/108#issuecomment-872779356)
 
 ### 本周推荐阅读 
 
