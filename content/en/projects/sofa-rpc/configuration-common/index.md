@@ -84,7 +84,7 @@ aliases: "/sofa-rpc/docs/Configuration-Common"
 | validation | Whether to enable parameter verification | | Based on JSR303 |
 | compress | Whether to start compression | false | |
 | parameters | Extra attributes | | `Map<String, String>` |
-| rejectedExecutionPolicy | Rejection strategy when the callback thread pool is full | DISCARD | DISCARD: discard the callback task, CALLER_RUNS: caller runs the callback in IO-thread, CALLER_HANDLE_EXCEPTION: caller handle the task with exception strategy provided |
+| rejectedExecutionPolicy | Rejection strategy when the callback thread pool is full | DISCARD | DISCARD: discard the callback task, CALLER_RUNS: caller runs the callback in IO-thread, CALLER_HANDLE_EXCEPTION: caller handle the task with exception strategy provided. @since 5.8.1 |
 
 ## MethodConfig
 
