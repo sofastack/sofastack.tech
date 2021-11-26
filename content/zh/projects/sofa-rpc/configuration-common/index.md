@@ -84,7 +84,7 @@ aliases: "/sofa-rpc/docs/Configuration-Common"
 | validation | 是否开启参数验证 | | 基于JSR303 |
 | compress | 是否启动压缩 | false |  |
 | parameters | 额外属性 | | `Map<String, String>` |
-
+| rejectedExecutionPolicy | 回调线程池满拒绝策略 | DISCARD | DISCARD：默认丢弃，CALLER_RUNS：IO 线程继续执行任务，CALLER_HANDLE_EXCEPTION：IO 线程执行异常回调任务 @since 5.8.1 |
 
 ## MethodConfig
 
@@ -100,7 +100,6 @@ aliases: "/sofa-rpc/docs/Configuration-Common"
 | validation | 是否开启参数验证 | null |  |
 | compress | 是否启动压缩 | null |  |
 | parameters | 额外属性 |  | `Map<String, String>` |
-
 
 ## ServerConfig
 
@@ -131,7 +130,6 @@ aliases: "/sofa-rpc/docs/Configuration-Common"
 | stopTimeout    | 优雅关闭超时时间（毫秒） | 10000(override 20000)  |                                                     |
 | boundHost      | 绑定的地址             |                        | 默认取host值。                                        |
 | parameters     | 额外属性               |                        | `Map<String, String>`                                 |
-
 
 ## RegistryConfig
 
