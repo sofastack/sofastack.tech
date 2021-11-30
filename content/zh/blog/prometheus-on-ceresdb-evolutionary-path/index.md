@@ -83,9 +83,7 @@ subquery 和 query_range【3】 接口（也称为区间查询）类似，主要
 
 假设有一个步长为 10s 、查询区间为 1h 的区间查询，查询语句是 
 
-、、、java
-avg_over_time((a_gauge == bool 2)[1h:10s]) 
-、、、
+![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Fp36R70RqbsAAAAAAAAAAAAAARQnAQ)
 
 那么对于每一步，都需要计算 3600/10=360 个数据点，按照一个小时的区间来算，总共会涉及到 360*360=129600 的点，但是由于 subquery 和区间查询的步长一致，所以有一部分点是可以复用的，真正涉及到的点仅为 720 个，即 2h 对应 subquery 的数据量。
 
