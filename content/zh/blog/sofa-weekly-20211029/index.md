@@ -5,7 +5,7 @@ authorlink: "https://github.com/sofastack"
 description: "SOFA WEEKLY |Layotto 本周 Contributor、QA 整理、 SOFARPC 本周发布"
 categories: "SOFA Weekly"
 tags: ["SOFA Weekly"]
-date: 2021-10-09T15:00:00+08:00
+date: 2021-10-29T15:00:00+08:00
 cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*_ewiQbuzeOQAAAAAAAAAAAAAARQnAQ"
 ---
 
