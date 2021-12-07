@@ -2,7 +2,7 @@
 title: "如何在生产环境排查 Rust 内存占用过高问题"
 author: "魏熙凯"
 authorlink: "https://github.com/sofastack"
-description: "新一代日志型系统在 SOFAJRaft 中的应用"
+description: "如何在生产环境排查 Rust 内存占用过高问题"
 categories: "SOFAStack"
 tags: ["SOFAStack"]
 date: 2021-11-02T15:00:00+08:00
