@@ -22,7 +22,7 @@ aliases: "/sofa-boot/docs/sofa-ark-ark-biz"
                 <goals>
                     <goal>repackage</goal>
                 </goals>
-            </excution>
+            </execution>
         </executions>
         <configuration>
             <attach>false</attach>
