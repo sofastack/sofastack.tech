@@ -57,7 +57,7 @@ A：一般客户端是上报到 lookout 服务端, 再由服务端决定要写�
 
 A：用于 jraft 的 jepsen 验证，参考这个项目： 
 
-https://github.com/sofastack/sofa-jraft-jepsen 
+[https://github.com/sofastack/sofa-jraft-jepsen](https://github.com/sofastack/sofa-jraft-jepsen）
 
 jraft 每次发版前要确保通过 jepsen 验证。
 
