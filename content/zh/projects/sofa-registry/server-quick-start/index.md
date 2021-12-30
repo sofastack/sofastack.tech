@@ -40,7 +40,9 @@ cd registry-all
 
 2.1 如果是本地启动开发注册中心, 可以使用 h2 作为数据库
 
-启动命令: `sh bin/start_dev.sh`
+IDEA 源码启动: 运行 com.alipay.sofa.registry.server.integration.RegistryApplication#main 
+
+fat jar 脚本启动命令: `sh bin/start_dev.sh`
 
 2.2 正式环境建议使用 mysql
 
