@@ -39,7 +39,10 @@ cd registry-all
 ### 2. Start registry-integration
 
 2.1 If you start the development registry locally, you can use h2 as the database
-Start command: `sh bin/start_dev.sh`
+
+IDEA source code startup: run com.alipay.sofa.registry.server.integration.RegistryApplication#main
+
+Fat jar script start command: `sh bin/start_dev.sh`
 
 2.2 MySQL is recommended for the official environment
 Create database and table
