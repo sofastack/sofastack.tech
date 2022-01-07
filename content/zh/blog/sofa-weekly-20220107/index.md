@@ -36,9 +36,8 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **@王勇旭** 提问：
 
->com.alipay.sofa.rpc.boot.runtime.adapter.processor.ConsumerConfigProcessor 没有提供注解上的支持，自己实现来处理吗？Cluster 指定 failover、failfast 或者自己实现，这种在 SOFA 中是怎么使用的呢？
-
->![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Po9JTL2ggu4AAAAAAAAAAAAAARQnAQ)
+>com.alipay.sofa.rpc.boot.runtime.adapter.processor.ConsumerConfigProcessor 没有提供注解上的支持，自己实现来处理吗？Cluster 指定 failover、failfast 或者自己实现，这种在 SOFA 中是怎么使用的呢？<br/>
+![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Po9JTL2ggu4AAAAAAAAAAAAAARQnAQ)
 
 A：这种的话，单个注解的 API 是不支持的。不过可以通过调整整体的 RPC 的配置，来实现切换到你想使用的 Cluster 上。具体如何配置可以看代码这里，支持自定义的配置文件，也支持 -D 环境变量的方式传入，key 为 consumer.Cluster。
 
@@ -56,9 +55,8 @@ A：这个功能感觉更偏全局一些，当然也是有单个 API 自定义�
 
 **@崔伟协** 提问：
 
->所有整个流程里的异常返回（那些没转发到 Upstream/或者转发失败的，直接返回给 client)都会经过这里吗？
-
->[https://github.com/mosn/mosn/blob/master/pkg/proxy/downstream.go#L1359](https://github.com/mosn/mosn/blob/master/pkg/proxy/downstream.go#L1359)
+>所有整个流程里的异常返回（那些没转发到 Upstream/或者转发失败的，直接返回给 client)都会经过这里吗？<br/>
+[https://github.com/mosn/mosn/blob/master/pkg/proxy/downstream.go#L1359](https://github.com/mosn/mosn/blob/master/pkg/proxy/downstream.go#L1359)
 
 A：也不一定，你的诉求是啥呢？但是所有请求基本都会走 filter，你可以在 append filter 劫持返回的请求。
 
