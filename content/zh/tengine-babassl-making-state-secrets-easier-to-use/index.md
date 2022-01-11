@@ -21,7 +21,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Vb3fRq8fMagAAAAAA
 
 Tengine 对 BabaSSL 提供的特殊 API 进行了适配，并增加对 NTLS 相关能力的支持。
 
-「详细 Pull Request 请见」：[https://github.com/alibaba/tengine/pull/1595 ](https://github.com/alibaba/tengine/pull/1595 )
+「详细 Pull Request 请见」：[https://github.com/alibaba/tengine/pull/1595](https://github.com/alibaba/tengine/pull/1595)
 
 至此，对我国密码行业相关安全通信协议，有使用需求的用户可以直接使用 Tengine + BabaSSL 的组合。而无需额外的 patch 或者代码改动，从用户使用的角度进一步提升了便利性。
 
