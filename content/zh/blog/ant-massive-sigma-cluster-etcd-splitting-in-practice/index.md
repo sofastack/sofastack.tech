@@ -121,12 +121,12 @@ Per-resource etcd servers overrides, comma separated. The individual override fo
 我们常见的资源拆分的简要配置示例如下：
 
 、、、java
-# events 拆分配置
---etcd-servers-overrides=/events#https://etcd1.events.xxx:2xxx;https://etcd2.events.xxx:2xxx;https://etcd3.events.xxx:2xxx
-# leases 拆分配置
---etcd-servers-overrides=coordination.k8s.io/leases#https://etcd1.leases.xxx:2xxx;https://etcd2.leases.xxx:2xxx;https://etcd3.leases.xxx:2xxx
-# pods 拆分配置
---etcd-servers-overrides=/pods#https://etcd1.pods.xxx.net:2xxx;https://etcd2.pods.xxx:2xxx;https://etcd3.pods.xxx:2xxx
+#events 拆分配置
+--etcd-servers-overrides=/events#[https://etcd1.events.xxx:2xxx;https://etcd2.events.xxx:2xxx;https://etcd3.events.xxx:2xxx](https://etcd1.events.xxx:2xxx;https://etcd2.events.xxx:2xxx;https://etcd3.events.xxx:2xxx)
+#leases 拆分配置
+--etcd-servers-overrides=coordination.k8s.io/leases#[https://etcd1.leases.xxx:2xxx;https://etcd2.leases.xxx:2xxx;https://etcd3.leases.xxx:2xxx](https://etcd1.leases.xxx:2xxx;https://etcd2.leases.xxx:2xxx;https://etcd3.leases.xxx:2xxx)
+#pods 拆分配置
+--etcd-servers-overrides=/pods#[https://etcd1.pods.xxx.net:2xxx;https://etcd2.pods.xxx:2xxx;https://etcd3.pods.xxx:2xxx](https://etcd1.pods.xxx.net:2xxx;https://etcd2.pods.xxx:2xxx;https://etcd3.pods.xxx:2xxx)
 、、、
 
 #### 重启组件是必须的吗？
@@ -197,7 +197,7 @@ type ObjectMeta struct {
   // Populated by the system.
   // Read-only.
   // Value must be treated as opaque by clients and .
-  // More info: https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency
+  // More info: [https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency](https://git.k8s.io/community/contributors/devel/sig-architecture/api-conventions.md#concurrency-control-and-consistency)
   // +optional
   ResourceVersion string `json:"resourceVersion,omitempty" protobuf:"bytes,6,opt,name=resourceVersion"`
     ...// omit code here
@@ -391,7 +391,7 @@ webhooks:
 - admissionReviewVersions:
   - v1beta1
   clientConfig:
-    url: https://extensions.xxx/always-deny
+    url: [https://extensions.xxx/always-deny](https://extensions.xxx/always-deny)
   failurePolicy: Fail
   name: always-deny.extensions.k8s
   namespaceSelector: {}
@@ -434,7 +434,7 @@ webhooks:
 - admissionReviewVersions:
   - v1beta1
   clientConfig:
-    url: https://extensions.xxx/always-deny
+    url: [https://extensions.xxx/always-deny](https://extensions.xxx/always-deny)
   failurePolicy: Fail
   name: always-deny.extensions.k8s
   namespaceSelector: {}
