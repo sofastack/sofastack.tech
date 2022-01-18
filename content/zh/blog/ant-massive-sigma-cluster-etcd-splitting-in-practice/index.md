@@ -118,17 +118,6 @@ Pod 资源可能是我们最熟悉的资源数据了，所有的 workload 最终
 Per-resource etcd servers overrides, comma separated. The individual override format: group/resource#servers, where servers are URLs, semicolon separated. Note that this applies only to resources compiled into this server binary.
 、、、
 
-我们常见的资源拆分的简要配置示例如下：
-
-、、、java
-#events 拆分配置
---etcd-servers-overrides=/events#[https://etcd1.events.xxx:2xxx;https://etcd2.events.xxx:2xxx;https://etcd3.events.xxx:2xxx](https://etcd1.events.xxx:2xxx;https://etcd2.events.xxx:2xxx;https://etcd3.events.xxx:2xxx)
-#leases 拆分配置
---etcd-servers-overrides=coordination.k8s.io/leases#[https://etcd1.leases.xxx:2xxx;https://etcd2.leases.xxx:2xxx;https://etcd3.leases.xxx:2xxx](https://etcd1.leases.xxx:2xxx;https://etcd2.leases.xxx:2xxx;https://etcd3.leases.xxx:2xxx)
-#pods 拆分配置
---etcd-servers-overrides=/pods#[https://etcd1.pods.xxx.net:2xxx;https://etcd2.pods.xxx:2xxx;https://etcd3.pods.xxx:2xxx](https://etcd1.pods.xxx.net:2xxx;https://etcd2.pods.xxx:2xxx;https://etcd3.pods.xxx:2xxx)
-、、、
-
 #### 重启组件是必须的吗？
 
 为了了解重启组件是否必须，如果不重启组件有什么影响。我们在测试环境进行了验证，结果我们发现在拆分完成后，新建 Pod 无法被调度，已有 Pod 的无法被删除，finalizier 无法摘除。经过分析后，发现相关组件无法感知到 Pod 创建和删除事件。
