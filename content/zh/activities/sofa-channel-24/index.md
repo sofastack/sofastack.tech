@@ -1,5 +1,5 @@
 ---
-author: "泡椒"
+author: "SOFA 团队"
 date: 2022-01-20T15:00:00+08:00
 title: "SOFAChannel#24：漫谈 HTTP/3 进化史"
 tags: ["SOFAChannel","HTTP/QUIC"]
@@ -16,7 +16,7 @@ description: "01 月 20 日周四晚 19 点，线上直播第 24 期。"
 
 - 活动形式：线上直播
 
-- 资料下载：[戳这里](https://gw.alipayobjects.com/os/bmw-prod/0853baea-292d-4d03-8849-481c79e41703.pdf)
+- 资料下载：[戳这里](https://gw.alipayobjects.com/os/bmw-prod/3c6d7642-16b3-4cc9-8968-5a2ff4ca10ad.pdf)
 
 - B 站直播间地址：[http://live.bilibili.com/21954520](http://live.bilibili.com/21954520)
 
