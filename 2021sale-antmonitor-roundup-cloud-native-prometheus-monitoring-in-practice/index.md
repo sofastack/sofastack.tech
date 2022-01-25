@@ -197,8 +197,6 @@ Rule 执行引擎除了支持实时的 RR 计算外，还支持历史 RR 重计�
 
 [https://mp.weixin.qq.com/s/zrxDgBjutbdvROQRYa3zrQ](https://mp.weixin.qq.com/s/zrxDgBjutbdvROQRYa3zrQ)
 
-本周推荐阅读	
-
 [Prometheus on CeresDB 演进之路](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247497779&idx=1&sn=3c47ec0f1af6b5f0278010720c52a7fc&chksm=faa317e9cdd49eff0eb65e69e3ce40254100848556eca075ef24f3ce4527d906ce67c2487f94&scene=21)
 
 [深入 HTTP/3（一）｜从 QUIC 链接的建立与关闭看协议的演进](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247499565&idx=1&sn=00a26362451ee3bbc8ee82588514eb52&chksm=faa310f7cdd499e15e39f1cfc32644cb175340f26148cab50ca90f973e786c5ef4d8cb025580&scene=21)
