@@ -13,9 +13,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*nIiyTqIZJS4AAAAAA
 
 蚂蚁集团高级开发工程师
 
-负责蚂蚁 Prometheus 监控原生功能
-在蚂蚁集团的落地与产品化建设
-
+负责蚂蚁 Prometheus 监控原生功能，在蚂蚁集团的落地与产品化建设
 
 本文 6566 字 阅读 15 分钟
 
