@@ -45,27 +45,7 @@ Prometheus 本身是一款单机监控产品，在蚂蚁庞大的高可用集群
 
 以下是一段 Prometheus metrics 数据的样例：
 
-、、、java
-$  curl localhost:8080/metrics
-#HELP go_gc_duration_seconds A summary of the pause duration of garbage collection cycles.
-#TYPE go_gc_duration_seconds summary
-go_gc_duration_seconds{quantile="0"} 7.2124e-05
-go_gc_duration_seconds{quantile="0.25"} 0.000105153
-go_gc_duration_seconds{quantile="0.5"} 0.000129333
-go_gc_duration_seconds{quantile="0.75"} 0.000159649
-go_gc_duration_seconds{quantile="1"} 0.070438398
-go_gc_duration_seconds_sum 11.413964775
-go_gc_duration_seconds_count 20020
-#HELP go_goroutines Number of goroutines that currently exist.
-#TYPE go_goroutines gauge
-go_goroutines 47
-#HELP go_info Information about the Go environment.
-#TYPE go_info gauge
-go_info{version="go1.15.2"} 1
-#HELP go_memstats_alloc_bytes Number of bytes allocated and still in use.
-#TYPE go_memstats_alloc_bytes gauge
-go_memstats_alloc_bytes 5.955488e+06
-、、、
+![图片](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*HuLfTq_-OuAAAAAAAAAAAAAAARQnAQ)
 
 Metrics（指标）数据和日志数据拥有较大差别，包括但不限于：
 
@@ -119,7 +99,7 @@ AntMonitor 现有的数据链路大致为由 agent 采集日志数据缓存于�
 
 AntMonitor 在日志监控的现有基础上，建设有一套较为完善的元数据维表体系，包含了 SOFA、Spanner、OB 等多个蚂蚁技术栈元数据。元数据告诉我们去哪里采集监控数据，对应原生的服务发现机制。为了拉齐原生功能，我们对部分维表进行了必要改造，此处我们以 Sigma 监控的落地实践为例，简要介绍下我们的元数据同步流程。
 
-###  2.1 Sigma 元数据同步 
+### 2.1 Sigma 元数据同步 
 
 AntMonitor 进行 Sigma 监控的前提是要获取元数据，元数据告诉我们去哪里采集监控数据。
 
@@ -213,13 +193,13 @@ Rule 执行引擎除了支持实时的 RR 计算外，还支持历史 RR 重计�
 
 -【Prometheus 官方文档】
 
-https://prometheus.io/
+[https://prometheus.io/](https://prometheus.io/)
 
 -【Prometheus on CeresDB 演进之路】
 
-https://mp.weixin.qq.com/s/zrxDgBjutbdvROQRYa3zrQ
+[https://mp.weixin.qq.com/s/zrxDgBjutbdvROQRYa3zrQ](https://mp.weixin.qq.com/s/zrxDgBjutbdvROQRYa3zrQ)
 
-### 本周推荐阅读  				
+本周推荐阅读  				
 
 [Prometheus on CeresDB 演进之路](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247497779&idx=1&sn=3c47ec0f1af6b5f0278010720c52a7fc&chksm=faa317e9cdd49eff0eb65e69e3ce40254100848556eca075ef24f3ce4527d906ce67c2487f94&scene=21)
 
