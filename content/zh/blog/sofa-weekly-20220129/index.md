@@ -36,9 +36,8 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **@李雪涛** 提问：
 
->请问 MOSN 插件的管理接口应该怎么调用，里面的 IP 和 port，IP 应该指的是 Pod 的 IP 吧，那 port 指的是什么呢?
-
->![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*o77dT7Ptr-8AAAAAAAAAAAAAARQnAQ)
+>请问 MOSN 插件的管理接口应该怎么调用，里面的 IP 和 port，IP 应该指的是 Pod 的 IP 吧，那 port 指的是什么呢?br/
+![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*o77dT7Ptr-8AAAAAAAAAAAAAARQnAQ)
 
 A：通过 admin 得配置。
 [https://www.github.com/mosn/mosn/tree/master/configs%2Fmosn_config.jso](https://www.github.com/mosn/mosn/tree/master/configs%2Fmosn_config.jso)
@@ -72,6 +71,7 @@ A：镜像的配置有这个 plugin 吗？或者你先别用那个 Istio，现�
 A：确实是这样，baggage 处理在 filter 之前。
 
 >还有什么更优雅的方式吗？那我非要只在 filter 里加透传 ，然后我现在的处理是：
+
 [https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Nyt0RbREWRcAAAAAAAAAAAAAARQnAQ](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Nyt0RbREWRcAAAAAAAAAAAAAARQnAQ)
 
 A：非要在 filter 里面处理 baggage 的话,可以直接操作 SOFARequest 对象的 RequestProp. RemotingConstants.RPC_REQUEST_BAGGAGE，可以参考 com.alipay.sofa.rpc.context.BaggageResolver#carryWithRequest 类。
