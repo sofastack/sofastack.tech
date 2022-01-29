@@ -70,9 +70,7 @@ A：镜像的配置有这个 plugin 吗？或者你先别用那个 Istio，现�
 
 A：确实是这样，baggage 处理在 filter 之前。
 
->还有什么更优雅的方式吗？那我非要只在 filter 里加透传 ，然后我现在的处理是：
-
-[https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Nyt0RbREWRcAAAAAAAAAAAAAARQnAQ](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Nyt0RbREWRcAAAAAAAAAAAAAARQnAQ)
+>还有什么更优雅的方式吗？那我非要只在 filter 里加透传要怎么做呢？
 
 A：非要在 filter 里面处理 baggage 的话,可以直接操作 SOFARequest 对象的 RequestProp. RemotingConstants.RPC_REQUEST_BAGGAGE，可以参考 com.alipay.sofa.rpc.context.BaggageResolver#carryWithRequest 类。
 
