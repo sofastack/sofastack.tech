@@ -1,11 +1,11 @@
---
+---
 title: "蚂蚁大规模 Kubernetes 集群无损升级实践指南【探索篇】"
 author: "王连平"
 authorlink: "https://github.com/sofastack"
 description: "蚂蚁大规模 Kubernetes 集群无损升级实践指南【探索篇】"
 categories: "SOFAStack"
 tags: ["SOFAStack"]
-date: 2022-02-08T15:00:00+08:00
+date: 2022-02-08 T15:00:00+08:00
 cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*xAmyQbhZR8wAAAAAAAAAAAAAARQnAQ"
 ---
 
@@ -202,7 +202,7 @@ Kubernetes 集群的升级主要包含客户端升级、核心组件升级，核
 
 - 如果新增字段被用于计算 container hash，将引发容器重建风险。
 
-#### 思考与解决
+思考与解决
 
 前面介绍了多版本 apiserver 交叉访问的问题，接下来我们如何解此问题。
 
@@ -259,7 +259,7 @@ Kubernetes 中的 resource 都会有一个 internal version，这个 internal ve
 
 - custom resource
 自定义 CR 的存储版本确定在 CRD 的配置中
-（详见：CRD 配置) https://kubernetes.io/zh/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definition-versioning/
+（详见：CRD 配置) [https://kubernetes.io/zh/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definition-versioning/](https://kubernetes.io/zh/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definition-versioning/)
 
 问题二：不同版本的 Kubernetes 中 如何做到存储数据兼容？
 
@@ -271,7 +271,7 @@ storage version 在 Kubernetes 版本迭代更新中不是一成不变的，也�
 
 ![图片](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*FnkDQrWbXiQAAAAAAAAAAAAAARQnAQ)
 
-####思考与解决
+思考与解决
 
 从上文可以看到，apiserver 具备动态转换存储版本的的能力，但是要对旧版本的数据进行一次读写操作。动态转换的能力也不是无限的，在某个 Kubernetes 版本中转换的版本是当前版本兼容支持的几个版本。
 
@@ -311,7 +311,7 @@ API 兼容性问题前面已经详细讲述了 API 变化的几种类型，这�
 
 上述这个问题如果是从 1.16 到 1.17 再到 1.18 逐个版本升级就不会出现了，这个想法非常好，但对于蚂蚁 Sigma Kubernetes 这种体量来讲频繁的升级难度较大，这也是我们做此事的原生动力，将升级变得更自动化、效率更高，当这个目标实现后此问题也就不复存在了，在当前阶段回退存储版本不兼容问题仍然棘手。
 
-#### 思考与解决
+思考与解决
 
 升级本身就是一次引入众多变量的操作，我们尽量做到在变化中找到一条能把控的路子，最基本的方法论就是控制变量，所以对于 API 兼容性问题，我们核心的原则为：新特性没有必要开启的先进性压制，保证可回滚。
 
@@ -351,7 +351,7 @@ API 兼容性问题前面已经详细讲述了 API 变化的几种类型，这�
 
 再说用户客户端版本信息，这个信息虽然可以从 apiserver 的监控中拿到，当然我们为了与管控链路对接，并不是直接拉取的监控信息，而是在 apiserver 中做了信息补充。
 
-#### 思考与解决
+思考与解决
 
 解决此问题本质上是理解“用户原始意图”，能够识别出哪些动作是无意的篡改哪些是真正的需求，此动作需要依赖以下两个信息：
 
@@ -399,14 +399,13 @@ API 兼容性问题前面已经详细讲述了 API 变化的几种类型，这�
 
 蚂蚁 Sigma 团队致力于规模化云原生调度平台的建设，为业务提供更快更好更稳的容器资源交付，近期我们在集群稳定性、高性能方面也取得了显著的成果，欢迎大家相互交流。
 
-#### 「参考资料」
+「参考资料」
 
 [《Kubernetes API 策略》](https://kubernetes.io/docs/reference/using-api/deprecation-policy/)
 
 [《Kubernetes 1.16 版本介绍》](https://kubernetes.io/blog/2019/07/18/api-deprecations-in-1-16/)
 
 [《Kubernetes 集群正确升级姿势》](https://www.cnblogs.com/gaorong/p/11266629.html)
-
 
 #### 求贤若渴：
 
