@@ -51,7 +51,7 @@ Kubernetes 社区的活跃度非常高，众多的云原生爱好者为社区贡
 
 上述两种方式各有优缺点，蚂蚁 Sigma 采用的是原地升级。
 
-### 【方法论-庖丁解牛】
+### 方法论-庖丁解牛
 
 采用原地升级时也必然会遇到原地升级的问题，其中最主要问题就是兼容性问题，主要包含两个方面：Kubernetes API 和组件内部的控制逻辑兼容性。
 
@@ -151,16 +151,18 @@ Kubernetes 集群的升级主要包含客户端升级、核心组件升级，核
 这里提到的脏数据问题主要体现在以下两个方面：
 
 - 多版本 apiserver 交叉操作同一资源
+
 是高低版本 apiserver 中对有 Schema 变化资源的操作会出现篡改问题，其问题本质与多版本客户端操作同一有 Schema 变化的资源时发生的篡改一致。只不过这里是 apiserver 版本不一样，客户端版本是否一致都会引起篡改问题。
 
 - 存储在 etcd 中的数据如何保证正确更新
+
 是大家一般不太注意的问题，因为 apiserver 升级过程中会帮我们很好的处理，但也不是百分百完美处理，这里单独拿出来讲一下也有助于大家对 Kubernetes 数据存储有更深入的了解。
 
 脏数据的问题在升级过程中很容易联想到可回滚性，我们无法保证升级百分百成功，但是我们一定要有可回滚能力，按照社区的建议 Kubernetes 在升级过程中不建议回滚，它会带来更多的兼容性问题。
 
 上述这些问题将在下文详细讲述。
 
-### 多版本 apiserver 并存】
+### 多版本 apiserver 并存
 
 从升级的过程中可以看到，在流量管控时主要管控的流量有两项：
 
@@ -251,6 +253,7 @@ Kubernetes 中的 resource 都会有一个 internal version，这个 internal ve
 如下，分为两种情况：
 
 - core resource
+
 存储版本在 apiserver 初始化时确定，针对某个 GroupVersion 分两步确定其存储版本：
 
 (1)确定与本 GV 使用同一存储版本 group resource ---> StorageFactory 中静态定义的 overrides
@@ -258,8 +261,8 @@ Kubernetes 中的 resource 都会有一个 internal version，这个 internal ve
 (2)在 group 中选择优先级最高的 version 作为存储版本---> Schema 注册时按照静态定义顺序获取
 
 - custom resource
-自定义 CR 的存储版本确定在 CRD 的配置中
-（详见：CRD 配置) [https://kubernetes.io/zh/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definition-versioning/](https://kubernetes.io/zh/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definition-versioning/)
+
+自定义 CR 的存储版本确定在 CRD 的配置中（详见：CRD 配置) [https://kubernetes.io/zh/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definition-versioning/](https://kubernetes.io/zh/docs/tasks/extend-kubernetes/custom-resources/custom-resource-definition-versioning/)
 
 问题二：不同版本的 Kubernetes 中 如何做到存储数据兼容？
 
@@ -318,9 +321,11 @@ API 兼容性问题前面已经详细讲述了 API 变化的几种类型，这�
 压制的主要目标有两个：
 
 - 高版本 apiserver 中新增的 GVK
+
 保证它们在升级的这个版本中不会出现
 
 - etcd 中的数据的存储版本
+
 存储版本对用户是透明的，我们也要保证压制调整对用户也是无感的，调整和压制的手段可以通过对 apiserver 代码做兼容性调整来实现。
 
 对于其他兼容性问题，目前没有很好的方案解决，当前我们的主要通过升级回滚 e2e 测试暴露问题，针对不兼容的问题做相应兼容性修改。
@@ -337,14 +342,16 @@ API 兼容性问题前面已经详细讲述了 API 变化的几种类型，这�
 
 ### 字段管控
 
-#### 残留问题
+残留问题
 
 字段管控的最大挑战是，如何准确的识别出用户是否是无意篡改字段。判断用户是否无意篡改需要拿到两个关键信息：
 
 - 用户原始请求内容
+
 用户原始请求内容是判断用户是否无意篡改的关键，如果原始请求中有某个字段的内容，说明用户是明确要修改，此时不需要管控。
 
 - 用户客户端版本信息
+
 否则，要看用户客户端版本是否低于当前集群版本，如果不低于集群版本说明用户有此字段明确修改不需要管控，如果低于集群版本这个字段用户可能看不到就需要管控了。
 
 那么问题来了，如何拿到这两个信息呢？先说用户原始请求内容，这个信息按照 Kubernetes 的能力，我们无法通过 webhook 或者其他插件机制很轻松的拿到请求内容，apiserver 调用 webhook 时的内容已经是经过版本转换后的内容。
