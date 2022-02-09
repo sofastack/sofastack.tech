@@ -19,7 +19,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*xAmyQbhZR8wAAAAAA
 
 —— 庖丁解牛，让升级不再烦恼
 
-## PART. 1 背 景
+## PART.1 背景
 
 蚂蚁 Sigma 作为蚂蚁集团核心的基础设施，经过多年的发展其规模已经处于业界领先位置，大规模集群对 Kubernetes 的稳定性及功能性提出更高的要求。蚂蚁 Sigma 力争在万级规模的云原生环境下，挑战高效稳定、无损无感的云原生操作系统升级，给用户带来极致稳定的、功能新颖的云原生服务。 
 
@@ -77,7 +77,7 @@ API 接口的变化固然要涉及到客户端的升级，特别是对于 deprec
 
 整体来看，我们通过客户端最小化升级和滚动自动化升级能力、提升升级的效率，通过精细化流量控制、灰度可回滚能力以及长效的字段管控能力，提升整个升级过程的可靠性、稳定性。
 
-## PART. 2 升级前
+## PART.2 升级前
 
 集群升级必然会有 API 的更新和迭代，主要体现在 API 新增、演进和移除，在 Kubernetes 中 API 的演进一般是 Alpha、beta、GA，一个 resouce 的 API version 会按照上述版本进行迭代，当一个 API 新增时，最开始是 Alpha 阶段，例如"cert-manager.io/v1alpha3"，经过若干次迭代，新特性进入 beta 版本，最后进入稳定的 GA 版本，这个过程可能跨若干个大的社区版本，一些版本会在 GA 版本稳定运行一定时间后被 deprached 掉，并且被 deprached 的 API 版本在一段时间后会被直接移除，这就对我们的客户端有了升级的刚性需求。
 
@@ -143,7 +143,7 @@ Kubernetes 的 resource 如果对某个字段的调整，包括：增加、删�
 
 针对第二个和第三个问题，都涉及到 Update 操作，因为 Update 操作会出现误操作的情况。如果用户客户端版本较低，但是用户并不关心 resource 的新增字段，也不想使用这些新功能，他可以完全不理会此字段，对于 create/delete/patch 都没有问题，同时 patch 操作也不会针对此字段进行。所以控制好 Update 操作的客户端就可以避免新增字段的篡改行为。
 
-## PART. 3 升级中
+## PART.3 升级中
 
 Kubernetes 集群的升级主要包含客户端升级、核心组件升级，核心组件包括 apiserver、controller-manger、scheduler 和 kubelet。
 
@@ -219,7 +219,7 @@ Kubernetes 集群的升级主要包含客户端升级、核心组件升级，核
 
 Kubernetes 中的数据存储有一套自己完整的理论，这里我们先简单介绍下 Kubernetes 中一个资源从请求进入到存入 etcd 的几次变换，之后再详细介绍升级过程中可能遇到的问题及我们的思考。
 
-#### Kubernetes资源版本转换
+#### Kubernetes 资源版本转换
 
 - apiserver 中的资源版本
 
@@ -335,7 +335,7 @@ API 兼容性问题前面已经详细讲述了 API 变化的几种类型，这�
 
 以上是升级过程中遇到的三个棘手的问题，以及相关的解决思路，接下来介绍下升级后的保障工作。
 
-## PART. 4 升级后
+## PART.4 升级后
 
 大版本升级时无法保证 100% 的客户端都升级到对应的最新版本。虽然升级前我们会推动 Update 流量的客户端进行升级，但是可能做不到 100% 升级，更重要的，升级后可能也会出现某个用户用低版本的客户端进行访问。我们期望通过 webhook 能够避免升级后低版本客户端意外篡改 resource 字段，达到真正的升级无损的目的。
 
@@ -371,7 +371,7 @@ API 兼容性问题前面已经详细讲述了 API 变化的几种类型，这�
 
 ![图片](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*JFEHT5xWR68AAAAAAAAAAAAAARQnAQ)
 
-## PART. 5 提升效果
+## PART.5 提升效果
 
 以上的这些探索在蚂蚁 Sigma 已经实战，升级效率得到了很大的提升，主要体现在以下几个方面：
 
@@ -385,7 +385,7 @@ API 兼容性问题前面已经详细讲述了 API 变化的几种类型，这�
 
 ![图片](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*VXfVS7vTcJ0AAAAAAAAAAAAAARQnAQ)
 
-## PART. 6 未来之路
+## PART.6 未来之路
 
 整体来讲，做好升级核心就是要做好兼容性这件事，同时也要把整个过程做的更自动化一些，观测性做的更好一些，接下来有几个方向的工作要继续进行：
 
