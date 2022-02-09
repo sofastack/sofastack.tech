@@ -401,11 +401,11 @@ API 兼容性问题前面已经详细讲述了 API 变化的几种类型，这�
 
 「参考资料」
 
-[《Kubernetes API 策略》](https://kubernetes.io/docs/reference/using-api/deprecation-policy/)
+[Kubernetes API 策略](https://kubernetes.io/docs/reference/using-api/deprecation-policy/)
 
-[《Kubernetes 1.16 版本介绍》](https://kubernetes.io/blog/2019/07/18/api-deprecations-in-1-16/)
+[Kubernetes 1.16 版本介绍](https://kubernetes.io/blog/2019/07/18/api-deprecations-in-1-16/)
 
-[《Kubernetes 集群正确升级姿势》](https://www.cnblogs.com/gaorong/p/11266629.html)
+[Kubernetes 集群正确升级姿势](https://www.cnblogs.com/gaorong/p/11266629.html)
 
 求贤若渴：
 
@@ -415,7 +415,7 @@ API 兼容性问题前面已经详细讲述了 API 变化的几种类型，这�
 
 联系邮箱:  xiaoyun.maoxy@antgroup.com
 
-本周推荐阅读  
+### 本周推荐阅读  
 
 [攀登规模化的高峰 - 蚂蚁集团大规模 Sigma 集群 ApiServer 优化实践](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247495579&idx=1&sn=67d0abc1c513ba4f815550d235b7a109&chksm=faa30041cdd489577c0e3469348ebad2ab2cc12cdfebca3a4f9e8dcd5ba828a76f500e8c0115&scene=21#)
 
