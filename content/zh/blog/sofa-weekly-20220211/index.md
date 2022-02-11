@@ -106,7 +106,7 @@ SOFARPC
 
 「详细参考」：
 
-https://github.com/sofastack/sofa-rpc/issues/1127
+[https://github.com/sofastack/sofa-rpc/issues/1127](https://github.com/sofastack/sofa-rpc/issues/1127)
 
 ### 本周推荐阅读  
 
