@@ -44,7 +44,7 @@ Layotto Star 一下✨：
 
 接下来会和大家分享下 2021 年 Layotto 的落地总结，以及新一年的 roadmap，欢迎关注~
 
-## Let's have fun together! 
+## Let's have fun together!
 
 想要初步接触 Layotto 的技术同学，可以从我们的技术任务入手，欢迎大家一起来玩～
 
@@ -70,7 +70,7 @@ Layotto
 
 ![图片](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*0ozeTZ6_dZ4AAAAAAAAAAAAAARQnAQ)
 
-### 本周推荐阅读  				
+## 本周推荐阅读  				
 
 [云原生运行时的下一个五年](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247498935&idx=1&sn=7b9976f41a35eba7db6025ff42ba7086&chksm=faa3136dcdd49a7b67baf40f78cf50cbd45d560a249d2d94af85af9fb9cf63b9e7be59f3dcc8&scene=21#)
 
