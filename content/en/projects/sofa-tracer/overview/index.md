@@ -1,5 +1,5 @@
 ---
-title: "SOFATracker overview"
+title: "SOFATracer overview"
 aliases: "/sofa-tracer/docs/Home"
 ---
 
