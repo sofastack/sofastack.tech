@@ -6,7 +6,7 @@ title: "如何参与 SOFAJRaft 代码贡献"
 
 贡献代码前需要先了解 git 工具的使用和 GitHub 网站的使用。
 - git 工具用法可以查看 [git 官方书籍](https://git-scm.com/book/zh/v1),需要阅读前几章来熟悉。
-- git 协作流程可以查看这篇文章 [git 协作流程](http://www.ruanyifeng.com/blog/2015/12/git-workflow.html)
+- git 协作流程可以查看这篇文章 [git 协作流程](http://www.ruanyifeng.com/blog/2015/12/git-workflow.html)。
 
 ## GitHub 贡献代码流程
 
@@ -33,7 +33,7 @@ SOFAJRaft 所有修改都在分支上进行，修改完后提交 pull request，
   git clone https://github.com/您的账号名/sofa-jraft
   ```
 
-- 拉分支准备修改代码
+- 拉分支准备修改代码:
 
   ```text
   git branch add_xxx_feature
@@ -86,9 +86,9 @@ SOFAJRaft 所有修改都在分支上进行，修改完后提交 pull request，
 - 请保持您编辑的代码的原有风格，尤其是空格换行等。
 - 对于无用的注释，请直接删除。
 - 对逻辑和功能不容易被理解的地方添加注释。
-- 及时更新文档
+- 及时更新文档。
 
-修改完代码后，请按照如下格式执行命令提交所有修改到本地:
+修改完代码后，请按照如下格式执行命令提交所有的修改到本地:
 
   ```text
   git commit -am '(feat) 添加xx功能'
@@ -97,7 +97,7 @@ SOFAJRaft 所有修改都在分支上进行，修改完后提交 pull request，
 
 #### 提交代码到远程仓库
 
-在代码提交到本地后，就是与远程仓库同步代码了。执行如下命令提交本地修改到 github 上：
+在代码提交到本地后，接下来就可以与远程仓库同步代码了。执行如下命令提交本地修改到 github 上：
 
 ```text
 git push origin "branchname"
@@ -107,7 +107,7 @@ git push origin "branchname"
 
 #### 提交合并代码到主干的请求
 
-在的代码提交到 GitHub 后，您就可以发送请求来把您改好的代码合入 SOFAJRaft 主干代码了。此时您需要进入您的 GitHub 上的对应仓库，按右上角的 ```pull request``` 按钮。选择目标分支，一般就是 master，系统会通知 SOFAJRaft 的人员， SOFAJRaft 人员会 Review 您的代码，符合要求后就会合入主干，成为 SOFAJRaft 的一部分。
+在的代码提交到 GitHub 后，您就可以发送请求来把您改好的代码合入 SOFAJRaft 主干代码了。此时您需要进入您在 GitHub 上的对应仓库，按右上角的 ```pull request``` 按钮。选择目标分支，一般就是 master，系统会通知 SOFAJRaft 的人员， SOFAJRaft 人员会 Review 您的代码，符合要求后就会合入主干，成为 SOFAJRaft 的一部分。
 
 #### 代码 Review
 

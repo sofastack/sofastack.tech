@@ -6,45 +6,57 @@ aliases: "/sofa-registry/docs/Server-QuickStart"
 
 ## Deployment
 
+The deployment of SOFARegistry relies on mysql, which uses mysql as the metadata storage of the registry itself
 SOFARegistry supports two types of deployment modes, which are integrated deployment and independent deployment. This topic describes the simplest integrated single-node deployment. For more information about deployment modes, see the [Deployment topic](../deployment).
 
 ## Deployment steps
 
-### 1. Download the source code or installation package.
+### 1. Download the source code or installation package
 
-#### Download the source code.
+#### Download the source code
 
 ```bash
 git clone https://github.com/sofastack/sofa-registry.git
 cd sofa-registry
-mvn clean package -DskipTests
-cp server/distribution/integration/target/registry-integration.tgz <somewhere>
-cd <somewhere> && mkdir registry-integration 
-tar -zxvf registry-integration.tgz -C registry-integration
-cd registry-integration
+ mvn clean package -Dmaven.test.skip=true
+cp ./server/distribution/all/target/registry-all.tgz <somewhere>
+cd <somewhere>
+tar -zxvf registry-all.tgz
+cd registry-all
 ```
 
-#### Download the installation package.
+#### Download the installation package
 
-You can download the latest registry-integration-$version.tar.gz package from [Releases](https://github.com/sofastack/sofa-registry/releases).
+You can download the latest registry-all.tgz package from [Releases](https://github.com/sofastack/sofa-registry/releases).
+
+**recommended to download v6 or above**
 
 ```bash
-mkdir registry-integration 
-tar -zxvf registry-integration-$version.tar.gz -C registry-integration
-cd registry-integration
+tar -zxvf registry-all.tgz
+cd registry-all
 ```
 
-### 2. Start registry-integration.
+### 2. Start registry-integration
 
-#### Linux/Unix/Mac
+2.1 If you start the development registry locally, you can use h2 as the database
 
-Startup command: `sh bin/startup.sh`
+IDEA source code startup: run com.alipay.sofa.registry.server.integration.RegistryApplication#main
 
-#### Windows
+Fat jar script start command: `sh bin/start_dev.sh`
 
-Double click the startup.bat file under the bin directory.
+2.2 MySQL is recommended for the official environment
+Create database and table
 
-### 3. Check the running status.
+```bash
+echo "create database registrymetadb " | mysql -u username -p
+mysql -u username -p registrymetadb < create_table.sql
+```
+
+Modify the configuration in `conf/application.properties`, the database password can also be passed in through the `JDBC_PASSWORD` environment variable
+
+Start command: `sh bin/integration/start.sh`
+
+### 3. Check the running status
 
 You can access the healthcheck API provided by these three roles, or view logs/registry-startup.log to check the running status.
 
@@ -61,4 +73,3 @@ $ curl http://localhost:9622/health/check
 $ curl http://localhost:9603/health/check
 {"success":true,"message":"..."}
 ```
-

@@ -37,6 +37,8 @@ sidebar:
         link: 'print-traceid-spanid'
       - title: '异步线程处理'
         link: 'async'
+      - title: '函数接口支持'
+        link: 'functional-interface-support'
       - title: '采样模式'
         link: 'sampler'
       - title: '上报数据至 Zipkin'

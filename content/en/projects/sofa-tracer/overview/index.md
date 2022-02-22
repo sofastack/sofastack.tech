@@ -1,5 +1,5 @@
 ---
-title: "SOFATracker overview"
+title: "SOFATracer overview"
 aliases: "/sofa-tracer/docs/Home"
 ---
 
@@ -36,6 +36,7 @@ The profile file provides various configuration options for you to customize the
 SOFATracer solves the problem of link tracing when implementing large-scale microservice architecture, achieves perspective network call, and can be used to rapidly Failures Discovery, Service Governance, and so on.
 
 ## Component event tracking
+
 At present, SOFATracer supports Spring MVC, database connection pool (DBCP, Druid, c3p0, tomcat, HikariCP, BoneCP) acheived by standard JDBC interface, HttpClient and other open-source components. Event tracking for other open-source components (such as MQ, Redis) is still in development.
 
 Component | Document| Version
