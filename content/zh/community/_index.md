@@ -16,6 +16,7 @@ Hello~欢迎来到 SOFAStack 开源社区，首先感谢一直以来支持 SOFAS
 如果文档解决不了您的问题，欢迎社区所有同学通过 [Github](https://github.com/sofastack) issue 区提交反馈，在 issue 里写下异常现象和复现步骤，或者是其他您想咨询的问题。发 issue 也可以方便后人，后人遇到问题时通过搜索引擎就能搜到解决方案。
 
 如果issue回复不及时，可以去钉钉群里找群管理员，群管理员会帮忙催项目维护者回issue。
+
 ## 参与开源共建
 
 欢迎参与 SOFAStack 开源社区共建，您可以通过以下的方式参与共建：
@@ -44,32 +45,42 @@ Hello~欢迎来到 SOFAStack 开源社区，首先感谢一直以来支持 SOFAS
 ![Community Organzation](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*DpjGQqAcRyQAAAAAAAAAAAAAARQnAQ)
 
 ### Developer Group（代码层面）
+
 #### Contributor
 
 **如何成为 Contributor：**
 
 在 SOFAStack 的任何一个正式项目中成功提交一个 PR 并合并。
+
 #### Member
+
 加入 SOFAStack GitHub 组织，成为 SOFAStack 开源社区的一员。
+
 ##### 成为Member的条件
+
 满足以下条件可以申请成为Member:
 
 - 贡献过一个有价值的PR，例如一个 Easy 级别的社区开发任务
 - 有意愿一起维护社区
 
 ##### 职责
+
 Member 需要一起帮忙回复issue/pr，triage（把issue分配给对应模块的负责人）
 
 ##### 权限
+
 Triage权限。有权限操作issue和pr，例如打label、分配问题。
 
 详细的权限说明见 [permissions-for-each-role](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization#permissions-for-each-role)
 
 #### Reviewer （可选）
+
 模块负责人，负责某个模块的issue review和code review
 
 该角色可选，各位项目负责人如果觉得没必要可以不设置该角色。
+
 ##### 成为Reviewer的条件
+
 有意愿负责某个模块的issue review和code review，且对该模块贡献过的PR满足**下列条件之一:**
 - 1个Hard级别的PR
 - 2个Medium级别的PR
@@ -80,8 +91,8 @@ Triage权限。有权限操作issue和pr，例如打label、分配问题。
 >设计这个规则的逻辑是： Reviewer要对某个模块很懂，才能对这个模块把关。那怎么判断他很懂呢？可以看他做过的PR，1个hard级别的pr，或者2个medium级别的pr，或者1个medium+2个easy级别的pr
 
 ##### 职责
-负责某个模块的issue review和code review,给出技术建议。有该模块相关的重大变更会request review模块Reviewer。
 
+负责某个模块的issue review和code review,给出技术建议。有该模块相关的重大变更会request review模块Reviewer。
 
 #### Committer
 
@@ -118,9 +129,6 @@ Triage权限。有权限操作issue和pr，例如打label、分配问题。
 [恭喜 张立斌 成为 Layotto committer！](https://mp.weixin.qq.com/s/no6mDymNEGxH3uoZbl1YTQ)
 
 [恭喜 赵延 成为 SOFAJRaft committer！](https://mp.weixin.qq.com/s/BKJ0bcaGBeYNErDhpjk42Q)
-
-
-
 
 ### PMC
 
