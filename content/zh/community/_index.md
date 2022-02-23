@@ -90,7 +90,7 @@ Triage权限。有权限操作issue和pr，例如打label、分配问题。
 
 >设计这个规则的逻辑是： Reviewer要对某个模块很懂，才能对这个模块把关。那怎么判断他很懂呢？可以看他做过的PR，1个hard级别的pr，或者2个medium级别的pr，或者1个medium+2个easy级别的pr
 
-##### 职责
+##### Reviewer 的职责
 
 负责某个模块的issue review和code review,给出技术建议。有该模块相关的重大变更会request review模块Reviewer。
 
