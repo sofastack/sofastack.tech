@@ -65,8 +65,10 @@ Triage权限。有权限操作issue和pr，例如打label、分配问题。
 
 详细的权限说明见 [permissions-for-each-role](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization#permissions-for-each-role)
 
-#### Reviewer
+#### Reviewer(可选)
 模块负责人，负责某个模块的issue review和code review
+
+该角色可选，各位项目负责人如果觉得没必要可以不设置该角色。
 ##### 成为Reviewer的条件
 有意愿负责某个模块的issue review和code review，且对该模块贡献过的PR满足**下列条件之一:**
 - 1个Hard级别的PR
