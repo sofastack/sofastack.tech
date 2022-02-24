@@ -85,6 +85,12 @@ title: "Awesome SOFA"
 <img alt="亿通国际" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*tlq4R7QqUaEAAAAAAAAAAABkARQnAQ" height="60" />
 <img alt="新华三" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*gw9uTbZvsbAAAAAAAAAAAAAAARQnAQ" height="60" />
 <img alt="klilalagroup" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*0cskToqBSi8AAAAAAAAAAAAAARQnAQ" height="60" />
+<img alt="中金公司" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*Oxc6Q5dPduoAAAAAAAAAAAAAARQnAQ" height="60" />
+<img alt="雪球" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*jHQpQ5KS1goAAAAAAAAAAAAAARQnAQ" height="60" />
+<img alt="同城旅行" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*njYWTJNvax0AAAAAAAAAAAAAARQnAQ" height="60" />
+<img alt="四川航旅飞客" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*JRx5S6NV9voAAAAAAAAAAAAAARQnAQ" height="60" />
+<img alt="山东智园科技" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*n6mPR7w0yboAAAAAAAAAAAAAARQnAQ" height="60" />
+<img alt="酷渲科技" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*aK1fToswfvEAAAAAAAAAAAAAARQnAQ" height="60" />
 
 ## 社区{#community}
 
