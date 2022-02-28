@@ -34,7 +34,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 通过 " SOFA WEEKLY " 的形式回复
 
-**@徐豪 ** 提问：
+**@徐豪** 提问：
 
 >想了解 Ark 动态模块，如何在 IDEA 里面进行开发调试？
 
@@ -44,14 +44,14 @@ A：这个和普通工程基于 idea 调试没有什么区别的，你的 issue 
 
 A：～/logs/sofa-ark 看看有日志吗？
 
-**@孙英雄 ** 提问：
+**@孙英雄** 提问：
 
 >请问伙伴们有在用 SOFA 技术栈在非金融的项目开发吗？
 
 A：有的哈，可以看下使用者登记 
 [https://github.com/sofastack/sofa-rpc/issues/375https://github.com/sofastack/sofastack.tech/issues/5](https://github.com/sofastack/sofa-rpc/issues/375https://github.com/sofastack/sofastack.tech/issues/5)
 
-**@来永国 ** 提问：
+**@来永国** 提问：
 
 >升 SpringBoot to 2.4.x 还有计划吗？
 
