@@ -19,7 +19,6 @@ SOFARegistry 是蚂蚁集团在生产大规模使用的服务注册中心，经�
 
 《认识 SOFARegistry》 这一系列文章将会基于 SOFARegistry 新版本（V6）的代码，讲解注册中心在超大规模集群场景下落地的解析与实践，同时介绍 SOFARegistry 的各项功能，方便业务落地。
 
-
 ## 部署架构
 
 ![weekly.jpg](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*pK1IRodh7_0AAAAAAAAAAAAAARQnAQ)
@@ -30,7 +29,7 @@ SOFARegistry 的角色分为 4 个: client、session、data、meta。
 
 角色分工如下：
 
-#### Client
+Client
 
 提供应用接入服务注册中心的基本 API 能力，通过编程方式调用服务注册中心的服务订阅和服务发布能力。
 
@@ -82,8 +81,8 @@ class Publisher{
   String zone;
   List<String> dataList; // 发布的数据, sofarpc 用法中常见url
 }
-
 ```
+
 ![图片](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*K-T-R7X04_8AAAAAAAAAAAAAARQnAQ)
 
 常见用法（JAVA SDK）
@@ -246,6 +245,7 @@ Session 在进行路由的时候，根据 DataInfoId 的 Hash 值确定数据所
 - 当 data 内发生服务变更（比如接受到了新的 pub），data 会通知所有的 session 触发对应 dataId 推送
 
 ### 数据同步兜底
+
 - session 会把 client 注册的 pub 和 sub 都存储在内存中，data 会定时和所有的 session 同步对比数据，确保数据能在短时间内达到最终一致。
 
 - session 定时对比内存中 sub 的推送完成的版本和 data 上数据的最新判断，判断是否需要触发推送。
