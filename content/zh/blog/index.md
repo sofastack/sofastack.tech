@@ -82,12 +82,13 @@ class Publisher{
   String zone;
   List<String> dataList; // 发布的数据, sofarpc 用法中常见url
 }
+
 ```
 ![图片](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*K-T-R7X04_8AAAAAAAAAAAAAARQnAQ)
 
 常见用法（JAVA SDK）
 
-##### 发布者
+发布者
 
 ```java
 // 构造发布者注册表 
@@ -100,7 +101,7 @@ Publisher publisher = registryClient.register(registration, "10.10.1.1:12200?xx=
 publisher.republish("10.10.1.1:12200?xx=zz");
 ```
 
-##### 订阅者
+订阅者
 
 ```java
 // 创建 SubscriberDataObserver 
