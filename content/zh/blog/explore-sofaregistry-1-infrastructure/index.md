@@ -33,15 +33,15 @@ Client
 
 提供应用接入服务注册中心的基本 API 能力，通过编程方式调用服务注册中心的服务订阅和服务发布能力。
 
-#### SessionServer ｜ 会话服务器
+SessionServer ｜ 会话服务器
 
 负责接受 Client 的服务发布和服务订阅请求，并作为一个中间层将写操作转发 DataServer 层。SessionServer 这一层可随业务机器数的规模的增长而扩容。
 
-#### DataServer ｜ 数据服务器
+DataServer ｜ 数据服务器
 
 负责存储具体的服务数据，数据按 dataInfoId 进行分片存储，支持多副本备份，保证数据高可用。这一层可随服务数据量的规模增长而扩容。
 
-#### MetaServer ｜ 元数据服务器
+MetaServer ｜ 元数据服务器
 
 负责维护集群 SessionServer 和 DataServer 的一致列表，作为 SOFARegistry 集群内部的地址发现服务，在 SessionServer 或 DataServer 节点变更时可以通知到整个集群。
 
