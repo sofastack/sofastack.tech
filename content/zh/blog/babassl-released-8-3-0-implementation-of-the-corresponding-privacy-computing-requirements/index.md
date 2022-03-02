@@ -105,7 +105,7 @@ TLS 可以说是整个互联网安全的基石，保障着我们的通信数据�
 
 ### 4. Tengine + BabaSSL ，让国密更易用！
 
-国内著名 Web 服务器和反向代理开源软件 Tengine（https://tengine.taobao.org）完成了对 BabaSSL（https://www.babassl.cn）的适配工作。Tengine 对 BabaSSL 提供的特殊 API 进行了适配，并增加对 NTLS 相关能力的支持。无需额外的 patch 或者代码改动，从用户使用的角度进一步提升了便利性。
+国内著名 Web 服务器和反向代理开源软件 Tengine 完成了对 BabaSSL的适配工作。Tengine 对 BabaSSL 提供的特殊 API 进行了适配，并增加对 NTLS 相关能力的支持。无需额外的 patch 或者代码改动，从用户使用的角度进一步提升了便利性。
 
 对密码学、隐私计算感兴趣的话 
 
