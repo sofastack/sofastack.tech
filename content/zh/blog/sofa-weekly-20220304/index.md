@@ -9,7 +9,6 @@ date: 2022-03-04T15:00:00+08:00
 cover: "https://gw.alipayobjects.com/zos/bmw-prod/5bcdff25-e21a-43ab-8e34-04305cd379ae.webp"
 ---
 
-
 SOFA WEEKLY | 每周精选，筛选每周精华问答
 
 同步开源进展，欢迎留言互动
@@ -57,6 +56,7 @@ A：基于 K8s 的实现的无侵入式服务发现是云原生下的一套较�
 A：需要配置一下 SendMessageHook 和 ConsumeMessageHook 这两个 hook，分别是：SofaTracerSendMessageHook、SofaTracerConsumeMessageHook。
 
 ### 本周发布
+
 BabaSSL 开源发布 8.3.0 版本，主要更新如下：
 
 修复 CVE-2021-4160
