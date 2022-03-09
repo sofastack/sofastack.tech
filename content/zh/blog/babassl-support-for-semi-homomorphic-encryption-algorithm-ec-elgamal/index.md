@@ -192,7 +192,9 @@ ElGamal 加密算法是基于 Diffie-Hellman 密钥交换的非对称加密算�
 
 ***对象相关接口***
 
-**1.上下文对象**：EC_ELGAMAL_CTX，该对象用来保存公私钥以及一些其他内部用到的信息，是 EC-ElGamal 算法其他接口的第一个参数。
+**1.上下文对象**：
+
+EC_ELGAMAL_CTX，该对象用来保存公私钥以及一些其他内部用到的信息，是 EC-ElGamal 算法其他接口的第一个参数。
 
 接口如下：
 
@@ -288,7 +290,7 @@ BabaSSL 是 OpenSSL 的衍生版，内部支持了很多椭圆曲线算法的实
 
 由于代码过长，查看代码辛苦移步 GitHub：
 
-https://github.com/BabaSSL/BabaSSL/blob/master/crypto/ec/ec_elgamal.c
+[https://github.com/BabaSSL/BabaSSL/blob/master/crypto/ec/ec_elgamal.c](https://github.com/BabaSSL/BabaSSL/blob/master/crypto/ec/ec_elgamal.c)
 
 具体的使用方法和案例，[可以点击查看](https://babassl.readthedocs.io/zh/latest/Tutorial/PHE/el-elgamal-sample/)。
 
