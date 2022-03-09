@@ -99,8 +99,7 @@ BabaSSL 作为蚂蚁可信原生一体机中的核心基础软件密码库，将
 
 4.需要实现的接口：
 
-*（1）**KeyGen()：** 密钥生成算法，用于产生加密数据的公钥 PK（* *Public* *Key）和私钥 SK（Secret Key），以及一些公共参数 PP（Public Parameter）。*\
-
+*（1）**KeyGen()：** 密钥生成算法，用于产生加密数据的公钥 PK（* *Public* *Key）和私钥 SK（Secret Key），以及一些公共参数 PP（Public Parameter）。*
 
 *（2）**Encrypt()：** 加密算法，使用 PK 对用户数据 Data 进行加密，得到密文 CT（Ciphertext）。*
 
