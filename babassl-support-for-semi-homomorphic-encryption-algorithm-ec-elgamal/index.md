@@ -1,6 +1,6 @@
 ---
 title: "BabaSSL：支持半同态加密算法 EC-ElGamal"
-author: "王祖熙"/
+author: "王祖熙"
 authorlink: "https://github.com/sofastack"
 description: "BabaSSL：支持半同态加密算法 EC-ElGamal进"
 categories: "SOFAStack"
