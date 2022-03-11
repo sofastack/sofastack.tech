@@ -8,6 +8,7 @@ aliases: "/sofa-registry/docs/Server-QuickStart"
 
 Starting SOFARegistry locally is to use the H2 database as the configuration database used by the registry, which can be started directly
 `com.alipay.sofa.registry.server.integration.RegistryApplication#main`
+
 By default, `application-dev.properties` will be used as the configuration file
 
 ## Deployment
