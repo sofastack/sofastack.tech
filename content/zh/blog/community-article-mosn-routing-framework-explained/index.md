@@ -109,7 +109,6 @@ func init() {
   variable.Register(variable.NewStringVariable("My-ClusterVariable", nil, nil, variable.DefaultStringSetter, 0))
 }
 
-
 var clusterMap = make(map[int]string, 0)
 
 func (f *MyFilter) OnReceive(ctx context.Context, headers api.HeaderMap, buf buffer.IoBuffer, trailers api.HeaderMap) api.StreamFilterStatus {
