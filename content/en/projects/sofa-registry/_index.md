@@ -25,6 +25,9 @@ sidebar:
   sub:
     - title: 'JAVA SDK'
       link: 'java-sdk'
-
+- title: 'Code Analyze'
+  sub:
+    - title: 'summary'
+      link: 'code-analyze/summary'
 ---
 
