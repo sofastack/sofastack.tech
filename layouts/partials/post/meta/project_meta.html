@@ -13,6 +13,15 @@
 		>{{ i18n "edit" }}</a>
 	</div>
 	<div class="meta">
-		{{ i18n "update_time" }}: {{ .Lastmod.Format "2006-01-02" }}
+		{{ i18n "update_time" }}: {{ .Lastmod.Format "2006-01-02" }} 
+		{{ with .Params }}
+			{{ if isset . "author"}}
+			·   {{ if isset . "authorlink"}}
+					<a href="{{ .authorlink }}">{{ .author }}</a> 
+				{{ else }}
+					{{ .author}}
+				{{ end }}
+			{{ end}}
+		{{ end }}
 	</div>
 </div>
