@@ -1,30 +1,15 @@
 ---
-draft: false
-title: "SOFARegistry"
-description: "SOFARegistry 是一个生产级、高时效、高可用的服务注册中心。"
-github: "https://github.com/sofastack/sofa-registry"
-level: "main"
-weight: 5
-icon: "/img/icons/sofaregistry.png"
-sidebar:
-  - title: '产品介绍'
+
+  - title: '数据表结构要求'
+  
+  - title: '写入'
     sub:
-      - title: '简介'
-        link: 'overview'
-      - title: '术语'
-        link: 'terminology'
-  - title: '快速开始'
+      - title: '写入缓存'
+       - title: '写入数据'
+  - title: '获取数据增量改变'
     sub:
-      - title: '服务端部署'
-        link: 'server-quick-start'
-      - title: '客户端部署'
-        link: 'client-quick-start'
-  - title: '开发手册'
-    sub:
-      - title: 'JAVA SDK'
-        link: 'java-sdk'
-  - title: '源码解析'
-    sub:
-      - title: '总览'
-        link: 'code-analyze/summary'
+      - title: 'watch'
+      - title: 'List'
+ - title: '清理失效数据'
+ - title: '总结'
 ---
