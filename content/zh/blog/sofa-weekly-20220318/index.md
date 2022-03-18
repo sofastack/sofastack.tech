@@ -25,7 +25,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 欢迎大家向公众号留言提问或在群里与我们互动，我们会筛选重点问题，通过 " SOFA WEEKLY " 的形式回复
 
-**@rust-rust ** 提问：
+**@rust-rust** 提问：
 
 >建议开发各种语言的 API。
 
@@ -33,7 +33,7 @@ A：Java 和 Python 在设计中，争取注册到 jsse 里。
 
 BabaSSL：[https://github.com/BabaSSL](https://github.com/BabaSSL)
 
-**@会飞的小胖子 ** 提问：
+**@会飞的小胖子** 提问：
 
 >tengine 现在可使用 BabaSSL 了吗？
 
