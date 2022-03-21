@@ -27,4 +27,6 @@ sidebar:
     sub:
       - title: '总览'
         link: 'code-analyze/summary'
+      - title: '数据表监听'
+        link: 'code-analyze/code-analyza-data-table-listening'
 ---
