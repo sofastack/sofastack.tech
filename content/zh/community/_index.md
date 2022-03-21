@@ -3,7 +3,7 @@ layout: singlepage
 title: "SOFAStack 社区"
 ---
 
-Hello~欢迎来到 SOFAStack 开源社区，首先感谢一直以来支持 SOFAStack 的你们❤
+Hello~欢迎来到 SOFAStack 开源社区，首先感谢一直以来支持 SOFAStack 的你们 ❤
 
 社区随时都欢迎各种贡献，无论是**简单的错别字修正**、**bug 修复**还是**增加新功能**，欢迎提 issue 或 pull request 至 Github 社区，也可以加入钉钉群：群号 34197075 联系我们。
 
@@ -15,27 +15,29 @@ Hello~欢迎来到 SOFAStack 开源社区，首先感谢一直以来支持 SOFAS
 
 如果文档解决不了您的问题，欢迎社区所有同学通过 [Github](https://github.com/sofastack) issue 区提交反馈，在 issue 里写下异常现象和复现步骤，或者是其他您想咨询的问题。发 issue 也可以方便后人，后人遇到问题时通过搜索引擎就能搜到解决方案。
 
-如果issue回复不及时，可以去钉钉群里找群管理员，群管理员会帮忙催项目维护者回issue。
+如果 issue 回复不及时，可以去钉钉群里找群管理员，群管理员会帮忙催项目维护者回 issue。
 
 ## 参与开源共建
 
 欢迎参与 SOFAStack 开源社区共建，您可以通过以下的方式参与共建：
+
 - **<SOFAStack&MOSN:新手任务计划/> （火热进行中）**
   - 作为技术同学，你是否有过“想参与某个开源项目的开发、但是不知道从何下手”的感觉？
-为了帮助大家更好的参与开源项目，SOFAStack和MOSN社区会定期发布适合新手的新手开发任务，帮助大家learning by doing!
-  - [Layotto社区任务](https://github.com/mosn/layotto/issues/108) 欢迎认领! 具体上手步骤可以看[新手攻略：从零开始成为 Layotto 贡献者](https://mosn.io/layotto/#/zh/development/start-from-zero)
-  - [SOFA-RPC社区任务](https://github.com/sofastack/sofa-rpc/issues/1127) 欢迎认领! 
+    为了帮助大家更好的参与开源项目，SOFAStack 和 MOSN 社区会定期发布适合新手的新手开发任务，帮助大家 learning by doing!
+  - [Layotto 社区任务](https://github.com/mosn/layotto/issues/108) 欢迎认领! 具体上手步骤可以看[新手攻略：从零开始成为 Layotto 贡献者](https://mosn.io/layotto/#/zh/development/start-from-zero)
+  - [SOFA-RPC 社区任务](https://github.com/sofastack/sofa-rpc/issues/1127) 欢迎认领!
 - **参与 SOFALab 源码解析（旧系列已完结，新系列策划中）**：
+
   - `SOFA:Lab` 源码研究实验室，由 SOFA 团队和源码爱好者们出品；
   - [SOFABootLab](/activities/sofa-boot-lab/) 、 [SOFAArkLab](/activities/sofa-ark-lab/) 、 [SOFARegistryLab](/tags/%E5%89%96%E6%9E%90-sofaregistry-%E6%A1%86%E6%9E%B6/) 、[SOFABoltLab](/tags/%E5%89%96%E6%9E%90-sofabolt-%E6%A1%86%E6%9E%B6/)、[SOFAJRaftLab](/tags/%E5%89%96%E6%9E%90-sofajraft-%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/)、[SOFATracerLab](/tags/%E5%89%96%E6%9E%90-sofatracer-%E6%A1%86%E6%9E%B6/)、[SOFARPCLab](/tags/%E5%89%96%E6%9E%90-sofarpc-%E6%A1%86%E6%9E%B6/) 系列已经完结；
 
-- **参与代码或文档贡献**： 
+- **参与代码或文档贡献**：
   - 无论是简单的错别字修正、bug 修复还是增加新功能，欢迎您的贡献！
 
 ## 参加开源活动
 
 - 欢迎关注【金融级分布式架构】微信公众号；
-- [SOFAMeetup](/tags/sofameetup/)：线下高质量的云原生架构面基活动，将以每2月一场的频次，在全国各个城市站，举行线下技术交流会；
+- [SOFAMeetup](/tags/sofameetup/)：线下高质量的云原生架构面基活动，将以每 2 月一场的频次，在全国各个城市站，举行线下技术交流会；
 - [SOFAChannel](/tags/sofachannel/)：有趣实用的分布式架构频道，将以每月一场的频次，在线上展开直播活动，分享技术干货；
 
 有想要交流的话题或者想要举办的城市，非常欢迎告诉我们，加入互动钉钉群：群号 34197075 与我们交流。
@@ -56,51 +58,62 @@ Hello~欢迎来到 SOFAStack 开源社区，首先感谢一直以来支持 SOFAS
 
 加入 SOFAStack GitHub 组织，成为 SOFAStack 开源社区的一员。
 
-##### 成为Member的条件
+##### 成为 Member 的条件
 
-满足以下条件可以申请成为Member:
+满足以下条件可以申请成为 Member:
 
-- 贡献过一个有价值的PR，例如一个 Easy 级别的社区开发任务
+- 贡献过一个有价值的 PR，例如一个 Easy 级别的社区开发任务
 - 有意愿一起维护社区
+
+##### 如何申请成为 Member ?
+
+可以在 [community repo](https://github.com/sofastack/community/issues) 发个 issue，包括：
+
+- 做个自我介绍
+- 贴一下自己贡献过的 PR
+
+社区维护者会即时回复您。
 
 ##### 职责
 
-Member 需要一起帮忙回复issue/pr，triage（把issue分配给对应模块的负责人）
+Member 需要一起帮忙回复 issue/pr，triage（把 issue 分配给对应模块的负责人）
 
 ##### 权限
 
-Triage权限。有权限操作issue和pr，例如打label、分配问题。
+Triage 权限。有权限操作 issue 和 pr，例如打 label、分配问题。
 
 详细的权限说明见 [permissions-for-each-role](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization#permissions-for-each-role)
 
 #### Reviewer （可选）
 
-模块负责人，负责某个模块的issue review和code review
+模块负责人，负责某个模块的 issue review 和 code review
 
 该角色可选，各位项目负责人如果觉得没必要可以不设置该角色。
 
-##### 成为Reviewer的条件
+##### 成为 Reviewer 的条件
 
-有意愿负责某个模块的issue review和code review，且对该模块贡献过的PR满足**下列条件之一:**
-- 1个Hard级别的PR
-- 2个Medium级别的PR
-- 1个Medium+2个Easy级别的PR
+有意愿负责某个模块的 issue review 和 code review，且对该模块贡献过的 PR 满足**下列条件之一:**
+
+- 1 个 Hard 级别的 PR
+- 2 个 Medium 级别的 PR
+- 1 个 Medium+2 个 Easy 级别的 PR
 
 注：相当于`Hard:Medium:Easy`的换算关系是`1:2:4`
 
->设计这个规则的逻辑是： Reviewer要对某个模块很懂，才能对这个模块把关。那怎么判断他很懂呢？可以看他做过的PR，1个hard级别的pr，或者2个medium级别的pr，或者1个medium+2个easy级别的pr
+> 设计这个规则的逻辑是： Reviewer 要对某个模块很懂，才能对这个模块把关。那怎么判断他很懂呢？可以看他做过的 PR，1 个 hard 级别的 pr，或者 2 个 medium 级别的 pr，或者 1 个 medium+2 个 easy 级别的 pr
 
 ##### Reviewer 的职责
 
-负责某个模块的issue review和code review,给出技术建议。有该模块相关的重大变更会request review模块Reviewer。
+负责某个模块的 issue review 和 code review,给出技术建议。有该模块相关的重大变更会 request review 模块 Reviewer。
 
 #### Committer
 
 **如何成为 Committer：**
 
-贡献过的PR满足下列条件:
-- 合并的 PR 达到 10个；
-- 其中至少包含1个 Hard 级别PR, 或者4个 Medium 级别PR；
+贡献过的 PR 满足下列条件:
+
+- 合并的 PR 达到 10 个；
+- 其中至少包含 1 个 Hard 级别 PR, 或者 4 个 Medium 级别 PR；
 
 **职责**
 
@@ -116,10 +129,10 @@ Triage权限。有权限操作issue和pr，例如打label、分配问题。
 
 **认证、运营宣传**
 
-- 在Discussion区颁发电子证书
+- 在 Discussion 区颁发电子证书
 
 示例： [Welcome new committer: Zhang Li Bin](https://github.com/mosn/layotto/discussions/352)
-  
+
 - 邮寄实体证书
 
 - 公众号宣传
@@ -136,7 +149,7 @@ Triage权限。有权限操作issue和pr，例如打label、分配问题。
 
 **如何成为 PMC：**
 
-由项目的PMC Member为某位Committer提名，然后PMC 投票，投票过半即可晋升为PMC Member
+由项目的 PMC Member 为某位 Committer 提名，然后 PMC 投票，投票过半即可晋升为 PMC Member
 
 **职责：**
 
@@ -158,7 +171,7 @@ Triage权限。有权限操作issue和pr，例如打label、分配问题。
 由已有的 PMC 推荐，参与 SOFAStack 布道，必须满足以下两个以上条件：
 
 - 成为社区成员时间超过三个月，并三个月内保持活跃；
-- 原创 SOFAStack 相关文章并发布数达到3篇以上；
+- 原创 SOFAStack 相关文章并发布数达到 3 篇以上；
 - 至少代表 SOFAStack，参与大会、Meetup 等分享一次；
 
 **职责**
