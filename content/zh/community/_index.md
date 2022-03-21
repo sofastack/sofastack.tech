@@ -3,87 +3,117 @@ layout: singlepage
 title: "SOFAStack 社区"
 ---
 
-Hello~欢迎来到 SOFAStack 开源社区，首先感谢一直以来支持 SOFAStack 的你们❤
-
-本方案为 SOFA Community 试运行方案，有任何建议欢迎与我们交流 <sofa@cloud.alipay.com>。
+Hello~欢迎来到 SOFAStack 开源社区，首先感谢一直以来支持 SOFAStack 的你们 ❤
 
 社区随时都欢迎各种贡献，无论是**简单的错别字修正**、**bug 修复**还是**增加新功能**，欢迎提 issue 或 pull request 至 Github 社区，也可以加入钉钉群：群号 34197075 联系我们。
 
 项目地址：[https://github.com/sofastack](https://github.com/sofastack)
 
-## 从哪里开始入手？
+## 提问指南
 
-当您在使用 SOFAStack 相关组件时**遇到困难**，可以到[相关组件文档](/projects/)下查看解决方案；同时社区鼓励所有同学通过 [Github](https://github.com/sofastack) issue 提交反馈，当您遇到以下情况，欢迎第一时间提交 issue：
+当您在使用 SOFAStack 相关组件时**遇到困难**，可以查阅[相关项目的文档](/projects/)查看解决方案；
 
-- ask question
-- bug report
-- help wanted
-- feature design
+如果文档解决不了您的问题，欢迎社区所有同学通过 [Github](https://github.com/sofastack) issue 区提交反馈，在 issue 里写下异常现象和复现步骤，或者是其他您想咨询的问题。发 issue 也可以方便后人，后人遇到问题时通过搜索引擎就能搜到解决方案。
+
+如果 issue 回复不及时，可以去钉钉群里找群管理员，群管理员会帮忙催项目维护者回 issue。
 
 ## 参与开源共建
 
 欢迎参与 SOFAStack 开源社区共建，您可以通过以下的方式参与共建：
 
-- **参与 SOFALab 源码共建**：
-  - <SOFA:Lab/> 源码研究实验室，由 SOFA 团队和源码爱好者们出品；
-  - 目前 [SOFABootLab](/activities/sofa-boot-lab/) 以及 [SOFAArkLab](/activities/sofa-ark-lab/) 正在文章认领中，欢迎你的加入~
-  - [SOFARegistryLab](/tags/%E5%89%96%E6%9E%90-sofaregistry-%E6%A1%86%E6%9E%B6/) 共建中、[SOFABoltLab](/tags/%E5%89%96%E6%9E%90-sofabolt-%E6%A1%86%E6%9E%B6/)、[SOFAJRaftLab](/tags/%E5%89%96%E6%9E%90-sofajraft-%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/)、[SOFATracerLab](/tags/%E5%89%96%E6%9E%90-sofatracer-%E6%A1%86%E6%9E%B6/)、[SOFARPCLab](/tags/%E5%89%96%E6%9E%90-sofarpc-%E6%A1%86%E6%9E%B6/) 系列已经完结；
-- **参与代码或文档贡献**： 
-  - Fork，fork 项目到自己的 Github 账户；
-  - Clone，clone 项目到本地开发环境；
-  - Hack，hack 代码或文档（创建新分支完成更新）；
-  - Push，push 已经 commit 的分支到远程 Github 账户；
-  - PR，创建新的 pull request 完成贡献；
+- **<SOFAStack&MOSN:新手任务计划/> （火热进行中）**
+  - 作为技术同学，你是否有过“想参与某个开源项目的开发、但是不知道从何下手”的感觉？
+    为了帮助大家更好的参与开源项目，SOFAStack 和 MOSN 社区会定期发布适合新手的新手开发任务，帮助大家 learning by doing!
+  - [Layotto 社区任务](https://github.com/mosn/layotto/issues/108) 欢迎认领! 具体上手步骤可以看[新手攻略：从零开始成为 Layotto 贡献者](https://mosn.io/layotto/#/zh/development/start-from-zero)
+  - [SOFA-RPC 社区任务](https://github.com/sofastack/sofa-rpc/issues/1127) 欢迎认领!
+- **参与 SOFALab 源码解析（旧系列已完结，新系列策划中）**：
+
+  - `SOFA:Lab` 源码研究实验室，由 SOFA 团队和源码爱好者们出品；
+  - [SOFABootLab](/activities/sofa-boot-lab/) 、 [SOFAArkLab](/activities/sofa-ark-lab/) 、 [SOFARegistryLab](/tags/%E5%89%96%E6%9E%90-sofaregistry-%E6%A1%86%E6%9E%B6/) 、[SOFABoltLab](/tags/%E5%89%96%E6%9E%90-sofabolt-%E6%A1%86%E6%9E%B6/)、[SOFAJRaftLab](/tags/%E5%89%96%E6%9E%90-sofajraft-%E5%AE%9E%E7%8E%B0%E5%8E%9F%E7%90%86/)、[SOFATracerLab](/tags/%E5%89%96%E6%9E%90-sofatracer-%E6%A1%86%E6%9E%B6/)、[SOFARPCLab](/tags/%E5%89%96%E6%9E%90-sofarpc-%E6%A1%86%E6%9E%B6/) 系列已经完结；
+
+- **参与代码或文档贡献**：
+  - 无论是简单的错别字修正、bug 修复还是增加新功能，欢迎您的贡献！
 
 ## 参加开源活动
 
-- SOFAGift：关注【金融级分布式架构】微信公众号，每周我们将进行一次福利抽奖活动，送出 SOFAStack 相关周边，感谢一直支持 SOFAStack 的 SOFAer；
-- [SOFAMeetup](/tags/sofameetup/)：线下高质量的云原生架构面基活动，将以每2月一场的频次，在全国各个城市站，举行线下技术交流会；
+- 欢迎关注【金融级分布式架构】微信公众号；
+- [SOFAMeetup](/tags/sofameetup/)：线下高质量的云原生架构面基活动，将以每 2 月一场的频次，在全国各个城市站，举行线下技术交流会；
 - [SOFAChannel](/tags/sofachannel/)：有趣实用的分布式架构频道，将以每月一场的频次，在线上展开直播活动，分享技术干货；
 
-有想要交流的话题或者想要举办的城市，非常欢迎告诉我们，加入互动钉钉群：群号 23372465 与我们交流。
+有想要交流的话题或者想要举办的城市，非常欢迎告诉我们，加入互动钉钉群：群号 34197075 与我们交流。
 
 ## SOFAStack 社区组织架构
 
-![Community Organzation](https://cdn.nlark.com/yuque/0/2019/png/226702/1577327906629-43c94574-2f7e-4c49-b27a-de9a836a54f2.png)
-
-### PMC
-
-项目管理委员会，为项目核心管理团队，参与 roadmap 制定与社区相关的重大决议；
-
-**如何成为 PMC：**
-
-- 超过社区 2/3 PMC 投票通过；
-- 长期关注项目发展并参与社区讨论至少一年时间；
-
-**职责：**
-
-- 积极参与社区讨论，对社区重大决策给予指导；
-- 负责保证开源项目的社区活动都能运转良好；
-
-**权限：**
-
-- Pull Request review 权限；
-- Pull Request approve 权限；
-- Merge 权限；
+![Community Organzation](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*DpjGQqAcRyQAAAAAAAAAAAAAARQnAQ)
 
 ### Developer Group（代码层面）
+
+#### Contributor
+
+**如何成为 Contributor：**
+
+在 SOFAStack 的任何一个正式项目中成功提交一个 PR 并合并。
+
+#### Member
+
+加入 SOFAStack GitHub 组织，成为 SOFAStack 开源社区的一员。
+
+##### 成为 Member 的条件
+
+满足以下条件可以申请成为 Member:
+
+- 贡献过一个有价值的 PR，例如一个 Easy 级别的社区开发任务
+- 有意愿一起维护社区
+
+##### 如何申请成为 Member ?
+
+可以在 [community repo](https://github.com/sofastack/community/issues) 发个 issue，包括：
+
+- 做个自我介绍
+- 贴一下自己贡献过的 PR
+
+社区维护者会即时回复您。
+
+##### 职责
+
+Member 需要一起帮忙回复 issue/pr，triage（把 issue 分配给对应模块的负责人）
+
+##### 权限
+
+Triage 权限。有权限操作 issue 和 pr，例如打 label、分配问题。
+
+详细的权限说明见 [permissions-for-each-role](https://docs.github.com/en/organizations/managing-access-to-your-organizations-repositories/repository-roles-for-an-organization#permissions-for-each-role)
+
+#### Reviewer （可选）
+
+模块负责人，负责某个模块的 issue review 和 code review
+
+该角色可选，各位项目负责人如果觉得没必要可以不设置该角色。
+
+##### 成为 Reviewer 的条件
+
+有意愿负责某个模块的 issue review 和 code review，且对该模块贡献过的 PR 满足**下列条件之一:**
+
+- 1 个 Hard 级别的 PR
+- 2 个 Medium 级别的 PR
+- 1 个 Medium+2 个 Easy 级别的 PR
+
+注：相当于`Hard:Medium:Easy`的换算关系是`1:2:4`
+
+> 设计这个规则的逻辑是： Reviewer 要对某个模块很懂，才能对这个模块把关。那怎么判断他很懂呢？可以看他做过的 PR，1 个 hard 级别的 pr，或者 2 个 medium 级别的 pr，或者 1 个 medium+2 个 easy 级别的 pr
+
+##### Reviewer 的职责
+
+负责某个模块的 issue review 和 code review,给出技术建议。有该模块相关的重大变更会 request review 模块 Reviewer。
 
 #### Committer
 
 **如何成为 Committer：**
 
-由已有的 PMC 推荐，并通过 2/3 以上投票通过，满足必须条件以及选择条件中的一个：
+贡献过的 PR 满足下列条件:
 
-必须满足：
-
-- 成为社区成员时间超过三个月；
-
-以下三个条件任意满足一个即可：
-
-- 超过 10 个  PR 合并；
-- 完成至少一个重大功能；
-- 修复至少一个严重 Bug；
+- 合并的 PR 达到 10 个；
+- 其中至少包含 1 个 Hard 级别 PR, 或者 4 个 Medium 级别 PR；
 
 **职责**
 
@@ -96,21 +126,41 @@ Hello~欢迎来到 SOFAStack 开源社区，首先感谢一直以来支持 SOFAS
 
 - Pull Request review 权限；
 - Pull Request approve 权限；
-- 获得 SOFAStack Committer 勋章；
 
-#### Contributor
+**认证、运营宣传**
 
-**如何成为 Contributor：**
+- 在 Discussion 区颁发电子证书
 
-- 在 SOFAStack 的任何一个正式项目中成功提交一个 PR 并合并。
+示例： [Welcome new committer: Zhang Li Bin](https://github.com/mosn/layotto/discussions/352)
+
+- 邮寄实体证书
+
+- 公众号宣传
+
+示例：
+
+[恭喜 张立斌 成为 Layotto committer！](https://mp.weixin.qq.com/s/no6mDymNEGxH3uoZbl1YTQ)
+
+[恭喜 赵延 成为 SOFAJRaft committer！](https://mp.weixin.qq.com/s/BKJ0bcaGBeYNErDhpjk42Q)
+
+### PMC
+
+项目管理委员会，为项目核心管理团队，参与 roadmap 制定与社区相关的重大决议；
+
+**如何成为 PMC：**
+
+由项目的 PMC Member 为某位 Committer 提名，然后 PMC 投票，投票过半即可晋升为 PMC Member
 
 **职责：**
 
-- 积极响应指派给您的 Issue 或 PR；
+- 积极参与社区讨论，对社区重大决策给予指导；
+- 负责保证开源项目的社区活动都能运转良好；
 
 **权限：**
 
-- 加入 SOFAStack GitHub 组织，成为 SOFAStack 开源社区的一员。
+- Pull Request review 权限；
+- Pull Request approve 权限；
+- Merge 权限；
 
 ### User Group（社区层面）
 
@@ -121,7 +171,7 @@ Hello~欢迎来到 SOFAStack 开源社区，首先感谢一直以来支持 SOFAS
 由已有的 PMC 推荐，参与 SOFAStack 布道，必须满足以下两个以上条件：
 
 - 成为社区成员时间超过三个月，并三个月内保持活跃；
-- 原创 SOFAStack 相关文章并发布数达到3篇以上；
+- 原创 SOFAStack 相关文章并发布数达到 3 篇以上；
 - 至少代表 SOFAStack，参与大会、Meetup 等分享一次；
 
 **职责**
