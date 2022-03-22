@@ -41,7 +41,6 @@ Nydus 镜像可以推送和保存在标准的容器镜像中心，Nydus 镜像�
 
 与此同时，Nydus 也在开发 Buildkit 相关的支持，在未来也可以直接通过 Buildkit 从 Dockerfile 直接创建加速镜像。
 
-
 Nydus-snapshotter 是 Containerd 的 Remote Snapshotter 插件，它是一个独立于 Containerd 的进程。
 
 当集成 Nydus-snapshotter 到 Containerd 后，Nydus-napshotter 在容器镜像准备阶段，只会将 Nydus 镜像的元数据部分 Bootstrap 从镜像中心下载下来，并且创建了一个新的进程 Nydusd。Nydusd 是处理文件系统操作的用户态进程。通过配置，Nydusd 可以作为基于 Linux FUSE 的用户态文件系统 Virtio-fs Vhost-user Backend，甚至可以是 Linux Fscache 的用户态进程。
@@ -87,12 +86,6 @@ Nydus 有如下重要的特性：
 ![weekly.jpg](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*jNQHQ6ViMiEAAAAAAAAAAAAAARQnAQ)
 
 Nydus 将与 Containerd 社区紧密合作，致力于提供更优秀的容器镜像加速方案，提高镜像的存储和分发效率，提供安全可靠的容器镜像服务。
-
-## 「参 考」
-
-[1] nydus-snapshotter repository:https://github.com/containerd/nydus-snapshotter.
-
-[2] acceld repository:https://github.com/goharbor/acceleration-service
 
 ## 求贤若渴：
 
