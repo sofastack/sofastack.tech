@@ -11,11 +11,12 @@ date: 2022-03-23T15:00:00+08:00
 
 
 > SOFAStack （**S**calable **O**pen **F**inancial **A**rchitecture Stack） 是蚂蚁集团自主研发的金融级云原生架构，包含了构建金融级云原生架构所需的各个组件，是在金融场景里锤炼出来的最佳实践。
+> 
 > SOFARegistry 是蚂蚁集团开源的具有承载海量服务注册和订阅能力的、高可用的服务注册中心，在支付宝/蚂蚁集团的业务发展驱动下，近十年间已经演进至第五代。
 
-> 本文为《剖析 | SOFARegistry 框架》第五篇，**本篇作者行动，来自高德**。
-
-> 《剖析 | SOFARegistry 框架》系列由 SOFA 团队和源码爱好者们出品，项目代号：SOFA:RegistryLab/，文末包含往期系列文章。
+> 本文为《源码解析｜数据倒排索引》，**作者行动，来自高德**。
+>
+> 《源码解析》系列由 SOFA 团队和源码爱好者们出品。
 
 GitHub 地址：[https://github.com/sofastack/sofa-registry](https://github.com/sofastack/sofa-registry)
 
@@ -241,11 +242,11 @@ public <R> R add(K key, V val, UnThrowableCallable<R> dataStoreCaller) {
   private void refresh() {
     tempIndex = new ConcurrentHashMap<>(this.index.size());
     Term prevTerm = lastTerm;
-    doubleWrite = true;												①
+①   doubleWrite = true;①
     try {
-      lastTerm = new Term();										②
-      boolean timeout = !prevTerm.waitAllDone();					③
-      dataStoreForEach(												④
+②     lastTerm = new Term();
+③     boolean timeout = !prevTerm.waitAllDone();
+④     dataStoreForEach(
           (key, val) -> {
             insert(tempIndex, key, val);
           });
