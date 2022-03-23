@@ -13,7 +13,7 @@ date: 2022-03-23T15:00:00+08:00
 > SOFARegistry 是蚂蚁集团开源的具有承载海量服务注册和订阅能力的、高可用的服务注册中心，在支付宝/蚂蚁集团的业务发展驱动下，近十年间已经演进至第五代。
 
 > 本文为《源码解析｜数据倒排索引》，**作者行动，来自高德**。
-
+>
 > 《源码解析》系列由 SOFA 团队和源码爱好者们出品。
 
 GitHub 地址：[https://github.com/sofastack/sofa-registry](https://github.com/sofastack/sofa-registry)
@@ -48,7 +48,6 @@ GitHub 地址：[https://github.com/sofastack/sofa-registry](https://github.com/
 
 >图2  SOFARegistry 分层设计
 ![image.png](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*v38WSr06IZwAAAAAAAAAAAAAARQnAQ)
-
 
 如图 2 所示、在 SOFARegistry 中、客户端 client 直接和 session 通讯，而不是传统意义上的Data节点、这种添加中间一层隔离 DataServer 和客户端的做法。主要是为了处理客户端连接风暴。对这种分层设计。
 
