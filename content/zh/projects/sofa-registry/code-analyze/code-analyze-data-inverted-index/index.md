@@ -220,7 +220,7 @@ public <R> R add(K key, V val, UnThrowableCallable<R> dataStoreCaller) {
     Term term = lastTerm;
     term.start.incrementAndGet();
     try {
-①   if (doubleWrite) {											
+①   if (doubleWrite) {
 ②     insert(tempIndex, key, val);
       }
 ③   insert(index, key, val);
