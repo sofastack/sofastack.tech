@@ -220,11 +220,11 @@ public <R> R add(K key, V val, UnThrowableCallable<R> dataStoreCaller) {
     Term term = lastTerm;
     term.start.incrementAndGet();
     try {
- ①   if (doubleWrite) {											
- ②     insert(tempIndex, key, val);
+①   if (doubleWrite) {											
+②     insert(tempIndex, key, val);
       }
- ③   insert(index, key, val);
- ④   return dataStoreCaller.call();
+③   insert(index, key, val);
+④   return dataStoreCaller.call();
     } finally {
       term.done.incrementAndGet();
     }
@@ -237,7 +237,7 @@ public <R> R add(K key, V val, UnThrowableCallable<R> dataStoreCaller) {
   private void refresh() {
     tempIndex = new ConcurrentHashMap<>(this.index.size());
     Term prevTerm = lastTerm;
-①   doubleWrite = true;①
+①   doubleWrite = true;
     try {
 ②     lastTerm = new Term();
 ③     boolean timeout = !prevTerm.waitAllDone();
