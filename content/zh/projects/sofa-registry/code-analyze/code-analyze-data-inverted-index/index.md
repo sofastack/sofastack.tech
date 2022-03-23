@@ -15,7 +15,7 @@ date: 2022-03-23T15:00:00+08:00
 > SOFARegistry 是蚂蚁集团开源的具有承载海量服务注册和订阅能力的、高可用的服务注册中心，在支付宝/蚂蚁集团的业务发展驱动下，近十年间已经演进至第五代。
 
 > 本文为《源码解析｜数据倒排索引》，**作者行动，来自高德**。
->
+
 > 《源码解析》系列由 SOFA 团队和源码爱好者们出品。
 
 GitHub 地址：[https://github.com/sofastack/sofa-registry](https://github.com/sofastack/sofa-registry)
@@ -134,7 +134,6 @@ this.REGIST_ID = UUID.randomUUID().toString()
 >图3 SessionServer 会话数据存储结构
 ![image.png](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Jh7XS6zcnTMAAAAAAAAAAAAAARQnAQ)
 
-
 在一些场景中、例如客户端断连，我们通过底层的通讯框架感知到这一变化。我们需要将该 条连接上所有的发布订阅会话数据清除掉。如果用上面的 存储结构 我们需要迭代查找、这样对于客户端频繁的断开连接场景来说，这样会过于消耗 CPU 资源、基于此 SessionServer 在保存 Store 数据的时候也保存一份倒排索引数据、方便通过 ConnectId 快速找到所有的注册订阅会话信息。数据结构如下:
 
 ```java
@@ -157,7 +156,6 @@ public abstract class DataIndexer<K, V> {
 
 >图4 DateStore 类图
 ![image.png](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*K81eTrug-w4AAAAAAAAAAAAAARQnAQ)
-
 
 ### 倒排索引数据和发布订阅数据如何一致性如何保证?
 
@@ -266,4 +264,3 @@ public <R> R add(K key, V val, UnThrowableCallable<R> dataStoreCaller) {
 ### 总结
 
 SOFARegistry 使用后台定时修正的方式保持 session 数据和索引数据的一致性、是一种比较简单的方式、省去了加锁逻辑，不会影响到写入性能。在定时修正过程中所以引入 Term 最终目的还是为了索引数据不丢失。大家可以参考源码细细体会。
-
