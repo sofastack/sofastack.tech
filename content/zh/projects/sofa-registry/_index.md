@@ -29,4 +29,7 @@ sidebar:
         link: 'code-analyze/summary'
       - title: '数据表监听'
         link: 'code-analyze/code-analyza-data-table-listening'
+      - title: '数据倒排索引'
+        link: 'code-analyze-data-inverted-index'
+        
 ---
