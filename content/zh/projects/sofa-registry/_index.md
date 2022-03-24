@@ -31,5 +31,7 @@ sidebar:
         link: 'code-analyze/code-analyza-data-table-listening'
       - title: '数据倒排索引'
         link: 'code-analyze/code-analyze-data-inverted-index'
+      - title: '推送延迟trace'
+        link: 'code-analyze/code-analyze-push-delay-trace'
         
 ---
