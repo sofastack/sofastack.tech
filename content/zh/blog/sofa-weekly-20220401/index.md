@@ -33,8 +33,7 @@ A：目前蚂蚁的落地用户将客户端 SDK，改成调用 Layotto；现在�
 
 >开源版服务器端支持哪些中间件，客户端无侵入支持哪些中间件？
 
-A：1. 已经落地的方案是：将各种中间件的 Java SDK，改成调用 Layotto （比如把 xxx-MQ-sdk 内部逻辑改成调layotto pubsub API，但是对业务代码暴露的接口不变)。业务系统需要升级下 SDK，业务代码不用改。这部分没开源，因为是改内部中间件的 SDK，这些中间件本身没开源。
-
+A：1. 已经落地的方案是：将各种中间件的 Java SDK，改成调用 Layotto （比如把 xxx-MQ-sdk 内部逻辑改成调layotto pubsub API，但是对业务代码暴露的接口不变)。业务系统需要升级下 SDK，业务代码不用改。这部分没开源，因为是改内部中间件的 SDK，这些中间件本身没开源。<br/>
 2. 开源版服务器端支持那些中间件：每类 API 有支持的组件列表。
 [https://mosn.io/layotto/#/zh/component_specs/sequencer/common](https://mosn.io/layotto/#/zh/component_specs/sequencer/common)
 其中 state API、pubsub API 因为复用了 Dapr 的组件，所有 Dapr 组件都支持。[https://docs.dapr.io/zh-hans/reference/components-reference/supported-state-stores/](https://docs.dapr.io/zh-hans/reference/components-reference/supported-state-stores/)
@@ -47,7 +46,7 @@ A：1. 已经落地的方案是：将各种中间件的 Java SDK，改成调用 
 
 「SOFABolt」：[https://github.com/sofastack/sofa-boot](https://github.com/sofastack/sofa-boot)
 
-**黄润良 ** 提问：
+**黄润良** 提问：
 
 >RPC 序列化 Localdatetime 有问题，改为 Date 类型后正常, 你知道原因吗?upstream 的 ip access 日志怎么打印来访日志呢，主要是负载均衡后访问到后段的哪个 IP?
 
