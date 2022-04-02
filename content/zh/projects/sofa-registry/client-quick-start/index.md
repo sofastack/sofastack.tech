@@ -76,7 +76,7 @@ registration.setScopeEnum(ScopeEnum.global);
 registryClient.register(registration);
 ```
 
-使用 SOFARegistry 发布数据一共包含三个步骤：
+使用 SOFARegistry 订阅数据一共包含三个步骤：
 
 1. 构建客户端实例;
 2. 创建 SubscriberDataObserver；
