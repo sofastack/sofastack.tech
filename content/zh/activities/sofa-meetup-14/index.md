@@ -25,7 +25,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Lxx8Qa2NIr0AAAAAA
 
 [《云原生多集群治理实践》](https://gw.alipayobjects.com/os/bmw-prod/06dd282a-c0be-4285-b625-63697826226d.pdf)<br/>
 
-[《蚂蚁服务发现的大规模实践与展望》 ](https://gw.alipayobjects.com/os/bmw-prod/7d7a7055-99b9-4b1f-aacc-4dbb75cd10f8.pdf)<br/>
+[《蚂蚁服务发现的大规模实践与展望》](https://gw.alipayobjects.com/os/bmw-prod/7d7a7055-99b9-4b1f-aacc-4dbb75cd10f8.pdf)<br/>
 
 ## 活动议程
 
@@ -36,7 +36,6 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Lxx8Qa2NIr0AAAAAA
 直播主题：木兰技术开放日&SOFAMeetup（云原生专场）           
 
 直播时间：2022 年 4 月 1 日 上午 9:30 
-
 
 议题分享：
 
@@ -130,7 +129,6 @@ naming 作为一个有着较长发展历史的领域，同时 naming 作为分�
 2. naming在云原生时代下的发展方向及趋势 
 
 3. 总结和展望
-
 
 听众收益：
 
