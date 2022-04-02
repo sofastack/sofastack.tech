@@ -19,7 +19,11 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Lxx8Qa2NIr0AAAAAA
 
 - 资料下载：<br/>
 
+[《如何建立云原生时代的 DevOps 工具链》](https://gw.alipayobjects.com/os/bmw-prod/c3a8aa31-737b-489f-8a22-f8e643b7d00a.pdf)<br/>
+
 [《在大规模集群中落地 Layotto 这种多运行时架构是一种什么样的体验》](https://gw.alipayobjects.com/os/bmw-prod/97aaba22-9d74-4957-9dd3-025fc28d071f.pdf)<br/>
+
+[《云原生多集群治理实践》](https://gw.alipayobjects.com/os/bmw-prod/06dd282a-c0be-4285-b625-63697826226d.pdf)<br/>
 
 [《蚂蚁服务发现的大规模实践与展望》 ](https://gw.alipayobjects.com/os/bmw-prod/7d7a7055-99b9-4b1f-aacc-4dbb75cd10f8.pdf)<br/>
 
