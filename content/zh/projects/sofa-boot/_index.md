@@ -82,6 +82,8 @@ sidebar:
             link: 'sofa-ark-plugin'
           - title: 'Ark 容器类加载机制'  	
             link: 'sofa-ark-classloader'
+          - title: 'Ark 最佳实践'
+            link: 'sofa-ark-best-practice'
       - title: '发布说明'
         link: 'sofa-ark-release'
       - title: '发展路线'
