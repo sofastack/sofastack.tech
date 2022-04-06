@@ -33,5 +33,7 @@ sidebar:
         link: 'code-analyze/code-analyze-data-inverted-index'
       - title: '推送延迟trace'
         link: 'code-analyze/code-analyze-push-delay-trace'
+      - title: '通讯数据压缩'
+        link: 'code-analyze/code-analyze-communication-data-compression' 
         
 ---
