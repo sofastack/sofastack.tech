@@ -1,3 +1,12 @@
+---
+title: "源码解析｜通讯数据压缩"
+author: "Carver_007"
+authorlink: "https://github.com/czbcxy"
+description: "源码解析｜通讯数据压缩"
+categories: "SOFAStack"
+tags: [“源码解析”]
+date: 2022-03-30T15:00:00+08:00
+---
 
 > 为了支撑超大规模集群以及大内容传输的支持，增加传输效率，减少网络带宽，考虑对消息进行压缩处理，SOFARegistry的data和session以及session和client (目前只有go支持）添加了对压缩数据传输的支持，同时增加缓存来减少压缩带来的较高的cpu的消耗。
 
