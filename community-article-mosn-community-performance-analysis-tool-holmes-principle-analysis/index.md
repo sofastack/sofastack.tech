@@ -174,7 +174,7 @@ h.Set(
 
 ![图片](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*9l3sTKA3wJ4AAAAAAAAAAAAAARQnAQ)
 
-##  Holmes V1.0 版本发布
+## Holmes V1.0 版本发布
 
 本文简单地介绍了 Holmes 的使用方法与原理。希望 Holmes 能在您提高应用的稳定性时帮助到你。
 
