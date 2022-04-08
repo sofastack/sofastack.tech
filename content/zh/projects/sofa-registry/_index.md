@@ -35,5 +35,7 @@ sidebar:
         link: 'code-analyze/code-analyze-push-delay-trace'
       - title: '通讯数据压缩'
         link: 'code-analyze/code-analyze-communication-data-compression' 
+      - title: '数据同步'
+        link: 'code-analyze/code-analyze-data-synchronization' 
         
 ---
