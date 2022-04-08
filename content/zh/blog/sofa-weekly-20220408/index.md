@@ -33,7 +33,7 @@ A：其实不需要和应用进行绑定，更准确的说法是节点级的服�
 
 「SOFARegistry」：[https://github.com/sofastack/sofa-registry](https://github.com/sofastack/sofa-registry)
 
-**黄润良 ** 提问：
+**@ 黄润良** 提问：
 
 ![weekly.jpg](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*GwwxQ48em3QAAAAAAAAAAAAAARQnAQ)
 
