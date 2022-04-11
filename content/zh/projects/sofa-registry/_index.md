@@ -37,5 +37,7 @@ sidebar:
         link: 'code-analyze/code-analyze-communication-data-compression' 
       - title: '数据同步'
         link: 'code-analyze/code-analyze-data-synchronization' 
+      - title: 'SlotTable'
+        link: 'code-analyze/code-analyze-slottable' 
         
 ---
