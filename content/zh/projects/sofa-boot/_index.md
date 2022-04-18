@@ -38,6 +38,8 @@ sidebar:
     sub:
       - title: 'SOFAArk 介绍'  	
         link: 'sofa-ark-readme'
+      - title: 'SOFAArk2.0 升级'  	
+        link: 'sofa-ark-migration-guide'
       - title: '快速开始'
         sub:
           - title: '如何打包 Ark Plugin'  	
