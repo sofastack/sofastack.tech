@@ -4,6 +4,7 @@ aliases: "/sofa-boot/docs/sofa-ark-migration-guide"
 ---
 
 # 背景
+
 SOFAArk 框架包含有三个概念，Ark Container, Ark Plugin 和 Ark Biz; 运行时逻辑结构图如下：
 
 ![image.png | center | 1310x1178](https://cdn.yuque.com/lark/2018/png/590/1523868989241-f50695ed-dca0-4bf7-a6a9-afe07c2ade76.png)
@@ -41,6 +42,7 @@ SOFAArk2.0方案整体优化点：
 # 升级方式
 
 ## 版本升级
+
 SOFAArk版本号第一位为大版本号，当为1.x.x时为SOFAArk1.0版，当为2.x.x时是SOFAArk2.0版，当前2.0版本已正式release，[Release-Notes](https://github.com/sofastack/sofa-ark/releases/tag/v2.0.0)
 
 ```xml
@@ -58,7 +60,9 @@ SOFAArk版本号第一位为大版本号，当为1.x.x时为SOFAArk1.0版，当�
 ```
 
 ## 打包插件
+
 在SOFAArk1.0中使用sofa-ark-maven-plugin打包，在SOFAArk2.0中采用spring-boot原生打包插件spring-boot-maven-plugin打包
+
 ```xml
 <build>
     <plugins>
@@ -69,16 +73,16 @@ SOFAArk版本号第一位为大版本号，当为1.x.x时为SOFAArk1.0版，当�
             <executions>
                 <execution>
                     <id>default-cli</id>
-                    
+
                     <!--goal executed to generate executable-ark-jar -->
                     <goals>
                         <goal>repackage</goal>
                     </goals>
-                    
+
                     <configuration>
                         <!--specify destination where executable-ark-jar will be saved, default saved to ${project.build.directory}-->
                         <outputDirectory>./target</outputDirectory>
-                        
+
                         <!--default none-->
                         <arkClassifier>executable-ark</arkClassifier>
                     </configuration>
@@ -89,7 +93,7 @@ SOFAArk版本号第一位为大版本号，当为1.x.x时为SOFAArk1.0版，当�
 </build>
 ```
 
-改为
+替换为：
 
 ```xml
 <build>
@@ -119,14 +123,16 @@ SOFAArk版本号第一位为大版本号，当为1.x.x时为SOFAArk1.0版，当�
 ## 运行启动
 
 ### 方式一：IDEA启动
+
 本地启动需要加上启动参数
--Dsofa.ark.embed.enable=true
--Dcom.alipay.sofa.ark.master.biz=${bizName}
+
+> -Dsofa.ark.embed.enable=true -Dcom.alipay.sofa.ark.master.biz=${bizName}
 
 ### 方式二：命令行启动
-Ark包是可执行Jar，可直接使用Java -jar的方式启动，先使用 mvn clean package 进行打包，打包得到 ${bizName}-${bizVersion}-ark-biz.jar，命令行启动
-java -jar -Dsofa.ark.embed.enable=true -Dcom.alipay.sofa.ark.master.biz=${bizName} ${bizName}-${bizVersion}-ark-biz.jar
 
+Ark包是可执行Jar，可直接使用Java -jar的方式启动，先使用 mvn clean package 进行打包，打包得到 ${bizName}-${bizVersion}-ark-biz.jar，命令行启动
+
+> java -jar -Dsofa.ark.embed.enable=true -Dcom.alipay.sofa.ark.master.biz=${bizName} ${bizName}-${bizVersion}-ark-biz.jar
 
 ## 示例工程
 
