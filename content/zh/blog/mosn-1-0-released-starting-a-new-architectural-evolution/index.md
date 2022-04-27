@@ -14,7 +14,6 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*VSMJT7-nwu0AAAAAA
 蚂蚁集团技术专家
 *负责 MOSN 核心开发，关注云原生流量网关的演进*
 
-
 以下内容整理自 SOFAStack 四周年的分享
 
 **本文 5332字 阅读** **10 分钟**
@@ -161,7 +160,7 @@ CGo 作为了 MOSN 和 Envoy 之间很重要桥梁，其性能很大程度决定
 
 目前已支持将 MOSN 部分 filter 运行在 Envoy 中，开源仓库可以找到这一部分，欢迎大家来试用。
 
-*https://github.com/mosn/mosn/blob/master/pkg/networkextention/README-cn.md*
+[https://github.com/mosn/mosn/blob/master/pkg/networkextention/README-cn.md](https://github.com/mosn/mosn/blob/master/pkg/networkextention/README-cn.md)
 
 **MoE 开源计划**
 
@@ -179,7 +178,7 @@ CGo 作为了 MOSN 和 Envoy 之间很重要桥梁，其性能很大程度决定
 
 我们把蚂蚁内部落地的 Holmes 集成到了开源的 MOSN 里，对于运行时的资源异常，可以捕捉异常现场来分析。关于 Holmes，我们之前有过一个分享，感兴趣的可以去阅读。
 
-*https://mosn.io/blog/posts/mosn-holmes-design/*
+[https://mosn.io/blog/posts/mosn-holmes-design/](https://mosn.io/blog/posts/mosn-holmes-design/)
 
 **南北向网关接入**
 
@@ -215,13 +214,13 @@ MOSN 目前作为数据面的呈现，产品能够包含一整套解决方案，
 
 欢迎大家使用 MOSN，共同成长
 
-MOSN 官网：https://mosn.io/
+MOSN 官网：[https://mosn.io/](https://mosn.io/)
 
-MOSN GitHub 地址：https://github.com/mosn
+MOSN GitHub 地址：[https://github.com/mosn](https://github.com/mosn)
 
 ### 本周推荐阅读
 
-- [金融级应用开发｜SOFABoot 框架剖析(https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247505461&idx=1&sn=198480c36943e1b904ab88291b539057&chksm=faa339efcdd4b0f91810d2c2dc2a9536f5378973a67d03e98f5b6a813771d46bd9cb145ed4d1&scene=21#wechat_redirect)
+- [金融级应用开发｜SOFABoot 框架剖析](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247505461&idx=1&sn=198480c36943e1b904ab88291b539057&chksm=faa339efcdd4b0f91810d2c2dc2a9536f5378973a67d03e98f5b6a813771d46bd9cb145ed4d1&scene=21#wechat_redirect)
 
 - [“SOFA 星球”闯关计划 ——Layotto 飞船](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247505856&idx=1&sn=bbf95767a84de62d4bb2bdf46644ab30&chksm=faa3381acdd4b10c76825f7d3999fb4956ce0d24562a7a26af1732c70d28966b2f84f0457800&scene=21#wechat_redirect)
 
