@@ -22,13 +22,14 @@ SOFAStack 官网: [https://www.sofastack.tech](https://www.sofastack.tech/)
 SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 ### SOFAStack 社区本周 Contributor  
+
 ![weekly.jpg](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*6Hm4SpN2FWUAAAAAAAAAAAAAARQnAQ)
 
 ### 每周读者问答提炼
 
 欢迎大家向公众号留言提问或在群里与我们互动，我们会筛选重点问题，通过 " SOFA WEEKLY " 的形式回复
 
-**@黄昊 ** 提问：
+@黄昊 提问：
 
 >同一个网格里，不同的 Pod 可以注入不同版本的 Sidecar 吗？
 
@@ -40,15 +41,17 @@ A：是的。
 
 「MOSN」：[https://github.com/mosn](https://github.com/mosn)
 
-**@service mesh ** 提问：
+@service mesh 提问：
 
 >gateway 有开源计划吗？
 
-A：有考虑，但是目前还没有具体的时间点，可以看下这个初期的 issue，有个demo[https://github.com/mosn/mosn/issues/1563 ](https://github.com/mosn/mosn/issues/1563 )
+A：有考虑，但是目前还没有具体的时间点，可以看下这个初期的 issue，有个demo.
+
+[https://github.com/mosn/mosn/issues/1563](https://github.com/mosn/mosn/issues/1563)
 
 「MOSN」：[https://github.com/mosn](https://github.com/mosn)
 
-**@Tom ** 提问：
+@Tom 提问：
 
 >Wasm 还有啥好玩的待实现的特性吗？
 
@@ -106,7 +109,7 @@ SOFARPC
 
 ### 本周推荐阅读
 
-- [金融级应用开发｜SOFABoot 框架剖析(https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247505461&idx=1&sn=198480c36943e1b904ab88291b539057&chksm=faa339efcdd4b0f91810d2c2dc2a9536f5378973a67d03e98f5b6a813771d46bd9cb145ed4d1&scene=21#wechat_redirect)
+- [金融级应用开发｜SOFABoot 框架剖析](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247505461&idx=1&sn=198480c36943e1b904ab88291b539057&chksm=faa339efcdd4b0f91810d2c2dc2a9536f5378973a67d03e98f5b6a813771d46bd9cb145ed4d1&scene=21#wechat_redirect)
 
 - [“SOFA 星球”闯关计划 ——Layotto 飞船](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247505856&idx=1&sn=bbf95767a84de62d4bb2bdf46644ab30&chksm=faa3381acdd4b10c76825f7d3999fb4956ce0d24562a7a26af1732c70d28966b2f84f0457800&scene=21#wechat_redirect)
 
