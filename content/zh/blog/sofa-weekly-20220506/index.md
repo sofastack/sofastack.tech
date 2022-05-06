@@ -22,13 +22,14 @@ SOFAStack 官网: [https://www.sofastack.tech](https://www.sofastack.tech/)
 SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 ### SOFAStack 社区本周 Contributor  
+
 ![weekly.jpg](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*_tbvRZ7Ydo4AAAAAAAAAAAAAARQnAQ)
 
 ### 每周读者问答提炼
 
 欢迎大家向公众号留言提问或在群里与我们互动，我们会筛选重点问题，通过 " SOFA WEEKLY " 的形式回复
 
-**@尚之 ** 提问：
+@尚之 提问：
 
 >SOFARegistry 和应用绑定有多深，Serverless 场景下有没有更动态的方案和应用解绑？
 
@@ -36,7 +37,7 @@ A：其实不需要和应用进行绑定，更准确的说法是节点级的服�
 
 「SOFARegistry」：[https://github.com/sofastack/sofa-registry](https://github.com/sofastack/sofa-registry)
 
-**@沄澈|che ** 提问：
+@沄澈|che 提问：
 
 >RPC 序列化 Localdatetime 有问题，改为 Date 类型后正常, 你知道原因吗?
 
