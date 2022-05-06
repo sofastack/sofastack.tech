@@ -39,5 +39,9 @@ sidebar:
         link: 'code-analyze/code-analyze-data-synchronization' 
       - title: 'SlotTable'
         link: 'code-analyze/code-analyze-slottable' 
+      - title: '无损运维'
+        link: 'code-analyze/code-analyze-non-destructive-o-and-m' 
+      - title: '推送开关'
+        link: 'code-analyze/code-analyze-push-switch' 
         
 ---
