@@ -54,7 +54,7 @@ SOFARegistry 的客户端目前采用长连接与其中一台 Session 相连，�
 
 项目社区导师：张立斌[1098294815@qq.com](1098294815@qq.com)
 
-### Layotto 
+### Layotto
 
 **Layotto 中实现 ceph 文件系统，同时打通 SOFABoot**
 
@@ -84,7 +84,7 @@ Tasks:
 
 1、upgrade opentracing version torelease-0.33.0
 
-2、adapter https://opentelemetry.io/docs/migration/opentracing/
+2、adapter [https://opentelemetry.io/docs/migration/opentracing/](https://opentelemetry.io/docs/migration/opentracing/)
 
 3、provide intergration doc and guides
 
@@ -137,6 +137,7 @@ Layotto 之前就已经可以跟 Istio 1.5.x 集成，由于落后当时的 Isti
 - 海外学生:提供录取通知书、学生卡、在读证明等文件
 
 ### 活动流程
+
 ![weekly.jpg](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*I-1FT4ifgJIAAAAAAAAAAAAAARQnAQ)
 
 ![weekly.jpg](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Dc30R4il5BsAAAAAAAAAAAAAARQnAQ)
