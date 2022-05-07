@@ -24,7 +24,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*lboCQplrH-IAAAAAA
 
 ## 项目任务
 
-#### 1.SOFARegistry 客户端负载均衡
+1.SOFARegistry 客户端负载均衡
 
 SOFARegistry 的客户端目前采用长连接与其中一台 Session 相连，随后会用这根链接注册和订阅服务，在注册中心进行运维期间，客户端会断链重连到别的机器上，经过一轮滚动升级，就会造成 Session 上链接分布的不均衡，一是数据不均衡，二是推送压力不均衡，严重的时候会造成单机热点，影响推送的效率。
 
@@ -38,7 +38,7 @@ SOFARegistry 的客户端目前采用长连接与其中一台 Session 相连，�
 
 项目社区导师：dzdx[dzidaxie@gmail.com](dzidaxie@gmail.com)
 
-#### 2.增强 layotto-java-sdk 和 layotto-spring-boot
+2.增强 layotto-java-sdk 和 layotto-spring-boot
 
 项目编号：2295a0213
 
@@ -52,7 +52,7 @@ SOFARegistry 的客户端目前采用长连接与其中一台 Session 相连，�
 
 项目社区导师：张立斌[1098294815@qq.com](1098294815@qq.com)
 
-#### 3.Layotto 中实现 ceph 文件系统，同时打通 SOFABoot
+3.Layotto 中实现 ceph 文件系统，同时打通 SOFABoot
 
 项目编号：2295a0214
 
@@ -66,7 +66,7 @@ SOFARegistry 的客户端目前采用长连接与其中一台 Session 相连，�
 
 项目社区导师：wenxuwan[wangwx_junction@163.com](wangwx_junction@163.com)
 
-#### 4.SOFATracer upgrade opentracing api version & adapter opentelemetry api.
+4.SOFATracer upgrade opentracing api version & adapter opentelemetry api
 
 项目编号：2295a0196 
 
@@ -84,7 +84,7 @@ Tasks:
 
 项目社区导师：卫恒（宋国磊）[glmapper_2018@163.com](glmapper_2018@163.com)
 
-#### 5.为 MOSN 适配社区 Proxy-Wasm v2 开源规范
+5.为 MOSN 适配社区 Proxy-Wasm v2 开源规范
 
 项目编号：22f080190
 
@@ -100,7 +100,7 @@ MOSN 是一款主要使用 Go 语言开发的网络代理 (类似 Envoy、Nginx)
 
 项目社区导师：叶永杰[yongjie.yyj@antgroup.com](yongjie.yyj@antgroup.com)
 
-#### 6.Layotto 集成 Istio
+6.Layotto 集成 Istio
 
 项目编号：22f080198
 
