@@ -22,13 +22,14 @@ SOFAStack 官网: [https://www.sofastack.tech](https://www.sofastack.tech/)
 SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 ### SOFAStack 社区本周 Contributor  
+
 ![weekly.jpg](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*_tbvRZ7Ydo4AAAAAAAAAAAAAARQnAQ)
 
 ### 每周读者问答提炼
 
 欢迎大家向公众号留言提问或在群里与我们互动，我们会筛选重点问题，通过 " SOFA WEEKLY " 的形式回复
 
-**@曹飞 ** 提问：
+@曹飞 提问：
 
 >Stream Filter ，大佬们这个配置参数哪里有说明啊？比如我要通过异常比例、异常，平均响应时间测试熔断，要怎么配置呢？
 
@@ -40,7 +41,7 @@ A：开源 MOSN 中用的限流能力是由 sentinel-golang 提供的，所以�
 
 「MOSN」：[https://github.com/mosn](https://github.com/mosn)
 
-**@bobtthp ** 提问：
+@bobtthp 提问：
 
 >请教下，这个有人遇到过吗？
 
