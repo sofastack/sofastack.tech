@@ -1,7 +1,7 @@
 ---
 title: "【2022 开源之夏】欢迎报名 SOFAStack 社区和 MOSN 社区项目！"
 authorlink: "https://github.com/sofastack"
-description: "2022 开源之夏】欢迎报名 SOFAStack 社区和 MOSN 社区项目！"
+description: "【2022 开源之夏】欢迎报名 SOFAStack 社区和 MOSN 社区项目！"
 categories: "SOFA Weekly"
 tags: ["SOFA Weekly"]
 date: 2022-05-07 T15:00:00+08:00
@@ -12,13 +12,13 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*lboCQplrH-IAAAAAA
 
 活动联合国内外各大开源社区，针对重要开源软件的开发与维护提供项目任务，并面向全球高校学生开放报名。
 
-![weekly.jpg](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*w1DUTLCCnzkAAAAAAAAAAAAAARQnAQ)
+![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*w1DUTLCCnzkAAAAAAAAAAAAAARQnAQ)
 
 2022 年，SOFAStack 和 MOSN 社区再次加入中国科学院软件研究所的高校开源活动——“开源之夏 2022”，为大家准备了六个任务，涉及 Cloud Native、Micro Service、Distributed System、Kubernetes、Container 等多个领域。
 
 ## 活动规则
 
-进入👉：[https://summer-ospp.ac.cn/#/homepage](https://summer-ospp.ac.cn/#/homepage)
+进入：[https://summer-ospp.ac.cn/#/homepage](https://summer-ospp.ac.cn/#/homepage)
 
 各位同学可以自由选择项目，与社区导师沟通实现方案并撰写项目计划书。被选中的学生将在社区导师指导下，按计划完成开发工作，并将成果贡献给社区。社区评估学生的完成度，主办方根据评估结果发放资助金额给学生。
 
@@ -128,9 +128,9 @@ Layotto 之前就已经可以跟 Istio 1.5.x 集成，由于落后当时的 Isti
 
 ### 活动流程
 
-![weekly.jpg](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*I-1FT4ifgJIAAAAAAAAAAAAAARQnAQ)
+![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*I-1FT4ifgJIAAAAAAAAAAAAAARQnAQ)
 
-![weekly.jpg](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Dc30R4il5BsAAAAAAAAAAAAAARQnAQ)
+![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Dc30R4il5BsAAAAAAAAAAAAAARQnAQ)
 
 微信扫码备注“开源之夏”进群交流
 
