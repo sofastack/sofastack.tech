@@ -4,7 +4,7 @@ authorlink: "https://github.com/sofastack"
 description: "【2022 开源之夏】欢迎报名 SOFAStack 社区和 MOSN 社区项目！"
 categories: "SOFA Weekly"
 tags: ["SOFA Weekly"]
-date: 2022-05-07 T15:00:00+08:00
+date: 2022-05-07T15:00:00+08:00
 cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*lboCQplrH-IAAAAAAAAAAAAAARQnAQ"
 ---
 
