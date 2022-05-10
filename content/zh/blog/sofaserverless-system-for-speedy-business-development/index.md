@@ -1,7 +1,7 @@
 ---
-title: "SOFA Serverless 体系助力业务极速研发"
+title: "SOFAServerless 体系助力业务极速研发"
 author: "赵真灵、刘晶"
-description: "SOFA Serverless 体系助力业务极速研发"
+description: "SOFAServerless 体系助力业务极速研发"
 categories: "SOFAStack"
 tags: ["SOFAStack"]
 date: 2022-05-10T15:00:00+08:00
@@ -14,7 +14,7 @@ cover: "https://oscimg.oschina.net/oscnet/up-4b32f58df2c03b26ef4258950210a51f421
 
 **本文 5332 字 阅读 10 分钟**
 
-SOFA Serverelss 研发运维平台是蚂蚁集团随着业务发展、研发运维的复杂性和成本不断增加的情况下，为帮助应用又快又稳地迭代而研发。从细化研发运维粒度和屏蔽基础设施的角度出发，演进出的一套解决方案。
+SOFAServerless 研发运维平台是蚂蚁集团随着业务发展、研发运维的复杂性和成本不断增加的情况下，为帮助应用又快又稳地迭代而研发。从细化研发运维粒度和屏蔽基础设施的角度出发，演进出的一套解决方案。
 
 核心方式是通过类隔离和热部署技术，将应用从代码结构和开发者阵型拆分为两个层次：业务模块和基座，基座为业务模块提供计算环境并屏蔽基础设施，模块开发者不感知机器、容量等基础设施，专注于业务研发帮助业务快速向前发展。
 
