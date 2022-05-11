@@ -25,8 +25,6 @@ sidebar:
         link: 'java-sdk'
   - title: '源码解析'
     sub:
-      - title: '总览'
-        link: 'code-analyze/summary'
       - title: 'SlotTable'
         link: 'code-analyze/code-analyze-slottable' 
       - title: '无损运维'
