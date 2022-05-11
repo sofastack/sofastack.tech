@@ -7,7 +7,7 @@ level: "main"
 weight: 5
 icon: "/img/icons/sofaregistry.png"
 sidebar:
-  - title: '产品介绍'
+  - title: '产品介绍123'
     sub:
       - title: '简介'
         link: 'overview'
