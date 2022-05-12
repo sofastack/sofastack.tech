@@ -9,12 +9,10 @@ icon: "/img/icons/sofaregistry.png"
 sidebar:
   - title: '产品介绍'
     sub:
-      - title: '产品概述'
-       sub:
-        - title: '简介'
-          link: 'overview'
-        - title: '术语'
-          link: 'terminology'
+      - title: '简介'
+        link: 'overview'
+      - title: '术语'
+        link: 'terminology'
   - title: '快速开始'
     sub:
       - title: '服务端部署'
