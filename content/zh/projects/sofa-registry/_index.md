@@ -52,7 +52,6 @@ sidebar:
         link: 'server-quick-start'
       - title: '客户端部署'
         link: 'client-quick-start'
- 
   - title: '用户指南'
     sub:
       - title: 'SDK'
@@ -60,7 +59,7 @@ sidebar:
           - title: 'Java SDK'
             link: 'java-sdk'
           - title: 'Go SDK'
-       - title: '参考手册/FAQ'
+      - title: '参考手册/FAQ'
   - title: '开发者指南'
     sub:
       - title: '部署手册'
