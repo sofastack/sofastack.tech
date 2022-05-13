@@ -78,7 +78,5 @@ sidebar:
           - title: '文档贡献指南'
           - title: '创建页面'
           - title: '样式指南'
-      - title: '贡献流程'
-   - title: '参考信息'
-   - title: 'FAQ'      
+      - title: '贡献流程'  
 ---
