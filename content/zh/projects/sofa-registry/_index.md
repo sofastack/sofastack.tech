@@ -74,9 +74,6 @@ sidebar:
           - title: '贡献指引'
           - title: '编码规范'
           - title: '贡献教程'
-            sub:
-              - title: '说明'
-              - title: '给注册中心添加 dashboard'
       - title: '贡献文档须知'
         sub:
           - title: '文档贡献指南'
