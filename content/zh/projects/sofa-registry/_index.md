@@ -38,7 +38,6 @@ sidebar:
           - title: 'registry meta 选主'
             link: 'code-analyze/code-analyze-registry-meta'  
       - title: '版本特性'
-        link:''
       - title: '配置概览'
         sub:
           - title: 'Session 配置'
@@ -80,4 +79,9 @@ sidebar:
           - title: '创建页面'
           - title: '样式指南'
       - title: '贡献流程'  
+
+  - title: '参考信息'
+    sub：
+  - title: 'FAQ'
+    sub：
 ---
