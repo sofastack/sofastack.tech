@@ -82,6 +82,7 @@ sidebar:
 
   - title: '参考信息'
     sub：
+*      - title: '参考'
   - title: 'FAQ'
-    sub：
+*      - title: 'QA'
 ---
