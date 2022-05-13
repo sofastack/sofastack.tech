@@ -80,7 +80,7 @@ sidebar:
       - title: '贡献文档须知'
         sub:
           - title: '文档贡献指南'
-            link: '创建页面'
+          - title: '创建页面'
           - title: '样式指南'
       - title: '贡献流程'
    - title: '参考信息'
