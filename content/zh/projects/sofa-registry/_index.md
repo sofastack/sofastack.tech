@@ -79,4 +79,9 @@ sidebar:
           - title: '创建页面'
           - title: '样式指南'
       - title: '贡献流程'  
+
+  - title: '参考信息'
+    link: ''
+  - title: 'FAQ'
+    link: ''
 ---
