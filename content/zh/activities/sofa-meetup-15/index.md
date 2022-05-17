@@ -42,4 +42,3 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*nrA_RKaAZycAAAAAA
 或微信扫码关注“金融级分布式架构”微信公众号👇
 
 >![](https://gw.alipayobjects.com/zos/bmw-prod/75d7bde6-1f48-4f28-80a4-215f8ec811bd.webp)
-
