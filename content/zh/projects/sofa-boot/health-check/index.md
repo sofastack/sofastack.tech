@@ -29,7 +29,7 @@ SOFABoot 为 Spring Boot 的健康检查能力增加了 Readiness Check 的能�
 
 ## 查看健康检查结果
 
-加入健康检查扩展之后，我们可以直接在浏览器中输入 [http://localhost:8080/health/readiness](http://localhost:8080/health/readiness) 来查看 Readiness Check 的结果。如果要查看 Liveness Check 的结果，可以直接查看 Spring Boot 的健康检查的 URL [http://localhost:8080/health](http://localhost:8080/health)。
+加入健康检查扩展之后，我们可以直接在浏览器中输入 [http://localhost:8080/actuator/readiness](http://localhost:8080/actuator/readiness) 来查看 Readiness Check 的结果。如果要查看 Liveness Check 的结果，可以直接查看 Spring Boot 的健康检查的 URL [http://localhost:8080/actuator](http://localhost:8080/actuator)。
 
 除了通过 URL 来查看健康检查的结果之外，在 SOFABoot 中，还可以通过查看具体的日志来确定健康检查的结果，日志的目录位于 `health-check` 目录下，日志的内容大概如下：
 
