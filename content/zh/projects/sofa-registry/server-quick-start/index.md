@@ -49,7 +49,7 @@ cd registry-all
 
 IDEA 源码启动: 运行 com.alipay.sofa.registry.server.integration.RegistryApplication#main 
 
-fat jar 脚本启动命令: `sh bin/start_dev.sh`
+fat jar 脚本启动命令: `sh bin/integration/start_dev.sh`
 
 2.2 正式环境建议使用 mysql
 
