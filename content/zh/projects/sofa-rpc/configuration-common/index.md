@@ -56,7 +56,7 @@ aliases: "/sofa-rpc/docs/Configuration-Common"
 | subscribe | 是否订阅 | true | 取决于实现，可能不生效。 |
 | proxy | 代理类型 | javassist | 还有JDK动态代理 |
 | protocol | 调用的协议 | bolt | 目前支持bolt，rest，dubbo |
-| directUrl | 直连地址 |  | 直连后register |
+| directUrl | 直连地址 |  | 直连后,register不生效 |
 | generic | 是否泛化调用 | false |  |
 | connectTimeout | 建立连接超时时间 | 3000(cover 5000) |  |
 | disconnectTimeout | 断开连接等等超时时间 | 5000(cover 10000) |  |
