@@ -260,17 +260,17 @@ TLS 协议从某种程度上来说解决了几个哲学问题：**你是谁？�
 
 不过好就好在，有问题总有解法，我们在我们开源的 BabaSSL 库对 QUIC-TLS 做了全量实现，除了帮助社区原始 PR 完善其对应的功能之外，同时也兼容了部分 BoringSSL 的 API 使用，这部分也经过了蚂蚁的生产考验，欢迎各位读者来体验一下，当然不仅如此，对于前文 QUIC-TLS 展望中提到的技术，我们也正在或者已经完成了实现，欢迎各位读者前来尝鲜。
 
-## 了解更多...
+了解更多...
 
 **BabaSSL Star 一下✨：**[https://github.com/BabaSSL/BabaSSL](https://github.com/BabaSSL/BabaSSL)
 
 【参考链接】
 
-【1】*https://datatracker.ietf.org/doc/html/draft-ietf-tls-esni-14*
+【1】[https://datatracker.ietf.org/doc/html/draft-ietf-tls-esni-14](https://datatracker.ietf.org/doc/html/draft-ietf-tls-esni-14)
 
-【2】*https://datatracker.ietf.org/doc/html/rfc8879*
+【2】[https://datatracker.ietf.org/doc/html/rfc8879](https://datatracker.ietf.org/doc/html/rfc8879)
 
-【3】*https://datatracker.ietf.org/doc/html/draft-ietf-tls-subcerts-12*
+【3】[https://datatracker.ietf.org/doc/html/draft-ietf-tls-subcerts-12](https://datatracker.ietf.org/doc/html/draft-ietf-tls-subcerts-12)
 
 ### 本周推荐阅读  
 
