@@ -15,6 +15,7 @@ SOFAStack 官网: [https://www.sofastack.tech](https://www.sofastack.tech/)
 SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 ### SOFAStack 社区本周 Contributor  
+
 ![weekly.jpg](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*7HwoTpF-fH8AAAAAAAAAAAAAARQnAQ)
 
 ### 每周读者问答提炼
