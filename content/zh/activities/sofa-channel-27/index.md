@@ -53,6 +53,7 @@ description: "2022 年 5 月 26 日 19：00 - 20：00  ，线上直播第 27 期
 >![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*MmuGRZU7ICIAAAAAAAAAAAAAARQnAQ)
 
 ## 直播回放
+
 [https://www.bilibili.com/video/BV1xg411o7Jo/](https://www.bilibili.com/video/BV1xg411o7Jo/)
 
 ## 了解更多技术干货
