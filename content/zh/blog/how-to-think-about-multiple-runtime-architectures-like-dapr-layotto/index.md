@@ -52,7 +52,7 @@ Dapr 项目是业界第一个 Multi-Runtime 实践项目，Dapr 的 Sidecar，�
 
 **Layotto**
 
-Layotto 是由蚂蚁集团 2021 年开源的一个实现 Multi-Runtime 架构的项目，核心思想是在 Service Mesh 的数据面 *（MOSN）* 里支持 Dapr API 和 WebAssembly 运行时，实现一个 Sidecar 同时作为 Service Mesh 数据面、多运行时 Runtime、FaaS 运行时。项目地址为：*https://github.com/mosn/layotto*
+Layotto 是由蚂蚁集团 2021 年开源的一个实现 Multi-Runtime 架构的项目，核心思想是在 Service Mesh 的数据面（MOSN里支持 Dapr API 和 WebAssembly 运行时，实现一个 Sidecar 同时作为 Service Mesh 数据面、多运行时 Runtime、FaaS 运行时。项目地址为：[https://github.com/mosn/layotto](https://github.com/mosn/layotto)
 
 以上是本文背景，接下来是本次主题分享。
 
@@ -79,7 +79,6 @@ Layotto 是由蚂蚁集团 2021 年开源的一个实现 Multi-Runtime 架构的
 ![图片](https://img.alicdn.com/imgextra/i4/O1CN01LPimM41ZMUFTvwO0p_!!6000000003180-2-tps-502-801.png)
 
 （图片摘自敖小剑老师的文章）
-
 
 这些自定义的扩展字段会破坏可移植性：如果你换一个组件，新组件肯定不认识这些字段，所以你得改代码。
 
