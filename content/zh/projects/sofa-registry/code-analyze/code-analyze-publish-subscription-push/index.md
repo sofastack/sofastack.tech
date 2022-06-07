@@ -97,8 +97,8 @@ int processBuffer(Ref ref, int hitSize) {
 * 通过 FirePushService#getDatum 方法从缓存中获取地址列表。该缓存使用 Guava Cache 的LoadingCache，当缓存中没有 dataInfoId 的地址列表时，会自动从 data server 获取地址列表，并放在缓存中。
 
 * 通过 FirePushService#processPush 方法将地址列表推送给所有订阅者
-    * 首先通过 firePush 方法将 PushTas k放入 buffer
-    * 等待 PushTaskBuffer.BufferWorker 线程异步处理任务
+  * 首先通过 firePush 方法将 PushTas k放入 buffer
+  * 等待 PushTaskBuffer.BufferWorker 线程异步处理任务
 
 ### 2.4 session server 推送地址列表
 
@@ -423,6 +423,7 @@ public Object doHandle(Channel channel, DataChangeRequest dataChangeRequest) {
   return null;
 }
 ```
+
 ### 3.5 session server 拉取地址列表
 
 同样地，此处采用生产者消费者模型，通过 worker 线程异步循环处理 ChangeTask，获取地址列表，更新地址列表缓存，推送给客户端，流程图如下。
@@ -490,7 +491,8 @@ SubDatum getDatum(String dataCenter, String dataInfoId, long expectVersion) {
 缓存：
 
 * SessionServer 通过 SessionCacheService 缓存地址列表，避免频繁请求给 data server 造成较大压力，影响存储稳定性；内部通过推拉结合的方式解决地址更新的问题，一方面通过数据变更通知 session server 更新地址列表，另一方面通过 VersionWatchDog 定时扫描版本号，拉取 data server 变更的地址列表；
-* 
+
+*
 合并 merge
 
 * 发布服务写入 data server 时采用了批量处理的方式，减少与 data server 的网络交互，避免频繁请求给 data server 造成较大压力，影响存储稳定性。

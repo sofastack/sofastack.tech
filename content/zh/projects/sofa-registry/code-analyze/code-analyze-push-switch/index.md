@@ -10,7 +10,7 @@ date: 2022-04-22T15:00:00+08:00
 
 ## 前言
 
-某些场景下 SOFARegistry 需要暂时关闭推送功能，这样集群内的业务可以利用 client 的缓存继续工作，比如说 SOFARegistry 需要进行不兼容升级，需要全集群下线，更新版本后再拉起。 
+某些场景下 SOFARegistry 需要暂时关闭推送功能，这样集群内的业务可以利用 client 的缓存继续工作，比如说 SOFARegistry 需要进行不兼容升级，需要全集群下线，更新版本后再拉起。
 
 推送开关的状态存储在数据库中，通过 Meta 修改数据后，Session 可以通过读取到推送开关的变更通知，并在对应的推送流程上进行切断。
 
@@ -61,15 +61,15 @@ public Result closePush() {
 可以看到，`closePush`函数主要做了三件事：
 
 1. 重设灰度推送开关
-   
+
    灰度推送开关中，存储着一个 IP 列表。灰度推送允许 SOFARegistry  即使在全局推送关闭的情况下，仍满足特定 IP 的推送请求。因此想要完全关闭推送功能，需要重设该开关，清空其中的 IP 列表。
 
 2. 重设全局推送开关
-   
+
    关闭推送功能，需要重设全局推送开关，保存开关配置为关闭的新数据。
 
 3. 发送数据变更通知
-   
+
    数据变更通知将告诉 Session，开关配置已经改变，需要进行更新。
 
 ## Meta存储开关配置数据
@@ -116,7 +116,7 @@ public boolean saveProvideData(PersistenceData persistenceData, long expectVersi
 
 ## Session 获取开关配置
 
-##### 通知更新
+### 通知更新
 
 继续上文，`closePush`会调用`fireDataChangeNotify`函数，通知外界开关配置发生了更新。
 
@@ -233,7 +233,7 @@ public boolean doFetch(String dataInfoId) {
 ```
 
 6. `AbstractFetchPersistenceSystemProperty`类，是最终负责更新的类
-   
+
    让我们分析一下它的结构
 
 ```java
@@ -376,7 +376,7 @@ protected boolean doFetchData() {
 
 只有当数据库的版本更新时，Session 才会进行 CompareAndSet 操作，更新内存中的开关配置。
 
-##### 定时更新
+### 定时更新
 
 当 Session 启动时，将开启对开关状态的监视。
 
@@ -467,4 +467,3 @@ void firePush(......) {
 ```
 
 由此，关闭推送得到了实现。
-

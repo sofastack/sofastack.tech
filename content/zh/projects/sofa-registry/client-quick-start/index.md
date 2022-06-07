@@ -37,19 +37,19 @@ registryClient.register(registration, "10.10.1.1:12200?xx=yy");
 1. 构造发布者注册表;
 1. 将注册表注册进客户端并发布数据。
 
-
 ### 2.1 构建客户端实例
+
 构建客户端实例的关键是创建 RegistryClientConfig 对象，创建 RegistryClientConfig 对象时需要指定 RegistryEndpoint 和 RegistryEndpointPort:
 
 * RegistryEndpoint：注册中心任一 Session 节点地址；
 * RegistryEndpointPort: Session 节点配置的 session.server.httpServerPort 端口值。
 
-
 ### 2.2 构造发布者注册表
+
 构造发布注册表只需要创建 PublisherRegistration 并指定 dataId，dataId 是发布服务的唯一标识。
 
-
 ### 2.3 发布数据
+
 调用 RegistryClient 的 register 方法可以进行数据发布，该方法需要两个参数，第一个参数是发布注册表，指定了服务的 dataId，第二个参数是数据值，一般是一个字符串类型。
 
 ## 3. 订阅数据
@@ -62,9 +62,9 @@ registryClient.init();
 
 // 创建 SubscriberDataObserver 
 SubscriberDataObserver subscriberDataObserver = new SubscriberDataObserver() {
-  	public void handleData(String dataId, UserData userData) {
-    		System.out.println("receive data success, dataId: " + dataId + ", data: " + userData);
-  	}
+   public void handleData(String dataId, UserData userData) {
+      System.out.println("receive data success, dataId: " + dataId + ", data: " + userData);
+   }
 };
 
 // 构造订阅者注册表，设置订阅维度，ScopeEnum 共有三种级别 zone, dataCenter, global
@@ -86,6 +86,7 @@ registryClient.register(registration);
 其中创建客户端实例方式与上文发布数据时创建客户端实例的方法一致。
 
 ### 3.1 创建 SubscriberDataObserver
+
 SubscriberDataObserver 是一个回调接口，该接口定义了 handleData 方法，该方法包含两个参数，分别是 dataId 及最终数据，当客户端收到服务端订阅的数据时会调用该方法。在 SOFARegistry 中，服务端返回数据用 UserData 表示，该类包含以下两个方法：
 
 ```java
@@ -111,5 +112,3 @@ public interface UserData {
 ```plain
 receive data success, dataId: com.alipay.test.demo.service:1.0@DEFAULT, data: DefaultUserData{zoneData={DEFAULT_ZONE=[10.10.1.1:12200?xx=yy]}, localZone='DEFAULT_ZONE'}
 ```
-
-
