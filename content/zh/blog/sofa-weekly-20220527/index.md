@@ -1,10 +1,10 @@
 ---
-title: "SOFA Weekly | 我是开源人、本周 QA、本周 Contributor"
+title: "SOFA Weekly | Kusion 开源啦、本周 QA、本周 Contributor"
 authorlink: "https://github.com/sofastack"
-description: "SOFA Weekly | 我是开源人、本周 QA、本周 Contributor"
+description: "SOFA Weekly | Kusion 开源啦、本周 QA、本周 Contributor"
 categories: "SOFA Weekly"
 tags: ["SOFA Weekly"]
-date: 2022-05-20T15:00:00+08:00
+date: 2022-05-27T15:00:00+08:00
 cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAAAAAAAAARQnAQ"
 ---
 
