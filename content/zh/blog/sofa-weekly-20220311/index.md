@@ -1,5 +1,5 @@
 ---
-title: "SOFA Weekly |SOFA Weekly | MOSN 社区会议、本周 Contributor、QA 整理"
+title: "SOFA Weekly | MOSN 社区会议、本周 Contributor、QA 整理"
 author: "SOFA 团队"
 authorlink: "https://github.com/sofastack"
 description: "SOFA Weekly | MOSN 社区会议、本周 Contributor、QA 整理
