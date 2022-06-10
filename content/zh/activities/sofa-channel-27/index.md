@@ -3,7 +3,7 @@ author: "SOFA 团队"
 date: 2022-05-27T15:00:00+08:00
 title: "SOFAChannel#27 深入 HTTP/3｜从 QUIC-TLS 看协议的安全设计"
 tags: ["SOFAChannel","HTTP/QUIC"]
-cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*B0wSQoEW9mAAAAAAAAAAAAAAARQnAQ"
+cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*XrIoRauVcO4AAAAAAAAAAAAAARQnAQ"
 categories: "SOFAChannel"
 description: "2022 年 5 月 26 日 19：00 - 20：00  ，线上直播第 27 期。"
 ---
