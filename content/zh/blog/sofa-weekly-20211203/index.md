@@ -1,5 +1,5 @@
 ---
-title: "SOFA Weekly | SOFA Weekly | 社区本周 Contributor、QA 整理、新手任务计划"
+title: "SOFA Weekly | 社区本周 Contributor、QA 整理、新手任务计划"
 author: "SOFA 团队"
 authorlink: "https://github.com/sofastack"
 description: "SOFA Weekly | 社区本周 Contributor、QA 整理、新手任务计划"
@@ -28,7 +28,9 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 ### 每周读者问答提炼
 
 欢迎大家向公众号留言提问或在群里与我们互动
+
 我们会筛选重点问题
+
 通过 " SOFA WEEKLY " 的形式回复
 
 **@xj** 提问：
