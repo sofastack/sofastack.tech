@@ -6,7 +6,7 @@ description: "深入 HTTP/3（2）｜不那么 Boring 的 SSL"
 categories: "SOFAStack"
 tags: ["SOFAStack"]
 date: 2022-05-24T15:00:00+08:00
-cover: "(https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7180a4e4063942fea0dcd3fd8ef35cf4~tplv-k3u1fbpfcp-zoom-1.image"
+cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*XrIoRauVcO4AAAAAAAAAAAAAARQnAQ"
 ---
 
 文｜曾柯（花名：毅丝 )
