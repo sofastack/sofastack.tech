@@ -45,9 +45,8 @@ A：Upstream 的协议本来就是在 filter 里面转换，你在 choose host �
 
 3.@曹飞 提问：
 
->大佬，监控指标可以显示到应用维度吗？
-
->![weekly2](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*GAOBTp1WtUoAAAAAAAAAAAAAARQnAQ)
+>大佬，监控指标可以显示到应用维度吗？<br/>
+![weekly2](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*GAOBTp1WtUoAAAAAAAAAAAAAARQnAQ)
 
 A：Metric 可以自定义输出的。
 
