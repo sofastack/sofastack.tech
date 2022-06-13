@@ -100,7 +100,7 @@ title: "Awesome SOFA"
     
     <img alt="Wechat" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*LVCnR6KtEfEAAAAAAAAAAABjARQnAQ" height="250" />
  
- - 视频号：SOFAGirl: 走进 SOFA 团队，了解更有趣的技术内容
+  - 视频号：SOFAGirl: 走进 SOFA 团队，了解更有趣的技术内容。
     
     <img alt="Wechat" src="https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*rhbMRoFunTIAAAAAAAAAAAAAARQnAQ" height="250" />
 
