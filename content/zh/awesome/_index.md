@@ -618,4 +618,4 @@ title: "Awesome SOFA"
 
 ## 用户登记{#registration}
 
-如果您已经在生产环境使用了 SOFAStack 相关组件，请在[这里](https://github.com/sofastack/sofastack.tech/issues/5)登记告诉我们，方便我们更好地为您服务。
+如果您已经在生产环境使用了 SOFAStack 相关组件，[请点击这里](https://github.com/sofastack/sofastack.tech/issues/5)登记告诉我们，方便我们更好地为您服务。
