@@ -99,7 +99,11 @@ title: "Awesome SOFA"
   - 公众号：金融级分布式架构（Antfin_SOFA）：致力于打造一流的分布式技术在金融场景应用实践的技术交流平台，专注于交流金融科技行业内最前沿、可供参考的技术方案与实施路线。
     
     <img alt="Wechat" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*LVCnR6KtEfEAAAAAAAAAAABjARQnAQ" height="250" />
-  
+ 
+ - 视频号：SOFAGirl: 走进 SOFA 团队，了解更有趣的技术内容
+    
+    <img alt="Wechat" src="https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*rhbMRoFunTIAAAAAAAAAAAAAARQnAQ" height="250" />
+
 - 钉钉
   - 钉钉交流群：
     - ~~金融级分布式架构 SOFAStack 1群，群号：23127468~~ 已满
