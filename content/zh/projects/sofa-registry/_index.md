@@ -23,4 +23,27 @@ sidebar:
     sub:
       - title: 'JAVA SDK'
         link: 'java-sdk'
+  - title: '源码解析'
+    sub:
+      - title: 'SlotTable'
+        link: 'code-analyze/code-analyze-slottable' 
+      - title: '无损运维'
+        link: 'code-analyze/code-analyze-non-destructive-o-and-m' 
+      - title: '发布订阅推送'
+        link: 'code-analyze/code-analyze-publish-subscription-push' 
+      - title: '数据同步'
+        link: 'code-analyze/code-analyze-data-synchronization' 
+      - title: '推送延迟 trace'
+        link: 'code-analyze/code-analyze-push-delay-trace'
+      - title: '推送开关'
+        link: 'code-analyze/code-analyze-push-switch' 
+      - title: '数据表监听'
+        link: 'code-analyze/code-analyza-data-table-listening'
+      - title: '数据倒排索引'
+        link: 'code-analyze/code-analyze-data-inverted-index'
+      - title: '通讯数据压缩'
+        link: 'code-analyze/code-analyze-communication-data-compression' 
+      - title: 'registry meta 选主'
+        link: 'code-analyze/code-analyze-registry-meta' 
+        
 ---

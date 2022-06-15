@@ -6,7 +6,7 @@ description: "2021 大促 AntMonitor 总结 - 云原生 Prometheus 监控实践"
 categories: "SOFAStack"
 tags: ["SOFAStack"]
 date: 2022-02-25T15:00:00+08:00
-cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*nIiyTqIZJS4AAAAAAAAAAAAAARQnAQ"
+cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*9R6MRLL-R2YAAAAAAAAAAAAAARQnAQ"
 ---
 
 文｜陈岸琦（花名：敖清 )

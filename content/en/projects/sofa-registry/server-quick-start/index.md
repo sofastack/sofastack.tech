@@ -4,6 +4,13 @@ title: "Server deployment"
 aliases: "/sofa-registry/docs/Server-QuickStart"
 ---
 
+## Local development
+
+Starting SOFARegistry locally is to use the H2 database as the configuration database used by the registry, which can be started directly
+`com.alipay.sofa.registry.server.integration.RegistryApplication#main`
+
+By default, `application-dev.properties` will be used as the configuration file
+
 ## Deployment
 
 The deployment of SOFARegistry relies on mysql, which uses mysql as the metadata storage of the registry itself

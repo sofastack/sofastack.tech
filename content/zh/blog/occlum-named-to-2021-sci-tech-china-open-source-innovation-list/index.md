@@ -6,7 +6,7 @@ description: "Occlum 入选 2021“科创中国”开源创新榜"
 categories: "SOFAStack"
 tags: ["SOFAStack"]
 date: 2022-03-03T15:00:00+08:00
-cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*JKfGQ7GpqfQAAAAAAAAAAAAAARQnAQ"
+cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*YLUzSpoQQaUAAAAAAAAAAAAAARQnAQ"
 ---
 
 在近日中国科协召开的 2022“科创中国”年度会议上，中国工程院院士周济发布了 2021“科创中国”开源创新榜单。

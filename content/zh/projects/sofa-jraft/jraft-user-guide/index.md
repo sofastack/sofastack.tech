@@ -1070,6 +1070,17 @@ NodeOptions 有一个 `raftOptions` 选项，用于设置跟性能和数据可�
 * 业务协议应当内置 Redirect 重定向请求协议，当写入到非 leader 节点，返回最新的 leader 信息到客户端，客户端可以做适当重试。通过定期拉取和 redirect 协议的结合，来提升客户端的可用性。
 * 建议使用线性一致读，将请求散列到集群内的所有节点上，降低 leader 的负荷压力。
 
+#### 9.2.4 反压策略
+
+单个 raft group 能够承载的“写入量“是有限的，当过载的时候，jraft 允许你设置反压策略，也就是 `Node#apply(task)` 方法在节点过载时候的行为。
+
+从 1.3.10 开始， jraft 引入了一个枚举类 `com.alipay.sofa.jraft.option.ApplyTaskMode`，它包含下列选项：
+
+* `ApplyTaskMode.Blocking`，阻塞模式，当节点过载的时候，将阻塞 `apply` 方法调用，直到处理能力缓解。
+* `ApplyTaskMode.NonBlocking`，非阻塞模式，也是**默认模式**，当节点过载的时候， 调用 `apply` 方法将立即失败返回，抛出异常或者执行 `closure#run(status)` 并传入错误状态。
+
+默认模式是 `ApplyTaskMode.NonBlocking`，你可以通过 `NodeOptions#setApplyTaskMode(ApplyTaskMode)` 改变。
+
 ### 9.3 系统参数建议
 
 参考自 etcd 中的一些优化，[https://etcd.io/docs/v3.4/tuning](https://etcd.io/docs/v3.4/tuning)
