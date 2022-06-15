@@ -8,8 +8,6 @@ tags: [“源码解析”]
 date: 2022-06-15T15:00:00+08:00
 ---
 
-# 源码解析：SOFABoot HealthCheck 机制解析
-
 ## 前言
 
 > spring-boot-starter-actuator模块为 Spring Boot 应用提供了监控能力，内置一系列健康指标，如数据源、磁盘空间等，并且允许开发者自定义健康指标。Spring Boot 提供 health 端点，将所有健康指标聚合，当应用中有一个组件状态异常，那么应用的整体状态视为down，开发者可以访问 health 端点来了解应用当前的运行状况。
