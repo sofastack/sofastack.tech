@@ -2,7 +2,7 @@
 title: "源码解析：SOFABoot HealthCheck 机制解析"
 author: "林楠"
 authorlink: "https://github.com/MingkeVan"
-description: "源码解析｜发布订阅推送"
+description: "源码解析 | SOFABoot HealthCheck 机制解析"
 categories: "SOFAStack"
 tags: [“源码解析”]
 date: 2022-06-15T15:00:00+08:00
