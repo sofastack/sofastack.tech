@@ -34,7 +34,7 @@ sidebar:
         link: 'sofaboot-profile'
       - title: 'SOFABoot 拓展点'  	
         link: 'extension'
-  - title: '类隔离'
+  - title: '类隔离和热部署'
     sub:
       - title: 'SOFAArk 介绍'  	
         link: 'sofa-ark-readme'
