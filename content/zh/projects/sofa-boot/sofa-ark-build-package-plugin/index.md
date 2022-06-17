@@ -3,7 +3,6 @@
 title: "打包插件"
 aliases: "/sofa-boot/docs/sofa-ark-build-package-plugin"
 ---
-
 > **SOFA**Stack（**S**calable **O**pen **F**inancial **A**rchitecture Stack）是蚂蚁金服自主研发的金融级云原生架构，包含了构建金融级云原生架构所需的各个组件，是在金融场景里锤炼出来的最佳实践。
 
 ![公众号-maven打包.jpg](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1584342277350-9d11f3f6-f01a-471b-a256-d13475945c25.jpeg#align=left&display=inline&height=766&margin=%5Bobject%20Object%5D&name=%E5%85%AC%E4%BC%97%E5%8F%B7-maven%E6%89%93%E5%8C%85.jpg&originHeight=766&originWidth=1800&size=315312&status=done&style=none&width=1800)
