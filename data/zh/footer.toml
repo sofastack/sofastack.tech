@@ -36,7 +36,7 @@
 	]
 
 [[qrcode]]
-	img = "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*rhbMRoFunTIAAAAAAAAAAAAAARQnAQ"
+	img = "img/qrcode/qrcode_video.png"
 	description = "微信视频号"
 	
 [[qrcode]]
