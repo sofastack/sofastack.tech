@@ -5,7 +5,7 @@ aliases: "/sofa-boot/docs/sofa-ark-build-package-plugin"
 ---
 > **SOFA**Stack（**S**calable **O**pen **F**inancial **A**rchitecture Stack）是蚂蚁金服自主研发的金融级云原生架构，包含了构建金融级云原生架构所需的各个组件，是在金融场景里锤炼出来的最佳实践。
 
-![公众号-maven打包.jpg](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1584342277350-9d11f3f6-f01a-471b-a256-d13475945c25.jpeg#align=left&display=inline&height=766&margin=%5Bobject%20Object%5D&name=%E5%85%AC%E4%BC%97%E5%8F%B7-maven%E6%89%93%E5%8C%85.jpg&originHeight=766&originWidth=1800&size=315312&status=done&style=none&width=1800)
+![公众号-maven打包.jpg](./header.png)
 
 本文为《剖析 | SOFAArk 实现原理》第二篇，本篇作者盲僧，来自 OYO。《剖析 | SOFAArk 实现原理》系列由 SOFA 团队和源码爱好者们出品，项目代号：<SOFA:ArkLab/>，文末附系列共建列表，目前已完成领取。
 
@@ -51,7 +51,7 @@ SOFAArk ：[https://github.com/sofastack/sofa-ark](https://github.com/sofastack/
 
 <br />执行 mvn package 命令后，将会打出如下结构的 3 个 jar 包，大家可以自行解压这三个 jar 包，看一看里面的具体内容，下面我们简单分析一下：
 
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/432786/1584184852154-969ae46c-4494-40ad-a60c-1e7c58e23678.png#align=left&display=inline&height=196&margin=%5Bobject%20Object%5D&name=image.png&originHeight=218&originWidth=618&size=105738&status=done&style=none&width=557)
+![image.png](./plugin-pakcages.png)
 
 tutorial-sofa-ark-maven-plugin-1.0.0-SNAPSHOT.jar ：它是 maven 插件打出来的原生 jar 包，只包含我们写的代码和 manifest 文件，无特殊意义。
 
@@ -171,11 +171,11 @@ Build-Jdk: 1.8.0_101
 
 首先分析下 Spring Boot 的启动流程，在执行 java-jar 命令后，程序会调用 META-INF\MANIFEST.MF 中定义的启动类的 main 方法，即 org.springframework.boot.loader.JarLauncher ，然后 Spring Boot 会去构建一个 LaunchedURLClassLoader ，它是一个自定义的 ClassLoader ，利用它去加载 BOOT-INF 下的 lib 和 classes 目录，最后会通过反射调用 Start-class 对应的启动类，从而启动整个业务的代码，这里用简单的一张图来描述下：
 
-![Spring Boot 启动流程.jpg](https://cdn.nlark.com/yuque/0/2020/jpeg/432786/1584540669899-020329e0-873e-47ac-9da6-23c2f3bfabc2.jpeg#align=left&display=inline&height=94&margin=%5Bobject%20Object%5D&name=Spring%20Boot%20%E5%90%AF%E5%8A%A8%E6%B5%81%E7%A8%8B.jpg&originHeight=145&originWidth=829&size=7004&status=done&style=none&width=538)
+![Spring Boot 启动流程.jpg](./sofaboot-startup-process.png)
 
 而 SOFAArk 的启动流程呢？我们可以参考下官网给出的详细[启动流程](https://www.sofastack.tech/projects/sofa-boot/sofa-ark-startup/) ，这里我们简单抽象出几个重要步骤：
 
-![容器运行流程图.jpg](https://cdn.nlark.com/yuque/0/2020/jpeg/432786/1584201929092-61068f08-c102-430a-85b6-badf365d5981.jpeg#align=left&display=inline&height=145&margin=%5Bobject%20Object%5D&name=%E5%AE%B9%E5%99%A8%E8%BF%90%E8%A1%8C%E6%B5%81%E7%A8%8B%E5%9B%BE.jpg&originHeight=145&originWidth=1357&size=13340&status=done&style=none&width=1357)
+![容器运行流程图.jpg](./sofaark-startup-process.png)
 
 显而易见，SOFAArk 并不是简单的将一个 FatJar 启动起来，在这个过程中，还包括了启动 Ark Container 和 Ark Plugin，而正是因为 Ark Container 的存在，才使得多 Biz 合并部署成为可能；下面就来揭开 ark 包的整个构建过程。
 
@@ -187,13 +187,13 @@ Build-Jdk: 1.8.0_101
 
 关于如果 debug maven 打包插件，可以参考这篇文章：[http://www.glmapper.com/2019/07/23/maven-debug/](http://www.glmapper.com/2019/07/23/maven-debug/)。断点位置参考下图：
 
-![image.png](https://cdn.nlark.com/yuque/0/2020/png/432786/1584187702156-d34e8fe4-e51d-4702-b4b3-28328334f69d.png#align=left&display=inline&height=288&margin=%5Bobject%20Object%5D&name=image.png&originHeight=441&originWidth=1061&size=435587&status=done&style=none&width=694)
+![image.png](./debug-maven-plugin.png)
 
 ### 插件执行流程
 
 maven 插件的源码说到底就是对文件流的操作，比较枯燥无味，所以这里准备了一个流程图，大致分析出了 sofa-ark-maven-plugin 的整个原理，各位可根据流程图自行对比源码进行分析。
 
-![sofa-ark-maven.jpg](https://cdn.nlark.com/yuque/0/2020/jpeg/432786/1584196676401-e2d740e4-2571-4f0d-9728-fc7550e5b56e.jpeg#align=left&display=inline&height=1465&margin=%5Bobject%20Object%5D&name=sofa-ark-maven.jpg&originHeight=1465&originWidth=1922&size=199037&status=done&style=none&width=1922)
+![sofa-ark-maven.jpg](./plugin-execution-process.png)
 
 ## 总结
 
