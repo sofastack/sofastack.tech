@@ -4,9 +4,7 @@ title: "打包插件"
 aliases: "/sofa-boot/docs/sofa-ark-build-package-plugin"
 ---
 
-
 > **SOFA**Stack（**S**calable **O**pen **F**inancial **A**rchitecture Stack）是蚂蚁金服自主研发的金融级云原生架构，包含了构建金融级云原生架构所需的各个组件，是在金融场景里锤炼出来的最佳实践。
-
 
 ![公众号-maven打包.jpg](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1584342277350-9d11f3f6-f01a-471b-a256-d13475945c25.jpeg#align=left&display=inline&height=766&margin=%5Bobject%20Object%5D&name=%E5%85%AC%E4%BC%97%E5%8F%B7-maven%E6%89%93%E5%8C%85.jpg&originHeight=766&originWidth=1800&size=315312&status=done&style=none&width=1800)
 
@@ -33,7 +31,6 @@ SOFAArk ：[https://github.com/sofastack/sofa-ark](https://github.com/sofastack/
 
 > 文中的示例代码可以参考 [我的 github](https://github.com/masteryourself-tutorial/tutorial-sofa/tree/master/tutorial-sofa-ark/tutorial-sofa-ark-maven-plugin)。
 
-
 ### 插件使用
 
 先将 Spring Boot 的打包插件 spring-boot-maven-plugin  删除或者注释，然后再引入如下插件即可：
@@ -52,6 +49,7 @@ SOFAArk ：[https://github.com/sofastack/sofa-ark](https://github.com/sofastack/
     </executions>
 </plugin>
 ```
+
 <br />执行 mvn package 命令后，将会打出如下结构的 3 个 jar 包，大家可以自行解压这三个 jar 包，看一看里面的具体内容，下面我们简单分析一下：
 
 ![image.png](https://cdn.nlark.com/yuque/0/2020/png/432786/1584184852154-969ae46c-4494-40ad-a60c-1e7c58e23678.png#align=left&display=inline&height=196&margin=%5Bobject%20Object%5D&name=image.png&originHeight=218&originWidth=618&size=105738&status=done&style=none&width=557)
@@ -72,7 +70,7 @@ tutorial-sofa-ark-maven-plugin-1.0.0-SNAPSHOT-ark-executable.jar ：这个 jar 
 
 spring-boot-maven-plugin 是 SpringBoot 默认提供的打包插件，其功能就是将工程打包成一个可执行的 FATJAR。spring-boot-maven-plugin 打包产物的目录结构如下：
 
-```
+```text
 .
 ├── BOOT-INF
 │   ├── classes # 应用的字节码目录
@@ -93,7 +91,7 @@ spring-boot-maven-plugin 是 SpringBoot 默认提供的打包插件，其功能�
 
 MANIFEST.MF 文件内容：
 
-```
+```manifest
 Manifest-Version: 1.0
 Archiver-Version: Plexus Archiver
 Built-By: rrz
@@ -113,7 +111,7 @@ MANIFEST.MF 文件中可以看到，描述了当前 jar 的一些核心元素，
 
 关于 sofa-ark-maven-plugin 的使用方式可以参考官方文档进行配置，篇幅原因，这里不再赘述。下面就直接来看下 sofa-ark-maven-plugin 插件的打包产物及目录结构，然后类比于 SpringBoot 的 FatJar 结构来理解 SOFAArk 中的一些概念和逻辑。
 
-```
+```text
 .
 ├── SOFA-ARK
 │   ├── biz
@@ -141,7 +139,7 @@ MANIFEST.MF 文件中可以看到，描述了当前 jar 的一些核心元素，
 
 MANIFEST.MF 文件内容：
 
-```
+```manifest
 Manifest-Version: 1.0
 web-context-path: /
 Archiver-Version: Plexus Archiver
@@ -168,9 +166,7 @@ Build-Jdk: 1.8.0_101
 
 > PS：如果我们在打包时引入了 plugin 类型的包，那么在 SOFA-ARK 目录下还会有个 plugin 目录（这里没有用到）。
 
-
 ### 启动顺序分析
-
 
 基于上述插件部分的对比，我们再来看看官网对 SOFAArk 的定义：**它是一款基于 Java 实现的轻量级类隔离容器，主要提供类隔离和应用(模块)合并部署能力**。重点是它能够提供合并部署能力（显然指的是 SOFA-ARK/biz 目录允许放多个 Ark Biz 包），这是 SpringBoot FatJar 无法做到的，既然如此，那么两者的启动顺序也必然有差别，下面简单探究一下。
 
@@ -196,13 +192,11 @@ Build-Jdk: 1.8.0_101
 
 ### 插件执行流程
 
-
 maven 插件的源码说到底就是对文件流的操作，比较枯燥无味，所以这里准备了一个流程图，大致分析出了 sofa-ark-maven-plugin 的整个原理，各位可根据流程图自行对比源码进行分析。
 
 ![sofa-ark-maven.jpg](https://cdn.nlark.com/yuque/0/2020/jpeg/432786/1584196676401-e2d740e4-2571-4f0d-9728-fc7550e5b56e.jpeg#align=left&display=inline&height=1465&margin=%5Bobject%20Object%5D&name=sofa-ark-maven.jpg&originHeight=1465&originWidth=1922&size=199037&status=done&style=none&width=1922)
 
 ## 总结
-
 
 通过上述内容的分析，我们应该了解了整个 sofa-ark-maven-plugin 的运行流程和原理了，无非是基于 Java 文件流的方式去生成特殊结构的 jar 包，然后通过定制化的启动流程，使得在业务 Biz 包代码执行之前，先启动 ark 容器，提供一系列的特殊功能，最后再启动 Biz。
 
