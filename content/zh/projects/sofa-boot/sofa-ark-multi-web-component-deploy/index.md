@@ -32,7 +32,7 @@ springboot自身还有jetty、netty等WebServer的实现，同样由其对应的
 
 ## 两种合并部署模式
 
-![两种合并部署模式](../resource/SOFA-ARK-Multi-Web-Pattern.png)
+![两种合并部署模式](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*aZ3-TLWCZ7MAAAAAAAAAAAAAARQnAQ)
 
 首先我们可以参考非Web的多Biz合并部署，SOFAArk使用不同的类加载器加载不同的Biz，其中Master Biz为LaunchedURLClassLoader加载，非Master Biz有其专属的BizClassLoader加载。对于每个Web Biz，也会使用其类加载器完成上述原生springboot web应用的启动流程，创建自己的Server、Host等。  
 这种情况下，为了区分不同Biz的接口，需要为每个Biz配置不同的port。  
@@ -217,7 +217,7 @@ public class ArkTomcatServletWebServerFactory extends TomcatServletWebServerFact
 }
 ````
 
-![sofa-ark tomcat应用启动流程](../resource/SOFA-ARK-Multi-Web.png)
+![sofa-ark tomcat应用启动流程](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*WxxOQphiHdQAAAAAAAAAAAAAARQnAQ)
 
 ## 总结
 
