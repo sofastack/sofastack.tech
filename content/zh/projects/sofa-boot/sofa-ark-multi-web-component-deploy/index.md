@@ -24,7 +24,7 @@ SOFAArk基于java类加载机制，为我们提供了一种java进程内多模�
 
 ## 原生springboot-web应用部署流程
 
-![springboot tomcat应用启动流程](../resource/springboot-embedded-tomcat.png)  
+![springboot tomcat应用启动流程](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*aZ3-TLWCZ7MAAAAAAAAAAAAAARQnAQ)  
 
 我们先从原生的springboot构建的基于内置tomcat的web应用说起。其在运行main函数初始化时，使用TomcatServletWebServerFactory#getWebServer这一工厂方法，创建了一个实现WebServer接口的TomcatWebServer实例，用来控制一个tomcat服务器，其中包括了一个Catalina Server的实现StandardServer，Server中的Engine、Host、Context容器也都是一个，Context中包含了唯一的contextPath。  
 
@@ -32,10 +32,11 @@ springboot自身还有jetty、netty等WebServer的实现，同样由其对应的
 
 ## 两种合并部署模式
 
-![两种合并部署模式](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*aZ3-TLWCZ7MAAAAAAAAAAAAAARQnAQ)
+![两种合并部署模式](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*vCX1S5rmAuwAAAAAAAAAAAAAARQnAQ)
 
 首先我们可以参考非Web的多Biz合并部署，SOFAArk使用不同的类加载器加载不同的Biz，其中Master Biz为LaunchedURLClassLoader加载，非Master Biz有其专属的BizClassLoader加载。对于每个Web Biz，也会使用其类加载器完成上述原生springboot web应用的启动流程，创建自己的Server、Host等。  
-这种情况下，为了区分不同Biz的接口，需要为每个Biz配置不同的port。  
+这种情况下，为了区分不同Biz的接口，需要为每个Biz配置不同的port。 
+
 这种方式由于一个Jvm进程中包含了多个Server及其Host，因此被称为多Host模式。  
 
 多Host模式的问题首先在于重复创建了tomcat相关的资源，造成资源的浪费；其次是每个Biz有自己的端口，不利于整个Ark包应用整体对外提供服务。因此SOFAArk提供了类似独立tomcat部署多webapp的方式。所有Biz共用同一个Server及Host，每个Biz只创建自己的Context，通过Context中的contextPath将自身接口与其它Biz接口做区分。
