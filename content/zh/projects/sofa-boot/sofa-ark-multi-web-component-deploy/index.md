@@ -65,7 +65,7 @@ springboot自身还有jetty、netty等WebServer的实现，同样由其对应的
 
 针对第一个问题——多个Biz要共用tomcat实例，sofa-ark定义了EmbeddedServerService接口，插件web-ark-plugin里包含了接口的实现EmbeddedServerServiceImpl，来持有公共tomcat实例。
 
-````
+````Java
 package com.alipay.sofa.ark.web.embed.tomcat;
 //作为ark plugin导出
 public class EmbeddedServerServiceImpl implements EmbeddedServerService<Tomcat> {
@@ -93,7 +93,8 @@ public class EmbeddedServerServiceImpl implements EmbeddedServerService<Tomcat> 
 ````
 
 如果Biz引入了web-ark-plugin，则在ArkTomcatServletWebServerFactory中注入EmbeddedServerServiceImpl，持有最先初始化的Web Biz创建的Tomcat实例(TomcatWebServer的核心)，并在后续初始化的其它Biz调用getWebServer获取tomcat实例时，返回持有的同一个实例，以此来保证多个Biz运行在同一个tomcat中。
-````
+
+````Java
 package com.alipay.sofa.ark.springboot.web;
 //每个Web Biz启动中都会创建一个自己的该类实例
 public class ArkTomcatServletWebServerFactory extends TomcatServletWebServerFactory {
@@ -123,7 +124,7 @@ public class ArkTomcatServletWebServerFactory extends TomcatServletWebServerFact
 
 对于第二个问题——区分不同Biz的http接口，独立运行的tomcat是通过contextPath这一配置来实现的，每个webapp设置不同的contextPath，作为不同webapp接口的前缀，例如server.xml中可以做如下配置
 
-````
+````Java
 <context path="test1" docBase="~/Documents/web1/" reloadable = true>
 <context path="test2" docBase="~/Documents/web2/" reloadable = true>
 ````
@@ -131,7 +132,7 @@ public class ArkTomcatServletWebServerFactory extends TomcatServletWebServerFact
 默认情况下使用war包解压后的文件夹名作为其contextPath。  
 springboot中可使用以下方式指定contextPath，默认为""，一个springboot项目只能指定一个。
 
-````
+````Java
 server:
   servlet:
     context-path: /myapp1
@@ -141,14 +142,14 @@ server:
 
 1、在其MANIFEST文件中配置web-context-path属性的值作为其contextPath，例如：
 
-````
+````Java
 Manifest-Version: 1.0
 web-context-path: another
 ````
 
 2、在调用BizFactoryServiceImpl的createBiz方法创建BizModel时，设置到该Biz的BizModel对象中
 
-````
+````Java
 package com.alipay.sofa.ark.container.service.biz;
 
 @Singleton
@@ -179,7 +180,7 @@ public class BizFactoryServiceImpl implements BizFactoryService {
 
 3、随后在ArkTomcatServletWebServerFactory的prepareContext方法中，为每个Biz创建其Context时，设置其对应的contextPath。
 
-````
+````Java
 package com.alipay.sofa.ark.springboot.web;
 
 public class ArkTomcatServletWebServerFactory extends TomcatServletWebServerFactory {
