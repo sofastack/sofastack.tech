@@ -166,7 +166,7 @@ MOSN 的做法是把一个服务下的机器按照机标签组合进行预先分
 
 再分享下添加 benchmark 进行测试的地址：
 
-*https://github.com/mosn/mosn/blob/b0da8a69137cea3a60cdc6dfc0784d29c4c2e25a/pkg/upstream/cluster/subset_loadbalancer_test.go#L891*
+*[https://github.com/mosn/mosn/blob/b0da8a69137cea3a60cdc6dfc0784d29c4c2e25a/pkg/upstream/cluster/subset_loadbalancer_test.go#L891](https://github.com/mosn/mosn/blob/b0da8a69137cea3a60cdc6dfc0784d29c4c2e25a/pkg/upstream/cluster/subset_loadbalancer_test.go#L891)*
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/55e86e99c8154325b51d499d85796c65~tplv-k3u1fbpfcp-zoom-1.image)
 
@@ -192,7 +192,7 @@ MOSN 的做法是把一个服务下的机器按照机标签组合进行预先分
 
 在这次优化过程中，我们用到了一些常见的优化手段，如：倒排索引、bitmap。不难看出，这些优化手段虽然基础常见， 但也取得了理想的优化效果，希望能对大家有所帮助。
 
-## 了解更多...
+## 了解更多
 
 **MOSN Star 一下✨：**
 
@@ -202,7 +202,7 @@ MOSN 的做法是把一个服务下的机器按照机标签组合进行预先分
 
 MOSN 文档使用指南
 
-[![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8f22ffc4d6f7434da79c9c02c0c80c69~tplv-k3u1fbpfcp-zoom-1.image)](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247507103&idx=1&sn=e8da41af0ceaa18ae13f31ca2905da8e&chksm=faa33345cdd4ba5397a43adfe8cabdc85321d3f9f14066c470885b41e2f704ec505a9f086cec&scene=21#wechat_redirect)
+[![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8f22ffc4d6f7434da79c9c02c0c80c69~tplv-k3u1fbpfcp-zoom-1.image)](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247507103&idx=1&sn=e8da41af0ceaa18ae13f31ca2905da8e&chksm=faa33345cdd4ba5397a43adfe8cabdc85321d3f9f14066c470885b41e2f704ec505a9f086cec&scene=21)
 
 MOSN 1.0 发布，开启新架构演进
 
