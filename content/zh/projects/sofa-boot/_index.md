@@ -104,6 +104,12 @@ sidebar:
         link: 'sofa-ark-roadmap'
       - title: '参与贡献'
         link: 'sofa-ark-contribution'
+  - title: '源码解析'
+    sub:
+      - title: 'SOFABoot HealthCheck 机制解析'
+        link: 'sofaboot-healthcheck-mechanism-explained'
+      - title: 'SOFABoot 组件协议 binding 机制解析'
+      - title: 'SOFABoot 上下文隔离机制解析'
   - title: '升级文档'
     sub:
       - title: 'SOFABoot 2.5.x 升级注意事项'  	
