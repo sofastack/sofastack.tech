@@ -52,6 +52,7 @@ springboot自身还有jetty、netty等WebServer的实现，同样由其对应的
 2. 需要像独立tomcat下部署多webapp一样，通过添加前缀的方式区分不同Biz的http接口。
 
 因此sofa-ark对springboot的相关实现做了替换，具体如下：  
+
 | sofa-ark                           | springboot                      |
 | ---------------------------------- | ------------------------------- |
 | ArkTomcatServletWebServerFactory   | TomcatServletWebServerFactory   |
