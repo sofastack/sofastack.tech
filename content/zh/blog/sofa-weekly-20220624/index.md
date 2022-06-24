@@ -39,7 +39,7 @@ A：Plugin 自己管理的依赖，通过 ark 中提到的 导出机制，将其
 
 >那 biz 的 class loader 的加载逻辑应该很复杂吧，因为它要区分什么类自己加载，什么类委托 plugin 加载。
 
-A：可以看下这个，*https://www.sofastack.tech/projects/sofa-boot/sofa-ark-migration-guide/*
+A：可以看下这个，*[https://www.sofastack.tech/projects/sofa-boot/sofa-ark-migration-guide/](https://www.sofastack.tech/projects/sofa-boot/sofa-ark-migration-guide/)*
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/a469d3145e1c4f1da0babf360e345543~tplv-k3u1fbpfcp-zoom-1.image)
 
