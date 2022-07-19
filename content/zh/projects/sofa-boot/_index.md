@@ -109,6 +109,7 @@ sidebar:
       - title: 'SOFABoot HealthCheck 机制解析'
         link: 'sofaboot-healthcheck-mechanism-explained'
       - title: 'SOFABoot 组件协议 binding 机制解析'
+        link: 'sofaboot-component-protocol-binding'
       - title: 'SOFABoot 上下文隔离机制解析'
   - title: '升级文档'
     sub:
