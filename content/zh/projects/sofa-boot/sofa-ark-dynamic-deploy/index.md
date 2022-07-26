@@ -1,9 +1,12 @@
-
 ---
 title: "动态部署"
 aliases: "/sofa-boot/docs/sofa-ark-dynamic-deploy"
+author: "林楠"
+authorlink: "https://github.com/it-linnan"
+description: "源码解析 | 动态部署"
+categories: "SOFAStack"
+tags: [“源码解析”]
 ---
-# 动态部署
 
 ## 前言
 
