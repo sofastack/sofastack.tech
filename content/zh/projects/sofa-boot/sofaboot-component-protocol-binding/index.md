@@ -8,8 +8,6 @@ tags: [“源码解析”]
 date: 2022-07-19T15:00:00+08:00
 ---
 
-# 组件协议 binding 机制解析
-
 ## 前言
 
 SOFABoot 提供两种服务通信能力，一种是 JVM 服务，用于同一应用内不同模块间的通信，一种是 RPC 服务，用于不同应用间的通信。SOFABoot 提供三种方式实现服务的发布和引用，分别是XML 配置文件、注解和 API 的方式，本文从源码角度解析从服务的发布和引用到组件协议 binding 机制的实现原理。
@@ -44,7 +42,7 @@ SOFABoot 提供两种服务通信能力，一种是 JVM 服务，用于同一应
 http\://sofastack.io/schema/sofaboot=com.alipay.sofa.boot.spring.namespace.handler.SofaBootNamespaceHandler
 ```
 
-SofaBootNamespaceHandler 在初始化阶段，基于 spi 机制查找所有标签解析器，调用 registerTagParser 方法注册标签解析器。
+SofaBootNamespaceHandler 在初始化阶段，基于 SPI 机制查找所有标签解析器，调用 registerTagParser 方法注册标签解析器。
 
 ```java
 public void init() {
@@ -111,7 +109,7 @@ public abstract class AbstractContractFactoryBean implements InitializingBean, F
 }
 ```
 
-在调用 ServiceFactoryBean 中的 doAfterPropertiesSet 方法，将服务配置转换为 ServiceComponent，注册到 sofa 的 ComponentManager 中
+在调用 ServiceFactoryBean 中的 doAfterPropertiesSet 方法，将服务配置转换为 ServiceComponent，注册到 SOFA 的 ComponentManager 中
 
 ```java
 public class ServiceFactoryBean extends AbstractContractFactoryBean {
@@ -168,7 +166,7 @@ public class ReferenceDefinitionParser extends AbstractContractDefinitionParser 
 
 ```
 
-ReferenceFactoryBean 中 doAfterPropertiesSet 方法，将服务配置转换为 ReferenceComponent，注册到 sofa 的 ComponentManager 中
+ReferenceFactoryBean 中 doAfterPropertiesSet 方法，将服务配置转换为 ReferenceComponent，注册到 SOFA 的 ComponentManager 中
 
 ```java
 public class ReferenceFactoryBean extends AbstractContractFactoryBean {
@@ -229,8 +227,8 @@ public class JvmServiceConsumer implements ClientFactoryAware {
 }
 ```
 
-对于注解的处理，SOFABoot 在 runtime-sofa-boot 模块中提供了相应的处理器 ServiceBeanFactoryPostProcessor。ServiceBeanFactoryPostProcessor 在 postProcessBeanDefinitionRegistry 方法中遍历所有bean，检查 bean 是否含有 sofa 注解，如果有就会解析注解中定义的属性值，将 bean 转换为 sofa 服务或者 sofa 服务引用。
-入口是 transformSofaBeanDefinition 方法，先判断 bean 的定义方式，从而决定如何获取 sofa 注解：如果 bean 是在配置类中定义的，那么就需要从方法上获取注解，也就是调用 generateSofaServiceDefinitionOnMethod 方法；另一种方式是直接在 bean 的类上获取注解，也就是调用 generateSofaServiceDefinitionOnClass 方法。
+对于 @SofaService 注解的处理，SOFABoot 在 runtime-sofa-boot 模块中提供了相应的处理器 ServiceBeanFactoryPostProcessor。ServiceBeanFactoryPostProcessor 在 postProcessBeanDefinitionRegistry 方法中遍历所有 bean，检查 bean 是否含有 @SofaService 注解，如果有就会解析注解中定义的属性值，将 bean 转换为 SOFA 服务。
+入口是 transformSofaBeanDefinition 方法，先判断 bean 的定义方式，从而决定如何获取 SOFA 注解：如果 bean 是在配置类中定义的，那么就需要从方法上获取注解，也就是调用 generateSofaServiceDefinitionOnMethod 方法；另一种方式是直接在 bean 的类上获取注解，也就是调用 generateSofaServiceDefinitionOnClass 方法。
 
 ```java
 public class ServiceBeanFactoryPostProcessor implements BeanDefinitionRegistryPostProcessor,
@@ -259,35 +257,35 @@ public class ServiceBeanFactoryPostProcessor implements BeanDefinitionRegistryPo
 }
 ```
 
-将 @SofaService 注解解析出来后，调用 generateSofaServiceDefinition 方法，将注解定义转换为 ServiceFactoryBean，并调用 registry.registerBeanDefinition 将 ServiceFactoryBean 注册到 Spring 上下文中。
+这里我们看下 generateSofaServiceDefinitionOnClass 方法：先从类定义中获取 @SofaService 注解，调用 generateSofaServiceDefinition 方法，将注解定义转换为 ServiceFactoryBean 。在转换时通过 getSofaServiceBinding 方法将 @SofaService 注解转换为 binding 设置到 ServiceFactoryBean 属性，通过 dependsOn 控制了加载顺序。最后调用 registry.registerBeanDefinition 方法，将 ServiceFactoryBean 注册到 Spring 上下文中。
 
 ```java
+private void generateSofaServiceDefinitionOnClass(String beanId, Class<?> beanClass,
+                                                    BeanDefinition beanDefinition,
+                                                    BeanDefinitionRegistry registry) {
+    SofaService sofaServiceAnnotation = AnnotationUtils.findAnnotation(beanClass, SofaService.class);
+    generateSofaServiceDefinition(beanId, sofaServiceAnnotation, beanClass, beanDefinition, registry);
+}
 private void generateSofaServiceDefinition(String beanId, SofaService sofaServiceAnnotation,
                                                Class<?> beanClass, BeanDefinition beanDefinition,
                                                BeanDefinitionRegistry registry) {
     ...
     BeanDefinitionBuilder builder = BeanDefinitionBuilder.genericBeanDefinition();
-    String serviceId = SofaBeanNameGenerator.generateSofaServiceBeanName(interfaceType,
-                                                                         sofaServiceAnnotation.uniqueId());
-
+    String serviceId = SofaBeanNameGenerator.generateSofaServiceBeanName(interfaceType, sofaServiceAnnotation.uniqueId());
     if (!registry.containsBeanDefinition(serviceId)) {
         builder.getRawBeanDefinition().setScope(beanDefinition.getScope());
         builder.setLazyInit(beanDefinition.isLazyInit());
         builder.getRawBeanDefinition().setBeanClass(ServiceFactoryBean.class);
         builder.addAutowiredProperty(AbstractContractDefinitionParser.SOFA_RUNTIME_CONTEXT);
-        builder
-            .addAutowiredProperty(AbstractContractDefinitionParser.BINDING_CONVERTER_FACTORY);
+        builder.addAutowiredProperty(AbstractContractDefinitionParser.BINDING_CONVERTER_FACTORY);
         builder.addAutowiredProperty(AbstractContractDefinitionParser.BINDING_ADAPTER_FACTORY);
-        builder.addPropertyValue(AbstractContractDefinitionParser.INTERFACE_CLASS_PROPERTY,
-                                 interfaceType);
-        builder.addPropertyValue(AbstractContractDefinitionParser.UNIQUE_ID_PROPERTY,
-                                 sofaServiceAnnotation.uniqueId());
+        builder.addPropertyValue(AbstractContractDefinitionParser.INTERFACE_CLASS_PROPERTY, interfaceType);
+        builder.addPropertyValue(AbstractContractDefinitionParser.UNIQUE_ID_PROPERTY, sofaServiceAnnotation.uniqueId());
         builder.addPropertyValue(AbstractContractDefinitionParser.BINDINGS,
                                  getSofaServiceBinding(sofaServiceAnnotation, sofaServiceAnnotation.bindings()));
         builder.addPropertyReference(ServiceDefinitionParser.REF, beanId);
         builder.addPropertyValue(ServiceDefinitionParser.BEAN_ID, beanId);
-        builder.addPropertyValue(AbstractContractDefinitionParser.DEFINITION_BUILDING_API_TYPE,
-                                 true);
+        builder.addPropertyValue(AbstractContractDefinitionParser.DEFINITION_BUILDING_API_TYPE, true);
         builder.addDependsOn(beanId);
         registry.registerBeanDefinition(serviceId, builder.getBeanDefinition());
     } else {
@@ -296,45 +294,39 @@ private void generateSofaServiceDefinition(String beanId, SofaService sofaServic
 }
 ```
 
-将 @SofaReference 注解解析出来后，调用 generateSofaReferenceDefinition 方法，将注解定义转换为 ReferenceFactoryBean，并调用 registry.registerBeanDefinition 将 ReferenceFactoryBean 注册到 Spring 上下文中
+对于 @SofaReference 注解的处理，SOFABoot 在 runtime-sofa-boot 模块中提供了相应的处理器 ReferenceAnnotationBeanPostProcessor。在 postProcessBeforeInitialization 方法中调用 processSofaReference 方法，通过 FieldFilter 筛选 bean 类中的含有 @SofaReference 注解的字段。在 doWith 方法中解析字段的 @SofaReference 注解中定义的属性值，调用 createReferenceProxy 方法，根据属性值生成 SOFA 服务引用代理。将 SOFA 服务引用代理设置到类字段中，通过该字段调用服务就相当于调用服务引用代理。
 
 ```java
-private void generateSofaReferenceDefinition(String beanId, Method method,
-                                             BeanDefinitionRegistry registry) {
-    Class<?>[] parameterTypes = method.getParameterTypes();
-    Annotation[][] parameterAnnotations = method.getParameterAnnotations();
-    for (int i = 0; i < parameterAnnotations.length; ++i) {
-        for (Annotation annotation : parameterAnnotations[i]) {
-            if (annotation instanceof SofaReference) {
-                doGenerateSofaReferenceDefinition(registry.getBeanDefinition(beanId),
-                                                  (SofaReference) annotation, parameterTypes[i], registry);
-            }
-        }
-    }
+public Object postProcessBeforeInitialization(Object bean, String beanName) throws BeansException {
+    processSofaReference(bean);
+    return bean;
 }
-private void doGenerateSofaReferenceDefinition(BeanDefinition beanDefinition,
-                                               SofaReference sofaReference,
-                                               Class<?> parameterType,
-                                               BeanDefinitionRegistry registry) {
-    ...
-    String uniqueId = sofaReference.uniqueId();
-    String referenceId = SofaBeanNameGenerator.generateSofaReferenceBeanName(interfaceType, uniqueId);
-    if (!registry.containsBeanDefinition(referenceId)) {
-        BeanDefinitionBuilder builder = BeanDefinitionBuilder.genericBeanDefinition();
-        builder.getRawBeanDefinition().setScope(beanDefinition.getScope());
-        builder.getRawBeanDefinition().setLazyInit(beanDefinition.isLazyInit());
-        builder.getRawBeanDefinition().setBeanClass(ReferenceFactoryBean.class);
-        builder.addAutowiredProperty(AbstractContractDefinitionParser.SOFA_RUNTIME_CONTEXT);
-        builder.addAutowiredProperty(AbstractContractDefinitionParser.BINDING_CONVERTER_FACTORY);
-        builder.addAutowiredProperty(AbstractContractDefinitionParser.BINDING_ADAPTER_FACTORY);
-        builder.addPropertyValue(AbstractContractDefinitionParser.UNIQUE_ID_PROPERTY, uniqueId);
-        builder.addPropertyValue(AbstractContractDefinitionParser.INTERFACE_CLASS_PROPERTY, interfaceType);
-        builder.addPropertyValue(AbstractContractDefinitionParser.BINDINGS,
-                                 getSofaReferenceBinding(sofaReference, sofaReference.binding()));
-        builder.addPropertyValue(AbstractContractDefinitionParser.DEFINITION_BUILDING_API_TYPE, true);
-        registry.registerBeanDefinition(referenceId, builder.getBeanDefinition());
-    }
-    ...
+private void processSofaReference(final Object bean) {
+    final Class<?> beanClass = bean.getClass();
+    ReflectionUtils.doWithFields(beanClass, new ReflectionUtils.FieldCallback() {
+        @Override
+        public void doWith(Field field) throws IllegalArgumentException, IllegalAccessException {
+            AnnotationWrapperBuilder<SofaReference> builder = AnnotationWrapperBuilder.wrap(
+                field.getAnnotation(SofaReference.class)).withBinder(binder);
+            SofaReference sofaReferenceAnnotation = builder.build();
+            ...
+            Object proxy = createReferenceProxy(sofaReferenceAnnotation, interfaceType);
+            ReflectionUtils.makeAccessible(field);
+            ReflectionUtils.setField(field, bean, proxy);
+        }
+    }, new ReflectionUtils.FieldFilter() {
+        @Override
+        public boolean matches(Field field) {
+            if (!field.isAnnotationPresent(SofaReference.class)) {
+                return false;
+            }
+            if (Modifier.isStatic(field.getModifiers())) {
+                SofaLogger.warn("SofaReference annotation is not supported on static fields: {}", field);
+                return false;
+            }
+            return true;
+        }
+    });
 }
 ```
 
@@ -358,7 +350,7 @@ SampleJvmService sampleJvmServiceClientImpl = referenceClient.reference(referenc
 sampleJvmServiceClientImpl.message();
 ```
 
-API 方式发布服务，是通过 ServiceClientImpl 的 service 方法实现的，将服务配置转换为 ServiceComponent ，注册到 sofa 的 ComponentManager 中，但没有向 Spring 上下文中注册 bean。
+API 方式发布服务，是通过 ServiceClientImpl 的 service 方法实现的，将服务配置转换为 ServiceComponent ，注册到 SOFA 的 ComponentManager 中，但没有向 Spring 上下文中注册 bean。
 
 ```java
 public class ServiceClientImpl implements ServiceClient {
@@ -378,7 +370,7 @@ public class ServiceClientImpl implements ServiceClient {
 }
 ```
 
-API 方式引用服务，是通过 ReferenceClientImpl 的 reference 方法实现的，将服务配置转换为 ReferenceComponent，注册到 sofa 的 ComponentManager 中。与发布服务相同，也没有向 Spring 上下文中注册 bean。
+API 方式引用服务，是通过 ReferenceClientImpl 的 reference 方法实现的，将服务配置转换为 ReferenceComponent，注册到 SOFA 的 ComponentManager 中。与发布服务相同，也没有向 Spring 上下文中注册 bean。
 
 ```java
 public class ReferenceClientImpl implements ReferenceClient {
@@ -392,7 +384,7 @@ public class ReferenceClientImpl implements ReferenceClient {
 
 ### 服务发布与引用总结
 
-以上篇幅介绍了服务发布与引用的大致流程，XML 和注解方式是向 Spring 上下文中注册了一个新的 bean，服务发布注册的是 ServiceFactoryBean，通过 ServiceFactoryBean 的注册流程向 ComponentManager 中注册 ServiceComponent；引用服务注册的是 ReferenceFactoryBean，通过 ReferenceFactoryBean 的注册流程向 ComponentManager 中注册 ReferenceComponent。API 方式的服务发布则是通过 ServiceClientImpl 直接向 ComponentManager 中注册 ServiceComponent ，引用服务是通过 ReferenceClientImpl 直接向 ComponentManager 中注册 ReferenceComponent。
+以上篇幅介绍了服务发布与引用的大致流程，XML 方式是向 Spring 上下文中注册了一个新的 bean，服务发布注册的是 ServiceFactoryBean，通过 ServiceFactoryBean 的注册流程向 ComponentManager 中注册 ServiceComponent；引用服务注册的是 ReferenceFactoryBean，通过 ReferenceFactoryBean 的注册流程向 ComponentManager 中注册 ReferenceComponent。注解方式的服务发布注册的是 ServiceFactoryBean，通过 ServiceFactoryBean 的注册流程向 ComponentManager 中注册 ServiceComponent；引用服务则是根据字段上的 @SofaReference 注解生成服务引用代理对象，将字段值设置为代理对象。API 方式的服务发布则是通过 ServiceClientImpl 直接向 ComponentManager 中注册 ServiceComponent ，引用服务是通过 ReferenceClientImpl 直接向 ComponentManager 中注册 ReferenceComponent。
 在前面的给出的代码中我们略过了一部分代码，这部分代码实际上就是组件协议 binding 的机制，接下来，我们进入正题。
 
 ## 组件协议 binding
@@ -401,8 +393,8 @@ public class ReferenceClientImpl implements ReferenceClient {
 
 | 接口类 | 说明 |
 | --- | --- |
-| com.alipay.sofa.runtime.spi.binding.Binding | sofa 组件协议接口，表示服务绑定了哪些协议，对外提供哪些协议的服务调用方式。SOFABoot 内置 JVM协议、RPC协议（bolt、dubbo等） |
-| com.alipay.sofa.runtime.api.client.param.BindingParam | sofa 组件协议参数接口，每种服务协议都需要配置一些参数，比如RPC协议通常需要配置超时时间、负载均衡算法等 |
+| com.alipay.sofa.runtime.spi.binding.Binding | SOFA 组件协议接口，表示服务绑定了哪些协议，对外提供哪些协议的服务调用方式。SOFABoot 内置 JVM协议、RPC协议（bolt、dubbo等） |
+| com.alipay.sofa.runtime.api.client.param.BindingParam | SOFA 组件协议参数接口，每种服务协议都需要配置一些参数，比如RPC协议通常需要配置超时时间、负载均衡算法等 |
 | com.alipay.sofa.runtime.spi.service.BindingConverter | Binding转换器接口，用于将服务协议配置转换为具体的Binding |
 | com.alipay.sofa.runtime.spi.service.BindingConverterFactory | Binding转换器工厂，能够通过协议名获取Binding转换器 |
 | com.alipay.sofa.runtime.spi.binding.BindingAdapter | Binding适配器，用于将Binding服务发布出去或生成服务引用 |
