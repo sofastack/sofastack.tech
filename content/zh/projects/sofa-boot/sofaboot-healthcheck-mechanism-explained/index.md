@@ -1,7 +1,7 @@
 ---
 title: "源码解析：SOFABoot HealthCheck 机制解析"
 author: "林楠"
-authorlink: "https://github.com/MingkeVan"
+authorlink: "https://github.com/it-linnan"
 description: "源码解析 | SOFABoot HealthCheck 机制解析"
 categories: "SOFAStack"
 tags: [“源码解析”]
