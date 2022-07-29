@@ -8,3 +8,6 @@ install:
 	@$(docker) scripts/install-dependency.sh
 serve:
 	@$(docker) hugo serve --bind 0.0.0.0 --disableFastRender
+lint_sofaregistry:
+	find content/zh/projects/sofa-registry | xargs  mdl --ignore-front-matter --style mdl_style.rb
+

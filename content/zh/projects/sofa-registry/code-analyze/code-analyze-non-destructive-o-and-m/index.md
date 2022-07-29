@@ -9,10 +9,10 @@ date: 2022-05-06T15:00:00+08:00
 ---
 
 ## 源码解析：无损运维
+
 >SOFARegistry 是一个基于内存存储的分布式注册中心，数据是分散存储在各个节点，为了做到注册中心自身运维期间依然能够对外正常提供服务，需要进行节点下线快速感知和数据迁移。
-
+>
 > - session 存储 client 发送的发布和订阅数据，由于 client 断连重放的特性，session 单机下线后 client 会重放数据到其他节点。
-
 > - data 会接收 session 发送的发布数据，data 单机下线后，meta 会通过 SlotTable 的变更把对应 Slot 的所有权移交其他 data，data 启动后会进行数据同步到达数据完整可对外提供服务的状态。
 
 ### session、data下线的过程，如何避免下线期间数据丢失和抖动
@@ -101,7 +101,6 @@ LOGGER.info("add data self to blacklist successfully");
 ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*YPGYTbeqg3IAAAAAAAAAAAAAARQnAQ)
 
 ![img.png](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*iCZhSLsRoVUAAAAAAAAAAAAAARQnAQ)
-
 
 Session 和 Data下线中的优雅关闭和数据迁移保证了下线期间数据丢失和抖动，期间仍然对外提供服务。
 
@@ -226,7 +225,7 @@ public void handle() {
 
 ### Data 启动期以及 Data 的启动过程的状态转化，如何确保新分配的 Slot 的数据完整性
 
-##### ***<u>启动入口</u>***
+#### ***<u>启动入口</u>***
 
 Data 启动的过程代码位于com.alipay.sofa.registry.server.data.bootstrap.DataServerBootstrap#start
 
@@ -372,9 +371,9 @@ Slot 的数据的同步是一个 watchDog 的模式，获取 slotTabel 的变化
 
 上面的两部分代码总体可以概括为以下两个层次：
 
-- Data 和 Session 通过心跳的机制在 Meta 上进行续约，当 Data 发生节点变更的时候，Meta 此时会重新进行分配，生成新的 SlotTable，并通过广播和心跳的方式返回所有的节点，Session 就会用这份 SlotTable 寻址新的 Data 节点。存在一个时刻，集群中存在两份 SlotTable，分裂时间最大(1s)。
+1. Data 和 Session 通过心跳的机制在 Meta 上进行续约，当 Data 发生节点变更的时候，Meta 此时会重新进行分配，生成新的 SlotTable，并通过广播和心跳的方式返回所有的节点，Session 就会用这份 SlotTable 寻址新的 Data 节点。存在一个时刻，集群中存在两份 SlotTable，分裂时间最大(1s)。
 
-- Session 上会缓存 Client 的 Pub 和 Sub 数据作为基准数据，在增量发送给 Data 的同时，Slot 的 leader 节点会定时和 Session 进行数据比对，Slot 的 follower 和 leader 也会定时进行数据对比，这样做到整个集群数据能快速达到最终一致，减少异常场景的不可服务时间。
+2. Session 上会缓存 Client 的 Pub 和 Sub 数据作为基准数据，在增量发送给 Data 的同时，Slot 的 leader 节点会定时和 Session 进行数据比对，Slot 的 follower 和 leader 也会定时进行数据对比，这样做到整个集群数据能快速达到最终一致，减少异常场景的不可服务时间。
 
 Slot 数据完整度校验的作用在于当一个 Slot 数据所有副本所在节点全部宕机，数据发生丢失时，只能通过 Session 上的缓存数据进行数据回放。但在完全回放完成时，Slot 是不可对外提供读取服务的，以此避免推空或者推错，从而保证了数据的完整性。
 
@@ -396,4 +395,3 @@ private void postStart() throws Throwable {
 ```
 
 至此，Server 的启动完成，Data 节点的 Slot 数据也根据变更后的 slotTable 同步完成，Data 节点开始在集群内工作。
-
