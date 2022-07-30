@@ -607,9 +607,9 @@ public class ArkServiceContainer {
             try {
                 LOGGER.info("Begin to start ArkServiceContainer");
 
-        	    // Guice 是 Google开发的, 一个轻量级的依赖注入框架
+                // Guice 是 Google开发的, 一个轻量级的依赖注入框架
                 injector = Guice.createInjector(findServiceModules());
-    		    // 从 guice 中查询所有 ArkService 实例
+                // 从 guice 中查询所有 ArkService 实例
                 for (Binding<ArkService> binding : injector
                     .findBindingsByType(new TypeLiteral<ArkService>() {
                     })) {
@@ -619,11 +619,11 @@ public class ArkServiceContainer {
 
                 for (ArkService arkService : arkServiceList) {
                     LOGGER.info(String.format("Init Service: %s", arkService.getClass().getName()));
-        		    // 初始化 arkService，一共有 4 个 ArkService，分别是：
-        		  	// PluginDeployService：部署 plugin 的服务
-        		    // BizDeployService:  部署 biz 包的服务
-        		    // ClassLoaderService:  ClassLoader 服务
-        		    // StandardTelnetServer: Telnet 工具服务
+                    // 初始化 arkService，一共有 4 个 ArkService，分别是：
+                    // PluginDeployService：部署 plugin 的服务
+                    // BizDeployService:  部署 biz 包的服务
+                    // ClassLoaderService:  ClassLoader 服务
+                    // StandardTelnetServer: Telnet 工具服务
                     arkService.init();
                 }
 
@@ -737,7 +737,7 @@ public class StandardPipeline implements Pipeline {
             try {
                 LOGGER.info(String.format("Start to process pipeline stage: %s", pipelineStage
                     .getClass().getName()));
-        	    // 执行每个步骤
+                // 执行每个步骤
                 pipelineStage.process(pipelineContext);
                 LOGGER.info(String.format("Finish to process pipeline stage: %s", pipelineStage
                     .getClass().getName()));
@@ -903,7 +903,7 @@ Ark 2.0 模式下，在这个步骤里会创建 master biz，创建 master biz �
                 }
                 ReflectionUtils.makeAccessible(field);
                 try {
-            	    // 自动注入
+                    // 自动注入
                     field.set(instance, value);
                     LOGGER.info(String.format("Inject {field= %s} of {service= %s} success!",
                         field.getName(), type));
