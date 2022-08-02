@@ -25,7 +25,7 @@ SOFARegistry 部署依赖 mysql, 使用 mysql 作为注册中心自身的元数�
 ```bash
 git clone https://github.com/sofastack/sofa-registry.git
 cd sofa-registry
- mvn clean package -Dmaven.test.skip=true
+mvn clean package -Pserver-release -Dmaven.test.skip=true
 cp ./server/distribution/all/target/registry-all.tgz <somewhere>
 cd <somewhere>
 tar -zxvf registry-all.tgz
