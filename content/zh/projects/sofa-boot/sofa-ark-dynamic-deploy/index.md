@@ -10,7 +10,7 @@ tags: [“源码解析”]
 
 ## 前言
 
-在实践中，我们通常会使用业务功能模块化的开发模式，部署时将不同模块合并部署，由于团队间技术栈不统一，此时就有可能出现以来冲突等问题。SOFAArk 定义了一种开发规范，将不同的应用模块打包成 Ark Biz，由一个基座 Biz 和多个 Biz 模块组成部署包，支持两种合并部署的方式，一种是静态合并部署，Ark Biz 以 Maven 依赖的方式引入项目；另一种是在运行时使用 API 或者 配置中心（Zookeeper）动态地安装或卸载 Biz，本文将重点讨论此方式。
+在实践中，我们通常会使用业务功能模块化的开发模式，部署时将不同模块合并部署，由于团队间技术栈不统一，此时就有可能出现依赖冲突等问题。SOFAArk 定义了一种开发规范，将不同的应用模块打包成 Ark Biz，由一个基座 Biz 和多个 Biz 模块组成部署包，支持两种合并部署的方式，一种是静态合并部署，Ark Biz 以 Maven 依赖的方式引入项目；另一种是在运行时使用 API 或者 配置中心（Zookeeper）动态地安装或卸载 Biz，本文将重点讨论此方式。
 
 ## Ark Biz 的生命周期
 
@@ -28,7 +28,7 @@ Ark Biz 的生命周期主要包含三条指令：
 * resolved: Biz 包解析完成，且已注册，此时 Biz 包还没有安装或者安装中
 * activated: Biz 包启动完成，且处于激活状态，可以对外提供服务
 * broken: Biz 包启动失败后状态
-* deactivated: Biz 包启动完成，但处于未激活状态。(注意这个状态只对 JVM 服务生效，对 RPC 等其他中间件无效)
+* deactivated: Biz 包启动完成，但处于未激活状态(注意这个状态只对 JVM 服务生效，对 RPC 等其他中间件无效)
 
 这里我们可以看一下 Ark Biz
 的数据模型 BizModel 类：
@@ -170,7 +170,7 @@ public Biz createBiz(BizArchive bizArchive) throws IOException {
 
 ### 启动 Ark Biz
 
-1. 将当前 ClassLoader 设置为 BizModel 的 ClassLoader，并暂存原 ClassLoader
+1. 将当前线程上下文 ClassLoader 设置为 BizModel 的 ClassLoader，并暂存原 ClassLoader
 2. 基于 BizModel ClassLoader 反射查找 MainClass，调用 main 方法
 3. 发布 AfterBizStartupEvent 事件，可以看到源码中的注释表示这里会触发健康检查，我们先记下这个点稍后解答
 4. 如果启动失败，就将 Ark Biz 状态设置为 broken
@@ -224,7 +224,7 @@ public void start(String[] args) throws Throwable {
 
 ### 关停 Ark Biz
 
-1. 将当前 ClassLoader 设置为 BizModel 的 ClassLoader，并暂存原 ClassLoader
+1. 将当前线程上下文 ClassLoader 设置为 BizModel 的 ClassLoader，并暂存原 ClassLoader
 2. 将 Ark Biz 状态设置为 deactivated
 3. 发布 BeforeBizStopEvent 事件，可以看到源码中的注释表示这里会触发 uninstall 卸载操作，我们先记下这个点稍后解答
 4. 从  Biz Manager 移除本次安装的 Ark Biz
@@ -320,7 +320,7 @@ public class SofaBizUninstallEventHandler implements EventHandler<BeforeBizStopE
 }
 ```
 
-SofaBizUninstallEventHandler 监听 BeforeBizStopEvent 事件，当事件发布时，调用 doUninstallBiz 方法，清理 JVM 服务、上下文参数等缓存。
+SofaBizUninstallEventHandler 监听 BeforeBizStopEvent 事件，当事件发布时，调用 doUninstallBiz 方法，清理 JVM 服务、上下文参数等缓存，并在 SofaRuntimeManager#shutDownExternally 方法中关闭基座 Biz 的 Spring 上下文。
 
 ## uninstall
 
@@ -479,7 +479,7 @@ public String handleCommand(String command) {
 }
 ```
 
-在 BizCommand 中，根据用户输入命令调用相应的编程API，以安装 Ark Biz 为例：
+在 BizCommand 中，根据用户输入命令调用相应的编程 API，以安装 Ark Biz 为例：
 
 1. 用户输入命令为 i 时，调用 installBiz 方法，进入安装流程
 2. 将用户输入的参数部分组装成 BizOperation
