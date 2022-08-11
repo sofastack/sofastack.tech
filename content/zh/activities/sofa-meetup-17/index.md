@@ -6,7 +6,7 @@ description: "SOFA Meetup 合肥站-云原生技术沙龙"
 categories: "SOFAMeetup"
 tags: ["SOFAMeetup"]
 date: 2022-08-13T15:00:00+08:00
-cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*h_XdRLUF_7wAAAAAAAAAAAAAARQnAQ"
+cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*bwpjQ7h41uIAAAAAAAAAAAAAARQnAQ"
 ---
 
 ## 概要
@@ -23,7 +23,6 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*h_XdRLUF_7wAAAAAA
 
 Dragonfly
 [https://github.com/sofastack/sofa-ark](https://github.com/sofastack/sofa-ark)
-
 
 KusionStack
 [https://github.com/kusionstack/kusion](https://github.com/kusionstack/kusion)
