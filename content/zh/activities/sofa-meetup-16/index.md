@@ -50,6 +50,14 @@ MOSN
 
 ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*g42wQ5BnNDsAAAAAAAAAAAAAARQnAQ)
 
+### 直播回放
+
+[Dragonfly：基于 P2P 的文件和镜像加速系统](https://www.bilibili.com/video/BV1TV4y1j7Yk/?vd_source=65cf108a3fb8e9985d41bd64c5448f63)
+
+[KusionStack 实践探秘｜技术、角色与应用场景篇](https://www.bilibili.com/video/BV15S4y1s7iA/?vd_source=65cf108a3fb8e9985d41bd64c5448f63)
+
+[Holmes｜Go 应用性能异常诊断定位利器](https://www.bilibili.com/video/BV1NU4y1C74q/?vd_source=65cf108a3fb8e9985d41bd64c5448f63)
+
 ## 了解更多技术干货
 
 使用钉钉搜索群号：**34197075**，即可加入，获取一手开源技术干货；或微信扫码关注“金融级分布式架构”微信公众号👇
