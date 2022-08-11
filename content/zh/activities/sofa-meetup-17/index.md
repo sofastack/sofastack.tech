@@ -19,7 +19,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*bwpjQ7h41uIAAAAAA
 
 - 活动形式：线下活动
 
-- 本次分享涉及的项目地址
+- 本次分享涉及的项目地址：
 
 Dragonfly
 [https://github.com/sofastack/sofa-ark](https://github.com/sofastack/sofa-ark)
