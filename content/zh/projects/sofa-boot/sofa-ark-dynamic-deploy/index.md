@@ -5,7 +5,7 @@ author: "林楠"
 authorlink: "https://github.com/it-linnan"
 description: "源码解析 | 动态部署"
 categories: "SOFAStack"
-tags: [“源码解析”]
+tags: ["源码解析"]
 ---
 
 ## 前言
