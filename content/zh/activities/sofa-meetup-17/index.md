@@ -21,7 +21,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*bwpjQ7h41uIAAAAAA
 
 - 本次分享涉及的项目地址：
 
-Dragonfly
+SOFAArk
 [https://github.com/sofastack/sofa-ark](https://github.com/sofastack/sofa-ark)
 
 KusionStack
