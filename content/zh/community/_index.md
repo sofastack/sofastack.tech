@@ -5,7 +5,7 @@ title: "SOFAStack 社区"
 
 Hello~欢迎来到 SOFAStack 开源社区，首先感谢一直以来支持 SOFAStack 的你们 ❤
 
-社区随时都欢迎各种贡献，无论是**简单的错别字修正**、**bug 修复**还是**增加新功能**，欢迎提 issue 或 pull request 至 Github 社区，也可以加入钉钉群：群号 34197075 联系我们。
+社区随时都欢迎各种贡献，无论是**简单的错别字修正**、**bug 修复**还是**增加新功能**，欢迎提 issue 或 pull request 至 Github 社区，也可以加入钉钉群：群号 44858463 联系我们。
 
 项目地址：[https://github.com/sofastack](https://github.com/sofastack)
 
