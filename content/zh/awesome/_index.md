@@ -107,7 +107,8 @@ title: "Awesome SOFA"
     - ~~金融级分布式架构 SOFAStack 3群，群号：23390449~~ 已满
     - ~~金融级分布式架构 SOFAStack 4群，群号：23372465~~ 已满
     - ~~金融级分布式架构 SOFAStack 5群，群号：30315793~~ 已满
-    - 金融级分布式架构 SOFAStack 6群，群号：34197075
+    - ~~金融级分布式架构 SOFAStack 6群，群号：34197075~~ 已满
+    - 金融级分布式架构 SOFAStack 7群，群号：44858463
 
       <img alt="DingTalk" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*1DklS7SZFNMAAAAAAAAAAAAAARQnAQ" height="250" />
 
