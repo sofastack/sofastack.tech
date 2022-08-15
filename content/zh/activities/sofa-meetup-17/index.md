@@ -19,6 +19,12 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*bwpjQ7h41uIAAAAAA
 
 - 活动形式：线下活动
 
+- 资料下载：
+
+[SOFA Serverless 体系助力业务极速研发](https://gw.alipayobjects.com/os/bmw-prod/29c18142-ed8f-4e64-825e-5f2e7a0008cd.pdf)
+
+[KusionStack 在蚂蚁规模化运维的探索和总结](https://gw.alipayobjects.com/os/bmw-prod/30f4e57c-19e4-48e7-b760-4ba92242f44c.pdf)
+
 - 本次分享涉及的项目地址：
 
 SOFAArk
@@ -32,6 +38,12 @@ KusionStack
 ### 活动议程
 
 ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*taODSaQ0WLoAAAAAAAAAAAAAARQnAQ)
+
+### 直播回放
+
+[SOFA Serverless 体系助力业务极速研发](https://www.bilibili.com/video/BV1Ld4y1P7VK/?vd_source=65cf108a3fb8e9985d41bd64c5448f63)
+
+[KusionStack 在蚂蚁规模化运维的探索和总结](https://www.bilibili.com/video/BV1p14y147cT/?vd_source=65cf108a3fb8e9985d41bd64c5448f63)
 
 ## 了解更多技术干货
 
