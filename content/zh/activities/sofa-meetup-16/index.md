@@ -19,30 +19,18 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*0W3YT64zMWgAAAAAA
 
 - 活动形式：线下活动
 
-- 资料下载：<br/>
-
-[《基于 P2P 的文件和镜像加速系统 Dragonfly》](https://gw.alipayobjects.com/os/bmw-prod/4a613648-c637-430f-8b8d-928f46b9b45e.pdf)
-
-[《Buildpacks & Argo CD GitOps》](https://gw.alipayobjects.com/os/bmw-prod/643970bb-bf15-471e-8417-03aafb5b945c.pdf)
-
-[《KusionStack 实践探秘｜技术、角色与应用场景篇》](https://gw.alipayobjects.com/os/bmw-prod/d1c6218f-742f-4bc2-a443-37d1cdfc5285.pdf)
-
-[《KubeSphere 在青花瓷的落地实践与展望》](https://gw.alipayobjects.com/os/bmw-prod/886db216-9e0e-479a-96fe-464acbce1287.pdf)
-
-[《Holmes｜Go 应用性能异常诊断定位利器》](https://gw.alipayobjects.com/os/bmw-prod/b6669ee6-e821-4a22-9511-d525f81cf97f.pdf)
-
+- 资料下载：  
+[《基于 P2P 的文件和镜像加速系统 Dragonfly》](https://gw.alipayobjects.com/os/bmw-prod/4a613648-c637-430f-8b8d-928f46b9b45e.pdf)  
+[《Buildpacks & Argo CD GitOps》](https://gw.alipayobjects.com/os/bmw-prod/643970bb-bf15-471e-8417-03aafb5b945c.pdf)  
+[《KusionStack 实践探秘｜技术、角色与应用场景篇》](https://gw.alipayobjects.com/os/bmw-prod/d1c6218f-742f-4bc2-a443-37d1cdfc5285.pdf)  
+[《KubeSphere 在青花瓷的落地实践与展望》](https://gw.alipayobjects.com/os/bmw-prod/886db216-9e0e-479a-96fe-464acbce1287.pdf)  
+[《Holmes｜Go 应用性能异常诊断定位利器》](https://gw.alipayobjects.com/os/bmw-prod/b6669ee6-e821-4a22-9511-d525f81cf97f.pdf)  
 [《云原生应用灾备最佳实践》](https://gw.alipayobjects.com/os/bmw-prod/a86d8a70-059b-4459-97d7-ab14b1ab32cf.pdf)
 
-- 本次分享涉及的项目地址
-
-Dragonfly
-[https://github.com/dragonflyoss](https://github.com/dragonflyoss)
-
-KusionStack
-[https://github.com/kusionstack/kusion](https://github.com/kusionstack/kusion)
-
-MOSN
-[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
+- 本次分享涉及的项目地址：  
+【Dragonfly】[https://github.com/dragonflyoss](https://github.com/dragonflyoss)  
+【KusionStack】[https://github.com/kusionstack/kusion](https://github.com/kusionstack/kusion)  
+【MOSN】[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 
 ## 活动介绍
 
