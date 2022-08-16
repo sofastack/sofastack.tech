@@ -131,10 +131,6 @@ public class SofaArkBootstrap {
         }
     }
 
-    public static Object prepareContainerForTest(Class testClass) {
-        // ...
-    }
-
     private static void remain(String[] args) throws Exception {// NOPMD
         // 在一个新的线程里面执行该方法
         AssertUtils.assertNotNull(entryMethod, "No Entry Method Found.");
@@ -142,18 +138,6 @@ public class SofaArkBootstrap {
         new ClasspathLauncher(new ClassPathArchive(entryMethod.getDeclaringClassName(),
             entryMethod.getMethodName(), urls)).launch(args, getClasspath(urls),
             entryMethod.getMethod());
-    }
-
-    private static String getClasspath(URL[] urls) {
-        // ...
-    }
-
-    private static URL[] getURLClassPath() {
-        // ...
-    }
-
-    private static boolean isSofaArkStarted() {
-        // ...
     }
 
 }
@@ -182,26 +166,6 @@ public abstract class AbstractLauncher {
             classLoader);
     }
 
-    /**
-     * Launch the ark container. This method is the initial entry point when execute in IDE.
-     * @throws Exception if the ark container fails to launch.
-     */
-    public Object launch(String[] args, String classpath, Method method) throws Exception {
-        // ......
-    }
-
-    /**
-     * Launch the ark container in {@literal TEST} run mode.
-     *
-     * @param classpath classpath of ark-biz
-     * @param testClass test class
-     * @return Object {@literal com.alipay.sofa.ark.container.ArkContainer}
-     * @throws Exception
-     */
-    public Object launch(String classpath, Class testClass) throws Exception {
-        // ......
-    }
-
     protected Object launch(String[] args, String mainClass, ClassLoader classLoader)
                                                                                      throws Exception {
         ClassLoader old = Thread.currentThread().getContextClassLoader();
@@ -215,56 +179,7 @@ public abstract class AbstractLauncher {
         }
     }
 
-    protected MainMethodRunner createMainMethodRunner(String mainClass, String[] args) {
-        return new MainMethodRunner(mainClass, args);
-    }
-
-    /**
-     * Returns the executable archive
-     * @return the executable archive
-     * @throws Exception
-     */
-    protected abstract ExecutableArchive getExecutableArchive() throws Exception;
-
-    /**
-     * Returns the container archive archive
-     * @return the container archive archive
-     * @throws Exception
-     */
-    protected ContainerArchive getContainerArchive() throws Exception {
-        return getExecutableArchive().getContainerArchive();
-    }
-
-    /**
-     * Create a classloader for the ark container archive
-     * @param containerArchive the ark container archive
-     * @return the classloader load ark container
-     * @throws Exception
-     */
-    protected ClassLoader createContainerClassLoader(ContainerArchive containerArchive)
-                                                                                       throws Exception {
-        List<URL> classpath = getExecutableArchive().getConfClasspath();
-        classpath.addAll(Arrays.asList(containerArchive.getUrls()));
-        return createContainerClassLoader(classpath.toArray(new URL[] {}), null);
-    }
-
-    /**
-     * Create a classloader for the specified URLs.
-     * @param urls the URLs
-     * @param parent the parent
-     * @return the classloader load ark container
-     */
-    protected ClassLoader createContainerClassLoader(URL[] urls, ClassLoader parent) {
-        return new ContainerClassLoader(urls, parent);
-    }
-
-    /**
-     * Returns the main class that should be launched.
-     *
-     * @return the name of the main class
-     * @throws Exception if the main class cannot be obtained.
-     */
-    protected abstract String getMainClass() throws Exception;
+    // ......
 }
 ```
 
@@ -359,7 +274,7 @@ public class StandardPipeline implements Pipeline {
 
 <h3 id="section-2-3-1">打包方式</h3>
 
-在 SOFAArk 2.0 中采用 spring-boot 原生打包插件 spring-boot-maven-plugin 打包
+在 SOFAArk 2.0 中基座是采用 spring-boot 原生打包插件 spring-boot-maven-plugin 打包
 
 ```xml
 <build>
@@ -753,7 +668,7 @@ public class StandardPipeline implements Pipeline {
 
 <h5 id="section-2-3-4-3-1">Archive 解析</h5>
 
-Ark 2.0 模式下，在这个步骤里会创建 master biz，创建 master biz 的过程见 processEmbed 方法和 BizFactoryServiceImpl 里面的 createEmbedMasterBiz，并且 master biz 是使用 Launcher$AppClassLoader 加载的 。创建完 master biz 之后进行安装 plugin，
+Ark 2.0 模式下，在这个步骤里会创建 master biz，创建 master biz 的过程见 processEmbed 方法和 BizFactoryServiceImpl 里面的 createEmbedMasterBiz，并且 master biz 是使用 LaunchedURLClassLoader 加载的（本地启动是用 AppClassLoader） 。创建完 master biz 之后进行安装 plugin。
 
 ```java
     // HandleArchiveStage 类
