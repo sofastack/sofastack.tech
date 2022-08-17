@@ -1,7 +1,7 @@
 ---
 title: "Seata-php 半年规划"
 authorlink: "https://github.com/sofastack"
-description: "Seata-php 半年规划"
+description: "让 PHPer 也能使用 seata-php 来实现分布式事务"
 categories: "SOFAStack"
 tags: ["SOFAStack"]
 date: 2022-08-16T15:00:00+08:00
