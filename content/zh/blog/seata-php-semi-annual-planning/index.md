@@ -78,7 +78,7 @@ Hyperf 框架是近年内出现的由国人基于 Swoole 开发的一个微服�
 
 #### 3.1.1 下载 Hyperf/Box
 
-```
+```text
 # Mac
 wget https://github.com/hyperf/box/releases/download/v0.0.3/box_php8.1_x86_64_macos -O box
 # Linux x86_64
@@ -106,7 +106,7 @@ box config set github.access-token <Your Token>
 
 当 Box 下载好后，继续下载 PHP 8.0 版本
 
-```
+```text
 # 下载 php8.0
 box get php@8.0
 # 将 box 设置为 php8.0 版本
@@ -117,7 +117,7 @@ box config set-php-version 8.0
 
 #### 3.1.3 下载 composer
 
-```
+```text
 # 下载 composer
 box get composer
 ```
@@ -128,7 +128,7 @@ box get composer
 
 环境搭建完毕过后，找一个目录来存放 seata-php 项目的代码。
 
-```
+```text
 # 找个地方创建一个目录
 mkdir ./seata
 
@@ -169,7 +169,7 @@ Seata-php 遵循 PSR-1 代码规范[2]。
 
 社区提供了一个类似于 Go 语言 gofmt 一样的代码格式化工具——composer cs-fix，具体使用方式是：
 
-```
+```text
 # 格式化某个文件
 composer cs-fix ${FileName}
 # 格式化某个目录
