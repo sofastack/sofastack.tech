@@ -19,19 +19,13 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*bwpjQ7h41uIAAAAAA
 
 - 活动形式：线下活动
 
-- 资料下载：
+- 资料下载：  
+[《SOFA Serverless 体系助力业务极速研发》](https://gw.alipayobjects.com/os/bmw-prod/29c18142-ed8f-4e64-825e-5f2e7a0008cd.pdf)  
+[《KusionStack 在蚂蚁规模化运维的探索和总结》](https://gw.alipayobjects.com/os/bmw-prod/30f4e57c-19e4-48e7-b760-4ba92242f44c.pdf)
 
-[SOFA Serverless 体系助力业务极速研发](https://gw.alipayobjects.com/os/bmw-prod/29c18142-ed8f-4e64-825e-5f2e7a0008cd.pdf)
-
-[KusionStack 在蚂蚁规模化运维的探索和总结](https://gw.alipayobjects.com/os/bmw-prod/30f4e57c-19e4-48e7-b760-4ba92242f44c.pdf)
-
-- 本次分享涉及的项目地址：
-
-SOFAArk
-[https://github.com/sofastack/sofa-ark](https://github.com/sofastack/sofa-ark)
-
-KusionStack
-[https://github.com/kusionstack/kusion](https://github.com/kusionstack/kusion)
+- 本次分享涉及的项目地址：  
+【SOFAArk】[https://github.com/sofastack/sofa-ark](https://github.com/sofastack/sofa-ark)  
+【KusionStack】[https://github.com/kusionstack/kusion](https://github.com/kusionstack/kusion)
 
 ## 活动介绍
 
@@ -47,5 +41,5 @@ KusionStack
 
 ## 了解更多技术干货
 
-使用钉钉搜索群号：**34197075**，即可加入，获取一手开源技术干货；或微信扫码关注“金融级分布式架构”微信公众号👇
+使用钉钉搜索群号：**44858463**，即可加入，获取一手开源技术干货；或微信扫码关注“金融级分布式架构”微信公众号👇
 ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*_a06Q7zMKnwAAAAAAAAAAAAAARQnAQ)
