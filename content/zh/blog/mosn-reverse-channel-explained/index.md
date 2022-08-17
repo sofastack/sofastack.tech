@@ -1,5 +1,5 @@
 ---
-title: "MOSN 反向通道详解”"
+title: "MOSN 反向通道详解"
 authorlink: "https://github.com/sofastack"
 description: "本文主要介绍之前新合入 master 分支的「反向通道」的使用场景和设计原理，欢迎大家留言探讨。"
 categories: "SOFAStack"
