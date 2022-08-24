@@ -5,7 +5,7 @@ description: "KusionStack 在蚂蚁集团的探索实践 (上)"
 categories: "SOFAStack"
 tags: ["SOFAStack"]
 date: 2022-08-23T15:00:00+08:00
-cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*6LWmTJsryI4AAAAAAAAAAAAAARQnAQ"
+cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*ZOfNTo_9J2kAAAAAAAAAAAAAARQnAQ"
 ---
 
 ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*hTloRpjaIwsAAAAAAAAAAAAAARQnAQ)
