@@ -22,7 +22,6 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*6LWmTJsryI4AAAAAA
 
 **本文 2369 字 阅读 7 分钟**
 
-
 **背景**
 
 要讲 Kusion 在蚂蚁集团的实践，我们首先来了解下蚂蚁集团在此之前的配置管理状况。
@@ -115,30 +114,25 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*6LWmTJsryI4AAAAAA
 
 **相关链接**
 
-**Kusion 工具链和引擎：**
-_http://github.com/KusionStack/kusion_
+**Kusion 工具链和引擎：** *[http://github.com/KusionStack/kusion](http://github.com/KusionStack/kusion)*
 
-**Kusion 模型库：**
-_http://github.com/KusionStack/konfig_
+**Kusion 模型库：** *[http://github.com/KusionStack/konfig](http://github.com/KusionStack/konfig)*
 
-**Roadmap：**
-_http://KusionStack.io/docs/governance/intro/roadmap_
-_
+**Roadmap：** *[http://KusionStack.io/docs/governance/intro/roadmap](http://KusionStack.io/docs/governance/intro/roadmap)*
 
 **了解更多**
 
-**KusionStack Star 一下✨：**
-_https://github.com/KusionStack/Kusion_
+**KusionStack Star 一下✨：** *[https://github.com/KusionStack/Kusion](https://github.com/KusionStack/Kusion)*
 
 **本周推荐阅读**
 
-[KCL：声明式的云原生配置策略语言](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247491634&idx=1&sn=8359805abd97c598c058c6b5ad573d0d&chksm=faa30fe8cdd486fe421da66237bdacb11d83c956b087823808ddaaff52c1b1900c02dbf80c07&scene=21#wechat_redirect)
+[KCL：声明式的云原生配置策略语言](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247491634&idx=1&sn=8359805abd97c598c058c6b5ad573d0d&chksm=faa30fe8cdd486fe421da66237bdacb11d83c956b087823808ddaaff52c1b1900c02dbf80c07&scene=21)
 
-[KusionStack 开源｜Kusion 模型库和工具链的探索实践](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247512283&idx=1&sn=b1a6218e9c396749846baaa9b6b38a2d&chksm=faa35f01cdd4d6177f00938c93b0c652533da148e5ecb888280205525f0e89e4636d010b64ee&scene=21&token=95908034&lang=zh_CN#wechat_redirect)
+[KusionStack 开源｜Kusion 模型库和工具链的探索实践](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247512283&idx=1&sn=b1a6218e9c396749846baaa9b6b38a2d&chksm=faa35f01cdd4d6177f00938c93b0c652533da148e5ecb888280205525f0e89e4636d010b64ee&scene=21&token=95908034&lang=zh_CN)
 
-[精彩回顾｜KusionStack 开源啦～](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247509944&idx=1&sn=e0e45403aa4fab624a2147bae6397154&chksm=faa34862cdd4c1747bd6a419c4eb2c2cd0244d9587179aabbbf246946ed28a83636ab9cedc86&scene=21&token=95908034&lang=zh_CN#wechat_redirect)
+[精彩回顾｜KusionStack 开源啦～](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247509944&idx=1&sn=e0e45403aa4fab624a2147bae6397154&chksm=faa34862cdd4c1747bd6a419c4eb2c2cd0244d9587179aabbbf246946ed28a83636ab9cedc86&scene=21&token=95908034&lang=zh_CN)
 
-[KusionStack 开源有感｜历时两年，打破“隔行如隔山”困境](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247510766&idx=1&sn=16d7ab76854829ee64211dd6b9f6915c&chksm=faa34534cdd4cc223422efda8872757cb2deb73d22fe1067e9153d4b4f28508481b85649e444&scene=21&token=95908034&lang=zh_CN#wechat_redirect)
+[KusionStack 开源有感｜历时两年，打破“隔行如隔山”困境](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247510766&idx=1&sn=16d7ab76854829ee64211dd6b9f6915c&chksm=faa34534cdd4cc223422efda8872757cb2deb73d22fe1067e9153d4b4f28508481b85649e444&scene=21&token=95908034&lang=zh_CN)
 
 **欢迎扫码关注我们的公众号**
 
