@@ -34,27 +34,27 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*hsZEQL7rsygAAAAAAAAAAAAAARQnAQ)
 
-A：这个 mosnd 只是 mosn 的拷贝，可以看下这个文档：_https://mosn.io/docs/user-guide/start/istio/#mosn-%E4%B8%8E-istio-%E7%9A%84-proxyv2-%E9%95%9C%E5%83%8F-build-%E6%96%B9%E6%B3%95__
+A：这个 mosnd 只是 mosn 的拷贝，可以看下这个文档：https://mosn.io/docs/user-guide/start/istio/#mosn-%E4%B8%8E-istio-%E7%9A%84-proxyv2-%E9%95%9C%E5%83%8F-build-%E6%96%B9%E6%B3%95
 
-**「MOSN」**：_https://github.com/mosn/mosn_
+**「MOSN」**：_https://github.com/mosn/mosn
 
 **2. 胡** 提问：
 
 >请问这边有现成用 SOFAStack 搭建的框架包吗，内容涉及 SOFABoot、SOFARegistry、SOFARPC 的？
 
-A：现成的框架包的话，你可以从 SOFABoot 开始，参考这个：_https://www.sofastack.tech/projects/sofa-boot/quick-start/_
+A：现成的框架包的话，你可以从 SOFABoot 开始，参考这个：_https://www.sofastack.tech/projects/sofa-boot/quick-start/
 
-**「SOFABoot」**：_https://github.com/sofastack/sofa-boot__
+**「SOFABoot」**：_https://github.com/sofastack/sofa-boot
 
-**「SOFARegistry」：**_https://github.com/sofastack/sofa-registry_
+**「SOFARegistry」：**_https://github.com/sofastack/sofa-registry
 
-**「SOFARPC」：**_https://github.com/sofastack/sofa-rpc_
+**「SOFARPC」：**_https://github.com/sofastack/sofa-rpc
 
 **MOSN v1.1.0 版本发布**
 
 **发布 MOSN v1.1.0 版本，主要变更如下：**
 
-1. 支持反向建连，云边互联场景，细节可以参考博客：**_https://mosn.io/blog/posts/mosn-tunnel/_
+1. 支持反向建连，云边互联场景，细节可以参考博客：**_https://mosn.io/blog/posts/mosn-tunnel/
 
 2. 支持自定义 xDS 解析扩展
 
@@ -62,7 +62,7 @@ A：现成的框架包的话，你可以从 SOFABoot 开始，参考这个：_ht
 
 4. 优化创建 subset 负载均衡的算法，降低内存占用
 
-**详细发布报告**：_https://github.com/mosn/mosn/blob/master/CHANGELOG_ZH.md_
+**详细发布报告**：_https://github.com/mosn/mosn/blob/master/CHANGELOG_ZH.md
 
 **本周推荐阅读**
 
