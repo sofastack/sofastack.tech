@@ -38,11 +38,11 @@ CodeCity 代码城市是瑞典工程师 Richard Wettel 开发的创意应用，�
 
 **- 比如打开本地的 KusionStack/kusion 仓库**
 
-$ gocity open $HOME/go/src/github.com/KusionStack/kusionINFO[0000] Visualization available at: http://localhost:4000/_#/local_
+![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*hy-GS7JMIuoAAAAAAAAAAAAAARQnAQ)
 
 **- 然后浏览器打开对应页面**
 
-![](https://intranetproxy.alipay.com/skylark/lark/0/2022/jpeg/71456658/1661860320070-2c1a0201-c6ca-4ff3-9971-2ac437042a1d.jpeg#clientId=uc728f140-cd19-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=u4405f2a0&margin=%5Bobject%20Object%5D&originHeight=506&originWidth=924&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u09690741-38b7-4cc0-b155-58fa485d8cb&title=)
+![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*dAjhRo_dp80AAAAAAAAAAAAAARQnAQ)
 
 本地执行一切正常！
 
@@ -52,17 +52,20 @@ $ gocity open $HOME/go/src/github.com/KusionStack/kusionINFO[0000] Visualization
 
 作为一个类似数字城市的应用，在云原生、元宇宙等背景下，部署上云也是一个自然的需求。同时我们也希望通过 GoCity 展示下 KusionStack 的基本用法。在 GoCity 上云之前，我们先尝试如何本地执行该应用。
 
-相应的容器镜像已经推送到 Docker Hub_（https://hub.docker.com/r/yuanhao1223/gocity）_，运行命令如下：docker run -d -p 4000:4000 yuanhao1223/gocity:latest
+相应的容器镜像已经推送到 Docker Hub[https://hub.docker.com/r/yuanhao1223/gocity](https://hub.docker.com/r/yuanhao1223/gocity)，运行命令如下：
 
-运行成功后，可打开本地地址_（http://localhost:4000/）_查看 Go 项目的数字城市 3D 效果。
+![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*HCaeQrPnTJMAAAAAAAAAAAAAARQnAQ)
+
+运行成功后，可打开本地地址[http://localhost:4000/](http://localhost:4000/)查看 Go 项目的数字城市 3D 效果。
 
 容器化成功后，现在准备上云。从本地执行容器的方式可以看出，想要在 Kubernetes 部署，至少需要 Deployment 和 Service 两种资源。其中 Deployment 用来部署 Go 代码城市，Service 暴露端口，访问无状态应用。
 
-首先参考安装文档_（https://kusionstack.io/docs/user_docs/getting-started/install/）_安装好本地 Kusion 命令，然后通过 kusion init 的在线仓库提供了相应的模板。Kusion 命令支持一键初始化配置：
+首先参考安装文档[https://kusionstack.io/docs/user_docs/getting-started/install/](https://kusionstack.io/docs/user_docs/getting-started/install/）安装好本地 Kusion 命令，然后通过 kusion init 的在线仓库提供了相应的模板。Kusion 命令支持一键初始化配置：
 kusion init --online
 
 输出类似以下信息：
-![](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/71456658/1661860320026-e7149d2f-092f-4082-bb75-76bb072d0b9b.png#clientId=uc728f140-cd19-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=u0c2537b3&margin=%5Bobject%20Object%5D&originHeight=179&originWidth=1080&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u35175eeb-dcdb-4cf0-9ae2-aeb32d09ff0&title=)
+
+![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*-G1ZS4X2OQAAAAAAAAAAAAAAARQnAQ)
 
 为了方便展示，Kusion 模板已经内置了 CodeCity 的例子。其中 code-city 模板依赖 konfig 大库中抽象化的前/后端模型，code-city 模板无依赖，可以自闭环。我们选择后者：
 
@@ -80,20 +83,24 @@ kusion init --online
 kusion apply main.k
 
 输出类似于：
-![](https://intranetproxy.alipay.com/skylark/lark/0/2022/gif/71456658/1661860320925-33005c51-4adc-49e0-adfd-3ef80d96c645.gif#clientId=uc728f140-cd19-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=u4214b7cb&margin=%5Bobject%20Object%5D&originHeight=439&originWidth=800&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u1448c75d-4c98-44ff-8a35-ded42846b62&title=)
+
+![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*vv9eRqNOmN0AAAAAAAAAAAAAARQnAQ)
 
 检查 Deployment 的状态：
-kubectl get deploy gocity
+
+![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*vv9eRqNOmN0AAAAAAAAAAAAAARQnAQ)
 
 输出类似于：
-NAME     READY   UP-TO-DATE   AVAILABLE   AGEgocity   1/1     1            1           85s
+
+![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*1r98QaGC0DQAAAAAAAAAAAAAARQnAQ)
 
 使用 kubectl 端口转发：
-kubectl port-forward svc/gocity 4000:4000
 
-访问本地地址_（https://localhost:4000/）_，点击 Example 处的链接 “KusionStack/kusion”，可以看到和本地执行一样的效果：
+![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*EyZxTJ1Wf_YAAAAAAAAAAAAAARQnAQ)
 
-![](https://intranetproxy.alipay.com/skylark/lark/0/2022/gif/71456658/1661860320887-025c6fb8-2de8-4061-bb46-023e3db9eccc.gif#clientId=uc728f140-cd19-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=u9484a70e&margin=%5Bobject%20Object%5D&originHeight=480&originWidth=768&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=ue577b776-f59f-4598-85ec-38976deff12&title=)
+访问本地地址[https://localhost:4000/)](https://localhost:4000/)，点击 Example 处的链接 “KusionStack/kusion”，可以看到和本地执行一样的效果：
+
+![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*ahRfToqw7VQAAAAAAAAAAAAAARQnAQ)
 
 至此，完成了 Go 代码城市的一键上云。有兴趣的读者，可以基于模型库 Konfig，选择其他模板，探索 KusionStack 支持的其它运维场景，下面我们将探索代码城市内部的原理。
 
@@ -103,21 +110,21 @@ kubectl port-forward svc/gocity 4000:4000
 
 说实话代码城市第一眼看上去更像一个电路板，要理解其中的含义需要了解几个基本的参数映射关系，如预览页面的右下角图所示：
 
-![](https://intranetproxy.alipay.com/skylark/lark/0/2022/jpeg/71456658/1661860320983-18078a6d-741d-4dc5-b70b-603f09e741ca.jpeg#clientId=uc728f140-cd19-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=u81525b81&margin=%5Bobject%20Object%5D&originHeight=206&originWidth=412&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=uaaff0e71-f557-4385-b0fc-2f79f7d8942&title=)
+![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*deORSpTUNRoAAAAAAAAAAAAAARQnAQ)
 
 以上的对应关系在其官方文档中也说明，如下图所示：
 
-![](https://intranetproxy.alipay.com/skylark/lark/0/2022/jpeg/71456658/1661860321001-7bf7ca15-3a5e-4e5f-9518-9f270247282c.jpeg#clientId=uc728f140-cd19-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=u80bd37de&margin=%5Bobject%20Object%5D&originHeight=237&originWidth=512&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=ufabae7d8-00da-4999-9415-6eeb0673e5e&title=)
+![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*1Ny8TK76I0IAAAAAAAAAAAAAARQnAQ)
 
 其中地面的粉红色表示 Go 包对应的目录（_因为包的依赖关系可能再产生叠加_），灰色表示目录内部的文件，而蓝色表示结构体。其中表示文件的灰色建筑物的大小即文件的大小，表示结构体的蓝色建筑物的高度即方法的数量，建筑物的长宽表示结构体中属性的数量，蓝色颜色的深度表示相关代码行数。
 
 我们可以选择 DiffOptions 结构体对应建筑物查看其相关的属性参数：
 
-![](https://intranetproxy.alipay.com/skylark/lark/0/2022/jpeg/71456658/1661860321007-042584a0-a6de-434b-9777-a57385c76a32.jpeg#clientId=uc728f140-cd19-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=u546fd302&margin=%5Bobject%20Object%5D&originHeight=446&originWidth=678&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=ub0c9db79-5b77-442c-b261-c7d16659165&title=)
+![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*ugvaTYwl3hEAAAAAAAAAAAAAARQnAQ)
 
 可以看到该结构体中有 15 个属性、3 个方法、共 156 行代码。通过点击其中的 “Github 链接” 按钮可以跳转到对应的位置：
 
-![](https://intranetproxy.alipay.com/skylark/lark/0/2022/jpeg/71456658/1661860321561-a9104a9d-1887-4e5d-917e-948cd70cfe6e.jpeg#clientId=uc728f140-cd19-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=u28101f5b&margin=%5Bobject%20Object%5D&originHeight=379&originWidth=646&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u43a00647-1981-4599-ac39-e015f5cf267&title=)
+![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*o1QTRaYgeMsAAAAAAAAAAAAAARQnAQ)
 
 因此通过这种方式我们可以很容易查看全局有无特别高大的建筑，从而判断是否存在某些文件和结构体的代码需要改进。可以说 GoCity 是一个很有趣的代码分析工具，甚至可以集成到 Github PR 代码评审流程中。
 
@@ -127,7 +134,7 @@ kubectl port-forward svc/gocity 4000:4000
 
 GoCity 代码架构主要分为代码数据提取和前端模型展示两块，如图所示：
 
-![](https://intranetproxy.alipay.com/skylark/lark/0/2022/jpeg/71456658/1661860321691-deff8bee-fb43-4598-b4c3-7266a418ea96.jpeg#clientId=uc728f140-cd19-4&crop=0&crop=0&crop=1&crop=1&from=paste&id=ue8d825f1&margin=%5Bobject%20Object%5D&originHeight=220&originWidth=537&originalType=url&ratio=1&rotation=0&showTitle=false&status=done&style=none&taskId=u7040e067-60fa-4ba1-b91a-e5669f9563e&title=)
+![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*_NT7Sa226zgAAAAAAAAAAAAAARQnAQ)
 
 首先 Codebase 表示要展示的代码，通过 Git Service 被拉取，然后通过 Parser 和 Position 服务提取得到对应的参数信息，然后通过前端展示。Go 语言代码主要集中在模型数据提取部分，而前端展示主要为 JS 等实现。前端展示资源文件通过 embed.FS 内嵌到程序中，GoCity 命令启动 Web 服务展示页面。代码架构比较清晰，也是一个比较理想可用于 Go 语言学习的开源项目。
 
@@ -152,7 +159,6 @@ GoCity 代码架构主要分为代码数据提取和前端模型展示两块，�
 **KusionStack Star 一下✨：**
 
 [https://github.com/KusionStack/Kusion](https://github.com/KusionStack/Kusion)
-
 
 **本周推荐阅读**
 
