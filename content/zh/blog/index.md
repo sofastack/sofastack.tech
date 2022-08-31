@@ -60,7 +60,7 @@ CodeCity 代码城市是瑞典工程师 Richard Wettel 开发的创意应用，�
 
 容器化成功后，现在准备上云。从本地执行容器的方式可以看出，想要在 Kubernetes 部署，至少需要 Deployment 和 Service 两种资源。其中 Deployment 用来部署 Go 代码城市，Service 暴露端口，访问无状态应用。
 
-首先参考安装文档[https://kusionstack.io/docs/user_docs/getting-started/install/](https://kusionstack.io/docs/user_docs/getting-started/install/）安装好本地 Kusion 命令，然后通过 kusion init 的在线仓库提供了相应的模板。Kusion 命令支持一键初始化配置：
+首先参考安装文档[https://kusionstack.io/docs/user_docs/getting-started/install/](https://kusionstack.io/docs/user_docs/getting-started/install/)安装好本地 Kusion 命令，然后通过 kusion init 的在线仓库提供了相应的模板。Kusion 命令支持一键初始化配置：
 
 ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*C4WtSLqKBIEAAAAAAAAAAAAAARQnAQ)
 
