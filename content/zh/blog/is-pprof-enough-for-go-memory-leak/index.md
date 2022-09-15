@@ -90,7 +90,7 @@ Go 语言作为编译型静态语言，是不需要为每个内存对象存储�
 
 所以，使用方式如下：
 
-```
+```text
 # 编译 mosn 维护的 viewcore
 git clone git@github.com:mosn/debug.git
 cd debug/cmd/viewcore
