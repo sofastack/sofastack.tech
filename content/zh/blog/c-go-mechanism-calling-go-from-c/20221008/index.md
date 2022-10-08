@@ -1,3 +1,13 @@
+---
+title: "cgo 机制 - 从 c 调用 go"
+authorlink: "https://github.com/sofastack"
+description: "cgo 机制 - 从 c 调用 go"
+categories: "SOFAStack"
+tags: ["SOFAStack"]
+date: 2022-10-08T15:00:00+08:00
+cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*4FrcRZITzesAAAAAAAAAAAAAARQnAQ"
+---
+
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5ba0daf5e03e44459f92d3d3b4e61bde~tplv-k3u1fbpfcp-zoom-1.image)
 
 文｜朱德江（GitHub ID：doujiang24)
