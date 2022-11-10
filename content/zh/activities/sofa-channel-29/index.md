@@ -16,17 +16,17 @@ description: "2022 年 7 月 26 日 19：00 - 20：00  ，线上直播第 29 期
 
 - 活动形式：线上直播
 
+- 直播回放：[点击观看](https://b23.tv/3LqLGJo)
+
 - 资料下载：[戳这里](https://gw.alipayobjects.com/os/bmw-prod/1a9dba2d-ba0a-409b-84b7-077c5bc312da.pdf)
 
-- B 站直播间地址：[http://live.bilibili.com/21954520](http://live.bilibili.com/21954520)
-
-- B 站直播ID：21954520
+- 推荐阅读：[Dragonfly--基于 P2P 的文件和镜像分发系统](https://mp.weixin.qq.com/s/Po_ivg-ecHFvdvTcCkHJdA)
 
 ## 介绍
 
 ### | SOFAChannel
 
-`<SOFA:Channel/>` 有趣实用的分布式架构频道，前沿技术、直播 Coding、观点“抬杠”，多种形式。
+`<SOFA:Channel/>` 有趣实用的分布式架构频道，前沿技术、直播 Coding、观点“抬杠”等多种形式期待你的参与！
 
 `<SOFA:Channel/>` 将作为 SOFA 所有在线内容的承载，包含直播/音视频教程，集中体现 SOFAStack 的能力全景图。
 
@@ -55,10 +55,6 @@ Dragonfly 是一款基于 P2P 的智能镜像和文件分发工具。它旨在�
 ## 议程
 
 >![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*QzkPQIHadrsAAAAAAAAAAAAAARQnAQ)
-
-## 直播回放
-
-[https://b23.tv/Gnz9y6D](https://b23.tv/Gnz9y6D)
 
 ## 了解更多技术干货
 
