@@ -39,7 +39,7 @@ Github 地址：
 
 ### 1.2 任务要求
 
-目标：当前 LogStorage 的实现，采用 index 与 data 分离的设计，我们将 key 和 value 的 offset 作为索引写入 rocksdb，同时日志条目（data）写入 Segment Log。因为使用 SOFAJRaft 的用户经常也使用了不同版本的 rocksdb，这就要求用户不得不更换自己的 rocksdb 版本来适应 SOFAJRaft， 所以我们希望做一个改进：移除对 rocksdb 的依赖，构建出一个纯 Java 实现的索引模块。
+目标：当前 LogStorage 的实现，采用 index 与 data 分离的设计，我们将 key 和 value 的 offset 作为索引写入 rocksdb，同时日志条目（data）写入 Segment Log。因为使用 SOFAJRaft 的用户经常也使用了不同版本的 rocksdb，这就要求用户不得不更换自己的 rocksdb 版本来适应 SOFAJRaft。因此我们希望做一个改进：移除对 rocksdb 的依赖，构建出一个纯 Java 实现的索引模块。
 
 ## PART. 2 前置知识
 
