@@ -46,6 +46,8 @@ sidebar:
             link: 'sofa-ark-ark-plugin-demo'
           - title: '如何打包 Ark 包'  	
             link: 'sofa-ark-ark-demo'
+          - title: 'Spring Boot 应用如何结合 SofaArk'
+            link: 'sofa-ark-spring-boot-demo'
       - title: '用户文档'
         sub:
           - title: '基础术语'  	
