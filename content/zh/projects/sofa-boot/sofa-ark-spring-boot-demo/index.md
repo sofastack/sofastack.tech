@@ -291,4 +291,4 @@ logging.file.path=./logs
 
 
 ## 7. 如何动态卸载 Spring Boot 业务应用
-目前 Spring boot 不支持动态卸载。
+目前 Spring boot 不支持动态卸载。如果要动态卸载，需要注册一个卸载的事件handler，请参考 sofaboot 的代码：[SofaBizUninstallEventHandler](https://github.com/sofastack/sofa-boot/blob/master/sofa-boot-project/sofa-boot-core/runtime-sofa-boot/src/main/java/com/alipay/sofa/runtime/SofaBizUninstallEventHandler.java)。
