@@ -16,7 +16,9 @@ aliases: "/sofa-boot/docs/sofa-ark-spring-boot-demo"
 ## 1. 简介
 
 宿主应用（master biz）负责沉淀通用的逻辑，为业务应用提供计算和环境，为业务应用的开发者屏蔽基础设施，更新迭代较慢。各个业务应用（普通 biz）是独立的代码仓库，可以进行独立的研发运维，粒度小，更新迭代较快。业务应用将通用的依赖下沉至宿主应用，依赖宿主应用的环境运行，不是一个 可执行 Jar，因此业务应用自身的 jar 包可以不包含该通用依赖，以此得到轻量化的业务应用 jar 包。
+
 宿主应用与业务应用的运行关系是：宿主应用首先启动，拥有与普通应用相同的类加载器；业务应用 jar 包以热拔插的模式在宿主应用中动态部署，通用依赖通过宿主应用的类加载器加载，其它依赖使用业务自己的BizClassLoader进行加载。
+
 本文中宿主应用和业务应用均为 Web 应用，采用了单 host 模式，其样例代码地址如下：
 
 - Spring Boot 宿主应用：[Spring Boot 宿主应用](https://github.com/sofastack-guides/sofa-ark-spring-guides)
@@ -99,6 +101,7 @@ mvn clean package -Dmaven.test.skip=true
 ## 3. 如何构建 Spring Boot 宿主应用
 
 Spring Boot 宿主应用和 Spring Boot 普通应用没有任何区别，打包插件保持不变。宿主应用包含多个业务应用的通用依赖（包括 SofaArk 依赖），为业务应用提供通用逻辑和环境。首先我们介绍Ark相关的依赖配置，然后以样例代码介绍通用依赖。
+
 Ark相关的依赖配置如下：
 
 ```xml
@@ -153,6 +156,7 @@ Ark相关的依赖配置如下：
 ### 4.1 IDEA 运行
 
 IDEA 运行需要先在 IDEA 的启动配置（Run Configurations）中添加虚拟机参数（VM Options）`-Dsofa.ark.embed.enable=true`，然后再运行。
+
 正常运行的截图为：
 
 - Ark Container 成功启动
@@ -213,6 +217,7 @@ java -jar -Dsofa.ark.embed.enable=true sofa-ark-spring-guides-0.0.1-SNAPSHOT-ark
 ## 5. 如何执行 Spring Boot 业务应用
 
 业务应用依赖宿主应用执行，因此需要在宿主应用成功运行之后，利用 Telnet 工具进行安装执行。Telnet 工具的详细介绍见 [Telnet 指令](https://www.sofastack.tech/projects/sofa-boot/sofa-ark-ark-telnet/)。
+
 在宿主应用运行后，连接 Telnet ，以`file:\\\`（Win）或`file:///`（Mac）为前缀，通过业务应用 ark-biz.jar 包的本地地址安装，如下：
 
 ```bash
@@ -257,6 +262,7 @@ SpringBootArkBizApplication classLoader: com.alipay.sofa.ark.container.service.c
 **端口配置**
 
 由于不同的 Biz 应用拥有各自的端口，因此需要在每个 Web 应用（包括 Web 业务应用及 Web 宿主应用）指定不同的端口号。接下来，我们结合样例仓库代码介绍：
+
 对于[业务应用样例](https://github.com/sofastack-guides/spring-boot-ark-biz)，配置 application.properties 如下：
 
 ```properties
