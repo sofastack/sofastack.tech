@@ -27,6 +27,7 @@ aliases: "/sofa-boot/docs/sofa-ark-spring-boot-demo"
 业务应用是一种普通 Biz，换而言之，“如何构建业务应用”即为“如何构建普通 Ark Biz”，`Ark Biz`的介绍请详见[Ark Biz](https://www.sofastack.tech/projects/sofa-boot/sofa-ark-ark-biz/)。
 
 ### 2.1 依赖配置
+
 首先，我们需要把业务应用构建成一种 SofaArk 框架可识别的`Ark Biz`，即：使用`Ark Biz`打包构建的依赖，配置如下：
 
 ```xml
