@@ -39,6 +39,7 @@ aliases: "/sofa-boot/docs/sofa-ark-ark-plugin-demo"
 
 ### 创建标准 Maven 工程
 该用例工程是一个标准的 Maven 工程，一共包含两个模块：
+
 * common 模块：包含了插件导出类
 
 * plugin 模块：包含了 `com.alipay.sofa.ark.spi.service.PluginActivator` 接口实现类和一个插件服务类，插件打包工具 `sofa-ark-plugin-maven-plugin` 即配置在该模块的 `pom.xml` 中；
