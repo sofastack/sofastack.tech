@@ -20,9 +20,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*Nk8-RoLjjy4AAAAAA
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/39459098704044578d070dde76b20a5c~tplv-k3u1fbpfcp-zoom-1.image)
 
-> GitLink 编程夏令营是在 CCF 中国计算机学会指导下，由 CCF 开源发展委员会（CCF ODC）举办的面向全国高校学生的暑期编程活动。  
-
-> 这是今年的夏令营活动中，余硕同学参加 Nydus 开源项目的总结，主要介绍了 Nydus 为支持镜像扫描与修复所做的研究与相关工作。
+> GitLink 编程夏令营是在 CCF 中国计算机学会指导下，由 CCF 开源发展委员会（CCF ODC）举办的面向全国高校学生的暑期编程活动。  这是今年的夏令营活动中，余硕同学参加 Nydus 开源项目的总结，主要介绍了 Nydus 为支持镜像扫描与修复所做的研究与相关工作。
 
 ## PART. 1 课题背景  
 
