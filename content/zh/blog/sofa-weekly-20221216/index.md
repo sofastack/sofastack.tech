@@ -4,7 +4,7 @@ authorlink: "https://github.com/sofastack"
 description: "SOFA Weekly | Tongsuo 8.3.2 版本发布、C 位大咖说、本周 Contributor & QA"
 categories: "SOFA Weekly"
 tags: ["SOFA Weekly"]
-date: 2022-11-25T15:00:00+08:00
+date: 2022-12-16T15:00:00+08:00
 cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAAAAAAAAARQnAQ"
 ---
 
