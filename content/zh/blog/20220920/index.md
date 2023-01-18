@@ -29,6 +29,7 @@ Seata 四种事务模式中，AT 事务模式是阿里体系独创的事务模�
 目前，Seata 社区正大力推进其多语言版本建设，Go、PHP、JS 和 Python 四个语言版本基本完成了 TCC 事务模式的实现。参照 Seata v1.5.2 版本的 AT 模式的实现，并结合 Seata 官方文档，本文尝试从代码角度详解 Seata AT 事务模式的详细流程，目的是梳理 Seata Java 版本 AT 模式的实现细节后，在多语言版本后续开发中，优先实现 AT 事务模式。
 
 ## 1、什么是 AT 模式？
+
 AT 模式是一种二阶段提交的分布式事务模式，它采用了本地 undo log 的方式来数据在修改前后的状态，并用它来实现回滚。从性能上来说，AT 模式由于有 undo log 的存在，一阶段执行完可以立即释放锁和连接资源，吞吐量比 XA 模式高。用户在使用 AT 模式的时候，只需要配置好对应的数据源即可，事务提交、回滚的流程都由 Seata 自动完成，对用户业务几乎没有入侵，使用便利。
 
 ## 2、AT 模式与 ACID 和 CAP
@@ -38,7 +39,6 @@ AT 模式是一种二阶段提交的分布式事务模式，它采用了本地 u
 ### 2.1 AT 与 ACID
 
 数据库事务要满足原子性、一致性、持久性以及隔离性四个性质，即 ACID 。在分布式事务场景下，一般地，首先保证原子性和持久性，其次保证一致性，隔离性则因为其使用的不同数据库的锁、数据 MVCC 机制以及相关事务模式的差异， 具有多种隔离级别，如 MySQL 自身事务就有读未提交（Read Uncommitted）、读已提交（Read Committed）、可重复读（Repeatable Read）、序列化（Serializable）等四种隔离级别。
-
 
 #### 2.1.1 AT模式的读隔离
 
@@ -206,146 +206,6 @@ UndoLogManager 负责 undo log 的新加、删除、回滚操作，不同的数�
 ![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f34351668e76479084c1cab76edd38f0~tplv-k3u1fbpfcp-zoom-1.image)
 
 源码分析如下：
-
-```Go
-@Override
-public void undo(DataSourceProxy dataSourceProxy, String xid, long branchId) throws TransactionException {
-	Connection conn = null;b
-		ResultSet rs = null;
-	PreparedStatement selectPST = null;
-	boolean originalAutoCommit = true;
-
-	for (; ; ) {
-		try {
-			conn = dataSourceProxy.getPlainConnection();
-
-			// The entire undo process should run in a local transaction.
-			// 开启本地事务，确保删除undo log和恢复业务数据的SQL在一个事务中commit
-			if (originalAutoCommit = conn.getAutoCommit()) {
-				conn.setAutoCommit(false);
-			}
-
-			// Find UNDO LOG
-			selectPST = conn.prepareStatement(SELECT_UNDO_LOG_SQL);
-			selectPST.setLong(1, branchId);
-			selectPST.setString(2, xid);
-			// 查出branchId的所有undo log记录，用来恢复业务数据
-			rs = selectPST.executeQuery();
-
-			boolean exists = false;
-			while (rs.next()) {
-				exists = true;
-
-				// It is possible that the server repeatedly sends a rollback request to roll back
-				// the same branch transaction to multiple processes,
-				// ensuring that only the undo_log in the normal state is processed.
-				int state = rs.getInt(ClientTableColumnsName.UNDO_LOG_LOG_STATUS);
-				// 如果state=1，说明可以回滚；state=1说明不能回滚
-				if (!canUndo(state)) {
-					if (LOGGER.isInfoEnabled()) {
-						LOGGER.info("xid {} branch {}, ignore {} undo_log", xid, branchId, state);
-					}
-					return;
-				}
-
-				String contextString = rs.getString(ClientTableColumnsName.UNDO_LOG_CONTEXT);
-				Map<String, String> context = parseContext(contextString);
-				byte[] rollbackInfo = getRollbackInfo(rs);
-
-				String serializer = context == null ? null : context.get(UndoLogConstants.SERIALIZER_KEY);
-				// 根据serializer获取序列化工具类
-				UndoLogParser parser = serializer == null ? UndoLogParserFactory.getInstance()
-					: UndoLogParserFactory.getInstance(serializer);
-				// 反序列化undo log，得到业务记录修改前后的明文
-				BranchUndoLog branchUndoLog = parser.decode(rollbackInfo);
-
-				try {
-					// put serializer name to local
-					setCurrentSerializer(parser.getName());
-					List<SQLUndoLog> sqlUndoLogs = branchUndoLog.getSqlUndoLogs();
-					if (sqlUndoLogs.size() > 1) {
-						Collections.reverse(sqlUndoLogs);
-					}
-					for (SQLUndoLog sqlUndoLog : sqlUndoLogs) {
-						TableMeta tableMeta = TableMetaCacheFactory.getTableMetaCache(dataSourceProxy.getDbType()).getTableMeta(
-								conn, sqlUndoLog.getTableName(), dataSourceProxy.getResourceId());
-						sqlUndoLog.setTableMeta(tableMeta);
-						AbstractUndoExecutor undoExecutor = UndoExecutorFactory.getUndoExecutor(
-								dataSourceProxy.getDbType(), sqlUndoLog);
-						undoExecutor.executeOn(conn);
-					}
-				} finally {
-					// remove serializer name
-					removeCurrentSerializer();
-				}
-			}
-
-			// If undo_log exists, it means that the branch transaction has completed the first phase,
-			// we can directly roll back and clean the undo_log
-			// Otherwise, it indicates that there is an exception in the branch transaction,
-			// causing undo_log not to be written to the database.
-			// For example, the business processing timeout, the global transaction is the initiator rolls back.
-			// To ensure data consistency, we can insert an undo_log with GlobalFinished state
-			// to prevent the local transaction of the first phase of other programs from being correctly submitted.
-			// See https://github.com/seata/seata/issues/489
-
-			if (exists) {
-				deleteUndoLog(xid, branchId, conn);
-				conn.commit();
-				if (LOGGER.isInfoEnabled()) {
-					LOGGER.info("xid {} branch {}, undo_log deleted with {}", xid, branchId,
-							State.GlobalFinished.name());
-				}
-			} else {
-				// 如果不存在undo log，可能是因为分支事务还未执行完成（比如，分支事务执行超时），TM发起了回滚全局事务的请求。
-				// 这个时候，往undo_log表插入一条记录，可以使分支事务提交的时候失败（undo log）
-				insertUndoLogWithGlobalFinished(xid, branchId, UndoLogParserFactory.getInstance(), conn);
-				conn.commit();
-				if (LOGGER.isInfoEnabled()) {
-					LOGGER.info("xid {} branch {}, undo_log added with {}", xid, branchId,
-							State.GlobalFinished.name());
-				}
-			}
-
-			return;
-		} catch (SQLIntegrityConstraintViolationException e) {
-			// Possible undo_log has been inserted into the database by other processes, retrying rollback undo_log
-			if (LOGGER.isInfoEnabled()) {
-				LOGGER.info("xid {} branch {}, undo_log inserted, retry rollback", xid, branchId);
-			}
-		} catch (Throwable e) {
-			if (conn != null) {
-				try {
-					conn.rollback();
-				} catch (SQLException rollbackEx) {
-					LOGGER.warn("Failed to close JDBC resource while undo ... ", rollbackEx);
-				}
-			}
-			throw new BranchTransactionException(BranchRollbackFailed_Retriable, String
-					.format("Branch session rollback failed and try again later xid = %s branchId = %s %s", xid,
-						branchId, e.getMessage()), e);
-		} finally {
-			try {
-				if (rs != null) {
-					rs.close();
-				}
-				if (selectPST != null) {
-					selectPST.close();
-				}
-				if (conn != null) {
-					if (originalAutoCommit) {
-						conn.setAutoCommit(true);
-					}
-					conn.close();
-				}
-			} catch (SQLException closeEx) {
-				LOGGER.warn("Failed to close JDBC resource while undo ... ", closeEx);
-			}
-		}
-	}
-}
-
-```
 
 备注：需要特别注意下，当回滚的时候，发现 undo log 不存在，需要往 undo_log 表新加一条记录，避免因为 RM 在 TM 发出回滚请求后，又成功提交分支事务的场景。
 
