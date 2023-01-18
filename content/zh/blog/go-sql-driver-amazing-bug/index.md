@@ -187,7 +187,7 @@ func parseDateTime(b []byte, loc *time.Location) (time.Time, error) {  const bas
 
 有些人可能有疑问，如果 go-sql-driver 为什么不直接使用 MySQL 的时区去解析 timestamp 呢？
   
-我们已经提了一个 issue，商讨更好的解决方案：*https://github.com/go-sql-driver/mysql/issues/1379*。
+我们已经提了一个 issue，商讨更好的解决方案：*[https://github.com/go-sql-driver/mysql/issues/1379](https://github.com/go-sql-driver/mysql/issues/1379)*。
 
 ### PART. 3 最后结论
 
