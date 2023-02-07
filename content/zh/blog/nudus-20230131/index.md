@@ -28,8 +28,6 @@ Nydus 的整体架构如下图所示。它可以通过 FUSE 给 runc 容器提�
 
 ![img](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/198629/1670840536290-09923ed1-72e2-421e-bd33-517b89fc1dff.png)
 
-![img](https://intranetproxy.alipay.com/skylark/lark/0/2022/png/198629/1670840550559-8b105a75-bb15-47ad-a847-5baa7b60c785.png)		
-
 在用户空间文件系统，Nydus 采用了数据和元数据分离的设计思想，元数据的修改不会导致整个镜像层的更新。原先的镜像层只存储文件的数据部分，同时数据被分块存储。拉取镜像是不需要拉取整层，只需要拉取所需文件对应的数据块即可。这也使得层与层之间，镜像与镜像之间共享数据块更加容易。上图展示了 Nydus 数据和元数据的存储格式。其中元数据以 merkle tree 的形式存储在 bootstrap 中，包含了容器启动所需要的信息。数据以 1MB 分块存储，不同镜像可以共享同一数据块。 
 
 ## Nydus 镜像校验意义及流程 
@@ -114,10 +112,10 @@ Nydus 镜像在构建完成后，由于网络、磁盘等故障或者镜像被�
 
 **本周推荐阅读**
 
-[Nydus 镜像扫描加速](https://link.juejin.cn/?target=http%3A%2F%2Fmp.weixin.qq.com%2Fs%3F__biz%3DMzUzMzU5Mjc1Nw%3D%3D%26mid%3D2247520024%26idx%3D1%26sn%3De87a70a49cabde775b3c6651db652404%26chksm%3Dfaa360c2cdd4e9d46b19c2cc037e7379ff40dc7c1b2fef98de37fc524f8931d9704046b36b4c%26scene%3D21%23wechat_redirect "http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247520024&idx=1&sn=e87a70a49cabde775b3c6651db652404&chksm=faa360c2cdd4e9d46b19c2cc037e7379ff40dc7c1b2fef98de37fc524f8931d9704046b36b4c&scene=21)
+[Nydus 镜像扫描加速](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247520024&idx=1&sn=e87a70a49cabde775b3c6651db652404&chksm=faa360c2cdd4e9d46b19c2cc037e7379ff40dc7c1b2fef98de37fc524f8931d9704046b36b4c&scene=21)
 
-[Nydus 镜像加速插件迁入 Containerd 旗下](https://link.juejin.cn/?target=http%3A%2F%2Fmp.weixin.qq.com%2Fs%3F__biz%3DMzUzMzU5Mjc1Nw%3D%3D%26mid%3D2247504035%26idx%3D1%26sn%3D320b77bf5f3c6cf0da309f7527b98e64%26chksm%3Dfaa33f79cdd4b66f184d273a2d7460c41320711eab47af849e386c359e71eeebc6c7f21c1e0f%26scene%3D21%23wechat_redirect "http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247504035&idx=1&sn=320b77bf5f3c6cf0da309f7527b98e64&chksm=faa33f79cdd4b66f184d273a2d7460c41320711eab47af849e386c359e71eeebc6c7f21c1e0f&scene=21)
+[Nydus 镜像加速插件迁入 Containerd 旗下](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247504035&idx=1&sn=320b77bf5f3c6cf0da309f7527b98e64&chksm=faa33f79cdd4b66f184d273a2d7460c41320711eab47af849e386c359e71eeebc6c7f21c1e0f&scene=21)
 
-[Nydus | 容器镜像基础](https://link.juejin.cn/?target=http%3A%2F%2Fmp.weixin.qq.com%2Fs%3F__biz%3DMzUzMzU5Mjc1Nw%3D%3D%26mid%3D2247517164%26idx%3D1%26sn%3D28f50763db2883839908057125a7b497%26chksm%3Dfaa36c36cdd4e52050796d00f2f5bf357471692c2da8727cc44ae47856cd925e599b6e954314%26scene%3D21%23wechat_redirect "http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247517164&idx=1&sn=28f50763db2883839908057125a7b497&chksm=faa36c36cdd4e52050796d00f2f5bf357471692c2da8727cc44ae47856cd925e599b6e954314&scene=21)
+[Nydus | 容器镜像基础](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247517164&idx=1&sn=28f50763db2883839908057125a7b497&chksm=faa36c36cdd4e52050796d00f2f5bf357471692c2da8727cc44ae47856cd925e599b6e954314&scene=21)
 
-[Dragonfly 和 Nydus Mirror 模式集成实践](https://link.juejin.cn/?target=http%3A%2F%2Fmp.weixin.qq.com%2Fs%3F__biz%3DMzUzMzU5Mjc1Nw%3D%3D%26mid%3D2247518517%26idx%3D1%26sn%3D74f6426f0b280cbd4aafd2d37eaaec04%26chksm%3Dfaa366efcdd4eff9b50d52dad855ab593034b4af94896c2386705a316f063a1825d1729da36a%26scene%3D21%23wechat_redirect "http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247518517&idx=1&sn=74f6426f0b280cbd4aafd2d37eaaec04&chksm=faa366efcdd4eff9b50d52dad855ab593034b4af94896c2386705a316f063a1825d1729da36a&scene=21)
+[Dragonfly 和 Nydus Mirror 模式集成实践](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247518517&idx=1&sn=74f6426f0b280cbd4aafd2d37eaaec04&chksm=faa366efcdd4eff9b50d52dad855ab593034b4af94896c2386705a316f063a1825d1729da36a&scene=21)
