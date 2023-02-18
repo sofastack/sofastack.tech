@@ -35,7 +35,7 @@ PeerId 表示一个 raft 协议的参与者（leader/follower/candidate etc.)，
 
 ```java
 PeerId peer = new PeerId("localhost", 8080);
-EndPoint addr = peer.getEndpoint(); // 获取节点地址
+Endpoint addr = peer.getEndpoint(); // 获取节点地址
 int index = peer.getIdx(); // 获取节点序号，目前一直为 0
 
 String s = peer.toString(); // 结果为 localhost:8080
@@ -116,8 +116,8 @@ Task 是用户使用 jraft 最核心的类之一，用于向一个 raft 复制�
 ```java
 Closure done = ...;
 Task task = new Task();
-task.setData(ByteBuffer.wrap("hello".getBytes());
-task.setClosure(done);
+task.setData(ByteBuffer.wrap("hello".getBytes()));
+task.setDone(done);
 ```
 
 任务的 closure 还可以使用特殊的 `TaskClosure` 接口，额外提供了一个 `onCommitted` 回调方法：
@@ -184,7 +184,7 @@ while(it.hasNext()){
 因为 StateMachine 接口的方法比较多，并且大多数方法可能不需要做一些业务处理，因此 jraft 提供了一个 StateMachineAdapter 桥接类，方便适配实现状态机，除了强制要实现 `onApply` 方法外，其他方法都提供了默认实现，也就是简单地打印日志，用户可以选择实现特定的方法：
 
 ```java
-public TestStateMachine extends StateMachineAdapter {
+public class TestStateMachine extends StateMachineAdapter {
     private AtomicLong          leaderTerm = new AtomicLong(-1);
     @Override
     public void onApply(Iterator iter) {
@@ -326,7 +326,7 @@ __这样可以做到一些资源复用，减少消耗，代价就是依赖了 jr
 
 * 服务端 `RpcServer` 配置以下环境变量：
 
-```
+```config
 // RpcServer init
 bolt.server.ssl.enable = true // 是否开启服务端 SSL 支持，默认为 false
 bolt.server.ssl.clientAuth = true // 是否开启服务端 SSL 客户端认证，默认为 false
@@ -342,7 +342,7 @@ bolt.server.ssl.clientAuth = false
 
 * 客户端 `RpcClient` 配置环境变量如下：
 
-```
+```config
 // RpcClient init
 bolt.client.ssl.enable = true // 是否开启客户端 SSL 支持，默认为 false
 bolt.client.ssl.keystore = cbolt.pfx // 客户端 SSL keystore 文件路径
@@ -357,7 +357,7 @@ bolt.client.ssl.enable = false
 其中服务端 SSL keystore 文件 `bolt.pfx` 和客户端 SSL keystore 文件 `cbolt.pfx` 按照以下步骤生成：
 
 * 首先生成 keystore 并且导出其认证文件。
-  
+
 ```sh
 keytool -genkey -alias securebolt -keysize 2048 -validity  365 -keyalg RSA -dname "CN=localhost" -keypass sfbolt -storepass sfbolt -keystore bolt.pfx -deststoretype pkcs12
   
@@ -365,13 +365,13 @@ keytool -export -alias securebolt -keystore bolt.pfx -storepass sfbolt -file bol
 ```
 
 * 接着生成客户端 keystore。
-  
+
 ```sh
 keytool -genkey -alias smcc -keysize 2048 -validity 365 -keyalg RSA -dname "CN=localhost" -keypass sfbolt -storepass sfbolt -keystore cbolt.pfx -deststoretype pkcs12
 ```
 
 * 最后导入服务端认证文件到客户端 keystore。
-  
+
 ```sh
 keytool -import -trustcacerts -alias securebolt -file bolt.cer -storepass sfbolt -keystore cbolt.pfx
 ```
@@ -1070,6 +1070,53 @@ NodeOptions 有一个 `raftOptions` 选项，用于设置跟性能和数据可�
 * 业务协议应当内置 Redirect 重定向请求协议，当写入到非 leader 节点，返回最新的 leader 信息到客户端，客户端可以做适当重试。通过定期拉取和 redirect 协议的结合，来提升客户端的可用性。
 * 建议使用线性一致读，将请求散列到集群内的所有节点上，降低 leader 的负荷压力。
 
+#### 9.2.4 反压策略
+
+单个 raft group 能够承载的“写入量“是有限的，当过载的时候，jraft 允许你设置反压策略，也就是 `Node#apply(task)` 方法在节点过载时候的行为。
+
+从 1.3.10 开始， jraft 引入了一个枚举类 `com.alipay.sofa.jraft.option.ApplyTaskMode`，它包含下列选项：
+
+* `ApplyTaskMode.Blocking`，阻塞模式，当节点过载的时候，将阻塞 `apply` 方法调用，直到处理能力缓解。
+* `ApplyTaskMode.NonBlocking`，非阻塞模式，也是**默认模式**，当节点过载的时候， 调用 `apply` 方法将立即失败返回，抛出异常或者执行 `closure#run(status)` 并传入错误状态。
+
+默认模式是 `ApplyTaskMode.NonBlocking`，你可以通过 `NodeOptions#setApplyTaskMode(ApplyTaskMode)` 改变。
+
+### 9.3 系统参数建议
+
+参考自 etcd 中的一些优化，[https://etcd.io/docs/v3.4/tuning](https://etcd.io/docs/v3.4/tuning)
+
+#### 9.3.1 磁盘
+
+jraft 群集对磁盘延迟比较敏感。由于 raft log 以及 snapshot 需要进行磁盘 io 操作，因此其他进程的磁盘活动可能会导致较长的 fsync 延迟，从而导致请求超时和重新选举。当给予较高的磁盘优先级时，jraft 应用有时可以与其他进程一起稳定运行。
+
+在 Linux 上，可以使用 `ionice` 命令来配置 jraft 进程的磁盘优先级:
+
+```sh
+# pid 为 jraft 应用进程id
+$ sudo ionice -c2 -n0 -p pid
+```
+
+#### 9.3.2 网络
+
+当 jraft leader 处理大量并发的客户端请求时，由于网络拥塞，可能会延迟处理与 follower 的请求。可以尝试通过设置 jraft 节点间通信流量优先级高于客户端请求流量优先级来进行解决。
+
+在 Linux 上，可以使用流量控制机制 `tc` 来设置不同流量的优先级:
+
+```sh
+# 这里使用8001来作为jraft节点间的通信端口，9001作为提供给客户端的请求端口
+tc qdisc add dev eth0 root handle 1: prio bands 3
+tc filter add dev eth0 parent 1: protocol ip prio 1 u32 match ip sport 8001 0xffff flowid 1:1
+tc filter add dev eth0 parent 1: protocol ip prio 1 u32 match ip dport 8001 0xffff flowid 1:1
+tc filter add dev eth0 parent 1: protocol ip prio 2 u32 match ip sport 9001 0xffff flowid 1:1
+tc filter add dev eth0 parent 1: protocol ip prio 2 u32 match ip dport 9001 0xffff flowid 1:1
+```
+
+如果想要取消 `tc`, 执行:
+
+```sh
+tc qdisc del dev eth0 root
+```
+
 ## 10. 如何基于 SPI 扩展
 
 如果基于 SPI 扩展支持适配新 LogEntry 编/解码器，需要下面的步骤:
@@ -1096,7 +1143,7 @@ public @interface SPI {
 ## 11. 排查故障工具
 
 在程序运行时，可以利用 Linux 平台的 SIGUSR2 信号输出节点的状态信息以及 metric 数据，具体执行方式: `kill -s SIGUSR2 pid`
-相关信息会输出到指定目录，默认在程序工作目录（cwd:  lsof -p $pid | grep cwd）生成 2 个文件：node_metrics.log 和 node_describe.log，其中 node_metrics.log 存储节点 metric 数据，node_describe.log 存储节点状态信息。
+相关信息会输出到指定目录，默认在程序工作目录（cwd:  lsof -p $pid | grep cwd）生成 3 个文件：node_metrics.log，node_describe.log以及  thread_pool_metrics.log， 其中 node_metrics.log 存储节点 metric 数据，node_describe.log 存储节点状态信息， thread_pool_metrics.log 存储线程池信息
 
 <div class="bi-table">
   <table>
@@ -1146,6 +1193,20 @@ public @interface SPI {
         </td>
         <td rowspan="1" colSpan="1">
           <div data-type="p">节点状态信息</div>
+        </td>
+      </tr>
+     <tr height="34px">
+        <td rowspan="1" colSpan="1">
+          <div data-type="p">jraft.signal.thread.pool.metrics.dir</div>
+        </td>
+        <td rowspan="1" colSpan="1">
+          <div data-type="p">cwd:  lsof -p $pid | grep cwd</div>
+        </td>
+        <td rowspan="1" colSpan="1">
+          <div data-type="p">thread_pool_metrics.log</div>
+        </td>
+        <td rowspan="1" colSpan="1">
+          <div data-type="p">线程池信息</div>
         </td>
       </tr>
     </tbody>
@@ -1246,10 +1307,155 @@ rhea-rpc-request-timer_-1
 
 ```
 
+```text
+9/11/21 12:36:43 AM ============================================================
+
+-- Timers ----------------------------------------------------------------------
+scheduledThreadPool.JRaft-Global-ElectionTimer
+             count = 18815
+         mean rate = 0.67 calls/second
+     1-minute rate = 0.66 calls/second
+     5-minute rate = 0.67 calls/second
+    15-minute rate = 0.67 calls/second
+               min = 0.01 milliseconds
+               max = 1.72 milliseconds
+              mean = 0.04 milliseconds
+            stddev = 0.12 milliseconds
+            median = 0.02 milliseconds
+              75% <= 0.03 milliseconds
+              95% <= 0.04 milliseconds
+              98% <= 0.18 milliseconds
+              99% <= 0.18 milliseconds
+            99.9% <= 1.72 milliseconds
+scheduledThreadPool.JRaft-Global-SnapshotTimer
+             count = 15
+         mean rate = 0.00 calls/second
+     1-minute rate = 0.00 calls/second
+     5-minute rate = 0.00 calls/second
+    15-minute rate = 0.00 calls/second
+               min = 0.06 milliseconds
+               max = 1.94 milliseconds
+              mean = 0.18 milliseconds
+            stddev = 0.00 milliseconds
+            median = 0.18 milliseconds
+              75% <= 0.18 milliseconds
+              95% <= 0.18 milliseconds
+              98% <= 0.18 milliseconds
+              99% <= 0.18 milliseconds
+            99.9% <= 0.18 milliseconds
+threadPool.JRAFT_CLOSURE_EXECUTOR
+             count = 33
+         mean rate = 0.00 calls/second
+     1-minute rate = 0.00 calls/second
+     5-minute rate = 0.00 calls/second
+    15-minute rate = 0.00 calls/second
+               min = 0.08 milliseconds
+               max = 22.36 milliseconds
+              mean = 0.18 milliseconds
+            stddev = 0.05 milliseconds
+...skipping...
+scheduledThreadPool.JRaft-Global-ElectionTimer
+             count = 18815
+         mean rate = 0.67 calls/second
+     1-minute rate = 0.66 calls/second
+     5-minute rate = 0.67 calls/second
+    15-minute rate = 0.67 calls/second
+               min = 0.01 milliseconds
+               max = 1.72 milliseconds
+              mean = 0.04 milliseconds
+            stddev = 0.12 milliseconds
+            median = 0.02 milliseconds
+              75% <= 0.03 milliseconds
+              95% <= 0.04 milliseconds
+              98% <= 0.18 milliseconds
+              99% <= 0.18 milliseconds
+            99.9% <= 1.72 milliseconds
+scheduledThreadPool.JRaft-Global-SnapshotTimer
+             count = 15
+         mean rate = 0.00 calls/second
+     1-minute rate = 0.00 calls/second
+     5-minute rate = 0.00 calls/second
+    15-minute rate = 0.00 calls/second
+               min = 0.06 milliseconds
+               max = 1.94 milliseconds
+              mean = 0.18 milliseconds
+            stddev = 0.00 milliseconds
+            median = 0.18 milliseconds
+              75% <= 0.18 milliseconds
+              95% <= 0.18 milliseconds
+              98% <= 0.18 milliseconds
+              99% <= 0.18 milliseconds
+            99.9% <= 0.18 milliseconds
+threadPool.JRAFT_CLOSURE_EXECUTOR
+             count = 33
+         mean rate = 0.00 calls/second
+     1-minute rate = 0.00 calls/second
+     5-minute rate = 0.00 calls/second
+    15-minute rate = 0.00 calls/second
+               min = 0.08 milliseconds
+               max = 22.36 milliseconds
+              mean = 0.18 milliseconds
+            stddev = 0.05 milliseconds
+            median = 0.17 milliseconds
+              75% <= 0.23 milliseconds
+              95% <= 0.23 milliseconds
+              98% <= 0.23 milliseconds
+              99% <= 0.23 milliseconds
+            99.9% <= 0.23 milliseconds
+threadPool.JRAFT_RPC_CLOSURE_EXECUTOR
+             count = 1
+         mean rate = 0.00 calls/second
+     1-minute rate = 0.00 calls/second
+     5-minute rate = 0.00 calls/second
+    15-minute rate = 0.00 calls/second
+               min = 7.00 milliseconds
+               max = 7.00 milliseconds
+              mean = 7.00 milliseconds
+            stddev = 0.00 milliseconds
+            median = 7.00 milliseconds
+              75% <= 7.00 milliseconds
+              95% <= 7.00 milliseconds
+              98% <= 7.00 milliseconds
+              99% <= 7.00 milliseconds
+            99.9% <= 7.00 milliseconds
+threadPool.JRaft-RPC-Processor
+             count = 23795
+         mean rate = 0.84 calls/second
+     1-minute rate = 0.85 calls/second
+     5-minute rate = 0.84 calls/second
+    15-minute rate = 0.84 calls/second
+               min = 0.01 milliseconds
+               max = 59.44 milliseconds
+              mean = 1.01 milliseconds
+            stddev = 6.46 milliseconds
+            median = 0.02 milliseconds
+              75% <= 0.03 milliseconds
+              95% <= 0.04 milliseconds
+              98% <= 34.92 milliseconds
+              99% <= 41.59 milliseconds
+            99.9% <= 55.83 milliseconds
+threadPool.grpc-default-executor
+             count = 1
+         mean rate = 0.00 calls/second
+     1-minute rate = 0.00 calls/second
+     5-minute rate = 0.00 calls/second
+    15-minute rate = 0.00 calls/second
+               min = 0.58 milliseconds
+               max = 0.58 milliseconds
+              mean = 0.58 milliseconds
+            stddev = 0.00 milliseconds
+            median = 0.58 milliseconds
+              75% <= 0.58 milliseconds
+              95% <= 0.58 milliseconds
+              98% <= 0.58 milliseconds
+              99% <= 0.58 milliseconds
+            99.9% <= 0.58 milliseconds
+
+```
+
 ## 12. Rocksdb 配置更改
 
 SOFJRaft 的 log storage 默认实现基于 rocksdb 存储，默认的 rocksdb 配置为吞吐优先原则，可能不适合所有场景以及机器规格，比如 4G 内存的机器建议缩小 block_size 以避免过多的内存占用。
-
 
 ```java
 final BlockBasedTableConfig conf = new BlockBasedTableConfig() //

@@ -16,7 +16,7 @@ description: "05 月 19 日周三晚 19 点，线上直播第 20 期。"
 
 - 活动形式：线上直播
 
-- 报名方式：[戳这里](http://hdxu.cn/MNCye)
+- 资料下载：[戳这里](https://gw.alipayobjects.com/os/bmw-prod/dd7a4f2e-1748-44a2-975c-b2ea6d011779.pdf)
 
 - B 站直播间地址：[http://live.bilibili.com/21954520](http://live.bilibili.com/21954520)
 

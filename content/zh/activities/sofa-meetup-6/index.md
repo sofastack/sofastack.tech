@@ -15,17 +15,21 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*XB9ESa8q8PwAAAAAA
 
 - 活动时间：2021 年 05 月 22 日（周六）14:00-17:00
 
-- 活动地点：上海黄浦外马路618号蚂蚁H空间 613
+- 活动地点：上海市浦东新区蚂蚁 S 空间 南泉北路 447 号 201
 
 - 活动形式：线下活动
 
-- 报名链接：[点击报名](http://hdxu.cn/1wI8X)
+- 资料下载：<br/>
+[《边缘计算中的 Kata Containers>](https://gw.alipayobjects.com/os/bmw-prod/30959033-63c5-43a4-93a4-75cbbb921296.pdf)<br/>
+[《快速闪电：Nydus 镜像加速服务》](https://gw.alipayobjects.com/os/bmw-prod/aec94883-3d3e-47cc-974f-e85a90fb66ff.pdf)<br/>
+[《WebAssembly Micro Runtime：云原生时代的超轻量级新型沙箱》](https://gw.alipayobjects.com/os/bmw-prod/dfadad7f-b3f0-48e7-b7b0-14a4fad65efc.pdf)<br/>
+[《WebAssembly 在 MOSN 中的探索与实践》](https://gw.alipayobjects.com/os/bmw-prod/fbf09bcb-3c0f-4b66-af74-9dfa69966405.pdf)
 
 ## 活动介绍
 
 ### 活动议程
 
-![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*oJA9Q7yCVXUAAAAAAAAAAAAAARQnAQ)
+![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*gtzbRpciFa8AAAAAAAAAAAAAARQnAQ)
 
 ### 本期议题以及嘉宾详解
 

@@ -27,7 +27,7 @@
 	]
 
 [[links]]
-	category = "蚂蚁金服开源项目"
+	category = "蚂蚁集团开源项目"
 	link_arr = [
 		["Ant Design", 'https://ant.design/'],
 		["Egg ", 'https://eggjs.org/'],
@@ -36,9 +36,13 @@
 	]
 
 [[qrcode]]
+	img = "img/qrcode/qrcode_video.png"
+	description = "微信视频号"
+	
+[[qrcode]]
 	img = "img/qrcode/qrcode_1.png"
 	description = "微信公众号"
 
 [[qrcode]]
-	img = "img/qrcode/qrcode_2.png"
+	img = "img/qrcode/dingtalk_7.jpg"
 	description = "钉钉群"
