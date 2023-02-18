@@ -7,7 +7,7 @@ aliases: "/sofa-rpc/docs/Getting-Started-With-SOFA-Boot"
 
 This document introduces how to use SOFARPC for service publishing and reference in SOFABoot. 
 
-You can get the code sample of this document by clicking [here](https://github.com/sofastack/sofa-rpc/tree/master/example/src/test/java/com/alipay/sofa/rpc/quickstart). Note that the code sample requires a local installation of the zookeeper environment. If not, you need to remove the `com.alipay.sofa.rpc.registry.address` configuration in `application.properties` to use the local file as a registry center.
+You can get the code sample of this document by clicking [here](https://github.com/sofastack-guides/sofa-rpc-guides). Note that the code sample requires a local installation of the zookeeper environment. If not, you need to remove the `com.alipay.sofa.rpc.registry.address` configuration in `application.properties` to use the local file as a registry center.
 
 ## Create a project 
 
@@ -30,16 +30,18 @@ Replace the above with the followings:
 <parent> 
     <groupId>com.alipay.sofa</groupId> 
     <artifactId>sofaboot-dependencies</artifactId> 
-    <version>3.0.0</version> 
+    <version>${sofa.boot.version}</version> 
 </parent> 
-``` 
+```
+
+Here, '${sofa. boot. version}' specifies the specific SOFABoot version. Refer to [Release History](https://github.com/sofastack/sofa-boot/releases).
 
 4. Configure `application.properties`:
-`application.properties` is the configuration file in SOFABoot project. Here you need to configure the application name. 
+  `application.properties` is the configuration file in SOFABoot project. Here you need to configure the application name. 
 
 ``` 
 spring.application.name=AppName 
-``` 
+```
 
 5. Introduce RPC starter:
 
@@ -48,82 +50,102 @@ spring.application.name=AppName
      <groupId>com.alipay.sofa</groupId>
      <artifactId>rpc-sofa-boot-starter</artifactId>
 </dependency> 
-``` 
-
-6. Declare the xsd file of SOFABoot:
-
-In the XML configuration file to be used, configure the declaration of the header xsd file to the followings. This enables development using the XML elements defined by SOFABoot. 
-
-```xml 
-<?xml version="1.0" encoding="UTF-8"?> 
-<beans xmlns="http://www.springframework.org/schema/beans" 
-       xmlns:xsi="http://www .w3.org/2001/XMLSchema-instance" 
-       xmlns:sofa="http://sofastack.io/schema/sofaboot" 
-       xmlns:context="http://www.springframework.org/schema/context" 
-       xsi:schemaLocation ="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd 
-            http://sofastack.io/schema/sofaboot http://sofastack .io/schema/sofaboot.xsd"
 ```
 
 ## Define service interface and implementation 
 
 ```java 
-public interface HelloSyncService { 
+public interface AnnotationService {
 
-    String saySync(String string); 
-} 
-``` 
-```java 
-public class HelloSyncServiceImpl implements HelloSyncService { 
+    String sayAnnotation(String string);
 
-    @Override 
-    public String saySync(String string) { 
-        return string; 
-    } 
-} 
-``` 
-
+}
+```
 ## Publish service on server
-Configure the followings in the xml file. When the Spring context is refreshed, SOFABoot registers the service implementation on the server, communicates with the client by bolt protocol, and publishes metadata such as address to registry center (local file is used as registry center by default). 
+Publish the service through '@ SofaService' annotation, as shown in the following code:
 
-```xml 
-<bean id="helloSyncServiceImpl" class="com.alipay.sofa.rpc.samples.invoke.HelloSyncServiceImpl"/> 
-<sofa:service ref="helloSyncServiceImpl" interface="com.alipay.sofa.rpc. samples.invoke.HelloSyncService"
-    <sofa:binding.bolt/> 
-</sofa:service> 
-``` 
+SOFABoot registers the service implementation on the server, communicates with the client by bolt protocol, and publishes metadata such as address to registry center (local file is used as registry center by default). 
+
+```java
+import com.alipay.sofa.runtime.api.annotation.SofaService;
+import com.alipay.sofa.runtime.api.annotation.SofaServiceBinding;
+import org.springframework.stereotype.Service;
+
+@SofaService(interfaceType = AnnotationService.class, bindings = { @SofaServiceBinding(bindingType = "bolt") })
+@Service
+public class AnnotationServiceImpl implements AnnotationService {
+    @Override
+    public String sayAnnotation(String string) {
+        return string;
+    }
+}
+```
 
 ## Reference service by client
-Configure the followings in the xml file. When the Spring context is refreshed, SOFABoot generates an RPC proxy bean,       `personReferenceBolt`. This allows you to use the bean directly in the code for remote call. 
+The reference service is annotated with '@ SofaReference', as shown in the following code:
 
-```xml 
-<sofa:reference id="helloSyncServiceReference" interface="com.alipay.sofa.rpc.samples.invoke.HelloSyncService"> 
-    <sofa:binding.bolt/> 
-</sofa:reference> 
-``` 
+SOFABoot will generate a RPC proxy bean for 'AnnotationService', it also specifies the bolt protocol to communicate with the server. This allows you to use the bean directly in the code for remote call. 
+
+```java
+import com.alipay.sofa.runtime.api.annotation.SofaReference;
+import com.alipay.sofa.runtime.api.annotation.SofaReferenceBinding;
+import org.springframework.stereotype.Service;
+
+@Service
+public class AnnotationClientImpl {
+
+    @SofaReference(interfaceType = AnnotationService.class, jvmFirst = false, 
+            binding = @SofaReferenceBinding(bindingType = "bolt"))
+    private AnnotationService annotationService;
+
+    public String sayClientAnnotation(String str) {
+        return annotationService.sayAnnotation(str);
+    }
+}
+```
 
 ## Run the project
-The startup class of SpringBoot is coded as follows. The above xml file is loaded here using ImportResource. 
+The startup class of SpringBoot is coded as follows:
+
+Start the server
 
 ```java 
-@ImportResource({ "classpath*:rpc-sofa-boot-starter-samples.xml" }) 
-@org.springframework.boot.autoconfigure.SpringBootApplication
-public class SofaBootRpcSamplesApplication {
+@SpringBootApplication
+public class AnnotationServerApplication {
+
     public static void main(String[] args) {
-          SpringApplication springApplication = new SpringApplication(SofaBootRpcSamplesApplication.class); 
-          ApplicationContext applicationContext = springApplication.run(args);           
 
-          HelloSyncService helloSyncServiceReference = (HelloSyncService) applicationContext 
-            .getBean("helloSyncServiceReference"); 
+        SpringApplication springApplication = new SpringApplication(
+            AnnotationServerApplication.class);
+        ApplicationContext applicationContext = springApplication.run(args);
+    }
+}
+```
 
-          System.out.println(helloSyncServiceReference.saySync("sync") ); 
-    } 
-} 
-``` 
+Start the client, get the implementation bean of `AnnotationClientImpl`, call sayClientAnnotation, and Indirect use of proxy class generated by `@SofaReference` call the remote service `AnnotationServiceImpl`.
+
+```java
+public class AnotationClientApplication {
+
+    public static void main(String[] args) {
+        //change port to run in local machine
+        System.setProperty("server.port", "8081");
+        SpringApplication springApplication = new SpringApplication(
+            AnotationClientApplication.class)；
+        ApplicationContext applicationContext = springApplication.run(args);
+
+        AnnotationClientImpl annotationService = applicationContext
+            .getBean(AnnotationClientImpl.class);
+        String result = annotationService.sayClientAnnotation("annotation");
+        System.out.println("invoke result:" + result);
+    }
+}
+```
 
 The output result is as follows: 
 
 ``` 
-sync 
-``` 
+invoke result:annotation
+```
 
 By this step, you've completed service publishing and reference.
