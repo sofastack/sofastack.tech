@@ -3,8 +3,6 @@
 title: "Get started with SOFABoot"
 aliases: "/sofa-rpc/docs/Getting-Started-With-SOFA-Boot"
 ---
-
-
 This document introduces how to use SOFARPC for service publishing and reference in SOFABoot. 
 
 You can get the code sample of this document by clicking [here](https://github.com/sofastack-guides/sofa-rpc-guides). Note that the code sample requires a local installation of the zookeeper environment. If not, you need to remove the `com.alipay.sofa.rpc.registry.address` configuration in `application.properties` to use the local file as a registry center.
@@ -39,7 +37,7 @@ Here, '${sofa-boot.version}' specifies the specific SOFABoot version. Refer to [
 4. Configure `application.properties`:
 `application.properties` is the configuration file in SOFABoot project. Here you need to configure the application name. 
 
-``` 
+``` xml
 spring.application.name=AppName 
 ```
 
@@ -61,9 +59,10 @@ public interface AnnotationService {
 
 }
 ```
-## Publish service on server
-Publish the service through '@SofaService' annotation, as shown in the following code:
 
+## Publish service on server
+
+Publish the service through '@SofaService' annotation, as shown in the following code:
 SOFABoot registers the service implementation on the server, communicates with the client by bolt protocol, and publishes metadata such as address to registry center (local file is used as registry center by default). 
 
 ```java
@@ -82,8 +81,8 @@ public class AnnotationServiceImpl implements AnnotationService {
 ```
 
 ## Reference service by client
-The reference service is annotated with '@SofaReference', as shown in the following code:
 
+The reference service is annotated with '@SofaReference', as shown in the following code:
 SOFABoot will generate a RPC proxy bean for 'AnnotationService', it also specifies the bolt protocol to communicate with the server. This allows you to use the bean directly in the code for remote call. 
 
 ```java
@@ -105,8 +104,8 @@ public class AnnotationClientImpl {
 ```
 
 ## Run the project
-The startup class of SpringBoot is coded as follows:
 
+The startup class of SpringBoot is coded as follows:
 Start the server
 
 ```java 
@@ -144,7 +143,7 @@ public class AnotationClientApplication {
 
 The output result is as follows: 
 
-``` 
+``` java
 invoke result:annotation
 ```
 

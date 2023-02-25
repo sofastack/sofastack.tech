@@ -4,7 +4,6 @@ title: "SOFABoot 环境注解使用"
 aliases: "/sofa-rpc/docs/Programing-SOFA-BOOT-Annotation"
 ---
 
-
 ## 注解服务发布与服务引用
 
 除了常规的 xml 方式发布服务外，我们也支持在SOFABoot 环境下，注解方式的发布与引用，同 xml 类似，我们有
@@ -13,7 +12,6 @@ aliases: "/sofa-rpc/docs/Programing-SOFA-BOOT-Annotation"
 ### 服务发布
 
 如果要发布一个 RPC 服务。我们只需要在 Bean 上面打上`@SofaService`注解。指定接口和协议类型即可。
-
 
 ```java
 import com.alipay.sofa.runtime.api.annotation.SofaService;
@@ -29,7 +27,6 @@ public class AnnotationServiceImpl implements AnnotationService {
     }
 }
 ```
-
 
 ### 服务引用
 

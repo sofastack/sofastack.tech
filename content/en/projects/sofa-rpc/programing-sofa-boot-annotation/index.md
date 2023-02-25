@@ -4,7 +4,6 @@ title: "Use annotation in SOFABoot"
 aliases: "/sofa-rpc/docs/Programing-SOFA-BOOT-Annotation"
 ---
 
-
 ## Use annotation for service publishing/reference
 
 In addition to the regular xml mode, it is also supported to publish and reference services with annotation in the SOFABoot environment. Similar to xml, we provide
@@ -13,7 +12,6 @@ In addition to the regular xml mode, it is also supported to publish and referen
 ### Service publishing
 
 To publish an RPC service, you only need to add a `@SofaService` annotation on the bean to specify the interface and protocol type.
-
 
 ```java
 import com.alipay.sofa.runtime.api.annotation.SofaService;
