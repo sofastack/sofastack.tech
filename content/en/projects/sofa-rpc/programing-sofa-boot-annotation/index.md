@@ -3,7 +3,6 @@
 title: "Use annotation in SOFABoot"
 aliases: "/sofa-rpc/docs/Programing-SOFA-BOOT-Annotation"
 ---
-
 ## Use annotation for service publishing/reference
 
 In addition to the regular xml mode, it is also supported to publish and reference services with annotation in the SOFABoot environment. Similar to xml, we provide
@@ -27,7 +26,6 @@ public class AnnotationServiceImpl implements AnnotationService {
     }
 }
 ```
-
 
 ### Service reference
 
