@@ -30,14 +30,14 @@ Replace the above with the followings:
 <parent> 
     <groupId>com.alipay.sofa</groupId> 
     <artifactId>sofaboot-dependencies</artifactId> 
-    <version>${sofa.boot.version}</version> 
+    <version>${sofa-boot.version}</version> 
 </parent> 
 ```
 
-Here, '${sofa. boot. version}' specifies the specific SOFABoot version. Refer to [Release History](https://github.com/sofastack/sofa-boot/releases).
+Here, '${sofa-boot.version}' specifies the specific SOFABoot version. Refer to [Release History](https://github.com/sofastack/sofa-boot/releases).
 
 4. Configure `application.properties`:
-  `application.properties` is the configuration file in SOFABoot project. Here you need to configure the application name. 
+`application.properties` is the configuration file in SOFABoot project. Here you need to configure the application name. 
 
 ``` 
 spring.application.name=AppName 
@@ -62,7 +62,7 @@ public interface AnnotationService {
 }
 ```
 ## Publish service on server
-Publish the service through '@ SofaService' annotation, as shown in the following code:
+Publish the service through '@SofaService' annotation, as shown in the following code:
 
 SOFABoot registers the service implementation on the server, communicates with the client by bolt protocol, and publishes metadata such as address to registry center (local file is used as registry center by default). 
 
@@ -82,7 +82,7 @@ public class AnnotationServiceImpl implements AnnotationService {
 ```
 
 ## Reference service by client
-The reference service is annotated with '@ SofaReference', as shown in the following code:
+The reference service is annotated with '@SofaReference', as shown in the following code:
 
 SOFABoot will generate a RPC proxy bean for 'AnnotationService', it also specifies the bolt protocol to communicate with the server. This allows you to use the bean directly in the code for remote call. 
 
