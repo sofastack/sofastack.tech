@@ -2,6 +2,7 @@
 ---
 title: "类委托加载"
 aliases: "/sofa-boot/docs/sofa-ark-class-loader-delegation"
+siblings_only: true
 ---
 ## 类委托加载
 
