@@ -54,9 +54,7 @@ JVM 版本（例如 Java -Version ）：1.8.333
 
 A：配置文件的配置应和 Spring Boot 应用保持一致，建议把配置文件放至 Resources 目录下。
 
-**「SOFAArk」**：*https://githu*
-
-*b.com/sofastack/sofa-ark/issues/602*
+**「SOFAArk」**：https://github.com/sofastack/sofa-ark/issues/602
 
 **2.@SpringLin97 #928**
 
@@ -66,7 +64,7 @@ A：配置文件的配置应和 Spring Boot 应用保持一致，建议把配置
 
 A：1.3.5 以后版本支持 IPV6。
 
-**「SOFAJRaft」**：*https://github.com/sofastack/sofa-jraft/issues/928*
+**「SOFAJRaft」**：https://github.com/sofastack/sofa-jraft/issues/928
 
 ### 本周推荐阅读
 
