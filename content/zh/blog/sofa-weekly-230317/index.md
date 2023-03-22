@@ -1,4 +1,4 @@
----
+--
 title: "SOFA Weekly | SOFANews、开源人 & issue 精选"
 authorlink: "https://github.com/sofastack"
 description: "SOFA Weekly | SOFANews、开源人 & issue 精选"
@@ -24,11 +24,11 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **MOSN**
 
-**主题**：MOSN 2023 社区会议
+**主题：**MOSN 2023 社区会议
 **时间：**3 月 23 号（下周四）晚上 19 点
 **钉钉会议号**：689 448 86753
 **电话呼入**：+862759771614（中国大陆）
-**钉钉入会链接**：https://meeting.dingtalk.com/j/vvE0uCA0vQT
+**钉钉入会链接**：*[https://meeting.dingtalk.com/j/vvE0uCA0vQT](https://meeting.dingtalk.com/j/vvE0uCA0vQT)*
 
 **议题**：
 回顾 MOSN 去年进展及今年的规划。
@@ -92,7 +92,7 @@ debug 可以看到找不到 class objectway.classvisitor
 
 引入 asm.jar 后会与 sping 框架的 asm org.springframework.asm.ClassVisitor 冲突
 
-A：看起来是 *[https:/github.com/sofastack/sofa-rpc/blob/5.8.3.1/all/pom.xml ](https:/github.com/sofastack/sofa-rpc/blob/5.8.3.1/all/pom.xml)*少添加了一个 asm 的依赖，导致出现上面的问题。
+A：看起来是 *[https:/github.com/sofastack/sofa-rpc/blob/5.8.3.1/all/pom.xml](https:/github.com/sofastack/sofa-rpc/blob/5.8.3.1/all/pom.xml)* 少添加了一个 asm 的依赖，导致出现上面的问题。
 
 **「SOFABoot」**：*[https://github.com/sofastack/sofa-boot/issues/1061](https://github.com/sofastack/sofa-boot/issues/1061)*
 
