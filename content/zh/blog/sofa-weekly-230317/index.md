@@ -1,10 +1,10 @@
---
-title: "SOFA Weekly | SOFANews、开源人 & issue 精选"
+---
+title: "SOFA Weekly | MOSN、Layotto 社区会议通知、Seata 版本发布"
 authorlink: "https://github.com/sofastack"
-description: "SOFA Weekly | SOFANews、开源人 & issue 精选"
+description: "SOFA Weekly | MOSN、Layotto 社区会议通知、Seata 版本发布"
 categories: "SOFA Weekly"
 tags: ["SOFA Weekly"]
-date: 2023-03-10T15:00:00+08:00
+date: 2023-03-17T15:00:00+08:00
 cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAAAAAAAAARQnAQ"
 ---
 
