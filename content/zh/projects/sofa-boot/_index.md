@@ -104,7 +104,9 @@ sidebar:
         link: 'sofa-ark-release'
       - title: '发展路线'
         link: 'sofa-ark-roadmap'
-      - title: '参与贡献'
+      - title: '公开分享'
+        link: 'sofa-ark-public-presentation'
+      - title: '如何贡献'
         link: 'sofa-ark-contribution'
   - title: '源码解析'
     sub:
