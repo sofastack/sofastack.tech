@@ -10,7 +10,7 @@ SOFAArk 合并部署时，除了宿主应用，其他 Biz 允许运行时动态�
 + unresolved: 未注册，此时 Biz 包未被运行时解析
 + resolved: Biz 包解析完成，且已注册，此时 Biz 包还没有安装或者安装中
 + activated: Biz 包启动完成，且处于激活状态，可以对外提供服务
-+ deactivated: Biz 包启动完成，但出于未激活状态，模块多个版本时，只有一个版本出于激活状态(注意这个状态只对 JVM 服务生效，对 RPC 等其他中间件无效)
++ deactivated: Biz 包启动完成，但处于未激活状态，模块多个版本时，只有一个版本处于激活状态(注意这个状态只对 JVM 服务生效，对 RPC 等其他中间件无效)
 + broken: Biz 包启动失败后状态
 
 目前 SOFAArk 提供了三种方式操作 Biz:
