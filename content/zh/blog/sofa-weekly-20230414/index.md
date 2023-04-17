@@ -27,7 +27,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*qYVHSoNJtEAAAAAAA
 
  **SOFAStack GitHub issue 精选** 
 
-**本周各项目回复 issue 共计 2 条**
+**本周各项目回复 issue 共计2条**
 
 欢迎大家在 GitHub 提交 issue 与我们互动
 
