@@ -1,11 +1,11 @@
 ---
-author: "SOFA 团队"
-date: 2023-04-15T15:00:00+08:00
 title: "SOFA 五周年，Live Long and Prosper！"
-tags: ["SOFAStack","开源五周年"]
-cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*qnntSam867oAAAAAAAAAAAAADrGAAQ/original"
+authorlink: "https://github.com/sofastack"
+description: "2023 年 4 月 15 日，我们在北京一起庆祝了 SOFA 社区的五岁生日。"
 categories: "SOFAStack"
-description: "2023 年 4 月 15 日，我们在北京一起庆祝了 SOFA 的五岁生日。"
+tags: ["SOFAStack","开源五周年"]
+date: 2023-04-15T15:00:00+08:00
+cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*qnntSam867oAAAAAAAAAAAAADrGAAQ/original"
 ---
 
 ## 概要
