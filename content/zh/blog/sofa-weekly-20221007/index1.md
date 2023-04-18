@@ -1,7 +1,7 @@
 ---
-title: "SOFA Weekly | C 位大咖说 & QA"
+title: "SOFA Weekly | 本周贡献 & issue 精选"
 authorlink: "https://github.com/sofastack"
-description: "SOFA Weekly | C 位大咖说 & QA"
+description: "SOFA Weekly | 本周贡献 & issue 精选"
 categories: "SOFA Weekly"
 tags: ["SOFA Weekly"]
 date: 2022-10-07T15:00:00+08:00
