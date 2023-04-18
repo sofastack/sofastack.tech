@@ -20,7 +20,6 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **SOFAStack:** *[https://github.com/sofastack](https://github.com/sofastack)*
 
-
 **每周读者问答提炼**
 
 欢迎大家向公众号留言提问或在群里与我们互动,我们会筛选重点问题通过 " SOFA WEEKLY " 的形式回复
@@ -48,7 +47,6 @@ A：哦 确实，这儿应该返回 error 就行了，不然任何值都有可�
 A：今年我们首先会开源 Envoy 的 cgo 插件，然后基于这个插件，可以把 Layotto 跑在 Envoy 上。
 
 **「Layotto」**：[https://github.com/mosn/layotto](https://github.com/mosn/layotto)
-
 
 **本周推荐阅读**
 
