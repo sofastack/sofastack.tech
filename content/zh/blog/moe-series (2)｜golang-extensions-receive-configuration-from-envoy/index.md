@@ -41,7 +41,7 @@ Basic Auth
 
 如下示例：
 
-```
+```bash
 
 func init() {
   // 注册 parser
@@ -79,7 +79,7 @@ func (p *parser) Parse(any *anypb.Any) interface{} {
 
 具体的 Basic Auth 认证逻辑，我们可以参考 Go 标准 net/http 库中的 Basic Auth 实现。
 
-```
+```bash
 
 func (f *filter) verify(header api.RequestHeaderMap) (bool, string) {
   auth, ok := header.Get("authorization")
@@ -104,7 +104,7 @@ func (f *filter) verify(header api.RequestHeaderMap) (bool, string) {
 
 简单起见，这次我们使用本地文件的配置方式。如下是关键的配置：
 
-```
+```bash
 
 http_filters:
   - name: envoy.filters.http.golang
@@ -131,7 +131,7 @@ http_filters:
 
 跑起来之后，我们测试一下：
 
-```
+```bash
 
 $ curl -s -I 'http://localhost:10000/'
 HTTP/1.1 401 Unauthorized
