@@ -8,3 +8,5 @@ install:
 	@$(docker) scripts/install-dependency.sh
 serve:
 	@$(docker) hugo serve --bind 0.0.0.0 --disableFastRender
+
+
