@@ -1,3 +1,16 @@
+---
+title: "MoE 系列（二）｜Golang 扩展从 Envoy 接收配置"
+authorlink: "https://github.com/sofastack"
+description: "MoE 系列（二）｜Golang 扩展从 Envoy 接收配置"
+categories: "SOFAStack"
+tags: ["SOFAStack"]
+date: 2023-04-18T15:00:00+08:00
+cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*J10BS4pE_rwAAAAAAAAAAAAADrGAAQ/original"
+
+---
+
+## 
+
 文｜朱德江（GitHub ID：doujiang24)
 
 MOSN 项目核心开发者
