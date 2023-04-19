@@ -41,8 +41,7 @@ Basic Auth
 
 如下示例：
 
-```
-func init() {
+```func init() {
   // 注册 parser
   http.RegisterHttpFilterConfigParser(&parser{})
 }
@@ -62,8 +61,7 @@ func (p *parser) Parse(any *anypb.Any) interface{} {
     conf.password = password
   }
   return conf
-}
-```
+}```
 
 这里为了方便，Any 中的类型是 Envoy 定义的 TypedStruct 类型，这样我们可以直接使用现成的 Go pb 库。
 
@@ -77,8 +75,7 @@ func (p *parser) Parse(any *anypb.Any) interface{} {
 
 具体的 Basic Auth 认证逻辑，我们可以参考 Go 标准 net/http 库中的 Basic Auth 实现。
 
-```
-func (f *filter) verify(header api.RequestHeaderMap) (bool, string) {
+```func (f *filter) verify(header api.RequestHeaderMap) (bool, string) {
   auth, ok := header.Get("authorization")
   if !ok {
     return false, "no Authorization"
@@ -91,8 +88,7 @@ func (f *filter) verify(header api.RequestHeaderMap) (bool, string) {
     return true, ""
   }
   return false, "invalid username or password"
-}
-```
+}```
 
 这里面的 `parseBasicAuth` 就是从 net/http 库中的实现，是不是很方便呢。
 
@@ -100,8 +96,7 @@ func (f *filter) verify(header api.RequestHeaderMap) (bool, string) {
 
 简单起见，这次我们使用本地文件的配置方式。如下是关键的配置：
 
-```
-http_filters:
+```http_filters:
   - name: envoy.filters.http.golang
     typed_config:
       "@type": type.googleapis.com/envoy.extensions.filters.http.golang.v3alpha.Config
@@ -112,8 +107,7 @@ http_filters:
         "@type": type.googleapis.com/xds.type.v3.TypedStruct
         value:
           username: "foo"
-          password: "bar"
-```
+          password: "bar"```
 
 这里我们配置了用户名密码：`foo:bar`。
 
@@ -125,8 +119,7 @@ http_filters:
 
 跑起来之后，我们测试一下：
 
-```
-$ curl -s -I 'http://localhost:10000/'
+```$ curl -s -I 'http://localhost:10000/'
 HTTP/1.1 401 Unauthorized
 
 # invalid username:password
@@ -135,8 +128,7 @@ HTTP/1.1 401 Unauthorized
 
 # valid foo:bar
 $ curl -s -I 'http://localhost:10000/' -H 'Authorization: basic Zm9vOmJhcg=='
-HTTP/1.1 200 OK
-```
+HTTP/1.1 200 OK```
 
 是不是很简单呢，一个标准的 Basic Auth 扩展就完成了。
 
@@ -157,4 +149,4 @@ Go 扩展的开发者，不需要关心配置的动态更新，只需要解析�
 **了解更多…**
 
 **MOSN Star 一下✨：**
-[*https://github.com/mosn/mosn*
+[*https://github.com/mosn/mosn*](https://github.com/mosn/mosn)
