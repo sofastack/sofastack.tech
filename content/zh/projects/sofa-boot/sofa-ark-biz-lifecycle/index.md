@@ -1,11 +1,9 @@
-
 ---
 title: "Ark Biz 生命周期"
 aliases: "/sofa-boot/docs/sofa-ark-biz-lifecycle"
 ---
 
-
-SOFAArk 合并部署时，除了宿主应用，其他 Biz 允许运行时动态部署和卸载。Biz 的状态如下：
+SOFAArk 合并部署时，除了宿主应用，其他 Biz 允许运行时动态部署和卸载。Biz 的状态如下:
 
 + unresolved: 未注册，此时 Biz 包未被运行时解析
 + resolved: Biz 包解析完成，且已注册，此时 Biz 包还没有安装或者安装中
@@ -28,6 +26,7 @@ SOFAArk 合并部署时，除了宿主应用，其他 Biz 允许运行时动态�
 **注意：部署相同名称不同版本 Biz 时，如果已有激活的版本，后续部署的其他版本 Biz 将自动处于钝化状态**
 
 ### 安装 Biz
+
 以 Spring Boot/SOFABoot 为例，应用(模块)安装包含以下流程：
 
 ![installation flow](installation-flow.png)
@@ -50,6 +49,7 @@ SOFAArk 合并部署时，除了宿主应用，其他 Biz 允许运行时动态�
 **注意：启动模块时抛出异常，均导致 Biz 启动失败，可以查看 sofa-ark/common-error.log 日志**
 
 ### 卸载 Biz
+
 应用（模块）卸载包含以下流程：
 
 ![uninstallation-flow](uninstallation-flow.png)
@@ -73,6 +73,7 @@ SOFAArk 合并部署时，除了宿主应用，其他 Biz 允许运行时动态�
 > Biz 执行完所有卸载操作时，将状态置为 unresolved
 
 #### 卸载面临的挑战
+
 卸载 Biz 最大的挑战在于 ClassLoader 的卸载，如果 ClassLoader 没有卸载干净，极有可能会导致 metaspace OOM. JDK 对 Class 的回收条件非常苛刻，包含：
 
 + 该类所有实例都已经回收
@@ -82,4 +83,5 @@ SOFAArk 合并部署时，除了宿主应用，其他 Biz 允许运行时动态�
 每个 Biz 都由独立的 BizClassLoader 加载，只要该 Biz 的加载的类或对象或 ClassLoader 被其他 Biz 或 Plugin 引用，则会导致 Biz 无法卸载成功
 
 ### 激活 Biz
+
 激活指令用于设置 Biz 状态为 Activated，如果此时已有其他版本 Biz 处于激活状态，则先设置其为 Deactivated，再激活指定的 Biz 为 Activated. 激活状态是相对 JVM 服务而言，只有被激活的 Biz，其发布的 JVM 服务才能被其他 Biz 引用
