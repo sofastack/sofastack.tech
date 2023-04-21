@@ -181,3 +181,18 @@ public class TestNGTest {
 ```
 
 上述用例打了 `@TestNGTest`，因此在执行该测试用例时，会先启动 Ark Container。
+
+### 加载Ark Biz
+在Linux/MacOS下命令：
+
+```shell
+biz -i file://{本地目录}/target/**biz.jar
+```
+
+在Windows下：
+
+```shell
+biz -i file:/C:/{后续路径}/target/**biz.jar
+```
+
+要注意，当前的telnet命令框暂时不支持对命令的删除，即使显示可以删除运行出来的命令依然是未删除之前＋重新输入的命令，所以请尽量一次性将命令输入正确，否则将要重新输入。
