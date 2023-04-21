@@ -199,7 +199,7 @@ public class TestNGTest {
 在 Linux/MacOS 下命令:
 
 ```shell
-biz -i file://XXX/XXXX/target/**-ark-biz.jar
+biz -i file:///XXX/XXXX/target/**-ark-biz.jar
 ```
 
 在 Windows 下:
