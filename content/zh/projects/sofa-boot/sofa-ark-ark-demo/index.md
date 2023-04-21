@@ -199,13 +199,13 @@ public class TestNGTest {
 在 Linux/MacOS 下命令:
 
 ```shell
-biz -i file://{本地目录}/target/**biz.jar
+biz -i file://XXX/XXXX/target/**-ark-biz.jar
 ```
 
 在 Windows 下:
 
 ```shell
-biz -i file:/C:/{后续路径}/target/**biz.jar
+biz -i file:/C:/XXX/XXXX/target/**-ark-biz.jar
 ```
 
 要注意，当前的 telnet 命令框暂时不支持对命令的删除，即使显示可以删除运行出来的命令依然是未删除之前加重新输入的命令，所以请尽量一次性将命令输入正确，否则将要重新输入。
