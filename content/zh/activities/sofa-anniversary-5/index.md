@@ -26,7 +26,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*qnntSam867oAAAAAA
 
   [《Seata发展之路——昨天、今天、明天》](https://mdn.alipayobjects.com/huamei_soxoym/afts/file/A*9GHZS7VIm2YAAAAAAAAAAAAADrGAAQ/%E8%AE%AE%E9%A2%98%E5%9B%9B%20%E6%9D%8E%E5%AE%97%E6%9D%B0%20Seata%E5%8F%91%E5%B1%95%E4%B9%8B%E8%B7%AF%E2%80%94%E2%80%94%E6%98%A8%E5%A4%A9%E3%80%81%E4%BB%8A%E5%A4%A9%E3%80%81%E6%98%8E%E5%A4%A90406.pdf)
 
-  [《蚂蚁注册中心建设的思考与实践》](https://mdn.alipayobjects.com/huamei_soxoym/afts/file/A*QKJPS5QRlscAAAAAAAAAAAAADrGAAQ/%E8%AE%AE%E9%A2%98%E4%BA%94%20%E8%82%96%E5%81%A5%20SOFARegistry%E5%88%86%E4%BA%AB0406.pdf)
+  [《蚂蚁注册中心建设的思考与实践》](https://mdn.alipayobjects.com/huamei_soxoym/afts/file/A*CqwrS5Qb2IwAAAAAAAAAAAAADrGAAQ/%E8%AE%AE%E9%A2%98%E4%BA%94%20%E8%82%96%E5%81%A5%20SOFARegistry%E5%88%86%E4%BA%ABV2.pdf)
 
 - B 站直播间地址：[http://live.bilibili.com/21954520](http://live.bilibili.com/21954520)
 
