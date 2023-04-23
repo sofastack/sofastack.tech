@@ -83,9 +83,9 @@ SOFA 五周年资料已上传 SOFAStack 官网
 
 - 更新了 Javassist Proxy 构造 class 时的 API 使之能在 JDK17 环境下运行#1316
 
-详细发布报告：*https://github.com/sofastack/sofa-rpc/compare/v5.9.2...v5.10.0*
+详细发布报告：[*https://github.com/sofastack/sofa-rpc/compare/v5.9.2...v5.10.0*](https://github.com/sofastack/sofa-rpc/compare/v5.9.2...v5.10.0)
 
-  **SOFAStack GitHub issue 精选**  
+**SOFAStack GitHub issue 精选**  
 
 **本周各项目回复 issue 共计 2 条**
 
@@ -98,12 +98,12 @@ SOFA 五周年资料已上传 SOFAStack 官网
 1. @LY1806620741 #1061
 
 > com.alipay.sofa.rpc.enable-swagger 是否已经废弃？在 3.16.3
-
+> 
 > com.alipay.sofa.rpc.enable-swagger=true 配置使用了 Objectway 的 ASM，与 Spring Boot 的 ASM 冲突。
 
 A：可以手动增加一个依赖。
 
-```
+```bash
 <dependency>
     <groupId>org.ow2.asm</groupId>
     <artifactId>asm</artifactId>
