@@ -5,7 +5,7 @@ description: "SOFARegistry | 大规模集群优化实践"
 categories: "SOFARegistry"
 tags: ["SOFARegistry"]
 date: 2022-11-03T15:00:00+08:00
-cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAAAAAAAAARQnAQ"
+cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*wFxNS4vZ6pEAAAAAAAAAAAAADrGAAQ/original"
 ---
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/e9de97a8e2d0469b95d8990621e3332c~tplv-k3u1fbpfcp-zoom-1.image)  

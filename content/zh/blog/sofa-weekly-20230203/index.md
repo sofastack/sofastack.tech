@@ -1,10 +1,10 @@
 ---
-title: "SOFA Weekly | SOFANews、本周贡献 & issue 精选"
+title: "SOFA Weekly | 本周贡献 & issue 精选"
 authorlink: "https://github.com/sofastack"
-description: "SOFA Weekly | SOFANews、本周贡献 & issue 精选"
+description: "SOFA Weekly | 本周贡献 & issue 精选"
 categories: "SOFA Weekly"
 tags: ["SOFA Weekly"]
-date: 2023-01-06T15:00:00+08:00
+date: 2023-02-03T15:00:00+08:00
 cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAAAAAAAAARQnAQ"
 ---
 
@@ -14,15 +14,15 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **筛选每周精华问答，同步开源进展，欢迎留言互动～**
 
-**SOFA**Stack（**S**calable **O**pen **F**inancial **A**rchitecture Stack）是蚂蚁集团自主研发的金融级云原生架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
+**SOFA**Stack（**S**calable **O**pen **F**inancial **A**rchitecture Stack）是蚂蚁集团自主研发的金融级云原生架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 
-**SOFAStack 官网:** *[https://www.sofastack.tech](https://www.sofastack.tech)*
+**SOFAStack 官网:** *[https://www.sofastack.tech](https://www.sofastack.tech)*
 
 **SOFAStack:** *[https://github.com/sofastack](https://github.com/sofastack)*
 
 ### SOFAStack 社区本周贡献
 
-![图片](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*UIbfRpBphOwAAAAAAAAAAAAADrGAAQ/original)
+![图片](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*-5tnQrGI_foAAAAAAAAAAAAADrGAAQ/original)
 
 ### SOFAStack GitHub issue 精选
 
@@ -46,7 +46,7 @@ A：第一种情况会等到超时时间，默认是 60 秒后进行回滚。在
 
 >Allow Setting Cluster Idle Timeout to Zero to Indicate Never Timeout.This issue requests the ability to set an idle_timeout = 0, to indicate the indefinite idle timeout for upstream connection timeout.
 
-![image.png](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cff2031d485347b78158d63c75d9fba8~tplv-k3u1fbpfcp-watermark.image?)
+![image.png](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*F7scS5hPz7MAAAAAAAAAAAAADrGAAQ/original)
 
 **「MOSN」**：*[https://github.com/mosn/mosn/](https://github.com/mosn/mosn/)*
 

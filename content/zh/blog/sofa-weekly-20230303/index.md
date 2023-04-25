@@ -5,7 +5,7 @@ description: ""
 categories: "SOFAStack"
 tags: ["SOFAStack"]
 date: 2023-03-03T15:00:00+08:00
-cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Rap6SJnP9f0AAAAAAAAAAAAAARQnAQ"
+cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*rGyJS61au0QAAAAAAAAAAAAADrGAAQ/original"
 ---
 
 ## SOFA Weekly｜铜锁探「密」、本周贡献 & issue 精选
@@ -66,18 +66,11 @@ A：由于你的宿主应用 @ComPonentScan 扫描了 “com.alipay.sofa”，�
 
   **本周推荐阅读** 
 
-![图片](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*Xb_yQ6f4J9IAAAAAAAAAAAAADrGAAQ/original)
 [SOFARegistry | 聊一聊服务发现的数据一致性](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247520348&idx=1&sn=459c9262761bd719a028c8ea27f56591&chksm=faa37f86cdd4f690cefbcb8564ab79b327512e409ada02870561ece96c6fc07c050fdc3b7f66&scene=21)
-
-![图片](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*fZVDQbjrbcoAAAAAAAAAAAAADrGAAQ/original)
 
 [SOFARegistry | 大规模集群优化实践](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247517005&idx=1&sn=685cea90982f8ecec5ffc56880d63175&chksm=faa36c97cdd4e58163830407bd827838f6ecb0a5b0e22130b507141fe9a24b2e645666fc0571&scene=21)
 
-![图片](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*SY9xT53yLQEAAAAAAAAAAAAADrGAAQ/original)
-
 [MOSN 反向通道详解](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247513902&idx=1&sn=be00c5af2e9775a4039430bf187e16f4&chksm=faa358f4cdd4d1e23d7e9c93b4a94d6e6c377f51eb5e96b6dd5f74b840e48ebd3f518c4bf80a&scene=21)
-
-![图片](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*LELrRrPSl-kAAAAAAAAAAAAADrGAAQ/original)
 
 [如何看待 Dapr、Layotto 这种多运行时架构？](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247510516&idx=1&sn=eff21915cd0ac1a8c8e3f126b549a605&chksm=faa3462ecdd4cf38ab6ab0c7201902fb53d54cea4865f9b7d7cdcdc7eaa00cf354d8b05e5393&scene=21)
 
