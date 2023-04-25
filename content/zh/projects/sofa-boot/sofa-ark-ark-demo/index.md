@@ -4,12 +4,15 @@ aliases: "/sofa-boot/docs/sofa-ark-ark-demo"
 ---
 
 ## 简介
+
 该样例工程演示了如何借助 `Maven` 插件将一个 Spring Boot Web 工程打包成标准格式规范的可执行 Ark 包；
 
 ## 准备
+
 因该样例工程依赖 sample-ark-plugin，因此需要提前在本地安装该 `Ark Plugin` 
 
 ## 工具
+
 官方提供了 `Maven` 插件 - `sofa-ark-maven-plugin` ，只需要简单的配置项，即可将 Spring Boot Web 工程打包成标准格式规范的可执行 Ark 包，插件坐标为：
 
 ```xml
@@ -22,14 +25,16 @@ aliases: "/sofa-boot/docs/sofa-ark-ark-demo"
 
 > [详细请参考插件使用文档](../sofa-ark-ark-jar)
 
-
 ## 入门
+
 基于该样例工程，我们一步步描述如何将一个 Spring Boot Web 工程打包成可运行 Ark 包
 
 ### 创建 SpringBoot Web 工程
+
 在官网 [https://start.spring.io/](https://start.spring.io/) 下载一个标准的 Spring Boot Web 工程
 
 ### 引入 sample-ark-plugin
+
 在工程主 `pom.xml` 中如下配置，添加另一个样例工程打包生成的 `Ark Plugin` 依赖，[参考文档](../sofa-ark-ark-plugin-demo) 
 
 ```xml
@@ -42,6 +47,7 @@ aliases: "/sofa-boot/docs/sofa-ark-ark-demo"
 ```
 
 ### 配置打包插件
+
 在工程主 `pom.xml` 中如下配置 `Maven` 插件 `sofa-ark-maven-plugin` :
 
 ```xml
@@ -81,9 +87,11 @@ aliases: "/sofa-boot/docs/sofa-ark-ark-demo"
 **关于 arkClassifier 配置项需要特别注意下，默认值为空；如果不指定 classifier ，上传到仓库的 Jar 包其实是一个可运行的 Ark 包；如果需要和普通的打包加以区分，需要配置该项值。**
 
 ### 打包、安装、发布
+
 和普通的工程操作类似，使用 `mvn package` , `mvn install` , `mvn deploy` 即可完成插件包的安装和发布；
 
 ### 运行
+
 我们提供了两种方式在 Ark 容器上启动工程应用，通过命令行启动或者在 IDE 启动；在 IDE 启动时，需要额外添加依赖；使用命令行启动非常简便，直接使用 `java -jar` 即可启动应用；下面我们说下如何在 IDE 启动 Ark 应用；
 
 * Spring Boot 工程：Spring Boot 工程需要添加如下依赖即可：
@@ -120,9 +128,11 @@ public class Application{
 ```
 
 ### 运行测试用例
+
 SOFAArk 提供了 `org.junit.runner.Runner` 的两个实现类，`ArkJUnit4Runner` 和 `ArkBootRunner`，分别用于集成 JUnit4 测试框架和 Spring Test；对于 TestNG 测试框架，提供了注解 `@TestNGOnArk`，对于任何 TestNG 测试用例，只有打有 `@TestNGOnArk` 的测试用例才会跑在 Ark Container 之上，否则普通用例一样。
 
 #### ArkJUnit4Runner
+
 `ArkJUnit4Runner` 类似 `JUnit4`，使用注解 `ArkJUnit4Runner`，即可在 SOFAArk 容器之上运行普通的 JUnit4 测试用例；示范代码如下：
 
 ```java
@@ -140,6 +150,7 @@ public class UnitTest {
 `ArkJUnit4Runner` 和 `JUnit4` 使用基本完全一致，`JUnit4` 测试框架的其他特性都能够完全兼容，
 
 #### ArkBootRunner
+
 `ArkBootRunner` 类似 `SpringRunner`，参考[文档](https://docs.spring.io/spring-boot/docs/current/reference/html/boot-features-testing.html)学习 `SpringRunner` 的用法；为了能够在 SOFAArk 容器之上运行 Spring Boot 测试用例，只需要简单使用 `@RunWith(ArkBootRunner.class)` 替代 `@RunWith(SpringRunner.class)` 即可；示范代码如下：
 
 ```java
@@ -161,6 +172,7 @@ public class IntegrationTest {
 `ArkBootRunner` 和 `SpringRunner` 使用基本完全一致；
 
 #### TestNGOnArk
+
 注解 `@TestNGOnArk` 是 SOFAArk 提供给开发者用于标记哪些 TestNG 用例跑在 SOFAArk 之上，哪些只是普通的运行。例如：
 
 ```java
@@ -181,3 +193,19 @@ public class TestNGTest {
 ```
 
 上述用例打了 `@TestNGTest`，因此在执行该测试用例时，会先启动 Ark Container。
+
+### 加载 Ark Biz
+
+在 Linux/MacOS 下命令:
+
+```shell
+biz -i file:///XXX/XXXX/target/**-ark-biz.jar
+```
+
+在 Windows 下:
+
+```shell
+biz -i file:///C:/XXX/XXXX/target/**-ark-biz.jar
+```
+
+要注意，当前的 telnet 命令框暂时不支持对命令的删除，即使显示可以删除运行出来的命令依然是未删除之前加重新输入的命令，所以请尽量一次性将命令输入正确，否则将要重新输入。
