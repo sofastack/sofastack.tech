@@ -228,7 +228,7 @@ Dragonfly P2P 镜像加速拉取
 
 代码资产都在蚂蚁域内，利用蚂蚁镜像构建中心托管的 BuildKit 集群，通过自定义的 ACI 组件进行构建 Nydus 镜像。
 
-```
+```bash
 镜像构建:  stage: 镜像构建  id: build-image  component: nydus-image-build  inputs:    imageName: ${{parameters.imageName}} #构建的镜像 name    imageTag: ${{vcs.commitSha}} # 构建的镜像 tag，这里的 ${{vcs.commitSha}} 是 ACI 内置参数    dockerfile: Dockerfile # dockerfile文件位置（默认相对代码根目录）    chunkDictImage: ${{parameters.chunkDictImage}}    timeoutInSec: 1200
 ```
 
@@ -236,7 +236,7 @@ Dragonfly P2P 镜像加速拉取
 
 **Dragonfly 安装**
 
-```
+```bash
 $ helm repo add dragonfly https://dragonflyoss.github.io/helm-charts/$ helm install --wait --timeout 10m --dependency-update --create-namespace --namespace dragonfly-system dragonfly dragonfly/dragonfly --set dfdaemon.config.download.prefetch=true,seedPeer.config.download.prefetch=trueNAME: dragonflyLAST DEPLOYED: Fri Apr  7 10:35:12 2023NAMESPACE: dragonfly-systemSTATUS: deployedREVISION: 1TEST SUITE: NoneNOTES:1. Get the scheduler address by running these commands:  export SCHEDULER_POD_NAME=$(kubectl get pods --namespace dragonfly-system -l "app=dragonfly,release=dragonfly,component=scheduler" -o jsonpath={.items[0].metadata.name})  export SCHEDULER_CONTAINER_PORT=$(kubectl get pod --namespace dragonfly-system $SCHEDULER_POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")  kubectl --namespace dragonfly-system port-forward $SCHEDULER_POD_NAME 8002:$SCHEDULER_CONTAINER_PORT  echo "Visit http://127.0.0.1:8002 to use your scheduler"
 2. Get the dfdaemon port by running these commands:  export DFDAEMON_POD_NAME=$(kubectl get pods --namespace dragonfly-system -l "app=dragonfly,release=dragonfly,component=dfdaemon" -o jsonpath={.items[0].metadata.name})  export DFDAEMON_CONTAINER_PORT=$(kubectl get pod --namespace dragonfly-system $DFDAEMON_POD_NAME -o jsonpath="{.spec.containers[0].ports[0].containerPort}")  You can use $DFDAEMON_CONTAINER_PORT as a proxy port in Node.
 3. Configure runtime to use dragonfly:  https://d7y.io/docs/getting-started/quick-start/kubernetes/
@@ -246,7 +246,7 @@ $ helm repo add dragonfly https://dragonflyoss.github.io/helm-charts/$ helm inst
 
 **Nydus 安装**
 
-```
+```bash
 $ curl -fsSL -o config-nydus.yaml https://raw.githubusercontent.com/dragonflyoss/Dragonfly2/main/test/testdata/charts/config-nydus.yaml$ helm install --wait --timeout 10m --dependency-update --create-namespace --namespace nydus-snapshotter nydus-snapshotter dragonfly/nydus-snapshotter -f config-nydus.yamlNAME: nydus-snapshotterLAST DEPLOYED: Fri Apr  7 10:40:50 2023NAMESPACE: nydus-snapshotterSTATUS: deployedREVISION: 1TEST SUITE: NoneNOTES:Thank you for installing nydus-snapshotter.
 Your release is named nydus-snapshotter.
 To learn more about the release, try:
