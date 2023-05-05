@@ -20,7 +20,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*2o6cQI-j4qkAAAAAA
 
 我们直接安装最新版的 Istio：
 
-```
+```bash
 # 下载最新版的 istioctl$ export ISTIO_VERSION=1.18.0-alpha.0$ curl -L https://istio.io/downloadIstio | sh -
 
 # 将 istioctl 加入 PATH$ cd istio-$ISTIO_VERSION/$ export PATH=$PATH:$(pwd)/bin
@@ -36,7 +36,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*2o6cQI-j4qkAAAAAA
 
 配置好了之后，简单测试一下：
 
-```
+```bash
 $ curl -s -I -HHost:httpbin.example.com "http://$INGRESS_HOST:$INGRESS_PORT/status/200"HTTP/1.1 200 OKserver: istio-envoydate: Fri, 10 Mar 2023 15:49:37 GMT
 ```
 
@@ -48,7 +48,7 @@ $ curl -s -I -HHost:httpbin.example.com "http://$INGRESS_HOST:$INGRESS_PORT/stat
 
 这里我们把上次 Basic Auth 编译出来的 libgolang.so，通过本地文件挂载进来。简单点搞，直接 edit deployment 加了这些配置：
 
-```
+```bash
 # 申明一个 hostPath 的 volumevolumes:- name: golang-so-basic-auth  hostPath:    path: /data/golang-so/example-basic-auth/libgolang.so    type: File
 
 # 挂载进来volumeMounts:- mountPath: /etc/golang/basic-auth.so  name: golang-so-basic-auth  readOnly: true
@@ -58,7 +58,7 @@ $ curl -s -I -HHost:httpbin.example.com "http://$INGRESS_HOST:$INGRESS_PORT/stat
 
 Istio 提供了 EnvoyFilter CRD，所以，用 Istio 来配置 Go 扩展也比较方便，apply 这段配置，Basic Auth 就开启了。
 
-```
+```bash
 apiVersion: networking.istio.io/v1alpha3kind: EnvoyFiltermetadata:  name: golang-filter  namespace: istio-systemspec:  configPatches:    # The first patch adds the lua filter to the listener/http connection manager  - applyTo: HTTP_FILTER    match:      context: GATEWAY      listener:        filterChain:          filter:            name: "envoy.filters.network.http_connection_manager"            subFilter:              name: "envoy.filters.http.router"    patch:      operation: INSERT_BEFORE      value: # golang filter specification       name: envoy.filters.http.golang       typed_config:          "@type": "type.googleapis.com/envoy.extensions.filters.http.golang.v3alpha.Config"          library_id: example          library_path: /etc/golang/basic-auth.so          plugin_name: basic-auth          plugin_config:            "@type": "type.googleapis.com/xds.type.v3.TypedStruct"            type_url: typexx            value:              username: foo              password: bar
 ```
 
@@ -68,7 +68,7 @@ apiVersion: networking.istio.io/v1alpha3kind: EnvoyFiltermetadata:  name: golang
 
 我们测试一下：
 
-```
+```bash
 $ curl -s -I -HHost:httpbin.example.com "http://$INGRESS_HOST:$INGRESS_PORT/status/200"HTTP/1.1 401 Unauthorized
 
 # valid foo:bar$ curl -s -I -HHost:httpbin.example.com "http://$INGRESS_HOST:$INGRESS_PORT/status/200" -H 'Authorization: basic Zm9vOmJhcg=='HTTP/1.1 200 OK
@@ -78,7 +78,7 @@ $ curl -s -I -HHost:httpbin.example.com "http://$INGRESS_HOST:$INGRESS_PORT/stat
 
 接下来，我们改一下 EnvoyFilter 中的密码，重新 apply，再测试一下：
 
-```
+```bash
 # foo:bar not match the new password$ curl -s -I -HHost:httpbin.example.com "http://$INGRESS_HOST:$INGRESS_PORT/status/200" -H 'Authorization: basic Zm9vOmJhcg=='HTTP/1.1 401 Unauthorized
 ```
 
