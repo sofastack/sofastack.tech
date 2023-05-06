@@ -28,7 +28,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 >我发现 MOSN 去 cookie 时候，如果取不到，则返回中横线。这里万一 cookie 值就是中横线怎么办呢？
 
-A：你用啥接口取得？
+A：你用啥接口取的？
 
 >用变量取的,前缀加 cookie 的 key。
 >>![](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*pFrBQLPKPT8AAAAAAAAAAAAADrGAAQ/original)
