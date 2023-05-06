@@ -38,7 +38,7 @@ A：0.4.2 版本之后就可以上生产环境。
 
 **2. 牛康龙 ** 提问：
 
->在使用时遇到了如下图这个问题，请问该如何解决？
+>在使用时遇到了如下图这个问题，请问该如何解决啊？
 ![](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*ip37T5HibbcAAAAAAAAAAAAADrGAAQ/original)
 
 A：换 Hikari Durid 的 bug 。
