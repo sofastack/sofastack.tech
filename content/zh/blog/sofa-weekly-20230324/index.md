@@ -39,7 +39,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 「Layotto」： 
 
-https://github.com/mosn/layotto/issues/907
+[https://github.com/mosn/layotto/issues/907](https://github.com/mosn/layotto/issues/907)
 
 ### SOFAStack 社区本周贡献
 
