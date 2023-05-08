@@ -74,7 +74,7 @@ $ curl -s -I -HHost:httpbin.example.com "http://$INGRESS_HOST:$INGRESS_PORT/stat
 # valid foo:bar$ curl -s -I -HHost:httpbin.example.com "http://$INGRESS_HOST:$INGRESS_PORT/status/200" -H 'Authorization: basic Zm9vOmJhcg=='HTTP/1.1 200 OK
 ```
 
-符合预期
+符合预期。
 
 接下来，我们改一下 EnvoyFilter 中的密码，重新 apply，再测试一下：
 
