@@ -1,7 +1,7 @@
 ---
 title: "SOFA Weekly｜开源之夏 MOSN 与 Layotto 项目简介、社区会议预告、社区本周贡献"
 authorlink: "https://github.com/sofastack"
-description: "MSOFA Weekly｜SOFAArk 社区会议预告、Layotto 社区会议回顾、社区本周贡献"
+description: "SOFA Weekly｜SOFAArk 社区会议预告、Layotto 社区会议回顾、社区本周贡献"
 categories: "SOFA Weekly"
 tags: ["SOFA Weekly"]
 date: 2023-05-05T15:00:00+08:00
