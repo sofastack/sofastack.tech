@@ -1,10 +1,10 @@
 ---
-title: "SOFA Weekly | C 位大咖说 & QA"
+title: "SOFA Weekly | 本周贡献 & issue 精选"
 authorlink: "https://github.com/sofastack"
-description: "SOFA Weekly | C 位大咖说 & QA"
+description: "SOFA Weekly |本周 Contributor & QA"
 categories: "SOFA Weekly"
 tags: ["SOFA Weekly"]
-date: 2022-10-07T15:00:00+08:00
+date: 2022-11-11T15:00:00+08:00
 cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAAAAAAAAARQnAQ"
 ---
 
@@ -20,33 +20,30 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **SOFAStack:** *[https://github.com/sofastack](https://github.com/sofastack)*
 
+### SOFAStack 社区本周贡献
+
+![图片](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*UIbfRpBphOwAAAAAAAAAAAAADrGAAQ/original)
+
 **每周读者问答提炼**
 
 欢迎大家向公众号留言提问或在群里与我们互动,我们会筛选重点问题通过 " SOFA WEEKLY " 的形式回复
 
-**1. greedying** 提问：
+**1. 奇奇** 提问：
 
->我发现 MOSN 去 cookie 时候，如果取不到，则返回中横线。这里万一 cookie 值就是中横线怎么办呢？
+>Seata 可以用于生产环境吗？
 
-A：你用啥接口取的？
+A：0.4.2 版本之后就可以上生产环境。
 
->用变量取的,前缀加 cookie 的 key。
->>![](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*pFrBQLPKPT8AAAAAAAAAAAAADrGAAQ/original)
->>MOSN 代码就是这么写的，那个 ValueNotFound 是一个短横，这是一个 feature 还是 bug？
+**「Seata」**：[https://github.com/seata/seata](https://github.com/seata/seata)
 
-A：哦 确实，这儿应该返回 error 就行了，不然任何值都有可能不对。
-![](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*3neXRYi9msgAAAAAAAAAAAAADrGAAQ/original)
-要这样处理才合理，通过 error 来判断了。
+**2. 牛康龙** 提问：
 
-**「MOSN」**：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
+>在使用时遇到了如下图这个问题，请问该如何解决啊？
+![](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*ip37T5HibbcAAAAAAAAAAAAADrGAAQ/original)
 
-**2. 卿同学** 提问：
+A：换 Hikari Durid 的 bug 。
 
->我看 Layotto 也在推动和 Envoy 的融合，这一块现在有进展吗？
-
-A：今年我们首先会开源 Envoy 的 cgo 插件，然后基于这个插件，可以把 Layotto 跑在 Envoy 上。
-
-**「Layotto」**：[https://github.com/mosn/layotto](https://github.com/mosn/layotto)
+**「Seata」**：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 **本周推荐阅读**
 
