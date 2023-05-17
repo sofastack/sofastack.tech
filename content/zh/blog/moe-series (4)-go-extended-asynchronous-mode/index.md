@@ -40,7 +40,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*Q_GgSKOFXIYAAAAAA
 
 接下来，我们还是通过一个示例来体验，这次我们实现 Basic Auth 的远程校验版本，关键代码如下：
 
-```
+```bash
 func (f *filter) DecodeHeaders(header api.RequestHeaderMap, endStream bool) api.StatusType {
   go func() {
     // verify 中的代码，可以不需要感知是否异步
@@ -59,7 +59,7 @@ func (f *filter) DecodeHeaders(header api.RequestHeaderMap, endStream bool) api.
 
 再来看 `verify` 的代码，重点是，我们可以在这里使用全部的 Go 特性：
 
-```
+```bash
 // 这里使用了 http.Post
 func checkRemote(config *config, username, password string) bool {
   body := fmt.Sprintf(`{"username": "%s", "password": "%s"}`, username, password)
@@ -100,7 +100,7 @@ func (f *filter) verify(header api.RequestHeaderMap) (bool, string) {
 
 老规矩，启动之后，我们使用 `curl` 来测试一下：
 
-```
+```bash
 $ curl -s -I -HHost:httpbin.example.com "http://$INGRESS_HOST:$INGRESS_PORT/status/200"
 HTTP/1.1 401 Unauthorized
 # valid foo:bar
