@@ -1,12 +1,13 @@
 ---
 title: "SOFARegistry | 聊一聊服务发现的数据一致性"
-authorlink: "https://github.com/sofastack"
+author: "肖健（花名：昱恒）"
+authorlink: "https://github.com/bjxiaojian"
 description: "SOFARegistry | 聊一聊服务发现的数据一致性"
 categories: "SOFAStack"
-tags: ["SOFAStack"]
-date: 2023-01-03T15:00:00+08:00
-cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*6mIVTrTjWEYAAAAAAAAAAAAADrGAAQ/original"
+tags: [“技术文章”]
+date: 2022-01-03T15:00:00+08:00
 ---
+
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/19546cb0b5394cfa85db3cca72ad65e9~tplv-k3u1fbpfcp-zoom-1.image)
 
 文｜肖健（花名：昱恒）
