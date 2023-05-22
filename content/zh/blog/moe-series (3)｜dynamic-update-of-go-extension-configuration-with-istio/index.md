@@ -4,7 +4,7 @@ authorlink: "https://github.com/sofastack"
 description: "MoE 系列（三）｜使用 Istio 动态更新 Go 扩展配置"
 categories: "SOFAStack"
 tags: ["SOFAStack"]
-date: 2023-05-5T15:00:00+08:00
+date: 2023-05-02T15:00:00+08:00
 cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*2o6cQI-j4qkAAAAAAAAAAAAADrGAAQ/original"
 ---
 
