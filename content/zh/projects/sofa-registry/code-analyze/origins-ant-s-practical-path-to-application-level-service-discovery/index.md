@@ -145,7 +145,7 @@ public class SampleClientImpl {
 
 3、那么对于 consumer1，我们需要将如下的数据推送给 consumer1：
 
-```yaml
+```
 com.alipay.sample.FooService:
 	- 1.1.1.1:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
 	- ...
@@ -162,7 +162,6 @@ com.alipay.sample.Service07:
 	- 1.1.1.1:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
 	- ...
 	- 1.1.1.99:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
-
 ```
 
 可以看到一台 provider 的扩缩容，就需要对 consumer1 进行如此大量的数据推送，如果 com.alipay.sample.FooService 的 publisher 的数量更大，达到 1 千个、1 万个呢？此时注册中心的服务变更通知，也面临着网络通信数据量大的挑战。  
@@ -173,7 +172,7 @@ com.alipay.sample.Service07:
 
 介绍完注册中心面临的挑战后，我们再从图 1 来看看 consumer 存储服务列表时，内存面临的挑战，对于注册中心推送下来的数据，consumer 也需要进行存储，然后再发起 RPC 服务调用的时候，就可以直接从 consumer 内存中获取到服务地址进行调用，consumer 中存储的数据，简化来看是如下的数据：
 
-```yaml
+```
 com.alipay.sample.FooService:
 	- 1.1.1.1:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
 	- ...
@@ -203,7 +202,7 @@ com.alipay.sample.Service07:
 
 初步看，我们不难发现的是，对于一个 provider1，在注册中心存储的 publisher 数据如下：
 
-```yaml
+```
 com.alipay.sample.FooService:
 	- 1.1.1.1:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
 
@@ -240,7 +239,7 @@ com.alipay.sample.Service100:
 
 3、consumer1 发起服务订阅后，注册中心进行数据推送，此时注册中心推送的数据为：
 
-```yaml
+```
 applicationB:
 	- 1.1.1.1:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
 	- ...
