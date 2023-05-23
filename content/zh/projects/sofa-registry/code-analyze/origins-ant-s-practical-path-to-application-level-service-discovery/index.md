@@ -148,7 +148,7 @@ public class SampleClientImpl {
 ```yaml
 com.alipay.sample.FooService:
         - 1.1.1.1:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
-	...
+        - ...
         - 1.1.1.99:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
 
 com.alipay.sample.BarService:
@@ -239,7 +239,7 @@ com.alipay.sample.Service100:
 
 3、consumer1 发起服务订阅后，注册中心进行数据推送，此时注册中心推送的数据为：
 
-```
+```yaml
 applicationB:
         - 1.1.1.1:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
         - ...
