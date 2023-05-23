@@ -147,21 +147,21 @@ public class SampleClientImpl {
 
 ```yaml
 com.alipay.sample.FooService:
-	1.1.1.1:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
+        - 1.1.1.1:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
 	...
-	1.1.1.99:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
+        - 1.1.1.99:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
 
 com.alipay.sample.BarService:
-	1.1.1.1:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
-	...
-	1.1.1.99:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
+        - 1.1.1.1:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
+        - ...
+        - 1.1.1.99:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
 
 //...中间省略
 
 com.alipay.sample.Service07:
-	1.1.1.1:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
-	...
-	1.1.1.99:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
+        - 1.1.1.1:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
+        - ...
+        - 1.1.1.99:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
 ```
 
 可以看到一台 provider 的扩缩容，就需要对 consumer1 进行如此大量的数据推送，如果 com.alipay.sample.FooService 的 publisher 的数量更大，达到 1 千个、1 万个呢？此时注册中心的服务变更通知，也面临着网络通信数据量大的挑战。  
@@ -174,21 +174,21 @@ com.alipay.sample.Service07:
 
 ```yaml
 com.alipay.sample.FooService:
-	1.1.1.1:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
-	...
-	1.1.1.99:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
+        - 1.1.1.1:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
+        - ...
+        - 1.1.1.99:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
 
 com.alipay.sample.BarService:
-	1.1.1.1:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
-	...
-	1.1.1.99:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
+        - 1.1.1.1:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
+        - ...
+        - 1.1.1.99:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
 
 //...中间省略
 
 com.alipay.sample.Service07:
-	1.1.1.1:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
-	...
-	1.1.1.99:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
+        - 1.1.1.1:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
+        - ...
+        - 1.1.1.99:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
 
 ```
 
@@ -204,15 +204,15 @@ com.alipay.sample.Service07:
 
 ```yaml
 com.alipay.sample.FooService:
-	1.1.1.1:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
+        - 1.1.1.1:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
 
 com.alipay.sample.BarService:
-	1.1.1.1:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
+        - 1.1.1.1:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
 
 //...中间省略
 
 com.alipay.sample.Service100:
-	1.1.1.1:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
+        - 1.1.1.1:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
 ```
 
 每个 publisher 中，除了 serviceName 不相同，url 存储了相同的 100 份，这里是否可以简化为存储 1 份？这是应用级服务发布最初的想法。
@@ -241,9 +241,9 @@ com.alipay.sample.Service100:
 
 ```
 applicationB:
-	- 1.1.1.1:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
-	- ...
-	- 1.1.1.100:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
+        - 1.1.1.1:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
+        - ...
+        - 1.1.1.100:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
 
 ```
 
@@ -257,15 +257,15 @@ applicationB:
 
 ```yaml
 applicationB:
-	- com.alipay.sample.FooService
+        - com.alipay.sample.FooService
   - com.alipay.sample.BarService
   - ...
-	- com.alipay.sample.Service50
+        - com.alipay.sample.Service50
 
 applicationB:
-	- 1.1.1.1:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
-	- ...
-	- 1.1.1.100:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
+        - 1.1.1.1:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
+        - ...
+        - 1.1.1.100:12200?app=applicationB&_SERIALIZETYPE=hessian2&_TIMEOUT=3000&zone=zone1&version=1&_WARMUPTIME=0
 
 ```
 
@@ -305,7 +305,7 @@ applicationB:
 
 这些问题，我们将在下一篇文章《技术内幕｜蚂蚁的应用级服务发现实践之路》中详细解答，敬请期待。
 
-##### 参考链接
+#### 参考链接
 
 [1]SOFARPC 编程界面：[https://www.sofastack.tech/projects/sofa-rpc/programing-sofa-boot-xml/](https://www.sofastack.tech/projects/sofa-rpc/programing-sofa-boot-xml/)
 
