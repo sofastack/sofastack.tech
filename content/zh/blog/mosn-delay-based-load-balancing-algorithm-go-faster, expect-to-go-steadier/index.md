@@ -11,8 +11,6 @@ cover:"https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*7liyT4oGBIkAAAAAAA
 
 ![图片](https://mmbiz.qpic.cn/mmbiz_gif/nibOZpaQKw09ARcsGuzib3ttcN4LZpdAC0n9KTQp7uibF8ia0ibk3Olf3sib50ExibicicOrzCOVrOyUD2dFib84f0fTx5uA/640?wx_fmt=gif&wxfrom=5&wx_lazy=1)
 
-mosn-delay-based-load-balancing-algorithm-go-faster, expect-to-go-steadier
-
 文｜纪卓志（GitHub ID：jizhuozhi)
 
 京东高级开发工程师
