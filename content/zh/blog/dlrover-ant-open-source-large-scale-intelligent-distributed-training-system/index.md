@@ -136,4 +136,4 @@ DLRover 目前已经在蚂蚁大规模落地，集群资源利用率相对于基
 **了解更多...**
 
 **DLRover Star 一下：**
-*https://github.com/intelligent-machine-learning*
+[https://github.com/intelligent-machine-learning](https://github.com/intelligent-machine-learning)
