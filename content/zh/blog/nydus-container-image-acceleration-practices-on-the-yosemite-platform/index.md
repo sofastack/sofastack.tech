@@ -244,17 +244,11 @@ Nydus 将原本统一存放在 Layer 层的文件数据和元数据 （文件系
 #### 3. Nydus 优势
 
 - 容器镜像按需下载，用户不再需要下载完整镜像就能启动容器。 
-
 - 块级别的镜像数据去重，最大限度为用户节省存储资源。 
-
 - 镜像只有最终可用的数据，不需要保存和下载过期数据。 
-
 - 端到端的数据一致性校验，为用户提供更好的数据保护。 
-
 - 兼容 OCI 分发标准和 artifacts 标准，开箱即可用。 
-
 - 支持不同的镜像存储后端，镜像数据不只可以存放在镜像仓库，还可以放到 NAS 或  者类似 S3 的对象存储上。 
-
 - 与 Dragonfly 的良好集成。 
 
 **PART.5**
@@ -317,9 +311,9 @@ K8s 集群使用的运行时为 Containerd ，而Containerd 也支持使用插�
 
 下载安装包：
 
-[https://github.com/dragonflyoss/image-service/releases](https://github.com/dragonflyoss/image-service/releases)
+ - [https://github.com/dragonflyoss/image-service/releases](https://github.com/dragonflyoss/image-service/releases)
+ - [https://github.com/containerd/nydus-snapshotter/releases](https://github.com/containerd/nydus-snapshotter/releases)
 
-[https://github.com/containerd/nydus-snapshotter/releases](https://github.com/containerd/nydus-snapshotter/releases)
 ```text
    tar -xf nydus-snapshotter-v0.5.1-x86_64.tgz  
    tar -xf nydus-static-v2.1.4-linux-amd64.tgz
@@ -441,6 +435,7 @@ sudo systemctl restart containerd
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/35c2c98cb7b84db1acc0b41697106b28~tplv-k3u1fbpfcp-zoom-1.image)
 
 POD 从 Create 到 Ready：OCI -> 20s
+
 POD 从 Create 到 Ready：Nydus -> 13s
 
 目前业务镜像尺寸并不大，大约 200MB，使用 Nydus 已有提升效果，在使用超大镜像的场景，例如 AI 计算等，Nydus 能带来的加速效果会非常的明显。
@@ -462,4 +457,3 @@ Nydus 是来自 CNCF 的优秀开源项目，更进一步说，约苗也将继�
 
 **Nydus Star 一下：**
 [https://github.com/dragonflyoss/image-service](https://github.com/dragonflyoss/image-service)
-
