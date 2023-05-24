@@ -311,8 +311,9 @@ K8s 集群使用的运行时为 Containerd ，而Containerd 也支持使用插�
 
 下载安装包：
 
- * [https://github.com/dragonflyoss/image-service/releases](https://github.com/dragonflyoss/image-service/releases)
- * [https://github.com/containerd/nydus-snapshotter/releases](https://github.com/containerd/nydus-snapshotter/releases)
+ [https://github.com/dragonflyoss/image-service/releases](https://github.com/dragonflyoss/image-service/releases)
+ 
+ [https://github.com/containerd/nydus-snapshotter/releases](https://github.com/containerd/nydus-snapshotter/releases)
 
 ```text
    tar -xf nydus-snapshotter-v0.5.1-x86_64.tgz  
