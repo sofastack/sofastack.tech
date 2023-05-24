@@ -45,5 +45,11 @@ sidebar:
         link: 'code-analyze/code-analyze-communication-data-compression' 
       - title: 'registry meta 选主'
         link: 'code-analyze/code-analyze-registry-meta' 
+      - title: 'SOFARegistry | 聊一聊服务发现的数据一致性'
+        link: 'code-analyze/sofaregistry-talk-about-the-data-consistency-of-service-discovery' 
+      - title: '缘起｜蚂蚁应用级服务发现的实践之路'
+        link: 'code-analyze/origins-ant-s-practical-path-to-application-level-service-discovery' 
+
+
         
 ---
