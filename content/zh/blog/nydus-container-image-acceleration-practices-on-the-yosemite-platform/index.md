@@ -205,7 +205,6 @@ Index 文件也是一个 JSON 文件。它是可选的，可以被认为是 Mani
 我们注意到镜像层需要全部堆叠后，容器才能看到整个文件系统视图，所以容器需要等到镜像的每一层都下载并解压之后才能启动。有一篇 FAST 论文研究分析\[1] 说镜像拉取占了大约容器 76% 的启动时间，但却只有 6.4% 的数据是会被容器读取的。这个结果很有趣，它激发了我们可以通过按需加载的方式来提高容器启动速度。另外，在层数较多的情况下，运行时也会有 Overlay 堆叠的开销。
 
 一般来说容器启动分为三个步骤：
-
 - 下载镜像；
 - 解压镜像；
 - 使用 Overlayfs 将容器可写层和镜像中的只读层聚合起来提供容器运行环境。
@@ -222,7 +221,7 @@ Index 文件也是一个 JSON 文件。它是可选的，可以被认为是 Mani
 
 ### Nydus 镜像解决方案
 
-Nydus 镜像加速框架是 Dragonfly\[2]（*CNCF 孵化中项目*）的子项目。它兼容了目前的 OCI 镜像构建、分发、运行时生态。Nydus 运行时由 Rust 编写，它在语言级别的安全性以及在性能、内存和 CPU 的开销方面非常有优势，同时也兼具了安全和高可扩展性。
+Nydus 镜像加速框架是 Dragonfly[2]（*CNCF 孵化中项目*）的子项目。它兼容了目前的 OCI 镜像构建、分发、运行时生态。Nydus 运行时由 Rust 编写，它在语言级别的安全性以及在性能、内存和 CPU 的开销方面非常有优势，同时也兼具了安全和高可扩展性。
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/117eba1b0fab4ec495b5c527f6a1c194~tplv-k3u1fbpfcp-zoom-1.image)
 
@@ -441,7 +440,7 @@ sudo systemctl restart containerd
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/35c2c98cb7b84db1acc0b41697106b28~tplv-k3u1fbpfcp-zoom-1.image)
 
-POD 从 Create 到 Ready：OCI -> 20s\
+POD 从 Create 到 Ready：OCI -> 20s
 POD 从 Create 到 Ready：Nydus -> 13s
 
 目前业务镜像尺寸并不大，大约 200MB，使用 Nydus 已有提升效果，在使用超大镜像的场景，例如 AI 计算等，Nydus 能带来的加速效果会非常的明显。
