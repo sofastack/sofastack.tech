@@ -69,11 +69,11 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*jR46Q5l39RkAAAAAA
 
 ### Kraken
 
-#### 架构图
+**架构图**
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9aaf891dfc214782b86ecbe045325f64~tplv-k3u1fbpfcp-zoom-1.image)
 
-#### 术语
+**术语**
 
 **Agent**
 
@@ -155,7 +155,6 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*jR46Q5l39RkAAAAAA
 
 - ECS 上 Nydusd 通过.p2p.volces.com 域名访问 Dfdaemon。
 - VCI 上镜像服务客户端和 Nydusd 通过.p2p.volces.com 域名访问 Dfdaemon。
-
 
 ### 压测数据
 
