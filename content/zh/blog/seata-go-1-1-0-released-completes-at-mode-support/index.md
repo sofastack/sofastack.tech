@@ -18,14 +18,14 @@ Seata-go 1.1.0 版本补齐了 AT 模式下对 Multi Delete、Multi Update、Ins
 
 示例链接：[https://github.com/seata/seata-go-samples/tree/main/at](https://github.com/seata/seata-go-samples/tree/main/at)
 
-### AT 模式:
+**AT 模式:**
 
 - AT 模式支持并集成了 Multi Delete SQL 语法
 - AT 模式支持并集成了 Multi Update SQL 语法
 - AT 模式支持并集成了 Insert on Update SQL 语法
 - AT 模式支持并集成了 Select for Update SQL 语法
 
-### 配置文件：
+**配置文件：**
 
 完善了更多地方读取配置文件功能
 
