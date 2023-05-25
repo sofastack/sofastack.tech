@@ -3,8 +3,8 @@ title: "缘起｜蚂蚁应用级服务发现的实践之路"
 author: "肖健"
 authorlink: "https://github.com/sofastack"
 description: "缘起｜蚂蚁应用级服务发现的实践之路"
-categories: "SOFARegistry"
-tags: ["SOFAStack"]["SOFARegistry"]
+categories: ["SOFARegistry"]
+tags: ["SOFAStack","SOFARegistry"]
 date: 2023-04-11T15:00:00+08:00
 ---
 

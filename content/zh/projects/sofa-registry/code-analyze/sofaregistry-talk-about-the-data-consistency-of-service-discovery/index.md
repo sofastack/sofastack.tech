@@ -3,8 +3,8 @@ title: "SOFARegistry | 聊一聊服务发现的数据一致性"
 author: "肖健"
 authorlink: "https://github.com/sofastack"
 description: "SOFARegistry | 聊一聊服务发现的数据一致性"
-categories: "SOFAStack"
-tags: ["SOFAStack"]["SOFARegistry"]
+categories: ["SOFAStack"]
+tags: ["SOFAStack","SOFARegistry"]
 date: 2023-01-03T15:00:00+08:00
 ---
 
