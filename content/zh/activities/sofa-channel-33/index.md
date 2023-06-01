@@ -14,7 +14,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*_GIrT6pCaS4AAAAAA
 - 活动时间：05 月 31 日，周三晚 19 点
 - 活动形式：线上直播
 - 资料下载：[点击获取](https://mdn.alipayobjects.com/huamei_soxoym/afts/file/A*x71TQY1uvZMAAAAAAAAAAAAADrGAAQ/Occlum_X_EDMM_0531%20SOFAChannel%20%E5%88%86%E4%BA%AB.pdf)
-- B 站直播间地址：http://live.bilibili.com/21954520
+- B 站直播间地址：<http://live.bilibili.com/21954520>
 - B 站直播ID：21954520
 
 ## 介绍
