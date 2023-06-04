@@ -12,6 +12,7 @@ aliases: "/sofa-boot/docs/sofa-ark-spring-boot-demo"
 5. 如何执行 Spring Boot 业务应用
 6. 多 Host 与单 Host 模式
 7. 如何动态卸载 Spring Boot 业务应用
+8. 日志配置
 
 ## 1. 简介
 
@@ -341,3 +342,17 @@ logging.file.path=./logs
 ## 7. 如何动态卸载 Spring Boot 业务应用
 
 目前 Spring boot 不支持动态卸载。如果要动态卸载，需要注册一个卸载的事件handler，请参考 sofaboot 的代码：[SofaBizUninstallEventHandler](https://github.com/sofastack/sofa-boot/blob/master/sofa-boot-project/sofa-boot-core/runtime-sofa-boot/src/main/java/com/alipay/sofa/runtime/SofaBizUninstallEventHandler.java)。
+
+## 8. 日志配置
+
+- logback 框架配置日志参数
+
+一般而言，建议业务应用使用 application.properties 配置日志参数，**不要写在 logback-spring.xml 中**。因为业务应用使用的 LoggerContext 是宿主应用的 LoggerContext（由宿主的类加载器加载），LoggerContext 只会在初始化时读取一次宿主应用的 logback-spring.xml，所以业务应用即使配置了 logback-spring.xml 也不会被读取。
+
+- 切换至 log4j2 框架
+
+排除项目各项依赖中的 logback 依赖，添加 log4j2依赖。
+
+- SOFAArk 容器日志
+
+参考 [Ark 日志说明](../sofa-ark-ark-log) 和 [配置文档](../sofa-ark-ark-config).
