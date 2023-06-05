@@ -5,7 +5,7 @@ description: "缘起｜蚂蚁应用级服务发现的实践之路"
 categories: "SOFAStack"
 tags: ["SOFAStack"]
 date: 2023-04-11T15:00:00+08:00
-cover:"https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*MqBZTo4wB7IAAAAAAAAAAAAADrGAAQ/original"
+cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*MqBZTo4wB7IAAAAAAAAAAAAADrGAAQ/original"
 
 ---
 ![图片](https://mmbiz.qpic.cn/mmbiz_gif/nibOZpaQKw09ARcsGuzib3ttcN4LZpdAC0n9KTQp7uibF8ia0ibk3Olf3sib50ExibicicOrzCOVrOyUD2dFib84f0fTx5uA/640?wx_fmt=gif&wxfrom=5&wx_lazy=1)
