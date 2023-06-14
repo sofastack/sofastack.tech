@@ -207,4 +207,4 @@ Seata-go 后续的 Saga 模式，计划采用 Temporal 框架来做服务编排�
 欢迎大家将 Seata/Seata-go/Seata-php/Seata-js 相关的实践文章投稿至：<https://www.yuque.com/fred-x/ngfgiz/le1h4u5kn0xyhhoh>
 
 **Seata Star 一下✨：**  
-**https://github.com/seata/seata-go**
+<https://github.com/seata/seata-go>
