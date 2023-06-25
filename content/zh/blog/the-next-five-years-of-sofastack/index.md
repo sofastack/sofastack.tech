@@ -1,13 +1,12 @@
 ---
 title: "SOFAStack 的下一个五年"
 authorlink: "https://github.com/sofastack"
-description: "下一个五年，让我们保持初心，一起把 SOFAStack 社区建设得更开放、更有趣！"
+description: "SOFAStack 的下一个五年"
 categories: "SOFAStack"
 tags: ["SOFAStack"]
 date: 2023-06-20T15:00:00+08:00
 cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*ZYb2R7aplbkAAAAAAAAAAAAADrGAAQ/original"
----  
-
+---
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f178aee24a3e442dae5c826a3830ad99~tplv-k3u1fbpfcp-zoom-1.image)  
 
@@ -21,10 +20,9 @@ SOFAStack 社区开源负责人
 
 <p align=center> 本文 3861 字 阅读 11 分钟 </p>
 
-
 # 01
 
-## 回顾开源这五年 ##
+## 回顾开源这五年 
 
 回想起 2018 年 4 月 19 日 SOFAStack 首次开源，当时的官宣文章中就提到了我们开源的初心：
 
@@ -74,10 +72,9 @@ SOFAStack 社区开源负责人
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/15f210abdfe8431493602df2c6a696f3~tplv-k3u1fbpfcp-zoom-1.image)
 图 6 - 开源飞轮
 
-
 # 02
 
-## 展望下一个五年 ##
+## 展望下一个五年 
 
 聊完了过去五年的过程和收获，对 SOFAStack 而言，下一个五年的主要方向就比较明确：我们还是会着重放在产品力的提升上，希望能持续解决分布式场景中的核心问题。
 
@@ -175,10 +172,9 @@ SOFAStack 社区开源负责人
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2905feb8fe1f492eb163d6b63b0623be~tplv-k3u1fbpfcp-zoom-1.image)
 图 16 - SOFA Function 产品架构
 
-
 # 03
 
-## 致谢 ##
+## 致谢 
 
 最后，值此 SOFAStack 开源五周年，还是要对大家表示感谢。
 
@@ -200,15 +196,13 @@ SOFAStack 社区开源负责人
 
 [SOFAStack 的下一个五年](https://mp.weixin.qq.com/s/5aVtoQzJoyblBcbEDg0vXA) 
 
+## 了解更多
 
-## 了解更多... ##
-
-### Layotto Star  一下 ###
+### Layotto Star  一下 
 
 [https://github.com/mosn/layotto](https://github.com/mosn/layotto)
 
-
-### 本周推荐阅读 ###
+### 本周推荐阅读 
 
 [![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/65cbbd221f5f4404844f671d42713072~tplv-k3u1fbpfcp-zoom-1.image)](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247520348&idx=1&sn=459c9262761bd719a028c8ea27f56591&chksm=faa37f86cdd4f690cefbcb8564ab79b327512e409ada02870561ece96c6fc07c050fdc3b7f66&scene=21)
 
