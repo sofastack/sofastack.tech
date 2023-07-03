@@ -358,7 +358,9 @@ logging.file.path=./logs
 
 ## 7. 如何动态卸载 Spring Boot 业务应用
 
-目前 Spring boot 不支持动态卸载。如果要动态卸载，需要注册一个卸载的事件handler，请参考 sofaboot 的代码：[SofaBizUninstallEventHandler](https://github.com/sofastack/sofa-boot/blob/master/sofa-boot-project/sofa-boot-core/runtime-sofa-boot/src/main/java/com/alipay/sofa/runtime/SofaBizUninstallEventHandler.java)。
+目前 Sofa Boot 支持动态卸载，而 Spring boot 不支持动态卸载。如果要动态卸载，需要注册一个卸载的事件handler，请参考 sofaboot 的代码：[SofaBizUninstallEventHandler](https://github.com/sofastack/sofa-boot/blob/master/sofa-boot-project/sofa-boot-core/runtime-sofa-boot/src/main/java/com/alipay/sofa/runtime/SofaBizUninstallEventHandler.java)。
+
+同理，如果业务应用卸载时存在资源未释放情况，可以注册一个监听模块卸载事件或者 spring 上下文关闭事件，来动态释放 socket 和 定时任务以及类似的例如缓存、线程池等。
 
 ## 8. 日志配置
 
@@ -373,3 +375,7 @@ logging.file.path=./logs
 - SOFAArk 容器日志
 
 参考 [Ark 日志说明](../sofa-ark-ark-log) 和 [配置文档](../sofa-ark-ark-config).
+
+## 9. 其它最佳实践
+
+建议 Spring Boot 业务应用 使用的 Spring Boot 版本和 Spring Boot 宿主应用保持一致。SofaArk 不支持业务应用和宿主应用使用启动框架的不同版本，也不建议用这种使用方式。
