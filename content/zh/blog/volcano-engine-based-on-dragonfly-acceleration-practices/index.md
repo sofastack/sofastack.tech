@@ -5,7 +5,7 @@ description: "火山引擎基于 Dragonfly 加速实践"
 categories: "SOFAStack"
 tags: ["SOFAStack"]
 date: 2023-03-21T15:00:00+08:00
-cover:"https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*jR46Q5l39RkAAAAAAAAAAAAADrGAAQ/original"
+cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*jR46Q5l39RkAAAAAAAAAAAAADrGAAQ/original"
 
 ---
 

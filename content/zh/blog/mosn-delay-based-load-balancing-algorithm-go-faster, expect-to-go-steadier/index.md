@@ -5,7 +5,7 @@ description: "MOSN 基于延迟负载均衡算法——走得更快，期待走�
 categories: "SOFAStack"
 tags: ["SOFAStack"]
 date: 2023-05-23T15:00:00+08:00
-cover:"https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*7liyT4oGBIkAAAAAAAAAAAAADrGAAQ/original"
+cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*7liyT4oGBIkAAAAAAAAAAAAADrGAAQ/original"
 
 ---
 
