@@ -13,6 +13,7 @@ aliases: "/sofa-boot/docs/sofa-ark-spring-boot-demo"
 6. 多 Host 与单 Host 模式
 7. 如何动态卸载 Spring Boot 业务应用
 8. 日志配置
+9. 其它最佳实践
 
 ## 1. 简介
 
@@ -54,7 +55,7 @@ aliases: "/sofa-boot/docs/sofa-ark-spring-boot-demo"
           <bizName>spring-boot-ark-biz</bizName> <!-- Ark Biz 名字-->
 <!-- webContextPath 是单 host 模式下的必要配置，详细配置见 5. 多 host 模式与单 host 模式 -->
           <webContextPath>biz</webContextPath>  <!-- 同一个host中设置不同的webContextPath-->
-<!-- declaredMode 开启后，业务应用可以使用自己声明过的、且宿主应用拥有的通用依赖-->
+<!-- declaredMode 开启后，业务应用可以使用自己声明过的、且宿主应用拥有的通用依赖，详细见：https://github.com/sofastack/sofa-ark/milestone/21 -->
           <declaredMode>true</declaredMode> <!-- 使用宿主应用的通用依赖-->
         </configuration>
       </plugin>
@@ -87,7 +88,23 @@ aliases: "/sofa-boot/docs/sofa-ark-spring-boot-demo"
 </dependency>
 ```
 
-### 2.2 打包
+### 2.2 修改 Spring Boot 启动类
+
+由于配置了 declaredMode，需要让模块导入资源时，优先从模块里查找，因此需要配置业务应用的资源加载器，定制化启动 Spring Boot 业务应用，如下：
+
+```java
+public static void main(String[] args) {
+    SpringApplicationBuilder builder = new SpringApplicationBuilder(SpringBootArkBizApplication.class).web(WebApplicationType.SERVLET);
+
+    // set biz to use resource loader.
+    ResourceLoader resourceLoader = new DefaultResourceLoader(SpringBootArkBizApplication.class.getClassLoader());
+    builder.resourceLoader(resourceLoader);
+    // run springboot application.
+    ConfigurableApplicationContext context = builder.build().run(args);
+    }
+```
+
+### 2.3 打包
 
 首先，使用 maven 打包业务应用，如下：
 
