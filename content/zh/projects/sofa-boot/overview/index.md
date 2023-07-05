@@ -11,17 +11,19 @@ SOFABoot 是蚂蚁金服开源的基于 Spring Boot 的研发框架，它在 Spr
 
 |SOFABoot 版本| Spring Boot 版本|
 |:---:|:---:|
-|2.3.x|1.4.2.RELEASE|
-|2.4.x|1.4.2.RELEASE|
-|2.5.x|1.5.16.RELEASE|
-|3.0.x|2.0.3.RELEASE|
-|3.1.x|2.1.0.RELEASE|
-|3.2.x|2.1.0.RELEASE|
 |3.3.0～3.3.1|2.1.11.RELEASE|
-|3.3.2 及以后|2.1.13.RELEASE|
+|3.3.2～3.6.0|2.1.13.RELEASE|
+|3.7.0～3.10.0|2.3.9.RELEASE|
+|3.11.0～3.11.1|2.3.12.RELEASE|
+|3.12.0～3.13.0|2.4.13|
+|3.14.0～3.14.1|2.6.9|
+|3.15.0～3.16.3|2.7.3|
+|3.17.0|2.7.8|
+|3.18.0～3.19.1|2.7.10|
+|4.0.0|3.0.7|
 
 
-即 SOFABoot 2.3.x 和 2.4.x 系列版本构建在 Spring Boot 1.4.2.RELEASE 基础之上；SOFABoot 2.5.x 系列版本构建在 Spring Boot 1.5.x 基础之上；SOFABoot 3.x 系列版本将构建在 Spring Boot 2.x 基础之上。你可以在[发布历史](https://github.com/sofastack/sofa-boot/releases)中查看获取所有的历史版本代码。另外为了方便社区同学能够基于最新开发版本的 SOFABoot 进行开发学习，我们会发布当前开发分支的 SNAPSHOT 版本。为顺利从中央仓库拉取 SNAPSHOT 包，需要在本地 maven setting.xml 文件增加如下 profile 配置:
+SOFABoot 3.x 系列版本将构建在 Spring Boot 2.x 基础之上，SOFABoot 4.x 系列版本将构建在 Spring Boot 3.x 基础之上 。你可以在[发布历史](https://github.com/sofastack/sofa-boot/releases)中查看获取所有的历史版本代码。另外为了方便社区同学能够基于最新开发版本的 SOFABoot 进行开发学习，我们会发布当前开发分支的 SNAPSHOT 版本。为顺利从中央仓库拉取 SNAPSHOT 包，需要在本地 maven setting.xml 文件增加如下 profile 配置:
 
 ```xml
 <profile>
@@ -50,7 +52,7 @@ SOFABoot 是蚂蚁金服开源的基于 Spring Boot 的研发框架，它在 Spr
 </profile>
 ```
 
-目前 SOFABoot 最新版本为 3.1.0，基于 Spring Boot 2.1.0.RELEASE, 支持 JDK11。
+目前 SOFABoot 最新版本为 4.0.0，基于 Spring Boot 3.0.7, 支持 JDK17。
 
 ## 功能描述
 
