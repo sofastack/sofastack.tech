@@ -46,7 +46,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **SOFA 社区会议回顾**  
 
-**Layotto：**
+Layotto：
 
 **主题**：Layotto 社区会议
 
