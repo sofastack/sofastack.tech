@@ -32,7 +32,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **电话呼入：** +862162681677（中国大陆）+8657128095818（中国大陆）
 
-**入会链接：https://meeting.dingtalk.com/j/NhOf1RUNqwL**
+**入会链接：[https://meeting.dingtalk.com/j/NhOf1RUNqwL](https://meeting.dingtalk.com/j/NhOf1RUNqwL)**
 
 **议题：**
 
