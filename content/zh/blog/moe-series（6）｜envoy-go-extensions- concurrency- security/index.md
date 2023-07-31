@@ -30,7 +30,7 @@ MOSN 项目核心开发者
 
 本质上因为 Go 有自己的抢占式的协程调度，这是 Go 比较重的部分，也是与 Lua 这类嵌入式语言区别很大的点。
 
-细节的话，这里就不展开了，感兴趣的可以看这篇👉[*cgo 实现机制 - 从 C 调用 Go*](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247516398&idx=1&sn=2172b6f6ffe9c8b3263a15ef60ee3d54&chksm=faa36f34cdd4e622746582f922cd00798a1044c4f32a7ce058be6df91b58cbee725022a56525&scene=21#wechat_redirect)
+细节的话，这里就不展开了，感兴趣的可以看这篇👉[*cgo 实现机制 - 从 C 调用 Go*](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247516398&idx=1&sn=2172b6f6ffe9c8b3263a15ef60ee3d54&chksm=faa36f34cdd4e622746582f922cd00798a1044c4f32a7ce058be6df91b58cbee725022a56525&scene=21)
 
 这里简单交代一下，因为 C 调用 Go，入口的 Go 函数的运行环境是，Goroutine 运行在 Envoy worker 线程上，但是这个时候，如果发生了网络调用这种可能导致 Goroutine 挂起的，则会导致 Envoy worker 线程被挂起。
 
