@@ -1,11 +1,11 @@
 ---
-title: "MoE 系列[六] - Envoy Go 扩展之并发安全"
+title: "MoE 系列（六）｜ Envoy Go 扩展之并发安全"
 authorlink: "https://github.com/sofastack"
-description: "MoE 系列[六] - Envoy Go 扩展之并发安全"
+description: "MoE 系列（六）｜Envoy Go 扩展之并发安全"
 categories: "SOFAStack"
 tags: ["SOFAStack"]
 date: 2023-07-18T15:00:00+08:00
-cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*19BBQZkmADQAAAAAAAAAAAAADrGAAQ/original"
+cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*wau5R5aCPXQAAAAAAAAAAAAADrGAAQ/original"
 ---
 
 ![图片](https://mmbiz.qpic.cn/mmbiz_gif/nibOZpaQKw09ARcsGuzib3ttcN4LZpdAC0n9KTQp7uibF8ia0ibk3Olf3sib50ExibicicOrzCOVrOyUD2dFib84f0fTx5uA/640?wx_fmt=gif&wxfrom=5&wx_lazy=1)
@@ -20,7 +20,7 @@ MOSN 项目核心开发者
 
 *专注于云原生网关研发的相关工作*
 
-***本文*** **1313** **字 阅读 4** **分钟**
+***本文*** **1313** **字  阅读 4** **分钟**
 
 前一篇介绍了 Envoy Go 扩展的内存安全，相对来说，还是比较好理解的，主要是 Envoy C++ 和 Go GC 都有自己一套的内存对象的生命周期管理。这篇聊的并发安全，则是专注在并发场景下的内存安全，相对来说会复杂一些。
 
