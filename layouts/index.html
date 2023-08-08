@@ -2,7 +2,7 @@
 	{{ $langData := index .Site.Data .Site.Language.Lang }}
 	{{ $data := $langData.home }}
 
-	{{ .Site.Title }} 
+	{{ .Site.Title }} · {{ $data.slogan.title }}
 {{ end }}
 
 {{ define "main" }}
