@@ -33,6 +33,7 @@ const main = () => {
   // image zoom
   $$('.typo img').forEach(imgElem => {
     zoom(imgElem)
+
   })
 }
 
