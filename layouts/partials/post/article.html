@@ -7,11 +7,9 @@
   
   // 选取所有img标签
   const imgElements = article.querySelectorAll('img');
-  console.log(imgElements,'imgElements')
+
   // 遍历img标签数组
   imgElements.forEach(img => {
-    // 获取img标签的src属性值
-    const src = img.getAttribute('src');
 
     img.setAttribute('referrerpolicy', 'no-referrer');
   });
