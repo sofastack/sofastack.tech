@@ -10,13 +10,14 @@
 
   // 遍历img标签数组
   imgElements.forEach(img => {
-    // 获取img标签的src属性值
     const src = img.getAttribute('src');
+    //图片格式列表
+    const imageFormats = ['.jpg', '.jpeg', '.png', '.gif', 'image', '.svg', '.ai', '.psd', '.tiff', '.bmp'];
+    //判断url中是否有图片格式结尾，没有则添加.image
+    if (!imageFormats.some(format => src.toLowerCase().endsWith(format))) {
+        img.setAttribute('src', src + '.image');
+      }
 
-    //拼接变量
-    const newSrc = '//images.weserv.nl/?url=' + src;
-
-    // 修改img标签的src属性
-    img.setAttribute('src', newSrc);
+    img.setAttribute('referrerpolicy', 'no-referrer');
   });
 </script>
