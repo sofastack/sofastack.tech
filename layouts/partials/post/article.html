@@ -4,12 +4,19 @@
 
 <script>
   const article = document.querySelector('article.typo')
-  
+
   // 选取所有img标签
   const imgElements = article.querySelectorAll('img');
 
   // 遍历img标签数组
   imgElements.forEach(img => {
+    const src = img.getAttribute('src');
+    const imageFormats = ['.jpg', '.jpeg', '.png', '.gif', 'image', '.svg', '.ai', '.psd', '.tiff', '.bmp'];
+
+    if (!imageFormats.some(format => src.toLowerCase().endsWith(format))) {
+        img.setAttribute('src', src + '.image');
+      }
+
 
     img.setAttribute('referrerpolicy', 'no-referrer');
   });
