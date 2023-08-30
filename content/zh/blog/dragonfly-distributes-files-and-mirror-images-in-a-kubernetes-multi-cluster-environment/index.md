@@ -32,8 +32,7 @@ Dragonfly 提供高效、稳定、安全的基于 P2P 技术的文件分发和�
 
 创建 Kind 多节点集群配置文件 kind-config.yaml，配置如下:
 
-
-```
+```go
 kind: Cluster
 apiVersion: kind.x-k8s.io/v1alpha4
 nodes:
@@ -55,18 +54,15 @@ nodes:
       cluster: b
 ```
 
-
 使用配置文件创建 Kind 集群：
 
-```
+```go
     kind create cluster --config kind-config.yaml    
 ````
 
 切换 Kubectl 的 context 到 Kind 集群：
 
-
-
-```
+```go
     kubectl config use-context kind-kind
 ```
 
@@ -74,7 +70,7 @@ nodes:
 
 下载 Dragonfly latest 镜像：
 
-```
+```go
     docker pull dragonflyoss/scheduler:latest
     docker pull dragonflyoss/manager:latest
     docker pull dragonflyoss/dfdaemon:latest
@@ -82,8 +78,7 @@ nodes:
 
 Kind 集群加载 Dragonfly latest 镜像：
 
-
-```
+```go
     kind load docker-image dragonflyoss/scheduler:latest
     kind load docker-image dragonflyoss/manager:latest
     kind load docker-image dragonflyoss/dfdaemon:latest
@@ -97,7 +92,7 @@ Kind 集群加载 Dragonfly latest 镜像：
 
 创建 Helm Charts 的 Dragonfly 集群 A 的配置文件 charts-config-cluster-a.yaml，配置如下：
 
-```
+```go
     containerRuntime:
       containerd:
         enable: true
@@ -158,7 +153,7 @@ Kind 集群加载 Dragonfly latest 镜像：
 
 使用配置文件部署 Helm Charts 的 Dragonfly 集群 A：
 
-```
+```go
     $ helm repo add dragonfly https://dragonflyoss.github.io/helm-charts/
     $ helm install --wait --create-namespace --namespace cluster-a dragonfly dragonfly/dragonfly -f charts-config-cluster-a.yaml
     NAME: dragonfly
@@ -186,11 +181,11 @@ Kind 集群加载 Dragonfly latest 镜像：
       export JAEGER_QUERY_PORT=$(kubectl --namespace cluster-a get services dragonfly-jaeger-query -o jsonpath="{.spec.ports[0].port}")  
       kubectl --namespace cluster-a port-forward service/dragonfly-jaeger-query 16686:$JAEGER_QUERY_PORT  
       echo "Visit http://127.0.0.1:16686/search?limit=20&lookback=1h&maxDuration&minDuration&service=dragonfly to query download events"
-````
+```
 
 检查 Dragonfly 集群 A 是否部署成功：
 
-```
+```go
     $ kubectl get po -n cluster-a
     NAME                                 READY   STATUS    RESTARTS      AGE
     dragonfly-dfdaemon-7t6wc             1/1     Running   0             3m18s
@@ -208,11 +203,9 @@ Kind 集群加载 Dragonfly latest 镜像：
 
 ### 创建 Manager REST 服务的 NodePort Service 资源
 
-
 创建 Manager REST 服务的配置文件 manager-rest-svc.yaml，配置如下：
 
-
-```
+```go
     apiVersion: v1
     kind: Service
     metadata:  
@@ -228,14 +221,13 @@ Kind 集群加载 Dragonfly latest 镜像：
         app: dragonfly  
         component: manager 
         release: dragonfly
-````
+```
 
 使用配置文件创建 Manager REST 服务的 Service 资源：
 
-
-```
+```go
     kubectl apply -f manager-rest-svc.yaml -n cluster-a
-````
+```
 
 ### 访问 Manager 控制台
 
@@ -299,7 +291,7 @@ Cluster 管辖的 Scopes 信息。Peer 会根据 Dfdaemon 启动的配置文件 
 
 创建 Helm Charts 的 Dragonfly 集群 B 的配置文件 charts-config-cluster-b.yaml，配置如下:
 
-```
+```go
 containerRuntime:
   containerd:
     enable: true
@@ -372,10 +364,9 @@ jaeger:
   enable: true
 ```
 
-
 使用配置文件部署 Helm Charts 的 Dragonfly 集群 B:
 
-```
+```go
 $ helm install --wait --create-namespace --namespace cluster-b dragonfly dragonfly/dragonfly -f charts-config-cluster-b.yaml
 NAME: dragonfly
 LAST DEPLOYED: Mon Aug  7 22:13:51 2023
@@ -405,10 +396,9 @@ NOTES:
   echo "Visit http://127.0.0.1:16686/search?limit=20&lookback=1h&maxDuration&minDuration&service=dragonfly to query download events"
 ```
 
-
 检查 Dragonfly 集群 B 是否部署成功：
 
-```
+```go
 $ kubectl get po -n dragonfly-system
 NAME                                READY   STATUS    RESTARTS   AGE
 dragonfly-dfdaemon-q8bsg            1/1     Running   0          67s
@@ -428,19 +418,17 @@ dragonfly-seed-peer-0               1/1     Running   0          
 
 在 kind-worker Node 下载 `ghcr.io/dragonflyoss/dragonfly2/scheduler:v2.0.5` 镜像：
 
-
-```
+```go
     docker exec -i kind-worker /usr/local/bin/crictl pull ghcr.io/dragonflyoss/dragonfly2/scheduler:v2.0.5
 ````
 
 暴露 Jaeger 16686 端口：
 
-
-```
+```go
     kubectl --namespace cluster-a port-forward service/dragonfly-jaeger-query 16686:16686
 ```
 
-进入 Jaeger 页面 \<http://127.0.0.1:16686/search >，搜索 Tags 值为 `http.url="/v2/dragonflyoss/dragonfly2/scheduler/blobs/sha256:82cbeb56bf8065dfb9ff5a0c6ea212ab3a32f413a137675df59d496e68eaf399?ns=ghcr.io"` Tracing：
+进入 Jaeger 页面 [http://127.0.0.1:16686/search](http://127.0.0.1:16686/search)，搜索 Tags 值为 `http.url="/v2/dragonflyoss/dragonfly2/scheduler/blobs/sha256:82cbeb56bf8065dfb9ff5a0c6ea212ab3a32f413a137675df59d496e68eaf399?ns=ghcr.io"` Tracing：
 
 ![图片](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*bDJKSoNHOjsAAAAAAAAAAAAADrGAAQ/original)
 
@@ -454,17 +442,17 @@ Tracing 详细内容：
 
 在 kind-worker2 Node 下载 `ghcr.io/dragonflyoss/dragonfly2/scheduler:v2.0.5` 镜像：
 
-```
+```go
     docker exec -i kind-worker2 /usr/local/bin/crictl pull ghcr.io/dragonflyoss/dragonfly2/scheduler:v2.0.5
 ````
 
 暴露 Jaeger 16686 端口：
 
-```
+```go
     kubectl --namespace cluster-a port-forward service/dragonfly-jaeger-query 16686:16686
 ```
 
-进入 Jaeger 页面 \<http://127.0.0.1:16686/search >，搜索 Tags 值为 `http.url="/v2/dragonflyoss/dragonfly2/scheduler/blobs/sha256:82cbeb56bf8065dfb9ff5a0c6ea212ab3a32f413a137675df59d496e68eaf399?ns=ghcr.io"` Tracing：
+进入 Jaeger 页面 [http://127.0.0.1:16686/search](http://127.0.0.1:16686/search)，搜索 Tags 值为 `http.url="/v2/dragonflyoss/dragonfly2/scheduler/blobs/sha256:82cbeb56bf8065dfb9ff5a0c6ea212ab3a32f413a137675df59d496e68eaf399?ns=ghcr.io"` Tracing：
 
 ![图片](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*zcLeTIFpe8YAAAAAAAAAAAAADrGAAQ/original)
 
@@ -478,19 +466,17 @@ Tracing 详细内容：
 
 在 kind-worker3 Node 下载 `ghcr.io/dragonflyoss/dragonfly2/scheduler:v2.0.5` 镜像：
 
-
-```
+```go
     docker exec -i kind-worker3 /usr/local/bin/crictl pull ghcr.io/dragonflyoss/dragonfly2/scheduler:v2.0.5
 ````
 
 暴露 Jaeger 16686 端口：
 
-
-```
+```go
     kubectl --namespace cluster-b port-forward service/dragonfly-jaeger-query 16686:16686
 ```
 
-进入 Jaeger 页面 \<http://127.0.0.1:16686/search >，搜索 Tags 值为 `http.url="/v2/dragonflyoss/dragonfly2/scheduler/blobs/sha256:82cbeb56bf8065dfb9ff5a0c6ea212ab3a32f413a137675df59d496e68eaf399?ns=ghcr.io"` Tracing：
+进入 Jaeger 页面 [http://127.0.0.1:16686/search](http://127.0.0.1:16686/search)，搜索 Tags 值为 `http.url="/v2/dragonflyoss/dragonfly2/scheduler/blobs/sha256:82cbeb56bf8065dfb9ff5a0c6ea212ab3a32f413a137675df59d496e68eaf399?ns=ghcr.io"` Tracing：
 
 ![图片](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*PLn6SqQUC90AAAAAAAAAAAAADrGAAQ/original)
 
@@ -504,19 +490,17 @@ Tracing 详细内容：
 
 在 kind-worker4 Node 下载 `ghcr.io/dragonflyoss/dragonfly2/scheduler:v2.0.5` 镜像：
 
-
-```
+```go
     docker exec -i kind-worker4 /usr/local/bin/crictl pull ghcr.io/dragonflyoss/dragonfly2/scheduler:v2.0.5
 ```
 
 暴露 Jaeger 16686 端口：
 
-
-```
+```go
     kubectl --namespace cluster-b port-forward service/dragonfly-jaeger-query 16686:16686
 ```
 
-进入 Jaeger 页面 \<http://127.0.0.1:16686/search > ，搜索 Tags 值为 `http.url="/v2/dragonflyoss/dragonfly2/scheduler/blobs/sha256:82cbeb56bf8065dfb9ff5a0c6ea212ab3a32f413a137675df59d496e68eaf399?ns=ghcr.io"` Tracing：
+进入 Jaeger 页面 [http://127.0.0.1:16686/search](http://127.0.0.1:16686/search)，搜索 Tags 值为 `http.url="/v2/dragonflyoss/dragonfly2/scheduler/blobs/sha256:82cbeb56bf8065dfb9ff5a0c6ea212ab3a32f413a137675df59d496e68eaf399?ns=ghcr.io"` Tracing：
 
 ![图片](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*KZ2nQ69TgSoAAAAAAAAAAAAADrGAAQ/original)
 
@@ -527,6 +511,7 @@ Tracing 详细内容：
 集群 B 中命中远程 Peer 缓存时，下载 `82cbeb56bf8065dfb9ff5a0c6ea212ab3a32f413a137675df59d496e68eaf399` 层需要消耗时间为 `14.53ms`。
 
 ## **Dragonfly Star 一下✨：**
+
 [https://github.com/dragonflyoss/Dragonfly2](https://github.com/dragonflyoss/Dragonfly2)
 
 ## 相关链接
