@@ -304,7 +304,7 @@ public String getAnnotationKey(Environment environment, DemoAnnotation demoAnnot
 }
 ```
 
-# Part.2 注意有重命名哦!
+# **Part.2 注意有重命名哦!**
 
 **请先留意以下信息！**
 
