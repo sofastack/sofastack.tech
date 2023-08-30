@@ -19,7 +19,7 @@ SOFABoot 4.0 基于 Spring Boot 3.0 与 Spring Framework 6 构建。在 Spring B
 
 **在 SOFABoot 4.0 引入的二方库升级列表如下**：
 
--   Spring Boot 3.0.5
+-   Spring Boot 3.0.7
 -   Spring Cloud 4.0.0
 -   Spring Cloud Stream 3.2.6
 -   SOFA Common tools 2.0.0
