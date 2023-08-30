@@ -3,7 +3,6 @@
 title: "SOFABoot 4.0 正式发布，多项新特性等你来体验！"
 aliases: "/sofa-boot/docs/upgrade_4_x"
 ---
-
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c2c467481d7844019332576418b5093c~tplv-k3u1fbpfcp-zoom-1.image)
 
 # Part.1 「亿点点」新特性
@@ -193,7 +192,7 @@ public class SampleSwitchApplicationListener
 
 在使用上述扩展点为你的 Bean 和扩展点添加按配置开启能力后，你可以在 `/sofa-boot/scenens` 目录下添加指定场景名 `scene-key` 前缀的配置文件 *（支持 application 及 yaml 格式）* ，在配置文件中添加该场景下的配置文件模版，例如：
 
-```
+```xml
 sofa.boot.switch.bean.a.enabled=false
 sofa.boot.switch.bean.b.enabled=true
 sofa.boot.switch.initializer.a.enabled=false
@@ -361,11 +360,9 @@ SOFABoot 4.0 不再支持 SOFAArk 1.0 模式，用于支持 Ark 测试的相关�
 
 - [Spring Boot 3.0.x 依赖索引](https://docs.spring.io/spring-boot/docs/3.0.x/reference/html/dependency-versions.html#appendix.dependency-versions)
 
-
 ### 检查已废弃的特性
 
 SOFABoot 3 以及 Spring Boot 2 中弃用的类、方法和属性，请确保在升级之前没有调用已弃用的功能。详情请参考上方「**Part.3 废弃特性｜再见啦，SOFAArk 1.0**」章节。
-
 
 ### 检查系统配置
 
