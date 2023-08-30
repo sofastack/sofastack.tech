@@ -16,7 +16,6 @@ SOFABoot 4.0 依赖 Java 17 作为最小支持的 JDK 版本。如果你的应�
 
 SOFABoot 4.0 基于 Spring Boot 3.0 与 Spring Framework 6 构建。在 Spring Boot 3.0 与 Spring Framework 6 引入的二方库升级列表可参考文档👉 [Spring Boot 3.0 Release Notes](https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-3.0-Release-Notes)
 
-
 **在 SOFABoot 4.0 引入的二方库升级列表如下**：
 
 -   Spring Boot 3.0.7
@@ -54,7 +53,6 @@ Spring Boot 3.0 中依赖 Jakarta EE 规范的部分已经升级到了 Jakarta E
 
 可参考文档：[Migrate to Jakarta EE 9](https://docs.openrewrite.org/recipes/java/migrate/jakarta/javaxmigrationtojakarta) 来修改 Jakarta 相关的包名以及依赖。
 
-
 ## 支持 SOFAArk 2.0
 
 [SOFAArk 2.0 模式](https://www.sofastack.tech/projects/sofa-boot/sofa-ark-migration-guide/)是 SOFAArk 框架的整体优化版本，相较于 SOFAArk 1.0 模式，它的整体优化思路和原则是 Ark Master Biz 保持和原生 SOFABoot 保持一致，弱化复杂的 Ark Plugin 类管控机制，将 Ark Plugin 与 Master Biz 合并。使得 Ark Master Biz 和原生 SOFABoot 应用的启动方式、类加载方式保持一致，大大降低了 Master Biz 应用的编程难度。
@@ -62,7 +60,6 @@ Spring Boot 3.0 中依赖 Jakarta EE 规范的部分已经升级到了 Jakarta E
 SOFABoot 4.0 版本不再支持 SOFAArk 1.0 模式，如果你想要在 SOFABoot 应用中使用 SOFAArk 2.0 模式，可以按照以下步骤进行操作：
 
 **1、在项目中引入 SOFAArk 组件依赖**
-
 
 ```xml
 <dependency>  
@@ -103,7 +100,6 @@ SOFABoot 4.0 版本不再支持 SOFAArk 1.0 模式，如果你想要在 SOFABoot
 - 方式一：
 
 IDEA 启动，注意需要添加启动参数：`-Dsofa.ark.embed.enable=true -Dcom.alipay.sofa.ark.master.biz=${bizName}`
-
 
 - 方式二：
 
@@ -164,13 +160,11 @@ public class SampleSwitchSpringContextInitializer extends
 
 `SampleSwitchSpringContextInitializer` 类将不再执行 `doInitialize` 方法。
 
-
 - 通过继承：
 
 `com.alipay.sofa.boot.listener.SwitchableApplicationListener` 类为：
 
 `ApplicationListener` 添加添加按配置开启能力：
-
 
 ```java
 public class SampleSwitchApplicationListener
@@ -209,9 +203,6 @@ sofa.boot.switch.initializer.c.enabled=false
 
 当你的应用打包后，你只需要添加配置 `sofa.boot.scenens=scene-key` 便可以生效 `/sofa-boot/scenens/scene-key.properites` 配置文件中的开关配置。该配置项同时支持配置多个场景名，可以同时生效多个场景配置文件。
 
-  
-
-
 ## 启动耗时统计能力增强
 
 SOFABoot 在 3.6.0 版本提供了 `/actuator/startup` 能力用于查询应用启动过程中的耗时细节。后来，Spring Boot 在 2.4 版本也提供了官方的 `/actuator/startup` 能力用于展示应用启动耗时详情。在 SOFA Boot 4.0 版本中，我们整合了 SOFA Boot 与 Spring Boot 提供的启动耗时统计能力：
@@ -242,7 +233,6 @@ public static void main(String[] args) {
 }
 ```
 
-
 **3、启动应用后，访问：**
 
 localhost:8080/actuator/startup **查看启动耗时详情信息。**
@@ -251,9 +241,7 @@ localhost:8080/actuator/startup **查看启动耗时详情信息。**
 
 SOFABoot 4.0 版本中新增了大量 SPI ，你可以通过这些 SPI 定制 SOFABoot 框架的运行逻辑。
 
-
 - **添加自定义的启动耗时阶段信息**
-
 
 `com.alipay.sofa.boot.startup.StartupReporterAware` 接口的使用方式与 `org.springframework.context.ApplicationContextAware` 接口的使用方法使用类似，当你的 Bean 实现了该接口时，你可以感知到应用中的：`com.alipay.sofa.boot.startup.StartupReporter` 实例。
 
@@ -283,12 +271,9 @@ SOFABoot 4.0 版本中新增了大量 SPI ，你可以通过这些 SPI 定制 SO
 
 在开启模块化隔离特性时，你可以自定义 `com.alipay.sofa.boot.context.ContextRefreshInterceptor` 接口的实现类并将其注册至 Spring Boot 上下文中，当每个 SOFA 模块的 Spring 上下文开始刷新前以及刷新完成后，都会触发该接口的 `beforeRefresh` 以及 `afterRefresh` 方法。
 
-
 你可以参考框架内置的：`com.alipay.sofa.runtime.context.ComponentContextRefreshInterceptor` 类，它用于在 SOFA 模块中的 Spring 上下文刷新成功后，将其注为 `SpringContextComponent`，在 SOFA 模块中的 Spring 上下文刷新失败后取消注册的 `ComponentInfo`。
 
-
 - **支持注解参数的占位符替换**
-
 
 在一些情况下，我们希望自定义注解中的属性使用非固定值，通过 Spring 配置进行定制。SOFABoot 提供了：
 
@@ -339,9 +324,6 @@ public String getAnnotationKey(Environment environment, DemoAnnotation demoAnnot
 | com.alipay.sofa.tracer.boot           | com.alipay.sofa.boot.tracer           |
 | com.alipay.sofa.service.api.component | com.alipay.sofa.runtime.ext           |
 
-  
-
-
 SOFABoot 提供的以下 API 类进行了重命名，如果你使用了对应的类，则需要修改为新的类名：
 
 | 原类名                                                       | 新类名                                                       |
@@ -352,13 +334,11 @@ SOFABoot 提供的以下 API 类进行了重命名，如果你使用了对应的
 | com.alipay.sofa.runtime.spring.share.UnshareSofaPostProcessor | com.alipay.sofa.boot.context.processor.UnshareSofaPostProcessor |
 | com.alipay.sofa.runtime.factory.BeanLoadCostBeanFactory      | com.alipay.sofa.boot.context.SofaDefaultListableBeanFactory  |
 
-
 # Part.3 废弃特性
 
 **再见啦，SOFAArk 1.0**
 
 SOFABoot 4.0 不再支持 SOFAArk 1.0 模式，用于支持 Ark 测试的相关工具类已被移除，SOFAArk 2.0 模式下你不再需要这些类：  
-
 
 -   com.alipay.sofa.test.annotation.DelegateToRunner
 -   com.alipay.sofa.test.runner.SofaBootRunner
@@ -369,14 +349,11 @@ SOFABoot 4.0 不再支持 SOFAArk 1.0 模式，用于支持 Ark 测试的相关�
 
 ## Before You Start 
 
-
 ### 升级 SOFABoot 至 最新的 3.x 版本
 
 在开始升级之前，请确保升级到最新可用的 3.x 版本。这将确保你正在针对该行的最新依赖项进行构建。
 
-
 ### 检查依赖列表
-
 
 迁移到 SOFABoot 4.0 将升级许多依赖项 *（包括 Spring Boot 3.0 升级的依赖项）* ，请确认依赖项升级对你的应用的影响。请参考：
 
@@ -394,42 +371,31 @@ SOFABoot 3 以及 Spring Boot 2 中弃用的类、方法和属性，请确保在
 
 SOFABoot 4.0 依赖 Java 17 或者更高的版本，不再支持 Java 8。同时依赖 Spring Boot 3.0。
 
-
 ## 升级至 SOFA Boot 4.0
-
 
 ### 修改重命名的配置项
 
-
 请参考下方「**Part.5 附录｜配置变更**」章节以及文档 [Spring Boot 2 -> 3 配置变更](https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-3.0-Configuration-Changelog)
-
 
 ### 修改重命名的类与依赖
 
-
 参考上方「**Part.2 注意有重命名哦！** 」章节
-
 
 ### 升级 Spring Boot 3.0
 
-
 参考文档： [Spring Boot 3.0 升级文档](https://github.com/spring-projects/spring-boot/wiki/Spring-Boot-3.0-Migration-Guide)
-
 
 # Part.5 附录｜配置变更
 
 *注：配置属性对比基于 3.16.3 与 4.0 版本。*
 
-
 - **在 4.0 版本中废弃的配置**
-
 
 | key                                                          |
 | ------------------------------------------------------------ |
 | com.alipay.sofa.boot.serviceNameWithBeanId                   |
 | com.alipay.sofa.boot.unregisterComponentWhenModuleInstallFailure |
 | com.alipay.sofa.boot.startup.skipSofaBean                    |
-
 
 - **在 4.0 版本中新增的配置**
 
@@ -442,11 +408,9 @@ SOFABoot 4.0 依赖 Java 17 或者更高的版本，不再支持 Java 8。同时
 | sofa.boot.threadPoolMonitor.disable          | false         | 关闭 SOFA 线程池监控能力                             |
 | sofa.boot.rpc.enableAutoPublish              | false         | 支持应用启动时自动发布 rpc服务，不依赖 Actuator 模块 |
 
-
 - **在 4.0 版本中重命名的配置**
 
 **runtime properties**
-
 
 | origin key                                        | replaced key                                  |
 | ------------------------------------------------- | --------------------------------------------- |
@@ -464,7 +428,6 @@ SOFABoot 4.0 依赖 Java 17 或者更高的版本，不再支持 Java 8。同时
 | com.alipay.sofa.boot.skipJvmSerialize             | sofa.boot.ark.jvmInvokeSerialize              |
 | com.alipay.sofa.boot.beanLoadCost                 | sofa.boot.startup.costThreshold               |
 
-
 **isle properties**
 
 | origin key                                                   | replaced key                                 |
@@ -480,7 +443,6 @@ SOFABoot 4.0 依赖 Java 17 或者更高的版本，不再支持 Java 8。同时
 | com.alipay.sofa.boot.parallelRefreshTimeout                  | sofa.boot.isle.parallelRefreshTimeout        |
 | com.alipay.sofa.boot.parallelRefreshCheckPeriod              | sofa.boot.isle.parallelRefreshCheckPeriod    |
 | com.alipay.sofa.boot.share.parent.context.post.processor.enabled | sofa.boot.isle.shareParentPostProcessor      |
-
 
 **actuator properties**
 
@@ -504,7 +466,6 @@ SOFABoot 4.0 依赖 Java 17 或者更高的版本，不再支持 Java 8。同时
 | com.alipay.sofa.boot.healthCheckParallelEnable             | sofa.boot.actuator.health.parallelCheck                      |
 | com.alipay.sofa.boot.healthCheckParallelTimeout            | sofa.boot.actuator.health.parallelCheckTimeout               |
 | com.alipay.sofa.boot.excludedIndicators                    | sofa.boot.actuator.health.excludedIndicators                 |
-
 
 **tracer properties**
 
@@ -605,7 +566,6 @@ SOFABoot 4.0 依赖 Java 17 或者更高的版本，不再支持 Java 8。同时
 | com.alipay.sofa.rpc.dynamicConfig                       | sofa.boot.rpc.dynamicConfig                       |
 | sofa.rpc.registry.disablePub                            | sofa.boot.rpc.registry.disablePub                 |
 | sofa.rpc.registry.defaultRegistry                       | sofa.boot.rpc.registry.defaultRegistry            |
-
 
 **了解更多...**
 
