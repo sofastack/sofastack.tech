@@ -1,7 +1,7 @@
 ---
-title: "直播预告｜SOFAChannel#35《SOFABoot 4.0 — 迈向 JDK 17 新时代》——SOFABoot 社区"
+title: "SOFAChannel#35《SOFABoot 4.0 — 迈向 JDK 17 新时代》——SOFABoot 社区"
 authorlink: "https://github.com/sofastack"
-description: "直播预告｜SOFAChannel#35《SOFABoot 4.0 — 迈向 JDK 17 新时代》"
+description: "SOFAChannel#35《SOFABoot 4.0 — 迈向 JDK 17 新时代》"
 categories: "SOFAChannel"
 tags: ["SOFAChannel"]
 date: 2023-08-31T15:00:00+08:00
@@ -13,8 +13,9 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*fItpRqhzLXcAAAAAA
 - 活动主题：SOFAChannel#35《SOFABoot 4.0 — 迈向 JDK 17 新时代》——SOFABoot 社区
 - 活动时间：09 月 07 日，周四晚 19 点
 - 活动形式：线上直播
+- 资料下载： <font color=#1E90FF>[点击获取](https://mdn.alipayobjects.com/huamei_soxoym/afts/file/A*yD0TQ6Uqhg4AAAAAAAAAAAAADrGAAQ/SOFAChannel#35%20SOFABoot%204.0%20%E2%80%94%20%E8%BF%88%E5%90%91%20JDK%2017%20%E6%96%B0%E6%97%B6%E4%BB%A3.pdf)</font> 
 - B 站直播间地址：[http://live.bilibili.com/21954520](http://live.bilibili.com/21954520)
-- B 站直播ID：21954520
+- B 站直播回放：[SOFAChannel#35](https://www.bilibili.com/video/BV1Uj41117Vz)
 
 ## 介绍
 
@@ -60,34 +61,12 @@ SOFABoot Maintainer
 - 已有应用如何升级至 SOFABoot 4.0 版本；
 - 一起探讨 SOFABoot 未来发展的趋势。
 
-## **直播预约**
+## 直播回放
 
-### 1.*视频号SOFAGirl直播*
+<font color=#1E90FF>[点击查看](https://www.bilibili.com/video/BV1Uj41117Vz)</font> 
 
-⬇️点击一键预约⬇️
+## 了解更多技术干货
 
-[SOFAChannel#35：SOFABoot 4.0 — 迈向 JDK 17 新时代](https://channels.weixin.qq.com/platform/live/reserve_detail?noticeId=finderlivenotice-v2_060000231003b20faec8c6ea8c1fc2d1cd04ea35b0778bb6cacaac8db7953c457eb33fa5ffc1%40finder-1693454763249903-837611355)
+使用钉钉搜索群号：<font color=#1E90FF>**44858463**</font> ，即可加入，获取一手开源技术干货；或微信扫码关注“金融级分布式架构”微信公众号👇
 
-### 2. *添加 SOFAGirl 微信*
-
-加入 SOFAChannel 技术交流群
-
-![图片](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*FyvgRYVG4kgAAAAAAAAAAAAADrGAAQ/original)
-
-### 3. *钉钉搜索：44858463*
-
-钉钉群同步直播，讲师在线答疑
-
-### 4. 扫描👇下方二维码或 点击[链接](https://www.bilibili.com/opus/835944770876473346?spm_id_from=444.41.0.0)
-
-预约 B 站直播
-
-![图片](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*eNAoT4_JolwAAAAAAAAAAAAADrGAAQ/original)
-
-将有机会获得 **SOFAStack 精美周边**～
-
-![图片](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*gejaSrQSnRAAAAAAAAAAAAAADrGAAQ/original)
-
-🤩欢迎对 SOFABoot 项目感兴趣的朋友们
-
-加入直播、参与讨论🤗
+![img](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*0LdnQ7OLNR4AAAAAAAAAAAAADrGAAQ/original)
