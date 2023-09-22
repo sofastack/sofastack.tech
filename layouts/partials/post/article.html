@@ -13,11 +13,11 @@
     const src = img.getAttribute('src');
     //图片格式列表
     const imageFormats = ['.jpg', '.jpeg', '.png', '.gif', 'image', '.svg', '.ai', '.psd', '.tiff', '.bmp'];
-    //判断url中是否有图片格式结尾，没有则添加.image
-    if (!imageFormats.some(format => src.toLowerCase().endsWith(format))) {
-        img.setAttribute('src', src + '.image');
-      }
+    //判断url中是否有图片格式结尾，没有则添加.image【问题修改：部分图片要带.image后缀展示的，去文档（content）里面修改图片地址】
+    // if (!imageFormats.some(format => src.toLowerCase().endsWith(format))) {
+    //     img.setAttribute('src', src + '.image');
+    //   }
 
-    img.setAttribute('referrerpolicy', 'no-referrer');
+    // img.setAttribute('referrerpolicy', 'no-referrer');
   });
 </script>

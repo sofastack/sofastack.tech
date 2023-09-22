@@ -16,7 +16,7 @@ Dragonfly 是一款基于 P2P 的镜像加速和文件分发系统。它旨在�
 
 SOFAChannel#34 就邀请到了**蚂蚁集团技术专家、Dragonfly 项目 Maintainer 戚文博**跟大家分享 **Dragonfly & Nydus 在 AI 场景下的实践**。
 
-![img](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*ZLHNSaDyevcAAAAAAAAAAAAADrGAAQ/original)
+![img](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*ZLHNSaDyevcAAAAAAAAAAAAADrGAAQ/original.image)
 
 ## 直播介绍
 
@@ -60,4 +60,4 @@ Dragonfly Maintainer
 
 使用钉钉搜索群号：**44858463**，即可加入，获取一手开源技术干货；或微信扫码关注“金融级分布式架构”微信公众号👇
 
-![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*_a06Q7zMKnwAAAAAAAAAAAAAARQnAQ)
+![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*_a06Q7zMKnwAAAAAAAAAAAAAARQnAQ.image)
