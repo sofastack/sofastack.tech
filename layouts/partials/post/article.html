@@ -1,3 +1,18 @@
 <article class="typo">
   {{ .Content | markdownify }}
 </article>
+
+<script>
+  const article = document.querySelector('article.typo')
+  // 选取所有img标签
+  const imgElements = article.querySelectorAll('img');
+  // 遍历img标签数组
+  imgElements.forEach(img => {
+    const src = img.getAttribute('src');
+    //图片格式列表
+    if (src.toLowerCase().endsWith('.image')) {
+      img.setAttribute('src', src.replace('.image', ''));
+    }
+    img.setAttribute('referrerpolicy', 'no-referrer');
+  });
+</script>

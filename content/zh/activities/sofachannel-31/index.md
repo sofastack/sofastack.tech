@@ -58,4 +58,4 @@ description: "2022 年 12 月 15 日 19：00 - 20：00  ，线上直播第 31 �
 
 使用钉钉搜索群号：**44858463**，即可加入，获取一手开源技术干货；或微信扫码关注“金融级分布式架构”微信公众号👇
 
-![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*_a06Q7zMKnwAAAAAAAAAAAAAARQnAQ.image)
+![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*_a06Q7zMKnwAAAAAAAAAAAAAARQnAQ)

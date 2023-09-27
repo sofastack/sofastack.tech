@@ -10,7 +10,7 @@ Currently, service governance and SOFAArk control of SOFADashboard are dependent
 
 ## Architecture
 
-![image.png](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*uVAiQKWS4G4AAAAAAAAAAABjARQnAQ)
+![image.png](https://img.alicdn.com/imgextra/i3/O1CN01qFO3qa282LVHXDfKH_!!6000000007874-2-tps-1040-548.png)
 
 Currently, service governance and SOFAArk control of SOFADashboard are implemented upon ZooKeeper-based programming.
 

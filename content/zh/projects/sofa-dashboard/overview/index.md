@@ -9,7 +9,7 @@ SOFADashboard 致力于对 SOFA 框架中组件进行统一管理，包括服务
 
 ## 架构简图
 
-![image.png](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*uVAiQKWS4G4AAAAAAAAAAABjARQnAQ)
+![image.png](https://img.alicdn.com/imgextra/i3/O1CN01qFO3qa282LVHXDfKH_!!6000000007874-2-tps-1040-548.png)
 
 SOFADashboard 目前服务治理与 SOFAArk 管控都是面向 Zookeeper 来编程实现的。
 
