@@ -20,5 +20,5 @@ Currently, service governance and SOFAArk control of SOFADashboard are implement
    * rpc provider: service provider of SOFARPC, which registers services with ZooKeeper.
    * rpc consumer: service consumer of SOFARPC, which subscribes to services on ZooKeeper.
    * client: SOFADashboard client, which is available upon the installation of the sofa-dashboard-client package. Currently, the SOFADashboard client only supports registration of health-check status and port information of applications with ZooKeeper. Later on, it will evolve into SOFABoot client, and report more diversified application data.
-   * ark-biz host app: see [SOFAArk ](https://www.sofastack.tech/sofa-boot/docs/sofa-ark-ark-config).
+   * ark-biz host app: see [SOFAArk](https://www.sofastack.tech/sofa-boot/docs/sofa-ark-ark-config).
 
