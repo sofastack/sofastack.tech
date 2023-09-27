@@ -19,4 +19,4 @@ SOFADashboard 目前服务治理与 SOFAArk 管控都是面向 Zookeeper 来编�
   * rpc provider : SOFARPC 的服务提供方，会将服务注册到 Zookeeper 上。
   * rpc consumer : SOFARPC 的服务消费方，会从 Zookeeper 上订阅服务。
   * client : SOFADashboard 客户端，引入 sofa-dashboard-client 包即可。目前仅提供将应用的健康检查状态及端口信息注册到 Zookeeper ，后面将会演化成 SOFABoot client，上报更丰富的应用数据。
-  * ark-biz 宿主应用: 参考 [SOFAArk](https://www.sofastack.tech/sofa-boot/docs/sofa-ark-ark-config)。
+  * ark-biz 宿主应用: 参考 [SOFAArk](https://www.sofastack.tech/sofa-boot/docs/sofa-ark-ark-config) 。
