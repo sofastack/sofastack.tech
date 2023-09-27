@@ -17,6 +17,7 @@ SOFAArk 管控主要包括以下功能：
 ![](https://img.alicdn.com/imgextra/i4/O1CN01O312QG1NU1UvZ0G4m_!!6000000001572-0-tps-1888-462.jpg)
 
 ### 插件注册
+
 将 ark-biz 插件注册到 SOFADashboard：
 
 ![ark-console.png](https://img.alicdn.com/imgextra/i1/O1CN01P9RoDK1tbrz7kfzGW_!!6000000005921-0-tps-1600-419.jpg)
