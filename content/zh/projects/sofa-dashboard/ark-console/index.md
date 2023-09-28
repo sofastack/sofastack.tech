@@ -14,40 +14,41 @@ SOFAArk 管控主要包括以下功能：
 
 ## 插件管理
 
-![](https://gw.alipayobjects.com/mdn/rms_9959bb/afts/img/A*RbF3RYO0xjYAAAAAAAAAAABkARQnAQ)
+![](https://img.alicdn.com/imgextra/i4/O1CN01O312QG1NU1UvZ0G4m_!!6000000001572-0-tps-1888-462.jpg)
 
 ### 插件注册
+
 将 ark-biz 插件注册到 SOFADashboard：
 
-![ark-console.png](https://gw.alipayobjects.com/mdn/rms_9959bb/afts/img/A*sfBRQYp6gKkAAAAAAAAAAABkARQnAQ)
+![ark-console.png](https://img.alicdn.com/imgextra/i1/O1CN01P9RoDK1tbrz7kfzGW_!!6000000005921-0-tps-1600-419.jpg)
 
 ### 插件删除
 
-![](https://gw.alipayobjects.com/mdn/rms_9959bb/afts/img/A*pGfFQqOGfLUAAAAAAAAAAABkARQnAQ)
+![](https://img.alicdn.com/imgextra/i4/O1CN01v7KVHL28YPEH7B2PG_!!6000000007944-0-tps-1602-399.jpg)
 
 ### 添加插件版本
 
-![](https://gw.alipayobjects.com/mdn/rms_9959bb/afts/img/A*52XaTpXZb2kAAAAAAAAAAABkARQnAQ)
+![](https://img.alicdn.com/imgextra/i2/O1CN01G8NJ3l1RkkQHvuD1a_!!6000000002150-0-tps-1527-429.jpg)
 
 ### 插件版本 biz 包路径
 
-![](https://gw.alipayobjects.com/mdn/rms_9959bb/afts/img/A*LdoxRJYHVVkAAAAAAAAAAABkARQnAQ)
+![](https://img.alicdn.com/imgextra/i2/O1CN01G8NJ3l1RkkQHvuD1a_!!6000000002150-0-tps-1527-429.jpg)
 
 ### 删除版本
 
-![](https://gw.alipayobjects.com/mdn/rms_9959bb/afts/img/A*9kYKS6JwUloAAAAAAAAAAABkARQnAQ)
+![](https://img.alicdn.com/imgextra/i4/O1CN01cvTscG22ozslV7v1V_!!6000000007168-0-tps-1624-415.jpg)
 
 ### 关联应用
 
 点击模块列表操作菜单栏中的关联应用，可以将一个应用与插件进行绑定：
 
-![image.png](https://gw.alipayobjects.com/mdn/rms_9959bb/afts/img/A*VOM_T7AJ94MAAAAAAAAAAABkARQnAQ)
+![image.png](https://img.alicdn.com/imgextra/i1/O1CN01gW0EgE1ZIpCZKMWPd_!!6000000003172-0-tps-1491-397.jpg)
 
 ## 动态管控
 
 点击插件列表后面的 详情 按钮，可以查看当前插件下所有应用信息和应用实例信息。
 
-![image.png](https://gw.alipayobjects.com/mdn/rms_9959bb/afts/img/A*u0EETYvo2JkAAAAAAAAAAABkARQnAQ)
+![image.png](https://img.alicdn.com/imgextra/i1/O1CN01FHHvf520TLvr7pbG5_!!6000000006850-0-tps-1838-489.jpg)
 
 ### 命令推送
 
@@ -60,4 +61,4 @@ SOFADashboard 提供三种维度的命令推送
 
 点击 状态详细按钮，左侧栏将会展开 "抽屉" 展示详情状态数据
 
-![image.png](https://gw.alipayobjects.com/mdn/rms_9959bb/afts/img/A*fGrcQ70PrYEAAAAAAAAAAABkARQnAQ)
+![image.png](https://img.alicdn.com/imgextra/i3/O1CN013Dj57g1UswM4EtJq2_!!6000000002574-0-tps-1657-977.jpg)
