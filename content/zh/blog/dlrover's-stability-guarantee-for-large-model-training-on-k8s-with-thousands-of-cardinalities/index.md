@@ -24,7 +24,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*nxSnTJH9AtQAAAAAA
 
 **本文 5104 字 阅读 13 分钟**
 
-## 01 **背景**.
+## 01 **背景**
 
 如今大语言模型（*LLM*）的分布式训练节点规模越来越大，训练耗时长。比如 OpenAI 在 1024 个 NVIDIA A100 GPU 上训练 GPT-3 大约需要 34 天。训练节点越多，耗时越长，训练期间节点故障概率就越大，况且 A100 GPU 的故障率也相对较高。所以大规模训练作业难免会遇到节点故障。据我们在蚂蚁 GPU 训练集群上观察，一个月内，单卡的故障率约 8%，那么一天单卡的故障率约为 0.27%。常见的故障原因有 Xid、ECC、NVLINK error 和 NCCL error 故障等。对于一个千卡训练作业来说，卡故障导致一天内训练失败的概率高达到 93%。所以训练作业几乎每天都会失败。作业失败后，用户需要手动重启作业，运维成本很高。如果用户重启不及时，中间间隔的时间就会导致 GPU 卡空闲，浪费昂贵的算力资源。
 
@@ -42,7 +42,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*nxSnTJH9AtQAAAAAA
 
 在 DLRover 弹性容错应用在蚂蚁大模型训练前，一周内千卡训练运行时间占 60.8%，有效训练时间约 32.9%（*有效训练时间=模型迭代的步数*每步的时间*）。除此之外，训练运行时间还包括 checkpoint 保存时间和训练回退时间等。DLRover 上线后，一周内千卡训练运行时间占比提升至 83.6%，有效训练时间提升至 58.9%。
 
-## 02 **PyTorch 弹性训练框架**.
+## 02 **PyTorch 弹性训练框架**
 
 弹性训练是指在训练过程中可以伸缩节点数量。当前支持 PyTroch 弹性训练的框架有 Torch Elastic 和 Elastic Horovod。二者显著的区别在于节点数量变化后是否需要重启训练子进程来恢复训练。Torch Elastic 感知到新节点加入后会立刻重启所有节点的子进程，集合通信组网，然后从 checkpoint 文件里恢复训练状态来继续训练。而 Elastic Horovod 则是每个训练子进程在每个 step 后检查新节点加入，子进程不退出的情况下重新集合通信组网，然后有 rank-0 将模型广播给所有 rank。二者的优劣对比如下：
 
@@ -50,7 +50,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*nxSnTJH9AtQAAAAAA
 
 通过上述对比可以看出，Torch Elastic 重启训练子进程的方案对用户更加友好，支持更多的分布式训练策略和模型。而 FSDP 和 NCCL 是当前大模型分布式训练使用最为广泛的技术。所以 DLRover 选择使用 Torch Elastic 重启子进程的方案来实现 Kubernetes 集群上分布式训练的弹性容错。
 
-## 03 **集合通信动态组网**.
+## 03 **集合通信动态组网**
 
 动态组网是指训练进程可以自动根据动态变化的节点数量来组网集合通信，无需固定给各个节点指定集合通信的 rank 和 world size。动态组网是弹性容错训练必须的，因为弹性容错作业中，节点的失败、扩容或者缩容都会导致节点的 rank 和 world size 变化。所以我们无法在作业启动前给节点指定 rank 和 world size。
 
@@ -82,7 +82,7 @@ DLRover 的 ElasticJob 在启动 Pod 时，会给每个 Pod 一个唯一的编�
 
 （DLRover 动态扩缩容时的集合通信组网）
 
-## 04 **分布式训练容错**.
+## 04 **分布式训练容错**
 
 训练容错是指训练出现故障后能在无人工介入的情况下快速恢复训练。训练恢复需要如下步骤：
 
@@ -110,7 +110,7 @@ DLRover 在重启训练子进程前运行一个简单的 Allgather 任务来排�
 
 在 PyTorch 分布式训练中，一个节点的进程出错后，Torch Elastic 会停止所有节点的进程。各个进程的日志都是单独存在各自日志文件中。为了找到训练失败是哪个进程出错导致的，我们需要搜索所有进程的日志。这个工作对于千卡作业是十分耗时且繁琐的。为此，我们在 ElasticAgent 中开发了错误日志收集供功能。当 ElasticAgent 发现子进程失败后，后将其错误日志的 message 发送给 Job Master。Job Master 会在其日志中展示具体哪个节点的那个进程失败了，以及错误日志。这样用户只需看下 Job Master 的节点日志就可以定位训练失败原因了。同时我们也支持将错误信息上报给钉钉。
 
-```
+```Java
 任务 torch-train 训练进程失败 torch-train-edljob worker-116 restart 0 fails: {
   "784": {
     "local_rank": 0,
@@ -127,7 +127,7 @@ DLRover 在重启训练子进程前运行一个简单的 Allgather 任务来排�
 }
 ```
 
-## 05 **FSDP 并行的 save/load 优化**.
+## 05 **FSDP 并行的 save/load 优化**
 
 DLRover 弹性容错需要依赖 checkpoint 来恢复模型状态。当前我们的大模型训练采用 FSDP 的并行方式，FSDP 保存 checkpoint 的方案有两种：
 
@@ -156,11 +156,11 @@ sharding 方式：
 
 (FSDP flat param 的逻辑格式)
 
-### **代码示例：**
+**代码示例**
 
 -   保存参数  
 
-```
+```Java
 from atorch.utils.fsdp_save_util import save_fsdp_flat_param
 model = ... # atorch 转换 FSDP 的模型
 save_fsdp_flat_param(model, "ckpt")
@@ -179,7 +179,7 @@ ckpt
 
 -   加载参数
 
-```
+```Java
 # init_empty_weights_with_disk_offload 时指定 ckpt 地址，会将模型全部在 meta 上
 # 初始化，在 FSDP 转换时按需加载 ckpt 地址
 from atorch.utils.meta_model_utils import init_empty_weights_with_disk_offload
@@ -203,11 +203,11 @@ FSDP 并行训练时，优化器是基于 FSDP 转化后的模型创建的，ATo
 
 (FSDP 优化器状态 reshard 示意图)
 
-### **代码示例：**
+**代码示例**
 
 -   保存优化器状态
 
-```
+```Java
 from atorch.utils.fsdp_save_util import save_fsdp_optim_param
 # model, optimizer 均是经过 atorch FSDP 转换的对象
 save_fsdp_optim_param(model, optimizer, 'ckpt')
@@ -223,14 +223,14 @@ ckpt
 
 -   加载优化器状态
 
-```
+```Java
 from atorch.utils.fsdp_save_util import ShardOptim
 sm = ShardOptim("ckpt")
 reshard_optim_state = sm.reshard_optim_state_dict(model)
 optimizer.load_state_dict(reshard_optim_state)
 ```
 
-## 06 **弹性容错在千亿级大模型训练的应用效果**.
+## 06 **弹性容错在千亿级大模型训练的应用效果**
 
 在使用 DLRover 弹性容错之前，Torch 大模型训练只要出错就要重启训练作业。为了及时重启作业，用户写了个程序每隔 10min 来检测作业状态。如果失败，就会重启作业。
 
@@ -240,11 +240,11 @@ optimizer.load_state_dict(reshard_optim_state)
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0c32ceec522f44109f4616ccaf90b5b6~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1080&h=800&s=304768&e=png&b=fefefe)
 
-## 07 **Kubernetes 上提交 GPT 弹性容错作业**.
+## 07 **Kubernetes 上提交 GPT 弹性容错作业**
 
 1.  在 Kubernetes 集群上部署 DLRover ElasticJob CRD。
 
-```
+```Java
 git clone git@github.com:intelligent-machine-learning/dlrover.git
 cd dlrover/go/operator/
 make deploy IMG=easydl/elasticjob-controller:master
@@ -252,7 +252,7 @@ make deploy IMG=easydl/elasticjob-controller:master
 
 2. 在构造训练镜像的 Dockerfile 中安装 `dlrover[torch]`。
 
-```
+```Java
 FROM registry.cn-hangzhou.aliyuncs.com/easydl/dlrover-train:torch201-py38  as base
  
  
@@ -266,7 +266,7 @@ COPY ./model_zoo ./model_zoo
 
 3. 在 ElasticJob 的 Container 的 Command 里使用 `dlrover-run` 在运行训练脚本。我们在镜像 [registry.cn-hangzhou.aliyuncs.com/easydl/dlrover-train:nanogpt-test](registry.cn-hangzhou.aliyuncs.com/easydl/dlrover-train:nanogpt-test) 已经准备好了代码和训练数据，可以直接用如下 ElasticJob 来提交示例作业。  
 
-```
+```Java
 apiVersion: elastic.iml.github.io/v1alpha1
 kind: ElasticJob
 metadata:
@@ -304,7 +304,7 @@ spec:
                   # nvidia.com/gpu: 1 # optional
 ```
 
-## 08 **总结 & 未来计划**.
+## 08 **总结 & 未来计划**
 
 DLRover 目前已经在蚂蚁千亿模型训练训练上落地，将 GPU 故障导致训练暂停时间由 30% 降低到了约 12%。我们希望 DLRover 在大规模分布式训练上提供智能化运维功能，降低用户运维成本，提升训练的稳定性。
 欢迎业界开发者关注 DLRover 社区，一起共建开放可复现的大模型训练技术栈方案。
