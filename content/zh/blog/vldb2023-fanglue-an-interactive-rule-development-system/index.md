@@ -54,7 +54,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*byB8Q68O4HoAAAAAA
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/479e2fd870ff4df6b0b700a05a8bd9bc~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1080&h=581&s=126498&e=png&b=ffffff)
 
-（图 2）
+（图 2） 
 
 在安全风控场景下，当规则中存在一些容易被攻击的条件时 *（例如拦截规则里有条件：转账金额>=500，欺诈方只需要使得转账金额小于 500 就可以绕过拦截规则）* ，风控专家会希望通过寻找“语义上相似”的条件来增加另一层保护。为了加强规则的鲁棒性，方略提出并引入了近似条件。假设当前的规则是 C1 and C2 and C3，覆盖的样本集为 A，我们希望在 C2 上增加近似条件，那么方略会在 C1 and C3 的基础上遍历所有的候选条件 *（特征、运算符、值）* ，每个候选条件都会覆盖数据的一个子集，记为 B。一个理想的近似条件应该在 A 和 B 之间具有高重叠度，同时又不引入太多额外的白样本。方略基于图 3 所示的公式衡量条件的相似度，其中![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7e0c058a4f9f4bd39670b72362ac1d54~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=88&h=58&s=8354&e=png&b=fffefe)表示![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/00d8740e858f410dbc3570d2ba9f3c7f~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=48&h=52&s=7224&e=png&b=fffefe)中带有正标签的子集，![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0907429ba6ac4e5c9c3701d4f2151232~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=96&h=54&s=8551&e=png&b=fffefe)表示![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8116369e66c64e0788bdb9f5cd776007~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=48&h=52&s=7224&e=png&b=fffefe)中带有负标签的子集。
 
@@ -93,10 +93,9 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*byB8Q68O4HoAAAAAA
 ## 了解更多
 
 **DLRover Star 一下✨：**  
-[https://github.com/*intelligent-machine-learning/dlrover](https://github.com/*intelligent-machine-learning/dlrover)
+[https://github.com/intelligent-machine-learning/dlrover](https://github.com/intelligent-machine-learning/dlrover)
 
-  
-## 本周推荐阅读  
+## 本周推荐阅读
 
 [DLRover 在 K8s 上千卡级大模型训练稳定性保障的技术实践](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247542032&idx=1&sn=ae2a0c66f480fa2e8f98ce3d4a9d8890&chksm=faa3cacacdd443dc0712e1b9204cbd3d98ab2b20889646bd5c21407dc21582af390088ae38a7&scene=21)
 
