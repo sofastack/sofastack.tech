@@ -5,7 +5,7 @@ description: "Docker 环境基于 Dragonfly 的 Kubernetes 多集群镜像分发
 categories: "SOFAStack"
 tags: ["SOFAStack"]
 date: 2023-09-19T15:00:00+08:00
-cover: ""
+cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*tgriQrW1muUAAAAAAAAAAAAADrGAAQ/original"
 ---
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/13029393037d43829c313f9bc2c4b0ac~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=638&h=90&s=206394&e=gif&f=120&b=ffffff)
@@ -307,7 +307,7 @@ proxy:
 ```
 
 #### 配置 Seed Peer
-  
+
 ```Java
 jaeger: "http://127.0.0.1:14268/api/traces"
 console: true  # 打开可从窗口查看日志
@@ -439,6 +439,7 @@ Harbor 配置策略 -> 通知 Manager -> 查询现有活动的 Scheduler 集群 
 -   快速：直接查看对应的日志即可。
 
 ## Dragonfly Star 一下✨
+
 [https://github.com/dragonflyoss/Dragonfly2](https://github.com/dragonflyoss/Dragonfly2)
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b32a918cfa864153ac41ec79257a78c2~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=148&h=148&s=386&e=png)
