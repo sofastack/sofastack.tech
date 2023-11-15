@@ -72,7 +72,7 @@ aliases: "/sofa-boot/docs/sofa-ark-ark-demo"
                         <!--default none-->
                         <arkClassifier>executable-ark</arkClassifier>
 
-                        <!-- 让模块只能使用基座里模块声明过的依赖 -->
+                        <!-- 让模块只能使用基座里模块声明过的依赖，详细查看 https://www.sofastack.tech/projects/sofa-boot/sofa-ark-class-loader-delegation/ -->
                         <declaredMode>true</declaredMode>
                     </configuration>
                 </execution>
