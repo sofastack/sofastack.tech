@@ -183,8 +183,10 @@ public String customEvent(){
 
 > 2019-11-28 16:31:22,077 INFO  EVENT-HANDLER-LOGGER - CUSTOM EVENT TOPIC: THIS IS CUSTOM
 
-### 事件使用注意
-1. 所有的事件都会发送给每个 Biz 的每个Handler，如果想处理发送到具体 Biz 的事件，需要在事件Handler 里添加这段逻辑进行过滤：
+## 事件使用注意
+
+1. 所有的事件都会发送给每个 Biz 的每个Handler，如果想处理发送到具体 Biz 的事件，需要在事件Handler 里添加这段逻辑进行过滤
+   
    ```java
    // 获取事件源所属的 Biz
    Biz source = event.getSource();
@@ -195,5 +197,6 @@ public String customEvent(){
         doAction();
    }
    ```
+   
 2. Ark 提供的事件主要用户跨模块间的事件处理，如果要对某个 Biz 进行资源清理，可以监听 Biz 自身的 ApplicationContext 的一些事件，可以不需要使用 Ark 提供的事件。
 
