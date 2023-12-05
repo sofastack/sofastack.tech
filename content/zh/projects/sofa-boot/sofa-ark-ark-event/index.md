@@ -198,5 +198,5 @@ public String customEvent(){
    }
    ```
    
-2. Ark 提供的事件主要用户跨模块间的事件处理，如果要对某个 Biz 进行资源清理，可以监听 Biz 自身的 ApplicationContext 的一些事件，可以不需要使用 Ark 提供的事件。
+2. Ark 提供的事件主要用于跨模块间的事件处理，如果要对某个 Biz 进行资源清理，可以监听 Biz 自身的 ApplicationContext 的一些事件，可以不需要使用 Ark 提供的事件。
 
