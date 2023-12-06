@@ -189,14 +189,14 @@ public String customEvent(){
 1. 所有的事件都会发送给每个 Biz 的每个Handler，如果想处理发送到具体 Biz 的事件，需要在事件Handler 里添加这段逻辑进行过滤
    
 ```java
-   // 获取事件源所属的 Biz
-   Biz source = event.getSource();
-   // 获取当前处理事件所属的 Biz
-   Biz handleBiz = ArkClient.getBizManagerService().getBizByClassLoader(this.getClass().getClassLoader());
-   // 判断是否是同一个 Biz
-   if (sourceBiz = handleBiz) {
-        doAction();
-   }
+// 获取事件源所属的 Biz
+Biz source = event.getSource();
+// 获取当前处理事件所属的 Biz
+Biz handleBiz = ArkClient.getBizManagerService().getBizByClassLoader(this.getClass().getClassLoader());
+// 判断是否是同一个 Biz
+if (sourceBiz = handleBiz) {
+    doAction();
+}
 ```
    
 2. Ark 提供的事件主要用于跨模块间的事件处理，如果要对某个 Biz 进行资源清理，可以监听 Biz 自身的 ApplicationContext 的一些事件，可以不需要使用 Ark 提供的事件。
