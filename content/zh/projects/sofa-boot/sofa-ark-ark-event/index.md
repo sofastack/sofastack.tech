@@ -10,6 +10,7 @@ SOFAArk 从 1.1.0 版本开始提供了全新的事件模型，囊括了 SOFAArk
 ## 事件概览
 
 ### biz 生命周期事件
+
 | 事件名 | 描述 |
 | --- | --- |
 | AfterBizStartupEvent | biz 启动之后发送的事件 |
@@ -19,8 +20,8 @@ SOFAArk 从 1.1.0 版本开始提供了全新的事件模型，囊括了 SOFAArk
 | BeforeBizStopEvent | biz 停止之前发送的事件 |
 | BeforeBizSwitchEvent | biz 切换之前发送的事件 |
 
-
 ### plugin 生命周期事件
+
 | 事件名 | 描述 |
 | --- | --- |
 | AfterPluginStartupEvent | plugin 启动之后发送的事件 |
@@ -28,17 +29,17 @@ SOFAArk 从 1.1.0 版本开始提供了全新的事件模型，囊括了 SOFAArk
 | BeforePluginStartupEvent | plugin 启动之前发送的事件 |
 | BeforePluginStopEvent | plugin 停止之前发送的事件 |
 
-
 ### 容器级别生命周期事件
+
 | 事件名 | 描述 |
 | --- | --- |
 | AfterFinishDeployEvent | 执行完 DeployStage 阶段之后发送的事件 |
 | AfterFinishStartupEvent | 执行完 Ark 容器启动之后发送的事件 |
 
-
 ## 事件监听
 
 ### 监听指定类型的事件
+
 上述提到的各个阶段的事件，我们可以通过编写 EventHandler 来处理，例如，希望监听类型为 BeforeBizStartupEvent 的事件，则可以通过以下方式实现监听：
 
 ```java
@@ -63,7 +64,6 @@ public class EventHandlerSample implements EventHandler<BeforeBizStartupEvent> {
 > 日志目录：target/test/logs/host-app/event-handler.log
 > 日志输出：
 > 2019-11-28 15:18:33,248 INFO  EVENT-HANDLER-LOGGER - begin to startup biz, current biz is: provider1:2.0.0, bizState: resolved
-
 
 在此基础上，在提供其他几个 event 的处理器：
 
@@ -99,6 +99,7 @@ public class AfterBizStartupEventHandler implements EventHandler<AfterBizStartup
 ```
 
 ### 监听不指定类型的事件
+
 某些情况下，如果期望监听所有 biz 或者 plugin 生命周期事件，可以使用以下方式：
 
 ```java
@@ -116,7 +117,6 @@ public class AbstractArkEventHandler implements EventHandler<AbstractArkEvent> {
 ```
 
 > 为了区分输出，可以 sout 输出到 console.
-
 
 在上一小节中提供了 4 个 EventHandler，分别用于处理 BeforeBizStartupEvent、AfterBizStartupEvent、BeforeBizStopEvent、AfterBizStopEvent 事件；这里又提供了监听 AbstractArkEvent 的 EventHandler ，因为 AbstractArkEvent 是上述 4 种事件类型的父类，所以 AbstractArkEventHandler 会接收到 这 4 个事件。
 
@@ -136,6 +136,7 @@ public class AbstractArkEventHandler implements EventHandler<AbstractArkEvent> {
 所以这些事件都可以被 AbstractArkEventHandler 处理到。
 
 ### 发送自定义事件
+
 1、自定义事件
 
 ```java
@@ -187,7 +188,7 @@ public String customEvent(){
 
 1. 所有的事件都会发送给每个 Biz 的每个Handler，如果想处理发送到具体 Biz 的事件，需要在事件Handler 里添加这段逻辑进行过滤
    
-   ```java
+```java
    // 获取事件源所属的 Biz
    Biz source = event.getSource();
    // 获取当前处理事件所属的 Biz
@@ -196,7 +197,6 @@ public String customEvent(){
    if (sourceBiz = handleBiz) {
         doAction();
    }
-   ```
+```
    
 2. Ark 提供的事件主要用于跨模块间的事件处理，如果要对某个 Biz 进行资源清理，可以监听 Biz 自身的 ApplicationContext 的一些事件，可以不需要使用 Ark 提供的事件。
-
