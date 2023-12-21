@@ -92,6 +92,7 @@ public class ArkServiceLoader {
 考虑到 Biz 会动态的安装和卸载，如果支持 Biz 的扩展实现加载，生命周期容易引起混乱，暂时不考虑支持。如果确实存在 Ark Plugin  需要主动触发 Ark  Biz 的逻辑调用，可以通过 SOFAArk 内部事件机制。
 
 ### SOFAArk 默认扩展点
+
 SOFAArk 容器目前提供了唯一一个扩展点 `ClassLoaderHook`，用于其他插件提供扩展实现，自定义类/资源加载逻辑。`ClassLoaderHooker` 接口定义如下，用于扩展 BizClassLoader 和 PluginClassLoader 类(资源）加载逻辑：
 
 ```java
@@ -123,6 +124,7 @@ public interface ClassLoaderHook<T> {
 通过在插件中扩展该 SPI 接口实现，可以自定义 PluginClassLoader 和  BizClassLoader 的类/资源的加载逻辑。
 
 #### 扩展实现 PluginClassLoader 加载逻辑
+
 定义对 PluginClassLoader 的扩展实现，需要指定 extension 名为 `plugin-classloader-hook`; 这是因为目前 SOFAArk 的策略只允许一个Plugin ClassLoaderHook 扩展实现生效，如果同时定义多个扩展类，优先级最高的生效。
 
 ```java
@@ -235,9 +237,9 @@ ClassLoaderHook 从 sofa-ark 0.6 版本就已经提供了，其主要目的是�
 
 不支持，会出现循环应引用问题。模块 BizClassLoader getResources 过程描述：
 
-- 1、preFindResource: 当前模块没有实现 hook，所以 preFindResource 不会执行，返回是 null
-- 2、getInternalResouces
-- 3、getJdkResource: 加载不到
-- 4、getExportResource: 这里会尝试使用插件 pluginClassLoader 来加载
-- 5、pluginClassLoader.getResources
-- 6、preFindResource: 这里委托给宿主 bizClassLoader 加载，bizClassLoader.getResources -> getInternalResouces->getExportResource->pluginClassLoader.getResources->hook preFindResource -> 委托给宿主 bizClassLoader 加载 -> ....
+* 1、preFindResource: 当前模块没有实现 hook，所以 preFindResource 不会执行，返回是 null
+* 2、getInternalResouces
+* 3、getJdkResource: 加载不到
+* 4、getExportResource: 这里会尝试使用插件 pluginClassLoader 来加载
+* 5、pluginClassLoader.getResources
+* 6、preFindResource: 这里委托给宿主 bizClassLoader 加载，bizClassLoader.getResources -> getInternalResouces->getExportResource->pluginClassLoader.getResources->hook preFindResource -> 委托给宿主 bizClassLoader 加载 -> ....
