@@ -215,6 +215,10 @@ public class DelegateMasterBizClassLoaderHook implements ClassLoaderHook<Biz> {
 
 重新打包，打包之后验证下模块 biz 包，里面已经没有 sofa-dashboard-ark-facade 包，然后重新验证下执行是否正常。
 
+### SOFAArk ClassLoaderHook 的默认实现 DelegateToMasterBizClassLoaderHook 
+
+ClassLoaderHook 从 sofa-ark 0.6 版本就已经提供了，其主要目的是用户可以通过自定义 ClassLoaderHook 来控制 class 和 resources 的加载。在 [2.0.1](https://github.com/sofastack/sofa-ark/releases/tag/v2.0.1) 版本中，sofaark  框架内部提供了一个默认得到 ClassLoaderHook  实现 [DelegateToMasterBizClassLoaderHook](https://github.com/sofastack/sofa-ark/blob/master/sofa-ark-parent/support/ark-support-starter/src/main/java/com/alipay/sofa/ark/support/common/DelegateToMasterBizClassLoaderHook.java)，用于在模块 biz 在 load 不到 classes 或者 resourcecs 时，尝试从宿主 biz 去 load 相应的 classes 和 resources。
+
 ### 通过 plugin 提供 hook 实现
 
 不支持，会出现循环应引用问题。模块 BizClassLoader getResources 过程描述：
