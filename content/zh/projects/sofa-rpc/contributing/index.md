@@ -88,7 +88,7 @@ SOFARPC 所有修改都在分支上进行，修改完后提交 `pull request`，
 * 应该提供新的单元测试来证明以前的代码存在 bug，而新的代码已经解决了这些 bug
 
   您可以用如下命令运行所有测试
-  
+
   ```plain
   mvn clean test
   ```
