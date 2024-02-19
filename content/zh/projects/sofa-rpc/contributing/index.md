@@ -34,14 +34,14 @@ aliases: "/sofa-rpc/docs/Contributing"
 SOFARPC 所有修改都在分支上进行，修改完后提交 `pull request`， 在 Code Review 后由项目维护人员 Merge 到主干。  
 因此，在获取源码步骤介绍后，您需要：
 
-- 下载代码到本地,这一步您可以选择git/https方式.
+* 下载代码到本地,这一步您可以选择git/https方式.
 
 
   ```
   git clone https://github.com/您的账号名/sofa-rpc.git 
   ```
   
-- 在提交pull request请求前, 请将您克隆的代码和远程代码库同步，这样您的pull request会简单清晰
+* 在提交pull request请求前, 请将您克隆的代码和远程代码库同步，这样您的pull request会简单清晰
   
   
   ```
@@ -50,7 +50,7 @@ SOFARPC 所有修改都在分支上进行，修改完后提交 `pull request`，
   git rebase upstream/master
   ```
   
-- 拉分支准备修改代码
+* 拉分支准备修改代码
   
   
   ```
