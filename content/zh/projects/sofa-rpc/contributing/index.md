@@ -42,8 +42,8 @@ SOFARPC 所有修改都在分支上进行，修改完后提交 `pull request`，
   ```
   
 * 在提交pull request请求前, 请将您克隆的代码和远程代码库同步，这样您的pull request会简单清晰
-  
-  
+
+
   ```
   git remote add upstream git@github.com:sofastack/sofa-rpc.git
   git fetch upstream
@@ -51,12 +51,11 @@ SOFARPC 所有修改都在分支上进行，修改完后提交 `pull request`，
   ```
   
 * 拉分支准备修改代码
-  
-  
+
+
   ```
   git checkout -b add_xxx_feature
   ```
-  
   
   执行完上述命令后，您的代码仓库就切换到相应分支了。执行如下命令可以看到您当前分支：
   
