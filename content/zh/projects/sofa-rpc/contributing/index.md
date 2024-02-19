@@ -37,14 +37,14 @@ SOFARPC 所有修改都在分支上进行，修改完后提交 `pull request`，
 * 下载代码到本地,这一步您可以选择git/https方式.
 
 
-  ```
+  ```java
   git clone https://github.com/您的账号名/sofa-rpc.git 
   ```
   
 * 在提交pull request请求前, 请将您克隆的代码和远程代码库同步，这样您的pull request会简单清晰
 
 
-  ```
+  ```plain
   git remote add upstream git@github.com:sofastack/sofa-rpc.git
   git fetch upstream
   git rebase upstream/master
@@ -53,25 +53,25 @@ SOFARPC 所有修改都在分支上进行，修改完后提交 `pull request`，
 * 拉分支准备修改代码
 
 
-  ```
+  ```plain
   git checkout -b add_xxx_feature
   ```
   
   执行完上述命令后，您的代码仓库就切换到相应分支了。执行如下命令可以看到您当前分支：
   
-  ```
+  ```plain
   git branch -a
   ```
   
   如果您想切换回主干，执行下面命令:
   
-  ```
+  ```plain
   git checkout -b master
   ```
   
   如果您想切换回分支，执行下面命令：
   
-  ```
+  ```plain
   git checkout -b "branchName"
   ```
 
@@ -109,7 +109,7 @@ SOFARPC 所有修改都在分支上进行，修改完后提交 `pull request`，
 
 修改完代码后，执行如下命令提交所有修改到本地:
   
-  ```
+  ```plain
   git commit -am '添加xx功能'
   ```
 
@@ -117,7 +117,7 @@ SOFARPC 所有修改都在分支上进行，修改完后提交 `pull request`，
 
 在代码提交到本地后，就是与远程仓库同步代码了。执行如下命令提交本地修改到 github 上：
 
-```
+```plain
 git push origin "branchname"
 ```
 
