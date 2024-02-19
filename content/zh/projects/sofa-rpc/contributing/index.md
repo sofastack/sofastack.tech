@@ -37,7 +37,7 @@ SOFARPC 所有修改都在分支上进行，修改完后提交 `pull request`，
 * 下载代码到本地,这一步您可以选择git/https方式.
 
 
-  ```java
+  ```plain
   git clone https://github.com/您的账号名/sofa-rpc.git 
   ```
   
