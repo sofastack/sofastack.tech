@@ -40,7 +40,7 @@ SOFARPC 所有修改都在分支上进行，修改完后提交 `pull request`，
   ```
   git clone https://github.com/您的账号名/sofa-rpc.git 
   ```
-* 在提交 pull request 请求前, 请将您克隆的代码和远程代码库同步，这样您的 pull request 会简单清晰
+* 在提交pull request请求前, 请将您克隆的代码和远程代码库同步，这样您的pull request会简单清晰
 
   ```
   git remote add upstream git@github.com:sofastack/sofa-rpc.git
