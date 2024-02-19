@@ -40,7 +40,7 @@ SOFARPC 所有修改都在分支上进行，修改完后提交 `pull request`，
   ```plain
   git clone https://github.com/您的账号名/sofa-rpc.git 
   ```
-  
+
 * 在提交pull request请求前, 请将您克隆的代码和远程代码库同步，这样您的pull request会简单清晰
 
 
@@ -49,28 +49,28 @@ SOFARPC 所有修改都在分支上进行，修改完后提交 `pull request`，
   git fetch upstream
   git rebase upstream/master
   ```
-  
+
 * 拉分支准备修改代码
 
 
   ```plain
   git checkout -b add_xxx_feature
   ```
-  
-  执行完上述命令后，您的代码仓库就切换到相应分支了。执行如下命令可以看到您当前分支：
-  
+
+执行完上述命令后，您的代码仓库就切换到相应分支了。执行如下命令可以看到您当前分支：
+
   ```plain
   git branch -a
   ```
-  
-  如果您想切换回主干，执行下面命令:
-  
+
+如果您想切换回主干，执行下面命令:
+
   ```plain
   git checkout -b master
   ```
-  
-  如果您想切换回分支，执行下面命令：
-  
+
+如果您想切换回分支，执行下面命令：
+
   ```plain
   git checkout -b "branchName"
   ```
@@ -84,7 +84,7 @@ SOFARPC 所有修改都在分支上进行，修改完后提交 `pull request`，
 * 代码风格保持一致
 
   SOFARPC 通过 Maven插件来保持代码格式一致.在提交代码前,务必本地执行
-  
+
   ```plain
   mvn clean compile
   ```
@@ -108,7 +108,7 @@ SOFARPC 所有修改都在分支上进行，修改完后提交 `pull request`，
 * 及时更新文档
 
 修改完代码后，执行如下命令提交所有修改到本地:
-  
+
   ```plain
   git commit -am '添加xx功能'
   ```
