@@ -91,7 +91,7 @@ SOFABoot 基于 Spring Boot 提供了健康检查，模块隔离，类隔离等�
 
 |扩展组件|starter|
 |:---:|:---:|
-|健康检查|sofa-boot-actuator|
+|健康检查|actuator-sofa-boot-starter|
 |模块化隔离|isle-sofa-boot-starter|
 |类隔离|sofa-ark-springboot-starter|
 |测试扩展|test-sofa-boot-starter|
