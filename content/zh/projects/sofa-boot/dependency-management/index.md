@@ -18,7 +18,7 @@ SOFABoot 是在 Spring Boot 的基础上提供的功能扩展。基于 Spring Bo
 ```
 
 其中 `${sofa.boot.version}` 为具体的 SOFABoot 版本，参考[发布历史](https://github.com/sofastack/sofa-boot/releases)。
- 
+
 ## SOFABoot 依赖管理 -- Gradle
 
 从 SOFABoot 3.1.1 版本开始，SOFABoot 开始支持使用 Gradle 来进行依赖管理，如果要使用 Gradle 来进行依赖管理，需要按照如下的形式来配置 `build.gradle`：
