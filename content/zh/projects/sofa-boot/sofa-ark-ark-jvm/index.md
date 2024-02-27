@@ -3,8 +3,6 @@
 title: "Ark 服务通信"
 aliases: "/sofa-boot/docs/sofa-ark-ark-jvm"
 ---
-
-
 在 [Ark 服务机制](../sofa-ark-ark-service) 中，我们详细介绍了如何引用和发布插件服务，主要是解决 Plugin 和 Biz 的通信问题；为了解决 Biz 之间的通信问题，SOFAArk 引入了 SOFABoot 提供的 `SofaService/SofaReference` 编程界面；下面介绍其使用方法。
 
 ### 引入依赖
@@ -54,7 +52,7 @@ SOFABoot 提供三种方式给开发人员发布和引用 JVM 服务
 ```xml
 <sofa:reference interface="com.alipay.sofa.runtime.test.service.SampleService" id="sampleServiceRef">
 	<sofa:binding.jvm/>
-</sofa:service>
+</sofa:reference>
 ```
 
 上面的配置中的 interface 是服务的接口，需要和发布服务时配置的 interface 一致。id 属性的含义同 Spring BeanId。上面的配置会生成一个 id 为 sampleServiceRef 的 Spring Bean，你可以将 sampleServiceRef 这个 Bean 注入到当前 SOFABoot 模块 Spring 上下文的任意地方。
