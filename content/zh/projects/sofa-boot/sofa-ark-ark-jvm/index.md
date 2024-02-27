@@ -4,7 +4,6 @@ title: "Ark 服务通信"
 aliases: "/sofa-boot/docs/sofa-ark-ark-jvm"
 ---
 在 [Ark 服务机制](../sofa-ark-ark-service) 中，我们详细介绍了如何引用和发布插件服务，主要是解决 Plugin 和 Biz 的通信问题；为了解决 Biz 之间的通信问题，SOFAArk 引入了 SOFABoot 提供的 `SofaService/SofaReference` 编程界面；下面介绍其使用方法。
-
 ### 引入依赖
 引入 runtime-sofa-boot-plugin 依赖，如果应用基于 Spring Boot 1.x 开发，推荐使用 v2.6.1 版本；如果应用基于 Spring Boot 2.x 开发，推荐使用 v3.1.3 版本；
 
@@ -15,7 +14,6 @@ aliases: "/sofa-boot/docs/sofa-ark-ark-jvm"
     <version>${sofa.boot.version}</version>
 </dependency>
 ```
-
 ### 发布和引用 JVM 服务
 SOFAArk 引入了 SOFABoot 提供的 `SofaService/SofaReference` JVM 服务概念([参考文档](../module-service))，为了方便文档统一，重复其介绍。
 
@@ -110,6 +108,7 @@ public class SampleServiceRef {
 ```
 
 使用 @SofaService 注解发布服务时，需要在实现类上打上 @SofaService 注解；在 Spring Boot 使用 Bean Method 创建 Bean 时，会导致 @Bean 和 @SofaService 分散在两处，而且无法对同一个实现类使用不同的 unique id。因此自 SOFABoot v2.6.0 及 v3.1.0 版本起，支持 @SofaService 作用在 Bean Method 之上，例如：
+
 ```java
 @Configuration
 public class SampleSofaServiceConfiguration {
@@ -122,6 +121,7 @@ public class SampleSofaServiceConfiguration {
 ```
 
 同样为了方便在 Spring Boot Bean Method 使用注解 @SofaReference 引用服务，自 SOFABoot v2.6.0 及 v3.1.0 版本起，支持在 Bean Method 参数上使用 @SofaReference 注解引用 JVM 服务，例如：
+
 ```java
 @Configuration
 public class MultiSofaReferenceConfiguration {
