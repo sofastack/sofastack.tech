@@ -8,9 +8,9 @@ on:
 jobs:
   setup:
     runs-on: int-runner-set
-    container:
-      image: ci-image:v1.0.0
-      options: --user 1001
+      container:
+        image: ci-image:v1.0.0
+        options: --user 1001
   build:
     runs-on: ubuntu-latest
     steps:
