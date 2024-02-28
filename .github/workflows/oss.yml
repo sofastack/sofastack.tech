@@ -1,0 +1,24 @@
+name: Upload to OSS
+
+on:
+  push:
+    branches:
+      - main  
+
+jobs:
+  upload:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout repository
+      uses: actions/checkout@v2
+
+    - name: Set up Aliyun CLI
+      uses: aliyun/aliyun-cli@v1
+      with:
+        access-key-id: ${{ secrets.OSS_ACCESS_KEY_ID }}
+        access-key-secret: ${{ secrets.OSS_ACCESS_KEY_SECRET }}
+
+    - name: Upload to OSS
+      run: |
+        ossutil cp -r . oss://sofastack-sofastacktech/ 
