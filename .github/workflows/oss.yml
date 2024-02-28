@@ -12,8 +12,8 @@ jobs:
     - uses: actions/checkout@v1
       with:
         submodules: true
-        fetch-depth: 0
-        persist-credentials: false
+    - name: Fix git safe.directory in container
+      run: mkdir -p /home/runner/work/_temp/_github_home && printf "[safe]\n\tdirectory = /github/workspace" > /home/runner/work/_temp/_github_home/.gitconfig    
     # 下载 git submodule
     - uses: srt32/git-actions@v0.0.3
       with:
