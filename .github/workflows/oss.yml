@@ -12,11 +12,11 @@ jobs:
     # 切代码到 runner
     - uses: actions/checkout@v1
       with:
-        submodules: false
+        submodules: true
     # 下载 git submodule
-   # - uses: srt32/git-actions@v0.0.3
-  #    with:
-   #     args: git submodule update --init --recursive
+    - uses: srt32/git-actions@v0.0.3
+      with:
+        args: git submodule update --init --recursive
     # 使用 node:10
     - name: use Node.js 10.x
       uses: actions/setup-node@v1
