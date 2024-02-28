@@ -3,7 +3,7 @@ name: Upload to OSS
 on:
   push:
     branches:
-      - main  
+      - master  
 
 jobs:
   upload:
