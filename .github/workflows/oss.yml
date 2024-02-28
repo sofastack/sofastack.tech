@@ -14,6 +14,7 @@ jobs:
       with:
         submodules: true
         fetch-depth: 0
+        persist-credentials: false
     # 下载 git submodule
     - uses: srt32/git-actions@v0.0.3
       with:
