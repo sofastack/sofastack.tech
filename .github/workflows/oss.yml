@@ -32,7 +32,7 @@ jobs:
         CI: true
     # 设置阿里云OSS的 id/secret，存储到 github 的 secrets 中
     - name: setup aliyun oss
-      uses: manyuanrong/setup-ossutil@master
+      uses: manyuanrong/setup-ossutil@v2.0
       with:
         endpoint: oss-cn-hangzhou-zmf.aliyuncs.com
         access-key-id: ${{ secrets.OSS_ACCESS_KEY_ID }}
