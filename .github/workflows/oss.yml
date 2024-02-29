@@ -34,7 +34,7 @@ jobs:
     - name: setup aliyun oss
       uses: manyuanrong/setup-ossutil@master
       with:
-        endpoint: oss-cn-beijing.aliyuncs.com
+        endpoint: oss-cn-hangzhou-zmf.aliyuncs.com
         access-key-id: ${{ secrets.OSS_ACCESS_KEY_ID }}
         access-key-secret: ${{ secrets.OSS_ACCESS_KEY_SECRET }}
     - name: cp files to aliyun
