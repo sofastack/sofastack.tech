@@ -294,6 +294,7 @@ SOFARegistry 将服务数据 （PublisherRegister） 和服务发布者 （Pub
 ![SOFALab](https://cdn.nlark.com/yuque/0/2019/png/226702/1556166838486-44c2acc2-e0c3-4557-9dfb-881617ad2bb1.png)
 
 本文为 SOFARegistry 的架构介绍，希望大家对 SOFARegistry 有一个初步的认识和了解。同时，我们开启了《剖析 | SOFARegistry  实现原理》系列，会逐步详细介绍各个部分的代码设计和实现，预计按照如下的目录进行：
+
 - 【已完成】海量数据下的注册中心 - SOFARegistry 架构介绍
 - 【待领取】SOFARegistry 分片存储的实现详解
 - 【待领取】SOFARegistry 数据推送机制详解
