@@ -63,12 +63,13 @@ providerConfig.setRegistry(registryConfigs);
 如果是使用 XML 的方式
 
 需要在properties里配置注册中心
+
 ```java
 com.alipay.sofa.rpc.registries.zookeeper=zookeeper://127.0.0.1:2181
 com.alipay.sofa.rpc.registries.nacos=nacos://127.0.0.1:8848
 ```
-        
-```java
+     
+```xml
 <bean id="sampleFacadeImpl" class="com.alipay.sofa.rpc.bean.SampleFacadeImpl"/>
 <sofa:service ref="sampleFacadeImpl" interface="com.alipay.sofa.rpc.bean.SampleFacade">
     <sofa:binding.bolt>
@@ -80,6 +81,7 @@ com.alipay.sofa.rpc.registries.nacos=nacos://127.0.0.1:8848
 如果使用 Annotation 的方式
 
 需要在properties里配置注册中心
+
 ```java
 com.alipay.sofa.rpc.registries.zookeeper=zookeeper://127.0.0.1:2181
 com.alipay.sofa.rpc.registries.nacos=nacos://127.0.0.1:8848
