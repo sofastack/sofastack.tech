@@ -3,8 +3,6 @@
 title: "服务发布与引用"
 aliases: "/sofa-rpc/docs/Publish-And-Reference"
 ---
-
-
 SOFARPC 的服务发布和引用的基本配置已经在「编程界面」章节中说明，这里主要介绍服务发布和引用的一些特性。
 
 ### 同一服务发布多种协议
@@ -14,6 +12,9 @@ SOFARPC 的服务发布和引用的基本配置已经在「编程界面」章节
 如果使用 Java API，可以按照如下的代码构建多个 ServerConfig，不同的 ServerConfig 设置不同的协议，然后将这些 ServerConfig 设置给 ProviderConfig：
 
 ```java
+ServerConfig serverConfigA = new ServerConfig();
+ServerConfig serverConfigB = new ServerConfig();
+        
  List<ServerConfig> serverConfigs = new ArrayList<ServerConfig>();
  serverConfigs.add(serverConfigA);
  serverConfigs.add(serverConfigB);
@@ -50,6 +51,9 @@ public class SampleServiceImpl implements SampleService {
 如果使用 API 的方式，构建多个 RegistryConfig 设置给 ProviderConfig 即可：
 
 ```java
+RegistryConfig registryA = new RegistryConfig();
+RegistryConfig registryB = new RegistryConfig();
+        
 List<RegistryConfig> registryConfigs = new ArrayList<RegistryConfig>();
 registryConfigs.add(registryA);
 registryConfigs.add(registryB);
@@ -58,7 +62,38 @@ providerConfig.setRegistry(registryConfigs);
 
 如果是使用 XML 的方式
 
+需要在properties里配置注册中心
+
+```java
+com.alipay.sofa.rpc.registries.zookeeper=zookeeper://127.0.0.1:2181
+com.alipay.sofa.rpc.registries.nacos=nacos://127.0.0.1:8848
+```
+
+```xml
+<bean id="sampleFacadeImpl" class="com.alipay.sofa.rpc.bean.SampleFacadeImpl"/>
+<sofa:service ref="sampleFacadeImpl" interface="com.alipay.sofa.rpc.bean.SampleFacade">
+    <sofa:binding.bolt>
+        <sofa:global-attrs registry="nacos,zookeeper"/>
+    </sofa:binding.bolt>
+</sofa:service>
+```
+
 如果使用 Annotation 的方式
+
+需要在properties里配置注册中心
+
+```java
+com.alipay.sofa.rpc.registries.zookeeper=zookeeper://127.0.0.1:2181
+com.alipay.sofa.rpc.registries.nacos=nacos://127.0.0.1:8848
+```
+
+```java
+@SofaService(bindings = {@SofaServiceBinding(registry = "nacos"),
+        @SofaServiceBinding(registry = "zookeeper")})
+public class SampleServiceImpl implements SampleService {
+    // ...
+}
+```
 
 ### 方法级参数设置
 
