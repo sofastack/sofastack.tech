@@ -36,7 +36,7 @@ jobs:
       with:
         hugo-version: 'latest'
     - name: Build
-      run: hugo
+      run:  pwd && ls && hugo version && hugo
     # 设置阿里云OSS的 id/secret，存储到 github 的 secrets 中
     - name: setup aliyun oss
       uses: manyuanrong/setup-ossutil@v2.0
