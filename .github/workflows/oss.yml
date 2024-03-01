@@ -26,10 +26,17 @@ jobs:
     # npm install
     - name: npm install and build
       run: |
+        pwd && ls
         npm install
         npm run build
       env:
         CI: true
+    - name: Setup Hugo
+      uses: peaceiris/actions-hugo@v2
+      with:
+        hugo-version: 'latest'
+    - name: Build
+      run: hugo
     # 设置阿里云OSS的 id/secret，存储到 github 的 secrets 中
     - name: setup aliyun oss
       uses: manyuanrong/setup-ossutil@v2.0
