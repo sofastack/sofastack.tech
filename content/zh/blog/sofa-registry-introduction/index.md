@@ -96,7 +96,7 @@ SOFARegistry 集群内部使用分层的架构，分别为连接会话层（Sess
 
 **服务发布模型（PublisherRegister）**
 
-- dataInfoId：服务唯一标识，由`<dataId>`、`<分组 group>`和`<租户 instanceId>`构成，例如在 SOFARPC 的场景下，一个 dataInfoId 通常是 `com.alipay.sofa.rpc.example.HelloService#@#SOFA#@#00001`，其中SOFA 是 group 名称，00001 是租户 id。group 和 instance 主要是方便对服务数据做逻辑上的切分，使不同 group 和 instance 的服务数据在逻辑上完全独立。模型里有 group 和 instanceId 字段，但这里不额外列出来，读者只要理解 dataInfoId 的含义即可。
+- dataInfoId：服务唯一标识，由`<dataId>`、`<分组 group>`和`<租户 instanceId>`构成，例如在 SOFARPC 的场景下，一个 dataInfoId 通常是 `com.alipay.sofa.rpc.example.HelloService#@#SOFA#@#00001`，其中SOFA 是 group 名称，00001 是租户 instanceId。group 和 instanceId 主要是方便对服务数据做逻辑上的切分，使不同 group 和 instanceId 的服务数据在逻辑上完全独立。模型里有 group 和 instanceId 字段，但这里不额外列出来，读者只要理解 dataInfoId 的含义即可。
 - zone：是一种单元化架构下的概念，代表一个机房内的逻辑单元，通常一个物理机房（Datacenter）包含多个逻辑单元（zone），更多内容可参考 [异地多活单元化架构解决方案](https://tech.antfin.com/solutions/multiregionldc)。在服务发现场景下，发布服务时需指定逻辑单元（zone），而订阅服务者可以订阅逻辑单元（zone）维度的服务数据，也可以订阅物理机房（datacenter）维度的服务数据，即订阅该 datacenter 下的所有 zone 的服务数据。
 - dataList：服务注册数据，通常包含“协议”、“地址”和“额外的配置参数”，例如 SOFARPC 所发布的数据类似`bolt://192.168.1.100:8080?timeout=2000`”。这里使用 dataList，表示一个 PublisherRegister 可以允许同时发布多个服务数据（但是通常我们只会发布一个）。
 
