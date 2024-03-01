@@ -68,7 +68,7 @@ providerConfig.setRegistry(registryConfigs);
 com.alipay.sofa.rpc.registries.zookeeper=zookeeper://127.0.0.1:2181
 com.alipay.sofa.rpc.registries.nacos=nacos://127.0.0.1:8848
 ```
-     
+
 ```xml
 <bean id="sampleFacadeImpl" class="com.alipay.sofa.rpc.bean.SampleFacadeImpl"/>
 <sofa:service ref="sampleFacadeImpl" interface="com.alipay.sofa.rpc.bean.SampleFacade">
