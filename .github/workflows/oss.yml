@@ -34,9 +34,10 @@ jobs:
     - name: Setup Hugo
       uses: peaceiris/actions-hugo@v2
       with:
-        hugo-version: 'latest'
+        hugo-version: '0.119.0'
+        extended: true
     - name: Build
-      run:  pwd && ls && hugo version && hugo
+      run: hugo --minify
     # 设置阿里云OSS的 id/secret，存储到 github 的 secrets 中
     - name: setup aliyun oss
       uses: manyuanrong/setup-ossutil@v2.0
