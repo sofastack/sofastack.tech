@@ -43,12 +43,10 @@ jobs:
     - name: setup aliyun oss
       uses: manyuanrong/setup-ossutil@v2.0
       with:
-        endpoint: oss-cn-hangzhou-zmf.aliyuncs.com
+        endpoint: http://oss-cn-hangzhou.aliyuncs.com
         access-key-id: ${{ secrets.OSS_ACCESS_KEY_ID }}
         access-key-secret: ${{ secrets.OSS_ACCESS_KEY_SECRET }}
     - name: pwd
       run: pwd && ls 
     - name: cp files to aliyun
-      run: ossutil cp -rf --acl public-read-write ./public oss-cn-hangzhou.aliyuncs.com
-
-
+      run: ossutil cp -rf --acl public-read-write ./public oss://sofastacktech-sofastacktech
