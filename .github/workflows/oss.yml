@@ -49,5 +49,6 @@ jobs:
     - name: pwd
       run: pwd && ls 
     - name: cp files to aliyun
-      run: ossutil cp -rf ./package.json oss://sofastack-sofastacktech/ 
+      run: ossutil cp -rf --acl public-read-write ./public oss-cn-hangzhou.aliyuncs.com
+
 
