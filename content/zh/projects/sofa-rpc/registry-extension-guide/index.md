@@ -3,8 +3,6 @@
 title: "注册中心扩展指南"
 aliases: "/sofa-rpc/docs/Registry-Extension-Guide"
 ---
-
-
 如果你要扩展一个注册中心，我们先看下注册中心的抽象类。
 
 ```java
@@ -31,6 +29,7 @@ public abstract class Registry implements Initializable, Destroyable {
  - [ ] 取消订阅服务列表、删除缓存
 
 其它
+
  - [ ] 注册中心节点断连后，不影响本地调用
  - [ ] 和一个注册中心节点断连后，可自己切换到其它注册中心节点
  - [ ] 注册中心节点切换后，自动恢复注册和订阅信息
