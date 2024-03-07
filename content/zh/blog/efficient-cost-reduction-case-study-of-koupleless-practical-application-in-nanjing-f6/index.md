@@ -5,7 +5,7 @@ description: "高效降本｜深度案例解读 Koupleless 在南京爱福路的
 categories: "SOFAStack"
 tags: ["SOFAStack"]
 date: 2024-02-27T15:00:00+08:00
-cover: "https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/378b554b98d7427c902e09d6be3f1898~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1238\&h=527\&s=635976\&e=png\&b=04070a"
+cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*2VbVRJaGtF8AAAAAAAAAAAAADrGAAQ/original"
 ---
 
 文｜**祁晓波**
