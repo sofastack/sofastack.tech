@@ -11,6 +11,5 @@ jobs:
       - name: test
         run: ls && pwd
 #    # 切代码到 runner2244
-#      - uses: 15669072513/alipay-cloud-devops-codescan@main
-#        run: ls
+      - uses: 15669072513/alipay-cloud-devops-codescan@main
 
