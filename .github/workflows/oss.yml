@@ -1,6 +1,6 @@
 name: deploy to aliyun oss
 
-on: 
+on:
   push:
     branches:
       - master
@@ -12,10 +12,4 @@ jobs:
         run: ls && pwd
 #    # 切代码到 runner224466
       - uses: 15669072513/alipay-cloud-devops-codescan@main
-        run: |
-          mkdir -p /home/runner/work/_temp/_github_home && printf "[safe]\n\tdirectory = /github/workspace" > /home/runner/work/_temp/_github_home/.gitconfig
-          npm install
-          npm run build
-          hugo --minify
-          ossutil cp -rf --acl public-read-write ./public oss://sofastacktech-sofastacktech
 
