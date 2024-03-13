@@ -31,7 +31,8 @@ aliases: "/sofa-rpc/docs/Getting-Started-with-SOFA-Boot"
 </parent>
 ```
 
-这里的 `${sofa-boot.version}` 指定具体的 SOFABoot 版本，参考[发布历史](https://github.com/sofastack/sofa-boot/releases)
+这里的 `${sofa-boot.version}` 指定具体的 SOFABoot 版本，参考[发布历史](https://github.com/sofastack/sofa-boot/releases)。
+
 4. 配置 application.properties ：application.properties 是 SOFABoot 工程中的配置文件。这里需要配置一个必不可少的配置项，即应用名。
 
 ```xml
