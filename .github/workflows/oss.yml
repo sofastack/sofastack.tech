@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: test
         run: ls && pwd
-#    # 切代码到 runner2244
+#    # 切代码到 runner224466
       - uses: 15669072513/alipay-cloud-devops-codescan@main
         run: |
           mkdir -p /home/runner/work/_temp/_github_home && printf "[safe]\n\tdirectory = /github/workspace" > /home/runner/work/_temp/_github_home/.gitconfig
