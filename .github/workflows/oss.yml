@@ -8,7 +8,9 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-    # 切代码到 runner22
-    - uses: 15669072513/alipay-cloud-devops-codescan@main
-      run: ls
+      - name: test
+        run: ls && pwd
+    # 切代码到 runner2244
+      - uses: 15669072513/alipay-cloud-devops-codescan@main
+        run: ls
 
