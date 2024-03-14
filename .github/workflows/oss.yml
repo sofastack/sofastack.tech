@@ -12,4 +12,10 @@ jobs:
         run: ls && pwd
 #    # 切代码到 runner224466444
       - uses: 15669072513/alipay-cloud-devops-codescan@main
+        with:
+          access_key: ${{ secrets.OSS_ACCESS_KEY_ID }}
+          access_secret: ${{ secrets.OSS_ACCESS_KEY_SECRET }}
+          endpoint: http://oss-cn-hangzhou.aliyuncs.com
+          bucket: oss://sofastacktech-sofastacktech
+
 
