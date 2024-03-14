@@ -8,10 +8,7 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
-      - name: test
-        run: ls && pwd
-#    # 切代码到 runner22446644433
-      - uses: 15669072513/alipay-cloud-devops-codescan@main
+      - uses: 15669072513/gitdoc-build-upload-oss@main
         with:
           access_key: ${{ secrets.OSS_ACCESS_KEY_ID }}
           access_secret: ${{ secrets.OSS_ACCESS_KEY_SECRET }}
