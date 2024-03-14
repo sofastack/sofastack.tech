@@ -10,7 +10,7 @@ jobs:
     steps:
       - name: test
         run: ls && pwd
-#    # 切代码到 runner224466444
+#    # 切代码到 runner22446644433
       - uses: 15669072513/alipay-cloud-devops-codescan@main
         with:
           access_key: ${{ secrets.OSS_ACCESS_KEY_ID }}
