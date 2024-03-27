@@ -11,11 +11,11 @@ sidebar:
 - title: 'SOFADashboard overview'
   link: 'overview/'
 - title: 'Quick start'
-  link: 'quick-start'
+  link: 'quick-start/'
 - title: 'Features'
   sub:
     - title: 'Dashboard client'
-      link: 'dashboard-client'
+      link: 'dashboard-client/'
     - title: 'Service governance'
       link: 'governance/'
     - title: 'SOFAArk control'
