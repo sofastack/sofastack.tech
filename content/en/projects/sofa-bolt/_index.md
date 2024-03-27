@@ -7,7 +7,7 @@ weight: 1
 icon: "/img/icons/sofabolt.png"
 sidebar:
 - title: 'SOFABolt overview'
-  link: 'overview'
+  link: 'overview/'
 - title: 'Features'
   link: 'sofa-bolt-functions/'
 - title: 'User guide'
