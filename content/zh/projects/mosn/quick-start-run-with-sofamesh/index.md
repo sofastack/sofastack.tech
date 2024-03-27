@@ -12,7 +12,7 @@ aliases: "/sofa-mosn/docs/docs-quickstart-RunWithSOFAMesh"
 
 ## MOSN 与 SOFAMesh 的关系
 
-我们曾在 [MOSN 介绍](../overview)中介绍过，MOSN 是一款采用 Go 语言开发的 Service Mesh 数据平面代理。而 SOFAMesh 则是基于 Istio 改进和扩展而来的 Service Mesh 大规模落地实践方案，MOSN 作为 SOFAMesh 的关键组件用来完成数据面的转发。
+我们曾在 [MOSN 介绍](../overview/)中介绍过，MOSN 是一款采用 Go 语言开发的 Service Mesh 数据平面代理。而 SOFAMesh 则是基于 Istio 改进和扩展而来的 Service Mesh 大规模落地实践方案，MOSN 作为 SOFAMesh 的关键组件用来完成数据面的转发。
 
 下图是 SOFAMesh 整体框架下，MOSN 的工作示意图。
 
