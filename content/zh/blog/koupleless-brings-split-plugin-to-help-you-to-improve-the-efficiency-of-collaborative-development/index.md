@@ -64,9 +64,9 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*EgQaSYNNkQwAAAAAA
 
 - 方式一：使用 Idea 专业版，对 Controller 做 Bean 分析和类分析，得到以下 Bean 依赖图和类依赖关系图
 
-![img](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*cCuVQKA-oqcAAAAAAAAAAAAADrGAAQ/original）
+![img](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*cCuVQKA-oqcAAAAAAAAAAAAADrGAAQ/original)
 
-![img](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*xYOSQZa61ZgAAAAAAAAAAAAADrGAAQ/original）
+![img](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*xYOSQZa61ZgAAAAAAAAAAAAADrGAAQ/original)
 
 **优势：**借助 IDEA 专业版，分析全面
 
@@ -86,7 +86,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*EgQaSYNNkQwAAAAAA
 
 以 QuartzJobController 为例，当选定的模块中有 QuartzJobController, QuartzJobService 和 QuartzJobServiceImpl 时，QuartzJobController 依赖的类和 Bean 关系如下图所示：
 
-![img](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*qnkbSoupH3UAAAAAAAAAAAAADrGAAQ/original）
+![img](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*qnkbSoupH3UAAAAAAAAAAAAADrGAAQ/original)
 
 QuartzJobController 的依赖类/Bean 分为四类：已在模块、可移入模块、建议分析被依赖关系和不建议移入模块：
 
@@ -100,9 +100,9 @@ QuartzJobController 的依赖类/Bean 分为四类：已在模块、可移入模
 
 当使用插件对 QuartzJobController 和 JobQueryCriteria 进行分析时，依赖树和被依赖树如下，与上述分析对应：
 
-![img](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*6mcxSq5fM64AAAAAAAAAAAAADrGAAQ/original）
+![img](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*6mcxSq5fM64AAAAAAAAAAAAADrGAAQ/original)
 
-![img](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*wHktTK6cATYAAAAAAAAAAAAADrGAAQ/original）
+![img](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*wHktTK6cATYAAAAAAAAAAAAADrGAAQ/original)
 
 **优势：**直观、操作便捷、提示友好
 
