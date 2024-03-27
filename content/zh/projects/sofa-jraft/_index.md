@@ -7,7 +7,7 @@ icon: "/img/icons/sofajraft.png"
 weight: 2
 sidebar:
   - title: 'SOFAJRaft 介绍'
-    link: 'overview'
+    link: 'overview/'
   - title: '核心引擎设计'
     link: 'engine-architecture'
   - title: 'Jepsen 验证'

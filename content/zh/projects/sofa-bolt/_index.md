@@ -7,7 +7,7 @@ weight: 1
 icon: "/img/icons/sofabolt.png"
 sidebar:
   - title: 'SOFABolt 概述'
-    link: 'overview'
+    link: 'overview/'
   - title: 'SOFABolt 功能介绍'
     link: 'sofa-bolt-functions'
   - title: 'SOFABolt 用户手册'

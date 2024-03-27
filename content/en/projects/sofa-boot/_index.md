@@ -8,7 +8,7 @@ icon: "/img/icons/sofaboot.png"
 level: "main"
 sidebar:
   - title: 'SOFABoot overview'
-    link: 'overview'
+    link: 'overview/'
   - title: 'Quick start guide'
     link: 'quick-start'
   - title: 'Dependency management'

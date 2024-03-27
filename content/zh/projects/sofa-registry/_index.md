@@ -10,7 +10,7 @@ sidebar:
   - title: '产品介绍'
     sub:
       - title: '简介'
-        link: 'overview'
+        link: 'overview/'
       - title: '术语'
         link: 'terminology'
   - title: '快速开始'

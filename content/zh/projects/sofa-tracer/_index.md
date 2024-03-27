@@ -8,7 +8,7 @@ weight: 3
 icon: "/img/icons/sofatracer.png"
 sidebar:
   - title: 'SOFATracer 介绍'
-    link: 'overview'
+    link: 'overview/'
   - title: '基础术语'
     link: 'explanation'
   - title: 'TraceId 和 SpanId 生成规则'

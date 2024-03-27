@@ -8,7 +8,7 @@ icon: "/img/icons/sofarpc.png"
 level: "main"
 sidebar:
   - title: "Overview"
-    link: "overview"
+    link: 'overview/'
   - title: 'Quick start guide'
     sub:
       - title: 'Get started with SOFARPC'

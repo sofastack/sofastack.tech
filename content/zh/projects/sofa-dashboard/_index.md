@@ -7,7 +7,7 @@ weight: 3
 icon: "/img/icons/sofadashboard.png"
 sidebar:
   - title: 'SOFADashboard 介绍'
-    link: 'overview'
+    link: 'overview/'
   - title: '快速开始'
     link: 'quick-start'
   - title: '功能介绍'

@@ -7,7 +7,7 @@ weight: 3
 icon: "/img/icons/sofaacts.png"
 sidebar:
   - title: "SOFAActs 介绍"
-    link: "overview"
+    link: 'overview/'
   - title: "用户手册"
     sub:
     - title: "快速开始"

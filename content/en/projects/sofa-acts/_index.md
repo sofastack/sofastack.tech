@@ -9,7 +9,7 @@ icon: "/img/icons/sofaacts.png"
 sidebar:
 
 - title: "SOFAActs overview"
-  link: "overview"
+  link: "overview/"
 - title: "User guide"
   sub:
     - title: "Quick start"

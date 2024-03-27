@@ -7,7 +7,7 @@ level: "main"
 icon: "/img/icons/sofaboot.png"
 sidebar:
   - title: 'SOFABoot 介绍'  	
-    link: 'overview'
+    link: 'overview/'
   - title: '快速开始'  	
     link: 'quick-start'
   - title: '依赖管理'  	

@@ -9,7 +9,7 @@ icon: "/img/icons/sofadashboard.png"
 sidebar:
 
 - title: 'SOFADashboard overview'
-  link: 'overview'
+  link: 'overview/'
 - title: 'Quick start'
   link: 'quick-start'
 - title: 'Features'

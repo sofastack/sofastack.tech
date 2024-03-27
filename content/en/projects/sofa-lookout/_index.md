@@ -7,7 +7,7 @@ weight: 4
 icon: "/img/icons/sofalookout.png"
 sidebar:
   - title: 'Overview'
-    link: "overview"
+    link: 'overview/'
   - title: 'Quick start guide'
     sub:
       - title: 'Quick start guide for SOFABoot project'

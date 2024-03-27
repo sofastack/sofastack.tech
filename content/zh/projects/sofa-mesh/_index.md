@@ -7,7 +7,7 @@ icon: "/img/icons/sofamesh.png"
 level: "incubating"
 sidebar:
   - title: 'SOFAMesh 介绍'
-    link: 'overview'
+    link: 'overview/'
   - title: 'Pilot'
     sub:
       - title: 'Pilot 介绍'
