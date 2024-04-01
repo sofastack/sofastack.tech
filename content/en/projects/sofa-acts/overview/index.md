@@ -1,7 +1,7 @@
 ---
 
 title: "SOFAActs overview"
-aliases: "/sofa-acts/docs/Home"
+aliases: "/sofa-acts/docs/Home/"
 ---
 
 AntCoreTest (ACTS) is a white-box test framework developed by Ant Financial based on years' testing knowledge and experience with the financial-level distributed architecture for the purpose of providing enterprises with a highly efficient, precise, and automated interface testing services.

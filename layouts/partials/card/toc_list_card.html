@@ -34,7 +34,7 @@
 										{{ $link = .Params.link }}
 									{{ end }}
 								{{ else }}
-									{{ $link = path.Join .RelPermalink "/overview" }}
+									{{ $link = path.Join .RelPermalink "/overview/" }}
 								{{ end }}
 								<a href={{ $link }}>
 									{{ .Title }}

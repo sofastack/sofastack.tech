@@ -3,7 +3,7 @@ title: "快速开始指南"
 aliases: "/sofa-tracer/docs/ComponentAccess"
 ---
 
-SOFATracer 接入的组件列表参考：[SOFATracer 介绍](../overview)，在使用时请注意不同组件对应的SOFATracer 版本和 JDK 版本。
+SOFATracer 接入的组件列表参考：[SOFATracer 介绍](../overview/)，在使用时请注意不同组件对应的SOFATracer 版本和 JDK 版本。
 
 ### 环境准备
 

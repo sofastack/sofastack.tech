@@ -11,7 +11,7 @@
 			{{ $link = .Params.link }}
 		{{ end }}
 	{{ else }}
-		{{ $link = path.Join .RelPermalink "/overview" }}
+		{{ $link = path.Join .RelPermalink "/overview/" }}
 	{{ end }}
 	<head>
 		<meta http-equiv="refresh" content="0; url={{$link}}" />

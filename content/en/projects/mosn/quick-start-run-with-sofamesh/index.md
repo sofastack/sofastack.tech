@@ -12,7 +12,7 @@ This article introduces how to use MOSN to build the Service Mesh development en
 
 ## Relationship between MOSN and SOFAMesh
 
-As mentioned in [MOSN introduction](../overview), MOSN is a Service Mesh data plane agent developed with Golang, and SOFAMesh is a large-scale implementation solution for Service Mesh, which is improved and extended based on Istio. Serving as a critical component of SOFAMesh, MOSN is used to complete data plane forwarding.
+As mentioned in [MOSN introduction](../overview/), MOSN is a Service Mesh data plane agent developed with Golang, and SOFAMesh is a large-scale implementation solution for Service Mesh, which is improved and extended based on Istio. Serving as a critical component of SOFAMesh, MOSN is used to complete data plane forwarding.
 
 The following figure shows the workflow chart of MOSN based on the overall SOFAMesh framework. 
 
