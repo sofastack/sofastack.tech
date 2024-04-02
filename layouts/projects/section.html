@@ -1,15 +1,17 @@
 {{ $isProjectHome := eq (path.Dir .File.Dir) "projects" }}
+
 {{ if $isProjectHome }}
 {{ .Render "list" }}
 {{ else }}
 {{ $link := "" }}
 {{ if isset .Params "link" }}
+{{ if hasPrefix .Params.link "/" }}
+{{ $link = path.Join .RelPermalink .Params.link }}
+{{ else }}
 {{ $link = .Params.link }}
-{{ if not (strings.HasSuffix $link "/") }}
-{{ $link = printf "%s/" $link }}
 {{ end }}
 {{ else }}
-{{ $link = printf "%s/overview/" .RelPermalink }}
+{{ $link = path.Join .RelPermalink "/overview" }}
 {{ end }}
 <head>
 	<meta http-equiv="refresh" content="0; url={{$link}}" />
