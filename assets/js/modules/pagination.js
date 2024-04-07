@@ -52,7 +52,7 @@ export function createPagination(hrefFn) {
   paginationDOM.innerHTML = `
   <ul class="list">
     ${paginations.map(number => {
-      const href = wrapHrefFn(number) === "" ? "" : ` href="${wrapHrefFn(number)}"`
+      const href = wrapHrefFn(number) === "" ? "" : ` href="${wrapHrefFn(number)}/"`
       return `<a${href}>
         <li class="item ${number === current ? '-active' : ''}">
           ${number === DOT ? '...' : number}
