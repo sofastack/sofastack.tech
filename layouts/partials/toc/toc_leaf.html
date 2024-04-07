@@ -9,7 +9,7 @@
 				<div class="link{{if eq $baseDir .link }} -current{{end}}">
 					<a
 						title="{{ .title }}"
-						href="{{ relLangURL (path.Join $project .link) }}"
+						href="{{ printf "%s/" (relLangURL (path.Join $project .link)) }}"
 					>{{ .title }}</a>
 				</div>
 			</li>
