@@ -15,7 +15,7 @@
 				{{ else }}
 				{{ $link = path.Join .RelPermalink "/overview/" }}
 				{{ end }}
-				<a href={{ $link }}>
+				<a href={{ printf "%s/" $link }}>
 					{{ .Title }}
 				</a>
 			</h3>
