@@ -55,7 +55,7 @@ export function createPagination(hrefFn) {
       const href = wrapHrefFn(number) === "" ? "" : ` href="${wrapHrefFn(number)}/"`
       return `<a${href}>
         <li class="item ${number === current ? '-active' : ''}">
-          ${number === DOT ? '...' : number}
+          ${number === DOT ? '...' : number} aaaaaa
         </li>
       </a>`
     }).join('')}
@@ -80,7 +80,7 @@ export default function() {
   const baseurl = basePathArr.join('/')
 
   const hrefFn = (number) => {
-    return `/${baseurl}/page/${number}/`
+    return `/${baseurl}/page/${number}`
   }
   createPagination(hrefFn)
 }
