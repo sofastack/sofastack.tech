@@ -1,17 +1,17 @@
 
 {{ if or .PrevInSection .NextInSection }}
-	<nav class="ss-pagination-next">
-		{{ with .PrevInSection -}}
-		<a class="link-next" href="{{ printf "%s/" .RelPermalink }}">
-			<span class="text">{{ i18n "prev_article" }}: </span>
-			<span class="text">{{ .Title }}</span>
-		</a>
-		{{- end }}
-		{{ with .NextInSection -}}
-		<a class="link-next" href="{{ printf "%s/" .RelPermalink }}">
-			<span class="text">{{ i18n "next_article" }}: </span>
-			<span class="text">{{ .Title }}</span>
-		</a>
-		{{- end }}
-	</nav>
+<nav class="ss-pagination-next">
+	{{ with .PrevInSection -}}
+	<a class="link-prev" href="{{ printf "%s/"  .Permalink }}">
+		<span class="text">{{ i18n "prev_article" }}: </span>
+		<span class="text">{{ .Title }}</span>
+	</a>
+	{{- end }}
+	{{ with .NextInSection -}}
+	<a class="link-next" href="{{ printf "%s/"  .Permalink }}">
+		<span class="text">{{ i18n "next_article" }}: </span>
+		<span class="text">{{ .Title }}</span>
+	</a>
+	{{- end }}
+</nav>
 {{ end }}
