@@ -55,7 +55,7 @@ export function createPagination(hrefFn) {
       const href = wrapHrefFn(number) === "" ? "" : ` href="${wrapHrefFn(number)}/"`
       return `<a${href}>
         <li class="item ${number === current ? '-active' : ''}">
-          ${number === DOT ? '...' : number} 
+          ${number === DOT ? '...' : number}
         </li>
       </a>`
     }).join('')}
