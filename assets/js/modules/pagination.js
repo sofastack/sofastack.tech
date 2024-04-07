@@ -80,7 +80,7 @@ export default function() {
   const baseurl = basePathArr.join('/')
 
   const hrefFn = (number) => {
-    return `/${baseurl}/page/${number}`
+    return `/${baseurl}/page/${number}/`
   }
   createPagination(hrefFn)
 }
