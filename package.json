@@ -29,8 +29,5 @@
     "sass-loader": "^7.1.0",
     "webpack": "^4.35.3",
     "webpack-cli": "^3.3.5"
-  },
-  "engines": {
-    "node": "^8.9.4"
   }
 }
