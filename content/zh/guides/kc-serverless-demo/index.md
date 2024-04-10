@@ -139,7 +139,6 @@ github: "https://github.com/sofastack-guides/kc-serverless-demo"
 - 选择测试执行
 - 触发查看效果
 
-
 ## 更多
 
 - [下载本次 Demo 幻灯片](https://gw.alipayobjects.com/os/basement_prod/ce277119-020a-4f59-926d-2331ab7c805b.pdf)
