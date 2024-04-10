@@ -14,7 +14,7 @@ projects: [{name: "Seata", link: "https://github.com/seata/seata"}]
 #### 1、引入maven依赖
 
 将下面的依赖引入到父工程的pom文件中（kc-sofastack-demo/pom.xml）:
-```xml
+```html
 <properties>
     <seata.version>0.6.1</seata.version>
     <netty4.version>4.1.24.Final</netty4.version>
@@ -49,7 +49,7 @@ projects: [{name: "Seata", link: "https://github.com/seata/seata"}]
 ```
 
 将下面的依赖引入到 stock-mng 工程的pom文件中（kc-sofastack-demo/stock-mng/pom.xml）:
-```xml
+```html
 <dependencies>
     <dependency>
         <groupId>io.seata</groupId>
@@ -64,7 +64,7 @@ projects: [{name: "Seata", link: "https://github.com/seata/seata"}]
 ```
 
 将下面的依赖引入到 balance-mng-impl 工程的pom文件中（kc-sofastack-demo/balance-mng/balance-mng-impl/pom.xml）:
-```xml
+```html
 <dependencies>
 
     <dependency>
@@ -322,7 +322,7 @@ CREATE TABLE `undo_log` (
 #### 2、实现TCC模式要求的三个接口: prepare、commit、rollback
 
 1. 在balance-mng-facade工程的pom文件引入依赖(kc-sofastack-demo/balance-mng/balance-mng-facade/pom.xml):
-```xml
+```html
 
 <dependencies>
     <dependency>
@@ -482,7 +482,7 @@ public Success purchase(String body) {
 #### 5、StockMngImpl依赖的BalanceMngFacade接口改成使用xml方式引入:
 BalanceMngFacade是一个rpc接口，之前的例子我们是用@SofaReference注解方式引入，目前TCC模式不支持注解的方式拦截（一下个版本修复），所以需要改成用xml的方法引入:
 1. 在stock-mng工程的src/main/resources目录下创建spring目录，并创建seata-sofarpc-reference.xml:
-```xml
+```html
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
