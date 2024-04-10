@@ -15,17 +15,12 @@ projects: [{name: "Seata", link: "https://github.com/seata/seata"}]
 
 将下面的依赖引入到父工程的pom文件中（kc-sofastack-demo/pom.xml）:
 ```xml
-...
 <properties>
-    ...
     <seata.version>0.6.1</seata.version>
     <netty4.version>4.1.24.Final</netty4.version>
 </properties>
-...
 <dependencyManagement>
     <dependencies>
-        ...
-
         <dependency>
             <groupId>io.seata</groupId>
             <artifactId>seata-all</artifactId>
@@ -56,7 +51,6 @@ projects: [{name: "Seata", link: "https://github.com/seata/seata"}]
 将下面的依赖引入到 stock-mng 工程的pom文件中（kc-sofastack-demo/stock-mng/pom.xml）:
 ```xml
 <dependencies>
-....
     <dependency>
         <groupId>io.seata</groupId>
         <artifactId>seata-all</artifactId>
@@ -72,7 +66,7 @@ projects: [{name: "Seata", link: "https://github.com/seata/seata"}]
 将下面的依赖引入到 balance-mng-impl 工程的pom文件中（kc-sofastack-demo/balance-mng/balance-mng-impl/pom.xml）:
 ```xml
 <dependencies>
-....
+
     <dependency>
         <groupId>io.seata</groupId>
         <artifactId>seata-all</artifactId>
@@ -94,10 +88,10 @@ projects: [{name: "Seata", link: "https://github.com/seata/seata"}]
 
 将下面的java代码段加到 BalanceMngApplication 和 StockMngApplication 类的main方法下面:
 ```java
-...
+
 import io.seata.rm.datasource.DataSourceProxy;
 import io.seata.spring.annotation.GlobalTransactionScanner;
-...
+
 
 
 public static void main(String[] args) {
@@ -137,21 +131,21 @@ public static class DataSourceConfig {
 
 在BookStoreControllerImpl类的purchase方法上加入@GlobalTransactional注解:
 ```java
-...
+
 import io.seata.spring.annotation.GlobalTransactional;
-...
+
 
 @Override
 @GlobalTransactional(timeoutMills = 300000, name = "kc-book-store-tx")
 public Success purchase(String body) {
-  ...
+  
 }
 ```
 
 #### 4、配置Seata server:
 简单起见，将Seata server和BalanceMngApplication一起启动，在BalanceMngApplication类中加入启动Seata server的代码:
 ```java
-...
+
 public static void main(String[] args) {
 
     startSeatServer();
@@ -179,7 +173,7 @@ private static void startSeatServer(){
     }).start();
 
 }
-...
+
 ```
 
 演示的Seata server使用本地文件作为存储，将下面两个文件复制到balance-mng-bootstrap和stock-mng工程的/src/main/resources目录下:
@@ -329,7 +323,7 @@ CREATE TABLE `undo_log` (
 
 1. 在balance-mng-facade工程的pom文件引入依赖(kc-sofastack-demo/balance-mng/balance-mng-facade/pom.xml):
 ```xml
-...
+
 <dependencies>
     <dependency>
         <groupId>io.seata</groupId>
@@ -339,7 +333,7 @@ CREATE TABLE `undo_log` (
 ```
 2. 在BalanceMngFacade接口增加三个方法:
 ```java
-...
+
 @TwoPhaseBusinessAction(name = "minusBalancePrepare", commitMethod = "minusBalanceCommit", rollbackMethod = "minusBalanceRollback")
 boolean minusBalancePrepare(BusinessActionContext context,
                             @BusinessActionContextParameter(paramName = "userName") String userName,
@@ -352,7 +346,7 @@ boolean minusBalanceRollback(BusinessActionContext context);
 
 3. 在BalanceMngMapper接口中实现上面三个接口需要用的sql:
 ```java
-...
+
 @Update("update balance_tb set balance = balance - #{amount}, freezed = freezed +  #{amount} where user_name = #{userName}")
 int minusBalancePrepare(@Param("userName") String userName, @Param("amount") BigDecimal amount);
 
@@ -369,12 +363,12 @@ ALTER TABLE balance_tb add column freezed decimal(10,2) default 0.00;
 
 5. 在BalanceMngImpl类中实现BalanceMngFacade接口中增加的三个方法:
 ```java
-...
+
 private static final Logger LOGGER = LoggerFactory.getLogger(BalanceMngImpl.class);
 
 @Override
 public boolean minusBalancePrepare(BusinessActionContext context, String userName, BigDecimal amount) {
-    LOGGER.info("minus balance prepare begin ...");
+    LOGGER.info("minus balance prepare begin ");
     LOGGER.info("minus balance prepare SQL: update balance_tb set balance = balance - {}, freezed = freezed + {}  where user_name = {}", amount, amount, userName);
 
     int effect = balanceMngMapper.minusBalancePrepare(userName, amount);
@@ -392,7 +386,7 @@ public boolean minusBalanceCommit(BusinessActionContext context) {
 
     final BigDecimal amount = new BigDecimal(String.valueOf(context.getActionContext("amount")));
 
-    LOGGER.info("minus balance commit begin ... xid: " + xid);
+    LOGGER.info("minus balance commit begin  xid: " + xid);
     LOGGER.info("minus balance commit SQL: update balance_tb set freezed = freezed - {}  where user_name = {}", amount, userName);
 
     int effect = balanceMngMapper.minusBalanceCommit(userName, amount);
@@ -409,7 +403,7 @@ public boolean minusBalanceRollback(BusinessActionContext context) {
 
     final BigDecimal amount = new BigDecimal(String.valueOf(context.getActionContext("amount")));
 
-    LOGGER.info("minus balance rollback begin ... xid: " + xid);
+    LOGGER.info("minus balance rollback begin  xid: " + xid);
     LOGGER.info("minus balance rollback SQL: update balance_tb set balance = balance + {}, freezed = freezed - {}  where user_name = {}", amount, amount, userName);
 
     int effect = balanceMngMapper.minusBalanceRollback(userName, amount);
@@ -422,7 +416,7 @@ public boolean minusBalanceRollback(BusinessActionContext context) {
 
 TCC模式不需要代理数据源，因为不需要解析sql，生成undo log，在BalanceMngApplication类中注释掉dataSource和createDataSource方法:
 ```java
-...
+
 @Configuration
 public static class DataSourceConfig {
 
@@ -469,7 +463,7 @@ public Success purchase(String body) {
     if (count <= 0) {
         throw new RuntimeException("purchase count should not be negative");
     }
-    LOGGER.info("purchase begin ... XID:" + RootContext.getXID());
+    LOGGER.info("purchase begin  XID:" + RootContext.getXID());
     stockMngFacade.createOrder(userName, productCode, count);
     stockMngFacade.minusStockCount(userName, productCode, count);
 
@@ -505,26 +499,28 @@ BalanceMngFacade是一个rpc接口，之前的例子我们是用@SofaReference�
 ```
 2. 在StockMngApplication类上加入@ImportResource注解加载上面的spring配置文件
 ```java
-...
+
 @SpringBootApplication
 @ImportResource("classpath*:spring/*.xml")
 public class StockMngApplication {
-...
+
 ```
 
 3. 将BookStoreControllerImpl类中引用balanceMngFacade接口的注解换成@Autowared:
 ```java
-...
+
 //@SofaReference(interfaceType = BalanceMngFacade.class, uniqueId = "${service.unique.id}", binding = @SofaReferenceBinding(bindingType = "bolt"))
 @Autowired
 private BalanceMngFacade balanceMngFacade;
-...
+
 ```
 
 #### 6、启动Seata server和stock-mng、balance-mng应用:
+
 1. 运行BalanceMngApplication类的main方法(包含启动Seata server)
 2. 运行StockMngApplication类的main方法
 3. 浏览器打开 http://localhost:8080/index.html
 
 ## 更多
+
 - [下载本次 Demo 幻灯片](https://gw.alipayobjects.com/os/basement_prod/04ed66e1-b962-4593-8924-ba2b0c096fe4.pdf)
