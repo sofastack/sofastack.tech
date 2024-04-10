@@ -15,6 +15,7 @@ projects: [{name: "Seata", link: "https://github.com/seata/seata"}]
 
 将下面的依赖引入到父工程的pom文件中（kc-sofastack-demo/pom.xml）:
 ```html
+
 <properties>
     <seata.version>0.6.1</seata.version>
     <netty4.version>4.1.24.Final</netty4.version>
@@ -46,10 +47,12 @@ projects: [{name: "Seata", link: "https://github.com/seata/seata"}]
         </dependency>
     </dependencies>
 </dependencyManagement>
+
 ```
 
 将下面的依赖引入到 stock-mng 工程的pom文件中（kc-sofastack-demo/stock-mng/pom.xml）:
 ```html
+
 <dependencies>
     <dependency>
         <groupId>io.seata</groupId>
@@ -61,10 +64,12 @@ projects: [{name: "Seata", link: "https://github.com/seata/seata"}]
         <artifactId>netty-all</artifactId>
     </dependency>
 <dependencies>
+
 ```
 
 将下面的依赖引入到 balance-mng-impl 工程的pom文件中（kc-sofastack-demo/balance-mng/balance-mng-impl/pom.xml）:
 ```html
+
 <dependencies>
 
     <dependency>
@@ -82,6 +87,7 @@ projects: [{name: "Seata", link: "https://github.com/seata/seata"}]
         <artifactId>netty-all</artifactId>
     </dependency>
 <dependencies>
+
 ```
 
 #### 2、使用Seata的DataSourceProxy代理实际的数据源，并配置GlobalTransactionScanner扫描@GlobalTransaction注解
@@ -124,6 +130,7 @@ public static class DataSourceConfig {
         return new GlobalTransactionScanner("kc-balance-mng", "my_test_tx_group");
     }
 }
+
 ```
 注意上面的dataSource方法返回的是DataSourceProxy代理的数据源
 
@@ -180,6 +187,7 @@ private static void startSeatServer(){
 <br>文件名：file.conf
 <br>文件内容：
 ```yaml
+
 transport {
   # tcp udt unix-domain-socket
   type = "TCP"
@@ -230,11 +238,13 @@ store {
     dir = "file_store/seata"
   }
 }
+
 ```
 
 <br>文件名：registry.conf
 <br>文件内容：
 ```yaml
+
 registry {
   # file 、nacos 、eureka、redis、zk
   type = "file"
@@ -286,11 +296,13 @@ config {
     name = "file.conf"
   }
 }
+
 ```
 
 #### 5、创建undo_log表:
 在balance_db和stock_db两个数据库中都创建undo_log表:
 ```sql
+
 CREATE TABLE `undo_log` (
   `id` bigint(20) NOT NULL AUTO_INCREMENT,
   `branch_id` bigint(20) NOT NULL,
@@ -303,6 +315,7 @@ CREATE TABLE `undo_log` (
   PRIMARY KEY (`id`),
   UNIQUE KEY `ux_undo_log` (`xid`,`branch_id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=1 DEFAULT CHARSET=utf8;
+
 ```
 
 #### 6、启动Seata server和stock-mng、balance-mng应用:
@@ -358,7 +371,9 @@ int minusBalanceRollback(@Param("userName") String userName, @Param("amount") Bi
 ```
 4. 修改balance_tb的表结构，增加freezed（冻结金额）字段:
 ```sql
+
 ALTER TABLE balance_tb add column freezed decimal(10,2) default 0.00;
+
 ```
 
 5. 在BalanceMngImpl类中实现BalanceMngFacade接口中增加的三个方法:
@@ -410,6 +425,7 @@ public boolean minusBalanceRollback(BusinessActionContext context) {
     LOGGER.info("minus balance rollback end");
     return (effect > 0);
 }
+
 ```
 
 #### 3、取消使用AT模式的DataSourceProxy
@@ -443,10 +459,12 @@ public static class DataSourceConfig {
         return new GlobalTransactionScanner("kc-balance-mng", "my_test_tx_group");
     }
 }
+
 ```
 
 #### 4、BookStoreControllerImpl的purchase方法改成调用BalanceMngFacade.minusBalancePrepare方法:
 ```java
+
 @Override
 @GlobalTransactional(timeoutMills = 300000, name = "kc-book-store-tx")
 public Success purchase(String body) {
@@ -477,12 +495,14 @@ public Success purchase(String body) {
     success.setSuccess("true");
     return success;
 }
+
 ```
 
 #### 5、StockMngImpl依赖的BalanceMngFacade接口改成使用xml方式引入:
 BalanceMngFacade是一个rpc接口，之前的例子我们是用@SofaReference注解方式引入，目前TCC模式不支持注解的方式拦截（一下个版本修复），所以需要改成用xml的方法引入:
 1. 在stock-mng工程的src/main/resources目录下创建spring目录，并创建seata-sofarpc-reference.xml:
 ```html
+
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
@@ -496,6 +516,7 @@ BalanceMngFacade是一个rpc接口，之前的例子我们是用@SofaReference�
     </sofa:reference>
 
 </beans>
+
 ```
 2. 在StockMngApplication类上加入@ImportResource注解加载上面的spring配置文件
 ```java
