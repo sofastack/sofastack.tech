@@ -89,7 +89,7 @@ January 28, 2019
 * Breaking changes
   * Changed the groupId of the project from com.alipay.jraft to com.alipay.sofa, and changed the package name to com.alipay.sofa.jraft. As a result, JRaft 1.2.1 is no longer compatible with earlier versions in the communication layer. During the batch release process, the coexistence of the new and earlier versions may result in two leaders being elected at the same time. If you need to smoothly scale up your cluster, contact us for the smooth upgrade solution.
 
-**We recommend that you upgrade to this version.**
+__We recommend that you upgrade to this version.__
 
 ---
 

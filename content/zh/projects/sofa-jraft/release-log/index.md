@@ -187,7 +187,7 @@ __此版本强烈推荐升级__
 * Breaking Changes
   * 项目的 groupId 由 com.alipay.jraft 变更为 com.alipay.sofa, 包名变更为 com.alipay.sofa.jraft，所以在通信层 1.2.1 版本与之前的版本不能兼容，批量发布过程中新老版本同时存在可能导致出现两个 leader 的情况，如果需要平滑升级的同学请联系我们提供平滑升级方案
 
-**此版本推荐升级。**
+__此版本推荐升级。__
 
 ---
 
