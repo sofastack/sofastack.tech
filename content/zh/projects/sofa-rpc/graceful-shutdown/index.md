@@ -1,12 +1,11 @@
 
 ---
+
 title: "优雅关闭"
 aliases: "/sofa-rpc/docs/Graceful-Shutdown"
 ---
 
-
 优雅关闭，包括两部分，一个是 RPC 框架作为客户端，一个是 RPC 框架作为服务端。
-
 
 ### 作为服务端
 
@@ -35,7 +34,6 @@ com.alipay.sofa.rpc.context.RpcRuntimeContext
 ```
 
 这个 ShutdownHook 的作用是当发布平台/用户执行 `kill pid` 的时候，会先执行 ShutdownHook 中的逻辑。在销毁操作中，RPC 框架会先执行向注册中心取消服务注册、关闭服务端口等动作。
-
 
 ```java
 private static void destroy(boolean active) {
@@ -125,7 +123,6 @@ private static void destroy(boolean active) {
 
 而是会判断当前服务端上面的连接和队列的任务，先处理完队列中的任务，再缓慢关闭。
 
-
 ### 作为客户端
 
 作为客户端。实际上就是 Cluster 的关闭，关闭调用的服务这一步，可以查看下
@@ -166,7 +163,6 @@ com.alipay.sofa.rpc.client.AbstractCluster
 ```
 
 这里面也会逐步将正在调用的请求处理完成才会下线。
-
 
 ## 最佳实践
 

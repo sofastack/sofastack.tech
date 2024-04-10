@@ -50,12 +50,13 @@ Kubernetes 1.14.0 Release 已经于 3 月 25 日正式发布。相信你也已�
 Kubernetes 里的任务优先级（priority）和抢占机制（preemption）的目的十分明确：保证高优先级的任务可以在需要的时候通过抢占低优先级任务的方式得到运行。
 
 这其中，优先级定义了一个 Pod 在集群中的重要程度，这个重要程度体现且仅体现在两个地方：
+
 1. 高优先级的 Pod 在调度阶段更容易被优先调度（K8s 采用队列调度模型），注意这里并不保证高优先级 Pod 永远被优先调度，实际影响调度顺序的因素有很多；
 2. 在集群整体负载较高时，如果出现高优先级 Pod 无法被调度的情况（集群中没有满足条件的 Node 供 Pod 运行），K8s 会启动抢占机制，通过抢占已经运行的低优先级的 Pod 的方式，让高优先级的 Pod 可以运行起来。抢占机制便是在这里引入的。
 
 抢占机制指当调度器发现某个 Pod（如 Pod-A）无法在集群中找到合适的节点部署时（所有节点 Predicates 全部失败），会试图通过删除一些优先级低于 Pod-A 的 Pod 来“腾出空间”部署 Pod-A，这样 Pod-A 就可以被调度了。这样一个“看似简单”的需求在分布式环境中实施起来有很多细节，例如：如何决定删除哪个节点的哪些 Pod、如何保证为 Pod-A 腾出的空间不被其它 Pod 占用、如何保证 Pod-A 不被饿死（Starvation）、如何处理有亲和性需求的 Pod 调度约束、是否需要支持跨节点 Preemption 以支持某些特定的约束（例如某 Failure Domain 的反亲和约束）等等。
 
-参见：Pod Priority and Preemption in Kubernetes ([#564](https://github.com/kubernetes/enhancements/issues/564)) 
+参见：Pod Priority and Preemption in Kubernetes ([#564](https://github.com/kubernetes/enhancements/issues/564))
 
 ## 你一定要知道什么是 Pod Ready++
 
@@ -63,7 +64,7 @@ Kubernetes 里的任务优先级（priority）和抢占机制（preemption）的
 
 这个特性，就是 1.14 里一个叫做“Pod Readiness Gates”、也叫做 Pod Ready ++ 的特性。它为 pod 的“Ready 状态” 提供了一个非常强大的扩展点。需要注意的是，用户需要编写一个外部控制器（Controller）来为这个 Pod Readiness Gates 字段对应的指标设置值。
 
-参见：Pod Ready++ ([#580](https://github.com/kubernetes/enhancements/issues/580)) 
+参见：Pod Ready++ ([#580](https://github.com/kubernetes/enhancements/issues/580))
 
 ## Kubernetes 原生应用管理能力
 

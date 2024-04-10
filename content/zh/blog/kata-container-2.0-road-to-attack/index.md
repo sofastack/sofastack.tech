@@ -9,7 +9,7 @@ date: 2020-07-28T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2020/png/226702/1596422461653-dd61eb12-2ee8-4ad5-b868-bbdfa5253f2a.png"
 ---
 
-Kata Containers 开源项目于 2017 年底正式启动，其目标是将虚拟机（VM）的安全优势与容器的高速及可管理性相结合，为用户带来出色的容器解决方案。该项目在过去两年取得了哪些进展？下一版本的路线图包含什么特性？首先让我们快速回顾一下 Kata Containers 项目的奋进之路…… 
+Kata Containers 开源项目于 2017 年底正式启动，其目标是将虚拟机（VM）的安全优势与容器的高速及可管理性相结合，为用户带来出色的容器解决方案。该项目在过去两年取得了哪些进展？下一版本的路线图包含什么特性？首先让我们快速回顾一下 Kata Containers 项目的奋进之路……
 
 ## 缘起：Kata Containers
 
@@ -28,7 +28,7 @@ Kata Containers 开源项目于 2017 年底正式启动，其目标是将虚拟�
 
 ![image.png](https://cdn.nlark.com/yuque/0/2020/png/226702/1595837666693-21bd7f5f-6f44-4c7e-9e80-6a37d67606ac.png)
 
-图 2. Kata Containers: 
+图 2. Kata Containers:
 每个容器/pod 被隔离在各自的轻量级虚拟机中
 
 因此，Kata Containers 与容器一样轻便快捷，并且可与容器生态系统无缝集成（包括流行的编排工具，如 Docker 和 Kubernetes），同时还具有虚拟机的安全优势。
@@ -54,11 +54,11 @@ Kata Containers 项目成立的第一年，社区主要致力于合并 Intel 及
 - Kata Containers 的虚拟机隔离模式既保障了容器在在多租户环境中的安全隔离，同时也实现了对应用和用户的不可见；
 - Kata Containers 作为一种安全容器解决方案，在百度的容器服务中扮演重要角色，并通过在不同场景下将虚拟机监控器（Virtual Machine Monitor, VMM）做替换来满足客户多样化的需要；
 
-在成功申请成为超级用户的过程中，百度阐述了 Kata Containers 改变其业务的方式： 
+在成功申请成为超级用户的过程中，百度阐述了 Kata Containers 改变其业务的方式：
 
 2019 年，我们基于 Kata Containers 的产品在 FaaS（功能即服务）、CaaS（容器即服务）和边缘计算领域取得了市场成功。百度智能云函数计算服务（CFC）基于 Kata Containers 为小度助手（DuerOS，达到亿级装机量的对话式人工智能操作系统）智能硬件的技术开发者提供部署平台，为 3,000 多名开发者、近 20,000 个技能提供了计算能力。百度容器实例服务（BCI）为百度内部的大数据业务提供了强大的基础架构支撑，帮助大数据部门构建起面向多租户的 Serverless 数据处理平台。百度智能云边缘计算节点（BEC）为所有客户提供开放式服务，基于 Kata Containers 的特性使多用户互相隔离、互不影响。
 
-张宇在 2019 年 11 月开源基础设施峰会上海发表演讲时表示：百度已经有 17 个重要的线上业务迁移到了 Kata Containers 平台。Kata Containers 提供容器级别的类似于虚拟机的安全性机制，这给客户带来了极大的信心，减少了他们将业务转移到容器环境时的担忧。 
+张宇在 2019 年 11 月开源基础设施峰会上海发表演讲时表示：百度已经有 17 个重要的线上业务迁移到了 Kata Containers 平台。Kata Containers 提供容器级别的类似于虚拟机的安全性机制，这给客户带来了极大的信心，减少了他们将业务转移到容器环境时的担忧。
 
 ## Kata Containers 2.0 技术线路图
 
@@ -84,4 +84,4 @@ Kata Containers 项目成立的第一年，社区主要致力于合并 Intel 及
 
 李昊阳 Horace Li：OpenStack 基金会中国社区经理，主要负责推进 OpenStack 生态系统在中国的发展，提升开源基础设施项目（包括 Kata Containers 等项目）及社区的活跃度与参与度。在加入 OpenStack 基金会之前，曾在 Intel 开源技术中心任职 13 年，担任技术客户经理，为中国的开源社区项目提供支持。
 
-本文英文原文：[https://thenewstack.io/the-road-to-kata-containers-2-0/](https://thenewstack.io/the-road-to-kata-containers-2-0/) 
+本文英文原文：[https://thenewstack.io/the-road-to-kata-containers-2-0/](https://thenewstack.io/the-road-to-kata-containers-2-0/)

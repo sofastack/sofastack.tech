@@ -1,10 +1,9 @@
 
 ---
+
 title: "自定义线程池"
 aliases: "/sofa-rpc/docs/Custom-ThreadPool"
 ---
-
-
 
 SOFARPC 支持自定义业务线程池。可以为指定服务设置一个独立的业务线程池，和 SOFARPC 自身的业务线程池是隔离的。多个服务可以共用一个独立的线程池。
 

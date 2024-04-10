@@ -17,9 +17,9 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 
 SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 
-**SOFAStack 官网: **[https://www.sofastack.tech](https://www.sofastack.tech/)
+**SOFAStack 官网:**[https://www.sofastack.tech](https://www.sofastack.tech/)
 
-**SOFAStack: **[https://github.com/sofastack](https://github.com/sofastack)
+**SOFAStack:**[https://github.com/sofastack](https://github.com/sofastack)
 
 ### 每周读者问答提炼
 
@@ -34,7 +34,7 @@ Saga 状态机在线设计器：[http://seata.io/saga_designer/index.html](http:
 
 Saga 状态机设计器视频教程：[http://seata.io/saga_designer/vedio.html](http://seata.io/saga_designer/vedio.html)
 
-**1、@李宇博 **提问：
+**1、@李宇博**提问：
 
 > 您好，我这边看视频直接把 Catch 直接拖到 serviceTask 上，好像没有生效，需要连线还是配置什么属性吗？
 

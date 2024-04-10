@@ -1,9 +1,9 @@
 
 ---
+
 title: "Quick start guide for common Java project"
 aliases: "/sofa-lookout/docs/quickstart-client-java"
 ---
-
 
 # Quick start for client
 

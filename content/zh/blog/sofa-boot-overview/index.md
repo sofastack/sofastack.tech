@@ -150,9 +150,9 @@ SOFABoot 通过 [SOFAArk](https://github.com/sofastack/sofa-ark) 提供类隔离
 本文为 SOFABoot 的初步介绍，希望大家对 SOFABoot 有一个初步的认识和了解。同时，我们开启了《剖析 | SOFABoot 框架》系列，会逐步详细介绍各个部分的代码设计和实现，预计按照如下的目录进行：
 
 - **【已完成】SOFABoot 总览**
-- 【已领取】SOFABoot HealthCheck 机制解析	
+- 【已领取】SOFABoot HealthCheck 机制解析
 - 【已领取】SOFABoot 日志隔离解析
-- 【待领取】SOFABoot runtime 机制解析	
+- 【待领取】SOFABoot runtime 机制解析
 - 【待领取】SOFABoot 上下文隔离机制解析
 
 如果有同学对以上某个主题特别感兴趣的，可以留言讨论，我们会适当根据大家的反馈调整文章的顺序，谢谢大家关注 SOFA ，关注 SOFABoot，我们会一直与大家一起成长的。

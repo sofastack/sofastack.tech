@@ -183,7 +183,7 @@ Data，Meta,Session Server 都提供 `getNodesRequestHandler` ，用于处理�
 
 而被加了 `@RaftService` 的类会被添加到 `Processor` 类 中，通过 `serviceId`(interfaceName + uniqueId) 进行区分。RaftServer 收到请求后，会把它生效到 SOFAJRaft 的状态机，具体实现类为 `ServiceStateMachine`，即会调用 `Processor` 方法，通过 serviceId 找到这个实现类，执行对应的方法调用。
 
-当然如果本机就是主节点, 对于一些查询请求不需要走 Raft 协议而直接调用本地实现方法。 
+当然如果本机就是主节点, 对于一些查询请求不需要走 Raft 协议而直接调用本地实现方法。
 
 这个过程其实和 RPC 调用非常类似，在引用方发起的方法调用，并不会真正的执行方法，而是封装成请求发送到 Raft 服务，由 Raft 状态机进行真正的方法调用，比如把节点信息存储到 Map 中。所有节点之间的数据一致由 Raft 协议进行保证。
 

@@ -42,4 +42,3 @@ For example, if the current version of the master branch code is `1.3.0`, the Bu
 ### Unit test
 
 Add the unit test case to the model that you have developed. The package name of the test class is identical to that of the tested class.
-

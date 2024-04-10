@@ -12,7 +12,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 ![图片](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAAAAAAAAARQnAQ)
 
-**筛选每周精华问答，同步开源进展，欢迎留言互动～** 
+**筛选每周精华问答，同步开源进展，欢迎留言互动～**
 
 **SOFA**Stack（**S**calable **O**pen **F**inancial **A**rchitecture Stack）是蚂蚁集团自主研发的金融级云原生架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 
@@ -43,12 +43,12 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
   - OSPP | Layotto 支持 plugable component 组件 #959
 
   - Support Pod Injection to deploy Layotto as a sidecar in Kubernetes #910
-    
+
 - Develop a new component for sms API；为“短信 API” 开发新的组件 #830
 
 「*Layotto*」：[https://github.com/mosn/layotto/issues/983](https://github.com/mosn/layotto/issues/983)
 
-## SOFA 社区会议回顾 
+## SOFA 社区会议回顾
 
 **SOFAServerless：**
 
@@ -63,27 +63,27 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
   - Arklet 待完成的动作
 
     - 增加影响基座健康状态的能力，查询健康状态指令
-      
+
     - 健康状态检查方案 review
-      
+
     - 模块安装支持远程协议
-      
+
     - 修复 ModuleController 使用 Arklet 遇到的问题 #17
-      
+
     - 增加锁控制 #39
-      
+
     - 基座引用的 starter，支持 Spring Boot、SOFABoot，推到 Maven 中央仓库
 
 - 9 月迭代规划讨论
 
   - 支持中间件列表与优先级
-    
+
   - 支持 SOFABoot 4.0
-    
+
   - 回滚，先扩后缩，模块流量 Service
-    
+
   - Arkctl Arklet ModuleController 0.5 发版本
- 
+
 「*SOFAServerless*」：[https://github.com/sofastack/sofa-serverless/issues/38](https://github.com/sofastack/sofa-serverless/issues/38)
 
 「*会议回放*」：[https://www.bilibili.com/video/BV19r4y1R761](https://www.bilibili.com/video/BV19r4y1R761)
@@ -116,7 +116,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 「*会议回放*」：[https://www.bilibili.com/video/BV15j411q7As](https://www.bilibili.com/video/BV15j411q7As)
 
-## SOFAStack 社区本周贡献 
+## SOFAStack 社区本周贡献
 
 ![图片](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*CJGnQqSAY2cAAAAAAAAAAAAADrGAAQ/original)
 

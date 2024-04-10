@@ -1,9 +1,9 @@
 
 ---
+
 title: "RESTful 协议基本使用"
 aliases: "/sofa-rpc/docs/RESTful-Basic"
 ---
-
 
 在 SOFARPC 中，使用不同的通信协议即使用不同的 Binding 即可，如果需要使用 RESTful 协议，只要将 Binding 设置为 REST 即可。
 

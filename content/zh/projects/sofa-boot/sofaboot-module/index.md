@@ -1,13 +1,13 @@
 
 ---
+
 title: "模块配置"
 aliases: "/sofa-boot/docs/SOFABoot-Module"
 ---
 
-
 SOFABoot 模块是一个普通的 Jar 包加上一些 SOFABoot 特有的配置，这些 SOFABoot 特有的配置，让一个 Jar 包能够被 SOFABoot 识别，使之具备模块化的能力。
 
-一个完整的 SOFABoot 模块和一个普通的 Jar 包有两点区别: 
+一个完整的 SOFABoot 模块和一个普通的 Jar 包有两点区别:
 
 - SOFABoot 模块包含一份 sofa-module.properties 文件，这份文件里面定义了 SOFABoot 模块的名称以及模块之间的依赖关系。
 - SOFABoot 模块的 META-INF/spring 目录下，可以放置任意多的 Spring 配置文件，SOFABoot 会自动把它们作为本模块的 Spring 配置加载起来。

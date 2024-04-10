@@ -1,9 +1,9 @@
 
 ---
+
 title: "预热权重"
 aliases: "/sofa-rpc/docs/Provider-Warmup-Weight"
 ---
-
 
 预热权重功能让客户端机器能够根据服务端的相应权重进行流量的分发。该功能也常被用于集群内少数机器的启动场景。利用流量权重功能在短时间内对服务端机器进行预热，然后再接收正常的流量比重。
 运行机制如下：
@@ -16,14 +16,17 @@ aliases: "/sofa-rpc/docs/Provider-Warmup-Weight"
 3.客户端在进行调用的时候会根据服务所在地址的预热时期所对应的权重进行流量分发。如上图 client 指向 ServiceA 和 ServiceB 。 ServiceA 预热完毕，权重默认 100 ， ServiceB 处于预热期，权重为 10，因此所承受流量分别为 100%110 和 10%110 。
 
 该功能使用方式如下。
+
 ```java
 ProviderConfig<HelloWordService> providerConfig = new ProviderConfig<HelloWordService>()
             .setWeight(100)
             .setParameter(ProviderInfoAttrs.ATTR_WARMUP_WEIGHT,"10")
             .setParameter(ProviderInfoAttrs.ATTR_WARM_UP_END_TIME,"12000");
 ```
+
 如上，该服务的预热期为 12s，在预热期内权重为 10，预热期结束后的正常权重为 100。如果该服务一共发布在两个机器 A,B 上，A 机器正处于预热期内，并使用上述配置，B 已经完成预热，正常权重为 200。那么客户端在调用的时候，此时流量分发的比重为 10：200，A 机器预热结束后，流量分发比重为 100：200。
 在 SOFABoot 中，如下配置预热时间，预热期间权重和预热完后的权重即可。
+
 ```xml
 <sofa:reference id="sampleRestFacadeReferenceBolt" interface="com.alipay.sofa.endpoint.facade.SampleFacade">
     <sofa:binding.bolt>

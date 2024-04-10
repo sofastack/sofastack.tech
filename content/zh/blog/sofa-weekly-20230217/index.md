@@ -30,7 +30,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 欢迎大家在 GitHub 提交 issue 与我们互动
 
-我们会筛选 issue 通过 
+我们会筛选 issue 通过
 
 " SOFA WEEKLY " 的形式回复
 
@@ -42,7 +42,7 @@ A：配置文件的配置应该和 Spring Boot 应用保持一致，建议把配
 
 **「SOFAArk」**：*[https://github.com/sofastack/sofa-ark](https://github.com/sofastack/sofa-ark)*
 
-**2.@tdxafpdq  #925** 
+**2.@tdxafpdq  #925**
 
 > 消息中间件业务场景下，如何使用 Snapshot 服务，以解决磁盘占用持续增长以及全量回放变慢。
 

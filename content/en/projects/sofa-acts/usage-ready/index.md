@@ -70,4 +70,3 @@ The quick test framework configuration mainly generates the basic Java classes a
 #### Configuration files
 
 ![Configuration files](configuration-file.png)
-

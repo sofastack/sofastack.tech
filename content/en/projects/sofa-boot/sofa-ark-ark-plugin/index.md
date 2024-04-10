@@ -1,13 +1,14 @@
 
 ---
+
 title: "Ark Plugin"
 aliases: "/sofa-boot/docs/sofa-ark-ark-plugin"
 ---
 
-
 ﻿This section will introduce the standard specifications and directory structure of `Ark Plugin` and  how to use the maven plugin of `sofa-ark-plugin-maven-plugin` to package and release it.
 
 ## Plugin Specifications
+
 A standard `Ark Plugin` should meet the following specifications:
 
 * The plugin should have a name (default is `${artifactId}`). At runtime, duplicate names are not allowed. In other words, the name will be used as the unique ID of `Ark Plugin`;
@@ -24,8 +25,8 @@ A standard `Ark Plugin` should meet the following specifications:
 
 * Support exporting resources from the classpath (wildcard is not supported); resources with higher priority will be exported first;
 
-
 ## Maven plugins
+
 The officially provided `Maven` plugin `sofa-ark-plugin-maven-plugin` can package projects into a standard-format `Ark Plugin`. The coordinates of `Maven` plugin are:
 
 ```xml
@@ -37,6 +38,7 @@ The officially provided `Maven` plugin `sofa-ark-plugin-maven-plugin` can packag
 ```
 
 ## Goals
+
 The `sofa-ark-plugin-maven-plugin` plugin provides `goal: ark-plugin`, which can be used to package the project into a standard-format `Ark Plugin`. Configurations are as follows:
 
 ```xml
@@ -156,29 +158,31 @@ The complete configuration template of the `sofa-ark-plugin-maven-plugin` plugin
 ```
 
 The meaning of the configuration items are as follows:
-+ `outputDirectory`: Specify the output directory of the ${pluginName}.ark.plugin; ${project.build.directory} is the default location;
 
-+ `attach`: Specify whether to install and publish the Ark plugin to the repository (true by default); 
+* `outputDirectory`: Specify the output directory of the ${pluginName}.ark.plugin; ${project.build.directory} is the default location;
 
-+ `activator`: Ark plugin can specify at most one implementation class for the `com.alipay.sofa.ark.spi.service.PluginActivator interface`;
+* `attach`: Specify whether to install and publish the Ark plugin to the repository (true by default);
 
-+ `priority`: Configure the priority: the smaller the number, the higher the priority for startup and class export (the default is 1000);
+* `activator`: Ark plugin can specify at most one implementation class for the `com.alipay.sofa.ark.spi.service.PluginActivator interface`;
 
-+ `pluginName`: Configure the plugin's name. Be sure to make it correct as it will be taken as the only identifier at runtime. For example, the sofa-RPC plugin can be configured as sofa-RPC; the default value is ${artifactId}
+* `priority`: Configure the priority: the smaller the number, the higher the priority for startup and class export (the default is 1000);
 
-+ `imported`: Configure imported classes and resources. Note that when configuring imported classes of the package level, if the package name is suffixed with wildcard `*`, then all packages or classes with that package prefix will be imported. Otherwise, only classes that have the prefix will be imported but its sub-packages will not be imported.
+* `pluginName`: Configure the plugin's name. Be sure to make it correct as it will be taken as the only identifier at runtime. For example, the sofa-RPC plugin can be configured as sofa-RPC; the default value is ${artifactId}
 
-+ `exported`: Configure exported classes and resources. Note that when configuring exported classes of the package level, if the package name is suffixed with wildcard `*`, then all packages or classes with that package prefix will be imported. Otherwise, only classes that have the prefix will be exported but its sub-packages will not be exported.
+* `imported`: Configure imported classes and resources. Note that when configuring imported classes of the package level, if the package name is suffixed with wildcard `*`, then all packages or classes with that package prefix will be imported. Otherwise, only classes that have the prefix will be imported but its sub-packages will not be imported.
 
-+ `excludes`: Exclude specified package dependencies when packaging plugins. The format is: ${groupId:artifactId} or ${groupId:artifactId:classifier}; 
+* `exported`: Configure exported classes and resources. Note that when configuring exported classes of the package level, if the package name is suffixed with wildcard `*`, then all packages or classes with that package prefix will be imported. Otherwise, only classes that have the prefix will be exported but its sub-packages will not be exported.
 
-+ `excludeGroupIds`: Exclude package dependencies that have the same groupId as specified when packaging plugins; 
+* `excludes`: Exclude specified package dependencies when packaging plugins. The format is: ${groupId:artifactId} or ${groupId:artifactId:classifier};
 
-+ `excludeArtifactIds`: Exclude package dependencies that have the same artifactId as specified when packaging plugins; 
+* `excludeGroupIds`: Exclude package dependencies that have the same groupId as specified when packaging plugins;
 
+* `excludeArtifactIds`: Exclude package dependencies that have the same artifactId as specified when packaging plugins;
 
 ## Constructing
+
 For a common Java project, generating a standard `Ark Plugin` only needs three steps:
+
 * Create an empty module under the project root directory to package the `Ark Plugin`, and define its coordinates, assuming:
 
 ```xml
@@ -189,12 +193,12 @@ For a common Java project, generating a standard `Ark Plugin` only needs three s
 </dependency>
 ```
 
-* Add the third-party dependencies and other modules of the project in the module's pom.xml file, and configure the `sofa-ark-plugin-maven-plugin` plugin in the configuration template; 
+* Add the third-party dependencies and other modules of the project in the module's pom.xml file, and configure the `sofa-ark-plugin-maven-plugin` plugin in the configuration template;
 
 * Tap the `mvn package` command under the module directory or the project root directory to generate the `ark-plugin-demo.ark.plugin` file in the configured `outputDirectory` directory. Tap the `mvn install` command to install the file in the local `Maven` repository;
 
-
 ## Publishing
+
 Configure the repository address in the master pom file, and tap the `mvn deploy` command to publish the `Ark plugin`. Note that the coordinates of the `Ark Plugin` will be attached with `classifier = Ark-plugin`. For example, with the above configuration specified, the following coordinates will be generated for the `Ark Plugin`:
 
 ```xml
@@ -209,6 +213,7 @@ Configure the repository address in the master pom file, and tap the `mvn deploy
 Other applications can reference the plugin via the coordinates.
 
 ## Ark Plugin typical directory structure
+
 ```text
 .
 │
@@ -235,6 +240,7 @@ The files and directories under the above structure are described as follows:
 * `com/alipay/sofa/ark/plugin/mark`: A markup file that regards the JAR package as the `Ark Plugin` file generated by the `sofa-Ark-plugin-maven-plugin`.
 
 * `META-INF/MANIFEST.MF`: It is used to record the plugin's meta information, whose content is like the following:
+
   ```manifest
   Manifest-Version: 1.0
   groupId: com.alipay.sofa

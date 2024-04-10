@@ -30,7 +30,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 欢迎大家在 GitHub 提交 issue 与我们互动
 
-我们会筛选 issue 通过 
+我们会筛选 issue 通过
 
 " SOFA WEEKLY " 的形式回复
 
@@ -52,7 +52,7 @@ A：最早是 V5 的时候，有 Watcher、Publisher 和 Subscriber 等概念，
 **「SOFARegistry」**
 [https://github.com/sofastack/sofa-registry](https://github.com/sofastack/sofa-registry)
 
-**2. @LinhuiG #845 ** 
+**2. @LinhuiG #845**
 
 > 一个集群中创建多个 Raft 实例（通过 groupId 区分），对其进行压力的时候，总是会出现领导者转移现象（Raft node receives higher term RequestVoteRequest），CPU 负载不到 70%，网络未拥堵，状态机内部使用了线程池异步处理。是否因为业务队列满载导致领导者心跳失效？
 

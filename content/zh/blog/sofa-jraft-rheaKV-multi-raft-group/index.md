@@ -42,6 +42,7 @@ MULTI-RAFT-GROUP 正是通过把整个数据从横向做切分，分为多个 Re
 RheaKV 主要由 3 个角色组成：PlacementDriver（以下成为 PD） 、Store、Region。由于 RheaKV 支持多组 Raft，所以比单组场景多出一个 PD 角色，用来调度以及收集每个 Store 及 Region 的基础信息。
 
 ![raft 相关图](https://cdn.nlark.com/yuque/0/2019/png/325890/1563956510930-911f3edf-137f-4e64-a685-131a85933217.png)
+
 ### PlacementDriver
 
 PD 负责整个集群的管理调度、Region ID 生成等。此组件非必须的，如果不使用 PD，设置 PlacementDriverOptions 的 fake 属性为 true 即可。PD 一般通过 Region 的心跳返回信息进行对 Region 调度，Region 处理完后，PD 则会在下一个心跳返回中收到 Region 的变更信息来更新路由及状态表。
@@ -102,7 +103,7 @@ Region.peers：peers 则指的是当前 Region 所包含的节点信息，Peer.i
 
 ### 读与写 Read / Write
 
-由于数据被拆分到不同 Region 上，所以在进行多 key 的读、写、更新操作时需要操作多个 Region，这时操作前我们需要得到具体的 Region，然后再单独对不同 Region 进行操作。我们以在多 Region 上 scan 操作为例, 目标是返回某个 key 区间的所有数据： 
+由于数据被拆分到不同 Region 上，所以在进行多 key 的读、写、更新操作时需要操作多个 Region，这时操作前我们需要得到具体的 Region，然后再单独对不同 Region 进行操作。我们以在多 Region 上 scan 操作为例, 目标是返回某个 key 区间的所有数据：
 
 **我们首先看 scan 方法的核心调用方法 internalScan 的异步实现：**
 
@@ -184,7 +185,7 @@ DefaultRegionKVService 是 RegionKVService 的默认实现类，主要处理对 
 
 需要特别讲到的是，在具体的 RheaKV 操作时，FailoverClosure 担任着比较重要的角色，也给整个系统增加了一定的容错性。假如在一次 scan 操作中，如果跨 Store 需要多节点 scan 数据的时候，任何网络抖动都会造成数据不完整或者失败情况，所以允许一定次数的重试有利于提高系统的可用性，但是重试次数不宜过高，如果出现网络堵塞，多次 timeout 级别失败会给系统带来额外的压力。这里只需要在 DefaultRheaKVStore 中，进行配置 failoverRetries 设置次数即可。
 
-## RheaKV PD 之 PlacementDriverClient 
+## RheaKV PD 之 PlacementDriverClient
 
 PlacementDriverClient 接口主要由 AbstractPlacementDriverClient 实现，然后 FakePlacementDriverClient、RemotePlacementDriverClient 为主要功能。FakePlacementDriverClient 是当系统不需要 PD 的时候进行 PD 对象的模拟，这里主要讲到 RemotePlacementDriverClient。
 

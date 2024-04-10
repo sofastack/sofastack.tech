@@ -28,7 +28,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563455530330-f84b834e-d3f
 我是来自蚂蚁金服中间件的雷志远，花名碧远，目前负责 SOFARPC 框架的相关工作。在上一期直播中，给大家介绍了 SOFARPC 性能优化方面的关于自定义协议、Netty 参数优化、动态代理等的优化。
 
 > 往期的直播回顾，可以在文末获取。
-> 
+>
 > 本期互动中奖名单：
 > **@司马懿 @邓从宝 @雾渊**，请文章下方回复进行礼品领取
 
@@ -112,7 +112,7 @@ JVM 使用 Native 函数在堆外分配内存。为什么要在堆外分配内�
 
 其中 DirectByteBuffer 经过几次 young gc 之后，会进入老年代。当老年代满了之后，会触发 Full GC。
 
-因为本身很小，很难占满老年代，因此基本不会触发 Full GC，带来的后果是大量堆外内存一直占着不放，无法进行内存回收，所以这里要注意 `-XX:+DisableExplicitGC` 不要关闭。 
+因为本身很小，很难占满老年代，因此基本不会触发 Full GC，带来的后果是大量堆外内存一直占着不放，无法进行内存回收，所以这里要注意 `-XX:+DisableExplicitGC` 不要关闭。
 
 ### Pool 还是 UnPool
 
@@ -198,7 +198,7 @@ io.netty.buffer.AbstractByteBufAllocator#ioBuffer(int)
 
 对于 SOFABolt 层面， SOFABolt 会在 Decode 完字节流之后，记录一个开始时间，然后在准备分发给 RPC 的业务线程池之前，比较一下当前时间，是否已经超过了用户的超时时间。如果超过了，直接丢弃，不分发给 RPC，也不会给客户端响应。
 
-### 第二种是 SOFARPC 在业务层的 Server Fail Fast 
+### 第二种是 SOFARPC 在业务层的 Server Fail Fast
 
 如果 SOFABolt 分发给 SOFARPC 的时候，还没有超时，但是 SOFARPC 走完了服务端业务逻辑之后，发现已经超时了。这时候，可以不返回业务结果，直接构造异常超时结果，数据更少，但结果是一样的。
 

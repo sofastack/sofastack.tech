@@ -71,8 +71,8 @@ Hello World!
 然后，我们为这个程序创建一个 Occlum 的实例目录（使用 `occlum new` 命令）。
 
 ```plain
-$ occlum new occlum_hello
-$ cd occlum_hello
+occlum new occlum_hello
+cd occlum_hello
 ```
 
 该命令会创建一个名为 `occlum_hello` 的目录，并在该目录中准备一些必要的文件（如 `Occlum.json` 配置文件）子目录（如 `image/`）。
@@ -80,8 +80,8 @@ $ cd occlum_hello
 接下来，我们基于刚刚编译好的 `hello_world` 制作一个 Occlum 的 Enclave 文件和可信镜像（使用 `occlum build` 命令）。
 
 ```plain
-$ cp ../hello_world image/bin
-$ occlum build
+cp ../hello_world image/bin
+occlum build
 ```
 
 最后，我们在 SGX 中运行 `hello_world`（使用 `occlum run` 命令）。

@@ -46,7 +46,7 @@ Spring 官网提供了一份 Spring Cloud 的架构图：
 
 从 Spring Cloud 的架构图可以看到，Spring Cloud 框架涵盖了分布式应用开发的方方面面，包括：
 
-- API 网关 
+- API 网关
 - 熔断与限流
 - 服务发现
 - 分布式配置

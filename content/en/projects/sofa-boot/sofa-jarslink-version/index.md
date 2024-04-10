@@ -1,11 +1,12 @@
 
 ---
+
 title: "Version release"
 aliases: "/sofa-boot/docs/sofa-jarslink-version"
 ---
 
-
 ﻿## Version release
+
 ### Version No
 
 Major, minor, and revision version numbers are used. For example 2.0.0.

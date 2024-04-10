@@ -172,7 +172,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563351799427-65a125ce-a51
 
 ## 4、总结
 
-通过 XML 的方式去配置 SOFA 的 JVM 服务和引用非常简洁，但是多了一定的编码工作量。因此，除了通过 XML 方式发布 JVM 服务和引用之外，SOFA 还提供了 Annotation 的方式来发布和引用 JVM 服务。`@SofaService` 注解省去了 `<sofa:service>` 声明，但 bean 的定义还是必须要有的。SOFA 实际上是注册了一个 BeanPostProcessor 来处理 `@SofaService` 和 `@SofaReference` 注解。 
+通过 XML 的方式去配置 SOFA 的 JVM 服务和引用非常简洁，但是多了一定的编码工作量。因此，除了通过 XML 方式发布 JVM 服务和引用之外，SOFA 还提供了 Annotation 的方式来发布和引用 JVM 服务。`@SofaService` 注解省去了 `<sofa:service>` 声明，但 bean 的定义还是必须要有的。SOFA 实际上是注册了一个 BeanPostProcessor 来处理 `@SofaService` 和 `@SofaReference` 注解。
 
 需要发布引用的对象属于当前 bean 的实例变量，使用 xml 的方式进行服务发布和引用，可以直接通过 Bean 生命周期的 `InitializingBean#afterPropertiesSet` 方法进行扩展。在工程中注解扫描是一个对所有 bean 的操作，只能通过实现 spring 的 beanpostprocessor 这个接口，另外有些属性可能在发布时需要用到。因此使用注解的方式进行服务发布和引用，分别基于 Bean 生命周期的 `BeanPostProcessor#postProcessAfterInitialization`、`#postProcessBeforeInitialization`方法进行扩展。
 

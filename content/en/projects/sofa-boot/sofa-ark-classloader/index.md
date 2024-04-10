@@ -1,16 +1,15 @@
 
 ---
+
 title: "Ark container class loading mechanism"
 aliases: "/sofa-boot/docs/sofa-ark-classloader"
 ---
-
 
 # Ark container class loading mechanism
 
 The plugins and business modules are managed in the Ark container. The following figure describes the class loading mechanism:
 
 ![undefined](https://gw.alipayobjects.com/zos/skylark/7dfdc66f-a70d-4ef0-9de3-92b72bf2caf7/2018/png/77f10035-a6c3-4bab-bff3-a2c9a986561f.png)
-
 
 ## Class loading mechanism of Ark container
 
@@ -33,11 +32,13 @@ Each Ark business has a separate classloader. Its class loading mechanism is bas
 For Ark business, no import configuration is provided. Instead, it defaults to importing all classes exported by plug-ins. To deal with some particular business scenarios, however, we do provide the Deny-import configuration so that we can exclude the classes exported by some plugins.
 
 # Class loading mechanism of Ark plugin resources
+
 The Ark plugin supports importing and exporting resources. To achieve this, we need to configure the corresponding import and export settings in `sofa-Ark-plugin-maven-plugin`. There are two ways to search for resources when using ClassLoader: `ClassLoader.getResource(String)` or `ClassLoader.getResources(String)`;
 
 + `ClassLoader.getResource(String)`: When an Ark Plugin is searching for a single resource, it will delegate the Ark Plugin that will export the resource to load the class first. If multiple plugins export the resource at the same time, then the plugin with higher priority will export the resource first. If the loading fails or no other Ark Plugin has exported the resource, it will have a try from the current Ark Plugin;
 
-+ `ClassLoader.getResources(String)`: When the Ark Plugin is searching for multiple resources, it will load from all Ark Plugins that export the resources as well as from the current Ark Plugin; 
++ `ClassLoader.getResources(String)`: When the Ark Plugin is searching for multiple resources, it will load from all Ark Plugins that export the resources as well as from the current Ark Plugin;
 
 # Ark business resource loading mechanism
+
 The Ark Biz will first load the resources exported by Ark Plugin by default. If developers want to search within the project, they can configure `denyImportResources` in `sofa-Ark-maven-plugin`. In this way, the Ark Biz will search for the resources inside Ark Biz rather than Ark Plugin.

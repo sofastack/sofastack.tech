@@ -9,8 +9,8 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1564383327640-1a846996-ade
 ---
 
 > 许文奇 蚂蚁金服高级技术专家，SOFAStack 商业化产品技术 Leader，多年分布式架构及中间件研发经验，负责过蚂蚁金服分布式架构在多家金融机构的咨询和落地
-> 本文根据他在 2019 蚂蚁金服 ATEC（Ant Technology Exploration Conference）科技大会上海站的分享整理。 
- 
+> 本文根据他在 2019 蚂蚁金服 ATEC（Ant Technology Exploration Conference）科技大会上海站的分享整理。
+
 本次分享主要会从单体架构和微服务架构的对比开始，后面重点谈一下实施金融级分布式架构的常见三个问题。
 
 ## 常用架构：单体式架构

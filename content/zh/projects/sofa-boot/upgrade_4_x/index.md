@@ -1,8 +1,10 @@
 
 ---
+
 title: "SOFABoot 4.0 正式发布，多项新特性等你来体验！"
 aliases: "/sofa-boot/docs/upgrade_4_x"
 ---
+
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c2c467481d7844019332576418b5093c~tplv-k3u1fbpfcp-zoom-1.image)
 
 # Part.1 「亿点点」新特性
@@ -17,36 +19,36 @@ SOFABoot 4.0 基于 Spring Boot 3.0 与 Spring Framework 6 构建。在 Spring B
 
 **在 SOFABoot 4.0 引入的二方库升级列表如下**：
 
--   Spring Boot 3.0.7
--   Spring Cloud 4.0.0
--   Spring Cloud Stream 3.2.6
--   SOFA Common tools 2.0.0
--   SOFATracer 4.0.0
--   SOFARPC 5.10.0
--   FastJson 1.2.83
--   Guava 31.1-jre
--   Grpc 1.51.1
--   Grpc common protos 2.11.0
--   Druid 1.2.16
--   ASM 9.4
--   Javassist 3.29.2-GA
--   Curator 4.3.0
--   Dubbo 3.1.8
--   Nacos 2.0.3
--   Swagger 1.6.7
--   Swagger2 2.2.8
+- Spring Boot 3.0.7
+- Spring Cloud 4.0.0
+- Spring Cloud Stream 3.2.6
+- SOFA Common tools 2.0.0
+- SOFATracer 4.0.0
+- SOFARPC 5.10.0
+- FastJson 1.2.83
+- Guava 31.1-jre
+- Grpc 1.51.1
+- Grpc common protos 2.11.0
+- Druid 1.2.16
+- ASM 9.4
+- Javassist 3.29.2-GA
+- Curator 4.3.0
+- Dubbo 3.1.8
+- Nacos 2.0.3
+- Swagger 1.6.7
+- Swagger2 2.2.8
 
 ## 基于 Jakarta EE
 
 Spring Boot 3.0 中依赖 Jakarta EE 规范的部分已经升级到了 Jakarta EE 10 版本。例如，使用 Servlet 6.0 和 JPA 3.1 规范。因此，部分包的命名空间也进行了替换，例如你应该使用：
 
-✅`jakarta.servlet.Filter` 
+✅`jakarta.servlet.Filter`
 
 而不是 `javax.servlet.Filter`。
 
 同时，如果你使用了自己的依赖提供 Jakarta EE 规范的 API，需注意进行对应的依赖升级，例如你应该使用：
 
-✅`jakarta.servlet:jakarta.servlet-api` 
+✅`jakarta.servlet:jakarta.servlet-api`
 
 而不是 `javax.servlet:javax.servlet-api`。
 
@@ -246,7 +248,7 @@ SOFABoot 4.0 版本中新增了大量 SPI ，你可以通过这些 SPI 定制 SO
 
 `com.alipay.sofa.boot.startup.StartupReporter` 类用于管理 SOFABoot 提供的 `/actuator/startup` 耗时信息，你可以通过 `com.alipay.sofa.boot.startup.StartupReporter#addCommonStartupStat` 方法添加你定制的耗时阶段信息。
 
-- **添加自定义的 Bean 启动耗时信息** 
+- **添加自定义的 Bean 启动耗时信息**
 
 `com.alipay.sofa.boot.startup.BeanStatCustomizer` 接口用于定制 SOFABoot 提供的 `/actuator/startup` 耗时信息中的 Bean 启动耗时特征。如果你想注册自定义的 `com.alipay.sofa.boot.startup.BeanStatCustomizer` 接口实现类，需要在 `META-INF/spring.factories` 文件注册 Spring Factories 形式的 SPI。你可以参考框架内置的 `com.alipay.sofa.runtime.startup.ComponentBeanStatCustomizer` 类用于提取 ServiceFactoryBean 类型的 Bean 的 Interface 字段用于展示。
 
@@ -266,7 +268,7 @@ SOFABoot 4.0 版本中新增了大量 SPI ，你可以通过这些 SPI 定制 SO
 
 `com.alipay.sofa.boot.context.processor.SofaPostProcessorShareFilter` 接口的实现类并将其注册至 Spring Boot 上下文中，通过 bean name 或 bean class 指定 PostProcessor 的共享方式。
 
-- **添加感知 SOFA 模块刷新的扩展点** 
+- **添加感知 SOFA 模块刷新的扩展点**
 
 在开启模块化隔离特性时，你可以自定义 `com.alipay.sofa.boot.context.ContextRefreshInterceptor` 接口的实现类并将其注册至 Spring Boot 上下文中，当每个 SOFA 模块的 Spring 上下文开始刷新前以及刷新完成后，都会触发该接口的 `beforeRefresh` 以及 `afterRefresh` 方法。
 
@@ -308,10 +310,10 @@ public String getAnnotationKey(Environment environment, DemoAnnotation demoAnnot
 
 **请先留意以下信息！**
 
--   通过 actuator-sofa-boot-starter 引入的 SOFABoot 增强的 actuator 能力，通过配置项定制开启的 actuator。
--   依赖 health-sofa-boot-starter 与 startup-sofa-boot-starter 已被废弃，请使用 actuator-sofa-boot-starter 替换。
--   依赖 log-sofa-boot-starter 已被废弃，如果你引入了其他的 sofa boot starter，可以直接删除该依赖。如果你没有引入任何其他 sofa boot starter，使用 sofa-boot-starter 代替它。
--   依赖 rpc-sofa-boot-plugin、runtime-sofa-boot-plugin、tracer-sofa-boot-plugin 已被废弃，可使用 ark-sofa-boot-starter 代替它们。
+- 通过 actuator-sofa-boot-starter 引入的 SOFABoot 增强的 actuator 能力，通过配置项定制开启的 actuator。
+- 依赖 health-sofa-boot-starter 与 startup-sofa-boot-starter 已被废弃，请使用 actuator-sofa-boot-starter 替换。
+- 依赖 log-sofa-boot-starter 已被废弃，如果你引入了其他的 sofa boot starter，可以直接删除该依赖。如果你没有引入任何其他 sofa boot starter，使用 sofa-boot-starter 代替它。
+- 依赖 rpc-sofa-boot-plugin、runtime-sofa-boot-plugin、tracer-sofa-boot-plugin 已被废弃，可使用 ark-sofa-boot-starter 代替它们。
 
 我们对下表中包名下的类进行了重命名，如果你使用了对应的类，则需要修改为新的包名：
 
@@ -339,14 +341,13 @@ SOFABoot 提供的以下 API 类进行了重命名，如果你使用了对应的
 
 SOFABoot 4.0 不再支持 SOFAArk 1.0 模式，用于支持 Ark 测试的相关工具类已被移除，SOFAArk 2.0 模式下你不再需要这些类：  
 
--   com.alipay.sofa.test.annotation.DelegateToRunner
--   com.alipay.sofa.test.runner.SofaBootRunner
--   com.alipay.sofa.test.runner.SofaJUnit4Runner
-
+- com.alipay.sofa.test.annotation.DelegateToRunner
+- com.alipay.sofa.test.runner.SofaBootRunner
+- com.alipay.sofa.test.runner.SofaJUnit4Runner
 
 # Part.4 请收下这份升级指南🙆🏻‍♂️
 
-## Before You Start 
+## Before You Start
 
 ### 升级 SOFABoot 至 最新的 3.x 版本
 

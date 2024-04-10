@@ -65,8 +65,8 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 详细参考：
 [https://github.com/mosn/holmes/blob/master/readme.md](https://github.com/mosn/holmes/blob/master/readme.md)
 
-
 ### SOFA 直播预告
+
 ![Service Mesh Webinar#4](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1604051618877-1f760465-fd0e-483f-b9a4-9f02e31e7248.jpeg)
 
 传统 CDN 节点内组件间通信通过 IP 分组渲染的方式实现，当更多参差不齐的异构节点资源出现的时候则不再能很好地满足我们的需求。

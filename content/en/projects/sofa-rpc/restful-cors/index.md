@@ -1,10 +1,9 @@
 
 ---
+
 title: "REST Cors"
 aliases: "/sofa-rpc/docs/RESTful-Cors"
 ---
-
-
 
 For REST，we provide a Filter to support cors now.
 
@@ -21,6 +20,7 @@ serverConfig.setParameters(parameters);
 ### XML Usage
 
 You can add this configuration to `application.properties`
+
 ```xml
 com.alipay.sofa.rpc.rest.allowed.origins=a.com,b.com
 

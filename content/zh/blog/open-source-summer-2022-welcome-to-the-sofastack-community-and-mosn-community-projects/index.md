@@ -68,7 +68,7 @@ SOFARegistry 的客户端目前采用长连接与其中一台 Session 相连，�
 
 4.SOFATracer upgrade opentracing api version & adapter opentelemetry api
 
-项目编号：2295a0196 
+项目编号：2295a0196
 
 任务难度：进阶/Advanced
 

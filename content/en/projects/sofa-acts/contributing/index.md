@@ -35,6 +35,7 @@ Therefore, after getting familiar with how to get the source code, you need to:
    ```plain
    Git clone https://github.com/your account name/acts.git
    ```
+
 * Pull a branch to prepare for code modification.
 
    ```plain
@@ -77,6 +78,7 @@ After a branch is pulled, you can modify the code.
    ```plain
    mvn clean compile
    ```
+
 * Supplement unit test code.
 * New modifications should have passed existing unit tests.
 * Provide a new unit test to prove that the previous code has bugs and the bugs have been fixed in the new code.
@@ -120,4 +122,3 @@ The person will leave a comment containing the code review suggestions on the co
 #### Merge the code into the trunk
 
 After your code passes the review, the ACTS maintenance personnel will merge it into the ACTS' master branch. You do not need to get involved in this step. After the code is merged, you will receive a message indicating a successful merge.
-

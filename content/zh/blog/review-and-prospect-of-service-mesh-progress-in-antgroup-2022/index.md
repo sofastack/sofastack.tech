@@ -15,6 +15,7 @@ cover: "https://cdn.nlark.com/yuque/0/2022/png/153624/1652759667758-9ac6d8d5-e82
 本次交流将以如下次序展开：
 
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/153624/1652758504322-f5e9c9d7-d6ec-45bb-8590-772849c7b20a.png#clientId=u1f24bd9c-2055-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=254&id=u8804a9b3&margin=%5Bobject%20Object%5D&name=image.png&originHeight=254&originWidth=2134&originalType=binary&ratio=1&rotation=0&showTitle=false&size=46667&status=done&style=none&taskId=u8ee57630-40b3-4947-aece-e2d7fcac2c5&title=&width=2134)
+
 ## 二、蚂蚁集团 Service Mesh 发展史
 
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/153624/1652758504429-b3368bc7-6df3-4c6a-a3c6-9bf8323bc9bf.png#clientId=u1f24bd9c-2055-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=690&id=Y4dW7&margin=%5Bobject%20Object%5D&name=image.png&originHeight=690&originWidth=2094&originalType=binary&ratio=1&rotation=0&showTitle=false&size=244332&status=done&style=none&taskId=u96235ef7-f046-4a20-89ba-9e6995b4330&title=&width=2094)
@@ -39,6 +40,7 @@ cover: "https://cdn.nlark.com/yuque/0/2022/png/153624/1652759667758-9ac6d8d5-e82
 3. 应用运行时阶段：将应用和具体基础设施的类型解耦，仅依赖标准 API 编程：
 
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/153624/1652758504319-72804307-117c-431e-9ad8-fb3828195c97.png#clientId=u1f24bd9c-2055-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=1120&id=pXRe9&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1120&originWidth=1710&originalType=binary&ratio=1&rotation=0&showTitle=false&size=123638&status=done&style=none&taskId=u99d70eb8-6ad0-4bed-ba07-5d06167b087&title=&width=1710)
+
 ## 三、东西向流量规模化挑战
 
 Mesh 化后的数据面 MOSN 承载了应用间非常核心的东西向通信链路，目前在蚂蚁集团内部覆盖应用数千，覆盖容器数十 W+，海量的规模带来了如长连接膨胀、服务发现数据量巨大、服务治理困难等问题。接下来我们来聊一聊我们在演进的过程中遇到并解决掉的一些经典问题。
@@ -61,7 +63,7 @@ Mesh 化后的数据面 MOSN 承载了应用间非常核心的东西向通信链
 
 由于心跳的主要作用是尽可能早的发现长连接是否已不可用，通常我们认为经过 3 次心跳超时即可判定一条长连接不可用，在一条长连接的生命周期里，不可用的场景占比是非常低的，如果我们把长连接的检测周期拉长一倍就可以减少 50%的心跳 CPU 损耗。为了保障检测的及时性，当出现心跳异常（如心跳超时等）场景时，再通过降低心跳周期来提高长连接不可用时的判定效率，基于以上思路我们设计了 MOSN 里的长连接心跳退避策略：
 
-1. 当长连接上无业务请求且心跳正常响应时，逐步将心跳周期拉长 15s -> 90s 
+1. 当长连接上无业务请求且心跳正常响应时，逐步将心跳周期拉长 15s -> 90s
 
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/153624/1652758505136-96b8bf3d-8ce5-4f68-a486-5389c8046711.png#clientId=u1f24bd9c-2055-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=214&id=u850213f2&margin=%5Bobject%20Object%5D&name=image.png&originHeight=214&originWidth=2132&originalType=binary&ratio=1&rotation=0&showTitle=false&size=26942&status=done&style=none&taskId=u3bd1beae-ebd7-4d9c-b9f3-26710bd6371&title=&width=2132)
 
@@ -127,6 +129,7 @@ MOSN 把请求链路下沉之后，我们在服务治理方面做了非常多的
 
 在实际的生产环境中，自适应限流可以迅速精准的定位异常来源，并秒级介入，迅速止血，同时也可以识别流量类型，优先降低压测流量来让生产流量尽可能成功。大促前再也不需要每个应用 Owner 去给自己应用的每个接口配置限流值，大幅度提升研发幸福感。
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/153624/1652758507194-28b592d7-47eb-4a97-a829-f815523dc987.png#clientId=u1f24bd9c-2055-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=374&id=u0c60d8c8&margin=%5Bobject%20Object%5D&name=image.png&originHeight=520&originWidth=1045&originalType=binary&ratio=1&rotation=0&showTitle=false&size=86086&status=done&style=none&taskId=u58794872-3810-4fb2-b5b5-62e44b0cc32&title=&width=751.5)
+
 ## 四、南北向流量打通
 
 MOSN 作为 Service Mesh 的数据面主要在东西向流量上发力，除了东西向流量之外，还有南北向流量被多种网关分而治之。

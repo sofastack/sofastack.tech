@@ -107,7 +107,7 @@ MOSN：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 4. 修复 Ark 环境处理注解时抛出 TypeNotPresentExceptionProxy 异常的问题
 
 **详细参考：**
-https://github.com/sofastack/sofa-boot
+<https://github.com/sofastack/sofa-boot>
 
 ### 本周推荐阅读
 

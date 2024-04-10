@@ -65,7 +65,7 @@ A：用完了会放回这个 avliableclients 的数组里，你的代码不是�
 
 「MOSN」：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 
-### SOFAStack&MOSN:新手任务计划 
+### SOFAStack&MOSN:新手任务计划
 
 作为技术同学，你是否有过“想参与某个开源项目的开发、但是不知道从何下手”的感觉？
 

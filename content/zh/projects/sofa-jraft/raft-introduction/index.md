@@ -66,12 +66,12 @@ title: "Raft 算法解读"
 ### Raft 设计原则
 
 * 概念分解
-    * Leader election
-    * Log replication
-    * Membership changes
+  * Leader election
+  * Log replication
+  * Membership changes
 * 通过减少状态数量将状态空间简化
-    * 日志不允许出现空洞, 并且 raft 限制了日志不一致的可能性
-    * 使用随机化时钟简化了领导选举的算法
+  * 日志不允许出现空洞, 并且 raft 限制了日志不一致的可能性
+  * 使用随机化时钟简化了领导选举的算法
 
 ### Raft 一致性算法
 
@@ -154,22 +154,22 @@ __接收日志的 follower 需要实现的__
 #### __服务器要遵守的规则__
 
 * __所有服务器:__
-    * 如果 commitIndex > lastApplied, 那么将 lastApplied 自增并把对应日志 log[lastApplied]应用到状态机
-    * 如果 RPC 请求或响应包含一个 term T 大于 currentTerm, 那么将 currentTerm 赋值为 T 并立即切换状态为 follower
+  * 如果 commitIndex > lastApplied, 那么将 lastApplied 自增并把对应日志 log[lastApplied]应用到状态机
+  * 如果 RPC 请求或响应包含一个 term T 大于 currentTerm, 那么将 currentTerm 赋值为 T 并立即切换状态为 follower
 * __Follower:__
-    * 无条件响应来自 candidate 和 leader 的 RPC
-    * 如果在选举超时之前没收到任何来自 leader 的 AppendEntries RPC 或 RequestVote RPC, 那么自己转换状态为 candidate
+  * 无条件响应来自 candidate 和 leader 的 RPC
+  * 如果在选举超时之前没收到任何来自 leader 的 AppendEntries RPC 或 RequestVote RPC, 那么自己转换状态为 candidate
 * __Candidate:__
-    * 转变为 candidate 之后开始发起选举
-        * currentTerm 自增 --> 重置选举计时器 --> 给自己投票 --> 向其他服务器发起 RequestVote RPC
-    * 如果收到了来自大多数服务器的投票, 转换状态成为 leader
-    * 如果收到了来自新 leader 的 AppendEntries RPC(Heartbeat), 转换状态为 follower
-    * 如果选举超时, 开始新一轮的选举
+  * 转变为 candidate 之后开始发起选举
+    * currentTerm 自增 --> 重置选举计时器 --> 给自己投票 --> 向其他服务器发起 RequestVote RPC
+  * 如果收到了来自大多数服务器的投票, 转换状态成为 leader
+  * 如果收到了来自新 leader 的 AppendEntries RPC(Heartbeat), 转换状态为 follower
+  * 如果选举超时, 开始新一轮的选举
 * __Leader:__
-    * 一旦成为 leader, 向其他所有服务器发送空的 AppendEntries RPC(Heartbeat), 并在空闲时间重复发送以防选举超时
-    * 如果收到来自客户端的请求, 向本地日志追加条目并向所有服务器发送 AppendEntries RPC, 在收到大多数响应后将该条目应用到状态机并回复响应给客户端
-    * 如果 leader 上一次收到的日志索引大于一个 follower 的 nextIndex, 那么通过 AppendEntries RPC 将 nextIndex 之后的所有日志发送出去; 如果发送成功, 将 follower 的 nextIndex 和 matchIndex 更新, 如果由于日志不一致导致失败, 那么将 nextIndex 递减并重新发送
-    * 如果存在一个 N > commitIndex 和半数以上的 matchIndex[i] >= N 并且 log[N].term == currentTerm, 将 commitIndex 赋值为 N
+  * 一旦成为 leader, 向其他所有服务器发送空的 AppendEntries RPC(Heartbeat), 并在空闲时间重复发送以防选举超时
+  * 如果收到来自客户端的请求, 向本地日志追加条目并向所有服务器发送 AppendEntries RPC, 在收到大多数响应后将该条目应用到状态机并回复响应给客户端
+  * 如果 leader 上一次收到的日志索引大于一个 follower 的 nextIndex, 那么通过 AppendEntries RPC 将 nextIndex 之后的所有日志发送出去; 如果发送成功, 将 follower 的 nextIndex 和 matchIndex 更新, 如果由于日志不一致导致失败, 那么将 nextIndex 递减并重新发送
+  * 如果存在一个 N > commitIndex 和半数以上的 matchIndex[i] >= N 并且 log[N].term == currentTerm, 将 commitIndex 赋值为 N
 
 #### 一致性算法总结
 
@@ -184,8 +184,8 @@ __接收日志的 follower 需要实现的__
 
 * RequestVote RPC
 * AppendEntries RPC
-    * 日志条目
-    * 心跳
+  * 日志条目
+  * 心跳
 * InstallSnapshot RPC
 
 ### 角色&状态转换
@@ -205,12 +205,12 @@ __接收日志的 follower 需要实现的__
 ### 领导人选举流程
 
 * follower --> candidate (选举超时触发)
-    * candidate --> leader
-        * 赢得了选举
-    * candidate --> follower
-        * 另一台服务器赢得了选举
-    * candidate --> candidate
-        * 一段时间内没有任何一台服务器赢得选举
+  * candidate --> leader
+    * 赢得了选举
+  * candidate --> follower
+    * 另一台服务器赢得了选举
+  * candidate --> candidate
+    * 一段时间内没有任何一台服务器赢得选举
 
 ### 选举活锁(多个节点超时同时选主)
 
@@ -225,27 +225,27 @@ __接收日志的 follower 需要实现的__
 __Raft 日志机制的特性__
 
 * 如果在不同的日志中的两个条目有着相同的索引和任期号, 那么他们存储的命令肯定是相同的
-    * 源于 leader 在一个任期里给定的一个日志索引最多创建一条日志条目, 同时该条目在日志中的位置也从不会改变
+  * 源于 leader 在一个任期里给定的一个日志索引最多创建一条日志条目, 同时该条目在日志中的位置也从不会改变
 * 如果在不同的日志中的两个条目有着相同的索引和任期号, 那么他们之前的所有日志条目都是完全一样的
-    * 源于 AppendEntries RPC 的一个简单的一致性检查: 当发送一个 AppendEntries RPC 时 leader 会把新日志之前的一个日志条目的索引位置和任期号都包含在里面, follower 会检查是否与自己的日志中的索引和任期号是否匹配, 如果不匹配就会拒绝这个日志条目, 接下来就是归纳法来证明了
+  * 源于 AppendEntries RPC 的一个简单的一致性检查: 当发送一个 AppendEntries RPC 时 leader 会把新日志之前的一个日志条目的索引位置和任期号都包含在里面, follower 会检查是否与自己的日志中的索引和任期号是否匹配, 如果不匹配就会拒绝这个日志条目, 接下来就是归纳法来证明了
 * leader 通过强制 follower 复制它的日志来处理日志的不一致
-    * 为了使 follower 的日志同自己的一致, leader 需要找到 follower 与它日志一致的索引位置并让 follower 删除该位置之后的条目, 然后再将自己在该索引位置之后的条目发送给 follower, 这些操作都在 AppendEntries RPC 进行一致性检查时完成
-    * leader 为每一个 follower 维护了一个 nextIndex, 用来表示将要发送给该 follower 的下一条日志条目索引, 当一个 leader 开始掌权时, 会将 nextIndex 初始化为它的最新日志条目索引值+1, 如果 follower 在一致性检查过程中发现自己的日志和 leader 不一致, 会在这个 AppendEntries RPC 请求中返回失败, leader 收到响应之后会将 nextIndex 递减然后重试, 最终 nextIndex 会达到一个 leader 和 follower 日志一致的位置, 这个时候 AppendEntries RPC 会成功, follower 中冲突的日志条目也被移除了, 此时 follower 和 leader 的日志就一致了
+  * 为了使 follower 的日志同自己的一致, leader 需要找到 follower 与它日志一致的索引位置并让 follower 删除该位置之后的条目, 然后再将自己在该索引位置之后的条目发送给 follower, 这些操作都在 AppendEntries RPC 进行一致性检查时完成
+  * leader 为每一个 follower 维护了一个 nextIndex, 用来表示将要发送给该 follower 的下一条日志条目索引, 当一个 leader 开始掌权时, 会将 nextIndex 初始化为它的最新日志条目索引值+1, 如果 follower 在一致性检查过程中发现自己的日志和 leader 不一致, 会在这个 AppendEntries RPC 请求中返回失败, leader 收到响应之后会将 nextIndex 递减然后重试, 最终 nextIndex 会达到一个 leader 和 follower 日志一致的位置, 这个时候 AppendEntries RPC 会成功, follower 中冲突的日志条目也被移除了, 此时 follower 和 leader 的日志就一致了
 
 ### 安全性
 
 * 选举限制
-    * 用投票规则的限制来阻止日志不全的服务器赢得选举
-        * RequestVote RPC 限制规则: 拒绝日志没自己新的 candidate
-    * Leader 永远不会覆盖自己的日志条目
-    * 日志条目只能从 leader 流向 follower
+  * 用投票规则的限制来阻止日志不全的服务器赢得选举
+    * RequestVote RPC 限制规则: 拒绝日志没自己新的 candidate
+  * Leader 永远不会覆盖自己的日志条目
+  * 日志条目只能从 leader 流向 follower
 * 如何提交上一个任期的日志条目
-    * 全程保持自己的任期号
+  * 全程保持自己的任期号
 * 安全性论证
-    * 领导人完整性原则(Leader Completeness)
-        * 如果一个日志条目在一个给定任期内被提交, 那么这个条目一定会出现所有任期号更大的 leader 中
-    * 状态机安全原则(State Machine Safety)
-        * 如果一个服务器已经将给定索引位置上的日志条目应用到状态机, 那么所有其他服务器不可能在该索引位置应用不同的日志条目
+  * 领导人完整性原则(Leader Completeness)
+    * 如果一个日志条目在一个给定任期内被提交, 那么这个条目一定会出现所有任期号更大的 leader 中
+  * 状态机安全原则(State Machine Safety)
+    * 如果一个服务器已经将给定索引位置上的日志条目应用到状态机, 那么所有其他服务器不可能在该索引位置应用不同的日志条目
 
 ### Follower 和 Candidate 崩溃
 
@@ -287,9 +287,9 @@ Raft 采用联合一致性的方式来解决节点变更, 先提交一个包含�
 
 * 每个服务器独立的创建快照, 只包含已被提交的日志
 * 快照内容主要包括
-    * 状态机的状态
-    * Raft 的少量元数据(见上图), 保留这些元数据是为了快照后对紧接着的一个 AppendEntries 进行一致性检查
-    * 为了支持集群成员变化, 最新的配置(Configuration)也会作为一个条目被保存在快照中
+  * 状态机的状态
+  * Raft 的少量元数据(见上图), 保留这些元数据是为了快照后对紧接着的一个 AppendEntries 进行一致性检查
+  * 为了支持集群成员变化, 最新的配置(Configuration)也会作为一个条目被保存在快照中
 
 __快照分块传输(InstallSnapshot RPC)__
 
@@ -319,13 +319,12 @@ __接收者需要实现的__
 
 * 客户端只将请求发送给领导人原则
 * 线性一致读
-    * 写 raft log 走状态机
-    * Leader 与过半机器交换心跳信息确定自己仍然是 leader 后可提供线性一致读
-    * 利用心跳机制提供租约机制(Lease read), 但是依赖本地时钟的准确性
+  * 写 raft log 走状态机
+  * Leader 与过半机器交换心跳信息确定自己仍然是 leader 后可提供线性一致读
+  * 利用心跳机制提供租约机制(Lease read), 但是依赖本地时钟的准确性
 
 ### 参考
 
 [braft 文档](https://github.com/brpc/braft/blob/master/docs/cn/raft_protocol.md)
 
 [raft-paper](https://ramcloud.atlassian.net/wiki/download/attachments/6586375/raft.pdf)
-

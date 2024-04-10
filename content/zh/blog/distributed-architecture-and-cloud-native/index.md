@@ -51,7 +51,7 @@ cover: "https://cdn.nlark.com/yuque/0/2020/png/226702/1583488828649-9160b27c-e21
 
 所谓“三板斧”就是可灰度、可监控、可应急。这是蚂蚁内部运维的一条红线准则，所有的变更，都必须要遵从这个规则，即使再细小的变更，再严密的测试，也不能忽略这条规则。为了满足这个需求，我们在 PaaS 产品层设计了各种各样的精细化发布策略，比如分组发布、beta 发布，灰度发布，蓝绿发布等。这些发布策略跟我们在做传统运维时用的手段是非常相似的，但很多使用容器的用户认为在 K8S 里实现会非常的困难。
 
-有些时候，由于对业务连续性的极高要求，也很难接受原生 K8S 模型标准化模式，比如原生 Deployment 做灰度或者金丝雀发布时，默认情况下在 Pod 变更和流量治理层面的管控还稍显不足，无法完全做到无损发布或按需过程管控。因此，我们在 PaaS 产品层面做了定制，在 Kubernetes 层面做了自定义资源的扩展，目的是能够在云原生的场景下，依然对整个发布过程实现精细化管控，使得大规模集群发布、灰度、回滚时更加优雅，符合技术风险三板斧原则。 
+有些时候，由于对业务连续性的极高要求，也很难接受原生 K8S 模型标准化模式，比如原生 Deployment 做灰度或者金丝雀发布时，默认情况下在 Pod 变更和流量治理层面的管控还稍显不足，无法完全做到无损发布或按需过程管控。因此，我们在 PaaS 产品层面做了定制，在 Kubernetes 层面做了自定义资源的扩展，目的是能够在云原生的场景下，依然对整个发布过程实现精细化管控，使得大规模集群发布、灰度、回滚时更加优雅，符合技术风险三板斧原则。
 
 ![需求背景：变更“三板斧”](https://cdn.nlark.com/yuque/0/2020/png/226702/1583486867621-6b36825c-6068-4a38-944b-6dab57edb6e3.png)
 
@@ -97,7 +97,7 @@ CAFEDeployment 有一个很重要的能力，就是能够感知到底层拓扑�
 
 ![开源版本介绍：OpenKruise - UnitedDeployment](https://cdn.nlark.com/yuque/0/2020/png/226702/1583487002821-96814981-a54b-4ebc-af0f-2ce857e0fa41.png)
 
-当前 OpenKruise 项目提供了一套 Controller 组件，其中的 UnitedDeployment 可以理解为 CAFEDeployment 的开源版本。除了基本的副本保持和发布能力，他还包含了 CAFEDeployment 的主要功能之一，多部署单元的 Pod 发布能力。 同时，由于 UnitedDeployment 是基于多种类型的 workload（目前支持社区的 StatefulSet 和 OpenKruise AdvancedStatefulSet）实现对 Pod 的管理，因此它还能保留相应 Workload 的特性。 
+当前 OpenKruise 项目提供了一套 Controller 组件，其中的 UnitedDeployment 可以理解为 CAFEDeployment 的开源版本。除了基本的副本保持和发布能力，他还包含了 CAFEDeployment 的主要功能之一，多部署单元的 Pod 发布能力。 同时，由于 UnitedDeployment 是基于多种类型的 workload（目前支持社区的 StatefulSet 和 OpenKruise AdvancedStatefulSet）实现对 Pod 的管理，因此它还能保留相应 Workload 的特性。
 
 UnitedDeployment 的核心贡献者吴珂(昊天) (Github:wu8685) 来自于 SOFAStack CAFE 团队，主导了整个 CAFEDeployment 的设计与开发。当前我们正在努力把更多能力在经过大规模验证之后，通过标准化的方式整合进开源版本中，逐步减少两个版本的差异，使之趋于统一。
 

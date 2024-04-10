@@ -1,9 +1,9 @@
 
 ---
+
 title: "扩展点设计"
 aliases: "/sofa-rpc/docs/Extension-Loader"
 ---
-
 
 # ExtensionLoader
 
@@ -16,7 +16,6 @@ aliases: "/sofa-rpc/docs/Extension-Loader"
 这里讲一下如何使方式进行扩展的。
 
 SOFARPC 提供了 ExtensionLoader 的能力。
-
 
 ## 扩展点设计
 

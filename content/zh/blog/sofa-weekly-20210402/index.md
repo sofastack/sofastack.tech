@@ -68,4 +68,3 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 - [SOFAGW 网关：安全可信的跨域 RPC/消息 互通解决方案](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247487444&idx=1&sn=1d55a7c68e105f305198eae65f587e2e&chksm=faa0e00ecdd76918b5cf4b5f4102347581de6c6f5154551d57dabfbfe16b45309f021e150a6f&scene=21)
 
 - [Serverless 给任务调度带来的变化及蚂蚁集团落地实践](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247487387&idx=1&sn=aa5611c20ac32f5f58e12488f1285824&chksm=faa0e041cdd769575a8f5921fed99968277be197544ccd9246e2f1a675b7a275b42e07ac61de&scene=21)
-

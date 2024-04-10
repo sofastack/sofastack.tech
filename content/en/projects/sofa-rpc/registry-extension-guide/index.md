@@ -1,9 +1,9 @@
 
 ---
+
 title: "Service Registry extension guide"
 aliases: "/sofa-rpc/docs/Registry-Extension-Guide"
 ---
-
 
 If you want to extend a registry center, you should take a look at the abstract classes of the registry center.
 

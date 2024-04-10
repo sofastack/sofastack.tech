@@ -12,7 +12,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*VV4FR4uvoE4AAAAAA
 
 文｜朱德江（GitHub ID：doujiang24)
 
-MOSN 项目核心开发者蚂蚁集团技术专家 
+MOSN 项目核心开发者蚂蚁集团技术专家
 
 *专注于云原生网关研发的相关工作。*
 
@@ -45,7 +45,7 @@ function foo(f)    return f.bendfoo({ b = 1 })
 
 能够运行时判断 `f` 的类型，是因为 Lua 中变量是用 `TValue` 来表示的，这个 `TValue` 结构中，就有一个信息用来存储变量类型。
 
-**PART. 2** 
+**PART. 2**
 
 ### 逆向类型推导
 
@@ -67,7 +67,7 @@ type Foo struct {    a uint64    b int64}type Bar struct {    f *Foo}var b Bar
 
 2.协程中每一帧函数的局部变量。
 
-**PART. 3** 
+**PART. 3**
 
 ### 全局变量
 
@@ -75,13 +75,13 @@ Go 在编译的时候，默认会生成一些调试信息，按照 DWARF 标�
 
 这些调试信息中，我们关注两类关键信息：
 
-1.  **类型信息：** 包括了源码中定义的类型，比如某个 struct 的名字、大小、以及各个 field 类型信息；
+1. **类型信息：** 包括了源码中定义的类型，比如某个 struct 的名字、大小、以及各个 field 类型信息；
 
-1.  **全局变量：** 包括变量名、地址、类型，调试信息中的、全局变量的地址、以及其类型信息，也就是构成推导的初始值。  
+1. **全局变量：** 包括变量名、地址、类型，调试信息中的、全局变量的地址、以及其类型信息，也就是构成推导的初始值。  
 
 函数局部变量，要复杂一些，不过基本原理是类似的，这里就不细说了~
 
-**PART. 4** 
+**PART. 4**
 
 ### 推导过程
 
@@ -101,11 +101,11 @@ type eface struct {    _type *_type    data  unsafe.Pointer}
 
 `_type` 中有两个信息，对我们比较有用：
 
-**1.名字** 
+**1.名字**
 
 不过比较坑的是，只存了 `pkg.Name` 并没有存完整的 Include Path 这个也合理的，毕竟 Go 运行时并不需要那么精确，也就是异常时，输出错误信息中用一下。不过在类型推导的时候，就容易踩坑了。
 
-**2.指针信息** 
+**2.指针信息**
 
 具体存储形式有点绕，不过也就是表示这个对象中，有哪些偏移量是指针。
 
@@ -125,7 +125,7 @@ type eface struct {    _type *_type    data  unsafe.Pointer}
 
 我们给 Go 官方 Debug 贡献了 `sync.map` 的逆向实现，有兴趣的可以看 CL 419177[2]。
 
-**PART. 5** 
+**PART. 5**
 
 ### 隐藏类型
 
@@ -135,7 +135,7 @@ type eface struct {    _type *_type    data  unsafe.Pointer}
 
 相比 `Method Value` 这种固定结构的，`Closure` 这种会更难搞一些，不过幸运的是，我们目前的使用过程中，还没有踩坑的经历。
 
-**PART. 6** 
+**PART. 6**
 
 ### 逆向推导风险
 
@@ -153,7 +153,7 @@ type eface struct {    _type *_type    data  unsafe.Pointer}
 
 也就是说，如果一条推导线索因为 `unsafe.pointer` 断了，如果另外有一个线索可以推导到这个对象，那也是不影响的。因为从 `GC root` 到一个 `GC obj` 的引用关系链，可能会不止一条。
 
-**PART. 7** 
+**PART. 7**
 
 ### 小结
 
@@ -174,5 +174,5 @@ Go 虽然是静态类型语言，不过由于提供了 `unsafe.pointer`，给�
 
 **了解更多...**
 
-**MOSN Star 一下✨：** 
+**MOSN Star 一下✨：**
 [https://github.com/mosn/mosn](https://github.com/mosn/mosn)

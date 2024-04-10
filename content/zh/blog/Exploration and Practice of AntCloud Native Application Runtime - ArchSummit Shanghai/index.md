@@ -112,7 +112,6 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*nergRo8-RI0AAAAAA
 
 **第四**，能力后面对应的组件实现是可以替换的，例如注册服务的提供者可以是 SOFARegistry，也可以是 Nacos 或者 Zookeeper。
 
-
 **运行时能力抽象**
 
 > ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*hWIVR6ccduYAAAAAAAAAAAAAARQnAQ)
@@ -200,5 +199,3 @@ FaaS 冷启预热池也是我们近期在探索的一个场景，大家知道 Fa
 - [Protocol Extension Base On Wasm——协议扩展篇](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247487546&idx=1&sn=72c3f1ede27ca4ace7988e11ca20d5f9&chksm=faa0ffe0cdd776f6d17323466b500acee50a371663f18da34d8e4cbe32304d7681cf58ff9b45&scene=21)
 
 > ![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*s3UzR6VeQ6cAAAAAAAAAAAAAARQnAQ)
-
-

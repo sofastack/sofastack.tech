@@ -1,9 +1,9 @@
 
 ---
+
 title: "模块化开发概述"
 aliases: "/sofa-boot/docs/Modular-Development"
 ---
-
 
 SOFABoot 从 2.4.0 版本开始支持基于 Spring 上下文隔离的模块化开发能力。为了更好的理解 SOFABoot 模块化开发的概念，我们来区分几个常见的模块化形式：
 
@@ -20,6 +20,7 @@ SOFABoot 模块化开发属于第二种模块化形式 —— 基于 Spring 上�
 ![modular development](modular-development.png)
 
 ### 依赖引入
+
 使用 SOFABoot 模块化开发方案，需要引入如下依赖：
 
 ```xml

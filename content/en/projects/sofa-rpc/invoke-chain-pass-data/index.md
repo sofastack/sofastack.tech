@@ -1,12 +1,13 @@
 
 ---
+
 title: "Link data transparent transmission"
 aliases: "/sofa-rpc/docs/Invoke-Chain-Pass-Data"
 ---
 
-
 The link data transparent transmission function allows the applications to store data in the calling context, and then any applications in the entire link can operate the data.
 This feature is used as follows. Data can be put into the request and response of the link for transparent transmission, and then the applications can get the corresponding data from the link.
+
 ```java
 RpcInvokeContext.getContext().putRequestBaggage("key_request","value_request");
 RpcInvokeContext.getContext().putResponseBaggage("key_response","value_response");
@@ -15,12 +16,12 @@ String requestValue=RpcInvokeContext.getContext().getRequestBaggage("key_request
 String responseValue=RpcInvokeContext.getContext().getResponseBaggage("key_response");
 ```
 
-
 ## Example
 
 For example, in the scenario of A -> B -> C, the request arguments set by A are transmitted to B and C. On return, response arguments of C and B are transmitted to A.
 
 Requester A is set as follows:
+
 ```java
 // Set the value of the request transparently before calling
 RpcInvokeContext context = RpcInvokeContext.getContext();
@@ -32,6 +33,7 @@ context.getResponseBaggage("respBaggageB");
 ```
 
 Business code for B is as follows:
+
 ```java
 public String hello() {
     / / Get the value of the request transparent transmission
@@ -46,19 +48,20 @@ public String hello() {
 ```
 
 If you start the child thread halfway, you need to set the context of the child thread:
+
 ```java
 CountDownLatch latch = new CountDownLatch(1);
 final RpcInvokeContext parentContext = RpcInvokeContext.peekContext();
 Thread thread = new Thread(new Runnable(){
     public void run(){
-	  Try {
-	      RpcInvokeContext.setContext(parentContext);
-		  / / Call a remote service
-		  xxxService.sayHello();
-		  latch.countDown();
-	  } finally {
-	      RpcInvokeContext.removeContext();
-	  }
+   Try {
+       RpcInvokeContext.setContext(parentContext);
+    / / Call a remote service
+    xxxService.sayHello();
+    latch.countDown();
+   } finally {
+       RpcInvokeContext.removeContext();
+   }
     }
 }, "new-thread");
 thread.start();

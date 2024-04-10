@@ -50,13 +50,11 @@ A: 会释放，close 是框架层面出现异常自动就会调，如果你自�
 
 Seata：[https://github.com/seata/seata](Seata：https://github.com/seata/seata)
 
-
 ### 本周推荐阅读
 
 - [助力数据安全：蚂蚁携手英特尔共同打造验证 PPML 解决方案](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247488532&idx=1&sn=11952dbe5c4483a16ce806f3dc636802&chksm=faa0fbcecdd772d859405491fdaf8260d17d9549bff3206840c68b96b248531d789993c85942&scene=21)
 
 - [用安全计算保护关键业务](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247488532&idx=2&sn=db66969566704cf14c8e604632c2026c&chksm=faa0fbcecdd772d89f06ddd61b66fa746c983522e72610b66cf8a6440861788eaeef8b91598a&scene=21)
-
 
 - [蚂蚁云原生应用运行时的探索和实践 - ArchSummit 上海](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247488131&idx=1&sn=cd0b101c2db86b1d28e9f4fe07b0446e&chksm=faa0fd59cdd7744f14deeffd3939d386cff6cecdde512aa9ad00cef814c033355ac792001377&scene=21)
 

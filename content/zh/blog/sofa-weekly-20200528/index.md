@@ -27,6 +27,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 1、@非余 提问：
 
 > 对于 Kata 我有些地方还是不太理解，我现在说说我的理解，麻烦你看对不 对，我的理解是 Kata 有两个缓存：
+>
 > 1. virtiofs 需要一个缓存。virtiofsd 和 guest 交互需要缓存做文件系统 buffer ，这个缓存的对应 qemu 的参数就是 memory-backend-file 。（这个缓存和 vhost-user 使用的 vring 是不是同一个？每一个 vm
 > 有自己的缓存空间 ） 在 Kata 配置文件对应的是 default_memory。缓存策略是 virtio_fs_cache。
 > 2. dax 缓存，对应的参数是 virtio_fs_cache_size，没有缓存策略控制。
@@ -62,7 +63,6 @@ A：因为是 begin 时的异常，所以没有 xid，begin 成功了才有 Comm
 
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
-
 5、@贾云森 提问
 
 > 常见的就是并没有对 Select 语句进行 forupdate,如果你不开启 forupdate,Seata 默认是遇到并发性竞争锁并不会去尝试重试,导致拿不到 lock 当前事务进行回滚.不影响一致性,如果你想没 forupdate
@@ -93,5 +93,3 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 详细参考：
 [https://github.com/sofastack/sofa-rpc/releases/tag/v5.7.8](https://github.com/sofastack/sofa-rpc/releases/tag/v5.7.8)
-
-

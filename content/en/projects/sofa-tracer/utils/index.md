@@ -1,9 +1,9 @@
 
 ---
+
 title: "SOFATracer Tools"
 aliases: "/sofa-tracer/docs/Utils"
 ---
-
 
 # SOFATracer Tools
 
@@ -53,7 +53,7 @@ List <LogData> logDataList = sofaTracerSpan.getLogs ();
 
 Baggage element is a collection of key-value pairs that carries data to be transparently transmitted. In SOFATracer, Baggage data is divided into sysBaggage and bizBaggage; sysBaggage mainly refers to transparently transmitted system data, and bizBaggage mainly refers to transparently transmitted business data.
 
-### Configure and get BaggageItem 
+### Configure and get BaggageItem
 
 BaggageItem is a data element in the Baggage collection.
 

@@ -6,7 +6,7 @@ aliases: "/sofa-tracer/docs/Usage_Of_HttpClient"
 
 # HttpClient Integration
 
-In this document will demonstrate how to use SOFATracer to track of HttpClient, this example [address] (https://github.com/sofastack-guides/sofa-tracer-guides/tree/master/tracer-sample-with-httpclient).
+In this document will demonstrate how to use SOFATracer to track of HttpClient, this example [address] (<https://github.com/sofastack-guides/sofa-tracer-guides/tree/master/tracer-sample-with-httpclient>).
 
 Assuming you have built a simple Spring Web project based on SOFABoot, Then you can be operated by the following steps:
 
@@ -32,6 +32,7 @@ Assuming you have built a simple Spring Web project based on SOFABoot, Then you 
     <version>4.1.3</version>
 </dependency>
 ```
+
 ## Project Configuration
 
 Then, add the parameters to be used by SOFATracer under the project's `application.properties` file, including `spring.application.name` that indicates the current application name and `logging.path` that specifies the log output directory.
@@ -42,6 +43,7 @@ spring.application.name=HttpClientDemo
 # logging path
 logging.path=./logs
 ```
+
 ## Add a Controller that provides RESTful service
 
 ```java
@@ -107,7 +109,6 @@ If there is a log similar to the followings, it indicates that the call to HttpC
 2018-09-27 20:31:22.336  INFO 33277 --- [           main] c.a.s.t.e.h.HttpClientDemoApplication    : Response is {"count":1,"name":"httpclient"}
 2018-09-27 20:31:22.453  INFO 33277 --- [           main] c.a.s.t.e.h.HttpClientDemoApplication    : Async Response is {"count":2,"name":"httpclient"}
 ```
-
 
 ## View log
 

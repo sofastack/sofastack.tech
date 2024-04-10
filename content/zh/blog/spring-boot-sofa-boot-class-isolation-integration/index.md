@@ -23,7 +23,6 @@ SOFABoot 的类隔离能力由单独的组件 SOFAArk 实现，相比业界遵�
 
 ![SOFABot 类隔离机制](sofa-boot-class-isolation.png)
 
-
 为了彻底解决类似的包冲突问题，我们需要借助类隔离机制，使用不同的类加载器加载冲突的三方依赖包，进而做到在同一个应用运行时共存。
 
 基于此背景，SOFABoot 提供了一个轻量级的类隔离框架，也是本文的主角，SOFAArk。
@@ -38,14 +37,14 @@ SOFABoot 的类隔离能力由单独的组件 SOFAArk 实现，相比业界遵�
 
 ![SOFAArk 运行时逻辑分层图](sofa-ark-layers-arch.png)
 
-
 可以看到，在应用运行时，SOFAArk 容器处于最底层，负责启动应用。应用依赖的所有 Ark Plugin 处于中间层，每个 Ark Plugin 都由 SOFAArk 容器使用独立的类加载器加载，相互隔离。应用业务代码及其他非 Ark Plugin 的普通三方依赖包，为了描述简单，统称为 Ark Biz，它运行在最上层，需要依赖中间层的 Ark Plugin。
 
 一个标准 Ark Plugin 会包含一些配置文件，主要包含导出类和导入类配置。导出类即把 Ark Plugin 中的类导出给 Ark Biz 和其他 Ark Plugin 可见。默认情况下，所有 Ark Plugin 的导出类对于 Ark Biz 来说都是可见的，即 Ark Biz 可以使用 Ark Plugin 的导出类。对于 Ark Plugin 来说，如果需要使用其他 Ark Plugin 的导出类，必须声明为自身的导入类。关于 Ark Plugin 详细说明可以参考文末相关链接。
 
 下面我们来演示如何开发一个简单的 Ark Plugin。
 
-# 3. Java 模块改造成 Ark Plugin 
+# 3. Java 模块改造成 Ark Plugin
+
 ## 3.1 新建工程
 
 Demo 工程参见：[https://github.com/QilongZhang/ark-plugin-demo](https://github.com/QilongZhang/ark-plugin-demo)

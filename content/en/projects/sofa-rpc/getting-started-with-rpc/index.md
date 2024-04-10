@@ -21,7 +21,7 @@ Create a new Maven project and introduce SOFARPC dependency.
 </dependency>
 ```
 
-Note: The latest version can be found at https://github.com/sofastack/sofa-rpc/releases.
+Note: The latest version can be found at <https://github.com/sofastack/sofa-rpc/releases>.
 
 ## Write a server implementation
 
@@ -117,7 +117,6 @@ The server outputs:
 The client outputs:
 
 > hello world !
-
 
 ## More
 

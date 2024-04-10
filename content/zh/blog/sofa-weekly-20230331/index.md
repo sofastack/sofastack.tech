@@ -32,6 +32,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 入会链接：[https://meeting.dingtalk.com/j/hv0CVKasIgs](https://meeting.dingtalk.com/j/hv0CVKasIgs)
 
 议题：
+
 - SOFAArk 社区化运作计划同步与讨论；
 - 版本维护策略公告；
 - 项目 CY23 开源规划（含新人培养计划）；
@@ -39,7 +40,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 欢迎感兴趣同学参加，有任何想交流讨论的议题可以直接留言。
 
-「SOFAArk」： 
+「SOFAArk」：
 
 [https://github.com/sofastack/sofa-ark/issues/635](https://github.com/sofastack/sofa-ark/issues/635)
 
@@ -53,7 +54,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 欢迎大家在 GitHub 提交 issue 与我们互动
 
-我们会筛选 issue 通过 
+我们会筛选 issue 通过
 
 " SOFA WEEKLY " 的形式回复
 
@@ -65,7 +66,7 @@ A：有的，近期也正在做兼容 jdk 17 的开发。
 
 **「SOFARPC」**：*[https://github.com/sofastack/sofa-rpc/issues/1321](https://github.com/sofastack/sofa-rpc/issues/1321)*
 
-**2.@googlefan  #939** 
+**2.@googlefan  #939**
 
 > jraft-spring-boot-starter || NodeManager 设计目的的作用?
 看到 jraft-core 有提供 NodeManage.nodeMap 这个针对 Node 节点进行管理的实例，我以为可以通过 NodeManage.nodeMap 来获取所有集群节点的 RPC 服务，如果是这样的话，这个类的设计的目的是?

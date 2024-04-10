@@ -61,6 +61,3 @@ projects: [
 
 - Demo 地址：[https://github.com/leizhiyuan/rpcchannel](https://github.com/leizhiyuan/rpcchannel)
 - 相关文章：[https://www.sofastack.tech/blog/sofa-channel-3-retrospect/](https://www.sofastack.tech/blog/sofa-channel-3-retrospect/)
-
-
-

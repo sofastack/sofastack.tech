@@ -28,7 +28,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 欢迎大家向公众号留言提问或在群里与我们互动
 
-我们会筛选重点问题通过 
+我们会筛选重点问题通过
 
 " SOFA WEEKLY " 的形式回复
 
@@ -40,7 +40,7 @@ A：不使用 Web-Ark-Plugin 插件，每个模块会启动新的 Tomcat 实例�
 
 **「SOFAArk」**：*[https://github.com/sofastack/sofa-ark](https://github.com/sofastack/sofa-ark)*
 
-**2. 肖文璧 提问** 
+**2. 肖文璧 提问**
 
 > Seata 对 Java17 的版本有支持吗？
 

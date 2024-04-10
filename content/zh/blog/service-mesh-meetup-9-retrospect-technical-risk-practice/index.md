@@ -187,7 +187,7 @@ Service Mesh 是深度参与业务流量的，最初的 Sidecar 的升级方式
 
 ## 技术风险建设-我们如何保障 Service Mesh 的生产稳定
 
-### 监控与定位能力 
+### 监控与定位能力
 
 Service Mesh 为监控与定位提供的数据包括：
 

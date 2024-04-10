@@ -53,7 +53,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 **@贾云森** 提问：
 
-> Could not commit JDBC transaction; 
+> Could not commit JDBC transaction;
 >nested exception is io.seata.rm.datasource.exec.LockConflictException: get global lock fail, xid:192.168.3.239:8092:138223831620784128, lockKeys:outpat_medical:135231296034705408,135231296034705409,135231296034705410,135231296034705411,135231296034705412,135231296034705413)","code":85550,"data":null,"time":"2021-05-19 10:12:10"
 想问一下为什么会发生这种异常啊？
 A：正常输出，竞争锁没竞争到。

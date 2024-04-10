@@ -11,7 +11,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1550642831191-6bc3631d-a1
 
 > 章耿，花名余淮，蚂蚁金服高级技术专家。
 > 2007 年毕业后一直从事服务化相关的工作，最早在国家电网做电子商务平台 SOA 化的工作，之后在京东负责京东的服务化框架 JSF，目前在蚂蚁金服中间件服务与框架组负责应用框架及 SOFAStack 相关的工作。
-> 
+>
 > 本文根据余淮在 2018 开源中国年终盛典的演讲内容整理，完整的分享 PPT 获取方式见文章底部。
 
 ![2018开源中国-余淮](https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1550642831191-6bc3631d-a183-49bf-b9bc-5b2d42c9612f.jpeg)
@@ -77,11 +77,12 @@ cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1550642831191-6bc3631d-a1
 
 ![蚂蚁金融科技](https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1550643676313-96c506d2-3204-4db4-aa73-98f3f8a8bbcb.jpeg)
 
-2015 年 9 月蚂蚁金融云对外正式发布，在今年 9 月的云栖大会，蚂蚁金融云正式升级为蚂蚁金融科技，并宣布技术全面对外开放，其中就包括金融级分布式架构 SOFAStack，左上角就是网址，感兴趣的朋友可以看下：https://tech.antfin.com/sofa
+2015 年 9 月蚂蚁金融云对外正式发布，在今年 9 月的云栖大会，蚂蚁金融云正式升级为蚂蚁金融科技，并宣布技术全面对外开放，其中就包括金融级分布式架构 SOFAStack，左上角就是网址，感兴趣的朋友可以看下：<https://tech.antfin.com/sofa>
 
 云上的 SOFAStack 继承了蚂蚁金服内部的能力，有三大特点，分别是开放（全栈开放、开源共建）、云原生（异地多活、无限扩展）、金融级（资金安全、无损容灾），下面是一些核心能力大家可以看下。这一切就使得蚂蚁金服的微服务体系不仅仅在蚂蚁内部玩得转，也需要适应云上例如云原生、多租户等更复杂的场景。
 
 ##  2、蚂蚁微服务体系
+
 讲到微服务，大家就会看到或者脑子就跳出各种各样的词，例如 RPC 框架、服务安全、路由寻址等等。
 ![微服务](https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1550643701314-5b1d9536-8af5-4593-a7a4-8a471724e5fa.jpeg)
 
@@ -91,7 +92,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1550642831191-6bc3631d-a1
 
 ![蚂蚁微服务架构](https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1550643709477-ee423c40-6a16-466c-bd91-ac9e666a711e.jpeg)
 
-这是一张蚂蚁内部微服务体系的一张简图，只列了部分主要组件，这些组件都是自研的，部分已经开源。可以看到有**配置中心 DRM**、**注册中心 SOFARegistry**，**应用开发框架 SOFABoot**，应用里的 **RPC 框架**、**分布式链路跟踪组件 Tracer**、**监控度量组件 Lookout** 等微服务组件，应用旁边是我们的 **SOFAMosn**，也就是 ServiceMesh 里的数据平面 SideCar，会将 RPC 里的路由、限流、鉴权等一些能力集成到这个组件里，下面的 **OCS **是我们的可观测性平台，可以在上面看 tracer 和 metrics 信息，两边的两个组件是 **Edge Proxy**，主要是在跨机房或者跨 BU 的远程服务访问的 Proxy。
+这是一张蚂蚁内部微服务体系的一张简图，只列了部分主要组件，这些组件都是自研的，部分已经开源。可以看到有**配置中心 DRM**、**注册中心 SOFARegistry**，**应用开发框架 SOFABoot**，应用里的 **RPC 框架**、**分布式链路跟踪组件 Tracer**、**监控度量组件 Lookout** 等微服务组件，应用旁边是我们的 **SOFAMosn**，也就是 ServiceMesh 里的数据平面 SideCar，会将 RPC 里的路由、限流、鉴权等一些能力集成到这个组件里，下面的 **OCS**是我们的可观测性平台，可以在上面看 tracer 和 metrics 信息，两边的两个组件是 **Edge Proxy**，主要是在跨机房或者跨 BU 的远程服务访问的 Proxy。
 
 下面我会逐一介绍各个组件：
 
@@ -124,7 +125,6 @@ SOFARPC 和其它的开源的 RPC 框架一样，做了很多分层很多的模�
 - 支持多种调用方式，同步、单向、回调、泛化等
 
 - 支持集群容错、服务预热、自动故障隔离
-
 
 SOFARPC 基于 Java Proxy 机制实现透明的，默认的基于二进制协议 Bolt 和 NIO 异步非阻塞实现高性能通讯。SOFARPC 基于其 ExtensionLoader 扩展机制和 EventBus 的事件总线机制可以进行非常方便集成各种各样的扩展。例如注册中心，我们内置支持了 ZooKeeper 和 nacos 的实现，社区帮我们共享了 consul 和 etcd 等实现。
 
@@ -181,6 +181,7 @@ SOFAMosn 是我们使用 Golang 语言开发的 sidecar，目前已经开源，�
 这张图其实是 istio 官方的一种图，只是我们把 Envoy 换成了 SOFAMosn。SOFAMosn 可以与 istio 无缝集成，完全兼容它的 API。SOFAMosn 也支持多种协议，除了 Envoy 支持的之外，还额外支持 SOFARPC 和 Dubbo 协议，当然您也可以非常方便的去扩展支持自定义协议。 SOFAMosn 内置了可观测组件，用户可以监控其网络、请求压力等信息。SOFAMosn 还能支持平滑 reload、平滑升级。
 
 ##  3、SOFAStack 开源
+
 SOFAStack 中的 SOFA 其实是 Scalable Open Financial Architecture 的首字母缩写，它是用于快速构建金融级分布式架构的一套中间件，也是在金融场景里锤炼出来的最佳实践。
 
 目前 SOFAStack 采用的开源策略我们称之为是「**Open Core**」，就是将 API 层、接口层以及核心实现逻辑通通开源，内部实现保留的是一些兼容内部系统，兼容老的 API，或者是一些历史包袱比较重的代码。
@@ -221,8 +222,8 @@ SOFAStack 下的项目大概有 30 来个，每天的 PV 在 10000 以上，总 
 
 **SOFAStack 文档:**  [http://www.sofastack.tech/](http://www.sofastack.tech/)
 
-**SOFAStack 开源整体地址: ** [https://github.com/sofastack](https://github.com/sofastack)
+**SOFAStack 开源整体地址:** [https://github.com/sofastack](https://github.com/sofastack)
 
 ![开源中国现场图](https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1550643892784-2013a459-a998-4d8b-9561-f974f2269dcf.jpeg)
 
-欢迎大家共同打造 SOFAStack  [https://github.com/alipay](https://github.com/alipay) 
+欢迎大家共同打造 SOFAStack  [https://github.com/alipay](https://github.com/alipay)

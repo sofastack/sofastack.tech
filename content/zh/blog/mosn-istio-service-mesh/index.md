@@ -132,7 +132,6 @@ MOSN 最近发布了 0.14.0 版本，具体信息大家也可以在 MOSN 的 git
 
 [https://github.com/mosn/mosn/releases/tag/v0.14.0](https://github.com/mosn/mosn/releases/tag/v0.14.0)
 
-
 这个版本主要是做了比较多支持 Istio 的工作，比如支持 Istio 1.5 版本，升级了 go-control-plane，sourcelabel 支持，一致性哈希负载均衡等等，也优化了性能和修复了已知的 bug。同时，我们也在推动 Istio 官方去促进通用数据面标准的制定，在不久的将来，Isito 或者是 Service Mesh 用户也不再会受限于 Envoy，在数据面上会有更多的选择。
 
 接下来，MOSN 也会继续对齐 Istio 的功能，成为可以在 Service Mesh 里工作的安全、稳定、功能强大的云原声数据面代理。也如前面的分享内容所见，MOSN 还有很多可以完善的地方，也欢迎各位有想法有兴趣的小伙伴加入，给 MOSN 提 issue 和 PR 吧。

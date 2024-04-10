@@ -16,4 +16,3 @@ You can view basic information of your application on SOFADashboard, including t
 ## Function display
 
 ![client-function](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*wyOzQYekfVMAAAAAAAAAAABjARQnAQ)
-

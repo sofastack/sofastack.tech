@@ -59,6 +59,7 @@ public @interface Extension {
 + `order` 用于决定具体扩展实现的生效顺序
 
 运行时，对于同一个接口的扩展实现生效规则如下：
+
 + 规则一：名称相同的扩展实现，只会返回优先级高的扩展实现类，order 数字越小，优先级越高
 + 规则二：名称不相同的扩展实现，则返回一个对应的 List 列表，每个名称返回优先级最高的扩展实现
 
@@ -145,10 +146,10 @@ public class TestBizClassLoaderHook implements ClassLoaderHook<Biz> {
 
 ## ClassLoaderHook 使用案例
 
-这里以 BizClassLoaderHook 为例，来实现 **模块中的类委托给基座加载 **，这种可以完全将所有依赖都打在基座（宿主）应用中，模块中可以什么依赖都不带，完全是纯的业务代码；带来的好处是，一个模块最终打出的包大小会非常小，在动态操作模块时，可以极大的提高性能。
+这里以 BizClassLoaderHook 为例，来实现 **模块中的类委托给基座加载**，这种可以完全将所有依赖都打在基座（宿主）应用中，模块中可以什么依赖都不带，完全是纯的业务代码；带来的好处是，一个模块最终打出的包大小会非常小，在动态操作模块时，可以极大的提高性能。
 
 例如有一个 sofa-dashboard-ark-facade 包，这个包本身就是由宿主应用提供，那么模块在引入这个包时就可以不再需要将 sofa-dashboard-ark-facade 打在自己的 biz 包里面。
-这里将 sofa-dashboard-ark-facade 的 dependency 的 scope 改为 provided，使得打包时，不将 sofa-dashboard-ark-facade 打到模块 biz 中。然后通过 ClassLoaderHook 机制将 
+这里将 sofa-dashboard-ark-facade 的 dependency 的 scope 改为 provided，使得打包时，不将 sofa-dashboard-ark-facade 打到模块 biz 中。然后通过 ClassLoaderHook 机制将
 sofa-dashboard-ark-facade 包中提供的类委托给宿主来加载。具体过程如下：
 
 ```xml
@@ -229,7 +230,7 @@ public class DelegateMasterBizClassLoaderHook implements ClassLoaderHook<Biz> {
 
 重新打包，打包之后验证下模块 biz 包，里面已经没有 sofa-dashboard-ark-facade 包，然后重新验证下执行是否正常。
 
-### SOFAArk ClassLoaderHook 的默认实现 DelegateToMasterBizClassLoaderHook 
+### SOFAArk ClassLoaderHook 的默认实现 DelegateToMasterBizClassLoaderHook
 
 ClassLoaderHook 从 sofa-ark 0.6 版本就已经提供了，其主要目的是用户可以通过自定义 ClassLoaderHook 来控制 class 和 resources 的加载。在 [2.0.1](https://github.com/sofastack/sofa-ark/releases/tag/v2.0.1) 版本中，sofaark  框架内部提供了一个默认得到 ClassLoaderHook  实现 [DelegateToMasterBizClassLoaderHook](https://github.com/sofastack/sofa-ark/blob/master/sofa-ark-parent/support/ark-support-starter/src/main/java/com/alipay/sofa/ark/support/common/DelegateToMasterBizClassLoaderHook.java)，用于在模块 biz 在 load 不到 classes 或者 resourcecs 时，尝试从宿主 biz 去 load 相应的 classes 和 resources。
 

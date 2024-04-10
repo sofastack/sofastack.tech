@@ -49,6 +49,7 @@ Nydus 在生产环境已经支撑了每日百万级别的加速镜像容器创�
 ## 议程
 
 > ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*77FTSaxGPI4AAAAAAAAAAAAAARQnAQ)
+>
 ## 直播回放
 
 [https://b23.tv/Gnz9y6D](https://www.bilibili.com/video/BV1j84y1v7BV/?spm_id_from=333.999.0.0&vd_source=65cf108a3fb8e9985d41bd64c5448f63)

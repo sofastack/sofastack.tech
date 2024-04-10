@@ -9,6 +9,7 @@ date: 2022-05-06T15:00:00+08:00
 ---
 
 ## 源码解析：无损运维
+>
 > SOFARegistry 是一个基于内存存储的分布式注册中心，数据是分散存储在各个节点，为了做到注册中心自身运维期间依然能够对外正常提供服务，需要进行节点下线快速感知和数据迁移。
 
 > - session 存储 client 发送的发布和订阅数据，由于 client 断连重放的特性，session 单机下线后 client 会重放数据到其他节点。
@@ -101,7 +102,6 @@ LOGGER.info("add data self to blacklist successfully");
 ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*YPGYTbeqg3IAAAAAAAAAAAAAARQnAQ)
 
 ![img.png](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*iCZhSLsRoVUAAAAAAAAAAAAAARQnAQ)
-
 
 Session 和 Data 下线中的优雅关闭和数据迁移保证了下线期间数据丢失和抖动，期间仍然对外提供服务。
 
@@ -396,4 +396,3 @@ private void postStart() throws Throwable {
 ```
 
 至此，Server 的启动完成，Data 节点的 Slot 数据也根据变更后的 slotTable 同步完成，Data 节点开始在集群内工作。
-

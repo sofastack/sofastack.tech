@@ -19,13 +19,13 @@ Layotto 正式加入 CNCF 云原生全景图!
 
 ![图片](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*aWLASbfTsPYAAAAAAAAAAAAAARQnAQ)
 
-## CNCF 简介 
+## CNCF 简介
 
 云原生计算基金会（CNCF, Cloud Native Computing Foundation）致力于云原生技术的普及和可持续发展。
 
 CNCF Landscape 意图从云原生的层次结构，以及不同的功能组成上，让用户了解云原生体系的全貌。同时，也受到广大开发者和使用者对该项目的关注和重视。
 
-## Layotto 简介 
+## Layotto 简介
 
 Layotto(/leɪˈɒtəʊ/) 是一款使用 Golang 开发的应用运行时, 旨在帮助开发人员快速构建云原生应用，帮助应用和基础设施解耦。
 
@@ -78,4 +78,4 @@ Layotto
 
 [MOSN 子项目 Layotto：开启服务网格+应用运行时新篇章](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247488835&idx=1&sn=d645b9abc866048e679b56bfe3b72482&chksm=faa0fa99cdd7738ff1749ae75b1670f953c92b70dcf0358337977438fd74b632b21a7b17ece3&scene=21#)
 
-![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*tvfDQLxTbsgAAAAAAAAAAAAAARQnAQ) 
+![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*tvfDQLxTbsgAAAAAAAAAAAAAARQnAQ)

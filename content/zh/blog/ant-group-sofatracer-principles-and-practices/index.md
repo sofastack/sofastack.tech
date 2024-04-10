@@ -227,4 +227,3 @@ OpenTelemetry：[https://opentelemetry.io/](https://opentelemetry.io/)
 更多文章请扫码关注“金融级分布式架构”公众号
 
 > ![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*5aK0RYuH9vgAAAAAAAAAAAAAARQnAQ)
-

@@ -23,7 +23,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*nrA_RKaAZycAAAAAA
 
 [《云原生应用配置代码化实践》](https://gw.alipayobjects.com/os/bmw-prod/b9eee439-0868-4edb-a21a-49cd3cbb63ef.pdf)<br/>
 
-## 活动回顾 
+## 活动回顾
 
 直播回放：
 

@@ -1,9 +1,9 @@
 
 ---
+
 title: "Basic usage of RESTful protocol"
 aliases: "/sofa-rpc/docs/RESTful-Basic"
 ---
-
 
 In SOFARPC, using different communication protocols is equal to using different Bindings. If you need to use the RESTful protocol, just set Binding to REST.
 

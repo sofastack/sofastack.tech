@@ -1,9 +1,9 @@
 
 ---
+
 title: "REST 自定义 Filter"
 aliases: "/sofa-rpc/docs/RESTful-Filter"
 ---
-
 
 对于 REST，我们设计了一个 JAXRSProviderManager 管理器类。在服务端生效，生效时间为服务启动时。
 
@@ -16,6 +16,7 @@ com.alipay.sofa.rpc.server.rest.RestServer#registerProvider
 ```java
 com.alipay.sofa.rpc.config.JAXRSProviderManager#registerCustomProviderInstance
 ```
+
 进行注册，其中自定义的 Filter 遵循 REST 的规范，需要实现如下接口：
 
 ```java

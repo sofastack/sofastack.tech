@@ -71,7 +71,7 @@ Service Mesh Virtual Meetup 是 ServiceMesher 社区和 CNCF 联合主办的线
 
 ## 借助 Service Mesh 解决现有架构痛点
 
-### 架构痛点分析 
+### 架构痛点分析
 
 ![架构痛点分析](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1588851115971-477430b8-5b13-4dc3-b203-6b656d3aa111.jpeg)
 

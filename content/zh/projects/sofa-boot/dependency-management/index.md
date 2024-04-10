@@ -1,8 +1,10 @@
 
 ---
+
 title: "依赖管理"
 aliases: "/sofa-boot/docs/DependencyManagement"
 ---
+
 SOFABoot 是在 Spring Boot 的基础上提供的功能扩展。基于 Spring Boot 的机制，SOFABoot 管理了 SOFA 中间件的依赖，并且提供了 Spring Boot 的 Starter，方便用户在 Spring Boot 中使用 SOFA 中间件。
 
 ## SOFABoot 依赖管理 -- Maven

@@ -6,7 +6,7 @@ aliases: "/sofa-tracer/docs/Usage_Of_OkHttp"
 
 # OkHttp Integration
 
-In this document will demonstrate how to use SOFATracer to track of OkHttp, this example [address] (https://github.com/sofastack-guides/sofa-tracer-guides/tree/sofaboot-2.x/tracer-sample-with-okhttp).
+In this document will demonstrate how to use SOFATracer to track of OkHttp, this example [address] (<https://github.com/sofastack-guides/sofa-tracer-guides/tree/sofaboot-2.x/tracer-sample-with-okhttp>).
 
 Assuming you have built a simple Spring Web project based on SOFABoot, Then you can be operated by the following steps:
 
@@ -25,6 +25,7 @@ Assuming you have built a simple Spring Web project based on SOFABoot, Then you 
     <version>3.12.1</version>
 </dependency>
 ```
+
 ## Project Configuration
 
 Then, add the parameters to be used by SOFATracer in the project's `application.properties` file, including `spring.application.name` that indicates the name of the current application and `logging.path` that specifies the log output directory.
@@ -62,6 +63,7 @@ public class SampleRestController {
     }
 }
 ```
+
 ## Construct OkHttp to initiate a call to the RESTful service above
 
 The code example is as follows:
@@ -106,7 +108,7 @@ In the `application.properties`, the log printing directory we configured is `./
     └── tracer-self.log
 ```
 
-In the example, you can see logs like the following in okhttp-digest. 
+In the example, you can see logs like the following in okhttp-digest.
 
 ```json
 {"time":"2019-04-12 13:38:10.187","local.app":"OkHttpDemo","traceId":"0a0fe85a1555047489980100151193","spanId":"0","request.url":"http://localhost:8081/okhttp?name=sofa","method":"GET","result.code":"200","req.size.bytes":0,"resp.size.bytes":0,"time.cost.milliseconds":207,"current.thread.name":"main","remote.app":"","baggage":""}

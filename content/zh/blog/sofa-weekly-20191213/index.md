@@ -17,9 +17,9 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 
 SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 
-**SOFAStack 官网: **[https://www.sofastack.tech](https://www.sofastack.tech/)
+**SOFAStack 官网:**[https://www.sofastack.tech](https://www.sofastack.tech/)
 
-**SOFAStack: **[https://github.com/sofastack](https://github.com/sofastack)
+**SOFAStack:**[https://github.com/sofastack](https://github.com/sofastack)
 
 ### 每周读者问答提炼
 
@@ -57,7 +57,7 @@ A：事实上 Seata Saga 模式 是一个具备“服务编排”和“Saga 分�
 
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
-**3、@anorqiu9 **提问：
+**3、@anorqiu9**提问：
 
 > 关于 MOSN 我们目前遇到一个架构方面的问题，就是原基于 Dubbo 的服务和现在基于 Spring Cloud 的服务互调如何做？一种方案设计服务同时开启两个服务框架的服务接口为两个框架的服务同时提供服务;另一种方案是异构系统基于网关交互.这两种方案有什么优缺点？大家有没有碰到过类似的场景，是如何处理的？谢谢！
 

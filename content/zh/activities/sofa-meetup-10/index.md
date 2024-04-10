@@ -29,13 +29,13 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*kvWHQ5NzzsUAAAAAA
 
 > ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*OEPXQoXiFB0AAAAAAAAAAAAAARQnAQ)
 
-## 活动回顾 
+## 活动回顾
 
 **《从云原生视角，解读 Erda 微服务观测系统的实现》**
 
 **嘉宾介绍**
 
-刘浩杨，Erda 微服务和监控团队负责人，主要负责云原生 PaaS 的架构设计、微服务观测治理平台的产品技术规划等工作，对分布式、可观察性、云原生等方向有深入的研究和实践经验。同时也是开源爱好者，Apache SkyWalking PMC 成员，在 Apache SkyWalking 的多语言生态和社区建设中起到重要作用。 
+刘浩杨，Erda 微服务和监控团队负责人，主要负责云原生 PaaS 的架构设计、微服务观测治理平台的产品技术规划等工作，对分布式、可观察性、云原生等方向有深入的研究和实践经验。同时也是开源爱好者，Apache SkyWalking PMC 成员，在 Apache SkyWalking 的多语言生态和社区建设中起到重要作用。
 
 **议题简介**
 

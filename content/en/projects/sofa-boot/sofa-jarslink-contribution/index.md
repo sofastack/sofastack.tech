@@ -22,7 +22,6 @@ No Matter whether you are fixing a Jarslink bug or adding a Jarslink feature, su
 * The Jarslink maintenance personnel will discuss the bug or new feature you submitted to determine whether the modification is necessary, or if there is any room for improvement or a better solution.
 * Start developing and submitting code after agreement to reduce the cost of communication between both parties as well as the number of rejected pull requests.
 
-
 ### Getting the source code
 
 To modify or add a feature, click the `fork` button in the upper left corner to copy Jarslink trunk code to your code repository, after submitting an issue.
@@ -33,7 +32,6 @@ Perform all the Jarslink modifications on the branch, and submit a `pull request
 Therefore, after getting the introduction to source code steps, you need to:
 
 * Download the code locally. You may select the git/https mode in this step.
-
 
   ```plain
   git clone https://github.com/your account name/sofa-jarslink.git 
@@ -82,6 +80,7 @@ After a branch is pulled, you can modify the code.
 * You should provide the new unit test to prove that the previous code has bugs and the new code has fixed such bugs.
 
   Execute the following command to run all tests:
+
   ```plain
   mvn clean test
   ```

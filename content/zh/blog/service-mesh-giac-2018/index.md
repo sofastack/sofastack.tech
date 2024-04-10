@@ -57,7 +57,7 @@ ServiceMesh 作为云原生之上的服务网格技术在今年引起了业界�
 - 需要提供链路级、服务级的安全隔离保护，需要支持多种语言、多种协议的转换分发能力；
 - 需要能享受系统层面、硬件层面的红利；
 - 需要为复杂的运维架构（如蚂蚁的 LDC 等）提供可扩展的流量调拨能力等等；
-- 当然根据每个公司的业务场景可能还有其他的因素。 
+- 当然根据每个公司的业务场景可能还有其他的因素。
 
 最后，如何要将这些能力都汇聚在统一的数据平面产品上，弥合南北向、东西向数据平面由于技术栈、团队等差异带来的鸿沟，变成了另一个更为复杂的问题。这里所提到的问题中任何一点扩展开来都可以是一个丰富独立的 Topic，受限于篇幅本次分享只能介绍我们在解决这些问题中的一小部分思考和实践。
 
@@ -69,7 +69,7 @@ ServiceMesh 作为云原生之上的服务网格技术在今年引起了业界�
 
 这里我根据 ISTIO 的 Task 文档总结了目前 SOFAMesh 支持的一些能力，如：透明拦截适配，细粒度的流控，故障注入，双向链路加密等。对于一些暂时存疑的功能，如 Mixer Check 等，暂时没有支持。目前 SOFAMesh 已在 UC 生产环境落地使用，满足了 Sidecar、Ingress、Egress 多种场景的使用需求。在这里附上  SOFAMesh，SOFAMosn 的 Github 地址，也欢迎大家使用交流。
 
-SOFAMesh: [https://github.com/alipay/sofa-mesh](https://github.com/alipay/sofa-mesh) 
+SOFAMesh: [https://github.com/alipay/sofa-mesh](https://github.com/alipay/sofa-mesh)
 SOFAMosn: [https://github.com/alipay/sofa-mosn](https://github.com/alipay/sofa-mosn)
 
 ![蚂蚁云原生数据平台架构](https://cdn.nlark.com/lark/0/2018/png/1273/1543218458578-9f7bd036-eb1d-489a-bbb8-5c40031def35.png)
@@ -214,7 +214,7 @@ SOFAMosn: [https://github.com/alipay/sofa-mosn](https://github.com/alipay/sofa-m
 
 地址：
 
-SOFAMesh: [https://github.com/alipay/sofa-mesh](https://github.com/alipay/sofa-mesh) 
+SOFAMesh: [https://github.com/alipay/sofa-mesh](https://github.com/alipay/sofa-mesh)
 
 SOFAMosn: [https://github.com/alipay/sofa-mosn](https://github.com/alipay/sofa-mosn)
 

@@ -17,9 +17,9 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 
 SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 
-**SOFAStack 官网: **[https://www.sofastack.tech](https://www.sofastack.tech/)
+**SOFAStack 官网:**[https://www.sofastack.tech](https://www.sofastack.tech/)
 
-**SOFAStack: **[https://github.com/sofastack](https://github.com/sofastack)
+**SOFAStack:**[https://github.com/sofastack](https://github.com/sofastack)
 
 ### 每周读者问答提炼
 
@@ -34,7 +34,7 @@ A：用了分布式事务性能肯定会下降，这是大家对一致性和性�
 
 **2、@吴攀** 提问：
 
-> 麻烦问下，我现在做的一个销售订单的流程。需要监听审批的状态变化，然后状态机才往下进行流转。Saga 能否满足呢？ 
+> 麻烦问下，我现在做的一个销售订单的流程。需要监听审批的状态变化，然后状态机才往下进行流转。Saga 能否满足呢？
 
 A：目前是不支持的，因为 Saga 的状态机定位是服务编排的事务处理，不应该包含人工审批动作，建议做成两个流程，包含人工审批动作，中间状态时间会很长。
 
@@ -48,8 +48,8 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 > SOFABoot 版本 v3.3.0，目前官网文档里只有整合 Nacos 0.6.0 版本的，请问怎么使用 Nacos 的命名空间功能？SOFABoot 版本 v3.3.0，maven 引用里 nacos-client 版本是 1.0.0，请问现在支持 nacos 最新版本是多少。
 
-A：Nacos 配置格式参考：https://www.sofastack.tech/projects/sofa-rpc/registry-nacos/
-对于 namespace 的，可以配置成这样即可：namespace nacos://yyy:8848/namespaceNacos 
+A：Nacos 配置格式参考：<https://www.sofastack.tech/projects/sofa-rpc/registry-nacos/>
+对于 namespace 的，可以配置成这样即可：namespace nacos://yyy:8848/namespaceNacos
 客户端应该是兼容的，你可以直接升级这个包的版本。
 
 > 命名空间问题解决了，感谢。因为我使用的时候指定了 nacos client 版本为 0.6.0，升级到 0.8.0 以上 nacos://yyy:8848/namespace 这种形式是可以的，而且只能使用 nacos://yyy:8848/namespace 这种形式，nacos://yyy:8848 是不行的。还望官方文档可以及时更新一下。

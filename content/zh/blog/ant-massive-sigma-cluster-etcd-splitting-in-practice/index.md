@@ -67,13 +67,13 @@ Sigma 集群最核心的 SLO 也是 Pod 的创建删除升级等指标。Pod 资
 
 ### PART. 2 问题解析
 
-#### 美好的期望 
+#### 美好的期望
 
 作为一个懒人，不想和那么多的组件 owner 沟通重启问题，大量组件重启也易造成操作遗漏，造成非预期问题。同时是否有更好的数据完整性校验的手段呢？
 
 如果组件不重启，那么整个过程后演变为下面的流程，预期将简化流程，同时保障安全性。
 
-为了达成美好的期望，我们来追本溯源重新 review 整个流程。 
+为了达成美好的期望，我们来追本溯源重新 review 整个流程。
 
 ![图片](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*DD7ZT7CK6I4AAAAAAAAAAAAAARQnAQ)
 
@@ -101,7 +101,7 @@ Lease 资源一般用于 Kubelet 心跳上报，另外也是社区推荐的 cont
 
 每个 Kubelet 都使用一个 Lease 对象进行心跳上报，默认是每 10s 上报一次。节点越多，etcd 承担的 update 请求越多，节点 Lease 的每分钟更新次数是节点总量的 6 倍，1 万个节点就是每分钟 6 万次，还是非常可观的。Lease 资源的更新对于判断 Node 是否 Ready 非常重要，所以单独拆分出来。
 
-controller 类组件的选主逻辑基本上都是使用的开源的选主代码包，即使用 Lease 选主的组件都是统一的选主逻辑。Kubelet 的上报心跳的代码逻辑更是在我们掌控之中。从代码中分析可知 Lease 资源并不需要严格的数据一致性，只需要在一定时间内保障 Lease 数据被更新过，就不影响使用 Lease 的组件正常功能。 
+controller 类组件的选主逻辑基本上都是使用的开源的选主代码包，即使用 Lease 选主的组件都是统一的选主逻辑。Kubelet 的上报心跳的代码逻辑更是在我们掌控之中。从代码中分析可知 Lease 资源并不需要严格的数据一致性，只需要在一定时间内保障 Lease 数据被更新过，就不影响使用 Lease 的组件正常功能。
 
 Kubelet 判断 Ready 的逻辑是否在 controller-manager 中的时间默认设置是 40s，即只要对应 Lease 资源在 40s 内被更新过，就不会被判断为 NotReady。而且 40s 这个时间可以调长，只要在这个时间更新就不影响正常功能。使用选主的 controller 类组件的选主 Lease duration 一般为 5s~65s 可以自行设置。
 
@@ -243,7 +243,7 @@ func (r *Reflector) Run(stopCh <-chan struct{}) {
 // ListAndWatch first lists all items and get the resource version at the moment of call,
 // and then use the resource version to watch.
 // It returns error if ListAndWatch didn't even try to initialize watch.
-func (r *Reflector) ListAndWatch(stopCh <-chan struct{}) error {
+func (r*Reflector) ListAndWatch(stopCh <-chan struct{}) error {
   var resourceVersion string
   // Explicitly set "0" as resource version - it's fine for the List()
   // to be served from cache and potentially be delayed relative to
@@ -298,7 +298,7 @@ func (r *Reflector) ListAndWatch(stopCh <-chan struct{}) error {
 
 ### PART. 3 问题破局
 
-#### 破解重启问题 
+#### 破解重启问题
 
 到了这里，我们似乎也难逃需要重启组件的命运，但是经过问题解析之后，我们理清了问题原因，其实也就找到了解决问题的方法。
 
@@ -320,7 +320,7 @@ kube-apiserver 的 watch 请求处理前文已经介绍过，我们可以通过�
 
 ![图片](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*LjbFRbXVpygAAAAAAAAAAAAAARQnAQ)
 
-#### 技术保障数据一致 
+#### 技术保障数据一致
 
 前人的经验是通过 etcd make-mirror 工具来实现数据迁移的，优点是简单方便，开源工具开箱即用。缺点是该工作实现简单，就是从一个 etcd 中读取 key，然后重新写入另一个 etcd 中，不支持断点续传，对大数据量耗时长的迁移不友好。另外 etcd key 中的 createRevision 信息也被破坏掉。因此在迁移完成后，需要进行严格的数据完整性检测。
 
@@ -364,7 +364,7 @@ etcd snapshot 数据虽然有我们想要的保持 KeyValue 的完整性，但�
 
 ![图片](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*lSCcRZqnmOAAAAAAAAAAAAAAARQnAQ)
 
-#### Pod 禁写的小坑 
+#### Pod 禁写的小坑
 
 在前面的拆分流程中，我们提到 K8s 禁止写一类资源的时候，可以通过 MutatingWebhook 来实现，就是直接返回 deny 结果即可，比较简单。这里记录一下我们当时遇到的一个小坑点。
 
@@ -377,6 +377,7 @@ kind: MutatingWebhookConfiguration
 metadata:
   name: deny-pods-write
 webhooks:
+
 - admissionReviewVersions:
   - v1beta1
   clientConfig:
@@ -420,6 +421,7 @@ kind: MutatingWebhookConfiguration
 metadata:
   name: deny-pods-write
 webhooks:
+
 - admissionReviewVersions:
   - v1beta1
   clientConfig:
@@ -442,7 +444,7 @@ webhooks:
   sideEffects: NoneOnDryRun
 、、、
 
-#### 最后的拆分流程 
+#### 最后的拆分流程
 
 在解决了前面的问题后，我们最后的拆分流程也就出来了。
 
@@ -454,7 +456,7 @@ webhooks:
 
 Pod 的禁写操作的时间根据 Pod 数据的大小而所有变化，主要消耗在 Pod 数据 copy 过程上，基本整个过程在几分钟内即可完成。
 
-除了 kube-apiserver 无法避免需要更新存储配置重启外，不需要任何组件重启。同时也节省了大量的与组件 owner 沟通时间，也避免了众多操作过程中的众多不确定性。 
+除了 kube-apiserver 无法避免需要更新存储配置重启外，不需要任何组件重启。同时也节省了大量的与组件 owner 沟通时间，也避免了众多操作过程中的众多不确定性。
 
 整个拆分过程一个人完全可以胜任。
 
@@ -488,4 +490,4 @@ Pod 的禁写操作的时间根据 Pod 数据的大小而所有变化，主要�
 
 [蚂蚁集团万级规模 k8s 集群 etcd 高可用建设之路](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247491409&idx=1&sn=d6c0722d55b772aedb6ed8e34979981d&chksm=faa0f08bcdd7799dabdb3b934e5068ff4e171cffb83621dc08b7c8ad768b8a5f2d8668a4f57e&scene=21)
 
-![img](https://gw.alipayobjects.com/zos/bmw-prod/75d7bde6-1f48-4f28-80a4-215f8ec811bd.webp) 
+![img](https://gw.alipayobjects.com/zos/bmw-prod/75d7bde6-1f48-4f28-80a4-215f8ec811bd.webp)

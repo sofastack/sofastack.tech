@@ -13,11 +13,11 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/156670/1556492476096-9300c652-29e
 > **SOFA**Stack
 > **S**calable **O**pen **F**inancial  **A**rchitecture Stack
 > 是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，是在金融场景里锤炼出来的最佳实践。
-> 
+>
 > SOFAJRaft 是一个基于 Raft 一致性算法的生产级高性能 Java 实现，支持 MULTI-RAFT-GROUP，适用于高负载低延迟的场景。
-> 
+>
 > 本文为《剖析 | SOFAJRaft 实现原理》第一篇，本篇作者米麒麟，来自陆金所。《剖析 | SOFAJRaft 实现原理》系列由 SOFA 团队和源码爱好者们出品，项目代号：<SOFA:JRaftLab/>，文章尾部有参与方式，欢迎同样对源码热情的你加入。
-> 
+>
 > SOFAJRaft ：[https://github.com/sofastack/sofa-jraft](https://github.com/alipay/sofa-jraft)
 
 # 前言
@@ -139,7 +139,7 @@ LocalRaftMetaStorage 基于 ProtoBuf 本地存储 Raft 元信息实现入�
 
 - 如果任务提交比较频繁，例如消息中间件场景导致整个重建过程很长启动缓慢；
 - 如果日志非常多并且节点需要存储所有的日志，对存储来说是资源占用不可持续；
-- 如果增加 Node 节点，新节点需要从 Leader 获取所有的日志重新存放至状态机，对于 Leader 和网络带宽都是不小的负担。 
+- 如果增加 Node 节点，新节点需要从 Leader 获取所有的日志重新存放至状态机，对于 Leader 和网络带宽都是不小的负担。
 
 因此通过引入 Snapshot 机制来解决此三个问题，所谓快照 Snapshot 即对数据当前值的记录，是为当前状态机的最新状态构建"镜像"单独保存，保存成功删除此时刻之前的日志减少日志存储占用；启动的时候直接加载最新的 Snapshot 镜像，然后重放在此之后的日志即可，如果 Snapshot 间隔合理，整个重放到状态机过程较快，加速启动过程。最后新节点的加入先从 Leader 拷贝最新的 Snapshot 安装到本地状态机，然后只要拷贝后续的日志即可，能够快速跟上整个 Raft Group 的进度。Leader 生成快照有几个作用：
 
@@ -170,7 +170,7 @@ SnapshotStorage 默认实现 LocalSnapshotStorage 是基于本地文件存储
 - init()：删除文件命名为 temp 的临时镜像 Snapshot，销毁文件前缀为 snapshot_ 的旧快照 Snapshot，获取快照最后一个索引 lastSnapshotIndex。
 - close()：按照快照最后一个索引 lastSnapshotIndex 和镜像编写器 LocalSnapshotWriter 快照索引重命名临时镜像 Snapshot 文件，销毁编写器 LocalSnapshotWriter 存储路径快照。
 - create()：销毁文件命名为 temp 的临时快照 Snapshot，基于临时镜像存储路径创建初始化快照编写器 LocalSnapshotWriter，加载文件命名为 __raft_snapshot_meta 的 Raft 快照元数据至内存。
-- open()：根据快照最后一个索引 lastSnapshotIndex 获取文件前缀为 snapshot_ 快照存储路径，基于快照存储路径创建初始化快照阅读器 LocalSnapshotReader，加载文件命名为 __raft_snapshot_meta 的 Raft 镜像元数据至内存。
+- open()：根据快照最后一个索引 lastSnapshotIndex 获取文件前缀为 snapshot_快照存储路径，基于快照存储路径创建初始化快照阅读器 LocalSnapshotReader，加载文件命名为 __raft_snapshot_meta 的 Raft 镜像元数据至内存。
 - startToCopyFrom(uri, opts)：创建初始化状态机快照复制器 LocalSnapshotCopier，生成远程文件复制器 RemoteFileCopier，基于远程服务地址 Endpoint 获取 Raft 客户端 RPC 服务连接指定 Uri，启动后台线程复制 Snapshot 镜像数据，加载 Raft 快照元数据获取远程快照 Snapshot 镜像文件，读取远程指定快照存储路径数据拷贝到 BoltSession，快照复制器 LocalSnapshotCopier 同步 Raft 快照元数据。
 
 ## SnapshotExecutor 存储管理
@@ -187,7 +187,7 @@ SnapshotExecutor 状态机快照和远程安装镜像实现逻辑：
 
 本文从 Log 日志存储 LogStorage、Meta 元信息存储 RaftMetaStorage 以及 Snapshot 快照存储 SnapshotStorage 三个方面详述 SOFAJRaft 存储模块实现细节，直观刻画 SOFAJRaft Server 节点 Node 之间存储日志、Raft 配置和镜像流程。
 
-# 欢迎加入，参与 SOFAJRaft 源码解析 
+# 欢迎加入，参与 SOFAJRaft 源码解析
 
 ![SOFALab](https://cdn.nlark.com/yuque/0/2019/png/226702/1556166838486-44c2acc2-e0c3-4557-9dfb-881617ad2bb1.png)
 

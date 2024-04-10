@@ -40,7 +40,7 @@ GitHub 地址：[https://github.com/sofastack/sofa-registry](https://github.com/
 MetaServer 在 SOFARegistry 中，承担着集群元数据管理的角色，用来维护集群成员列表，可以认为是 SOFARegistry 注册中心的注册中心。当 SessionServer 和 DataServer 需要知道集群列表，并且需要扩缩容时，MetaServer 将会提供相应的数据。
 
 ![图1 MetaServer 内部结构](https://cdn.nlark.com/yuque/0/2020/png/156644/1582241958945-116ce065-dba1-479b-b208-8fbb102ef346.png)
-图 1 MetaServer 内部结构 
+图 1 MetaServer 内部结构
 图源自 [《蚂蚁金服服务注册中心 MetaServer 功能介绍和实现剖析 | SOFARegistry 解析》](https://www.yuque.com/sofaregistrylab/plsrlw/rk82ky)
 
 因为 SOFARegistry 集群节点列表数据并不是很多，因此不需要使用数据分片的方式在 MetaServer 中存储。如图 1 所示，集群节点列表存储在 Repository 中，上面通过 Raft 强一致性协议对外提供节点注册、续约、列表查询等 Bolt 请求，从而保障集群获得的数据是强一致性的。
@@ -102,9 +102,9 @@ DataServer 在服务数据有变化时会主动通知到 SessionServer 中，此
 
 SessionServer 会每隔一定的时间（默认 30s）主动向 DataServer 查询所有 `dataInfoId` 的 `version` 信息，若发现有版本号有变化，则会进行相应的同步操作。
 
-  - SessionServer 从 DataServer 同步数据：常规情况下，一般是 DataServer 的数据要比 SessionServer 更新，此时，当 SessionServer 发现数据版本号有变化时，会主动拉取 DataServer 的数据进行同步。注意，此时缓存的数据只与当前 SessionServer 管理的客户端所订阅的服务信息有关，并不会缓存全量的数据，而且容量也不允许。
+- SessionServer 从 DataServer 同步数据：常规情况下，一般是 DataServer 的数据要比 SessionServer 更新，此时，当 SessionServer 发现数据版本号有变化时，会主动拉取 DataServer 的数据进行同步。注意，此时缓存的数据只与当前 SessionServer 管理的客户端所订阅的服务信息有关，并不会缓存全量的数据，而且容量也不允许。
 
-  - DataServer 从 SessionServer 同步数据：特殊情况下，DataServer 数据出现缺失，并且副本数据也出现问题之后，当 SessionServer 与 DataServer 数据进行版本号比对时，会触发数据恢复操作，能够把 SessionServer 内存中所存储的全量数据恢复到 DataServer 中，实现了数据的反向同步与补偿机制。
+- DataServer 从 SessionServer 同步数据：特殊情况下，DataServer 数据出现缺失，并且副本数据也出现问题之后，当 SessionServer 与 DataServer 数据进行版本号比对时，会触发数据恢复操作，能够把 SessionServer 内存中所存储的全量数据恢复到 DataServer 中，实现了数据的反向同步与补偿机制。
 
 - 数据的缓存方式
 

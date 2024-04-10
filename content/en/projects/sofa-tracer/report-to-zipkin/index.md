@@ -8,7 +8,9 @@ This example demonstrates how to remotely report link data to [Zipkin](https://z
 The following examples demonstrate how to use them in SOFABoot/SpringBoot projects and non-SOFABoot/SpringBoot projects, respectively.
 
 ## Prepare environment
+
 To use SOFABoot, you need to prepare the basic environment first. SOFABoot relies on the following environments:
+
 + JDK7 or JDK8
 + Apache Maven 3.2.5+ required for compilation
 
@@ -35,7 +37,7 @@ Replace the above with the followings:
 </parent>
 ```
 
-The `${sofa.boot.version}` specifies the latest version of SOFABoot. For more about SOFABoot versions, see [Release notes](https://github.com/sofastack/sofa-boot/releases). 
+The `${sofa.boot.version}` specifies the latest version of SOFABoot. For more about SOFABoot versions, see [Release notes](https://github.com/sofastack/sofa-boot/releases).
 
 ## Add SOFATracer starter
 
@@ -64,6 +66,7 @@ com.alipay.sofa.tracer.zipkin.baseUrl=http://localhost:9411
 ## Configure Zipkin Dependencies
 
 Considering that Zipkin's data reporting capability is not the ability of SOFATracer to be enabled by default,it‘s desirable to add the following Zipkin data reporting dependencies when using SOFATracer for data reporting:
+
 ```xml
 <dependency>
     <groupId>io.zipkin.zipkin2</groupId>
@@ -74,7 +77,7 @@ Considering that Zipkin's data reporting capability is not the ability of SOFATr
     <groupId>io.zipkin.reporter2</groupId>
     <artifactId>zipkin-reporter</artifactId>
     <version>2.7.13</version>
-</dependency>	
+</dependency> 
 ```
 
 ## Start the Zipkin server
@@ -95,9 +98,9 @@ You can access the REST service by typing [http://localhost:8080/helloZipkin](ht
 
 ```json
 {
-	content: "Hello, SOFATracer Zipkin Remote Report!",
-	id: 1,
-	success: true
+ content: "Hello, SOFATracer Zipkin Remote Report!",
+ id: 1,
+ success: true
 }
 ```
 
@@ -105,10 +108,8 @@ You can access the REST service by typing [http://localhost:8080/helloZipkin](ht
 
 Open the Zipkin server interface, assuming that the address of the Zipkin server we deployed is `http://zipkin-cloud-3.host.net:9411`, open the URL and search for `zipkin` (since our local access address is localhost:8080/helloZipkin), you can see the link map shown.
 
-## SOFATracer in Spring Project 
+## SOFATracer in Spring Project
 
 For a typical Spring project, we usually use tomcat/jetty as the servlet container to launch the application. Specific project reference [Use SOFATracer in Spring project](https://github.com/glmapper/tracer-zipkin-plugin-demo)
 
 Prerequisite: You need to configure and set up the Zipkin server with reference to [this document](https://zipkin.io/).
-
-

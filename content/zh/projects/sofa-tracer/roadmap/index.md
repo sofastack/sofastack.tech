@@ -39,13 +39,13 @@ aliases: "/sofa-tracer/docs/roadmap"
 ### 2.2.0
 
 * SOFATracer 支持 JDBC 数据源
-    * SOFATracer 支持 Mysql Driver
-    * SOFATracer 支持 [Sharding-JDBC](https://github.com/sharding-sphere/sharding-sphere)
-    * SOFATracer 支持  Mysql-JDBC
-    * SOFATracer 支持  Druid
-    * SOFATracer 支持  c3p0
-    * SOFATracer 支持  Tomcat-JDBC
-    * SOFATracer 支持  HikariCP
+  * SOFATracer 支持 Mysql Driver
+  * SOFATracer 支持 [Sharding-JDBC](https://github.com/sharding-sphere/sharding-sphere)
+  * SOFATracer 支持  Mysql-JDBC
+  * SOFATracer 支持  Druid
+  * SOFATracer 支持  c3p0
+  * SOFATracer 支持  Tomcat-JDBC
+  * SOFATracer 支持  HikariCP
 * SOFATracer 支持 HttpClient
 * SOFATracer 支持 Zipkin 2.X.X 版本，开发验证并测试
 

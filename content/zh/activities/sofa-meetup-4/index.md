@@ -112,4 +112,3 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁集团自主�
 
 使用钉钉搜索群号：**34197075**，即可加入，获取一手开源技术干货；或微信扫码关注“金融级分布式架构”微信公众号👇
 ![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*s3UzR6VeQ6cAAAAAAAAAAAAAARQnAQ)
-

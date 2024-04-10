@@ -25,4 +25,3 @@ For example, if the current version of the master branch code is 5.4.0, the BugF
 * The develop branches use SNAPSHOT versions, for example, 5.3.0-SNAPSHOT.
 * Upon formal release, SNAPSHOT is replaced with a formal version number, for example 5.3.0.
 * After the formal release, the next version is pulled, for example, 5.3.1-SNAPSHOT.
-

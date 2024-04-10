@@ -10,7 +10,7 @@ cover: "/cover.jpg"
 ---
 
 > **SOFA** **S**calable **O**pen **F**inancial **A**rchitecture 是蚂蚁金服自主研发的金融级分布式中间件，包含了构建金融级云原生架构所需的各个组件，是在金融场景里锤炼出来的最佳实践。
-> 
+>
 > SOFATracer 是一个用于分布式系统调用跟踪的组件，通过统一的 TraceId 将调用链路中的各种网络调用情况以日志的方式记录下来，以达到透视化网络调用的目的，这些链路数据可用于故障的快速发现，服务治理等。
 >
 > **SOFATracer**：<https://github.com/sofastack/sofa-tracer>
@@ -58,9 +58,9 @@ cover: "/cover.jpg"
 
 但是为了简化 `span` 之间的这种依赖关系，在具体实现时通常会将具有嵌套关系的作为 `ChildOf`，平行执行的作为`FollowFrom`，比如：
 
-__a、ChildOf 示例__
+**a、ChildOf 示例**
 
-在 `methodA` 中调用了 `method` B : 
+在 `methodA` 中调用了 `method` B :
 
 ```java
 methodA(){            // spanA start
@@ -76,7 +76,7 @@ methodB(){            // spanB start
 
 这种关系一般会 表示为 `SpanB ChildOf SpanA` 。
 
-__b、FollowFrom 示例__
+**b、FollowFrom 示例**
 
 `method` 方法中，`methodA`执行之后 `methodB` 执行 :
 
@@ -93,7 +93,7 @@ method(){
 
 这种关系一般会 表示为 `SpanB FollowFrom SpanA` 。
 
-### 1.2、API 
+### 1.2、API
 
 `Opentracing API` 是对分布式链路中涉及到的一些列操作的高度抽象集合。`Opentracing` 中将所有核心的组件都声明为接口，例如 `Tracer`、`Span`、`SpanContext`、`Format`（高版本中还包括 `Scope` 和 `ScopeManager`）等。`SOFATracer` 使用的版本是 0.22.0 ，主要是对 `Tracer`、`Span`、`SpanContext` 三个概念模型的实现。下面就针对这三个组件结合 `SOFATracer` 来分析。
 

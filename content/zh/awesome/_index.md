@@ -97,7 +97,7 @@ title: "Awesome SOFA"
 - [Github Community](https://github.com/sofastack/community)
 - 微信
   - 公众号：金融级分布式架构（Antfin_SOFA）：致力于打造一流的分布式技术在金融场景应用实践的技术交流平台，专注于交流金融科技行业内最前沿、可供参考的技术方案与实施路线。
-    
+
     <img alt="Wechat" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*LVCnR6KtEfEAAAAAAAAAAABjARQnAQ" height="250" />
   
 - 钉钉

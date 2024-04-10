@@ -42,6 +42,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*XB9ESa8q8PwAAAAAA
 **议题简介**
 
 - Kata Containers 具有的轻量和高安全等特性使它在资源受限和安全性需求的物联网/边缘计算领域有很好的应用前景, 并且可以与其他轻量级解决方案（如 K3S 等）进一步结合使用。本话题包含下列子话题：
+
 1) LF Edge（由 Akraino 和 EdgeX 合并而成）中的 Kata Containers；
 2) 打造轻量级 K8S 集群--Kata-Containers 与 K3S 的结合；
 3) 在 ACRN 中运行 Kata Containers；
@@ -82,8 +83,8 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*XB9ESa8q8PwAAAAAA
 
 **听众收获**
 
-- 了解 WebAssembly 这一新兴技术 
-- 了解 WAMR 开源项目的架构、特性及社区合作 
+- 了解 WebAssembly 这一新兴技术
+- 了解 WAMR 开源项目的架构、特性及社区合作
 - 了解 WAMR 在云原生场景中的应用实例
 
 **《WebAssembly 在 MOSN 中的探索与实践》**

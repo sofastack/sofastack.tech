@@ -117,14 +117,14 @@ SOFABolt 中包含的协议命令如上图所示。在 RPC 版本的协议命令
 整个请求和响应的过程设计的核心组件如上图所示，其中：
 
 - 客户端侧：
-   - Connection 连接对象的封装，封装对底层网络的操作；
-   - CommandEncoder 负责编码 RemotingCommand，将 RemotingCommand 按照私有协议编码成 byte 数据；
-   - RpcResponseProcessor 负责处理服务端的响应；
+  - Connection 连接对象的封装，封装对底层网络的操作；
+  - CommandEncoder 负责编码 RemotingCommand，将 RemotingCommand 按照私有协议编码成 byte 数据；
+  - RpcResponseProcessor 负责处理服务端的响应；
 - 服务端侧：
-   - CommandDecoder 分别负责解码 byte 数据，按照私有协议将 byte 数据解析成 RemotingCommand 对象；
-   - RpcHandler 按照协议码将 RemotingCommand 转发到对应的 CommandHandler 处理；
-   - CommandHandler 按照 CommandCode 将 RemotingCommand 转发到对应的 RpcRequestProcessor 处理；
-   - RpcRequestProcessor 按照 RemotingCommand 携带对象的 Class 将请求转发到用户的 UserProcessor 执行业务逻辑，并将结果通过 CommandDecoder 编码后返回给客户端；
+  - CommandDecoder 分别负责解码 byte 数据，按照私有协议将 byte 数据解析成 RemotingCommand 对象；
+  - RpcHandler 按照协议码将 RemotingCommand 转发到对应的 CommandHandler 处理；
+  - CommandHandler 按照 CommandCode 将 RemotingCommand 转发到对应的 RpcRequestProcessor 处理；
+  - RpcRequestProcessor 按照 RemotingCommand 携带对象的 Class 将请求转发到用户的 UserProcessor 执行业务逻辑，并将结果通过 CommandDecoder 编码后返回给客户端；
 
 ## 私有协议实现
 

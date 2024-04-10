@@ -169,7 +169,7 @@ private final ConcurrentHashSet<InvocationStat> stats;
 
 ### 3.3 度量策略
 
-度量策略会计算模型 MeasureModel 里的数据进行度量，选出正常和异常节点。 默认采用服务水平 ip 资源度量策略，如果某个 ip 的异常率大于该服务所有 ip 的平均异常率到一定比例，则判定为异常。 
+度量策略会计算模型 MeasureModel 里的数据进行度量，选出正常和异常节点。 默认采用服务水平 ip 资源度量策略，如果某个 ip 的异常率大于该服务所有 ip 的平均异常率到一定比例，则判定为异常。
 
 度量策略将计算模型设置为三种状态：HEALTH(正常)、ABNORMAL(异常)、IGNORE(忽略)。这三种状态根据异常率情况相互转化。
 

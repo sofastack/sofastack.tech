@@ -1,9 +1,9 @@
 
 ---
+
 title: "View version"
 aliases: "/sofa-boot/docs/ViewVersions"
 ---
-
 
 ﻿With SOFABoot, we can directly view the version of SOFA middleware and other detailed information in the browser.
 
@@ -35,4 +35,5 @@ After an application started successfully, you can visit [http://localhost:8080/
   }
 ]
 ```
-** Note: In SOFABoot 3.x, the endpoint path has been changed from sofaboot/versions to actuator/versions**.
+
+**Note: In SOFABoot 3.x, the endpoint path has been changed from sofaboot/versions to actuator/versions**.

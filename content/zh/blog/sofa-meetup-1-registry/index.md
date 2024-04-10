@@ -24,7 +24,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563935303034-c22aa7b6-f54
 
 SOFARegistry 是蚂蚁金服开源的具有承载海量服务注册和订阅能力的、高可用的服务注册中心，最早源自于淘宝的初版 ConfigServer，在支付宝/蚂蚁金服的业务发展驱动下，近十年间已经演进至第五代。
 
-GitHub 地址：[https://github.com/alipay/sofa-registry](https://github.com/alipay/sofa-registry) 
+GitHub 地址：[https://github.com/alipay/sofa-registry](https://github.com/alipay/sofa-registry)
 
 ## 概念
 

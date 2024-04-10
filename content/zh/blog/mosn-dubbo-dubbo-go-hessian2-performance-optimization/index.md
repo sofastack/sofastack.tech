@@ -70,44 +70,44 @@ go tool pprof mosnd pprof.mosn.samples.cpu.001.pb.gz
 Total: 1.75mins
      370ms     37.15s (flat, cum) 35.46% of Total
       10ms       10ms    123:func (conn *streamConnection) Dispatch(buffer types.IoBuffer) {
-      40ms      630ms    125:	log.DefaultLogger.Tracef("stream connection dispatch data string = %v", buffer.String())
+      40ms      630ms    125: log.DefaultLogger.Tracef("stream connection dispatch data string = %v", buffer.String())
          .          .    126:
-         .          .    127:	// get sub protocol codec
-         .      250ms    128:	requestList := conn.codec.SplitFrame(buffer.Bytes())
-      20ms       20ms    129:	for _, request := range requestList {
-      10ms      160ms    134:		headers := make(map[string]string)
-         .          .    135:		// support dynamic route
-      50ms      920ms    136:		headers[strings.ToLower(protocol.MosnHeaderHostKey)] = conn.connection.RemoteAddr().String()
+         .          .    127: // get sub protocol codec
+         .      250ms    128: requestList := conn.codec.SplitFrame(buffer.Bytes())
+      20ms       20ms    129: for _, request := range requestList {
+      10ms      160ms    134:  headers := make(map[string]string)
+         .          .    135:  // support dynamic route
+      50ms      920ms    136:  headers[strings.ToLower(protocol.MosnHeaderHostKey)] = conn.connection.RemoteAddr().String()
          .          .    149:
-         .          .    150:		// get stream id
-      10ms      440ms    151:		streamID := conn.codec.GetStreamID(request)
-         .          .    156:		// request route
-         .       50ms    157:		requestRouteCodec, ok := conn.codec.(xprotocol.RequestRouting)
-         .          .    158:		if ok {
-         .     20.11s    159:			routeHeaders := requestRouteCodec.GetMetas(request)
-         .          .    165:		}
+         .          .    150:  // get stream id
+      10ms      440ms    151:  streamID := conn.codec.GetStreamID(request)
+         .          .    156:  // request route
+         .       50ms    157:  requestRouteCodec, ok := conn.codec.(xprotocol.RequestRouting)
+         .          .    158:  if ok {
+         .     20.11s    159:   routeHeaders := requestRouteCodec.GetMetas(request)
+         .          .    165:  }
          .          .    166:
-         .          .    167:		// tracing
-      10ms       80ms    168:		tracingCodec, ok := conn.codec.(xprotocol.Tracing)
-         .          .    169:		var span types.Span
-         .          .    170:		if ok {
-      10ms      1.91s    171:			serviceName := tracingCodec.GetServiceName(request)
-         .      2.17s    172:			methodName := tracingCodec.GetMethodName(request)
+         .          .    167:  // tracing
+      10ms       80ms    168:  tracingCodec, ok := conn.codec.(xprotocol.Tracing)
+         .          .    169:  var span types.Span
+         .          .    170:  if ok {
+      10ms      1.91s    171:   serviceName := tracingCodec.GetServiceName(request)
+         .      2.17s    172:   methodName := tracingCodec.GetMethodName(request)
          .          .    176:
-         .          .    177:			if trace.IsEnabled() {
-         .       50ms    179:				tracer := trace.Tracer(protocol.Xprotocol)
-         .          .    180:				if tracer != nil {
-      20ms      1.66s    181:					span = tracer.Start(conn.context, headers, time.Now())
-         .          .    182:				}
-         .          .    183:			}
-         .          .    184:		}
+         .          .    177:   if trace.IsEnabled() {
+         .       50ms    179:    tracer := trace.Tracer(protocol.Xprotocol)
+         .          .    180:    if tracer != nil {
+      20ms      1.66s    181:     span = tracer.Start(conn.context, headers, time.Now())
+         .          .    182:    }
+         .          .    183:   }
+         .          .    184:  }
          .          .    185:
-         .      110ms    186:		reqBuf := networkbuffer.NewIoBufferBytes(request)
-         .          .    188:		// append sub protocol header
-      10ms      950ms    189:		headers[types.HeaderXprotocolSubProtocol] = string(conn.subProtocol)
-      10ms      4.96s    190:		conn.OnReceive(ctx, streamID, protocol.CommonHeader(headers), reqBuf, span, isHearbeat)
-      30ms       60ms    191:		buffer.Drain(requestLen)
-         .          .    192:	}
+         .      110ms    186:  reqBuf := networkbuffer.NewIoBufferBytes(request)
+         .          .    188:  // append sub protocol header
+      10ms      950ms    189:  headers[types.HeaderXprotocolSubProtocol] = string(conn.subProtocol)
+      10ms      4.96s    190:  conn.OnReceive(ctx, streamID, protocol.CommonHeader(headers), reqBuf, span, isHearbeat)
+      30ms       60ms    191:  buffer.Drain(requestLen)
+         .          .    192: }
          .          .    193:}
 ```
 
@@ -137,105 +137,105 @@ var DubboSubMetadata = &Metadata{}
 // speed up for decode or encode dubbo peformance.
 // please do not use outside of the dubbo framwork.
 type Metadata struct {
-	data map[string]*Node
-	mu   sync.RWMutex // protect data internal
+ data map[string]*Node
+ mu   sync.RWMutex // protect data internal
 }
 
 // Find cached pub or sub metatada.
 // caller should be check match is true
 func (m *Metadata) Find(path, version string) (node *Node, matched bool) {
-	// we found nothing
-	if m.data == nil {
-		return nil, false
-	}
+ // we found nothing
+ if m.data == nil {
+  return nil, false
+ }
 
-	m.mu.RLocker().Lock()
-	// for performance
-	// m.mu.RLocker().Unlock() should be called.
+ m.mu.RLocker().Lock()
+ // for performance
+ // m.mu.RLocker().Unlock() should be called.
 
-	// we check head node first
-	head := m.data[path]
-	if head == nil || head.count <= 0 {
-		m.mu.RLocker().Unlock()
-		return nil, false
-	}
+ // we check head node first
+ head := m.data[path]
+ if head == nil || head.count <= 0 {
+  m.mu.RLocker().Unlock()
+  return nil, false
+ }
 
-	node = head.Next
-	// just only once, just return
-	// for dubbo framwork, that's what we're expected.
-	if head.count == 1 {
-		m.mu.RLocker().Unlock()
-		return node, true
-	}
+ node = head.Next
+ // just only once, just return
+ // for dubbo framwork, that's what we're expected.
+ if head.count == 1 {
+  m.mu.RLocker().Unlock()
+  return node, true
+ }
 
-	var count int
-	var found *Node
+ var count int
+ var found *Node
 
-	for ; node != nil; node = node.Next {
-		if node.Version == version {
-			if found == nil {
-				found = node
-			}
-			count++
-		}
-	}
+ for ; node != nil; node = node.Next {
+  if node.Version == version {
+   if found == nil {
+    found = node
+   }
+   count++
+  }
+ }
 
-	m.mu.RLocker().Unlock()
-	return found, count == 1
+ m.mu.RLocker().Unlock()
+ return found, count == 1
 }
 
 // Register pub or sub metadata
 func (m *Metadata) Register(path string, node *Node) {
-	m.mu.Lock()
-	// for performance
-	// m.mu.Unlock() should be called.
+ m.mu.Lock()
+ // for performance
+ // m.mu.Unlock() should be called.
 
-	if m.data == nil {
-		m.data = make(map[string]*Node, 4)
-	}
+ if m.data == nil {
+  m.data = make(map[string]*Node, 4)
+ }
 
-	// we check head node first
-	head := m.data[path]
-	if head == nil {
-		head = &Node{
-			count: 1,
-		}
-		// update head
-		m.data[path] = head
-	}
+ // we check head node first
+ head := m.data[path]
+ if head == nil {
+  head = &Node{
+   count: 1,
+  }
+  // update head
+  m.data[path] = head
+ }
 
-	insert := &Node{
-		Service: node.Service,
-		Version: node.Version,
-		Group:   node.Group,
-	}
+ insert := &Node{
+  Service: node.Service,
+  Version: node.Version,
+  Group:   node.Group,
+ }
 
-	next := head.Next
-	if next == nil {
-		// fist insert, just insert to head
-		head.Next = insert
-		// record last element
-		head.last = insert
-		m.mu.Unlock()
-		return
-	}
+ next := head.Next
+ if next == nil {
+  // fist insert, just insert to head
+  head.Next = insert
+  // record last element
+  head.last = insert
+  m.mu.Unlock()
+  return
+ }
 
-	// we check already exist first
-	for ; next != nil; next = next.Next {
-		// we found it
-		if next.Version == node.Version && next.Group == node.Group {
-			// release lock and no nothing
-			m.mu.Unlock()
-			return
-		}
-	}
+ // we check already exist first
+ for ; next != nil; next = next.Next {
+  // we found it
+  if next.Version == node.Version && next.Group == node.Group {
+   // release lock and no nothing
+   m.mu.Unlock()
+   return
+  }
+ }
 
-	head.count++
-	// append node to the end of the list
-	head.last.Next = insert
-	// update last element
-	head.last = insert
-	m.mu.Unlock()
+ head.count++
+ // append node to the end of the list
+ head.last.Next = insert
+ // update last element
+ head.last = insert
+ m.mu.Unlock()
 }
 ```
 
@@ -247,18 +247,18 @@ func (m *Metadata) Register(path string, node *Node) {
 // If the ingress scenario is not using group,
 // we can skip parsing attachment to improve performance
 if listener == IngressDubbo {
-	if node, matched = DubboPubMetadata.Find(path, version); matched {
-		meta[ServiceNameHeader] = node.Service
-		meta[GroupNameHeader] = node.Group
-	}
+ if node, matched = DubboPubMetadata.Find(path, version); matched {
+  meta[ServiceNameHeader] = node.Service
+  meta[GroupNameHeader] = node.Group
+ }
 } else if listener == EgressDubbo {
-	// for better performance.
-	// If the egress scenario is not using group,
-	// we can skip parsing attachment to improve performance
-	if node, matched = DubboSubMetadata.Find(path, version); matched {
-		meta[ServiceNameHeader] = node.Service
-		meta[GroupNameHeader] = node.Group
-	}
+ // for better performance.
+ // If the egress scenario is not using group,
+ // we can skip parsing attachment to improve performance
+ if node, matched = DubboSubMetadata.Find(path, version); matched {
+  meta[ServiceNameHeader] = node.Service
+  meta[GroupNameHeader] = node.Group
+ }
 }
 ```
 
@@ -270,8 +270,8 @@ if listener == IngressDubbo {
 
 ```go
 go test -bench=BenchmarkCountArgCount -run=^$ -benchmem
-BenchmarkCountArgCountByRegex-12	200000	6236 ns/op	1472 B/op	24 allocs/op
-BenchmarkCountArgCountOptimized-12	10000000	124 ns/op	0 B/op	0 allocs/op
+BenchmarkCountArgCountByRegex-12 200000 6236 ns/op 1472 B/op 24 allocs/op
+BenchmarkCountArgCountOptimized-12 10000000 124 ns/op 0 B/op 0 allocs/op
 ```
 
 **优化思路：**
@@ -280,48 +280,48 @@ BenchmarkCountArgCountOptimized-12	10000000	124 ns/op	0 B/op	0 allocs/op
 
 ```plain
 func getArgumentCount(desc string) int {
-	len := len(desc)
-	if len == 0 {
-		return 0
-	}
+ len := len(desc)
+ if len == 0 {
+  return 0
+ }
 
-	var args, next = 0, false
-	for _, ch := range desc {
+ var args, next = 0, false
+ for _, ch := range desc {
 
-		// is array ?
-		if ch == '[' {
-			continue
-		}
+  // is array ?
+  if ch == '[' {
+   continue
+  }
 
-		// is object ?
-		if next && ch != ';' {
-			continue
-		}
+  // is object ?
+  if next && ch != ';' {
+   continue
+  }
 
-		switch ch {
-		case 'V', // void
-			'Z', // boolean
-			'B', // byte
-			'C', // char
-			'D', // double
-			'F', // float
-			'I', // int
-			'J', // long
-			'S': // short
-			args++
-		default:
-			// we found object
-			if ch == 'L' {
-				args++
-				next = true
-				// end of object ?
-			} else if ch == ';' {
-				next = false
-			}
-		}
+  switch ch {
+  case 'V', // void
+   'Z', // boolean
+   'B', // byte
+   'C', // char
+   'D', // double
+   'F', // float
+   'I', // int
+   'J', // long
+   'S': // short
+   args++
+  default:
+   // we found object
+   if ch == 'L' {
+    args++
+    next = true
+    // end of object ?
+   } else if ch == ';' {
+    next = false
+   }
+  }
 
-	}
-	return args
+ }
+ return args
 }
 ```
 
@@ -348,21 +348,21 @@ Go SDK 代码 `runtime/string.go#slicerunetostring`(rune 转换成 string)， �
 
 ```plain
       10ms       10ms     75:func unSerialize(serializeId int, data []byte, parseCtl unserializeCtl) *dubboAttr {
-      10ms      140ms     82:	attr := &dubboAttr{}
-      80ms      2.56s     83:	decoder := hessian.NewDecoderWithSkip(data[:])
+      10ms      140ms     82: attr := &dubboAttr{}
+      80ms      2.56s     83: decoder := hessian.NewDecoderWithSkip(data[:])
 ROUTINE ======================== bufio.NewReaderSize in /usr/local/go/src/bufio/bufio.go
       50ms      2.44s (flat, cum)  2.33% of Total
-         .      220ms     55:	r := new(Reader)
-      50ms      2.22s     56:	r.reset(make([]byte, size), rd)
-         .          .     57:	return r
+         .      220ms     55: r := new(Reader)
+      50ms      2.22s     56: r.reset(make([]byte, size), rd)
+         .          .     57: return r
          .          .     58:}
 ```
 
 我们可以写个池化内存前后性能对比, 性能提升 85.4%!!! , [benchmark 用例](https://github.com/zonghaishang/dubbo-go-hessian2/blob/9b418c4e2700964f244e6b982855b4e89b45990d/string_test.go#L161) ：
 
 ```go
-BenchmarkNewDecoder-12	1487685	803 ns/op	4528 B/op	9 allocs/op
-BenchmarkNewDecoderOptimized-12	10564024	117 ns/op	128 B/op	3 allocs/op
+BenchmarkNewDecoder-12 1487685 803 ns/op 4528 B/op 9 allocs/op
+BenchmarkNewDecoderOptimized-12 10564024 117 ns/op 128 B/op 3 allocs/op
 ```
 
 **优化思路：**
@@ -388,8 +388,8 @@ hessianPool.Put(decoder)
 xprotocol 在实现 xprotocol.Tracing 获取服务名称和方法时，会触发调用并解析 2 次，调用开销比较大。
 
 ```plain
-      10ms      1.91s    171:			serviceName := tracingCodec.GetServiceName(request)
-         .      2.17s    172:			methodName := tracingCodec.GetMethodName(request)
+      10ms      1.91s    171:   serviceName := tracingCodec.GetServiceName(request)
+         .      2.17s    172:   methodName := tracingCodec.GetMethodName(request)
 ```
 
 **优化思路：**
@@ -416,7 +416,7 @@ MOSN 在解码 Dubbo 的请求时，会在 header 中塞一份远程 host 的地
 **优化思路：**
 
 ```plain
-     50ms      920ms    136:		headers[strings.ToLower(protocol.MosnHeaderHostKey)] = conn.connection.RemoteAddr().String()
+     50ms      920ms    136:  headers[strings.ToLower(protocol.MosnHeaderHostKey)] = conn.connection.RemoteAddr().String()
 ```
 
 在获取远程地址时，尽可能在 streamConnection 中 cache 远程 ip 值，不要每次都去调用 RemoteAddr。

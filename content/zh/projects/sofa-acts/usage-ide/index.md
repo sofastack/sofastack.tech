@@ -153,6 +153,7 @@ ME：map 默认全 key 校验，ME则以期望 key 为准，实际值多余期�
 ```
 
 对于返回结果的时间 Date 类型字段校验说明：
+
 1. Y | null -> 代表期望为 null
 2. Y | 2015-01-01 00:00:00 -> 代表期望为 2015-01-01 00:00:00
 3. N | null -> 代表不校验
@@ -161,6 +162,7 @@ ME：map 默认全 key 校验，ME则以期望 key 为准，实际值多余期�
 ### 编码方式准备期望结果
 
 覆盖 prepare 方法，通过 ActsRuntimeContext 的如下方法，快速获取和设置期望结果。
+
 1. 获取期望结果：`Object getExpectResult()`
 2. 设置期望结果：`Boolean setExpectResult(Object objToSet)`
 

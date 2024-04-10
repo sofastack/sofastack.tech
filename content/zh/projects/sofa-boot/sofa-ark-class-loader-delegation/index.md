@@ -1,9 +1,11 @@
 
 ---
+
 title: "类委托加载"
 aliases: "/sofa-boot/docs/sofa-ark-class-loader-delegation"
 siblings_only: "true"
 ---
+
 ## 类委托加载
 
 注：这里委托加载不止包含类委托，还包含资源委托加载。
@@ -11,6 +13,7 @@ siblings_only: "true"
 SOFAArk 通过多 ClassLoader 的方式提供类隔离的能力，并在此基础上具备多版本隔离和热部署的能力。当然类如果纯粹隔离还不够，还需要考虑 ClassLoader 之间的类共享。SOFAArk 通过类委托机制，提供了一套丰富的委托加载能力。定义了 PluginClassLoader 和 BizClassLoader，不同类型具备不同的类查找逻辑，同时提供 ClassLoaderHook 能力，允许自定义模块间的类委托加载。SOFAArk 框架本身的类委托加载是非常灵活的，但是在实际落地时，需要有一套类委托加载的最佳实践。
 
 SOFAArk 支持的场景主要分为两类：
+
 1. 多 Plugin 的类隔离：考虑如何相同类不同版本不会相互冲突
 2. 合并部署/热部署：原应用如何拆分，或多个应用如何合并
 
@@ -74,7 +77,7 @@ SOFAArk 支持的场景主要分为两类：
 ### 推荐自定义委托加载方式
 
 1. 模块自定义委托加载 + 模块自动瘦身
-2. 模块开启 declaredMode 
+2. 模块开启 declaredMode
 3. 基座预置依赖
 
 #### 开启后的副作用

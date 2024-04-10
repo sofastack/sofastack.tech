@@ -30,6 +30,7 @@ aliases: "/sofa-tracer/docs/Usage_Of_HttpClient"
     <version>4.1.3</version>
 </dependency>
 ```
+
 ## 工程配置
 
 在工程的 `application.properties` 文件下添加 SOFATracer 要使用的参数，包括`spring.application.name` 用于标示当前应用的名称；`logging.path` 用于指定日志的输出目录。
@@ -65,6 +66,7 @@ public class SampleRestController {
     }
 }
 ```
+
 ## 构造 HttpClient 发起一次对上文的 RESTful 服务的调用
 
 代码示例如下：

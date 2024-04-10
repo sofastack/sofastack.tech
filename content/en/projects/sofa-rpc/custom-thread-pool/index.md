@@ -1,10 +1,9 @@
 
 ---
+
 title: "Custom thread pool"
 aliases: "/sofa-rpc/docs/Custom-ThreadPool"
 ---
-
-
 
 SOFARPC supports custom business thread pools. A separate business thread pool can be set up for the specified service, isolated from SOFARPC's global business thread pool. Multiple services can share a single thread pool.
 

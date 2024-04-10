@@ -1,9 +1,9 @@
 
 ---
+
 title: "Load balance"
 aliases: "/sofa-rpc/docs/Load-Balance"
 ---
-
 
 SOFARPC provides a variety of load balancing algorithms and currently supports the following five types:
 

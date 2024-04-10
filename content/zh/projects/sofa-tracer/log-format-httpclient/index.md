@@ -1,9 +1,9 @@
 
 ---
+
 title: "HttpClient 日志"
 aliases: "/sofa-tracer/docs/Log_Format_HttpClient"
 ---
-
 
 SOFATracer 集成 sofa-tracer-httpclient-plugin 插件后输出 HttpClient 请求的链路数据，默认为 `JSON` 数据格式。
 
@@ -86,4 +86,3 @@ key | 表达含义
 {"time":"2019-09-02 23:44:11.785","stat.key":{"method":"GET","local.app":"HttpClientDemo","request.url":"http://localhost:8080/httpclient"},"count":2,"total.cost.milliseconds":229,"success":"true","load.test":"F"}
 
 ```
-

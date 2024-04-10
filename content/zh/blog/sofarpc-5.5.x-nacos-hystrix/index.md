@@ -12,7 +12,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1564392994334-a78d9821-c56
 > **SOFA**
 > **S**calable **O**pen **F**inancial **A**rchitecture
 > 是蚂蚁金服自主研发的金融级分布式中间件，包含了构建金融级云原生架构所需的各个组件，是在金融场景里锤炼出来的最佳实践。
-> 
+>
 > SOFA 文档: <http://www.sofastack.tech/>
 > SOFA: <https://github.com/alipay>
 
@@ -37,8 +37,8 @@ SOFABoot 从 2.5.3 开始已集成 SOFARPC 对 Nacos 的配置支持，假如开
 根据 RPC 的[示例工程](https://github.com/alipay/sofa-rpc-boot-projects/tree/master/sofa-boot-samples)创建一个 SOFABoot 工程，SOFABoot 工程使用 2.5.3。
 
 ```bash
-$ git clone git@github.com:alipay/sofa-rpc-boot-projects.git
-$ git checkout 5.x
+git clone git@github.com:alipay/sofa-rpc-boot-projects.git
+git checkout 5.x
 ```
 
 在 application.properties 中配置服务注册中心地址信息，就能够使用 Nacos 作为注册中心。

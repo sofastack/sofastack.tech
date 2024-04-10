@@ -1,9 +1,9 @@
 
 ---
+
 title: "Custom router"
 aliases: "/sofa-rpc/docs/Custom-Router"
 ---
-
 
 The route service address in SOFARPC is abstracted into a processing chain, and is processed by each router. Like filter, SOFARPC provides the same extensibility for router.
 

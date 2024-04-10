@@ -13,6 +13,7 @@ Running mechanism:
 * The entire calculation and control process proceeds asynchronously, thus not blocking the call.
 
 The standalone fault tolerance is used as follows:
+
 ```java
 FaultToleranceConfig faultToleranceConfig = new FaultToleranceConfig();
         faultToleranceConfig.setRegulationEffective(true);
@@ -22,6 +23,7 @@ FaultToleranceConfig faultToleranceConfig = new FaultToleranceConfig();
 
 FaultToleranceConfigManager.putAppConfig("appName", faultToleranceConfig);
 ```
+
 As above, after the standalone fault tolerance switch is turned on, the application will calculate the exceptions every 20s time window. If a service + IP calling dimension is determined to be a faulty node, the weight of the service + IP will be degraded to 0.5 times.
 
 For more detailed parameters, please refer to [Standalone troubleshooting](../configuration-fault-tolerance)

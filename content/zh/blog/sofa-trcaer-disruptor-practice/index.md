@@ -10,9 +10,9 @@ cover: "https://cdn.nlark.com/yuque/0/2020/png/226702/1584441374916-be2fe746-58f
 ---
 
 > **SOFA**Stack（**S**calable **O**pen **F**inancial **A**rchitecture Stack）是蚂蚁金服自主研发的金融级云原生架构，包含了构建金融级云原生架构所需的各个组件，是在金融场景里锤炼出来的最佳实践。
-> 
+>
 > SOFATracer 是一个用于分布式系统调用跟踪的组件，通过统一的 TraceId 将调用链路中的各种网络调用情况以日志的方式记录下来，以达到透视化网络调用的目的，这些链路数据可用于故障的快速发现，服务治理等。
-> 
+>
 > SOFATracer：[https://github.com/sofastack/sofa-tracer](https://github.com/sofastack/sofa-tracer)
 
 ## Disruptor 简介
@@ -253,7 +253,6 @@ waitStrategy 决定了消费者采用何种等待策略。
 ### WaitStrategy
 
 > Strategy employed for making {[@link](https://example.com) EventProcessor}s wait on a cursor {[@link](https://example.com) Sequence}.
-
 
 EventProcessor 的等待策略；具体实现在 disruptor 中有 8 种：
 

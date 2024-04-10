@@ -55,7 +55,7 @@ A：一般客户端是上报到 lookout 服务端, 再由服务端决定要写�
 
 ![img](https://gw.alipayobjects.com/zos/bmw-prod/d72444fa-733f-452c-9fa9-90e11f4ce17e.webp)
 
-A：用于 jraft 的 jepsen 验证，参考这个项目： 
+A：用于 jraft 的 jepsen 验证，参考这个项目：
 
 [https://github.com/sofastack/sofa-jraft-jepsen](https://github.com/sofastack/sofa-jraft-jepsen)
 

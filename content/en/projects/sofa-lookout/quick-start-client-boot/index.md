@@ -22,7 +22,6 @@ Introduce the following dependency in `pom.xml`:
 
 In case of Spring Boot project, it is required to specify a [version](http://mvnrepository.com/artifact/com.alipay.sofa.lookout/lookout-sofa-boot-starter).
 
-
 ## Create a Metrics indicator
 
 After completing the introduction of dependencies, you can add the following methods to the startup class in Spring Boot:

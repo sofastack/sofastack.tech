@@ -1,16 +1,15 @@
 
 ---
+
 title: "Http 协议基本使用"
 aliases: "/sofa-rpc/docs/Http-Json"
 ---
-
 
 ## Http 协议基本使用
 
 在 SOFARPC (非 SOFABoot 环境)中，当使用 Http 作为服务端协议的时候，支持 Json 作为序列化方式，作为一些基础的测试方式使用。
 
 ### SOFARPC API 使用
-
 
 #### 发布服务
 

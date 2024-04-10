@@ -30,7 +30,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 
 > 根据 jraft-example, 使用“fake PD”, 怎样手动 rebalance。使用 PD 自管理体现在哪？
 
-A：手动 API： 
+A：手动 API：
 [https://github.com/sofastack/sofa-jraft/blob/master/jraft-core/src/main/java/com/alipay/sofa/jraft/CliService.java#L190](https://github.com/sofastack/sofa-jraft/blob/master/jraft-core/src/main/java/com/alipay/sofa/jraft/CliService.java#L190)
 
 PD 目前只实现了 leader 平衡和自动分裂，支持很容易基于 SPI 扩展增加自己的逻辑(增加并实现自己的 com.alipay.sofa.jraft.rhea.util.pipeline.Handler 即可)，文档见：[https://www.sofastack.tech/projects/sofa-jraft/jraft-rheakv-user-guide/](https://www.sofastack.tech/projects/sofa-jraft/jraft-rheakv-user-guide/)

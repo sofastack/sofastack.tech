@@ -37,7 +37,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 > 我们在 Istio 环境下，因为 MOSN 是自动 sidecar 注入的，我怎么控制他读取我的配置文件内容呢？而且我看官方的 Istio 案例也是可以通过 virsual service 进行流量控制的，我们这个 config.json 也是可以进行流量控制的，是不是我理解的 config.json 是在 virsualService.yaml 的功能上进行拓展的功能(比如这种 tag 路由是 virsualService 不能控制的)。
 
-A：Istio 场景下对应的 sidecar 的静态配置是一些通用的模板（如 pilot 地址渲染等）。关于 service 相关的路由及治理控制都是通过 Istio 定义的 CRD 控制： 
+A：Istio 场景下对应的 sidecar 的静态配置是一些通用的模板（如 pilot 地址渲染等）。关于 service 相关的路由及治理控制都是通过 Istio 定义的 CRD 控制：
 
 [https://istio.io/latest/docs/reference/config/networking/](https://istio.io/latest/docs/reference/config/networking/)
 

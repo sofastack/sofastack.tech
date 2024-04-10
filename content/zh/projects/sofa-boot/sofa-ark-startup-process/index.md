@@ -1,8 +1,10 @@
 
 ---
+
 title: "启动过程"
 aliases: "/sofa-boot/docs/sofa-ark-startup-process"
 ---
+
 # 启动过程
 
 ## Ark 1.0 非内嵌模式
@@ -57,7 +59,7 @@ Ark 包是可执行 Jar，可直接使用 java -jar 的方式启动，先使用 
 
 ```bash
 java -jar ${bizName}-${bizVersion}-executable-ark.jar
-``` 
+```
 
 <h3 id="section-1-3-4">启动原理分析</h3>
 
@@ -848,6 +850,7 @@ Ark 2.0 模式下，在这个步骤里会创建 master biz，创建 master biz �
 <h5 id="section-2-3-4-3-4">部署 Ark 插件</h5>
 
 `DeployPluginStage` 这一步主要是部署 plugin。从 PluginManagerService 中获取到所有的 Ark 插件，并按照插件优先级顺序：
+
 * ClassloaderService 准备插件 export 类的 map 映射
 * PluginDeployService 启动插件的 com.alipay.sofa.ark.spi.service.PluginActivator。
 

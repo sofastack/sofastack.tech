@@ -17,4 +17,3 @@ title: "Roadmap"
 4. **(p2)** Translate the document into multiple languages.
 5. **(p2)** Add a learner role that only replicates data and does not vote.
 6. **(p3)** Complete jepsen tests for RheaKV.
-

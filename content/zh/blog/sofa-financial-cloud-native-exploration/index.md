@@ -121,4 +121,4 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1562902599427-d421bc4c-ee8
 
 随着蚂蚁金融科技开放战略和国际化的业务背景，时至今日蚂蚁金服 SOFAStack 已经服务了许多家国内外金融机构作分布式架构技术转型升级，过程中也逐渐打磨和丰富了大规模运维监控产品体系，即**金融分布式架构-云应用引擎(SOFAStack-CAFE,  Scalable Open Financial Architecture - Cloud Application Fabric Engine)，**其中容器应用服务(AKS, Application Kubernetes Service) 则是基于 K8S 打造的核心容器服务产品，致力于满足机房级高可用、安全、弹性、可观测性、发布变更管控策略等方面的要求，并力求降低复杂新兴技术带来的门槛和应用风险。
 
-最后打个广告，欢迎加入 SOFAStack 产品研发团队，共建金融级云原生产品！目前产品经理、架构师 、前后端研发和质量等多个岗位开放招聘中，简历请投递：ranger.yrj@antfin.com 。
+最后打个广告，欢迎加入 SOFAStack 产品研发团队，共建金融级云原生产品！目前产品经理、架构师 、前后端研发和质量等多个岗位开放招聘中，简历请投递：<ranger.yrj@antfin.com> 。

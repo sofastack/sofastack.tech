@@ -51,7 +51,7 @@ I/O 多路复用(I/O multiplexing)会用到 select 或者 poll 或者 epoll 函�
 
 信号驱动 I/O(signal-driver I/O)使用信号，让内核在描述符就绪时发送 SIGIO 信号通知我们进行处理，这时候我们就可以开始真正的读了。
 
-###  异步 I/O
+### 异步 I/O
 
 ![异步 I/O](https://cdn.nlark.com/yuque/0/2018/png/156121/1536484800026-c94d6d86-9249-4be3-8335-20c31cf5e5d8.png)
 
@@ -70,6 +70,7 @@ I/O 多路复用(I/O multiplexing)会用到 select 或者 poll 或者 epoll 函�
 在了解了内核层面上这几个线程模型之后，我们要给大家介绍下 JAVA BIO 和 JAVA NIO。
 
 ### JAVA BIO
+
 首先我们给大家看一个直接使用  JAVA BIO 写得一个服务端。
 
 ![JAVA BIO 写的一个服务端](https://cdn.nlark.com/yuque/0/2018/png/156121/1536722399340-1e5efe3b-33a2-48f0-9242-7f255d9b06c0.png)
@@ -195,11 +196,11 @@ Reactor 主从多线程模型的特点：
      - 序列化请求/反序列化响应：发起请求的线程，如果是 callback，是新的一个线程。
      - 心跳：Netty-Worker 线程
 - 服务端
-     - 端口：Netty-Boss 线程
-     - 长连接：Netty-Worker 线程
-     - 心跳：Netty-Worker 线程
-     - 反序列化请求 Header：Netty-Worker 线程
-     - 反序列化请求 Body/序列化响应：SOFARPC 业务线程池
+  - 端口：Netty-Boss 线程
+  - 长连接：Netty-Worker 线程
+  - 心跳：Netty-Worker 线程
+  - 反序列化请求 Header：Netty-Worker 线程
+  - 反序列化请求 Body/序列化响应：SOFARPC 业务线程池
 
 ### 自定义业务线程池
 

@@ -26,7 +26,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 欢迎大家在 GitHub 提交 issue 与我们互动
 
-我们会筛选 issue 通过 
+我们会筛选 issue 通过
 
 " SOFA WEEKLY " 的形式回复
 
@@ -38,7 +38,7 @@ A：把 autoReleaseAfterClose 设置为 true，可以非常方便。
 
 **「SOFAJraft」**：*[https://github.com/sofastack/sofa-jraft/](https://github.com/sofastack/sofa-jraft/)*
 
-**2. @canaan-wang #859** 
+**2. @canaan-wang #859**
 
 > Layotto 为什么要开发 SDK ？SDK 中的功能代码为什么不可以迁移到 Server 端？
 

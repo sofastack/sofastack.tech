@@ -84,7 +84,7 @@ Http2 虽然更为通用，但是一方面，出现较晚，迁移转换成本�
 关于 SOFABolt 相关的源码解析，也可以通过这个系列来了解。
 
 SOFABolt  源码解析系列：点击【剖析 | SOFABOLT 框架】即可查看）
-[https://www.sofastack.tech/blog](https://www.sofastack.tech/blog) 
+[https://www.sofastack.tech/blog](https://www.sofastack.tech/blog)
 
 ## Netty 性能参数优化
 
@@ -209,7 +209,7 @@ DEMO 链接：[https://github.com/leizhiyuan/rpcchannel](https://github.com/leiz
 
 我们自己的测试数据显示 Javassist Bytecode 的方式是除了 Asm 之外，性能最好的。Asm 由于使用写法非常反人类，所以我们目前还是使用的 Javassist Bytecode 的方式。
 
-| **Benchmark                                   ** | **Mode  ** | **Cnt  ** | Score | Error | **Units** |
+| **Benchmark** | **Mode** | **Cnt** | Score | Error | **Units** |
 | --- | --- | --- | --- | --- | --- |
 | ProxyInvokeBenchmark.invokeByAsm             | avgt   | 10 | 7.865 | ±0.028 | ns/op |
 | ProxyInvokeBenchmark.invokeByBytebuddy       | avgt   | 10 | 14.318 | ± 0.41 | ns/op |
@@ -220,7 +220,7 @@ DEMO 链接：[https://github.com/leizhiyuan/rpcchannel](https://github.com/leiz
 
 可优先选择 javassist bytecode，有一定的性能优势，性能测试可以根据自己的情况，使用 JMH 进行测试。测试代码和版本在 DEMO 中提供。
 
-## 总结 
+## 总结
 
 得益于 Java 社区的发展以及前辈们的贡献，目前写一个 RPC 框架并不是很难。但是作为一个 RPC 框架，需要在可维护性的基础上，尽可能提高自身性能，将在实际过程中遇到的一些场景和异常情况进行修复和优化，并进行更好的代码设计和实现。对于性能上的数据，可以多使用 JMH 并结合实际业务场景，进行相应的测试。
 

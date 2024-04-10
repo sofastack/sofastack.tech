@@ -1,9 +1,9 @@
 
 ---
+
 title: "Warm-up weight"
 aliases: "/sofa-rpc/docs/Provider-Warmup-Weight"
 ---
-
 
 The warm-up weight feature allows the client machine to distribute traffic based on the corresponding weight of the server. This feature is also often used in the scenario where a few machines within a cluster are being started. The server machines can be warmed up in a short time with the traffic weight function, and then continue to receive the normal traffic.
 

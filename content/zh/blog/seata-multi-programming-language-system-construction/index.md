@@ -128,7 +128,7 @@ Seata Java 支持的注册中心有 File 、Nacos 、Eureka、Redis、Zk、Cons
 
 同理于配置中心，Seata 的注册中心也可以复用其所在的微服务框架的注册中心，如 Nacos、Etcd、Zookeeper 等。运行在 Kubernetes 平台上时，把 API server 当作注册中心，多语言版本的 Seata 优先实现 File 类型，配置 API server 地址即可。
 
-Seata server *（就是 TC）* 可以多 namespace 部署，每个 namespace 下可以有多个 TC 集群，Seata Client *（包括 TM 和 RM）* 可以通过 service 形式获取 TC 集群地址，这样既达到了 TC 高可用的目的，也方便在客户端层面对 TC 集群进行负载均衡。 
+Seata server *（就是 TC）* 可以多 namespace 部署，每个 namespace 下可以有多个 TC 集群，Seata Client *（包括 TM 和 RM）* 可以通过 service 形式获取 TC 集群地址，这样既达到了 TC 高可用的目的，也方便在客户端层面对 TC 集群进行负载均衡。
 
 ## PART. 2--总结
 

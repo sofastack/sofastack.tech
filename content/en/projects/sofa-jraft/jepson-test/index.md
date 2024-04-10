@@ -13,4 +13,3 @@ In addition to hundreds of unit tests and some chaos tests, SOFAJRaft also uses 
 - Randomly dividing a cluster into different majority groups
 
 [sofa-jraft-jepsen project address](https://github.com/sofastack/sofa-jraft-jepsen)
-

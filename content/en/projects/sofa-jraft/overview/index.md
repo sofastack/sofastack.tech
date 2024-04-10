@@ -62,4 +62,3 @@ JRaft is a [Raft](https://raft.github.io/) implementation that is completely bas
 ## Contact us
 
 Welcome to join our DingTalk chat group: 23127468.
-

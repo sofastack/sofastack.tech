@@ -14,9 +14,11 @@ date: 2022-03-23T15:00:00+08:00
 - 如何统计各个阶段的耗时
 
 ### 前言
+>
 > 此次源码解析均在 sofa-registry:6.1.4-SNAPSHOT 版本下分析
 
 ### 1、大致代码流转流程
+
 起源于此类 com.alipay.sofa.registry.server.session.push.PushProcessor
 @PostConstruct 注解由 java 源码提供初始化类会运行此方法，那么就从 init() 函数开始我们今天的故事！
 
@@ -32,7 +34,7 @@ date: 2022-03-23T15:00:00+08:00
 
 源码给的默认值
 
-coreSize = OsUtils.getCpuCount() * 3 CPU 数量 * 3
+coreSize = OsUtils.getCpuCount() *3 CPU 数量* 3
 
 coreBufferSize = coreSize * 3000
 
@@ -110,6 +112,7 @@ PushClientCallback.onCallback
 最后算出大量的数据进行追踪 PushTrace.finish()
 
 ## 3.首次订阅和后续推送延迟计算的区分
+
 见下表/图统计
 
 ## 4.如何统计各个阶段的耗时
@@ -117,8 +120,6 @@ PushClientCallback.onCallback
 此图为理解链路追踪过程：
 
 ![image.png](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*RVQlSaJdEcUAAAAAAAAAAAAAARQnAQ)
-
-
 
 | 字段                                                        | 字段解释                                                     | 表达式                                                       | 根据上图分析步骤                                             | 首次订阅和后续推送计算方式是否有区别（默认不填为否） | 注解                                   |
 | ----------------------------------------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ------------------------------------------------------------ | ---------------------------------------------------- | -------------------------------------- |
@@ -137,13 +138,11 @@ PushClientCallback.onCallback
 | pushTaskQueueSpanMillis                                     | 计算任务在队列里面等待的时间                                 | pushStartTimestamp - pushCreateTimestamp                     | 步骤 1-2                                                     |                                                      |                                        |
 | pushTaskClientIOSpanMillis                                  | 计算整个推送任务开始执行到结束的时间（严格意义上算 push 的耗时） | pushFinishTimestamp - pushStartTimestamp                     | 步骤 3-6                                                     |                                                      |                                        |
 
-
-
 源码阅读一些问题：
 
 1.线程数量设置是否合理
 
-coreSize = OsUtils.getCpuCount() * 3 CPU 数量*3
+coreSize = OsUtils.getCpuCount() *3 CPU 数量*3
 
 coreBufferSize = coreSize * 3000
 

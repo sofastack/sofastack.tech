@@ -72,7 +72,7 @@ Service Mesh 是蚂蚁金服下一代架构的核心，本次主题主要分享�
 
 - 按需获取 & Custom Resource 缓存
 
-这是一个面向 DBMesh 业务场景的定制性优化，是基于按需获取的逻辑来实现的。其目的在于解决 DBMesh CR 数量过多，过大导致的性能问题，同时避免 Pilot 由于 List/Watch CR 资源导致 OOM 问题，Pilot 采用按需缓存和过期失效的策略来优化内存占用。 
+这是一个面向 DBMesh 业务场景的定制性优化，是基于按需获取的逻辑来实现的。其目的在于解决 DBMesh CR 数量过多，过大导致的性能问题，同时避免 Pilot 由于 List/Watch CR 资源导致 OOM 问题，Pilot 采用按需缓存和过期失效的策略来优化内存占用。
 
 - 局部推送
 

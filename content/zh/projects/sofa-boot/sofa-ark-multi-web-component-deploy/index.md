@@ -35,7 +35,7 @@ springboot 自身还有 jetty、netty 等 WebServer 的实现，同样由其对�
 ![两种合并部署模式](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*vCX1S5rmAuwAAAAAAAAAAAAAARQnAQ)
 
 首先我们可以参考非 Web 的多 Biz 合并部署，SOFAArk 使用不同的类加载器加载不同的 Biz，其中 Master Biz 为 LaunchedURLClassLoader 加载，非 Master Biz 有其专属的 BizClassLoader 加载。对于每个 Web Biz，也会使用其类加载器完成上述原生 springboot web 应用的启动流程，创建自己的 Server、Host 等。  
-这种情况下，为了区分不同 Biz 的接口，需要为每个 Biz 配置不同的 port。 
+这种情况下，为了区分不同 Biz 的接口，需要为每个 Biz 配置不同的 port。
 
 这种方式由于一个 Jvm 进程中包含了多个 Server 及其 Host，因此被称为多 Host 模式。  
 

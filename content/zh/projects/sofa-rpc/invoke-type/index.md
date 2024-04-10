@@ -1,9 +1,9 @@
 
 ---
+
 title: "Bolt 协议调用方式"
 aliases: "/sofa-rpc/docs/Invoke-Type"
 ---
-
 
 ## 调用方式
 

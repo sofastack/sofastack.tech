@@ -159,7 +159,7 @@ OCM 技术已经应用到蚂蚁集团的基础设施中，作为第一步，通�
 [https://groups.google.com/g/open-cluster-management](https://groups.google.com/g/open-cluster-management)
 
 ●访问社区官网获取更多信息：
-[https://open-cluster-management.io/](https://open-cluster-management.io/](https://open-cluster-management.io/](https://open-cluster-management.io/)
+[https://open-cluster-management.io/](<https://open-cluster-management.io/>](<https://open-cluster-management.io/>](<https://open-cluster-management.io/>)
 
 今年 9 月 10 日 INCLUSION·外滩大会将如期举行，作为全球金融科技盛会，它将继续保持科技·让技术更普惠的初心。11 日下午的多集群、混合云架构开源专场，OCM 社区的主要开发人员会为大家带来围绕 OCM 构建的多集群、混合云最佳实践，欢迎你届时线下参加，面对面交流。
 感谢你对 OCM 的关注与参与，欢迎分享给有同样需求的更多朋友，让我们共同为多集群、混合云的使用体验更进一步而添砖加瓦！

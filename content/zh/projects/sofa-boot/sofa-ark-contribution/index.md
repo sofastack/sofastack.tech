@@ -1,9 +1,9 @@
 
 ---
+
 title: "参与贡献"
 aliases: "/sofa-boot/docs/sofa-ark-contribution"
 ---
-
 
 > 可以先去 [发展路线](../sofa-ark-roadmap) 内了解下开发任务及未来规划。
 
@@ -24,7 +24,6 @@ aliases: "/sofa-boot/docs/sofa-ark-contribution"
 * SOFAArk 的维护人员会对您提的 bug 或者新增功能进行相关讨论，确定该修改是不是必要，有没有提升的空间或更好的办法。
 * 在达成一致后再开发,并提交代码，减少双方沟通成本，也减少 pull request 被拒绝的情况。
 
-
 ### 获取源码
 
 要修改或新增功能，在提 issue 后，点击左上角的`fork`按钮，复制一份 SOFAArk 主干代码到您的代码仓库。
@@ -35,7 +34,6 @@ SOFAArk 所有修改都在分支上进行，修改完后提交 `pull request`，
 因此，在获取源码步骤介绍后，您需要：
 
 * 下载代码到本地,这一步您可以选择 git/https 方式.
-
 
   ```plain
   git clone https://github.com/您的账号名/sofa-ark.git
@@ -84,6 +82,7 @@ SOFAArk 所有修改都在分支上进行，修改完后提交 `pull request`，
 * 应该提供新的单元测试来证明以前的代码存在 bug，而新的代码已经解决了这些 bug
 
   您可以用如下命令运行所有测试
+
   ```plain
   mvn clean test
   ```

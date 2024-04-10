@@ -1,9 +1,9 @@
 
 ---
+
 title: "Serialization protocol"
 aliases: "/sofa-rpc/docs/Serialization"
 ---
-
 
 When using the Bolt communication protocol, SOFARPC can choose different serialization protocols, **which can be hessian2 or protobuf currently**.
 

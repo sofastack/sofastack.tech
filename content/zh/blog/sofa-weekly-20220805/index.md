@@ -25,6 +25,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9bebad7229b9454b8e0b135e043714af~tplv-k3u1fbpfcp-zoom-1.image)
 
 ### 每周读者问答提炼
+
 欢迎大家向公众号留言提问或在群里与我们互动我们会筛选重点问题通过 " SOFA WEEKLY " 的形式回复
 
 **1. 吴宇奇** 提问：

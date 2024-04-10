@@ -98,6 +98,7 @@ ConsumerConfig<HelloService> consumer = new ConsumerConfig<HelloService>()
             .setRegistry(registryConfig)        
             .setDirectUrl("bolt://127.0.0.1:12201");
 ```
+
 直接地址路由扩展了 Router 抽象类的实现，在重写的 route 方法中，直接获取配置好的直接路由地址。当请求到来时，直接从地址管理列表中，拿到对应的地址，就实现了直接地址路由的功能。
 
 ### 注册中心(RegistryRouter)

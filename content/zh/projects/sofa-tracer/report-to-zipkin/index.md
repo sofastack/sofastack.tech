@@ -9,7 +9,6 @@ aliases: "/sofa-tracer/docs/ReportToZipkin"
 
 > 下面的示例中将分别演示在 SOFABoot/SpringBoot 工程中 以及 非 SOFABoot/SpringBoot 工程中如何使用。
 
-
 ## 依赖引入
 
 ### 添加 SOFATracer 依赖
@@ -71,9 +70,9 @@ com.alipay.sofa.tracer.zipkin.baseUrl=http://localhost:9411
 
 ```json
 {
-	content: "Hello, SOFATracer Zipkin Remote Report!",
-	id: 1,
-	success: true
+ content: "Hello, SOFATracer Zipkin Remote Report!",
+ id: 1,
+ success: true
 }
 ```
 
@@ -84,6 +83,3 @@ com.alipay.sofa.tracer.zipkin.baseUrl=http://localhost:9411
 ## Spring 工程运行
 
 对于一般的 Spring 工程，我们通常使用 tomcat/jetty 作为 servlet 容器来启动应用。具体工程参考 [在 Spring 工程中使用 SOFATracer](https://github.com/glmapper/tracer-zipkin-plugin-demo)
-
-
-

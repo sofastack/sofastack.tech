@@ -72,7 +72,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 [https://tech.antfin.com/products/DTX](https://tech.antfin.com/products/DTX)
 
-## 二、投入开源社区，共建开源分布式事务 Seata 
+## 二、投入开源社区，共建开源分布式事务 Seata
 
 ### 2.1 分布式事务 Seata 介绍
 
@@ -108,7 +108,7 @@ Seata 会有 4 种分布式事务解决方案，分别是 AT 模式、TCC 模式
 
 ![AT 模式](https://cdn.nlark.com/yuque/0/2019/png/226702/1561961547361-8de31ff9-ea86-4eef-828e-691576285ae2.png)
 
-##### AT 模式如何做到对业务的无侵入 
+##### AT 模式如何做到对业务的无侵入
 
 - 一阶段：
 
@@ -167,7 +167,6 @@ Saga 模式是 Seata 即将开源的长事务解决方案，将由蚂蚁金服�
 分布式事务执行过程中，依次执行各参与者的正向操作，如果所有正向操作均执行成功，那么分布式事务提交。如果任何一个正向操作执行失败，那么分布式事务会去退回去执行前面各参与者的逆向回滚操作，回滚已提交的参与者，使分布式事务回到初始状态。
 
 ![Saga 模式](https://cdn.nlark.com/yuque/0/2019/png/226702/1561965208439-606129fe-6761-4177-8887-1fda9306f104.png)
-
 
 Saga 模式下分布式事务通常是由事件驱动的，各个参与者之间是异步执行的，Saga 模式是一种长事务解决方案。
 

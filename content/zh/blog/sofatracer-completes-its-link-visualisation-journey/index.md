@@ -33,7 +33,7 @@ SOFATracer 是蚂蚁集团基于 OpenTracing 规范开发的分布式链路跟�
 
 SOFATracer 提供了异步落地磁盘的日志打印能力和将链路跟踪数据上报到开源产品 Zipkin 做分布式链路跟踪展示的能力。这次参加开源之夏活动的任务是要把链路跟踪数据上报到 Jaeger 和 SkyWalking 中进行展示。
 
-### SOFATracer 数据上报 
+### SOFATracer 数据上报
 
 ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Mg8STYZRA6UAAAAAAAAAAAAAARQnAQ)
 
@@ -59,7 +59,7 @@ SpanReportListenerHolder 中的实例在项目启动的时候加入，且分为 
 
 要实现把 SOFATracer 中的 trace 数据上传到 Jaeger 和 SkyWalking 需要实现 SpanReportListener 接口并在应用启动的时候把对应实例加入到 SpanReportListenersHolder 中。
 
-## PART. 2 Jaeger 数据上报 
+## PART. 2 Jaeger 数据上报
 
 下图是 Jaeger 中数据上报的部分图示，图中 CommandQueue 中存放的是刷新或添加指令，生产者是采样器和 flush 定时器，消费者是队列处理器。采样器判断一个 span 需要上报后向 CommandQueue 中添加一个 AppendCommand，flush 定时器根据设置的 flushInterval 不断向队列中添加 FlushCommand，队列处理器不断从 CommandQueue 中读取指令判断是 AppendCommand 还是 FlushCommand，如果刷新指令把当前 byteBuffer 中的数据发送到接受端，如果是添加指令把这个 span 添加到 byteBuffer 中暂存。
 
@@ -71,7 +71,7 @@ SpanReportListenerHolder 中的实例在项目启动的时候加入，且分为 
 
 上图是 Jaeger 中 Sender 的 UML 图，从图中可以看到有两种类型的 Sender 分别是 HTTPSender 和 UDPSender 。分别对应用 HTTP 发送数据和 UDP 发送数据，在实现 SOFATracer 上报 Jaeger 中使用 UDPSender 发送 span 数据到 Jaeger Agent 中，使用 HTTPSender 直接发送数据到 Jaeger-Collector 中。
 
-### Jaeger Span 与 SOFATracer Span 模型的转换 
+### Jaeger Span 与 SOFATracer Span 模型的转换
 
 #### 模型转换对照
 
@@ -108,7 +108,7 @@ TraceId 的转换：
 
 - 解决办法这个问题的解决办法同之前已有的转化为 Zipkin 中的 SpanId 的解决办法一样，也是使用 FNV Hash 将 String 映射成冲突较小的 Long 型。
 
-### 两种上传方式 
+### 两种上传方式
 
 #### 配合 Jaeger Agent
 
@@ -134,7 +134,7 @@ SOFATracer 中的 SpanId 是一个字符串，但是在 SkyWalking 中 SpanId �
 
 SegmentId 是用来唯一标识一个 segment 的，如果 segmentId 相同前一个 segment 会被后面的 segment 覆盖导致 span 丢失。最后使用的 segmentId 的构造方式是 segmentId = traceId + SpanId 哈希值 + 0/1，其中 0 和 1 分别代表 server 和 client。最后需要加上 client 和 server 的原因是在 Dubbo 和 SOFARPC 中存在 server -> server 的情况，其中 RPC 调用的 client、server span 的 SpanId 和 parentId 都一样，需要以此来区分它们，否则 client 端的 span 会被覆盖。
 
-### Dubbo 与 SOFARPC 的处理 
+### Dubbo 与 SOFARPC 的处理
 
 基本的模型是 client-server-client-server-. 这种模式，但是在 Dubbo 和 SOFARPC 中存在 server -> server 的情况，其中 client span、server span 两个 span 除了 kind 类型不同之外，其他的信息是一样。
 
@@ -160,13 +160,13 @@ client span ：parentSegmentId = traceId + parentId 哈希值 + server(0)
 
 可以通过 local.host、local.port 组成 SOFARPC 中不能直接从 span 中获取到本机的 IP，使用的是获取本机的第一个有效 IPv4 地址，但是没有端口号，所以在上面的 peer 字段中也只用了 IP。
 
-### 展示拓扑图 
+### 展示拓扑图
 
 在构建链路的过程中几个比较关键的字段是 peer、networkAddressUsedAtPeer 、parentService、parentServiceInstance、parentEndpoint。其中 Peer 和 networkAddressUsedAtPeer 分别表示对端地址以及 client 端调用当前实例使用的地址，这两个字段的作用是将链路中的实例连接起来，如果这两个字段缺失会导致链路断开，在转换过程中这两个字段通过在 span 的 tag 中寻找或获取本机第一个合法的 IPv4 地址获得。后三个字段的作用是指出对应的父实例节点，如果不设置这三个字段会产生一个空的实例信息，如下图所示。目前 SOFATracer 中在能在上下文中传播的只有 TraceIdSpanId、parentId、sysBaggage、bizBaggage 从其中无法得到以上的三个字段，为了能展示拓扑图在 SOFATracer 的上下文中增加了七个字段 service、serviceInstance、endpoint、parentService、parentServiceInstance、parentEndpoint、peer 这样就能够在转换的过程中获得父服务的相关信息。
 
 ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*_IeiRIIUV3QAAAAAAAAAAAAAARQnAQ)
 
-### 异步上传 
+### 异步上传
 
 使用 HTTP 上报 Json 格式的 segment 数据到后端，上报时以 message 为单位，多个 segment 组合成一个 message。
 
@@ -176,7 +176,7 @@ client span ：parentSegmentId = traceId + parentId 哈希值 + server(0)
 
 ## PART. 4 压 测
 
-### 测试配置 
+### 测试配置
 
 - Windows 10
 
@@ -184,9 +184,9 @@ client span ：parentSegmentId = traceId + parentId 哈希值 + server(0)
 
 - Disk 500GB SSD
 
-- Intel(R) Core(TM) i7-7700HQ CPU @2.80GHz  2.80GHz 
+- Intel(R) Core(TM) i7-7700HQ CPU @2.80GHz  2.80GHz
 
-### 测试方式 
+### 测试方式
 
 部署一个包含六个服务的调用链路。设置三组对照：
 
@@ -194,9 +194,9 @@ client span ：parentSegmentId = traceId + parentId 哈希值 + server(0)
 
 - 50% 采集
 
-- 全量采集 
+- 全量采集
 
-### Jaeger 测试结果 
+### Jaeger 测试结果
 
 测试中相关的几个参数设置如下：
 
@@ -230,7 +230,7 @@ client span ：parentSegmentId = traceId + parentId 哈希值 + server(0)
 
 ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*uqB4RIFn5mAAAAAAAAAAAAAAARQnAQ)
 
-### SkyWalking 测试结果 
+### SkyWalking 测试结果
 
 **全集采集**
 
@@ -252,15 +252,11 @@ client span ：parentSegmentId = traceId + parentId 哈希值 + server(0)
 
 本次介绍的 SOFATracer 的链路可视化，将会在下个版本 release。
 
-
-
 **「收获」**
 
 很幸运能够参加这次的开源之夏活动，在阅读 SOFATracer 源码的过程中学习了很多优秀的设计思想与实现方式，实现的过程中会去模仿一些源码的实现方式在这个过程中自己学习到了很多。在项目实施过程中也发现了自己的一些问题，比如在解决问题时有一点思路就开始做，没有深挖这个思路是否可行，这个坏习惯浪费了许多时间。这是我第一次参与到开源社区的相关活动中，在这个过程中了解了开源社区的运作方式，在以后的学习过程中会更加努力提高自己的代码能力，争取能为开源社区做出一点贡献。
 
 特别感谢感谢宋国磊老师对我的耐心指导，在项目过程中宋老师帮助我解开了很多疑惑，学到很多东西，感谢 SOFAStack 社区在整个过程中对我的诸多帮助，感谢活动主办方提供的平台。
-
-
 
 **「参考资料」**
 

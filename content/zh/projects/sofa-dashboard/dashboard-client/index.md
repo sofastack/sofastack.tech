@@ -41,12 +41,15 @@ SOFADashboard 支持查看应用的 IP、端口、健康检查状态等基本信
 ![](https://gw.alipayobjects.com/mdn/rms_9959bb/afts/img/A*ol2GRInEdS0AAAAAAAAAAABkARQnAQ)
 
 ### 环境变量
+
 ![](https://gw.alipayobjects.com/mdn/rms_9959bb/afts/img/A*auCST4IAN44AAAAAAAAAAABkARQnAQ)
 
 ### loggins
+
 ![](https://gw.alipayobjects.com/mdn/rms_9959bb/afts/img/A*8mGtS4Sx55EAAAAAAAAAAABkARQnAQ)
 
 ### mappings
+
 ![](https://gw.alipayobjects.com/mdn/rms_9959bb/afts/img/A*jGWjT7ZU3dMAAAAAAAAAAABkARQnAQ)
 
 ## 配置

@@ -20,7 +20,7 @@ description: "5 月 28 日周四晚 8 点，Service Mesh Webinar#1 线上直播�
 
 ## 介绍
 
-### Service Mesh Webinar 
+### Service Mesh Webinar
 
 Service Mesh Webinar 是由 ServiceMesher 社区和 CNCF 联合发起的线上直播活动，活动将不定期举行，邀请社区成员为大家带来 Service Mesh 领域的知识和实践分享。
 

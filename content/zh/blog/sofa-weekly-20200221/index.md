@@ -17,16 +17,16 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 
 SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 
-**SOFAStack 官网: **[https://www.sofastack.tech](https://www.sofastack.tech/)
+**SOFAStack 官网:**[https://www.sofastack.tech](https://www.sofastack.tech/)
 
-**SOFAStack: **[https://github.com/sofastack](https://github.com/sofastack)
+**SOFAStack:**[https://github.com/sofastack](https://github.com/sofastack)
 
 ### 每周读者问答提炼
 
 欢迎大家向公众号留言提问或在群里与我们互动
 我们会筛选重点问题通过 " SOFA WEEKLY " 的形式回复
 
-**1、@朱楠 **提问：
+**1、@朱楠**提问：
 
 > 请教下，我看文档上有说 json 可以热部署，有 demo 吗，没怎么看明白如何热部署
 > ![image.png](https://cdn.nlark.com/yuque/0/2020/png/226702/1582270528773-c95ddf2a-cf84-43a1-a063-feeef533d096.png)
@@ -41,7 +41,7 @@ A：注册了 json，如果数据库里有名称相同的，它会对比字节�
 
 A：因为状态机里定义了要调用服务，这个服务可能是目前在系统里没有引用，所以需要上传 jar。
 
-2、**@刘川江 **提问：
+2、**@刘川江**提问：
 
 > Seata Saga 模式服务（ServiceTask）之间如何在运行时传递业务参数？如将服务 A 运行后的生成的业务对象传递到后续的服务中进行处理。
 
@@ -60,7 +60,7 @@ A：可以，比如 A 是一个查询类的服务，可以将 A 设置成 IsForU
 
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
-**3、@SUNBIAO **提问：
+**3、@SUNBIAO**提问：
 
 > 请问 SOFA 消费者端可以同时配置多个注册中心嘛？例如一个 web 控制器接入端当作消费者，配置连接多个注册中心，订阅不同注册中心上的生产者服务，但是这个消费者端不同的具体消费者调用不同注册中心的服务，前提是注册中心不能合成一个，现实有多个不同的注册中心。
 
@@ -68,7 +68,7 @@ A：可以的，可以看这个类 com.alipay.sofa.rpc.config.AbstractInterfaceC
 
 SOFARPC：[https://github.com/sofastack/sofa-rpc](https://github.com/sofastack/sofa-rpc)
 
-4、**@七美 **提问：
+4、**@七美**提问：
 
 > SOFATracer 目前落盘的摘要 log 是固定格式的，能否直接以 zipkin 的 json 数据格式落盘？如果可以如何操作？
 

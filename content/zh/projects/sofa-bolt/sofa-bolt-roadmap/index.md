@@ -10,7 +10,7 @@ aliases: "/sofa-bolt/docs/sofa-bolt-roadmap"
 * 修复项目中已知的 BUG：<https://github.com/alipay/sofa-bolt/issues/82>
 * RPC 层支持从 IO 线程派发 message list：<https://github.com/alipay/sofa-bolt/pull/84>
 
-## Version 1.6.0 
+## Version 1.6.0
 
 ### 整体目标
 

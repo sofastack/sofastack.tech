@@ -30,7 +30,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 欢迎大家在 GitHub 提交 issue 与我们互动
 
-我们会筛选 issue 通过 
+我们会筛选 issue 通过
 
 " SOFA WEEKLY " 的形式回复
 
@@ -42,7 +42,7 @@ A：第一种情况会等到超时时间，默认是 60 秒后进行回滚。在
 
 **「Seata」**：*[https://github.com/seata/seata](https://github.com/seata/seata)*
 
-**2.@antjack  #2197** 
+**2.@antjack  #2197**
 
 > Allow Setting Cluster Idle Timeout to Zero to Indicate Never Timeout.This issue requests the ability to set an idle_timeout = 0, to indicate the indefinite idle timeout for upstream connection timeout.
 

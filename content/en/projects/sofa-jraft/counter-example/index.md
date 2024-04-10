@@ -551,4 +551,3 @@ public boolean onSnapshotLoad(SnapshotReader reader) {
 ```
 
 You can set the snapshot interval by using the snapshotIntervalSecs method of NodeOptions. The default interval is one hour.
-

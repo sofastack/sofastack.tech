@@ -38,15 +38,15 @@ A：支持 istio1.10。
 
 A：是需要适配下的，主要看新增了多少改动。
 
-**「MOSN」**：*https://github.com/mosn/mosn/*
+**「MOSN」**：*<https://github.com/mosn/mosn/>*
 
 **2.林楠** 提问：
 
 > 关在 uninstall biz 包的时候，没有从内嵌 Tomcat 卸载掉，接口仍能访问。看到 demo 中的提示是由于未注册 BeforeBizStopEvent，所以不具备动态卸载能力。想问下 SOFAArk 是否有计划做 Tomcat 的动态卸载，如果想自行实现的话，是不是调用 ArkTomcatWebServer 实例的 stop 方法就能够实现动态卸载？
 
-A：Spring Boot 模块没有动态卸载能力：*https://github.com/sofastack/sofa-ark/issues/554#issuecomment-1207183454*
+A：Spring Boot 模块没有动态卸载能力：*<https://github.com/sofastack/sofa-ark/issues/554#issuecomment-1207183454>*
 
-**「SOFAArk」**：*https://github.com/sofastack/sofa-ark*
+**「SOFAArk」**：*<https://github.com/sofastack/sofa-ark>*
 
 ### 本周推荐阅读
 

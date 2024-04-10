@@ -16,7 +16,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563456011284-3294de2d-77a
 
 Kubernetes 原生社区 Deployment 和 StatefulSet 解决了“服务节点版本一致性”的问题，并且通过 Rolling Update 实现了滚动升级，提供了基本的回滚策略。对于高可用建设要求不高的“年轻”业务，是一个不错的选择。
 
-但是，在金融场景下，要解决的场景复杂得多。因此我们在金融分布式架构-云应用引擎（**SOFAStack-CAFE**，参见《金融级云原生探索实践系列——开篇》）中提出了 **CafeDeployment **的云原生模型，致力于解决以下问题：
+但是，在金融场景下，要解决的场景复杂得多。因此我们在金融分布式架构-云应用引擎（**SOFAStack-CAFE**，参见《金融级云原生探索实践系列——开篇》）中提出了 **CafeDeployment**的云原生模型，致力于解决以下问题：
 
 **1. IP 不可变**
 
@@ -31,7 +31,6 @@ Deployment/StatefulSet 无法根据特定属性进行差异化部署。而在�
 Deployment 无法控制发布步长，StatefulSet 虽然可以控制步长，但是每次都需要人工计算最新版本需要的副本数并修改 Partition，在多机房/部署单元的情况下，光想想发布要做的操作都脑袋炸裂。
 
 在面对以上这些问题的时候，我们思考：能不能有一个类似 Deployment 的东西，不仅可以实现副本保持，并且能协助用户管控应用节点部署结构、做 Beta 验证、分批发布，减少用户干预流程，实现最大限度减少发布风险的目标，做到快速止损，并进行修正干预。这就是我们为什么选择定义了自己的资源——**CafeDeployment**。
-
 
 ## 模型定义
 
@@ -48,30 +47,30 @@ metadata:
   ......
 spec:
   historyLimit: 20
-  podSetType: InPlaceSet	# 目前支持底层PodSet：InPlaceSet，ReplicaSet，StatefulSet
+  podSetType: InPlaceSet # 目前支持底层PodSet：InPlaceSet，ReplicaSet，StatefulSet
   replicas: 10
   selector:
   matchLabels:
     instance: productpage
     name: bookinfo
   strategy:
-    batchSize: 4	# 分组发布时，每组更新的Pod数目
+    batchSize: 4 # 分组发布时，每组更新的Pod数目
     minReadySeconds: 30
-    needWaitingForConfirm: true	# 分组发布中，每组结束时是否需要等待确认
-    upgradeType: Beta	# 目前支持发布策略：Beta发布，分组发布
+    needWaitingForConfirm: true # 分组发布中，每组结束时是否需要等待确认
+    upgradeType: Beta # 目前支持发布策略：Beta发布，分组发布
     pause: false
   template:
     ......
-  volumeClaimTemplates:	# 用于支持statefulSet
-  serviceName:		# 用于支持statefulSet
+  volumeClaimTemplates: # 用于支持statefulSet
+  serviceName:  # 用于支持statefulSet
   topology:
     autoReschedule:
-      enable: true	# 是否启动Pod自动重调度
+      enable: true # 是否启动Pod自动重调度
       initialDelaySeconds: 10
-    unitType: Cell	# 部署单元类型：Cell，Zone，None
+    unitType: Cell # 部署单元类型：Cell，Zone，None
     unitReplicas:
-      CellA: 4		# 固定某部署单元的Pod数目
-    values:		# 部署单元
+      CellA: 4  # 固定某部署单元的Pod数目
+    values:  # 部署单元
       - CellA
       - CellB
 ```
@@ -88,7 +87,7 @@ spec:
       name: bookinfo
       deployUnit: CellB
   strategy:
-    partition: 6		# 控制发布时更新Pod的进度
+    partition: 6  # 控制发布时更新Pod的进度
   template:
     ......
 ```
@@ -119,15 +118,15 @@ CafeDeployment 支持跨部署单元的分组扩容，Pod 调度，分组发布�
 
 ```yaml
 spec:
-	......
-  replicas: 10								# 副本数为10
+ ......
+  replicas: 10        # 副本数为10
   strategy:
-    upgradeType: Beta						# Beta发布
-    batchSize: 4								# 每组Pod数为4
-    needWaitingForConfirm: true	# 分组暂停
+    upgradeType: Beta      # Beta发布
+    batchSize: 4        # 每组Pod数为4
+    needWaitingForConfirm: true # 分组暂停
   topology:
     ......
-    values:		# 两个部署单元，CellA和CellB
+    values:  # 两个部署单元，CellA和CellB
       - CellA
       - CellB
 ```
@@ -150,15 +149,15 @@ spec:
 
 ```yaml
 spec:
-	......
-  replicas: 10								# 副本数为10
+ ......
+  replicas: 10        # 副本数为10
   strategy:
-    upgradeType: Beta						# Beta发布
-    batchSize: 4								# 每组Pod数为4
-    needWaitingForConfirm: true	# 分组暂停
+    upgradeType: Beta      # Beta发布
+    batchSize: 4        # 每组Pod数为4
+    needWaitingForConfirm: true # 分组暂停
   topology:
     ......
-    values:		# 两个部署单元，CellA和CellB
+    values:  # 两个部署单元，CellA和CellB
       - CellA
       - CellB
 ```
@@ -187,8 +186,8 @@ spec:
 spec:
   topology:
     autoReschedule:
-      enable: true						# 是否启动Pod自动重调度
-      initialDelaySeconds: 10	# Pod由于资源不足，10秒后会被尝试重调度
+      enable: true      # 是否启动Pod自动重调度
+      initialDelaySeconds: 10 # Pod由于资源不足，10秒后会被尝试重调度
 ```
 
 在 Pod 部署过程中，如下图所示，
@@ -204,8 +203,8 @@ spec:
   topology:
     ......
     unitReplicas:
-      CellA: 4		# 固定某部署单元的Pod数目
-      CellB: 10%	# 通过百分比指定
+      CellA: 4  # 固定某部署单元的Pod数目
+      CellB: 10% # 通过百分比指定
     values:
       - CellA
       - CellB

@@ -31,11 +31,13 @@ aliases: "/sofa-mosn/docs/docs-reference-PerformanceReport010"
 ### HTTP1.1 协议（发送 1K 字符串）
 
 使用 ApacheBench/2.3, 测试指令:
+
 ```bash
 ab -n $RPC -c $CPC -p 1k.txt -T "text/plain" -k http://11.166.161.136:12200/tcp_bench > ab.log.$CPU_IDX &
 ```
 
 ## Service mesh 运行机器规格
+
 Service mesh 运行在容器中，其中 CPU 为独占的一个逻辑核，具体规格如下：
 
 | 类别 | 信息 |
@@ -127,7 +129,6 @@ Service mesh 运行在容器中，其中 CPU 为独占的一个逻辑核，具�
 
 - version：1.7
 - tag：1ef23d481a4701ad4a414d1ef98036bd2ed322e7
-
 
 ## Envoy TCP 测试配置
 

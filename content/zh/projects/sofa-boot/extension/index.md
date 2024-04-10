@@ -1,9 +1,9 @@
 
 ---
+
 title: "SOFABoot 拓展点"
 aliases: "/sofa-boot/docs/extension"
 ---
-
 
 SOFABoot 支持模块化隔离，在实际的使用场景中，一个模块中的 bean 有时候需要开放一些入口，供另外一个模块扩展。SOFABoot 借鉴和使用了 [Nuxeo Runtime](https://github.com/nuxeo-archives/nuxeo-runtime) 项目 以及 [nuxeo](https://github.com/nuxeo/nuxeo) 项目，并在上面扩展，与 Spring 融合，提供扩展点的能力。
 
@@ -97,6 +97,7 @@ public class ExtensionDescriptor {
 ```
 
 其中：
+
 - name 为扩展点的名字
 - ref 为扩展点所作用在的 bean
 - object 为扩展点的贡献点具体的描述，这个描述是通过 XMap 的方式来进行的(XMap 的作用是将 Java 对象和 XML 文件进行映射，这里建议通过在网上搜索下 XMap 的文档来了解 XMap)
@@ -116,6 +117,7 @@ public class ExtensionDescriptor {
 ```
 
 其中：
+
 - bean 为扩展所作用在的 bean
 - point 为扩展点的名字
 - content 里面的内容为扩展的定义，其会通过 XMap 将内容解析为：扩展点的贡献点具体的描述对象，在这里即为 `com.alipay.sofa.boot.test.extension.ExtensionDescriptor` 对象
@@ -129,6 +131,7 @@ public class ExtensionDescriptor {
 上述的例子中只是一个很简单的扩展，其实 XMap 包含了非常丰富的描述能力，包括 `List`, `Map` 等，这些可以通过查看 XMap 的文档来了解。
 
 在 SOFABoot 中，除了 XMap 原生的支持以外，还扩展了跟 Spring 集成的能力：
+
 - 通过 `XNode` 扩展出了 `XNodeSpring`
 - 通过 `XNodeList` 扩展出了 `XNodeListSpring`
 - 通过 `XNodeMap` 扩展出了 `XNodeMapSpring`
@@ -232,10 +235,9 @@ public class SpringListExtensionDescriptor {
 </sofa:extension>
 ```
 
-在定义扩展时，首先定义了两个 bean，然后将它们放入扩展定义中。 
+在定义扩展时，首先定义了两个 bean，然后将它们放入扩展定义中。
 
 此时，调用 `iExtension` 的 `getSimpleSpringListBeans` 方法，可以看到其中包含了通过扩展方式添加的两个 bean。
-
 
 ## 通过客户端方式定义扩展点和扩展
 
@@ -276,6 +278,7 @@ extensionClient.publishExtensionPoint(extensionPointParam);
 
 通过客户端和通过 xml 注册扩展点时各参数的含义保持一致：
 其中：
+
 - name 为扩展点的名字
 - targetName 为扩展点所作用在的 bean 的名字
 - target 为扩展点所作用在的 bean
@@ -310,6 +313,7 @@ extensionClient.publishExtension(extensionParam);
 ```
 
 通过客户端和通过 xml 注册扩展点时各参数的含义保持一致：
+
 - targetInstanceName 为扩展所作用在的 bean
 - targetName 为扩展点的名字
 - element 里面的内容为扩展的定义，这里需要传入 `Element` 对象，通过从 xml 中读取，这里示例子的内容如下：

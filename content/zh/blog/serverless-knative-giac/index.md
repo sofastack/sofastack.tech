@@ -240,13 +240,10 @@ Queue Proxy 也是一个现存的需要替换的模块。
 * 成熟度：目前才 0.2 版本，实在太早期，太多东西还在开发甚至规划中。希望随着时间的推移和版本演进，Knative 能尽快走向成熟。
 * 复杂度：成熟度的问题还好说，总能一步一步改善的，无非是时间问题。但是 Knative 的系统复杂度过高的问题，目前看来几乎是不可避免的。
 
-最后，对 Knative 的总结，就一句话：__前途不可限量，但是成长需要时间__。让我们拭目以待。
+最后，对 Knative 的总结，就一句话：**前途不可限量，但是成长需要时间**。让我们拭目以待。
 
 ![ServiceMesher 社区](https://cdn.nlark.com/yuque/0/2019/png/226702/1551861385309-6eb9ed6e-3f4e-4931-95ac-d9e1c22923db.png)
-
 
 欢迎大家加入 servicemesher 社区，也可以通过关注 servicemesher 微信公众号来及时了解 service mesh 技术的最新动态。
 
 欢迎大家共同打造 SOFAStack [https://github.com/sofastack](https://github.com/sofastack)
-
-

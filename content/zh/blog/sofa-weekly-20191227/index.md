@@ -17,9 +17,9 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 
 SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 
-**SOFAStack 官网: **[https://www.sofastack.tech](https://www.sofastack.tech/)
+**SOFAStack 官网:**[https://www.sofastack.tech](https://www.sofastack.tech/)
 
-**SOFAStack: **[https://github.com/sofastack](https://github.com/sofastack)
+**SOFAStack:**[https://github.com/sofastack](https://github.com/sofastack)
 
 ### 社区 Big News
 
@@ -34,7 +34,7 @@ SOFA Community 期待你的加入：[https://www.sofastack.tech/community/](/com
 欢迎大家向公众号留言提问或在群里与我们互动
 我们会筛选重点问题通过 " SOFA WEEKLY " 的形式回复
 
-**1、@包和平 **提问：
+**1、@包和平**提问：
 
 > 请问 Seata Saga 状态机可以跨服务来配置吗？案例中的 springcloud-eureka-feign-mybatis-seata 这个和我们的情况类似。这个默认的不是 AT 模式吗？我想使用 Saga 的状态机来配置整个流程，这个情况就涉及了三个服务 storage   order  account，我看 demo 中都是在单个服务中配置的状态机，所以想询问一下怎么配置。
 > ![image.png](https://cdn.nlark.com/yuque/0/2019/png/226702/1577429204441-8a4c9aa6-ddf8-40e1-88d1-0f23077af4f9.png)

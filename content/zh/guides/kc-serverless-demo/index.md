@@ -25,14 +25,17 @@ github: "https://github.com/sofastack-guides/kc-serverless-demo"
 ![pic](preview-sas.png)
 
 <a name="fxwGD"></a>
+
 ### Step 0: 前期准备
 
 - 应用 clone：[https://github.com/sofastack-guides/kc-serverless-demo](https://github.com/sofastack-guides/kc-serverless-demo)
 
 <a name="Wat0u"></a>
+
 ### 讲师演示
 
 <a name="QrSTV"></a>
+
 #### 快速发布后端 Java 应用
 
 - 选择快速创建
@@ -43,6 +46,7 @@ github: "https://github.com/sofastack-guides/kc-serverless-demo"
 - 创建完成后，复制保存后端服务的地址
 - 查看后端服务计算实例数量：0
   <a name="WGOZU"></a>
+
 #### 快速发布前端 NodeJS 应用
 
 - 选择创建应用服务
@@ -54,29 +58,33 @@ github: "https://github.com/sofastack-guides/kc-serverless-demo"
 - 环境变量设置 `BALANCEMNG_URL` 为后端服务的地址
 
 <a name="75JiI"></a>
+
 ### Step 1: 查看 Serverless 应用服务
 
-- 访问 Serverless 应用服务地址 [https://sas.shared.cloud.alipay.com/](https://sas.shared.cloud.alipay.com/) 
+- 访问 Serverless 应用服务地址 [https://sas.shared.cloud.alipay.com/](https://sas.shared.cloud.alipay.com/)
 - 使用账号，密码登陆
 - 选择 workspace：
-    - workspace0【user00-09】
-    - workspace1【user10-19】
-    - ...
-    - workspace9【user90-99】
+  - workspace0【user00-09】
+  - workspace1【user10-19】
+  - ...
+  - workspace9【user90-99】
 - 查看前端应用服务：kubecon-frontend-demo-xx【00-99】
 - 查看后端应用服务：kubecon-backend-demo-xx【00-99】
 - **查看目前后端应用的计算实例数量：0**
 
 <a name="scmLZ"></a>
+
 ### Step 2: 查看 0-1 冷启能力
 
 - 使用 Chrome 浏览器访问前端服务，域名为：*.kevinwang.cc
 - 查看后端服务的计算实例数量的变化
 
 <a name="epfI5"></a>
+
 ### 讲师演示
 
 <a name="liSO7"></a>
+
 #### 创建版本和流量控制
 
 - 克隆前端应用，并创建新版本
@@ -85,6 +93,7 @@ github: "https://github.com/sofastack-guides/kc-serverless-demo"
 - 通过浏览器查看效果
 
 <a name="713LS"></a>
+
 ### Step 3: 查看版本和流量控制
 
 - 打开前端应用服务
@@ -92,14 +101,18 @@ github: "https://github.com/sofastack-guides/kc-serverless-demo"
 - 通过浏览器访问应用查看流控效果
 
 <a name="VQrsn"></a>
+
 ### Step 4: 时间触发器
 
 - 创建时间触发器，定时 2 分钟后触发一次
 - 为前端应用配置触发器
 - 在指定时间，通过执行记录查看触发效果
   <a name="Ekbs7"></a>
+
 ### [](https://github.com/sofastack-guides/kc-serverless-demo#step-2-%E6%9F%A5%E7%9C%8B-0-1-%E5%86%B7%E5%90%AF%E8%83%BD%E5%8A%9B)
+
 <a name="4iW0b"></a>
+
 ### Step 5: Log Shell 和计量
 
 - 打开 Log Shell
@@ -109,9 +122,11 @@ github: "https://github.com/sofastack-guides/kc-serverless-demo"
 - 通过计量监控查看实例运行情况
 
 <a name="KESa0"></a>
+
 ### 讲师演示
 
 <a name="BdZ6q"></a>
+
 #### M-N 快速伸缩
 
 - 打开应用服务

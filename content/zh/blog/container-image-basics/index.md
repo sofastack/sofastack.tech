@@ -210,7 +210,7 @@ Erofs over fscache 是 Linux 内核原生的镜像按需加载特性，于 5.19 
 
 事实上我们可以将按需加载的
 
-（1）缓存管理和 
+（1）缓存管理和
 
 （2）缓存未命中的时候通过各种途径 (例如网络) 获取数据，这两个操作解耦开。缓存管理可以下沉到内核态执行，这样当镜像在本地 ready 的时候，就可以避免内核态/用户态上下文的切换。而这也正是 erofs over fscache 技术的价值所在。
 
@@ -573,31 +573,31 @@ sudo docker run -d --name=registry --restart=always -p 5000:5000 registry && sud
 
 ## 07 参考资料
 
-[1]OCI 镜像标准格式: 
+[1]OCI 镜像标准格式:
 *[https://github.com/opencontainers/image-spec](https://github.com/opencontainers/image-spec)*
 
-[2]自校验的哈希树: 
+[2]自校验的哈希树:
 *[https://en.wikipedia.org/wiki/Merkle_tree](https://en.wikipedia.org/wiki/Merkle_tree)*
 
-[3]FUSE: 
+[3]FUSE:
 *[https://www.kernel.org/doc/html/latest/filesystems/fuse.html](https://www.kernel.org/doc/html/latest/filesystems/fuse.html)*
 
 [4]virtiofs:
 *[https://virtio-fs.gitlab.io/](https://virtio-fs.gitlab.io/)*
 
-[5]runc 容器: 
+[5]runc 容器:
 *[https://github.com/opencontainers/runc](https://github.com/opencontainers/runc)*
 
-[6]Kata 容器: 
+[6]Kata 容器:
 *[https://katacontainers.io/](https://katacontainers.io/)*
 
-[7]OSS 对象存储: 
+[7]OSS 对象存储:
 *[https://www.alibabacloud.com/product/oss](https://www.alibabacloud.com/product/oss)*
 
-[8]Nydus-snapshotter: 
+[8]Nydus-snapshotter:
 *[https://github.com/containerd/nydus-snapshotter](https://github.com/containerd/nydus-snapshotter)*
 
-[9]fuse-overlayfs: 
+[9]fuse-overlayfs:
 *[https://github.com/containers/fuse-overlayfs](https://github.com/containers/fuse-overlayfs)*
 
 [10]5.19 版本:

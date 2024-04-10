@@ -1,9 +1,9 @@
 
 ---
+
 title: "Ark container plugin mechanism"
 aliases: "/sofa-boot/docs/sofa-ark-plugin"
 ---
-
 
 ## Starting an Ark plug-in
 
@@ -72,11 +72,11 @@ Ark plug-ins communicate using services. The interfaces used by the publishing a
 ```
 
 A plug-in service is interface-specific. For one interface, the following descriptions are true:
+
 * Only one service can be published for each plug-in. When more than one service is published, the reference of the previously published service will be returned.
 * If you use `referenceService` to reference a single service when multiple plug-ins have published services, which service is returned depends on whether pluginName is specified:
   * When not specified, the service with the highest priority is returned.
   * When specified, the service published by the plugin with the specified name is returned.
-
 
 The returned service reference `ServiceReference` is defined as follows:
 
@@ -121,11 +121,9 @@ public interface ServiceMetadata {
 ```
 
 Where:
+
 * `getService()` can be used to obtain the service object (specifically, implObject is used when the service is published).
 * `getServiceMetadata()` can be used to obtain the service metadata, including:
   * Service name: interface name of the service
   * Service interface
   * Service provider information: includes provider name (such as the plugin name) and provider priority (plugin priority)
-
-
-

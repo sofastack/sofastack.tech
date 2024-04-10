@@ -80,8 +80,8 @@ Go 也是一样，因为运行 Go 程序不需要前置部署类似于 JRE 的�
 
 **-** go dependency 的交集一致
 
--   代码一致
--   path 一致
+- 代码一致
+- path 一致
 
 **-** go build 某些 flag 一致
 
@@ -103,7 +103,7 @@ GO111MODULE=on go build --buildmode=plugin -mod readonly -o ./codec.so ./codec.g
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ae8c9866a99249ad93b709a78d7f0354~tplv-k3u1fbpfcp-zoom-1.image)
 
-注意，goland 组装的编译命令里包含关键的 
+注意，goland 组装的编译命令里包含关键的
 
 -gcflags all=-N -l 参数，但是插件编译的命令里没有。此时，你在尝试拉起插件时就会得到一个有关 runtime/internal/sys 的报错。
 
@@ -205,21 +205,21 @@ fatal error: runtime: no plugin module data
 
 **-** 统一编译环境：
 
--   提供一个标准的 docker image 用来编译主程序和插件，规避任何 go 版本、gopath 路径、用户名等不一致所带来的问题；
+- 提供一个标准的 docker image 用来编译主程序和插件，规避任何 go 版本、gopath 路径、用户名等不一致所带来的问题；
 
--   预制 go/pkg/mod，尽可能减少因为没有使用 vendor 模式导致每次编译都要重新下载依赖的问题。
+- 预制 go/pkg/mod，尽可能减少因为没有使用 vendor 模式导致每次编译都要重新下载依赖的问题。
 
 **-** 统一 Makefile：
 
--   提供一套主程序和插件的编译 Makefile，规避任何因为 go build 命令带来的问题。
+- 提供一套主程序和插件的编译 Makefile，规避任何因为 go build 命令带来的问题。
 
 **-** 统一插件开发脚手架：
 
--   由脚手架，而不是开发者拉齐插件与主程序的依赖版本。并由脚手架解决其他相关问题。
+- 由脚手架，而不是开发者拉齐插件与主程序的依赖版本。并由脚手架解决其他相关问题。
 
 **-** 流水线化：
 
--   将编译部署流水线化，进一步避免出现错误。
+- 将编译部署流水线化，进一步避免出现错误。
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c9973461c8894180b737cfeaaa52f061~tplv-k3u1fbpfcp-zoom-1.image)
 

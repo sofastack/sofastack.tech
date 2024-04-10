@@ -196,4 +196,4 @@ SOFABolt 只依赖 SLF4J 作为日志门面。同时提供了 log4j、log4j2、l
 
 * [蚂蚁通信框架实践](https://mp.weixin.qq.com/s/JRsbK1Un2av9GKmJ8DK7IQ)
 * [剖析 | SOFARPC 框架之总体设计与扩展机制](https://mp.weixin.qq.com/s/ZKUmmFT0NWEAvba2MJiJfA)
-* [SOFABolt lab](https://www.sofastack.tech/categories/sofabolt/) 
+* [SOFABolt lab](https://www.sofastack.tech/categories/sofabolt/)

@@ -35,7 +35,7 @@ OBProxy 的核心逻辑：
 
 可以看出，OBProxy 和 ZDAL 这两个组件的执行路径有一定的重复度，比如两个组件都做了 SQL 解析，并分析表名和字段。这对性能带来一定的损耗，而且这种重复给研发迭代带来更多的工作量。
 
-![ZDAL 和 OBProxy](https://cdn.nlark.com/yuque/0/2019/png/226702/1575957783679-9ecd666a-9df4-4299-b36f-b58e76d393d9.png)    
+![ZDAL 和 OBProxy](https://cdn.nlark.com/yuque/0/2019/png/226702/1575957783679-9ecd666a-9df4-4299-b36f-b58e76d393d9.png)
 
 基于前面的考虑将 ZDAL 和 OBProxy 两者合并成一个组件的是一个自然的方案，通过将 ZDAL 逻辑下沉到 OBProxy 中，让 OBProxy 提供了分库分表、读写分离、分布式序列等中间件能力，这个组件我们命名为 ODP（Open Database Proxy）。
 

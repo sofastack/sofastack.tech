@@ -17,9 +17,9 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 
 SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 
-**SOFAStack 官网: **[https://www.sofastack.tech](https://www.sofastack.tech/)
+**SOFAStack 官网:**[https://www.sofastack.tech](https://www.sofastack.tech/)
 
-**SOFAStack: **[https://github.com/sofastack](https://github.com/sofastack)
+**SOFAStack:**[https://github.com/sofastack](https://github.com/sofastack)
 
 ### 每周读者问答提炼
 
@@ -29,6 +29,7 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 **1、@杨俊 提问：**
 
 > AT 模式下，当 seata-server 挂掉之后，有未完成的全局事务还在 undo_log 表中，这里有两个问题问一下：
+>
 > 1. seata-server 再次重启后，之前未完成的全局事务偶尔会出现回滚失败的问题，就是一直重试，但始终回滚失败，这个问题如何解决？
 > 1. seata-server 再次重启后，大多数情况下会成功回滚，但是等待时间过长，感觉要至少 3-5 分钟才会回滚，这期间涉及到的相关业务服务无法处理其他请求，直至之前的未完成全局事务成功回滚了，才能处理其他请求，请问这个问题如何解决，还有回滚时间在哪里配置能够缩短？
 > ※上述两个问题都是基于 seata-sample 产生的。
@@ -37,6 +38,7 @@ A：1.  要确认下客户端日志中回滚失败的原因，重启后会恢复
 2. server.recovery.rollbackingRetryPeriod , 是不是重启前未完成事务过多？
 
 > 好的，谢谢。
+>
 > 1. seata-sample 中三个服务，Account、Order 回滚成功，Storage 回滚失败，然后 seata-server 就一直反复重试，seata 和 storage 及其他服务重启也无用，然后手工将日志删除，依然不停重试，最后重启 seata 服务，系统把删掉的日志又给重写到日志表了，但是 log_status 为 1，至此不再重试，但是事务未能成功回滚。
 > 1. 重启未完成的事务只有那么三个而已，并不多。
 

@@ -1,9 +1,9 @@
 
 ---
+
 title: "Use dynamic API in SOFABoot"
 aliases: "/sofa-rpc/docs/Programing-SOFA-BOOT-API"
 ---
-
 
 ## Use API
 

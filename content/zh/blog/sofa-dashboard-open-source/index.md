@@ -9,10 +9,10 @@ date: 2019-05-05T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563868284867-44971797-275e-4d71-a20e-bbdc89cba861.png"
 ---
 
-> **SOFA**Stack 
+> **SOFA**Stack
 > **S**calable **O**pen **F**inancial **A**rchitecture Stack 是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，是在金融场景里锤炼出来的最佳实践。
 > 为了建设更完整的 SOFAStack 微服务体系，我们计划发起 SOFADashboard 项目，计划通过社区的方式共建，将其打造为一站式的 SOFAStack 管控平台。欢迎共建~
-> SOFADashboard：[https://github.com/sofastack/sofa-dashboard](https://github.com/sofastack/sofa-dashboard) 
+> SOFADashboard：[https://github.com/sofastack/sofa-dashboard](https://github.com/sofastack/sofa-dashboard)
 
 ## 背景
 
@@ -40,7 +40,7 @@ SOFADashboard 作为一站式 SOFAStack 管控台，希望对 SOFAStack 各个�
 
 4 月 30 日，我们上传了第一个 SOFADashboard 版本，主要能力包括：应用信息、服务查看、动态模块管控等。
 
-目前演示地址：[http://dashboard.dev.sofastack.tech:8000/](http://dashboard.dev.sofastack.tech:8000/) 
+目前演示地址：[http://dashboard.dev.sofastack.tech:8000/](http://dashboard.dev.sofastack.tech:8000/)
 
 ![SOFADashboard](https://cdn.nlark.com/yuque/0/2019/png/226702/1556525347731-24fa1d1e-555f-44f0-a275-f188e35cbba8.png)
 

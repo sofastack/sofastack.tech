@@ -62,6 +62,7 @@ In conclusion, with the packaging plugin provided by SOFAArk, the application
 can package two types of packages—Ark package and Biz package.
 
 ## Packaging Configuration
+
 Detailed use of the packaging plugin `sofa-ark-maven-plugin` is available in [Reference Documents](../sofa-ark-ark-jar). The following is an attached simple packaging configuration:
 
 ```xml
@@ -86,5 +87,3 @@ Detailed use of the packaging plugin `sofa-ark-maven-plugin` is available in [Re
 ```
 
 Note the configuration of "attach", which mainly affects the installation and release of the Biz package. When attach is configured and released as true, execute the mvn install command and the Biz package will be installed in the local maven repository. When the mvn deploy command is executed, the Biz package will also be uploaded to the remote maven repository. The GAV coordinates of the Biz package is determined by the pom.xml file, with the additional attribute of classifier=ark-biz. For the role of classifier, refer to the [StackOverFlow Q&A](https://stackoverflow.com/questions/20909634/what-is-the-purpose-of-mavens-dependency-declarations-classifier-property)
-
-

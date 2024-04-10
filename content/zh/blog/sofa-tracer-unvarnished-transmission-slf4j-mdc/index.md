@@ -13,7 +13,7 @@ cover: "/cover.jpg"
 >
 > SOFATracer 是一个用于分布式系统调用跟踪的组件，通过统一的 TraceId 将调用链路中的各种网络调用情况以日志的方式记录下来，以达到透视化网络调用的目的，这些链路数据可用于故障的快速发现，服务治理等。
 >
-本文为《剖析 | SOFATracer 框架》第三篇。《剖析 | SOFATracer 框架》系列由 SOFA 团队和源码爱好者们出品，项目代号：SOFA:TracerLab/**，**目前领取已经完成，感谢大家的参与。 
+本文为《剖析 | SOFATracer 框架》第三篇。《剖析 | SOFATracer 框架》系列由 SOFA 团队和源码爱好者们出品，项目代号：SOFA:TracerLab/**，**目前领取已经完成，感谢大家的参与。
 SOFATracer：<https://github.com/sofastack/sofa-tracer>
 
 ![SOFATracer-数据上报.jpg](https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1550742047257-362367aa-5c4a-45bc-ab40-cd6fdfe74c09.jpeg)
@@ -84,7 +84,7 @@ SOFATracer 中跨进程传输的总体流程如下图所示：
 {"time":"2019-01-07 20:14:52.628","stat.key":{"method":"GET","local.app":"HttpClientDemo","request.url":"http://localhost:8080/httpclient"},"count":2,"total.cost.milliseconds":111,"success":"true","load.test":"F"}
 ```
 
-透传链路如下： 
+透传链路如下：
 ![img](https://cdn.nlark.com/yuque/0/2019/jpeg/111154/1547518277511-75574ab0-6f9e-4d7e-9bc7-431710822416.jpeg)
 
 ##### 1、客户端
@@ -227,7 +227,7 @@ public void serverSend(String resultCode) {
     serverSpan.log(LogData.SERVER_SEND_EVENT_VALUE);
     // 结果码
     serverSpan.setTag(CommonSpanTags.RESULT_CODE, resultCode);
-    serverSpan.finish();	
+    serverSpan.finish(); 
     } finally {
       //处理完成要清空 TL
       this.clearTreadLocalContext();
@@ -270,7 +270,7 @@ public SofaTracerSpanContext cloneInstance() {
 
 ```java
 private void initRunnable(Runnable wrappedRunnable, SofaTraceContext traceContext) {
-	// 任务 runnable
+ // 任务 runnable
   this.wrappedRunnable = wrappedRunnable;
   // tracer 上下文，可以由外部指定，如果没有指定则使用 SofaTraceContextHolder 获取
   this.traceContext = traceContext;

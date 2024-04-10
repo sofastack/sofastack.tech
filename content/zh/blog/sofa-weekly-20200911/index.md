@@ -100,6 +100,7 @@ OceanBaseDev Meetup#1 上海站，将邀请**蚂蚁集团** OceanBase 团队的�
 **活动主题**：**OceanBaseDev Meetup#1 上海站「深入分布式数据库：事务·高可用·云原生」
 
 **出品人：**
+
 - 杨传辉（花名：日照）蚂蚁集团研究员、OceanBase 总架构师
 - 韩富晟（花名：颜然）蚂蚁集团资深技术专家、OceanBase 事务研发负责人
 

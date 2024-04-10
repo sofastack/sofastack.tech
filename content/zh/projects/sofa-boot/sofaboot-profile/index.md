@@ -1,9 +1,9 @@
 
 ---
+
 title: "SOFABoot Profile"
 aliases: "/sofa-boot/docs/SOFABoot-Profile"
 ---
-
 
 Spring 框架从 3.1.X 版本开始提供了 profile 功能: [Bean Definition Profiles](https://docs.spring.io/spring/docs/3.1.0.RELEASE/reference/htmlsingle/#d0e1293)，SOFABoot 支持模块级 profile 能力，即在各个模块启动的时候决定模块是否能够启动。
 

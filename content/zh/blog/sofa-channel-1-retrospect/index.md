@@ -106,7 +106,7 @@ SOFAStack 中的 SOFA 其实是 Scalable Open Financial Architecture 的首字�
 
 例如微服务里的服务发现，我们没有开源内部的 SOFARegistry，但是我们对接了 ZooKeeper/etcd/nacos 等业界成熟的注册中心产品，又例如分布式跟踪，我们虽然开源了自己的 SOFATracer，但是在 SOFARPC 我们也提供 skywalking 作为我们的分布式跟踪的实现。通过保持和业界众多优秀开源产品的兼容性，使得 SOFAStack 有更多可能。
 
-![开源现状](https://cdn.nlark.com/yuque/0/2019/png/226702/1547802066686-f3de36d7-a4fe-45d3-b303-e4c884d6d987.png)   
+![开源现状](https://cdn.nlark.com/yuque/0/2019/png/226702/1547802066686-f3de36d7-a4fe-45d3-b303-e4c884d6d987.png)
 
 目前 SOFAStack 的源码托管在 Github 和 Gitee 上面，欢迎感兴趣的朋友上去看看，也欢迎给我们 Star。
 

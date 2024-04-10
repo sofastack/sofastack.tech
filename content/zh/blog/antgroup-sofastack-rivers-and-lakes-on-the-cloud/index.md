@@ -59,7 +59,7 @@ cover: "https://cdn.nlark.com/yuque/0/2020/png/226702/1597055079560-40d2527f-d4c
 
 为什么叫这个名字？其一是源于当时正火的“SOA”概念，即 Service-Oriented Architecture，“面向服务的架构”，在此基础上加入金融业务，就构成了 SOFA 的全称：Service-Oriented Fabric Architecture。
 
-其二则是开发者的私心，“希望能够像沙发（Sofa）一样，让工程师可以非常爽地工作。” 
+其二则是开发者的私心，“希望能够像沙发（Sofa）一样，让工程师可以非常爽地工作。”
 
 ## 从“连接器”到“工具库”
 

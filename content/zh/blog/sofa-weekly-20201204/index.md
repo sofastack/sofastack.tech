@@ -51,6 +51,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 **本周发布详情如下：**
 **1、MOSN 发布了 v0.19.0 版本：**
+
 - 重构了 StreamFilter 框架，提供更强的可复用的能力
 - 支持 MaxProcs 可基于 CPU 使用限制自动识别的能力
 - 支持指定 Istio cluster 的网络

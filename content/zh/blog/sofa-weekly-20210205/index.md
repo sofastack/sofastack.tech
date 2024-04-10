@@ -37,7 +37,7 @@ SOFAArk：[https://github.com/sofastack/sofa-ark](https://github.com/sofastack/s
 
 **@王盛** 提问：
 
-> 请教个问题：--set 
+> 请教个问题：--set
 > meshConfig.defaultConfig.binaryPath="/usr/local/bin/mosn" 这个不起作用，有谁碰见过这个情况？
 >![](https://cdn.nlark.com/yuque/0/2021/png/12405317/1612507562168-75aaf910-e81c-4b37-8866-6f1225a2308c.png#align=left&display=inline&height=90&margin=%5Bobject%20Object%5D&originHeight=695&originWidth=1080&size=0&status=done&style=none&width=140)
 
@@ -117,4 +117,3 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 详细参考：
 [https://github.com/sofastack/sofa-tracer/releases/tag/v3.1.0](https://github.com/sofastack/sofa-tracer/releases/tag/v3.1.0)
-

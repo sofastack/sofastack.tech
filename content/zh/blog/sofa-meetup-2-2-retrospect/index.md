@@ -299,7 +299,7 @@ com.alipay.sofa.ark.config.address=zookeeper://localhost:2181
 
 基于上述所有的配置，将 host-app 打包，然后运行。
 
-- mvn clean install 
+- mvn clean install
 - java -jar sofa-dashboard-ark-hostapp-1.0.0.jar
 
 下面可以通过 SOFAArk 提供的 endpoint 来查看下当前应用的 biz state 信息：

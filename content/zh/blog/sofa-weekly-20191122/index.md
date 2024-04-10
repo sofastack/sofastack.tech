@@ -17,9 +17,9 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 
 SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 
-**SOFAStack 官网: **[https://www.sofastack.tech](https://www.sofastack.tech/)
+**SOFAStack 官网:**[https://www.sofastack.tech](https://www.sofastack.tech/)
 
-**SOFAStack: **[https://github.com/sofastack](https://github.com/sofastack)
+**SOFAStack:**[https://github.com/sofastack](https://github.com/sofastack)
 
 ### 每周读者问答提炼
 
@@ -62,7 +62,7 @@ A：[https://github.com/seata/seata/blob/develop/server/src/main/resources/file.
 
 > 还有个问题，发现 catch 没有捕捉到 RuntimeExcepeion 异常：
 > ![catch 没有捕捉到 RuntimeExcepeion 异常](https://cdn.nlark.com/yuque/0/2019/png/226702/1574383152417-faf96097-244e-46a8-9d6f-44bf49ed9dc0.png)
-> 
+>
 > ![状态](https://cdn.nlark.com/yuque/0/2019/png/226702/1574383191115-523bccad-860e-4c93-a482-912a11a076b6.png)
 
 A：它走到 Fail 那个状态去了吗？另外就是 Status 是会执行的，catch 异常和状态判断是两个互不干扰的事情。
@@ -93,7 +93,7 @@ A：所谓双模，是指 SOFA 微服务和 Service Mesh 技术的双剑合璧�
 - [蚂蚁金服 Service Mesh 大规模落地系列 - 核心篇](/blog/service-mesh-practice-in-production-at-ant-financial-part1-core/)
 - [Service Mesh 落地负责人亲述：蚂蚁金服双十一四大考题](/blog/service-mesh-practice-antfinal-shopping-festival-big-exam/)
 
-###  SOFA 项目进展
+### SOFA 项目进展
 
 **本周发布详情如下：**
 

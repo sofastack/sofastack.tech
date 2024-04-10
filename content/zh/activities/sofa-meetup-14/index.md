@@ -31,11 +31,11 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Lxx8Qa2NIr0AAAAAA
 
 > ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*xZxESJeDxBgAAAAAAAAAAAAAARQnAQ)
 
-## 活动回顾 
+## 活动回顾
 
-直播主题：木兰技术开放日&SOFAMeetup（云原生专场）           
+直播主题：木兰技术开放日&SOFAMeetup（云原生专场）
 
-直播时间：2022 年 4 月 1 日 上午 9:30 
+直播时间：2022 年 4 月 1 日 上午 9:30
 
 议题分享：
 
@@ -81,7 +81,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Lxx8Qa2NIr0AAAAAA
 
 议题简介：
 
-随着 Service Mesh 在蚂蚁集团内部的大规模落地，我们逐渐遇到了新的挑战，这让我们迫切的寻找新的解决方案。 
+随着 Service Mesh 在蚂蚁集团内部的大规模落地，我们逐渐遇到了新的挑战，这让我们迫切的寻找新的解决方案。
 Service Mesh 通过引入 sidecar 来简化服务治理，而 dapr 这种“多运行时”项目告诉大家：sidecar 能做的事情远不止于此。
 
 "多运行时"这种架构真的有这么好么？会不会太过理想化？
@@ -100,7 +100,7 @@ Service Mesh 通过引入 sidecar 来简化服务治理，而 dapr 这种“多�
 
 ### 《云原生多集群治理实践》
 
-> 徐迪 腾讯云技术专家，Clusternet 项目发起人。 
+> 徐迪 腾讯云技术专家，Clusternet 项目发起人。
 
 嘉宾简介：
 
@@ -114,7 +114,7 @@ Service Mesh 通过引入 sidecar 来简化服务治理，而 dapr 这种“多�
 
 ### 《蚂蚁服务发现的大规模实践与展望》
 
-> 肖健 目前在蚂蚁集团中间件团队负责 SOFARegistry 项目研发            
+> 肖健 目前在蚂蚁集团中间件团队负责 SOFARegistry 项目研发
 
 嘉宾简介：肖健（花名：昱恒）目前在蚂蚁集团中间件团队负责 SOFARegistry 项目研发
 
@@ -124,9 +124,9 @@ naming 作为一个有着较长发展历史的领域，同时 naming 作为分�
 
 本次分享将会包含以下内容：
 
-1. 蚂蚁内部实践 
+1. 蚂蚁内部实践
 
-2. naming 在云原生时代下的发展方向及趋势 
+2. naming 在云原生时代下的发展方向及趋势
 
 3. 总结和展望
 

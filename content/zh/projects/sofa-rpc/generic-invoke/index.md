@@ -1,9 +1,9 @@
 
 ---
+
 title: "Bolt 协议泛化调用"
 aliases: "/sofa-rpc/docs/Generic-Invoke"
 ---
-
 
 泛化调用提供了让客户端在不需要依赖服务端的接口情况下就能够发起调用的能力。目前 SOFARPC 的泛化调用仅支持在 Bolt 通信协议下使用 Hessian2 作为序列化协议，其他的方式并不支持。
 
@@ -23,6 +23,7 @@ aliases: "/sofa-rpc/docs/Generic-Invoke"
 ```
 
 ### 引用服务
+
 ```xml
 <sofa:reference jvm-first="false" id="sampleGenericServiceReference" interface="com.alipay.sofa.rpc.api.GenericService">
     <sofa:binding.bolt>
@@ -45,8 +46,6 @@ aliases: "/sofa-rpc/docs/Generic-Invoke"
 
 ## RPC API
 
-
-
 ```java
 ConsumerConfig<GenericService> consumerConfig = new ConsumerConfig<GenericService>()
            .setInterfaceId("com.alipay.sofa.rpc.quickstart.HelloService")
@@ -55,9 +54,11 @@ GenericService testService = consumerConfig.refer();
 
 String result = (String) testService.$invoke("sayHello", new String[] { "java.lang.String" },new Object[] { "1111" });
 ```
+
 如上通过 setGeneric 设置该服务为泛化服务，设置服务方的接口名。以 GenericService 作为泛化服务，通过 GenericService 就能够发起泛化调用了。发起调用时，需要传入方法名，方法类型，方法参数。
 
 如果参数或者返回结果在客户端也需要泛化表示。可以通过 GenericObject 来实现。
+
 ```java
 GenericObject genericObject = new GenericObject("com.alipay.sofa.rpc.invoke.generic.TestObj");
 
@@ -71,7 +72,9 @@ GenericObject result = (GenericObject) testService.$genericInvoke("echoObj",
 String str = result.getField("str");
 String num = result.getField("num");
 ```
+
 如上就能获得序列化结果。完整的泛化调用方式使用说明如下：
+
 ```java
 /**
 * Java Bean

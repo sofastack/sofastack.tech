@@ -35,7 +35,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*P_EnQbF8D3QAAAAAA
 
 > ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*ahidQ56SGgoAAAAAAAAAAAAAARQnAQ)
 
-## 活动回顾 
+## 活动回顾
 
 嘉宾简介：
 
@@ -56,12 +56,10 @@ Ralph Squillace
 微软高级总监
 字节码联盟董事会成员
 
+汤伟
+蚂蚁集团资深技术专家
 
-
-汤伟              
-蚂蚁集团资深技术专家     
-
-《蚂蚁集团 WASM 编译器虚拟机基础能力建设》   
+《蚂蚁集团 WASM 编译器虚拟机基础能力建设》
 
 嘉宾简介：
 
@@ -73,9 +71,8 @@ Ralph Squillace
 听众收益：
 了解 wasm 在蚂蚁的业务场景中的需求和我们的编译器、虚拟机技术能力建设上的一些探索。
 
-
-何良              
-intel 资深软件工程师            
+何良
+intel 资深软件工程师
 
 《WebAssembly Micro Runtime 开源技术解析与展望》
 
@@ -83,9 +80,8 @@ intel 资深软件工程师
 
 议题简介：主要介绍 WebAssembly Micro Runtime(WAMR) 的技术特性，发展历程以及路线图。面对嵌入式设备独特的资源条件和使用场景，WAMR 进行了有针对性的特性开发，比如选用不同的运行模式适应不同的资源水平，利用 XIP 在文件系统中直接执行，在 RUNTIME 中支持 Sensor API 等。此外，WAMR 努力打造高效的开发环境，提供源码级调试的功能框架和 VSCODE 插件。目前，支持高级语言（比如 JAVA,KOTLIN 等）和 SOCKET APIs 的功能开发正在有序展开。
 
-
-唐兹源              
-阿里巴巴前端技术专家        
+唐兹源
+阿里巴巴前端技术专家
 
 《Waft: 基于 WebAssembly 的 AIoT 应用框架实践》
 
@@ -103,8 +99,8 @@ intel 资深软件工程师
 了解天猫精灵技术团队如何结合 WAMR 和自研渲染引擎设计动态化容器
 了解如何运用 AssemblyScript 设计适合 Web 开发者的应用框架及工具链建设
 
-臧琳       
-腾讯云高级工程师            
+臧琳
+腾讯云高级工程师
 
 《WASM 中的 GC 遐想》
 
@@ -112,9 +108,8 @@ intel 资深软件工程师
 
 议题简介：内存管理及垃圾回收技术是现代高级语言的核心技术之一，也是 webassembly 承载多语言支持的必经之路， wasm 社区已经将 GC proposal 提上日程，本话题和大家一起进行一次头脑风暴，探讨未来 wasm 的内存管理及垃圾收集技术可能的发展方向。
 
-
-张磊              
-蚂蚁集团技术专家            
+张磊
+蚂蚁集团技术专家
 
 《WebAssembly 在区块链中的实践》
 
@@ -124,8 +119,8 @@ intel 资深软件工程师
 
 听众收益：将会了解到 wasm 在区块链领域的应用现状和面临的技术挑战。
 
-黄齐       
-小米软件工程师/Vela OS 框架业务技术负责人           
+黄齐
+小米软件工程师/Vela OS 框架业务技术负责人
 
 《Wasm & WAMR 在 AIOT 领域的应用》
 

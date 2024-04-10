@@ -173,4 +173,4 @@ To view the reported merics, you can visit [http://zipkin-dev.sofastack.tech:941
 - rpc.consumer.service.stats.total_time.elapPerExec{app="stock_mng"}： Average calling duration of BalanceMngFacade
 - rpc.consumer.service.stats.total_time.max{app="stock_mng"}：Maximum response time of BalanceMngFacade
 
-For more usage about SOFALookout, see https://www.sofastack.tech/sofa-lookout/docs/Home
+For more usage about SOFALookout, see <https://www.sofastack.tech/sofa-lookout/docs/Home>

@@ -160,7 +160,7 @@ Seata 作为一个强大而稳定的开源分布式事务解决方案，为广�
 
 为促进分布式事务技术的普及和实践，增进 Apache Seata（incubating）使用者的交流与学习，我们将定期邀请业内资深的技术专家，分享实战经验。
 
-欢迎订阅 dev-subscribe@seata.apache.org 邮件组，关注 Apache Seata（incubating）社区技术发展。
+欢迎订阅 <dev-subscribe@seata.apache.org> 邮件组，关注 Apache Seata（incubating）社区技术发展。
 
 欢迎持续关注 Seata！
 

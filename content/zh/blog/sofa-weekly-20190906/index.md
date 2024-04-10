@@ -16,9 +16,9 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 
 SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 
-**SOFAStack 官网: **[https://www.sofastack.tech](https://www.sofastack.tech/)
+**SOFAStack 官网:**[https://www.sofastack.tech](https://www.sofastack.tech/)
 
-**SOFAStack: **[https://github.com/sofastack](https://github.com/sofastack)
+**SOFAStack:**[https://github.com/sofastack](https://github.com/sofastack)
 
 ### 每周读者问答提炼
 
@@ -26,7 +26,7 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 
 我们会筛选重点问题通过 " SOFA WEEKLY " 的形式回复
 
-**1、@王冰 **提问：
+**1、@王冰**提问：
 
 > 请问个问题，SOFATracer 在采样计算时 rootSpan 为什么会计算两次，第一次是生成 span 时，第二次是在上报前又计算了一次？
 
@@ -56,7 +56,7 @@ A：TCC 的代理会代理二种类型的分支：在本地标注为 localTcc，
 **1、SOFATracer v2.4.1/v3.0.6 版本发布，主要变更如下：**
 
 - 支持自定义埋点 (FlexibleTracer)
-- 支持 Dubbo 2.6.x 
+- 支持 Dubbo 2.6.x
 - 日志输出支持非 json 格式(xstringbuilder)
 
 - 支持自定义扩展 Repoter 上报
@@ -68,7 +68,7 @@ A：TCC 的代理会代理二种类型的分支：在本地标注为 localTcc，
 
 详细发布报告：
 
-[https://github.com/sofastack/sofa-tracer/releases/tag/v2.4.1](https://github.com/sofastack/sofa-tracer/releases/tag/v2.4.1) 
+[https://github.com/sofastack/sofa-tracer/releases/tag/v2.4.1](https://github.com/sofastack/sofa-tracer/releases/tag/v2.4.1)
 
  [https://github.com/sofastack/sofa-tracer/releases/tag/v3.0.6](https://github.com/sofastack/sofa-tracer/releases/tag/v3.0.6)
 
@@ -92,7 +92,7 @@ A：TCC 的代理会代理二种类型的分支：在本地标注为 localTcc，
 ### SOFA 用户召集
 
 如果您已经在生产环境使用了 SOFAStack 相关组件，请在下方链接登记告诉我们，方便我们更好地为您服务，我们将会把您加入到 “SOFAStack 金牌用户服务群【邀约制】”里面，以便更加快捷的沟通和更加高效的线上使用问题支持。
-[https://github.com/sofastack/sofastack.tech/issues/5](https://github.com/sofastack/sofastack.tech/issues/5) 
+[https://github.com/sofastack/sofastack.tech/issues/5](https://github.com/sofastack/sofastack.tech/issues/5)
 
 已有用户查看：
 [https://www.sofastack.tech/awesome](https://www.sofastack.tech/awesome)

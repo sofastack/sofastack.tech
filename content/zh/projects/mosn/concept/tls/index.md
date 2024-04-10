@@ -8,9 +8,9 @@ title: 'TLS 安全链路'
 
 MOSN 支持通过 Istio Citadel 的证书签发方案，基于 Istio 社区的 [SDS （Secret Discovery Service）](https://www.envoyproxy.io/docs/envoy/latest/configuration/security/secret)方案为 Sidecar 配置证书，支持证书动态发现和热更新能力。为了支持更高级的安全能力，MOSN 没有使用 Citadel 的证书自签发能力，而是通过对接内部 KMS 系统获取证书。同时提供证书缓存和证书推送更新能力。
 
-我们先来看看 MOSN 证书方案的架构图，如下图所示： 
+我们先来看看 MOSN 证书方案的架构图，如下图所示：
 
-![MOSN 证书方案](mosn-certificate-arch.png) 
+![MOSN 证书方案](mosn-certificate-arch.png)
 
 各组件职能如下：
 
@@ -23,7 +23,7 @@ MOSN 支持通过 Istio Citadel 的证书签发方案，基于 Istio 社区的 [
 
 对整体架构有个大致理解后，我们分解下 Sidecar 获取证书的流程，如下图所示：
 
-![证书获取流程](certificate-request-process.png) 
+![证书获取流程](certificate-request-process.png)
 
 补充说明下图中的每一步环节：
 

@@ -36,7 +36,7 @@ SOFARegistry 采用预分配的方式。
 
 ![image.png](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*KJSMRblolhsAAAAAAAAAAAAAARQnAQ)
 
-实际上上述 **Slot** 和 **节点 **的映射关系在源码中以 **SlotTable 和 Slot **的方式进行表达。源码如下代码块所示。
+实际上上述 **Slot** 和 **节点**的映射关系在源码中以 **SlotTable 和 Slot**的方式进行表达。源码如下代码块所示。
 
 ```java
 
@@ -66,7 +66,7 @@ public final class Slot implements Serializable, Cloneable {
 
 SlotTable 的整个同步更新步骤如图所示。
 
-代码参考 
+代码参考
 `com.alipay.sofa.registry.server.Meta.slot.arrange.ScheduledSlotArranger#arrangeSync.`
 
 SlotTable 的定期变更是通过在初始化 ScheduledSlotArranger 时候实例化守护线程不断的 定期执行 内部任务 Arranger 的 arrangeSync 方法来实现 SlotTable 变更的。大致流程如下所示。
@@ -79,7 +79,7 @@ SlotTable 的定期变更是通过在初始化 ScheduledSlotArranger 时候实�
 
 第二步是获取最新的 DataServer 节点，因为 重新分配 SlotTable 本质上是 对 DataServer 节点和 slot 槽位之间的映射关系进行重新分配。所以肯定需要获取到当前正在存活的 DataServer 节点信息，从而方便的对之进行 slot 分配。
 
-(这里获取正在存活的 DataServer 也就是有和 MetaServer 维持心跳的 DataServer, 底层是从 
+(这里获取正在存活的 DataServer 也就是有和 MetaServer 维持心跳的 DataServer, 底层是从
 `com.alipay.sofa.registry.server.Meta.lease.impl.SimpleLeaseManager`中获取，感兴趣可以查看相关源码) 。
 
 第三部是分配前置校验，实际上一些边界条件的判断、例如 DataServer 是否为空、 DataServer 的大小是否大于配置的 minDataNodeNum，只有满足这些条件才进行变更。
@@ -237,7 +237,7 @@ public void removeDataServerSlots(String dataServer) {
 
 由图可知分配过程最后委托给 DefaultSlotAssigner ，DefaultSlotAssigner 在构造方法中实例化了 当前正在创建的 **SlotTableBuilder /currentDataServers 的视图/MigrateSlotGroup**, 其中 **MigrateSlotGroup**
 
-内部保存的是那些缺少 **leader **以及 **follow**的 **Slot**
+内部保存的是那些缺少 **leader**以及 **follow**的 **Slot**
 
 ```java
 public class MigrateSlotGroup {

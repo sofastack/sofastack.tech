@@ -1,9 +1,9 @@
 
 ---
+
 title: "直连调用"
 aliases: "/sofa-rpc/docs/Peer-To-Peer"
 ---
-
 
 SOFARPC 支持指定地址进行调用的场景。用 Java API 的使用方式如下，设置直连地址即可：
 

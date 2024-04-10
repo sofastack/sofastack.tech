@@ -45,6 +45,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)</br>
 A：应该是用了 zk 当配置中心，但是又没有写配置进去。</br>
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)</br>
 </br>
+
 ### 本周推荐阅读
 
 - [MOSN 的无人值守变更实践](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247487479&idx=1&sn=e5972cbc1d8c04cff843380117158539&chksm=faa0e02dcdd7693b965e35014cfef4dc3be84e477e0c74694421658a2570162ad73883e7b054&scene=21)

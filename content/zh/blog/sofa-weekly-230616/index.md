@@ -20,7 +20,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **SOFAStack:** *[https://github.com/sofastack](https://github.com/sofastack)*
 
-**SOFA 社区会议预告** 
+**SOFA 社区会议预告**
 
 **Layotto：**
 
@@ -59,7 +59,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 「**会议回放**」：<https://www.bilibili.com/video/BV1wm4y1i7hv/?spm_id_from=333.999.0.0&vd_source=65cf108a3fb8e9985d41bd64c5448f63>
 
- **SOFARPC 5.10.1 版本发布** 
+ **SOFARPC 5.10.1 版本发布**
 
 发布 **SOFARPC 5.10.1 版本**，主要变更如下:
 
@@ -72,7 +72,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 ![图片](https://mmbiz.qpic.cn/sz_mmbiz_jpg/nibOZpaQKw08ldYvWlHopgtqGzQCTQBYjv841lDh7CGkaPNddibT4IbXXsfXlvRia9PIy2rWiaeV4ZBB6cQgEvSh5Q/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1)
 
-**本周推荐阅读** 
+**本周推荐阅读**
 
 [Seata Saga 模式快速入门和最佳实践](https://mp.weixin.qq.com/s/cGi2wzCroMVHhPgvqASlBQ)
 

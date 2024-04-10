@@ -4,6 +4,7 @@ aliases: "/sofa-MOSN/docs/docs-reference-PerformanceReport021"
 ---
 
 以下性能报告的基准版本为 MOSN 0.2.1。在 0.2.1 版本中，我们进行了如下一些优化手段：
+
 - 添加内存复用框架，涵盖 io/protocol/stream/proxy 层级，减少对象分配、内存使用和 GC 压力。
 - 针对大量链接场景，新增 Raw Epoll 模式，该模式使用了事件回调机制 + IO 协程池，规避了海量协程带来的堆栈内存消耗以及调度开销。
 
@@ -12,6 +13,7 @@ aliases: "/sofa-MOSN/docs/docs-reference-PerformanceReport021"
 ## 总览
 
 本次性能报告在`0.1.0 性能报告`的基础上，新增了若干场景的覆盖，总体包含以下几部分：
+
 - 单核性能（sidecar 场景）
   - 7 层代理
     - Bolt（串联）
@@ -23,7 +25,7 @@ aliases: "/sofa-MOSN/docs/docs-reference-PerformanceReport021"
     - Http/1.1（直连）
     - Http/2（直连）
 - 长连接网关
-    - Bolt（read/write loop with goroutine/raw epoll）
+  - Bolt（read/write loop with goroutine/raw epoll）
 
 ## 单核性能（sidecar 场景）
 
@@ -65,7 +67,6 @@ aliases: "/sofa-MOSN/docs/docs-reference-PerformanceReport021"
 | Bolt       | 16000     |15.8     | 77184     |98     |
 | Http/1.1   | 4610     |67    | 47336     |90     |
 | Http/2     | 5219     |81     | 31244     |74     |
-
 
 ## 多核性能（gateway 场景）
 
@@ -145,7 +146,6 @@ aliases: "/sofa-MOSN/docs/docs-reference-PerformanceReport021"
 | RWLoop + goroutine | 1000    | 3.3     |60     | 200028 |
 | Raw epoll   | 1000     | 2.5   |  18  | 28 |
 
-
 ## 总结
 
 MOSN `0.2.1`引入了`内存复用框架`，相比`0.1.0`，在 `bolt 协议转发`场景性能表现得到了大幅优化。在提升了**20**% 的 QPS 的同时，还优化了 **30**% 的内存占用。
@@ -161,12 +161,11 @@ MOSN `0.2.1`引入了`内存复用框架`，相比`0.1.0`，在 `bolt 协议转�
 对比条件：
 
 - 页面大小 0~10k，平均 5k
-- downstream 链接 1000 
+- downstream 链接 1000
 - upstream 链接 6
 - 单核压测
 
-| __版本__ | __QPS__ | 内存 |
+| **版本** | **QPS** | 内存 |
 | --- | --- | --- |
 | 0.1.0 | 10500 | 175M |
 | 0.2.1 | 13000 | 122M |
-

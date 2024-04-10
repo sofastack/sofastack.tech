@@ -57,6 +57,7 @@ A：通过 admin 得配置。
 [https://www.codepile.net/pile/EK6Om3A6](https://www.codepile.net/pile/EK6Om3A6)
 
 A：镜像的配置有这个 plugin 吗？或者你先别用那个 Istio，现本地打包测试下，直接二进制启动试试：
+
 1. 看配置，有没有 paper 的 filter 配置
 2. MOSN 的 main 文件需要 import 你的 paper 文件，因为注册用的 init
 3. 看下启动日志：

@@ -62,33 +62,33 @@ ExtendConfig 中定义 AgentBootstrapConfig 结构如下：
 
 ```plain
 type AgentBootstrapConfig struct {
-	Enable bool `json:"enable"`
-	// The number of connections established between the agent and each server
-	ConnectionNum int `json:"connection_num"`
-	// The cluster of remote server
-	Cluster string `json:"cluster"`
-	// After the connection is established, the data transmission is processed by this listener
-	HostingListener string `json:"hosting_listener"`
-	// Static remote server list
-	StaticServerList []string `json:"server_list"`
+ Enable bool `json:"enable"`
+ // The number of connections established between the agent and each server
+ ConnectionNum int `json:"connection_num"`
+ // The cluster of remote server
+ Cluster string `json:"cluster"`
+ // After the connection is established, the data transmission is processed by this listener
+ HostingListener string `json:"hosting_listener"`
+ // Static remote server list
+ StaticServerList []string `json:"server_list"`
 
-	// DynamicServerListConfig is used to specify dynamic server configuration
-	DynamicServerListConfig struct {
-		DynamicServerLister string `json:"dynamic_server_lister"`
-	}
+ // DynamicServerListConfig is used to specify dynamic server configuration
+ DynamicServerListConfig struct {
+  DynamicServerLister string `json:"dynamic_server_lister"`
+ }
 
-	// ConnectRetryTimes
-	ConnectRetryTimes int `json:"connect_retry_times"`
-	// ReconnectBaseDuration
-	ReconnectBaseDurationMs int `json:"reconnect_base_duration_ms"`
+ // ConnectRetryTimes
+ ConnectRetryTimes int `json:"connect_retry_times"`
+ // ReconnectBaseDuration
+ ReconnectBaseDurationMs int `json:"reconnect_base_duration_ms"`
 
-	// ConnectTimeoutDurationMs specifies the timeout for establishing a connection and initializing the agent
-	ConnectTimeoutDurationMs int    `json:"connect_timeout_duration_ms"`
-	CredentialPolicy         string `json:"credential_policy"`
-	// GracefulCloseMaxWaitDurationMs specifies the maximum waiting time to close conn gracefully
-	GracefulCloseMaxWaitDurationMs int `json:"graceful_close_max_wait_duration_ms"`
+ // ConnectTimeoutDurationMs specifies the timeout for establishing a connection and initializing the agent
+ ConnectTimeoutDurationMs int    `json:"connect_timeout_duration_ms"`
+ CredentialPolicy         string `json:"credential_policy"`
+ // GracefulCloseMaxWaitDurationMs specifies the maximum waiting time to close conn gracefully
+ GracefulCloseMaxWaitDurationMs int `json:"graceful_close_max_wait_duration_ms"`
 
-	TLSContext *v2.TLSConfig `json:"tls_context"`
+ TLSContext *v2.TLSConfig `json:"tls_context"`
 }
 ```
 
@@ -106,18 +106,18 @@ type AgentBootstrapConfig struct {
 
 ```plain
 func (a *AgentPeer) Start() {
-	connList := make([]*AgentClientConnection, 0, a.conf.ConnectionNumPerAddress)
-	for i := 0; i < a.conf.ConnectionNumPerAddress; i++ {
-	  // 初始化和建立反向连接
-		conn := NewAgentCoreConnection(*a.conf, a.listener)
-		err := conn.initConnection()
-		if err == nil {
-			connList = append(connList, conn)
-		}
-	}
-	a.connections = connList
-	// 建立一个旁路控制连接
-	a.initAside()
+ connList := make([]*AgentClientConnection, 0, a.conf.ConnectionNumPerAddress)
+ for i := 0; i < a.conf.ConnectionNumPerAddress; i++ {
+   // 初始化和建立反向连接
+  conn := NewAgentCoreConnection(*a.conf, a.listener)
+  err := conn.initConnection()
+  if err == nil {
+   connList = append(connList, conn)
+  }
+ }
+ a.connections = connList
+ // 建立一个旁路控制连接
+ a.initAside()
 }
 ```
 
@@ -125,31 +125,31 @@ initConnection 方法进行具体的初始化完整的反向连接，采取指�
 
 ```plain
 func (a *connection) initConnection() error {
-	var err error
-	backoffConnectDuration := a.reconnectBaseDuration
+ var err error
+ backoffConnectDuration := a.reconnectBaseDuration
 
-	for i := 0; i < a.connectRetryTimes || a.connectRetryTimes == -1; i++ {
-		if a.close.Load() {
-			return fmt.Errorf("connection closed, don't attempt to connect, address: %v", a.address)
-		}
-		// 1. 初始化物理连接和传输反向连接元数据
-		err = a.init()
-		if err == nil {
-			break
-		}
-		log.DefaultLogger.Errorf("[agent] failed to connect remote server, try again after %v seconds, address: %v, err: %+v", backoffConnectDuration, a.address, err)
-		time.Sleep(backoffConnectDuration)
-		backoffConnectDuration *= 2
-	}
-	if err != nil {
-		return err
-	}
-	// 2. 托管listener
-	utils.GoWithRecover(func() {
-		ch := make(chan api.Connection, 1)
-		a.listener.GetListenerCallbacks().OnAccept(a.rawc, a.listener.UseOriginalDst(), nil, ch, a.readBuffer.Bytes(), []api.ConnectionEventListener{a})
-	}, nil)
-	return nil
+ for i := 0; i < a.connectRetryTimes || a.connectRetryTimes == -1; i++ {
+  if a.close.Load() {
+   return fmt.Errorf("connection closed, don't attempt to connect, address: %v", a.address)
+  }
+  // 1. 初始化物理连接和传输反向连接元数据
+  err = a.init()
+  if err == nil {
+   break
+  }
+  log.DefaultLogger.Errorf("[agent] failed to connect remote server, try again after %v seconds, address: %v, err: %+v", backoffConnectDuration, a.address, err)
+  time.Sleep(backoffConnectDuration)
+  backoffConnectDuration *= 2
+ }
+ if err != nil {
+  return err
+ }
+ // 2. 托管listener
+ utils.GoWithRecover(func() {
+  ch := make(chan api.Connection, 1)
+  a.listener.GetListenerCallbacks().OnAccept(a.rawc, a.listener.UseOriginalDst(), nil, ch, a.readBuffer.Bytes(), []api.ConnectionEventListener{a})
+ }, nil)
+ return nil
 }
 ```
 
@@ -191,12 +191,12 @@ MOSN 反向通道完整的生命周期交互过程：
 // ConnectionInitInfo is the basic information of agent host,
 // it is sent immediately after the physical connection is established
 type ConnectionInitInfo struct {
-	ClusterName      string                 `json:"cluster_name"`
-	Weight           int64                  `json:"weight"`
-	HostName         string                 `json:"host_name"`
-	CredentialPolicy string                 `json:"credential_policy"`
-	Credential       string                 `json:"credential"`
-	Extra            map[string]interface{} `json:"extra"`
+ ClusterName      string                 `json:"cluster_name"`
+ Weight           int64                  `json:"weight"`
+ HostName         string                 `json:"host_name"`
+ CredentialPolicy string                 `json:"credential_policy"`
+ Credential       string                 `json:"credential"`
+ Extra            map[string]interface{} `json:"extra"`
 }
 ```
 
@@ -210,34 +210,34 @@ Tunnel Server 接受该元数据信息之后，主要工作包括：
 
 ```plain
 func (t *tunnelFilter) handleConnectionInit(info *ConnectionInitInfo) api.FilterStatus {
-	// Auth the connection
-	conn := t.readCallbacks.Connection()
-	if info.CredentialPolicy != "" {
-		// 1. 自定义鉴权操作，篇幅原因省略
-	}
-	if !t.clusterManager.ClusterExist(info.ClusterName) {
-		writeConnectResponse(ConnectClusterNotExist, conn)
-		return api.Stop
-	}
-	// Set the flag that has been initialized, subsequent data processing skips this filter
-	err := writeConnectResponse(ConnectSuccess, conn)
-	if err != nil {
-		return api.Stop
-	}
-	conn.AddConnectionEventListener(NewHostRemover(conn.RemoteAddr().String(), info.ClusterName))
-	tunnelHostMutex.Lock()
-	defer tunnelHostMutex.Unlock()
-	snapshot := t.clusterManager.GetClusterSnapshot(context.Background(), info.ClusterName)
-	// 2. host加入到指定的cluster
-	_ = t.clusterManager.AppendClusterTypesHosts(info.ClusterName, []types.Host{NewHost(v2.Host{
-		HostConfig: v2.HostConfig{
-			Address:    conn.RemoteAddr().String(),
-			Hostname:   info.HostName,
-			Weight:     uint32(info.Weight),
-			TLSDisable: false,
-		}}, snapshot.ClusterInfo(), CreateAgentBackendConnection(conn))})
-	t.connInitialized = true
-	return api.Stop
+ // Auth the connection
+ conn := t.readCallbacks.Connection()
+ if info.CredentialPolicy != "" {
+  // 1. 自定义鉴权操作，篇幅原因省略
+ }
+ if !t.clusterManager.ClusterExist(info.ClusterName) {
+  writeConnectResponse(ConnectClusterNotExist, conn)
+  return api.Stop
+ }
+ // Set the flag that has been initialized, subsequent data processing skips this filter
+ err := writeConnectResponse(ConnectSuccess, conn)
+ if err != nil {
+  return api.Stop
+ }
+ conn.AddConnectionEventListener(NewHostRemover(conn.RemoteAddr().String(), info.ClusterName))
+ tunnelHostMutex.Lock()
+ defer tunnelHostMutex.Unlock()
+ snapshot := t.clusterManager.GetClusterSnapshot(context.Background(), info.ClusterName)
+ // 2. host加入到指定的cluster
+ _ = t.clusterManager.AppendClusterTypesHosts(info.ClusterName, []types.Host{NewHost(v2.Host{
+  HostConfig: v2.HostConfig{
+   Address:    conn.RemoteAddr().String(),
+   Hostname:   info.HostName,
+   Weight:     uint32(info.Weight),
+   TLSDisable: false,
+  }}, snapshot.ClusterInfo(), CreateAgentBackendConnection(conn))})
+ t.connInitialized = true
+ return api.Stop
 }
 ```
 

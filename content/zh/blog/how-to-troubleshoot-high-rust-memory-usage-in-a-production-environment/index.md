@@ -22,7 +22,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*G6AeQZFaW6MAAAAAA
 本文我想分享一下，我们在实践过程中遇到的关于内存占用过高的问题。对于这些内存问题，在本文中会做出简单的分类，以及提供我们在生产环境下进行排查定位的方法给大家参考。
 
 > 本文最先发表于 RustMagazine 中文月刊
-> 
+>
 > ([https://rustmagazine.github.io/rust_magazine_2021/chapter_5/rust-memory-troubleshootting.html](https://rustmagazine.github.io/rust_magazine_2021/chapter_5/rust-memory-troubleshootting.html)）
 
 ## 内存分配器
@@ -269,9 +269,9 @@ jemalloc 提供的 stats 数据不一定是完全准确的，因为他为了更�
 
 欢迎加入或者推荐
 
-请联系：jiachun.fjc@antgroup.com
+请联系：<jiachun.fjc@antgroup.com>
 
-***\*本周推荐阅读\**** 
+***\*本周推荐阅读\****
 
 [新一代日志型系统在 SOFAJRaft 中的应用](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*72x1QKc1bQMAAAAAAAAAAAAAARQnAQ)
 

@@ -11,14 +11,15 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/156645/1562157948733-4c673075-94d
 
 > 2019 年 6 月 25 日，全球知名开源组织云原生计算基金会 CNCF 宣布，蚂蚁金服正式成为 CNCF 黄金会员，蚂蚁金服表示将持续加大对开源项目的支持，包括 Kubernetes，ServiceMesh，Serverless，安全容器等方向，并发挥自己的力量。SOFAStack 作为蚂蚁金服重要的开源项目，最近也与 CNCF 有故事发生。
 
-
 近期，CNCF 发布了最新版本的 Cloud Native Landscape，蚂蚁金服金融级分布式架构 SOFAStack 中有 3 个项目被纳入，分别是 Service Mesh 数据平面代理 SOFAMosn、分布式链路跟踪系统 SOFATracer 和 RPC 服务框架 SOFARPC。
 
 ## CNCF & CNCF Cloud Native Landscape
+
 CNCF(Cloud Native Computing Foundation)，是由 Google 牵头创立的云原生计算开源软件基金会。它致力于云原生(Cloud Native)技术的普及和可持续发展。2016 年 11 月，CNCF 开始维护 Cloud Native Landscape，汇总流行热门的云原生技术与工具，并加以分类，为企业构建云原生体系提供参考，在云生态研发、运维领域具有广泛影响力。
 
 ## SOFAStack & CNCF Cloud Native Landscape
-蚂蚁金服金融级分布式架构 SOFAStack 中的 3 个项目加入这次最新版本的 Cloud Native Landscape ，分别是 Service Mesh 数据平面代理 **SOFAMosn**、分布式链路跟踪系统 **SOFATracer ** 和 RPC 服务框架 **SOFARPC**。
+
+蚂蚁金服金融级分布式架构 SOFAStack 中的 3 个项目加入这次最新版本的 Cloud Native Landscape ，分别是 Service Mesh 数据平面代理 **SOFAMosn**、分布式链路跟踪系统 **SOFATracer** 和 RPC 服务框架 **SOFARPC**。
 
 ![landscape](https://cdn.nlark.com/yuque/0/2019/png/226702/1562219713962-38216a3f-76f7-4ae2-af7c-5cca87f82aaa.png)
 

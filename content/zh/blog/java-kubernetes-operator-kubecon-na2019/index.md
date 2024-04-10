@@ -19,10 +19,10 @@ cover: "https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1579248978867-b6f341d3-0f
 图为何子波和金敏在 KubeCon NA2019 大会分享后的交流
 
 **何子波 蚂蚁金服技术专家**：
-_(adohe@github) _Kubernetes 维护者，SIG CLI Co-Chair（包括 Kubectl 及其扩展插件，Kustomize 以及客户端运行时），同时关注安全容器，多租户等领域。
+_(adohe@github)_Kubernetes 维护者，SIG CLI Co-Chair（包括 Kubectl 及其扩展插件，Kustomize 以及客户端运行时），同时关注安全容器，多租户等领域。
 
 **金敏 蚂蚁金服软件工程师**：
-_(yue9944882@github) _Kubernetes SIG API-Machinery 维护者及其子领域 Owner（CRD 服务实现，APIAggregation SDK 套件，控制面流控，OpenAPIv2/3，Java SDK 等），同时也是 OpenAPI 开源生态工具链`openapitools.org` 的 Techincal Committee。
+_(yue9944882@github)_Kubernetes SIG API-Machinery 维护者及其子领域 Owner（CRD 服务实现，APIAggregation SDK 套件，控制面流控，OpenAPIv2/3，Java SDK 等），同时也是 OpenAPI 开源生态工具链`openapitools.org` 的 Techincal Committee。
 
 本文根据两位在 KubeCon NA2019 的分享内容整理。本次演讲与大家分享蚂蚁金服金融科技扩展云原生 Java 能力到云的实践和改造，并将收获的产出回馈开放给 Kubernetes 社区。
 

@@ -10,7 +10,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563516448245-2113c18e-d1a
 ---
 
 > SOFAStack
-> **S**calable **O**pen **F**inancial **A**rchitecture Stack 是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，是在金融场景里锤炼出来的最佳实践。 
+> **S**calable **O**pen **F**inancial **A**rchitecture Stack 是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，是在金融场景里锤炼出来的最佳实践。
 > SOFARegistry 是蚂蚁金服开源的具有承载海量服务注册和订阅能力的、高可用的服务注册中心，最早源自于淘宝的初版 ConfigServer，在支付宝/蚂蚁金服的业务发展驱动下，近十年间已经演进至第五代。
 > GitHub 地址：[https://github.com/sofastack/sofa-registry](https://github.com/sofastack/sofa-registry)
 
@@ -214,7 +214,7 @@ SOFARegistry 服务端在接收到“服务发布（PublisherRegister）”和�
 
 ![节点宕机](https://cdn.nlark.com/yuque/0/2019/png/226702/1556089042646-c19e7056-e9ec-44fd-9e1b-90a2a8df87d0.png)
 
-- 节点扩容：节点扩容的过程比节点宕机稍微复杂，因为新节点的加入可能导致 slot 迁移，而迁移的过程中需要保证系统仍可以对外服务。以下图为例，扩容 nodeF 之后，系统需要对路由表的重新平衡，S1 的主节点由 nodeA 变为 nodeF，S12 的备节点由 nodeC 变为 nodeF。我们讲一下 S1 的数据迁移过程：首先客户端所看到的路由表还不会发生变化，客户端对 S1 的读写请求仍然会路由到 nodeA。与此同时  nodeA 开始将 S1 的数据复制给 nodeF；然后，当 nodeF 即将完成数据的备份时，短暂地对 S1 禁写，确保 S1 不会再更新，然后 nodeF 完成最终的数据同步；最后，修改路由表，将 S1 的主节点改为 nodeF，并将最新的路由表信息通知给 Client，至此就完成 S1 的迁移过程。Client 后续对 S1 的读写都会发送给 nodeF。 
+- 节点扩容：节点扩容的过程比节点宕机稍微复杂，因为新节点的加入可能导致 slot 迁移，而迁移的过程中需要保证系统仍可以对外服务。以下图为例，扩容 nodeF 之后，系统需要对路由表的重新平衡，S1 的主节点由 nodeA 变为 nodeF，S12 的备节点由 nodeC 变为 nodeF。我们讲一下 S1 的数据迁移过程：首先客户端所看到的路由表还不会发生变化，客户端对 S1 的读写请求仍然会路由到 nodeA。与此同时  nodeA 开始将 S1 的数据复制给 nodeF；然后，当 nodeF 即将完成数据的备份时，短暂地对 S1 禁写，确保 S1 不会再更新，然后 nodeF 完成最终的数据同步；最后，修改路由表，将 S1 的主节点改为 nodeF，并将最新的路由表信息通知给 Client，至此就完成 S1 的迁移过程。Client 后续对 S1 的读写都会发送给 nodeF。
 
 ![节点扩容](https://cdn.nlark.com/yuque/0/2019/png/226702/1556089042662-bb3efcf2-5aef-4138-a2c6-8fea91bc97e1.png)
 
@@ -289,7 +289,7 @@ SOFARegistry 将服务数据 （PublisherRegister） 和服务发布者 （Pub
 
 总结，本节介绍了 SOFARegistry 实现秒级的服务上下线通知的原理，主要是 2 个方面，第一是服务的健康检测，通过连接敏感的特性，对服务宕机做到秒级发现，但为此也带来“网络不稳定导致服务频繁上下线”的负面影响；第二是内部角色之间的“推”和“拉”的机制，整个服务上下线流程都以实时的“推”为主，因此才能做到秒级的通知。
 
-### 欢迎加入，参与 SOFARegistry 源码解析 
+### 欢迎加入，参与 SOFARegistry 源码解析
 
 ![SOFALab](https://cdn.nlark.com/yuque/0/2019/png/226702/1556166838486-44c2acc2-e0c3-4557-9dfb-881617ad2bb1.png)
 

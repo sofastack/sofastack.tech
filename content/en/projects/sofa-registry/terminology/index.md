@@ -30,4 +30,3 @@ aliases: "/sofa-registry/docs/Terminology"
 | Session server | A server role of SOFARegistry that establishes TCP long connections with clients for data interaction|
 | Data server | A server role of SOFARegistry that is responsible for data storage. |
 | Meta server | A server role of SOFARegistry that is responsible consensus coordination of the cluster based on the Raft protocol.  |
-

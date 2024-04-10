@@ -60,6 +60,7 @@ title: "Server 配置说明"
 ### processor
 
 MOSN 使用的 `GOMAXPROCS` 数量
+
 - 如果没有配置，默认为 CPU 数量。
 - 如果配置为 0，等价于没有配置。
 

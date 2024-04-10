@@ -115,4 +115,4 @@ Argo 得到 etcd watch 的 http 请求，去 etcd 读出 yaml 中的数据并解
 
 值得一提的是，在 Kubernetes 之后，Google 推出了 Fuchsia 作为 Android 可能的替代品。而 Fuchsia 基于 Zircon 内核开发，Zircon 基于 C++ 开发，正是微内核架构。在算力井喷的现代，除了在分布式操作系统领域，微内核能否也在手机/物联网操作系统领域复兴，让我们拭目以待。
 
-_本文内容主要基于王益最近给_[SQLFlow](https://github.com/sql-machine-learning/sqlflow)_ 和_[ElasticDL](https://github.com/sql-machine-learning/elasticdl)_ 团队的分享。沈凋墨和章海涛、武毅、闫旭、张科等一起总结。这个总结解释了 SQLFlow 作为一个 Kubernetes-native 的分布式编译器的设计思路基础，也解释了 ElasticDL 只针对 Kubernetes 平台做分布式 AI 的原因。本文作者中包括百度 Paddle EDL 的作者。Paddle EDL 是基于 PaddlePaddle 和 Kubernetes 的分布式计算框架，于 2018 年贡献给 Linux Foundation._
+_本文内容主要基于王益最近给_[SQLFlow](https://github.com/sql-machine-learning/sqlflow)_和_[ElasticDL](https://github.com/sql-machine-learning/elasticdl)_团队的分享。沈凋墨和章海涛、武毅、闫旭、张科等一起总结。这个总结解释了 SQLFlow 作为一个 Kubernetes-native 的分布式编译器的设计思路基础，也解释了 ElasticDL 只针对 Kubernetes 平台做分布式 AI 的原因。本文作者中包括百度 Paddle EDL 的作者。Paddle EDL 是基于 PaddlePaddle 和 Kubernetes 的分布式计算框架，于 2018 年贡献给 Linux Foundation._

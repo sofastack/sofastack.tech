@@ -149,7 +149,7 @@ Envoy 使用的是单进程多线程模型，其局限就是无法通过环境�
 
 MOSN 的方案和 Envoy 类似，都是通过 UDS 来传递 listener fd。但是其比 Envoy 更厉害的地方在于它可以把老的连接从 Old MOSN 上迁移到 New MOSN 上。**也就是说把一个连接从进程 A 迁移到进程 B，而保持连接不断**！！！厉不厉害？听起来很简单，但是实现起来却没那么容易，比如数据已经被拷贝到了应用层，但是还没有被处理，怎么办？这里面有很多细节需要处理。它子所以能做到这种层面，靠的也是内核的 `sendmsg/recvmsg` 技术。
 
-> SCM_RIGHTS - Send or receive a set of open file descriptors from another process. The data portion contains an integer array of the file descriptors. The passed file descriptors behave as though they have been created with dup(2). http://linux.die.net/man/7/unix
+> SCM_RIGHTS - Send or receive a set of open file descriptors from another process. The data portion contains an integer array of the file descriptors. The passed file descriptors behave as though they have been created with dup(2). <http://linux.die.net/man/7/unix>
 
 这里有一个 Go 实现的小 Demo: [tcp 链接迁移](https://zhuanlan.zhihu.com/p/97340154)。
 

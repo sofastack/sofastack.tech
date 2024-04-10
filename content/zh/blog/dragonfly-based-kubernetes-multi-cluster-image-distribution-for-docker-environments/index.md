@@ -18,10 +18,10 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*tgriQrW1muUAAAAAA
 
 ## 1｜你将在本文学到什么
 
--   多 K8s 集群镜像分发方案
--   Dragonfly 的理解
--   Harbor 的预热机制
--   Dragonfly 的使用以及排障
+- 多 K8s 集群镜像分发方案
+- Dragonfly 的理解
+- Harbor 的预热机制
+- Dragonfly 的使用以及排障
 
 ## 2｜K8S 多集群镜像分发问题
 
@@ -33,20 +33,20 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*tgriQrW1muUAAAAAA
 
 带来的问题是：
 
--   每套环境一个 Harbor，导致部署、维护的困难。
--   Harbor 的复制策略比较简单，无法单例执行。并且重试非常占用中心仓带宽。
+- 每套环境一个 Harbor，导致部署、维护的困难。
+- Harbor 的复制策略比较简单，无法单例执行。并且重试非常占用中心仓带宽。
 
 那么面对这种场景存在以下两种方案：
 
--   Harbor 仓库分级复制策略
--   P2P 镜像分发策略
+- Harbor 仓库分级复制策略
+- P2P 镜像分发策略
 
 Harbor 仓库分级复制策略，存在以下问题：
 
--   如何进行分级划分
--   升级过程，如果节点所处的是第三级，如何触发复制策略加速缓存
--   每个节点增加了安全暴露面
--   节点的不断增加，后续是否需要 3 级、4 级、5 级，维护管理成本指数增加。
+- 如何进行分级划分
+- 升级过程，如果节点所处的是第三级，如何触发复制策略加速缓存
+- 每个节点增加了安全暴露面
+- 节点的不断增加，后续是否需要 3 级、4 级、5 级，维护管理成本指数增加。
 
 所以在项目中，我的选择是 Dragonfly 的 P2P 镜像分发策略。
 
@@ -62,9 +62,9 @@ Harbor 仓库分级复制策略，存在以下问题：
 
 此 P2P 不是金融圈里面经常爆雷的，而是 Peer to Peer 网络技术。有几个比较突出的使用：
 
--   迅雷；
--   某夭折的播放器（*快 B*）；
--   国内一些视频网站白嫖用户网络的 P2P CDN。
+- 迅雷；
+- 某夭折的播放器（*快 B*）；
+- 国内一些视频网站白嫖用户网络的 P2P CDN。
 
 #### 为什么需要 P2P 网络
 
@@ -97,17 +97,17 @@ c31aa26549dd: Already exists
 
 **Scheduler:**
 
--   基于机器学习的多场景自适应智能 P2P 节点调度，为当前下载节点选择最优父节点；
--   构建 P2P 下载网络的有向无环图；
--   根据不同特征值评估节点下载能力, 剔除异常节点；
--   当下载失败情况，主动通知 Dfdaemon 进行回源下载。
+- 基于机器学习的多场景自适应智能 P2P 节点调度，为当前下载节点选择最优父节点；
+- 构建 P2P 下载网络的有向无环图；
+- 根据不同特征值评估节点下载能力, 剔除异常节点；
+- 当下载失败情况，主动通知 Dfdaemon 进行回源下载。
 
 **Dfdaemon：** （*分为 Peer、Seed Peer*）
 
--   基于 gRPC 提供下载功能, 并提供多源适配能力；
--   开启 Seed Peer 模式可以作为 P2P 集群中回源下载节点, 也就是整个集群中下载的根节点；
--   为镜像仓库或者其他 HTTP 下载任务提供代理服务；
--   下载任务基于 HTTP 或 HTTPS 或其他自定义协议。
+- 基于 gRPC 提供下载功能, 并提供多源适配能力；
+- 开启 Seed Peer 模式可以作为 P2P 集群中回源下载节点, 也就是整个集群中下载的根节点；
+- 为镜像仓库或者其他 HTTP 下载任务提供代理服务；
+- 下载任务基于 HTTP 或 HTTPS 或其他自定义协议。
 
 使用场景流程说明如下：（*当需要下载某一层镜像时*）
 
@@ -115,7 +115,7 @@ c31aa26549dd: Already exists
 
 2. Peer 节点进行本地缓存判断，查看是否存在该层镜像；
 
--   是，则直接响应。如图：
+- 是，则直接响应。如图：
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/842e577478504b08b9795115d2f0625a~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1080&h=383&s=71928&e=png&b=f7f7f7)
 
@@ -123,7 +123,7 @@ c31aa26549dd: Already exists
 
 4. Scheduler 将判断 Seed Peer 中是否存在：
 
--   是，则将对应的地址返回，通知 Peer 去指定的 Seed Peer 拉取资源,如图：
+- 是，则将对应的地址返回，通知 Peer 去指定的 Seed Peer 拉取资源,如图：
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/460db07a503e424fbe8da4fa4f5b2661~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1080&h=486&s=112922&e=png&b=f8f8f8)
 
@@ -153,7 +153,7 @@ c31aa26549dd: Already exists
 
 ### a.配置 Docker
 
--   配置 http proxy 
+- 配置 http proxy
 
 ```Java
 vi /etc/systemd/system/docker.service.d/http-proxy.conf
@@ -164,7 +164,7 @@ Environment="HTTP_PROXY=http://127.0.0.1:65001"
 Environment="HTTPS_PROXY=http://127.0.0.1:65001"
 ```
 
--   私有仓库的话，配置忽略证书 insecure-registries；
+- 私有仓库的话，配置忽略证书 insecure-registries；
 
 ```Java
 vi /etc/docker/daemon.json
@@ -179,7 +179,7 @@ vi /etc/docker/daemon.json
 
 ### b.安装依赖
 
-MySQL: 
+MySQL:
 
 ```MySQL
 docker run -d --name dragonfly-mysql --restart=always -p 3306:3306 \
@@ -220,15 +220,11 @@ docker run --rm --name jaeger \
 
 私有仓库的情况下，需要给 Dragonfly 代理也配置一个私有证书；如果不配置，在拉取过程中，会偶发 pull 失败的情况，报错如下：
 
-
-
 ```Java
 http: server gave HTTP response to HTTPS client
 ```
 
 生成一个 CA 证书私钥。
-
-
 
 ```Java
 openssl genrsa -out ca.key 2048
@@ -420,11 +416,11 @@ Harbor 配置策略 -> 通知 Manager -> 查询现有活动的 Scheduler 集群 
 
 **Harbor 配置如下：**
 
--   配置分发实例
+- 配置分发实例
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4d274daddfee4fbf8cda570000af2e6a~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1080&h=408&s=42127&e=png&b=162b33)
 
--   为对应的项目配置 P2P 策略
+- 为对应的项目配置 P2P 策略
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dca9a92ea4764857924b3c95064ab0f6~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1062&h=636&s=28873&e=png&b=101f25)
 
@@ -434,9 +430,9 @@ Harbor 配置策略 -> 通知 Manager -> 查询现有活动的 Scheduler 集群 
 
 **我们怎么判断当前的镜像层已经缓存到了本地？**
 
--   Dfdaemon 将缓存默认存放在 /var/lib/Dragonfly 目录下，名称为 task 名称；
--   通过查看源码，task 名称的来源为：func taskIDV1（*url string, meta *commonv1.UrlMeta, ignoreRange bool*） 。即对每一层算法计算出来的。
--   快速：直接查看对应的日志即可。
+- Dfdaemon 将缓存默认存放在 /var/lib/Dragonfly 目录下，名称为 task 名称；
+- 通过查看源码，task 名称的来源为：func taskIDV1（*url string, meta *commonv1.UrlMeta, ignoreRange bool*） 。即对每一层算法计算出来的。
+- 快速：直接查看对应的日志即可。
 
 ## Dragonfly Star 一下✨
 

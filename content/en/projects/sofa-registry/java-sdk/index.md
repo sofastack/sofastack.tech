@@ -169,4 +169,3 @@ Request parameters
 | registryType | RegistryType | The enumeration value of any of the three types: PUBLISHER, SUBSCRIBER, and CONFIGURATOR. |
 
 The Integer values returned by the method show the numbers of unregistered and unsubscribed users.
-

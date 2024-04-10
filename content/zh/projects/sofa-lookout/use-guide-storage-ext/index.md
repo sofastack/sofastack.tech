@@ -1,10 +1,9 @@
 
 ---
+
 title: "服务器端 Metrics 存储扩展机制"
 aliases: "/sofa-lookout/docs/useguide-storage-ext"
 ---
-
-
 
 如果需要扩展支持适配一个新的数据存储，可能需要下面的步骤:
 
@@ -42,6 +41,7 @@ aliases: "/sofa-lookout/docs/useguide-storage-ext"
 - 在 "com.alipay.sofa.lookout.server.starter.ServerAutoConfiguration" 中 @import 上述存储 spring 配置类；
 
 ## 3.最后贡献建议
+
 - 提 issue 说明需求，并可以介绍下方案；
 - 保证测试覆盖；
 - fork 代码，编译通过后，提交 PR；

@@ -33,7 +33,6 @@ A：如果想用别的语言给 Layotto 做扩展的话，目前感觉可行的�
 
 Layotto：[https://github.com/mosn/layotto](https://github.com/mosn/layotto)
 
-
 2、@证道者 提问：
 
 > 目前提供 pub/sub 能力，流 stream 能力，状态能力，以后也会将一些通用的业务能力抽象下移到 Layotto 吗？我觉得有点像组件化，面向能力编程。
@@ -59,7 +58,6 @@ Layotto：[https://github.com/mosn/layotto](https://github.com/mosn/layotto)
 - [蚂蚁云原生应用运行时的探索和实践 - ArchSummit 上海](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247488131&idx=1&sn=cd0b101c2db86b1d28e9f4fe07b0446e&chksm=faa0fd59cdd7744f14deeffd3939d386cff6cecdde512aa9ad00cef814c033355ac792001377&scene=21)
 
 - [带你走进云原生技术：云原生开放运维体系探索和实践](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247488044&idx=1&sn=ef6300d4b451723aa5001cd3deb17fbc&chksm=faa0fdf6cdd774e03ccd9130099674720a81e7e109ecf810af147e08778c6582636769646490&scene=21)
-
 
 更多文章请扫码关注“金融级分布式架构”公众号
 

@@ -10,11 +10,11 @@ cover: "/cover.jpg"
 ---
 
 > **SOFA** **S**calable **O**pen **F**inancial **A**rchitecture 是蚂蚁金服自主研发的金融级分布式中间件，包含了构建金融级云原生架构所需的各个组件，是在金融场景里锤炼出来的最佳实践。
-> 
+>
 > SOFATracer 是一个用于分布式系统调用跟踪的组件，通过统一的 TraceId 将调用链路中的各种网络调用情况以日志的方式记录下来，以达到透视化网络调用的目的，这些链路数据可用于故障的快速发现，服务治理等。
-> 
+>
 > 本文为《剖析 | SOFATracer 框架》最后一篇，本篇作者 yushuqiang，来自小象生鲜。《剖析 | SOFATracer 框架》系列由 SOFA 团队和源码爱好者们出品，项目代号：[SOFA:TracerLab/]，目前领取已经完成，感谢大家的参与。
-> 
+>
 > **SOFATracer**：<https://github.com/sofastack/sofa-tracer>
 
 ![SOFATracer-埋点.jpg](https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1550721767785-3fb17b31-aaa0-4748-82eb-b36e734458d0.jpeg)
@@ -94,7 +94,6 @@ RpcThriftTracer 继承了 AbstractTracer 类，是对 clientTracer、serverTrace
 | AbstractSofaTracerStatisticReporter | AbstractRpcStatJsonReporter<br />RpcClientStatJsonReporter<br />RpcServerStatJsonReporter | 统计日志 reporter 类的实现类   | 这里就是就是将统计日志添加到日志槽里，等待被消费(输出到日志)。具体可以参考：SofaTracerStatisticReporterManager.StatReporterPrinter。 |      |
 | RpcSpanTags                         |                                                              |                                | 要采集数据 key 的取值定义                                    |      |
 
-
 > PS:上面表格中 SpanEncoder 和 AbstractSofaTracerStatisticReporter 的实现中，多了一层 AbstractRpcDigestSpanJsonEncoder 和 AbstractRpcStatJsonReporter 的抽象，主要是由于 client 和 server 端有公共的逻辑处理，为了减少冗余代码，而采用了多继承模式处理。
 
 **4、数据传播格式实现**
@@ -164,7 +163,7 @@ serverReceive 这个方法是在 AbstractTracer 类中提供了实现，子类�
 
 ```yaml
 clientSend
-		serverReceive
+  serverReceive
     ...
     serverSend
 clientReceive   

@@ -9,7 +9,7 @@ date: 2022-03-02T15:00:00+08:00
 cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*cKRdQb_z-H0AAAAAAAAAAAAAARQnAQ"
 ---
 
-## BabaSSL 8.3.0 稳定版本发布！ 
+## BabaSSL 8.3.0 稳定版本发布
 
 密码学开源项目 BabaSSL 近日发布了 8.3.0 稳定版本，该版本中提供了若干 bug 修复以及较多的新特性支持。
 
@@ -69,7 +69,7 @@ RFC8879 所定义的 TLS 证书压缩功能为 TLS 握手带来了很大的性�
 
 [https://github.com/BabaSSL/BabaSSL/releases/tag/8.3.0](https://github.com/BabaSSL/BabaSSL/releases/tag/8.3.0)
 
-## BabaSSL 是什么 ？ 
+## BabaSSL 是什么 ？
 
 BabaSSL 是一个提供现代密码学算法和安全通信协议的开源基础密码库，为存储、网络、密钥管理、隐私计算等诸多业务场景提供底层的密码学基础能力。实现数据在传输、使用、存储等过程中的私密性、完整性和可认证性的保证，为数据生命周期中的隐私和安全提供保护能力。
 
@@ -83,7 +83,7 @@ BabaSSL 对国际和国内的新型技术标准采用快速跟进的策略，因
 
 自 2020 年开源以来，BabaSSL 也在行业内得到了广大用户的使用和验证，并应用到了众多业务场景里。
 
-## BabaSSL 的前世今生 
+## BabaSSL 的前世今生
 
 BabaSSL 诞生于蚂蚁集团和阿里集团内部，目前作为蚂蚁和阿里的统一基础密码库，广泛应用在各类蚂蚁和阿里的业务当中，提供了 TLS、数据存储、国密合规等关键的密码学相关能力，确保了各项业务平稳、安全、合规的运行。
 
@@ -99,15 +99,15 @@ BabaSSL 诞生于蚂蚁集团和阿里集团内部，目前作为蚂蚁和阿里
 
 TLS 可以说是整个互联网安全的基石，保障着我们的通信数据的安全。随着 TLS 1.3+ 国密正式成为了国家/国际层面均认可的标准（RFC8998），我们也正式在 BabaSSL 中支持了相关能力并将其开源，并建设了 BabaSSL 社区。
 
-### 3. TLS 握手带宽直降 80%，BabaSSL 是怎么做到的 
+### 3. TLS 握手带宽直降 80%，BabaSSL 是怎么做到的
 
 为了保障数据的安全性，通常使用 TLS/SSL 进行加密传输。当客户端访问服务器后台时，客户端会先和服务器进行 TLS 握手。RFC 8879 TLS Certificate Compression 就是为了解决这个问题，在 TLS 1.3 握手时提供证书压缩功能，大大降低数据传输，减少 TLS 握手的带宽消耗呢。
 
-### 4. Tengine + BabaSSL ，让国密更易用！
+### 4. Tengine + BabaSSL ，让国密更易用
 
 国内著名 Web 服务器和反向代理开源软件 Tengine 完成了对 BabaSSL 的适配工作。Tengine 对 BabaSSL 提供的特殊 API 进行了适配，并增加对 NTLS 相关能力的支持。无需额外的 patch 或者代码改动，从用户使用的角度进一步提升了便利性。
 
-对密码学、隐私计算感兴趣的话 
+对密码学、隐私计算感兴趣的话
 
 等你加入我们！
 

@@ -16,25 +16,30 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 
 SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 
-**SOFAStack 官网: **[https://www.sofastack.tech](https://www.sofastack.tech/)
+**SOFAStack 官网:**[https://www.sofastack.tech](https://www.sofastack.tech/)
 
-**SOFAStack: **[https://github.com/sofastack](https://github.com/sofastack)
+**SOFAStack:**[https://github.com/sofastack](https://github.com/sofastack)
 
 ### 社区 Big News
 
 **NO.1 社区新认证一位 Committer**
 
-**Github ID **[**@zongtanghu**](https://github.com/zongtanghu) 成为 SOFAJRaft Committer：
+**Github ID**[**@zongtanghu**](https://github.com/zongtanghu) 成为 SOFAJRaft Committer：
 
 主要贡献：
 
 1. 贡献了两个重要 Feature：
+
 - 基于优先级配置的自动选举；
 - 为 Replicator 日志复制实现 ReplicatorStateListener 监听器；
+
 2. 添加一些优化功能和 Bugfix：
+
 - 优化 SOFAJRaft 的工具类，减少冗余代码，增加单元测试用例代码；
 - 优化常量类，实现 Copiable 接口；
+
 3. 原创文章贡献
+
 - 《[SOFAJRaft Snapshot 原理剖析 | SOFAJRaft 实现原理](/blog/sofa-jraft-snapshot-principle-analysis/)》;
 - 《[中国移动苏州研发中心消息队列高可用设计之谈 | SOFAStack 用户说](/blog/sofa-jraft-user-china-mobile/)》;
 
@@ -52,9 +57,10 @@ SOFAStack 社区：[https://www.sofastack.tech/awesome/](/awesome/)
 
 > 为什么 MOSN 热重启机制需要新老进程，两个 unix domain socket server 通信交互?
 > 目前分为 旧进程 reconfigerServer 新进程 transferServer,
+>
 > 1. reconfigerServer 只是新进程主动判断 isReconfigure() 就结束了连接；
 > 1. 迁移 listener fd 以及 connection fd 让旧进程作为 client 角色；
-> 
+>
 > 如果仅使用 reconfigerServer 作为交互通信会存在哪些问题？
 
 A：你的意思就是旧进程 reconfigerServer 在收到 isReconfigure() 后，直接传输旧进程的 fd 给新进程。原理上也是可以的。这儿其实有个历史原因，最开始支持信号 fork 子进程的方式，是不需要 isReconfigure() 来判断是否存在旧进程的，通过环境变量就可以了，后来为了支持容器升级的方式，单独启一个新的进程，才需要一个机制来判断是否存在旧进程，为了改动更小，之前的逻辑不受影响，才加了这个新的 us 来通讯。
@@ -74,9 +80,10 @@ A：你看到代码是 listen fd 的迁移，和 Envoy 最大的不同是我们�
 第三阶段， 支持容器间存量长链接的迁移，通过 uds 查找子进程。
 
 > 非常感谢丰富的演进说明。重新拉起容器这块不太明白，对 Envoy 的场景理解：
+>
 > - 热重启是同一个容器内，Sidecar 新老进程的交接，业务进程继续运行；
 > - Sidecar 进程管理是由 pilot-agent 进行管理，当前容器内 agent 发送热重启信号，非重新拉起容器；
-> 
+>
 > MOSN 这里指的是拉起新容器, 容器间迁移数据？uds 的路径是挂载盘?
 
 A：Envoy 的方式不能用镜像来管理二进制了。MOSN 除了支持 Envoy 这种容器内热升级，也支持容器间。MOSN 会拉起新容器，然后做容器间的连接迁移，uds 的路径是共享卷，2 个 container 共享。
@@ -93,7 +100,7 @@ MOSN：[https://github.com/sofastack/sofa-mosn](https://github.com/sofastack/sof
 - [蚂蚁金服 Service Mesh 大规模落地系列 - 核心篇](/blog/service-mesh-practice-in-production-at-ant-financial-part1-core/)
 - [Service Mesh 落地负责人亲述：蚂蚁金服双十一四大考题](/blog/service-mesh-practice-antfinal-shopping-festival-big-exam/)
 
-###  SOFA 项目进展
+### SOFA 项目进展
 
 **本周发布详情如下：**
 

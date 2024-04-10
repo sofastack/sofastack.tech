@@ -155,7 +155,6 @@ step3：follower 每秒判断锁是否过期，如果过期，则 cas 竞选 lea
 
 step4：如果 leader 发生切换，通知 xxx
 
-
 ## 时序图
 
 💡 Tips：输入`/画板`或点击上方工具栏![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Ab3yRqrz93MAAAAAAAAAAAAAARQnAQ)，选择「画板」、绘制流程图、架构图等各种图形。

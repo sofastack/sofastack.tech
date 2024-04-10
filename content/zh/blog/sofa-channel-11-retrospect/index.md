@@ -10,7 +10,7 @@ cover: "https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1579428984201-7e413fcb-37
 ---
 
 > <SOFA:Channel/>，有趣实用的分布式架构频道。
-> 
+>
 > 本文根据 SOFAChannel#11 直播分享整理，主题：从一个例子开始体验轻量级类隔离容器 SOFAArk。
 > 回顾视频以及 PPT 查看地址见文末。欢迎加入直播互动钉钉群：23372465，不错过每场直播。
 
@@ -166,7 +166,7 @@ SOFADashboard：[https://github.com/sofastack/sofa-dashboard](https://github.com
 
 > 重启应用排序会发生变化吗？
 
-A：可以在 Ark Biz 中指定 priority，保证启动顺序。 
+A：可以在 Ark Biz 中指定 priority，保证启动顺序。
 
 #### @Tower Q3
 

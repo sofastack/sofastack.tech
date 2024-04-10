@@ -60,7 +60,6 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 CSDI summit 中国软件研发管理行业技术峰会（Software development management industry technology summit）是软件行业技术领域顶级盛会，协同国内外知名软件、互联网等企业研发一线技术专家从 AI 和大数据、产业变革、技术创新、生态发展、业务创新、商业模式等方面重点研讨软件研发趋势。**蚂蚁集团也受邀参与**本次峰会分享“**云原生**”相关主题。
 
-
 **分享主题：金融级云原生 PaaS 实践之路**
 
 **分享嘉宾：**成旻 蚂蚁集团高级技术专家

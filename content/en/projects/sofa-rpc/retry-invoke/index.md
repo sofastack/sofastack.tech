@@ -1,9 +1,9 @@
 
 ---
+
 title: "Retry strategy"
 aliases: "/sofa-rpc/docs/Retry-Invoke"
 ---
-
 
 SOFARPC supports a framework-level retry strategy when the cluster mode is FailOver (SOFARPC uses FailOver mode by default). Retry is only initiated if there is a framework-level exception or a timeout exception on the server. If the business itself throws an exception, the service will not be called again. SOFARPC does not perform any retry by default.
 

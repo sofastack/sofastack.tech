@@ -94,7 +94,7 @@ SessionServer 模块的各个 bean 在 JavaConfig 中统一配置，JavaConfig �
 
 ### SessionServer 保存了哪些数据
 
-在了解了 SessionServer 的启动过程、明白 SessionServer 作为 DataServer 的代理层、有着非常重要的位置。能够分摊一部分对 DataServer 的压力。那么在 SessionServer 在注册的时候会保存了哪些数据呢? 
+在了解了 SessionServer 的启动过程、明白 SessionServer 作为 DataServer 的代理层、有着非常重要的位置。能够分摊一部分对 DataServer 的压力。那么在 SessionServer 在注册的时候会保存了哪些数据呢?
 
 1. SessionCacheService
 
@@ -205,7 +205,7 @@ public <R> R add(K key, V val, UnThrowableCallable<R> dataStoreCaller) {
 
 细心的读者应该发现方法执行完成也没有删除索引数据、这样会导致执行完删除逻辑 索引数据是多于 DataStore 数据。思考一下这里为什么不直接删除索引数据呢?  我们不妨来假设这里有删除索引数据逻辑。
 
-在刚好准备执行删除 索引时刻 (还未执行)，该条会话又重新建立了 (可能是客户端的短时间的网络原因导致的断开连接又重新连接上) 重新写入了 DataStore 和索引数据，随后执行索引删除操作继续执行、那么就会把新写入的索引数据删除掉。那么新写入的 dataStore 会话数据就没有索引指向之、导致 DataStore 数据残留、无任何索引数据引用这部分数据，也没有办法通过索引删除。 
+在刚好准备执行删除 索引时刻 (还未执行)，该条会话又重新建立了 (可能是客户端的短时间的网络原因导致的断开连接又重新连接上) 重新写入了 DataStore 和索引数据，随后执行索引删除操作继续执行、那么就会把新写入的索引数据删除掉。那么新写入的 dataStore 会话数据就没有索引指向之、导致 DataStore 数据残留、无任何索引数据引用这部分数据，也没有办法通过索引删除。
 
 基于此 SofaRegistry 在删除时保留了索引数据，只删除会话数据。而且在针对数据的查询以及删除场景中 SofaRegistry 做了很多的检查、保证就算是索引数据多于 dataStore 数据的情况下也不会出现问题。 例如 AbstractDataManager#queryByConnectId 通过索引查出来的 registerId 和 dataInfoId 也会重新回查 dataStore 去重新检查一次的、所以数据最终还是以 dataStore 为准. 不会产生问题。
 

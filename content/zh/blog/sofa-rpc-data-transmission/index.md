@@ -70,6 +70,7 @@ public class HelloServiceImpl implements HelloService {
     }
 }
 ```
+
 后续的所有调用模式都使用`HelloServiceImpl`这个服务实现。(示例代码在 SOFARPC 的 测试 case 中都要对应的示例，大家可以对应阅读。)
 
 对用户可见的操作 API 只有一个就是 `RpcInvokeContext`，在 SOFABoot 和 SOFARPC 下都适用，当然如果你了解 SOFARPC 的 Filter 机制，也可以通过扩展这个来实现。
@@ -127,7 +128,6 @@ future 模式在 SOFARPC 内部会被转化为 callback 的方式进行调用，
 3. 设置响应透传数据到 main 线程的调用上下文
 
 4. 将 main 线程上下文拷贝到当前的回调线程中
-
 
 实际上，第三步与第四步在 SOFARPC 源码中顺序相反，本文这样解读是为了更容易理解。这样无论是 future 模式（从 main 线程的调用上下文获取响应透传数据）还是 callback 模式（从回调线程的调用上下文获取响应透传数据），都可以顺利的获取到响应透传数据。
 

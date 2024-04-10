@@ -1,9 +1,9 @@
 
 ---
+
 title: "Direct call"
 aliases: "/sofa-rpc/docs/Peer-To-Peer"
 ---
-
 
 SOFARPC supports scenarios where a specified address is called.
 

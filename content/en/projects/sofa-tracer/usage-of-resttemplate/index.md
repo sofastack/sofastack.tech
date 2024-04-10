@@ -10,7 +10,7 @@ In this document will demonstrate how to use SOFATracer to track of RestTemplate
 
 Assuming you have built a simple Spring Web project based on SOFABoot, Then you can be operated by the following steps:
 
-## Introduce dependency 
+## Introduce dependency
 
 ```xml
 <dependency>
@@ -19,6 +19,7 @@ Assuming you have built a simple Spring Web project based on SOFABoot, Then you 
     <!-- SOFABoot version unified management -->
 </dependency>
 ```
+
 ## Project Configuration
 
 Then, add the parameters to be used by SOFATracer in the project's `application.properties` file, including `spring.application.name` that indicates the name of the current application and `logging.path` that specifies the log output directory.
@@ -81,7 +82,6 @@ ListenableFuture<ResponseEntity<String>> forEntity = asyncRestTemplate.getForEnt
 RestTemplate             restTemplate;
 ```
 
-
 ## Run the project
 
 Start the SOFABoot app and see the log in the console as follows:
@@ -115,7 +115,6 @@ In the `application.properties`, the log printing directory we configured is `./
     ├── static-info.log
     └── tracer-self.log
 ```
-
 
 In the example, a call to the same RESTful service is initiated by constructing two RestTemplates (one synchronous one asynchronous),After the call is completed, you can see a log similar to the following in the restTemplate-digest.log:
 

@@ -44,7 +44,7 @@ AT 模式是一种二阶段提交的分布式事务模式，它采用了本地 u
 
 在数据库本地事务隔离级别**读已提交（Read Committed）** 或以上的基础上，Seata（AT 模式）的默认全局隔离级别是**读未提交（Read Uncommitted）** 。
 
-如果应用在特定场景下，必须要求全局的**读已提交**，目前 Seata 的方式是通过 SELECT FOR UPDATE 语句的代理。 
+如果应用在特定场景下，必须要求全局的**读已提交**，目前 Seata 的方式是通过 SELECT FOR UPDATE 语句的代理。
 
 SELECT FOR UPDATE 语句的执行会查询**全局锁**，如果**全局锁**被其他事务持有，则释放本地锁（回滚 SELECT FOR UPDATE 语句的本地执行）并重试。这个过程中，查询是被 block 住的，直到**全局锁**拿到，即读取的相关数据是**已提交**的，才返回。
 
@@ -80,14 +80,14 @@ AT 模式默认优先保证 CP，但提供了配置通道让用户在 CP 和 AP 
 
 ## 3、AT 数据源代理
 
-在 AT 模式中，用户只需要配置好 AT 的代理数据源即可， AT 的所有流程都在代理数据源中完成，对用户无感知。 
+在 AT 模式中，用户只需要配置好 AT 的代理数据源即可， AT 的所有流程都在代理数据源中完成，对用户无感知。
 
 AT 数据源代理的整体类结构如下图：
 
 ![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6c080b82054b4f1aa46fe0e899f3bfc1~tplv-k3u1fbpfcp-zoom-1.image)
 
  AT 事务数据源代理类结构图【from *[https://seata.io/zh-cn/docs/dev/mode/xa-mode.html](https://seata.io/zh-cn/docs/dev/mode/xa-mode.html)*】
- 
+
 AT 的数据源代理中，分别对目标数据库的 DataSource 、 Connection 和 Statement  进行了代理，在执行目标 SQL 动作之前，完成了 RM 资源注册、 undo log 生成、分支事务注册、分支事务提交/回滚等操作，而这些操作对用户并无感知。
 
 下面的时序图中，展示了 AT 模式在执行过程中，这几个代理类的动作细节：
@@ -346,4 +346,3 @@ Seata AT 模式依赖于各个 DB 厂商的不同版本的 DB Driver（数据库
 [Go 代码城市上云--KusionStack 实践](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247515572&idx=1&sn=8fffc0fb13ffc8346e3ab151978d947f&chksm=faa3526ecdd4db789035b4c297811524cdf3ec6b659e283b0f9858147c7e37c4fea8b14b2fc6&scene=21)
 
 [Seata-php 半年规划](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247515039&idx=1&sn=e6068fc1b925e71eb8550c8c41296c6d&chksm=faa35445cdd4dd53b450c96f6077b161026a62e451c7c4b8288364b137b3786bbe3d5ea0340a&scene=21#wechat_redirect)
-

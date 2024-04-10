@@ -26,7 +26,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1571295410250-183069b1-613
 
 这里我们着重分享蚂蚁金服正在实践的几项云原生安全技术，包括云原生网络安全 Service Mesh，安全容器，以及机密计算。
 
-## 云原生网络安全：SOFAMesh 
+## 云原生网络安全：SOFAMesh
 
 当前，云原生里除了容器之外第二大技术其实就是 Service Mesh，从蚂蚁的实践来看，其实它对金融安全有非常高的帮助。它至少可以做到三点：
 
@@ -46,7 +46,7 @@ SOFAMesh 是基于 Istio 改进和扩展而来的 Service Mesh 大规模落地�
 
 蚂蚁金服率先在生产环境中大规模落地 SOFAMesh，超过 10W+ 容器做到了 Mesh 化，平稳支撑了 618 大促，给我们带来了多协议支持、UDPA、平滑升级、安全等多方面的好处，并且对性能仅有轻微的影响，单跳 CPU 增加 5% 损耗，RT 增加不到 0.2ms，甚至部分业务经过 Mesh 化改造将业务链路下沉，RT 反而下降 7%。
 
-## 安全容器：Kata Containers 
+## 安全容器：Kata Containers
 
 ![传统容器架构](https://cdn.nlark.com/yuque/0/2019/png/226702/1571121897038-b337be81-b59d-4915-9b34-848a3e55af1a.png)
 

@@ -15,6 +15,7 @@ aliases: "/sofa-registry/docs/Contributing"
 ## GitHub 贡献代码流程
 
 ### 提交 issue
+
 不论您是修复 SOFARegistry 的 bug 还是新增 SOFARegistry 的功能，在您提交代码之前，在 SOFARegistry 的 GitHub 上提交一个 issue，描述您要修复的问题或者要增加的功能。这么做有几个好处:
 
 * 不会与其它开发者或是他们对这个项目的计划发生冲突，产生重复工作.
@@ -22,9 +23,11 @@ aliases: "/sofa-registry/docs/Contributing"
 * 在达成一致后再开发,并提交代码，减少双方沟通成本，也减少 pull request 被拒绝的情况。
 
 ### 获取源码
+
 要修改或新增功能，在提 issue 后，点击左上角的 fork 按钮，复制一份 SOFARegistry 主干代码到您的代码仓库。
 
 ### 拉分支
+
 SOFARegistry 所有修改都在分支上进行，修改完后提交 pull request， 在 Code Review 后由项目维护人员 Merge 到主干。
 
 因此，在获取源码步骤介绍后，您需要：
@@ -46,6 +49,7 @@ git branch add_xxx_feature
 ```bash
 git branch -a
 ```
+
 如果您想切换回主干，执行下面命令:
 
 ```bash
@@ -59,9 +63,11 @@ git checkout -b "branchName"
 ```
 
 ### 修改代码提交到本地
+
 拉完分支后，就可以修改代码了。
 
 #### 修改代码注意事项
+
 * 代码风格保持一致
 
 SOFARegistry 通过 Maven 插件来保持代码格式一致.在提交代码前,务必本地执行
@@ -77,9 +83,11 @@ mvn clean compile
 ```bash
 mvn clean test
 ```
+
 也可以通过 IDE 来辅助运行。
 
 #### 其它注意事项
+
 * 请保持您编辑的代码的原有风格，尤其是空格换行等.
 * 对于无用的注释，请直接删除
 * 对逻辑和功能不容易被理解的地方添加注释。
@@ -92,6 +100,7 @@ git commit -am '添加xx功能'
 ```
 
 ### 提交代码到远程仓库
+
 在代码提交到本地后，就是与远程仓库同步代码了。执行如下命令提交本地修改到 github 上：
 
 ```bash
@@ -101,12 +110,15 @@ git push origin "branchname"
 如果前面您是通过 fork 来做的,那么这里的 origin 是 push 到您的代码仓库，而不是 SOFARegistry 的代码仓库.
 
 ### 提交合并代码到主干的请求
+
 在您的代码提交到 GitHub 后，您就可以发送请求来把您改好的代码合入 SOFARegistry 主干代码了。此时您需要进入您的 GitHub 上的对应仓库，按右上角的 pull request 按钮。选择目标分支,一般就是 master，系统会通知 SOFARegistry 的人员， SOFARegistry 人员会 Review 您的代码，符合要求后就会合入主干，成为 SOFARegistry 的一部分。
 
 #### 代码 Review
+
 在您提交代码后，您的代码会被指派给维护人员 Review，请耐心等待。如果在数天后，仍然没有人对您的提交给予任何回复，可以在 PR 下面留言，并 @ 对应的人员。
 
 对于代码 Review 的意见会直接备注到到对应 PR 或者 Issue。如果觉得建议是合理的，也请您把这些建议更新到您的补丁中。
 
 #### 合并代码到主干
+
 在代码 Review 通过后，就由 SOFARegistry 维护人员操作合入主干了。这一步不用参与，代码合并之后，您会收到合并成功的提示。

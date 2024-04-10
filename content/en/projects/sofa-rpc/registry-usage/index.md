@@ -1,9 +1,9 @@
 
 ---
+
 title: "Select Service Registry"
 aliases: "/sofa-rpc/docs/Registry-Usage"
 ---
-
 
 SOFABoot RPC Starter provides a variety of registry center options as well as convenient configurations.
 

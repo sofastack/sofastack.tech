@@ -2,7 +2,7 @@
 title: "SOFAJRaft 介绍"
 ---
 
-本介绍内容来自 [braft](https://github.com/brpc/braft) 文档，原文链接请参见[这里](https://github.com/brpc/braft/blob/master/docs/cn/overview.md)。braft 的关于算法和应用本身的文档非常优秀，由于 jraft 脱胎自 
+本介绍内容来自 [braft](https://github.com/brpc/braft) 文档，原文链接请参见[这里](https://github.com/brpc/braft/blob/master/docs/cn/overview.md)。braft 的关于算法和应用本身的文档非常优秀，由于 jraft 脱胎自
  braft，我们强烈推荐阅读上述文档以了解 raft 算法的基本原理和应用。
 
 ## 分布式一致性

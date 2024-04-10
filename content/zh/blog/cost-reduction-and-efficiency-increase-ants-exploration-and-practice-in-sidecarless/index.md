@@ -15,7 +15,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*_7u7TYpqVcMAAAAAA
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6702b62873014dacbdf0bfd2dcf1aa9f~tplv-k3u1fbpfcp-zoom-1.image)
 
-*深耕于高性能网络服务器研发，目前专注于云原生 ServiceMesh、Nginx、MOSN、Envoy、Istio 等相关领域。* 
+*深耕于高性能网络服务器研发，目前专注于云原生 ServiceMesh、Nginx、MOSN、Envoy、Istio 等相关领域。*
 
 本文 **5574** 字 阅读 **14** 分钟
 
@@ -23,7 +23,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*_7u7TYpqVcMAAAAAA
 
 从单体到分布式，解决了日益增长的业务在单体架构下的系统臃肿问题；从分布式到微服务，解决了服务化后的服务治理问题；从微服务到服务网格，解决了应用和基础设施耦合下的研发效能及稳定性问题。
 
-从微服务架构的演进历史来看，任何架构都不是一成不变，总是随着应用在不同阶段的痛点以及周边技术的发展而持续演进，而服务网格 *（ServiceMesh）* 概念从提出到生产落地至今已 6 年多了，那它的下一代架构应该是什么样？对此业界也有不同的声音 [Service Mesh 的下一站是 Sidecarless 吗](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247517361&idx=1&sn=9a5947c97d2e6adffa3d066c4c599c7b&chksm=faa36b6bcdd4e27dac0d925ac6385de906b413944203519f7b9be627b0b708e87381f0bcad2b&scene=21#wechat_redirect)[1] ，本文主要介绍蚂蚁在这方面的探索和实践，最终如何帮业务降本增效，提升安全保障水位。
+从微服务架构的演进历史来看，任何架构都不是一成不变，总是随着应用在不同阶段的痛点以及周边技术的发展而持续演进，而服务网格 *（ServiceMesh）* 概念从提出到生产落地至今已 6 年多了，那它的下一代架构应该是什么样？对此业界也有不同的声音 [Service Mesh 的下一站是 Sidecarless 吗][http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247517361&idx=1&sn=9a5947c97d2e6adffa3d066c4c599c7b&chksm=faa36b6bcdd4e27dac0d925ac6385de906b413944203519f7b9be627b0b708e87381f0bcad2b&scene=21#wechat_redirect](1) ，本文主要介绍蚂蚁在这方面的探索和实践，最终如何帮业务降本增效，提升安全保障水位。
 
 ## 一、 问题及挑战
 
@@ -78,7 +78,7 @@ Sidecar 同应用同属一个 Pod，这无论对于 Sidecar 还是应用自身�
 **- 运维及安全合规**
 
    a. Node 化后涉及到 Daemonset 自身以及应用维度的配置升级发布流程如何管控，同时出现故障时如何缩小爆炸半径；  
-   
+
    b. Node 化后涉及到的安全合规问题如何保证，如网络连通性如何隔离、身份等；
 
    c. Node 化后，Daemonset 所占用的机器成本如何规划 *（超卖？独占？）* 以及各个应用的资源消耗如何计算。
@@ -87,7 +87,7 @@ Sidecar 同应用同属一个 Pod，这无论对于 Sidecar 还是应用自身�
 
 将应用 Pod 中的 Sidecar 下沉到 Node，以 Daemonset 方式在每个 Node 部署。我们将该 Daemonset 命名为 NodeSentry，其定位是作为 Node 的网络基础设施，承载网络安全、流量治理、Mesh 下沉、连接收敛等 Node 相关网络治理平台。
 
-本文主要介绍 NodeSentry 承载 Mesh 下沉相关方案，Node 化后需要数据面 Proxy 能够高效、稳定的承载多个 Pod 的流量治理。这就要求数据面 Proxy 具备高处理性能及高研发效能，为此我们在 2021 年就其做了相关技术布局 MOSN2.0，详细介绍见 [开启云原生 MOSN 新篇章 — 融合 Envoy 和 GoLang 生态](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247490185&idx=1&sn=cfc301e20a1ae5d0754fab3f05ea094a&chksm=faa0f553cdd77c450bf3c8e34cf3c27c3bbd89092ff30e6ae6b2631953c4886086172a37cb48&scene=21#wechat_redirect)[3] 。
+本文主要介绍 NodeSentry 承载 Mesh 下沉相关方案，Node 化后需要数据面 Proxy 能够高效、稳定的承载多个 Pod 的流量治理。这就要求数据面 Proxy 具备高处理性能及高研发效能，为此我们在 2021 年就其做了相关技术布局 MOSN2.0，详细介绍见 [开启云原生 MOSN 新篇章 — 融合 Envoy 和 GoLang 生态][http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247490185&idx=1&sn=cfc301e20a1ae5d0754fab3f05ea094a&chksm=faa0f553cdd77c450bf3c8e34cf3c27c3bbd89092ff30e6ae6b2631953c4886086172a37cb48&scene=21#wechat_redirect](3) 。
 
 Mesh 下沉至 NodeSentry 其架构如上图所示，在新的架构下不仅能解决 Sidecar 形态的痛点，同时也具备了如下收益：
 

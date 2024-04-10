@@ -10,11 +10,11 @@ cover: "/cover.jpg"
 ---
 
 > **SOFA** **S**calable **O**pen **F**inancial **A**rchitecture 是蚂蚁金服自主研发的金融级分布式中间件，包含了构建金融级云原生架构所需的各个组件，是在金融场景里锤炼出来的最佳实践。
-> 
+>
 > SOFATracer 是一个用于分布式系统调用跟踪的组件，通过统一的 TraceId 将调用链路中的各种网络调用情况以日志的方式记录下来，以达到透视化网络调用的目的，这些链路数据可用于故障的快速发现，服务治理等。
-> 
+>
 > 本文为《剖析 | SOFATracer 框架》第二篇。《剖析 | SOFATracer 框架》系列由 SOFA 团队和源码爱好者们出品，项目代号：**<SOFA:TracerLab/>**，目前领取已经完成，感谢大家的参与。
-> 
+>
 > SOFATracer：<https://github.com/sofastack/sofa-tracer>
 
 ![SOFATracer-数据上报.jpg](https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1547173396825-f25c0dcc-19c3-424d-9830-cfc4d923e0a0.jpeg)
@@ -218,7 +218,7 @@ zipkin2.reporter.AsyncReporter 是 zipkin 提供的一个数据上报抽象类�
 
 关于 SpringBoot 工程使用 zipkin 上报案例请参考：[上报数据到 zipkin](https://www.sofastack.tech/sofa-tracer/docs/ReportToZipkin)
 
-关于 spring 应用中使用 zipkin 上报插件请参考：[tracer-zipkin-plugin-demo](https://github.com/glmapper/tracer-zipkin-plugin-demo) 
+关于 spring 应用中使用 zipkin 上报插件请参考：[tracer-zipkin-plugin-demo](https://github.com/glmapper/tracer-zipkin-plugin-demo)
 
 - Services 展示
 

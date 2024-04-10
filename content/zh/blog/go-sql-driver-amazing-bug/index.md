@@ -193,13 +193,13 @@ func parseDateTime(b []byte, loc *time.Location) (time.Time, error) {  const bas
 
 在 MySQL 中读写 timestamp 类型数据时，有如下注意事项：
 
-1.  默认约定：写入 MySQL 时间时，把当前时区的时间转换为 UTC + 00:00（世界标准时区）的值，读取后在前端展示时再次进行转换；
+1. 默认约定：写入 MySQL 时间时，把当前时区的时间转换为 UTC + 00:00（世界标准时区）的值，读取后在前端展示时再次进行转换；
 
-1.  如果不愿意使用默认约定，在现阶段使用 go-sql-driver 的时候，一定要特别注意，需要在 DSN 字符串加上 "loc=true&time_zone=*" , 和数据的时区保持一致，不然的话就会导致 timestamp 字段解析错误。
+1. 如果不愿意使用默认约定，在现阶段使用 go-sql-driver 的时候，一定要特别注意，需要在 DSN 字符串加上 "loc=true&time_zone=*" , 和数据的时区保持一致，不然的话就会导致 timestamp 字段解析错误。
 
 **| 参考文档 |**  
 
-《The date, datetime, and timestamp Types》 
+《The date, datetime, and timestamp Types》
 
 *[https://dev.mysql.com/doc/refman/8.0/en/datetime.html](https://dev.mysql.com/doc/refman/8.0/en/datetime.html)*  
 

@@ -1,10 +1,9 @@
 
 ---
+
 title: "工程示例"
 aliases: "/sofa-lookout/docs/useguide-samples"
 ---
-
-
 
 源码工程中提供了一些样例工程，辅助说明项目的使用。样例工程的 readme 有使用补充说明，`另外需要将这些 sample 工程单独的导入 IDE`。
 

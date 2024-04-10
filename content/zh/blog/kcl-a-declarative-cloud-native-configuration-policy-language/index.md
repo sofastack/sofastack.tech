@@ -25,15 +25,15 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*WZ3iTYRNn9EAAAAAA
 
 ```python
 schema GIACInvitation[name: str]:
-	Name:     str = name
-	Topic:    str = "分享主题"
-	Company?: str = None
-	Type:     str = "分享嘉宾"
-	Address:  str = "深圳"
+ Name:     str = name
+ Topic:    str = "分享主题"
+ Company?: str = None
+ Type:     str = "分享嘉宾"
+ Address:  str = "深圳"
 
 invitation = GIACInvitation("姓名") {
-	Topic:   "KCL配置策略语言"
-	Company: "蚂蚁集团"
+ Topic:   "KCL配置策略语言"
+ Company: "蚂蚁集团"
 }
 ```
 
@@ -210,11 +210,9 @@ schema ContainerPort:
 
 #### 2.2.2 运行时类型和逻辑 check 验证
 
-
 KCL 的 schema 不仅仅是带类型的结构体，也可以用于在运行时校验存量的无类型的 JSON 和 YAML 数据。此外 schema 的 check 块可以编写语义检查的代码，在运行时实例化 schema 时会自动进行校验。同时，基于 schema 的继承和 mixin 可以产生跟多关联的 check 规则。
 
 > ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*FBglSYlLhHcAAAAAAAAAAAAAARQnAQ)
-
 
 比如以下的例子展示 check 的常见用法：
 
@@ -237,7 +235,6 @@ schema sample:
 ```
 
 check 中每个语句都是一个可以产生 bool 结果的表达式和可选的错误信息组成（每个普通的 bool 表达式其实是 assert 语句的简化而来）。通过内置的语法和函数可以实现在运行时对属性值的逻辑验证。
-
 
 #### 2.2.3 内置测试支持
 

@@ -35,5 +35,4 @@ SOFARPC: [5.5.2](https://github.com/sofastack/sofa-rpc/releases), SOFABoot: [2.6
 </dependency>
 ```
 
-
 SOFARPC 集成验证 SOFARegistry 服务端版本：5.2.0

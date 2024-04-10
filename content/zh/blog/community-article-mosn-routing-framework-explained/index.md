@@ -15,7 +15,7 @@ e 签宝中间件开发
 
 负责 e 签宝中间件开发和维护，包括 MQ、网关、微服务、数据同步、全链路压测等
 
-## 贡献者前言 
+## 贡献者前言
 
 「 开源就是在使用中，共同成长的过程 」
 
@@ -31,7 +31,7 @@ e 签宝中间件开发
 
 MOSN 作为网络边缘代理组件，路由功能是核心功能，本文将介绍 MOSN 路由如何使用，以及 MOSN 路由的一些高级使用技巧，欢迎大家留言指导。
 
-## 路由基本设计 
+## 路由基本设计
 
 在 MOSN 的路由设计中，Cluster 和 Route 是高度关联的，说白了 Route 的配置，就是为了表达如何准确找到你想找到的 Cluster，另外一个 Cluster 可以有多个 Host 机器。
 
@@ -57,7 +57,7 @@ MOSN 作为网络边缘代理组件，路由功能是核心功能，本文将介
 
 这样，就实现了一个简单的 MOSN 路由的配置。
 
-## 动态路由 Cluster 
+## 动态路由 Cluster
 
 大部分情况下，如果我们的路由逻辑很简单，例如根据 Header 里的某个名字，找到对应的 Cluster，代码或者配置就是这么写的：
 
@@ -121,9 +121,9 @@ func (f *MyFilter) OnReceive(ctx context.Context, headers api.HeaderMap, buf buf
 }
 、、、
 
-## MOSN Subset 
+## MOSN Subset
 
-如上面所述，我们经常有在一个集群里有多个版本，如何根据某些标签将请求路由到指定的版本呢？ 
+如上面所述，我们经常有在一个集群里有多个版本，如何根据某些标签将请求路由到指定的版本呢？
 
 通常，我们会使用 Subset 方案，即“子集合”。可在一个 Cluster 里面，为每个应用打标。同时我们的路由也配置相关的配置（MOSN 称为 Metadata），实现较为复杂的路由。
 
@@ -197,7 +197,7 @@ ps: 关于这个例子，我们其实也可以使用 MOSN 的 ORIGINAL_DST 机�
 
 当执行 chooseHost 时，subsetLoadBalancer.findSubset 函数会根据当前请求的元数据，从 subSetLoadbalancer 里找出匹配的 Host List。
 
-## 总结 
+## 总结
 
 我们先讲了基于简单的配置，来实现简单的 Router 和 Cluster 的配置文件路由。
 
@@ -225,4 +225,4 @@ ps: 关于这个例子，我们其实也可以使用 MOSN 的 ORIGINAL_DST 机�
 
 [恭喜 吕冰洁 成为 SOFAStack committer！](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247502520&idx=1&sn=45bc1b879e3014b18f3fc3ee6a10277e&chksm=faa32562cdd4ac74657f95e7f3e1cfad7619638a08fb9f8754e5539f2fdf05718c87436c5c5e&scene=21)
 
-![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*tvfDQLxTbsgAAAAAAAAAAAAAARQnAQ) 
+![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*tvfDQLxTbsgAAAAAAAAAAAAAARQnAQ)

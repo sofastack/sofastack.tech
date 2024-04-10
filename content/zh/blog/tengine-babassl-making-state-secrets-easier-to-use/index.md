@@ -55,7 +55,7 @@ Tengine 来源于 Nginx，所以默认使用的是 OpenSSL。此次 Tengine 针�
 
 具体来说，此次在 Tengine 中增加了几个新的指令，对 NTLS 进行支持。
 
-### 1. 下载 BabaSSL 和 Tengine 
+### 1. 下载 BabaSSL 和 Tengine
 
 - 前往 👇 下载 BabaSSL 的源代码包:
 
@@ -79,7 +79,7 @@ Tengine 来源于 Nginx，所以默认使用的是 OpenSSL。此次 Tengine 针�
     --with-stream_ssl_module --with-stream_sni
 ```
 
-### 3. 配置 Tengine 开启 NTLS 
+### 3. 配置 Tengine 开启 NTLS
 
 一个开启了 NTLS 的 Tengine 配置文件的例子：
 
@@ -117,7 +117,7 @@ stream {
 }
 ```
 
-### 4. 测试 NTLS 
+### 4. 测试 NTLS
 
 可以使用 BabaSSL 的 s_client 工具对开启了 NTLS 的 Tengine 进行测试。
 
@@ -153,4 +153,4 @@ BabaSSL 的代码目前托管在 Github 上：[https://github.com/BabaSSL/BabaSS
 
 [一行降低 100000kg 碳排放量的代码！](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247499661&idx=1&sn=7c609883a7fd3b6f738bd0c13b82d8e5&chksm=faa31057cdd49941e00d39e0df6dd2e8c91050c0cb33bad124983cd8d732c6f5f2fc0bbdba49&scene=21)
 
-![img](https://gw.alipayobjects.com/zos/bmw-prod/75d7bde6-1f48-4f28-80a4-215f8ec811bd.webp) 
+![img](https://gw.alipayobjects.com/zos/bmw-prod/75d7bde6-1f48-4f28-80a4-215f8ec811bd.webp)

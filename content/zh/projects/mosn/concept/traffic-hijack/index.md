@@ -17,7 +17,7 @@ MOSN 作为 Sidecar 和业务容器部署在同一个 Pod 中时，需要使得�
 1. 调用端的 Sidecar 会向服务注册中心（如 SOFA Registry）发起服务订阅请求，告知需要订阅的服务信息；
 1. 服务注册中心（如 SOFA Registry）向调用端的 Sidecar 推送服务地址（1.2.3.4:20881）
 
-![流量接管示意图](traffic-hijacking.png) 
+![流量接管示意图](traffic-hijacking.png)
 
 ### 服务调用过程
 
@@ -27,7 +27,7 @@ MOSN 作为 Sidecar 和业务容器部署在同一个 Pod 中时，需要使得�
 1. 调用端的 Sidecar 接收到请求后，通过解析请求头，可以得知具体要调用的服务信息，然后获取之前从服务注册中心返回的地址后就可以发起真实的调用（`1.2.3.4:20881`）
 1. 服务端的 Sidecar 接收到请求后，经过一系列处理，最终会把请求发送给服务端（`127.0.0.1:20880`）
 
-![服务调用过程示意图](service-call-process.png) 
+![服务调用过程示意图](service-call-process.png)
 
 ## 透明劫持
 
@@ -39,11 +39,12 @@ iptables 通过 NAT 表的 redirect 动作执行流量重定向，通过 syn 包
 
 iptables 劫持原理如下图所示：
 
-![iptables 劫持原理](iptables.png) 
+![iptables 劫持原理](iptables.png)
 
 ### 使用 iptables 做流量劫持时存在的问题
 
 目前 Istio 使用 iptables 实现透明劫持，主要存在以下三个问题：
+
 1. 需要借助于 conntrack 模块实现连接跟踪，在连接数较多的情况下，会造成较大的消耗，同时可能会造成 track 表满的情况，为了避免这个问题，业内有关闭 conntrack 的做法，比如阿里巴巴就关闭了这个模块。
 1. iptables 属于常用模块，全局生效，不能显式的禁止相关联的修改，可管控性比较差。
 1. iptables 重定向流量本质上是通过 loopback 交换数据，outbond 流量将两次穿越协议栈，在大并发场景下会损失转发性能。
@@ -60,11 +61,12 @@ tproxy 可以用于 inbound 流量的重定向，且无需改变报文中的目�
 
 为了适配更多应用场景，outbound 方向通过 hook connect 来实现，实现原理如下：
 
-![hook-connect 原理示意图](hook-connect.png) 
+![hook-connect 原理示意图](hook-connect.png)
 
 无论采用哪种透明劫持方案，均需要解决获取真实目的 IP/端口的问题，使用 iptables 方案通过 getsockopt 方式获取，tproxy 可以直接读取目的地址，通过修改调用接口，hook connect 方案读取方式类似于 tproxy。
 
 实现透明劫持后，在内核版本满足要求（4.16 以上）的前提下，通过 sockmap 可以缩短报文穿越路径，进而改善 outbound 方向的转发性能。
 
 ## 总结
+
 总结来看，如果应用程序通过注册中心发布/订阅服务时，可以结合注册中心劫持流量；在需要用到透明劫持的场景，如果性能压力不大，使用 iptables redirect 即可，大并发压力下使用 tproxy 与 hook connect 结合的方案。

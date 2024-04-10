@@ -50,7 +50,7 @@ Java、网络通信、RPC
 
 **项目社区导师：EvenLiu**
 
-**evenljj@163.com**
+**<evenljj@163.com>**
 
 **SOFARPC 支持 Stream 流式处理方式**
 
@@ -70,7 +70,7 @@ Java、SOFAArk 源代码
 
 **项目社区导师：卫恒**
 
-**glmapper_2018@163.com**
+**<glmapper_2018@163.com>**
 
 **开发一个客户端，支持 Biz 模块的热部署和热卸载，初步实现 Serverless 体验**
 
@@ -90,7 +90,7 @@ Go、K8s
 
 **项目社区导师：流铄**
 
-**xujinle300@126.com**
+**<xujinle300@126.com>**
 
 **开发一个 K8s Operator，编排客户端 API 实现 Biz 模块的热部署，初步达成 Serverless 研发体验**
 
@@ -108,7 +108,7 @@ Java、网络通信、RPC
 
 **项目社区导师：刘源远**
 
-**gege87417376@qq.com**
+**<gege87417376@qq.com>**
 
 **结合 NWR 实现 Flexible RAFT，用于自定义 Quorum 的大小**
 
@@ -128,7 +128,7 @@ Go、Kubernetes、K8s
 
 **项目社区导师：刘训灼**
 
-**mixdeers@gmail.com**
+**<mixdeers@gmail.com>**
 
 **Layotto 支持自动/手动注入 Pod 部署**
 

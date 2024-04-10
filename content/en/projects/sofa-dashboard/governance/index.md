@@ -19,4 +19,3 @@ The service governance console mainly provides two basic functions: service name
 ## Service consumer details page
 
 ![governance-consumer.png](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*_-9ZQrQNCQ0AAAAAAAAAAABjARQnAQ)
-

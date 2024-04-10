@@ -95,19 +95,19 @@ LogEntry 增加切片读取 API
 
 在删除 rocksdb 大 range 数据时，优化空间回收速度
 
-在节点过载时，将原有的快速失败策略修改为反压策略，依赖于这个特性的用户推荐升级 
+在节点过载时，将原有的快速失败策略修改为反压策略，依赖于这个特性的用户推荐升级
 
 #### Bug Fixes
 
 升级 Log4j 以解决安全漏洞
 
-snapshot 文件使用 atomic move 避免文件重新命名是被损坏 
+snapshot 文件使用 atomic move 避免文件重新命名是被损坏
 
 修复 Counter demo 不兼容 gRPC 的问题
 
 修复对 snapshot 并行压缩/解压的配置项错误
 
-修复在某种竞争条件下 Replicator 可能停止发送心跳的 bug 
+修复在某种竞争条件下 Replicator 可能停止发送心跳的 bug
 
 「详细参考」：[https://github.com/sofastack/sofa-jraft/releases/tag/1.3.10](https://github.com/sofastack/sofa-jraft/releases/tag/1.3.10)
 

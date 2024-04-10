@@ -26,7 +26,7 @@ SOFAJRaft ：[https://github.com/sofastack/sofa-jraft](https://github.com/sofas
 SOFAJRaft-RheaKV 是基于 SOFAJRaft 和 RocksDB 实现的嵌入式、分布式、高可用、强一致的 KV 存储类库，SOFAJRaft 是基于 Raft 一致性算法的生产级高性能 Java 实现，支持 Multi-Raft-Group。SOFAJRaft-RheaKV 集群主要包括三个核心组件：PD，Store 和 Region。本文将围绕 SOFAJRaft-RheaKV 架构设计，存储概览，核心模块，使用场景以及基于 Raft 实现等方面剖析 SOFAJRaft-RheaKV 基于 SOFAJRaft 实现原理，阐述如何使用 Raft 协议支持 KV 存储类库功能特性：
 
 - SOFAJRaft-RheaKV 基础架构如何设计？核心组件负责哪些功能？模块内部处理流程是怎样？
-- 基于 SOFAJRaft 如何使用 Raft 实现 SOFAJRaft-RheaKV 强一致性和自驱动等特性？ 
+- 基于 SOFAJRaft 如何使用 Raft 实现 SOFAJRaft-RheaKV 强一致性和自驱动等特性？
 
 ![SOFAJRaft-RheaKV](https://cdn.nlark.com/yuque/0/2019/png/156670/1558518242634-e9ab6e23-bef0-43bb-a99e-7715e6751fd0.png)
 
@@ -96,8 +96,8 @@ PD 模块主要参考 TIKV 的设计理念，目前只实现自动平衡所�
   1.  HeartbeatSender 负责发送当前存储节点的心跳，心跳中包含一些状态信息，心跳一共分为两类：StoreHeartbeat 和 RegionHeartbeat；
   1. PD 不断接受 RheaKV 集群这两类心跳消息，PD 在对 Region Leader 的心跳回复里面包含具体调度指令，再以这些信息作为决策依据。除此之外，PD 还应该可以通过管理接口接收额外的运维指令，用来人为执行更准确的决策。
   1. 两类心跳包含的状态信息详细内容如下：
-    - StoreHeartbeat 包括存储节点 Store 容量，Region 数量，Snapshot 数量以及写入/读取数据量等 StoreStats 统计明细；
-    - RegionHeartbeat 包括 Region 的 Leader 位置，掉线 Peer 列表，暂时不 Work 的 Follower 以及写入/读取数据量/Key 的个数等 RegionStats 统计明细。
+  - StoreHeartbeat 包括存储节点 Store 容量，Region 数量，Snapshot 数量以及写入/读取数据量等 StoreStats 统计明细；
+  - RegionHeartbeat 包括 Region 的 Leader 位置，掉线 Peer 列表，暂时不 Work 的 Follower 以及写入/读取数据量/Key 的个数等 RegionStats 统计明细。
 - Pipeline：是针对心跳上报 Stats 的计算以及存储处理流水线，处理单元 Handler 可插拔非常方便扩展。
 - MetadataStore：负责集群元信息存储以及查询，存储方面基于内嵌的 RheaKV。
 

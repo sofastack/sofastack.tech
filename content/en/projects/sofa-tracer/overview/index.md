@@ -51,5 +51,5 @@ RestTemplate | [doc link](../usage-of-resttemplate) | 2.3.0
 OkHttp | [doc link](../usage-of-okhttp) | 2.3.2
 Dubbo | [doc link](../usage-of-dubbo) | 2.4.0
 OpenFeign | [doc link](../usage-of-dubbo) | 3.0.4
-Redis | TODO | 
-MQ | TODO | 
+Redis | TODO |
+MQ | TODO |

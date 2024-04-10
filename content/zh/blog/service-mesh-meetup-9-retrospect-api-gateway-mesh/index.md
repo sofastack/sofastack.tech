@@ -48,7 +48,7 @@ MOSN 是一款使用 Go 语言开发的网络代理软件，作为云原生的�
 
 上面的架构大家都比较了解了，从上面的描述大家也看出来了，API Gateway 和 Service Mesh 的 Sidecar 很多能力都是类似的，比如都是一个网络代理，都具备负载均衡，都具备一些限流和鉴权能力。下面，我们将做一个 API  Gateway 和 Service Mesh 的对比。
 
-### API  Gateway vs Service Mesh 
+### API  Gateway vs Service Mesh
 
 ![API Gateway vs Service Mesh](https://cdn.nlark.com/yuque/0/2020/png/226702/1578548437900-a57f1295-7309-4e30-a39a-8c9289fc8938.png)
 

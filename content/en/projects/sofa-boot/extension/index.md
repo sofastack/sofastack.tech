@@ -1,11 +1,11 @@
 
 ---
+
 title: "SOFABoot Extension Point"
 aliases: "/sofa-boot/docs/extension"
 ---
 
-
-SOFABoot supports modular isolation. But in actual usage scenarios, There is one case that beans in one module sometimes need to open some entries for another module to expand. SOFABoot draws on and uses the [Nuxeo Runtime] (https://github.com/nuxeo-archives/nuxeo-runtime) project and the [nuxeo](https://github.com/nuxeo/nuxeo) project and expands on it, provides the ability to extend points with Spring, We call it `Extension Point`.
+SOFABoot supports modular isolation. But in actual usage scenarios, There is one case that beans in one module sometimes need to open some entries for another module to expand. SOFABoot draws on and uses the [Nuxeo Runtime] (<https://github.com/nuxeo-archives/nuxeo-runtime>) project and the [nuxeo](https://github.com/nuxeo/nuxeo) project and expands on it, provides the ability to extend points with Spring, We call it `Extension Point`.
 
 ## Usage
 
@@ -97,6 +97,7 @@ Then define the extension point in xml:
 ```
 
 among them:
+
 - `name` is the name of the extension point
 - `ref` is the bean to which the extension point is applied
 - `object` is a concrete description of the contribution point of the extension point. This description is done by XMap (XMap is used to map Java objects and XML files. It is recommended to search XMap documents on the Internet to understand XMap)
@@ -116,6 +117,7 @@ The above has defined the extension point, and we can extend this bean at this p
 ```
 
 among them:
+
 - `bean` is the bean to which the extension is applied
 - `point` is the name of the extension point
 - The content inside `content` is an extension definition, which will parse the content through XMap into: the extension point's contribution point specific description object, here is the `com.alipay.sofa.boot.test.extension.ExtensionDescriptor` object
@@ -129,6 +131,7 @@ At this point, call the `extension` bean's `say()` method, and you can see the v
 The above example is just a very simple extension. In fact, XMap contains a very rich description capability, including `List`, `Map`, etc. These can be seen by looking at the XMap documentation.
 
 In SOFABoot, in addition to XMap native support, it extends the ability to integrate with Spring:
+
 - Extend `XNodeSpring` via `XNode`
 - Extend `XNodeListSpring` via `XNodeList`
 - Extend `XNodeMapSpring` via `XNodeMap`
@@ -185,7 +188,7 @@ In the module's Spring configuration file, we configure this bean:
     <bean id="iExtension" class="com.alipay.sofa.runtime.integration.extension.bean.IExtensionImpl"/>
 ```
 
-###  Defining extension points
+### Defining extension points
 
 First, you need an object to describe:
 
@@ -271,6 +274,7 @@ extensionClient.publishExtensionPoint(extensionPointParam);
 
 The meaning of each parameter is consistent when the client and the extension point are registered via XML:
 among them:
+
 - `name` is the name of the extension point
 - `targetName` is the name of the bean to which the extension point is applied
 - `target` is the bean to which the extension point is applied
@@ -305,6 +309,7 @@ extensionClient.publishExtension(extensionParam);
 ```
 
 The meaning of each parameter is consistent when the client and the extension point are registered via XML:
+
 - `targetInstanceName` is the bean to which the extension is applied
 - `targetName` is the name of the extension point
 - The content inside the `element` is an extended definition. Here you need to pass in the `Element` object. By reading it from XML, the contents of the example are as follows:

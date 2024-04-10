@@ -527,7 +527,7 @@ public enum ReadOnlyOption {
 }
 ```
 
-The LeaseRead solution improves the performance of the ReadIndex solution by approximately 15%. 
+The LeaseRead solution improves the performance of the ReadIndex solution by approximately 15%.
 
 ## 6. Failures and countermeasures
 

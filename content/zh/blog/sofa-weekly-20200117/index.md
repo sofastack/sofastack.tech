@@ -17,16 +17,16 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 
 SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 
-**SOFAStack 官网: **[https://www.sofastack.tech](https://www.sofastack.tech/)
+**SOFAStack 官网:**[https://www.sofastack.tech](https://www.sofastack.tech/)
 
-**SOFAStack: **[https://github.com/sofastack](https://github.com/sofastack)
+**SOFAStack:**[https://github.com/sofastack](https://github.com/sofastack)
 
 ### 每周读者问答提炼
 
 欢迎大家向公众号留言提问或在群里与我们互动
 我们会筛选重点问题通过 " SOFA WEEKLY " 的形式回复
 
-**1、@J~杰 **提问：
+**1、@J~杰**提问：
 
 > 咨询一下，Seata TCC 中这个 BusinessActivityContext 是用于做什么的？
 
@@ -38,12 +38,12 @@ A：不需要，可以在 try 方法上的参数加注解，它会自动把这�
 
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
-**2、王国柱 **提问：
+**2、王国柱**提问：
 
 > 有一个问题想要请教一下：
 > HBX：如果是 spanner - > gateway -> app1 这种架构，每次上新的应用，应该是需要在 geteway 中配置新应用的 ip 地址路由信息。
 > 如果是 spanner ->  gateway.jar,app1 这种架构，如果新增加 app2， spanner 如何知道新的应用地址在哪里。
-> 
+>
 > HBX：我理解集中式的 gateway，应该会把后端 app 的应用地址信息配置在集中式的 gateway 中。如果做成 jar，那 app 和 jar 的地址信息，该如何被 spanner 知道？
 
 A：Spanner 其实就是 ingress，不管是 gateway 还是 app x，都可以通过服务发现来发现服务器的 ip 信息。

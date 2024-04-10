@@ -16,10 +16,10 @@ descripton: "SOFAStack Cloud Native Workshop 由蚂蚁金服主办，6 月 24 �
 - 时间：9:00 – 16:00
 - 地点：上海世博中心 616 房间
 - 注册费：免费
-- 注册地址：https://www.lfasiallc.com/events/kubecon-cloudnativecon-china-2019/co-located-events/#sofastack-cloud-native-workshop
+- 注册地址：<https://www.lfasiallc.com/events/kubecon-cloudnativecon-china-2019/co-located-events/#sofastack-cloud-native-workshop>
 - 备注：本次活动为动手实践，请携带个人电脑。本沙龙沟通语言为中文。
 
-SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主研发并开源的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，是在金融场景里锤炼出来的最佳实践。SOFAStack 官方网站：https://www.sofastack.tech/
+SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主研发并开源的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，是在金融场景里锤炼出来的最佳实践。SOFAStack 官方网站：<https://www.sofastack.tech/>
 
 参加此次 Meetup 您将获得：
 

@@ -10,9 +10,9 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1564389345682-0d130dcb-468
 ---
 
 > 崔秀龙，HPE 软件分析师，Kubernetes 权威指南作者之一，Kubernetes、Istio 项目成员。
-> 
+>
 > 本文根据崔秀龙在 2019 广州 Service Mesh Meetup#5 分享整理，完整的分享 PPT 获取方式见文章底部。
-> 
+>
 > 本文内容收录在崔秀龙的新书：《深入浅出 Istio - Service Mesh 快速入门与实践》的第十章，该书将于近期由博文视点出版发行，敬请关注。
 
 ![Service Mesh Meetup 分享现场图](https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1547173724138-2dd495ad-ea26-45eb-8d9b-6306df9c7855.jpeg)

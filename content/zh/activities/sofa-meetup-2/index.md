@@ -34,7 +34,7 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 
 建议：参会者可带上电脑，现场有 Demo 实操环节~
 
-## 加入 SOFA 钉钉互动群 
+## 加入 SOFA 钉钉互动群
 
 欢迎加入直播互动钉钉群：23195297（搜索群号加入即可）
 

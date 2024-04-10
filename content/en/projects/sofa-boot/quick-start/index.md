@@ -9,7 +9,8 @@ aliases: "/sofa-boot/docs/QuickStart"
 ## Environment Preparation
 
 To use SOFABoot, we need to prepare the basic environment first. SOFABoot depends on the following environment:
-- JDK7 or JDK8 
+
+- JDK7 or JDK8
 - Needs to be compiled with Apache Maven 3.2.5 or above
 
 ## Create Project
@@ -38,6 +39,7 @@ as:
     <version>${sofa.boot.version}</version>
 </parent>
 ```
+
 Here, `${sofa.boot.version}` denotes the SOFABoot version (please refer to [release note](https://github.com/sofastack/sofa-boot/releases)). Then, add a SOFABoot dependency of Health Check extension and Spring Boot Web Starter.
 
 ```xml
@@ -89,6 +91,7 @@ We can browse [http://localhost:8080/sofaboot/versions](http://localhost:8080/so
   }
 ]
 ```
+
 **Note:  In SOFABoot 3.x, the endpoint path has been changed from sofaboot/versions to actuator/versions**
 
 We can browse [http://localhost:8080/health/readiness](http://localhost:8080/health/readiness) to check the status of the Readiness Check. The result is like the following:
@@ -110,6 +113,7 @@ We can browse [http://localhost:8080/health/readiness](http://localhost:8080/hea
   }
 }
 ```
+
 **Note: In SOFABoot 3.x, the endpoint path has been changed from health/readiness to actuator/readiness.**
 
 `status:  "UP"` indicates that Readiness Check is in good condition. We can browse `http://localhost:8080/health` to get the application's running state (it may change over time).
@@ -132,6 +136,7 @@ In the above `application.properties` file, the logging directory we have config
 If the application fails to start or the Health Check fails, we can find the error cause in the corresponding log file (sometimes we need to pay attention to the `common-error.log` file)
 
 ## Testing
+
 As we know, SpringBoot provides the `SpringRunner` integrated with JUnit 4 for developers to write integration test cases. In SOFABoot, we can still use the native `SpringRunner`, but we recommend that you use SOFABoot's `SofaBootRunner` and `SofaJUnit4Runner` to write integration tests and unit tests; beyond that, the application requires additional import of the following Starter:
 
 ```xml
@@ -299,7 +304,7 @@ Add the META-INF/spring/service-consumer.xml file to reference the services publ
 
 #### Referencing Service in Annotation Mode
 
-Define the JvmServiceConsumer class, and add the @SofaReference annotation to its sampleJvmServiceAnnotationImpl property: 
+Define the JvmServiceConsumer class, and add the @SofaReference annotation to its sampleJvmServiceAnnotationImpl property:
 
 ```java
 public class JvmServiceConsumer implements ClientFactoryAware {
@@ -402,4 +407,3 @@ public class SofaBootWithModulesTest {
     }
 }
 ```
-

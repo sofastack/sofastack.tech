@@ -9,7 +9,7 @@ date: 2019-02-25T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563849314113-2c30dc19-fa01-4e6c-8bf6-16771e95fbe3.png"
 ---
 
-> 此文章适合没有任何 Kubernetes/容器/Docker 经验的同学 —** 在不久的将来，你不懂如何操作 Kubernetes 接口，就等于现在的你不懂最普通的 Linux 命令。**此文章阅读耗时大概 15 分钟。
+> 此文章适合没有任何 Kubernetes/容器/Docker 经验的同学 —**在不久的将来，你不懂如何操作 Kubernetes 接口，就等于现在的你不懂最普通的 Linux 命令。**此文章阅读耗时大概 15 分钟。
 
 蚂蚁金服资源调度组致力于将 Kubernetes 落地到世界上最有价值的金融科技独角兽公司，欢迎联系作者微信： answer1991chen 咨询招聘事宜。
 
@@ -136,7 +136,7 @@ spec:
 提交“菜单”到 Kubernetes 集群：
 
 ```bash
-$ kubectl apply -f ./nginx.yaml
+kubectl apply -f ./nginx.yaml
 ```
 
 访问刚部署的 HTTP 服务:

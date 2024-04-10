@@ -68,14 +68,14 @@ The configuration template is described as follows:
     </plugins>
 </build>
 ```
+
 Description of plugin configuration:
 
 + `outputDirectory`: Execute `mvn package` and then specify a directory to store the Ark package. The default directory is ${project. Build. Directory}.
 + `arkClassifier`: Execute `mvn docleoy`, and then specify the coordinates of Maven repositories to locate the Ark package by setting the `classfaulter` value (the default is empty). We recommend that you configure this to give a different name from the ordinary Fat jar;
 + `denyImportClasses`: By default, the application will first load the classes that the Art plugin exports. It can be configured to deny such export.
-+ `denyImportPackages`: Corresponding to the above `denyImportClasses`, it can be configured to deny import at the package level; 
++ `denyImportPackages`: Corresponding to the above `denyImportClasses`, it can be configured to deny import at the package level;
 + `denyImportResources`: By default, the application will first load the resources that the Art plugin exports. It can be configured to deny such export.
-
 
 ## Add dependencies for the class isolation framework
 
@@ -101,7 +101,6 @@ SOFABoot's class isolation framework will automatically check whether Ark plugin
 ```
 
 By doing so, SOFABoot's class isolation container will automatically isolate SOFARPC and other application dependencies at run time to avoid potential package conflicts. Developers, of course, can also develop their own Ark plugin packages (refer to [SOFAArk](https://github.com/sofastack/sofa-Ark) for details).
-
 
 ## Running
 
@@ -260,5 +259,3 @@ public class UnitTestCaseWithoutArk {
 
 }
 ```
-
-

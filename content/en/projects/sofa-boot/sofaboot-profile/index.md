@@ -1,9 +1,9 @@
 
 ---
+
 title: "SOFABoot profile"
 aliases: "/sofa-boot/docs/SOFABoot-Profile"
 ---
-
 
 ﻿Since 3.1.X Spring framework has started to support the profile function: [Bean Definition Profiles](https://docs.spring.io/spring/docs/3.1.0.RELEASE/reference/htmlsingle/#d0e1293), SOFABoot support modular-level profiling, it will determine whether a module can be started when each module is getting started.
 

@@ -25,15 +25,16 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/06b67548218b4373bc43079c87e43442~tplv-k3u1fbpfcp-zoom-1.image)
 
 ### 每周读者问答提炼
+
 欢迎大家向公众号留言提问或在群里与我们互动我们会筛选重点问题通过 " SOFA WEEKLY " 的形式回复
 
 **1. 信广健** 提问：
 
 > 经过十分曲折的故事了解到了 Layotto ， 进群后想看看后续发展，有什么好的文档可以学习下吗？
 
-A：目前还在活跃开发中，可以看下 *https://github.com/mosn/layotto* 了解下，相关的文档也在 *https://mosn.io/layotto/*
+A：目前还在活跃开发中，可以看下 *<https://github.com/mosn/layotto>* 了解下，相关的文档也在 *<https://mosn.io/layotto/>*
 
-**「Layotto」**：*https://github.com/mosn/layotto*
+**「Layotto」**：*<https://github.com/mosn/layotto>*
 
 **2. 清源** 提问：
 
@@ -41,7 +42,7 @@ A：目前还在活跃开发中，可以看下 *https://github.com/mosn/layotto
 
 A：你可以自己实现的，XDS 也是调用 MOSN 的更新 API。
 
-**「MOSN」**：*https://github.com/mosn/mosn*
+**「MOSN」**：*<https://github.com/mosn/mosn>*
 
 **3. 樊志超** 提问：
 
@@ -53,7 +54,7 @@ A：这个看你怎么用了，自己选择。
 
 A：TCP、UDS 都可以。
 
-**「MOSN」**：*https://github.com/mosn/mosn*
+**「MOSN」**：*<https://github.com/mosn/mosn>*
 
 ### SOFARPC 5.8.6 版本发布
 
@@ -71,7 +72,7 @@ A：TCP、UDS 都可以。
 
 1.修复了 Triple 协议在多 classLoader 环境下的序列化问题
 
-**详细发布报告**：*https://github.com/sofastack/sofa-rpc/releases/tag/v5.8.6*
+**详细发布报告**：*<https://github.com/sofastack/sofa-rpc/releases/tag/v5.8.6>*
 
 ### 本周推荐阅读
 

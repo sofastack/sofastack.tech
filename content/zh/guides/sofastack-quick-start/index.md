@@ -13,23 +13,25 @@ projects: [
 # 使用 SOFAStack 快速构建微服务
 
 ## 前置条件
+
 注意：您需要自行部署后端环境依赖，并修改示例中的服务依赖地址即可使用。
 
-- [必选]部署注册中心：https://www.sofastack.tech/projects/sofa-registry/server-quick-start/
+- [必选]部署注册中心：<https://www.sofastack.tech/projects/sofa-registry/server-quick-start/>
 - [必须]部署数据库：本地自行搭建数据库，然后导入 [DDL.sql](https://github.com/sofastack-guides/kc-sofastack-demo/blob/master/DDL.sql)
-- [可选]部署 LookoutServer：https://www.sofastack.tech/projects/sofa-lookout/quick-start-metrics-server/
-- [可选]部署 Zipkin：https://zipkin.io/pages/quickstart.html
+- [可选]部署 LookoutServer：<https://www.sofastack.tech/projects/sofa-lookout/quick-start-metrics-server/>
+- [可选]部署 Zipkin：<https://zipkin.io/pages/quickstart.html>
 
 ## 实验内容
 
 本实验基于 SOFAStack 快速构建一个微服务，主要包括以下几个部分：
 
-* 使用 SOFABoot + SOFARPC 发布服务
-* 使用 SOFABoot + SOFARPC 调用服务
-* 通过 ZipKin 查看 SOFATracer 上报的 Tracer 信息
-* 通过 SOFALookout 查看上报的 Metrics 信息
+- 使用 SOFABoot + SOFARPC 发布服务
+- 使用 SOFABoot + SOFARPC 调用服务
+- 通过 ZipKin 查看 SOFATracer 上报的 Tracer 信息
+- 通过 SOFALookout 查看上报的 Metrics 信息
 
 ## 架构图
+
 ![pic](https://gw.alipayobjects.com/mdn/rms_c69e1f/afts/img/A*FiVrSoXTfsAAAAAAAAAAAABkARQnAQ)
 
 ## 任务
@@ -37,6 +39,7 @@ projects: [
 #### 1、任务准备
 
 从  github 上将 demo 工程克隆到本地
+
 ```bash
 git clone https://github.com/sofastack-guides/kc-sofastack-demo.git
 ```
@@ -45,12 +48,13 @@ git clone https://github.com/sofastack-guides/kc-sofastack-demo.git
 
 ![pic](https://gw.alipayobjects.com/mdn/rms_c69e1f/afts/img/A*vVDNR7FRmQsAAAAAAAAAAABkARQnAQ)
 
-* balance-mng：余额管理系统，提供扣减余额服务
-* stock-mng：库存管理系统，提供扣减库存服务
+- balance-mng：余额管理系统，提供扣减余额服务
+- stock-mng：库存管理系统，提供扣减库存服务
 
 #### 2、引入依赖
 
 将下面的依赖引入到 balance-mng 和 stock-mng 工程模块的 pom.xml 文件中。
+
 ```xml
 <!--SOFARPC 依赖-->
 <dependency>
@@ -90,6 +94,7 @@ stock-mng 工程直接将依赖引入 stock-mng/pom.xml 文件：
 #### 3、添加配置
 
 将如下配置复制到 balance-mng 和 stock-mng 工程模块的 application.properties 中。
+
 ```properties
 # 1、添加服务注册中心地址
 com.alipay.sofa.rpc.registry.address=sofa://localhost:9603
@@ -106,6 +111,7 @@ balance-mng 工程需要将配置添加至 balance-mng/balance-mng-bootstrap/src
 ![pic](https://gw.alipayobjects.com/mdn/rms_c69e1f/afts/img/A*aI0nT4hu2sYAAAAAAAAAAABkARQnAQ)
 
 另外数据库配置修改为自己的数据库信息：
+
 ```plain
 # database config
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
@@ -119,6 +125,7 @@ stock-mng 工程需要将配置添加至 stock-mng/src/main/resources/applicatio
 ![pic](https://gw.alipayobjects.com/mdn/rms_c69e1f/afts/img/A*MVm1TIODuNYAAAAAAAAAAABkARQnAQ)
 
 另外数据库配置修改为自己的数据库信息：
+
 ```plain
 # database config
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
@@ -128,9 +135,10 @@ spring.datasource.password=root
 ```
 
 #### 4、修改 unique id
+
 由于所有人共用一套服务发现，为区分不同用户发布的服务，需要为服务增加 unique id。
 
-KubeCon workshop 会给每个用户准备一个 SOFAStack 账号，格式为 user0@sofastack.io 到 user99@sofastack.io，去掉 @sofastack.io 部分，账户前半部分的 user0 至 user99 即可作为 unique id。
+KubeCon workshop 会给每个用户准备一个 SOFAStack 账号，格式为 <user0@sofastack.io> 到 <user99@sofastack.io>，去掉 @sofastack.io 部分，账户前半部分的 user0 至 user99 即可作为 unique id。
 
 > 注意：balance-mng 和 stock-mng 里的 unique id 需要一致。
 
@@ -212,8 +220,8 @@ import com.alipay.sofa.runtime.api.annotation.SofaReferenceBinding;
 
 ![pic](https://gw.alipayobjects.com/mdn/rms_c69e1f/afts/img/A*k1kVS5N4oCQAAAAAAAAAAABkARQnAQ)
 
-* `jvm.threads.totalStarted{app="stock_mng"}`：可以查看 JVM 启动线程数
-* `rpc.consumer.service.stats.total_count.count{app="stock_mng"}`：可以查看 stock_mng 应用的调用次数
+- `jvm.threads.totalStarted{app="stock_mng"}`：可以查看 JVM 启动线程数
+- `rpc.consumer.service.stats.total_count.count{app="stock_mng"}`：可以查看 stock_mng 应用的调用次数
 
 关于 SOFALookout 的更多用法，请参考: [https://www.sofastack.tech/sofa-lookout/docs/Home](https://www.sofastack.tech/sofa-lookout/docs/Home)
 

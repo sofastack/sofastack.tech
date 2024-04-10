@@ -1,15 +1,16 @@
 
 ---
+
 title: "SOFARPC Metrics"
 aliases: "/sofa-lookout/docs/SOFARPC-Metrics"
 ---
-
 
 # SOFARPC Metrics
 
 SOFARPC currently measures two metrics.
 
 ## Server thread pool
+
 | metric name |  metric tags |  specification |
 | --- | --- | --- |
 | rpc.bolt.threadpool.config | bolt thread pool configuration | Mainly includes thread pool configuration information for RPC server |
@@ -17,8 +18,8 @@ SOFARPC currently measures two metrics.
 | rpc.bolt.threadpool.idle.count | | Idle thread of the current thread pool |
 | rpc.bolt.threadpool.queue.size | | Tasks in the queue of the current thread pool |
 
-
 ## Client call information
+
 | metric name |   metric tags |  specification |
 | --- |  --- |  --- |
 rpc.consumer.service.stats.fail_count.count| app,service,method,protocol,invoke_type,target_app |  Failure count of a certain interface |
@@ -39,8 +40,8 @@ rpc.consumer.service.stats.total_time.elapPerExec| app,service,method,protocol,i
 rpc.consumer.service.stats.total_time.max| app,service,method,protocol,invoke_type,target_app | Maximum total time of a certain interface |
 rpc.consumer.service.stats.total_time.totalTime| app,service,method,protocol,invoke_type,target_app | Total time of a certain interface |
 
-
 ## Server called information
+
 | metric name |   metric tags |  specification |
 | --- |  --- |  --- |
 rpc.provider.service.stats.fail_count.count|app,service,method,protocol,caller_app  | Total number of failed calls of a certain interface |

@@ -67,7 +67,6 @@ CNCF 的旗舰会议聚集了全球领先开源社区和云原生社区的使用
 - **分享时间：**2020-07-30 20:10-20:40
 - **报名方式**：点击“[这里](https://cnosvschina20cn.sched.com/event/cpCR/nanomao-kuberneteszhong-shi-jiong-pan-slozha-kang-fanrejingghua-yaodaelskuang-yan-shu)”，即可报名
 
-
 **分享主题**：为 Kubernetes 的秘密披上无形的盾牌
 
 - **分享嘉宾**：柯粟 蚂蚁集团高级开发工程师

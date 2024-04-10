@@ -33,7 +33,7 @@ A：直接用 Bolt 自己的 API 就行。
 
 「SOFABolt」：[https://github.com/sofastack/sofa-boot](https://github.com/sofastack/sofa-boot)
 
-**沄澈|che ** 提问：
+**沄澈|che** 提问：
 
 > RPC 序列化 Localdatetime 有问题，改为 Date 类型后正常, 你知道原因吗?
 

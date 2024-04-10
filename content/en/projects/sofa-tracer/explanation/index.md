@@ -1,9 +1,9 @@
 
 ---
+
 title: "Terminologies"
 aliases: "/sofa-tracer/docs/Explanation"
 ---
-
 
 # Explanation of Terms
 

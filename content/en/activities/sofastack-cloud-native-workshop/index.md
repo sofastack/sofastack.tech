@@ -15,10 +15,10 @@ cover: "/cover.jpg"
 - Time: 9:00 – 16:00
 - Location: Shanghai Expo Centre Room 616
 - Registration Fees: Complimentary
-- Register here: https://www.lfasiallc.com/events/kubecon-cloudnativecon-china-2019/co-located-events/#sofastack-cloud-native-workshop
+- Register here: <https://www.lfasiallc.com/events/kubecon-cloudnativecon-china-2019/co-located-events/#sofastack-cloud-native-workshop>
 - Note: This event is hands-on, please bring your personal computer. The language of communication in this workshop is Chinese.
 
-SOFAStack (Scalable Open Financial Architecture Stack) is a financial-grade distributed architecture independently developed and open sourced by Ant Financial. It contains the components required to build a financial-grade cloud native architecture. It is a best practice tempered in financial scenarios. SOFAStack official website: https://www.sofastack.tech/
+SOFAStack (Scalable Open Financial Architecture Stack) is a financial-grade distributed architecture independently developed and open sourced by Ant Financial. It contains the components required to build a financial-grade cloud native architecture. It is a best practice tempered in financial scenarios. SOFAStack official website: <https://www.sofastack.tech/>
 
 Attendees can get:
 

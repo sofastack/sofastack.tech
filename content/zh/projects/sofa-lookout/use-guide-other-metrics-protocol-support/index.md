@@ -1,9 +1,9 @@
 
 ---
+
 title: "服务器端常见数据采集协议支持"
 aliases: "/sofa-lookout/docs/useguide-other-metrics-protocol-support"
 ---
-
 
 使用 Lookout sdk 是推荐方式，当然 Lookout gateway 还支持其他协议上报。（但由于属于非标接入，细节可联系我们）
 
@@ -12,7 +12,6 @@ aliases: "/sofa-lookout/docs/useguide-other-metrics-protocol-support"
 ## 1.Promethues Push 协议写入支持
 
 - Lookout-gateway 这里扮演的是一个 prometheus-pushgateway 角色：
-
 
 ```plain
 echo "some_metric{k1="v1"} 3.14" | curl --data-binary \
@@ -29,13 +28,11 @@ echo "some_metric{k1="v1"} 3.14" | curl --data-binary \
 
 - 更多细节可以参考：[prometheus-pushgateway](https://github.com/prometheus/pushgateway)  ，你可以选择官方[对应编程语言的 SDKs](https://prometheus.io/docs/instrumenting/clientlibs/)
 
-
 ## 2. Lookout 自有协议写入支持
 
 默认的收集服务和数据协议标准(即 Lookout 自有的协议支持标准)
 
 - localhost:7200/lookout/metrics/app/{app}/step/{step}
-
 
 ```plain
 curl -H "Content-type:text/plain"  -X POST -d 'xx' \
@@ -44,13 +41,13 @@ curl -H "Content-type:text/plain"  -X POST -d 'xx' \
 
 - 请求体是一种批量复合形式。内容是多条 metrics 数据以 "\t" 进行连接；
 
-
 ```plain
 {"time":"1970-01-01T08:00:00+08:00","tags":{"k1":"v1"},"m_name":{"count":0,"rate":0.0}}
 \t{"time":"1970-01-01T08:00:00+08:00","tags":{"k1":"v1"},"m_name":{"value":99.0}}
 \t{"time":"1970-01-01T08:00:00+08:00","tags":{"k1":"v1"},"m_name":{"elapPerExec":0.0,"totalTime":0.0,"max":0.0}}
 \t{"time":"1970-01-01T08:00:00+08:00","tags":{"k1":"v1"},"m_name":{"totalAmount":0.0,"rate":0.0,"max":0}}
 ```
+
 上面内容中组成部分分别是：counter 型,gauge 型,Timer 型
 
 - 其中单条数据结构
@@ -72,12 +69,9 @@ curl -H "Content-type:text/plain"  -X POST -d 'xx' \
 
 - 如果内容由进行了 snappy 压缩，需添加请求头 "Content-Encoding:snappy",且"Content-type: application/octet-stream";
 
-
-
 ## 3.OPEN TSDB 协议写入支持
 
 - 请求 demo
-
 
 ```plain
 curl -X POST \
@@ -103,7 +97,6 @@ curl -X POST \
 
 - 更多细节可以参考 OpenTSDB 的 /api/put 接口 [http://opentsdb.net/docs/build/html/api_http/put.html](http://opentsdb.net/docs/build/html/api_http/put.html)
 
-
 ## 4.Metricbeat 写入协议支持
 
 ### （1）.metricbeat 的配置
@@ -115,7 +108,9 @@ output.elasticsearch:
   hosts: ['10.15.232.67:7200']
   path: /beat
 ```
+
 host 是 lookout-gateway 的地址,端口是`7200`. 另外加了级主路径`/beat`;
+
 ### (2).为了符合 metrics2.0 标准，gateway 会对数据进行转换
 
 这块后续去时序库查询，你需要关注：
@@ -157,7 +152,6 @@ host 是 lookout-gateway 的地址,端口是`7200`. 另外加了级主路径`/be
 
 - TO:
 
-
 ```plain
 {
   "metrics": {
@@ -182,5 +176,3 @@ host 是 lookout-gateway 的地址,端口是`7200`. 另外加了级主路径`/be
   "timestamp": 1522312041200
 }
 ```
-
-

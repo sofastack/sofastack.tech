@@ -20,7 +20,7 @@ SOFAStack 官网: [https://www.sofastack.tech](https://www.sofastack.tech/)
 
 SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
-### 社区 Big News 
+### 社区 Big News
 
 SOFA 社群元旦快乐！新的一年我们也要在一起哦！
 

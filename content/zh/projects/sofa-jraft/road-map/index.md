@@ -15,4 +15,4 @@ title: "Road Map"
 3. **(p1)** 对于 multi-raft-group 场景，提供一个 manual rebalance api 用于平衡各个节点的 leaders 数量
 4. **(p2)** 文档国际化
 5. **(p2)** 添加 Learner 角色，只用于同步数据不参与投票
-6. **(p3)** RheaKV 完成 jepsen 验证        
+6. **(p3)** RheaKV 完成 jepsen 验证

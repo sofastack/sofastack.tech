@@ -33,16 +33,16 @@ Service Mesh 是目前社区最为炙手可热的技术方向，去年双 11 在
 对于 Service Mesh 来说，主要关注的指标有系统指标和 Metrics 指标：
 
 - 系统指标（包括 Pod、App 和 MOSN 等 Sidecar 多个维度的系统指标）：
-   - 系统指标, 包含 CPU、LOAD、MEM、BYTES、TCP、UCP 等信息；
-   - 磁盘，包含分区可用空间、使用率等信息；
-   - IO，包含 IOPS 等信息；
+  - 系统指标, 包含 CPU、LOAD、MEM、BYTES、TCP、UCP 等信息；
+  - 磁盘，包含分区可用空间、使用率等信息；
+  - IO，包含 IOPS 等信息；
 - Metrics 指标：
-   - PROCESSOR，包含 MOSN 进程打开的 fd 数量、申请的虚拟内存大小等进程资源信息；
-   - GO，包含 MOSN 进程 goroutine 数量(G)、thread 数量(M)以及 memstats 等 go runtime 信息；
-   - Downstream，包含全局下游累计建链数、总读取字节数、累计请求数、请求耗时等；
-   - Upstream，包含上游请求失败次数、集群累计建链数、累计断链数、异常断链次数、上游请求平均耗时等；
-   - MQ Mesh，包含发送消息总数、耗时、失败数等以及消费消息总数、耗时、失败数等；
-   - Gateway Mesh，包含 qps、rt、限流以及多维度的成功数和失败数等；
+  - PROCESSOR，包含 MOSN 进程打开的 fd 数量、申请的虚拟内存大小等进程资源信息；
+  - GO，包含 MOSN 进程 goroutine 数量(G)、thread 数量(M)以及 memstats 等 go runtime 信息；
+  - Downstream，包含全局下游累计建链数、总读取字节数、累计请求数、请求耗时等；
+  - Upstream，包含上游请求失败次数、集群累计建链数、累计断链数、异常断链次数、上游请求平均耗时等；
+  - MQ Mesh，包含发送消息总数、耗时、失败数等以及消费消息总数、耗时、失败数等；
+  - Gateway Mesh，包含 qps、rt、限流以及多维度的成功数和失败数等；
 
 ### 数据计算
 
@@ -145,4 +145,4 @@ SRE 专家们总是对新产品上线产生莫名的担忧，特别是今年蚂�
 
 关于「智能运维」有任何想要交流、讨论的话题，欢迎留言告诉我们。
 
-PS：蚂蚁智能监控正在招聘 AIOps 专家，欢迎加入我们，有兴趣联系 boyan@antfin.com
+PS：蚂蚁智能监控正在招聘 AIOps 专家，欢迎加入我们，有兴趣联系 <boyan@antfin.com>

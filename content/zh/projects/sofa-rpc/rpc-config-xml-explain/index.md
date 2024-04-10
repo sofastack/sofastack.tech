@@ -1,10 +1,9 @@
 
 ---
+
 title: "SOFABoot 环境发布订阅说明"
 aliases: "/sofa-rpc/docs/RPC-Config-Xml-Explain"
 ---
-
-
 
 这部分介绍在 SOFABoot 环境下,完整的 SOFARPC 服务发布与引用说明
 

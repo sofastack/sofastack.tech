@@ -9,7 +9,7 @@ date: 2020-04-08T18:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2020/png/226702/1586329715980-451d357c-4250-4293-ace4-dac82e5a2d31.png"
 ---
 
-> SOFAStack（**S**calable **O**pen **F**inancial **A**rchitecture Stack ）是蚂蚁金服自主研发的金融级云原生架构，包含了构建金融级云原生架构所需的各个组件，是在金融场景里锤炼出来的最佳实践。 
+> SOFAStack（**S**calable **O**pen **F**inancial **A**rchitecture Stack ）是蚂蚁金服自主研发的金融级云原生架构，包含了构建金融级云原生架构所需的各个组件，是在金融场景里锤炼出来的最佳实践。
 
 ![SOFA：RegistryLab](https://cdn.nlark.com/yuque/0/2020/png/226702/1586313135059-01c65515-067a-40c8-9957-33a98f0a2b00.png)
 

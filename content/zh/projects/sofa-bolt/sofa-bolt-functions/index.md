@@ -10,22 +10,22 @@ aliases: "/sofa-bolt/docs/Functions"
 ## SOFABolt　的基础功能
 
 * 基础通信功能 ( remoting-core )
-    * 基于 Netty 高效的网络 IO 与线程模型运用
-    * 连接管理 (无锁建连，定时断链，自动重连)
-    * 基础通信模型 ( oneway，sync，future，callback )
-    * 超时控制
-    * 批量解包与批量提交处理器
-    * 心跳与 IDLE 事件处理
+  * 基于 Netty 高效的网络 IO 与线程模型运用
+  * 连接管理 (无锁建连，定时断链，自动重连)
+  * 基础通信模型 ( oneway，sync，future，callback )
+  * 超时控制
+  * 批量解包与批量提交处理器
+  * 心跳与 IDLE 事件处理
 * 协议框架 ( protocol-skeleton )
-    * 命令与命令处理器
-    * 编解码处理器
-    * 心跳触发器
+  * 命令与命令处理器
+  * 编解码处理器
+  * 心跳触发器
 * 私有协议定制实现 - RPC 通信协议 ( protocol-implementation )
-    * RPC 通信协议的设计
-    * 灵活的反序列化时机控制
-    * 请求处理超时 FailFast 机制
-    * 用户请求处理器 ( UserProcessor )
-    * 双工通信
+  * RPC 通信协议的设计
+  * 灵活的反序列化时机控制
+  * 请求处理超时 FailFast 机制
+  * 用户请求处理器 ( UserProcessor )
+  * 双工通信
 
 ## 用法 1
 

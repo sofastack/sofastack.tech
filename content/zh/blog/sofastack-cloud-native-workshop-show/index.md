@@ -60,7 +60,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1561517619143-37d5188a-b0
 
 上图是云上 SOFAStack 的架构图，我们可以看到 SOFAStack 商业化对外输出的是完整的解决方案。支撑解决方案的就是本次要体验的分布式中间件和云应用引擎等等能力。除此之外还有完善的研发效能平台服务以及技术风险防控平台。关于这部分内容，在本次下午场会有更详细的介绍和体验。
 
-## Let's get started!
+## Let's get started
 
 刚聊了这么多，大家是不是想动手试试了呢？本次 Demo 将带领大家综合利用开源版本的 SOFAStack 和云上产品，五小时实现一个在线电商平台。
 
@@ -107,4 +107,3 @@ cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1561517619143-37d5188a-b0
 [https://github.com/sofastack](https://github.com/sofastack)
 
 希望和我们一起玩的开心😊
-

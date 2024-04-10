@@ -20,7 +20,7 @@ description: "7 月 18 日周四晚 7 点，线上直播第 7 期。"
 
 ### | SOFAChannel
 
-`<SOFA:Channel/>` 有趣实用的分布式架构频道：前沿技术、直播 Coding、观点“抬杠”，多种形式。 
+`<SOFA:Channel/>` 有趣实用的分布式架构频道：前沿技术、直播 Coding、观点“抬杠”，多种形式。
 
 `<SOFA:Channel/>` 将作为 SOFA 所有在线内容的承载，包含直播/音视频教程，集中体现 SOFAStack 的能力全景图。
 

@@ -172,6 +172,7 @@ Seata Saga 提供了一个可视化的状态机设计器方便用户使用，代
 
 - ProcessController 层：
   - 由于上层的 Eventing 驱动一个“空”流程执行的执行，"state"的行为和路由都未实现，由上层实现；
+
 > 基于以上两层理论上可以自定义扩展任何"流程"引擎。这两层的设计是参考了内部金融网络平台的设计。
 
 - StateMachineEngine 层：
@@ -241,7 +242,7 @@ Seata Saga 提供了一个可视化的状态机设计器方便用户使用，代
 
 目前开源社区也有一些 Saga 事务框架，如：Apache Camel Saga、Eventuate Tram Saga、Apache ServiceComb Saga 等等。也有一些服务编排的框架，如 uber cadence、netflix conductor、zeebe-io zeebe、ing-bank Baker、AWS Step Functions 等等。
 
-但是它们要么只有 Saga 事务处理能力、要么只有服务编排能力，Seata Saga 是将这两者能力非常优雅的结合在一起，为用户提供一个简化研发、降低异常处理难度、高性能事件驱动的产品。 
+但是它们要么只有 Saga 事务处理能力、要么只有服务编排能力，Seata Saga 是将这两者能力非常优雅的结合在一起，为用户提供一个简化研发、降低异常处理难度、高性能事件驱动的产品。
 
 ##  基于注解拦截器的 Saga 实现（规划中）
 

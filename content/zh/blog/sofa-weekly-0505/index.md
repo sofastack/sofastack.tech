@@ -69,7 +69,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 1. 基于 coraza 和 MOSN on Envoy 开发 Envoy 的 WAF 插件
 
-导师：罗泽轩 
+导师：罗泽轩
 
 联系邮箱：[*spacewanderlzx@gmail.com*](spacewanderlzx@gmail.com)
 
@@ -91,7 +91,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 1. Layotto 支持自动/手动注入 Pod 部署
 
-导师：刘训灼 
+导师：刘训灼
 
 联系邮箱：[*mixdeers@gmail.com*](mixdeers@gmail.com)
 
@@ -113,7 +113,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 ![图片](https://mmbiz.qpic.cn/mmbiz_jpg/nibOZpaQKw0icjgyf1v0LdibmEHuyRSBty6W4BCicBr2wqmeF0zPgppibXMnp12Kn3x0MQ9LPUSL3TQKiaFaqv0picsDQ/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1)
 
-  **本周推荐阅读** 
+  **本周推荐阅读**
 
 [MoE 系列（三）｜使用 Istio 动态更新 Go 扩展配置](https://mp.weixin.qq.com/s/gvbvAZEUbjtD-UpKziHmBA)
 

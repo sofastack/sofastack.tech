@@ -19,9 +19,9 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*oRtfRJ9ZGDgAAAAAA
 
 Nydus 是蚂蚁集团，阿里云和字节等共建的开源容器镜像加速项目，是 CNCF Dragonfly 的子项目，Nydus 在 OCI Image Spec 基础上重新设计了镜像格式和底层文件系统，从而加速容器启动速度，提高大规模集群中的容器启动成功率。详情文档请参考如下地址：
 
-*   Nydus 官方网站：*<https://nydus.dev/>*
+* Nydus 官方网站：*<https://nydus.dev/>*
 
-*   Nydus Github：*<https://github.com/dragonflyoss/image-service>*
+* Nydus Github：*<https://github.com/dragonflyoss/image-service>*
 
 **PART.1**
 
@@ -205,9 +205,10 @@ Index 文件也是一个 JSON 文件。它是可选的，可以被认为是 Mani
 我们注意到镜像层需要全部堆叠后，容器才能看到整个文件系统视图，所以容器需要等到镜像的每一层都下载并解压之后才能启动。有一篇 FAST 论文研究分析\[1] 说镜像拉取占了大约容器 76% 的启动时间，但却只有 6.4% 的数据是会被容器读取的。这个结果很有趣，它激发了我们可以通过按需加载的方式来提高容器启动速度。另外，在层数较多的情况下，运行时也会有 Overlay 堆叠的开销。
 
 一般来说容器启动分为三个步骤：
-- 下载镜像；
-- 解压镜像；
-- 使用 Overlayfs 将容器可写层和镜像中的只读层聚合起来提供容器运行环境。
+
+* 下载镜像；
+* 解压镜像；
+* 使用 Overlayfs 将容器可写层和镜像中的只读层聚合起来提供容器运行环境。
 
 #### 2. 较高的本地存储成本
 
@@ -243,13 +244,13 @@ Nydus 将原本统一存放在 Layer 层的文件数据和元数据 （文件系
 
 #### 3. Nydus 优势
 
-* 容器镜像按需下载，用户不再需要下载完整镜像就能启动容器。 
-* 块级别的镜像数据去重，最大限度为用户节省存储资源。 
-* 镜像只有最终可用的数据，不需要保存和下载过期数据。 
-* 端到端的数据一致性校验，为用户提供更好的数据保护。 
-* 兼容 OCI 分发标准和 artifacts 标准，开箱即可用。 
-* 支持不同的镜像存储后端，镜像数据不只可以存放在镜像仓库，还可以放到 NAS 或  者类似 S3 的对象存储上。 
-* 与 Dragonfly 的良好集成。 
+* 容器镜像按需下载，用户不再需要下载完整镜像就能启动容器。
+* 块级别的镜像数据去重，最大限度为用户节省存储资源。
+* 镜像只有最终可用的数据，不需要保存和下载过期数据。
+* 端到端的数据一致性校验，为用户提供更好的数据保护。
+* 兼容 OCI 分发标准和 artifacts 标准，开箱即可用。
+* 支持不同的镜像存储后端，镜像数据不只可以存放在镜像仓库，还可以放到 NAS 或  者类似 S3 的对象存储上。
+* 与 Dragonfly 的良好集成。
 
 **PART.5**
 
@@ -257,7 +258,7 @@ Nydus 将原本统一存放在 Layer 层的文件数据和元数据 （文件系
 
 约苗平台作为国内领先的疾病预防信息与服务平台，以疫苗预约服务为核心，提供包括疫苗预约、疾病防控科普、“宫颈癌&乳腺癌”筛查预约等专业、全面的疾病预防信息与服务。
 
-截止 2023 年 2 月约苗平台累计注册用户 3700 万+ 人，覆盖 28 个省及直辖市， 200+ 地级市，关联全国社区公共卫生服务机构 4000+ 家，提供疫苗预约&订阅服务  1.1  亿 + 次。 
+截止 2023 年 2 月约苗平台累计注册用户 3700 万+ 人，覆盖 28 个省及直辖市， 200+ 地级市，关联全国社区公共卫生服务机构 4000+ 家，提供疫苗预约&订阅服务  1.1  亿 + 次。
 
 约苗业务全部基于 Kubernetes 进行微服务构建，在 Kubernetes 平台上已经平稳运行了超过 4 年时间，并且紧随 Kubernetes 的版本迭代及时更新。约苗的集群规模超过 60 个 Node 节点，目前相关服务容器 POD 已经超过了 1000+，同时每天更有上万个临时 Cronjob 类型的 POD 进行创建和销毁。对平台的运维发布的效率有较高的要求。
 
@@ -290,7 +291,7 @@ Nydus 镜像加速，可以直接对接 OCI 镜像，同时 Containerd 也支持
 
 `nydusify convert --source dockerharboar/nginx:1.2 --target dockerharboar/nginx:1.2-nydus`
 
-注意: 
+注意:
 
 * Source 这里表示源 Docker-Harboar 仓库的镜像，这个镜像必须私有仓库已经存在。
 * Target 这里表示将源仓库镜像转换为 Nydus 镜像。
@@ -312,7 +313,7 @@ K8s 集群使用的运行时为 Containerd ，而 Containerd 也支持使用插�
 下载安装包：
 
  [https://github.com/dragonflyoss/image-service/releases](https://github.com/dragonflyoss/image-service/releases)
- 
+
  [https://github.com/containerd/nydus-snapshotter/releases](https://github.com/containerd/nydus-snapshotter/releases)
 
 ```text

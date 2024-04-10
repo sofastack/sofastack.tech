@@ -10,8 +10,8 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563883382891-ab2b2b2d-b13
 ---
 
 > **SOFAStack**
-> **S**calable** O**pen **F**inancial  **A**rchitecture Stack 是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，是在金融场景里锤炼出来的最佳实践。
-> 
+> **S**calable**O**pen **F**inancial  **A**rchitecture Stack 是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，是在金融场景里锤炼出来的最佳实践。
+>
 > 蚂蚁金服在 SOFAStack 体系内研发了一款基于 Java 实现的轻量级类隔离容器，主要提供类隔离和应用(模块)合并部署能力--SOFAArk。本篇文章为 SOFAArk 0.6.0 的新特性介绍。
 > GitHub 地址：[https://github.com/alipay/sofa-ark](https://github.com/alipay/sofa-ark)
 

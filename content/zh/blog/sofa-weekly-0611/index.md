@@ -33,7 +33,6 @@ A：通过 CliService 动态增上改节点。
 
 SOFAJraft：[https://github.com/sofastack/sofa-jraft](https://github.com/sofastack/sofa-jraft)
 
-
 2、@王国鑫 提问：
 
 > 请教一下，其中一个 follow 机器，在状态机 onApply 里执行任务，有一些异常，这个异常状态如何上报给 leader？
@@ -56,11 +55,9 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 - [助力数据安全：蚂蚁携手英特尔共同打造验证 PPML 解决方案](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247488532&idx=1&sn=11952dbe5c4483a16ce806f3dc636802&chksm=faa0fbcecdd772d859405491fdaf8260d17d9549bff3206840c68b96b248531d789993c85942&scene=21)
 
-
 - [蚂蚁云原生应用运行时的探索和实践 - ArchSummit 上海](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247488131&idx=1&sn=cd0b101c2db86b1d28e9f4fe07b0446e&chksm=faa0fd59cdd7744f14deeffd3939d386cff6cecdde512aa9ad00cef814c033355ac792001377&scene=21)
 
 - [带你走进云原生技术：云原生开放运维体系探索和实践](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247488044&idx=1&sn=ef6300d4b451723aa5001cd3deb17fbc&chksm=faa0fdf6cdd774e03ccd9130099674720a81e7e109ecf810af147e08778c6582636769646490&scene=21)
-
 
 更多文章请扫码关注“金融级分布式架构”公众号
 

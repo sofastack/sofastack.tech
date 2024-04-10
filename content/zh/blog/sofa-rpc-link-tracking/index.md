@@ -238,4 +238,4 @@ SOFARPC 的依靠集成 SOFATrace 来实现链路追踪技术，SOFARPC 作为�
 
 ## 五. 参考资料
 
-- [1] [《Dapper, a Large-Scale Distributed Systems Tracing Infrastructure》](https://www.researchgate.net/profile/Luiz_Barroso/publication/239595848_Dapper_a_Large-Scale_Distributed_Systems_Tracing_Infrastructure/links/5474acdc0cf29afed60f9031/Dapper-a-Large-Scale-Distributed-Systems-Tracing-Infrastructure.pdf?origin=publication_detail) 
+- [1] [《Dapper, a Large-Scale Distributed Systems Tracing Infrastructure》](https://www.researchgate.net/profile/Luiz_Barroso/publication/239595848_Dapper_a_Large-Scale_Distributed_Systems_Tracing_Infrastructure/links/5474acdc0cf29afed60f9031/Dapper-a-Large-Scale-Distributed-Systems-Tracing-Infrastructure.pdf?origin=publication_detail)

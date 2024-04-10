@@ -14,6 +14,7 @@ aliases: "/sofa-registry/docs/JAVA-SDK"
 ```
 
 ## 2. 创建 SOFARegistry 客户端实例
+
 构建 SOFARegistry 客户端实例的关键代码如下：
 
 ```java
@@ -61,6 +62,7 @@ public class DefaultRegistryClientConfigBuilder {
 | syncConfigRetryInterval | int | 同步服务端列表间隔时间，默认值 30000ms。 |
 
 ## 3. 发布数据
+
 发布数据的关键代码如下：
 
 ```java
@@ -84,8 +86,8 @@ publisher.republish("10.10.1.1:12200?xx=zz");
 | group | String | 数据分组，发布订阅时需要使用相同值，数据唯一标识由 dataId + group + instanceId 组成，默认值 DEFAULT_GROUP。 |
 | appName | String | 应用 appName。 |
 
-
 ## 4. 订阅数据
+
 订阅数据的关键代码如下：
 
 ```java
@@ -111,6 +113,7 @@ Subscriber subscriber = registryClient.register(registration);
 订阅数据需要创建两个关键类，分别是 SubscriberDataObserver 和 SubscriberRegistration，前者是收到服务端数据后的回调接口，后者是订阅者注册表，用于向服务端注册订阅信息。
 
 ### 4.1 SubscriberDataObserver
+
 SubscriberDataObserver 仅包含一个方法：
 
 ```java
@@ -137,6 +140,7 @@ public interface UserData {
 * getZoneData: 返回以 zone 为 key，每个 zone 的数据为 value 的数据。
 
 ### 4.2 SubscriberRegistration
+
 SubscriberRegistration 包含以下四个属性：
 
 | 属性名 | 属性类型 | 描述 |
@@ -148,6 +152,7 @@ SubscriberRegistration 包含以下四个属性：
 | subscriberDataObserver | SubscriberDataObserver | 服务端数据后的回调接口。 |
 
 ## 5. 注销发布及订阅
+
 取消发布订阅的接口如下：
 
 ```java

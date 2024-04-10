@@ -68,7 +68,7 @@ SOFAJRaft ：[https://github.com/sofastack/sofa-jraft](https://github.com/sofas
 SOFAJRaft 的选举中包含了对两个属性的判断：LogIndex 和 Term，这是整个选举算法的核心部分，也是容易让人产生困惑的地方，因此我们做一下解释：
 
 1. Term：我们会对舰队中旗舰的历史进行编号，比如舰队的第 1 任旗舰、第 2 任旗舰，这个数字我们就用 Term 来表示。由于舰队中同时最多只能有一艘舰船担任旗舰，所以每一个 Term 只归属于一艘舰船，显然 Term 是单调递增的。
-2.  LogIndex：每任旗舰在职期间都会发布一些指令（称其为“旗舰令”，类比“总统令”），这些旗舰令当然也是要编号归档的，这个编号我们用 Term 和 LogIndex 两个维度来标识，表示“第 Term 任旗舰发布的第 LogIndex 号旗舰令”。不同于现实中的总统令，我们的旗舰令中的 LogIndex 是一直递增的，不会因为旗舰的更迭而从头开始计算。
+2. LogIndex：每任旗舰在职期间都会发布一些指令（称其为“旗舰令”，类比“总统令”），这些旗舰令当然也是要编号归档的，这个编号我们用 Term 和 LogIndex 两个维度来标识，表示“第 Term 任旗舰发布的第 LogIndex 号旗舰令”。不同于现实中的总统令，我们的旗舰令中的 LogIndex 是一直递增的，不会因为旗舰的更迭而从头开始计算。
 
 ![总统令 Vs 旗舰令，LogIndex 稍有区别](https://cdn.nlark.com/yuque/0/2019/png/307286/1562209301850-6c00ed4e-8d27-44f1-b6c7-c76cab5a1c63.png)
 

@@ -169,7 +169,7 @@ Donald Knuth 认为许多优化是没必要的，我们可能花费了大量的�
 - time: Sleep requires ~7 syscalls #25471：
 [https://github.com/golang/go/issues/25471](https://github.com/golang/go/issues/25471)
 
-- How does Go know time.Now?： 
+- How does Go know time.Now?：
 [https://tpaschalis.github.io/golang-time-now/](https://tpaschalis.github.io/golang-time-now/)
 
 - It's Go Time on Linux：
@@ -196,4 +196,4 @@ Donald Knuth 认为许多优化是没必要的，我们可能花费了大量的�
 
 [降本提效！注册中心在蚂蚁集团的蜕变之路](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247498209&idx=1&sn=7dbfd98e922d938ffce24986945badef&chksm=faa3163bcdd49f2d3b5dd6458a3e7ef9f67819d8a1b5b1cbb3d10ab3b7cda12dd7a3d2971a9e&scene=21)
 
-![img](https://gw.alipayobjects.com/zos/bmw-prod/75d7bde6-1f48-4f28-80a4-215f8ec811bd.webp) 
+![img](https://gw.alipayobjects.com/zos/bmw-prod/75d7bde6-1f48-4f28-80a4-215f8ec811bd.webp)

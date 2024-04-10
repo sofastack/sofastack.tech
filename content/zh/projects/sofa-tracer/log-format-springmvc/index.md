@@ -1,9 +1,9 @@
 
 ---
+
 title: "Spring MVC 日志"
 aliases: "/sofa-tracer/docs/Log_Format_SpringMVC"
 ---
-
 
 SOFATracer 集成 SpringMVC 后输出 MVC 请求的链路数据格式，默认为 `JSON` 数据格式。
 

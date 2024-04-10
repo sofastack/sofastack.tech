@@ -26,4 +26,3 @@ SOFADashboard 服务治理主要是对 SOFARpc 的服务进行管理。 目前�
 * 应用服务详情
 
 ![](https://gw.alipayobjects.com/mdn/rms_9959bb/afts/img/A*R5ajSoQsx2oAAAAAAAAAAABkARQnAQ)
-

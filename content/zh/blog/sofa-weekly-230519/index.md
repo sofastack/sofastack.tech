@@ -45,7 +45,7 @@ QCon 是由极客邦科技旗下 InfoQ 中国主办的综合性技术盛会，�
 
 「**会议回放**」：[*https://www.bilibili.com/video/BV1Go4y1F7wo/?spm_id_from=333.999.0.0&vd_source=65cf108a3fb8e9985d41bd64c5448f63*](https://www.bilibili.com/video/BV1Go4y1F7wo/?spm_id_from=333.999.0.0&vd_source=65cf108a3fb8e9985d41bd64c5448f63)
 
- **SOFA 社区会议预告** 
+ **SOFA 社区会议预告**
 
 **Layotto：**
 
@@ -73,7 +73,7 @@ QCon 是由极客邦科技旗下 InfoQ 中国主办的综合性技术盛会，�
 
 ![图片](https://mmbiz.qpic.cn/mmbiz_jpg/nibOZpaQKw0ibwXPxqC8mufMuBufWA5AIG25icythe9qfhgrKuYOjq84mWk2x1KWicGQLOENevnHvK0C6eyXNSSU8Q/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1)
 
-  **本周推荐阅读** 
+  **本周推荐阅读**
 
 [MoE 系列（四）｜Go 扩展的异步模式](https://mp.weixin.qq.com/s/to6U_5UfU1LUSj6vGsQQuQ)
 

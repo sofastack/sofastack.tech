@@ -123,7 +123,7 @@ fail fast，让 Layotto 启动报错时自杀
 
 [https://github.com/mosn/layotto/issues/108#issuecomment-872779356](https://github.com/mosn/layotto/issues/108#issuecomment-872779356)
 
-### 本周推荐阅读 
+### 本周推荐阅读
 
 - [rometheus on CeresDB 演进之路](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247497779&idx=1&sn=3c47ec0f1af6b5f0278010720c52a7fc&chksm=faa317e9cdd49eff0eb65e69e3ce40254100848556eca075ef24f3ce4527d906ce67c2487f94&token=709289858&lang=zh_CN#rd)
 

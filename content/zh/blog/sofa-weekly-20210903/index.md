@@ -22,7 +22,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 欢迎大家向公众号留言提问或在群里与我们互动
 
-我们会筛选重点问题通过 
+我们会筛选重点问题通过
 
 "SOFA WEEKLY" 的形式回复
 
@@ -97,7 +97,7 @@ A：超时回滚，如果 TM 是决议提交给了 TC，那么“是”提交，
 
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
- **SOFAStack & MOSN：新手任务计划** 
+ **SOFAStack & MOSN：新手任务计划**
 
 作为技术同学，你是否有过“想参与某个开源项目的开发、但是不知道从何下手”的感觉？
 

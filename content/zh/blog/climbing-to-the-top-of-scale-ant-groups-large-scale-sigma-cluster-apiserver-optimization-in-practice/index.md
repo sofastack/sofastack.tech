@@ -93,11 +93,11 @@ Sigma apiserver 组件是 Kubernetes 集群的所有外部请求访问入口，�
 
 - 减少客户端的超时以及超时导致的各种问题；在现有资源下提供更多的流量接入能力；
 
- **整体优化思路** 
+ **整体优化思路**
 
 构建一个大规模的 Kubernetes 集群以及性能优化不是一件容易的事，如 Google Kubernetes Engine K8s 规模化文章所言：
 
-「The scale of a Kubernetes cluster is like a multidimensional object composed of all the cluster’s resources—and scalability is an envelope that limits how much you can stretch that cube. The number of pods and containers, the frequency of scheduling events, the number of services and endpoints in each service—these and many others are good indicators of a cluster’s scale. 
+「The scale of a Kubernetes cluster is like a multidimensional object composed of all the cluster’s resources—and scalability is an envelope that limits how much you can stretch that cube. The number of pods and containers, the frequency of scheduling events, the number of services and endpoints in each service—these and many others are good indicators of a cluster’s scale.
 
 The control plane must also remain available and workloads must be able to execute their tasks.
 
@@ -123,7 +123,7 @@ What makes operating at a very large scale harder is that there are dependencies
 
 同时，在 SLO 的牵引下对 apiserver 进行优化，让我们可以在一个更大规模的 Kubernetes 集群下依然为用户提供更好的 API 服务品质。
 
-### 缓存层优化 
+### 缓存层优化
 
 **「List 走 watchCache」**
 
@@ -157,13 +157,13 @@ What makes operating at a very large scale harder is that there are dependencies
 
 > ![图片](https://gw.alipayobjects.com/zos/bmw-prod/846c757e-1660-40f2-8cc9-2dafc6981070.webp)
 
-### 存储层优化 
+### 存储层优化
 
 在资源更新频率比较快的情况下，GuaranteedUpdate 会进行大量的重试，同时造成不必要的 etcd 的压力。Sigma 给 GuaranteedUpdate 增加了指数退避的重试策略，减少了 update 操作的冲突次数，也减少了 apiserver 对于 etcd 的更新压力。
 
 在大规模高流量集群中，我们发现  apiserver 的一些不合理的日志输出会造成 apiserver 严重的性能抖动。例如，我们调整了 GuaranteedUpdate/delete 等操作在更新或者删除冲突时的日志输出级别。这减少了磁盘 io 操作，降低了客户端访问 apiserver 的请求响应时间。此外，在集群资源变化率很高的情况下，" fast watch slow processing" 的日志也会非常多。这主要是表明 apiserver 从 etcd watch 事件之后，在缓存里面构建 watchCache 的速率低于从 etcd watch 到事件的速率，在不修改 watchCache 数据结构的情况下暂时是无法改进的。因此我们也对 slow processing 日志级别进行了调整，减少了日志输出。
 
-### 接入层优化 
+### 接入层优化
 
 Golang profiling 一直是用于对 Go 语言编写的应用的优化利器。在对 apiserver 进行线上 profiling 的时候，我们也发现了不少热点，并对其进行了优化。
 
@@ -203,7 +203,7 @@ etcd 对于每个存储的资源都会有 1.5MB 大小的限制，并在请求�
 
 > ![图片](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*tEIXQq8h7x4AAAAAAAAAAAAAARQnAQ)
 
-### 基础资源 
+### 基础资源
 
 在各类型的流量随着业务增长有不同程度的上升的情况下，经过优化，apiserver CPU 利用率下降了约 7%。但是在内存上，增多了 20% 左右，这是因为 watchCache 在开启动态调整后相比之前缓存了更多的不同类别资源（node/pod 等）的对象。
 
@@ -279,9 +279,9 @@ etcd 对于每个存储的资源都会有 1.5MB 大小的限制，并在请求�
 
 蚂蚁集团 Kubernetes 集群调度系统支撑了蚂蚁集团在线、实时业务的百万级容器资源调度, 向上层各类金融业务提供标准的容器服务及动态资源调度能力, 肩负蚂蚁集团资源成本优化的责任。我们有业界规模最大 Kubernetes 集群，最深入的云原生实践，最优秀的调度技术。欢迎有意在 Kubernetes/云原生/容器/内核隔离混部/调度/集群管理深耕的同学加入，北京、上海、杭州期待大家的加入。
 
-联系邮箱 ***xiaoyun.maoxy@antgroup.com***
+联系邮箱 ***<xiaoyun.maoxy@antgroup.com>***
 
- **本周推荐阅读** 
+ **本周推荐阅读**
 
 [SOFAJRaft 在同程旅游中的实践](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247495260&idx=1&sn=a56b0f82159e551dec4752b7290682cd&chksm=faa30186cdd488908a73792f9a1748cf74c127a792c5c484ff96a21826178e2aa35c279c41b3&scene=21)
 

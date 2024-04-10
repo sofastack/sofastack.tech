@@ -12,7 +12,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1564368763406-6433cb14-13c
 > SOFAStack
 > Scalable Open Financial  Architecture Stack
 是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，是在金融场景里锤炼出来的最佳实践。
-> 
+>
 > 蚂蚁金服在 SOFAStack 体系内研发了基于模型驱动的自动化接口测试框架 SOFAACTS。
 > GitHub 地址：<https://github.com/alipay/sofa-acts>
 
@@ -143,4 +143,4 @@ GitHub 项目地址：<https://github.com/alipay/sofa-acts>
 
 ## 招聘
 
-蚂蚁金服金融核心测试技术团队持续寻找对测试自动化、智能风险管控等方向充满热情的小伙伴加入，有意者请联系 zhiqiang.li@antfin.com
+蚂蚁金服金融核心测试技术团队持续寻找对测试自动化、智能风险管控等方向充满热情的小伙伴加入，有意者请联系 <zhiqiang.li@antfin.com>

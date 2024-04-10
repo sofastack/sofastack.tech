@@ -75,4 +75,3 @@ SpanTags 是 SOFATracer 中提供的工具类，在使用注解或者手动埋�
 * 非 json 格式
 
 > 2019-09-05 10:25:50.992,flexible-sample,0a0fe9291567650350953100130778,0.2,client,,http-nio-8080-exec-1,4ms,hello,param.types=java.lang.String&author=glmapper&,,
-

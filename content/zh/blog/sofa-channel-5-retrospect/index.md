@@ -122,6 +122,7 @@ SOFAActs 中的模型主要分为：数据模型和对象模型。
 为了更好地理解数据模型， 在 model／dbModel 下的 csv 文件中，我们可以看到某一张表的全部字段、取值以及校验规则。数据模型聚合了表的结构、数据和校验规则，结合可视化编辑器可快速创建、复制 DB 数据，一次编辑多次使用。这里我们来看下示例，在编辑器如何使用数据模型。
 
 <video id="如何使用数据模型" controls="" preload="none" alt="title"> <source id="mp43" src="https://gw.alipayobjects.com/mdn/rms_95b965/afts/file/A*oQuwRYktDckAAAAAAAAAAABkARQnAQ" type="video/mp4"> </video>
+
 #### 3.2.2 对象模型
 
 对象模型，它是方法入参、出参等对象在 SOFAActs 中的映射，可以在 model／objModel 目录下查看生成的对象模型。对象模型的结构和数据模型相似，是属性、取值、校验规则的聚合，与数据模型不同的是，对象模型可能存在多层嵌套，因为类的某一属性可以是 map、集合、类等引用类型。
@@ -129,6 +130,7 @@ SOFAActs 中的模型主要分为：数据模型和对象模型。
 在 SOFAActs 编辑器中可以为一个新的用例添加入参数据，如果入参是简单类型，如 int、String 等可以选择简单类型填充，这里示例下复杂类型，即业务对象的模型使用，在左侧的列表中选择目标对象，添加至右侧，如果有多个入参可以一并添加到右侧后，再点击确定，即可以在入参设置中看到入参数据并可进行编辑。对于有多个入参的方法，入参设置中从上之下的顺序和方法声明入参顺序是需要一致的。
 
 <video id="一键脚本生成" controls="" preload="none" alt="title"> <source id="mp44" src="https://gw.alipayobjects.com/mdn/rms_95b965/afts/file/A*CsRxTpwXIv0AAAAAAAAAAABkARQnAQ" type="video/mp4"> </video>
+
 ### 3.3 精细化校验
 
 下面我们介绍精细化校验，在一开始时，我们提及到复杂业务场景下极易出现校验遗漏，形成校验假绿。为此，SOFAActs 内置了精细化校验，从校验规则和行为还原两点，来保证复杂场景的校验覆盖。

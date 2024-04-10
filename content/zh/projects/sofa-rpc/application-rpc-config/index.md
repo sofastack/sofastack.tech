@@ -1,15 +1,17 @@
 
 ---
+
 title: "RPC 应用参数配置"
 aliases: "sofa-rpc/docs/Application-RPC-Config"
 ---
+
 在 SOFABoot 的使用场景下，RPC 框架在应用层面，提供一些配置参数，支持的应用级别的参数配置，如端口，线程池等信息，都是通过
 Spring Boot 的`@ConfigurationProperties` 进行的绑定。绑定属性类是`com.alipay.sofa.rpc.boot.config.SofaBootRpcProperties`，配置前缀是
 
 ```java
 
 static final String PREFIX = "com.alipay.sofa.rpc";
-``` 
+```
 
 那么在 application.properties 文件中，目前可以配置以下几个选项。其中使用者也可以根据自己的编码习惯，按照 Spring Boot 的规范，按照驼峰，中划线等进行书写。
 
@@ -123,4 +125,3 @@ static final String PREFIX = "com.alipay.sofa.rpc";
 | 配置项                                                | 说明                                     | 类型   | 默认值 |
 | ----------------------------------------------------- | ---------------------------------------- | ------ | ------ |
 | com.alipay.sofa.rpc.consumer.repeated.reference.limit | 允许客户端对同一个服务生成的引用代理数量 | String | 3      |
-

@@ -197,4 +197,3 @@ In scenarios where communications are relatively simple, we use the RPC communic
 * [Ant Financial communication framework practices](https://mp.weixin.qq.com/s/JRsbK1Un2av9GKmJ8DK7IQ)
 * [Analysis | Overall design and scaling mechanism of the SOFARPC framework](https://mp.weixin.qq.com/s/ZKUmmFT0NWEAvba2MJiJfA)
 * [SOFABolt lab](https://www.sofastack.tech/categories/sofabolt/)
-

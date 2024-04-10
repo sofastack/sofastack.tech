@@ -1,9 +1,9 @@
 
 ---
+
 title: "健康检查"
 aliases: "/sofa-boot/docs/HealthCheck"
 ---
-
 
 SOFABoot 为 Spring Boot 的健康检查能力增加了 Readiness Check 的能力。如果你需要使用 SOFA 中间件，那么建议使用 SOFABoot 的健康检查能力的扩展，来更优雅的上线应用实例
 
@@ -19,7 +19,6 @@ SOFABoot 为 Spring Boot 的健康检查能力增加了 Readiness Check 的能�
 ```
 
 **如果不引入 SOFABoot 的健康检查扩展，用户依然可以直接依赖 HealthIndicator 接口进行原生的 Spring Boot Actuator 的 Liveness Check。**
-
 
 ## 安全提醒
 

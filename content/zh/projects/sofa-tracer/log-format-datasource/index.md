@@ -1,9 +1,9 @@
 
 ---
+
 title: "DataSource 日志"
 aliases: "/sofa-tracer/docs/Log_Format_Datasource"
 ---
-
 
 SOFATracer 对标准的 JDBC 数据源进行埋点，输出 SQL 语句执行链路数据，默认日志输出为 `JSON` 数据格式。
 

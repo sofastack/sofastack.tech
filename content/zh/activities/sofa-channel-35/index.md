@@ -13,7 +13,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*fItpRqhzLXcAAAAAA
 - 活动主题：SOFAChannel#35《SOFABoot 4.0 — 迈向 JDK 17 新时代》——SOFABoot 社区
 - 活动时间：09 月 07 日，周四晚 19 点
 - 活动形式：线上直播
-- 资料下载： <font color=#1E90FF>[点击获取](https://mdn.alipayobjects.com/huamei_soxoym/afts/file/A*yD0TQ6Uqhg4AAAAAAAAAAAAADrGAAQ/SOFAChannel#35%20SOFABoot%204.0%20%E2%80%94%20%E8%BF%88%E5%90%91%20JDK%2017%20%E6%96%B0%E6%97%B6%E4%BB%A3.pdf)</font> 
+- 资料下载： <font color=#1E90FF>[点击获取](https://mdn.alipayobjects.com/huamei_soxoym/afts/file/A*yD0TQ6Uqhg4AAAAAAAAAAAAADrGAAQ/SOFAChannel#35%20SOFABoot%204.0%20%E2%80%94%20%E8%BF%88%E5%90%91%20JDK%2017%20%E6%96%B0%E6%97%B6%E4%BB%A3.pdf)</font>
 - B 站直播间地址：[http://live.bilibili.com/21954520](http://live.bilibili.com/21954520)
 - B 站直播回放：[SOFAChannel#35](https://www.bilibili.com/video/BV1Uj41117Vz)
 
@@ -53,7 +53,7 @@ SOFABoot Maintainer
 
 **「议题简介」**
 
-本次分享将主要介绍 SOFABoot 4.0 新版本引入的新特性与变化，包括其设计理念与实现方式。再者就是介绍 SOFABoot 3 应用如何升级至 SOFABoot 4.0 版本，并展望 SOFABoot 未来的发展趋势。 
+本次分享将主要介绍 SOFABoot 4.0 新版本引入的新特性与变化，包括其设计理念与实现方式。再者就是介绍 SOFABoot 3 应用如何升级至 SOFABoot 4.0 版本，并展望 SOFABoot 未来的发展趋势。
 
 **「听众收获」**
 
@@ -63,7 +63,7 @@ SOFABoot Maintainer
 
 ## 直播回放
 
-<font color=#1E90FF>[点击查看](https://www.bilibili.com/video/BV1Uj41117Vz)</font> 
+<font color=#1E90FF>[点击查看](https://www.bilibili.com/video/BV1Uj41117Vz)</font>
 
 ## 了解更多技术干货
 

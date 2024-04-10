@@ -35,6 +35,7 @@ description: "02 月 24 日周四晚 19 点，线上直播第 25 期。"
 Kubernetes 已经成为行业内，容器编排的标准。越来越多的企业开始在生产中使用 Kubernetes，拥抱云原生。
 
 Kubernetes 为什么要持续迭代升级？大规模集群下升级过程将面临哪些问题？如何在复杂问题中找到一条无损升级路子？本次分享将用 40 分钟时间带你一起庖丁解牛 Kubernetes 的升级难题。
+
 ### | 加入 SOFA 钉钉互动群
 
 欢迎加入直播互动钉钉群：34197075（搜索群号加入即可）
@@ -46,6 +47,7 @@ Kubernetes 为什么要持续迭代升级？大规模集群下升级过程将面
 - 负责蚂蚁 Kubernetes 集群容器交付方面工作，专注于集群交付能力、交付性能及交付 Trace 等相关领域。
 
 ## 议程
+>
 > ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*P3NJRbl8kqcAAAAAAAAAAAAAARQnAQ)
 
 ### 18:50-19:00  主持人开场

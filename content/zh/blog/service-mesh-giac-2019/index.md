@@ -163,7 +163,7 @@ Mosn V1 和 Mosn V2 进入热升级模式之后，可能会存在 Mosn V1 已经
 
 ![图18. 请求合并写](https://cdn.nlark.com/yuque/0/2019/png/226702/1561194250938-39369d9e-9253-4216-8673-6bb069956467.png)
 
-Mosn 的核心网络模型是完全自实现的，我们在整个网络层做了非常多的优化，通过 golang 的 writev 我们把多笔请求合并成一次写，降低 sys.call 的调用，提升整体的性能与吞吐。同时在使用 writev 的过程中，有发现 golang 对 writev 的实现有 bug，会导致部分内存无法回收，我们给 golang 提交 PR 修复此问题，已被接受：[https://github.com/golang/go/pull/32138](https://github.com/golang/go/pull/32138) 
+Mosn 的核心网络模型是完全自实现的，我们在整个网络层做了非常多的优化，通过 golang 的 writev 我们把多笔请求合并成一次写，降低 sys.call 的调用，提升整体的性能与吞吐。同时在使用 writev 的过程中，有发现 golang 对 writev 的实现有 bug，会导致部分内存无法回收，我们给 golang 提交 PR 修复此问题，已被接受：[https://github.com/golang/go/pull/32138](https://github.com/golang/go/pull/32138)
 
 其他优化点还有很多，不再一一详细描述，仅供思路参考，如：
 

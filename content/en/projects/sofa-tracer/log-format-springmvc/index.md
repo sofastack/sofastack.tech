@@ -1,11 +1,12 @@
 
 ---
+
 title: "Spring MVC log"
 aliases: "/sofa-tracer/docs/Log_Format_SpringMVC"
 ---
 
-
 # SpringMVC Log Format
+
 After integrating SpringMVC, SOFATracer will output the link data format of the MVC requests, which is `JSON` by default.
 
 ### Spring MVC digest log (spring-mvc-digest.log)

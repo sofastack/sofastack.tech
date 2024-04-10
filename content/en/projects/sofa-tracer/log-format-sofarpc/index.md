@@ -1,11 +1,12 @@
 
 ---
+
 title: "SOFARPC log"
 aliases: "/sofa-tracer/docs/Log_Format_SOFARPC"
 ---
 
-
 # SOFARPC Log Format
+
 After SOFARPC (v5.4.0 and above) is integrated in SOFATracer, the link data is output in `JSON` format by default. Each field meaning is as follows:
 
 ## RPC client digest log (rpc-client-digest.log)
@@ -39,7 +40,6 @@ Example:
 ```json
 {"timestamp":"2018-05-20 17:03:20.708","tracerId":"1e27326d1526807000498100185597","spanId":"0","span.kind":"client","local.app":"SOFATracerRPC","protocol":"bolt","service":"com.alipay.sofa.tracer.examples.sofarpc.direct.DirectService:1.0","method":"sayDirect","current.thread.name":"main","invoke.type":"sync","router.record":"DIRECT","remote.app":"samples","remote.ip":"127.0.0.1:12200","local.client.ip":"127.0.0.1","result.code":"00","req.serialize.time":"33","resp.deserialize.time":"39","resp.size":"170","req.size":"582","client.conn.time":"0","client.elapse.time":"155","local.client.port":"59774","baggage":""}
 ```
-
 
 ## RPC server digest log (rpc-server-digest.log)
 

@@ -67,12 +67,12 @@ title: "'Introduction to the Raft algorithm'"
 ### Raft design principles
 
 * Concept decomposition
-   * Leader election
-   * Log replication
-   * Membership changes
+  * Leader election
+  * Log replication
+  * Membership changes
 * Raft reduces the number of states to simplify the state space.
-   * Raft does not allow log holes and restricts the possibilities of log inconsistency.
-   * Raft uses randomized timers to simplify the leader election.
+  * Raft does not allow log holes and restricts the possibilities of log inconsistency.
+  * Raft uses randomized timers to simplify the leader election.
 
 ### Raft consistency algorithm
 
@@ -155,22 +155,22 @@ __Receiver implementation:__
 #### __Rules for servers__
 
 * __All Servers:__
-   * If commitIndex > lastApplied, increment lastApplied, and apply log[lastApplied] to state machine.
-   * If the RPC request or response contains term T > currentTerm, set currentTerm to T and transit into a follower.
+  * If commitIndex > lastApplied, increment lastApplied, and apply log[lastApplied] to state machine.
+  * If the RPC request or response contains term T > currentTerm, set currentTerm to T and transit into a follower.
 * __Follower__
-   * Responds to RPCs from candidates and the leader.
-   * If the election timeout elapses, and the follower fails to receive any AppendEntries RPCs from the current leader or any RequestVote RPCs from any candidate, the follower transits into a candidate.
+  * Responds to RPCs from candidates and the leader.
+  * If the election timeout elapses, and the follower fails to receive any AppendEntries RPCs from the current leader or any RequestVote RPCs from any candidate, the follower transits into a candidate.
 * __Candidate__
-   * Starts election after transiting into a candidate:
-      * Increment currentTerm > Reset the election timer > Vote for itself > Send RequestVote RPCs to all other servers.
-   * If the candidate receives votes from a majority of servers, it becomes the leader.
-   * If a candidate receives an AppendEntries RPC from the new leader, it transits into a follower.
-   * If the election timeout elapses, it starts a new election.
+  * Starts election after transiting into a candidate:
+    * Increment currentTerm > Reset the election timer > Vote for itself > Send RequestVote RPCs to all other servers.
+  * If the candidate receives votes from a majority of servers, it becomes the leader.
+  * If a candidate receives an AppendEntries RPC from the new leader, it transits into a follower.
+  * If the election timeout elapses, it starts a new election.
 * __Leader__
-   * Upon election, the leader sends empty AppendEntries RPCs (heartbeat) to each server, and repeats the step during idle periods to prevent the election from timeing out.
-   * If the leader receives a command from a client, it appends an entry to the local log and sends AppendEntries RPCs to all servers. After receiving responses from a majority of the servers, it applies the entry to the state machine and replies responses to the clients.
-   * If last log index >= nextIndex for a follower, the leader sends an AppendEntries RPC with log entries starting from the nextIndex. If it is successful, the leader updates the follower's nextIndex and matcheIndex. If AppendEntries fails because of log inconsistency, the leader decrements the nextIndex and resends the AppendEntries RPC to the follower.
-   * If there is an N that N > commitIndex, a majority of matchIndex[i] >= N, and log]N[.term == currentTerm, the leader sets commitIndex to N.
+  * Upon election, the leader sends empty AppendEntries RPCs (heartbeat) to each server, and repeats the step during idle periods to prevent the election from timeing out.
+  * If the leader receives a command from a client, it appends an entry to the local log and sends AppendEntries RPCs to all servers. After receiving responses from a majority of the servers, it applies the entry to the state machine and replies responses to the clients.
+  * If last log index >= nextIndex for a follower, the leader sends an AppendEntries RPC with log entries starting from the nextIndex. If it is successful, the leader updates the follower's nextIndex and matcheIndex. If AppendEntries fails because of log inconsistency, the leader decrements the nextIndex and resends the AppendEntries RPC to the follower.
+  * If there is an N that N > commitIndex, a majority of matchIndex[i] >= N, and log]N[.term == currentTerm, the leader sets commitIndex to N.
 
 #### Summary of the Raft consensus algorithm
 
@@ -185,8 +185,8 @@ __Receiver implementation:__
 
 * RequestVote RPC
 * AppendEntries RPC
-   * Log entries
-   * Heartbeat
+  * Log entries
+  * Heartbeat
 * InstallSnapshot RPC
 
 ### Roles and states transition
@@ -195,7 +195,7 @@ __Receiver implementation:__
 
 * Follower: All followers are passive. They issue no requests on their own but simply respond to requests from the leader and candidates.
 * Leader: The leader handles all client requests. If a client contacts a follower, the follower redirects the client to the leader.
-*  Candidate: A candidate can be elected as a new leader.
+* Candidate: A candidate can be elected as a new leader.
 
 ### Terms (logical clock)
 
@@ -206,12 +206,12 @@ Raft divides time into terms of arbitrary length. Each term begins with an elect
 ### Leader election
 
 * Follower > candidate (triggered by election timeout)
-   * Candidate > leader
-      * The candidate wins the election.
-   * Candidate > follower
-      * Another server wins the election.
-   * Candidate > candidate
-      * No server wins the election within the specified period.
+  * Candidate > leader
+    * The candidate wins the election.
+  * Candidate > follower
+    * Another server wins the election.
+  * Candidate > candidate
+    * No server wins the election within the specified period.
 
 ### Prevention of multiple candidates starting leader election simultaneously
 
@@ -226,29 +226,29 @@ Once a leader has been elected, it begins receiving client requests. Each client
 __Features of the Raft log mechanism__
 
 * If two entries in different logs share the same index and term, they store the same command.
-   * A leader creates at most one entry with a given log index in a given term, and log entries never change their position in the log.
+  * A leader creates at most one entry with a given log index in a given term, and log entries never change their position in the log.
 * If two entries in different logs have the same index and term, then the logs are identical in all preceding entries.
-   * This is guaranteed by a simple consistency check performed by AppendEntries RPCs. When sending an AppendEntries RPC, the leader includes the index and term of the entry in its log. If the follower does not find an entry in its log with the same index and term, it refuses the new entries, and the consistency check acts as an induction step.
+  * This is guaranteed by a simple consistency check performed by AppendEntries RPCs. When sending an AppendEntries RPC, the leader includes the index and term of the entry in its log. If the follower does not find an entry in its log with the same index and term, it refuses the new entries, and the consistency check acts as an induction step.
 * The leader handles inconsistencies by forcing the followers' logs to duplicate its own.
-   * To bring a follower's log into consistency with its own, the leader must find the latest log entry where the two logs agree, delete any entries in the follower's log after that point, and send the follower all of the leader's entries after that point. All of these actions happen in response to the consistency check performed by AppendEntries RPCs.
-   * The leader maintains a nextIndex for each follower, which is the index of the next log entry the leader will send to that follower. When a leader first comes to power, it initializes all nextIndex values to the index just after the last one in its log. If a follower's log is inconsistent with the leader's, the AppendEntries consistency check will fail in the next AppendEntries RPC. After a rejection, the leader decrements nextIndex and retries the AppendEntries RPC. Eventually nextIndex will reach a point where the leader and follower logs match. When this happens, AppendEntries will succeed, which removes any conflicting entries in the follower's log and appends entries from the leader's log (if any). Then the follower's log is consistent with the leader's.
+  * To bring a follower's log into consistency with its own, the leader must find the latest log entry where the two logs agree, delete any entries in the follower's log after that point, and send the follower all of the leader's entries after that point. All of these actions happen in response to the consistency check performed by AppendEntries RPCs.
+  * The leader maintains a nextIndex for each follower, which is the index of the next log entry the leader will send to that follower. When a leader first comes to power, it initializes all nextIndex values to the index just after the last one in its log. If a follower's log is inconsistent with the leader's, the AppendEntries consistency check will fail in the next AppendEntries RPC. After a rejection, the leader decrements nextIndex and retries the AppendEntries RPC. Eventually nextIndex will reach a point where the leader and follower logs match. When this happens, AppendEntries will succeed, which removes any conflicting entries in the follower's log and appends entries from the leader's log (if any). Then the follower's log is consistent with the leader's.
 
 ### Safety
 
 * Election restriction
-   * Raft uses a restriction on which servers may be elected the leader, which ensures servers with incomplete log entries do not win elections.
-      * RequestVote RPC restriction: The RPC includes information about the candidate's log, and the voter denies its vote if its own log is more up-to-date than that of the candidate.
-   * A leader never overwrites entries in its log.
-   * Log entries only flow from the leader to followers.
+  * Raft uses a restriction on which servers may be elected the leader, which ensures servers with incomplete log entries do not win elections.
+    * RequestVote RPC restriction: The RPC includes information about the candidate's log, and the voter denies its vote if its own log is more up-to-date than that of the candidate.
+  * A leader never overwrites entries in its log.
+  * Log entries only flow from the leader to followers.
 * Submit entries from previous terms
-   * Log entries maintain the same term number over time and across logs.
+  * Log entries maintain the same term number over time and across logs.
 * Safety argument
-   * Leader completeness
-      * If a log entry is committed in a given term, then that entry will be presented in the logs of the leaders for all higher-numbered terms.
-   * State machine safety
-      * If a server has applied a log entry at a given index to its state machine, no other server will apply a different log entry for the same index.
+  * Leader completeness
+    * If a log entry is committed in a given term, then that entry will be presented in the logs of the leaders for all higher-numbered terms.
+  * State machine safety
+    * If a server has applied a log entry at a given index to its state machine, no other server will apply a different log entry for the same index.
 
-###  Follower and candidate crashes
+### Follower and candidate crashes
 
 * Raft handles these failures by retrying indefinitely.
 * Raft RPCs are idempotent.
@@ -262,7 +262,7 @@ __broadcastTime << electionTimeout << MTBF__
 | electionTimeout | The period of time that followers would wait for communication from the leader before they start an election. |
 | MTBF | The average time between failures for a single server. |
 
-* The broadcast time should be smaller than the election timeout period by a magnitude so that leaders can reliably send the heartbeat messages to keep followers from starting elections. Given the randomized approach used for election timeouts, this inequality also makes split votes unlikely. 
+* The broadcast time should be smaller than the election timeout period by a magnitude so that leaders can reliably send the heartbeat messages to keep followers from starting elections. Given the randomized approach used for election timeouts, this inequality also makes split votes unlikely.
 * The election timeout should be smaller than MTBF by a magnitude so that the system can run steadily. When the leader crashes, the system will be unavailable for roughly the election timeout period.
 
 ### Cluster membership changes
@@ -288,9 +288,9 @@ Raft uses a joint consensus approach to make node changes safe. The cluster firs
 
 * Each server takes snapshots independently, covering only committed entries in its log.
 * A snapshot mainly covers:
-   * The state machine state.
-   * A small amount of metadata of the Raft group (as shown in the above figure). Such metadata is preserved to support the AppendEntries consistency check for the first log entry following the snapshot.
-   * To enable cluster membership changes, the snapshot also includes the latest configuration in the log as of the last included index.
+  * The state machine state.
+  * A small amount of metadata of the Raft group (as shown in the above figure). Such metadata is preserved to support the AppendEntries consistency check for the first log entry following the snapshot.
+  * To enable cluster membership changes, the snapshot also includes the latest configuration in the log as of the last included index.
 
 __InstallSnapshot RPC__
 
@@ -313,20 +313,19 @@ __Receiver implementation:__
 * Reply and wait for more data chunks if done is false.
 * Save the snapshot file, discard any existing or partial snapshot with a smaller index.
 * If existing log entry has the same index and term as snapshot's last included entry, retain log entries following it and reply.
-*  Discard the entire log.
+* Discard the entire log.
 * Reset the state machine using snapshot contents (and load snapshot's cluster configuration).
 
 ### Client interaction
 
 * Clients of Raft send all of their requests to the leader.
 * Linearizable reads
-   * Write the Raft log and use the state machine.
-   * The leader sends heartbeats to all nodes and receives responses from more than half of them to ensure it is still the leader. Then it can provide linearizable read.
-   * The leader could also rely on the heartbeat mechanism to provide a form of lease (lease read), but this would rely on the accuracy of the local clock.
+  * Write the Raft log and use the state machine.
+  * The leader sends heartbeats to all nodes and receives responses from more than half of them to ensure it is still the leader. Then it can provide linearizable read.
+  * The leader could also rely on the heartbeat mechanism to provide a form of lease (lease read), but this would rely on the accuracy of the local clock.
 
 ### References
 
 [Braft document](https://github.com/brpc/braft/blob/master/docs/cn/raft_protocol.md)
 
 [The Raft paper](https://ramcloud.atlassian.net/wiki/download/attachments/6586375/raft.pdf)
-

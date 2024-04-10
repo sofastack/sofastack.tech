@@ -1,8 +1,10 @@
 
 ---
+
 title: "SOFABoot 环境 XML 配置使用"
 aliases: "/sofa-rpc/docs/Programing-SOFA-BOOT-XML"
 ---
+
 声明 SOFABoot 的 xsd 文件：在要使用的 XML 配置文件中将头部 xsd 文件的声明设置为如下。这样就能够使用 SOFABoot 定义的 XML 元素进行开发。
 
 ```xml

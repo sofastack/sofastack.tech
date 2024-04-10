@@ -48,7 +48,7 @@ A：～/logs/sofa-ark 看看有日志吗？
 
 > 请问伙伴们有在用 SOFA 技术栈在非金融的项目开发吗？
 
-A：有的哈，可以看下使用者登记 
+A：有的哈，可以看下使用者登记
 [https://github.com/sofastack/sofa-rpc/issues/375https://github.com/sofastack/sofastack.tech/issues/5](https://github.com/sofastack/sofa-rpc/issues/375https://github.com/sofastack/sofastack.tech/issues/5)
 
 **@来永国** 提问：

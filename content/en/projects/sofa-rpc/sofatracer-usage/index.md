@@ -1,9 +1,9 @@
 
 ---
+
 title: "SOFATracer"
 aliases: "/sofa-rpc/docs/SOFATracer-Usage"
 ---
-
 
 Since SOFARPC 5.4.0, the SOFATracer function is integrated, which is enabled by default. It can output the data information in the link.
 
@@ -39,7 +39,6 @@ Example:
 ```plain
 {"timestamp":"2018-05-20 17:03:20.708","tracerId":"1e27326d1526807000498100185597","spanId":"0","span.kind":"client","local.app":"SOFATracerRPC","protocol":"bolt","service":"com.alipay.sofa.tracer.examples.sofarpc.direct.DirectService:1.0","method":"sayDirect","current.thread.name":"main","invoke.type":"sync","router.record":"DIRECT","remote.ip":"127.0.0.1:12200","local.client.ip":"127.0.0.1","result.code":"00","req.serialize.time":"33","resp.deserialize.time":"39","resp.size":"170","req.size":"582","client.conn.time":"0","client.elapse.time":"155","local.client.port":"59774","baggage":""}
 ```
-
 
 ## RPC server digest log (rpc-server-digest.log)
 
@@ -85,8 +84,6 @@ Example:
 ```plain
 {"time":"2018-05-18 07:02:19.717","stat.key":{"method":"method","local.app":"client","service":"app.service:1.0"},"count":10,"total.cost.milliseconds":17,"success":"Y"}
 ```
-
-
 
 ## RPC server statistical log (rpc-server-stat.log)
 

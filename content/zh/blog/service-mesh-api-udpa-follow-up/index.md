@@ -17,7 +17,7 @@ cover: "https://cdn.nlark.com/yuque/0/2020/png/226702/1585189900989-0ae555ff-525
 
 另外蚂蚁金服开源的云原生网络代理 MOSN 目前已经支持 xDS v2 API，后面也会逐步向着 UDPA 的方向去演进，兼容标准 Istio，感兴趣的读者可以去了解下。
 
-MOSN：https://github.com/mosn/mon
+MOSN：<https://github.com/mosn/mon>
 
 ## UDPA 介绍
 
@@ -26,13 +26,13 @@ MOSN：https://github.com/mosn/mon
 - UDPA ：“Universal Data Plane API”的缩写， “通用数据平面 API”
 - UDPA-WG：”Universal Data Plane API Working Group”的缩写，这是 CNCF 下的一个工作组，负责制定 UDPA；
 
-UDPA 的目标，援引自 https://github.com/cncf/udpa 的描述：
+UDPA 的目标，援引自 <https://github.com/cncf/udpa> 的描述：
 
 > 通用数据平面 API 工作组（UDPA-WG）的目标是召集对数据平面代理和负载均衡器的通用控制和配置 API 感兴趣的业界人士。
 
 UDPA 的愿景，同样援引：
 
-> 通用数据平面 API（UDPA）的愿景在 https://blog.envoyproxy.io/the-universal-data-plane-api-d15cec7a 中阐明。我们将寻求一组 API，它们为 L4/L7 数据平面配置提供事实上的标准，类似于 SDN 中 L2/L3/L4 的 OpenFlow 所扮演的角色。
+> 通用数据平面 API（UDPA）的愿景在 <https://blog.envoyproxy.io/the-universal-data-plane-api-d15cec7a> 中阐明。我们将寻求一组 API，它们为 L4/L7 数据平面配置提供事实上的标准，类似于 SDN 中 L2/L3/L4 的 OpenFlow 所扮演的角色。
 > 这些 API 将在 proto3 中规范定义，并通过定义良好的、稳定 API 版本控制策略，从现有的 Envoy xDS API 逐步演进。API 将涵盖服务发现、负载均衡分配、路由发现、监听器配置、安全发现、负载报告、运行状况检查委托等。
 > 我们将对 API 进行改进和成型，以支持客户端 lookaside 负载均衡（例如 gRPC-LB），Envoy 之外的数据平面代理，硬件 LB，移动客户端以及其他范围。我们将努力尽可能与供应商和实现无关，同时坚持支持已投入生产的 UDPA 的项目（到目前为止，Envoy 和 gRPC-LB）。
 
@@ -47,7 +47,7 @@ UDPA 的愿景，同样援引：
 
 在 2019 年 11 月的 EnvoyCon 上，Envoy 的开发者，也是目前 UDPA 最主要的负责人之一，来自 Google 的 Harvey Tuch，有一个演讲非常详细而清晰的解答了这个问题，这个演讲的标题是：“The Universal Dataplane API (UDPA): Envoy’s Next Generation APIs”。
 
-> 备注：这里我直接援引这份演讲的部分内容，以下两张图片均出自 [这份演讲的 PPT](https://static.sched.com/hosted_files/envoycon2019/ac/EnvoyCon UDPA 2019.pdf) 。鸣谢 Harvey。
+> 备注：这里我直接援引这份演讲的部分内容，以下两张图片均出自 [这份演讲的 PPT](<https://static.sched.com/hosted_files/envoycon2019/ac/EnvoyCon> UDPA 2019.pdf) 。鸣谢 Harvey。
 
 下图展示了近年来 xDS 协议的演进历程和未来规划：
 
@@ -79,7 +79,7 @@ UDPA 的愿景，同样援引：
 
 ## UDPA API 进展
 
-言归正传，我们来看一下 UDPA 目前的最新进展。从 https://github.com/cncf/udpa ，可以看到目前 UDPA 中已经定义好的部分 API 内容：
+言归正传，我们来看一下 UDPA 目前的最新进展。从 <https://github.com/cncf/udpa> ，可以看到目前 UDPA 中已经定义好的部分 API 内容：
 
 ### 类型定义
 
@@ -161,9 +161,9 @@ UDPA 目前定义了四个注解（Annotation）：
 - 一个 OpenRcaService 服务定义和配套的 OracLoadReport 数据定义；
 - 4 个注解；
 
-考虑到 UDPA 推出的时间是 2019 年 5 月份，迄今有 9 个月的时间，这个进展有些出乎意料。 
+考虑到 UDPA 推出的时间是 2019 年 5 月份，迄今有 9 个月的时间，这个进展有些出乎意料。
 
-翻了一遍 https://github.com/cncf/udpa 上的内容，包括所有的 commit 和 PR ，发现活跃的开发者主要是两位同学：Google 的 htuch 和 Tetrate 公司的 Lizan。然后 cncf/UDPA 项目的 star 数量也非常低，才 55 个 star，可以认为社区基本上没什么人关注。
+翻了一遍 <https://github.com/cncf/udpa> 上的内容，包括所有的 commit 和 PR ，发现活跃的开发者主要是两位同学：Google 的 htuch 和 Tetrate 公司的 Lizan。然后 cncf/UDPA 项目的 star 数量也非常低，才 55 个 star，可以认为社区基本上没什么人关注。
 
 但是，稍后当我看到 UDPA 的设计文档时，才发现原来 UDPA 的精华都在设计中，只是进度原因还未能正式出成型的 API。
 
@@ -402,7 +402,7 @@ UDPA 目前还处于早期设计阶段，关键的 UDPA-TP 和 UDPA-DM 的设计
 
 ## 参考资料
 
-- https://github.com/cncf/udpa ：UDPA 在 github 的项目，API 定义来自这里
+- <https://github.com/cncf/udpa> ：UDPA 在 github 的项目，API 定义来自这里
 - Universal Data Plane API Working Group (UDPA-WG): UDPA 设计文档，但是内容很少
 - Universal Data Plane API Working Group (UDPA-WG)：CNCF 下的 UDPA 工作组，加入之后能看到一些资料
 - UDPA-TP strawman: UDPA-TP 的设计文档

@@ -32,13 +32,13 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*nxSnTJH9AtQAAAAAA
 
 为此，DLRover 在 Kubernetes 上基于 Torch Elastic 开发了弹性训练功能，实现 PyTorch 分布式训练的自动容错和弹性。具体功能如下：
 
--   出现故障后，快速执行节点健康检测，定位故障机并将其隔离，然后重启 Pod 来替换故障节点。
+- 出现故障后，快速执行节点健康检测，定位故障机并将其隔离，然后重启 Pod 来替换故障节点。
 
--   健康检测通过后，重启训练子进程来自动恢复模型训练，无需重启作业或者所有 Pod。
+- 健康检测通过后，重启训练子进程来自动恢复模型训练，无需重启作业或者所有 Pod。
 
--   节点故障导致可用机器少于作业配置，自动缩容来继续训练。集群新增机器后，自动扩容来恢复节点数量。
+- 节点故障导致可用机器少于作业配置，自动缩容来继续训练。集群新增机器后，自动扩容来恢复节点数量。
 
--   优化 FSDP 并行训练的模型 save/load，支持根据实际卡数 reshard 模型参数，缩短 checkpoint 保存和加载时间。
+- 优化 FSDP 并行训练的模型 save/load，支持根据实际卡数 reshard 模型参数，缩短 checkpoint 保存和加载时间。
 
 在 DLRover 弹性容错应用在蚂蚁大模型训练前，一周内千卡训练运行时间占 60.8%，有效训练时间约 32.9%（*有效训练时间=模型迭代的步数*每步的时间*）。除此之外，训练运行时间还包括 checkpoint 保存时间和训练回退时间等。DLRover 上线后，一周内千卡训练运行时间占比提升至 83.6%，有效训练时间提升至 58.9%。
 
@@ -60,11 +60,11 @@ Torch Elastic 启动子进程后，所有子进程需要进行集合通信组网
 
 但是使用 Torch Elastic 原生方案中，我们发现一些问题：
 
--   节点不能容错。TCPStore 在一个训练节点上，如果该节点挂了，重组网就没法继续了。
+- 节点不能容错。TCPStore 在一个训练节点上，如果该节点挂了，重组网就没法继续了。
 
--   节点 rank 是随机的。ElasticAgent 同步 host 到共享存储的顺序是随机的，导致节点 rank 的随机。在训练代码中，用户一般会将模型迭代信息输出在 rank-0 的日志里，比如 step、loss 和耗时等。用户只能通过进程日志寻找 rank-0 ，对于多节点的作业，这是比较麻烦的。
+- 节点 rank 是随机的。ElasticAgent 同步 host 到共享存储的顺序是随机的，导致节点 rank 的随机。在训练代码中，用户一般会将模型迭代信息输出在 rank-0 的日志里，比如 step、loss 和耗时等。用户只能通过进程日志寻找 rank-0 ，对于多节点的作业，这是比较麻烦的。
 
--   Torch Elastic 的动态组网不能控制组网的节点数量。比如 LLM 模型训练中，用户可能会将 4 个节点作为一个数据预处理的组，那么弹性伸缩需要保证节点数量是 4 的整数倍。而 Torch Elastic 只要发现有一个新节点加入就会立刻重启训练。 
+- Torch Elastic 的动态组网不能控制组网的节点数量。比如 LLM 模型训练中，用户可能会将 4 个节点作为一个数据预处理的组，那么弹性伸缩需要保证节点数量是 4 的整数倍。而 Torch Elastic 只要发现有一个新节点加入就会立刻重启训练。
 
 ### **DLRover 动态组网**
 
@@ -139,12 +139,12 @@ DLRover 弹性容错需要依赖 checkpoint 来恢复模型状态。当前我们
 
 rank0_only：
 
--   rank-0 需要加载所有的模型参数和优化器状态，可能导致 OOM。
--   rank-0 需要通过 Allgather 获取所有模型参数和优化器状态并依次写入磁盘，耗时过长。
+- rank-0 需要加载所有的模型参数和优化器状态，可能导致 OOM。
+- rank-0 需要通过 Allgather 获取所有模型参数和优化器状态并依次写入磁盘，耗时过长。
 
 sharding 方式：
 
--   保存 checkpoint 的 rank 数量必须和加载 checkpoint 的 rank 数量必须一致。而弹性容错作业中并不能保证 rank 数量不变。
+- 保存 checkpoint 的 rank 数量必须和加载 checkpoint 的 rank 数量必须一致。而弹性容错作业中并不能保证 rank 数量不变。
 
 ### **参数支持 reshard 的 save/load**
 
@@ -158,7 +158,7 @@ sharding 方式：
 
 **代码示例**
 
--   保存参数  
+- 保存参数  
 
 ```Java
 from atorch.utils.fsdp_save_util import save_fsdp_flat_param
@@ -177,7 +177,7 @@ ckpt
 """
 ```
 
--   加载参数
+- 加载参数
 
 ```Java
 # init_empty_weights_with_disk_offload 时指定 ckpt 地址，会将模型全部在 meta 上
@@ -205,7 +205,7 @@ FSDP 并行训练时，优化器是基于 FSDP 转化后的模型创建的，ATo
 
 **代码示例**
 
--   保存优化器状态
+- 保存优化器状态
 
 ```Java
 from atorch.utils.fsdp_save_util import save_fsdp_optim_param
@@ -221,7 +221,7 @@ ckpt
 """
 ```
 
--   加载优化器状态
+- 加载优化器状态
 
 ```Java
 from atorch.utils.fsdp_save_util import ShardOptim
@@ -242,7 +242,7 @@ optimizer.load_state_dict(reshard_optim_state)
 
 ## 07 **Kubernetes 上提交 GPT 弹性容错作业**
 
-1.  在 Kubernetes 集群上部署 DLRover ElasticJob CRD。
+1. 在 Kubernetes 集群上部署 DLRover ElasticJob CRD。
 
 ```Java
 git clone git@github.com:intelligent-machine-learning/dlrover.git

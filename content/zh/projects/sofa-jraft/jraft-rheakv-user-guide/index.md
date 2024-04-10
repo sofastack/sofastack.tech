@@ -25,8 +25,8 @@ RheaKV 是一个轻量级的分布式的嵌入式的 KV 存储 lib， rheaKV 包
 ## 存储设计
 
 * 存储层为可插拔设计， 目前支持 MemoryDB 和 RocksDB 两种实现：
-    * MemoryDB 基于 ConcurrentSkipListMap 实现，有更好的性能，但是单机存储容量受内存限制
-    * [RocksDB](https://github.com/facebook/rocksdb) 在存储容量上只受磁盘限制，适合更大数据量的场景
+  * MemoryDB 基于 ConcurrentSkipListMap 实现，有更好的性能，但是单机存储容量受内存限制
+  * [RocksDB](https://github.com/facebook/rocksdb) 在存储容量上只受磁盘限制，适合更大数据量的场景
 * 数据强一致性， 依靠 jraft 来同步数据到其他副本, 每个数据变更都会落地为一条 raft 日志, 通过 raft 的日志复制功能, 将数据安全可靠地同步到同 group 的全部节点中
 
 ## 使用场景
@@ -454,7 +454,7 @@ MetadataClient 负责从 PD 获取集群元信息以及注册元信息
 
 ### 客户端路由
 
-#### __分片逻辑：RegionRouteTable__
+#### **分片逻辑：RegionRouteTable**
 
 ![分片逻辑](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*NySFTZrZ8l4AAAAAAAAAAABjARQnAQ)
 
@@ -465,27 +465,27 @@ MetadataClient 负责从 PD 获取集群元信息以及注册元信息
 * 假设 id 为 2 的 region2 [startKey2, endKey2) 分裂
 * 它分裂后的两个 region 分别为 id 继续为 2 的 region2 [startKey2, splitKey) 和 id 为 3 的 region3 [splitKey, endKey2)
 * 可以再看上图会发现，此时只需要再往 regionRouteTable 添加一个元素 `<region3, splitKey>` 即可，原来 region2 对应的数据是不需要修改的
-    * __Write-Operation__
-        * 单 key 写请求路由逻辑很简单，根据 key 查询对应的 region，再对该 region 发起请求即可。
-        * 如果是一个批量操作写请求，比如 `put(List)`，那么会对所有 keys 进行 split，分组后再并行分别请求所属的 regionEngine，要注意的是此时无法提供事务保证。
-    * __Read-Operation__
-        * 单 key 读请求路由逻辑也很简单，根据 key 查询对应的 region，再对该 region 发起请求即可。
-        * 如果是一个批量读请求，比如 scan(startKey, endKey)，那么会对所有 keys 进行 split，分组后并行再分别请求所属的 regionEngine。
+  * **Write-Operation**
+    * 单 key 写请求路由逻辑很简单，根据 key 查询对应的 region，再对该 region 发起请求即可。
+    * 如果是一个批量操作写请求，比如 `put(List)`，那么会对所有 keys 进行 split，分组后再并行分别请求所属的 regionEngine，要注意的是此时无法提供事务保证。
+  * **Read-Operation**
+    * 单 key 读请求路由逻辑也很简单，根据 key 查询对应的 region，再对该 region 发起请求即可。
+    * 如果是一个批量读请求，比如 scan(startKey, endKey)，那么会对所有 keys 进行 split，分组后并行再分别请求所属的 regionEngine。
 
 #### Failover
 
-__RheaKV 对用户端提供的是异步 api, 这就要求 failover 的处理流程必须也得是异步, 这对设计增加了一些难度，实现会绕一点__
+**RheaKV 对用户端提供的是异步 api, 这就要求 failover 的处理流程必须也得是异步, 这对设计增加了一些难度，实现会绕一点**
 
-__以下问题是 RheaKV 必须要解决的:__
+**以下问题是 RheaKV 必须要解决的:**
 
 1. 异步失败 retry
 2. 调用时遇到 membership change，需要刷新 membership 重试
 3. 一次操作多个 key (比如 range scan) 时遭遇 region 自动 split，需要在 retry 时也能自动分裂(放大)请求，并异步合并多个响应结果
 4. 前一次操作可能是本地调用，retry 时却可能需要发起远程调用，也可能是反过来的情况，两种情况都需要兼容
 
-__RheaKV 可以划分为两种类型的请求，两种类型需要不同的 failover 逻辑：__
+**RheaKV 可以划分为两种类型的请求，两种类型需要不同的 failover 逻辑：**
 
-* __Single-Key-Operation (只操作一个 key)__
+* **Single-Key-Operation (只操作一个 key)**
 Retry 依赖一个叫做 FailoverClosure 的 callback 类，大体逻辑如下:
 
 ```java
@@ -528,9 +528,9 @@ Retry 依赖一个叫做 FailoverClosure 的 callback 类，大体逻辑如下:
 
 **Multi-Keys-Operation (操作多个 key 或一个 key 区间)**
 
-1. 对于多个 key 的请求，还要先对 keys 做 split，每个 region 包含一部分数量的 keys，对于每个 region 有单独 failover 处理，此时 FailoverClosure 类只能处理表①中的作为类型，处理逻辑同 __Single-Key-Operation__
-2. 对于表②中三个 region epoch 发生变更的错误，FailoverClosure 无法处理，因为在 epoch 发生变化时，很有可能是发生了 region split，对于先前定位的 region，分裂成了 2 个，此时不光需要重新从 PD 刷新 region 信息，failover 还要处理请求的放大(多个 region 就会产生多个请求)，所以新增了几类 __FailoverFuture__ 来处理这种请求放大的逻辑
-3. 其中 __scan(startKey, endKey)__ 的 FailoverFuture 主要逻辑如下图, 可以看到整个流程是完全异步的
+1. 对于多个 key 的请求，还要先对 keys 做 split，每个 region 包含一部分数量的 keys，对于每个 region 有单独 failover 处理，此时 FailoverClosure 类只能处理表①中的作为类型，处理逻辑同 **Single-Key-Operation**
+2. 对于表②中三个 region epoch 发生变更的错误，FailoverClosure 无法处理，因为在 epoch 发生变化时，很有可能是发生了 region split，对于先前定位的 region，分裂成了 2 个，此时不光需要重新从 PD 刷新 region 信息，failover 还要处理请求的放大(多个 region 就会产生多个请求)，所以新增了几类 **FailoverFuture** 来处理这种请求放大的逻辑
+3. 其中 **scan(startKey, endKey)** 的 FailoverFuture 主要逻辑如下图, 可以看到整个流程是完全异步的
 
 ```java
         @Override
@@ -566,28 +566,27 @@ Retry 依赖一个叫做 FailoverClosure 的 callback 类，大体逻辑如下:
 
 #### 举例: 一次 scan 的流程
 
-* __确定 key 区间 [startKey, endKey) 覆盖的 region list__
-    * RegionRouteTable#findRegionsByKeyRange(startKey, endKey)
-    * RegionRouteTable 是一个红黑树结构存储的 region 路由表，startKey 为作为红黑树的 key，只要查找 [startKey, endKey) 的子视图再加上一个 floorEntry(startKey) 即可
-    * 如下图例子，计算得出 [startKey, endKey) 横跨 region1, region2, region3 一共 3 个分区(region1 为 floor entry, region2 和 region3 为子视图部分)
+* **确定 key 区间 [startKey, endKey) 覆盖的 region list**
+  * RegionRouteTable#findRegionsByKeyRange(startKey, endKey)
+  * RegionRouteTable 是一个红黑树结构存储的 region 路由表，startKey 为作为红黑树的 key，只要查找 [startKey, endKey) 的子视图再加上一个 floorEntry(startKey) 即可
+  * 如下图例子，计算得出 [startKey, endKey) 横跨 region1, region2, region3 一共 3 个分区(region1 为 floor entry, region2 和 region3 为子视图部分)
 
 ![region list](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*5gBCRJZjEqAAAAAAAAAAAABjARQnAQ)
 
-* __请求分裂: scan -> multi-region scan__
-    * region1 -> regionScan(startKey, regionEndKey1)
-    * region2 -> regionScan(regionStartKey2, regionEndKey2)
-    * region3 -> regionScan(regionStartKey3, endKey)
+* **请求分裂: scan -> multi-region scan**
+  * region1 -> regionScan(startKey, regionEndKey1)
+  * region2 -> regionScan(regionStartKey2, regionEndKey2)
+  * region3 -> regionScan(regionStartKey3, endKey)
 
 ![请求分裂](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*BLVgSaFlAgoAAAAAAAAAAABjARQnAQ)
 
-* __遭遇 region split (分裂的标志是 region epoch 发生变化)__
-    * 刷新 RegionRouteTable，需要从 PD 获取最新的路由表，比如当前示例中 region2 分裂变成了 region2 + region5
-        * region2 -> regnonScan(regionStartKey2, regionEndKey2)  请求分裂并重试
-            * region2 -> regionScan(regionStartKey2, newRegionEndKey2)
-            * region5 -> regionScan(regionStartKey5, regionEndKey5)
+* **遭遇 region split (分裂的标志是 region epoch 发生变化)**
+  * 刷新 RegionRouteTable，需要从 PD 获取最新的路由表，比如当前示例中 region2 分裂变成了 region2 + region5
+    * region2 -> regnonScan(regionStartKey2, regionEndKey2)  请求分裂并重试
+      * region2 -> regionScan(regionStartKey2, newRegionEndKey2)
+      * region5 -> regionScan(regionStartKey5, regionEndKey5)
 
 ![region split](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*Cr5gT4FFs3QAAAAAAAAAAABjARQnAQ)
 
-* __遭遇 Invalid Peer (NOT\_LEADER 等错误)__
-    * 这个就很简单了, 重新获取当前 key 区间所属的 raft-group 的最新 leader，再次发起调用即可
-
+* **遭遇 Invalid Peer (NOT\_LEADER 等错误)**
+  * 这个就很简单了, 重新获取当前 key 区间所属的 raft-group 的最新 leader，再次发起调用即可

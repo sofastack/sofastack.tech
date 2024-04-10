@@ -156,4 +156,3 @@ Netty 提供了一个方便的解码工具类 ByteToMessageDecoder ，如图上�
 - [蚂蚁通信框架实践](https://mp.weixin.qq.com/s/JRsbK1Un2av9GKmJ8DK7IQ)
 - [nio-trick-and-trap](http://jm.taobao.org/2013/11/25/java-nio-trick-and-trap/)
 - 《netty 实战》
-

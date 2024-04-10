@@ -10,11 +10,11 @@ cover: "/cover.jpg"
 ---
 
 > **SOFA** **S**calable **O**pen **F**inancial **A**rchitecture 是蚂蚁金服自主研发的金融级分布式中间件，包含了构建金融级云原生架构所需的各个组件，是在金融场景里锤炼出来的最佳实践。
-> 
+>
 > SOFATracer 是一个用于分布式系统调用跟踪的组件，通过统一的 TraceId 将调用链路中的各种网络调用情况以日志的方式记录下来，以达到透视化网络调用的目的，这些链路数据可用于故障的快速发现，服务治理等。
-> 
+>
 > 本文为《剖析 | SOFATracer 框架》第四篇，本篇作者米麒麟，来自陆金所。《剖析 | SOFATracer 框架》系列由 SOFA 团队和源码爱好者们出品，项目代号：[SOFA:TracerLab/](sofa:tracerlab/)**，**目前领取已经完成，感谢大家的参与。
-> 
+>
 > SOFATracer： <https://github.com/sofastack/sofa-tracer>
 
 ![SOFATracer-采样数据和源码剖析.JPG](https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1548920649244-937dd370-77b4-4a69-90d5-a449d6b8a73e.jpeg)
@@ -155,7 +155,6 @@ SOFATracer 提供基于固定采样率的采样实现，采样模式需设置为
 ```
 
 - 刷新 20 次请求
-
 
 ```json
 {"time":"2018-11-09 12:14:29.466","local.app":"SOFATracerSpringMVC","traceId":"0a0fe8ec154173686946410159846","spanId":"0.1","request.url":"http://localhost:8080/springmvc","method":"GET","result.code":"200","req.size.bytes":-1,"resp.size.bytes":0,"time.cost.milliseconds":2,"current.thread.name":"http-nio-8080-exec-5","baggage":""}

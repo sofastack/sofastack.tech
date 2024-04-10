@@ -29,19 +29,18 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*IcnvSK-tBssAAAAAAA
 - 本次分享涉及的项目地址
 
 sofa-registry 开箱即用计划
-https://github.com/sofastack/sofa-registry/projects/5
+<https://github.com/sofastack/sofa-registry/projects/5>
 
 sofa-registry 深度解析计划
-https://github.com/sofastack/sofa-registry/projects/4
+<https://github.com/sofastack/sofa-registry/projects/4>
 
 (这两个计划想帮助对参与开源项目感兴趣的同学由浅入深的上手，成为社区的一员)
 
 sofa-tracer
-https://github.com/sofastack/sofa-tracer
+<https://github.com/sofastack/sofa-tracer>
 
 mosn
-https://github.com/mosn/mosn
-
+<https://github.com/mosn/mosn>
 
 ## 活动介绍
 
@@ -65,13 +64,12 @@ https://github.com/mosn/mosn
 **项目地址**
 
 sofa-registry 开箱即用计划
-https://github.com/sofastack/sofa-registry/projects/5
+<https://github.com/sofastack/sofa-registry/projects/5>
 
 sofa-registry 深度解析计划
-https://github.com/sofastack/sofa-registry/projects/4
+<https://github.com/sofastack/sofa-registry/projects/4>
 
 (这两个计划想帮助对参与开源项目感兴趣的同学由浅入深的上手，成为社区的一员)
-
 
 **听众收获**
 
@@ -111,8 +109,7 @@ https://github.com/sofastack/sofa-registry/projects/4
 
 **项目地址**
 
-https://github.com/sofastack/sofa-tracer
-
+<https://github.com/sofastack/sofa-tracer>
 
 **听众收获**
 
@@ -146,7 +143,7 @@ https://github.com/sofastack/sofa-tracer
 
 **项目地址**
 
-https://github.com/mosn/mosn
+<https://github.com/mosn/mosn>
 
 **听众收获**
 

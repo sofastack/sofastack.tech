@@ -139,10 +139,13 @@ com.alipay.remoting.rpc.protocol.RpcResponseProcessor#doProcess
 ```java
 String result =(String)SofaResponseFuture.getResponse(timeout,true);
 ```
+
 2.获取原生 Futrue，该种方式获取 JDK 原生的 Future，参数表示是否清除线程上下文中的结果。因为响应结果放在 JDK 原生的 Future，需要通过 JDK Future 的 get()方法获取响应结果。
+
 ```java
 Future future = SofaResponseFuture.getFuture(true);
 ```
+
 当前线程发起调用得到 RpcResponseFuture 对象，当前线程继续执行下一次调用。在任意时刻使用 RpcResponseFuture 对象的 get() 方法来获取结果，如果响应已经回来此时就马上得到结果；如果响应没有回来则阻塞住当前线程直到响应回来或者超时时间到。
 
 ### Callback 回调调用
@@ -152,6 +155,7 @@ Future future = SofaResponseFuture.getFuture(true);
 ```java
 com.alipay.sofa.rpc.core.invoke.SofaResponseCallback
 ```
+
 使用 SOFABoot 的话配置
 
 ```xml

@@ -1,11 +1,12 @@
 
 ---
+
 title: "Local"
 aliases: "/sofa-rpc/docs/Registry-Local"
 ---
 
-
 To use local file as service registry center, you can configure it in `application.properties` as follows:
+
 ```plain
 com.alipay.sofa.rpc.registry.address=local:///home/admin/registry/localRegistry.reg
 ```

@@ -58,4 +58,3 @@ The configuration file provides extensive configuration options to help you cust
 ## Scenarios
 
 ACTS supports quick compilation and running of interface test cases for SOFABoot-based applications in the Intellij IDEA development environment. We recommend that you use Intellij IDEA 2017 for better compatibility with ACTS IDE.
-

@@ -1,9 +1,9 @@
 
 ---
+
 title: "OpenFeign 日志"
 aliases: "/sofa-tracer/docs/Log_Format_OpenFeign"
 ---
-
 
 SOFATracer 集成 Spring Cloud OpenFeign 后输出请求的链路数据格式，默认为 `JSON` 数据格式。
 

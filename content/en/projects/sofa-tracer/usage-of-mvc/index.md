@@ -69,9 +69,9 @@ You can access the REST service by visiting [http://localhost:8080/springmvc](ht
 
 ```json
 {
-	content: "Hello, SOFATracer SpringMVC DEMO!",
-	id: 1,
-	success: true
+ content: "Hello, SOFATracer SpringMVC DEMO!",
+ id: 1,
+ success: true
 }
 ```
 

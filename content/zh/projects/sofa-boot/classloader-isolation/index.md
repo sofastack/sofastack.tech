@@ -1,9 +1,9 @@
 
 ---
+
 title: "SOFABoot 使用类隔离"
 aliases: "/sofa-boot/docs/ClassLoader-Isolation"
 ---
-
 
 SOFABoot 提供了类隔离框架 SOFAArk, 弥补了 Spring Boot 在类隔离能力上的缺失，用以解决在实际开发中常见的类冲突、包冲突问题，详细请参考  [SOFAArk](https://github.com/sofastack/sofa-ark)。
 
@@ -70,6 +70,7 @@ SOFABoot 提供了类隔离框架 SOFAArk, 弥补了 Spring Boot 在类隔离能
     </plugins>
 </build>
 ```
+
 插件配置项解释：
 
 + `outputDirectory`: 执行 `mvn package` 命令后，指定打出来的 ark 包存放目录，默认存放至 ${project.build.directory}
@@ -77,7 +78,6 @@ SOFABoot 提供了类隔离框架 SOFAArk, 弥补了 Spring Boot 在类隔离能
 + `denyImportClasses`: 默认情况下，应用会优先加载 ark plugin 导出的类，使用该配置项，可以禁止应用从 ark plugin 加载其导出类；
 + `denyImportPackages`: 对应上述的 `denyImportClasses`, 提供包级别的禁止导入；
 + `denyImportResources`: 默认情况下，应用会优先加载 ark plugin 导出的资源，使用该配置项，可以禁止应用从 ark plugin 加载其导出资源；
-
 
 ## 添加类隔离框架依赖
 
@@ -102,7 +102,6 @@ SOFABoot 的类隔离框架会自动检测应用中是否有引入 Ark Plugin（
 ```
 
 如此，在运行时，SOFABoot 的类隔离容器会自动隔离 SOFARPC 和其他应用依赖，避免可能存在的包冲突；当然开发者也可以独立开发自身所需 ark plugin 包，详情参考[SOFAArk](https://github.com/sofastack/sofa-ark)
-
 
 ## 运行
 
@@ -169,6 +168,7 @@ Ark container started in 8797 ms.
 ```
 
 ## 测试
+
 为了在跑测试用例时使用 SOFABoot 类隔离能力，需要额外引入 SOFABoot 官方提供的 `test-sofa-boot-starter` 依赖，使用 `SofaBootRunner` 和 `SofaJUnit4Runner` 编写集成测试和单元测试，这也是 SOFABoot 推荐测试用例的编写方式.
 
 使用 `SofaBootRunner` 和 `SofaJUnit4Runner` 的好处是会自动感知应用是否使用了类隔离能力，开发者只需添加或者删除 SOFABoot 类隔离依赖包：
@@ -183,6 +183,7 @@ Ark container started in 8797 ms.
 即可完成和 SOFABoot 类隔离能力的集成和剥离，使用详情如下：
 
 #### SofaBootRunner
+
 集成测试示例代码：
 
 ```java
@@ -213,6 +214,7 @@ public class IntegrationTestCase {
 依赖；根据 Spring Boot 依赖即服务的原则，如果检测到 `sofa-ark-springboot-starter` 依赖，`SofaBootRunner` 会使用 SOFABoot 类隔离能力，否则和原生的 `SpringRunner` 无异；
 
 #### SofaJUnit4Runner
+
 单元测试示例代码：
 
 ```java
@@ -229,6 +231,7 @@ public class UnitTestCase {
 `SofaJUnit4Runner` 同样会检测应用是否引入 `sofa-ark-springboot-starter` 依赖；根据 Spring Boot 依赖即服务的原则，如果检测到 `sofa-ark-springboot-starter` 依赖，`SofaJUnit4Runner` 会使用 SOFABoot 类隔离能力，否则和原生的 `JUnit4` 无异；
 
 #### 自定义 Runner
+
 在编写测试用例时，有时需要指定特殊的 Runner，为了统一编码风格，可以借助注解 `@DelegateToRunner` 配合 `SofaBootRunner` 和 `SofaJUnit4Runner` 使用，示例代码：
 
 ```java

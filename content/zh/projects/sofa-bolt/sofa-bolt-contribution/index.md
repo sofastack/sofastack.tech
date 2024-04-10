@@ -34,37 +34,37 @@ aliases: "/sofa-bolt/docs/Contribution"
 Bolt 所有修改都在分支上进行，修改完后提交 pull request ， 在 code review 后由项目维护人员 merge 到主干。
 因此，在获取源码步骤介绍后，你需要：
 
-* 下载代码到本地,这一步你可以选择 git/https 方式.
+- 下载代码到本地,这一步你可以选择 git/https 方式.
 
 ```bash
 git clone https://github.com/sofastack/sofa-bolt.git
 ```
 
-* 拉分支准备修改代码
+- 拉分支准备修改代码
 
 ```java
 git branch add_xxx_feature
 ```
 
-* 执行完上述命令后，你的代码仓库就切换到相应分支了。执行如下命令可以看到你当前分支：
+- 执行完上述命令后，你的代码仓库就切换到相应分支了。执行如下命令可以看到你当前分支：
 
 ```java
 git branch -a
 ```
 
-* 如果你想切换回主干，执行下面命令:
+- 如果你想切换回主干，执行下面命令:
 
 ```java
 git checkout -b master
 ```
 
-* 如果你想切换回分支，执行下面命令：
+- 如果你想切换回分支，执行下面命令：
 
 ```java
 git checkout -b "branchName"
 ```
 
-* 想直接从 github 上拉取分支到本地
+- 想直接从 github 上拉取分支到本地
 
 ```java
 git clone -b branchname https://xxx.git
@@ -76,16 +76,16 @@ git clone -b branchname https://xxx.git
 
 #### 修改代码注意事项
 
-* 代码风格保持一致
+- 代码风格保持一致
 Bolt 通过 Maven 插件来保持代码格式一致.在提交代码前,务必本地执行
 
 ```java
 mvn clean package
 ```
 
-* 补充单元测试代码
-* 新有修改应该通过已有的单元测试.
-* 应该提供新的单元测试来证明以前的代码存在 bugs，而新的代码已经解决了这些 bugs.
+- 补充单元测试代码
+- 新有修改应该通过已有的单元测试.
+- 应该提供新的单元测试来证明以前的代码存在 bugs，而新的代码已经解决了这些 bugs.
 
 你可以用如下命令运行所有测试
 
@@ -97,10 +97,10 @@ mvn clean test
 
 #### 其它注意事项
 
-* 请保持你编辑的代码的原有风格,尤其是空格换行等.
-* 对于无用的注释, 请直接删除
-* 对逻辑和功能不容易被理解的地方添加注释.
-* 及时更新文档
+- 请保持你编辑的代码的原有风格,尤其是空格换行等.
+- 对于无用的注释, 请直接删除
+- 对逻辑和功能不容易被理解的地方添加注释.
+- 及时更新文档
 修改完代码后，执行如下命令提交所有修改到本地:
 
 ```java
@@ -135,27 +135,27 @@ git push origin "branchname"
 
 SOFABolt is released under the Apache 2.0 license, and follows a very
 standard Github development process, using Github tracker for issues and
-merging pull requests into master . If you would like to contribute something, 
+merging pull requests into master . If you would like to contribute something,
 or simply want to hack on the code this document should help you get started.
 
 ### Sign the Contributor License Agreement
 
-Before we accept a non-trivial patch or pull request we will need you to 
-sign the Contributor License Agreement. Signing the contributor’s agreement 
-does not grant anyone commit rights to the main repository, but it does mean 
-that we can accept your contributions, and you will get an author credit if 
-we do. Active contributors might be asked to join the core team, and given 
+Before we accept a non-trivial patch or pull request we will need you to
+sign the Contributor License Agreement. Signing the contributor’s agreement
+does not grant anyone commit rights to the main repository, but it does mean
+that we can accept your contributions, and you will get an author credit if
+we do. Active contributors might be asked to join the core team, and given
 the ability to merge pull requests.
 
 ### Code Conventions
 
-None of these is essential for a pull request, but they will all help. 
+None of these is essential for a pull request, but they will all help.
 
 1. we provided a [code formatter file](AlipayFormatter.xml), it will formatting
 automatically your project when during process of building.
 
-2. Make sure all new `.java` files to have a simple Javadoc class comment 
-with at least an `@author` tag identifying you, and preferably at least a 
+2. Make sure all new `.java` files to have a simple Javadoc class comment
+with at least an `@author` tag identifying you, and preferably at least a
 paragraph on what the class is for.
 
 3. Add the ASF license header comment to all new `.java` files (copy from existing files in the project)
@@ -166,6 +166,6 @@ paragraph on what the class is for.
 
 6. A few unit tests would help a lot as well — someone has to do it.
 
-7. When writing a commit message please follow [these conventions](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html), if 
-you are fixing an existing issue please add Fixes gh-XXXX at the end 
+7. When writing a commit message please follow [these conventions](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html), if
+you are fixing an existing issue please add Fixes gh-XXXX at the end
 of the commit message (where XXXX is the issue number).

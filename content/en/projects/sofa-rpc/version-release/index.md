@@ -1,13 +1,13 @@
 
 ---
+
 title: "Version release"
 aliases: "/sofa-rpc/docs/Version-Release"
 ---
 
-
 ## Version number
 
-The system adopts a three-digit versioning scheme. The three digits respectively are major version number, minor version number, and revision number, for example: 5.1.2. 
+The system adopts a three-digit versioning scheme. The three digits respectively are major version number, minor version number, and revision number, for example: 5.1.2.
 
 For more information, see the [http://semver.org/lang/zh-CN/](http://semver.org/lang/zh-CN/).
 

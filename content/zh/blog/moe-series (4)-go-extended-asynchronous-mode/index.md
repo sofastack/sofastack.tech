@@ -20,8 +20,8 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*Q_GgSKOFXIYAAAAAA
 
 所以，我们需要一种异步模式：
 
--   我们在 Go 扩展中，启动一个 Goroutine，然后立即返回给 Envoy，当前正在处理的请求会被挂起，Envoy 则可以继续处理其他请求。
--   Goroutine 在后台异步执行，当 Goroutine 中的任务完成之后，再回调通知 Envoy，挂起的请求可以继续处理了。
+- 我们在 Go 扩展中，启动一个 Goroutine，然后立即返回给 Envoy，当前正在处理的请求会被挂起，Envoy 则可以继续处理其他请求。
+- Goroutine 在后台异步执行，当 Goroutine 中的任务完成之后，再回调通知 Envoy，挂起的请求可以继续处理了。
 
 注意：虽然 Goroutine 是异步执行，但是 Goroutine 中的代码，与同步模式下的代码，几乎是一样的，并不需要特别的处理。
 
@@ -31,8 +31,8 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*Q_GgSKOFXIYAAAAAA
 
 有两方面的原因：
 
--   有了 Full-feature supported Go，我们可以实现非常强大、复杂的扩展。
--   可以非常方便的集成现有 Go 世界的代码，享受 Go 生态的红利。
+- 有了 Full-feature supported Go，我们可以实现非常强大、复杂的扩展。
+- 可以非常方便的集成现有 Go 世界的代码，享受 Go 生态的红利。
 
 如果不支持全部的 Go 特性，那么在集成现有 Go 代码的时候，会有诸多限制，导致需要重写大量的代码，这样，就享受不到 Go 生态的红利了。
 

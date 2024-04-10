@@ -1,14 +1,15 @@
 
 ---
+
 title: "链路数据透传"
 aliases: "/sofa-rpc/docs/Invoke-Chain-Pass-Data"
 ---
-
 
 ## 链路数据透传
 
 链路数据透传功能支持应用向调用上下文中存放数据，达到整个链路上的应用都可以操作该数据。
 使用方式如下，可分别向链路的 request 和 response 中放入数据进行透传，并可获取到链路中相应的数据。
+
 ```java
 RpcInvokeContext.getContext().putRequestBaggage("key_request","value_request");
 RpcInvokeContext.getContext().putResponseBaggage("key_response","value_response");
@@ -17,12 +18,12 @@ String requestValue=RpcInvokeContext.getContext().getRequestBaggage("key_request
 String responseValue=RpcInvokeContext.getContext().getResponseBaggage("key_response");
 ```
 
-
 ## 使用示例
 
 例如 A -> B -> C 的场景中，将 A 设置的请求隐式传参数据传递给 B 和 C。在返回的时候，将 C 和 B 的响应隐式传参数据传递给 A。
 
 A 请求方设置的时候：
+
 ```java
 // 调用前设置请求透传的值
 RpcInvokeContext context = RpcInvokeContext.getContext();
@@ -34,6 +35,7 @@ context.getResponseBaggage("respBaggageB");
 ```
 
 B 业务代码中：
+
 ```java
 public String hello() {
     // 拿到请求透传的值
@@ -48,19 +50,20 @@ public String hello() {
 ```
 
 如果中途自己启动了子线程，则需要设置子线程的上下文：
+
 ```java
 CountDownLatch latch = new CountDownLatch(1);
 final RpcInvokeContext parentContext = RpcInvokeContext.peekContext();
 Thread thread = new Thread(new Runnable(){
     public void run(){
-	  try {
-	      RpcInvokeContext.setContext(parentContext);
-		  // 调一个远程服务
-		  xxxService.sayHello();
-		  latch.countDown();
-	  } finally {
-	      RpcInvokeContext.removeContext();
-	  }
+   try {
+       RpcInvokeContext.setContext(parentContext);
+    // 调一个远程服务
+    xxxService.sayHello();
+    latch.countDown();
+   } finally {
+       RpcInvokeContext.removeContext();
+   }
     }
 }, "new-thread");
 thread.start();

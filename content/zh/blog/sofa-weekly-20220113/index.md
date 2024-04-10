@@ -30,7 +30,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 欢迎大家在 GitHub 提交 issue 与我们互动
 
-我们会筛选 issue 通过 
+我们会筛选 issue 通过
 
 " SOFA WEEKLY " 的形式回复
 
@@ -42,7 +42,7 @@ A：SOFARegistry 本身是比较存粹的服务发布和订阅功能，应用级
 
 **「SOFARegistry」**：*[https://github.com/sofastack/sofa-registry/](https://github.com/sofastack/sofa-registry/)*
 
-**2. @yemoli #1290** 
+**2. @yemoli #1290**
 
 > 请问 MOSN 支持增加订阅 xDS  吗？gRPC DeltaAggregatedResources。
 

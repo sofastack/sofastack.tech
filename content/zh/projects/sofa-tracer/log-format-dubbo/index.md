@@ -1,5 +1,6 @@
 
 ---
+
 title: "Dubbo 日志"
 aliases: "/sofa-tracer/docs/Log_Format_Dubbo"
 ---
@@ -40,6 +41,7 @@ key | 表达含义
 ```json
 {"time":"2019-09-02 23:36:08.250","local.app":"dubbo-consumer","traceId":"1e27a79c156743856804410019644","spanId":"0","span.kind":"client","result.code":"00","current.thread.name":"http-nio-8080-exec-2","time.cost.milliseconds":"205ms","protocol":"dubbo","service":"com.glmapper.bridge.boot.service.HelloService","method":"SayHello","invoke.type":"sync","remote.host":"192.168.2.103","remote.port":"20880","local.host":"192.168.2.103","client.serialize.time":35,"client.deserialize.time":5,"req.size.bytes":336,"resp.size.bytes":48,"error":"","sys.baggage":"","biz.baggage":""}
 ```
+
 ### Dubbo 服务提供方摘要日志（dubbo-server-digest.log）
 
 以 JSON 格式输出的数据，相应 key 的含义解释如下：
@@ -121,11 +123,13 @@ key | 表达含义
 样例：
 
 * dubbo-client-stat.log
+
 ```json
 {"time":"2019-09-02 23:36:13.040","stat.key":{"method":"SayHello","local.app":"dubbo-consumer","service":"com.glmapper.bridge.boot.service.HelloService"},"count":1,"total.cost.milliseconds":205,"success":"true","load.test":"F"}
 ```
 
 * dubbo-server-stat.log
+
 ```json
 {"time":"2019-09-02 23:36:13.208","stat.key":{"method":"SayHello","local.app":"dubbo-provider","service":"com.glmapper.bridge.boot.service.HelloService"},"count":1,"total.cost.milliseconds":9,"success":"true","load.test":"F"}
 ```

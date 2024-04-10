@@ -64,5 +64,3 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*A4bcQoXf5ZkAAAAAA
 通过 ServiceMesh 的精细化引流能力，可以将 Serverless Task 流量收敛在指定的“服务分组”集群内，再利用框架（如 SOFA Boot）的“服务分组”配置能力，控制非期望的 Bean 和服务在“服务分组”集群内关闭，最终就能够做到将 Serverless Task 流量完整的收敛在指定的服务器集群内，达到流量收敛的目的后，再结合定时任务本身具备的周期、可预测等特点，就可以根据任务执行情况弹性伸缩“服务分组”内的机器资源从而提升资源利用率。
 
 鉴于 Serverless Task 给业务带来稳定性和资源利用率提升的业务价值，还能够提升业务的研发效率，我们还会继续支持更多调度以及批处理业务场景的 Serverless 化，如：金融交互文件场景、ODPS 离/在线转换场景和 FTP 文件处理场景，欢迎大家关注。
-
-

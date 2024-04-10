@@ -22,7 +22,7 @@ cover: "https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1585544894349-8be1db03-e0
 
 今天我们将从以下几个方面，对 MOSN 的扩展机制进行介绍：
 
--  MOSN 扩展能力和扩展机制的详细介绍；
+- MOSN 扩展能力和扩展机制的详细介绍；
 - 结合示例对 MOSN 的 Filter 扩展机制与插件扩展机制进行详细介绍；
 - MOSN 后续扩展能力规划与展望；
 
@@ -51,6 +51,7 @@ MOSN 作为一款网络代理，在转发链路上的网络层、协议层、转
 在目前的内置 MOSN 实现中，Stream Filter 机制暂时与内置的 network filter: proxy 是绑定的，后面我们也考虑将这部分能力进行抽象，让其他 network filter 也可以复用这部分能力。
 
 关于 Stream Filter，今天会为大家讲解两个部分的内容：
+
 1. 一个 Stream Filter 包含哪些部分以及在 MOSN 中是如何工作的；
 2. 通过一个 Demo 演示来加深对 Stream Filter 的实现与应用；
 
@@ -112,6 +113,7 @@ MOSN 的 Plugin 机制包含了两部分内容，一是 MOSN 自定义的 Plugin
 #### 多进程 Plugin 框架
 
 MOSN 的 Plugin 框架是 MOSN 封装的一个可以让 MOSN 通过 gRPC 和独立进程进行交互的方式，它包含两部分：
+
 1. 独立的进程通过 MOSN Plugin 框架管理，作为 MOSN 的子进程；MOSN 的 Plugin 框架可以管理它们，如启动、关闭等；
 2. 通过在 MOSN 中实现的 agent，使用 gRPC 的方式和子进程进行交互，gRPC 可以是基于 tcp 的，也可以是基于 domain socket 的；
 
@@ -211,17 +213,17 @@ Demo Readme：[https://github.com/mosn/mosn/tree/master/examples/cn_readme/mosn-
 
 - 多进程 Demo 中证书加载的独立进程，使用 python 或者 java 实现以后，demo 运行演示成功。任意一种语言就算完成一个任务。
 
-+ examples/codes/mosn-extensions/plugin/cert_loader/python/
-+ examples/codes/mosn-extensions/plugin/cert_loader/java/
+- examples/codes/mosn-extensions/plugin/cert_loader/python/
+- examples/codes/mosn-extensions/plugin/cert_loader/java/
 
 - 多进程 Demo 中 stream filter 的独立进程，使用 python 或者 java 实现以后，demo 运行演示成功。任意一种语言就算完成一个任务。
 
-+ examples/codes/mosn-extensions/plugin/filter/python/
-+ examples/codes/mosn-extensions/plugin/filter/java/
+- examples/codes/mosn-extensions/plugin/filter/python/
+- examples/codes/mosn-extensions/plugin/filter/java/
 
 - SO 动态加载 Demo 中，SO 里实现的 Stream Filter 结合多进程框架（GO 语言）实现，Demo 运行演示成功。
 
-+ examples/codes/mosn-extensions/plugin/so/subprocess/
+- examples/codes/mosn-extensions/plugin/so/subprocess/
 
 跨语言相关的实现可以参考以下示例：
 
@@ -238,4 +240,4 @@ MOSN 官网：[https://mosn.io/](https://mosn.io/)
 
 本期直播视频回顾以及 PPT 查看地址
 
-https://tech.antfin.com/community/live/1152
+<https://tech.antfin.com/community/live/1152>

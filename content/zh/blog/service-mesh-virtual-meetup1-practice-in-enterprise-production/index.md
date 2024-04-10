@@ -300,7 +300,7 @@ CAP 理论。
 ## 参考资料
 
 - [Service Mesh 概述](https://www.servicemesher.com/istio-handbook/concepts/overview.html)
-- [Consul 作为注册中心在云环境的实践与应用](https://mp.weixin.qq.com/s/zoS-5oyfh9EV6S5PLy54yg) 
+- [Consul 作为注册中心在云环境的实践与应用](https://mp.weixin.qq.com/s/zoS-5oyfh9EV6S5PLy54yg)
 - [有了这三个锦囊，再也不用担心微服务治理了](https://mp.weixin.qq.com/s/62237UuEEJiOP_b3xRrZog)
 - [一文理解微服务高可用的常用手段](https://mp.weixin.qq.com/s/oky8g1Nisdr2T4kYG-DFhg)
 - [微服务断路器模式实现：Istio vs Hystrix](https://www.servicemesher.com/blog/istio-vs-hystrix-circuit-breaker/)

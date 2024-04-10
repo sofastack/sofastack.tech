@@ -1,9 +1,9 @@
 
 ---
+
 title: "Custom filter"
 aliases: "/sofa-rpc/docs/Custom-Filter"
 ---
-
 
 SOFARPC provides a good extensibility mechanism, which provide SPI capabilities for each module. SOFARPC uses multiple filters to intercept requests and responses. These filters can be customized and extended by users. The execution order of custom filters is after the built-in filters. The procedure is as follows:
 
@@ -24,6 +24,7 @@ public class CustomFilter extends Filter {
     }
 }
 ```
+
 2 The custom filter will be added into the interceptor chain. There are three specific ways to do this step.
 
 - Method 1: In API. In this way, the custom filter can take effect in the specified provider or consumer.
@@ -37,7 +38,7 @@ consumerConfig.setFilterRef(Arrays.asList(new CustomFilter()));
 ```
 
 - Method 2: Add `@Extension` annotation + configuration extension file to the class.
-   
+
 ```java
 @Extension("customer")
 public class CustomFilter extends Filter {    
@@ -52,6 +53,7 @@ public class CustomFilter extends Filter {
     }
 }
 ```
+
 Create a new extension file `META-INF/services/sofa-rpc/com.alipay.sofa.rpc.filter.Filter` with the following content:
 
 ```plain
@@ -59,6 +61,7 @@ customer=com.alipay.sofa.rpc.custom.CustomFilter
 ```
 
 Code injection.
+
 ```java
 // Service provider
 providerConfig.setFilter(Arrays.asList("customer"));
@@ -72,6 +75,6 @@ consumerConfig.setFilter(Arrays.asList("customer"));
 @Extension("customer")
 @AutoActive(providerSide = true, consumerSide = true)
 public class customerFilter extends Filter {
-		// ...
+  // ...
 }
 ```

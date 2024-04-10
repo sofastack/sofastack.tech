@@ -123,4 +123,3 @@ The person will leave a comment containing the code review suggestions on the co
 #### Merge the code into the master branch
 
 After your code passes the review, the SOFARegistry maintenance personnel will merge it into the master branch. You do not need to get involved in this step. After the code is merged, you will receive a message indicating a successful merge.
-

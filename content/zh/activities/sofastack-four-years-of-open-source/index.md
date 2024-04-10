@@ -42,7 +42,7 @@ naming 作为一个有着较长发展历史的领域，同时 naming 作为分�
 
 ### | 三、《蚂蚁集团 Service Mesh 进展回顾与展望》
 
-讲师：蚂蚁集团高级技术专家 石建伟（花名：卓与）      
+讲师：蚂蚁集团高级技术专家 石建伟（花名：卓与）
 
 [点击下载资料](https://gw.alipayobjects.com/os/bmw-prod/6c10e447-5a94-45f3-a84e-bef572485a28.pdf)
 
@@ -58,7 +58,7 @@ naming 作为一个有着较长发展历史的领域，同时 naming 作为分�
 
 ### | 四、《MOSN 1.0 发布，开启新一代架构演进》
 
-讲师：MOSN 核心成员 朱德江（花名：人德）    
+讲师：MOSN 核心成员 朱德江（花名：人德）
 
 [点击下载资料](https://gw.alipayobjects.com/os/bmw-prod/3a4f6f5f-8413-492b-a9f8-315619eee88b.pdf)
 
@@ -76,7 +76,7 @@ naming 作为一个有着较长发展历史的领域，同时 naming 作为分�
 
 讲师：蚂蚁集团技术专家 赵真灵（花名：有济）
 
-讲师：蚂蚁集团技术专家刘晶（花名：飞廉）      
+讲师：蚂蚁集团技术专家刘晶（花名：飞廉）
 
 [点击下载资料](https://gw.alipayobjects.com/os/bmw-prod/797e73f6-eb34-4b56-829c-6bb11710d5b0.pdf)
 

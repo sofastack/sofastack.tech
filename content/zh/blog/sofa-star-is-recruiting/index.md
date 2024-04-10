@@ -69,7 +69,7 @@ SOFA 陆续在全国各地组织了多场 Meetup 活动，活动全程直播，�
 
 > ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*-iy2QqHprZgAAAAAAAAAAAAAARQnAQ)
 
-### 召唤装备！
+### 召唤装备
 
 在 SOFA 星球，大家不仅能够与每个领域的技术大牛面对面交流技术、认识新朋友，更能够收获 SOFA 星途者的周边衣服、杯子、双肩包等……
 

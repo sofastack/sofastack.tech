@@ -14,7 +14,7 @@ The versions of the framework components used in this case are as follows:
 
 * Spring Cloud Greenwich.RELEASE
 * SOFABoot 3.1.1/SpringBoot 2.1.0.RELEASE
-* SOFATracer 3.0.4 
+* SOFATracer 3.0.4
 * JDK 8
 
 This case includes two submodules:
@@ -44,11 +44,12 @@ Replace the above with the followings:
     <version>${sofa.boot.version}</version>
 </parent>
 ```
+
 The `${sofa.boot.version}` specifies the latest version of SOFABoot. For more information about SOFABoot versions, refer to [Release notes](https://github.com/sofastack/sofa-boot/releases).
 
 ## New tracer-sample-with-openfeign-provider Module
 
-* Introducing dependence 
+* Introducing dependence
 
     ```xml
     <dependency>
@@ -64,6 +65,7 @@ The `${sofa.boot.version}` specifies the latest version of SOFABoot. For more in
         <artifactId>spring-cloud-starter-openfeign</artifactId>
     </dependency>
     ```
+
     > SOFATracer versions are controlled by SOFABoot versions. If the SOFABoot versions used do not match, you need to manually specify a tracer version that is higher than 3.0.4.
 
 * `application.properties` Configuration
@@ -75,6 +77,7 @@ The `${sofa.boot.version}` specifies the latest version of SOFABoot. For more in
     spring.cloud.zookeeper.discovery.enabled=true
     spring.cloud.zookeeper.discovery.instance-id=tracer-provider
     ```
+
 * Simple resource class
 
     ```java
@@ -86,9 +89,10 @@ The `${sofa.boot.version}` specifies the latest version of SOFABoot. For more in
         }
     }
     ```
+
 ## New tracer-sample-with-openfeign-consumer Module
 
-* Introducing dependence 
+* Introducing dependence
 
     ```xml
     <dependency>
@@ -114,6 +118,7 @@ The `${sofa.boot.version}` specifies the latest version of SOFABoot. For more in
     spring.cloud.zookeeper.discovery.enabled=true
     spring.cloud.zookeeper.discovery.instance-id=tracer-consumer
     ```
+
 * Define the feign resource
 
     ```java
@@ -123,6 +128,7 @@ The `${sofa.boot.version}` specifies the latest version of SOFABoot. For more in
         String testFeign();
     }
     ```
+
 * User @EnableFeignClients And @EnableDiscoveryClient
 
     ```java
@@ -148,7 +154,7 @@ The `${sofa.boot.version}` specifies the latest version of SOFABoot. For more in
 
 ## Test
 
-Start tracer-sample-with-openfeign-provider and tracer-sample-with-openfeign-consumer two projects; then browser access:Http://localhost:8082/ . Then check the log:
+Start tracer-sample-with-openfeign-provider and tracer-sample-with-openfeign-consumer two projects; then browser access:<Http://localhost:8082/> . Then check the log:
 
 In the `application.properties`, the log printing directory we configured is `./logs`, which is the root directory of the current application (we can configure it based on actual situation). In the root directory, you can see log files in the structure similar to the followings:
 

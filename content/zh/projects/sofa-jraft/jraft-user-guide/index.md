@@ -1077,7 +1077,7 @@ NodeOptions 有一个 `raftOptions` 选项，用于设置跟性能和数据可�
 从 1.3.10 开始， jraft 引入了一个枚举类 `com.alipay.sofa.jraft.option.ApplyTaskMode`，它包含下列选项：
 
 * `ApplyTaskMode.Blocking`，阻塞模式，当节点过载的时候，将阻塞 `apply` 方法调用，直到处理能力缓解。
-* `ApplyTaskMode.NonBlocking`，非阻塞模式，也是**默认模式**，当节点过载的时候， 调用 `apply` 方法将立即失败返回，抛出异常或者执行 `closure#run(status)` 并传入错误状态。
+* `ApplyTaskMode.NonBlocking`，非阻塞模式，也是__默认模式__，当节点过载的时候， 调用 `apply` 方法将立即失败返回，抛出异常或者执行 `closure#run(status)` 并传入错误状态。
 
 默认模式是 `ApplyTaskMode.NonBlocking`，你可以通过 `NodeOptions#setApplyTaskMode(ApplyTaskMode)` 改变。
 

@@ -27,7 +27,7 @@ GitHub 地址：[https://github.com/sofastack/sofa-registry](https://github.com/
 
 - **DataServer 总体架构**：对 SOFARegistry 中支持海量数据的总体架构做一个简述，讲解数据分片和同步方案中所涉及到的关键技术点；
 - **DataServer 启动**：讲解 DataServer 启动的服务，从而为接下来更直观地理解数据分片、数据同步的触发时机以及触发方式等做一个铺垫；
--  **数据分片**：讲解 SOFARegistry 中采用的一致性 Hash 算法进行数据分片的缘由以及具体实现方法；
+- **数据分片**：讲解 SOFARegistry 中采用的一致性 Hash 算法进行数据分片的缘由以及具体实现方法；
 - **数据同步方案**：讲解 SOFARegistry 采用的数据同步方案；
 
 ## DataServer 总体架构

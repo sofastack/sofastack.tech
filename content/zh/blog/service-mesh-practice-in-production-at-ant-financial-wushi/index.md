@@ -93,9 +93,9 @@ Istio 以其前瞻的设计结合云原生的概念，一出现就让人眼前�
 
 虽然确实有少量 Greenfield 应用已经在基于云原生来构建了，但现实是那些大量的 Brownfield 应用是公司业务的顶梁柱，承载着更大的业务价值，所以如何把它们纳入 Service Mesh 统一管控，从而带来更大的价值，也就成了更需要优先考虑的话题。
 
-![vm](https://cdn.nlark.com/yuque/0/2019/png/226702/1575015733259-bbd4c49e-8aab-44c1-b717-736f4e042509.png) 
+![vm](https://cdn.nlark.com/yuque/0/2019/png/226702/1575015733259-bbd4c49e-8aab-44c1-b717-736f4e042509.png)
 
-[图片来源](https://medium.com/next-level-german-engineering/comparison-of-two-different-approaches-towards-container-management-4e5298736d42)      
+[图片来源](https://medium.com/next-level-german-engineering/comparison-of-two-different-approaches-towards-container-management-4e5298736d42)
 
 ![standalone-service-registry.png](https://cdn.nlark.com/yuque/0/2019/png/226702/1575015733266-e476d1f4-c792-4aa5-a070-448005c2cea2.png)
 
@@ -108,7 +108,7 @@ Istio 以其前瞻的设计结合云原生的概念，一出现就让人眼前�
 1. **Mixer**
    1. **Mixer 的性能问题，一直都是 Istio 中最被人诟病的地方；**
    1. 尤其在 Istio 1.1/1.2 版本之后引入了 Out-Of-Process Adapter，更是雪上加霜；
-   1. 从落地的角度看，**Mixer V1 **糟糕至极的性能，已经是“生命无法承受之重”。对于一般规模的生产级落地而言，Mixer 性能已经是难于接受，更不要提大规模落地……
+   1. 从落地的角度看，**Mixer V1**糟糕至极的性能，已经是“生命无法承受之重”。对于一般规模的生产级落地而言，Mixer 性能已经是难于接受，更不要提大规模落地……
    1. Mixer V2 方案则给了社区希望：将 Mixer 合并进 Sidecar，引入 web assembly 进行 Adapter 扩展，这是我们期待的 Mixer 落地的正确姿势，是 Mixer 的未来，是 Mixer 的『诗和远方』。然而社区望穿秋水，但 Mixer V2 迟迟未能启动，长期处于 In Review 状态，远水解不了近渴；
 2. **Pilot**
    1. Pilot 是一个被 Mixer 掩盖的重灾区：长期以来大家的性能关注点都在 Mixer，表现糟糕而且问题明显的 Mixer 一直在吸引火力。但是当选择放弃 Mixer（典型如官方在 Istio 新版本中提供的关闭 Mixer 的配置开关）之后，Pilot 的性能问题也就很快浮出水面；

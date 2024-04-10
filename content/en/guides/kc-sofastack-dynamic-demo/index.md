@@ -15,7 +15,7 @@ Based on the background of [kc-sofastack-demo](https://github.com/sofastack-guid
 
 ## Demo content
 
-Implement the dynamic change of product sorting via the dynamic module capability provided by SOFABoot and the dynamic module control capability of SOFADashboard. 
+Implement the dynamic change of product sorting via the dynamic module capability provided by SOFABoot and the dynamic module control capability of SOFADashboard.
 
 Implement the change of application behavior without restarting the host and without changing the application configuration.
 
@@ -26,6 +26,7 @@ The project architecture is as follows:
 ## Tasks
 
 ### 1. Preparation
+
 Clone the demo from GitHub to local
 
 ```plain
@@ -71,7 +72,7 @@ As shown in the following screenshot, add the Ark package plugin in the POM file
 </plugin>
 ```
 
-#### Step 2: Run mvn clean package to package the project 
+#### Step 2: Run mvn clean package to package the project
 
 The successfully packaged JAR file is as shown in the following screenshot:
 
@@ -112,7 +113,7 @@ In the downloaded project, dynamic-stock-mng is the host application model. In t
 
 ```xml
 <plugin>
-	<groupId>com.alipay.sofa</groupId>
+ <groupId>com.alipay.sofa</groupId>
   <artifactId>sofa-ark-maven-plugin</artifactId>
   <version>0.6.0</version>
   <executions>
@@ -172,7 +173,7 @@ The log information after successful startup is as follows:
 
 #### 5. Register plugin information in Dashboard
 
-1. Click **Create**. 
+1. Click **Create**.
 2. In the popup dialog, enter plugin name and description.
 3. Click **OK**.
 
@@ -198,7 +199,7 @@ Before installing, you can first visit [http://localhost:8080](http://localhost:
 
 ![result-1](result-1.png)
 
-Then, click Install. After 1 ~ 2 seconds, the status is changed to ACTIVATED. 
+Then, click Install. After 1 ~ 2 seconds, the status is changed to ACTIVATED.
 
 ![activated](activated.png)
 

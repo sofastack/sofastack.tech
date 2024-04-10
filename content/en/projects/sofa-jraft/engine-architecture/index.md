@@ -32,4 +32,3 @@ The RPC module is used for network communication between nodes.
 
 1. The RPC server is built in a node to receive requests from other nodes or clients, and to redirect such requests to the corresponding service modules.
 2. The RPC client is used to issue requests to other nodes, such as requests for votes, log replication requests, and heartbeats.
-

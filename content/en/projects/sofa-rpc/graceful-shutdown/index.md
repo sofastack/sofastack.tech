@@ -1,12 +1,11 @@
 
 ---
+
 title: "Graceful shutdown"
 aliases: "/sofa-rpc/docs/Graceful-Shutdown"
 ---
 
-
 Graceful shutdown includes two parts. One is the RPC framework as client, and the other is the RPC framework as server.
-
 
 ### As server
 
@@ -123,7 +122,6 @@ Taking bolt as an example, closing the port is not an immediate action.
 ```
 
 Instead, it will determine the tasks of the current connection and queue on the server, first process the tasks in the queue, and then slowly shutdown.
-
 
 ### As client
 

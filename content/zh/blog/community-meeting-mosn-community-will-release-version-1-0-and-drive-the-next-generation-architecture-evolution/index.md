@@ -62,7 +62,7 @@ A：是的，就这个意思。现在我们的 demo 就可以玩起来了，只�
 「demo 文档」⬇️：
 [https://github.com/mosn/mosn/blob/master/pkg/networkextention/README-cn.md](https://github.com/mosn/mosn/blob/master/pkg/networkextention/README-cn.md)
 
-3.关于 GC 优化方式的讨论 
+3.关于 GC 优化方式的讨论
 
 A：（1）降低 GC 频率确实是有效的，可以减少长期存活对象的重复 mark。（2）不过这种预分配的，其实不是很灵活，最好的还是动态调整 GC Percent，保持 GC goal 在预期的水位。
 

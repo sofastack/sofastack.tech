@@ -277,7 +277,7 @@ sudo systemctl restart containerd
 验证 Containerd 是否使用 `nydus-snapshotter` 插件:
 
 ```YAML
-$ ctr -a /run/containerd/containerd.sock plugin ls | grep nydusio.containerd.snapshotter.v1          nydus                    -              ok
+ctr -a /run/containerd/containerd.sock plugin ls | grep nydusio.containerd.snapshotter.v1          nydus                    -              ok
 ```
 
 **Systemd 启动**
@@ -327,13 +327,13 @@ Oct 19 08:01:00 kvm-gaius-0 systemd[1]: Started nydus snapshotter.Oct 19 08:01:0
 
 **转换 Nydus 格式镜像**
 
-转换 `python:latest` 镜像为 Nydus 格式镜像, 可以直接使用已经转换好的 
+转换 `python:latest` 镜像为 Nydus 格式镜像, 可以直接使用已经转换好的
 
 `dragonflyoss/python-nydus:latest` 镜像, 跳过该步骤。转换工具可以使用 Nydusify[3] 也可以使用 acceld[4]。
 
 **登陆 Dockerhub**
 
-转换 Nydus 镜像, 
+转换 Nydus 镜像,
 
 `DOCKERHUB_REPO_NAME` 环境变量设置为用户个人的镜像仓库:
 
@@ -352,7 +352,7 @@ sudo nerdctl --snapshotter nydus run --rm -it $DOCKERHUB_REPO_NAME/python-nydus:
 搜索日志验证 Nydus 基于 Mirror 模式通过 Dragonfly 分发流量:
 
 ```YAML
-$ grep mirrors /var/lib/containerd-nydus/logs/**/*log[2022-10-19 10:16:13.276548 +00:00] INFO [storage/src/backend/connection.rs:271] backend config: ConnectionConfig { proxy: ProxyConfig { url: "", ping_url: "", fallback: false, check_interval: 5, use_http: false }, mirrors: [MirrorConfig { host: "http://127.0.0.1:65001", headers: {"X-Dragonfly-Registry": "https://index.docker.io"}, auth_through: false }], skip_verify: false, timeout: 10, connect_timeout: 10, retry_limit: 2 }
+grep mirrors /var/lib/containerd-nydus/logs/**/*log[2022-10-19 10:16:13.276548 +00:00] INFO [storage/src/backend/connection.rs:271] backend config: ConnectionConfig { proxy: ProxyConfig { url: "", ping_url: "", fallback: false, check_interval: 5, use_http: false }, mirrors: [MirrorConfig { host: "http://127.0.0.1:65001", headers: {"X-Dragonfly-Registry": "https://index.docker.io"}, auth_through: false }], skip_verify: false, timeout: 10, connect_timeout: 10, retry_limit: 2 }
 ```
 
 **PART. 3**
@@ -382,10 +382,10 @@ $ grep mirrors /var/lib/containerd-nydus/logs/**/*log[2022-10-19 10:16:13.276548
 而 Dragonfly 可以基于 P2P 技术有效减少回源镜像仓库的请求数量和下载流量。最优的情况，Dragonfly 可以保证大规模集群中每个下载任务只回源一次。
 
 **｜相关链接｜**
- 
+
 [1]Dragonfly1.x:*[https://github.com/dragonflyoss/Dragonfly](https://github.com/dragonflyoss/Dragonfly)*
 
-[2]Kind:*[https://kind.sigs.k8s.io/](https://kind.sigs.k8s.io/)* 
+[2]Kind:*[https://kind.sigs.k8s.io/](https://kind.sigs.k8s.io/)*
 
 [3]Nydusify:*[https://github.com/dragonflyoss/image-service/blob/master/docs/nydusify.md](https://github.com/dragonflyoss/image-service/blob/master/docs/nydusify.md)*
 
@@ -401,13 +401,13 @@ Github 仓库:
 
 *[https://github.com/dragonflyoss/Dragonfly2](https://github.com/dragonflyoss/Dragonfly2)*
 
-Slack Channel: 
+Slack Channel:
 
 *#dragonflyonCNCF Slack*
 
 Discussion Group:
 
-*dragonfly-discuss@googlegroups.com*
+*<dragonfly-discuss@googlegroups.com>*
 
 Twitter: *@dragonfly_oss*
 
@@ -427,7 +427,7 @@ Slack Channel:   *#nydus*
 
 **[https://github.com/dragonflyoss/Dragonfly2](https://github.com/dragonflyoss/Dragonfly2)**
 
-** 本周推荐阅读**
+**本周推荐阅读**
 
 [Dragonfly 基于 P2P 的文件和镜像分发系统](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247515730&idx=1&sn=185ccafb2e52b09b0c5746e5dd70f9ae&chksm=faa35188cdd4d89e014c71c1ebfdaa615eafca514443e40e923933df5e6ea32fe90ae50af74d&scene=21)
 

@@ -30,7 +30,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 欢迎大家在 GitHub 提交 issue 与我们互动
 
-我们会筛选 issue 通过 
+我们会筛选 issue 通过
 
 " SOFA WEEKLY " 的形式回复
 
@@ -42,7 +42,7 @@ A：一般 SLA 的定义和系统的关键指标相关，类似 Registry 的核�
 
 **「SOFARegistry」**：*[https://github.com/sofastack/sofa-registry/](https://github.com/sofastack/sofa-registry/)*
 
-**2.@郑长青  #2197** 
+**2.@郑长青  #2197**
 
 > 我在宿主应用使用 Ark Biz，采用 Maven 依赖方式静态合并部署，但是通过 biz-a 查看，没有启动业务应用，这个问题遇到过吗？
 

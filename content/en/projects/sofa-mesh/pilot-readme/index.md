@@ -1,9 +1,9 @@
 
 ---
+
 title: "Introduction to Pilot"
 aliases: "/sofa-mesh/docs/pilot-README"
 ---
-
 
 # Pilot introduction
 

@@ -18,4 +18,3 @@ The following table lists the features that have not yet been implemented. We en
 | Code | Support for Kubernetes | Medium |  |  |  |
 | Code | Support for Apollo | Medium |  |  |  |
 | Code | Frontend optimization | Medium |  |  |  |
-

@@ -80,7 +80,7 @@ a.Subscriber 存储到 Map<datainfoid, map> 的数据结构中，可以进行去
 
 b.定时从 Map 中取出 Subscribers ，进行分组创建推送任务
 
-c.最大数据量是 Session 单机的所有 Subscriber ，容量可控 
+c.最大数据量是 Session 单机的所有 Subscriber ，容量可控
 
 **-** **用 Map 存储 DataServer 上发生变化数据的 DataInfoId ，聚合通知 Session 进行推送[3]**
 
@@ -146,17 +146,17 @@ Session 在开启压缩缓存后，压缩在 CPU 占比获得了大幅度的降�
 
 然重试可以一定程度上提高成功率，但毕竟不能无限的重试。同时各个攒批操作本身也会有容量上限，瞬间大量的请求会造成任务被丢弃，因此就需要有定时任务来对因失败造成不一致的状态进行修复。  
 
-简要介绍一下 SOFARegistry 内部相关的定时任务是如何设计，从而实现数据的最终一致性： 
+简要介绍一下 SOFARegistry 内部相关的定时任务是如何设计，从而实现数据的最终一致性：
 
 **- 增量数据同步**
 
 Session 作为客户端同步写入数据的角色，可以认为他的 pub/sub 数据是最最准确的整个数据的同步过程是一个单向流，利用定时任务做到最终一致性 client -> Session -> dataLeader -> dataFollower
 
-**-** **Data 定时 (默认 6s) 与所有的 Session 对比并同步 pub 数据[10]**    
+**-** **Data 定时 (默认 6s) 与所有的 Session 对比并同步 pub 数据[10]**
 
 a.作为 Session 发送到 Data 上的 pub、unpub、clientoff 等修改数据的请求失败的兜底措施
 
-b.同时会在 slot leader 迁移到新的 Data 上或者 slot follower 升级成 slot leader 的时候主动发起一次同步，确保 slot 数据的完整性 
+b.同时会在 slot leader 迁移到新的 Data 上或者 slot follower 升级成 slot leader 的时候主动发起一次同步，确保 slot 数据的完整性
 
 **-** **Data slot follower 定时(默认 3min) 与 Data slot leader 对比并同步 pub 数据[11]**
 
@@ -164,7 +164,7 @@ b.同时会在 slot leader 迁移到新的 Data 上或者 slot follower 升级�
 
 **- 推送补偿**
 
-由于存在各种场景导致推送失败，下面每一个场景都会导致服务数据没有正确推送到每个客户端上    
+由于存在各种场景导致推送失败，下面每一个场景都会导致服务数据没有正确推送到每个客户端上
 
 a. Session 写入到 Data 失败
 
@@ -218,7 +218,7 @@ public abstract class BaseInfo implements Serializable, StoreData < String > {
 
 #### 3.5.2 临时对象复用
 
-对于高频使用场景，对象复用对内存优化是比较大的。 
+对于高频使用场景，对象复用对内存优化是比较大的。
 
 举例：
 
@@ -263,7 +263,7 @@ private static final transient ThreadLocal < StringBuilder > builder =        Th
 
 根据请求类型不同拆分线程池可以大幅度提高抗并发的能力，SOFARegistry 内分了多个独立的线程池，不同请求和事件使用同一个线程池处理，造成死锁：
 
-**- Session**    
+**- Session**
 
 a. accessDataExecutor : 处理来自注册中心客户端的请求
 

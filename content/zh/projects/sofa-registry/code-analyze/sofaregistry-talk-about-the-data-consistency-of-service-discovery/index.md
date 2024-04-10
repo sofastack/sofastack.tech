@@ -137,7 +137,7 @@ Etcd 默认的读数据流程是 Linearizability Read，那么怎么样才能读
 - 这是 Raft 论文中提到过的一种优化方案，具体来说：
 
 - Leader 将当前自己 Log 的 Commit Index 记录到一个 local 变量 Read Index 里面；
- 
+
 - 向其它节点发起一次 Heartbeat，如果大多数节点返回了对应的 Heartbeat Response，那么 Leader 就能够确定现在自己仍然是 Leader；
 
 - Leader 等待自己的状态机执行，直到 Apply Index 超过了 Read Index，这样就能够安全的提供 Linearizable Read 了；
@@ -473,7 +473,7 @@ throw new DistroException(String.format("Get data from %s failed.", key.getTarge
 
 - Nacos-A 发送 CheckSum 请求时，将自己作为 Leader 的 A_SERVICE_XXX 分别计算 md5code；
 
-- md5code 生成规则：ip.getIp() + ":" + ip.getPort() + "_" + ip.getWeight() + "_" + ip.isHealthy() + "_" + ip.getClusterName()；
+- md5code 生成规则：ip.getIp() + ":" + ip.getPort() + "*" + ip.getWeight() + "*" + ip.isHealthy() + "_" + ip.getClusterName()；
 
 - 在 Nacos-B 中计算出有差异的 A_SERVICE_XXX，对于需要 Update 的从 Nacos-A 中进行全量数据拉取；对于需要 Remove 的从内存中删除。
 
@@ -513,7 +513,7 @@ return result;
 
 **1. V1 Distro 最终数据一致性：**
 
-- 计算每个 Service 的 CheckSum 时，使用的是 ip.getIp() + ":" + ip.getPort() + "_" + ip.getWeight() + "_" + ip.isHealthy() + "_" + ip.getClusterName() 进行 CheckSum 计算；
+- 计算每个 Service 的 CheckSum 时，使用的是 ip.getIp() + ":" + ip.getPort() + "*" + ip.getWeight() + "*" + ip.isHealthy() + "_" + ip.getClusterName() 进行 CheckSum 计算；
 
 - 对于需要更新的数据，向原节点全量拉取 Service 的数据；可以考虑优化成差量拉取。
 
@@ -581,7 +581,7 @@ return result;
 
 *[https://github.com/sofastack/sofa-registry/](https://github.com/sofastack/sofa-registry/)*
 
-** 本周推荐阅读**
+**本周推荐阅读**
 
 [SOFARegistry | 大规模集群优化实践](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247517005&idx=1&sn=685cea90982f8ecec5ffc56880d63175&chksm=faa36c97cdd4e58163830407bd827838f6ecb0a5b0e22130b507141fe9a24b2e645666fc0571&scene=21)
 

@@ -10,6 +10,7 @@ aliases: "/sofa-boot/docs/sofa-jarslink-jarslink-invocation-demo"
 During merged deployment, Biz packages can communicate with each other by releasing and referencing JVM services apart from using the RPC framework. This sample project is intended to demonstrate how two Biz packages communicate by JVM services.
 
 Within the biz-jvm-invocation-sample project, there are three sub-projects whose functions are as follows:
+
 + facade: A common Java module that defines the SampleJvmService interface.
 
 ```java
@@ -44,7 +45,8 @@ public class HelloController {
 }
 ```
 
-+ app-two: A non-web application in SOFABoot that uses the `@SofaService` annotation to publish the SampleJvmService. 
++ app-two: A non-web application in SOFABoot that uses the `@SofaService` annotation to publish the SampleJvmService.
+
 ```java
 package me.qlong.tech.service.impl;
 
@@ -81,7 +83,7 @@ For detailed information about publishing and referencing JVM services, see the 
 
 ## Demo
 
-+ cd biz-jvm-invocation-sample/facade && mvn clean install 
++ cd biz-jvm-invocation-sample/facade && mvn clean install
 Execute the mvn clean install command in the facade root directory, and install the facade package in the local Maven repository so that you can add a facade dependency in app-one and app-two:
 
 ```xml

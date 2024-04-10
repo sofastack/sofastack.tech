@@ -138,7 +138,7 @@ Demo [工程地址](https://github.com/caojie09/sofaboot-module-run)
 </parent>
 ```
 
-替换为: 
+替换为:
 
 ```xml
 <parent>
@@ -190,9 +190,8 @@ public class HelloController {
 }
 ```
 
-访问 http://localhost:8080/hello-sofamodule ，可以看到 HelloController 成功调用到了 service-provide 发布的服务。
+访问 <http://localhost:8080/hello-sofamodule> ，可以看到 HelloController 成功调用到了 service-provide 发布的服务。
 
 ## 5. 总结
 
 本文主要介绍了使用 SOFABoot 进行上下文隔离的模块化开发，通过两个简单的用例工程，分别介绍了如何开发一个 SOFABoot 模块以及如何在 Spring Boot 快速集成模块化开发能力。每个 SOFABoot 模块都是独立的 Spring 上下文，SOFABoot 模块不仅仅包括代码，还包括 Spring 配置文件，用户在引用 SOFABoot 模块时，只需简单增加依赖即可，由框架负责刷新模块上下文，无需在 Spring 中新增任何 Bean 定义，简化了接入流程，降低了出错几率。
-

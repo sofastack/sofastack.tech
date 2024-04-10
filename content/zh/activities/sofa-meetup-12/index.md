@@ -22,13 +22,13 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*1wsAR44ALTEAAAAAA
 - 资料下载：<br/>
 [《攀登规模化的高峰蚂蚁集团大规模 Sigma 集 ApiServer 优化实践》](https://gw.alipayobjects.com/os/bmw-prod/75201cac-3aff-499b-8715-8809c00ae977.pdf)<br/>
 
-## 活动回顾 
+## 活动回顾
 
 **《攀登规模化的高峰蚂蚁集团大规模 Sigma 集 ApiServer 优化实践》**
 
 **嘉宾介绍**
 
-唐博：蚂蚁集团技术专家，目前主要致力于 Kubernetes 性能和规模化方向，在资源编排调度，以及机器学习平台等领域有所涉猎，是 Kubernetes/istio/volcano 等云原生相关项目的代码贡献者。 
+唐博：蚂蚁集团技术专家，目前主要致力于 Kubernetes 性能和规模化方向，在资源编排调度，以及机器学习平台等领域有所涉猎，是 Kubernetes/istio/volcano 等云原生相关项目的代码贡献者。
 
 谭崇康：蚂蚁集团高级技术专家，负责大规模 K8s 集群设计、集群性能及 Pod 交付成功率及吞吐保障。长期从事云平台领域的新架构研发工作，研究兴趣包括 Kubernetes 领域的最新技术、操作系统、大数据、AIOps 等。
 

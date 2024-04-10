@@ -26,7 +26,6 @@ date: 2022-03-18T15:00:00+08:00
 | gmt_create     | Date    | create time       |
 | gmt_modified   | Date    | last update time  |
 
-
 ## 写入
 
 ### 写入缓存
@@ -247,4 +246,3 @@ public List<AppRevision> getExpired(Date beforeTime, int limit) {
 **SOFARegistry** 内部的部分配置的更新需要及时感知，比如应用级服务发现的元数据变更，常见数据库并没有数据表变化通知的接口，**SOFARegistry** 实现了对于数据表更新实时 watch 的机制。
 
 **watch** 通过更新缓存 id 实现实时检测增量变化，实时感知失效数据。**list** 提供定时全量修正机制，补足 **watch** 对于的不足，缓存机制能防止大量节点同时上传大量相同数据造成可能的宕机。
-
