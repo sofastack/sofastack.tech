@@ -8,13 +8,13 @@ projects: [{name: "Seata", link: "https://github.com/seata/seata"}]
 
 **注意：您需要自行部署后端环境依赖，并修改示例中的服务依赖地址即可使用。**
 
-在开始该demo之前先完成《[使用 SOFAStack 快速构建微服务](https://github.com/sofastack-guides/kc-sofastack-demo)》，如果没有完成，可以基于仓库里的kc-sofastack-demo工程为基线完成下面的demo，该demo是在它基础上加上Seata分布式事务。但该demo不是只能应用于SOFA，可以适用于任何java技术栈应用。
+在开始该 demo 之前先完成《[使用 SOFAStack 快速构建微服务](https://github.com/sofastack-guides/kc-sofastack-demo)》，如果没有完成，可以基于仓库里的 kc-sofastack-demo 工程为基线完成下面的 demo，该 demo 是在它基础上加上 Seata 分布式事务。但该 demo 不是只能应用于 SOFA，可以适用于任何 java 技术栈应用。
 
 ## AT 模式
 
-#### 1、引入maven依赖
+#### 1、引入 maven 依赖
 
-将下面的依赖引入到父工程的pom文件中（kc-sofastack-demo/pom.xml）:
+将下面的依赖引入到父工程的 pom 文件中（kc-sofastack-demo/pom.xml）:
 
 ```html
 
@@ -52,7 +52,7 @@ projects: [{name: "Seata", link: "https://github.com/seata/seata"}]
 
 ```
 
-将下面的依赖引入到 stock-mng 工程的pom文件中（kc-sofastack-demo/stock-mng/pom.xml）:
+将下面的依赖引入到 stock-mng 工程的 pom 文件中（kc-sofastack-demo/stock-mng/pom.xml）:
 
 ```html
 
@@ -70,7 +70,7 @@ projects: [{name: "Seata", link: "https://github.com/seata/seata"}]
 
 ```
 
-将下面的依赖引入到 balance-mng-impl 工程的pom文件中（kc-sofastack-demo/balance-mng/balance-mng-impl/pom.xml）:
+将下面的依赖引入到 balance-mng-impl 工程的 pom 文件中（kc-sofastack-demo/balance-mng/balance-mng-impl/pom.xml）:
 
 ```html
 
@@ -94,9 +94,9 @@ projects: [{name: "Seata", link: "https://github.com/seata/seata"}]
 
 ```
 
-#### 2、使用Seata的DataSourceProxy代理实际的数据源，并配置GlobalTransactionScanner扫描@GlobalTransaction注解
+#### 2、使用 Seata 的 DataSourceProxy 代理实际的数据源，并配置 GlobalTransactionScanner 扫描@GlobalTransaction 注解
 
-将下面的java代码段加到 BalanceMngApplication 和 StockMngApplication 类的main方法下面:
+将下面的 java 代码段加到 BalanceMngApplication 和 StockMngApplication 类的 main 方法下面:
 
 ```java
 
@@ -138,11 +138,11 @@ public static class DataSourceConfig {
 
 ```
 
-注意上面的dataSource方法返回的是DataSourceProxy代理的数据源
+注意上面的 dataSource 方法返回的是 DataSourceProxy 代理的数据源
 
-#### 3、配置@GlobalTransactional注解使分布式事务生效:
+#### 3、配置@GlobalTransactional 注解使分布式事务生效
 
-在BookStoreControllerImpl类的purchase方法上加入@GlobalTransactional注解:
+在 BookStoreControllerImpl 类的 purchase 方法上加入@GlobalTransactional 注解:
 
 ```java
 
@@ -156,9 +156,9 @@ public Success purchase(String body) {
 }
 ```
 
-#### 4、配置Seata server:
+#### 4、配置 Seata server
 
-简单起见，将Seata server和BalanceMngApplication一起启动，在BalanceMngApplication类中加入启动Seata server的代码:
+简单起见，将 Seata server 和 BalanceMngApplication 一起启动，在 BalanceMngApplication 类中加入启动 Seata server 的代码:
 
 ```java
 
@@ -192,7 +192,7 @@ private static void startSeatServer(){
 
 ```
 
-演示的Seata server使用本地文件作为存储，将下面两个文件复制到balance-mng-bootstrap和stock-mng工程的/src/main/resources目录下:
+演示的 Seata server 使用本地文件作为存储，将下面两个文件复制到 balance-mng-bootstrap 和 stock-mng 工程的/src/main/resources 目录下:
 <br>文件名：file.conf
 <br>文件内容：
 
@@ -310,9 +310,9 @@ config {
 
 ```
 
-#### 5、创建undo_log表:
+#### 5、创建 undo_log 表
 
-在balance_db和stock_db两个数据库中都创建undo_log表:
+在 balance_db 和 stock_db 两个数据库中都创建 undo_log 表:
 
 ```sql
 
@@ -331,21 +331,21 @@ CREATE TABLE `undo_log` (
 
 ```
 
-#### 6、启动Seata server和stock-mng、balance-mng应用:
+#### 6、启动 Seata server 和 stock-mng、balance-mng 应用
 
-1. 运行BalanceMngApplication类的main方法(包含启动Seata server)
-2. 运行StockMngApplication类的main方法
+1. 运行 BalanceMngApplication 类的 main 方法(包含启动 Seata server)
+2. 运行 StockMngApplication 类的 main 方法
 3. 浏览器打开 <http://localhost:8080/index.html>
 
 ## TCC 模式
 
-#### 1、引入maven依赖
+#### 1、引入 maven 依赖
 
-见上文AT模式的1、引入maven依赖
+见上文 AT 模式的 1、引入 maven 依赖
 
-#### 2、实现TCC模式要求的三个接口: prepare、commit、rollback
+#### 2、实现 TCC 模式要求的三个接口: prepare、commit、rollback
 
-1. 在balance-mng-facade工程的pom文件引入依赖(kc-sofastack-demo/balance-mng/balance-mng-facade/pom.xml):
+1. 在 balance-mng-facade 工程的 pom 文件引入依赖(kc-sofastack-demo/balance-mng/balance-mng-facade/pom.xml):
 
 ```html
 
@@ -357,7 +357,7 @@ CREATE TABLE `undo_log` (
 </dependencies>
 ```
 
-2. 在BalanceMngFacade接口增加三个方法:
+2. 在 BalanceMngFacade 接口增加三个方法:
 
 ```java
 
@@ -371,7 +371,7 @@ boolean minusBalanceCommit(BusinessActionContext context);
 boolean minusBalanceRollback(BusinessActionContext context);
 ```
 
-3. 在BalanceMngMapper接口中实现上面三个接口需要用的sql:
+3. 在 BalanceMngMapper 接口中实现上面三个接口需要用的 sql:
 
 ```java
 
@@ -385,7 +385,7 @@ int minusBalanceCommit(@Param("userName") String userName, @Param("amount") BigD
 int minusBalanceRollback(@Param("userName") String userName, @Param("amount") BigDecimal amount);
 ```
 
-4. 修改balance_tb的表结构，增加freezed（冻结金额）字段:
+4. 修改 balance_tb 的表结构，增加 freezed（冻结金额）字段:
 
 ```sql
 
@@ -393,7 +393,7 @@ ALTER TABLE balance_tb add column freezed decimal(10,2) default 0.00;
 
 ```
 
-5. 在BalanceMngImpl类中实现BalanceMngFacade接口中增加的三个方法:
+5. 在 BalanceMngImpl 类中实现 BalanceMngFacade 接口中增加的三个方法:
 
 ```java
 
@@ -446,9 +446,9 @@ public boolean minusBalanceRollback(BusinessActionContext context) {
 
 ```
 
-#### 3、取消使用AT模式的DataSourceProxy
+#### 3、取消使用 AT 模式的 DataSourceProxy
 
-TCC模式不需要代理数据源，因为不需要解析sql，生成undo log，在BalanceMngApplication类中注释掉dataSource和createDataSource方法:
+TCC 模式不需要代理数据源，因为不需要解析 sql，生成 undo log，在 BalanceMngApplication 类中注释掉 dataSource 和 createDataSource 方法:
 
 ```java
 
@@ -481,7 +481,7 @@ public static class DataSourceConfig {
 
 ```
 
-#### 4、BookStoreControllerImpl的purchase方法改成调用BalanceMngFacade.minusBalancePrepare方法:
+#### 4、BookStoreControllerImpl 的 purchase 方法改成调用 BalanceMngFacade.minusBalancePrepare 方法
 
 ```java
 
@@ -518,11 +518,11 @@ public Success purchase(String body) {
 
 ```
 
-#### 5、StockMngImpl依赖的BalanceMngFacade接口改成使用xml方式引入:
+#### 5、StockMngImpl 依赖的 BalanceMngFacade 接口改成使用 xml 方式引入
 
-BalanceMngFacade是一个rpc接口，之前的例子我们是用@SofaReference注解方式引入，目前TCC模式不支持注解的方式拦截（一下个版本修复），所以需要改成用xml的方法引入:
+BalanceMngFacade 是一个 rpc 接口，之前的例子我们是用@SofaReference 注解方式引入，目前 TCC 模式不支持注解的方式拦截（一下个版本修复），所以需要改成用 xml 的方法引入:
 
-1. 在stock-mng工程的src/main/resources目录下创建spring目录，并创建seata-sofarpc-reference.xml:
+1. 在 stock-mng 工程的 src/main/resources 目录下创建 spring 目录，并创建 seata-sofarpc-reference.xml:
 
 ```html
 
@@ -542,7 +542,7 @@ BalanceMngFacade是一个rpc接口，之前的例子我们是用@SofaReference�
 
 ```
 
-2. 在StockMngApplication类上加入@ImportResource注解加载上面的spring配置文件
+2. 在 StockMngApplication 类上加入@ImportResource 注解加载上面的 spring 配置文件
 
 ```java
 
@@ -552,7 +552,7 @@ public class StockMngApplication {
 
 ```
 
-3. 将BookStoreControllerImpl类中引用balanceMngFacade接口的注解换成@Autowared:
+3. 将 BookStoreControllerImpl 类中引用 balanceMngFacade 接口的注解换成@Autowared:
 
 ```java
 
@@ -562,10 +562,10 @@ private BalanceMngFacade balanceMngFacade;
 
 ```
 
-#### 6、启动Seata server和stock-mng、balance-mng应用:
+#### 6、启动 Seata server 和 stock-mng、balance-mng 应用
 
-1. 运行BalanceMngApplication类的main方法(包含启动Seata server)
-2. 运行StockMngApplication类的main方法
+1. 运行 BalanceMngApplication 类的 main 方法(包含启动 Seata server)
+2. 运行 StockMngApplication 类的 main 方法
 3. 浏览器打开 <http://localhost:8080/index.html>
 
 ## 更多
