@@ -9,8 +9,8 @@ aliases: "/sofa-rpc/docs/Getting-Started-with-SOFA-Boot"
 ## 创建工程
 
 1. 环境准备：SOFABoot 需要 JDK7 或者 JDK8 ，需要采用 Apache Maven 2.2.5 或者以上的版本来编译。
-2. 工程构建：SOFABoot 构建在 Spring Boot 之上。因此可以使用 [Spring&nbsp;Boot&nbsp;的工程生成工具](http://start.spring.io/)来生成一个标准的Spring Boot 工程。
-3. 引入 SOFABoot 环境：生成的 Spring Boot 标准工程直接使用的 Spring Boot 的 parent 依赖，改为 SOFABoot 提供的 parent 依赖，该parent 提供并管控了多种 SOFABoot 提供的 starter。
+2. 工程构建：SOFABoot 构建在 Spring Boot 之上。因此可以使用 [Spring&nbsp;Boot&nbsp;的工程生成工具](http://start.spring.io/)来生成一个标准的 Spring Boot 工程。
+3. 引入 SOFABoot 环境：生成的 Spring Boot 标准工程直接使用的 Spring Boot 的 parent 依赖，改为 SOFABoot 提供的 parent 依赖，该 parent 提供并管控了多种 SOFABoot 提供的 starter。
 
 ```xml
 <parent>

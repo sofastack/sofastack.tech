@@ -50,7 +50,7 @@ scrape_configs:
 
 With the above configuration file, you can start Prometheus locally via Docker:
 
-```
+```plain
 docker run -d -p 9090:9090 -v $PWD/prometheus.yml:/etc/prometheus/prometheus.yml  --name prom prom/prometheus:master
 ```
 

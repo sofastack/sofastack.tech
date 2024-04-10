@@ -35,7 +35,7 @@ ACTS 的模版有可以有效应对上述问题，通过将类和表固化为 CS
 
 **1. 校验 flag 说明**
 
-    ```plain
+   plain ```plain
     Y: 插入
     N：不插入
     C：以此为 where 条件对插入后的数据进行清理
@@ -62,7 +62,7 @@ DB 模版的使用可参考准备 DB 数据。
 
 <p align="center">图8</p>
 
-点击 OK 后生成模板，如图9：
+点击 OK 后生成模板，如图 9：
 
 ![生成模型](generated-model.png)
 

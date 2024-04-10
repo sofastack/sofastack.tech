@@ -60,7 +60,7 @@ MOSN Agent 通过 ExtendConfig 特性，在 MOSN 启动时加载和完成初始�
 
 ExtendConfig 中定义 AgentBootstrapConfig 结构如下：
 
-```
+```plain
 type AgentBootstrapConfig struct {
 	Enable bool `json:"enable"`
 	// The number of connections established between the agent and each server
@@ -104,7 +104,7 @@ type AgentBootstrapConfig struct {
 
 针对每个远端的 Tunnel Server 实例，Agent 对应一个 AgentPeer 对象，启动时除了主动建立 ConnectionNum 个反向通信连接，还会额外建立一条旁路连接，这条旁路连接主要是用来发送一些管控参数，例如平滑关闭连接、调整连接比重。
 
-```
+```plain
 func (a *AgentPeer) Start() {
 	connList := make([]*AgentClientConnection, 0, a.conf.ConnectionNumPerAddress)
 	for i := 0; i < a.conf.ConnectionNumPerAddress; i++ {
@@ -123,7 +123,7 @@ func (a *AgentPeer) Start() {
 
 initConnection 方法进行具体的初始化完整的反向连接，采取指数退避的方式保证在最大重试次数之内建连成功。
 
-```
+```plain
 func (a *connection) initConnection() error {
 	var err error
 	backoffConnectDuration := a.reconnectBaseDuration
@@ -187,7 +187,7 @@ MOSN 反向通道完整的生命周期交互过程：
 
 建连过程中由 Tunnel Agent 主动发起，并且在 TCP 连接建立成功 *（TLS 握手成功）* 之后，将反向建连的关键信息 ConnectionInitInfo 序列化并传输给对端 Tunnel Server，该结构体定义了反向通道的元数据信息。
 
-```
+```plain
 // ConnectionInitInfo is the basic information of agent host,
 // it is sent immediately after the physical connection is established
 type ConnectionInitInfo struct {
@@ -208,7 +208,7 @@ Tunnel Server 接受该元数据信息之后，主要工作包括：
 
 此时建连过程才算完成。
 
-```
+```plain
 func (t *tunnelFilter) handleConnectionInit(info *ConnectionInitInfo) api.FilterStatus {
 	// Auth the connection
 	conn := t.readCallbacks.Connection()
@@ -261,7 +261,7 @@ func (t *tunnelFilter) handleConnectionInit(info *ConnectionInitInfo) api.Filter
 
 **3.** 更多的配套自动化运维和部署工具。
 
-### 了解更多…
+### 了解更多……
 
 **MOSN Star 一下✨：**
 *[https://github.com/mosn/mosn](https://github.com/mosn/mosn)*

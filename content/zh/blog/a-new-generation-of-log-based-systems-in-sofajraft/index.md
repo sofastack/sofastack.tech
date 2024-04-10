@@ -67,7 +67,7 @@ Github 地址：
 
 \- **Value_pos**: 存储在对应 File 中的哪个位置开始
 
-\- 其他的可能还有 crc，时间戳等......
+\- 其他的可能还有 crc，时间戳…….
 
 ![img](https://gw.alipayobjects.com/zos/bmw-prod/ad19776e-1429-4389-8920-077188313872.webp)
 
@@ -205,7 +205,7 @@ boolean truncatePrefix(final long firstIndexKept);/*** Delete uncommitted logs f
 
 \- 一套代码可读性强的存储系统，代码需要符合 SOFAJRaft 的规范
 
-......
+……
 
 在本次任务中，我和导师在存储架构的设计上进行了多次的讨论与修改，最终设计出了一套完整的方案，能够完美的契合以上的所有要求。
 

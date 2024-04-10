@@ -58,7 +58,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **会议内容：**
 
-- 8月回顾
+- 8 月回顾
 
   - Arklet 待完成的动作
 

@@ -78,7 +78,7 @@ String responseStr = httpClient.executeGet(httpGetUrl);
 
 Start the SOFABoot app and see the log in the console as follows:
 
-```
+```plain
 2019-04-12 13:38:09.896  INFO 51193 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
 2019-04-12 13:38:09.947  INFO 51193 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8081 (http)
 2019-04-12 13:38:09.952  INFO 51193 --- [           main] c.a.s.t.e.okhttp.OkHttpDemoApplication   : Started OkHttpDemoApplication in 3.314 seconds (JVM running for 4.157)
@@ -86,7 +86,7 @@ Start the SOFABoot app and see the log in the console as follows:
 
 When there is a log similar to the following, the call to OkHttp is successful:
 
-```
+```plain
 2019-04-12 13:38:10.205  INFO 51193 --- [           main] c.a.s.t.e.okhttp.OkHttpDemoApplication   : Response is {"count":1,"name":"sofa"}
 ```
 
@@ -94,7 +94,7 @@ When there is a log similar to the following, the call to OkHttp is successful:
 
 In the `application.properties`, the log printing directory we configured is `./logs`, which is the root directory of the current application (we can configure it based on actual situation). In the root directory, you can see log files in the structure similar to the followings:
 
-```
+```plain
 ./logs
 ├── spring.log
 └── tracelog

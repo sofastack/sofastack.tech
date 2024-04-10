@@ -30,7 +30,7 @@ totalRateLimit: 1024Mi
 
 其中 `perPeerRateLimit` 为单个任务设置流量上限， `totalRateLimit` 为单个节点的所有任务设置流量上限。
 
-静态限流策略的理想情况是： `perPeerRateLimit` 设置为20M ， `totalRateLimit` 设置为 100M ，且该节点目前运行了 5 个或更多的 P2P 下载任务，这种情况下可以确保所有任务总带宽不会超过 100M ，且带宽会被有效利用。
+静态限流策略的理想情况是： `perPeerRateLimit` 设置为 20M ， `totalRateLimit` 设置为 100M ，且该节点目前运行了 5 个或更多的 P2P 下载任务，这种情况下可以确保所有任务总带宽不会超过 100M ，且带宽会被有效利用。
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9961baec5df1458692eb084cf6b51538~tplv-k3u1fbpfcp-zoom-1.image)
 
@@ -48,7 +48,7 @@ totalRateLimit: 1024Mi
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/97596adf05ba40929d31e7a777e2280e~tplv-k3u1fbpfcp-zoom-1.image)
 
-根据以上分析，Dragonfly 进行任务限速的逻辑为，每个peer task（`peerTaskConductor`）会有单独的限速 `perPeerRateLimit` ，同时 `pieceManager` 会有 `TotalRateLimit` 的总限速，以此达到单任务单独限流，同时限制所有任务总带宽的效果。
+根据以上分析，Dragonfly 进行任务限速的逻辑为，每个 peer task（`peerTaskConductor`）会有单独的限速 `perPeerRateLimit` ，同时 `pieceManager` 会有 `TotalRateLimit` 的总限速，以此达到单任务单独限流，同时限制所有任务总带宽的效果。
 
 ### 03 优化方案
 
@@ -109,7 +109,7 @@ Traffic shaper 的具体运行逻辑为，由`peerTaskManager`维护`trafficShap
 测试 traffic shaper 相比原有的静态限流策略在单个任务、多个任务并发、多个任务交错等多种情况下的性能提升，测试结果如下：
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cb7d9914142a4768a7f2c3ee943ebb5e~tplv-k3u1fbpfcp-zoom-1.image)
-*注：若不特殊注明，单任务限流为4KB/s，总限流为10KB/s*
+*注：若不特殊注明，单任务限流为 4KB/s，总限流为 10KB/s*
 
 可以看到， traffic shaper 在单任务、多任务不相交、单任务低带宽等情况下相比静态限流策略性能提升明显，为 24%~59% 。在多个任务并发、多个任务交错等情况下和静态限流策略性能相当。综上，实验证明 sampling traffic shaper 能很好地解决任务数量较少时总带宽被大量浪费的情况，同时在任务数量较多以及其他复杂情况时依旧能保证和静态限流算法持平的效果。
 

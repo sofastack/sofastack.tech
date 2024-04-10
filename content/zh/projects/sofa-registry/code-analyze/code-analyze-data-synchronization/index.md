@@ -55,7 +55,7 @@ SessionServer 和 DataServer 之间的数据同步，是基于推拉结合的机
 
 - 拉：除了上述的 DataServer 主动推以外，SessionServer 每隔一定的时间间隔，会主动向 DataServer 查询所有 dataInfoId 的 version 信息，然后再与 SessionServer 内存的 version 作比较，若发现 version 有变化，则主动向 DataServer 获取数据。这个“拉”的逻辑，主要是对“推”的一个补充，若在“推”的过程有错漏的情况可以在这个时候及时弥补。
 
->关于推和拉两种模式检查的 version 有一些差异，可以详见下面 推模式下的数据同步 和 拉模式下的数据同步 中的具体介绍
+> 关于推和拉两种模式检查的 version 有一些差异，可以详见下面 推模式下的数据同步 和 拉模式下的数据同步 中的具体介绍
 
 ### 推模式下的数据同步流程
 推模式是通过 SyncingWatchDog 这个守护线程不断 loop 执行来实现数据变更检查和通知发起的。
@@ -100,7 +100,7 @@ for (SlotState slotState : slotTableStates.slotStates.values()) {
 
 ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*u2avTJNS9rMAAAAAAAAAAAAAARQnAQ)
 
-需要注意的是，拉模式对推送流程的补充，这里的 version 是每个 sub 的 lastPushedVersion， 而 推模式的version 是 pub 的数据的 version。关于 lastPushedVersion 的获取可以参考 `com.alipay.sofa.registry.server.session.store.SessionInterests#selectSubscribers`
+需要注意的是，拉模式对推送流程的补充，这里的 version 是每个 sub 的 lastPushedVersion， 而 推模式的 version 是 pub 的数据的 version。关于 lastPushedVersion 的获取可以参考 `com.alipay.sofa.registry.server.session.store.SessionInterests#selectSubscribers`
 
 ```java
 store.forEach((String dataInfoId, Map<String, Subscriber> subs) -> {
@@ -121,7 +121,7 @@ store.forEach((String dataInfoId, Map<String, Subscriber> subs) -> {
 
 ### DataServer 多副本之间的数据同步
 
-主要是 slot对应的 data 的 follower 定期和 leader 进行数据同步，其同步逻辑与 SessionServer 和 DataServer 之间的数据同步逻辑差异不大；发起方式也是一样的；data 判断如果当前节点不是 leader，就会进行与 leader 之间的数据同步。
+主要是 slot 对应的 data 的 follower 定期和 leader 进行数据同步，其同步逻辑与 SessionServer 和 DataServer 之间的数据同步逻辑差异不大；发起方式也是一样的；data 判断如果当前节点不是 leader，就会进行与 leader 之间的数据同步。
 
 ```java
 if (localIsLeader(slot)) {
@@ -132,7 +132,7 @@ if (localIsLeader(slot)) {
 }
 ```
 
->篇幅原因，这部分不展开讨论。
+> 篇幅原因，这部分不展开讨论。
 
 ### 增量同步 diff 计算逻辑分析
 
@@ -230,7 +230,7 @@ for (DatumSummary summary : targetDatumSummaries) {
     }
 ```
 
-这里同样分析几种场景（下面只的是更新 dataInfoId 对应的 publisher，registerId 与 publisher是 一一对应）：
+这里同样分析几种场景（下面只的是更新 dataInfoId 对应的 publisher，registerId 与 publisher 是 一一对应）：
 
 - 目标数据集与基线数据集相同，且数据没有超过 publisherMaxNum，返回的待更新和待移除均为空，且没有剩余未处理数据
 
@@ -250,4 +250,4 @@ for (DatumSummary summary : targetDatumSummaries) {
 - 在拉模式和数据变更通知两个部分，内部采用了类似生产-消费模型，一方面是对于生产和消费逻辑的解耦，从代码上更独立；再者通过缓存或者队列来消除生产和消费速度不同而相互阻塞的问题。
 - 拉模式对推模式的补充；我们知道推模式是 server -> client，发生在数据变更时，如果出现一些异常，导致某条 server -> client 链路推送失败，则会导致不同 client 持有的数据不一致的情况；拉模式的补充，使得 client 可以主动去完成对于数据一致性的检查。
 
->最后，感谢大家的阅读，文中如有错误，请指出；也欢迎大家关注 SOFAStack 社区。
+> 最后，感谢大家的阅读，文中如有错误，请指出；也欢迎大家关注 SOFAStack 社区。

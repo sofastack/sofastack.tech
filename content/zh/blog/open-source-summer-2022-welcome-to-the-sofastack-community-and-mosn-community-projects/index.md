@@ -114,7 +114,7 @@ MOSN 是一款主要使用 Go 语言开发的网络代理 (类似 Envoy、Nginx)
 
 既然 Istio 可以集成 MOSN ，且 Layotto 跟 MOSN 是一体的，因此本次的任务是把 Layotto 作为数据面跟 Istio 进行集成，以服务调用为例，在应用通过 Layotto 的 invokeService API 去调用目标服务时可以直接复用 Istio 强大的治理能力，比如流量控制、故障注入等等。
 
-Layotto 之前就已经可以跟 Istio 1.5.x 集成，由于落后当时的 Istio 版本太多，最终没有合并到主干，本次任务希望可以集成 1.10.x 之后的Istio。
+Layotto 之前就已经可以跟 Istio 1.5.x 集成，由于落后当时的 Istio 版本太多，最终没有合并到主干，本次任务希望可以集成 1.10.x 之后的 Istio。
 
 项目社区导师：marco[gujin.mzj@antgroup.com](gujin.mzj@antgroup.com)
 
@@ -136,4 +136,4 @@ Layotto 之前就已经可以跟 Istio 1.5.x 集成，由于落后当时的 Isti
 
 与导师沟通时间：4.21-5.20
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*8G5NRZ7UEToAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*8G5NRZ7UEToAAAAAAAAAAAAAARQnAQ)

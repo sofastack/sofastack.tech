@@ -24,7 +24,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 ### SOFA&MOSN 社区 本周 Contributor
 
->![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*07viQaDCJAEAAAAAAAAAAAAAARQnAQ)
+> ![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*07viQaDCJAEAAAAAAAAAAAAAARQnAQ)
 
 ### 每周读者问答提炼
 
@@ -36,24 +36,24 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **@徐豪** 提问：
 
->想了解 Ark 动态模块，如何在 IDEA 里面进行开发调试？
+> 想了解 Ark 动态模块，如何在 IDEA 里面进行开发调试？
 
 A：这个和普通工程基于 idea 调试没有什么区别的，你的 issue 里面提到要调试模块，那就在安装模块的时候，将断点打在你关注的代码行。
 
->目前我没有看到相关的 guide，然后自行尝试，先启动容器，再手工启动模块，感觉没成功，不清楚问题出在哪？
+> 目前我没有看到相关的 guide，然后自行尝试，先启动容器，再手工启动模块，感觉没成功，不清楚问题出在哪？
 
 A：～/logs/sofa-ark 看看有日志吗？
 
 **@孙英雄** 提问：
 
->请问伙伴们有在用 SOFA 技术栈在非金融的项目开发吗？
+> 请问伙伴们有在用 SOFA 技术栈在非金融的项目开发吗？
 
 A：有的哈，可以看下使用者登记 
 [https://github.com/sofastack/sofa-rpc/issues/375https://github.com/sofastack/sofastack.tech/issues/5](https://github.com/sofastack/sofa-rpc/issues/375https://github.com/sofastack/sofastack.tech/issues/5)
 
 **@来永国** 提问：
 
->升 SpringBoot to 2.4.x 还有计划吗？
+> 升 SpringBoot to 2.4.x 还有计划吗？
 
 A：GitHub 上有一些 exmaple，你可以先玩玩。这个今年在规划了，下个 SOFABoot 版本 3.11.0 将会升级到 Spring Boot 2.4.13。
 

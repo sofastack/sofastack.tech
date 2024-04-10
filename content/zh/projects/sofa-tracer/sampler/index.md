@@ -22,15 +22,15 @@ com.alipay.sofa.tracer.samplerName=PercentageBasedSampler
 
 #### 验证方式
 
-* 当采样率设置为100时，每次都会打印摘要日志。
-* 当采样率设置为0时，不打印
-* 当采样率设置为0~100之间时，按概率打印
+* 当采样率设置为 100 时，每次都会打印摘要日志。
+* 当采样率设置为 0 时，不打印
+* 当采样率设置为 0~100 之间时，按概率打印
 
 以请求 10 次来验证下结果。
 
-1、当采样率设置为100时，每次都会打印摘要日志
+1、当采样率设置为 100 时，每次都会打印摘要日志
 
-启动工程，浏览器中输入：http://localhost:8080/springmvc ；并且刷新地址10次，查看日志如下：
+启动工程，浏览器中输入：http://localhost:8080/springmvc ；并且刷新地址 10 次，查看日志如下：
 
 ```json
 {"time":"2018-11-09 11:54:47.643","local.app":"SOFATracerSpringMVC","traceId":"0a0fe8ec154173568757510019269","spanId":"0.1","request.url":"http://localhost:8080/springmvc","method":"GET","result.code":"200","req.size.bytes":-1,"resp.size.bytes":0,"time.cost.milliseconds":68,"current.thread.name":"http-nio-8080-exec-1","baggage":""}
@@ -45,21 +45,21 @@ com.alipay.sofa.tracer.samplerName=PercentageBasedSampler
 {"time":"2018-11-09 11:54:54.565","local.app":"SOFATracerSpringMVC","traceId":"0a0fe8ec154173569456310189269","spanId":"0.1","request.url":"http://localhost:8080/springmvc","method":"GET","result.code":"200","req.size.bytes":-1,"resp.size.bytes":0,"time.cost.milliseconds":2,"current.thread.name":"http-nio-8080-exec-8","baggage":""}
 ```
 
-2、当采样率设置为0时，不打印
+2、当采样率设置为 0 时，不打印
 
-启动工程，浏览器中输入：http://localhost:8080/springmvc ；并且刷新地址10次，查看 ./logs/tracerlog/ 目录，没有 spring-mvc-digest.log 日志文件
+启动工程，浏览器中输入：http://localhost:8080/springmvc ；并且刷新地址 10 次，查看 ./logs/tracerlog/ 目录，没有 spring-mvc-digest.log 日志文件
 
-3、当采样率设置为0~100之间时，按概率打印
+3、当采样率设置为 0~100 之间时，按概率打印
 
 这里设置成 20
 
-* 刷新10次请求
+* 刷新 10 次请求
 ```json
 {"time":"2018-11-09 12:14:29.466","local.app":"SOFATracerSpringMVC","traceId":"0a0fe8ec154173686946410159846","spanId":"0.1","request.url":"http://localhost:8080/springmvc","method":"GET","result.code":"200","req.size.bytes":-1,"resp.size.bytes":0,"time.cost.milliseconds":2,"current.thread.name":"http-nio-8080-exec-5","baggage":""}
 {"time":"2018-11-09 12:15:21.776","local.app":"SOFATracerSpringMVC","traceId":"0a0fe8ec154173692177410319846","spanId":"0.1","request.url":"http://localhost:8080/springmvc","method":"GET","result.code":"200","req.size.bytes":-1,"resp.size.bytes":0,"time.cost.milliseconds":2,"current.thread.name":"http-nio-8080-exec-2","baggage":""}
 ```
 
-* 刷新20次请求
+* 刷新 20 次请求
 ```json
 {"time":"2018-11-09 12:14:29.466","local.app":"SOFATracerSpringMVC","traceId":"0a0fe8ec154173686946410159846","spanId":"0.1","request.url":"http://localhost:8080/springmvc","method":"GET","result.code":"200","req.size.bytes":-1,"resp.size.bytes":0,"time.cost.milliseconds":2,"current.thread.name":"http-nio-8080-exec-5","baggage":""}
 {"time":"2018-11-09 12:15:21.776","local.app":"SOFATracerSpringMVC","traceId":"0a0fe8ec154173692177410319846","spanId":"0.1","request.url":"http://localhost:8080/springmvc","method":"GET","result.code":"200","req.size.bytes":-1,"resp.size.bytes":0,"time.cost.milliseconds":2,"current.thread.name":"http-nio-8080-exec-2","baggage":""}
@@ -70,7 +70,7 @@ com.alipay.sofa.tracer.samplerName=PercentageBasedSampler
 
 ### 自定义采样模式
 
-SOFATracer 中提供了一个采样率计算的接口 Sampler ，如果你需要定制化自己的采样策略，可通过实现此接口来进行扩展。下面通过一个简单的Demo 来演示如何使用自定义采样模式。
+SOFATracer 中提供了一个采样率计算的接口 Sampler ，如果你需要定制化自己的采样策略，可通过实现此接口来进行扩展。下面通过一个简单的 Demo 来演示如何使用自定义采样模式。
 
 #### 自定义采样规则类
 

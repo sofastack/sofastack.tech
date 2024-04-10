@@ -15,7 +15,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1566971825765-57ff814b-1eb
 
 ## 前言
 
-标题“Service Mesh发展趋势(续)”中的“续”是指在今年5月底，我在 CloudNative Meetup上做了一个“[Service Mesh发展趋势：云原生中流砥柱](https://mp.weixin.qq.com/s/N_z14Ej_TUCEvo3Onzausw)”的演讲，当时主要讲了三块内容：Service Mesh 产品动态、发展趋势、与云原生的关系。后来有同学反应希望部分感兴趣的内容能讲的更深一些，所以今天将继续“Service Mesh 发展趋势”这个话题。
+标题“Service Mesh 发展趋势(续)”中的“续”是指在今年 5 月底，我在 CloudNative Meetup 上做了一个“[Service Mesh 发展趋势：云原生中流砥柱](https://mp.weixin.qq.com/s/N_z14Ej_TUCEvo3Onzausw)”的演讲，当时主要讲了三块内容：Service Mesh 产品动态、发展趋势、与云原生的关系。后来有同学反应希望部分感兴趣的内容能讲的更深一些，所以今天将继续“Service Mesh 发展趋势”这个话题。
 
 今天给大家分享的内容有部分是上次演讲内容的深度展开，如社区关心的 Mixer v2 以及最近看到的一些业界新的技术方向，如 web assembly 技术，还有产品形态上的创新，如 google traffic director 对 Service Mesh 的虚拟机形态的创新支持。
 
@@ -90,7 +90,7 @@ Mixer v1 架构的优点主要体现为：
 1. 集中式服务：提高基础设施后端的可用性，为前置条件检查结果提供集群级别的全局 2 级缓存；
 1. 灵活的适配器模型，使其以下操作变得简单：
   - 运维添加、使用和删除适配器；
-  - 开发人员创建新的适配器（超过20个适配器）；
+  - 开发人员创建新的适配器（超过 20 个适配器）；
 
 而 Mixer v1 架构的缺点，则主要体现为：
 
@@ -134,7 +134,7 @@ Mixer 带来的性能问题，以及 Mixer Cache 的失效，导致为了得到�
 
 也可以看我之前对这个内容的摘要翻译：[https://skyao.io/learning-istio/mixer/design/v2.html](https://skyao.io/learning-istio/mixer/design/v2.html)
 
-下图是这个 Mixer V2 Architecture 的信息摘要，当前状态为 In Review，创建时间为 2018年12月18，迄今八个月：
+下图是这个 Mixer V2 Architecture 的信息摘要，当前状态为 In Review，创建时间为 2018 年 12 月 18，迄今八个月：
 
 ![mixer-v2-proposal-summary](https://cdn.nlark.com/yuque/0/2019/png/226702/1566960497149-2f4d5fad-8e34-48c1-854d-8d1b2a185784.png)
 
@@ -184,9 +184,9 @@ Envoy 最新尝试的新扩展方式 Web Assembly，则成为我们今天的希�
 
 ![envpy-and-wasm](https://cdn.nlark.com/yuque/0/2019/png/226702/1566960510967-1f99ee9f-4310-4e88-ac6c-616b1f1044e3.png)
 
-最近 Envoy 在开始提供 WASM 的支持，具体可以看 [Support WebAssembly (WASM) in Envoy](https://github.com/envoyproxy/envoy/issues/4272) 这个 issue 的描述，目前从 github 的 milestone 中看到 Envoy 计划在1.12版本提供对 WASM 的支持（Envoy 1.11版本发布于7月12日）。
+最近 Envoy 在开始提供 WASM 的支持，具体可以看 [Support WebAssembly (WASM) in Envoy](https://github.com/envoyproxy/envoy/issues/4272) 这个 issue 的描述，目前从 github 的 milestone 中看到 Envoy 计划在 1.12 版本提供对 WASM 的支持（Envoy 1.11 版本发布于 7 月 12 日）。
 
-还有一个 [envoy-wasm项目](https://github.com/envoyproxy/envoy-wasm)，定位为"Playground for Envoy WASM filter"。
+还有一个 [envoy-wasm 项目](https://github.com/envoyproxy/envoy-wasm)，定位为"Playground for Envoy WASM filter"。
 
 ### WASM 简单介绍
 
@@ -249,9 +249,9 @@ Mixer v2 的终极目标形态应该是这样：
 
 我们从这个 Issue 中可以大体总结 Envoy 对 WASM 支持的过程：
 
-- 2018年8月28日，Issue 创建，提交对 WASM 支持的想法；
-- 2018年10月开始动手，进行 poc；
-- 2019年5月 poc 完成，然后创建 envoy-wasm 项目；
+- 2018 年 8 月 28 日，Issue 创建，提交对 WASM 支持的想法；
+- 2018 年 10 月开始动手，进行 poc；
+- 2019 年 5 月 poc 完成，然后创建 envoy-wasm 项目；
 - 目前这个 Issue 放在 Envoy 的下一个 milestone1.12 中；
 
 Envoy 最近刚发布了 1.11 版本，根据最近两年中 Envoy 的稳健表现，Envoy 一般三个月发布一个版本，这样预计 1.12 版本会在未来三个月内提供。即使 1.12 版本未能完成，延后到 1.13 版本，也会在六个月内提供。
@@ -269,7 +269,7 @@ Envoy 最近刚发布了 1.11 版本，根据最近两年中 Envoy 的稳健表�
 
 Mixer v2 虽然前景美好，奈何还需时日，尤其取决于 Istio 的表现：社区的殷切期待和 Istio 的犹豫未决可谓耐人寻味。
 
-最后感叹一声：**南望王师又一年，王师还在 Review 间**......
+最后感叹一声：**南望王师又一年，王师还在 Review 间**……
 
 ## Service Mesh 灵魂拷问三：要不要支持虚拟机？
 
@@ -283,13 +283,13 @@ Mixer v2 虽然前景美好，奈何还需时日，尤其取决于 Istio 的表�
 
 - Service Mesh 的第一代产品，典型如 `Linkered 1.*` 和 Envoy，天然支持虚拟机
 - Service Mesh 的第二代产品，如 Istio，在刚开始发布时还计划提供对非 k8s 的支持，但是后面实质性的取消，基本只有在 k8s 上才好用。`Linkerd 2.*` 更是明确只提供 k8s 的支持。
-- AWS 在 2018 年推出的 app mesh，不仅仅可以支持虚拟机，而且可以支持虚拟机和容器相互访问，稍后Google 推出了 Traffic Director 产品，也是同样思路。
+- AWS 在 2018 年推出的 app mesh，不仅仅可以支持虚拟机，而且可以支持虚拟机和容器相互访问，稍后 Google 推出了 Traffic Director 产品，也是同样思路。
 
 稍加回顾，就会发现：历史总是惊人的相似，螺旋式上升？波浪式起伏？
 
 ![vm-support-next](https://cdn.nlark.com/yuque/0/2019/png/226702/1566960555107-a9482452-14e4-45bd-a949-34fe75e2ffae.png)
 
-Service Mesh 对于虚拟机的态度，从 `Linkerd 1.*` 和 Envoy的支持，到 Istio / `Linkerd 2.*` 的不支持，再到 AWS app mesh 和 Google Traffic Director 的支持，可谓一波三折。未来如果有新形态的 Service Mesh 产品出现，对虚拟机的支持又会是如何？支持还是不支持，我们拭目以待。
+Service Mesh 对于虚拟机的态度，从 `Linkerd 1.*` 和 Envoy 的支持，到 Istio / `Linkerd 2.*` 的不支持，再到 AWS app mesh 和 Google Traffic Director 的支持，可谓一波三折。未来如果有新形态的 Service Mesh 产品出现，对虚拟机的支持又会是如何？支持还是不支持，我们拭目以待。
 
 ### 虚拟机支持与否的背后
 
@@ -301,7 +301,7 @@ Service Mesh 对于虚拟机的态度，从 `Linkerd 1.*` 和 Envoy的支持，�
 
 第二个转折该如何解释？
 
-AWS App Mesh 提供对虚拟机支持是容易理解的，毕竟 AWS 上目前还是以虚拟机为主，而且 k8s/云原生本来就是  Google 和 AWS 竞争的重要武器，AWS app mesh 提供对虚拟机的支持，并且可以打通就有的虚拟机体现和新的k8s 体系，对AWS意义重大。
+AWS App Mesh 提供对虚拟机支持是容易理解的，毕竟 AWS 上目前还是以虚拟机为主，而且 k8s/云原生本来就是  Google 和 AWS 竞争的重要武器，AWS app mesh 提供对虚拟机的支持，并且可以打通就有的虚拟机体现和新的 k8s 体系，对 AWS 意义重大。
 
 但是，作为 k8s 和云原生的主要推动力量， Google 为什么在 Traffic Director 这个产品上没有继续 Istio / Linkerd2 只支持 k8s 的做法，而是效仿 AWS 呢？
 
@@ -313,7 +313,7 @@ AWS App Mesh 提供对虚拟机支持是容易理解的，毕竟 AWS 上目前�
 - 现实：虚拟机大量存在，大量公司未能有效掌握 k8s，大部分应用还是运行在虚拟机上；
 
 关于 Service Mesh 形态和云原生未能普及的思考，去年（2018-02-10
-）在 [DreamMesh抛砖引玉(2)-CloudNative](https://skyao.io/post/201802-dreammesh-brainstorm-cloudnative/) 这篇博客中我有详细描述，当时也和很多社区同学深入讨论。援引当时的一小段总结：
+）在 [DreamMesh 抛砖引玉(2)-CloudNative](https://skyao.io/post/201802-dreammesh-brainstorm-cloudnative/) 这篇博客中我有详细描述，当时也和很多社区同学深入讨论。援引当时的一小段总结：
 
 > 理想很丰满，现实很骨感。Cloud Native 虽然令人向往，然而现实中，有多少企业是真的做好了 Cloud Native 的准备？
 > 问题：到底该先容器/k8s，再上微服务/Service Mesh；还是先微服务/Service Mesh，再上容器/k8s？
@@ -339,13 +339,13 @@ AWS App Mesh 提供对虚拟机支持是容易理解的，毕竟 AWS 上目前�
 
 其中最重要的是提供实例模版（Instance Template）来进行虚拟机的硬件配置/操作系统配置，然后基于实例模版来创建虚拟机实例，并通过自动启动脚本来获取并启动应用，从而实现了从零启动一个运行于虚拟机的应用的全过程自动化。
 
-而实例模版+自动启动脚本配合，可以实现类似容器和k8s下的很多类似功能，比如应用版本升级时只需要修改实例模版（和其中的自动启动脚本），类似容器下的修改镜像文件。实例模版提供对实例副本数的管理，包括固定大小和自动伸缩（由此提供类serverless的特性）。
+而实例模版+自动启动脚本配合，可以实现类似容器和 k8s 下的很多类似功能，比如应用版本升级时只需要修改实例模版（和其中的自动启动脚本），类似容器下的修改镜像文件。实例模版提供对实例副本数的管理，包括固定大小和自动伸缩（由此提供类 serverless 的特性）。
 
 类似的，为了方便管理运行于虚拟机上的应用实例，Traffic Director 效仿 k8s/Istio 的方式来管理服务：
 
 ![traffic-director-service-management](https://cdn.nlark.com/yuque/0/2019/png/226702/1566960594819-1ec1eed9-d6de-41d9-9a48-944d49aed47c.png)
 
-Traffic Director 提供了可同时用于k8s/容器/虚拟机三种模式下的统一的服务抽象，容许在控制台手工创建服务并关联到实例模版（以及实例模版背后的虚拟机实例和运行其上的应用），可以通过托管实例组配置健康检查/灰度发布等高级特性。
+Traffic Director 提供了可同时用于 k8s/容器/虚拟机三种模式下的统一的服务抽象，容许在控制台手工创建服务并关联到实例模版（以及实例模版背后的虚拟机实例和运行其上的应用），可以通过托管实例组配置健康检查/灰度发布等高级特性。
 
 Google Traffic Director 在 Service Mesh 虚拟机支持上的创新思路在于：**补齐虚拟机的短板，向容器看齐，维持一致的用户体验**。如下图所示，在通过托管式实例组向容器/k8s 看齐（当然非常有限）之后，配合统一的 Traffic Director 服务抽象，就可以实现统一管理应用，如配置路由规则。从而实现在最上层为不同 Service Mesh 模式提供一致的用户体验：
 
@@ -353,7 +353,7 @@ Google Traffic Director 在 Service Mesh 虚拟机支持上的创新思路在于
 
 通过上述的创新方式，Traffic Director 将 Service Mesh 对虚拟机的支持提升到新的高度。
 
-> 备注：关于Google Traffic Director 对虚拟机支持的细节，请见我的另一篇博客文档 ["Service Mesh先行：Google Traffic Director实践分析"](https://skyao.io/post/20190707-google-traffic-director-practice/)
+> 备注：关于 Google Traffic Director 对虚拟机支持的细节，请见我的另一篇博客文档 ["Service Mesh 先行：Google Traffic Director 实践分析"](https://skyao.io/post/20190707-google-traffic-director-practice/)
 
 ## Service Mesh 灵魂拷问四：说好的供应商不锁定呢？
 
@@ -367,7 +367,7 @@ Google Traffic Director 在 Service Mesh 虚拟机支持上的创新思路在于
 
 在 Service Mesh 领域，供应商不锁定的典型代表，就是 SMI（Service Mesh Interface）。
 
-> 备注：关于 Service Mesh Interface 的介绍，我之前的博客文档 [Service Mesh Interface详细介绍](https://skyao.io/post/201906-service-mesh-interface-detail/) 有非常详细的描述。
+> 备注：关于 Service Mesh Interface 的介绍，我之前的博客文档 [Service Mesh Interface 详细介绍](https://skyao.io/post/201906-service-mesh-interface-detail/) 有非常详细的描述。
 
 让我们来共同回味 SMI 为整个 Service Mesh 社区带来的美好愿景：
 
@@ -381,7 +381,7 @@ Google Traffic Director 在 Service Mesh 虚拟机支持上的创新思路在于
 
 在 SMI 发布之后，最近 Service Mesh 社区的主要玩家都纷纷开始提供对 SMI 的支持：
 
-- Linkerd：发布于 2019-07-11的 Linkerd 2.4.0 版本开始支持 SMI；
+- Linkerd：发布于 2019-07-11 的 Linkerd 2.4.0 版本开始支持 SMI；
 - Consul Connect: 发布于 2019-07-09 的 Consul 1.6 版本开始支持 SMI；
 
 ### Google 在 Service Mesh 标准化上的反常表现
@@ -399,7 +399,7 @@ Google 作为 Service Mesh 界的领头羊，在标准化方面表现可谓消�
 
 AWS 不加入社区容易理解，毕竟 AWS 自成体系，AWS 本来也就是“供应商不锁定”的革命对象。而 Google 这位“供应商不锁定”运动的发起者，在 Service Mesh 标准化上的反常表现，却是耐人寻味：屠龙的勇士，终将变成恶龙吗？
 
-再次以此图，致敬 AWS和 Google：
+再次以此图，致敬 AWS 和 Google：
 
 ![smi-google-aws](https://cdn.nlark.com/yuque/0/2019/png/226702/1566960614746-66d56595-7094-4514-bfd0-1f68e49ada2d.png)
 
@@ -422,7 +422,7 @@ Service Mesh 出道四年，对于一个新技术，四年时间不算短，到�
 1. 要不要支持虚拟机？关注点依然是落地，对现实的妥协或者说学会接地气，以创新思维来实现用新方法解决老问题
 1. 说好的供应商不锁定呢？关注点在于标准化，还有标准化之后的生态共建和生态繁荣。
 
-本次 Service Mesh 发展趋势的续篇到此为止，今年年底前也许还会有 Service Mesh 发展趋势序列的第三篇（名字大概会叫做续2吧），希望届时能看到一些令人眼前一亮的新东西。敬请期待！
+本次 Service Mesh 发展趋势的续篇到此为止，今年年底前也许还会有 Service Mesh 发展趋势序列的第三篇（名字大概会叫做续 2 吧），希望届时能看到一些令人眼前一亮的新东西。敬请期待！
 
 ### 回顾资料下载
 

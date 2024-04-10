@@ -30,7 +30,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **1.小白** 提问：
 
->这个配置是起到什么作用？<declaredMode>true</declaredMode>
+> 这个配置是起到什么作用？<declaredMode>true</declaredMode>
 
 A：declaredMode 是指：如果 biz 和宿主 biz 依赖相同的包，biz 会使用宿主 biz 内的包。即：biz 该包设置成 provided 时，安装 biz 至宿主 biz 可以正常使用，从而减小了 biz 的体积。
 
@@ -38,7 +38,7 @@ A：declaredMode 是指：如果 biz 和宿主 biz 依赖相同的包，biz 会�
 
 **2.肖才稳** 提问：
 
->Seata 的回滚模式，如果数据库被其他应用改了，是不是不能回滚了？Seata 必须保证数据库只有自己一个应用用了是吗？
+> Seata 的回滚模式，如果数据库被其他应用改了，是不是不能回滚了？Seata 必须保证数据库只有自己一个应用用了是吗？
 
 A：那你可以用 XA，AT 是要保证所有操作数据库的动作都在 Seata 事务的全局事务覆盖下。也就是说，如果你这个库的这个表被其他应用用了，让这个应用也集成 Seata 就行了。
 

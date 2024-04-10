@@ -22,11 +22,11 @@ GitHub 地址：[https://github.com/sofastack/sofa-registry](https://github.com/
 
 我们知道一个典型的服务发布流程是这样的。
 
->图1 服务发布流程
+> 图 1 服务发布流程
 >
 >![image.png](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*H5z1S6vRN20AAAAAAAAAAAAAARQnAQ)
 
-如上图、服务注册中心在RPC远程调用中的通常是中间协调者的角色，服务发布者Publisher将服务的发布信息（服务名称、ip、端口号等信息)）发布到注册中心 Registry 中、通常保存在 Registry 内部的数据结构中。服务订阅者在第一次调用服务的时候、会通过 Registry 找到所要调用服务的提供者列表。缓存在本地然后通过负载均衡算法找到一个具体的服务提供者。调用这个具体的服务提供者接口。
+如上图、服务注册中心在 RPC 远程调用中的通常是中间协调者的角色，服务发布者 Publisher 将服务的发布信息（服务名称、ip、端口号等信息)）发布到注册中心 Registry 中、通常保存在 Registry 内部的数据结构中。服务订阅者在第一次调用服务的时候、会通过 Registry 找到所要调用服务的提供者列表。缓存在本地然后通过负载均衡算法找到一个具体的服务提供者。调用这个具体的服务提供者接口。
 
 了解了一个典型的 RPC 调用的流程、我们来看看 SOFARegistry 作为一个注册中心内部包含哪几种角色。
 
@@ -46,12 +46,12 @@ GitHub 地址：[https://github.com/sofastack/sofa-registry](https://github.com/
 
 元数据服务器，负责维护集群 SessionServer 和 DataServer 的一致列表，作为 SOFARegistry 集群内部的地址发现服务，在 SessionServer 或 DataServer 节点变更时可以通知到整个集群。
 
->图2  SOFARegistry 分层设计
+> 图 2  SOFARegistry 分层设计
 ![image.png](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*v38WSr06IZwAAAAAAAAAAAAAARQnAQ)
 
-如图 2 所示、在 SOFARegistry 中、客户端 client 直接和 session 通讯，而不是传统意义上的Data节点、这种添加中间一层隔离 DataServer 和客户端的做法。主要是为了处理客户端连接风暴。对这种分层设计。
+如图 2 所示、在 SOFARegistry 中、客户端 client 直接和 session 通讯，而不是传统意义上的 Data 节点、这种添加中间一层隔离 DataServer 和客户端的做法。主要是为了处理客户端连接风暴。对这种分层设计。
 
-感兴趣的可以参考  《[海量数据下的注册中心 - SOFARegistry 架构介绍](https://www.sofastack.tech/blog/sofa-registry-introduction/)》的 “如何支持海量客户端” 章节，这里不再赘述。文章下面也是主要围绕 Session层展开。
+感兴趣的可以参考  《[海量数据下的注册中心 - SOFARegistry 架构介绍](https://www.sofastack.tech/blog/sofa-registry-introduction/)》的 “如何支持海量客户端” 章节，这里不再赘述。文章下面也是主要围绕 Session 层展开。
 
 ### SessionServer 启动过程
 
@@ -98,7 +98,7 @@ SessionServer 模块的各个 bean 在 JavaConfig 中统一配置，JavaConfig �
 
 1. SessionCacheService
 
-从名称可以看出是缓存数据，当 Subscriber 注册到 SessionServer 中的时候、我们会给 Client 推送 Client 感兴趣的服务提供者信息列表。但是我们不可能在每次 Client 有变化的时候都去 Data层获取数据、这样对 Data 层的压力会很大。在 SessionServer 上缓存数据服务提供者信息可以对 DataServer 层屏蔽 Client 的变化，从而有效减轻 DataServer 的压力。SessionCacheService 内部的 readWriteCacheMap 缓存了服务提供者列表信息。使用 guava cache 缓存数据。数据有 ttl ，除此之外 Data 层有数据变化也会通知 cache 数据失效。
+从名称可以看出是缓存数据，当 Subscriber 注册到 SessionServer 中的时候、我们会给 Client 推送 Client 感兴趣的服务提供者信息列表。但是我们不可能在每次 Client 有变化的时候都去 Data 层获取数据、这样对 Data 层的压力会很大。在 SessionServer 上缓存数据服务提供者信息可以对 DataServer 层屏蔽 Client 的变化，从而有效减轻 DataServer 的压力。SessionCacheService 内部的 readWriteCacheMap 缓存了服务提供者列表信息。使用 guava cache 缓存数据。数据有 ttl ，除此之外 Data 层有数据变化也会通知 cache 数据失效。
 
 2. Subscriber 和 Publisher 会话缓存信息正排索引信息。
 
@@ -111,7 +111,7 @@ SOFARegistry 有一些场景需要根据 ip:port 反查改连接所对应的所�
 
 ### 会话数据和索引数据表示
 
-客户端的发布订阅会话信息保存在 SlotStore 或者 SimpleStore 中、其中 发布会话数据保存在SlotStore 中、订阅会话信息保存在 SimpleStore 中、SlotStore 和 SimpleStore 的区别在于 SlotStore 会将数据分成不同的 Slot 存储。不同的 Slot 主要是为了做数据多副本拷贝、以及方便与 DataStore 做数据校对。 抛开 SlotStore 抽象、这两种对象底层数据保存格式都是如下数据结构:
+客户端的发布订阅会话信息保存在 SlotStore 或者 SimpleStore 中、其中 发布会话数据保存在 SlotStore 中、订阅会话信息保存在 SimpleStore 中、SlotStore 和 SimpleStore 的区别在于 SlotStore 会将数据分成不同的 Slot 存储。不同的 Slot 主要是为了做数据多副本拷贝、以及方便与 DataStore 做数据校对。 抛开 SlotStore 抽象、这两种对象底层数据保存格式都是如下数据结构:
 > Map<String /*dataInfoId*/, Map<String /*registerId*/, T>> stores;
 
 外层 key 是 dataInfoId，dataInfoId 是代表发布订阅信息的唯一标识、例如、
@@ -120,7 +120,7 @@ SOFARegistry 有一些场景需要根据 ip:port 反查改连接所对应的所�
 com.alipay.test.demo.service:1.0@DEFAULT#@#DEFAULT_INSTANCE_ID#@#TEST_GROUP 
 ```
 
-内层结构中的 key 为 registerId, 代表一次发布订阅请求的唯一id，每次 client 发起发布订阅会随机生成一个不一样的 id
+内层结构中的 key 为 registerId, 代表一次发布订阅请求的唯一 id，每次 client 发起发布订阅会随机生成一个不一样的 id
 
 ```java
 this.REGIST_ID = UUID.randomUUID().toString()
@@ -128,7 +128,7 @@ this.REGIST_ID = UUID.randomUUID().toString()
 
 具体关系如下图所示:
 
->图3 SessionServer 会话数据存储结构
+> 图 3 SessionServer 会话数据存储结构
 ![image.png](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Jh7XS6zcnTMAAAAAAAAAAAAAARQnAQ)
 
 在一些场景中、例如客户端断连，我们通过底层的通讯框架感知到这一变化。我们需要将该 条连接上所有的发布订阅会话数据清除掉。如果用上面的 存储结构 我们需要迭代查找、这样对于客户端频繁的断开连接场景来说，这样会过于消耗 CPU 资源、基于此 SessionServer 在保存 Store 数据的时候也保存一份倒排索引数据、方便通过 ConnectId 快速找到所有的注册订阅会话信息。数据结构如下:
@@ -151,7 +151,7 @@ public abstract class DataIndexer<K, V> {
 
 在源码中类图如下
 
->图4 DateStore 类图
+> 图 4 DateStore 类图
 ![image.png](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*K81eTrug-w4AAAAAAAAAAAAAARQnAQ)
 
 ### 倒排索引数据和发布订阅数据如何一致性如何保证?
@@ -205,9 +205,9 @@ public <R> R add(K key, V val, UnThrowableCallable<R> dataStoreCaller) {
 
 细心的读者应该发现方法执行完成也没有删除索引数据、这样会导致执行完删除逻辑 索引数据是多于 DataStore 数据。思考一下这里为什么不直接删除索引数据呢?  我们不妨来假设这里有删除索引数据逻辑。
 
-在刚好准备执行删除 索引时刻 (还未执行)，该条会话又重新建立了 (可能是客户端的短时间的网络原因导致的断开连接又重新连接上) 重新写入了DataStore和索引数据，随后执行索引删除操作继续执行、那么就会把新写入的索引数据删除掉。那么新写入的 dataStore 会话数据就没有索引指向之、导致 DataStore 数据残留、无任何索引数据引用这部分数据，也没有办法通过索引删除。 
+在刚好准备执行删除 索引时刻 (还未执行)，该条会话又重新建立了 (可能是客户端的短时间的网络原因导致的断开连接又重新连接上) 重新写入了 DataStore 和索引数据，随后执行索引删除操作继续执行、那么就会把新写入的索引数据删除掉。那么新写入的 dataStore 会话数据就没有索引指向之、导致 DataStore 数据残留、无任何索引数据引用这部分数据，也没有办法通过索引删除。 
 
-基于此 SofaRegistry 在删除时保留了索引数据，只删除会话数据。而且在针对数据的查询以及删除场景中 SofaRegistry 做了很多的检查、保证就算是索引数据多于 dataStore 数据的情况下也不会出现问题。 例如 AbstractDataManager#queryByConnectId 通过索引查出来的 registerId 和 dataInfoId 也会重新回查 dataStore 去重新检查一次的、所以数据最终还是以dataStore为准. 不会产生问题。
+基于此 SofaRegistry 在删除时保留了索引数据，只删除会话数据。而且在针对数据的查询以及删除场景中 SofaRegistry 做了很多的检查、保证就算是索引数据多于 dataStore 数据的情况下也不会出现问题。 例如 AbstractDataManager#queryByConnectId 通过索引查出来的 registerId 和 dataInfoId 也会重新回查 dataStore 去重新检查一次的、所以数据最终还是以 dataStore 为准. 不会产生问题。
 
 虽然说索引数据多余 dataStore 数据不会有数据污染问题、但是也不能一直让索引数据持续变大、这样对内存也是一种极大的浪费。那么这部分多余的索引数据何时进行清理呢。 这里 SOFARegistry 通过一种简单的方式来保证数据的最终一致性，也就是定时任务修正数据的不一致情况。
 
@@ -254,7 +254,7 @@ public <R> R add(K key, V val, UnThrowableCallable<R> dataStoreCaller) {
 
 这里我们思考一个问题、一般来说在做数据迁移的时候、我们只需要有一个是否 "双写" 标识就可以了。打开双写开关、执行数据的双向写入。关闭开关、停止双写。这里为什么有了双写开关还要有一个 Term 标识呢？
 
-假如我们只有一个 双写开关。线程1 执行 add 方法执行到 ③ 或者 ④ 的时因为 gc 或者线程调度停止运行、此时后台任务线程在 refresh 方法的 ① 处 开启了双写，也就是说打开双写的时候、线程1 执行 add 方法刚好执行到一半，因为线程1 没有执行 doubleWrite 双写、所以 tempIndex 中肯定没有线程1 所添加的服务发布订阅数据，同理 Store 中也没有添加成功。因为线程1 还没执行完成  add 方法执行，此时如果后台线程执行 refresh 方法后续步骤、也就是 refresh 方法的第 ④ 步。那么最终的 tempIndex 索引数据肯定缺少线程1 添加的发布订阅数据信息。
+假如我们只有一个 双写开关。线程 1 执行 add 方法执行到 ③ 或者 ④ 的时因为 gc 或者线程调度停止运行、此时后台任务线程在 refresh 方法的 ① 处 开启了双写，也就是说打开双写的时候、线程 1 执行 add 方法刚好执行到一半，因为线程 1 没有执行 doubleWrite 双写、所以 tempIndex 中肯定没有线程 1 所添加的服务发布订阅数据，同理 Store 中也没有添加成功。因为线程 1 还没执行完成  add 方法执行，此时如果后台线程执行 refresh 方法后续步骤、也就是 refresh 方法的第 ④ 步。那么最终的 tempIndex 索引数据肯定缺少线程 1 添加的发布订阅数据信息。
 
 为了避免这种场景导致的不一致。我们需要了解 add 方法执行的过程。所以我们引入 Term 、在 add 方法执行开始和接收分别对 Term 的内部源自变量 start 和 done 进行自增++。当我们开启双写、随后替换老的 Term 为一个新的 Term (代码 refresh ②处)、相当于开启了新一轮的统计。这样后来的基于新的 Term 的统计肯定都会写到 TempIndex (voiltile 内存语义决定的)、基于之前老的 Term 的写入、我们只需要在 refresh 执行到 ③ 处等待执行完成即可。这样 Store 中就有了基于上一个 Term 中的全量 Session 会话信息了、这样回放的时候才不会丢失索引数据。
 

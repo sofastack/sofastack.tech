@@ -33,7 +33,7 @@ SOFABoot 为 Spring Boot 的健康检查能力增加了 Readiness Check 的能�
 
 除了通过 URL 来查看健康检查的结果之外，在 SOFABoot 中，还可以通过查看具体的日志来确定健康检查的结果，日志的目录位于 `health-check` 目录下，日志的内容大概如下：
 
-```
+```plain
 2018-04-06 23:29:50,240 INFO  main                             - Readiness check result: success
 ```
 

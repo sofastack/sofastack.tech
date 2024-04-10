@@ -120,7 +120,7 @@ among them:
 - `point` is the name of the extension point
 - The content inside `content` is an extension definition, which will parse the content through XMap into: the extension point's contribution point specific description object, here is the `com.alipay.sofa.boot.test.extension.ExtensionDescriptor` object
 
-At this point, we can look back at the `registerExtension` method defined in `com.alipay.sofa.boot.test.impl.ExtensionImpl`. When SOFABoot resolves to the contribution point, it will call the `registerExtension of the extended bean. The ` method contains the user-defined contribution point processing logic. In the above example, the user-defined value is obtained and set to the value in the word field that overrides the original definition in the bean.
+At this point, we can look back at the `registerExtension` method defined in `com.alipay.sofa.boot.test.impl.ExtensionImpl`. When SOFABoot resolves to the contribution point, it will call the `registerExtension of the extended bean. The` method contains the user-defined contribution point processing logic. In the above example, the user-defined value is obtained and set to the value in the word field that overrides the original definition in the bean.
 
 At this point, call the `extension` bean's `say()` method, and you can see the value defined in the return extension: newValue.
 

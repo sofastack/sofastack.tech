@@ -95,7 +95,7 @@ public interface UserData {
 }
 ```
 
-* getLocalZone: 返回当前zone；
+* getLocalZone: 返回当前 zone；
 * getZoneData: 返回以 zone 为 key，每个 zone 的数据为 value 的数据。
 
 ### 3.2 构造订阅者注册表

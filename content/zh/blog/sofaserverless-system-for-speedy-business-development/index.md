@@ -144,7 +144,7 @@ SOFAServerless 体系在解决业务研发运维痛点基础上，建设了高�
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b6395a67c6064d4599766ff89af8063e~tplv-k3u1fbpfcp-zoom-1.image)
 
-## PART. 3 业务的落地形态**
+## PART. 3 业务的落地形态
 
 SOFAServerless 发展到现在，已经在蚂蚁内部接入了 700 多个 Java、nodejs 应用，基本涵盖了蚂蚁所有业务线，支撑了 1 万多次的完整的生产研发迭代。线下可以做到秒级发布，支付宝应用内很多业务就是跑在 SOFAServerless 上的，比如投放展位、公益游戏、营销玩法。
 

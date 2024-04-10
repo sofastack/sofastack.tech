@@ -54,7 +54,7 @@ Here, `${sofa.boot.version}` denotes the SOFABoot version (please refer to [rele
 
 Finally, configure parameters commonly used in the SOFABoot project in the `application.properties` file. The `spring.application.name` parameter is required to name the current application; the `logging path` specifies the output directory for logging information.
 
-```
+```plain
 # Application Name
 spring.application.name=SOFABoot Demo
 # logging path
@@ -67,7 +67,7 @@ logging.path=./logs
 
 We can import the project into IDE and run the 'main' method in the generated project (generally in the XXXApplication class) to start the application, or we can execute the `mvn spring-boot:run` command under the project's root directory, which will print the startup logging in the console:
 
-```
+```plain
 2018-04-05 21:36:26.572  INFO ---- Initializing ProtocolHandler ["http-nio-8080"]
 2018-04-05 21:36:26.587  INFO ---- Starting ProtocolHandler [http-nio-8080]
 2018-04-05 21:36:26.608  INFO ---- Using a shared selector for servlet write/read

@@ -37,7 +37,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **议题：**
 
-\- 2023开源之夏-课题/导师招募 #894；
+\- 202 3开源之夏-课题/导师招募 #894；
 
 \- Discussion: 自建各种 Component #902；
 

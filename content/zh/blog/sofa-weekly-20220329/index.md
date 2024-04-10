@@ -27,7 +27,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **@韩升** 提问：
 
->问下 SOFABolt 是否可以单独集成到 Spring Cloud 体系中？不依赖与 SOFABoot？还是直接引用 Bolt 的组件，然后使用原生的方式处理？
+> 问下 SOFABolt 是否可以单独集成到 Spring Cloud 体系中？不依赖与 SOFABoot？还是直接引用 Bolt 的组件，然后使用原生的方式处理？
 
 A：直接用 Bolt 自己的 API 就行。
 
@@ -35,7 +35,7 @@ A：直接用 Bolt 自己的 API 就行。
 
 **沄澈|che ** 提问：
 
->RPC 序列化 Localdatetime 有问题，改为 Date 类型后正常, 你知道原因吗?
+> RPC 序列化 Localdatetime 有问题，改为 Date 类型后正常, 你知道原因吗?
 
 A：要看 SerializerFactory 对 Localdatetime 的支持了。
 
@@ -105,4 +105,4 @@ Holmes 是 MOSN 社区开源的 go 语言 continous profiling 组件，可以自
 
 更多文章请扫码关注“金融级分布式架构”公众号
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*8G5NRZ7UEToAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*8G5NRZ7UEToAAAAAAAAAAAAAARQnAQ)

@@ -11,7 +11,7 @@ cover: "https://cdn.nlark.com/yuque/0/2020/png/226702/1592298369471-f97a2072-9ee
 
 ## 引言
 
-Service Mesh 是目前社区最为炙手可热的技术方向，去年双11在蚂蚁金服得到全面的应用，并平稳顺滑的支撑了大促服务。作为目前规模最大的 Service Mesh 集群，本文从监控的领域对 Service Mesh 落地进行经验总结，主要从以下几方面进行介绍：
+Service Mesh 是目前社区最为炙手可热的技术方向，去年双 11 在蚂蚁金服得到全面的应用，并平稳顺滑的支撑了大促服务。作为目前规模最大的 Service Mesh 集群，本文从监控的领域对 Service Mesh 落地进行经验总结，主要从以下几方面进行介绍：
 
 1. 云原生监控，介绍蚂蚁金服 Metrics 监控的落地；
 1. 用户视角分析，介绍从应用 owner 的角度对这一基础服务设施的体验以及 SRE 从全站服务的稳定性对监控提出的要求；
@@ -29,7 +29,7 @@ Service Mesh 是目前社区最为炙手可热的技术方向，去年双11在�
 
 ![蚂蚁金服监控采集](https://cdn.nlark.com/yuque/0/2020/png/226702/1592289622069-4eedbe89-361d-4769-a7c7-4c42b3e83bcc.png)
 
-在Service Mesh 监控落地中，业务方参考业界标准输出 Metrics 指标数据，监控采集该物理机不同 Pod、App 和 Sidecar 的各项指标，包含 Metrics 指标和系统服务指标（CPU、MEM、DISK、JVM、IO 等），然后计算清洗集群节点通过拉取最近周期数据进行数据汇总、groupby 等，数据采集周期又分为：5秒级数据和分钟级数据。
+在 Service Mesh 监控落地中，业务方参考业界标准输出 Metrics 指标数据，监控采集该物理机不同 Pod、App 和 Sidecar 的各项指标，包含 Metrics 指标和系统服务指标（CPU、MEM、DISK、JVM、IO 等），然后计算清洗集群节点通过拉取最近周期数据进行数据汇总、groupby 等，数据采集周期又分为：5 秒级数据和分钟级数据。
 对于 Service Mesh 来说，主要关注的指标有系统指标和 Metrics 指标：
 
 - 系统指标（包括 Pod、App 和 MOSN 等 Sidecar 多个维度的系统指标）：

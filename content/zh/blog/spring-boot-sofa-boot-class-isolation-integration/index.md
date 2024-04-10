@@ -184,7 +184,7 @@ Demo 工程参见：[https://github.com/QilongZhang/springboot-ark-demo](https:/
 
 在 Spring Boot 官网 [https://start.spring.io/](https://start.spring.io/) 新建一个 web 工程，并设置 Spring Boot 版本号为 1.4.2.RELEASE。在 Spring Boot 工程中集成 SOFABoot 类隔离能力，只需要添加 SOFABoot 提供的类隔离框架 starter。修改 maven 项目的配置文件 `pom.xml`，将
 
-```
+```plain
 <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
@@ -195,7 +195,7 @@ Demo 工程参见：[https://github.com/QilongZhang/springboot-ark-demo](https:/
 
 替换为：
 
-```
+```plain
 <parent>
     <groupId>com.alipay.sofa</groupId>
     <artifactId>sofaboot-dependencies</artifactId>

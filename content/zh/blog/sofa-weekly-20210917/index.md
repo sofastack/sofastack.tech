@@ -12,7 +12,7 @@ SOFA WEEKLY | 每周精选，筛选每周精华问答
 
 同步开源进展，欢迎留言互动
 
->![weekly.jpg](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAAAAAAAAARQnAQ)
+> ![weekly.jpg](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAAAAAAAAARQnAQ)
 
 SOFAStack（Scalable Open Financial Architecture Stack)是蚂蚁金服自主研发的金融级云原生架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 
@@ -48,7 +48,7 @@ A：在开源，内部的做了一些业务相关的扩展。
 
 **请问下现在统一限流中心能使用么？**
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*NZczR6FTwMAAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*NZczR6FTwMAAAAAAAAAAAAAAARQnAQ)
 
 A：现在开源版本还用不了集群限流，自适应限流的实现也和我们的有一些差异,后面我们会考虑移植到开源版本的。
 
@@ -72,7 +72,7 @@ A：其实 lua 也可以， 比如用 go 你可以启动一个 zk，然后去调
 
 请教一下，在使用 rheakv 的过程中出现这个问题要怎么排查?
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*OLCrSbMK6XsAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*OLCrSbMK6XsAAAAAAAAAAAAAARQnAQ)
 
 A：可以看下 bolt 怎么设置写入的高低水位线，这应该是触发了 netty 的 channel 写入水位线。
 
@@ -81,7 +81,7 @@ com.alipay.remoting.config.BoltGenericOption#NETTY_BUFFER_LOW_WATER_MARK
 
 刚才找了下，你看些这个类的 options。
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*oHFPR7eiw78AAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*oHFPR7eiw78AAAAAAAAAAAAAARQnAQ)
 
 com.alipay.sofa.jraft.rpc.impl.BoltRaftRpcFactory#CHANNEL_WRITE_BUF_LOW_WATER_MARK
 com.alipay.sofa.jraft.rpc.impl.BoltRaftRpcFactory#CHANNEL_WRITE_BUF_HIGH_WATER_MARK
@@ -120,7 +120,7 @@ jraft 也开放了设置。
 
 - 修复 RpcInvokeContext 中线程安全问题；
 
-- 修复 ProviderInfo中getAttr 类型转换问题。
+- 修复 ProviderInfo 中 getAttr 类型转换问题。
 
 **详细参考：**
 
@@ -138,4 +138,4 @@ jraft 也开放了设置。
 
 更多文章请扫码关注“金融级分布式架构”公众号
 
->![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*5aK0RYuH9vgAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*5aK0RYuH9vgAAAAAAAAAAAAAARQnAQ)

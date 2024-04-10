@@ -48,8 +48,8 @@ GitHub 地址：[https://github.com/sofastack/sofa-registry](https://github.com/
 业界服务注册中心的健康检测机制：
 
 - Eureka：定期有 Renew 心跳，数据具有 TTL（Time To Live）；并且支持自定义 HealthCheck 机制，当 HealthCheck 检测出系统不健康时主动更新 Instance 的状态；
-- Zookeeper：定期发送连接心跳以保持会话 （Session），会话本身 （Session） 具有TTL；
-- Etcd：定期通过 HTTP 对数据进行 Refresh，数据具有 TTL。申请 Lease 租约，设置服务生存周期TTL；
+- Zookeeper：定期发送连接心跳以保持会话 （Session），会话本身 （Session） 具有 TTL；
+- Etcd：定期通过 HTTP 对数据进行 Refresh，数据具有 TTL。申请 Lease 租约，设置服务生存周期 TTL；
 - Consul：Agent 定期对服务进行 healthcheck，支持 HTTP/TCP/Script/Docker；由服务主动定期向 agent 更新 TTL；
 
 ### SOFARegistry 的健康检测
@@ -71,7 +71,7 @@ SOFARegistry 将服务数据 （PublisherRegister） 和服务发布者 （Publi
 1. 客户端 Client 调用服务发布者 Publisher 的 register 向 SessionServer 注册服务。
 1. SessionServer 接收到服务数据即 PublisherRegister 写入内存 （SessionServer 存储 Client 的服务数据到内存，用于后续跟 DataServer 做定期检查），接着根据 dataInfoId 的一致性 Hash 寻找对应的 DataServer，将 PublisherRegister 发送给 DataServer。
 1. DataServer 接收到 PublisherRegister 数据首先也是把数据写入内存 ，DataServer 以 dataInfoId 的维度汇总所有 PublisherRegister。同时 DataServer 将该 dataInfoId 的变更事件通知给所有 SessionServer，变更事件内容包括 dataInfoId 和版本号信息 version 等。
-1. DataServer 同时异步以 dataInfoId 维度增量同步数据给其他副本，考虑到 DataServer 在一致性 Hash 分片的基础上对每个分片保存多个副本（默认是3个副本）。
+1. DataServer 同时异步以 dataInfoId 维度增量同步数据给其他副本，考虑到 DataServer 在一致性 Hash 分片的基础上对每个分片保存多个副本（默认是 3 个副本）。
 1. SessionServer 接收到变更事件通知对比 SessionServer 内存中存储的 dataInfoId 的版本号 version，若发现比 DataServer 发送的版本号小则主动向 DataServer 获取 dataInfoId 的完整数据，即包含所有该 dataInfoId 具体的 PublisherRegister 服务列表。
 1. SessionServer 把数据推送给对应的客户端 Client，Client 即接收到此次服务注册之后最新服务列表数据。
 
@@ -100,10 +100,10 @@ SOFARegistry 将服务数据 （PublisherRegister） 和服务发布者 （Publi
 
 - SessionServer 和 DataServer 之间的通信采用基于推拉结合的机制
   - 推：DataServer 在服务数据有变化时主动通知 SessionServer，SessionServer 检查确认需要更新（对比版本号 version） 主动向 DataServer 获取数据。
-  - 拉：除了上述的 DataServer 主动推以外，SessionServer 每隔一定的时间间隔（默认30秒）主动向 DataServer 查询所有 dataInfoId 的 version 信息，再对比 SessionServer 内存的版本号 version，若发现 version 有变化则主动向 DataServer 获取数据。这个“拉”的逻辑，主要是对“推”的一个补充，若在“推”的过程有错漏的情况可以在这个时候及时弥补。
+  - 拉：除了上述的 DataServer 主动推以外，SessionServer 每隔一定的时间间隔（默认 30 秒）主动向 DataServer 查询所有 dataInfoId 的 version 信息，再对比 SessionServer 内存的版本号 version，若发现 version 有变化则主动向 DataServer 获取数据。这个“拉”的逻辑，主要是对“推”的一个补充，若在“推”的过程有错漏的情况可以在这个时候及时弥补。
 
 - Client 与 SessionServer 之间的通信使用基于推的机制
-  - SessionServer 在接收到 DataServer 的数据变更推送，或者 SessionServer 定期查询 DataServer 发现数据有变更并且重新获取之后，直接将 dataInfoId 的数据推送给 Client。如果此过程由于网络原因没能成功推送给 Client，SessionServer 尝试做指定次数（默认是5次）的重试，最终还是失败的话依然会在 SessionServer 定期每隔 30s 轮训 DataServer 时再次推送服务数据给 Client。
+  - SessionServer 在接收到 DataServer 的数据变更推送，或者 SessionServer 定期查询 DataServer 发现数据有变更并且重新获取之后，直接将 dataInfoId 的数据推送给 Client。如果此过程由于网络原因没能成功推送给 Client，SessionServer 尝试做指定次数（默认是 5 次）的重试，最终还是失败的话依然会在 SessionServer 定期每隔 30s 轮训 DataServer 时再次推送服务数据给 Client。
 
 ![服务数据流转流程](https://cdn.nlark.com/yuque/0/2019/png/156670/1574223950704-a89fbe25-3de2-4304-bd2d-4f97aea18895.png)
 

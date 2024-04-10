@@ -27,7 +27,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **@rust-rust** 提问：
 
->建议开发各种语言的 API。
+> 建议开发各种语言的 API。
 
 A：Java 和 Python 在设计中，争取注册到 jsse 里。
 
@@ -35,7 +35,7 @@ BabaSSL：[https://github.com/BabaSSL](https://github.com/BabaSSL)
 
 **@会飞的小胖子** 提问：
 
->tengine 现在可使用 BabaSSL 了吗？
+> tengine 现在可使用 BabaSSL 了吗？
 
 A：tengine master 已经支持，稳定版还得等等。
 
@@ -87,7 +87,7 @@ SOFARPC
 
 发布 1.3.10 版本，主要变更如下：
 
-#### Features：
+#### Features
 
 优化 read-index 读，增加 maxReadIndexLag 参数设置快速失败阈值  
 
@@ -97,7 +97,7 @@ LogEntry 增加切片读取 API
 
 在节点过载时，将原有的快速失败策略修改为反压策略，依赖于这个特性的用户推荐升级 
 
-#### Bug Fixes：
+#### Bug Fixes
 
 升级 Log4j 以解决安全漏洞
 
@@ -123,4 +123,4 @@ snapshot 文件使用 atomic move 避免文件重新命名是被损坏
 
 更多文章请扫码关注“金融级分布式架构”公众号
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*8G5NRZ7UEToAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*8G5NRZ7UEToAAAAAAAAAAAAAARQnAQ)

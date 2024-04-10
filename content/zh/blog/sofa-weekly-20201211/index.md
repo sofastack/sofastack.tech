@@ -49,7 +49,7 @@ A：其他线程也加上 global transactional 注解。分布式事务下，没
 
 > Raft 是为了解决目前的什么问题？
 
-A: 依赖外部存储。AT 有 before 镜像、after 镜像，after 镜像是在 undo_log 表里存储，那么 before 在哪里存着了？未来的 Raft 模式，集群支持动态扩缩容，事务信息存储在内存中（测试下来比 redis 快），现在的全局事务信息，分支事务信息，全局锁都是持久化到 db，或者 redis 去的。如果这个时候持久化用的 db 宕机了，Seata-Server会不可用，而集成了 Raft ，leader 宕机后自动选举新 leader，继续运转。所以，利用 raft 一致性算法，可以让多个Seata集群内存中的数据保持一致。
+A: 依赖外部存储。AT 有 before 镜像、after 镜像，after 镜像是在 undo_log 表里存储，那么 before 在哪里存着了？未来的 Raft 模式，集群支持动态扩缩容，事务信息存储在内存中（测试下来比 redis 快），现在的全局事务信息，分支事务信息，全局锁都是持久化到 db，或者 redis 去的。如果这个时候持久化用的 db 宕机了，Seata-Server 会不可用，而集成了 Raft ，leader 宕机后自动选举新 leader，继续运转。所以，利用 raft 一致性算法，可以让多个 Seata 集群内存中的数据保持一致。
  
 ### 相关推荐阅读
 

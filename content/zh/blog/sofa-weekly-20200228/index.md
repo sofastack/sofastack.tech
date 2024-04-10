@@ -28,7 +28,7 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 
 **1、@朱楠 **提问：
 
-> SpringBoot 集成 Seata Saga 模式后启动报了这个错，有谁知道是什么情况吗？不知道问题出在哪，我就参照Saga 的 demo 来配置的。
+> SpringBoot 集成 Seata Saga 模式后启动报了这个错，有谁知道是什么情况吗？不知道问题出在哪，我就参照 Saga 的 demo 来配置的。
 > ![部分代码](https://cdn.nlark.com/yuque/0/2020/png/226702/1582871098524-c92690e9-49c5-47be-b141-65c12b8f85f6.png)
 
 A：这个事务异常了，然后 server 端出发了事务恢复，但是这条事务在客户端已经没有了。
@@ -109,7 +109,7 @@ SOFAChannel#12 线上直播将邀请蚂蚁金服分布式事务核心开发仁�
 
 **主题**：SOFAChannel#12：蚂蚁金服分布式事务实践解析
 
-**时间**：2020年3月12日（周四）19:00-20:00
+**时间**：2020 年 3 月 12 日（周四）19:00-20:00
 
 **嘉宾**：仁空，蚂蚁金服分布式事务核心开发
 

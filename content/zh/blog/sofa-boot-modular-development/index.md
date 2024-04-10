@@ -31,7 +31,7 @@ SOFABoot 是蚂蚁金服中间件团队开源的基于 Spring Boot 的一个开�
 
 ![SOFABoot 模块化开发](https://gw.alipayobjects.com/zos/nemopainter_prod/f6372d29-cb2f-488f-a858-46f97a610e7c/sofastack-blog/resources-2018-07-2018-07-21-01-01.png)
 
-SOFABoot 模块是模块化开发的最小单元，每个 SOFABoot 模块是一个独立的 Spring 上下文，在 SOFABoot 模块中我们可以定义Bean、发布 RPC 服务、连接数据库等等。
+SOFABoot 模块是模块化开发的最小单元，每个 SOFABoot 模块是一个独立的 Spring 上下文，在 SOFABoot 模块中我们可以定义 Bean、发布 RPC 服务、连接数据库等等。
 
 由于上下文隔离，模块与模块之间的 Bean 无法通过 @Autowired 依赖注入，我们提供了 JVM Service/Reference 的方式进行模块间通信。SOFABoot 提供了两种形式的服务发布和引用，用于解决不同级别的模块间调用问题：
 

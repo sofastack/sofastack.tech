@@ -203,7 +203,7 @@ public class SampleSwitchApplicationListener
 
 在使用上述扩展点为你的 Bean 和扩展点添加按配置开启能力后，你可以在 `/sofa-boot/scenens` 目录下添加指定场景名 `scene-key` 前缀的配置文件 *（支持 application 及 yaml 格式）* ，在配置文件中添加该场景下的配置文件模版，例如：
 
-```
+```plain
 sofa.boot.switch.bean.a.enabled=false
 sofa.boot.switch.bean.b.enabled=true
 sofa.boot.switch.initializer.a.enabled=false
@@ -367,7 +367,7 @@ SOFABoot 4.0 不再支持 SOFAArk 1.0 模式，用于支持 Ark 测试的相关�
 -   com.alipay.sofa.test.annotation.DelegateToRunner
 -   com.alipay.sofa.test.runner.SofaBootRunner
 -   com.alipay.sofa.test.runner.SofaJUnit4Runner
--   
+
 
 # Part.4 请收下这份升级指南🙆🏻‍♂️
 
@@ -444,7 +444,7 @@ SOFABoot 4.0 依赖 Java 17 或者更高的版本，不再支持 Java 8。同时
 | sofa.boot.scenes                             | 无            | 开启的场景配置列表                                   |
 | sofa.boot.startup.bufferSize                 | 4096          | 框架内置的 BufferingApplicationStartup 的缓存大小    |
 | sofa.boot.threadPoolMonitor.disable          | false         | 关闭 SOFA 线程池监控能力                             |
-| sofa.boot.rpc.enableAutoPublish              | false         | 支持应用启动时自动发布 rpc服务，不依赖 Actuator 模块 |
+| sofa.boot.rpc.enableAutoPublish              | false         | 支持应用启动时自动发布 rpc 服务，不依赖 Actuator 模块 |
 
 
 - **在 4.0 版本中重命名的配置**

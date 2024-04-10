@@ -9,7 +9,7 @@ date: 2021-09-07T15:00:00+08:00
 cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*PhN5Sp2T9NYAAAAAAAAAAAAAARQnAQ"
 ---
 
-## AntMonitor简介 
+## AntMonitor 简介 
 
 AntMonitor 是蚂蚁集团的智能监控系统，通过构建面向监控可观测数据的、实时的、稳定的采集、清洗、计算及存储数据链路，为技术风险大脑及体系提供实时、稳定、可靠、丰富的可观测数据与告警服务。
 
@@ -19,7 +19,7 @@ AntMonitor 日常服务于蚂蚁全站 100+ 业务域，分钟峰值数据清洗
 
 系统架构上，AntMonitor 可以分为产品、告警、计算和存储等四个子系统，各个子系统可以独立提供服务，又相互协调配合，承担起了蚂蚁技术风险的数据底盘角色。
 
->![](https://oscimg.oschina.net/oscnet/up-a90d9145029f81fbf45183540695b53e372.jpg)
+> ![](https://oscimg.oschina.net/oscnet/up-a90d9145029f81fbf45183540695b53e372.jpg)
 
 ### 产品系统 
 
@@ -47,15 +47,15 @@ AntMonitor 日常服务于蚂蚁全站 100+ 业务域，分钟峰值数据清洗
 
 - compute-space（cspace）
 
-为一个抽象的计算能力资源池，负责对gs投递过来的任务拓扑进行解析执行以产出数据，写入存储系统，并将任务状态反馈给 gs ，cspace 并不与具体的数据计算资源池绑定，底层的实现可以是任意计算引擎。当前，一个 cspace 节点的实现为一个 spark 集群。
+为一个抽象的计算能力资源池，负责对 gs 投递过来的任务拓扑进行解析执行以产出数据，写入存储系统，并将任务状态反馈给 gs ，cspace 并不与具体的数据计算资源池绑定，底层的实现可以是任意计算引擎。当前，一个 cspace 节点的实现为一个 spark 集群。
 
 三、采集层
 
-- gaea-registry为整个采集侧的管控中心，它将采集配置下发给 agent 和 vessel ，同时也负责维护所有 agent 和 vessel 的健康状态与路由信息等。
+- gaea-registry 为整个采集侧的管控中心，它将采集配置下发给 agent 和 vessel ，同时也负责维护所有 agent 和 vessel 的健康状态与路由信息等。
 
-- agent为部署在物理机上的采集服务进程，负责对日志、系统指标、事件等原始数据进行读取。
+- agent 为部署在物理机上的采集服务进程，负责对日志、系统指标、事件等原始数据进行读取。
 
-- vessel为数据清洗集群，负责拉群 agent 采集的原始数据进行结构化清洗，并以 rpc 形式返回给 cspace 。
+- vessel 为数据清洗集群，负责拉群 agent 采集的原始数据进行结构化清洗，并以 rpc 形式返回给 cspace 。
 
 ### 告警系统
 
@@ -87,7 +87,7 @@ AntMonitor 日常服务于蚂蚁全站 100+ 业务域，分钟峰值数据清洗
 
 针对蚂蚁智能监控自身的稳定性建设，我们主要从两方面进行推进，包括稳定性架构的设计与运行时的稳定性保障，整体如下图所示。
 
->![](https://oscimg.oschina.net/oscnet/up-28bfc01900ca5b1a5ab50406f49eb021c4c.jpg)
+> ![](https://oscimg.oschina.net/oscnet/up-28bfc01900ca5b1a5ab50406f49eb021c4c.jpg)
 
 ### 稳定性架构 
 
@@ -125,19 +125,19 @@ AntMonitor 日常服务于蚂蚁全站 100+ 业务域，分钟峰值数据清洗
 
 ### 机房级容灾 
 
->![](https://oscimg.oschina.net/oscnet/up-a1a7d52e8f3cf6c1ff68b8554496b9bd7bb.jpg)
+> ![](https://oscimg.oschina.net/oscnet/up-a1a7d52e8f3cf6c1ff68b8554496b9bd7bb.jpg)
 
 对于常规的业务域租户，AntMonitor 提供机房级的容灾能力，各子系统的机房级容灾方案实现如下。
 
 **产品系统**
 
->![](https://oscimg.oschina.net/oscnet/up-96dbeabc4f0a93ce5bea3daa6fb85ddbc17.jpg)
+> ![](https://oscimg.oschina.net/oscnet/up-96dbeabc4f0a93ce5bea3daa6fb85ddbc17.jpg)
 
 - monitorprod 为同城三机房部署的无状态组件，每个机房的服务挂载一个 vip ，解决机房内单点容灾问题，多个机房的 vip 挂载到一个域名，依靠 dns 解决机房级容灾问题。
 
 - monitormeta 为同城三机房部署的主备架构，基于分布式锁选出 master 节点提供同步能力。
 
->![](https://oscimg.oschina.net/oscnet/up-1b87dc03a1430cc2c4e9ac748fa0d6006c4.jpg)
+> ![](https://oscimg.oschina.net/oscnet/up-1b87dc03a1430cc2c4e9ac748fa0d6006c4.jpg)
 
 计算系统内组件较多，且直接关系到监控数据质量，所以稳定性工作也较为复杂。
 
@@ -147,15 +147,15 @@ AntMonitor 日常服务于蚂蚁全站 100+ 业务域，分钟峰值数据清洗
 
 - cspace 的一个节点，底层的执行引擎实际上是一个 spark 集群。一个 cspace 节点内部依赖 spark 的资源调度能力（比如 yarn）解决单点问题。多个 cspace 注册到 gs 并托管自身的生命周期，可以被视为无状态的计算服务；
 
-- gaea-registry为基于抢占 oceanbase 分布式锁的主备架构。master 节点将采集配置进行分片，每个分片具备两个副本，分配到不同的 slave 上，当一个 slave 节点故障时，master 节点会协调受影响的数据分片到健康的 slave 节点上；
+- gaea-registry 为基于抢占 oceanbase 分布式锁的主备架构。master 节点将采集配置进行分片，每个分片具备两个副本，分配到不同的 slave 上，当一个 slave 节点故障时，master 节点会协调受影响的数据分片到健康的 slave 节点上；
 
-- agent和 vessel 都是跟随业务系统进行部署的。每个物理机上部署一个agent 容器，负责采集同物理机上的多个业务容器；每个业务机房部署一个 vessel 集群，负责对该机房所有 agent 采集上来的原始数据进行清洗。这样做的原因是，原始数据（比如日志）的量级非常庞大，跨机房传输会带来大量的网络延迟和对网络设备的冲击，所以部署到机房内部是最高效的方式。也正是如此， agent 与 vessel 的容灾等级比较特殊，agent 无法解决单点问题，因为它本身就部署在单机上；vessel 为机房内的容灾组件，当机房故障时，机房内的业务本身已不可用，需要依赖业务自身的容灾方案切流到健康机房。
+- agent 和 vessel 都是跟随业务系统进行部署的。每个物理机上部署一个 agent 容器，负责采集同物理机上的多个业务容器；每个业务机房部署一个 vessel 集群，负责对该机房所有 agent 采集上来的原始数据进行清洗。这样做的原因是，原始数据（比如日志）的量级非常庞大，跨机房传输会带来大量的网络延迟和对网络设备的冲击，所以部署到机房内部是最高效的方式。也正是如此， agent 与 vessel 的容灾等级比较特殊，agent 无法解决单点问题，因为它本身就部署在单机上；vessel 为机房内的容灾组件，当机房故障时，机房内的业务本身已不可用，需要依赖业务自身的容灾方案切流到健康机房。
 
 但此时我们会提供另一个指标——数据齐全度——来反映监控数据的准确性问题。例如一个监控配置需要采集 100 个业务容器，如果某一个 agent 所在物理机挂掉导致 5 个业务容器采集失败，计算层会汇聚出 95% 的齐全度信息；如果某一个机房发生故障导致该机房 vessel 集群不可用，相应的 30 个业务容器的数据丢失，计算层同样会汇聚出 70% 的齐全度信息。
 
 **告警系统**
 
->![](https://oscimg.oschina.net/oscnet/up-79ba60877a961106239b01b9c24eb455600.jpg)
+> ![](https://oscimg.oschina.net/oscnet/up-79ba60877a961106239b01b9c24eb455600.jpg)
 
 告警系统由于与计算系统架构的相似性，稳定性架构上也大同小异。
 
@@ -167,13 +167,13 @@ AntMonitor 日常服务于蚂蚁全站 100+ 业务域，分钟峰值数据清洗
 
 **存储系统**
 
->![](https://oscimg.oschina.net/oscnet/up-b45596f68b9a183b485b8403f007ec8bc3d.jpg)
+> ![](https://oscimg.oschina.net/oscnet/up-b45596f68b9a183b485b8403f007ec8bc3d.jpg)
 
 - ceresdbconsole 为无状态节点，基于 vip + dns 实现机房级别的容灾能力。
 
 - ceresmeta 基于分布式共识算法 raft 构建，为 ceresdb 集群提供高可靠的元数据管理能力和集群调度能力。采用三机房 2、2、1 模式部署，此外每个机房还会再添加几个 learner 角色，不参与 raft 选举，learner 节点不但可以对数据进行冷备，还可以在集群多数派不可用时切换为 follower 角色；
 
-- cresproxy 与 ceresbase 为同一个容器内的两个伴随进程，单个进程的存活状态由 supervisor 保障。ceresdb 对数据进行切割形成数据分片，分片存储在 ceresbase 上，每个分片包含主、备2个副本，分布在不同的 ceresbase 节点上。当一个 ceresbase 所在的容器宕机后， ceresmeta 会进行 rebalance ，将受影响的数据分片切换到健康副本所在的 ceresbase 节点上。
+- cresproxy 与 ceresbase 为同一个容器内的两个伴随进程，单个进程的存活状态由 supervisor 保障。ceresdb 对数据进行切割形成数据分片，分片存储在 ceresbase 上，每个分片包含主、备 2 个副本，分布在不同的 ceresbase 节点上。当一个 ceresbase 所在的容器宕机后， ceresmeta 会进行 rebalance ，将受影响的数据分片切换到健康副本所在的 ceresbase 节点上。
 
 ### 城市级容灾 
 
@@ -181,7 +181,7 @@ AntMonitor 日常服务于蚂蚁全站 100+ 业务域，分钟峰值数据清洗
 
 具体的方案是异地双链路部署。针对高保租户，除了上述的上海链路外，我们同时在河源部署了一条完整的监控链路，即同一时刻、同一配置，任务会执行两次、产生两份数据和告警事件、并通过两个域名独立向外暴露服务，当某一条链路不可用时，可以手动切换到另一条链路。
 
->![](https://oscimg.oschina.net/oscnet/up-d6e28bd6cb98ff3bb8a4d3f16836847db61.jpg)
+> ![](https://oscimg.oschina.net/oscnet/up-d6e28bd6cb98ff3bb8a4d3f16836847db61.jpg)
 
 为什么选择异地双链路，而不是异地双活或者异地热备呢？
 
@@ -193,7 +193,7 @@ AntMonitor 日常服务于蚂蚁全站 100+ 业务域，分钟峰值数据清洗
 
 - 其三，备用链路一定程度上可以作为主链路的灰度环境。当监控自身需要做变更时，尤其是针对高保租户集群，可以先发布备用链路，减少直接发布主链路带来的误报或漏报风险；
 
-- 其四，是由于资源配额存在限制。蚂蚁智能监控是蚂蚁全站的资源大户，客观因素不足以支撑我们在异地针对所有租户部署一套完全独立的双活或热备集群，而是选择针对流量占比不足1%的高保租户跨城冗余出双份数据。
+- 其四，是由于资源配额存在限制。蚂蚁智能监控是蚂蚁全站的资源大户，客观因素不足以支撑我们在异地针对所有租户部署一套完全独立的双活或热备集群，而是选择针对流量占比不足 1%的高保租户跨城冗余出双份数据。
 
 跨城双链路的部署，使得整个 AntMonitor 即使在最严苛的环境之下，也能生存下来。
 
@@ -207,7 +207,7 @@ AntMonitor 日常服务于蚂蚁全站 100+ 业务域，分钟峰值数据清洗
 
 例如存在三个租户 A、B、C，租户 A 由于存储写入量比普通租户更大，可以为其搭建单独的存储集群；租户 B 和租户 C 对告警有更高的实时性要求，可以为它们搭建单独的告警集群。
 
->![](https://oscimg.oschina.net/oscnet/up-8f32b3baf1f1cee1bed4853ab58b024879c.jpg)
+> ![](https://oscimg.oschina.net/oscnet/up-8f32b3baf1f1cee1bed4853ab58b024879c.jpg)
 
 单元化设计为 AntMonitor 的稳定性架构带来了诸多好处。
 
@@ -235,11 +235,11 @@ AntMonitor 处理这类问题的核心思想就是“隔离”。
 
 针对自监控问题，与双链路类似， AntMonitor 拥有一套内核态监控集群，这个集群独立部署且版本稳定，一方面避免了生产环境 AntMonitor 异常导致监控开发同学不能及时发现，另一方面也避免了由于生产环境 AntMonitor 变更导致异常且无法及时定位根因的风险。
 
->![](https://oscimg.oschina.net/oscnet/up-7ee2ef69940e08fdc37e6de381cbf0aafa4.jpg)
+> ![](https://oscimg.oschina.net/oscnet/up-7ee2ef69940e08fdc37e6de381cbf0aafa4.jpg)
 
 针对 基础础设施循环依赖的问题 ，一方面 AntMonitor 在设计之初就将自身作为了整个蚂蚁最底层的基础设施之一，只依赖了 iaas 与 oceanbase，没有依赖其他任何中间件。另一方面，针对被 AntMonitor 依赖的 iaas 与 oceanbase ，我们也单独为其搭建了独立且版本稳定的监控集群，确保不会由于生产环境的监控变更导致 AntMonitor 上游依赖的监控服务不可用。
 
->![](https://oscimg.oschina.net/oscnet/up-7f73bc19407addb33e356bb9a1235d1240c.jpg)
+> ![](https://oscimg.oschina.net/oscnet/up-7f73bc19407addb33e356bb9a1235d1240c.jpg)
 
 ## 数字化运营 
 
@@ -263,7 +263,7 @@ AntMonitor 处理这类问题的核心思想就是“隔离”。
 
 **沙盒拦截**
 
->![](https://oscimg.oschina.net/oscnet/up-844370c857c4a6ddc81b0be5ce66fe35cae.jpg)
+> ![](https://oscimg.oschina.net/oscnet/up-844370c857c4a6ddc81b0be5ce66fe35cae.jpg)
 
 经验告诉我们，变更往往最容易给系统引入稳定性问题。
 

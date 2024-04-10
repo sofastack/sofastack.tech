@@ -31,7 +31,7 @@ aliases: "/sofa-rpc/docs/Generic-Invoke"
 </sofa:reference>
 ```
 
-其中,jvm-first根据实际情况,默认可以不写,接口写泛化调用的通用接口,generic-interface中写上自己要调用的接口名称即可.
+其中,jvm-first 根据实际情况,默认可以不写,接口写泛化调用的通用接口,generic-interface 中写上自己要调用的接口名称即可.
 
 ### 发起调用
 

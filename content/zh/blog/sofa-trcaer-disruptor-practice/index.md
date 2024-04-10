@@ -44,9 +44,9 @@ public Disruptor(
 ```
 
 - eventFactory : 在环形缓冲区中创建事件的 factory；
-- ringBufferSize:环形缓冲区的大小，必须是2的幂；
+- ringBufferSize:环形缓冲区的大小，必须是 2 的幂；
 - threadFactory：用于为处理器创建线程；
-- producerType：生成器类型以支持使用正确的sequencer和publisher创建RingBuffer；枚举类型，SINGLE、MULTI两个项。对应于 SingleProducerSequencer和MultiProducerSequencer两种Sequencer；
+- producerType：生成器类型以支持使用正确的 sequencer 和 publisher 创建 RingBuffer；枚举类型，SINGLE、MULTI 两个项。对应于 SingleProducerSequencer 和 MultiProducerSequencer 两种 Sequencer；
 - waitStrategy : 等待策略；
 
 如果我们想构造一个 disruptor，那么我们就需要上面的这些组件。从 eventFactory 来看，还需要一个具体的 Event 来作为消息事件的载体。【下面按照官方给的案例进行简单的修改作为示例】
@@ -115,7 +115,7 @@ Disruptor<LongEvent> disruptor = new Disruptor<>(
  disruptor.start();
 ```
 
-到这里，已经构建了一个disruptor；但是目前怎么使用它来发布消息和消费消息呢？
+到这里，已经构建了一个 disruptor；但是目前怎么使用它来发布消息和消费消息呢？
 
 ### 发布消息
 
@@ -158,7 +158,7 @@ disruptor.handleEventsWith(longEventHandler);
 
 ### 运行结果（这里）
 
-```
+```plain
 publish event :0
 Event: 0 -> disruptor-thread-1
 -------------------------------->
@@ -252,7 +252,7 @@ waitStrategy 决定了消费者采用何种等待策略。
 
 ### WaitStrategy
 
-> Strategy employed for making {[@link ]() EventProcessor}s wait on a cursor {[@link ]() Sequence}.
+> Strategy employed for making {[@link](https://example.com) EventProcessor}s wait on a cursor {[@link](https://example.com) Sequence}.
 
 
 EventProcessor 的等待策略；具体实现在 disruptor 中有 8 种：
@@ -322,7 +322,7 @@ public final class WorkProcessor<T> implements EventProcessor {
 
 在写 Demo 的过程中，本来想通过不设定消费者来观察 RingBuffer 可用容量变化的。但是验证过程中，一直得不到预期的结果，(注：没有设置消费者，只有生产者)，先看结果：
 
-```
+```plain
 publish event :0
 bufferSie:8
 remainingCapacity:8
@@ -409,7 +409,7 @@ public long remainingCapacity()
 
 来解释下这段代码的含义：
 
-假设当前 ringBuffer 的 bufferSize 是 8 ；上次申请到的序列号是 5，其实也就是说已经生产过占用的序列号是5；假设当前已经消费到的序列号是 3，那么剩余的容量为： 8-（5-2） = 5。
+假设当前 ringBuffer 的 bufferSize 是 8 ；上次申请到的序列号是 5，其实也就是说已经生产过占用的序列号是 5；假设当前已经消费到的序列号是 3，那么剩余的容量为： 8-（5-2） = 5。
 
 ![代码解读](https://cdn.nlark.com/yuque/0/2020/png/226702/1584325942392-6516acd0-ccfe-4a87-8fa6-bfd786147479.png)
 
@@ -433,7 +433,7 @@ public static long getMinimumSequence(final Sequence[] sequences, long minimum)
 long consumed = Util.getMinimumSequence(gatingSequences, nextValue);
 ```
 
-gatingSequences是 SingleProducerSequencer 父类  AbstractSequencer 中的成员变量：
+gatingSequences 是 SingleProducerSequencer 父类  AbstractSequencer 中的成员变量：
 
 ```java
 protected volatile Sequence[] gatingSequences = new Sequence[0];
@@ -466,9 +466,9 @@ return getBufferSize() - (produced - produced) === getBufferSize();
 
 ## SOFATracer 中 Disruptor 实践
 
-SOFATracer 中，AsyncCommonDigestAppenderManager 对 Disruptor 进行了封装，用于处理外部组件的Tracer摘要日志。该部分借助 AsyncCommonDigestAppenderManager 的源码来分析下 SOFATracer 如何使用Disruptor 的。
+SOFATracer 中，AsyncCommonDigestAppenderManager 对 Disruptor 进行了封装，用于处理外部组件的 Tracer 摘要日志。该部分借助 AsyncCommonDigestAppenderManager 的源码来分析下 SOFATracer 如何使用 Disruptor 的。
 
-SOFATracer 中使用了两种不同的事件模型，一种是 SOFATracer 内部使用的 StringEvent , 一种是外部扩展使用的 SofaTacerSpanEvent。这里以 SofaTacerSpanEvent 这种事件模型来分析。StringEvent 消息事件模型对应的是 AsyncCommonAppenderManager 类封装的disruptor。
+SOFATracer 中使用了两种不同的事件模型，一种是 SOFATracer 内部使用的 StringEvent , 一种是外部扩展使用的 SofaTacerSpanEvent。这里以 SofaTacerSpanEvent 这种事件模型来分析。StringEvent 消息事件模型对应的是 AsyncCommonAppenderManager 类封装的 disruptor。
 
 ### SofaTracerSpanEvent ( -> LongEvent)
 
@@ -490,7 +490,7 @@ public class SofaTracerSpanEvent {
 
 Consumer 是 AsyncCommonDigestAppenderManager 的内部类；实现了 EventHandler 接口，这个 consumer 就是作为消费者存在的。
 
-在 AsyncCommonAppenderManager 中也有一个，这个地方个人觉得可以抽出去，这样可以使得AsyncCommonDigestAppenderManager/AsyncCommonAppenderManager 的代码看起来更干净。
+在 AsyncCommonAppenderManager 中也有一个，这个地方个人觉得可以抽出去，这样可以使得 AsyncCommonDigestAppenderManager/AsyncCommonAppenderManager 的代码看起来更干净。
 
 ```java
 private class Consumer implements EventHandler<SofaTracerSpanEvent> {
@@ -633,7 +633,7 @@ public void start(final String workerName) {
 ![调用 start](https://cdn.nlark.com/yuque/0/2020/png/226702/1584325942382-ba1fdf89-bc8b-4f9d-8f9e-7fe61f916306.png)
 
 - CommonTracerManager : 这个里面持有了 AsyncCommonDigestAppenderManager 类的一个单例对象，并且是 static 静态代码块中调用了 start 方法；这个用来输出普通日志；
-- SofaTracerDigestReporterAsyncManager：这里类里面也是持有了AsyncCommonDigestAppenderManager 类的一个单例对像，并且提供了 getSofaTracerDigestReporterAsyncManager 方法来获取该单例，在这个方法中调用了 start 方法；该对象用来输出摘要日志；
+- SofaTracerDigestReporterAsyncManager：这里类里面也是持有了 AsyncCommonDigestAppenderManager 类的一个单例对像，并且提供了 getSofaTracerDigestReporterAsyncManager 方法来获取该单例，在这个方法中调用了 start 方法；该对象用来输出摘要日志；
 
 ### 发布事件
 
@@ -695,7 +695,7 @@ SOFATracer 事件发布的调用逻辑：
 
 ## 小结
 
-本文对 SOFATracer 中使用 Disruptor 来进行日志输出的代码进行了简单的分析，更多内部细节原理可以自行看下SOFATracer 的代码。SOFATracer 作为一种比较底层的中间件组件，在实际的业务开发中基本是无法感知的。但是作为技术来学习，还是有很多点可以挖一挖。
+本文对 SOFATracer 中使用 Disruptor 来进行日志输出的代码进行了简单的分析，更多内部细节原理可以自行看下 SOFATracer 的代码。SOFATracer 作为一种比较底层的中间件组件，在实际的业务开发中基本是无法感知的。但是作为技术来学习，还是有很多点可以挖一挖。
 
 SOFATracer：[https://github.com/sofastack/sofa-tracer](https://github.com/sofastack/sofa-tracer)
 

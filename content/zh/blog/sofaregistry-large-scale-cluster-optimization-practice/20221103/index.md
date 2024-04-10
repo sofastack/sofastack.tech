@@ -150,7 +150,7 @@ Session 在开启压缩缓存后，压缩在 CPU 占比获得了大幅度的降�
 
 **- 增量数据同步**
 
-Session 作为客户端同步写入数据的角色，可以认为他的 pub/sub 数据是最最准确的整个数据的同步过程是一个单向流，利用定时任务做到最终一致性client -> Session -> dataLeader -> dataFollower
+Session 作为客户端同步写入数据的角色，可以认为他的 pub/sub 数据是最最准确的整个数据的同步过程是一个单向流，利用定时任务做到最终一致性 client -> Session -> dataLeader -> dataFollower
 
 **-** **Data 定时 (默认 6s) 与所有的 Session 对比并同步 pub 数据[10]**    
 
@@ -216,7 +216,7 @@ public abstract class BaseInfo implements Serializable, StoreData < String > {
 }
 ```
 
-#### 3.5.2 临时对象复用*
+#### 3.5.2 临时对象复用
 
 对于高频使用场景，对象复用对内存优化是比较大的。 
 
@@ -458,7 +458,7 @@ PASS
 
 ```
 
-相比标准库的 math.rand ,  runtime.fastrandn 如此的快，因为他直接使用了go runtime 中 m.fastrand 作为种子，没有加锁操作，是 threadlocal 的实现，对于  randn 的取模操作也进优化，改用乘加移位实现 ： *[https://lemire.me/blog/2016/06/27/a-fast-alternative-to-the-modulo-reduction](https://lemire.me/blog/2016/06/27/a-fast-alternative-to-the-modulo-reduction)*
+相比标准库的 math.rand ,  runtime.fastrandn 如此的快，因为他直接使用了 go runtime 中 m.fastrand 作为种子，没有加锁操作，是 threadlocal 的实现，对于  randn 的取模操作也进优化，改用乘加移位实现 ： *[https://lemire.me/blog/2016/06/27/a-fast-alternative-to-the-modulo-reduction](https://lemire.me/blog/2016/06/27/a-fast-alternative-to-the-modulo-reduction)*
 
 ## 4 总结与展望
 
@@ -498,11 +498,11 @@ PASS
 
 *[https://github.com/sofastack/sofa-registry/blob/d9ca139595f6cc5b647f53297db7be8c14390c2b/server/server/shared/src/main/java/com/alipay/sofa/registry/server/shared/util/DatumUtils.java#L149](https://github.com/sofastack/sofa-registry/blob/d9ca139595f6cc5b647f53297db7be8c14390c2b/server/server/shared/src/main/java/com/alipay/sofa/registry/server/shared/util/DatumUtils.java#L149)*
 
-[8]Data 变更通知 Session 失败会加入重试队列最多重试3次
+[8]Data 变更通知 Session 失败会加入重试队列最多重试 3 次
 
 *[https://github.com/sofastack/sofa-registry/blob/d9ca139595f6cc5b647f53297db7be8c14390c2b/server/server/data/src/main/java/com/alipay/sofa/registry/server/data/change/DataChangeEventCenter.java#L199](https://github.com/sofastack/sofa-registry/blob/d9ca139595f6cc5b647f53297db7be8c14390c2b/server/server/data/src/main/java/com/alipay/sofa/registry/server/data/change/DataChangeEventCenter.java#L199)*
 
-[9]Session 推送给 Client 失败时会加入队列最多重试3次
+[9]Session 推送给 Client 失败时会加入队列最多重试 3 次
 
 *[https://github.com/sofastack/sofa-registry/blob/d9ca139595f6cc5b647f53297db7be8c14390c2b/server/server/session/src/main/java/com/alipay/sofa/registry/server/session/push/PushProcessor.java#L494](https://github.com/sofastack/sofa-registry/blob/d9ca139595f6cc5b647f53297db7be8c14390c2b/server/server/session/src/main/java/com/alipay/sofa/registry/server/session/push/PushProcessor.java#L494)*
 

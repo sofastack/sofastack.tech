@@ -87,9 +87,9 @@ A：目前同一个端口支持 tls/明文自定识别， http1/http2 的自动�
 
 A：如果是做流量劫持的话，其实是不需要支持识别的，这个 15001 不会实际处理请求，会转发给正确的端口来处理。
 
-> Sidecar 内部做一个转发是吧，开另外2个端口，那15001这个端口配置 TCP 协议了，然后接收到之前做判断是什么协议，转给对应的端口。
+> Sidecar 内部做一个转发是吧，开另外 2 个端口，那 15001 这个端口配置 TCP 协议了，然后接收到之前做判断是什么协议，转给对应的端口。
 
-A：可以看一下这篇文章：《[SOFAMesh中的多协议通用解决方案x-protocol介绍系列（1）——DNS通用寻址方案](/blog/sofa-mesh-x-protocol-common-address-solution/)》。
+A：可以看一下这篇文章：《[SOFAMesh 中的多协议通用解决方案 x-protocol 介绍系列（1）——DNS 通用寻址方案](/blog/sofa-mesh-x-protocol-common-address-solution/)》。
 
 ### SOFA 项目进展
 
@@ -99,7 +99,7 @@ A：可以看一下这篇文章：《[SOFAMesh中的多协议通用解决方案x
 
 - 重构了 ioctl 的实现；
 - 增加了 socketpair；
-- 实现了与Alpine Linux的二进制兼容性；
+- 实现了与 Alpine Linux 的二进制兼容性；
 - 增加了 nanosleep；
 - 增加了外部可调用命令的路径检查（即 occlum run 的）；
 - 增加了 XGBoost 的 demo；
@@ -109,28 +109,28 @@ A：可以看一下这篇文章：《[SOFAMesh中的多协议通用解决方案x
 
 ### 社区活动
 
-#### 回顾：
+#### 回顾
 
-11月24日 Kubernetes & Cloud Native X Service Mesh Meetup 活动回顾（含现场PPT以及视频回顾）：
+11 月 24 日 Kubernetes & Cloud Native X Service Mesh Meetup 活动回顾（含现场 PPT 以及视频回顾）：
 
 - [Service Mesh 在『路口』的产品思考与实践：务实是根本](/blog/service-mesh-practice-in-production-at-ant-financial-wushi/)
-- [深入Kubernetes 的“无人区” — 蚂蚁金服双十一的调度系统](/blog/kubernetes-practice-antfinal-shopping-festival/)
+- [深入 Kubernetes 的“无人区” — 蚂蚁金服双十一的调度系统](/blog/kubernetes-practice-antfinal-shopping-festival/)
 
-12月5日 SOFAChannel#9 直播回顾：
+12 月 5 日 SOFAChannel#9 直播回顾：
 
 - https://tech.antfin.com/community/live/1021/data/957
 
-#### 预告-专享福利：
+#### 预告-专享福利
 
 ![OSC 源创会](https://cdn.nlark.com/yuque/0/2019/png/226702/1575625658399-e8c74d62-13aa-4623-89a3-a7bd6e8bc8db.png)
 
-“剑指源码，尖峰对话”2019 OSC源创会是由 OSCHINA 主办的线下技术沙龙，理念为“自由、开放、分享”，SOFAStack 也受邀参加本次年终盛会，并带来主题分享。
+“剑指源码，尖峰对话”2019 OSC 源创会是由 OSCHINA 主办的线下技术沙龙，理念为“自由、开放、分享”，SOFAStack 也受邀参加本次年终盛会，并带来主题分享。
 
 **主题**：《蚂蚁金服 Service Mesh 超大规模实践以及开源》
 
 **嘉宾**：卓与，蚂蚁金服 Mesh 化落地负责人
 
-**时间**：2019年12月15日下午14:05-14:40（架构分会场）
+**时间**：2019 年 12 月 15 日下午 14:05-14:40（架构分会场）
 
 **专享福利：**点击“[**这里**](https://www.oschina.net/2019-shenzhen-ceremony)”，**验证码**填写“**SOFAStack**”即可获得大会**免费票**。
 

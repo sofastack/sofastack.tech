@@ -128,6 +128,6 @@ CHANGELOG：[https://github.com/dragonflyoss/Dragonfly2/blob/main/CHANGELOG.md](
 [19].Zhou Xu Github：
 [https://github.com/fcgxz2003](https://github.com/fcgxz2003)
 
-## Dragonfly Star 一下✨：
+## Dragonfly Star 一下✨
 
 [https://github.com/dragonflyoss/Dragonfly2](https://github.com/dragonflyoss/Dragonfly2)

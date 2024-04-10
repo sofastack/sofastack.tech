@@ -17,7 +17,7 @@ SOFARPC 已支持使用 SOFARegistry 作为服务注册中心。假设你已经�
 
 然后在 application.properties 中加入如下配置即可：
 
-```
+```plain
 com.alipay.sofa.rpc.registry.address=sofa://127.0.0.1:9603
 ```
 
@@ -25,7 +25,7 @@ com.alipay.sofa.rpc.registry.address=sofa://127.0.0.1:9603
 
 SOFARPC: [5.5.2](https://github.com/sofastack/sofa-rpc/releases), SOFABoot: [2.6.3](https://github.com/sofastack/sofa-boot/releases/)。
 
-由于本次发布的时间问题，暂时需要用户指定SOFARPC Starter的版本
+由于本次发布的时间问题，暂时需要用户指定 SOFARPC Starter 的版本
 
 ```xml
 <dependency>

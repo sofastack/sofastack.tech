@@ -39,23 +39,23 @@ SOFARPC 服务调用提供同步 Sync、异步 Future、回调 Callback 以及�
 
 如上图所示，这里主要是描述了客户端的处理逻辑，其中客户端线程和 RPC 内部部分处理并不在一个线程里。所以这里客户端线程包含其中一部分操作，后文的图中也是类似。其中红色的树状框表示客户端的线程阻塞。
 
-可以看到，客户端在代码片段2中，发起 RPC 调用，那么除非本次 RPC 彻底完成，或者 RPC 在指定时间内抛出超时异常，否则红框一直阻塞，代码片段3没有机会执行。
+可以看到，客户端在代码片段 2 中，发起 RPC 调用，那么除非本次 RPC 彻底完成，或者 RPC 在指定时间内抛出超时异常，否则红框一直阻塞，代码片段 3 没有机会执行。
 
 ### Future  异步调用
 
-客户端发起调用后不会同步等待服务端的结果，而是获取到 RPC框架给到的一个 Future 对象，调用过程不会阻塞线程，然后继续执行后面的业务逻辑。服务端返回响应结果被 RPC 缓存，当客户端需要响应结果的时候需要主动获取结果，获取结果的过程阻塞线程。
+客户端发起调用后不会同步等待服务端的结果，而是获取到 RPC 框架给到的一个 Future 对象，调用过程不会阻塞线程，然后继续执行后面的业务逻辑。服务端返回响应结果被 RPC 缓存，当客户端需要响应结果的时候需要主动获取结果，获取结果的过程阻塞线程。
 
 ![Future 调用](https://cdn.nlark.com/yuque/0/2018/png/156121/1533729405581-e81af4d6-c046-4cf6-a0db-68a3c04bd2d1.png)
 
-如上图所示，代码片段2发起 RPC 调用后，RPC 框架会立刻返回一个 Future 对象。给到代码片段2，代码片段2可以选择等待结果，或者也可以继续执行代码片段3，等代码片段3执行完成后，再获取 Future 中的值。
+如上图所示，代码片段 2 发起 RPC 调用后，RPC 框架会立刻返回一个 Future 对象。给到代码片段 2，代码片段 2 可以选择等待结果，或者也可以继续执行代码片段 3，等代码片段 3 执行完成后，再获取 Future 中的值。
 
 ### Callback 回调调用
 
-客户端提前设置回调实现类，在发起调用后不会等待结果，但是注意此时是通过上下文或者其他方式向 RPC 框架注册了一个 Callback 对象，结果处理是在新的线程里执行。RPC在获取到服务端的结果后会自动执行该回调实现。
+客户端提前设置回调实现类，在发起调用后不会等待结果，但是注意此时是通过上下文或者其他方式向 RPC 框架注册了一个 Callback 对象，结果处理是在新的线程里执行。RPC 在获取到服务端的结果后会自动执行该回调实现。
 
 ![Callback 调用](https://cdn.nlark.com/yuque/0/2018/png/156121/1533729431591-6b0480ee-d40b-481d-ad7e-486bb840299b.png)
 
-如图所示，客户端代码段2发起 RPC 调用后，并不关心结果，此时也不会有结果。只是将自己的一个 Callback 对象传递给 RPC 框架，RPC 框架发起调用后，立即返回。之后自己等待调用结果，在有了调用结果，或者超过业务配置的超时时间后，将响应结果或者超时的异常，进行 callback 的回调。一般的，一个 callback 的结果需要包含两个部分
+如图所示，客户端代码段 2 发起 RPC 调用后，并不关心结果，此时也不会有结果。只是将自己的一个 Callback 对象传递给 RPC 框架，RPC 框架发起调用后，立即返回。之后自己等待调用结果，在有了调用结果，或者超过业务配置的超时时间后，将响应结果或者超时的异常，进行 callback 的回调。一般的，一个 callback 的结果需要包含两个部分
 
 ```java
 public interface InvokeCallback {
@@ -139,11 +139,11 @@ com.alipay.remoting.rpc.protocol.RpcResponseProcessor#doProcess
 ```java
 String result =(String)SofaResponseFuture.getResponse(timeout,true);
 ```
-2.获取原生 Futrue，该种方式获取JDK原生的 Future，参数表示是否清除线程上下文中的结果。因为响应结果放在JDK原生的 Future，需要通过JDK Future的get()方法获取响应结果。
+2.获取原生 Futrue，该种方式获取 JDK 原生的 Future，参数表示是否清除线程上下文中的结果。因为响应结果放在 JDK 原生的 Future，需要通过 JDK Future 的 get()方法获取响应结果。
 ```java
 Future future = SofaResponseFuture.getFuture(true);
 ```
-当前线程发起调用得到 RpcResponseFuture 对象，当前线程继续执行下一次调用。在任意时刻使用RpcResponseFuture 对象的 get() 方法来获取结果，如果响应已经回来此时就马上得到结果；如果响应没有回来则阻塞住当前线程直到响应回来或者超时时间到。
+当前线程发起调用得到 RpcResponseFuture 对象，当前线程继续执行下一次调用。在任意时刻使用 RpcResponseFuture 对象的 get() 方法来获取结果，如果响应已经回来此时就马上得到结果；如果响应没有回来则阻塞住当前线程直到响应回来或者超时时间到。
 
 ### Callback 回调调用
 
@@ -176,7 +176,7 @@ RpcInvokeContext.getContext().setResponseCallback(sofaResponseCallbackImpl);
 <sofa:global-attrs type="oneway"/>
 ```
 
-元素的type属性声明调用方式 oneway
+元素的 type 属性声明调用方式 oneway
 
 ![Oneway 单向调用](https://cdn.nlark.com/yuque/0/2018/png/156121/1533737145316-35f516ae-45cc-4ad8-b54b-4b16b7750aa0.png)
 
@@ -230,9 +230,9 @@ private int resolveTimeout(SofaRequest request, ConsumerConfig consumerConfig, P
 
 3.如果还是没有取到，这时候，我们取服务提供方的超时时间，这个会通过注册中心传递下来。
 
-4.最终，我们取默认的超时时间，目前这个超时时间是3s。
+4.最终，我们取默认的超时时间，目前这个超时时间是 3s。
 
-注意，在真实的场景下，超时控制实际上是一个比较有挑战的事情，一旦出现 JVM层面的 STW，时间控制就会变得不够准确。因此，如果系统层面存在某些性能问题，也会影响超时的计算，这时候，会看到，已经超过了超时时间，但是客户端并没有及时终止。
+注意，在真实的场景下，超时控制实际上是一个比较有挑战的事情，一旦出现 JVM 层面的 STW，时间控制就会变得不够准确。因此，如果系统层面存在某些性能问题，也会影响超时的计算，这时候，会看到，已经超过了超时时间，但是客户端并没有及时终止。
 
 ### 线程模型
 

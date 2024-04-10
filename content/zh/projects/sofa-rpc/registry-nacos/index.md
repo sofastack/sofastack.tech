@@ -8,7 +8,7 @@ aliases: "/sofa-rpc/docs/Registry-Nacos"
 SOFARPC 已支持使用 Nacos 作为服务注册中心。假设你已经根据 Nacos 的[快速开始](https://nacos.io/zh-cn/docs/quick-start.html)在本地部署好 Nacos Server，服务发现的端口默认设置在 `8848`。
 
 在 SOFARPC 中使用 Nacos 作为服务注册中心只需要在 application.properties 中加入如下配置即可：
-```
+```plain
 com.alipay.sofa.rpc.registry.address=nacos://127.0.0.1:8848
 ```
 

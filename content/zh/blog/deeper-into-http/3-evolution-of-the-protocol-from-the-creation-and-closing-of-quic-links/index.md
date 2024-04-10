@@ -141,7 +141,7 @@ seq 的二义性问题：设想这样的一个场景，发送端发送了一个 
 
 1.图中多了"init packet"、"handshake packet"、"short-header packet"的概念；
 
-2.图中多了 pkt_number的概念以及stream+offset的概念；
+2.图中多了 pkt_number 的概念以及 stream+offset 的概念；
 
 3.pkt_number 的下标变化似乎有些奇怪。
 
@@ -157,7 +157,7 @@ pkt_number 从流程图看起来，和 TCP 的 seq 字段比较类似，然而�
 
 2. 加密 pkt_number 以保障安全
 
-当然 pkt_number 从 0 开始技术便也就遇上了和 TCP一样的安全问题，解决方案也很简单，就是用为 pkt_number 加密，pkt_number 加密后，中间人便无法获取到加密的 pkt_number 的 key，便也无法获取到真实的 pkt_number，也就无法通过观测 pkt_number 来预测后续的数据发送。而这里又引申出了另一个问题，TLS 需要握手完成后才能得到中间人无法获取的 key，而 pkt_number 又在 TLS 握手之前又存在，这看起来又是一个鸡和蛋的问题，至于其解决方案，这里先卖一个关子，留到后面 QUIC-TLS 的专题文章再讲。
+当然 pkt_number 从 0 开始技术便也就遇上了和 TCP 一样的安全问题，解决方案也很简单，就是用为 pkt_number 加密，pkt_number 加密后，中间人便无法获取到加密的 pkt_number 的 key，便也无法获取到真实的 pkt_number，也就无法通过观测 pkt_number 来预测后续的数据发送。而这里又引申出了另一个问题，TLS 需要握手完成后才能得到中间人无法获取的 key，而 pkt_number 又在 TLS 握手之前又存在，这看起来又是一个鸡和蛋的问题，至于其解决方案，这里先卖一个关子，留到后面 QUIC-TLS 的专题文章再讲。
 
 3. 细粒度的 pkt_number space 的设计
 

@@ -32,7 +32,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **@非余** 提问：
 
->我有个需求，就是我们有自己的配置中心，我的配置加载不想用默认的文件配置，这里如果我要开发的话应该怎么样加会比较漂亮？
+> 我有个需求，就是我们有自己的配置中心，我的配置加载不想用默认的文件配置，这里如果我要开发的话应该怎么样加会比较漂亮？
 
 A：把 config.Load 重写成你自己的配置解析，configmanager.RegisterConfigLoadFunc。
 
@@ -48,7 +48,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 **@飒** 提问：
 
->A 服务使用了 @GlobalTransactional（rollbackFor = Exception.class），调用了 B 服务，B 服务报错了，结果都提交成功，数据库数据也更新了，一般是什么原因？
+> A 服务使用了 @GlobalTransactional（rollbackFor = Exception.class），调用了 B 服务，B 服务报错了，结果都提交成功，数据库数据也更新了，一般是什么原因？
 
 A：应该是你被调用的服务，没有加入到全局事务中去（也就是说，被调用的服务没加上 @GlobalTransactional）。
 
@@ -94,4 +94,4 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 更多文章请扫码关注“金融级分布式架构”公众号
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*weuLRqbBWEkAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*weuLRqbBWEkAAAAAAAAAAAAAARQnAQ)

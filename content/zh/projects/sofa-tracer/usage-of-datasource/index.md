@@ -152,7 +152,7 @@ public class SimpleRestController {
 CREATE TABLE TEST(ID INT PRIMARY KEY%2C NAME VARCHAR(255));","connection.establish.span":"128ms","db.execute.cost":"15ms","database.type":"h2","database.endpoint":"jdbc:h2:~/test:-1","sys.baggage":"","biz.baggage":""}
 ```
 
-+ datasource-client-stat.log (默认60s打印一次，)
++ datasource-client-stat.log (默认 60s 打印一次，)
 ```json
 {"time":"2019-09-02 21:31:50.435","stat.key":{"local.app":"SOFATracerDataSource","database.name":"test","sql":"DROP TABLE IF EXISTS TEST;
 CREATE TABLE TEST(ID INT PRIMARY KEY%2C NAME VARCHAR(255));"},"count":1,"total.cost.milliseconds":15,"success":"true","load.test":"F"}
@@ -166,7 +166,7 @@ com.alipay.sofa.tracer.datasource.enable=false
 
 ## 注意
 + 引入 SOFATracer 需要强制配置应用名，否则应用启动失败。属性名称为：`spring.application.name`
-+ SOFATracer 2.2.0基于标准的 JDBC 接口实现，理论上支持对所有标准的数据库连接池（如 DBCP，BoneCP 等）埋点。在 Spring Boot 环境，对于 DBCP、Druid、c3p0、tomcat、HikariCP 五种连接池支持自动埋点，即用户只需要引入 SOFATracer 依赖即可。在非 Spring Boot 环境或者对其他连接池（如 BoneCP）还需要增加手动配置，比如：
++ SOFATracer 2.2.0 基于标准的 JDBC 接口实现，理论上支持对所有标准的数据库连接池（如 DBCP，BoneCP 等）埋点。在 Spring Boot 环境，对于 DBCP、Druid、c3p0、tomcat、HikariCP 五种连接池支持自动埋点，即用户只需要引入 SOFATracer 依赖即可。在非 Spring Boot 环境或者对其他连接池（如 BoneCP）还需要增加手动配置，比如：
 ```xml
 <bean id="smartDataSource" class="com.alipay.sofa.tracer.plugins.datasource.SmartDataSource" init-method="init">
     <property name="delegate" ref="simpleDataSource"/>

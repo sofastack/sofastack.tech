@@ -13,7 +13,7 @@ cover: "/cover.jpg"
 > 
 > SOFATracer 是一个用于分布式系统调用跟踪的组件，通过统一的 TraceId 将调用链路中的各种网络调用情况以日志的方式记录下来，以达到透视化网络调用的目的，这些链路数据可用于故障的快速发现，服务治理等。
 > 
-> 本文为《剖析 | SOFATracer 框架》最后一篇，本篇作者yushuqiang，来自小象生鲜。《剖析 | SOFATracer 框架》系列由 SOFA 团队和源码爱好者们出品，项目代号：[SOFA:TracerLab/]，目前领取已经完成，感谢大家的参与。
+> 本文为《剖析 | SOFATracer 框架》最后一篇，本篇作者 yushuqiang，来自小象生鲜。《剖析 | SOFATracer 框架》系列由 SOFA 团队和源码爱好者们出品，项目代号：[SOFA:TracerLab/]，目前领取已经完成，感谢大家的参与。
 > 
 > **SOFATracer**：<https://github.com/sofastack/sofa-tracer>
 
@@ -25,7 +25,7 @@ cover: "/cover.jpg"
 
 作为一个开源实现，SOFATracer 也尽可能提供大而全的插件实现，但由于多数公司都有自己配套的技术体系，完全依赖官方提供的插件可能无法满足自身的需要，因此如何基于 SOFATracer 自身 API 的组件埋点机制进行扩展，实现自己的插件是必须掌握的一项本领。
 
-本文将根据 SOFATracer 自身 AP I的扩展点及已提供的插件源码来分析下 SOFATracer 插件的埋点机制。
+本文将根据 SOFATracer 自身 AP I 的扩展点及已提供的插件源码来分析下 SOFATracer 插件的埋点机制。
 
 ## SOFATracer 的插件埋点机制
 
@@ -74,7 +74,7 @@ AbstractTracer 是 SOFATracer 用于插件扩展使用的一个抽象类，根�
 
 ![image.png](https://cdn.nlark.com/yuque/0/2019/png/236836/1550567519779-8d83f912-e07f-44f5-bb1e-3a69fd4fb770.png)
 
-从上图插件的工程的包结构可以看出，整个插件实现比较简单，代码量不多，但从类的定义来看，直观的体现了SOFATracer 插件埋点机制所介绍的套路。下面将进行详细的分析与介绍。
+从上图插件的工程的包结构可以看出，整个插件实现比较简单，代码量不多，但从类的定义来看，直观的体现了 SOFATracer 插件埋点机制所介绍的套路。下面将进行详细的分析与介绍。
 
 **2、实现 Tracer 实例**
 
@@ -95,7 +95,7 @@ RpcThriftTracer 继承了 AbstractTracer 类，是对 clientTracer、serverTrace
 | RpcSpanTags                         |                                                              |                                | 要采集数据 key 的取值定义                                    |      |
 
 
-> PS:上面表格中SpanEncoder和AbstractSofaTracerStatisticReporter的实现中，多了一层AbstractRpcDigestSpanJsonEncoder和AbstractRpcStatJsonReporter的抽象，主要是由于client和server端有公共的逻辑处理，为了减少冗余代码，而采用了多继承模式处理。
+> PS:上面表格中 SpanEncoder 和 AbstractSofaTracerStatisticReporter 的实现中，多了一层 AbstractRpcDigestSpanJsonEncoder 和 AbstractRpcStatJsonReporter 的抽象，主要是由于 client 和 server 端有公共的逻辑处理，为了减少冗余代码，而采用了多继承模式处理。
 
 **4、数据传播格式实现**
 
@@ -111,20 +111,20 @@ SOFATracer 支持使用 OpenTracing 的内建格式进行上下文传播。
 | ConsumerTracerFilter |
 | ProviderTracerFilter |
 
-> 我们内部 Thrift 支持 SPI Filter 机制，因此要实现对请求的拦截过滤，示例插件埋点的实现就是基于 SPI Filter 机制完成的。其中FilterThriftBase抽象也是为了便于处理consumerFilter和providerFilter公共的逻辑抽象。
+> 我们内部 Thrift 支持 SPI Filter 机制，因此要实现对请求的拦截过滤，示例插件埋点的实现就是基于 SPI Filter 机制完成的。其中 FilterThriftBase 抽象也是为了便于处理 consumerFilter 和 providerFilter 公共的逻辑抽象。
 
 ## 插件扩展基本思路总结
 
 对于一个组件来说，一次处理过程一般是产生一个 Span；这个 Span 的生命周期是从接收到请求到返回响应这段过程。
 
-但是这里需要考虑的问题是如何与上下游链路关联起来呢？在 Opentracing 规范中，可以在 Tracer 中 extract 出一个跨进程传递的 SpanContext 。然后通过这个 SpanContext 所携带的信息将当前节点关联到整个 Tracer 链路中去，当然有提取（extract）就会有对应的注入（inject）；更多请参考 [蚂蚁金服分布式链路跟踪组件链路透传原理与SLF4J MDC的扩展能力分析 | 剖析](https://www.sofastack.tech/blog/sofa-tracer-unvarnished-transmission-slf4j-mdc/) 。
+但是这里需要考虑的问题是如何与上下游链路关联起来呢？在 Opentracing 规范中，可以在 Tracer 中 extract 出一个跨进程传递的 SpanContext 。然后通过这个 SpanContext 所携带的信息将当前节点关联到整个 Tracer 链路中去，当然有提取（extract）就会有对应的注入（inject）；更多请参考 [蚂蚁金服分布式链路跟踪组件链路透传原理与 SLF4J MDC 的扩展能力分析 | 剖析](https://www.sofastack.tech/blog/sofa-tracer-unvarnished-transmission-slf4j-mdc/) 。
 
 链路的构建一般是 client-server-client-server 这种模式的，那这里就很清楚了，就是会在 client 端进行注入（inject），然后再 server 端进行提取（extract），反复进行，然后一直传递下去。
 
 在拿到 SpanContext 之后，此时当前的 Span 就可以关联到这条链路中了，那么剩余的事情就是收集当前组件的一些数据；整个过程大概分为以下几个阶段：
 
 - 从请求中提取 spanContext
-- 构建 Span，并将当前 Span 存入当前 tracer上下文中（SofaTraceContext.push(Span)） 。
+- 构建 Span，并将当前 Span 存入当前 tracer 上下文中（SofaTraceContext.push(Span)） 。
 - 设置一些信息到 Span 中
 - 返回响应
 - Span 结束&上报
@@ -135,7 +135,7 @@ SOFATracer 支持使用 OpenTracing 的内建格式进行上下文传播。
 
 Thrift 插件中的 Consumer 和 Provider 分别对应于 client 和 server 端存在的，所以在 client 端就是将当前请求线程的产生的 traceId 相关信息 Inject 到 SpanContext，server 端从请求中 extract 出 spanContext，来还原本次请求线程的上下文。
 
-相关处理逻辑在FilterThriftBase抽象类中，如下图:
+相关处理逻辑在 FilterThriftBase 抽象类中，如下图:
 
 ![image.png](https://cdn.nlark.com/yuque/0/2019/png/236836/1550500090382-54a106e9-5364-4116-bb20-fb2bda8dc57d.png)
 
@@ -182,7 +182,7 @@ clientReceive
 
 ![1-2.jpg](https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1550562880070-9ccb839f-de48-467a-be91-cec841cac936.jpeg)
 
-服务端接收请求 sr 阶段，产生了一个 Span 。上面appendProviderRequestSpanTags这段代码是为当前这个 Span 设置一些基本信息，包括当前应用的应用名、当前请求的 service、当前请求的请求方法以及请求大小等。
+服务端接收请求 sr 阶段，产生了一个 Span 。上面 appendProviderRequestSpanTags 这段代码是为当前这个 Span 设置一些基本信息，包括当前应用的应用名、当前请求的 service、当前请求的请求方法以及请求大小等。
 
 ### 返回响应与结束 Span
 
@@ -196,7 +196,7 @@ clientReceive
 
 ![image.png](https://cdn.nlark.com/yuque/0/2019/png/236836/1550568092408-2dcc5b51-6319-43b8-bfad-817e2c804a56.png)
 
-关于 clientReceive 和 serverSend 里面调用 Span.finish 这个方法( opentracing 规范中，Span.finish 的执行标志着一个 Span 的结束（见图一)，当调用finish执行逻辑时同时会进行span数据的上报(见图二)和当前请求线程MDC资源的清理操作(见图三)等。
+关于 clientReceive 和 serverSend 里面调用 Span.finish 这个方法( opentracing 规范中，Span.finish 的执行标志着一个 Span 的结束（见图一)，当调用 finish 执行逻辑时同时会进行 span 数据的上报(见图二)和当前请求线程 MDC 资源的清理操作(见图三)等。
 
 - 图一：
 
@@ -222,7 +222,7 @@ clientReceive
 2. 实现当前插件的 Tracer 实例，这里需要明确当前插件是以 client 存在还是以 server 存在
 3. 实现一个枚举类，用来描述当前组件的日志名称和滚动策略 key 值等
 4. 实现插件摘要日志的 Encoder ，实现当前组件的定制化输出
-5. 实现插件的统计日志 Reporter 实现类，通过继承 AbstractSofaTracerStatisticReporter 类并重写doReportStat
+5. 实现插件的统计日志 Reporter 实现类，通过继承 AbstractSofaTracerStatisticReporter 类并重写 doReportStat
 6. 定义当前插件的传播格式
 7. 要明确我们需要收集哪些数据
 
@@ -233,7 +233,7 @@ clientReceive
 **文中涉及到的所有链接：**
 
 - 《Dapper，大规模分布式系统的跟踪系统》：<https://bigbully.github.io/Dapper-translation/>
-- 蚂蚁金服分布式链路跟踪组件链路透传原理与SLF4J MDC的扩展能力分析 | 剖析： <https://mp.weixin.qq.com/s/DQNOz6QnfKCJ0rhbx1cJLw>
+- 蚂蚁金服分布式链路跟踪组件链路透传原理与 SLF4J MDC 的扩展能力分析 | 剖析： <https://mp.weixin.qq.com/s/DQNOz6QnfKCJ0rhbx1cJLw>
 
 ![加入钉钉群.png](https://cdn.nlark.com/yuque/0/2019/png/226702/1550721734815-7fecd598-f7b8-4ae6-a5eb-809a7f13b8a4.png)
 

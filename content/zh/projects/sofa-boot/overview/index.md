@@ -61,7 +61,7 @@ SOFABoot 在 Spring Boot 基础上，提供了以下能力：
 * 增加日志空间隔离的能力：中间件框架自动发现应用的日志实现依赖并独立打印日志，避免中间件和应用日志实现绑定，通过 [sofa-common-tools](https://github.com/sofastack/sofa-common-tools) 实现。
 * 增加类隔离的能力：基于 [SOFAArk](https://github.com/sofastack/sofa-ark) 框架提供类隔离能力，方便使用者解决各种类冲突问题。
 * 增加中间件集成管理的能力：统一管控、提供中间件统一易用的编程接口、每一个 SOFA 中间件都是独立可插拔的组件。
-* 提供完全兼容 Spring Boot的能力：SOFABoot 基于 Spring Boot 的基础上进行构建，并且完全兼容 Spring Boot。
+* 提供完全兼容 Spring Boot 的能力：SOFABoot 基于 Spring Boot 的基础上进行构建，并且完全兼容 Spring Boot。
 
 ## 应用场景
 

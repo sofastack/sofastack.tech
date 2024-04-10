@@ -54,7 +54,7 @@ byte[] clz = this.requestClass.getBytes(Configs.DEFAULT_CHARSET);
 
 直接将字符串转换成 Byte 数组即可，跟具体的任何序列化方式，比如跟采用 Hessian 还是 Pb 都是无关的。
 
-serializeHeader 则是序列化 HeaderMap。这时候因为有了前面的 requestClass，就可以根据这个名字拿到SOFARPC 层或者用户自己注册的序列化器。然后进行序列化 Header，这个对应 SOFARPC 框架中的 SofaRpcSerialization 类。在这个类里，我们可以自由使用本次传输的对象，将一些必要信息提取到Header 中，并进行对应的编码。这里也不跟具体的序列化方式有关，是一个简单 Map 的序列化，写 key、写 value、写分隔符。有兴趣的同学可以直接看源码。
+serializeHeader 则是序列化 HeaderMap。这时候因为有了前面的 requestClass，就可以根据这个名字拿到 SOFARPC 层或者用户自己注册的序列化器。然后进行序列化 Header，这个对应 SOFARPC 框架中的 SofaRpcSerialization 类。在这个类里，我们可以自由使用本次传输的对象，将一些必要信息提取到 Header 中，并进行对应的编码。这里也不跟具体的序列化方式有关，是一个简单 Map 的序列化，写 key、写 value、写分隔符。有兴趣的同学可以直接看源码。
 
 源码链接：[https://github.com/alipay/sofa-bolt/blob/531d1c0d872553d92fc55775565b3f7be8661afa/src/main/java/com/alipay/remoting/rpc/protocol/RpcRequestCommand.java#L66](https://github.com/alipay/sofa-bolt/blob/531d1c0d872553d92fc55775565b3f7be8661afa/src/main/java/com/alipay/remoting/rpc/protocol/RpcRequestCommand.java#L66)
 
@@ -125,8 +125,8 @@ Netty 从 4.1.x 开始，非 Android 平台默认使用池化（PooledByteBufAll
 注意：
 
 - 如果 DirectMemory 设置过小，是不会启用 Pooled 的。
-- 另外需要注意 PooledByteBufAllocator 的 MaxDirectMemorySize 设置。本机验证的话，大概需要 96M 以上，在 Demo中有说明。
-- Demo地址： [https://github.com/leizhiyuan/rpcchannel](https://github.com/leizhiyuan/rpcchannel)
+- 另外需要注意 PooledByteBufAllocator 的 MaxDirectMemorySize 设置。本机验证的话，大概需要 96M 以上，在 Demo 中有说明。
+- Demo 地址： [https://github.com/leizhiyuan/rpcchannel](https://github.com/leizhiyuan/rpcchannel)
 
 ```java
  DEFAULT_NUM_DIRECT_ARENA = Math.max(0,
@@ -139,7 +139,7 @@ Netty 从 4.1.x 开始，非 Android 平台默认使用池化（PooledByteBufAll
 
 ### Direct 还是 Heap
 
-目前 Netty 在 write 的时候默认是 Direct ，而在 read 到字节流时会进行选择。可以查看如下代码，``io.netty.channel.nio.AbstractNioByteChannel.NioByteUnsafe#read``。框架所采取的策略是：如果所运行的平台提供了Unsafe 相关的操作，则调用 Unsafe 在 Direct 区域进行内存分配，否则在 Heap 上进行分配。
+目前 Netty 在 write 的时候默认是 Direct ，而在 read 到字节流时会进行选择。可以查看如下代码，``io.netty.channel.nio.AbstractNioByteChannel.NioByteUnsafe#read``。框架所采取的策略是：如果所运行的平台提供了 Unsafe 相关的操作，则调用 Unsafe 在 Direct 区域进行内存分配，否则在 Heap 上进行分配。
 
 有兴趣的同学可以通过 **Demo 3** 中的示例来 debug，断点打在如下位置，就可以看到 Netty 选择的过程。
 
@@ -153,9 +153,9 @@ io.netty.buffer.AbstractByteBufAllocator#ioBuffer(int)
 
 一般来说，我们不会主动去分配 ByteBuf ，只要去操作读写 ByteBuf。所以：
 
-1. 使用 Bytebuf.forEachByte() ，传入 Processor 来代替循环 ByteBuf.readByte() 的遍历操作，避免rangeCheck() 。因为每次 readByte() 都不是读一个字节这么简单，首先要判断 refCnt() 是否大于0，然后再做范围检查防止越界。getByte(i＝int) 又有一些检查函数，JVM 没有内连的时候，性能就有一定的损耗。
+1. 使用 Bytebuf.forEachByte() ，传入 Processor 来代替循环 ByteBuf.readByte() 的遍历操作，避免 rangeCheck() 。因为每次 readByte() 都不是读一个字节这么简单，首先要判断 refCnt() 是否大于 0，然后再做范围检查防止越界。getByte(i＝int) 又有一些检查函数，JVM 没有内连的时候，性能就有一定的损耗。
 2. 使用 CompositeByteBuf 来避免不必要的内存拷贝。在操作一些协议包数据拼接时会比较有用，比如在 Service Mesh 的场景，如果我们需要改变 Header 中的 RequestId，然后和原始的 Body 数据拼接。
-3. 如果要读1个 int ， 用 Bytebuf.readInt() , 不要使用 Bytebuf.readBytes(buf, 0, 4) 。这样能避免一次内存拷贝，其他 long 等同理，毕竟还要转换回来，性能也更好。在 **Demo 4** 中有体现。
+3. 如果要读 1 个 int ， 用 Bytebuf.readInt() , 不要使用 Bytebuf.readBytes(buf, 0, 4) 。这样能避免一次内存拷贝，其他 long 等同理，毕竟还要转换回来，性能也更好。在 **Demo 4** 中有体现。
 4. RecyclableArrayList ，在出现频繁 new ArrayList 的场景可考虑 。例如：SOFABolt 在批量解包的时候使用了 RecyClableList ，可以让 Netty 来回收。上期分享中有介绍到这个功能，详情可以见文末上期回顾链接。
 5. 避免拷贝，为了失败时重试，假设要保留内容稍后使用。不想 Netty 在发送完毕后把 buffer 就直接释放了，可以用 copy() 复制一个新的 ByteBuf。但是下面这样更高效，Bytebuf newBuf=oldBuf.duplicate().retain(); 只是复制出独立的读写索引, 底下的 ByteBuffer 是共享的，同时将 ByteBuffer 的计数器＋1，这样可以避免释放，而不是通过拷贝来阻止释放。
 6. 最后可能出现问题，使用 PooledBytebuf 时要善于利用 -Dio.netty.leakDetection.level 参数，可以定位内存泄漏出现的信息。
@@ -170,11 +170,11 @@ io.netty.buffer.AbstractByteBufAllocator#ioBuffer(int)
 
 如果应用刚刚启动完成，此时 JIT 的优化以及其他相关组件还未充分预热完成。此时，如果立刻收到正常的流量调用可能会导致当前机器处理非常缓慢，甚至直接当机无法正常启动。这时需要的操作：先关闭流量，然后重启，之后开放流量。
 
-为此，SOFARPC 允许用户在发布服务时，设置当前服务在启动后的一段时间内接受的权重数值，默认是100。
+为此，SOFARPC 允许用户在发布服务时，设置当前服务在启动后的一段时间内接受的权重数值，默认是 100。
 
 ![权重负载均衡图](https://cdn.nlark.com/yuque/0/2019/png/226702/1551407093604-9600bd5e-6a53-4e6d-a6f8-f56dd1d1e3f4.png)
 
-如上图所示，假设用户设置了某个服务 A 的启动预热时间为 60s，期间权重是10，则 SOFARPC 在调用的时候会进行如图所示的权重调节。
+如上图所示，假设用户设置了某个服务 A 的启动预热时间为 60s，期间权重是 10，则 SOFARPC 在调用的时候会进行如图所示的权重调节。
 
 这里我们假设有三个服务端，两个过了启动期间，另一个还在启动期间。在负载均衡的时候，三个服务器会根据各自的权重占总权重的比例来进行负载均衡。这样，在启动期间的服务方就会收到比较少的调用，防止打垮服务端。当过了启动期间之后，会使用默认的 100 权重进行负载均衡。这个在 **Demo 5** 中有示例。
 
@@ -216,7 +216,7 @@ io.netty.buffer.AbstractByteBufAllocator#ioBuffer(int)
 
 ### 线程池调节
 
-以业务线程数为例，目前默认线程池，20核心线程数，200最大线程数，0队列。可以通过以下配置项来调整：
+以业务线程数为例，目前默认线程池，20 核心线程数，200 最大线程数，0 队列。可以通过以下配置项来调整：
 
 ```java
 com.alipay.sofa.rpc.bolt.thread.pool.core.size # bolt 核心线程数

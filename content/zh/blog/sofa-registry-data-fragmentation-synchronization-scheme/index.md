@@ -56,7 +56,7 @@ DataServer 模块的各个 bean 在 JavaConfig 中统一配置，JavaConfig 类�
 
 ![图2 DataServerBootstrap 中的 start 方法](https://cdn.nlark.com/yuque/0/2019/png/156644/1569713909310-c8ab9b3c-e76e-49b7-9818-abc345ceb2f3.png)
 
-图2 DataServerBootstrap 中的 start 方法
+图 2 DataServerBootstrap 中的 start 方法
 
 这几个 Server 的作用如下：
 
@@ -80,7 +80,7 @@ DataServer 模块的各个 bean 在 JavaConfig 中统一配置，JavaConfig 类�
 
 ![图5 监听端口](https://cdn.nlark.com/yuque/0/2019/png/156644/1569832055473-fc0f2e95-a2b1-4a53-8399-a0f0de423a74.png)
 
-图5 监听端口
+图 5 监听端口
 
 ### 其他初始化 Bean
 

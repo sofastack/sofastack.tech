@@ -28,10 +28,10 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **@刘嘉伟** 提问：
 
-> 请教一下：我在纯 TCC 事务 a、b、c个服务调用中 c 服务异常了，b 服务回滚日志是
-> rm handle undo log process:
-> UndoLogDeleteRequest{resourceId='insert', saveDays=7, branchType=AT}
-> 明明是纯 TCC 事务，怎么 AT 都出来了，导致了一个问题：TCC 数据源也没有代理的，也没有相应的 undo log表，然后 AT 事务回滚肯定无效的，TCC 的 cancel 也没有执行。
+> 请教一下：我在纯 TCC 事务 a、b、c 个服务调用中 c 服务异常了，b 服务回滚日志是
+rm handle undo log process:
+UndoLogDeleteRequest{resourceId='insert', saveDays=7, branchType=AT}
+明明是纯 TCC 事务，怎么 AT 都出来了，导致了一个问题：TCC 数据源也没有代理的，也没有相应的 undo log 表，然后 AT 事务回滚肯定无效的，TCC 的 cancel 也没有执行。
 
 A：这个理论上来说是没影响的，定时触发的，跟你本身的回滚逻辑应该没关系；这个 pr 会优化这个点：[https://github.com/seata/seata/pull/3501](https://github.com/seata/seata/pull/3501)。
 

@@ -70,7 +70,7 @@ SOFAJRaft：[https://github.com/sofastack/sofa-jraft](https://github.com/sofasta
 - [蚂蚁金服分布式链路跟踪组件 SOFATracer 中 Disruptor 实践（含源码）](/blog/sofa-trcaer-disruptor-practice/)
 - [蚂蚁金服开源分布式链路跟踪组件 SOFATracer 埋点机制剖析](/blog/sofa-tracer-event-tracing-deep-dive/)
 - [蚂蚁金服开源分布式链路跟踪组件 SOFATracer 采样策略和源码剖析](/blog/sofa-tracer-sampling-tracking-deep-dive/)
-- [蚂蚁金服开源分布式链路跟踪组件 SOFATracer 链路透传原理与SLF4J MDC 的扩展能力剖析](/blog/sofa-tracer-unvarnished-transmission-slf4j-mdc/)
+- [蚂蚁金服开源分布式链路跟踪组件 SOFATracer 链路透传原理与 SLF4J MDC 的扩展能力剖析](/blog/sofa-tracer-unvarnished-transmission-slf4j-mdc/)
 - [蚂蚁金服分布式链路跟踪组件 SOFATracer 数据上报机制和源码剖析](/blog/sofa-tracer-response-mechanism/)
 - [蚂蚁金服分布式链路跟踪组件 SOFATracer 总览|剖析](/blog/sofa-tracer-overview/)
 
@@ -83,7 +83,7 @@ SOFAJRaft：[https://github.com/sofastack/sofa-jraft](https://github.com/sofasta
 现实场景中，大部分国内厂商都有一套自研 RPC 的服务化体系，属于「存量服务化体系的兼容方案」中的协议适配问题。为此，MOSN 设计了一套多协议框架，用于降低自研体系的协议适配及接入成本，加速 Service Mesh 的落地普及。SOFAChannel#13，将向大家介绍 MOSN 实现多协议低成本接入的设计思路以及相应的快速接入实践案例。
 
 - 主题：SOFAChannel#13：云原生网络代理 MOSN 的多协议机制解析
-- 时间：2020年3月26日（周四）19:00-20:00
+- 时间：2020 年 3 月 26 日（周四）19:00-20:00
 - 嘉宾：无钩，蚂蚁金服技术专家、MOSN Committer
 - 形式：线上直播
 - 报名方式：点击“[这里](https://tech.antfin.com/community/live/1131)”，即可报名

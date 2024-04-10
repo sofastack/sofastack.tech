@@ -41,7 +41,7 @@ public class RestfulSampleServiceImpl implements SampleService {
 
 在发布服务之后，用户可以通过浏览器来直接访问服务，对于上面的服务，访问的地址如下：
 
-```
+```plain
 http://localhost:8341/sample/hello
 ```
 

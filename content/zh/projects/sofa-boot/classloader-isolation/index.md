@@ -73,7 +73,7 @@ SOFABoot 提供了类隔离框架 SOFAArk, 弥补了 Spring Boot 在类隔离能
 插件配置项解释：
 
 + `outputDirectory`: 执行 `mvn package` 命令后，指定打出来的 ark 包存放目录，默认存放至 ${project.build.directory}
-+ `arkClassifier`: 执行 `mvn depleoy` 命令后，指定发布到仓库的 ark 包的maven坐标的 `classifer` 值, 默认为空；我们推荐配置此配置项用于和普通的 Fat Jar 加以名字上区别；
++ `arkClassifier`: 执行 `mvn depleoy` 命令后，指定发布到仓库的 ark 包的 maven 坐标的 `classifer` 值, 默认为空；我们推荐配置此配置项用于和普通的 Fat Jar 加以名字上区别；
 + `denyImportClasses`: 默认情况下，应用会优先加载 ark plugin 导出的类，使用该配置项，可以禁止应用从 ark plugin 加载其导出类；
 + `denyImportPackages`: 对应上述的 `denyImportClasses`, 提供包级别的禁止导入；
 + `denyImportResources`: 默认情况下，应用会优先加载 ark plugin 导出的资源，使用该配置项，可以禁止应用从 ark plugin 加载其导出资源；
@@ -92,7 +92,7 @@ SOFABoot 提供了类隔离框架 SOFAArk, 弥补了 Spring Boot 在类隔离能
 
 根据 SpringBoot 依赖即服务的原则，添加该依赖之后，应用启动之前，会优先启动 SOFABoot 类隔离容器；
 
-SOFABoot 的类隔离框架会自动检测应用中是否有引入 Ark Plugin（即需要被隔离的jar包，详情请参考 [SOFAArk](https://github.com/sofastack/sofa-ark)）, 并隔离加载；例如为了避免 SOFABoot 官方提供的 SOFARPC 组件和应用产生依赖冲突，SOFABoot提供了 SOFARPC 组件对应的 ark plugin 版，用户如果需要隔离 SOFARPC，只需要添加如下组件：
+SOFABoot 的类隔离框架会自动检测应用中是否有引入 Ark Plugin（即需要被隔离的 jar 包，详情请参考 [SOFAArk](https://github.com/sofastack/sofa-ark)）, 并隔离加载；例如为了避免 SOFABoot 官方提供的 SOFARPC 组件和应用产生依赖冲突，SOFABoot 提供了 SOFARPC 组件对应的 ark plugin 版，用户如果需要隔离 SOFARPC，只需要添加如下组件：
 
 ```xml
 <dependency>
@@ -131,7 +131,7 @@ starting in sample ark plugin activator
 
 使用 `mvn clean install` 将工程打包具体类隔离能力的 Fat Jar。打包之后的文件格式类似如下：
 
-```
+```plain
 .
 ├── classes
 │   └── com
@@ -162,7 +162,7 @@ starting in sample ark plugin activator
 
 其中 `sofaboot-sample-with-isolation-2.4.0-executable-ark` 就是一个具备类隔离能力的 Fat Jar，我们可以直接通过 `java -jar` 的方式将其启动。在服务器或者控制台上执行 `java -jar sofaboot-sample-with-isolation-2.4.0-executable-ark` 可以看到类似如下的启动成功日志：
 
-```
+```plain
 2018-04-07 10:57:48.033  INFO 8488 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
 2018-04-07 10:57:48.042  INFO 8488 --- [           main] .i.SofaBootClassIsolationDemoApplication : Started SofaBootClassIsolationDemoApplication in 7.432 seconds (JVM running for 8.99)
 Ark container started in 8797 ms.

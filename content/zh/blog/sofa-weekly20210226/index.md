@@ -28,7 +28,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **@宓文明** 提问：
 
->请教：大家有没有遇到过 SOFAArk 工程这样的情况：双机房集群部署（检查模块 jar 大小相同、MD5 相同、部署时间相同），其中一台服务器中报错 NoClassDefFoundError（调用模块工具类的静态方法时，工具类找不到），其余的服务器都 OK。
+> 请教：大家有没有遇到过 SOFAArk 工程这样的情况：双机房集群部署（检查模块 jar 大小相同、MD5 相同、部署时间相同），其中一台服务器中报错 NoClassDefFoundError（调用模块工具类的静态方法时，工具类找不到），其余的服务器都 OK。
 >![](https://cdn.nlark.com/yuque/0/2021/png/12405317/1614323320115-d2f5a67b-c548-47c5-86df-c5a387c6a689.png)
 
 A：你们登录到机器上去，堆栈是有的；这种问题可能是因为底层有 class 没找到，两个思路：
@@ -41,7 +41,7 @@ SOFAArk:[https://github.com/sofastack/sofa-ark](https://github.com/sofastack/sof
 
 > MOSN 是如何保证一定是先于业务容器启动，并且保证是后于业务容器销毁呢？
 
-A：启动就是按 pod 里的容器顺序启动，MOSN 容器在 APP 容器前。APP 容器内的应用进程启动前会检查 MOSN 的端口是否存活，得等到 MOSN 进程启动完成才能继续。销毁 pod 的时候没有特别处理，就是摘了pod 的流量整个销毁。
+A：启动就是按 pod 里的容器顺序启动，MOSN 容器在 APP 容器前。APP 容器内的应用进程启动前会检查 MOSN 的端口是否存活，得等到 MOSN 进程启动完成才能继续。销毁 pod 的时候没有特别处理，就是摘了 pod 的流量整个销毁。
 
 MOSN:[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 
@@ -56,7 +56,7 @@ MOSN:[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 
 **@饶文强** 提问：
 
-> 请教一下：我不是很理解这一步锁撤销的步骤：线程 A 进入同步代码块方法，尝试获取偏向锁，此时若 CAS 线程 id 替换失败，为什么涉及一个偏向锁撤销，线程 A 不是没有获取到锁。我的理解是此时锁对象的偏向锁线程 id 不是线程A本身，为什么还需要偏向锁撤销？
+> 请教一下：我不是很理解这一步锁撤销的步骤：线程 A 进入同步代码块方法，尝试获取偏向锁，此时若 CAS 线程 id 替换失败，为什么涉及一个偏向锁撤销，线程 A 不是没有获取到锁。我的理解是此时锁对象的偏向锁线程 id 不是线程 A 本身，为什么还需要偏向锁撤销？
 >![](https://cdn.nlark.com/yuque/0/2021/png/12405317/1614323402397-fb5a94e5-d4a1-44fa-bfbd-418e30a1f600.png)
 
 A：因为偏向锁可以被降级，其他的不可以，这个时候需要升级锁或降级锁；偏向锁持有者是不会做降级操作的，只有前来竞争锁的线程会去判断。

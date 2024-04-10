@@ -481,7 +481,7 @@ throw new DistroException(String.format("Get data from %s failed.", key.getTarge
 
 - 区别于 v1 版本的实现，v2 中以 ClientId 维度进行 CheckSum；
 
-- Nacos-1 对于本节点的所有 ClientId，每个 ClientId都包装成一个 Task 任务，使用 gRPC 发送给所有的 Distro 节点；
+- Nacos-1 对于本节点的所有 ClientId，每个 ClientId 都包装成一个 Task 任务，使用 gRPC 发送给所有的 Distro 节点；
 
 ```Java
 @Overridepublic List<DistroData> getVerifyData() { 
@@ -527,7 +527,7 @@ return result;
 
 1. Client 发起服务注册数据 Publisher 给 SessionServer，SessionServer 接收成功；
 
-2. SessionServer 接收到 Publisher 数据后，首先写入内存  *(Client 发送过来的 Publisher 数据，SessionServer 都会存储到内存，用于后续可以跟 DataServer 做定期检查)* ，然后将 Publisher 数据发送给 DataServer，DataServer收到 Session 的 Pub 之后，修改 Datum 的版本号；
+2. SessionServer 接收到 Publisher 数据后，首先写入内存  *(Client 发送过来的 Publisher 数据，SessionServer 都会存储到内存，用于后续可以跟 DataServer 做定期检查)* ，然后将 Publisher 数据发送给 DataServer，DataServer 收到 Session 的 Pub 之后，修改 Datum 的版本号；
 
 3. DataServer 先对 Notify 的请求做 merge 操作 *（等待 1000ms）* ，然后将数据的变更事件通知给所有 SessionServer *(事件内容是 ID 和版本号信息和版本号信息：<dataInfoId> 和 <version>)* ；
 
@@ -565,7 +565,7 @@ return result;
 
 4. 当 Data-B2 中收到本机房 Session 的 Pub、ubPub、Client_off 请求后，完成本机房 Datum 数据处理；然后将 Datum.Version 通知给本机房 Session，同时将具体的 Pub、ubPub、Client_off 请求发送给 Data-A1；
 
-5. Data-A1定时将 SlotId=1 的摘要数据发送给 Data-B2，将 SlotId=2 的摘要数据发送给 Data-B3，返回有差异的 DataInfoId 列表；再将差异 DataInfoId 进行性细的 Pub 摘要对比，确保数据最终一致；
+5. Data-A1 定时将 SlotId=1 的摘要数据发送给 Data-B2，将 SlotId=2 的摘要数据发送给 Data-B3，返回有差异的 DataInfoId 列表；再将差异 DataInfoId 进行性细的 Pub 摘要对比，确保数据最终一致；
 
 6. Data-A1 将变化的 DataInfoId 以及 Datum Version 通知给本集群所有的 Session，将 DataCenterB 的数据变化推送给 DataCenterA 的所有 Client。
 

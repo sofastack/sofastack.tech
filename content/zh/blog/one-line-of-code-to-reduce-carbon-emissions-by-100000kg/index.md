@@ -46,7 +46,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*L5OQQYsX12gAAAAAA
 
 ![图片](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*sRK8Q6hJqHkAAAAAAAAAAAAAARQnAQ)
 
-经过层层分析，发现其中一部分原因是 MOSN 依赖的 sentinel-golang 中的一个StartTimeTicker 的 func 中的 Sleep 产生了大量的系统调用，这是个什么逻辑？
+经过层层分析，发现其中一部分原因是 MOSN 依赖的 sentinel-golang 中的一个 StartTimeTicker 的 func 中的 Sleep 产生了大量的系统调用，这是个什么逻辑？
 
 ## PART. 3 理论分析
 
@@ -100,7 +100,7 @@ Cache 设计的目的是为了减少 time.Now 的调用，所以理论上这里�
 
 ｜注 0: 内部使用的 MOSN 版本基于原版 Sentinel 做了一些定制化，社区版本放大比理论上低于该比值。
 
-考虑到创建资源点是低频的，我们可以近似认为此处调用放大比为 5。所以理论上当单机 QPS 至少超过 4800 以上才可能会取得收益......我们动辄听说什么 C10K、C100K、C1000K 问题，这个值看上去似乎并不很高？但在实际业务系统中，这实际上是一个很高的量。
+考虑到创建资源点是低频的，我们可以近似认为此处调用放大比为 5。所以理论上当单机 QPS 至少超过 4800 以上才可能会取得收益……我们动辄听说什么 C10K、C100K、C1000K 问题，这个值看上去似乎并不很高？但在实际业务系统中，这实际上是一个很高的量。
 
 我随机抽取了多个日常请求量相对大的应用查看 QPS（这里的 QPS 包含所有类型的资源点，入口/出口调用以及子资源点等，总之就是所有会经过 Sentinel Entry 调用的请求量），日常峰值也未超过 4800QPS，可见实际的业务系统中，单机请求量超过这个值的场景是非常罕见的。¹
 

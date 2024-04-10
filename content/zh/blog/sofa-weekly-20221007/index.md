@@ -26,12 +26,12 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **1. greedying** 提问：
 
->我发现 MOSN 去 cookie 时候，如果取不到，则返回中横线。这里万一 cookie 值就是中横线怎么办呢？
+> 我发现 MOSN 去 cookie 时候，如果取不到，则返回中横线。这里万一 cookie 值就是中横线怎么办呢？
 
 A：你用啥接口取的？
 
->用变量取的,前缀加 cookie 的 key。
->>![](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*pFrBQLPKPT8AAAAAAAAAAAAADrGAAQ/original)
+> 用变量取的,前缀加 cookie 的 key。
+>> ![](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*pFrBQLPKPT8AAAAAAAAAAAAADrGAAQ/original)
 >>MOSN 代码就是这么写的，那个 ValueNotFound 是一个短横，这是一个 feature 还是 bug？
 
 A：哦 确实，这儿应该返回 error 就行了，不然任何值都有可能不对。
@@ -42,7 +42,7 @@ A：哦 确实，这儿应该返回 error 就行了，不然任何值都有可�
 
 **2. 卿同学** 提问：
 
->我看 Layotto 也在推动和 Envoy 的融合，这一块现在有进展吗？
+> 我看 Layotto 也在推动和 Envoy 的融合，这一块现在有进展吗？
 
 A：今年我们首先会开源 Envoy 的 cgo 插件，然后基于这个插件，可以把 Layotto 跑在 Envoy 上。
 

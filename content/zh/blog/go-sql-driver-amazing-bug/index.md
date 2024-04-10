@@ -20,7 +20,7 @@ Seata-go 项目共同发起人
 
 本文 **3482** 字 阅读 **7** 分钟
 
->对于 Go CURD Boy 来说，相信 `github.com/go-sql-driver/mysql` 这个库都不会陌生。基本上 Go 的 CURD 都离不开这个特别重要的库。我们在开发 Seata-go 时也使用了这个库。不过最近在使用 go-sql-driver/mysql 查询 MySQL 的时候，就出现一个很有意思的 bug, 觉得有必要分享出来，以防止后来者再次踩坑。
+> 对于 Go CURD Boy 来说，相信 `github.com/go-sql-driver/mysql` 这个库都不会陌生。基本上 Go 的 CURD 都离不开这个特别重要的库。我们在开发 Seata-go 时也使用了这个库。不过最近在使用 go-sql-driver/mysql 查询 MySQL 的时候，就出现一个很有意思的 bug, 觉得有必要分享出来，以防止后来者再次踩坑。
 
 ## PART. 1 问题详述
 

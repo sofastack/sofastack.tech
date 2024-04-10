@@ -17,7 +17,7 @@ aliases: "/sofa-boot/docs/sofa-ark-spring-boot-demo"
 
 宿主应用（master biz）负责沉淀通用的逻辑，为业务应用提供计算和环境，为业务应用的开发者屏蔽基础设施，更新迭代较慢。各个业务应用（普通 biz）是独立的代码仓库，可以进行独立的研发运维，粒度小，更新迭代较快。业务应用将通用的依赖下沉至宿主应用，依赖宿主应用的环境运行，不是一个 可执行 Jar，因此业务应用自身的 jar 包可以不包含该通用依赖，以此得到轻量化的业务应用 jar 包。
 
-宿主应用与业务应用的运行关系是：宿主应用首先启动，拥有与普通应用相同的类加载器；业务应用 jar 包以热拔插的模式在宿主应用中动态部署，通用依赖通过宿主应用的类加载器加载，其它依赖使用业务自己的BizClassLoader进行加载。
+宿主应用与业务应用的运行关系是：宿主应用首先启动，拥有与普通应用相同的类加载器；业务应用 jar 包以热拔插的模式在宿主应用中动态部署，通用依赖通过宿主应用的类加载器加载，其它依赖使用业务自己的 BizClassLoader 进行加载。
 
 本文中宿主应用和业务应用均为 Web 应用，采用了单 host 模式，其样例代码地址如下：
 
@@ -94,15 +94,15 @@ aliases: "/sofa-boot/docs/sofa-ark-spring-boot-demo"
 mvn clean package -Dmaven.test.skip=true
 ```
 
-在之前设定的 outputDirectory 目录下，后缀为ark-biz.jar的包是业务应用的 Ark Biz，如：
+在之前设定的 outputDirectory 目录下，后缀为 ark-biz.jar 的包是业务应用的 Ark Biz，如：
 
 - spring-boot-ark-biz-0.0.1-SNAPSHOT-ark-biz.jar
 
 ## 3. 如何构建 Spring Boot 宿主应用
 
-Spring Boot 宿主应用和 Spring Boot 普通应用没有任何区别，打包插件保持不变。宿主应用包含多个业务应用的通用依赖（包括 SofaArk 依赖），为业务应用提供通用逻辑和环境。首先我们介绍Ark相关的依赖配置，然后以样例代码介绍通用依赖。
+Spring Boot 宿主应用和 Spring Boot 普通应用没有任何区别，打包插件保持不变。宿主应用包含多个业务应用的通用依赖（包括 SofaArk 依赖），为业务应用提供通用逻辑和环境。首先我们介绍 Ark 相关的依赖配置，然后以样例代码介绍通用依赖。
 
-Ark相关的依赖配置如下：
+Ark 相关的依赖配置如下：
 
 ```xml
 <dependency>
@@ -202,7 +202,7 @@ IDEA 运行需要先在 IDEA 的启动配置（Run Configurations）中添加虚
 mvn clean package -Dmaven.test.skip=true
 ```
 
-打包成功后，在之前设定的 outputDirectory 目录下，后缀为ark-biz.jar的包是宿主应用的 Fat Jar，如：
+打包成功后，在之前设定的 outputDirectory 目录下，后缀为 ark-biz.jar 的包是宿主应用的 Fat Jar，如：
 
 - sofa-ark-spring-guides-0.0.1-SNAPSHOT-ark-biz.jar
 
@@ -294,7 +294,7 @@ logging.file.path=./logs
 
 **运行宿主应用与业务应用**
 
-按照[第4节](#jfVbQ)和[第5节](#edkzZ)运行，此时宿主应用以8080端口提供服务，业务应用以8081端口提供服务。因此，可以通过 [http://localhost:8081/](http://localhost:8081/) 访问到业务应用，可以看到返回 `hello to ark dynamic deploy`。
+按照[第 4 节](#jfVbQ)和[第 5 节](#edkzZ)运行，此时宿主应用以 8080 端口提供服务，业务应用以 8081 端口提供服务。因此，可以通过 [http://localhost:8081/](http://localhost:8081/) 访问到业务应用，可以看到返回 `hello to ark dynamic deploy`。
 
 ### 6.2 单 host 模式
 
@@ -336,8 +336,8 @@ logging.file.path=./logs
 
 **运行宿主应用与业务应用**
 
-按照[第4节](#jfVbQ)和[第5节](#edkzZ)运行，此时宿主应用和业务应用共用8080端口，宿主应用以`/`为 `WebContextPath`向外提供服务，业务应用以`/biz/`为`WebContextPath`向外提供服务。因此，可以通过 [http://localhost:8080/biz](http://localhost:8080/biz) 访问到业务应用，可以看到返回 `hello to ark dynamic deploy`。
+按照[第 4 节](#jfVbQ)和[第 5 节](#edkzZ)运行，此时宿主应用和业务应用共用 8080 端口，宿主应用以`/`为 `WebContextPath`向外提供服务，业务应用以`/biz/`为`WebContextPath`向外提供服务。因此，可以通过 [http://localhost:8080/biz](http://localhost:8080/biz) 访问到业务应用，可以看到返回 `hello to ark dynamic deploy`。
 
 ## 7. 如何动态卸载 Spring Boot 业务应用
 
-目前 Spring boot 不支持动态卸载。如果要动态卸载，需要注册一个卸载的事件handler，请参考 sofaboot 的代码：[SofaBizUninstallEventHandler](https://github.com/sofastack/sofa-boot/blob/master/sofa-boot-project/sofa-boot-core/runtime-sofa-boot/src/main/java/com/alipay/sofa/runtime/SofaBizUninstallEventHandler.java)。
+目前 Spring boot 不支持动态卸载。如果要动态卸载，需要注册一个卸载的事件 handler，请参考 sofaboot 的代码：[SofaBizUninstallEventHandler](https://github.com/sofastack/sofa-boot/blob/master/sofa-boot-project/sofa-boot-core/runtime-sofa-boot/src/main/java/com/alipay/sofa/runtime/SofaBizUninstallEventHandler.java)。

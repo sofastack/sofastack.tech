@@ -10,7 +10,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*mKvPQLAbptIAAAAAA
 
 导言：
 
->GitLink 编程夏令营是在 CCF 中国计算机学会指导下，由 CCF 开源发展委员会（CCF ODC）举办的面向全国高校学生的暑期编程活动。这是去年（2022）的夏令营活动中，王瑞同学参加 Nydus 开源项目的总结，主要介绍了为 Nydus 支持镜像与文件系统一致性校验所做的相关工作。
+> GitLink 编程夏令营是在 CCF 中国计算机学会指导下，由 CCF 开源发展委员会（CCF ODC）举办的面向全国高校学生的暑期编程活动。这是去年（2022）的夏令营活动中，王瑞同学参加 Nydus 开源项目的总结，主要介绍了为 Nydus 支持镜像与文件系统一致性校验所做的相关工作。
 
 ## Nydus 简介 
 
@@ -82,7 +82,7 @@ Nydus 镜像在构建完成后，由于网络、磁盘等故障或者镜像被�
 
 在挂载 Nydus 镜像时，我们需要正确填充 Nydusd 的 config，其中便包含 Backend Config 和 Backend Type。因此我们对用户传入的参数进行判断，如果用户没有传入 Backend Type，那么我们默认镜像源为 registry，如果没有传入 Backend Config，那么我们通过 target 提取 host 和 repo，然后读取 docker 的 config 获取 auth 相关的信息，最后生成 Backend Config。 
 
-除此之外，由于我们目前的测试代码中不涉及用户鉴权，所以额外添加了 testBasicAuth 测试样例，用于检验在用户不指定 Backend Config 时，我们是否能够正确提供 鉴权信息。在测试样例中，我们模拟生成了用户名、密码和 docker config，并正确设置了环境变量 。 启动 docker 时 ，额外指定REGISTRY_AUTH_HTPASSWD_PATH ， REGISTRY_AUTH 等用于鉴权。 
+除此之外，由于我们目前的测试代码中不涉及用户鉴权，所以额外添加了 testBasicAuth 测试样例，用于检验在用户不指定 Backend Config 时，我们是否能够正确提供 鉴权信息。在测试样例中，我们模拟生成了用户名、密码和 docker config，并正确设置了环境变量 。 启动 docker 时 ，额外指定 REGISTRY_AUTH_HTPASSWD_PATH ， REGISTRY_AUTH 等用于鉴权。 
 
 ### 实现无需 docker 拉取镜像 
 
@@ -108,7 +108,7 @@ Nydus 镜像在构建完成后，由于网络、磁盘等故障或者镜像被�
 
 **Nydus Star 一下✨：**
 
-*[github.com/dragonflyos…](https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fdragonflyoss%2Fimage-service "https://github.com/dragonflyoss/image-service")*
+*[github.com/dragonflyos……](https://link.juejin.cn/?target=https%3A%2F%2Fgithub.com%2Fdragonflyoss%2Fimage-service "https://github.com/dragonflyoss/image-service")*
 
 **本周推荐阅读**
 

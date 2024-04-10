@@ -37,13 +37,13 @@ A：这个 看需求了，都可以啊。我感觉还是可以继续使用注册
 
 A：Sesta server 经常会经常替换吗？
 
-> 这个得看用户了，要不咱假设2个情况吧，如果不经常替换，此方案适用不。经常替换下要做哪些改进？
+> 这个得看用户了，要不咱假设 2 个情况吧，如果不经常替换，此方案适用不。经常替换下要做哪些改进？
 
-A：经常替换的话要考虑 raft 集群的替换，要处理 addpeer removepeer 这是要走 raft 协议的（用 cliservice 这个接口），就是换一台 server 不是换个地址就完事了，需要调用 addpeer把新机器加入 raftgroup 然后 SOFAJRaft 会自动同步数据，移除一个节点需要调用 removepeer。
+A：经常替换的话要考虑 raft 集群的替换，要处理 addpeer removepeer 这是要走 raft 协议的（用 cliservice 这个接口），就是换一台 server 不是换个地址就完事了，需要调用 addpeer 把新机器加入 raftgroup 然后 SOFAJRaft 会自动同步数据，移除一个节点需要调用 removepeer。
 
-> 也就是，如果我现在扩容，比如我原来的节点是127.0.0.1:7091，127.0.0.1:7092，127.0.0.1:7093 然后我现在要加一个127.0.0.1:7094，我能不能直接跟 zk 那边扩容一样，我新加入进来的节点设置的地址是127.0.0.1:7091，127.0.0.1:7092，127.0.0.1:7093，127.0.0.1:7094，先让他加入进去，然后手动挨个重启其余3台。目前这样的扩缩容，我的设计方案能满足吗？
+> 也就是，如果我现在扩容，比如我原来的节点是 127.0.0.1:7091，127.0.0.1:7092，127.0.0.1:7093 然后我现在要加一个 127.0.0.1:7094，我能不能直接跟 zk 那边扩容一样，我新加入进来的节点设置的地址是 127.0.0.1:7091，127.0.0.1:7092，127.0.0.1:7093，127.0.0.1:7094，先让他加入进去，然后手动挨个重启其余 3 台。目前这样的扩缩容，我的设计方案能满足吗？
 
-A：不需要重启，需要 addpeer，参考第11小结，最有效的排查 SOFAJRaft 问题工具
+A：不需要重启，需要 addpeer，参考第 11 小结，最有效的排查 SOFAJRaft 问题工具
 [https://www.sofastack.tech/projects/sofa-jraft/jraft-user-guide/](https://www.sofastack.tech/projects/sofa-jraft/jraft-user-guide/)
 SOFAJRaft：[https://github.com/sofastack/sofa-jraft](https://github.com/sofastack/sofa-jraft)
 
@@ -105,6 +105,6 @@ OceanBaseDev Meetup#1 上海站，将邀请**蚂蚁集团** OceanBase 团队的�
 
 **活动时间：**2020-09-20 13:00-17:30
 
-**活动地点：**上海市杨浦区政学路77号 InnoSpace+
+**活动地点：**上海市杨浦区政学路 77 号 InnoSpace+
 
 **活动报名：点击“[**阅读原文**](https://www.huodongxing.com/event/5562442480600)”，了解活动详细议题并锁定席位

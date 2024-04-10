@@ -52,11 +52,11 @@ A：Nacos 配置格式参考：https://www.sofastack.tech/projects/sofa-rpc/regi
 对于 namespace 的，可以配置成这样即可：namespace nacos://yyy:8848/namespaceNacos 
 客户端应该是兼容的，你可以直接升级这个包的版本。
 
-> 命名空间问题解决了，感谢。因为我使用的时候指定了 nacos client 版本为0.6.0，升级到 0.8.0 以上nacos://yyy:8848/namespace 这种形式是可以的，而且只能使用 nacos://yyy:8848/namespace 这种形式，nacos://yyy:8848 是不行的。还望官方文档可以及时更新一下。
+> 命名空间问题解决了，感谢。因为我使用的时候指定了 nacos client 版本为 0.6.0，升级到 0.8.0 以上 nacos://yyy:8848/namespace 这种形式是可以的，而且只能使用 nacos://yyy:8848/namespace 这种形式，nacos://yyy:8848 是不行的。还望官方文档可以及时更新一下。
 
 A：这里应该是要配置成：nacos://yyy:8848/ 后面有个/。好的，最近我们升级一下 Nacos 的 client 版本。文档我们同步修改下。
 
-> 刚试了nacos://yyy:8848/，服务依然无法发布到默认命名空间。Nacos server 是1.2.0，客户端是使用SOFABoot v3.3.0。
+> 刚试了 nacos://yyy:8848/，服务依然无法发布到默认命名空间。Nacos server 是 1.2.0，客户端是使用 SOFABoot v3.3.0。
 
 A：不会发到默认的，这个会发到的是 SOFARPC 这个 Namespace：`private static final String DEFAULT_NAMESPACE = "sofa-rpc";`
 
@@ -132,7 +132,7 @@ SOFARPC：[https://github.com/sofastack/sofa-rpc](https://github.com/sofastack/s
 
 **主题**：SOFAChannel#13：云原生网络代理 MOSN 的多协议机制解析
 
-**时间**：2020年3月26日（周四）19:00-20:00
+**时间**：2020 年 3 月 26 日（周四）19:00-20:00
 
 **嘉宾**：无钩，蚂蚁金服技术专家、MOSN Committer
 

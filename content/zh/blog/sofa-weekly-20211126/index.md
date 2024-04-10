@@ -33,7 +33,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **@洪艺辉** 提问：
 
->无损迁移 TCP Listener 之后，在新 MOSN 上重新 server.Serve(net.Listener)，老 MOSN 那个 Listenr 能马上死掉的 API?
+> 无损迁移 TCP Listener 之后，在新 MOSN 上重新 server.Serve(net.Listener)，老 MOSN 那个 Listenr 能马上死掉的 API?
 
 A：New MOSN 启动成功之后，就关闭老的。
 
@@ -43,11 +43,11 @@ A：New MOSN 启动成功之后，就关闭老的。
 
 **@大白** 提问：
 
->MOSN 借助 FastHTTP 解析，是不是就没考虑大的请求了。这边不做处理的考虑是什么呢？
+> MOSN 借助 FastHTTP 解析，是不是就没考虑大的请求了。这边不做处理的考虑是什么呢？
 
 A：MOSN 有个地方限制太大的请求，好像还可以配置来着。
 
->是的，注意到有限制最大 body 大小，但是遇到一些大请求对 Sidecar 压力会很大吧。
+> 是的，注意到有限制最大 body 大小，但是遇到一些大请求对 Sidecar 压力会很大吧。
 
 A：RPC 场景一般没有大包，我们有个 issue 是直接 Stream。FastHTTP 也支持流式，要适配下，有兴趣可以一起来搞搞。
 
@@ -57,7 +57,7 @@ A：RPC 场景一般没有大包，我们有个 issue 是直接 Stream。FastHTT
 
 **@xj** 提问：
 
->咨询下 MOSN 在做 gRPC 代理的时候，如何解决代理识别客户端新增的 proto ？难道客户端多一个 proto  代理也要增加？ 还是说直接在 HTTP2.0 层面做？
+> 咨询下 MOSN 在做 gRPC 代理的时候，如何解决代理识别客户端新增的 proto ？难道客户端多一个 proto  代理也要增加？ 还是说直接在 HTTP2.0 层面做？
 
 A：就是 HTTP2.0 层面，代理一般不需要识别 body。
 
@@ -65,7 +65,7 @@ A：就是 HTTP2.0 层面，代理一般不需要识别 body。
 
 **@TyCoding** 提问：
 
->请问 SOFARPC 不使用 SOFABoot 的话，就只能用这种方式发布服务和消费吗？那如果多个接口呢?
+> 请问 SOFARPC 不使用 SOFABoot 的话，就只能用这种方式发布服务和消费吗？那如果多个接口呢?
 
 ![weekly.jpg](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*rOg-SpVtySUAAAAAAAAAAAAAARQnAQ)
 
@@ -75,7 +75,7 @@ A：多个接口，就多个 providerconfig 即可。
 
 **@王金鹏** 提问：
 
->有个问题想请教一下 SOFABoot 和 bolt 之间版本兼容的问题，SOFABoot 版本 2.3.4，bolt 原版本 1.4.2 升级到 1.5.8 会不会有兼容性的问题？
+> 有个问题想请教一下 SOFABoot 和 bolt 之间版本兼容的问题，SOFABoot 版本 2.3.4，bolt 原版本 1.4.2 升级到 1.5.8 会不会有兼容性的问题？
 
 A：最好不要这么升级，bolt 不同版本 API 可能存在差异，最好直接把 SOFABoot 版本升级上去，对应的依赖都是我们测试过的。
 
@@ -145,4 +145,4 @@ fail fast，让 Layotto 启动报错时自杀
 
 - [终于！SOFATracer 完成了它的链路可视化之旅](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247496554&idx=1&sn=b6c292ee9b983a2344f2929390fe15c4&chksm=faa31cb0cdd495a6770720e631ff338e435998f294145da18c04bf34b82e49d2f028687cad7f&scene=21)
 
->![weekly.jpg](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*7h5NRow08IQAAAAAAAAAAAAAARQnAQ)
+> ![weekly.jpg](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*7h5NRow08IQAAAAAAAAAAAAAARQnAQ)

@@ -13,8 +13,8 @@ cover: "https://cdn.nlark.com/yuque/0/2020/png/226702/1588143360262-569ca7a3-d3d
 
 关于 Service Mesh 和 API Gateway 之间的关系，这个问题过去两年间经常被问起，社区也有不少文章和资料给出解答。其中不乏 Christian Posta 这样的网红给出过深度介绍。我在这里做一个资料的整理和汇总，结合个人的理解给出一些看法。另外在本文最后，介绍蚂蚁金服在 Service Mesh 和 API Gateway 融合的这个最新领域的一些开创性的实践和探索，希望给大家一个更有体感的认知。
 
-> 备注1：为了节约篇幅，我们将直奔主题，假定读者对 Service Mesh 和 API Gateway 已有基本的了解。
-> 备注2:  这边文章更关注于梳理整个脉络，内容不会展开的特别细，尤其是其他文章已经详细阐述的部分。如果您在浏览本文之后，还想更深入的了解细节，请继续阅读文章最后的参考资料和推荐阅读。
+> 备注 1：为了节约篇幅，我们将直奔主题，假定读者对 Service Mesh 和 API Gateway 已有基本的了解。
+>   备注2:  这边文章更关注于梳理整个脉络，内容不会展开的特别细，尤其是其他文章已经详细阐述的部分。如果您在浏览本文之后，还想更深入的了解细节，请继续阅读文章最后的参考资料和推荐阅读。
 
 ## 原本清晰的界限：定位和职责
 
@@ -73,7 +73,7 @@ cover: "https://cdn.nlark.com/yuque/0/2020/png/226702/1588143360262-569ca7a3-d3d
 
 而最终决策通常也和产品的定位有关：如果希望维持 API Gateway 的独立产品定位，希望可以在不同的服务间通讯方案下都可以使用，则通常选择前者，典型如 Kong；如果和服务间通讯方案有非常深的渊源，则通常选择后者，典型如 Spring Cloud 生态下的 Zuul 和 SpringCloud Gateway。
 
-但无论选择哪个流派，都改变不了一个事实，当 “API Gateway 作为一个客户端访问内部服务” 时，它的确和一个普通内部服务作为客户端去访问其他服务没有本质差异：服务发现、负载均衡、流量路由、熔断、限流、服务降级、故障注入、日志、监控、链路追踪、访问控制、加密、身份认证...... 当我们把网关访问内部服务的功能一一列出来时，发现几乎所有的这些功能都是和服务间调用重复。
+但无论选择哪个流派，都改变不了一个事实，当 “API Gateway 作为一个客户端访问内部服务” 时，它的确和一个普通内部服务作为客户端去访问其他服务没有本质差异：服务发现、负载均衡、流量路由、熔断、限流、服务降级、故障注入、日志、监控、链路追踪、访问控制、加密、身份认证…… 当我们把网关访问内部服务的功能一一列出来时，发现几乎所有的这些功能都是和服务间调用重复。
 
 这也就造成了一个普遍现象：如果已有一个成熟的服务间通讯框架，再去考虑实现 API Gateway，重用这些重复的能力就成为自然而然的选择。典型如前面提到的 Spring Cloud 生态下的 Zuul 以及后面开发的 Spring Cloud Gateway，就是以重用类库的方式实现了这些能力的重用。
 
@@ -113,7 +113,7 @@ cover: "https://cdn.nlark.com/yuque/0/2020/png/226702/1588143360262-569ca7a3-d3d
 
 而采用这个方案的公司，通常都是先有 Service Mesh 产品，再基于 Service Mesh 产品规划（或者重新规划） API Gateway 方案，典型如蚂蚁金服的 SOFA Gateway 产品是基于 MOSN，而社区开源产品 Ambassador 和 Gloo 都是基于 Envoy。
 
-上述方案的优势在于 API Gateway 和 Sidecar 独立部署，职责明确，架构清晰。但是，和 Service Mesh 使用Sidecar 被质疑多一跳会造成性能开销影响效率一样，API Gateway 使用 Sidecar 也被同样的质疑：多了一跳......
+上述方案的优势在于 API Gateway 和 Sidecar 独立部署，职责明确，架构清晰。但是，和 Service Mesh 使用 Sidecar 被质疑多一跳会造成性能开销影响效率一样，API Gateway 使用 Sidecar 也被同样的质疑：多了一跳……
 
 解决“多一跳”问题的方法简单而粗暴，基于 Sidecar，将 API Gateway 的功能加进来。这样 API Gateway 本体和 Sidecar 再次合二为一：
 
@@ -197,6 +197,6 @@ MOSN 是 MOSN 是 Modular Open Smart Network 的简称， 是一款使用 Go 语
 - [API Gateway 的身份认同危机](https://www.servicemesher.com/blog/api-gateways-are-going-through-an-identity-crisis/): 2019-05, 原文作者 Christian Posta，译者周雨青，讲述 API Gateway 的基本理念如 API 的定义，API Management 的含义，API Gateway 模式，以及服务网格和 API Gateway 的关系。
 - [长路漫漫踏歌而行：蚂蚁金服 Service Mesh 实践探索](https://skyao.io/talk/201810-ant-finance-service-mesh-practice/): 2018-10，我在 QCon 的演讲，我分享了当时蚂蚁金服在服务间通讯范围的探索，提出将服务网格在东西向通讯中的能力重用到南北向通讯中，当时基于 Sidecar 的 SOFA Gateway 产品刚开始开发。
 - [API Gateway vs Service Mesh](https://blog.getambassador.io/api-gateway-vs-service-mesh-104c01fa4784): 2018-09，作者 Richard Li，Datawire 的 CEO ，在开发 Ambassador API Gateway。Ambassador 是基于 Envoy 的 API Gateway 开源产品，文章阐述了对服务网格和 API Gateway 的看法，差异，以及对两者集成的看法。
-- [DreamMesh 抛砖引玉(9)-API Gateway](https://skyao.io/post/201803-dreammesh-brainstorm-gateway/): 2018-03，这个文章也是我写的，2018年初我和 Service Mesh 社区的一些朋友深入探讨之后，在 DreamMesh 系列博客文章中记录下了当时构想的方案，尤其对 API Gateway 和 Sidecar 是分是合有详细讨论。当时想法还不够成熟，但大体方向已经有雏形了。鸣谢当时参与讨论的同学！
+- [DreamMesh 抛砖引玉(9)-API Gateway](https://skyao.io/post/201803-dreammesh-brainstorm-gateway/): 2018-03，这个文章也是我写的，2018 年初我和 Service Mesh 社区的一些朋友深入探讨之后，在 DreamMesh 系列博客文章中记录下了当时构想的方案，尤其对 API Gateway 和 Sidecar 是分是合有详细讨论。当时想法还不够成熟，但大体方向已经有雏形了。鸣谢当时参与讨论的同学！
 - [Service Mesh vs API Gateway](https://medium.com/microservices-in-practice/service-mesh-vs-api-gateway-a6d814b9bf56): 2017-10，原文作者 [Kasun Indrasiri](https://medium.com/@kasunindrasiri)，以及 [赵化冰同学翻译的中文版本](https://zhaohuabing.com/2018/04/11/service-mesh-vs-api-gateway/)，文章不长，主要对比了服务网格和 API Gateway 的产品功能，提出了两者融合的方式——在 API Gateway 中通过服务网格来调用下游服务。
 - [Application Network Functions With ESBs, API Management, and Now.. Service Mesh?](https://blog.christianposta.com/microservices/application-network-functions-with-esbs-api-management-and-now-service-mesh/)：2017-08，作者 Christian Posta，讲述服务网格与 ESB，消息代理和 API 管理之类的事物的关系。内容非常好，强烈推荐阅读（我不得不吐糟一下：配图太辣眼睛）。

@@ -97,7 +97,7 @@ $ git clone git@github.com:sofastack/sofa-mesh.git
 
 You should change directory to sofa-mesh source code, and then use helm template to install isito crd and istio
 
-    ```
+   plain ```
     $ cd sofa-mesh
     $ helm template install/kubernetes/helm/istio-init --name istio-init --namespace istio-system | kubectl apply -f -
     $ helm template install/kubernetes/helm/istio --name istio --namespace istio-system | kubectl apply -f -
@@ -105,7 +105,7 @@ You should change directory to sofa-mesh source code, and then use helm template
 
 Uninstall 
 
-    ```
+   plain ```
     $ helm template install/kubernetes/helm/istio --name istio --namespace istio-system | kubectl delete -f -
     $ kubectl delete namespace istio-system
     ```    
@@ -213,7 +213,7 @@ $ curl -o /dev/null -s -w "%{http_code}\n"  http://$GATEWAY_URL/productpage   //
 * Observe the page status
 
 
-Visit http://$GATEWAY_URL/productpage. Note that, you need to replace `$GATEWAY_URL` with the address you set. Normally, you can see the following BookInfo interface after refreshing the page. There are three versions of Book Reviews. After refreshing, you can see them in turn. To learn why these three versions appear, view the configuration in `samples/bookinfo/platform/kube/bookinfo.yaml`.
+Visit http://$GATEWAY_URL/productpage. Note that, you need to replace `$GATEWAY_URL`with the address you set. Normally, you can see the following BookInfo interface after refreshing the page. There are three versions of Book Reviews. After refreshing, you can see them in turn. To learn why these three versions appear, view the configuration in`samples/bookinfo/platform/kube/bookinfo.yaml`.
 
 + Interface of version 1
 ![](v1.png)

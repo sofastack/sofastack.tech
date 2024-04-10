@@ -5,7 +5,7 @@ aliases: "/sofa-mesh/docs/sofa-mesh-setup"
 
 本文旨在描述如何在 Kubernetes 快速开始安装和配置 Istio。
 
-SOFA Mosn 不仅可以支持 Istio 标准的部署模式，也能支持单方面的 Inbound Sidecar，Outbound Sidecar的部署模式，满足用户的各种需求。
+SOFA Mosn 不仅可以支持 Istio 标准的部署模式，也能支持单方面的 Inbound Sidecar，Outbound Sidecar 的部署模式，满足用户的各种需求。
 
 ## 前置要求
 
@@ -27,13 +27,13 @@ Step 3. 创建命名空间
 kubectl create namespace istio-system
 ```
 
-Step 4. 使用helm安装istio CRD
+Step 4. 使用 helm 安装 istio CRD
 
 ```bash
 helm template install/kubernetes/helm/istio-init --name istio-init --namespace istio-system | kubectl apply -f -
 ```
 
-Step 5. 使用helm安装各个组件
+Step 5. 使用 helm 安装各个组件
 
 ```bash
 helm template install/kubernetes/helm/istio --name istio --namespace istio-system | kubectl apply -f -
@@ -55,7 +55,7 @@ kubectl get pod -n istio-system
 kubectl label namespace default istio-injection=enabled
 ```
 
-使用 kubectl 部署Bookinfo的服务：
+使用 kubectl 部署 Bookinfo 的服务：
 
 ```bash
 kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml

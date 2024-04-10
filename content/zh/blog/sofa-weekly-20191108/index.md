@@ -57,7 +57,7 @@ A：你可以考虑用子状态机来复用，子状态机会多生成一行 sta
 
 - [企业服务行业如何试水 Istio | Service Mesh Meetup 分享实录](/blog/service-mesh-meetup-5-istio-retrospect/)
 
-- [蚂蚁金服Service Mesh新型网络代理的思考与实践 | GIAC 分享实录](/blog/service-mesh-giac-2018/)
+- [蚂蚁金服 Service Mesh 新型网络代理的思考与实践 | GIAC 分享实录](/blog/service-mesh-giac-2018/)
 
 - [蚂蚁金服 Service Mesh 渐进式迁移方案|Service Mesh Meetup 实录](/blog/service-mesh-meetup-5-retrospect/)
 
@@ -69,7 +69,7 @@ A：你可以考虑用子状态机来复用，子状态机会多生成一行 sta
 
 ![image.png](https://cdn.nlark.com/yuque/0/2019/png/226702/1573200539515-4cdbff5c-3fa9-4d98-a610-a1f123e3c0f1.png)
 
-2019年度TOP100全球软件案例研究峰会即将举行，蚂蚁金服也受邀参与本次案例分享。
+2019 年度 TOP100 全球软件案例研究峰会即将举行，蚂蚁金服也受邀参与本次案例分享。
 
 Service Mesh 是蚂蚁金服下一代架构的核心，本主题主要分享在蚂蚁金服当前的体量下，我们如何做到在奔跑的火车上换轮子，将现有的 SOA 体系快速演进至 Service Mesh 架构。RPC、消息、DB、安全、运维等每一个环节均充满挑战。**本次实战分享蚂蚁金服双十一核心应用如何大规模落地 Service Mesh 架构并降低大促成本。**
 
@@ -77,7 +77,7 @@ Service Mesh 是蚂蚁金服下一代架构的核心，本主题主要分享在�
 
 嘉宾：石建伟，花名：卓与，蚂蚁金服中间件技术专家，主要负责蚂蚁金服服务注册中心、配置中心与 Service Mesh 的研发与架构。当前专注在蚂蚁金服 Service Mesh 内部落地。
 
-时间：2019年11月15日（周五）16:50-17:50
+时间：2019 年 11 月 15 日（周五）16:50-17:50
 
 地点：北京国际会议中心
 

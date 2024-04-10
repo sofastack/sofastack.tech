@@ -30,7 +30,7 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 
 > 请问：关于 SOFAJRaft 线性读，为什么读失败了要应用到状态机呢，是为了拉齐 readindex 吗？
 
-A：线性一直读不走 raft log （应该是你说的状态机的意思），在 rheakv 里面，如果线性一直读失败了，那么会和write操作一样通过 raft log 达成一致再走状态机读，这是个兜底策略，否则 readIndex 失败了能怎么办呢？ 另一只方式就是直接返回用户失败了。可以具体看一下「JRaft 实现细节解析之高效的线性一致读」这一小节的内容～
+A：线性一直读不走 raft log （应该是你说的状态机的意思），在 rheakv 里面，如果线性一直读失败了，那么会和 write 操作一样通过 raft log 达成一致再走状态机读，这是个兜底策略，否则 readIndex 失败了能怎么办呢？ 另一只方式就是直接返回用户失败了。可以具体看一下「JRaft 实现细节解析之高效的线性一致读」这一小节的内容～
 
 [https://www.sofastack.tech/projects/sofa-jraft/consistency-raft-jraft/](https://www.sofastack.tech/projects/sofa-jraft/consistency-raft-jraft/)
 
@@ -48,7 +48,7 @@ SOFAJRaft：[https://github.com/sofastack/sofa-jraft](https://github.com/sofasta
 - TCC 模式支持 hsf 服务调用；
 - Saga 模式性能优化默认不注册分支事务等；
 
-本次发布涉及代码改动文件数 324个，代码行 +11,907 −3,437。   
+本次发布涉及代码改动文件数 324 个，代码行 +11,907 −3,437。   
 此版本在 feature 和稳定性相对 1.1.0 版本都有较大幅度增强，强烈推荐大家验证和升级到此版本。 
 
 详细发布报告：[https://seata.io/zh-cn/blog/download.html](https://seata.io/zh-cn/blog/download.html)

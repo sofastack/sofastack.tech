@@ -38,7 +38,7 @@ Saga 状态机设计器视频教程：[http://seata.io/saga_designer/vedio.html]
 
 > 您好，我这边看视频直接把 Catch 直接拖到 serviceTask 上，好像没有生效，需要连线还是配置什么属性吗？
 
-A：没有生效是指什么？Catch 要连一个线到一个其它的 state，意思是捕获到异常后，去执行一个分支，这个 state可以是任何类型的 state，比如 CompensationTrigger、ServiceTask，通常是 CompensationTrigger，立即触发补偿。
+A：没有生效是指什么？Catch 要连一个线到一个其它的 state，意思是捕获到异常后，去执行一个分支，这个 state 可以是任何类型的 state，比如 CompensationTrigger、ServiceTask，通常是 CompensationTrigger，立即触发补偿。
 
 > 我是直接连接到 compensateTrigger 上的，然后我手动抛出异常，并没有执行补偿方法，而是在不停的重试调用之前抛出异常的方法。
 
@@ -52,7 +52,7 @@ A：需要在线上配置异常类型：
 
 A：你的意思是热点数据问题吗？
 
-> 可以理解成热点数据，我这边的测试场景就是下单减库存，2个微服务，库存由于基本上是同一行库存数据。
+> 可以理解成热点数据，我这边的测试场景就是下单减库存，2 个微服务，库存由于基本上是同一行库存数据。
 
 A：热点数据撞锁是正常的，你可以用自旋锁，让其它事务等待一下再获取锁，而不是立即失败。[http://seata.io/zh-cn/docs/user/configurations.html](http://seata.io/zh-cn/docs/user/configurations.html)
 
@@ -97,11 +97,11 @@ v. 修复 HTTP2 Stream 计数错误的 bug；
 
 ![SOFAChannel#10](https://cdn.nlark.com/yuque/0/2020/png/226702/1578042193692-cf1f9429-7dcb-44b7-93fc-fa335c7eeb02.png)
 
-新年快乐~2020年第一期线上直播来啦，SOFAChannel#10 将和大家一起探讨 《分布式事务 Seata 长事务解决方案 Saga 模式详解》，将从金融分布式应用开发的痛点出发，结合 Saga 分布式事务的理论和使用场景，讲解如何使用 Seata Saga 状态机来进行服务编排和分布式事务处理，构建更有弹性的金融应用，同时也会从架构、原理、设计、高可用、最佳实践等方面剖析 Saga 状态机的实现。
+新年快乐~2020 年第一期线上直播来啦，SOFAChannel#10 将和大家一起探讨 《分布式事务 Seata 长事务解决方案 Saga 模式详解》，将从金融分布式应用开发的痛点出发，结合 Saga 分布式事务的理论和使用场景，讲解如何使用 Seata Saga 状态机来进行服务编排和分布式事务处理，构建更有弹性的金融应用，同时也会从架构、原理、设计、高可用、最佳实践等方面剖析 Saga 状态机的实现。
 
 **主题**：SOFAChannel#10：分布式事务 Seata 长事务解决方案 Saga 模式详解
 
-**时间**：2020年1月9日（下周四）19:00-20:00
+**时间**：2020 年 1 月 9 日（下周四）19:00-20:00
 
 **嘉宾**：陈龙（花名：屹远） 蚂蚁金服分布式事务核心研发、Seata Committer
 

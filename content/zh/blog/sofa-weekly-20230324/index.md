@@ -57,11 +57,11 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **1.@kunple-w  #916**
 
->SpringBoot 2.2 废弃了 logging.path，2.3 已删除该属性，应使用 logging.file.pat。
+> SpringBoot 2.2 废弃了 logging.path，2.3 已删除该属性，应使用 logging.file.pat。
 Steps to reproduce the behavior：
 - 使用 SOFA 3.10.0，按照 SOFA guides 配置 logging.path，启动后并没有出现文档中的一些日志文件。
 - 降级为 sample 中的 3.2.0 版本，日志文件出现。
-截图如下（2个属性同时配置）:
+截图如下（2 个属性同时配置）:
 ![](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*5dIhTbzK7KcAAAAAAAAAAAAADrGAAQ/original)
 ![](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*5dIhTbzK7KcAAAAAAAAAAAAADrGAAQ/original)
 
@@ -71,7 +71,7 @@ A：SOFA 中间件中使用 sofa-common-tools 打印的日志，日志空间和 
 
 **2.@shuangchengsun  #263** 
 
->客户端的上下线，Client1 处于下线过程，此时 Client1 在路由表中的状态是如何维护的？
+> 客户端的上下线，Client1 处于下线过程，此时 Client1 在路由表中的状态是如何维护的？
 ![](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*dsAsSK7YdF8AAAAAAAAAAAAADrGAAQ/original)
 
 A：data 上有一个定时器去维护每个 Session 相关数据的，如果 Session 挂了，data 大约 30s 后把挂掉的 Session 的数据清理掉，同时链接挂掉的 Session 上的的 Client（除掉了下的 Client） 会自动重新连接到其他 Session 上，然后会把数据增加一个版本重新注册到 Session 上，Session 会再发到那台数据上。

@@ -19,7 +19,7 @@ This document does not cover the backend deployment. If you need it, please refe
 
 4. Add `-javaagent:/path/to/skywalking-package/agenxt/skywalking-agent.jar` to the application, which must be placed before the `-jar` parameter.
 The `skywalking-agent` can be gotten in [official release package](http://skywalking.apache.org/downloads/). The new directory structure is as follows:
-```
+```plain
 +-- agent
     +-- activations
          apm-toolkit-log4j-1.x-activation.jar

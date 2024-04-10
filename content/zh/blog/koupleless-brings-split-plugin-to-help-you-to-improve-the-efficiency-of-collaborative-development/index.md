@@ -74,7 +74,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*EgQaSYNNkQwAAAAAA
 
 - 方式二：凭借脑力分析
 
-当 A 类依赖了B、C、D、...、N类，在拆出时需要分析每一个类有没有被其它类依赖，能不能够拆出到模块应用。
+当 A 类依赖了 B、C、D、...、N 类，在拆出时需要分析每一个类有没有被其它类依赖，能不能够拆出到模块应用。
 
 **优势：**直观
 
@@ -228,7 +228,7 @@ Bean 定义主要有三种方式：类名注解、方法名注解和 xml。不�
 
 - Bean 调用：由上文分析的 Bean 依赖关系，插件过滤出模块和基座之间的 Bean 调用，并将字段注解（@Autowired @Resource @Qualifier）修改为 @AutowiredFromBase 或 @AutowiredFromBiz。
 
-- 基座数据源复用：根据用户选择的 Mapper 文件及 MyBatis 配置依赖关系，抽取该 Mapper 相关的MyBatis 配置信息。然后把配置信息填充至数据源复用模板文件，保存在模块中。
+- 基座数据源复用：根据用户选择的 Mapper 文件及 MyBatis 配置依赖关系，抽取该 Mapper 相关的 MyBatis 配置信息。然后把配置信息填充至数据源复用模板文件，保存在模块中。
 
 ## 未来展望
 
@@ -238,6 +238,6 @@ Bean 定义主要有三种方式：类名注解、方法名注解和 xml。不�
 
 欢迎更多感兴趣的同学关注 Koupleless 社区，共同建设 Koupleless 生态。
 
-**Koupleless star一下**
+**Koupleless star 一下**
 
 [https://github.com/koupleless/koupleless](https://github.com/koupleless/koupleless)

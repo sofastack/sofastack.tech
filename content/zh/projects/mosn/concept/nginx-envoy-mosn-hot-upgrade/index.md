@@ -151,7 +151,7 @@ MOSN 的方案和 Envoy 类似，都是通过 UDS 来传递 listener fd。但是
 
 > SCM_RIGHTS - Send or receive a set of open file descriptors from another process. The data portion contains an integer array of the file descriptors. The passed file descriptors behave as though they have been created with dup(2). http://linux.die.net/man/7/unix
 
-这里有一个 Go 实现的小 Demo: [tcp链接迁移](https://zhuanlan.zhihu.com/p/97340154)。
+这里有一个 Go 实现的小 Demo: [tcp 链接迁移](https://zhuanlan.zhihu.com/p/97340154)。
 
 ## 对比
 

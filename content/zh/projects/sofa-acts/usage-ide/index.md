@@ -22,13 +22,13 @@ aliases: "/sofa-acts/docs/Usage-IDE"
 ![简单入参](simple.png)
 
 导入简单入参后，值直接在这里填写；
-自上而下表示被测接口方法的第1个、第2个和第3个参数，右键可以调节顺序。
+自上而下表示被测接口方法的第 1 个、第 2 个和第 3 个参数，右键可以调节顺序。
 
 ![填写参数值](parameter-value.png)
 
 ### 复杂入参
 
-如图27所示，AccountTransRequest 和 BusinessActionContext 类需要生成入参模板，一般情况下，在一键生成测试脚本时会自动生成方法的入参和返回结果的类模板，打开 ACTS IDE 可对其进行编辑，如图28。
+如图 27 所示，AccountTransRequest 和 BusinessActionContext 类需要生成入参模板，一般情况下，在一键生成测试脚本时会自动生成方法的入参和返回结果的类模板，打开 ACTS IDE 可对其进行编辑，如图 28。
 
 ![编辑类模板](edit-class-template.png)
 
@@ -48,8 +48,8 @@ aliases: "/sofa-acts/docs/Usage-IDE"
 
 ### map
 
-以示例2为例（Set 与此类似）
-图32中，演示示例2的方法入参为 `Map<String,Object>` 类型。由于 Object 不是具体类型，如果要设置 Object 为复杂对象，则需要去编辑 YAML。例如设置 Object 为 AccountTransResult 类型，则按照如下编辑：
+以示例 2 为例（Set 与此类似）
+图 32 中，演示示例 2 的方法入参为 `Map<String,Object>` 类型。由于 Object 不是具体类型，如果要设置 Object 为复杂对象，则需要去编辑 YAML。例如设置 Object 为 AccountTransResult 类型，则按照如下编辑：
 
 ![Map 示例](map-example.png)
 
@@ -71,7 +71,7 @@ aliases: "/sofa-acts/docs/Usage-IDE"
 
 2. 如果枚举嵌套在其他类中，则在该类的 CSV 模版中设置枚举的值为 DEBIT；
 
-3. 用例数据 YAML 中，如图37：
+3. 用例数据 YAML 中，如图 37：
 
 ```yaml
 interestRecoverTypeEnum: !!com.alipay.fc.loancore.common.util.enums.InterestRecoverTypeEnum 'ALL'
@@ -83,7 +83,7 @@ interestRecoverTypeEnum: !!com.alipay.fc.loancore.common.util.enums.InterestReco
 
 ### 编码方式准备入参
 
-覆盖 prepare 方法，通过 ActsRuntimeContext 的方法，快速获取和设置用例入参，如图38所示：
+覆盖 prepare 方法，通过 ActsRuntimeContext 的方法，快速获取和设置用例入参，如图 38 所示：
 
 1. 获取所有入参：`List getInputParams()`
 2. 按位置获取：`Object getInputParamByPos(int i)`
@@ -97,7 +97,7 @@ interestRecoverTypeEnum: !!com.alipay.fc.loancore.common.util.enums.InterestReco
 
 ### 准备 DB 数据-单列场景{#db-single}
 
-如图39，在数据库准备设置位置右键，选择好要插入的 DB 模板（请先确保该DB模板已经生成），图中1、2、3步骤之后点击 OK 即插入 DB 准备模板，如图41，可对要插入 DB 的数据进行编辑：
+如图 39，在数据库准备设置位置右键，选择好要插入的 DB 模板（请先确保该 DB 模板已经生成），图中 1、2、3 步骤之后点击 OK 即插入 DB 准备模板，如图 41，可对要插入 DB 的数据进行编辑：
 
 ![选择模板](select-module.png)
 
@@ -119,7 +119,7 @@ interestRecoverTypeEnum: !!com.alipay.fc.loancore.common.util.enums.InterestReco
 
 <p align="center">图42</p>
 
-### 准备 DB 数据-flag说明
+### 准备 DB 数据-flag 说明
 
 数据依赖标记：
 
@@ -223,7 +223,7 @@ R：正则匹配校验
 
 ### 简单类型编辑
 
-以自定义参数设置添加简单类型数据为例。如图46，自定义参数设置右键 -> 模板选择，弹框填写入参名字：
+以自定义参数设置添加简单类型数据为例。如图 46，自定义参数设置右键 -> 模板选择，弹框填写入参名字：
 
 ![自定义参数设置](custom-parameter.png)
 
@@ -325,7 +325,7 @@ R：正则匹配校验
 
 ### 一键返填
 
-如图59，选中需要反填的用例，确认即可。
+如图 59，选中需要反填的用例，确认即可。
 
 ![返填](converse-input.png)
 

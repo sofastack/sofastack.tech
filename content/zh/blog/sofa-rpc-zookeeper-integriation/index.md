@@ -31,7 +31,7 @@ $ cd /home/admin/zookeeper-3.4.11
 $ cp conf/zoo_sample.cfg conf/zoo.cfg
 ```
 
-第三步：到 Zookeeper 安装目录下直接启动Zookeeper。
+第三步：到 Zookeeper 安装目录下直接启动 Zookeeper。
 
 ```bash
 $ cd /home/admin/zookeeper-3.4.11
@@ -221,7 +221,7 @@ public class ClientMain {
 ```
 
 ### 2.4 运行
-我们先运行服务提供端程序 `ServerMain`，然后去 ZooKeeper上看下服务订阅情况。
+我们先运行服务提供端程序 `ServerMain`，然后去 ZooKeeper 上看下服务订阅情况。
 
 ```bash
 $ sh bin/zkCli.sh
@@ -236,14 +236,14 @@ WatchedEvent state:SyncConnected type:None path:null
 
 运行结果如下：
 
-```
+```plain
 hello world
 hello world
 hello world
 hello world
 ```
 
-我们也可以去 ZooKeeper上看下服务订阅情况，
+我们也可以去 ZooKeeper 上看下服务订阅情况，
 
 ```bash
 sh bin/zkCli.sh
@@ -259,14 +259,14 @@ WatchedEvent state:SyncConnected type:None path:null
 ## 3. 在 SOFABoot 使用 SOFARPC 及 ZooKeeper 注册中心
 [SOFABoot](https://github.com/sofastack/sofa-boot) 是蚂蚁金服开源的基于 Spring Boot 的研发框架，它在增强了 Spring Boot 的同时，SOFABoot 提供了让用户可以在 Spring Boot 中非常方便地使用 SOFAStack 相关中间件的能力。
 
-SOFARPC 也实现以一个 `rpc-sofa-boot-starter` 可以方便的集成到 SOFABoot 应用。目前只支持Spring XML 方式发布和引用服务，下一个版本将支持 Annotation 方式发布和引用服务。
+SOFARPC 也实现以一个 `rpc-sofa-boot-starter` 可以方便的集成到 SOFABoot 应用。目前只支持 Spring XML 方式发布和引用服务，下一个版本将支持 Annotation 方式发布和引用服务。
 
 Demo 工程参见: [sofa-rpc-sofa-boot-zookeeper-demo](https://github.com/ujjboy/sofa-rpc-sofa-boot-zookeeper-demo)
 
 ### 3.1 创建 SpringBoot 工程
 SOFABoot 运行需要 JDK 7 及以上、 Maven 3.2.5 以上。
 
-我们可以使用 Spring Boot 的[工程生成工具](http://start.spring.io/) 来生成一个标准的Spring Boot 工程。
+我们可以使用 Spring Boot 的[工程生成工具](http://start.spring.io/) 来生成一个标准的 Spring Boot 工程。
 
 ![undefined](https://cdn.yuque.com/lark/0/2018/png/9439/1523969432790-d0c3cb6d-dd2d-4c45-8dd5-d595e2395c1b.png) 
 
@@ -430,7 +430,7 @@ public class SofaRpcSofaBootZookeeperDemoApplication {
 
 直接运行 `SofaRpcSofaBootZookeeperDemoApplication`，结果如下：
 
-```
+```plain
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
 ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \

@@ -11,7 +11,7 @@ cover: "https://cdn.nlark.com/yuque/0/2020/png/226702/1589959655608-27c7682b-ed2
 
 > Service Mesh Webinar 是由 ServiceMesher 社区和 CNCF 联合发起的线上直播活动，活动将不定期举行，为大家带来 Service Mesh 领域的知识和实践分享。
 
-本文根据5月28日晚 Service Mesh Webinar#1 多点生活平台架构组研发工程师陈鹏，线上主题分享《多点生活在 Service Mesh 上的实践 -- Istio + Mosn 在 Dubbo 场景下的探索之路》整理，文末包含本次分享的视频回顾链接以及 PPT 下载地址。
+本文根据 5 月 28 日晚 Service Mesh Webinar#1 多点生活平台架构组研发工程师陈鹏，线上主题分享《多点生活在 Service Mesh 上的实践 -- Istio + Mosn 在 Dubbo 场景下的探索之路》整理，文末包含本次分享的视频回顾链接以及 PPT 下载地址。
 
 ## 前言
 
@@ -348,7 +348,7 @@ mosn-tutorial：[https://github.com/mosn/mosn-tutorial](https://github.com/mosn/
 
 ## 本期嘉宾介绍
 
-陈鹏，多点生活平台架构组研发工程师，开源项目与云原生爱好者。有多年的网上商城、支付系统相关开发经验，2019年至今从事云原生和 Service Mesh 相关开发工作。
+陈鹏，多点生活平台架构组研发工程师，开源项目与云原生爱好者。有多年的网上商城、支付系统相关开发经验，2019 年至今从事云原生和 Service Mesh 相关开发工作。
 
 ## 回顾资料
 

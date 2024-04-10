@@ -52,7 +52,7 @@ SOFAGirl 主持人
 
 力鲲 SOFAJRaft 开源负责人
 
-### 本期分享大纲：
+### 本期分享大纲
 
 - 如何使用 SOFAJRaft 实现自己的分布式应用
 - 基于实例理解 SOFAJRaft 中的概念和术语

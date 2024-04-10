@@ -6,7 +6,7 @@ aliases: "/sofa-rpc/docs/Registry-Local"
 
 
 使用本地文件作为服务注册中心在 application.properties 中如下配置即可：
-```
+```plain
 com.alipay.sofa.rpc.registry.address=local:///home/admin/registry/localRegistry.reg
 ```
 
@@ -14,6 +14,6 @@ com.alipay.sofa.rpc.registry.address=local:///home/admin/registry/localRegistry.
 
 对于 windows 用户，则以上地址类似：
 
-```
+```plain
 com.alipay.sofa.rpc.registry.address=local://c://users/localRegistry.reg
 ```

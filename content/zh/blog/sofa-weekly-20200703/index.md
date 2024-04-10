@@ -41,7 +41,7 @@ A：rheakv multi group 按照 range 分片，左闭右开，可以自定义，�
 
 > yaml 配置中 regionEngineOptionsList.RegionEngineOptions 中的 serverAddress、initialServerList 等配置和外部与 regionEngineOptionsList 平级的 serverAddress 配置以及与 storeEngineOptions 平级的 initialServerList 是什么关系，谁覆盖谁？
 
-A：store 和 region 为1：n， region 包含在 store 中，store 的参数会 copy 传递到 region。
+A：store 和 region 为 1：n， region 包含在 store 中，store 的参数会 copy 传递到 region。
 
 > jraft-example 展示，Rhea-kv 是客户端+服务端模式，其中 benchmark 使用分片集群部署模式，需要先同时使用 BenchmarkClient、BenchmarkServer 拉启后台服务，而后面的 rheakv 使用分节点配置和启动，如何区分二者的场景和使用姿势。
 
@@ -54,8 +54,8 @@ A：SOFAJRaft 是一个 jar 包，是不是独立进程完全取决于你自己�
 > 参考 jraft-example 实例，基于 rheakv 部署 multi group，加减 learnner 节点等，应该是以分组为单位操作，目前只看到 NodeOptions 中有 groupId 属性，多组时怎么配置和分别操作。
 
 A：这应该是两个问题。
-问题1（groupId 多组如何配置）：在 rheakv 里，groupId 是 clusterName + ‘-’ regionId。
-问题2（多组如何配置 learner）：目前没有很灵活，我们内部使用还是单独指定几台机器，上面的节点全部是 learner 节点，只要配置 initialServerList: 127.0.0.1:8181,127.0.0.1:8182,127.0.0.1:8183/learner 即所有 group 的 learner 都在 127.0.0.1:8183/learner 一个节点上，你的需求收到了，下个版本会增加每个 region 单独指定 learner，需要修改 RegionEngineOptions.initialServerList 在不为空的时候不被 StoreEngineOptions 的值覆盖即可。
+问题 1（groupId 多组如何配置）：在 rheakv 里，groupId 是 clusterName + ‘-’ regionId。
+问题 2（多组如何配置 learner）：目前没有很灵活，我们内部使用还是单独指定几台机器，上面的节点全部是 learner 节点，只要配置 initialServerList: 127.0.0.1:8181,127.0.0.1:8182,127.0.0.1:8183/learner 即所有 group 的 learner 都在 127.0.0.1:8183/learner 一个节点上，你的需求收到了，下个版本会增加每个 region 单独指定 learner，需要修改 RegionEngineOptions.initialServerList 在不为空的时候不被 StoreEngineOptions 的值覆盖即可。
 
 SOFAJRaft：[https://github.com/sofastack/sofa-jraft](https://github.com/sofastack/sofa-jraft)
 

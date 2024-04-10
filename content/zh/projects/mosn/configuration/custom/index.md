@@ -46,9 +46,9 @@ title: "自定义配置说明"
 }
 ```
 
-- `status`，bool类型，表示是否开启 TLS，默认是 false。
+- `status`，bool 类型，表示是否开启 TLS，默认是 false。
 - `type`，字符串类型，描述 tls_context 的类型。tls_context 支持扩展实现，不同的 type 对应不同的实现方式，默认实现方式对应的 type 是空字符串。
-- `server_name`，当没有配置 insecure_skip 时，用于校验服务端返回证书的 hostname。作为Cluster配置时有效。
+- `server_name`，当没有配置 insecure_skip 时，用于校验服务端返回证书的 hostname。作为 Cluster 配置时有效。
 - `ca_cert`，证书签发的根 CA 证书。
 - `cert_chain`，TLS 证书链配置。
 - `private_key`，证书私钥配置。
@@ -57,7 +57,7 @@ title: "自定义配置说明"
 - `insecure_skip`，bool 类型，作为 Cluster 配置时有效，表示是否要忽略 Server 端的证书校验。
 - `cipher_suites`，如果配置了该配置，那么 TLS 连接将只支持配置了的密码套件，并且会按照配置的顺序作为优先级使用，支持的套件类型如下：
 
-```
+```plain
 ECDHE-ECDSA-AES256-GCM-SHA384
 ECDHE-RSA-AES256-GCM-SHA384
 ECDHE-ECDSA-AES128-GCM-SHA256
@@ -94,7 +94,7 @@ ECDHE-ECDSA-SM4-SM3
 
 - - 支持 h2、http/1.1、 sofa。
 
-- `fall_back`，bool类型，当配置为 true 时，如果证书解析失败，不会报错而是相当于没有开启 TLS。
+- `fall_back`，bool 类型，当配置为 true 时，如果证书解析失败，不会报错而是相当于没有开启 TLS。
 - `extend_verify`，任意 json 类型，当 type 为非空时，作为扩展的配置参数。
 - `sds_source`，访问 SDS API 的配置，如果配置了这个配置，`ca_cert`、`cert_chain` 和 `private_key` 都会被忽略，但是其余的配置依然有效。
 

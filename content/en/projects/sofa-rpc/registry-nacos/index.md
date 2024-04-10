@@ -8,7 +8,7 @@ aliases: "/sofa-rpc/docs/Registry-Nacos"
 SOFARPC already supports using Nacos as a service registry. Suppose you have deployed Nacos Server locally according to Nacos's [Quick Start] (https://nacos.io/zh-cn/docs/quick-start.html), and the service discovery port is set to `8848` by default.
 
 To use Nacos as a service registry in SOFARPC, you only need to add the following configuration to `application.properties`:
-```
+```plain
 com.alipay.sofa.rpc.registry.address=nacos://127.0.0.1:8848
 ```
 

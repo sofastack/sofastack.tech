@@ -80,7 +80,7 @@ Ark Plugin 包: 简称 Plugin，提供把非业务基础组件下沉的能力，
 
 ![Plugin 包目录结构](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1582616549444-9d0c9877-9b4a-4060-bf03-9af2cf21fed3.jpeg)
 
-上文介绍了 Ark 包、Ark Biz 包、Ark Plugin 包的目录结构，接下来我们介绍下 Ark 包运行时的整个运行时结构。通过下面这张图我们可以看到，在整个运行时，Ark 包分为三层，底层是 Ark Container，中间层是 Ark Plugin，上层是 Ark Biz。Ark Container 负责启动所有 Ark Plugin 及 Ark Biz，Ark Plugin 支持类导入导出能力，所以 Ark Plugin 之间有双向箭头相互委托。为了简化 Ark Biz 的使用，Ark Biz 不支持导入导出类，Ark Biz默认会导入所有 Ark Plugin 的类。
+上文介绍了 Ark 包、Ark Biz 包、Ark Plugin 包的目录结构，接下来我们介绍下 Ark 包运行时的整个运行时结构。通过下面这张图我们可以看到，在整个运行时，Ark 包分为三层，底层是 Ark Container，中间层是 Ark Plugin，上层是 Ark Biz。Ark Container 负责启动所有 Ark Plugin 及 Ark Biz，Ark Plugin 支持类导入导出能力，所以 Ark Plugin 之间有双向箭头相互委托。为了简化 Ark Biz 的使用，Ark Biz 不支持导入导出类，Ark Biz 默认会导入所有 Ark Plugin 的类。
 
 ![Ark 包运行时结构](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1582616549454-9d47eea6-7d16-419b-945c-d2ef66e3416a.jpeg)
 
@@ -151,36 +151,36 @@ SOFAArk：[https://github.com/sofastack/sofa-ark](https://github.com/sofastack/s
 
 ### 本期直播 QA 回顾
 
-#### @鸿关 Q1：
+#### @鸿关 Q1
 
 > 用 SOFAArk 的话，能直接集成到 SOFABoot 工程不？还是说必须要建个 SOFAArk 的工程？SOFAArk 可以运用于非 SOFABoot 的项目么？
 
 A： 能直接集成到 SOFABoot 工程，不需要新建 SOFAArk 工程，也可以用于非 SOFABoot 工程，只要是 Spring Boot 工程即可，但是不引入 SOFA 相关依赖的话，@SofaService 及 @SofaReference 等注解就没法用了。
 
-> 宿主包刚开始是指定的1.0版本，如果我线上我已经升到2.0的版本，万一线上机器挂掉重启，那我的算法都变了吧，就有问题。
+> 宿主包刚开始是指定的 1.0 版本，如果我线上我已经升到 2.0 的版本，万一线上机器挂掉重启，那我的算法都变了吧，就有问题。
 
 A：这个需要进行一些集群管理，重启的时候自动安装模块，目前我们开源了 [sofa-dashboard](https://github.com/sofastack/sofa-dashboard) 可以帮助大家进行集群管理。
 SOFADashboard：[https://github.com/sofastack/sofa-dashboard](https://github.com/sofastack/sofa-dashboard)
 
-#### @陈鑫杰 Q2：
+#### @陈鑫杰 Q2
 
 > 重启应用排序会发生变化吗？
 
 A：可以在 Ark Biz 中指定 priority，保证启动顺序。 
 
-#### @Tower Q3：
+#### @Tower Q3
 
 > 如果是多副本的情况下怎么更新？
 
 A：多副本指的就是集群管理？目前我们开源了 [sofa-dashboard](https://github.com/sofastack/sofa-dashboard) 可以帮助大家进行集群管理。
 
-#### @祁路 Q4：
+#### @祁路 Q4
 
 > Biz 的安装可以通过 Api 吗？
 
 A：sofa-ark 工程中提供 com.alipay.sofa.ark.api.ArkClient 类，用于支持 API 方式安装 Biz。
 
-#### @盲僧 Q5：
+#### @盲僧 Q5
 
 > 运行期间安装 biz，然后激活模块这一过程做了哪些事情 ，如果这个 biz jar 包放在远程仓库怎么加载里面的代码呢？是拉下来放到本地的一个磁盘用 classloader 去加载使用吗？
 
@@ -190,7 +190,7 @@ A：运行期安装会动态创建一个 ClassLoader 将 Biz 代码加载起来�
 
 A：不会。
 
-#### @曾鹏 Q6：
+#### @曾鹏 Q6
 
 > SOFAArk 有什么实际的应用场景吗？
 

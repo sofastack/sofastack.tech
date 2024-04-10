@@ -25,7 +25,7 @@ SOFAJRaft：[https://github.com/sofastack/sofa-jraft](https://github.com/sofasta
 
 ## 一、快照的概念与特点
 
-SOFAJRaft 是对 Raft 共识算法的 Java 实现。既然是共识算法，就不可避免的要对需要达成共识的内容，在多个服务器节点之间进行传输，一般将这些共识的内容称之为日志块（LogEntry）。如果读过《剖析 | SOFAJRaft 实现原理》系列前面几篇文章的同学，应该了解到在 SOFAJRaft 中，可以通过“节点之间并发复制日志”、“批量化复制日志”和“复制日志pipeline机制”等优化手段来保证服务器节点之间日志复制效率达到最大化。
+SOFAJRaft 是对 Raft 共识算法的 Java 实现。既然是共识算法，就不可避免的要对需要达成共识的内容，在多个服务器节点之间进行传输，一般将这些共识的内容称之为日志块（LogEntry）。如果读过《剖析 | SOFAJRaft 实现原理》系列前面几篇文章的同学，应该了解到在 SOFAJRaft 中，可以通过“节点之间并发复制日志”、“批量化复制日志”和“复制日志 pipeline 机制”等优化手段来保证服务器节点之间日志复制效率达到最大化。
 
 但如果遇到下面的两个场景，仅依靠上面的优化方法并不能有效地根本解决问题：
 
@@ -59,15 +59,15 @@ SOFAJRaft 是对 Raft 共识算法的 Java 实现。既然是共识算法，就�
 
 ![在 Snapshot 禁用情况下集群节点扩容](https://cdn.nlark.com/yuque/0/2019/png/439987/1568774493825-aa20861c-9324-4207-a535-9b1a043b7516.png)
 
-图1 在 Snapshot 禁用情况下集群节点扩容
+图 1 在 Snapshot 禁用情况下集群节点扩容
 
 ![image.png](https://cdn.nlark.com/yuque/0/2019/png/439987/1568774527638-51a77503-2614-454d-91d2-fa5e7be278a6.png)
 
-图2 在 Snapshot 启用情况下集群节点扩容
+图 2 在 Snapshot 启用情况下集群节点扩容
 
-从上面两张 SOFAJRaft 集群的结构图上，可以很明显地看出在开启和禁用 Snapshot 时，扩容的新 Raft 节点需要从 Leader 节点传输过来不同的日志数量。在禁用 Snapshot 情况下，新 Raft 节点需要把 Leade 节点内从起始的 T1 时刻至当前 T3 时刻这一时间范围内的所有日志都重新传至本地后提交给状态机。而在开启 Snapshot 情况下，新 Raft 节点则无需像 图1 中那么逐条复制 T1~T3 时刻内的所有日志，而只需先从 Leader 节点加载最新的镜像文件 Snapshot_Index_File 至本地，然后仅复制 T3 时刻以后的日志至本地并提交状态机即可。
+从上面两张 SOFAJRaft 集群的结构图上，可以很明显地看出在开启和禁用 Snapshot 时，扩容的新 Raft 节点需要从 Leader 节点传输过来不同的日志数量。在禁用 Snapshot 情况下，新 Raft 节点需要把 Leade 节点内从起始的 T1 时刻至当前 T3 时刻这一时间范围内的所有日志都重新传至本地后提交给状态机。而在开启 Snapshot 情况下，新 Raft 节点则无需像 图 1 中那么逐条复制 T1~T3 时刻内的所有日志，而只需先从 Leader 节点加载最新的镜像文件 Snapshot_Index_File 至本地，然后仅复制 T3 时刻以后的日志至本地并提交状态机即可。
 
-在这里可能有同学会有疑问：“在 图 1 中，从 Leader 节点传给新扩容的 Raft 节点的数据是 T1~T3 的日志，而 图2 中取而代之的是 Snapshot_Index_File 快照镜像文件，似乎还是不可避免额外的数据传输么？”仔细看下图 2，会发现其中 Snapshot_Index_File 快照镜像文件是对 T1~T3 时刻内日志数据指令的合并（包括数集合[Add 1,Add 6,Add 4,Sub 3,Sub 4,Add 3]），也即为最终的数据状态值。
+在这里可能有同学会有疑问：“在 图 1 中，从 Leader 节点传给新扩容的 Raft 节点的数据是 T1~T3 的日志，而 图 2 中取而代之的是 Snapshot_Index_File 快照镜像文件，似乎还是不可避免额外的数据传输么？”仔细看下图 2，会发现其中 Snapshot_Index_File 快照镜像文件是对 T1~T3 时刻内日志数据指令的合并（包括数集合[Add 1,Add 6,Add 4,Sub 3,Sub 4,Add 3]），也即为最终的数据状态值。
 
 ### 2.2 SOFAJRaft Snapshot 机制的实践应用
 
@@ -121,7 +121,7 @@ SOFAJRaft 中 Snapshot 机制的核心类是 SnapshotExecutorImpl。这个 Snaps
 
 ![生成快照/安装快照/加载快照框架图](https://cdn.nlark.com/yuque/0/2019/png/439987/1568774816004-c660d5d5-8f1a-487f-9fa8-3757fed7a939.png)
 
-图3 生成快照/安装快照/加载快照框架图
+图 3 生成快照/安装快照/加载快照框架图
 
 从上面的整体流程框架图中可以看到，在新扩容的 Raft 节点启动后（它为 Follower 角色），它获取到 Leader 节点发送的安装 Snapshot 的 RPC 请求（InstallSnapshotRequest）后，会在 T1 时刻先调用 SnapshotExecutor 执行器的  `installSnapshot()`  方法，本地生成如上图所示的“snapshot_1”数据文件。
 
@@ -129,7 +129,7 @@ SOFAJRaft 中 Snapshot 机制的核心类是 SnapshotExecutorImpl。这个 Snaps
 
 最后，在 T3 时刻，该 Follower 节点，调用 SnapshotExecutor 执行器的  `doSnapshot()`  方法，合并日志数据集合并生成如上图所示的“snapshot_2”文件，同时会对之前的日志进行一个裁剪。具体的做法是，本地清理删除上图中从“snapshot_1”文件最后的 index+1 位置前的日志。
 
-有读者朋友可能会问裁剪日志时，为什么不删除从“snapshot_2”文件最后的 index+1 位置前的日志？这里考虑到的主要原因是，在Raft集群中， Leader 和 Follower 节点间做日志复制时，很可能会存在有部分 Follower 节点没有完全跟上 Leader 节点的情况，如果此时 Leader 节点裁剪了从“snapshot_2”文件最后的 index+1 位置前的日志，那剩余未完成日志复制的 Follower 节点就无法从 Leader 节点同步日志，而只能通过 Leader 发送过来的 installSnapshotRequest 来完成同步最新的状态了（感兴趣的同学可以参考着研究下 SOFAJRaft 源码 LogManagerImpl 类的  `setSnapshot()`  方法实现）。
+有读者朋友可能会问裁剪日志时，为什么不删除从“snapshot_2”文件最后的 index+1 位置前的日志？这里考虑到的主要原因是，在 Raft 集群中， Leader 和 Follower 节点间做日志复制时，很可能会存在有部分 Follower 节点没有完全跟上 Leader 节点的情况，如果此时 Leader 节点裁剪了从“snapshot_2”文件最后的 index+1 位置前的日志，那剩余未完成日志复制的 Follower 节点就无法从 Leader 节点同步日志，而只能通过 Leader 发送过来的 installSnapshotRequest 来完成同步最新的状态了（感兴趣的同学可以参考着研究下 SOFAJRaft 源码 LogManagerImpl 类的  `setSnapshot()`  方法实现）。
 
 ## 三、总结
 

@@ -31,7 +31,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **@东仔** 提问：
 
->SOFARegistry 的 client、meta、data、session 的四个模块间怎么交互的？
+> SOFARegistry 的 client、meta、data、session 的四个模块间怎么交互的？
 
 A：client API 参考 :
 
@@ -45,13 +45,13 @@ meta、data、session 没有提供 API 文档, 相关介绍可以看下:
 
 **@刚刚** 提问：
 
->获取有效链接，这个方法不是每次 new 一个 TCP 链接？
+> 获取有效链接，这个方法不是每次 new 一个 TCP 链接？
 
 ![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Z9DZTawcyHUAAAAAAAAAAAAAARQnAQ)
 
 A：会复用的，为 0 的时候才新建，不为 0 的时候我看是去到一个，直接把那个位置重置为 nil 了。
 
->复用是体现在？还是我 down 大代码不是最新的。
+> 复用是体现在？还是我 down 大代码不是最新的。
 
 A：用完了会放回这个 avliableclients 的数组里，你的代码不是最新，但大致逻辑也就这样。
 
@@ -115,7 +115,7 @@ SOFARPC
 
 4. 支持动态设置上游协议，使用 transcoder filter 来替换 Proxy 中的协议转换
 
-5. 其他优化与BUG Fix
+5. 其他优化与 BUG Fix
 
 「详细参考」：
 

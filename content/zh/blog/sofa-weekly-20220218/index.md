@@ -23,13 +23,13 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 ### SOFAStack 社区获奖啦
 
-SOFAStack 团队在 segmentfault 思否颁布的2021 年中国技术先锋年度评选中，荣获“中国技术品牌影响力企业” 。
+SOFAStack 团队在 segmentfault 思否颁布的 2021 年中国技术先锋年度评选中，荣获“中国技术品牌影响力企业” 。
 
->![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*eUrKTbaHUhgAAAAAAAAAAAAAARQnAQ)
+> ![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*eUrKTbaHUhgAAAAAAAAAAAAAARQnAQ)
 
 ### SOFA&MOSN 社区 本周 Contributor
 
->![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*KKvoT6Zt0F8AAAAAAAAAAAAAARQnAQ)
+> ![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*KKvoT6Zt0F8AAAAAAAAAAAAAARQnAQ)
 
 ### 每周读者问答提炼
 
@@ -41,19 +41,19 @@ SOFAStack 团队在 segmentfault 思否颁布的2021 年中国技术先锋年度
 
 **@Nothing** 提问：
 
->请教个问题，一个服务的订阅者实例数很多的情况下，如果所有订阅者都与 provider 建立连接，provider 的连接数压力大，SOFARegistry 是怎么考虑这种情况的?
+> 请教个问题，一个服务的订阅者实例数很多的情况下，如果所有订阅者都与 provider 建立连接，provider 的连接数压力大，SOFARegistry 是怎么考虑这种情况的?
 
 A：目前正在做 host subset 的设计，注册中心端会直接进行分片，减少客户端压力。现在开源版本的 SOFARegistry 还不具备这个的能力，我们内部也是采用全链接。可以了解一下 MOSN ，MOSN 有类似分片功能，内部也有大规模落地。
 
 **@老段** 提问：
 
->如果启动三个节点的话，停掉一个节点，系统就会一直选举，不再提供服务了；如果启动五个节点的话，停掉两个节点，系统就会一直选举，也不再提供服务了。这个正常么？
+> 如果启动三个节点的话，停掉一个节点，系统就会一直选举，不再提供服务了；如果启动五个节点的话，停掉两个节点，系统就会一直选举，也不再提供服务了。这个正常么？
 
 A：不正常，我这边 3 个节点，kill 一个 follower 完全没影响，kill leader 也可以很快选举完成。不会一直选举，服务可以提供，只不过日志里会去找那个挂了的节点。
 
 **@张永欣** 提问：
 
->MOSN 怎么配置 dubbo 连接，支持自发现 dubbo 服务吗？
+> MOSN 怎么配置 dubbo 连接，支持自发现 dubbo 服务吗？
 
 A：github 上有一些 exmaple，你可以先玩玩：
 

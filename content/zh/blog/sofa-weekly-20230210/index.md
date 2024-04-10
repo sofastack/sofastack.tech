@@ -36,7 +36,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **1.@shuangchengsun  #266**
 
->我想知道对于 SOFARegistry 这样的系统是如何定义 SLA 的，以及有没有一个参考值。
+> 我想知道对于 SOFARegistry 这样的系统是如何定义 SLA 的，以及有没有一个参考值。
 
 A：一般 SLA 的定义和系统的关键指标相关，类似 Registry 的核心就是 Pub Sub 模型，Pub 列表变化后及时推送给 Sub；那么 SLA 的定义就可以从类似 Pub 变更后在多长的周期内能推送给所有的 Sub，这个成功率应该高于多少。参考值这个看系统维护者对这个系统的要求吧，这个没什么标准值。
 
@@ -44,7 +44,7 @@ A：一般 SLA 的定义和系统的关键指标相关，类似 Registry 的核�
 
 **2.@郑长青  #2197** 
 
->我在宿主应用使用 Ark Biz，采用 Maven 依赖方式静态合并部署，但是通过 biz-a 查看，没有启动业务应用，这个问题遇到过吗？
+> 我在宿主应用使用 Ark Biz，采用 Maven 依赖方式静态合并部署，但是通过 biz-a 查看，没有启动业务应用，这个问题遇到过吗？
 
 A：是打包业务 Biz 的 declared-libraries 赋值问题，所以动态部署和静态部署使用 2.1.0 版本的 sofa-ark-maven-plugin 插件无法正常运行。Bug 修复的 PR 已经合并，预计周五（2 月 10 日）发布新 2.1.1 版本。
 

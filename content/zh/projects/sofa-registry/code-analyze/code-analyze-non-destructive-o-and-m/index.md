@@ -9,13 +9,13 @@ date: 2022-05-06T15:00:00+08:00
 ---
 
 ## 源码解析：无损运维
->SOFARegistry 是一个基于内存存储的分布式注册中心，数据是分散存储在各个节点，为了做到注册中心自身运维期间依然能够对外正常提供服务，需要进行节点下线快速感知和数据迁移。
+> SOFARegistry 是一个基于内存存储的分布式注册中心，数据是分散存储在各个节点，为了做到注册中心自身运维期间依然能够对外正常提供服务，需要进行节点下线快速感知和数据迁移。
 
 > - session 存储 client 发送的发布和订阅数据，由于 client 断连重放的特性，session 单机下线后 client 会重放数据到其他节点。
 
 > - data 会接收 session 发送的发布数据，data 单机下线后，meta 会通过 SlotTable 的变更把对应 Slot 的所有权移交其他 data，data 启动后会进行数据同步到达数据完整可对外提供服务的状态。
 
-### session、data下线的过程，如何避免下线期间数据丢失和抖动
+### session、data 下线的过程，如何避免下线期间数据丢失和抖动
 
 SessionServer 和 DataServer 下线的相关代码都位于各自 bootstrap 类的 dostop 方法中。
 
@@ -103,11 +103,11 @@ LOGGER.info("add data self to blacklist successfully");
 ![img.png](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*iCZhSLsRoVUAAAAAAAAAAAAAARQnAQ)
 
 
-Session 和 Data下线中的优雅关闭和数据迁移保证了下线期间数据丢失和抖动，期间仍然对外提供服务。
+Session 和 Data 下线中的优雅关闭和数据迁移保证了下线期间数据丢失和抖动，期间仍然对外提供服务。
 
 ### Meta 如何处理 Session、Data 主动下线的请求通知
 
-Meta 集群服务于 SOFARegistry 内部的 Session 集群和 Data 集群，Meta 层能够感知到 Session 节点和 Data 节点的变化，并通知集群的其它节点。RegistryForbiddenServerHandler 注册在sessionServerHandlers、dataServerHandlers ：
+Meta 集群服务于 SOFARegistry 内部的 Session 集群和 Data 集群，Meta 层能够感知到 Session 节点和 Data 节点的变化，并通知集群的其它节点。RegistryForbiddenServerHandler 注册在 sessionServerHandlers、dataServerHandlers ：
 
 ```java
 @Bean(name = "sessionServerHandlers")
@@ -228,7 +228,7 @@ public void handle() {
 
 ##### ***<u>启动入口</u>***
 
-Data 启动的过程代码位于com.alipay.sofa.registry.server.data.bootstrap.DataServerBootstrap#start
+Data 启动的过程代码位于 com.alipay.sofa.registry.server.data.bootstrap.DataServerBootstrap#start
 
 ```java
 /** start dataserver */
@@ -271,7 +271,7 @@ DataServer 模块的各个 bean 在 JavaConfig 中统一配置，JavaConfig 类�
 
 sofaRegistry V6 版本引入了“路由表”（SlotTabel）的概念，“路由表”负责存放每个节点和 N 个 Slot 的映射关系，并保证尽量把所有 Slot 均匀地分配给每个节点。这样，当节点上下线时，只需要修改路由表内容即可。
 
-从代码中可以看出，DataServer 服务在启动时，会启动 DataServer、DataSyncServer、HttpServer 三个 bolt 服务。在启动这些 Server 之时，DataServer 注册了一系列 Handler 来处理各类消息。启动这些 Server 后，调用了renewNode（）方法，renewNode 调用 metaServerService的 renewNode，通过获取在心跳请求中将返回 SlotTable 路由表信息、Data 节点将路由表 SlotTable 保存在本地中，具体代码可以参考com.alipay.sofa.registry.server.meta.remoting.meta.MetaServerRenewService#renewNode，下一步又刷新了 Session 的信息，并创建了一个 renew meta 的守护进程，用来持续刷新节点上存储的集群信息：
+从代码中可以看出，DataServer 服务在启动时，会启动 DataServer、DataSyncServer、HttpServer 三个 bolt 服务。在启动这些 Server 之时，DataServer 注册了一系列 Handler 来处理各类消息。启动这些 Server 后，调用了 renewNode（）方法，renewNode 调用 metaServerService 的 renewNode，通过获取在心跳请求中将返回 SlotTable 路由表信息、Data 节点将路由表 SlotTable 保存在本地中，具体代码可以参考 com.alipay.sofa.registry.server.meta.remoting.meta.MetaServerRenewService#renewNode，下一步又刷新了 Session 的信息，并创建了一个 renew meta 的守护进程，用来持续刷新节点上存储的集群信息：
 
 ```java
   private void renewNode() {

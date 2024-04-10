@@ -37,7 +37,7 @@ Prometheus 本身是一款单机监控产品，在蚂蚁庞大的高可用集群
 
 今年大促，我们成功地将 Sigma 集群监控（蚂蚁原生的集群管理和资源调度平台）完整迁移至 AntMonitor。配合告警和大盘，实现了 Sigma 监控的覆盖。AntMonitor 凭借 Sigma 监控的迁移，成功孵化了完善的的云原生 Prometheus  监控能力。
 
-本文简要介绍了AntMonitor 对 Prometheus 监控功能的支持，以及 Sigma 监控的落地实践。
+本文简要介绍了 AntMonitor 对 Prometheus 监控功能的支持，以及 Sigma 监控的落地实践。
 
 ## PART. 1 海量数据下的采集架构
 

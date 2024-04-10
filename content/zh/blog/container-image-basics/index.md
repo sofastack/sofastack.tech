@@ -70,7 +70,7 @@ Nydus 与 Nydus snapshotter 社区贡献者，专注存储，云原生技术。
 
 **- tar 格式标准**
 
-- tar 格式并不区分 tar archive entries ordering，这带来一个问题，即如果用户在不同机器上 ；build 同一个镜像，最终可能会因为使用了不同的文件系统而得到不同的镜像，比如在文件系统 A 上的 order 是 foo 在 bar 之前进入 tar ，在文件系统 B 上的 order 是 bar 在 foo 之前进入tar ，那么这两个镜像是不同的；
+- tar 格式并不区分 tar archive entries ordering，这带来一个问题，即如果用户在不同机器上 ；build 同一个镜像，最终可能会因为使用了不同的文件系统而得到不同的镜像，比如在文件系统 A 上的 order 是 foo 在 bar 之前进入 tar ，在文件系统 B 上的 order 是 bar 在 foo 之前进入 tar ，那么这两个镜像是不同的；
 
 - 当 tar 被 gzip 压缩过之后不支持 seek ，导致运行之前必须先下载并解压 targz 的 image layers，而不能实现文件数据按需加载。
 
@@ -118,7 +118,7 @@ Nydus 的架构主要包含两部分内容：
 
 **- 负责解析容器镜像的 FUSE 用户态文件系统进程**
 
-Nydus 兼容多种文件系统，能够解析 FUSE 和 virtiofs 协议来支持传统的 runc 容器、 Kata容器。对于存储后端，支持使用容器仓库（ Registery ）、OSS 对象存储 、NAS、Dragonfly 的超级节点和 Peer 节点作为 Nydus 的镜像数据存储后端。此外，为了加速启动速度，Nydus 还可以配置一个本地缓存，避免每次启动容器时都从远端数据源拉取数据。
+Nydus 兼容多种文件系统，能够解析 FUSE 和 virtiofs 协议来支持传统的 runc 容器、 Kata 容器。对于存储后端，支持使用容器仓库（ Registery ）、OSS 对象存储 、NAS、Dragonfly 的超级节点和 Peer 节点作为 Nydus 的镜像数据存储后端。此外，为了加速启动速度，Nydus 还可以配置一个本地缓存，避免每次启动容器时都从远端数据源拉取数据。
 
 ### 1.4 Nydus 特性
 
@@ -263,7 +263,7 @@ sudo nerdctl version    # 需要使用sudo，不然会提示安装 rootless
 
 **Nydus 安装**
 
-装主要的3个工具（也可以直接下载所有工具的二进制文件，编译安装时默认没有没有 Nydusify ）：
+装主要的 3 个工具（也可以直接下载所有工具的二进制文件，编译安装时默认没有没有 Nydusify ）：
 
 - `nydusify` 将 OCI 格式的容器镜像转换为 Nydus 格式（ RAFS ）容器镜像的工具。
 
@@ -571,7 +571,7 @@ sudo docker rm -f registry
 sudo docker run -d --name=registry --restart=always -p 5000:5000 registry && sudo docker logs registry -f
 ```
 
-## 07参考资料
+## 07 参考资料
 
 [1]OCI 镜像标准格式: 
 *[https://github.com/opencontainers/image-spec](https://github.com/opencontainers/image-spec)*

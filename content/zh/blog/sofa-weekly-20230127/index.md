@@ -32,7 +32,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **1. @fengjiachun #951**
 
->怎么通过GitHub Action 自动发布新版本 jar 到 maven 库？
+> 怎么通过 GitHub Action 自动发布新版本 jar 到 maven 库？
 
 A：把 autoReleaseAfterClose 设置为 true，可以非常方便。
 
@@ -40,7 +40,7 @@ A：把 autoReleaseAfterClose 设置为 true，可以非常方便。
 
 **2. @canaan-wang #859** 
 
->Layotto 为什么要开发 SDK ？SDK 中的功能代码为什么不可以迁移到 Server 端？
+> Layotto 为什么要开发 SDK ？SDK 中的功能代码为什么不可以迁移到 Server 端？
 
 A：对于一些熟悉 gRPC 的用户来说，Client 端直接裸用 gRPC 都可以，但这种方式对于应用开发者是有理解成本的，所以 Layotto 的 SDK 提供的更多的是接口定义，让用户编程的时候不需要直接面向裸漏的 gRPC。举个简单的例子：假设用户可以往 gRPC 的 header 里面塞一个字段 “rpc-remote-address” 该字段用来指定 RPC 访问的远端目标地址，那么如果没 SDK，用户就得知道两件事：字段名和如何塞字段到 gRPC 的 header。但如果有 SDK，你可以提供一个函数 SetRpcTargetAddress（Address String）来直接给用户使用。
 

@@ -9,7 +9,7 @@ date: 2021-06-15T15:00:00+08:00
 cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*24RYSZWmV5gAAAAAAAAAAAAAARQnAQ"
 ---
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*GeGWTLnKpUIAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*GeGWTLnKpUIAAAAAAAAAAAAAARQnAQ)
 
 GoCN：贵司从什么时候开始用 Go，基于什么原因，还记得第一个用 Go 的项目是什么吗?
 
@@ -48,4 +48,4 @@ GoCN：对本次大会的期待是什么？
 
 更多文章请扫码关注“金融级分布式架构”公众号
 
->![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*s3UzR6VeQ6cAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*s3UzR6VeQ6cAAAAAAAAAAAAAARQnAQ)

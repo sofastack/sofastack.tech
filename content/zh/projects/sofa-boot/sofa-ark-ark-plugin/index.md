@@ -12,7 +12,7 @@ aliases: "/sofa-boot/docs/sofa-ark-ark-plugin"
 
 * 插件必须配置插件名，默认为 `${artifactId}` ；运行时，不允许存在同名的插件，可以认为它是 `Ark Plugin` 的唯一 ID;
 
-* 插件必须配置优先级，默认为1000，数字越低表示优先级越高；
+* 插件必须配置优先级，默认为 1000，数字越低表示优先级越高；
 
 * 插件最多配置一个入口类 `activator` ，它是容器启动插件的入口，统一实现 `com.alipay.sofa.ark.spi.service.PluginActivator` 接口类；优先级高的插件优先启动；
 
@@ -165,11 +165,11 @@ aliases: "/sofa-boot/docs/sofa-ark-ark-plugin"
 配置项含义如下：
 + `outputDirectory`: 指定打包的 ${pluginName}.ark.plugin 存放目录; 默认放在 ${project.build.directory};
 
-+ `attach`: 是否把 ark plugin 安装、发布到仓库，默认为true; 
++ `attach`: 是否把 ark plugin 安装、发布到仓库，默认为 true; 
 
 + `activator`: ark plugin 最多仅能指定一个 `com.alipay.sofa.ark.spi.service.PluginActivator` 接口实现类;
 
-+ `priority`: 配置优先级，数字越小，优先级越高，优先启动，优先导出类，默认1000;
++ `priority`: 配置优先级，数字越小，优先级越高，优先启动，优先导出类，默认 1000;
 
 + `pluginName`: 配置插件的名字，务必配置对，运行时，是插件的唯一标识 ID。比如 sofa-rpc 插件，可以配置为 sofa-rpc; 默认为 ${artifactId};
 

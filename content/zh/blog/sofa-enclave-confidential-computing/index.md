@@ -102,7 +102,7 @@ SOFAEnclave 的核心包括三部分，Enclave 内核 Occlum，云原生机密�
 
 Occlum 兼容 POSIX 编程接口，并支持多线程、OpenMP、和多进程；同时，Occlum 实现了多进程隔离机制，使得多个可信应用之间可以相互隔离。Occlum 使得开发者方便利用 Enclave 的 CIA 能力，达到可用不可见、可用不可攻的效果，使数据保护能真正得到落实。
 
-Occlum项目地址：[https://github.com/occlum/occlum](https://github.com/occlum/occlum)
+Occlum 项目地址：[https://github.com/occlum/occlum](https://github.com/occlum/occlum)
 
 目前，Occlum 可轻松支持大型人工智能框架，例如 XGBoost、TensorFlow 等，也可支持大型服务器应用例如 Shell, GCC，Web Server 等。Occlum 具有如下技术特点：
 
@@ -114,7 +114,7 @@ Occlum 是业界首个内存安全的 SGX LibOS。Occlum LibOS 是基于保证�
 
 2) 简单易用
 
-Occlum LibOS 使得 Linux 应用程序在只修改少量代码或者完全不修改代码的情况下运行于 Enclave 安全环境中。用户只需使用 Occlum 工具链（occlum-clang）编译应用程序，并使用名为 occlum 的命令行工具在 SGX enclave 中运行该应用程序。该命令行工具提供了诸多子命令，其中最重要的三个是：occlum init：初始化 Occlum 的上下文occlum build：制作 Occlum 的可信镜像和 enclaveocclum run <program_name> <program_args>：在 enclave 中运行 Occlum 可信镜像中的一个程序。
+Occlum LibOS 使得 Linux 应用程序在只修改少量代码或者完全不修改代码的情况下运行于 Enclave 安全环境中。用户只需使用 Occlum 工具链（occlum-clang）编译应用程序，并使用名为 occlum 的命令行工具在 SGX enclave 中运行该应用程序。该命令行工具提供了诸多子命令，其中最重要的三个是：occlum init：初始化 Occlum 的上下文 occlum build：制作 Occlum 的可信镜像和 enclaveocclum run <program_name> <program_args>：在 enclave 中运行 Occlum 可信镜像中的一个程序。
 
 Occlum 大大降低了为 Enclave 开发应用的开发成本。我们以一个最简单的 Hello World 为例说明。使用 Intel SGX SDK 开发的 SGX Hello World 工程包含 10 个左右的文件，300 行左右的代码；使用百度的 Rust SGX SDK 需要 200 行左右的代码；Google 的 Asylo 也需要 100 行左右的代码。相比之下，Occlum 不要求用户给 Linux 版本 Hello World（5 行代码）增加任何额外的代码，并且只需三行命令即可将 Linux 版的 Hello World 程序运行于 SGX enclave 中，效果如下：
 

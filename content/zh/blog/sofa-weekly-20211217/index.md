@@ -35,7 +35,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **@孙军超** 提问：
 
->请教一下 JRaft 里， Bolt 的 logback 日志怎么关掉 ?
+> 请教一下 JRaft 里， Bolt 的 logback 日志怎么关掉 ?
 
 ![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*8nOfTYiNSfIAAAAAAAAAAAAAARQnAQ)
 
@@ -45,7 +45,7 @@ A：可以参考这个文件。[https://github.com/sofastack/sofa-jraft/issues/7
 
 **@超** 提问：
 
->这种方式运行 Wasm 的时候，Layotto 自身加上运行时部分初始化需要加载 Dapr 组件时间可能总共要 1-2s（还没有实测，因为目前只用过 Dapr，后面会实际运行一下）。这方面冷启动延迟一方面可以精简 Wasm 的 runtime 仅包括 Dapr 或者 Layotto 的 SDK 通过网络来通信；另一方面就是优化运行时的启动时间。作者对这方面问题有想法吗？ 
+> 这种方式运行 Wasm 的时候，Layotto 自身加上运行时部分初始化需要加载 Dapr 组件时间可能总共要 1-2s（还没有实测，因为目前只用过 Dapr，后面会实际运行一下）。这方面冷启动延迟一方面可以精简 Wasm 的 runtime 仅包括 Dapr 或者 Layotto 的 SDK 通过网络来通信；另一方面就是优化运行时的启动时间。作者对这方面问题有想法吗？ 
 
 A:这个问题属于 Layotto 自身如何快速初始化，目前我们也在这方面做一些尝试，比如优化调度算法，让某些特征的函数调度到特定的 Layotto 上，这样就可以让 Layotto 提前初始化好资源。不过这只是函数急速调度中的一个环节，实际落地过程中还有调度算法执行耗时，Pod 启动耗时，函数自身启动耗时等等因素，这也是我们目前正在努力的方向。
 

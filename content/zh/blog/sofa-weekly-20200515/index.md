@@ -38,9 +38,9 @@ SOFAJRaft：[https://github.com/sofastack/sofa-jraft](https://github.com/sofasta
 
 **2、@廖景楷** 提问：
 
-> 请教 Seata 在做超时处理时怎么协调多个节点不会同时对某个事务做多次处理？还是说要求业务容许多次commit，rollback，Seata 就不协调了？
-> 我在测试 seata-server 多节点 HA 部署，用 MySQL 存储，看代码貌似所有节点都是无差别无状态的，在多个实例的 DefaultCoordiantor 里头有定时器去扫描超时的事务进行重试或者回滚，打开 general log 也发现有多个客户端 IP 在用同样的语句在扫描 global_table 表进行超时等处理。想确认一下多节点间是否有协调机制？
-> 我在 K8s下面部署3节点的 seata-server statefulset，镜像 docker.io/seataio/seata-server:latest 使用 Nacos 作为 registry。
+> 请教 Seata 在做超时处理时怎么协调多个节点不会同时对某个事务做多次处理？还是说要求业务容许多次 commit，rollback，Seata 就不协调了？
+我在测试 seata-server 多节点 HA 部署，用 MySQL 存储，看代码貌似所有节点都是无差别无状态的，在多个实例的 DefaultCoordiantor 里头有定时器去扫描超时的事务进行重试或者回滚，打开 general log 也发现有多个客户端 IP 在用同样的语句在扫描 global_table 表进行超时等处理。想确认一下多节点间是否有协调机制？
+我在 K8s 下面部署 3 节点的 seata-server statefulset，镜像 docker.io/seataio/seata-server:latest 使用 Nacos 作为 registry。
 
 A：目前没有，多次不会导致数据问题，不过确实浪费资源，可以考虑引入分布式 job。
 
@@ -54,7 +54,7 @@ A：是的，不过不是业务处理，框架会处理。
 
 A：如果 Server 是公用的一个 DB，理论上没问题的。
 
-> 没有理解你说的公用 DB.... Seata Server 在 K8s 上用独立的几个 pod 部署，那相应的我们会给它单独创建数据库。
+> 没有理解你说的公用 DB…… Seata Server 在 K8s 上用独立的几个 pod 部署，那相应的我们会给它单独创建数据库。
 
 A：Seata 高可用要求就是需要 server 的集群共用同一个 Seata 库，不然无法数据共享，也就是无法知晓当前运作的事务信息。首先你要保证 Server 集群用的同一个注册中心集群，并且共用同一个 Seata 库，这样才能保障数据共享、高可用。
 

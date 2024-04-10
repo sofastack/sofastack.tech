@@ -36,7 +36,7 @@ Mecha 这个词之所以出现在这里，主要是因为 **Bilgin Ibryam** 的�
 
 > 备注：详情请见原文，为了节约篇幅，这里只做简单概述，不完全引用原文内容。
 
-下图是传统中间件平台和云原生平台的对比，传统中间件以各种SDK的方式提供能力，而云原生平台则通过各种外围Runtime（典型如大家熟悉的Servicemesh/Istio）：
+下图是传统中间件平台和云原生平台的对比，传统中间件以各种 SDK 的方式提供能力，而云原生平台则通过各种外围 Runtime（典型如大家熟悉的 Servicemesh/Istio）：
 
 ![traditional-platform-and-cloudnative-platform](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1589254870161-b7fbd433-09d1-40f9-bfb2-8d52babca971.jpeg)
 
@@ -66,13 +66,13 @@ Mecha 这个词之所以出现在这里，主要是因为 **Bilgin Ibryam** 的�
 1. Mecha 是通用的，高度可配置的，可重用的组件，提供分布式原语作为现成的能力。
 1. Mecha 可以与单个 Micrologic 组件一起部署(Sidecar 模式)，也可以部署为多个共享(注：我称之为 Node 模式)。
 1. Mecha 不对 Micrologic 运行时做任何假设，它与使用开放协议和格式（例如 HTTP/gRPC、JSON、Protobuf、CloudEvents）的多语言微服务甚至单体一起使用。
-1. Mecha 以简单的文本格式（例如 YAML、JSON）声明式地配置，指示要启用的功能以及如何将其绑定到Micrologic 端点。
+1. Mecha 以简单的文本格式（例如 YAML、JSON）声明式地配置，指示要启用的功能以及如何将其绑定到 Micrologic 端点。
 1. 与其依靠多个代理来实现不同的目的（例如网络代理、缓存代理、绑定代理），不如使用一个 Mecha 提供所有这些能力。
 
 下面是我对上述特性的个人理解：
 
 1. Mecha 提供的是**能力**，以分布式原语体现的各种能力，而不局限于单纯的网络代理。
-1. Mecha 的部署模型，不局限于 Sidecar 模式，Node 模式在某些场景下（如 Edge/IoT，Serverless FaaS）可能会是更好的方式。至少，Mecha下有机会按需选择，而不是绑死在 Sidecar 模式上。
+1. Mecha 的部署模型，不局限于 Sidecar 模式，Node 模式在某些场景下（如 Edge/IoT，Serverless FaaS）可能会是更好的方式。至少，Mecha 下有机会按需选择，而不是绑死在 Sidecar 模式上。
 1. Mecha 和 Micrologic 之间的交互是开放而有 API 标准的，Mecha 和 Micrologic 之间的“协议”体现在 API 上，而不是 TCP 通讯协议。这提供了一个契机：一个统一 Micrologic 和 Mecha 之间通讯方式的契机。
 1. Mecha 可以以声明式的方式进行配置和控制，这非常符合云原生的理念，同样也使得 API 更关注于能力本身，而不是能力如何配置。
 1. 应用需要的能力如此之多（参见上面的图：分布式应用的四大需求），如果每个能力都对应一个代理（不管是 Node 还是 Sidecar），数量会非常夸张，带来的运维压力会很可怕。因此，如 Mecha 这个名字暗示的，运行时应该是整套的形式提供能力，而不是分散。
@@ -167,7 +167,7 @@ POST/GET/PUT/DELETE http://localhost:<daprPort>/v1.0/invoke/<appId>/method/<meth
 1. Dapr 首先会请求应用，咨询应用需要订阅那些主题（topic），如例子中应用返回的的 TopicA / TopicB；
 1. Dapr 实现主题订阅，在接收到消息之后，再把消息发送给应用，通过 URL 参数的不同来区分不同的主题；
 
-注意在这个调用期间，无论是收发消息，应用完全不用理会底层 pub/sub 的实现机制（比如是 Kafka，还是RocketMQ，还是其他公有云提供的消息机制），也完全不用引入该实现机制的客户端 SDK，只是简单的使用 Darp定义的 API 即可，从而实现了和底层的解耦，以及“厂商不绑定”。
+注意在这个调用期间，无论是收发消息，应用完全不用理会底层 pub/sub 的实现机制（比如是 Kafka，还是 RocketMQ，还是其他公有云提供的消息机制），也完全不用引入该实现机制的客户端 SDK，只是简单的使用 Darp 定义的 API 即可，从而实现了和底层的解耦，以及“厂商不绑定”。
 
 为了进一步简化调用的过程（毕竟发一个最简单的 HTTP GET 请求也要应用实现 HTTP 协议的调用/连接池管理等），Dapr 提供了各个语言的 SDK，如 Java / Go / Python / dotNET / JavaScript / cpp / Rust 。另外同时提供 HTTP 客户端和 gRPC 客户端。
 
@@ -186,7 +186,7 @@ public interface DaprClient {
 
 ## 分析和总结
 
-前面介绍了Multiple Runtime / Mecha 的架构思想，以及参考实现之一的微软 Dapr 项目。
+前面介绍了 Multiple Runtime / Mecha 的架构思想，以及参考实现之一的微软 Dapr 项目。
 
 由于 Multiple Runtime / Mecha 这个思想非常的新，刚刚提出不久，而微软 Dapr 项目也是一个新出来的项目，不管是理论思想还是实践都处于非常早期的状态，也还没有形成完善的方法论。
 
@@ -196,15 +196,15 @@ public interface DaprClient {
 
 1. Mesh 模式应该推向更大的领域。
 
-随着云原生的深入，应用需要的分布式能力应该全面下沉，而不仅仅局限于Servicemesh提供的服务间通讯能力；应用形态会朝纯业务逻辑这个目标更进一步，应用更加的云原生化。
+随着云原生的深入，应用需要的分布式能力应该全面下沉，而不仅仅局限于 Servicemesh 提供的服务间通讯能力；应用形态会朝纯业务逻辑这个目标更进一步，应用更加的云原生化。
 
-这是大势所趋，也是Mecha架构出现和发展的原动力。
+这是大势所趋，也是 Mecha 架构出现和发展的原动力。
 
 2. Mecha 强调是“提供能力”，而不是通讯代理。
 
 Mecha 的使用方式和 Service Mesh 有非常大的差异：Mecha 强调的是提供分布式能力给应用使用，这些能力最终以封装完善的 API 的方式呈现。API 体现的是应用对能力的“需求”和“意愿”，不涉及到如何实现，实现是 Mecha 的职责，采用什么样的实现也是由 Mecha 来控制。
 
-在Service Mesh 下，不存在这个需求：Service Mesh 提供的是服务间通讯能力，这个能力是由 Sidecar 来提供，没有其他更底层的实现，不存在隔离和替换的可能。受服务通讯协议和报文 schema 的限制，Service Mesh 只能做请求的“转发”，能力聚焦在“如何转发”上，没有其他需要隔离和替代的能力。
+在 Service Mesh 下，不存在这个需求：Service Mesh 提供的是服务间通讯能力，这个能力是由 Sidecar 来提供，没有其他更底层的实现，不存在隔离和替换的可能。受服务通讯协议和报文 schema 的限制，Service Mesh 只能做请求的“转发”，能力聚焦在“如何转发”上，没有其他需要隔离和替代的能力。
 
 当 Mecha 把能力扩展到 Servic Mesh 之外时，很多能力是由外部系统提供：比如 pub-sub 能力可以由不同的 Message Queue 实现；状态管理能力可以连接不同的 Key-Value 实现。此时能力的隔离性和可替代性就成为关键需求：解耦应用和能力实现，容许 Mecha 替换底层实现（进而实现供应商不锁定等）。
 
@@ -250,7 +250,7 @@ Mecha 的精髓，要从上面这句名言开始：
 
 ![mecha-core](https://cdn.nlark.com/yuque/0/2020/png/226702/1589263931183-592be274-11a8-4027-aeb0-c3617e980a2b.png)
 
-- 在 Mecha下，MicroLogic（也就是业务逻辑的代码实现）不容许直接使用底层实现提供的分布式能力；
+- 在 Mecha 下，MicroLogic（也就是业务逻辑的代码实现）不容许直接使用底层实现提供的分布式能力；
 - Mecha Runtime 将为 Micro Logic 提供分布式能力，同时隔离应用和底层实现；
 - 为了方便使用，提供轻量级 SDK，其中的 API 层实现了分布式能力的抽象，应用只需面向 API 编程；
 - 轻量级 SDK 和 Mecah Runtime 配合，完成对底层实现的解耦和可替换；
@@ -280,7 +280,7 @@ Mecha 的精髓，要从上面这句名言开始：
 
 ## Mecha 总结
 
-大概是在3月初，当时我第一次阅读 “Multi-Runtime Microservices Architecture” 这篇文章，有一种豁然开朗的感觉，尤其是有很多之前在反复考虑和权衡但是下不了结论的问题，在这个文章中得到了清晰的解答。可谓受益匪浅。
+大概是在 3 月初，当时我第一次阅读 “Multi-Runtime Microservices Architecture” 这篇文章，有一种豁然开朗的感觉，尤其是有很多之前在反复考虑和权衡但是下不了结论的问题，在这个文章中得到了清晰的解答。可谓受益匪浅。
 
 在 Service Mesh 探索和实践的这三年中，遇到很多问题，有很多之前没有想到过的问题浮现。比如，以前一直觉得 Service Mesh 中引入 Sidecar 带来的最大麻烦会是性能，但实际上，从目前的实践看，Sidecar 引入后带来的维护代价才是更令人头疼的事情，相比之下 Sidecar 引入带来的性能损失显得无伤大雅。
 
@@ -289,7 +289,7 @@ Mecha 的精髓，要从上面这句名言开始：
 1. Mecha 是云原生化和 Mesh 化的必然趋势：云原生在继续发展，应用需要的分布式能力需要继续下沉，越来越多的能力会以 Sidecar 的形式出现，这是大势所趋。但不可能出现一个应用部署十几个 Sidecar 的局面，这会是运维地狱。因此，必然需要出现新的形态来解决 Sidecar 过多的问题，合并为一个或者多个 Sidecar 就会成为必然。
 1. Mecha 是 Service Mesh 模式的自然进化版本：Service Mesh 落地实践三年了，效果一直并不理想，到了该反思反省的时候了；而且 Mecha 的范围也远不止服务间通讯，新的需求下应该有新的思考和突破。Service Mesh 现有的固定模式，在 Mecha 下可以尝试打破以探索新的方式：不必拘泥于 Sidecar，试试 Node 模式；不必拘泥于通讯协议转发，试试 Runtime 提供能力解耦底层实现；不必拘泥于零侵入，试试在应用中保留一个足够轻的轻量级 SDK。
 
-正如曾有说法，说“微服务是 SOA 实践中正确的部分（the Good Part）”，我希望在 Mecha 的探索和实践中，能够从 Service Mesh 的实践中吸取成功的经验和失败的教训，希望 Mecha 也能成为 Service Mesh 的 Good Part。希望在云原生的演进路线中，Mecha 可以继微服务和 Service Mesh之后，成为云原生落地实践的下一站。
+正如曾有说法，说“微服务是 SOA 实践中正确的部分（the Good Part）”，我希望在 Mecha 的探索和实践中，能够从 Service Mesh 的实践中吸取成功的经验和失败的教训，希望 Mecha 也能成为 Service Mesh 的 Good Part。希望在云原生的演进路线中，Mecha 可以继微服务和 Service Mesh 之后，成为云原生落地实践的下一站。
 
 回到现实，目前 Mecha 和 Multi-Runtime 还是一个非常新的想法，Dapr 项目也才刚刚起步，Mecha 要探索的道路还很漫长，一切都还需要摸索着前进。
 
@@ -303,6 +303,6 @@ Mecha 的精髓，要从上面这句名言开始：
 
 本文参考了 Bilgin Ibryam 出品的如下内容：
 
-- [Multi-Runtime Microservices Architecture](https://www.infoq.com/articles/multi-runtime-microservice-architecture/)，作者 [Bilgin Ibryam](http://ofbizian.com/)，Mecha的思想来自这篇文章，强烈推荐阅读。也可以直接看我翻译的版本 [多运行时微服务架构](https://skyao.io/post/202003-multi-runtime-microservice-architecture/)。如前所述，建议在阅读本文之前先阅读这篇博客文章。
+- [Multi-Runtime Microservices Architecture](https://www.infoq.com/articles/multi-runtime-microservice-architecture/)，作者 [Bilgin Ibryam](http://ofbizian.com/)，Mecha 的思想来自这篇文章，强烈推荐阅读。也可以直接看我翻译的版本 [多运行时微服务架构](https://skyao.io/post/202003-multi-runtime-microservice-architecture/)。如前所述，建议在阅读本文之前先阅读这篇博客文章。
 
-- [The Evolution of Distributed Systems on Kubernetes](https://qconlondon.com/london2020/presentation/evolution-distributed-systems-kubernetes) : 作者 Bilgin Ibryam, 2020年3月在 QCon London的演讲，依然强烈推荐。内容非常精彩，对 Kubernetes 上分布式系统演进做了很好的总结和展望，当然也依然在布道多运行时微服务架构的理念。本文的很多图片 [援引自这份PPT](https://qconlondon.com/system/files/presentation-slides/bilgin_-_evolution_of_distributed_systems_on_kubernetes.pdf)。
+- [The Evolution of Distributed Systems on Kubernetes](https://qconlondon.com/london2020/presentation/evolution-distributed-systems-kubernetes) : 作者 Bilgin Ibryam, 2020 年 3 月在 QCon London 的演讲，依然强烈推荐。内容非常精彩，对 Kubernetes 上分布式系统演进做了很好的总结和展望，当然也依然在布道多运行时微服务架构的理念。本文的很多图片 [援引自这份 PPT](https://qconlondon.com/system/files/presentation-slides/bilgin_-_evolution_of_distributed_systems_on_kubernetes.pdf)。

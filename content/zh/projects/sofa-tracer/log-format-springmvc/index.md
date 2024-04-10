@@ -36,7 +36,7 @@ key | 表达含义
 
 ### Spring MVC 统计日志（spring-mvc-stat.log）
 
-`stat.key` 即本段时间内的统计关键字集合，统一关键字集合唯一确定一组统计数据，包含local.app、request.url、和 method 字段.
+`stat.key` 即本段时间内的统计关键字集合，统一关键字集合唯一确定一组统计数据，包含 local.app、request.url、和 method 字段.
 
 <table>
    <tr>

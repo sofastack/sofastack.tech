@@ -28,7 +28,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **@王盛** 提问：
 
->这个配置在 sidecar 里面怎么改，这个怎么配到 Istio 里面?
+> 这个配置在 sidecar 里面怎么改，这个怎么配到 Istio 里面?
 >
 >![](https://cdn.nlark.com/yuque/0/2021/png/12405317/1613725206693-8ab5ef99-3fbe-4367-aa10-c7d107ef2b33.png)
 
@@ -66,12 +66,12 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 **本周发布详情如下：**
 
-**1、SOFARPC发布 v5.7.7版本，主要变更如下：**
+**1、SOFARPC 发布 v5.7.7 版本，主要变更如下：**
 
 - 使用 Github Action 替代 Travis 进行持续集成
 - 升级 jackson-datebind 到 2.9.10.7
 - 升级 junit 到 4.13.1
-- 修复了Rest中，当请求经过代理源IP获取不准确的问题
+- 修复了 Rest 中，当请求经过代理源 IP 获取不准确的问题
 - 修复了内置 Protobuf Compiler 的 BUG
 
 详细参考：[https://github.com/sofastack/sofa-rpc/releases/tag/v5.7.7](https://github.com/sofastack/sofa-rpc/releases/tag/v5.7.7)

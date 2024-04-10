@@ -36,7 +36,7 @@ A：SOFAJRaft 没有限制，可以在自己的 statemachine 里不直接返回�
 
 A：onApply 里面实现就可以，onApply 就可以理解为和达成多数派之间没有延迟。
 
-> 我在文档中有看到 TaskClosure 这么一个接口，在它的 onCommitted 方法里响应客户端会不会更高效？据我所知，raft 仅需写入日志就可保证强一致性，可以异步去 apply，所以在复制日志给大多数后就通过 onCommitted方法响应客户端（尽管还没有任何一个节点 apply 了该日志），这样效率好像会高一点，不知道我对这个接口理解有没有误。
+> 我在文档中有看到 TaskClosure 这么一个接口，在它的 onCommitted 方法里响应客户端会不会更高效？据我所知，raft 仅需写入日志就可保证强一致性，可以异步去 apply，所以在复制日志给大多数后就通过 onCommitted 方法响应客户端（尽管还没有任何一个节点 apply 了该日志），这样效率好像会高一点，不知道我对这个接口理解有没有误。
 
 A：com.alipay.sofa.jraft.core.FSMCallerImpl#doCommitted
 
@@ -58,7 +58,7 @@ MOSN：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 
 A：全局事务的分支事务结束后，不在全局事务的本地数据请求可修改数据。
 
-> 那这样，全局事务的其他分支出现异常，分支事务回滚，从undo里读，发现数据已经被修改了，就得人工处理了？
+> 那这样，全局事务的其他分支出现异常，分支事务回滚，从 undo 里读，发现数据已经被修改了，就得人工处理了？
 
 A：是，从业务设计上来说如果使用 AT 模式要把数据修改都交给 AT 来管理来避免这类问题。
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
@@ -86,7 +86,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 **2、发布 SOFAArk v1.1.1 版本，主要变更如下：**
 
-- 优化biz 卸载，清理临时文件；
+- 优化 biz 卸载，清理临时文件；
 - 支持 biz 打包 指定 bizName -D 参数；
 
 详细发布报告：[https://github.com/sofastack/sofa-ark/releases/tag/v1.1.1](https://github.com/sofastack/sofa-ark/releases/tag/v1.1.1)
@@ -99,7 +99,7 @@ SOFAChannel#12 线上直播将邀请蚂蚁金服分布式事务核心开发仁�
 
 **主题**：SOFAChannel#12：蚂蚁金服分布式事务实践解析
 
-**时间**：2020年3月12日（周四）19:00-20:00
+**时间**：2020 年 3 月 12 日（周四）19:00-20:00
 
 **嘉宾**：仁空，蚂蚁金服分布式事务核心开发
 

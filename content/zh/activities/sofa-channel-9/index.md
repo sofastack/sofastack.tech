@@ -50,11 +50,11 @@ SOFAGirl 主持人
 
 卓与 蚂蚁金服 Service Mesh 落地负责人
 
-### 本期分享大纲：
+### 本期分享大纲
 
 - 蚂蚁金服 Service Mesh 架构双十一大规模落地实践案例分析；
 - 从核心、RPC、消息等模块分享蚂蚁金服 Service Mesh 落地实践细节；
-- 欢迎先阅读[ ](https://www.sofastack.tech/tags/service-mesh-落地实践/)[Service Mesh 落地](https://www.sofastack.tech/tags/service-mesh-落地实践/)系列文章，收看直播收获更好的效果；
+- 欢迎先阅读[](https://www.sofastack.tech/tags/service-mesh-落地实践/)[Service Mesh 落地](https://www.sofastack.tech/tags/service-mesh-落地实践/)系列文章，收看直播收获更好的效果；
 
 ## 嘉宾
 

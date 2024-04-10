@@ -50,7 +50,7 @@ Service Mesh 是蚂蚁金服下一代架构的核心，本次主题主要分享�
 
 - 熔断
 
-基于使用场景的压测数据，限制单实例 Pilot 同时可服务的 Sidecar 数量上限，超过熔断值的新连接会被Pilot 主动拒绝。
+基于使用场景的压测数据，限制单实例 Pilot 同时可服务的 Sidecar 数量上限，超过熔断值的新连接会被 Pilot 主动拒绝。
 
 - 定期重置
 
@@ -68,7 +68,7 @@ Service Mesh 是蚂蚁金服下一代架构的核心，本次主题主要分享�
 
 - 首次请求优化
 
-社区方案里 Pilot 是通过 Pod.Status 来获取 Pod 的 IP 信息，在小集群的测试中，这个时间基本秒级内可以完成。然而在大集群生产环境中，我们发现 Status 的更新事件时间较慢，甚至出现超过 10s 以上的情况，而且延迟时间不稳定，会增加 Pilot 首次下发的时延。我们通过与基础设施 K8s 打通，由 PaaS 侧将 Pod 分配到的 IP 直接标记到Pod.Annotation 上，从而实现在第一次获取 Pod 事件时，就可以获取到 IP，将该环节的时延减少到0。
+社区方案里 Pilot 是通过 Pod.Status 来获取 Pod 的 IP 信息，在小集群的测试中，这个时间基本秒级内可以完成。然而在大集群生产环境中，我们发现 Status 的更新事件时间较慢，甚至出现超过 10s 以上的情况，而且延迟时间不稳定，会增加 Pilot 首次下发的时延。我们通过与基础设施 K8s 打通，由 PaaS 侧将 Pod 分配到的 IP 直接标记到 Pod.Annotation 上，从而实现在第一次获取 Pod 事件时，就可以获取到 IP，将该环节的时延减少到 0。
 
 - 按需获取 & Custom Resource 缓存
 
@@ -131,7 +131,7 @@ Sidecar 基于社区 SDS 方案 （Secret Discovery Service），支持证书动
 - Citadel Agent 携带 appkey 请求 Citadel 签发证书；
 - Citadel 检查证书是否已缓存，如无证书，则向 KMS 申请签发证书；
 - KMS 会将签发的证书响应回 Citadel，另外 KMS 也支持证书过期轮换通知；
-- Citadel 收到证书后，会将证书层层传递，最终到达MOSN ；
+- Citadel 收到证书后，会将证书层层传递，最终到达 MOSN ；
 
 ### 国密通信
 
@@ -161,11 +161,11 @@ Citadel Agent 通过 Citadel 去同步 POD 及 CRD 等信息，虽然避免了 N
 
 1. 为 MCP 协议支持增量信息同步模式，性能大幅优于社区原生方案全量 MCP 同步方式；
 1. Citadel Agent 是 Node 粒度组件，基于最小信息可见集的想法，Citadel 在同步信息给 Citadel Agent 时，通过 Host IP ，Pod 及 CR 上的 Label 筛选出最小集，仅推送每个 Citadel Agent 自身服务范围的信息；
-1. 更进一步，基于 Pod 和 CR 的变更事件可以预先知道需要推送给哪些 Citadel Agent 实例，只对感知变更的Citadel Agent 触发推送事件，即支持局部推送能力；
+1. 更进一步，基于 Pod 和 CR 的变更事件可以预先知道需要推送给哪些 Citadel Agent 实例，只对感知变更的 Citadel Agent 触发推送事件，即支持局部推送能力；
 
 ## 未来思考
 
-本次大促的控制面的重心在于解决规模化问题，后续控制面将会在服务发现、精细化路由、Policy As Code 等领域深入探索。我们将与社区深度合作，控制面将支持通过 MCP 对接多种注册中心（SOFARegistry（已开源）, Nacos等）进行服务发现信息同步，解决大规模服务注册发现问题，支持增量推送大量 endpoint。同时控制面还能通过增强配置下发能力，为应用启动提速，将在 Serverless 极速启动场景获取技术红利。控制面还将结合 Policy As Code，从而更具想象空间，具备极简建站，默认安全等能力。
+本次大促的控制面的重心在于解决规模化问题，后续控制面将会在服务发现、精细化路由、Policy As Code 等领域深入探索。我们将与社区深度合作，控制面将支持通过 MCP 对接多种注册中心（SOFARegistry（已开源）, Nacos 等）进行服务发现信息同步，解决大规模服务注册发现问题，支持增量推送大量 endpoint。同时控制面还能通过增强配置下发能力，为应用启动提速，将在 Serverless 极速启动场景获取技术红利。控制面还将结合 Policy As Code，从而更具想象空间，具备极简建站，默认安全等能力。
 
 到此，本次分享的内容就结束了。Istio 生产级实践机会难得，并且任重道远。最后，欢迎有志之士加入我们，一起打造世界级规模的 Service Mesh。
 

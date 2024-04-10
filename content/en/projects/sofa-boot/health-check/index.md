@@ -31,7 +31,7 @@ After adding the Health Check extension, you can directly browser [http://localh
 
 In SOFABoot, you can also view Health Check results by checking the specific logs in the `health-check` directory. Generally, such logs contain the following content:
 
-```
+```plain
 2018-04-06 23:29:50,240 INFO  main                             - Readiness check result: success
 ```
 

@@ -17,7 +17,7 @@ aliases: "/sofa-acts/docs/Contributing"
 不论您是修复 ACTS 的 bug 还是新增 ACTS 的功能，在您提交代码之前，在 ACTS 的 __GitHub__ 上提交一个 issue，描述您要修复的问题或者要增加的功能。这么做有几个好处:
 
 * 不会与其它开发者或是他们对这个项目的计划发生冲突，产生重复工作.
-* ACTS 的维护人员会对您提的bug或者新增功能进行相关讨论，确定该修改是不是必要，有没有提升的空间或更好的办法。
+* ACTS 的维护人员会对您提的 bug 或者新增功能进行相关讨论，确定该修改是不是必要，有没有提升的空间或更好的办法。
 * 在达成一致后再开发,并提交代码，减少双方沟通成本，也减少 pull request 被拒绝的情况。
 
 ### 获取源码
@@ -30,23 +30,23 @@ ACTS 所有修改都在分支上进行，修改完后提交 `pull request`， �
 因此，在获取源码步骤介绍后，您需要：
 
 * 下载代码到本地,这一步您可以选择 git/https 方式.
-    ```
+    ```plain
     git clone https://github.com/您的账号名/acts.git 
     ```
 * 拉分支准备修改代码
-    ```
+    ```plain
     git branch add_xxx_feature
     ```
     执行完上述命令后，您的代码仓库就切换到相应分支了。执行如下命令可以看到您当前分支：
-    ```
+    ```plain
     git branch -a
     ```
     如果您想切换回主干，执行下面命令:
-    ```
+    ```plain
     git checkout -b master
     ```
     如果您想切换回分支，执行下面命令：
-    ```
+    ```plain
     git checkout -b "branchName"
     ```
 
@@ -56,7 +56,7 @@ ACTS 所有修改都在分支上进行，修改完后提交 `pull request`， �
 
 * 修改完代码后，执行如下命令提交所有修改到本地
 
-    ```
+    ```plain
     git commit -am '添加xx功能'
     ```
 
@@ -64,14 +64,14 @@ ACTS 所有修改都在分支上进行，修改完后提交 `pull request`， �
 
 * 代码风格保持一致
 * ACTS 通过 Maven 插件来保持代码格式一致.在提交代码前,务必本地执行
-    ```
+    ```plain
     mvn clean compile
     ```
 * 补充单元测试代码
 * 新有修改应该通过已有的单元测试.
 * 应该提供新的单元测试来证明以前的代码存在 bug，而新的代码已经解决了这些 bug
     您可以用如下命令运行所有测试
-    ```
+    ```plain
     mvn clean test
     ```
     也可以通过 IDE 来辅助运行。
@@ -88,7 +88,7 @@ ACTS 所有修改都在分支上进行，修改完后提交 `pull request`， �
 在代码提交到本地后，就是与远程仓库同步代码了。
 * 执行如下命令提交本地修改到 github 上
 
-    ```
+    ```plain
     git push origin "branchname"
     ```
 

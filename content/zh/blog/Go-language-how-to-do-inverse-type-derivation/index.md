@@ -93,7 +93,7 @@ Go 在编译的时候，默认会生成一些调试信息，按照 DWARF 标�
 
 Go 语言中 interface 比较类似动态类型，如下是空接口的内存结构，每个对象都存储了其类型信息：
 
-```
+```plain
 type eface struct {    _type *_type    data  unsafe.Pointer}
 ```
 

@@ -37,7 +37,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*RzWkR4udP3gAAAAAA
 
 该系统大体架构如图 -1 所示:
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*21YqTpZXf_kAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*21YqTpZXf_kAAAAAAAAAAAAAARQnAQ)
 
 图-1：原来的架构
 
@@ -71,9 +71,9 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*RzWkR4udP3gAAAAAA
 
 3. 迁移 K8s selector 的解析逻辑，这里用 Java 写了一套和 go 版本 K8s selector 一样解析逻辑的组件 K8s-selector-Java。
 
-改造过后的架构如图-2所示:
+改造过后的架构如图-2 所示:
 
->![](https://gw.alipayobjects.com/zos/bmw-prod/db254f89-b153-42f4-9de9-539ece66bb21.webp)
+> ![](https://gw.alipayobjects.com/zos/bmw-prod/db254f89-b153-42f4-9de9-539ece66bb21.webp)
 
 图-2：重构后的架构
 
@@ -91,7 +91,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*RzWkR4udP3gAAAAAA
 
 大体逻辑如图 -3 所示，
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*RX5_QboDXGsAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*RX5_QboDXGsAAAAAAAAAAAAAARQnAQ)
 
 图-3：通常的编程模型
 
@@ -112,7 +112,7 @@ task 中包含两个属性是需要关注的，一个是 done，一个是 data�
 
 大体逻辑如图 -4 所示，
 
->![](https://gw.alipayobjects.com/zos/bmw-prod/e1ec1e80-1570-4543-8b26-59704a968c7b.webp)
+> ![](https://gw.alipayobjects.com/zos/bmw-prod/e1ec1e80-1570-4543-8b26-59704a968c7b.webp)
 
 图-4：SOFAJRaft 的编程模型
 
@@ -201,7 +201,7 @@ onApply 是状态机的核心功能，其目的就是接收入参中的 Raft log
 
 **snapshot 机制**可以这么去理解，在 SOFAJRaft 中，业务 processor 中的操作都是状态机驱动的，而状态机又是由 Raft log 驱动。**那么 processor 中数据的最终形态其实就是所有的 Raft log 应用的总和。**
 
-比如存在一个 Raft log，其业务含义是 i++。10 条 Raft log 被状态机应用后，驱动 processor 进行 10 次 i++ 操作，最终的值就是为 10。应用就算崩溃重启后，重启时，他会去应用之前的 10 条 i++ 的Raft log，processor 中的值也还是 10。使用 snapshot 机制，在进行 snapshot 时，把 processor 中的 10 进行持久化，持久化完成过后，将前 10 条 Raft log 进行删除，后续再来 2 条 i++ 的 Raft log，processor 的值变为 12，存在 2 条 i++ 的 Raft log。应用就算崩溃重启，那么它首先也会读取 snapshot 中的数据 10，再去应用 2 条 i++ 的 Raft log，最终数据也是 12，和崩溃之前保持一致。
+比如存在一个 Raft log，其业务含义是 i++。10 条 Raft log 被状态机应用后，驱动 processor 进行 10 次 i++ 操作，最终的值就是为 10。应用就算崩溃重启后，重启时，他会去应用之前的 10 条 i++ 的 Raft log，processor 中的值也还是 10。使用 snapshot 机制，在进行 snapshot 时，把 processor 中的 10 进行持久化，持久化完成过后，将前 10 条 Raft log 进行删除，后续再来 2 条 i++ 的 Raft log，processor 的值变为 12，存在 2 条 i++ 的 Raft log。应用就算崩溃重启，那么它首先也会读取 snapshot 中的数据 10，再去应用 2 条 i++ 的 Raft log，最终数据也是 12，和崩溃之前保持一致。
 
 **Processor 的最终态 =** **snapshot + Raft log**
 
@@ -272,8 +272,7 @@ StateMachine 提供了状态回调的接口，我们在回调中对接内部的�
 
 *[https://pingcap.com/zh/blog/lease-read](https://pingcap.com/zh/blog/lease-read)*
 
-```com.alipay.sofa.jraft.Node#readIndex(final byte[] requestContext, final ReadIndexClosure done)
-```
+
 
 第一个参数是发起 read-index read 时的上下文，可以在回调中使用。
 
@@ -338,7 +337,7 @@ StateMachine 提供了状态回调的接口，我们在回调中对接内部的�
 
 在 SOFAJRaft 中，各个节点需要通过 RPC 来进行通信，比如发送心跳，投票等。
 
-SOFAJRaft 默认提供了两种通信方式，一种是 sofa-bolt，还有一种是 grpc，考虑到组件的流行性，选择了grpc来作为通信方式。在构建 server 时，使用 GrpcRaftRpcFactory 在创建 RpcServer 。然后将 SOFAJRaft 中自带的处理器（心跳处理器，投票处理器等）注册到 RpcServer中。这些处理器都是实现了 RpcProcessor 接口，该接口的 handleRequest 方法会处理收到的请求。
+SOFAJRaft 默认提供了两种通信方式，一种是 sofa-bolt，还有一种是 grpc，考虑到组件的流行性，选择了 grpc 来作为通信方式。在构建 server 时，使用 GrpcRaftRpcFactory 在创建 RpcServer 。然后将 SOFAJRaft 中自带的处理器（心跳处理器，投票处理器等）注册到 RpcServer 中。这些处理器都是实现了 RpcProcessor 接口，该接口的 handleRequest 方法会处理收到的请求。
 
 使用 GrpcRaftRpcFactory 需要注意的是，需要引入依赖。
 
@@ -491,7 +490,7 @@ closure.run(Status.OK());
 
 在 SOFAJRaft 中，election timeout 就是选举超时的时间，一旦超过了 election timeout，Follwer 还没有收到 Leader 的心跳，Follower 认为当前集群中没有 Leader，自己发起投票来尝试当选 Leader。
 
-正常情况下，Leader 给 Follower 发心跳的频率是 election timeout / 10，也就是说在 election timeout 期间内，Leader 会给 Follower 发 10 次心跳，Follower 10次都没有收到心跳的情况下，才会发生选举。
+正常情况下，Leader 给 Follower 发心跳的频率是 election timeout / 10，也就是说在 election timeout 期间内，Leader 会给 Follower 发 10 次心跳，Follower 10 次都没有收到心跳的情况下，才会发生选举。
 
 而恰巧的是，我设置的 election timeout 刚好就是 5s，5s / 10 刚好就是 500ms。
 
@@ -505,9 +504,9 @@ closure.run(Status.OK());
 
 基于以上分析，将 election timeout 的时间调整为了 1s，心跳频率也就变成了 100ms，最大的响应耗时也就变低了，平均响应耗时也降低到了 4ms 左右。
 
-read-index read 大概逻辑如图-5所示，
+read-index read 大概逻辑如图-5 所示，
 
->![](https://gw.alipayobjects.com/zos/bmw-prod/fd718f8f-28d4-4cc6-be2c-e569a079b8f1.webp)
+> ![](https://gw.alipayobjects.com/zos/bmw-prod/fd718f8f-28d4-4cc6-be2c-e569a079b8f1.webp)
 
 图-5：read-index read 处理逻辑
 
@@ -519,9 +518,9 @@ read-index read 大概逻辑如图-5所示，
 
 在一次排查问题的过程中，怀疑网络存在问题。于是联系运维同学，运维同学对执行 tcpdump 命令，对网络进行了抓包。
 
-整个集群分为 3 个机房，2+2+1 的模式进行部署，1 这个节点的网络偶尔会存在波动。在当时执行 tcpdump 过后 4 分钟，到1这个节点的读请求就开始发生 read-index timeout 了，而当时的逻辑是，只要 read-index read 回调状态不 ok，就将该请求转发到 Leader，走 Raft log 来进行处理。
+整个集群分为 3 个机房，2+2+1 的模式进行部署，1 这个节点的网络偶尔会存在波动。在当时执行 tcpdump 过后 4 分钟，到 1 这个节点的读请求就开始发生 read-index timeout 了，而当时的逻辑是，只要 read-index read 回调状态不 ok，就将该请求转发到 Leader，走 Raft log 来进行处理。
 
-这里存在一个接口，是去读所有的数据，数据量比较大。当 read-index read 超时时，会将这个请求转发到了 Leader 节点，走 Raft log 去读数据，走 Raft log 就会在状态机中去进行处理，而这个请求的 response 比较大，导致在获取完数据后，去序列化数据时比较耗时，大概需要消耗 1500ms，状态机中处理 Raft log 的吞吐就降低了。并且 Raft log 是会从 Leader 复制给 Follower 的，也就是说，Follower 的状态机也会去执行这个耗时 1500 ms的 Raft log，只是 Follower 不对 response 做处理而已。
+这里存在一个接口，是去读所有的数据，数据量比较大。当 read-index read 超时时，会将这个请求转发到了 Leader 节点，走 Raft log 去读数据，走 Raft log 就会在状态机中去进行处理，而这个请求的 response 比较大，导致在获取完数据后，去序列化数据时比较耗时，大概需要消耗 1500ms，状态机中处理 Raft log 的吞吐就降低了。并且 Raft log 是会从 Leader 复制给 Follower 的，也就是说，Follower 的状态机也会去执行这个耗时 1500 ms 的 Raft log，只是 Follower 不对 response 做处理而已。
 
 在上面描述了 read-index read 的逻辑，Follower 要执行 read-index read，需要状态机的 apply-index 追上 Leader 的 commit index，当发生上述网络波动时，这个大接口走 Raft log 的方式，降低了状态机处理 Raft log 的吞吐，导致 Follwer 的 apply index 更难追上 Leader 的 commit index 了。
 
@@ -545,7 +544,7 @@ read-index read 大概逻辑如图-5所示，
 
 这里需要注意的是，copy on write 会消耗 2 倍的内存，这里需要确保不要导致 OOM 了。不同的场景需要考虑不同的异步 snapshot 的方式。
 
- **Raft中存在 Raft log 和 snapshot file，**
+ **Raft 中存在 Raft log 和 snapshot file，**
 
  **需要文件系统保证有状态** 
 
@@ -597,7 +596,7 @@ reporter.start(30, TimeUnit.SECONDS);
 
 感谢 SOFAStack 提供的一个如此优秀的 Java 框架。 
 
->![](https://gw.alipayobjects.com/zos/bmw-prod/c6f2a1fc-62ed-4185-8fe6-0ac47f803641.webp)
+> ![](https://gw.alipayobjects.com/zos/bmw-prod/c6f2a1fc-62ed-4185-8fe6-0ac47f803641.webp)
 
 \-
 
@@ -619,19 +618,19 @@ reporter.start(30, TimeUnit.SECONDS);
 
 · JRaft-rheakv 中关于 SOFAJRaft 的使用 
 
->![图片](https://gw.alipayobjects.com/zos/bmw-prod/8a09120c-232f-4063-9091-1581d48c487b.webp)
+> ![图片](https://gw.alipayobjects.com/zos/bmw-prod/8a09120c-232f-4063-9091-1581d48c487b.webp)
 
 [SOFAJRaft 在同程旅游中的实践](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247495260&idx=1&sn=a56b0f82159e551dec4752b7290682cd&chksm=faa30186cdd488908a73792f9a1748cf74c127a792c5c484ff96a21826178e2aa35c279c41b3&scene=21#wechat_redirect)
 
->![图片](https://gw.alipayobjects.com/zos/bmw-prod/5930ca07-3a49-4d7e-b4cb-60441899b67b.webp)
+> ![图片](https://gw.alipayobjects.com/zos/bmw-prod/5930ca07-3a49-4d7e-b4cb-60441899b67b.webp)
 
 [技术风口上的限流](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247494701&idx=1&sn=f9a2b71de8b5ade84c77b87a8649fa3a&chksm=faa303f7cdd48ae1b1528ee903a0edc9beb691608efd924189bcf025e462ea8be7bc742772e1&scene=21#wechat_redirect)
 
->![图片](https://gw.alipayobjects.com/zos/bmw-prod/5a638c3f-4d7e-46f5-a296-e8afae0d0930.webp)
+> ![图片](https://gw.alipayobjects.com/zos/bmw-prod/5a638c3f-4d7e-46f5-a296-e8afae0d0930.webp)
 
 [蚂蚁集团万级规模 k8s 集群 etcd 高可用建设之路](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247491409&idx=1&sn=d6c0722d55b772aedb6ed8e34979981d&chksm=faa0f08bcdd7799dabdb3b934e5068ff4e171cffb83621dc08b7c8ad768b8a5f2d8668a4f57e&scene=21#wechat_redirect)
 
->![图片](https://gw.alipayobjects.com/zos/bmw-prod/998a92fe-ff8d-4f50-82f0-c74cc721d9cc.webp)
+> ![图片](https://gw.alipayobjects.com/zos/bmw-prod/998a92fe-ff8d-4f50-82f0-c74cc721d9cc.webp)
 
 [2021 年云原生技术发展现状及未来趋势](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247492248&idx=1&sn=c26d93b04b2ee8d06d8d495e114cb960&chksm=faa30d42cdd48454b4166a29efa6c0e775ff443f972bd74cc1eb057ed4f0878b2cb162b356bc&scene=21#wechat_redirect)
 

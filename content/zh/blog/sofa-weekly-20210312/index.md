@@ -24,7 +24,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **@孙军超** 提问：
 
->请教一下  jraft-rheakv  rocksdb 的 get put 操作，耗时要 5 秒钟，是服务端配置需要优化吗？ 以下是我的服务端配置截图。
+> 请教一下  jraft-rheakv  rocksdb 的 get put 操作，耗时要 5 秒钟，是服务端配置需要优化吗？ 以下是我的服务端配置截图。
 >![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*FchcT6tAN-YAAAAAAAAAAAAAARQnAQ)
 
 A：kill -s sigusr2 可以看到性能指标度量，官方文档请看一下有相关说明。
@@ -43,7 +43,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 **@谭玖朋** 提问：
 
->这两个地方调用 rollback 有特殊意义吗？我发现在此之前没有更新操作啊。
+> 这两个地方调用 rollback 有特殊意义吗？我发现在此之前没有更新操作啊。
 >![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*1kSAQbfQFd4AAAAAAAAAAAAAARQnAQ)
 
 A：这个地方应该是一个编码的习惯，在 autocommit=false 的时候，返回前都做一次 commit 或者 rollback 操作，确保当前的事务能够提交或者回滚，同时释放数据库的锁（哪怕前面并没有事务和锁）。
@@ -77,7 +77,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 ### 本周推荐阅读
 
-- [可信原生负责人入选“2021年度全球青年领袖”名单](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247487429&idx=1&sn=224bfffc83c539ff4e05e2b261abdc7f&chksm=faa0e01fcdd76909d34c27543f0c24786554f697351c83a38a2db41a5e4b3bab0ab51b82541b&scene=21#wechat_redirect)
+- [可信原生负责人入选“2021 年度全球青年领袖”名单](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247487429&idx=1&sn=224bfffc83c539ff4e05e2b261abdc7f&chksm=faa0e01fcdd76909d34c27543f0c24786554f697351c83a38a2db41a5e4b3bab0ab51b82541b&scene=21#wechat_redirect)
 
 - [Serverless 给任务调度带来的变化及蚂蚁集团落地实践](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247487387&idx=1&sn=aa5611c20ac32f5f58e12488f1285824&chksm=faa0e041cdd769575a8f5921fed99968277be197544ccd9246e2f1a675b7a275b42e07ac61de&scene=21)
 

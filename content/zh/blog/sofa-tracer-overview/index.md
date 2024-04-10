@@ -37,7 +37,7 @@ cover: "/cover.jpg"
 
 ## 1、Opentracing 简介
 
-首先来解释下 `OpenTracing` 是什么`OpenTracing` 致力于为分布式跟踪创建更标准化的API和工具，它由完整的API规范、实现该规范的框架、库以及项目文档组成。
+首先来解释下 `OpenTracing` 是什么`OpenTracing` 致力于为分布式跟踪创建更标准化的 API 和工具，它由完整的 API 规范、实现该规范的框架、库以及项目文档组成。
 
 `OpenTracing` 提供了一套平台无关、厂商无关的 `API`，这样不同的组织或者开发人员就能够更加方便的添加或更换追踪系统的实现。 `OpenTracing API` 中的一些概念和术语，在不同的语言环境下都是共享的。
 
@@ -53,7 +53,7 @@ cover: "/cover.jpg"
 
 - `root span` : 当前链路中的第一个 `span`
 - `ChildOf` 和 `FollowFrom` 是目前被定义的两种 `References` 类型
-  - `ChildOf` : 父级 span某种程度上取决于子span （子span的结果可能会对父span产生影响）
+  - `ChildOf` : 父级 span 某种程度上取决于子 span （子 span 的结果可能会对父 span 产生影响）
   - `FollowFrom` : 父 `Span`不以任何方式依赖子 `Span`
 
 但是为了简化 `span` 之间的这种依赖关系，在具体实现时通常会将具有嵌套关系的作为 `ChildOf`，平行执行的作为`FollowFrom`，比如：
@@ -70,7 +70,7 @@ methodB(){            // spanB start
 }                     // spanB finish
 ```
 
-产生的 `span `在时间维度上展现的视角如下：
+产生的 `span`在时间维度上展现的视角如下：
 
 ![image.png](https://cdn.nlark.com/yuque/0/2018/png/230565/1545823843007-cf30f4e9-1b5f-4405-bd39-c08b44d00599.png)
 
@@ -78,7 +78,7 @@ methodB(){            // spanB start
 
 __b、FollowFrom 示例__
 
-`method` 方法中，`methodA `执行之后 `methodB` 执行 :
+`method` 方法中，`methodA`执行之后 `methodB` 执行 :
 
 ```java
 method(){
@@ -87,7 +87,7 @@ method(){
 }
 ```
 
-产生的 `span `在时间维度上展现的视角如下：
+产生的 `span`在时间维度上展现的视角如下：
 
 ![image.png](https://cdn.nlark.com/yuque/0/2018/png/230565/1545823870929-bf7d3af0-3c72-4ac7-909d-74f064c58c3b.png)
 
@@ -111,9 +111,9 @@ method(){
 
 | 接口                                                         | 描述                                             |
 | ------------------------------------------------------------ | ------------------------------------------------ |
-| SpanBuilder buildSpan(String operationName)                  | 根据指定的operationName构建一个新的span          |
+| SpanBuilder buildSpan(String operationName)                  | 根据指定的 operationName 构建一个新的 span          |
 |void inject(SpanContext spanContext, Format format, C carrier); | 将 spanContext 以 format 的格式注入到 carrier 中 |
-| SpanContext extract(Format  format, C carrier);        | 以 format 的格式从carrier中解析出 SpanContext    |
+| SpanContext extract(Format  format, C carrier);        | 以 format 的格式从 carrier 中解析出 SpanContext    |
 
 `SofaTracer` 实现了 `Tracer` 接口，并扩展了采样、数据上报等能力。
 
@@ -128,14 +128,14 @@ method(){
 | void close()                                       | 关闭 span                  |
 | Span setTag(String key, value)                     | 设置 tags                  |
 | Span log(long timestampMicroseconds, String event) | 设置 log 事件              |
-| Span setOperationName(String operationName)        | 设置span的operationName    |
+| Span setOperationName(String operationName)        | 设置 span 的 operationName    |
 | Span setBaggageItem(String key, String value)      | 设置 BaggageItem           |
 | String getBaggageItem(String key)                  | 获取 BaggageItem           |
 
-> 关于`tags`和`log`的解释：如果把从进入公司到离开公司这段时间作为一个 `span`，那么 `tags` 里面可以是你写的代码，你喝的水，甚至你讲过的话；`log` 则更关注某个时刻的事，比如在12:00 去吃了个饭，在15:00 开了个会。
+> 关于`tags`和`log`的解释：如果把从进入公司到离开公司这段时间作为一个 `span`，那么 `tags` 里面可以是你写的代码，你喝的水，甚至你讲过的话；`log` 则更关注某个时刻的事，比如在 12:00 去吃了个饭，在 15:00 开了个会。
 > 如果说 `tags` 里面都是和公司有关的，那么 `Baggage` 里面则不仅仅是局限于你在公司的事，比如你口袋里的手机。
 
- `SofaTracerSpan` 在实现 `Span` 接口，并扩展了对 `Reference`、`tags`、线程异步处理以及插件扩展中所必须的 `logType `和产生当前 `span `的 `Tracer `类型等处理的能力。
+ `SofaTracerSpan` 在实现 `Span` 接口，并扩展了对 `Reference`、`tags`、线程异步处理以及插件扩展中所必须的 `logType`和产生当前 `span`的 `Tracer`类型等处理的能力。
 
 **c、SpanContext & SofaTracerSpanContext**
 
@@ -147,7 +147,7 @@ method(){
 
 | 接口                                                  | 描述                            |
 | :---------------------------------------------------- | :------------------------------ |
-| `Iterable<Map.Entry<String, String>> baggageItems();` | 拿到所有的baggageItems 透传数据 |
+| `Iterable<Map.Entry<String, String>> baggageItems();` | 拿到所有的 baggageItems 透传数据 |
 
 `SofaTracerSpanContext` 实现了 `SpanContext` 接口，扩展了构建 `SpanContext`、序列化 `baggageItems` 以及`SpanContext`等新的能力，除此之外，`SpanContext` 在跨进行透传时携带的信息进行了规范：
 
@@ -223,8 +223,8 @@ SOFATracer 版本说明：
 
 - 分布式链路跟踪组件概述
 - `SOFATracer` 数据上报机制和源码分析
-- `SOFATracer API `组件埋点机制和源码分析
-- `SOFATracer `链路透传原理与 `SLF4J MDC` 的扩展能力分析
+- `SOFATracer API`组件埋点机制和源码分析
+- `SOFATracer`链路透传原理与 `SLF4J MDC` 的扩展能力分析
 - `SOFATracer` 的采样策略和源码分析
 
 如果有同学对以上某个主题特别感兴趣的，可以留言讨论，我们会适当根据大家的反馈调整文章的顺序，谢谢大家关注，关注 SOFATracer，我们会一直与大家一起成长的。

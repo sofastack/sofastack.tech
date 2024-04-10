@@ -25,7 +25,7 @@ SofaTracerSpan sofaTracerSpan = sofaTraceContext.getCurrentSpan();
 
 When using the SOFATracer plugin component, such as Spring MVC, the component integrates the capabilities of SOFATracer. So it can get all the information in the Span after getting Span. The specific acquisition method example (it demands that Span is not empty, namely that the corresponding component has integrated SOFATracer) is as follow:
 
-### Get TraceId and SpanId:
+### Get TraceId and SpanId
 
 ```java
 SofaTracerSpanContext sofaTracerSpanContext = currentSpan.getSofaTracerSpanContext();

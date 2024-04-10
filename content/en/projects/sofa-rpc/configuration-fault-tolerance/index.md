@@ -24,7 +24,7 @@ In SOFABoot, you only need to configure fault tolerance parameters to `applicati
 
 
 * Example
-```
+```plain
 Com.alipay.sofa.rpc.aft.time.window=20
 Com.alipay.sofa.rpc.aft.least.window.count=30
 Com.alipay.sofa.rpc.aft.least.window.exception.rate.multiple=6

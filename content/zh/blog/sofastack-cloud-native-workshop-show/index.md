@@ -46,7 +46,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1561517619143-37d5188a-b0
 
 例如 Service Mesh 可以解决中间件等基础能力下层的问题，Serverless 可以解决研发效能的问题，可以让业务开发更专注于业务。这些新的技术和理念蚂蚁金服都会在内部探索并在生产落地，最近我们在深圳 GIAC 首次分享了大规模落地的实践总结，[蚂蚁金服 Service Mesh 落地实践与挑战 | GIAC 实录](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247485186&idx=1&sn=0765fa3e47aa9caae5c5068bd916f913&chksm=faa0e8d8cdd761cefb5d7192a66bbc86b30a09bcc3e806f84120a0f0dec1784824dc2f59e896&scene=21)。同时，我们也会将这些云原生落地实践开源出来，并和社区一起共同推进和建设金融级的云原生标准。
 
-### SOFAStack 开源版本：
+### SOFAStack 开源版本
 
 **2018 年 4 月 19 日正式宣布逐步开源 SOFAStack，开源的策略是 Open Core，也就是把核心的接口和实现都开源出来，内部保留老的兼容代码。**到现在为止差不多 1 年 2 个月的时间，已经开源了十几个项目，累计超过 25,600  Star，120 多位贡献者， 以及 30 多家生产用户，近期也认证了两位社区 Committer，这里想再次感谢开发者和企业的信任和认可，我们将持续优化和扩大开源版图。
 
@@ -54,7 +54,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1561517619143-37d5188a-b0
 
 ![SOFAStack 开源大图](https://cdn.nlark.com/yuque/0/2019/png/226702/1561517619145-99a50327-ab82-41c0-9a91-74354c5d3c17.png)
 
-### SOFAStack 云产品：
+### SOFAStack 云产品
 
 ![云上 SOFAStack 架构图](https://cdn.nlark.com/yuque/0/2019/png/226702/1561517619115-fe4164c8-f24a-4fdc-a091-9dcb898b8b3c.png)
 

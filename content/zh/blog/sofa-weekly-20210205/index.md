@@ -31,7 +31,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 > SOFAArk 的项目里面 controller 层可以是 Biz 包么，这样 mng 里面引入 one，然后启动 mng 访问不到 one 里面的接口呢？
 >![](https://cdn.nlark.com/yuque/0/2021/png/12405317/1612507471211-bdd714ba-1cc9-4976-a122-79ad8c59e939.png#align=left&display=inline&height=65&margin=%5Bobject%20Object%5D&originHeight=502&originWidth=1080&size=0&status=done&style=none&width=140)
 
-A：SOFAArk 的项目里面 controller 层不限制的，biz 包部署普通的依赖包，它是一个可执行的 jar，ark包 = biz + plugin + container，动态部署你可以通过 telnet 指令的方式去动态安装，不建议直接塞到 pom 里面去。
+A：SOFAArk 的项目里面 controller 层不限制的，biz 包部署普通的依赖包，它是一个可执行的 jar，ark 包 = biz + plugin + container，动态部署你可以通过 telnet 指令的方式去动态安装，不建议直接塞到 pom 里面去。
 
 SOFAArk：[https://github.com/sofastack/sofa-ark](https://github.com/sofastack/sofa-ark)
 
@@ -48,7 +48,7 @@ MOSN：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 
 **@杨星** 提问：
 
-> 如果 Seata 使用注册中心的话，Client 端的 registry.type，与 config.type 需要改成对应的注册中心吧，Client 端的这两项配置的作用是什么？SeataServer 的这两项配置倒好理解，Client 端的config.type 目的是读取client端的配置信息，那 registry.type 是干什么的呢？
+> 如果 Seata 使用注册中心的话，Client 端的 registry.type，与 config.type 需要改成对应的注册中心吧，Client 端的这两项配置的作用是什么？SeataServer 的这两项配置倒好理解，Client 端的 config.type 目的是读取 client 端的配置信息，那 registry.type 是干什么的呢？
 
 A：我认为，registry.type 指的是注册中心的类型，config.type 指的是配置中心的类型。注册和配置中心是 2 个东西，我认为是从注册中心里拿 seata-server 实例，客户端找协调者。
 
@@ -70,7 +70,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 **本周发布详情如下：**
 
-**1、MOSN发布 v0.21.0 版本，主要变更如下：**
+**1、MOSN 发布 v0.21.0 版本，主要变更如下：**
 
 - 限流模块升级与优化，支持自定义过滤条件等能力
 - 为适配路由支持变量机制对部分常量名进行了不兼容的删除和新增，可能会影响部分基于 MOSN 的代码编写
@@ -85,7 +85,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 **本周发布详情如下：**
 
-**1、SOFABoot发布 v3.6.0 版本，主要变更如下：**
+**1、SOFABoot 发布 v3.6.0 版本，主要变更如下：**
 
 - 支持本地开发时自动将 SOFABoot 日志输出到控制台
 - startup endpoint 采用新的数据格式，支持按时间轴分析
@@ -95,7 +95,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 - SOFATracer 升级版本至 3.1.0
 - SOFA-common-tools 升级版本至 1.3.2
 - Tomcat 升级版本至 9.0.37
-- 使用 Github Action 进行CI
+- 使用 Github Action 进行 CI
 - 移除默认的 Maven Profile 配置
 
 详细参考：[https://github.com/sofastack/sofa-boot/releases/tag/v3.6.0](https://github.com/sofastack/sofa-boot/releases/tag/v3.6.0)

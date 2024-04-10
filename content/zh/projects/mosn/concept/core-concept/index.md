@@ -93,14 +93,14 @@ MOSN 通过提供 stream filter 注册机制以及统一的 stream send/receive 
 
 ## TLS 安全链路
 
-通过测试，原生的 Go 的 TLS 经过了大量的汇编优化，在性能上是 Nginx（OpenSSL）的80%，Boring 版本的 Go（使用 cgo 调用 BoringSSL）因为 cgo 的性能问题， 并不占优势，所以我们最后选择使用原生 Go 的 TLS，相信 Go Runtime 团队后续会有更多的优化，我们也会有一些优化计划。
+通过测试，原生的 Go 的 TLS 经过了大量的汇编优化，在性能上是 Nginx（OpenSSL）的 80%，Boring 版本的 Go（使用 cgo 调用 BoringSSL）因为 cgo 的性能问题， 并不占优势，所以我们最后选择使用原生 Go 的 TLS，相信 Go Runtime 团队后续会有更多的优化，我们也会有一些优化计划。
 
 Go vs Nginx 测试结果如下图所示：
 
 ![Go vs Nginx TLS 性能](mosn-tls-1.png) 
 
 - Go 在 RSA 上没有太多优化，go-boring（CGO）的能力是 Go 的两倍。
-- p256 在 Go 上有汇编优化，ECDSA 优于go-boring。
+- p256 在 Go 上有汇编优化，ECDSA 优于 go-boring。
 - 在 AES-GCM 对称加密上，Go 的能力是 go-boring 的 20 倍。
 - 在 SHA、MD 等 HASH 算法也有对应的汇编优化。
 

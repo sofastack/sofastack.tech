@@ -23,7 +23,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 ### Layotto 本周新晋 Contributor
 
->![](https://gw.alipayobjects.com/zos/bmw-prod/e3e93aa6-efd2-4e84-acd4-d3485944b6e6.webp)
+> ![](https://gw.alipayobjects.com/zos/bmw-prod/e3e93aa6-efd2-4e84-acd4-d3485944b6e6.webp)
 
 ### 每周读者问答提炼
 
@@ -35,7 +35,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **@郑楚齐** 提问：
 
->我们在 Istio 环境下，因为 MOSN 是自动 sidecar 注入的，我怎么控制他读取我的配置文件内容呢？而且我看官方的 Istio 案例也是可以通过 virsual service 进行流量控制的，我们这个 config.json 也是可以进行流量控制的，是不是我理解的 config.json 是在 virsualService.yaml 的功能上进行拓展的功能(比如这种 tag 路由是 virsualService 不能控制的)。
+> 我们在 Istio 环境下，因为 MOSN 是自动 sidecar 注入的，我怎么控制他读取我的配置文件内容呢？而且我看官方的 Istio 案例也是可以通过 virsual service 进行流量控制的，我们这个 config.json 也是可以进行流量控制的，是不是我理解的 config.json 是在 virsualService.yaml 的功能上进行拓展的功能(比如这种 tag 路由是 virsualService 不能控制的)。
 
 A：Istio 场景下对应的 sidecar 的静态配置是一些通用的模板（如 pilot 地址渲染等）。关于 service 相关的路由及治理控制都是通过 Istio 定义的 CRD 控制： 
 
@@ -45,7 +45,7 @@ MOSN：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 
 **@郑楚齐** 提问：
 
->MOSN 执行的这个 config.json 是如何使用呢？因为目前 Istio 的这个配置 DestinationRule VirsualService 是不满足需求的，或者说 MOSN 收到我们订制的DestinationRule VirsualService，会自动转为 config.json 供给 MOSN 使用呢？
+> MOSN 执行的这个 config.json 是如何使用呢？因为目前 Istio 的这个配置 DestinationRule VirsualService 是不满足需求的，或者说 MOSN 收到我们订制的 DestinationRule VirsualService，会自动转为 config.json 供给 MOSN 使用呢？
 
 A：cluster subset 配置目前 Istio 的 Destination Rule 还不支持，不过目前是可以通过 Envoy Filter 来给对应的 cluster 打 patch 实现（比较麻烦点）。
 
@@ -53,7 +53,7 @@ MOSN：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 
 **@郑楚齐** 提问：
 
->如果是在 Envoy Filter 打 patch 的话，有没有什么例子吗?
+> 如果是在 Envoy Filter 打 patch 的话，有没有什么例子吗?
 
 A：这个就是上面说的 cluster subset 配置。目前 Istio 的 Destination Rule 里面还不支持这个（详细见上面的那个讨论 issue），目前唯一的方法就是使用 Envoy Filter 的这个 CRD 打 patch 实现。
 
@@ -63,7 +63,7 @@ MOSN：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 
 **@郑楚齐** 提问：
 
->看了官方的 EnvoyFilter，不过感觉跟我们 MOSN 的 config.json 里面的内容想对照匹配起来确实很难。
+> 看了官方的 EnvoyFilter，不过感觉跟我们 MOSN 的 config.json 里面的内容想对照匹配起来确实很难。
 
 A：你可以用 xds 动态更新或者扩展用我们的 API 更新，不需要直接用这个配置文件。直接调用 MOSN 自己的 API，xds 其实也是 adapt 到这些 API 接口的，如果你们不用 Istio 的话，自己封装可能更简单，主要就 route 和 cluster 两个 API 就行了。
 
@@ -75,7 +75,7 @@ MOSN：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 
 **@孤若** 提问：
 
->当空回滚时，如果是因为远程方法调用 try 响应超时，怎么解决终止 try 执行？比如 rollback 执行远比 try 阶段快，rollback 结束 try 还在执行。
+> 当空回滚时，如果是因为远程方法调用 try 响应超时，怎么解决终止 try 执行？比如 rollback 执行远比 try 阶段快，rollback 结束 try 还在执行。
 
 A：我之前有参考这个，有提到 TCC 异常控制：
 
@@ -85,7 +85,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 **@林祥标** 提问：
 
->Seata 1.3.0 jdk 1.8 使用 jackson 对 localDateTime 进行序列化时报错，有大佬知道怎么解决吗？
+> Seata 1.3.0 jdk 1.8 使用 jackson 对 localDateTime 进行序列化时报错，有大佬知道怎么解决吗？
 
 A：如果数据库用 datetime，实体又是 localdatetime，目前我发现只能 spi、替换序列化方式、依赖等等都没用。通过 spi 定义三个序列化方式就行了：LocalDate、LocalDateTime、LocalTime...反正如果数据库不是时间戳，目前给的适配方式是无用的(个人用下来的结果)。
 

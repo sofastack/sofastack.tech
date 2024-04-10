@@ -83,7 +83,7 @@ TraceId 的转换：
 
 - 问题在 SOFATracer 中的 TracerId 的产生规则是：服务器 IP + ID 产生的时间 + 自增序列 + 当前进程号
 
->例如 ：0ad1348f1403169275002100356696 前 8 位 0ad1348f 即产生 TraceId 的机器的 IP，这是一个十六进制的数字，每两位代表 IP 中的一段，我们把这个数字，按每两位转成 10 进制即可得到常见的 IP 地址表示方式 10.209.52.143，您也可以根据这个规律来查找到请求经过的第一个服务器。后面的 13 位 1403169275002 是产生 TraceId 的时间。之后的 4 位 1003 是一个自增的序列，从 1000 涨到 9000，到达 9000 后回到 1000 再开始往上涨。最后的 5 位 56696 是当前的进程 ID，为了防止单机多进程出现 TraceId 冲突的情况，所以在 TraceId 末尾添加了当前的进程 ID。——TraceId 和 SpanId 生成规则
+> 例如 ：0ad1348f1403169275002100356696 前 8 位 0ad1348f 即产生 TraceId 的机器的 IP，这是一个十六进制的数字，每两位代表 IP 中的一段，我们把这个数字，按每两位转成 10 进制即可得到常见的 IP 地址表示方式 10.209.52.143，您也可以根据这个规律来查找到请求经过的第一个服务器。后面的 13 位 1403169275002 是产生 TraceId 的时间。之后的 4 位 1003 是一个自增的序列，从 1000 涨到 9000，到达 9000 后回到 1000 再开始往上涨。最后的 5 位 56696 是当前的进程 ID，为了防止单机多进程出现 TraceId 冲突的情况，所以在 TraceId 末尾添加了当前的进程 ID。——TraceId 和 SpanId 生成规则
 
 在 SOFATracer 中 TraceId 是 String 类型，但是在 Jaeger 中 TraceId 是使用的两个 Long 型的整数来构成最终的 TraceId。
 
@@ -112,7 +112,7 @@ TraceId 的转换：
 
 #### 配合 Jaeger Agent
 
->The Jaeger agent is a network daemon that listens for spans sent over UDP, which it batches and sends to the Collector. It is designed to be deployed to all hosts as an infrastructure component. The agent abstracts the routing and discovery of the Collectors away from the client.
+> The Jaeger agent is a network daemon that listens for spans sent over UDP, which it batches and sends to the Collector. It is designed to be deployed to all hosts as an infrastructure component. The agent abstracts the routing and discovery of the Collectors away from the client.
 
 Jaeger Agent 被设计成一种基本组件部署到主机上，能够将路由和发现 Collector 的任务从 client 中抽离出来。Agent 只能接受通过 UDP 发送的 Thrift 格式的数据，所以要使用 Jaeger Agent 需要使用 UDPSender。
 
@@ -126,7 +126,7 @@ SkyWalking 是分布式系统的应用程序性能监视工具，专为微服务
 
 **模型转换对照**  
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*CuTTQpIuL98AAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*CuTTQpIuL98AAAAAAAAAAAAAARQnAQ)
 
 ### SegmentId、SpanId、PatentSpanID 的转换  
 
@@ -252,7 +252,7 @@ client span ：parentSegmentId = traceId + parentId 哈希值 + server(0)
 
 本次介绍的 SOFATracer 的链路可视化，将会在下个版本 release。
 
--
+
 
 **「收获」**
 
@@ -260,7 +260,7 @@ client span ：parentSegmentId = traceId + parentId 哈希值 + server(0)
 
 特别感谢感谢宋国磊老师对我的耐心指导，在项目过程中宋老师帮助我解开了很多疑惑，学到很多东西，感谢 SOFAStack 社区在整个过程中对我的诸多帮助，感谢活动主办方提供的平台。
 
--
+
 
 **「参考资料」**
 

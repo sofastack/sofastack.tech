@@ -104,7 +104,7 @@ Envoy 的创始人也来凑了个热闹，他对 Sidecar 架构也是颇有微�
 
 图中的 ztunnel 就是 L4 *（DaemonSet 部署）* ，waypoint 就是 L7 *（Pod 部署）* ，L4 和 L7 都是可选的，可以根据业务场景灵活组合，比如没有 L7 的场景，直接就用 L4 即可。
 
-注：图中的 ztunnel 就是L4 *（*DaemonSet* 部署）* ，waypoint 就是 L7 *（Pod 部署）* 。
+注：图中的 ztunnel 就是 L4 *（*DaemonSet* 部署）* ，waypoint 就是 L7 *（Pod 部署）* 。
 
 无形之中，Ambient Mesh 架构对 William Morgan 评论中的问题也做了一定的解决和反驳：
 
@@ -162,8 +162,7 @@ Istio 认为 Envoy 作为被世界上最大的网络运营商使用的久经考�
 
 [蚂蚁集团 Service Mesh 进展回顾与展望](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247509391&idx=1&sn=95883f61905cc4de15125ffd2183b801&chksm=faa34a55cdd4c3434a0d667f8ed57e59c2fc747315f947b19b23f520786130446b6828a68069&scene=21)
 
-[顺丰科技 Service Mesh：落地半年，最初目标已经实现，将在更多场景进行大规模探索
-](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247514453&idx=1&sn=1a1a3edb14cc1e9f9a2afc2ac1cc939c&chksm=faa3568fcdd4df998340a1cc1dbd0e9c5cc3c762fed1ff2ede263ebc7af86aa4d86bb23fb0e3&scene=21)
+[顺丰科技 Service Mesh：落地半年，最初目标已经实现，将在更多场景进行大规模探索](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247514453&idx=1&sn=1a1a3edb14cc1e9f9a2afc2ac1cc939c&chksm=faa3568fcdd4df998340a1cc1dbd0e9c5cc3c762fed1ff2ede263ebc7af86aa4d86bb23fb0e3&scene=21)
 
 [「网商双十一」基于 ServiceMesh 技术的业务链路隔离技术及实践](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247499337&idx=1&sn=a0f3965f5989858c7e50763e696c9c53&chksm=faa31193cdd49885045adfce40c76e7cde9b689203845f2f674c24f379c246868d272c8adcbd&scene=21)
 

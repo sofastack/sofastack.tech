@@ -37,7 +37,7 @@ A：没有 Next 属性，可以下载 seata-sample，里面有例子，[https://
 > 好的，CompensateState 这个属性是正向失败后，重试这个状态？
 
 A：正向失败后，触发这个补偿状态。
-[https://github.com/seata/seata/tree/develop/test/src/test/java/io/seata/saga/engine](https://github.com/seata/seata/tree/develop/test/src/test/java/io/seata/saga/engine) 为里有很多单元测试案例，代码对应的json在：[https://github.com/seata/seata/tree/develop/test/src/test/resources/saga/statelang](https://github.com/seata/seata/tree/develop/test/src/test/resources/saga/statelang)。
+[https://github.com/seata/seata/tree/develop/test/src/test/java/io/seata/saga/engine](https://github.com/seata/seata/tree/develop/test/src/test/java/io/seata/saga/engine) 为里有很多单元测试案例，代码对应的 json 在：[https://github.com/seata/seata/tree/develop/test/src/test/resources/saga/statelang](https://github.com/seata/seata/tree/develop/test/src/test/resources/saga/statelang)。
 正向失败后，触发这个 CompensateState 状态，但失败后并不会默认就触发补偿流程，需要在 Catch 属性里，Next 到一个 CompensateTrigger。
 
 > 那 Saga 模式下，如果 TC 端发出回滚命令，Saga 怎么处理，没发现有回滚状态？
@@ -56,7 +56,7 @@ A：Catch 属性是用来检测异常的，但异常的处理可能不仅仅是�
 > 如果一个 Saga 状态失败后，RM 一直会重试，这个重试有没有次数限制的？
 
 A：[https://github.com/seata/seata/blob/develop/server/src/main/resources/file.conf.example](https://github.com/seata/seata/blob/develop/server/src/main/resources/file.conf.example)
-重试间隔和重试超时时间, -1是无限重试，比如可以配置成 1d ，只重度一天。
+重试间隔和重试超时时间, -1 是无限重试，比如可以配置成 1d ，只重度一天。
 
 ![代码](https://cdn.nlark.com/yuque/0/2019/png/226702/1574383118081-972d6971-62fd-492a-aa49-84d3036b3a3e.png)
 
@@ -117,6 +117,6 @@ Service Mesh 是蚂蚁金服下一代架构的核心，本期直播主要分享�
 - 蚂蚁金服 Service Mesh 架构双十一大规模落地实践案例分析；
 - 从核心、RPC、消息等模块分享蚂蚁金服 Service Mesh 落地实践细节；
 
-时间：2019年12月5日（周四）19:00-20:00
+时间：2019 年 12 月 5 日（周四）19:00-20:00
 形式：线上直播
 报名方式：点击“[这里](https://tech.antfin.com/community/live/1021)”即可报名

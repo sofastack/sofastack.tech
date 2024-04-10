@@ -54,7 +54,7 @@ Dragonfly 是一款基于 P2P 的智能镜像和文件分发工具。它旨在�
 
 ## 议程
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*QzkPQIHadrsAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*QzkPQIHadrsAAAAAAAAAAAAAARQnAQ)
 
 ## 了解更多技术干货
 

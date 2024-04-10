@@ -18,7 +18,7 @@ description: "见证 SOFAStack 社区开源四周年!"
 
 - B 站直播间地址：[http://live.bilibili.com/21954520](http://live.bilibili.com/21954520)
 
-- B 站直播ID：21954520
+- B 站直播 ID：21954520
 
 ## 介绍
 

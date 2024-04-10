@@ -21,7 +21,7 @@ title: "分布式一致性 Raft 与 JRaft"
 
 模块化的拆分主要体现在：Raft 把一致性协议划分为 Leader 选举、MemberShip 变更、日志复制、Snapshot 等几个几乎完全解耦的模块
 
-更加简化的设计则体现在：Raft 不允许类似 paxos 中的乱序提交、简化系统中的角色状态（只有 Leader、Follower、Candidate三种角色）、限制仅 Leader 可写入、使用随机化的超时时间来设计 Leader Election 等等
+更加简化的设计则体现在：Raft 不允许类似 paxos 中的乱序提交、简化系统中的角色状态（只有 Leader、Follower、Candidate 三种角色）、限制仅 Leader 可写入、使用随机化的超时时间来设计 Leader Election 等等
 
 ## 特点：Strong Leader
 
@@ -36,7 +36,7 @@ title: "分布式一致性 Raft 与 JRaft"
 
 ## 复制状态机
 
-对于一个无限增长的序列 a[1, 2, 3…]，如果对于任意整数 i，a[i] 的值满足分布式一致性，这个系统就满足一致性状态机的要求
+对于一个无限增长的序列 a[1, 2, 3……]，如果对于任意整数 i，a[i] 的值满足分布式一致性，这个系统就满足一致性状态机的要求
 基本上所有的真实系统都会有源源不断的操作，这时候单独对某个特定的值达成一致显然是不够的。为了让真实系统保证所有的副本的一致性，通常会把操作转化为 [write-ahead-log](https://en.wikipedia.org/wiki/Write-ahead_logging)(WAL)。然后让系统中所有副本对 WAL 保持一致，这样每个副本按照顺序执行 WAL 里的操作，就能保证最终的状态是一致的
 
 ![st.png | left | 450x250](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*OiwGTZnO2uMAAAAAAAAAAABjARQnAQ)
@@ -60,7 +60,7 @@ title: "分布式一致性 Raft 与 JRaft"
 
 1. RequestVote RPC：由 candidate 发出，用于发送投票请求
 2. AppendEntries (Heartbeat) RPC：由 leader 发出，用于 leader 向 followers 复制日志条目，也会用作 Heartbeat （日志条目为空即为 Heartbeat）
-3. InstallSnapshot RPC：由 leader 发出，用于快照传输，虽然多数情况都是每个服务器独立创建快照，但是leader 有时候必须发送快照给一些落后太多的 follower，这通常发生在 leader 已经丢弃了下一条要发给该follower 的日志条目(Log Compaction 时清除掉了) 的情况下
+3. InstallSnapshot RPC：由 leader 发出，用于快照传输，虽然多数情况都是每个服务器独立创建快照，但是 leader 有时候必须发送快照给一些落后太多的 follower，这通常发生在 leader 已经丢弃了下一条要发给该 follower 的日志条目(Log Compaction 时清除掉了) 的情况下
 
 ### 任期逻辑时钟
 
@@ -131,7 +131,7 @@ title: "分布式一致性 Raft 与 JRaft"
     * 日志被复制到 followers 后，先持久化，并不能马上被应用到状态机
     * 只有 leader 知道日志是否达成多数派，是否可以应用到状态机
     * Followers 记录 leader 发来的当前 commitIndex，所有小于等于 commitIndex 的日志均可以应用到状态机
-* CommitIndex推进：
+* CommitIndex 推进：
     * Leader 在下一个 AppendEntries RPC (也包括 Heartbeat)中携带当前的 commitIndex
     * Followers 检查日志有效性通过则接受 AppendEntries 并同时更新本地 commitIndex，最后把所有小于等于 commitIndex 的日志应用到状态机
 
@@ -281,13 +281,13 @@ JRaft 是从百度的 [braft](https://github.com/brpc/braft) 移植而来，做�
         * (2) 接着向 followers 发起一轮 heartbeat，如果半数以上节点返回了对应的 heartbeat response，那么 leader 就能够确定现在自己仍然是 leader (证明了自己是自己)
         * (3) Leader 等待自己的状态机执行，直到 applyIndex 超过了 ReadIndex，这样就能够安全的提供 Linearizable Read 了，也不必管读的时刻是否 leader 已飘走 (思考：为什么等到 applyIndex 超过了 ReadIndex 就可以执行读请求?)
         * (4) Leader 执行 read 请求，将结果返回给 Client
-    * 通过ReadIndex，也可以很容易在 followers 节点上提供线性一致读：
+    * 通过 ReadIndex，也可以很容易在 followers 节点上提供线性一致读：
         * Follower 节点向 leader 请求最新的 ReadIndex
         * Leader 执行上面前 3 步的过程(确定自己真的是 leader)，并返回 ReadIndex 给 follower
         * Follower 等待自己的 applyIndex 超过了 ReadIndex
         * Follower 执行 read 请求，将结果返回给 client
     （JRaft 中可配置是否从 follower 读取，默认不打开）
-    * ReadIndex小结
+    * ReadIndex 小结
         * 相比较于走 raft log 的方式，ReadIndex 省去了磁盘的开销，能大幅度提升吞吐，结合 JRaft 的 batch + pipeline ack + 全异步机制，三副本的情况下 leader 读的吞吐可以接近于 RPC 的吞吐上限
         * 延迟取决于多数派中最慢的一个 heartbeat response，理论上对于降低延时的效果不会非常显著
 
@@ -380,7 +380,7 @@ public void readFromQuorum(String key, AsyncContext asyncContext) {
 * 自驱动
     * 自诊断, 自优化, 自决策
 
-以上几点(尤其2，3) 基本都是依托于 JRaft 自身的功能来实现，详细介绍请参考 JRaft 文档
+以上几点(尤其 2，3) 基本都是依托于 JRaft 自身的功能来实现，详细介绍请参考 JRaft 文档
 
 # [JRaft 详细文档](https://github.com/alipay/sofa-jraft/wiki)
 

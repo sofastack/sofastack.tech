@@ -301,7 +301,7 @@ Nydus 镜像加速，可以直接对接 OCI 镜像，同时 Containerd 也支持
 
 ### Nydus 对接 K8s 集群
 
-K8s 集群使用的运行时为 Containerd ，而Containerd 也支持使用插件 Nydus Snapshotter 来识别 Nydus 镜像，同时在使用 Nydus 功能时, Nydus 也是支持原生的  OCI 镜像，只是没有按需加载相关功能。
+K8s 集群使用的运行时为 Containerd ，而 Containerd 也支持使用插件 Nydus Snapshotter 来识别 Nydus 镜像，同时在使用 Nydus 功能时, Nydus 也是支持原生的  OCI 镜像，只是没有按需加载相关功能。
 
 #### 1. K8s 集群节点部署 Nydus
 

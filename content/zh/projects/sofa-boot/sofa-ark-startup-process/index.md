@@ -317,7 +317,7 @@ public class StandardPipeline implements Pipeline {
 
 <h4 id="section-2-2-3-2">方式二、命令行启动</h4>
 
-Ark包是可执行Jar，可直接使用Java -jar的方式启动，先使用 mvn clean package 进行打包，打包得到 ${bizName}-${bizVersion}-ark-biz.jar，命令行启动
+Ark 包是可执行 Jar，可直接使用 Java -jar 的方式启动，先使用 mvn clean package 进行打包，打包得到 ${bizName}-${bizVersion}-ark-biz.jar，命令行启动
 
 ```bash
 java -jar -Dsofa.ark.embed.enable=true -Dcom.alipay.sofa.ark.master.biz=${bizName} ${bizName}-${bizVersion}-ark-biz.jar
@@ -490,7 +490,7 @@ public class ArkContainer {
 
 <h4 id="section-2-3-4-2">启动容器服务</h4>
 
-ArkServiceContainer 是基于 Guice 实现的容器服务，[Guice](https://github.com/google/guice) 是 Google开发的, 一个轻量级的依赖注入框架。类似Spring 的依赖注入。通过 Guice 管理 Ark 容器服务相关的 bean。
+ArkServiceContainer 是基于 Guice 实现的容器服务，[Guice](https://github.com/google/guice) 是 Google 开发的, 一个轻量级的依赖注入框架。类似 Spring 的依赖注入。通过 Guice 管理 Ark 容器服务相关的 bean。
 
 ```java
 public class ArkServiceContainer {

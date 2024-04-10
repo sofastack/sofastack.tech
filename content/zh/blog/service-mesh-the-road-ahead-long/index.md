@@ -90,11 +90,11 @@ _我们认为，未来会更多地属于那些告别大教堂、拥抱集市的�
 - 社区组织：MOSN Community Organization
 - 项目管理条例：PMC、Committer 选举晋升机制等等
 
-接下来，开源社区我们也持续做了非常多的事情，包括专题 Working Group的创建，例如 Isito WG， Dubbo WG 等等。
+接下来，开源社区我们也持续做了非常多的事情，包括专题 Working Group 的创建，例如 Isito WG， Dubbo WG 等等。
 
 ![MOSN 开源社区现况](https://cdn.nlark.com/yuque/0/2020/png/226702/1592200446476-75d58920-6511-4d17-bcc8-f1ef99e57c92.png)
 
-同时也寻求了非常多的外部合作，超过一半的 contributor 均来自外部，接受了第一个来自 BOSS 直聘的 Committer 等等，针对生态融合，我们同Skywalking，Sentinel和Dubbo-go社区进行了深度合作。
+同时也寻求了非常多的外部合作，超过一半的 contributor 均来自外部，接受了第一个来自 BOSS 直聘的 Committer 等等，针对生态融合，我们同 Skywalking，Sentinel 和 Dubbo-go 社区进行了深度合作。
 
 #### Skywalking
 
@@ -136,7 +136,7 @@ Sentinel 是由阿里巴巴开源，面向微服务的轻量级流量控制框�
 
 - MOSN 提供 Subscribe、Unsubscribe、Publish、Unpublish 的 HTTP 服务；
 - SDK 发送请求到 MOSN 提供的这些服务，让 MOSN 代为与真正的注册中心交互；
-- MOSN 通过 Dubbo-go直接和注册中心连接；
+- MOSN 通过 Dubbo-go 直接和注册中心连接；
 
 右图是直接通过 Istio 扩展，以云原生的方式进行 Mesh 支持，该方案是社区合作伙伴多点生活进行了能力贡献，详细的技术方案和使用方式可以阅读[《多点生活在 Service Mesh 上的实践 -- Istio + Mosn 在 Dubbo 场景下的探索之路》](https://www.sofastack.tech/activities/service-mesh-webinar-1/)。
 
@@ -147,12 +147,12 @@ Sentinel 是由阿里巴巴开源，面向微服务的轻量级流量控制框�
 - 云原生标准 Sidecar 的打造；
 - 标准化参与和建设；
 
-针对第一点，MOSN 持续在进行 Istio 能力的对齐工作，包括 Istio 侧多 Sidecar 支持以及 MOSN 侧功能对齐  Istio，控制面方面支持注入 MOSN Sidecar、Pilot-agent 的适配以及 Istio 编译构建的适配、负载均衡算法、流量管理体系、流量检测、服务治理、Gzip等，整个 Milestone：
+针对第一点，MOSN 持续在进行 Istio 能力的对齐工作，包括 Istio 侧多 Sidecar 支持以及 MOSN 侧功能对齐  Istio，控制面方面支持注入 MOSN Sidecar、Pilot-agent 的适配以及 Istio 编译构建的适配、负载均衡算法、流量管理体系、流量检测、服务治理、Gzip 等，整个 Milestone：
 
-- 2020年4月完成相关需求任务拆解，可在 Istio-1.4.x 版运行 Bookinfo；
-- 2020年6月完成 HTTP 系强依赖功能开发，兼容新架构下的 Istio-1.5.x；
-- 2020年8月 HTTP 系功能对齐 Istio；
-- 2020年9月支持 Istio 版本预发布；
+- 2020 年 4 月完成相关需求任务拆解，可在 Istio-1.4.x 版运行 Bookinfo；
+- 2020 年 6 月完成 HTTP 系强依赖功能开发，兼容新架构下的 Istio-1.5.x；
+- 2020 年 8 月 HTTP 系功能对齐 Istio；
+- 2020 年 9 月支持 Istio 版本预发布；
 
 标准化方面，我们参与了 UDPA 相关规范讨论，并提出限流通用 API 规范[讨论](https://github.com/cncf/udpa/issues/27)，社区会议讨论组织中。
 
@@ -203,7 +203,7 @@ MOSN 多协议框架
 
 #### 可扩展模块化能力
 
-随着业务的发展以及我们对Service Mesh的规划，MOSN需要承载越来越多的基础能力下沉，只有提供灵活高效且稳定的可扩展机制，才能保持其竞争力以及长久生命力。
+随着业务的发展以及我们对 Service Mesh 的规划，MOSN 需要承载越来越多的基础能力下沉，只有提供灵活高效且稳定的可扩展机制，才能保持其竞争力以及长久生命力。
 
 MOSN 在设计初期就借鉴了 Nginx 和 Envoy 的优秀设计，提供了基于 Filter 的可扩展机制，通过 Network Filter 可以创建自定义的 Proxy 逻辑，通过 Stream Filter 可以提供限流、认证鉴权、注入等等功能，通过 Listener Filter 可以支持透明劫持的能力。
 
@@ -263,7 +263,7 @@ OpenSSL 作为密码基础设施的老大哥，成为了我们的不二选择。
 
 ![MOSN 整体规划](https://cdn.nlark.com/yuque/0/2020/png/226702/1592200446676-e34af2a1-9b62-4293-a373-433aaeeca673.png)
 
-在我看来，Service Mesh架构对于云原生架构，就像高铁之于国民经济。我们经历了云计算的十年，在这个过程中，看似牢固的行业和技术壁垒被不断打破，经典的理念也经常受到质疑和挑战，那么Service Mesh在未来一定也有大的变革。小剑老师其实对此做了深入的分析[《Mecha：将Mesh进行到底》](https://www.sofastack.tech/blog/mecha-carry-mesh-to-the-end/)。这里我就不再重复，主要说说我个人的一些见解。首先我们在发展趋势中，业务与基础技术持续解耦、协同；中间件持续下沉，业务基础层下沉；基础业务需更好的与 Mesh 架构整合，形成生态，有非常高度的一致。同时我认为随着云原生网络的边界扩大，势必带来规模化效应，我们需要解决性能、资源消耗、延迟等各种基础问题，所以需要通过 Kernel Bypaas，Sidecar as Node，引入硬件优化等手段解决以上问题。同时我们相信在云原生的演进中，容器网络将与 Service Mesh 融合，网络从面向 IP 到面向 Identity 与服务，可以将 Sidecar 向下沉淀为系统基础设施，成为安全容器网络栈，智能硬件设备基本网络单元。
+在我看来，Service Mesh 架构对于云原生架构，就像高铁之于国民经济。我们经历了云计算的十年，在这个过程中，看似牢固的行业和技术壁垒被不断打破，经典的理念也经常受到质疑和挑战，那么 Service Mesh 在未来一定也有大的变革。小剑老师其实对此做了深入的分析[《Mecha：将 Mesh 进行到底》](https://www.sofastack.tech/blog/mecha-carry-mesh-to-the-end/)。这里我就不再重复，主要说说我个人的一些见解。首先我们在发展趋势中，业务与基础技术持续解耦、协同；中间件持续下沉，业务基础层下沉；基础业务需更好的与 Mesh 架构整合，形成生态，有非常高度的一致。同时我认为随着云原生网络的边界扩大，势必带来规模化效应，我们需要解决性能、资源消耗、延迟等各种基础问题，所以需要通过 Kernel Bypaas，Sidecar as Node，引入硬件优化等手段解决以上问题。同时我们相信在云原生的演进中，容器网络将与 Service Mesh 融合，网络从面向 IP 到面向 Identity 与服务，可以将 Sidecar 向下沉淀为系统基础设施，成为安全容器网络栈，智能硬件设备基本网络单元。
 
 当 Sidecar 下沉作为系统的一部分后，开始从框架往平台发展，提供分布式原语抽象像 Dapr 一样提供远程 API 的方式对外提供服务是一种实现，另外我们正在尝试基于共享内存的接口通信方案，最后业务会发展为面向 Mesh 编程，Mesh 架构最终形成分布式微服务 OS。
 
@@ -271,7 +271,7 @@ OpenSSL 作为密码基础设施的老大哥，成为了我们的不二选择。
 
 ## 作者简介
 
-肖涵，花名涵畅，2011年加入蚂蚁金服，一直从事四/七层网络负载均衡，高性能代理服务器以及网络协议相关的研发工作。目前是蚂蚁金服可信原生技术部应用网络组负责人，蚂蚁金服开源项目云原生网络代理 MOSN 负责人。
+肖涵，花名涵畅，2011 年加入蚂蚁金服，一直从事四/七层网络负载均衡，高性能代理服务器以及网络协议相关的研发工作。目前是蚂蚁金服可信原生技术部应用网络组负责人，蚂蚁金服开源项目云原生网络代理 MOSN 负责人。
 
 ## 蚂蚁金服 Service Mesh 双十一落地系列文章
 

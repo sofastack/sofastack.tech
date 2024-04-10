@@ -75,7 +75,7 @@ actsRuntimeContext.paramMap.put("param1","123");
 
 **目前仅支持 String 的组件化**
 
-如果属性是需要动态生成的字符串，例如某些 ID，可以通过 `@` 符号来调用一个组件生成这个属性，组件要放在跟 test 同级的 component 包下，即：`com.corpname.appname.acts.component` (这里appname是系统名，corpname是公司名，如alipay)。
+如果属性是需要动态生成的字符串，例如某些 ID，可以通过 `@` 符号来调用一个组件生成这个属性，组件要放在跟 test 同级的 component 包下，即：`com.corpname.appname.acts.component` (这里 appname 是系统名，corpname 是公司名，如 alipay)。
 
 ```java
 public class MyComponent {

@@ -51,7 +51,7 @@ com.alipay.sofa.jraft.StateMachine#onSnapshotSave，比如 Counter 这个 exampl
 
 **发布 SOFARegistry 5.2.1, 主要变更如下：**
 i. 安全修改，升级 Jettyserver 版本到 9.4.17.v20190418.
-ii. jraft bug 修正版本到1.2.5
+ii. jraft bug 修正版本到 1.2.5
 iii. 修复 dataServer 启动没有 working 时刻一些操作延迟处理问题
 iv. data 重连 meta 逻辑 bug 导致所有 data 无法连接 meta 修改
 v. data 从 working 状态变回 init 状态 bug 修改

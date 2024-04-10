@@ -9,8 +9,8 @@ RheaKV 是一个轻量级的分布式的嵌入式的 KV 存储 lib， rheaKV 包
 1. 嵌入式: jar 包方式嵌入到应用中
 2. 强一致性: 基于 multi-raft 分布式一致性协议保证数据可靠性和一致性
 3. 自驱动 （目前未完全实现）: 自诊断, 自优化, 自决策, 自恢复
-4. 可监控: 基于节点自动上报到PD的元信息和状态信息
-5. 基本API: get/put/delete 和跨分区 scan/batch put, distributed lock 等等
+4. 可监控: 基于节点自动上报到 PD 的元信息和状态信息
+5. 基本 API: get/put/delete 和跨分区 scan/batch put, distributed lock 等等
 
 ## 架构设计
 
@@ -200,7 +200,7 @@ boolean bDeleteRange(final byte[] startKey, final byte[] endKey);
 boolean bDeleteRange(final String startKey, final String endKey);
 ```
 
-1. 移除 `[startKey, endKey)` 范围内所有的数据， 注意 key的 范围是一个左闭右开的区间，即不包含`endKey`
+1. 移除 `[startKey, endKey)` 范围内所有的数据， 注意 key 的 范围是一个左闭右开的区间，即不包含`endKey`
 2. 同样支持跨分区删除， rheaKV 内部会自动计算这个 key 区间的所覆盖的分区然后并行发起调用， 同样需要强调，这是个较危险的操作，请慎重使用
 
 ### execute
@@ -254,7 +254,7 @@ DistributedLock<byte[]> getDistributedLock(final String target, final long lease
 
 ## 快速开始
 
-### 启动yaml配置
+### 启动 yaml 配置
 
 ```yaml
 ##RheaKVStoreOptions
@@ -318,13 +318,13 @@ if (rheaKVStore.init(opts)) {
 
 ## 核心设计
 
-### KV模块内部处理流程
+### KV 模块内部处理流程
 
 ![KV 模块内部处理流程](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*VsIgSqmCSQUAAAAAAAAAAABjARQnAQ)
 
 #### RheaKVStore
 
-最上层 User API，默认实现为 DefaultRheaKVStore， RheaKVStore 为纯异步实现，所以通常阻塞调用导致的客户端出现瓶颈，理论上不会在RheaKV上遭遇，DefaultRheaKVStore 实现了包括请求路由、request 分裂、response 聚合以及失败重试等功能
+最上层 User API，默认实现为 DefaultRheaKVStore， RheaKVStore 为纯异步实现，所以通常阻塞调用导致的客户端出现瓶颈，理论上不会在 RheaKV 上遭遇，DefaultRheaKVStore 实现了包括请求路由、request 分裂、response 聚合以及失败重试等功能
 
 #### PlacementDriverClient
 
@@ -332,19 +332,19 @@ if (rheaKVStore.init(opts)) {
 
 #### RegionRouteTable
 
-作为一个本地路由表缓存组件，RegionRouteTable 会根据 kv 请求的具体失败原因来决策是否从 PD Server 集群刷新数据，还提供对单个 key、多个 key 列表以及一个key range进行计算，返回对应的分区 ID
+作为一个本地路由表缓存组件，RegionRouteTable 会根据 kv 请求的具体失败原因来决策是否从 PD Server 集群刷新数据，还提供对单个 key、多个 key 列表以及一个 key range 进行计算，返回对应的分区 ID
 
 #### LoadBalancer
 
-在提供 follower 线性一致读的配置下有效，目前仅支持RR策略
+在提供 follower 线性一致读的配置下有效，目前仅支持 RR 策略
 
 #### RheaKVRpcService
 
-针对 kv 服务的 rpc client包装，实现了 failover 逻辑
+针对 kv 服务的 rpc client 包装，实现了 failover 逻辑
 
 #### RegionKVService
 
-KV server 端的请求处理服务，一个 StoreEngine 中包含很多 RegionKVService, 每个 RegionKVService 对应一个region，只处理自己 region 范围内的请求
+KV server 端的请求处理服务，一个 StoreEngine 中包含很多 RegionKVService, 每个 RegionKVService 对应一个 region，只处理自己 region 范围内的请求
 
 #### MetricsRawKVStore
 
@@ -460,14 +460,14 @@ MetadataClient 负责从 PD 获取集群元信息以及注册元信息
 
 可以看到，实现上图最适合的数据结构便是跳表或者二叉树（最接近匹配项查询）
 
-选择 region 的 startKey 还是 endKey 作为 RegionRouteTable 的 key 也是有讲究的，比如为什么没有使用endKey? 这主要取决于 region split 的方式：
+选择 region 的 startKey 还是 endKey 作为 RegionRouteTable 的 key 也是有讲究的，比如为什么没有使用 endKey? 这主要取决于 region split 的方式：
 
 * 假设 id 为 2 的 region2 [startKey2, endKey2) 分裂
 * 它分裂后的两个 region 分别为 id 继续为 2 的 region2 [startKey2, splitKey) 和 id 为 3 的 region3 [splitKey, endKey2)
-* 可以再看上图会发现，此时只需要再往 regionRouteTable 添加一个元素 `<region3, splitKey>` 即可，原来region2 对应的数据是不需要修改的
+* 可以再看上图会发现，此时只需要再往 regionRouteTable 添加一个元素 `<region3, splitKey>` 即可，原来 region2 对应的数据是不需要修改的
     * __Write-Operation__
         * 单 key 写请求路由逻辑很简单，根据 key 查询对应的 region，再对该 region 发起请求即可。
-        * 如果是一个批量操作写请求，比如 `put(List)`，那么会对所有 keys 进行 split，分组后再并行分别请求所属的regionEngine，要注意的是此时无法提供事务保证。
+        * 如果是一个批量操作写请求，比如 `put(List)`，那么会对所有 keys 进行 split，分组后再并行分别请求所属的 regionEngine，要注意的是此时无法提供事务保证。
     * __Read-Operation__
         * 单 key 读请求路由逻辑也很简单，根据 key 查询对应的 region，再对该 region 发起请求即可。
         * 如果是一个批量读请求，比如 scan(startKey, endKey)，那么会对所有 keys 进行 split，分组后并行再分别请求所属的 regionEngine。
@@ -476,17 +476,17 @@ MetadataClient 负责从 PD 获取集群元信息以及注册元信息
 
 __RheaKV 对用户端提供的是异步 api, 这就要求 failover 的处理流程必须也得是异步, 这对设计增加了一些难度，实现会绕一点__
 
-__以下问题是RheaKV必须要解决的:__
+__以下问题是 RheaKV 必须要解决的:__
 
 1. 异步失败 retry
 2. 调用时遇到 membership change，需要刷新 membership 重试
-3. 一次操作多个 key (比如range scan) 时遭遇 region 自动 split，需要在 retry 时也能自动分裂(放大)请求，并异步合并多个响应结果
+3. 一次操作多个 key (比如 range scan) 时遭遇 region 自动 split，需要在 retry 时也能自动分裂(放大)请求，并异步合并多个响应结果
 4. 前一次操作可能是本地调用，retry 时却可能需要发起远程调用，也可能是反过来的情况，两种情况都需要兼容
 
 __RheaKV 可以划分为两种类型的请求，两种类型需要不同的 failover 逻辑：__
 
 * __Single-Key-Operation (只操作一个 key)__
-    Retry 依赖一个叫做 FailoverClosure 的 callback类，大体逻辑如下:
+Retry 依赖一个叫做 FailoverClosure 的 callback 类，大体逻辑如下:
 
 ```java
     public void run(final Status status) {
@@ -510,26 +510,26 @@ __RheaKV 可以划分为两种类型的请求，两种类型需要不同的 fail
 
 表①
 
-| NOT\_LEADER | 当前节点不是Leader |
+| NOT\_LEADER | 当前节点不是 Leader |
 | :--- | :--- |
-| NO\_REGION\_FOUND | 当前机器未找到指定的RegionEngine |
-| LEADER\_NOT\_AVAILABLE | 当前的Region Group可能还未选举出Leader |
+| NO\_REGION\_FOUND | 当前机器未找到指定的 RegionEngine |
+| LEADER\_NOT\_AVAILABLE | 当前的 Region Group 可能还未选举出 Leader |
 
 ---
 
 表②
 
-| INVALID\_REGION\_MEMBERSHIP | 当前Region Group已经发生了成员变化, 比如新增或删除了节点 |
+| INVALID\_REGION\_MEMBERSHIP | 当前 Region Group 已经发生了成员变化, 比如新增或删除了节点 |
 | :--- | :--- |
-| INVALID\_REGION\_VERSION | 当前Region分裂(split)了 |
-| INVALID\_REGION\_EPOCH | 表示可能为INVALID\_REGION\_MEMBERSHIP或INVALID\_REGION\_VERSION任意一个 |
+| INVALID\_REGION\_VERSION | 当前 Region 分裂(split)了 |
+| INVALID\_REGION\_EPOCH | 表示可能为 INVALID_REGION_MEMBERSHIP 或 INVALID_REGION_VERSION 任意一个 |
 
 ---
 
-**Multi-Keys-Operation (操作多个key或一个key区间)**
+**Multi-Keys-Operation (操作多个 key 或一个 key 区间)**
 
 1. 对于多个 key 的请求，还要先对 keys 做 split，每个 region 包含一部分数量的 keys，对于每个 region 有单独 failover 处理，此时 FailoverClosure 类只能处理表①中的作为类型，处理逻辑同 __Single-Key-Operation__
-2. 对于表②中三个 region epoch 发生变更的错误，FailoverClosure 无法处理，因为在epoch发生变化时，很有可能是发生了 region split，对于先前定位的 region，分裂成了 2 个，此时不光需要重新从 PD 刷新region 信息，failover 还要处理请求的放大(多个 region 就会产生多个请求)，所以新增了几类 __FailoverFuture__ 来处理这种请求放大的逻辑
+2. 对于表②中三个 region epoch 发生变更的错误，FailoverClosure 无法处理，因为在 epoch 发生变化时，很有可能是发生了 region split，对于先前定位的 region，分裂成了 2 个，此时不光需要重新从 PD 刷新 region 信息，failover 还要处理请求的放大(多个 region 就会产生多个请求)，所以新增了几类 __FailoverFuture__ 来处理这种请求放大的逻辑
 3. 其中 __scan(startKey, endKey)__ 的 FailoverFuture 主要逻辑如下图, 可以看到整个流程是完全异步的
 
 ```java
@@ -568,7 +568,7 @@ __RheaKV 可以划分为两种类型的请求，两种类型需要不同的 fail
 
 * __确定 key 区间 [startKey, endKey) 覆盖的 region list__
     * RegionRouteTable#findRegionsByKeyRange(startKey, endKey)
-    * RegionRouteTable 是一个红黑树结构存储的 region 路由表，startKey 为作为红黑树的key，只要查找 [startKey, endKey) 的子视图再加上一个 floorEntry(startKey) 即可
+    * RegionRouteTable 是一个红黑树结构存储的 region 路由表，startKey 为作为红黑树的 key，只要查找 [startKey, endKey) 的子视图再加上一个 floorEntry(startKey) 即可
     * 如下图例子，计算得出 [startKey, endKey) 横跨 region1, region2, region3 一共 3 个分区(region1 为 floor entry, region2 和 region3 为子视图部分)
 
 ![region list](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*5gBCRJZjEqAAAAAAAAAAAABjARQnAQ)

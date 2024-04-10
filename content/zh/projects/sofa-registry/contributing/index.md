@@ -9,16 +9,16 @@ aliases: "/sofa-registry/docs/Contributing"
 
 贡献代码前需要先了解 git 工具的使用和 GitHub 网站的使用。
 
-* git 工具用法可以查看[git官方书籍](http://git-scm.com/book/zh/v1),需要阅读前几章来熟悉。
-* git 协作流程可以查看这篇文章 [Git协作流程](http://www.ruanyifeng.com/blog/2015/12/git-workflow.html)
+* git 工具用法可以查看[git 官方书籍](http://git-scm.com/book/zh/v1),需要阅读前几章来熟悉。
+* git 协作流程可以查看这篇文章 [Git 协作流程](http://www.ruanyifeng.com/blog/2015/12/git-workflow.html)
 
 ## GitHub 贡献代码流程
 
-### 提交issue
+### 提交 issue
 不论您是修复 SOFARegistry 的 bug 还是新增 SOFARegistry 的功能，在您提交代码之前，在 SOFARegistry 的 GitHub 上提交一个 issue，描述您要修复的问题或者要增加的功能。这么做有几个好处:
 
 * 不会与其它开发者或是他们对这个项目的计划发生冲突，产生重复工作.
-* SOFARegistry 的维护人员会对您提的bug或者新增功能进行相关讨论，确定该修改是不是必要，有没有提升的空间或更好的办法。
+* SOFARegistry 的维护人员会对您提的 bug 或者新增功能进行相关讨论，确定该修改是不是必要，有没有提升的空间或更好的办法。
 * 在达成一致后再开发,并提交代码，减少双方沟通成本，也减少 pull request 被拒绝的情况。
 
 ### 获取源码
@@ -64,7 +64,7 @@ git checkout -b "branchName"
 #### 修改代码注意事项
 * 代码风格保持一致
 
-SOFARegistry 通过 Maven插件来保持代码格式一致.在提交代码前,务必本地执行
+SOFARegistry 通过 Maven 插件来保持代码格式一致.在提交代码前,务必本地执行
 
 ```bash
 mvn clean compile
@@ -72,7 +72,7 @@ mvn clean compile
 
 * 补充单元测试代码
 * 新有修改应该通过已有的单元测试.
-* 应该提供新的单元测试来证明以前的代码存在 bug，而新的代码已经解决了这些 bug您可以用如下命令运行所有测试
+* 应该提供新的单元测试来证明以前的代码存在 bug，而新的代码已经解决了这些 bug 您可以用如下命令运行所有测试
 
 ```bash
 mvn clean test

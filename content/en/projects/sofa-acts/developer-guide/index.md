@@ -9,7 +9,7 @@ aliases: "/sofa-acts/docs/DeveloperGuide"
 > Install JDK7 or later versions, and Maven 3.2.5 or later versions.
 Directly download the code, and execute the following command in the code directory:
 
-```
+```plain
 mvn clean install
 ```
 

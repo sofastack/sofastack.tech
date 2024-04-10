@@ -24,7 +24,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **1、@李明** 提问：
 
->请教一下： SOFATracer 用 3.1.0 版本对应 SOFABoot，应该使用 3.1. 版本吗？<br />
+> 请教一下： SOFATracer 用 3.1.0 版本对应 SOFABoot，应该使用 3.1. 版本吗？<br />
 >![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*ulnNQaI9e5IAAAAAAAAAAAAAARQnAQ)
 
 A：都可以，不依赖 SOFABoot 版本。<br />
@@ -32,14 +32,14 @@ SOFATracer：[https://github.com/sofastack/sofa-tracer](https://github.com/sofas
 
 **2、@黄海淇** 提问：
 
->有没有 SOFABoot 从零开始的文档哇？这家公司用的 SOFA 相关的组件做的银行项目。<br />
+> 有没有 SOFABoot 从零开始的文档哇？这家公司用的 SOFA 相关的组件做的银行项目。<br />
 
 A：[https://www.sofastack.tech/projects/sofa-boot/overview/](https://www.sofastack.tech/projects/sofa-boot/overview/)  ，在我们社区各个项目的主页介绍里面都是有文档的。<br />
 SOFABoot：[https://github.com/sofastack/sofa-boot](https://github.com/sofastack/sofa-boot)<br />
 
 **3、@陈承邦** 提问：
 
->undo_log 日志当时回滚删除，还是过一段时间批量删除？
+> undo_log 日志当时回滚删除，还是过一段时间批量删除？
 >![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*60ryRJCVayoAAAAAAAAAAAAAARQnAQ)
 
 A：回滚删除，status 为 1 的 7 天删除。<br />
@@ -47,14 +47,14 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)<br />
 
 **4、@贾云森** 提问：
 
->@GlobalTransactional  这个注解下的，不同 Service 的数据库操作，都要加本地事务吗？<br />
+> @GlobalTransactional  这个注解下的，不同 Service 的数据库操作，都要加本地事务吗？<br />
 
 A：AT 模式下不需要。<br />
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)<br />
 
 **5、@天成** 提问：
 
->问下：生产跟预发感觉也得搭建 2 个 seata-server，不能共用一个对吧？<br />
+> 问下：生产跟预发感觉也得搭建 2 个 seata-server，不能共用一个对吧？<br />
 >![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*xnrlSZ3GlOQAAAAAAAAAAAAAARQnAQ)
 
 A：可以共用一个，因为锁需要共享才能排他；也可以分开，但是要用表共享，具体看官网事务分组。<br />

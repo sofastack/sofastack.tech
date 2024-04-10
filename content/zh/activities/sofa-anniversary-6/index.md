@@ -44,7 +44,7 @@ Welcome to SOFA World and Hello SOFA World！
 
 - 王特（花名：亦夏），蚂蚁集团技术专家、Apache Seata(incubating) 社区 PPMC
 
-- 赵真灵（花名：有济），koupleless开源负责人、蚂蚁集团技术专家
+- 赵真灵（花名：有济），koupleless 开源负责人、蚂蚁集团技术专家
 
 - 马振军（花名：古今），Layotto 开源负责人、蚂蚁集团技术专家
 

@@ -76,7 +76,7 @@ String responseStr = httpClient.executeGet(httpGetUrl);
 
 启动 SOFABoot 应用，在控制台中看到启动打印的日志如下：
 
-```
+```plain
 2019-04-12 13:38:09.896  INFO 51193 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
 2019-04-12 13:38:09.947  INFO 51193 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8081 (http)
 2019-04-12 13:38:09.952  INFO 51193 --- [           main] c.a.s.t.e.okhttp.OkHttpDemoApplication   : Started OkHttpDemoApplication in 3.314 seconds (JVM running for 4.157)
@@ -84,7 +84,7 @@ String responseStr = httpClient.executeGet(httpGetUrl);
 
 当有类似如下的日志时，说明 OkHttp 的调用成功：
 
-```
+```plain
 2019-04-12 13:38:10.205  INFO 51193 --- [           main] c.a.s.t.e.okhttp.OkHttpDemoApplication   : Response is {"count":1,"name":"sofa"}
 ```
 
@@ -92,7 +92,7 @@ String responseStr = httpClient.executeGet(httpGetUrl);
 
 在上面的 `application.properties` 里面，我们配置的日志打印目录是 `./logs` 即当前应用的根目录（我们可以根据自己的实践需要进行配置），在当前工程的根目录下可以看到类似如下结构的日志文件：
 
-```
+```plain
 ./logs
 ├── spring.log
 └── tracelog

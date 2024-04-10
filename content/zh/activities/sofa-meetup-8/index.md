@@ -15,23 +15,23 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*IcnvSK-tBssAAAAAAA
 
 - 活动时间：2021 年 07 月 24 日（周六）13:30-17:30
 
-- 活动地点：合肥高新区创新产业园D8栋一楼集思空间
+- 活动地点：合肥高新区创新产业园 D8 栋一楼集思空间
 
 - 活动形式：线下活动
 
 - 资料下载：<br/>
 [《蚂蚁注册中心 SOFARegistry 分享》](https://gw.alipayobjects.com/os/bmw-prod/7b73191a-0057-4f57-9570-fed0929b75d1.pdf)<br/>
-[《基于API 网关的微服务治理演进与架构实践》](https://gw.alipayobjects.com/os/bmw-prod/7f7c9a04-d5c9-487e-af1e-c746e896e5c7.pdf)<br/>
+[《基于 API 网关的微服务治理演进与架构实践》](https://gw.alipayobjects.com/os/bmw-prod/7f7c9a04-d5c9-487e-af1e-c746e896e5c7.pdf)<br/>
 [《蚂蚁集团分布式链路组件 SOFATracer 原理与实践》](https://gw.alipayobjects.com/os/bmw-prod/a2186772-3ebc-42cb-8479-7d60ae5d8b67.pdf)<br/>
 [《准实时的日志聚合平台》](https://gw.alipayobjects.com/os/bmw-prod/bc982c91-4706-4cc0-858c-2ea5c204b3ab.pdf)<br/>
-[《Service Mesh在蚂蚁集团的实践》](https://gw.alipayobjects.com/os/bmw-prod/e2a493d2-911f-4cd0-8204-1a00e374c6b0.pdf)
+[《Service Mesh 在蚂蚁集团的实践》](https://gw.alipayobjects.com/os/bmw-prod/e2a493d2-911f-4cd0-8204-1a00e374c6b0.pdf)
 
 - 本次分享涉及的项目地址
 
-sofa-registry开箱即用计划
+sofa-registry 开箱即用计划
 https://github.com/sofastack/sofa-registry/projects/5
 
-sofa-registry深度解析计划
+sofa-registry 深度解析计划
 https://github.com/sofastack/sofa-registry/projects/4
 
 (这两个计划想帮助对参与开源项目感兴趣的同学由浅入深的上手，成为社区的一员)
@@ -55,7 +55,7 @@ https://github.com/mosn/mosn
 
 **嘉宾介绍**
 
-祝辰（花名忘禅），蚂蚁集团技术专家，2020年加入蚂蚁集团致力于服务发现领域的技术建设，开源项目sofa-registry、x-pipe核心开发人员。  
+祝辰（花名忘禅），蚂蚁集团技术专家，2020 年加入蚂蚁集团致力于服务发现领域的技术建设，开源项目 sofa-registry、x-pipe 核心开发人员。  
 
 **议题简介**
 
@@ -64,10 +64,10 @@ https://github.com/mosn/mosn
 
 **项目地址**
 
-sofa-registry开箱即用计划
+sofa-registry 开箱即用计划
 https://github.com/sofastack/sofa-registry/projects/5
 
-sofa-registry深度解析计划
+sofa-registry 深度解析计划
 https://github.com/sofastack/sofa-registry/projects/4
 
 (这两个计划想帮助对参与开源项目感兴趣的同学由浅入深的上手，成为社区的一员)
@@ -79,25 +79,25 @@ https://github.com/sofastack/sofa-registry/projects/4
 
 2、深入了解千万级别微服务场景下服务发现的问题和解法。
 
-**《基于API 网关的微服务治理演进与架构实践》**
+**《基于 API 网关的微服务治理演进与架构实践》**
 
 **嘉宾介绍**
 
-王晔倞，现任API7 VP，Apache APISIX Contributor。公众号「头哥侃码」作者，曾在好买财富、大智慧、中通服软件、东方购物任职，21年IT从业经验，对技术管理和架构设计有一定的经验。TGO 鲲鹏会上海理事会成员，腾讯云TVP，QCon北京2017明星讲师，QCon北京2018优秀出品人。
+王晔倞，现任 API7 VP，Apache APISIX Contributor。公众号「头哥侃码」作者，曾在好买财富、大智慧、中通服软件、东方购物任职，21 年 IT 从业经验，对技术管理和架构设计有一定的经验。TGO 鲲鹏会上海理事会成员，腾讯云 TVP，QCon 北京 2017 明星讲师，QCon 北京 2018 优秀出品人。
 
 **议题简介**
 
 内容讲述随着业务的发展，规模扩大，服务颗粒越来越细，数量也越来越多。
 我们在过程中有过很多经验和探索，并将系统从一个服务于单个业务方的后台系统逐渐改造成为一个支持海量内容，服务多个业务方，业务规则复杂多变的微服务治理架构。
-通过API网关，我们有效协调线上运行的各个服务，保障服务的SLA。基于服务调用的性能KPI数据进行容量管理，并通过对技术中台的升级，对故障进行降级、熔断、限流等一系列升级。
+通过 API 网关，我们有效协调线上运行的各个服务，保障服务的 SLA。基于服务调用的性能 KPI 数据进行容量管理，并通过对技术中台的升级，对故障进行降级、熔断、限流等一系列升级。
 
 **听众收获**
 
 1、微服务治理当前面临的问题；
 
-2、API网关在微服务治理中的价值；
+2、API 网关在微服务治理中的价值；
 
-3、从“单体“到”微服务“的转型过程中，该如何使用API网关实现微服务治理。
+3、从“单体“到”微服务“的转型过程中，该如何使用 API 网关实现微服务治理。
 
 **《蚂蚁集团分布式链路组件 SOFATracer 原理与实践》**
 
@@ -124,7 +124,7 @@ https://github.com/sofastack/sofa-tracer
 
 **嘉宾介绍**
 
-吕思泉是思科 Webex 产品线 MATS（媒体分析与问题诊断服务）团队的技术专家，热爱开源，热爱分享，热爱生活，在MATS团队主要工作方向为基础技术的研究与应用，在分布式系统和微服务方面有丰富的经验，由其本人编写并开源的jgossip项目解决了MATS分布式Job Engine的水平扩展难题，由其本人研究并实践的基于Loki+Promtail+Grafana的日志平台大幅度提高了MATS团队在分布式系统日志管理与监控方面的效率。
+吕思泉是思科 Webex 产品线 MATS（媒体分析与问题诊断服务）团队的技术专家，热爱开源，热爱分享，热爱生活，在 MATS 团队主要工作方向为基础技术的研究与应用，在分布式系统和微服务方面有丰富的经验，由其本人编写并开源的 jgossip 项目解决了 MATS 分布式 Job Engine 的水平扩展难题，由其本人研究并实践的基于 Loki+Promtail+Grafana 的日志平台大幅度提高了 MATS 团队在分布式系统日志管理与监控方面的效率。
 
 **议题简介**
 

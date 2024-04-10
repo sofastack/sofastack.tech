@@ -3,7 +3,7 @@ title: "应用日志打印 traceId 和 spanId"
 aliases: "/sofa-tracer/docs/PrintTraceIdSpanId"
 ---
 
-SLF4J 提供了 MDC （Mapped Diagnostic Contexts）功能，可以支持用户定义和修改日志的输出格式以及内容。本文将介绍 SOFATracer 集成的 SLF4J MDC功能，方便用户在只简单修改日志配置文件的前提下输出当前 SOFATracer 上下文 `TraceId` 以及 `SpanId` 。
+SLF4J 提供了 MDC （Mapped Diagnostic Contexts）功能，可以支持用户定义和修改日志的输出格式以及内容。本文将介绍 SOFATracer 集成的 SLF4J MDC 功能，方便用户在只简单修改日志配置文件的前提下输出当前 SOFATracer 上下文 `TraceId` 以及 `SpanId` 。
 
 ## 使用前提
 

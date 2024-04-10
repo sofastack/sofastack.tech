@@ -38,7 +38,7 @@ cd mosn
 
 最终 MOSN 的源代码代码路径为 `$GOPATH/src/mosn.io/mosn`
 
-## 导入IDE
+## 导入 IDE
 
 使用您喜爱的 Go IDE 导入 `$GOPATH/src/mosn.io/mosn` 项目，推荐 Goland。
 

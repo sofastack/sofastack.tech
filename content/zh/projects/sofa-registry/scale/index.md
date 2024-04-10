@@ -13,13 +13,13 @@ aliases: "/sofa-registry/docs/Scale"
 
 **第一步. 部署新的 registry-integration 节点**
 
-首先参考[部署](../deployment)文档，将 `registry-integration.tgz` 在新节点 node4 上部署起来，值得注意的是，node4 需要将 nodes.metaNode 配置项指定为4台机器的地址列表：
+首先参考[部署](../deployment)文档，将 `registry-integration.tgz` 在新节点 node4 上部署起来，值得注意的是，node4 需要将 nodes.metaNode 配置项指定为 4 台机器的地址列表：
 
 ```bash
 nodes.metaNode=DefaultDataCenter:<node1>,<node2>,<node3>,<node4>
 ```
 
-在这一步中，node4启动完成后，访问 `curl http://<node4>:9615/health/check` 状态显示是不健康，因为 node4 尚未加入集群，要加入集群，需要做第二步。
+在这一步中，node4 启动完成后，访问 `curl http://<node4>:9615/health/check` 状态显示是不健康，因为 node4 尚未加入集群，要加入集群，需要做第二步。
 
 **第二步. 调用 changePeer 使新节点加入集群**
 
@@ -33,7 +33,7 @@ curl -X POST "http://<node1>:9615/manage/changePeer" -d "ipAddressList=<node1>,<
 
 ### 1.2 缩容 registry-integration
 
-假设集群目前有3台机器 node1/node2/node3，需要缩容 node3。
+假设集群目前有 3 台机器 node1/node2/node3，需要缩容 node3。
 
 #### 1.2.1 平滑缩容
 
@@ -41,7 +41,7 @@ curl -X POST "http://<node1>:9615/manage/changePeer" -d "ipAddressList=<node1>,<
 
 **第一步. 调用 changePeer 移除节点**
 
-对 node1/node2 的任意一台，执行“修改节点列表”的运维命令，将集群列表由“node1/node2/node3”改为“node1/node2”，即把node3移除出地址列表：
+对 node1/node2 的任意一台，执行“修改节点列表”的运维命令，将集群列表由“node1/node2/node3”改为“node1/node2”，即把 node3 移除出地址列表：
 
 ```bash
 curl -X POST "http://<node1>:9615/manage/changePeer" -d "ipAddressList=<node1>,<node2>"
@@ -70,13 +70,13 @@ curl -X POST "http://<node1>:9615/manage/changePeer" -d "ipAddressList=<node1>,<
 
 ### 2.1 扩容 registry-meta
 
-假设目前已经部署了3台 registry-meta ，分别是 metaNode1/metaNode2/metaNode3，扩容的新节点是 metaNode4.
+假设目前已经部署了 3 台 registry-meta ，分别是 metaNode1/metaNode2/metaNode3，扩容的新节点是 metaNode4.
 
 **操作步骤：**
 
 **第一步. 部署新的 registry-meta 节点**
 
-首先参考[部署](../deployment)文档，将 `registry-meta.tgz` 在新节点 metaNode4 上部署起来，值得注意的是，metaNode4 需要将 nodes.metaNode 配置项指定为4台机器的地址列表：
+首先参考[部署](../deployment)文档，将 `registry-meta.tgz` 在新节点 metaNode4 上部署起来，值得注意的是，metaNode4 需要将 nodes.metaNode 配置项指定为 4 台机器的地址列表：
 
 ```bash
 nodes.metaNode=DefaultDataCenter:<metaNode1>,<metaNode2>,<metaNode3>,<metaNode4>
@@ -96,7 +96,7 @@ curl -X POST "http://<metaNode1>:9615/manage/changePeer" -d "ipAddressList=<meta
 
 ### 2.2 缩容 registry-meta 
 
-假设集群目前有3台机器 metaNode1/metaNode2/metaNode3，需要缩容 metaNode3。
+假设集群目前有 3 台机器 metaNode1/metaNode2/metaNode3，需要缩容 metaNode3。
 
 #### 2.2.1 平滑缩容
 
@@ -110,7 +110,7 @@ curl -X POST "http://<metaNode1>:9615/manage/changePeer" -d "ipAddressList=<meta
 curl -X POST "http://<metaNode1>:9615/manage/changePeer" -d "ipAddressList=<metaNode1>,<metaNode2>"
 ```
 
-做完这一步之后，访问 `curl http://<metaNode3>:9615/health/check` 状态显示应当是不健康的，因为metaNode3已经被踢出了集群。
+做完这一步之后，访问 `curl http://<metaNode3>:9615/health/check` 状态显示应当是不健康的，因为 metaNode3 已经被踢出了集群。
 
 **第二步. 关闭 metaNode3**
 

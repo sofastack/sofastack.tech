@@ -99,7 +99,7 @@ a. 判定合数剩余类问题是指 n=pq，其中：p、q 为大素数，任�
 
 b. 第 n 项剩余的集合是 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/58eb549438fa4b2e8cdf6c64a9213573~tplv-k3u1fbpfcp-zoom-1.image) 的一个![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c98a8b7da91b4896a847bc47ce764f27~tplv-k3u1fbpfcp-zoom-1.image) 阶乘法子集；
 
-c. 每个第 n 项剩余 z 都正好拥有 n 个 n 阶的根，其中只有一个是严格小于 n 的 *（即* *![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/64c4fe9b60724de08b88d3f87e2a0801~tplv-k3u1fbpfcp-zoom-1.image)）* ；d. 第n项剩余都可以写成 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dd33d4d3618c42af8911b045e084bd1e~tplv-k3u1fbpfcp-zoom-1.image)的形式。  
+c. 每个第 n 项剩余 z 都正好拥有 n 个 n 阶的根，其中只有一个是严格小于 n 的 *（即* *![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/64c4fe9b60724de08b88d3f87e2a0801~tplv-k3u1fbpfcp-zoom-1.image)）* ；d. 第 n 项剩余都可以写成 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dd33d4d3618c42af8911b045e084bd1e~tplv-k3u1fbpfcp-zoom-1.image)的形式。  
 
 ● 正确性验证  
 
@@ -295,7 +295,7 @@ arg2          The second argument of a homomorphic operation
 
 **- encrypt：** 对数字进行加密，输出 Paillier 加密的结果，需要通过参数 -key_in 参数指定 Paillier 公钥文件路径，如果加密负数则需要将 `-` 用 `_` 代替，因为 `-` 会被 OpenSSL 解析成预定义参数了 *（下同）* ；
 
-**- decrypt：** 对 Paillier 密文进行解密，输出解密结果，需要通过-key_in参数指定 Paillier 私钥文件路径；  
+**- decrypt：** 对 Paillier 密文进行解密，输出解密结果，需要通过-key_in 参数指定 Paillier 私钥文件路径；  
 
 **- add：** 对两个 Paillier 密文进行同态加法操作，输出同态加法密文结果，需要通过参数 -key_in 参数指定 Paillier 公钥文件路径；
 

@@ -33,7 +33,7 @@ id = basicId.withTag("service", "com.alipay.demo.demoService")
 
 上面是 Id 的简单示例了，如何创建 Id，如何打 tag，（每打一次 tag，都会生成并返回一个新的 Id 对象引用）切记！使用返回新的 Id 对象了哦。
 
-* 不要主动缓存 Id 或具体的 Metric 对象,Lookout 的 Registry 已经登记记录了。相等的 Id （ name 和 tags 一样）会复用已有的Id 对应 Metric 对象。
+* 不要主动缓存 Id 或具体的 Metric 对象,Lookout 的 Registry 已经登记记录了。相等的 Id （ name 和 tags 一样）会复用已有的 Id 对应 Metric 对象。
 
 #### 2.1 Priority tag (不是必须)
 
@@ -54,7 +54,7 @@ id.withTag(LookoutConstants.LOW_PRIORITY_TAG);
 专门用途的 TAG 名称: "priority": 表示优先级。
 - 系统保留的 tag key 统配格式`_*_`,以下划线开始，以下划线结束（比如: "_type_" ）。 `请不要使用这种格式的 key，可能会被系统覆盖或丢弃`
 
-### 3.可接入的统计( Metric )类型API
+### 3.可接入的统计( Metric )类型 API
 
 #### Counter 「计数器」
 
@@ -122,7 +122,7 @@ MixinMetric 是 Lookout 特有的，表示多个基本 metrics 的混合体。�
 
 - 场景：列出 TOP 5/10/20...（前 5/10/20... 名）度量信息；
 
-- 具体背景: 当希望更细粒度地跟踪和度量时，比如某条 sql 语句（某个 URL ）的请求耗时，你可能需要将 sql (或 url )作为一个tag ,比如:
+- 具体背景: 当希望更细粒度地跟踪和度量时，比如某条 sql 语句（某个 URL ）的请求耗时，你可能需要将 sql (或 url )作为一个 tag ,比如:
 
 ```Java
 sql_execute_cost:sql=select..

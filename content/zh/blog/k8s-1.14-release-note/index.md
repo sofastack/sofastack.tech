@@ -10,7 +10,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563847319489-1e2c8604-c98
 
 本文由张磊、心贵、临石、徙远、衷源、浔鸣等同学联合撰写。
 
-Kubernetes 1.14.0 Release 已经于 3 月 25 日正式发布。相信你也已经注意到，相比于1.13 和 1.12 版本，这次发布包含的重要变非常多，其对应的 [Release Note](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.14.md#kubernetes-v114-release-notes) 的篇幅长度也创下了“新高”。
+Kubernetes 1.14.0 Release 已经于 3 月 25 日正式发布。相信你也已经注意到，相比于 1.13 和 1.12 版本，这次发布包含的重要变非常多，其对应的 [Release Note](https://github.com/kubernetes/kubernetes/blob/master/CHANGELOG-1.14.md#kubernetes-v114-release-notes) 的篇幅长度也创下了“新高”。
 
 面对这样一份“海量信息”的 Release Note，我们该如何从这份文档里进行高效的信息过滤和挖掘，帮助团队更精准、快速的梳理出这次发布最主要的技术脉络呢？
 
@@ -18,12 +18,12 @@ Kubernetes 1.14.0 Release 已经于 3 月 25 日正式发布。相信你也已�
 
 ## Windows Node 正式生产可用
 
-随着1.14的发布，Kubernetes 对windows节点的生产级支持无疑是一个重要的里程碑。具体来说，1.14 版本针对 Windows 做了大量增强；
+随着 1.14 的发布，Kubernetes 对 windows 节点的生产级支持无疑是一个重要的里程碑。具体来说，1.14 版本针对 Windows 做了大量增强；
 
-- Pod：Pod内支持 readiness 和 liveness 探针；支持进程隔离和 volume 共享的多容器 Pod；Pod 支持原生configmap 和 sercret；Pod 支持emptyDir；支持对 Pod 进行资源配额等；但是像优雅删除、Termination message、Privileged Containers、HugePages、Pod 驱逐策略等部分特性还未在 1.14 版本提供；
+- Pod：Pod 内支持 readiness 和 liveness 探针；支持进程隔离和 volume 共享的多容器 Pod；Pod 支持原生 configmap 和 sercret；Pod 支持 emptyDir；支持对 Pod 进行资源配额等；但是像优雅删除、Termination message、Privileged Containers、HugePages、Pod 驱逐策略等部分特性还未在 1.14 版本提供；
 - Service：支持服务环境变量提供 DNS 解析；支持 NodePort、ClusterIP、LoadBalancer、Headless service；暂不支持 Pod 的 hostnetwork 模式；
 - 常规 Workload controller：RS、deployment、statefulset、daemonset、job、cronjob 均支持 windows 容器；
-- 除此之外，支持 Pod 和 container 维度的metrics、HPA、“kubectl exec”、调度抢占、resource quotas、CNI 网络支持等多种特性让 windows workload 更加云原生；由于 windows 的特殊兼容性，目前 host OS 的版本必须和容器镜像 OS 版本一致，1.14 版本支持 win server 2019；未来版本中会考虑使用 Hyper-V 隔离机制来解决版本兼容性问题。
+- 除此之外，支持 Pod 和 container 维度的 metrics、HPA、“kubectl exec”、调度抢占、resource quotas、CNI 网络支持等多种特性让 windows workload 更加云原生；由于 windows 的特殊兼容性，目前 host OS 的版本必须和容器镜像 OS 版本一致，1.14 版本支持 win server 2019；未来版本中会考虑使用 Hyper-V 隔离机制来解决版本兼容性问题。
 
 而伴随着  Windows 容器的生态正在慢慢壮大，能够在生产级别支持 Windows 节点的容器服务开始见诸各大云厂商。阿里云容器服务（ACK）近期已经推出了 Windows Container 的支持，提供了 linux/windows 应用混合部署的统一管理能力。
 
@@ -50,28 +50,28 @@ Kubernetes 1.14.0 Release 已经于 3 月 25 日正式发布。相信你也已�
 Kubernetes 里的任务优先级（priority）和抢占机制（preemption）的目的十分明确：保证高优先级的任务可以在需要的时候通过抢占低优先级任务的方式得到运行。
 
 这其中，优先级定义了一个 Pod 在集群中的重要程度，这个重要程度体现且仅体现在两个地方：
-1. 高优先级的Pod 在调度阶段更容易被优先调度（K8s 采用队列调度模型），注意这里并不保证高优先级 Pod 永远被优先调度，实际影响调度顺序的因素有很多；
+1. 高优先级的 Pod 在调度阶段更容易被优先调度（K8s 采用队列调度模型），注意这里并不保证高优先级 Pod 永远被优先调度，实际影响调度顺序的因素有很多；
 2. 在集群整体负载较高时，如果出现高优先级 Pod 无法被调度的情况（集群中没有满足条件的 Node 供 Pod 运行），K8s 会启动抢占机制，通过抢占已经运行的低优先级的 Pod 的方式，让高优先级的 Pod 可以运行起来。抢占机制便是在这里引入的。
 
-抢占机制指当调度器发现某个Pod（如 Pod-A）无法在集群中找到合适的节点部署时（所有节点 Predicates 全部失败），会试图通过删除一些优先级低于 Pod-A 的 Pod 来“腾出空间”部署 Pod-A，这样 Pod-A 就可以被调度了。这样一个“看似简单”的需求在分布式环境中实施起来有很多细节，例如：如何决定删除哪个节点的哪些 Pod、如何保证为 Pod-A 腾出的空间不被其它 Pod 占用、如何保证 Pod-A 不被饿死（Starvation）、如何处理有亲和性需求的 Pod 调度约束、是否需要支持跨节点 Preemption 以支持某些特定的约束（例如某 Failure Domain 的反亲和约束）等等。
+抢占机制指当调度器发现某个 Pod（如 Pod-A）无法在集群中找到合适的节点部署时（所有节点 Predicates 全部失败），会试图通过删除一些优先级低于 Pod-A 的 Pod 来“腾出空间”部署 Pod-A，这样 Pod-A 就可以被调度了。这样一个“看似简单”的需求在分布式环境中实施起来有很多细节，例如：如何决定删除哪个节点的哪些 Pod、如何保证为 Pod-A 腾出的空间不被其它 Pod 占用、如何保证 Pod-A 不被饿死（Starvation）、如何处理有亲和性需求的 Pod 调度约束、是否需要支持跨节点 Preemption 以支持某些特定的约束（例如某 Failure Domain 的反亲和约束）等等。
 
 参见：Pod Priority and Preemption in Kubernetes ([#564](https://github.com/kubernetes/enhancements/issues/564)) 
 
 ## 你一定要知道什么是 Pod Ready++
 
-在 1.14 版本之前，Kubernetes 判断一个 Pod 是否 Ready，就是检查这个 Pod 的容器是否全部正常运行。但是这里有个问题，那就是容器或者说里面的主进程 Ready，并不一定意味着这个应用副本就一定是就绪的。为了确认 Pod 确实可以正常可用，我们希望给它增加一些外部指标（比如，该 Pod 需要的 Service，DNS，存储等服务全部就绪），来反应这个Pod是否“真正”Ready。
+在 1.14 版本之前，Kubernetes 判断一个 Pod 是否 Ready，就是检查这个 Pod 的容器是否全部正常运行。但是这里有个问题，那就是容器或者说里面的主进程 Ready，并不一定意味着这个应用副本就一定是就绪的。为了确认 Pod 确实可以正常可用，我们希望给它增加一些外部指标（比如，该 Pod 需要的 Service，DNS，存储等服务全部就绪），来反应这个 Pod 是否“真正”Ready。
 
-这个特性，就是1.14 里一个叫做“Pod Readiness Gates”、也叫做 Pod Ready ++ 的特性。它为pod的“Ready 状态” 提供了一个非常强大的扩展点。需要注意的是，用户需要编写一个外部控制器（Controller）来为这个Pod Readiness Gates 字段对应的指标设置值。
+这个特性，就是 1.14 里一个叫做“Pod Readiness Gates”、也叫做 Pod Ready ++ 的特性。它为 pod 的“Ready 状态” 提供了一个非常强大的扩展点。需要注意的是，用户需要编写一个外部控制器（Controller）来为这个 Pod Readiness Gates 字段对应的指标设置值。
 
 参见：Pod Ready++ ([#580](https://github.com/kubernetes/enhancements/issues/580)) 
 
 ## Kubernetes 原生应用管理能力
 
-1.14之后，Kubernetes 项目本身开始具备了原生的应用管理能力，这其中最重要的一个功能，就是 Kustomize。
+1.14 之后，Kubernetes 项目本身开始具备了原生的应用管理能力，这其中最重要的一个功能，就是 Kustomize。
 
 Kustomize 允许用户从一个基础  YAML 文件，通过 overlay 的方式生成最终部署应用所需的 YAML 文件，而不是像 Helm 那样通过字符串替换的方式来直接修改基础 YAML 文件（模板）。这样，在一个用户通过 overlay 生成新的 YAML 文件的同时，其他用户可以完全不受影响的使用任何一个基础 YAML 或者某一层生成出来的 YAML 。这使得每一个用户，都可以通过 fork/modify/rebase 这样 Git 风格的流程来管理海量的 YAML 文件。这种 PATCH 的思想跟 Docker 镜像是非常类似的，它既规避了“字符串替换”对 YAML 文件的入侵，也不需要用户学习蹩脚的 DSL 语法（比如 Lua）。
 
-在1.14之后，Kustomize 已经成为了 kubectl 的一个内置命令。不难看到，Kubernetes 社区正在探索一种 Helm 之外的、更加 Kubernetes 原生的应用管理方法。具体效果如何，我们不妨拭目以待。
+在 1.14 之后，Kustomize 已经成为了 kubectl 的一个内置命令。不难看到，Kubernetes 社区正在探索一种 Helm 之外的、更加 Kubernetes 原生的应用管理方法。具体效果如何，我们不妨拭目以待。
 
 参见：Added Kustomize as a subcommand in kubectl ([#73033](https://github.com/kubernetes/kubernetes/pull/73033), [@Liujingfang1](https://github.com/Liujingfang1))
 
@@ -89,7 +89,7 @@ Kustomize 允许用户从一个基础  YAML 文件，通过 overlay 的方式�
 
 - 在做 Pod 驱逐时，会优先尝试使用优雅删除模式，而不是暴力删除 etcd 内的 Pod 数据。这个修复能够使被驱逐的 Pod 更加优雅的退出。参见：[#72730](https://github.com/kubernetes/kubernetes/pull/72730)
 - Kubelet 要重建 Pod 的容器时，如果旧容器是 unknown 状态，现在 Kubelet 会首先尝试 Stop 容器。这避免了一个 Pod 的同一个容器申明会有多个实例同时运行的风险。参见：[#73802](https://github.com/kubernetes/kubernetes/pull/73802)
-- 在大规模集群中，节点因为个别Pod使用了大量磁盘 IO，可能会导致节点频繁的在Ready/NotReady状态之间变化。这种状态会引起大规模的、不可预期的 Pod Eviction，导致线上故障。蚂蚁金服的工程师针对 Docker 环境下的这个问题提交了修复，建议大家也排查一下其它运行时的集群里是否有同样的问题。参见：[#74389](https://github.com/kubernetes/kubernetes/pull/74389)
+- 在大规模集群中，节点因为个别 Pod 使用了大量磁盘 IO，可能会导致节点频繁的在 Ready/NotReady 状态之间变化。这种状态会引起大规模的、不可预期的 Pod Eviction，导致线上故障。蚂蚁金服的工程师针对 Docker 环境下的这个问题提交了修复，建议大家也排查一下其它运行时的集群里是否有同样的问题。参见：[#74389](https://github.com/kubernetes/kubernetes/pull/74389)
 - 当 Kubelet 在压力较大情况下，可能会发生 Kubelet 的 Pod 生命周期事件消费频次弱于事件产生频次，导致负责这个事件的 Channel 被占满，这种情况持续一段时间后会直接导致 Kubelet 死锁。阿里巴巴的工程师针对修这个问题提交了修复。参见：[#72709](https://github.com/kubernetes/kubernetes/pull/72709)
 
 ## 大规模场景下的性能提升与优化
@@ -97,5 +97,5 @@ Kustomize 允许用户从一个基础  YAML 文件，通过 overlay 的方式�
 在 Kubernetes 的主干功能日趋稳定之后，社区已经开始更多的关注大规模场景下 Kubernetes 项目会暴露出来的各种各样的问题。在 v1.14 中，Kubernetes 社区从面向最终用户的角度做出了很多优化，比如：
 
 - kubectl 在实现中会顺序遍历 APIServer 暴露出的全部资源的 Group/Version/Kind，直到查找到需要处理的资源。这种遍历方式导致了用户在大规模集群下使用 kubectl 的性能体验受到很大影响。在 v1.14 版本中，kubectl 的顺序遍历行为终于参见： [#73345](https://github.com/kubernetes/kubernetes/pull/73345)
-- 在 1.14 中，APIServer 里的一个重要变更，是对单次 PATCH 请求内容里的操作个数做出了限制，不能超过10000个，否则就不处理此请求。这样做的目的，是防止 APIServer 因为处理海量的甚至是恶意 PATCH 请求导致整个集群瘫痪。这也其实也是社区的 CVE-2019-1002100 主要的修复方法。参见：[#74000](https://github.com/kubernetes/kubernetes/pull/74000)
-- Kubernetes 的 Aggregated API 允许 k8s 的开发人员编写一个自定义服务，并把这个服务注册到 k8s 的 API 里面像原生 API 一样使用。在这个情况下，APIServer 需要将用户自定义 API Spec 与原生的 API Spec 归并起来，这是一个非常消耗 CPU 的性能痛点。而在 v1.14 中，社区大大优化了这个操作的速率，极大地提升了APIServer 归并 Spec 的性能（提升了不止十倍）。参见：[#71223](https://github.com/kubernetes/kubernetes/pull/71223)
+- 在 1.14 中，APIServer 里的一个重要变更，是对单次 PATCH 请求内容里的操作个数做出了限制，不能超过 10000 个，否则就不处理此请求。这样做的目的，是防止 APIServer 因为处理海量的甚至是恶意 PATCH 请求导致整个集群瘫痪。这也其实也是社区的 CVE-2019-1002100 主要的修复方法。参见：[#74000](https://github.com/kubernetes/kubernetes/pull/74000)
+- Kubernetes 的 Aggregated API 允许 k8s 的开发人员编写一个自定义服务，并把这个服务注册到 k8s 的 API 里面像原生 API 一样使用。在这个情况下，APIServer 需要将用户自定义 API Spec 与原生的 API Spec 归并起来，这是一个非常消耗 CPU 的性能痛点。而在 v1.14 中，社区大大优化了这个操作的速率，极大地提升了 APIServer 归并 Spec 的性能（提升了不止十倍）。参见：[#71223](https://github.com/kubernetes/kubernetes/pull/71223)

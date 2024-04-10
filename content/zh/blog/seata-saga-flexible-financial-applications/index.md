@@ -48,7 +48,7 @@ Seata 意为：Simple Extensible Autonomous Transaction Architecture，是一套
 
 对于事务我们都知道 ACID，也很熟悉 CAP 理论最多只能满足其中两个，所以，为了提高性能，出现了 ACID 的一个变种 BASE。ACID 强调的是一致性（CAP 中的 C），而 BASE 强调的是可用性（CAP 中的 A）。我们知道，在很多情况下，我们是无法做到强一致性的 ACID 的。特别是我们需要跨多个系统的时候，而且这些系统还不是由一个公司所提供的。BASE 的系统倾向于设计出更加有弹力的系统，在短时间内，就算是有数据不同步的风险，我们也应该允许新的交易可以发生，而后面我们在业务上将可能出现问题的事务通过补偿的方式处理掉，以保证最终的一致性。
 
-所以我们在实际开发中会进行取舍，对于更多的金融核心以上的业务系统可以采用补偿事务，补偿事务处理方面在30年前就提出了 Saga 理论，随着微服务的发展，近些年才逐步受到大家的关注。目前业界比较也公认 Saga 是作为长事务的解决方案。
+所以我们在实际开发中会进行取舍，对于更多的金融核心以上的业务系统可以采用补偿事务，补偿事务处理方面在 30 年前就提出了 Saga 理论，随着微服务的发展，近些年才逐步受到大家的关注。目前业界比较也公认 Saga 是作为长事务的解决方案。
 > [https://github.com/aphyr/dist-sagas/blob/master/sagas.pdf](https://github.com/aphyr/dist-sagas/blob/master/sagas.pdf)
 > [http://microservices.io/patterns/data/saga.html](http://microservices.io/patterns/data/saga.html)
 
@@ -56,7 +56,7 @@ Seata 意为：Simple Extensible Autonomous Transaction Architecture，是一套
 
 ### Apache Camel Saga
 
-Camel 是实现 EIP（Enterprise Integration Patterns）企业集成模式的一款开源产品，它基于事件驱动的架构，有着良好的性能和吞吐量，它在2.21版本新增加了 Saga EIP。
+Camel 是实现 EIP（Enterprise Integration Patterns）企业集成模式的一款开源产品，它基于事件驱动的架构，有着良好的性能和吞吐量，它在 2.21 版本新增加了 Saga EIP。
 
 Saga EIP 提供了一种方式可以通过 camel route 定义一系列有关联关系的 Action，这些 Action 要么都执行成功，要么都回滚，Saga 可以协调任何通讯协议的分布式服务或本地服务，并达到全局的最终一致性。Saga 不要求整个处理在短时间内完成，因为它不占用任何数据库锁，它可以支持需要长时间处理的请求，从几秒到几天，Camel 的 Saga EIP 是基于 [Microprofile 的 LRA](https://github.com/eclipse/microprofile-sandbox/tree/master/proposals/0009-LRA)（Long Running Action），同样也是支持协调任何通讯协议任何语言实现的分布式服务。
 
@@ -144,7 +144,7 @@ public class CreateOrderSaga implements SimpleSaga<CreateOrderSagaData> {
 
 [ServiceComb Saga](https://github.com/apache/incubator-servicecomb-saga)也是一个微服务应用的数据最终一致性解决方案。相对于 [TCC](http://design.inf.usi.ch/sites/default/files/biblio/rest-tcc.pdf) 而言，在 try 阶段，Saga 会直接提交事务，后续 rollback 阶段则通过反向的补偿操作来完成。与前面两种不同是它是采用 Java 注解+拦截器的方式来进行“补偿”服务的定义。
 
-#### 架构：
+#### 架构
 
 Saga 是由 **alpha** 和 **omega **组成，其中：
 
@@ -155,7 +155,7 @@ Saga 是由 **alpha** 和 **omega **组成，其中：
 下图展示了 alpha，omega 以及微服务三者的关系：
 ![alpha，omega 以及微服务三者关系](https://cdn.nlark.com/lark/0/2018/png/65674/1532326931798-2fa9190d-4562-46f5-bb4e-ae48221126fd.png)
 
-#### 使用示例：
+#### 使用示例
 
 ```java
 public class ServiceA extends AbsService implements IServiceA {
@@ -226,7 +226,7 @@ Seata Saga 采用了状态机+DSL 方案来实现，原因有以下几个：
 - 状态机+DSL 方案在实际生产中应用更广泛；
 - 可以使用 Actor 模型或 SEDA 架构等异步处理引擎来执行，提高整体吞吐量；
 - 通常在核心系统以上层的业务系统会伴随有“服务编排”的需求，而服务编排又有事务最终一致性要求，两者很难分割开，状态机+DSL 方案可以同时满足这两个需求；
-- 由于 Saga 模式在理论上是不保证隔离性的，在极端情况下可能由于脏写无法完成回滚操作，比如举一个极端的例子, 分布式事务内先给用户 A 充值，然后给用户 B 扣减余额，如果在给A用户充值成功，在事务提交以前，A 用户把线消费掉了，如果事务发生回滚，这时则没有办法进行补偿了，有些业务场景可以允许让业务最终成功，在回滚不了的情况下可以继续重试完成后面的流程，状态机+DSL的方案可以实现“向前”恢复上下文继续执行的能力, 让业务最终执行成功，达到最终一致性的目的。
+- 由于 Saga 模式在理论上是不保证隔离性的，在极端情况下可能由于脏写无法完成回滚操作，比如举一个极端的例子, 分布式事务内先给用户 A 充值，然后给用户 B 扣减余额，如果在给 A 用户充值成功，在事务提交以前，A 用户把线消费掉了，如果事务发生回滚，这时则没有办法进行补偿了，有些业务场景可以允许让业务最终成功，在回滚不了的情况下可以继续重试完成后面的流程，状态机+DSL 的方案可以实现“向前”恢复上下文继续执行的能力, 让业务最终执行成功，达到最终一致性的目的。
 
 > 在不保证隔离性的情况下：业务流程设计时要遵循“宁可长款, 不可短款”的原则，长款意思是客户少了线机构多了钱，以机构信誉可以给客户退款，反之则是短款，少的线可能追不回来了。所以在业务流程设计上一定是先扣款。
 
@@ -386,7 +386,7 @@ public interface InventoryService {
   - Succeed: 状态机正常结束；
   - Fail: 状态机异常结束；
   - SubStateMachine: 调用子状态机；
-- ServiceName: 服务名称，通常是服务的beanId；
+- ServiceName: 服务名称，通常是服务的 beanId；
 - ServiceMethod: 服务方法名称；
 - CompensateState: 该"状态"的补偿"状态"；
 - Input: 调用服务的输入参数列表，是一个数组，对应于服务方法的参数列表， $.表示使用表达式从状态机上下文中取参数，表达使用的 [SpringEL](https://docs.spring.io/spring/docs/4.3.10.RELEASE/spring-framework-reference/html/expressions.html)， 如果是常量直接写值即可；

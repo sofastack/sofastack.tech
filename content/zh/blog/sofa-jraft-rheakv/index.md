@@ -43,7 +43,7 @@ SOFAJRaft-RheaKV 是一个轻量级的分布式的嵌入式的 KV 存储 Lib
 
 SOFAJRaft-RheaKV 存储类库主要包括 PD，Store 和 Region 三个核心组件，支持轻量级的状态/元信息存储以及集群同步，分布式锁服务使用场景：
 
-- PD 是全局的中心总控节点，负责整个集群的调度管理，维护 RegionRouteTable 路由表。一个 PDServer 管理多个集群，集群之间基于 clusterId 隔离；PD Server 需要单独部署，很多场景其实并不需要自管理，RheaKV 也支持不启用 PD，不需要自管理的集群可不启用 PD，设置 PlacementDriverOptions 的 fake选项为 true 即可。
+- PD 是全局的中心总控节点，负责整个集群的调度管理，维护 RegionRouteTable 路由表。一个 PDServer 管理多个集群，集群之间基于 clusterId 隔离；PD Server 需要单独部署，很多场景其实并不需要自管理，RheaKV 也支持不启用 PD，不需要自管理的集群可不启用 PD，设置 PlacementDriverOptions 的 fake 选项为 true 即可。
 - Store 是集群中的一个物理存储节点，一个 Store 包含一个或多个 Region。
 - Region 是最小的 KV 数据单元，可理解为一个数据分区或者分片，每个 Region 都有一个左闭右开的区间 [startKey, endKey)，能够根据请求流量/负载/数据量大小等指标自动分裂以及自动副本搬迁。Region 有多个副本 Replication 构建 Raft Groups 存储在不同的 Store 节点，通过 Raft 协议日志复制功能数据同步到同 Group 的全部节点。
 
@@ -103,7 +103,7 @@ PD 模块主要参考 TIKV 的设计理念，目前只实现自动平衡所�
 
 ## SOFAJRaft-RheaKV 剖析
 
-RheaKV 是基于 SOFAJRaft 实现的嵌入式、分布式、高可用、强一致的 KV 存储类库，TiKV 是一个分布式的 KV 系统，采用 Raft 协议保证数据的强一致性，同时使用 MVCC + 2PC 方式实现分布式事务的支持，两者如何基于 Raft协议实现 KV 存储？
+RheaKV 是基于 SOFAJRaft 实现的嵌入式、分布式、高可用、强一致的 KV 存储类库，TiKV 是一个分布式的 KV 系统，采用 Raft 协议保证数据的强一致性，同时使用 MVCC + 2PC 方式实现分布式事务的支持，两者如何基于 Raft 协议实现 KV 存储？
 
 ### RheaKV 基于 JRaft 实现
 
@@ -113,10 +113,10 @@ RaftRawKVStore 是 RheaKV 基于 Raft 复制状态机 KVStoreStateMachine�
 
 1. 检查当前节点的状态是否为 STATE_LEADER，如果当前节点不是 Leader 直接失败通知 Done Closure，通知失败(NOT_LEADER)后客户端刷新 Leader 地址并且重试。Raft 分组 Leader 节点调用 Node#apply(task) 提交申请基于键值操作的任务到相应 Raft Group，向 Raft Group 组成的复制状态机集群提交新任务应用到业务状态机，Raft Log 形成 Majority 后 StateMachine#onApply(iterator) 接口应用到状态机的时候会被获取调用。Node 节点构建申请任务日志封装成事件发布回调，发布节点服务事件到队列 applyQueue，依靠 Disruptor 的 MPSC 模型批量消费，对整体吞吐性能有着极大的提升。日志服务事件处理器以单线程 Batch 攒批的消费方式批量运行键值存储申请任务；
 1. Raft 副本节点 Node 执行申请任务检查当前状态是否为 STATE_LEADER，必须保证 Leader 节点操作申请任务。循环遍历节点服务事件判断任务的预估任期是否等于当前节点任期，Leader 没有发生变更的阶段内提交的日志拥有相同的 Term 编号，节点 Node 任期满足预期则 Raft 协议投票箱 BallotBox 调用 appendPendingTask(conf, oldConf, done) 日志复制之前保存应用上下文，即基于当前节点配置以及原始配置创建选票 Ballot 添加到选票双向队列 pendingMetaQueue；
-1. 日志管理器 LogManager 调用底层日志存储 LogStorage#appendEntries(entries) 批量提交申请任务日志写入 RocksDB，用于 Leader 向 Follower 复制日志包括心跳存活检查等。日志管理器发布 Leader 稳定状态回调 LeaderStableClosure 事件到队列 diskQueue 即 Disruptor 的 Ring Buffer，稳定状态回调事件处理器通过MPSC Queue 模型攒批消费触发提交节点选票；
+1. 日志管理器 LogManager 调用底层日志存储 LogStorage#appendEntries(entries) 批量提交申请任务日志写入 RocksDB，用于 Leader 向 Follower 复制日志包括心跳存活检查等。日志管理器发布 Leader 稳定状态回调 LeaderStableClosure 事件到队列 diskQueue 即 Disruptor 的 Ring Buffer，稳定状态回调事件处理器通过 MPSC Queue 模型攒批消费触发提交节点选票；
 1. 投票箱 BallotBox 调用 commitAt(firstLogIndex, lastLogIndex, peerId) 方法提交当前 PeerId 节点选票到 Raft Group，更新日志索引在[first_log_index, last_log_index]范畴。通过 Node#apply(task) 提交的申请任务最终将会复制应用到所有 Raft 节点上的状态机，RheaKV 状态机通过继承 StateMachineAdapter 状态机适配器的 KVStoreStateMachine 表示；
-1. Raft 状态机 KVStoreStateMachine 调用 onApply(iterator) 方法按照提交顺序应用任务列表到状态机。当 onApply(iterator) 方法返回时认为此批申请任务都已经成功应用到状态机上，假如没有完全应用(比如错误、异常)将被当做 Critical 级别错误报告给状态机的 onError(raftException) 方法，错误类型为 ERROR_TYPE_STATE_MACHINE。Critical 错误导致终止状态机，为什么这里需要终止状态机，非业务逻辑异常的话(比如磁盘满了等 IO 异常)，代表可能某个节点成功应用到状态机，但是当前节点却应用状态机失败，是不是代表出现不一致的错误？ 解决办法只能终止状态机，需要手工介入重启，重启后依靠 Snapshot + Raft log 恢复状态机保证状态机数据的正确性。提交的任务在 SOFAJRaft 内部用来累积批量提交，应用到状态机的是 Task迭代器，通过 com.alipay.sofa.jraft.Iterator 接口表示；
-1. KVStoreStateMachine 状态机迭代状态输出列表积攒键值状态列表批量申请 RocksRawKVStore 调用 batch(kvStates) 方法运行相应键值操作存储到 RocksDB，为啥 Batch 批量存储呢？ 刷盘常用伎俩，攒批刷盘优于多次刷盘。通过 RecycleUtil 回收器工具回收状态输出列表，其中KVStateOutputList 是 Pooled ArrayList 实现，RecycleUtil 用于释放列表对象池化复用避免每次创建 List。
+1. Raft 状态机 KVStoreStateMachine 调用 onApply(iterator) 方法按照提交顺序应用任务列表到状态机。当 onApply(iterator) 方法返回时认为此批申请任务都已经成功应用到状态机上，假如没有完全应用(比如错误、异常)将被当做 Critical 级别错误报告给状态机的 onError(raftException) 方法，错误类型为 ERROR_TYPE_STATE_MACHINE。Critical 错误导致终止状态机，为什么这里需要终止状态机，非业务逻辑异常的话(比如磁盘满了等 IO 异常)，代表可能某个节点成功应用到状态机，但是当前节点却应用状态机失败，是不是代表出现不一致的错误？ 解决办法只能终止状态机，需要手工介入重启，重启后依靠 Snapshot + Raft log 恢复状态机保证状态机数据的正确性。提交的任务在 SOFAJRaft 内部用来累积批量提交，应用到状态机的是 Task 迭代器，通过 com.alipay.sofa.jraft.Iterator 接口表示；
+1. KVStoreStateMachine 状态机迭代状态输出列表积攒键值状态列表批量申请 RocksRawKVStore 调用 batch(kvStates) 方法运行相应键值操作存储到 RocksDB，为啥 Batch 批量存储呢？ 刷盘常用伎俩，攒批刷盘优于多次刷盘。通过 RecycleUtil 回收器工具回收状态输出列表，其中 KVStateOutputList 是 Pooled ArrayList 实现，RecycleUtil 用于释放列表对象池化复用避免每次创建 List。
 
 RheaKV 基于状态机 KVStoreStateMachine 的 RaftRawKVStore 存储 Raft 实现入口：
 

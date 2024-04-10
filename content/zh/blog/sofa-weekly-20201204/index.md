@@ -55,6 +55,6 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 - 支持 MaxProcs 可基于 CPU 使用限制自动识别的能力
 - 支持指定 Istio cluster 的网络
 - 针对高并发场景的内存使用进行了优化
-- 多处BUG修复
+- 多处 BUG 修复
 
 详细参考：[https://github.com/mosn/mosn/releases/tag/v0.19.0](https://github.com/mosn/mosn/releases/tag/v0.19.0)

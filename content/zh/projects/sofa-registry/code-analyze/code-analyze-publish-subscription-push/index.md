@@ -10,7 +10,7 @@ date: 2022-05-09T15:00:00+08:00
 
 ## 前言
 
->此次源码解析均在 sofa-registry:6.1.4-SNAPSHOT 版本下分析
+> 此次源码解析均在 sofa-registry:6.1.4-SNAPSHOT 版本下分析
 
 ## 一、架构流程图
 
@@ -49,7 +49,7 @@ case SUBSCRIBER:
      break;
 ```
 
-* 触发RegProcessor#fireOnReg方法，将订阅者放入buffer中，参考源码如下：
+* 触发 RegProcessor#fireOnReg 方法，将订阅者放入 buffer 中，参考源码如下：
 
 ```java
 boolean fireOnReg(Subscriber subscriber) {
@@ -94,10 +94,10 @@ int processBuffer(Ref ref, int hitSize) {
 }
 ```
 
-* 通过 FirePushService#getDatum 方法从缓存中获取地址列表。该缓存使用 Guava Cache 的LoadingCache，当缓存中没有 dataInfoId 的地址列表时，会自动从 data server 获取地址列表，并放在缓存中。
+* 通过 FirePushService#getDatum 方法从缓存中获取地址列表。该缓存使用 Guava Cache 的 LoadingCache，当缓存中没有 dataInfoId 的地址列表时，会自动从 data server 获取地址列表，并放在缓存中。
 
 * 通过 FirePushService#processPush 方法将地址列表推送给所有订阅者
-    * 首先通过 firePush 方法将 PushTas k放入 buffer
+    * 首先通过 firePush 方法将 PushTas k 放入 buffer
     * 等待 PushTaskBuffer.BufferWorker 线程异步处理任务
 
 ### 2.4 session server 推送地址列表
@@ -133,7 +133,7 @@ int watchBuffer(BufferWorker worker) {
 
 ## 三、发布流程
 
-服务发布流程主要分为下面5步：
+服务发布流程主要分为下面 5 步：
 
 * 客户端服务注册
 * session server 处理服务发布请求
@@ -230,7 +230,7 @@ public void run() {
 ```
 
 * data server 的 BatchPutDataHandler 收到请求
-* tryAddPublisher：当 registerId 对应服务没有发布过或传入发布方 version 最新时，存入LocalDatumStorage；仅当新增发布方或已有发布方地址列表发生改变时，返回 true，并生成 DataChange 事件；
+* tryAddPublisher：当 registerId 对应服务没有发布过或传入发布方 version 最新时，存入 LocalDatumStorage；仅当新增发布方或已有发布方地址列表发生改变时，返回 true，并生成 DataChange 事件；
 
 ```java
 private boolean tryAddPublisher(Publisher publisher) {
@@ -486,11 +486,11 @@ SubDatum getDatum(String dataCenter, String dataInfoId, long expectVersion) {
 
 异步处理
 
-* SOFARegistry 是 AP 的，订阅发布流程基本上都采用了异步处理的方式，牺牲了一部分一致性。内部大量采用了 Map 或队列作为缓存，解耦生产者和消费者，极大地提升了客户端 session server和 data server 的性能；
+* SOFARegistry 是 AP 的，订阅发布流程基本上都采用了异步处理的方式，牺牲了一部分一致性。内部大量采用了 Map 或队列作为缓存，解耦生产者和消费者，极大地提升了客户端 session server 和 data server 的性能；
 缓存：
 
 * SessionServer 通过 SessionCacheService 缓存地址列表，避免频繁请求给 data server 造成较大压力，影响存储稳定性；内部通过推拉结合的方式解决地址更新的问题，一方面通过数据变更通知 session server 更新地址列表，另一方面通过 VersionWatchDog 定时扫描版本号，拉取 data server 变更的地址列表；
-* 
+
 合并 merge
 
 * 发布服务写入 data server 时采用了批量处理的方式，减少与 data server 的网络交互，避免频繁请求给 data server 造成较大压力，影响存储稳定性。

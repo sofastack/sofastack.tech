@@ -85,7 +85,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 **发布 SOFATracer v3.0.12 版本，主要变更如下：**
 
-- 2个 Dubbo 插件融合, 新的用户请直接使用 sofa-tracer-dubbo-common-plugin；
+- 2 个 Dubbo 插件融合, 新的用户请直接使用 sofa-tracer-dubbo-common-plugin；
 - 修复 Dubbo 插件传递错误 spanId 的问题；
 
 详细发布报告：
@@ -100,7 +100,7 @@ SOFATracer 是蚂蚁金服开源的基于 OpenTracing 规范 的分布式链路�
 本期直播将通过具体 Demo 带你快速上手 SOFATracer，同时将介绍 SOFATracer 具体功能，并详细介绍其核心关键「埋点机制」的原理。
 
 - 主题：SOFAChannel#15：分布式链路组件 SOFATracer 埋点机制解析
-- 时间：2020年4月23日（周四）19:00-20:00
+- 时间：2020 年 4 月 23 日（周四）19:00-20:00
 - 嘉宾：卫恒 SOFATracer 开源负责人
 - 形式：线上直播
 - 报名方式：点击“[这里](https://tech.antfin.com/community/live/1167)”，即可报名

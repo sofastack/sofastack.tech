@@ -29,7 +29,7 @@ cover: "/cover.jpg"
 
 ### 跟踪采样模型
 
-每个请求都会利用到大量服务器高吞吐量的线上服务，这是对有效跟踪最主要的需求之一。这种情况需要生成大量的跟踪数据，并且他们对性能的影响是最敏感的。延迟和吞吐量带来的损失在把采样率调整到小于1/16之后就能全部在实验误差范围内。
+每个请求都会利用到大量服务器高吞吐量的线上服务，这是对有效跟踪最主要的需求之一。这种情况需要生成大量的跟踪数据，并且他们对性能的影响是最敏感的。延迟和吞吐量带来的损失在把采样率调整到小于 1/16 之后就能全部在实验误差范围内。
 
 在实践中，我们发现即便采样率调整到 1/1024 仍然是有足够量的跟踪数据用来跟踪大量的服务。保持链路跟踪系统的性能损耗基线在一个非常低的水平是很重要的，因为它为那些应用提供了一个宽松的环境使用完整的 Annotation API 而无惧性能损失。使用较低的采样率还有额外好处，可以让持久化到硬盘中的跟踪数据在垃圾回收机制处理之前保留更长时间，这样为链路跟踪系统的收集组件提供更多灵活性。
 
@@ -39,7 +39,7 @@ cover: "/cover.jpg"
 
 要真正做到应用级别的透明，我们需要把核心跟踪代码做的很轻巧，然后把它植入到那些无所不在的公共组件中，比如线程调用、控制流以及 RPC 库。使用自适应的采样率可以使链路跟踪系统变得可伸缩，并且降低性能损耗。链路跟踪系统的实现要求性能低损耗，尤其在生产环境中不能影响到核心业务的性能，也不可能每次请求都跟踪，所以要进行采样，每个应用和服务可以自己设置采样率。采样率应该是在每个应用自己的配置里设置的，这样每个应用可以动态调整，特别是应用刚上线时可以适当调高采样率。一般在系统峰值流量很大的情况下，只需要采样其中很小一部分请求，例如 1/1000 的采样率，即分布式跟踪系统只会在 1000 次请求中采样其中的某一次。
 
-在 Dapper 论文中强调了数据采样的重要性，如果将每条埋点数据都刷新到磁盘上会增大链路追踪框架对原有业务性能的影响。如果采样率太低，可能会导致一些重要数据的丢失。 论文中提到如果在高并发情况下 1/1024 的采样率是足够的，也不必担心重要事件数据的丢失。因为在高并发环境下，一个异常数据出现一次，那么就会出现1000次。 然而在并发量不是很多的系统，并且对数据极为敏感时需要让业务开发人员手动设置采样率。
+在 Dapper 论文中强调了数据采样的重要性，如果将每条埋点数据都刷新到磁盘上会增大链路追踪框架对原有业务性能的影响。如果采样率太低，可能会导致一些重要数据的丢失。 论文中提到如果在高并发情况下 1/1024 的采样率是足够的，也不必担心重要事件数据的丢失。因为在高并发环境下，一个异常数据出现一次，那么就会出现 1000 次。 然而在并发量不是很多的系统，并且对数据极为敏感时需要让业务开发人员手动设置采样率。
 
 对于高吞吐量服务，积极采样并不妨碍最重要的分析。如果一个显著的操作在系统中出现一次，他就会出现上千次。低吞吐量服务可以负担得起跟踪每一个请求。这是促使我们下决心使用自适应采样率的原因。为了维持物质资源的需求和渐增的吞吐要求之间的灵活性，我们在收集系统自身上增加了额外的采样率支持。
 
@@ -80,7 +80,7 @@ SOFATracer 构建 Span 区别于 OpenTracing 规范中基于 SpanBuilder#start �
 
 ![image.png](https://cdn.nlark.com/yuque/0/2019/png/230565/1548820117348-503e1dbc-8639-4104-8479-6b8a7cb4701f.png)
 
-第二种情况下是基于 SofaTracerSpanContext 构建，SOFATracer 中 SofaTracerSpanContext 的构造函数默认会设置为不采样，那么对于这种情况，SOFATracer 会将采样计算延迟到 Span 上报时进行，此时计算的条件是SofaTracer 中有采样器存在并且当前 Span 必须是 rootSpan ：
+第二种情况下是基于 SofaTracerSpanContext 构建，SOFATracer 中 SofaTracerSpanContext 的构造函数默认会设置为不采样，那么对于这种情况，SOFATracer 会将采样计算延迟到 Span 上报时进行，此时计算的条件是 SofaTracer 中有采样器存在并且当前 Span 必须是 rootSpan ：
 
 ![image.png](https://cdn.nlark.com/yuque/0/2019/png/230565/1548820649340-2e3a6064-e40a-4e30-a4fb-377053d6b387.png)
 
@@ -112,7 +112,7 @@ SofaTracerPercentageBasedSampler 基于蓄水池采样算法创建随机 BitSet 
 
 ### 固定采样率模式
 
-SOFATracer 提供基于固定采样率的采样实现，采样模式需设置为 PercentageBasedSampler 。当 com.alipay.sofa.tracer.samplerName=PercentageBasedSampler 时，用户需配置com.alipay.sofa.tracer.samplerPercentage 采样率。
+SOFATracer 提供基于固定采样率的采样实现，采样模式需设置为 PercentageBasedSampler 。当 com.alipay.sofa.tracer.samplerName=PercentageBasedSampler 时，用户需配置 com.alipay.sofa.tracer.samplerPercentage 采样率。
 
 通过 application.properties 增加采样相关配置项提供基于固定采样率的采样模式：
 
@@ -126,7 +126,7 @@ SOFATracer 提供基于固定采样率的采样实现，采样模式需设置为
 
 以请求 10 次来验证下结果。
 
-1.当采样率设置为100时，每次都会打印摘要日志
+1.当采样率设置为 100 时，每次都会打印摘要日志
 启动工程，浏览器中输入：[http://localhost:8080/springmvc](http://localhost:8080/springmvc) ；并且刷新地址 10 次，查看日志如下：
 
 ```json
@@ -155,7 +155,7 @@ SOFATracer 提供基于固定采样率的采样实现，采样模式需设置为
 ```
 
 - 刷新 20 次请求
-- 
+
 
 ```json
 {"time":"2018-11-09 12:14:29.466","local.app":"SOFATracerSpringMVC","traceId":"0a0fe8ec154173686946410159846","spanId":"0.1","request.url":"http://localhost:8080/springmvc","method":"GET","result.code":"200","req.size.bytes":-1,"resp.size.bytes":0,"time.cost.milliseconds":2,"current.thread.name":"http-nio-8080-exec-5","baggage":""}

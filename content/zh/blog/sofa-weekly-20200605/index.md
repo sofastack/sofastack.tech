@@ -35,7 +35,7 @@ A：SOFARPC 发的 rest 服务，feign 的方式是可以调用的，但是跟 r
 
 A：[https://github.com/sofastack/spring-cloud-sofastack-samples](https://github.com/sofastack/spring-cloud-sofastack-samples)
 
-> 我想问下 SOFARegistry 能像 Nacos 那样注册的是整个服务的名称么，现在 SOFARegistry 是细到接口。Spring Cloud是以整个应用注册的，SOFARegistry 是以每一个SofaServicce 注册的。
+> 我想问下 SOFARegistry 能像 Nacos 那样注册的是整个服务的名称么，现在 SOFARegistry 是细到接口。Spring Cloud 是以整个应用注册的，SOFARegistry 是以每一个 SofaServicce 注册的。
 
 A：SOFARegistry 和 Nacos 都是注册中心服务端产品，存的都是 key: list< string > 这样的数据结构，里面存什么数据是由他们的客户端决定的。SOFARPC 就算是注册中心的客户端。
 

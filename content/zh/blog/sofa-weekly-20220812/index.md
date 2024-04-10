@@ -29,7 +29,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **1. 信广健** 提问：
 
->经过十分曲折的故事了解到了 Layotto ， 进群后想看看后续发展，有什么好的文档可以学习下吗？
+> 经过十分曲折的故事了解到了 Layotto ， 进群后想看看后续发展，有什么好的文档可以学习下吗？
 
 A：目前还在活跃开发中，可以看下 *https://github.com/mosn/layotto* 了解下，相关的文档也在 *https://mosn.io/layotto/*
 
@@ -37,7 +37,7 @@ A：目前还在活跃开发中，可以看下 *https://github.com/mosn/layotto
 
 **2. 清源** 提问：
 
->现在 MOSN 除了适配 XDS 做到动态规则下发之外？有没有其他的动态规则下发办法？
+> 现在 MOSN 除了适配 XDS 做到动态规则下发之外？有没有其他的动态规则下发办法？
 
 A：你可以自己实现的，XDS 也是调用 MOSN 的更新 API。
 
@@ -45,11 +45,11 @@ A：你可以自己实现的，XDS 也是调用 MOSN 的更新 API。
 
 **3. 樊志超** 提问：
 
->问一下，MOSN 与业务容器间的信息交互是采用 socket 方式吗？
+> 问一下，MOSN 与业务容器间的信息交互是采用 socket 方式吗？
 
 A：这个看你怎么用了，自己选择。
 
->默认的是哪种方式呢？
+> 默认的是哪种方式呢？
 
 A：TCP、UDS 都可以。
 

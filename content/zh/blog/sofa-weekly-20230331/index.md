@@ -59,7 +59,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **1.@Misakami  #1321**
 
->请问 sofa-rpc 有支持 jdk 17 的计划么？现在虽然能正常使用，但是需要在启动参数加上 --add-opens java.base/java.lang=ALL-UNNAMED。
+> 请问 sofa-rpc 有支持 jdk 17 的计划么？现在虽然能正常使用，但是需要在启动参数加上 --add-opens java.base/java.lang=ALL-UNNAMED。
 
 A：有的，近期也正在做兼容 jdk 17 的开发。
 
@@ -67,7 +67,7 @@ A：有的，近期也正在做兼容 jdk 17 的开发。
 
 **2.@googlefan  #939** 
 
->jraft-spring-boot-starter || NodeManager 设计目的的作用?
+> jraft-spring-boot-starter || NodeManager 设计目的的作用?
 看到 jraft-core 有提供 NodeManage.nodeMap 这个针对 Node 节点进行管理的实例，我以为可以通过 NodeManage.nodeMap 来获取所有集群节点的 RPC 服务，如果是这样的话，这个类的设计的目的是?
 
 A：NodeManager 是 jraft 内部为了实现单个进程内多个 raft group 共享同一个网络端口设计的，不是给集成着或者用户使用的。

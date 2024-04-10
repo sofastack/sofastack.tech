@@ -25,7 +25,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 1.@有时候 提问：
 
->SOFARPC 注册服务和订阅服务用到的 interface，Java 类文件内容是一样的，但如果包路径不是完全一样有问题么？
+> SOFARPC 注册服务和订阅服务用到的 interface，Java 类文件内容是一样的，但如果包路径不是完全一样有问题么？
 
 A：路径不一样就是不同接口，注册中心不感知到 method 这层。dataid 不一样的，[https://www.sofastack.tech/projects/sofa-rpc/rpc-config-xml-explain/](https://www.sofastack.tech/projects/sofa-rpc/rpc-config-xml-explain/) 。
 
@@ -33,11 +33,11 @@ A：路径不一样就是不同接口，注册中心不感知到 method 这层�
 
 2.@啥也不是 提问：
 
->大佬们，在现有协议拓展框架下，在 choose host 以后根据节点信息动态选择上游的协议，实现起来感觉不是很方便，有大佬指点一下吗？
+> 大佬们，在现有协议拓展框架下，在 choose host 以后根据节点信息动态选择上游的协议，实现起来感觉不是很方便，有大佬指点一下吗？
 
 A：你是上下游协议不一样吗？
 
->是的，而且同一个集群里面协议也可能不一样。我们自己的 RPC 协议存在多个版本，上下游的版本我们没办法控制，想着每个版本分别作为一种协议，利用框架能力，让协议版本的选择跟序列化解偶，每个 host 的版本是通过我们自己配置中心获取的。cluster 中 host 协议版本不受我们控制。
+> 是的，而且同一个集群里面协议也可能不一样。我们自己的 RPC 协议存在多个版本，上下游的版本我们没办法控制，想着每个版本分别作为一种协议，利用框架能力，让协议版本的选择跟序列化解偶，每个 host 的版本是通过我们自己配置中心获取的。cluster 中 host 协议版本不受我们控制。
 
 A：Upstream 的协议本来就是在 filter 里面转换，你在 choose host 之后进行 filter 设置就行了。这个是一个协议转换框架 filter，根据配置的协议转换，你可以复用这个，区别就是 upstream 的协议是动态指定的，但没有本质区别：[https://www.github.com/mosn/mosn/tree/master/pkg%2Ffilter%2Fstream%2Ftranscoder](https://www.github.com/mosn/mosn/tree/master/pkg%2Ffilter%2Fstream%2Ftranscoder)
 
@@ -45,7 +45,7 @@ A：Upstream 的协议本来就是在 filter 里面转换，你在 choose host �
 
 3.@曹飞 提问：
 
->大佬，监控指标可以显示到应用维度吗？<br/>
+> 大佬，监控指标可以显示到应用维度吗？<br/>
 ![weekly2](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*GAOBTp1WtUoAAAAAAAAAAAAAARQnAQ)
 
 A：Metric 可以自定义输出的。
@@ -106,4 +106,4 @@ SOFARPC
 
 更多文章请扫码关注“金融级分布式架构”公众号
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*8G5NRZ7UEToAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*8G5NRZ7UEToAAAAAAAAAAAAAARQnAQ)

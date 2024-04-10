@@ -223,7 +223,7 @@ TensorFlow Pod 分别并发 50、100、200、500 的回源流量。
 ### 术语及定义
 
 **OCI**
-Open Container Initiative，开放容器计划是一个 Linux 基金会项目，由Docker在2015年6月启动，旨在为操作系统级虚拟化（*最重要的是 Linux 容器）*设计开放标准。
+Open Container Initiative，开放容器计划是一个 Linux 基金会项目，由 Docker 在 2015 年 6 月启动，旨在为操作系统级虚拟化（*最重要的是 Linux 容器）*设计开放标准。
 
 **OCI Artifac****t**
 遵循 OCI image spec 的制品。
@@ -235,7 +235,7 @@ Open Container Initiative，开放容器计划是一个 Linux 基金会项目，
 遵循 OCI distribution spec 实现的制品仓库。
 
 **ECS**
-是一种由CPU、内存、云盘组成的资源集合，每一种资源都会逻辑对应到数据中心的计算硬件实体。
+是一种由 CPU、内存、云盘组成的资源集合，每一种资源都会逻辑对应到数据中心的计算硬件实体。
 
 **CR**
 火山引擎镜像仓库服务。
@@ -252,7 +252,7 @@ Open Container Initiative，开放容器计划是一个 Linux 基金会项目，
 火山引擎提供的海量、安全、低成本、易用、高可靠、高可用的分布式云存储服务。
 
 **Private Zone**
-基于专有网络VPC*（Virtual Private Cloud）*环境的私有DNS服务。该服务允许在自定义的一个或多个VPC中将私有域名映射到IP地址。
+基于专有网络 VPC*（Virtual Private Cloud）*环境的私有 DNS 服务。该服务允许在自定义的一个或多个 VPC 中将私有域名映射到 IP 地址。
 
 **P2P**
 

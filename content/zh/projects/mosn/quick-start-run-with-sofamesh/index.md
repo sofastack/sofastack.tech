@@ -62,9 +62,9 @@ $ brew cask install minikube
 $ minikube start --memory=8192 --cpus=4 --kubernetes-version=v1.15.0 --vm-driver=hyperkit
 ```
 
-创建istio 命名空间
+创建 istio 命名空间
 
-```
+```plain
 $ kubectl create namespace istio-system
 ```
 
@@ -97,7 +97,7 @@ $ git clone https://github.com/sofastack/sofa-mesh.git
 
 **使用 `helm template` 安装**
 
-首先需要切换到SOFAMesh源码所在目录，然后使用Helm安装istio CRD以及各个组件 
+首先需要切换到 SOFAMesh 源码所在目录，然后使用 Helm 安装 istio CRD 以及各个组件 
 
 ```bash
 $ cd sofa-mesh 
@@ -108,7 +108,7 @@ $ helm template install/kubernetes/helm/istio --name istio --namespace istio-sys
 ### 3. 验证安装
 
 `istio-system` 命名空间下的 pod 状态都是 Running 时，说明已经部署成功。
-如果仅仅是为了运行bookinfo，只需要pilot,injector,citadel这三个pods运行成功就可以满足最低要求
+如果仅仅是为了运行 bookinfo，只需要 pilot,injector,citadel 这三个 pods 运行成功就可以满足最低要求
 
 ```bash
 $ kubectl get pods -n istio-system
@@ -127,7 +127,7 @@ prometheus-84bd4b9796-nq8lg                 1/1     Running   0          5m
 
 ### 4. 卸载安装
 
-卸载SOFAMesh
+卸载 SOFAMesh
 
 ```bash
 $ helm template install/kubernetes/helm/istio --name istio --namespace istio-system | kubectl delete -f -
@@ -196,7 +196,7 @@ NAME               AGE
 bookinfo-gateway   24m
 ```
 
-设置GATEWAY_URL,参考文档 https://istio.io/docs/tasks/traffic-management/ingress/ingress-control/#determining-the-ingress-ip-and-ports
+设置 GATEWAY_URL,参考文档 https://istio.io/docs/tasks/traffic-management/ingress/ingress-control/#determining-the-ingress-ip-and-ports
 
 ```bash
 $ export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].nodePort}')

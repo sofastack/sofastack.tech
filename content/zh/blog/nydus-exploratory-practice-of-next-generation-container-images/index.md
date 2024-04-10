@@ -12,7 +12,7 @@ cover: "https://img.alicdn.com/imgextra/i1/O1CN01RhFWZu1IEqAgomXg9_!!60000000008
 
 文｜严松（花名：井守）
 
-Nydus 镜像开源项目 Maintainer蚂蚁集团技术专家
+Nydus 镜像开源项目 Maintainer 蚂蚁集团技术专家
 
 蚂蚁集团基础设施研发，专注云原生镜像与容器运行时生态
 

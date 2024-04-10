@@ -36,7 +36,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **1.@linkoog  #602**
 
->SOFAArk 2.0 合并部署时，ark-biz 无法读取配置文件
+> SOFAArk 2.0 合并部署时，ark-biz 无法读取配置文件
 
 A：配置文件的配置应该和 Spring Boot 应用保持一致，建议把配置文件放置到 resources 目录下。
 
@@ -44,7 +44,7 @@ A：配置文件的配置应该和 Spring Boot 应用保持一致，建议把配
 
 **2.@tdxafpdq  #925** 
 
->消息中间件业务场景下，如何使用 Snapshot 服务，以解决磁盘占用持续增长以及全量回放变慢。
+> 消息中间件业务场景下，如何使用 Snapshot 服务，以解决磁盘占用持续增长以及全量回放变慢。
 
 A：消息场景下，还是控制消息的总量，通过 TTL 等机制来及时删除过期的消息，如果是同步数据库的场景，可以使用 Snapshot 来做检查点（Checkpoint），Snapshot 本身可能只做一些数据库状态校验的动作，确保 Snapshot log index 之前的日志都已经同步复制完成，然后 JRaft 就可以释放之前的日志。
 

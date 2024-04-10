@@ -59,7 +59,7 @@ A：具体内容我们会在 Service Mesh Summit 2022 首届服务网格峰会�
 
 A：是的，就这个意思。现在我们的 demo 就可以玩起来了，只是有些接口还没标准化，现在我们内部落地的 sofagw 就是这个架构。
 
-「demo文档」⬇️：
+「demo 文档」⬇️：
 [https://github.com/mosn/mosn/blob/master/pkg/networkextention/README-cn.md](https://github.com/mosn/mosn/blob/master/pkg/networkextention/README-cn.md)
 
 3.关于 GC 优化方式的讨论 

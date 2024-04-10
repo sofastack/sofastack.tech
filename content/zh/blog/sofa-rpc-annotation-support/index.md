@@ -27,7 +27,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563351799427-65a125ce-a51
 
 3. 编程 API 方式（动态）
 
-编程 API 方式与Spring 的 `ApplicationContextAware` 类似。XML的方式依赖于在xml中引入 SOFA 命名空间，利用 Bean 的生命周期管理，进行 Bean 的注入。相比这两种方式，通过 Annotation 方式发布 JVM 服务更加灵活方便，只需要在实现类上加 `@SofaService`、`@SofaRefernce` 注解即可进行服务的发布和引用。本文针对 SOFARPC 在注解的支持和使用分原理、源码两部分进行一一介绍。
+编程 API 方式与 Spring 的 `ApplicationContextAware` 类似。XML 的方式依赖于在 xml 中引入 SOFA 命名空间，利用 Bean 的生命周期管理，进行 Bean 的注入。相比这两种方式，通过 Annotation 方式发布 JVM 服务更加灵活方便，只需要在实现类上加 `@SofaService`、`@SofaRefernce` 注解即可进行服务的发布和引用。本文针对 SOFARPC 在注解的支持和使用分原理、源码两部分进行一一介绍。
 
 ## 2、原理介绍
 
@@ -35,11 +35,11 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563351799427-65a125ce-a51
 
 注解又称为元数据，可以对代码中添加信息，这是一种形式化的方法，可以在稍后的某个时刻非常方便地使用这些数据。这个时刻可能是编译时，也可能是运行时。
 
-注解是JDK1.5版本开始引入的一个特性，用于对代码进行说明，可以对包、类、接口、字段、方法参数、局部变量等进行注解。注解的本质就是一个继承了 Annotation 接口的接口。一个注解准确意义上来说，只不过是一种特殊的注释而已，如果没有解析它的代码，它可能连注释都不如。
+注解是 JDK1.5 版本开始引入的一个特性，用于对代码进行说明，可以对包、类、接口、字段、方法参数、局部变量等进行注解。注解的本质就是一个继承了 Annotation 接口的接口。一个注解准确意义上来说，只不过是一种特殊的注释而已，如果没有解析它的代码，它可能连注释都不如。
 
 一般常用的注解可以分为三类：
 
-1. Java自带的标准注解，包括`@Override`（标明重写某个方法）、`@Deprecated`（标明某个类或方法过时）和`@SuppressWarnings`（标明要忽略的警告）。
+1. Java 自带的标准注解，包括`@Override`（标明重写某个方法）、`@Deprecated`（标明某个类或方法过时）和`@SuppressWarnings`（标明要忽略的警告）。
 
 2. 元注解，元注解是用于定义注解的注解。
 
@@ -62,8 +62,8 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563351799427-65a125ce-a51
 
 2. @Retention：指定了被修饰的注解的生命周期，分以下三种类型：
 
-- RetentionPolicy.SOURCE：该注解只保留在一个源文件当中，当编译器将源文件编译成class文件时，它不会将源文件中定义的注解保留在class文件中。
-- RetentionPolicy.CLASS：该注解只保留在一个class文件当中，当加载class文件到内存时，虚拟机会将注解去掉，从而在程序中不能访问。
+- RetentionPolicy.SOURCE：该注解只保留在一个源文件当中，当编译器将源文件编译成 class 文件时，它不会将源文件中定义的注解保留在 class 文件中。
+- RetentionPolicy.CLASS：该注解只保留在一个 class 文件当中，当加载 class 文件到内存时，虚拟机会将注解去掉，从而在程序中不能访问。
 - RetentionPolicy.RUNTIME：该注解在程序运行期间都会存在内存当中。此时，我们可以通过反射来获得定义在某个类上的所有注解。
 
 3. @Documented：当我们执行 JavaDoc 文档打包时会被保存进 doc 文档，反之将在打包时丢弃。
@@ -98,9 +98,9 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563351799427-65a125ce-a51
 - RuntimeInVisibleParameterAnnotations：运行时不可见的方法参数注解
 - AnnotationDefault：注解类元素的默认值
 
-`java.lang.reflect.AnnotatedElement` 接口是所有程序元素（Class、Method和Constructor）的父接口，程序通过反射获取了某个类的 AnnotatedElemen t对象之后，利用 Java 的反射机获取程序代码中的注解，然后根据预先设定的处理规则解析处理相关注解以达到主机本身设定的功能目标。
+`java.lang.reflect.AnnotatedElement` 接口是所有程序元素（Class、Method 和 Constructor）的父接口，程序通过反射获取了某个类的 AnnotatedElemen t 对象之后，利用 Java 的反射机获取程序代码中的注解，然后根据预先设定的处理规则解析处理相关注解以达到主机本身设定的功能目标。
 
-本质上来说，反射机制就是注解使用的核心，程序可以调用该对象的以下方法来访问 Annotation信息：
+本质上来说，反射机制就是注解使用的核心，程序可以调用该对象的以下方法来访问 Annotation 信息：
 
 - getAnnotation：返回指定的注解
 - isAnnotationPresent：判定当前元素是否被指定注解修饰
@@ -150,29 +150,29 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563351799427-65a125ce-a51
 
 2. 生成 ServiceComponent 服务组件对象。
 
-3. 调用 ServiceComponent 服务组件的 register、resolve、activate方法，逐一调用对应 BindingAdapter 对外暴露服务。
+3. 调用 ServiceComponent 服务组件的 register、resolve、activate 方法，逐一调用对应 BindingAdapter 对外暴露服务。
 
 4. 不同的 BindingAdapter，对应的 outBinding 服务处理策略不一样。对于 JvmBindingAdapter 直接返回空，因为服务不需要暴露给外部，当其他模块调用该服务，直接通过 registry 对象进行查找。其他 RPC BindingAdapter 则将服务信息推送到注册中心 Confreg。
 
-5. 将 ServiceComponent 注册到 sofa 的上下文sofaRuntimeContext 中。
+5. 将 ServiceComponent 注册到 sofa 的上下文 sofaRuntimeContext 中。
 
 #### 3.2.3、服务引用
 
-`@SofaReference` 的目标则是将 SOFA Context 中的一个服务注册成为 Spring 中的一个bean。基于以上注解解析基础上，主要通过 `ReferenceRegisterHelper.registerReference()` 方法从SOFA上下文中，拿到服务对应的代理对象。在 `registerReference()` 方法内部，主要包含以下操作：
+`@SofaReference` 的目标则是将 SOFA Context 中的一个服务注册成为 Spring 中的一个 bean。基于以上注解解析基础上，主要通过 `ReferenceRegisterHelper.registerReference()` 方法从 SOFA 上下文中，拿到服务对应的代理对象。在 `registerReference()` 方法内部，主要包含以下操作：
 
 1. 当注解的 `jvmFirst()` 为 true 时，会为服务自动再添加一个本地 JVM 的 binding，这样能够做到优先本地调用，避免跨机调用。
 
 2. 生成 ReferenceComponent 服务组件对象。
 
-3. 与 ServiceComponent 处理方式类似，ReferenceComponent 也会添加到 `ConcurrentMap`_`<`_`ComponentName, ComponentInfo`_`> `_`registry` 对象中，分别执行组件的register、resolve、activate 三个方法。其中 register、resolve 方法主要是改变组件的生命周期，代理对象的生成就是在 activate 方法中完成的。
+3. 与 ServiceComponent 处理方式类似，ReferenceComponent 也会添加到 `ConcurrentMap`_`<`_`ComponentName, ComponentInfo`_`>`_`registry` 对象中，分别执行组件的 register、resolve、activate 三个方法。其中 register、resolve 方法主要是改变组件的生命周期，代理对象的生成就是在 activate 方法中完成的。
 
-4. ReferenceComponent 组件通过不同类型的 binding 生成不同类型的代理对象。如果只有一个binding，使用当前 binding 生成代理对象。如果有多个 binding，优先使用 jvm binding 来生成本地调用的代理对象，若本地代理对象不存在，使用远程代理对象。
+4. ReferenceComponent 组件通过不同类型的 binding 生成不同类型的代理对象。如果只有一个 binding，使用当前 binding 生成代理对象。如果有多个 binding，优先使用 jvm binding 来生成本地调用的代理对象，若本地代理对象不存在，使用远程代理对象。
 
-5. 对于JvmBindingAdapter 的 inBinding 方法，直接借助于动态代理技术进行生成代理对象，对于 RpcBindingAdapter 的 inBinding，在构造的过程存在向注册中心订阅的逻辑。
+5. 对于 JvmBindingAdapter 的 inBinding 方法，直接借助于动态代理技术进行生成代理对象，对于 RpcBindingAdapter 的 inBinding，在构造的过程存在向注册中心订阅的逻辑。
 
 ## 4、总结
 
-通过 XML 的方式去配置 SOFA 的 JVM 服务和引用非常简洁，但是多了一定的编码工作量。因此，除了通过 XML 方式发布 JVM 服务和引用之外，SOFA 还提供了 Annotation 的方式来发布和引用 JVM 服务。`@SofaService` 注解省去了 `<sofa:service>` 声明，但 bean 的定义还是必须要有的。SOFA 实际上是注册了一个BeanPostProcessor 来处理 `@SofaService` 和 `@SofaReference` 注解。 
+通过 XML 的方式去配置 SOFA 的 JVM 服务和引用非常简洁，但是多了一定的编码工作量。因此，除了通过 XML 方式发布 JVM 服务和引用之外，SOFA 还提供了 Annotation 的方式来发布和引用 JVM 服务。`@SofaService` 注解省去了 `<sofa:service>` 声明，但 bean 的定义还是必须要有的。SOFA 实际上是注册了一个 BeanPostProcessor 来处理 `@SofaService` 和 `@SofaReference` 注解。 
 
 需要发布引用的对象属于当前 bean 的实例变量，使用 xml 的方式进行服务发布和引用，可以直接通过 Bean 生命周期的 `InitializingBean#afterPropertiesSet` 方法进行扩展。在工程中注解扫描是一个对所有 bean 的操作，只能通过实现 spring 的 beanpostprocessor 这个接口，另外有些属性可能在发布时需要用到。因此使用注解的方式进行服务发布和引用，分别基于 Bean 生命周期的 `BeanPostProcessor#postProcessAfterInitialization`、`#postProcessBeforeInitialization`方法进行扩展。
 

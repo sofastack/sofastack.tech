@@ -27,13 +27,13 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **@ 毛晨斌** 提问：
 
->使用 Layotto 是不是客户端代码需要重新实现，全部调用 Layotto 提供的API？多少正式的项目正在使用 Layotto?
+> 使用 Layotto 是不是客户端代码需要重新实现，全部调用 Layotto 提供的 API？多少正式的项目正在使用 Layotto?
 
 A：目前蚂蚁的落地用户将客户端 SDK，改成调用 Layotto；现在在搞无侵入方案。
 
->开源版服务器端支持哪些中间件，客户端无侵入支持哪些中间件？
+> 开源版服务器端支持哪些中间件，客户端无侵入支持哪些中间件？
 
-A：1. 已经落地的方案是：将各种中间件的 Java SDK，改成调用 Layotto （比如把 xxx-MQ-sdk 内部逻辑改成调layotto pubsub API，但是对业务代码暴露的接口不变)。业务系统需要升级下 SDK，业务代码不用改。这部分没开源，因为是改内部中间件的 SDK，这些中间件本身没开源。<br/>
+A：1. 已经落地的方案是：将各种中间件的 Java SDK，改成调用 Layotto （比如把 xxx-MQ-sdk 内部逻辑改成调 layotto pubsub API，但是对业务代码暴露的接口不变)。业务系统需要升级下 SDK，业务代码不用改。这部分没开源，因为是改内部中间件的 SDK，这些中间件本身没开源。<br/>
 2. 开源版服务器端支持那些中间件：每类 API 有支持的组件列表。
 [https://mosn.io/layotto/#/zh/component_specs/sequencer/common](https://mosn.io/layotto/#/zh/component_specs/sequencer/common)
 其中 state API、pubsub API 因为复用了 Dapr 的组件，所有 Dapr 组件都支持。[https://docs.dapr.io/zh-hans/reference/components-reference/supported-state-stores/](https://docs.dapr.io/zh-hans/reference/components-reference/supported-state-stores/)
@@ -48,11 +48,11 @@ A：1. 已经落地的方案是：将各种中间件的 Java SDK，改成调用 
 
 **黄润良** 提问：
 
->RPC 序列化 Localdatetime 有问题，改为 Date 类型后正常, 你知道原因吗?upstream 的 ip access 日志怎么打印来访日志呢，主要是负载均衡后访问到后段的哪个 IP?
+> RPC 序列化 Localdatetime 有问题，改为 Date 类型后正常, 你知道原因吗?upstream 的 ip access 日志怎么打印来访日志呢，主要是负载均衡后访问到后段的哪个 IP?
 
 A：你要在 errorlog 打印吗？你可以配置 accesslog，一个请求一条的。你的 tracelog 也可以打印的。[https://github.com/mosn/mosn/blob/master/pkg/log/accesslog.go](https://github.com/mosn/mosn/blob/master/pkg/log/accesslog.go)
 
->[WARN][downStream]reset stream reason ConnectionTermination[proxy][downstream]processError=downstreamReset proxyld:2204350,reason:ConnectionTermination
+> [WARN][downStream]reset stream reason ConnectionTermination[proxy][downstream]processError=downstreamReset proxyld:2204350,reason:ConnectionTermination
 
 A：downstream 的连接断链了。比如你 curl 访问 MOSN，在 reponse 回复之前 Ctrl+C 终止断链接，MOSN 就会打印这个日志，也就是还没有回复请求，client 就断链了。 然后 client 自己有超时，可能就断链了。
 
@@ -122,4 +122,4 @@ Holmes 是 MOSN 社区开源的 go 语言 continous profiling 组件，可以自
 
 更多文章请扫码关注“金融级分布式架构”公众号
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*8G5NRZ7UEToAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*8G5NRZ7UEToAAAAAAAAAAAAAARQnAQ)

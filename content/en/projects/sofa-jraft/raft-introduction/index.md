@@ -3,7 +3,7 @@
 title: "'Introduction to the Raft algorithm'"
 ---
 
-### Novel features:
+### Novel features
 
 <div class="bi-table">
   <table>
@@ -46,13 +46,13 @@ title: "'Introduction to the Raft algorithm'"
 
 ![image.png | left | 321x179](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*OiwGTZnO2uMAAAAAAAAAAABjARQnAQ)
 
-#### 1. Replicated state machines are implemented based on logs.
+#### 1. Replicated state machines are implemented based on logs
 
 * Each server stores a log.
 * Each log entry contains a command.
 * The state machine executes commands in order.
 
-#### 2. Consensus algorithms for practical systems typically have the following properties:
+#### 2. Consensus algorithms for practical systems typically have the following properties
 
 * They ensure safety.
 * They are highly available.

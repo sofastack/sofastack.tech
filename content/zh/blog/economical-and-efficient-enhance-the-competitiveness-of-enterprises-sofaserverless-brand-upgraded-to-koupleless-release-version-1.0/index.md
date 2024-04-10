@@ -63,7 +63,7 @@ Koupleless 由 SOFAServerless 品牌升级而来，是一款模块化研发框�
 
 ![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0897b44fd2ec4522ad2784184dfacbad~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1080&h=381&s=77370&e=png&a=1&b=e5d8d8)
 
-- 研发工具 Arkctl一键构建、部署和发布模块，方便用于本地开发测试验证。
+- 研发工具 Arkctl 一键构建、部署和发布模块，方便用于本地开发测试验证。
 - Arklet、SOFAArk 和 Runtime 组件为多种研发框架如 Spring Boot、SOFABoot、Dubbo 提供多模块运行容器环境，适配 30+ 组件，沉淀 25+ samples 用例。
 - 控制面组件 ModuleControllerModuleDeployment，提供模块发布与运维能力； ModuleScheduler，提供模块基础调度能力； ModuleScaler，提供模块扩缩容能力。
 

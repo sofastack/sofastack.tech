@@ -7,11 +7,11 @@ aliases: "/sofa-rpc/docs/Extension-Loader"
 
 # ExtensionLoader
 
-为了对 SOFARPC 各个环节的都有充足的可扩展性，SOFA-RPC定义了一套十分灵活的扩展机制，所有扩展实现都是**平等**的。
+为了对 SOFARPC 各个环节的都有充足的可扩展性，SOFA-RPC 定义了一套十分灵活的扩展机制，所有扩展实现都是**平等**的。
 
-这套机制不管是对SOFA-RPC本身的开发者其使用者而言都是非常有用的。SOFA-RPC将其自身抽象为了多个模块，各个模块之间无显示依赖，通过SPI的方式进行交互。
+这套机制不管是对 SOFA-RPC 本身的开发者其使用者而言都是非常有用的。SOFA-RPC 将其自身抽象为了多个模块，各个模块之间无显示依赖，通过 SPI 的方式进行交互。
 
-这套扩展机制抽象了这一SPI的交互方式。如果你读了上面文档讲到的 Filter 和 Router，应该已经有所体会。
+这套扩展机制抽象了这一 SPI 的交互方式。如果你读了上面文档讲到的 Filter 和 Router，应该已经有所体会。
 
 这里讲一下如何使方式进行扩展的。
 
@@ -145,7 +145,7 @@ Person person = ExtensionLoaderFactory.getExtensionLoader(Person.class).getExten
 com.alipay.sofa.rpc.client.Client              |客户端    | |Failover、Failfast
 com.alipay.sofa.rpc.client.ConnectionHolder    |连接管理器 | |AllConnect（全部连接）
 com.alipay.sofa.rpc.client.AddressHolder       |地址管理器 | |单组、多组
-com.alipay.sofa.rpc.client.LoadBalancer        |负载均衡   | |随机、轮询、最少并发、一致性hash、本机优先
+com.alipay.sofa.rpc.client.LoadBalancer        |负载均衡   | |随机、轮询、最少并发、一致性 hash、本机优先
 com.alipay.sofa.rpc.client.Router              |路由器    | |
 com.alipay.sofa.rpc.codec.Compressor           |压缩      | |snappy、~~quicklz~~
 com.alipay.sofa.rpc.codec.Serializer           |序列化器  | |java、hessian、pb
@@ -153,7 +153,7 @@ com.alipay.sofa.rpc.filter.Filter              |拦截器    | |
 com.alipay.sofa.rpc.protocol.Protocol          |协议      | |bolt、dubbo、rest
 com.alipay.sofa.rpc.protocol.ProtocolDecoder   |协议解码   | |bolt
 com.alipay.sofa.rpc.protocol.ProtocolEncoder   |协议编码   | |bolt
-com.alipay.sofa.rpc.protocol.TelnetHandler     |telnet的响应| |version、help、ls
+com.alipay.sofa.rpc.protocol.TelnetHandler     |telnet 的响应| |version、help、ls
 com.alipay.sofa.rpc.proxy.Proxy                |代理类    | |java、javassist
 com.alipay.sofa.rpc.registry.Registry          |注册中心    | |zookeeper
 com.alipay.sofa.rpc.server.Server              |服务端实现 | | bolt、rest

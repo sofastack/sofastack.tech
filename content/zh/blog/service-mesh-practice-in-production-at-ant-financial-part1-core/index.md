@@ -94,19 +94,19 @@ SOFAMosn 通过提供 network filter 注册机制以及统一的 packet read/wri
 SOFAMosn 通过提供 stream filter 注册机制以及统一的 stream send/receive filter 接口，实现了 Stream filter 扩展机制，包括支持：
 
 - 流量镜像；
-- RBAC鉴权；
+- RBAC 鉴权；
 
 ### TLS 安全链路
 
 作为金融科技公司，资金安全是最重要的一环，链路加密又是其中最基础的能力，在 TLS 安全链路上我们进行了大量的调研测试。
 
-通过测试，原生的 Go 的 TLS 经过了大量的汇编优化，在性能上是 Nginx(OpenSSL）的80%，Boring 版本的 Go(使用 cgo 调用 BoringSSL) 因为 cgo 的性能问题， 并不占优势，所以我们最后选型原生 Go 的 TLS，相信 Go Runtime 团队后续会有更多的优化，我们也会有一些优化计划。
+通过测试，原生的 Go 的 TLS 经过了大量的汇编优化，在性能上是 Nginx(OpenSSL）的 80%，Boring 版本的 Go(使用 cgo 调用 BoringSSL) 因为 cgo 的性能问题， 并不占优势，所以我们最后选型原生 Go 的 TLS，相信 Go Runtime 团队后续会有更多的优化，我们也会有一些优化计划。
 
 ![TLS 安全链路](https://cdn.nlark.com/yuque/0/2019/png/226702/1573700732612-e8ea5910-d680-49a5-bfd3-94bee142a8db.png)
 
-- go 在 RSA 上没有太多优化，go-boring（CGO）的能力是 go 的1倍；
-- p256 在 go 上有汇编优化，ECDSA 优于go-boring；
-- 在 AES-GCM 对称加密上，go 的能力是 go-boring 的20倍；
+- go 在 RSA 上没有太多优化，go-boring（CGO）的能力是 go 的 1 倍；
+- p256 在 go 上有汇编优化，ECDSA 优于 go-boring；
+- 在 AES-GCM 对称加密上，go 的能力是 go-boring 的 20 倍；
 - 在 SHA、MD 等 HASH 算法也有对应的汇编优化；
 
 为了满足金融场景的安全合规，我们同时也对国产密码进行了开发支持，这个是 Go Runtime 所没有的。虽然目前的性能相比国际标准 AES-GCM 还是有一些差距，大概是 50%，但是我们已经有了后续的一些优化计划，敬请期待。
@@ -143,7 +143,7 @@ SOFAMosn 通过提供 stream filter 注册机制以及统一的 stream send/rece
 
 ![内存复用机制](https://cdn.nlark.com/yuque/0/2019/png/226702/1573700732649-e33b8c83-42a0-4706-9ad0-22b8f09d5a9e.png)
 
-线上复用率可以达到90%以上，当然 sync.Pool 并不是银弹，也有自己的一些问题，但是随着 Runtime 对 sync.Pool 的持续优化，比如 go1.13 就使用 lock-free 结构减少锁竞争和增加了 victim cache 机制，以后会越来越完善。
+线上复用率可以达到 90%以上，当然 sync.Pool 并不是银弹，也有自己的一些问题，但是随着 Runtime 对 sync.Pool 的持续优化，比如 go1.13 就使用 lock-free 结构减少锁竞争和增加了 victim cache 机制，以后会越来越完善。
 
 ### XDS（UDPA）
 
@@ -159,9 +159,9 @@ SOFAMosn 通过提供 stream filter 注册机制以及统一的 stream send/rece
 
 从线下环境到灰度环境，我们遇到了很多线下没有的大规模场景，比如单实例数万后端节点，数千路由规则，不仅占用内存，对路由匹配效率也有很大影响，比如海量高频的服务发布注册也对性能和稳定性有很大挑战。
 
-整个压测优化过程历时五个月，从最初的 CPU 整体增加20%，RT 每跳增加 0.8ms, 到最后 CPU 整体增加 6%，RT 每跳增加了 0.2ms，内存占用峰值优化为之前的 1/10 。
+整个压测优化过程历时五个月，从最初的 CPU 整体增加 20%，RT 每跳增加 0.8ms, 到最后 CPU 整体增加 6%，RT 每跳增加了 0.2ms，内存占用峰值优化为之前的 1/10 。
 
-|  | **整体增加CPU ** | **每跳RT** | **内存占用峰值** |
+|  | **整体增加 CPU ** | **每跳 RT** | **内存占用峰值** |
 | --- | --- | --- | --- |
 | **优化前** | 20% | 0.8ms | 2365M |
 | **优化后** | 6% | 0.2ms | 253M |
@@ -184,7 +184,7 @@ SOFAMosn 做的大量核心优化和 Route Cache 等业务逻辑优化的下沉�
 
 - GC 优化，减少长尾请求
 
-新版的自我抢占(self-preempt)机制，将耗时较长 GC 标记过程打散，来换取更为平滑的GC表现，减少对业务的延迟影响。
+新版的自我抢占(self-preempt)机制，将耗时较长 GC 标记过程打散，来换取更为平滑的 GC 表现，减少对业务的延迟影响。
 
 [https://go-review.googlesource.com/c/go/+/68574/](https://go-review.googlesource.com/c/go/+/68574/)
 [https://go-review.googlesource.com/c/go/+/68573/](https://go-review.googlesource.com/c/go/+/68573/)
@@ -209,11 +209,11 @@ Go 1.12.6
 
 ### Go Runtime Bug 修复
 
-在前期灰度验证时，SOFAMosn 线上出现了较严重的内存泄露，一天泄露了1G 内存，最终排查是 Go Runtime 的 Writev 实现存在缺陷，导致 slice 的内存地址被底层引用，GC 不能释放。
+在前期灰度验证时，SOFAMosn 线上出现了较严重的内存泄露，一天泄露了 1G 内存，最终排查是 Go Runtime 的 Writev 实现存在缺陷，导致 slice 的内存地址被底层引用，GC 不能释放。
 
 ![Go Runtime Bug 修复](https://cdn.nlark.com/yuque/0/2019/png/226702/1573700732678-4bf7a376-28eb-4113-bded-8803f001b628.png)
 
-我们给 Go 官方提交了 Bugfix，已合入 Go 1.13最新版。
+我们给 Go 官方提交了 Bugfix，已合入 Go 1.13 最新版。
 [internal/poll: avoid memory leak in Writev](https://github.com/golang/go/pull/32138)
 
 ## 后序

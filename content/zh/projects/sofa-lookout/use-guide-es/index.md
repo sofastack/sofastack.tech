@@ -9,11 +9,11 @@ aliases: "/sofa-lookout/docs/useguide-es"
 推荐版本: ES 5
 ### 自动初始化库
 
-Lookout 服务器端启动时，会自动检查（默认开启，可关闭）所连接的ES机器(或集群)，检查 Metrics 数据存储的 Index和 Mapping 是否已经建立，
-如果未初始化则进行初始化工作。默认初始化并产生索引alias: "lookout-active-metrics，lookout-search-metrics"。
+Lookout 服务器端启动时，会自动检查（默认开启，可关闭）所连接的 ES 机器(或集群)，检查 Metrics 数据存储的 Index 和 Mapping 是否已经建立，
+如果未初始化则进行初始化工作。默认初始化并产生索引 alias: "lookout-active-metrics，lookout-search-metrics"。
 
 - 看下 Alias 和 Indices
-```
+```plain
 http://localhost:9200/_cat/aliases
 
 lookout-active-metrics metrics-2019.05.30-1 - - -
@@ -21,7 +21,7 @@ lookout-search-metrics metrics-2019.05.30-1 - - -
 ```
 
 - 看下存储 Mapping：
-```
+```plain
 http://localhost:9200/lookout-active-metrics/_mapping
 
 {
@@ -50,7 +50,7 @@ http://localhost:9200/lookout-active-metrics/_mapping
 ### 自动运维
 
 - 自动 Indices Rollover
-  * 如果超过1天，则切换新索引
+  * 如果超过 1 天，则切换新索引
   * 如果单个索引的 docs 数目超过: 100000000，则切换新索引；
   
 - 自动删除过期 Indices

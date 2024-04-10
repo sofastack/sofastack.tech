@@ -42,4 +42,4 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*1wsAR44ALTEAAAAAA
 
 或微信扫码关注“金融级分布式架构”微信公众号👇
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*gT8sT7fFmNoAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*gT8sT7fFmNoAAAAAAAAAAAAAARQnAQ)

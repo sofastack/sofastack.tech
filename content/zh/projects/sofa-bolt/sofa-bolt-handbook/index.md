@@ -22,7 +22,7 @@ aliases: "/sofa-bolt/docs/sofa-bolt-handbook"
 ### 1.1 实现用户请求处理器 (UserProcessor)
 
 我们提供了两种用户请求处理器，SyncUserProcessor 与 AsyncUserProcessor。
-二者的区别在于，前者需要在当前处理线程以return返回值的形式返回处理结果；而后者，有一个 AsyncContext 存根，可以在当前线程，也可以在异步线程，调用 `sendResponse` 方法返回处理结果。示例可参考如下两个类：
+二者的区别在于，前者需要在当前处理线程以 return 返回值的形式返回处理结果；而后者，有一个 AsyncContext 存根，可以在当前线程，也可以在异步线程，调用 `sendResponse` 方法返回处理结果。示例可参考如下两个类：
 
 * [同步请求处理器](https://github.com/sofastack/sofa-bolt/blob/master/src/test/java/com/alipay/remoting/rpc/common/SimpleServerUserProcessor.java)
 * [异步请求处理器](https://github.com/sofastack/sofa-bolt/blob/master/src/test/java/com/alipay/remoting/rpc/common/AsyncServerUserProcessor.java)
@@ -53,11 +53,11 @@ aliases: "/sofa-bolt/docs/sofa-bolt-handbook"
 
 当前线程发起调用后，需要在指定的超时时间内，等到响应结果，才能完成本次调用。如果超时时间内没有得到结果，那么会抛出超时异常。这种调用模式最常用。注意要根据对端的处理能力，合理设置超时时间。请参考[示例](https://github.com/sofastack/sofa-bolt/blob/master/src/test/java/com/alipay/remoting/demo/BasicUsageDemoByJunit.java##L120)。
 
-**3. Future调用**
+**3. Future 调用**
 
 当前线程发起调用，得到一个 RpcResponseFuture 对象，当前线程可以继续执行下一次调用。可以在任意时刻，使用 RpcResponseFuture 对象的 get() 方法来获取结果，如果响应已经回来，此时就马上得到结果；如果响应没有回来，则会阻塞住当前线程，直到响应回来，或者超时时间到。请参考[示例](https://github.com/sofastack/sofa-bolt/blob/master/src/test/java/com/alipay/remoting/demo/BasicUsageDemoByJunit.java##L144)。
 
-**4. Callback异步调用**
+**4. Callback 异步调用**
 
 当前线程发起调用，则本次调用马上结束，可以马上执行下一次调用。发起调用时需要注册一个回调，该回调需要分配一个异步线程池。待响应回来后，会在回调的异步线程池，来执行回调逻辑。请参考[示例](https://github.com/sofastack/sofa-bolt/blob/master/src/test/java/com/alipay/remoting/demo/BasicUsageDemoByJunit.java##L168)。
 
@@ -78,7 +78,7 @@ SOFABolt 只依赖 SLF4J 作为日志门面。同时提供了 log4j、log4j2、l
 
 在调用过程中，我们还提供了带 InvokeContext 的接口，并一路传递下去，可以在自定义序列化器，用户请求处理器中获得。我们分为两种场景来使用请求上下文：
 
-* 客户端：用户可以设置一些针对本次请求生效的参数，比如序列化类型，是否开启crc等机制。同时可以从上下文中获取建连耗时，连接信息等。
+* 客户端：用户可以设置一些针对本次请求生效的参数，比如序列化类型，是否开启 crc 等机制。同时可以从上下文中获取建连耗时，连接信息等。
 * 服务端：用户可以从用户请求处理器中获得请求到达后的排队耗时，连接信息等
 * 注意：客户端与服务端的上下文是独立的，即客户端设置的上下文只在客户端可见，对服务端不可见；反之同理。
 * [使用示例](https://github.com/sofastack/sofa-bolt/blob/master/src/test/java/com/alipay/remoting/rpc/invokecontext/BasicUsage_InvokeContext_Test.java##L128)
@@ -87,15 +87,15 @@ SOFABolt 只依赖 SLF4J 作为日志门面。同时提供了 log4j、log4j2、l
 
 除了服务端可以注册用户请求处理器，我们的客户端也可以注册用户请求处理器。此时，服务端就可以发起对客户端的调用，也可以使用 [1.4](https://github.com/sofastack/sofa-bolt/wiki/SOFA-Bolt-Handbook##14-%E5%9F%BA%E7%A1%80%E9%80%9A%E4%BF%A1%E6%A8%A1%E5%9E%8B) 提到了任何一种通信模型。
 
-* [示例1：使用 Connection 对象的双工通信](https://github.com/sofastack/sofa-bolt/blob/master/src/test/java/com/alipay/remoting/demo/BasicUsageDemoByJunit.java##L223)，注意使用 Connection 对象的双工通信，服务端需要通过事件监听处理器或者用户请求处理器，自己保存好 Connection 对象。
-* [示例2：使用 Address 的双工通信](https://github.com/sofastack/sofa-bolt/blob/master/src/test/java/com/alipay/remoting/demo/BasicUsageDemoByJunit.java##L263)，注意使用 Address 方式的双工通信，需要在初始化 RpcServer 时，打开 manageConnection 开关，表示服务端会根据客户端发起的建连，维护一份地址与连接的映射关系。默认不需要双工通信的时候，这个功能是关闭的。
+* [示例 1：使用 Connection 对象的双工通信](https://github.com/sofastack/sofa-bolt/blob/master/src/test/java/com/alipay/remoting/demo/BasicUsageDemoByJunit.java##L223)，注意使用 Connection 对象的双工通信，服务端需要通过事件监听处理器或者用户请求处理器，自己保存好 Connection 对象。
+* [示例 2：使用 Address 的双工通信](https://github.com/sofastack/sofa-bolt/blob/master/src/test/java/com/alipay/remoting/demo/BasicUsageDemoByJunit.java##L263)，注意使用 Address 方式的双工通信，需要在初始化 RpcServer 时，打开 manageConnection 开关，表示服务端会根据客户端发起的建连，维护一份地址与连接的映射关系。默认不需要双工通信的时候，这个功能是关闭的。
 
 ### 2.3 建立多连接与连接预热
 
-通常来说，点对点的直连通信，客户端和服务端，一个 IP 一个连接对象就够用了。不管是吞吐能力还是并发度，都能满足一般业务的通信需求。而有一些场景，比如不是点对点直连通信，而是经过了 LVS VIP，或者 F5 设备的连接，此时，为了负载均衡和容错，会针对一个 URL 地址建立多个连接。我们提供如下方式来建立多连接，即发起调用时传入的 URL 增加如下参数 `127.0.0.1:12200?_CONNECTIONNUM=30&_CONNECTIONWARMUP=true`，表示针对这个 IP 地址，需要建立30个连接，同时需要预热连接。其中预热与不预热的区别是：
+通常来说，点对点的直连通信，客户端和服务端，一个 IP 一个连接对象就够用了。不管是吞吐能力还是并发度，都能满足一般业务的通信需求。而有一些场景，比如不是点对点直连通信，而是经过了 LVS VIP，或者 F5 设备的连接，此时，为了负载均衡和容错，会针对一个 URL 地址建立多个连接。我们提供如下方式来建立多连接，即发起调用时传入的 URL 增加如下参数 `127.0.0.1:12200?_CONNECTIONNUM=30&_CONNECTIONWARMUP=true`，表示针对这个 IP 地址，需要建立 30 个连接，同时需要预热连接。其中预热与不预热的区别是：
 
-* 预热：即第一次调用（比如 Sync 同步调用），就建立30个连接
-* 不预热：每一次调用，创建一个连接，直到创建满30个连接
+* 预热：即第一次调用（比如 Sync 同步调用），就建立 30 个连接
+* 不预热：每一次调用，创建一个连接，直到创建满 30 个连接
 * [使用示例](https://github.com/sofastack/sofa-bolt/blob/master/src/test/java/com/alipay/remoting/rpc/addressargs/AddressArgs_CONNECTIONNUM_Test.java##L234)
 
 ### 2.4 自动断连与重连
@@ -148,7 +148,7 @@ SOFABolt 只依赖 SLF4J 作为日志门面。同时提供了 log4j、log4j2、l
 
 ## 3. 高级功能
 
-### 3.1 开启IO线程处理机制
+### 3.1 开启 IO 线程处理机制
 
 默认情况下，我们使用最佳实践的线程模型来处理请求，即尽可能少的占用 IO 线程，但有一些场景，比如计算过程非常简单，希望减少线程切换，尽可能大的增加 IO 吞吐量的场景。此时我们提供了一个开关，来让业务处理也在 IO 线程执行。
 
@@ -163,7 +163,7 @@ SOFABolt 只依赖 SLF4J 作为日志门面。同时提供了 log4j、log4j2、l
 
 ### 3.3 请求处理超时 FailFast 机制
 
-当服务端接收到请求后，如果线程池队列的排队等待时间已经超过了客户端发起调用时设置的超时时间，那么本次调用可以直接丢弃，因为请求，对于客户端来说已经无用了（注意：oneway调用方式该机制不起作用，因为不用设置超时时间）。默认情况下，我们这个功能都是开启的；考虑到有用户可能会需要自己来做是否丢弃请求的判断，同时打印一些日志来自己做记录，我们提供了一个开关来控制这个功能：
+当服务端接收到请求后，如果线程池队列的排队等待时间已经超过了客户端发起调用时设置的超时时间，那么本次调用可以直接丢弃，因为请求，对于客户端来说已经无用了（注意：oneway 调用方式该机制不起作用，因为不用设置超时时间）。默认情况下，我们这个功能都是开启的；考虑到有用户可能会需要自己来做是否丢弃请求的判断，同时打印一些日志来自己做记录，我们提供了一个开关来控制这个功能：
 
 * 开关控制
 

@@ -61,7 +61,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 ### 本周发布
 
-本周 SOFAJRaft 发布 1.3.8v版本。主要更新如下：
+本周 SOFAJRaft 发布 1.3.8v 版本。主要更新如下：
 
 - Snapshot 支持并行压缩/解压缩，充分利用多核，加速在 snapshot 较大的时的 load 和 save 速度；
 
@@ -115,4 +115,4 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 更多文章请扫码关注“金融级分布式架构”公众号
 
->![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*5aK0RYuH9vgAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*5aK0RYuH9vgAAAAAAAAAAAAAARQnAQ)

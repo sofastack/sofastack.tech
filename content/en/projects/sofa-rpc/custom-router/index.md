@@ -28,7 +28,7 @@ public class CustomerRouter extends Router {
 
 Create a extension file `META-INF/services/sofa-rpc/com.alipay.sofa.rpc.client.Router` with the following content:
 
-```
+```plain
 customerRouter=com.alipay.sofa.rpc.custom.CustomRouter
 ```
 

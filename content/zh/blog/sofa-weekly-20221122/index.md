@@ -30,11 +30,11 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **1.卓俊良** 提问：
 
->Q: 22. AT 模式和 Spring @Transactional 注解连用时需要注意什么 ？
+> Q: 22. AT 模式和 Spring @Transactional 注解连用时需要注意什么 ？
 
 A：@Transactional 可与 DataSourceTransactionManager 和 JTATransactionManager 连用，分别表示本地事务和 XA 分布式事务，大家常用的是与本地事务结合。当与本地事务结合时， @Transactional 和 @GlobalTransaction 连用，@Transactional 只能位于标注在 @GlobalTransaction 的同一方法层次或者位于 @GlobalTransaction 标注方法的内层。这里分布式事务的概念要大于本地事务，若将 @Transactional 标注在外层会导致分布式事务空提交，当 @Transactional 对应的 connection 提交时会报全局事务正在提交或者全局事务的 xid 不存在。
 
->如果要支持 istio1.14 是需要重新适配吗？还是说有其他简化的方式？
+> 如果要支持 istio1.14 是需要重新适配吗？还是说有其他简化的方式？
 
 A：是需要适配下的，主要看新增了多少改动。
 
@@ -42,7 +42,7 @@ A：是需要适配下的，主要看新增了多少改动。
 
 **2.快叫我去学习** 提问：
 
->Q: 34.Seata 的 JDK 版本要求是什么？ 
+> Q: 34.Seata 的 JDK 版本要求是什么？ 
 
 A：目前 Seata 支持的 JDK 版本为 JDK8、11。其余版本不确保 100% 兼容。
 

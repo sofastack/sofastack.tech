@@ -40,30 +40,23 @@ Therefore, you must complete the following steps after getting the source codes:
 * Download the codes locally through Git or HTTPs.<br> 
 	  ```
 	  git clone https://github.com/your account name/sofa-rpc.git
-  ```
+  * Pull branches for code modifications.<br> 
 
-* Pull branches for code modifications.<br> 
-
-	  ```
+	  `plain``
 	  git branch add_xxx_feature
-	  ```
-
+	  
 After executing the above command, your code repository switches to the corresponding branch. Execute the following command to see your current branch:<br>
 
  
-	```
+	``plainplainplain`
 	  git branch -a
 	```
 	
 If you want to switch back to the trunk, execute the following command:<br>
-	  ```
-	  git checkout -b master
-	  ```
+	  ```git checkout -b master```
 	
 If you want to switch back to the branch, execute the following command:<br>
-	```
-	  git checkout -b "branchName"
-	 ```
+	```git checkout -b "branchName"```
 
 
 ### Modify and submit codes locally
@@ -84,7 +77,7 @@ SOFARPC keeps the code format consistent through the Maven plugin. You must exec
 * New modifications should have passed the existing unit tests.
 * Provide new unit tests to prove that the previous code has bugs, and the new code has fixed these bugs.<br>
 You can run all tests with the following command:
-  ```
+  ```plain
   mvn clean test
   ```
 
@@ -99,7 +92,7 @@ You can run all tests with the following command:
 
 After modification, execute the following command to submit all modifications locally:<br>
   
-  ```
+  ```plain
   git commit -am 'add xx function'
   ```
 
@@ -107,7 +100,7 @@ After modification, execute the following command to submit all modifications lo
 
 After the codes are submitted a local repository, the codes are synchronized with the remote repository. Execute the following command to submit the local modification to GitHub:
 
-```
+```plain
 git push origin "branchname"
 ```
 

@@ -35,39 +35,39 @@ Therefore, after getting the introduction to source code steps, you need to:
 * Download the code locally. You may select the git/https mode in this step.
 
 
-  ```
+  ```plain
   git clone https://github.com/your account name/sofa-jarslink.git 
   ```
 
 * Pull a branch to prepare for code modification.
 
-  ```
+  ```plain
   git branch add_xxx_feature
   ```
   
   After the preceding command is executed, your code repository will switch to the corresponding branch. To view the current branch, execute the following command:
   
-  ```
+  ```plain
   git branch -a
   ```
   
   If you want to switch back to the trunk, execute the following command:
   
-  ```
+  ```plain
   git checkout -b master
   ```
   
   If you want to switch back to the branch, execute the following command:
   
-  ```
+  ```plain
   git checkout -b "branchName"
   ```
 
-### Modify the code and submit it locally.
+### Modify the code and submit it locally
 
 After a branch is pulled, you can modify the code.
 
-#### When modifying the code, note the following:
+#### When modifying the code, note the following
 
 * Keep the code style consistent.
 
@@ -82,7 +82,7 @@ After a branch is pulled, you can modify the code.
 * You should provide the new unit test to prove that the previous code has bugs and the new code has fixed such bugs.
 
   Execute the following command to run all tests:
-  ```
+  ```plain
   mvn clean test
   ```
 
@@ -97,7 +97,7 @@ After a branch is pulled, you can modify the code.
 
 After the code is modified, execute the following command to submit all modifications to the local repository:
 
-  ```
+  ```plain
   git commit -am 'Add xx feature'
   ```
 
@@ -105,7 +105,7 @@ After the code is modified, execute the following command to submit all modifica
 
 After being submitted to the local repository, the code is synchronized to a remote repository. Execute the following command to submit the local modification to github:
 
-```
+```plain
 git push origin "branchname"
 ```
 

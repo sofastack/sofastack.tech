@@ -11,9 +11,9 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*TpZATZH8MlMAAAAAA
 
 文｜曹先胜
 
-e签宝中间件开发
+e 签宝中间件开发
 
-负责e签宝中间件开发和维护，包括 MQ、网关、微服务、数据同步、全链路压测等
+负责 e 签宝中间件开发和维护，包括 MQ、网关、微服务、数据同步、全链路压测等
 
 ## 贡献者前言 
 
@@ -25,7 +25,7 @@ e签宝中间件开发
 
 我们使用 MOSN 的出发点是公司框架使用了很多的中间件，每个中间件有自己的依赖，这些依赖经常性的会发生冲突。虽然我们使用了类似 Spring Boot 的 Pom 管理机制，但升级框架过程中，如果有同学自行引入了 jar 包，就不可避免的会发生 jar 冲突。为了解决这个问题，我们调研了很多方案，最终认为 Service Mesh 是解决这个问题的一个比较合适的方案。
 
-同时，也调研了一些其他的开源产品，经过内部讨论和各种取舍，我们选择了MOSN。
+同时，也调研了一些其他的开源产品，经过内部讨论和各种取舍，我们选择了 MOSN。
 
 在使用 MOSN 时，因为要对接 Eureka，需要进行动态路由，而官网关于路由的文章不是很多。因此，在自己和烈元老师学习后，总结了这样一篇路由分享文章。
 
@@ -89,7 +89,7 @@ r.VirtualHosts[0].Routers = append(r.VirtualHosts[0].Routers, router)
 
 那如果是更复杂的逻辑呢？
 
-比如利用请求里的 Header 和“配置中心”的某个值进行计算，如何才能找到 Cluster呢？
+比如利用请求里的 Header 和“配置中心”的某个值进行计算，如何才能找到 Cluster 呢？
 
 此时，通过配置已经无法解决这个需求，因为这其中涉及到了计算逻辑，MOSN 通过动态配置可以支持该需求。
 
@@ -165,7 +165,7 @@ MOSN 支持基于 stream filter 的方式，设置动态路由。
 
 这样就能匹配到指定机器了。
 
-ps: 关于这个例子，我们其实也可以使用 MOSN 的 ORIGINAL_DST 机制，将 Cluster 的 Type 设置为 ORIGINAL_DST（MOSN 还支持 DNS 集群类型），然后配置 cluster.original_dst_lb_config.use_header = true。我们请求的时候，在 Header 里加入Host = {目标地址}， MOSN 就会根据这个指定的 Host Header 进行转发。
+ps: 关于这个例子，我们其实也可以使用 MOSN 的 ORIGINAL_DST 机制，将 Cluster 的 Type 设置为 ORIGINAL_DST（MOSN 还支持 DNS 集群类型），然后配置 cluster.original_dst_lb_config.use_header = true。我们请求的时候，在 Header 里加入 Host = {目标地址}， MOSN 就会根据这个指定的 Host Header 进行转发。
 
 当然，MOSN 也可以自定义名字，不一定要叫 Host。
 

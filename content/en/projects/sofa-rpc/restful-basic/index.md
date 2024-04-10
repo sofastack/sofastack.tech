@@ -41,7 +41,7 @@ If you want to publish the service by other methods, please refer to [Basic usag
 
 After the service is published, you can directly access the service through the browser. For the above service, the access address is as follows:
 
-```
+```plain
 http://localhost:8341/sample/hello
 ```
 

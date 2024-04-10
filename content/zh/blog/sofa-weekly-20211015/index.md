@@ -13,7 +13,7 @@ SOFA WEEKLY | 每周精选，筛选每周精华问答
 
 同步开源进展，欢迎留言互动
 
->![weekly.jpg](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*_ewiQbuzeOQAAAAAAAAAAAAAARQnAQ)
+> ![weekly.jpg](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*_ewiQbuzeOQAAAAAAAAAAAAAARQnAQ)
 
 SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主研发的金融级云原生架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 
@@ -31,7 +31,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **@崔伟协** 提问：
 
->我们的项目基于 MOSN，请问这里 panic了，要怎么解决？
+> 我们的项目基于 MOSN，请问这里 panic 了，要怎么解决？
 
 [https://github.com/mosn/mosn/blob/master/pkg/proxy/downstream.go#L393-L399](https://github.com/mosn/mosn/blob/master/pkg/proxy/downstream.go#L393-L399)
 
@@ -41,7 +41,7 @@ A：有异常的时候可以直接返回一个异常的数据包，m.receiveHand
 
 **@玄灭** 提问：
 
->请问 MOSN 有计划支持 eureka 注册中心吗？
+> 请问 MOSN 有计划支持 eureka 注册中心吗？
 
 A：目前没有，欢迎 pr，有个 zk 的例子，实现起来也简单。
 
@@ -51,7 +51,7 @@ A：目前没有，欢迎 pr，有个 zk 的例子，实现起来也简单。
 
 **@张昊** 提问：
 
->仓库中 /jarslink-samples/spring-boot-transform-sample 对照文档启动后，telnet 中 install -b *ark-biz.jar，控制台报错，大家有遇到类似问题嘛？
+> 仓库中 /jarslink-samples/spring-boot-transform-sample 对照文档启动后，telnet 中 install -b *ark-biz.jar，控制台报错，大家有遇到类似问题嘛？
 
 A：这个项目不维护了，相关功能已经 merge 到 SOFAArk 里面去了，以后建议直接用 SOFAArk。
 
@@ -61,7 +61,7 @@ SOFAArk 有相关的适应样例：[https://github.com/sofastack-guides](https:/
 
 **@春少** 提问：
 
->这一段逻辑，是为了避免在执行 add peer 的时候，出现 raft 选举的情况吗？<br/>
+> 这一段逻辑，是为了避免在执行 add peer 的时候，出现 raft 选举的情况吗？<br/>
 >![weekly.jpg](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*UKtPTJkE_qwAAAAAAAAAAAAAARQnAQ)
 
 A：是的，所以这个时候就交给新的 leader 负责继续推进新的成员节点变更。
@@ -106,4 +106,4 @@ A：是的，所以这个时候就交给新的 leader 负责继续推进新的�
 
 - [MOSN 子项目 Layotto：开启服务网格+应用运行时新篇章](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247488835&idx=1&sn=d645b9abc866048e679b56bfe3b72482&chksm=faa0fa99cdd7738ff1749ae75b1670f953c92b70dcf0358337977438fd74b632b21a7b17ece3&scene=21#wechat_redirect)
 
->![weekly.jpg](https://gw.alipayobjects.com/zos/bmw-prod/337fd10f-76f2-4e08-b25f-3d23e3510cb9.webp)
+> ![weekly.jpg](https://gw.alipayobjects.com/zos/bmw-prod/337fd10f-76f2-4e08-b25f-3d23e3510cb9.webp)

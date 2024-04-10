@@ -475,7 +475,7 @@ public static class DataSourceConfig {
 
 ```
 
-#### 4、Change BookStoreControllerImpl purchase method to the BalanceMngFacade.minusBalancePrepare method:
+#### 4、Change BookStoreControllerImpl purchase method to the BalanceMngFacade.minusBalancePrepare method
 
 ```java
 @Override
@@ -552,7 +552,7 @@ private BalanceMngFacade balanceMngFacade;
 
 ```
 
-#### 6. Start Seata server, stock-mng and balance-mng applications:
+#### 6. Start Seata server, stock-mng and balance-mng applications
 1. Run the main method in BalanceMngApplication class (including starting Seata server)
 1. Run the main method in StockMngApplication class
 1. Visit http://127.0.0.1:8080/ in the browser

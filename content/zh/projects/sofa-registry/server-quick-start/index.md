@@ -5,7 +5,7 @@ aliases: "/sofa-registry/docs/Server-QuickStart"
 
 ## 本地开发
 
-在本地启动 SOFARegistry 是使用的H2 database 作为注册中心使用的配置数据库, 可以直接启动   
+在本地启动 SOFARegistry 是使用的 H2 database 作为注册中心使用的配置数据库, 可以直接启动   
 `com.alipay.sofa.registry.server.integration.RegistryApplication#main`
 
 默认会使用  `application-dev.properties` 作为配置文件

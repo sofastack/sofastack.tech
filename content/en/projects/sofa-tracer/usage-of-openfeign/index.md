@@ -152,7 +152,7 @@ Start tracer-sample-with-openfeign-provider and tracer-sample-with-openfeign-con
 
 In the `application.properties`, the log printing directory we configured is `./logs`, which is the root directory of the current application (we can configure it based on actual situation). In the root directory, you can see log files in the structure similar to the followings:
 
-```
+```plain
 ./logs
 ├── spring.log
 └── tracelog

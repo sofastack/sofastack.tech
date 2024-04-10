@@ -69,7 +69,7 @@ Module-Profile=!product
 
 This will activate the module when the com.alipay.sofa.boot.active-profiles does not contain product. Since it is specified as dev, this module will be activated.
 
-### Set the spring.profiles.active property that is used to activate the Spring context of the module.
+### Set the spring.profiles.active property that is used to activate the Spring context of the module
 
 Add the following configurations to the application.properties file:
 

@@ -42,7 +42,7 @@ SOFAJRaft ：[https://github.com/sofastack/sofa-jraft](https://github.com/sofas
 
 ![Raft Log read](https://cdn.nlark.com/yuque/0/2019/png/156670/1561613590894-89f6d15f-dc51-4779-a3de-bfb4bf05394c.png)
 
-当然，因为每次 Read 都需要走 Raft 流程，Raft Log 存储、复制带来刷盘开销、存储开销、网络开销，走 Raft Log不仅仅有日志落盘的开销，还有日志复制的网络开销，另外还有一堆的 Raft “读日志” 造成的磁盘占用开销，导致 Read 操作性能是非常低效的，所以在读操作很多的场景下对性能影响很大，在读比重很大的系统中是无法被接受的，通常都不会使用。
+当然，因为每次 Read 都需要走 Raft 流程，Raft Log 存储、复制带来刷盘开销、存储开销、网络开销，走 Raft Log 不仅仅有日志落盘的开销，还有日志复制的网络开销，另外还有一堆的 Raft “读日志” 造成的磁盘占用开销，导致 Read 操作性能是非常低效的，所以在读操作很多的场景下对性能影响很大，在读比重很大的系统中是无法被接受的，通常都不会使用。
 
 在 Raft 里面，节点有三个状态：Leader，Candidate 和 Follower，任何 Raft 的写入操作都必须经过 Leader，只有 Leader 将对应的 Raft Log 复制到 Majority 的节点上面认为此次写入是成功的。所以如果当前 Leader 能确定一定是 Leader，那么能够直接在此 Leader 上面读取数据，因为对于 Leader 来说，如果确认一个 Log 已经提交到大多数节点，在 t1 的时候 apply 写入到状态机，那么在 t1 后的 Read 就一定能读取到这个新写入的数据。
 
@@ -56,7 +56,7 @@ SOFAJRaft ：[https://github.com/sofastack/sofa-jraft](https://github.com/sofas
 第一种是 ReadIndex Read，当 Leader 需要处理 Read 请求时，Leader 与过半机器交换心跳信息确定自己仍然是 Leader 后可提供线性一致读：
 
 1. Leader 将自己当前 Log 的 commitIndex 记录到一个 Local 变量 ReadIndex 里面；
-1. 接着向 Followers 节点发起一轮 Heartbeat，如果半数以上节点返回对应的 Heartbeat Response，那么 Leader就能够确定现在自己仍然是 Leader；
+1. 接着向 Followers 节点发起一轮 Heartbeat，如果半数以上节点返回对应的 Heartbeat Response，那么 Leader 就能够确定现在自己仍然是 Leader；
 1. Leader 等待自己的 StateMachine 状态机执行，至少应用到 ReadIndex 记录的 Log，直到 applyIndex 超过 ReadIndex，这样就能够安全提供 Linearizable Read，也不必管读的时刻是否 Leader 已飘走；
 1. Leader 执行 Read 请求，将结果返回给 Client。
 
@@ -83,7 +83,7 @@ Lease Read 实现方式包括：
 
 ## SOFAJRaft 线性一致读实现
 
-SOFAJRaft 采用 ReadIndex 替代走 Raft 状态机的方案，简而言之是依靠 ReadIndex 原则直接从 Leader 读取结果：所有已经复制到多数派上的 Log（可视为写操作）被视为安全的 Log，Leader 状态机只要按照顺序执行到此条 Log之后，该 Log 所体现的数据就能对客户端 Client 可见，具体分解为以下四个步骤：
+SOFAJRaft 采用 ReadIndex 替代走 Raft 状态机的方案，简而言之是依靠 ReadIndex 原则直接从 Leader 读取结果：所有已经复制到多数派上的 Log（可视为写操作）被视为安全的 Log，Leader 状态机只要按照顺序执行到此条 Log 之后，该 Log 所体现的数据就能对客户端 Client 可见，具体分解为以下四个步骤：
 
 - Client 发起 Read 请求；
 - Leader 确认最新复制到多数派的 LogIndex；
@@ -105,15 +105,15 @@ SOFAJRaft 基于 Raft 协议的 ReadIndex 线性一致读实现是调用 R
 - 检查当前 Raft 集群节点数量，如果集群只有一个 Peer 节点直接获取投票箱 BallotBox 最新提交索引 lastCommittedIndex 即 Leader 节点当前 Log 的 commitIndex 构建 ReadIndexClosure 响应；
 - 日志管理器 LogManager 基于投票箱 BallotBox 的 lastCommittedIndex 获取任期检查是否等于当前任期，如果不等于当前任期表示此 Leader 节点未在其任期内提交任何日志，需要拒绝只读请求；
 - 校验 Raft 集群节点数量以及 lastCommittedIndex 所属任期符合预期，那么响应构造器设置其索引为投票箱 BallotBox 的 lastCommittedIndex，并且来自 Follower 的请求需要检查 Follower 是否在当前配置；
-- 获取 ReadIndex 请求级别 ReadOnlyOption 配置，ReadOnlyOption 参数默认值为 ReadOnlySafe，ReadOnlySafe 通过与 Quorum 通信来保证只读请求的可线性化。按照 ReadOnlyOption 配置为ReadOnlySafe 调用 Replicator#sendHeartbeat(rid, closure) 方法向 Followers 节点发送 Heartbeat 心跳请求，发送心跳成功执行 ReadIndexHeartbeatResponseClosure 心跳响应回调；
-- ReadIndex 心跳响应回调检查是否超过半数节点包括 Leader 节点自身投票赞成，半数以上节点返回客户端Heartbeat 请求成功响应，即 applyIndex 超过 ReadIndex 说明已经同步到 ReadIndex 对应的 Log 能够提供 Linearizable Read。
+- 获取 ReadIndex 请求级别 ReadOnlyOption 配置，ReadOnlyOption 参数默认值为 ReadOnlySafe，ReadOnlySafe 通过与 Quorum 通信来保证只读请求的可线性化。按照 ReadOnlyOption 配置为 ReadOnlySafe 调用 Replicator#sendHeartbeat(rid, closure) 方法向 Followers 节点发送 Heartbeat 心跳请求，发送心跳成功执行 ReadIndexHeartbeatResponseClosure 心跳响应回调；
+- ReadIndex 心跳响应回调检查是否超过半数节点包括 Leader 节点自身投票赞成，半数以上节点返回客户端 Heartbeat 请求成功响应，即 applyIndex 超过 ReadIndex 说明已经同步到 ReadIndex 对应的 Log 能够提供 Linearizable Read。
 
 二、当前节点状态是 STATE_FOLLOWER 即为 Follower 节点，接收 ReadIndex 请求通过 readFollower(request,  done) 方法支持线性一致读：
 
 - 检查当前 Leader 节点是否为空，如果 Leader 节点为空表示当然任期没有 Leader 节点；
 - Follower 节点调用 RpcService#readIndex(leaderId.getEndpoint(), newRequest, -1, closure) 方法向 Leader 发送 ReadIndex 请求，Leader 节点调用 readIndex(requestContext, done) 方法启动可线性化只读查询请求，只读服务添加请求发布 ReadIndex 事件到队列 readIndexQueue 即 Disruptor 的 Ring Buffer；
 - ReadIndex 事件处理器 ReadIndexEventHandler 通过 MPSC Queue 模型攒批消费触发使用 executeReadIndexEvents(events) 执行 ReadIndex 事件，轮询 ReadIndex 事件封装 ReadIndexState 状态列表构建 ReadIndexResponseClosure 响应回调提交给 Leader 节点处理 ReadIndex 请求；
-- Leader 节点调用 handleReadIndexRequest(request, readIndexResponseClosure) 方法进行 readLeader 线性一致读过程，返回投票箱 BallotBox 的 lastCommittedIndex。ReadIndex 响应回调遍历状态列表记录当前提交日志 Index，检查申请状态机最新 Log Entry 的 committedIndex 是否已经申请即比较状态机 appliedIndex 是否大于等于当前 committedIndex。由于 Leader 节点处理添加 Log Entry 请求发送心跳后投票箱 BallotBox 更新 lastCommittedIndex，当 Leader 节点的 lastCommittedIndex 大于当前的 lastCommittedIndex 就会创建提交 Log Entry 异步任务发布到 taskQueue 队列，申请任务处理器 ApplyTaskHandler 执行提交 LogEntry 申请任务，通知 Follower 节点最新申请的 committedIndex 已经更新。如果当前申请状态机的 applyIndex 超过 ReadIndex，那么通知 ReadIndex 请求成功返回给客户端。当前 Follower 节点落后于 Leader 时把 Leader 节点返回的committedIndex 放到 pendingNotifyStatus 缓存等待 Leader 节点同步完日志更新 applyIndex。
+- Leader 节点调用 handleReadIndexRequest(request, readIndexResponseClosure) 方法进行 readLeader 线性一致读过程，返回投票箱 BallotBox 的 lastCommittedIndex。ReadIndex 响应回调遍历状态列表记录当前提交日志 Index，检查申请状态机最新 Log Entry 的 committedIndex 是否已经申请即比较状态机 appliedIndex 是否大于等于当前 committedIndex。由于 Leader 节点处理添加 Log Entry 请求发送心跳后投票箱 BallotBox 更新 lastCommittedIndex，当 Leader 节点的 lastCommittedIndex 大于当前的 lastCommittedIndex 就会创建提交 Log Entry 异步任务发布到 taskQueue 队列，申请任务处理器 ApplyTaskHandler 执行提交 LogEntry 申请任务，通知 Follower 节点最新申请的 committedIndex 已经更新。如果当前申请状态机的 applyIndex 超过 ReadIndex，那么通知 ReadIndex 请求成功返回给客户端。当前 Follower 节点落后于 Leader 时把 Leader 节点返回的 committedIndex 放到 pendingNotifyStatus 缓存等待 Leader 节点同步完日志更新 applyIndex。
 
 SOFAJRaft 基于 Batch+Pipeline Ack+ 全异步机制的 ReadIndex 核心逻辑：
 
@@ -133,7 +133,7 @@ SOFAJRaft 基于时钟和心跳实现的线性一致读 Lease Read 优化逻�
 
 本文围绕 Raft Log Read，ReadIndex Read 以及 Lease Read 线性一致读实现细节方面剖析 SOFAJRaft 线性一致读基本原理，阐述 SOFAJRaft 如何使用 Batch+Pipeline Ack+全异步机制和 Clock+Heartbeat 手段优化 ReadIndex 和 Lease Read 线性一致读具体实现。
 
-### 《剖析 | SOFAJRaft 实现原理》系列文章回顾：
+### 《剖析 | SOFAJRaft 实现原理》系列文章回顾
 
 - [SOFAJRaft-RheaKV 是如何使用 Raft 的 | SOFAJRaft 实现原理](https://www.sofastack.tech/blog/sofa-jraft-rheakv/)
 - [蚂蚁金服生产级 Raft 算法库 SOFAJRaft 存储模块剖析 | SOFAJRaft 实现原理](https://www.sofastack.tech/blog/sofa-jraft-algorithm-storage-module-deep-dive/)

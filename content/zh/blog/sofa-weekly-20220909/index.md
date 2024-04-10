@@ -30,11 +30,11 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **1.我是一个小胖子** 提问：
 
->MOSN 现在是已经完整支持 xDS 协议了吗？
+> MOSN 现在是已经完整支持 xDS 协议了吗？
 
 A：支持 istio1.10。
 
->如果要支持 istio1.14 是需要重新适配吗？还是说有其他简化的方式？
+> 如果要支持 istio1.14 是需要重新适配吗？还是说有其他简化的方式？
 
 A：是需要适配下的，主要看新增了多少改动。
 
@@ -42,7 +42,7 @@ A：是需要适配下的，主要看新增了多少改动。
 
 **2.林楠** 提问：
 
->关在 uninstall biz 包的时候，没有从内嵌 Tomcat 卸载掉，接口仍能访问。看到 demo 中的提示是由于未注册 BeforeBizStopEvent，所以不具备动态卸载能力。想问下 SOFAArk 是否有计划做 Tomcat 的动态卸载，如果想自行实现的话，是不是调用 ArkTomcatWebServer 实例的 stop 方法就能够实现动态卸载？
+> 关在 uninstall biz 包的时候，没有从内嵌 Tomcat 卸载掉，接口仍能访问。看到 demo 中的提示是由于未注册 BeforeBizStopEvent，所以不具备动态卸载能力。想问下 SOFAArk 是否有计划做 Tomcat 的动态卸载，如果想自行实现的话，是不是调用 ArkTomcatWebServer 实例的 stop 方法就能够实现动态卸载？
 
 A：Spring Boot 模块没有动态卸载能力：*https://github.com/sofastack/sofa-ark/issues/554#issuecomment-1207183454*
 
@@ -52,7 +52,7 @@ A：Spring Boot 模块没有动态卸载能力：*https://github.com/sofastack/s
 
 [MOSN｜Go 原生插件使用问题全解析](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247512138&idx=1&sn=851abb8d07d47f703e33978c9c125c59&chksm=faa35f90cdd4d6869c6cd4934c042484dbe1063c3fb85462d2f33e936b96240ae33d02d18c3a&scene=21)
 
-[社区文章｜MOSN反向通道详解](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247510516&idx=1&sn=eff21915cd0ac1a8c8e3f126b549a605&chksm=faa3462ecdd4cf38ab6ab0c7201902fb53d54cea4865f9b7d7cdcdc7eaa00cf354d8b05e5393&scene=21)
+[社区文章｜MOSN 反向通道详解](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247510516&idx=1&sn=eff21915cd0ac1a8c8e3f126b549a605&chksm=faa3462ecdd4cf38ab6ab0c7201902fb53d54cea4865f9b7d7cdcdc7eaa00cf354d8b05e5393&scene=21)
 
 [MOSN 文档使用指南](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247507103&idx=1&sn=e8da41af0ceaa18ae13f31ca2905da8e&chksm=faa33345cdd4ba5397a43adfe8cabdc85321d3f9f14066c470885b41e2f704ec505a9f086cec&scene=21)
 

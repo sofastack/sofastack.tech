@@ -30,7 +30,7 @@ github: "https://github.com/sofastack-guides/kc-serverless-demo"
 - 应用 clone：[https://github.com/sofastack-guides/kc-serverless-demo](https://github.com/sofastack-guides/kc-serverless-demo)
 
 <a name="Wat0u"></a>
-### 讲师演示：
+### 讲师演示
 
 <a name="QrSTV"></a>
 #### 快速发布后端 Java 应用
@@ -74,7 +74,7 @@ github: "https://github.com/sofastack-guides/kc-serverless-demo"
 - 查看后端服务的计算实例数量的变化
 
 <a name="epfI5"></a>
-### 讲师演示：
+### 讲师演示
 
 <a name="liSO7"></a>
 #### 创建版本和流量控制
@@ -109,13 +109,13 @@ github: "https://github.com/sofastack-guides/kc-serverless-demo"
 - 通过计量监控查看实例运行情况
 
 <a name="KESa0"></a>
-### 讲师演示：
+### 讲师演示
 
 <a name="BdZ6q"></a>
 #### M-N 快速伸缩
 
 - 打开应用服务
-- 查看当前版本的计算实例限额 1-5 / 计算实例数量：目前为1
+- 查看当前版本的计算实例限额 1-5 / 计算实例数量：目前为 1
 - 开始压测模拟高并发，并同步查看计算示例数变化
 - 快速从 1 变化为 4，演示结束
 

@@ -129,7 +129,7 @@ public class SamplePluginActivator implements PluginActivator {
 }
 ```
 
-同时，在服务实现 `SamplePluginServiceImpl` 中演示了如何引用其他插件或者Ark容器发的服务，这里是引用 Ark 容器发布的事件管理服务 `EventAdminService`:
+同时，在服务实现 `SamplePluginServiceImpl` 中演示了如何引用其他插件或者 Ark 容器发的服务，这里是引用 Ark 容器发布的事件管理服务 `EventAdminService`:
 
 ```java
 public class SamplePluginServiceImpl implements SamplePluginService {

@@ -25,7 +25,7 @@ public class CustomerRouter extends Router {
     }
 ```
 新建扩展文件 META-INF/services/sofa-rpc/com.alipay.sofa.rpc.client.Router 。内容如下：
-```
+```plain
 customerRouter=com.alipay.sofa.rpc.custom.CustomRouter
 ```
 如上自定义了一个 CustomerRouter ，生效于所有消费者。其中 init 参数 ConsumerBootstrap 是引用服务的包装类，能够拿到 ConsumerConfig ，代理类，服务地址池等对象。 needToLoad 表示是否生效该 Router ， route 方法即筛选地址的方法。

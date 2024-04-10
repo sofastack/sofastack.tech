@@ -1,6 +1,6 @@
 
 ---
-title: "Node跨语言调用"
+title: "Node 跨语言调用"
 aliases: "/sofa-rpc/docs/Node-And-Java-Communicate"
 ---
 

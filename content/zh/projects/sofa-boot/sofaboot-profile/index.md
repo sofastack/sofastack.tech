@@ -77,7 +77,7 @@ application.properties 中增加配置如下：
 com.alipay.sofa.boot.active-profiles=dev,test
 ```
 
-该配置表示激活 profile 为 dev 或者 test 的模块，当一个模块满足上面的激活条件时，这个模块就会被启动，同时 Spring 上下文的环境信息 spring.profiles.active 也被设置为了 dev,test ，这样如下的配置 beanId 为 devBeanId 和 testBeanId 的bean都会被激活。
+该配置表示激活 profile 为 dev 或者 test 的模块，当一个模块满足上面的激活条件时，这个模块就会被启动，同时 Spring 上下文的环境信息 spring.profiles.active 也被设置为了 dev,test ，这样如下的配置 beanId 为 devBeanId 和 testBeanId 的 bean 都会被激活。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

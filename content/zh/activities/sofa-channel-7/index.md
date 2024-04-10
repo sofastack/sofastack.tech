@@ -54,7 +54,7 @@ SOFAGirl 主持人
 
 枫晟 蚂蚁金服 SOFAStack-CAFE 云应用引擎 容器应用服务研发负责人
 
-### 本期分享大纲：
+### 本期分享大纲
 
 - Kubernetes Deployment 发展历史与现状
 - Kubernetes Deployment 在互联网金融云场景下的问题与挑战

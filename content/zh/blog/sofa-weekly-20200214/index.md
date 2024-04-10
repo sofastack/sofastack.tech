@@ -83,14 +83,14 @@ SOFAArk：[https://github.com/sofastack/sofa-ark](https://github.com/sofastack/s
 
 **1、发布 SOFATracer v2.4.5/3.0.9 版本，主要变更如下：**
 
-i. 默认禁用上报数据到zipkin, 需要显式设置 com.alipay.sofa.tracer.zipkin.enabled=true 才能开启；
+i. 默认禁用上报数据到 zipkin, 需要显式设置 com.alipay.sofa.tracer.zipkin.enabled=true 才能开启；
 详细发布报告：
 [https://github.com/sofastack/sofa-tracer/releases/tag/v2.4.5](https://github.com/sofastack/sofa-tracer/releases/tag/v2.4.5)
 [https://github.com/sofastack/sofa-tracer/releases/tag/v3.0.9](https://github.com/sofastack/sofa-tracer/releases/tag/v3.0.9)
 
 **2、发布 SOFATracer v2.4.6v/v3.0.10 版本，主要变更如下：**
 
-i. 支持使用 JVM系统属性 或 环境变量 SOFA_TRACER_LOGGING_PATH 来定制 tracelog 的路径
+i. 支持使用 JVM 系统属性 或 环境变量 SOFA_TRACER_LOGGING_PATH 来定制 tracelog 的路径
 详细发布报告：
 [https://github.com/sofastack/sofa-tracer/releases/tag/v2.4.6](https://github.com/sofastack/sofa-tracer/releases/tag/v2.4.6)
 [https://github.com/sofastack/sofa-tracer/releases/tag/v3.0.10](https://github.com/sofastack/sofa-tracer/releases/tag/v3.0.10)
@@ -107,7 +107,7 @@ i. 支持使用 JVM系统属性 或 环境变量 SOFA_TRACER_LOGGING_PATH 来定
 
 **主题**：SOFAChannel#12：蚂蚁金服分布式事务实践解析
 
-**时间**：2020年3月12日（周四）19:00-20:00
+**时间**：2020 年 3 月 12 日（周四）19:00-20:00
 
 **嘉宾**：仁空，蚂蚁金服分布式事务核心开发
 

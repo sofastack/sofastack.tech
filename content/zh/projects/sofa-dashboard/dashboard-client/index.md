@@ -3,7 +3,7 @@ title: "应用面板"
 aliases: "/sofa-dashboard/docs/DashboardClient"
 ---
 
-SOFADashboard 支持查看应用的IP、端口、健康检查状态等基本信息。此功能依赖 SOFADashboard client ，如果一个应用需要将应用信息展示到 SOFADashboard 管控端，可以通过引入客户端依赖即可：
+SOFADashboard 支持查看应用的 IP、端口、健康检查状态等基本信息。此功能依赖 SOFADashboard client ，如果一个应用需要将应用信息展示到 SOFADashboard 管控端，可以通过引入客户端依赖即可：
 
 ```xml
 <denpendency>
@@ -56,15 +56,15 @@ SOFADashboard 支持查看应用的IP、端口、健康检查状态等基本信�
 | 属性                  | 名称                | 默认值 | 备注 |
 | ----                 | ----                | ---- | -----|
 | enable               | 是否可用             | true |  当开启时，dashboard client 的相应功能才会作用|
-| instanceIp           | 指定当前实例的IP 地址  | "" | 一般用于测试或者需要指定 IP 的场景  |
-| storeInitDelayExp    | 初始上报延迟          |  30s | Dashboard度量数据存储上报延迟期望(s) |
-| storeUploadPeriodExp | 上报周期 | 60s       | Dashboard度量数据存储上报周期(s) |
-| virtualHost         | 虚拟地址             | "" | 服务发布虚拟host（同SofaRpc中相同定义），可使用-Dcom.alipay.sofa.rpc.virtual.host引入|
-| virutalPort         | 虚拟端口             | "" | 服务发布虚拟port（同SofaRpc中相同定义），可使用-Dcom.alipay.sofa.rpc.virtual.port引入|
-| internalHost        | 内部地址             | "" | 容器内部地址（例如podIp等)，可使用-Dcom.alipay.sofa.rpc.virtual.internal.host引入|
-| arkEnable           | 是否启用ark管理      |true | 当开启时，dashboard client的相应功能才会作用|
+| instanceIp           | 指定当前实例的 IP 地址  | "" | 一般用于测试或者需要指定 IP 的场景  |
+| storeInitDelayExp    | 初始上报延迟          |  30s | Dashboard 度量数据存储上报延迟期望(s) |
+| storeUploadPeriodExp | 上报周期 | 60s       | Dashboard 度量数据存储上报周期(s) |
+| virtualHost         | 虚拟地址             | "" | 服务发布虚拟 host（同 SofaRpc 中相同定义），可使用-Dcom.alipay.sofa.rpc.virtual.host 引入|
+| virutalPort         | 虚拟端口             | "" | 服务发布虚拟 port（同 SofaRpc 中相同定义），可使用-Dcom.alipay.sofa.rpc.virtual.port 引入|
+| internalHost        | 内部地址             | "" | 容器内部地址（例如 podIp 等)，可使用-Dcom.alipay.sofa.rpc.virtual.internal.host 引入|
+| arkEnable           | 是否启用 ark 管理      |true | 当开启时，dashboard client 的相应功能才会作用|
 
-注：virtualHost，virutalPort 如果通过com.alipay.sofa.rpc指定了相应参数，则不需要通过dashborad再次指定
+注：virtualHost，virutalPort 如果通过 com.alipay.sofa.rpc 指定了相应参数，则不需要通过 dashborad 再次指定
 
 **zookeeper , prefix : com.alipay.sofa.dashboard.zookeeper**
 
@@ -80,13 +80,13 @@ SOFADashboard 支持查看应用的IP、端口、健康检查状态等基本信�
 
 | 属性                  | 名称                | 默认值 | 备注 |
 | ----                 | ----                | ---- | -----|
-| enble               | 是否可用            | true | 当开启时，dashboard会使用redis作为存储 |
+| enble               | 是否可用            | true | 当开启时，dashboard 会使用 redis 作为存储 |
 | recordTtl           | 上报周期(ms).  | 3600 |   |
-| url    | redis对应url          |   | 例如：redis://user:password@example.com:6379 |
-| host | redis对应host（单实例模式） |       | |
-| port | redis对应port（单实例模式） |       |  |
-| password | redis密码 |                     |  |
-| Sentinel.master | Sentinel模式master |        | master节点名，需参阅集群搭建设置 |
-| Sentinel.nodes | Sentinel模式节点地址 |        |  例如host1:port1;host2:port2;host3:port3   |
-| Cluster.nodes | Cluster模式节点地址 |        |  例如host1:port1;host2:port2;host3:port3  |
-| Cluster.maxRedirects | Cluster模式重定向次数 |   0    |  建议给值，例如10 |
+| url    | redis 对应 url          |   | 例如：redis://user:password@example.com:6379 |
+| host | redis 对应 host（单实例模式） |       | |
+| port | redis 对应 port（单实例模式） |       |  |
+| password | redis 密码 |                     |  |
+| Sentinel.master | Sentinel 模式 master |        | master 节点名，需参阅集群搭建设置 |
+| Sentinel.nodes | Sentinel 模式节点地址 |        |  例如 host1:port1;host2:port2;host3:port3   |
+| Cluster.nodes | Cluster 模式节点地址 |        |  例如 host1:port1;host2:port2;host3:port3  |
+| Cluster.maxRedirects | Cluster 模式重定向次数 |   0    |  建议给值，例如 10 |

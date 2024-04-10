@@ -37,7 +37,7 @@ SOFAArk 提出了一种特殊的包结构 -- Ark Biz，用户可以使用 Maven 
 
 ![Ark Biz](https://cdn.nlark.com/yuque/0/2019/png/226702/1553048279009-dcd80828-177b-466b-89d4-4c3fddb04ca7.png)
 
-Biz 对应用类型没有限制，可以是 Spring Boot/SOFABoot/Java 普通应用类型，Biz 之间采用统一的编程界面-[SOFA JVM服务](https://www.sofastack.tech/sofa-boot/docs/sofa-ark-ark-jvm)进行交互。发布和引用服务也非常简单，使用 API 或者 Spring 注解/XML 方式：
+Biz 对应用类型没有限制，可以是 Spring Boot/SOFABoot/Java 普通应用类型，Biz 之间采用统一的编程界面-[SOFA JVM 服务](https://www.sofastack.tech/sofa-boot/docs/sofa-ark-ark-jvm)进行交互。发布和引用服务也非常简单，使用 API 或者 Spring 注解/XML 方式：
 
 ![发布和引用服务源码](https://cdn.nlark.com/yuque/0/2019/png/226702/1553048279015-030e16c6-c052-4000-8323-2e2c72062f24.png)
 
@@ -87,7 +87,7 @@ SOFAArk 采用轻量级的类隔离方案来解决日常经常遇到的包冲突
 
 ![SOFAArk 运行逻辑结构图](https://cdn.nlark.com/yuque/0/2019/png/226702/1553048279031-76fb0245-0f12-4478-bc0a-aad77c9396a9.png)
 
-在介绍这三个概念之前，先介绍 Executable Ark Jar 包概念：Ark 包是 SOFAArk 定义的特殊格式的可执行 Jar 包。SOFAArk 提供的 Maven 插件 sofa-ark-maven-plugin 可以将单个或多个 Biz打包成 Ark 包，使用 java -jar命令即可在 SOFAArk 容器之上启动所有应用。Ark 包通常包含 Ark Container、Ark Plugin 和 Ark Biz。下面是一个简单的 Ark 包工程目录：
+在介绍这三个概念之前，先介绍 Executable Ark Jar 包概念：Ark 包是 SOFAArk 定义的特殊格式的可执行 Jar 包。SOFAArk 提供的 Maven 插件 sofa-ark-maven-plugin 可以将单个或多个 Biz 打包成 Ark 包，使用 java -jar 命令即可在 SOFAArk 容器之上启动所有应用。Ark 包通常包含 Ark Container、Ark Plugin 和 Ark Biz。下面是一个简单的 Ark 包工程目录：
 
 ![Ark 包工程目录](https://cdn.nlark.com/yuque/0/2019/png/226702/1553048279029-4e454efe-8e63-473d-9505-5a74a567543d.png)
 

@@ -294,7 +294,7 @@ applicationB:
 
 这个推演结果是令人激动的，然而实际的场景要比上述这个数据更复杂。这个推演模型，要进行真正线上实施，并且进行大规模落地，仍然是长路漫漫。这里先抛出几个问题：
 
-1、如果不同的接口之间，参数并不是完全相同的，我们要如何处理？例如 FooService 的 _TIMEOUT=3000，BarService的_TIMEOUT=1000，Service100的_TIMEOUT=5000；
+1、如果不同的接口之间，参数并不是完全相同的，我们要如何处理？例如 FooService 的 _TIMEOUT=3000，BarService 的_TIMEOUT=1000，Service100 的_TIMEOUT=5000；
 
 2、provider 的不同 pod 之间，发布的服务列表有差异，要如何处理？例如 provider1 发布的服务列表是 ["com.alipay.sample.FooService","com.alipay.sample.BarService", ..., "com.alipay.sample.Service50"]；provider2 发布的服务列表是 ["com.alipay.sample.FooService","com.alipay.sample.BarService", ..., "com.alipay.sample.Service51"]；
 

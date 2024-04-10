@@ -46,14 +46,14 @@ SOFABolt：[https://github.com/sofastack/sofa-bolt](SOFABolt：https://github.co
 > 这一步如果抛出异常，那么是不是不会释放 connection 连接？导致长期占有数据库连接。
 > ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*zVudSLWTnlYAAAAAAAAAAAAAARQnAQ)
 
-A: 会释放，close 是框架层面出现异常自动就会调，如果你自己写 jdbc，你也肯定捕获一次做 rollback close了，这属于框架和业务上的处理，Seata 只不过把异常抛出去。
+A: 会释放，close 是框架层面出现异常自动就会调，如果你自己写 jdbc，你也肯定捕获一次做 rollback close 了，这属于框架和业务上的处理，Seata 只不过把异常抛出去。
 
 Seata：[https://github.com/seata/seata](Seata：https://github.com/seata/seata)
 
 
 ### 本周推荐阅读
 
-- [助力数据安全：蚂蚁携手英特尔共同打造验证PPML解决方案](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247488532&idx=1&sn=11952dbe5c4483a16ce806f3dc636802&chksm=faa0fbcecdd772d859405491fdaf8260d17d9549bff3206840c68b96b248531d789993c85942&scene=21)
+- [助力数据安全：蚂蚁携手英特尔共同打造验证 PPML 解决方案](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247488532&idx=1&sn=11952dbe5c4483a16ce806f3dc636802&chksm=faa0fbcecdd772d859405491fdaf8260d17d9549bff3206840c68b96b248531d789993c85942&scene=21)
 
 - [用安全计算保护关键业务](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247488532&idx=2&sn=db66969566704cf14c8e604632c2026c&chksm=faa0fbcecdd772d89f06ddd61b66fa746c983522e72610b66cf8a6440861788eaeef8b91598a&scene=21)
 
@@ -82,4 +82,4 @@ Seata：[https://github.com/seata/seata](Seata：https://github.com/seata/seata)
 
 更多文章请扫码关注“金融级分布式架构”公众号
 
->![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*s3UzR6VeQ6cAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*s3UzR6VeQ6cAAAAAAAAAAAAAARQnAQ)

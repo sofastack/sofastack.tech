@@ -17,14 +17,14 @@ cover: "https://cdn.nlark.com/yuque/0/2020/png/226702/1591703787275-1d0224b4-abc
 
 根据实际业务部署场景，并没有选用高性能机器，使用普通 Linux 机器，配置和压测参数如下：
 
-- Intel(R) Xeon(R) Platinum 8163 CPU @ 2.50GHz 4核16G；
+- Intel(R) Xeon(R) Platinum 8163 CPU @ 2.50GHz 4 核 16G；
 - pod 配置 `2c、1g`，jvm 参数 `-server -Xms1024m -Xmx1024m`；
-- 网络延迟 0.23ms, 2台 Linux 机器，分别部署 server+MOSN, 压测程序 [rpc-perfomance](https://github.com/zonghaishang/rpc-performance)；
+- 网络延迟 0.23ms, 2 台 Linux 机器，分别部署 server+MOSN, 压测程序 [rpc-perfomance](https://github.com/zonghaishang/rpc-performance)；
 
-经过3轮性能优化后，使用优化版本 MOSN 将会获得以下性能收益(框架随机512和1k字节压测)：
+经过 3 轮性能优化后，使用优化版本 MOSN 将会获得以下性能收益(框架随机 512 和 1k 字节压测)：
 
-- 512字节：MOSN+Dubbo 服务调用 tps 整体提升55-82.8%，rt 降低45%左右，内存占用 40M；
-- 1k数据：MOSN+Dubbo 服务调用 tps 整体提升51.1-69.3%，rt 降低41%左右,  内存占用 41M；
+- 512 字节：MOSN+Dubbo 服务调用 tps 整体提升 55-82.8%，rt 降低 45%左右，内存占用 40M；
+- 1k 数据：MOSN+Dubbo 服务调用 tps 整体提升 51.1-69.3%，rt 降低 41%左右,  内存占用 41M；
 
 ### 性能优化工具 pprof
 
@@ -32,15 +32,15 @@ cover: "https://cdn.nlark.com/yuque/0/2020/png/226702/1591703787275-1d0224b4-abc
 
 因为 MOSN 默认会在`34902`端口暴露 http 服务，通过以下命令轻松获取 MOSN 的性能诊断文件：
 
-```
+```plain
 go tool pprof -seconds 60 http://benchmark-server-ip:34902/debug/pprof/profile
 # 会生成类似以下文件，该命令采样cpu 60秒
 # pprof.mosn.samples.cpu.001.pb.gz
 ```
 
-然后继续用 pprof 打开诊断文件，方便在浏览器查看，在图1-1给出压测后 profiler 火焰图：
+然后继续用 pprof 打开诊断文件，方便在浏览器查看，在图 1-1 给出压测后 profiler 火焰图：
 
-```
+```plain
 # http=:8000代表pprof打开8000端口然后用于web浏览器分析
 # mosnd代表mosn的二进制可执行文件，用于分析代码符号
 # pprof.mosn.samples.cpu.001.pb.gz是cpu诊断文件
@@ -49,12 +49,12 @@ go tool pprof -http=:8000 mosnd pprof.mosn.samples.cpu.001.pb.gz
 
 ![图1-1 压测后 profiler 火焰图](https://cdn.nlark.com/yuque/0/2020/png/226702/1591262555984-3096f50a-9568-4dff-bf55-3639f7d69c6f.png)
 
-在获得诊断数据后，可以切到浏览器 Flame Graph(火焰图，Go 1.11以上版本自带)，火焰图的 X 轴坐标代表 CPU 消耗情况，Y 轴代码方法调用堆栈。在优化开始之前，我们借助 Go 工具 pprof 可以诊断出大致的性能卡点在以下几个方面(直接压 Server 端 MOSN)：
+在获得诊断数据后，可以切到浏览器 Flame Graph(火焰图，Go 1.11 以上版本自带)，火焰图的 X 轴坐标代表 CPU 消耗情况，Y 轴代码方法调用堆栈。在优化开始之前，我们借助 Go 工具 pprof 可以诊断出大致的性能卡点在以下几个方面(直接压 Server 端 MOSN)：
 
-- MOSN 在接收 Dubbo 请求，CPU 卡点在streamConnection.Dispatch；
+- MOSN 在接收 Dubbo 请求，CPU 卡点在 streamConnection.Dispatch；
 - MOSN 在转发 Dubbo 请求，CPU 卡点在 downStream.Receive；
 
-可以点击火焰图任意横条，进去查看长方块耗时和堆栈明细（请参考图1-2和1-3所示）：
+可以点击火焰图任意横条，进去查看长方块耗时和堆栈明细（请参考图 1-2 和 1-3 所示）：
 
 ![图1-2 长方块耗时](https://cdn.nlark.com/yuque/0/2020/png/226702/1591262667845-8c6054c9-f4ab-4fed-9254-7ff213a2db44.png)
 
@@ -266,7 +266,7 @@ if listener == IngressDubbo {
 
 #### 2. 优化 Dubbo 解码参数
 
-在 Dubbo 解码参数值的时候 ，MOSN 采用的是 Hessian 的正则表达式查找，非常耗费性能。我们先看下优化前后 benchmark 对比, 性能提升50倍!!!
+在 Dubbo 解码参数值的时候 ，MOSN 采用的是 Hessian 的正则表达式查找，非常耗费性能。我们先看下优化前后 benchmark 对比, 性能提升 50 倍!!!
 
 ```go
 go test -bench=BenchmarkCountArgCount -run=^$ -benchmem
@@ -276,9 +276,9 @@ BenchmarkCountArgCountOptimized-12	10000000	124 ns/op	0 B/op	0 allocs/op
 
 **优化思路：**
 
-可以消除正则表达式，采用简单字符串解析识别参数类型个数， [Dubbo 编码参数个数字符串实现](https://github.com/zonghaishang/dubbo/blob/e0fd702825a274379fb609229bdb06ca0586122e/dubbo-common/src/main/java/org/apache/dubbo/common/utils/ReflectUtils.java#L370) 并不复杂, 主要给对象加L前缀、数组加[、primitive 类型有单字符代替。采用 Go 可以实现同等解析, 可以参考[优化代码 diff](https://github.com/mosn/mosn/pull/1174/commits/9020ee9995cd15a7a4321a375a9506cf94dc70a8#diff-73d1153005841c788c91116915f460a5R245) ：
+可以消除正则表达式，采用简单字符串解析识别参数类型个数， [Dubbo 编码参数个数字符串实现](https://github.com/zonghaishang/dubbo/blob/e0fd702825a274379fb609229bdb06ca0586122e/dubbo-common/src/main/java/org/apache/dubbo/common/utils/ReflectUtils.java#L370) 并不复杂, 主要给对象加 L 前缀、数组加[、primitive 类型有单字符代替。采用 Go 可以实现同等解析, 可以参考[优化代码 diff](https://github.com/mosn/mosn/pull/1174/commits/9020ee9995cd15a7a4321a375a9506cf94dc70a8#diff-73d1153005841c788c91116915f460a5R245) ：
 
-```
+```plain
 func getArgumentCount(desc string) int {
 	len := len(desc)
 	if len == 0 {
@@ -327,18 +327,18 @@ func getArgumentCount(desc string) int {
 
 #### 3. 优化 hessian go 解码 string 性能
 
-在图1-2中可以看到 hessian go 在解码 string 占比 CPU 采样较高，我们在解码 Dubbo 请求时，会解析 Dubbo 框架版本、调用 path、接口版本和方法名，这些都是 string 类型，hessian go 解析 string 会影响 RPC 性能。
+在图 1-2 中可以看到 hessian go 在解码 string 占比 CPU 采样较高，我们在解码 Dubbo 请求时，会解析 Dubbo 框架版本、调用 path、接口版本和方法名，这些都是 string 类型，hessian go 解析 string 会影响 RPC 性能。
 
-我们首先跑一下 benchmark 前后解码 string 性能对比，性能提升 56.11%!!!  对应到 RPC 中有5%左右提升。
+我们首先跑一下 benchmark 前后解码 string 性能对比，性能提升 56.11%!!!  对应到 RPC 中有 5%左右提升。
 
-```
+```plain
 BenchmarkDecodeStringOriginal-12     1967202     613 ns/op     272 B/op     6 allocs/op
 BenchmarkDecodeStringOptimized-12     4477216     269 ns/op     224 B/op     5 allocs/op
 ```
 
 **优化思路：**
 
-直接使用 utf-8 byte 解码，性能最高，之前先解码 byte 成 rune, 对 rune 解码成 string 及其耗费性能。增加批量string chunk copy, 降低 read 调用，并且使用 unsafe 转换 string(避免一些校验)，因为代码优化 diff 较多，这里给出[优化代码 PR](https://github.com/apache/dubbo-go-hessian2/pull/188) 。
+直接使用 utf-8 byte 解码，性能最高，之前先解码 byte 成 rune, 对 rune 解码成 string 及其耗费性能。增加批量 string chunk copy, 降低 read 调用，并且使用 unsafe 转换 string(避免一些校验)，因为代码优化 diff 较多，这里给出[优化代码 PR](https://github.com/apache/dubbo-go-hessian2/pull/188) 。
 
 Go SDK 代码 `runtime/string.go#slicerunetostring`(rune 转换成 string)， 同样是把 rune 转成 byte 数组，这里给了我优化思路启发。
 
@@ -346,7 +346,7 @@ Go SDK 代码 `runtime/string.go#slicerunetostring`(rune 转换成 string)， �
 
 虽然消除了 Dubbo 的 body 解码部分，但是 MOSN 在处理 Dubbo 请求时，必须要借助 hessian 去 decode 请求头部的框架版本、请求 path 和接口版本值。但是每次在解码的时候都会创建序列化对象，开销非常高，因为 hessian 每次在创建 reader 的时候会 allocate 4k 数据并 reset。
 
-```
+```plain
       10ms       10ms     75:func unSerialize(serializeId int, data []byte, parseCtl unserializeCtl) *dubboAttr {
       10ms      140ms     82:	attr := &dubboAttr{}
       80ms      2.56s     83:	decoder := hessian.NewDecoderWithSkip(data[:])
@@ -358,7 +358,7 @@ ROUTINE ======================== bufio.NewReaderSize in /usr/local/go/src/bufio/
          .          .     58:}
 ```
 
-我们可以写个池化内存前后性能对比, 性能提升85.4%!!! , [benchmark 用例](https://github.com/zonghaishang/dubbo-go-hessian2/blob/9b418c4e2700964f244e6b982855b4e89b45990d/string_test.go#L161) ：
+我们可以写个池化内存前后性能对比, 性能提升 85.4%!!! , [benchmark 用例](https://github.com/zonghaishang/dubbo-go-hessian2/blob/9b418c4e2700964f244e6b982855b4e89b45990d/string_test.go#L161) ：
 
 ```go
 BenchmarkNewDecoder-12	1487685	803 ns/op	4528 B/op	9 allocs/op
@@ -369,7 +369,7 @@ BenchmarkNewDecoderOptimized-12	10564024	117 ns/op	128 B/op	3 allocs/op
 
 在每次编解码时，池化 hessian 的 decoder 对象，新增 NewCheapDecoderWithSkip 并支持 reset 复用 decoder。
 
-```
+```plain
 var decodePool = &sync.Pool{
     New: func() interface{} {
         return hessian.NewCheapDecoderWithSkip([]byte{})
@@ -385,9 +385,9 @@ hessianPool.Put(decoder)
 
 #### 5. 优化重复解码 service 和 methodName 值
 
-xprotocol 在实现 xprotocol.Tracing 获取服务名称和方法时，会触发调用并解析2次，调用开销比较大。
+xprotocol 在实现 xprotocol.Tracing 获取服务名称和方法时，会触发调用并解析 2 次，调用开销比较大。
 
-```
+```plain
       10ms      1.91s    171:			serviceName := tracingCodec.GetServiceName(request)
          .      2.17s    172:			methodName := tracingCodec.GetMethodName(request)
 ```
@@ -404,7 +404,7 @@ xprotocol 在实现 xprotocol.Tracing 获取服务名称和方法时，会触发
 
 生产代码中, 尽量不要使用 fmt.Sprintf 和 fmt.Printf 去做类型转换和打印信息。可以使用 strconv 去转换。
 
-```
+```plain
    .      430ms    147: reqIDStr := fmt.Sprintf("%d", reqID)
 60ms      4.10s    168: fmt.Printf("src=%s, len=%d, reqid:%v\n", streamID, reqIDStrLen, reqIDStr)
 ```
@@ -415,7 +415,7 @@ MOSN 在解码 Dubbo 的请求时，会在 header 中塞一份远程 host 的地
 
 **优化思路：**
 
-```
+```plain
      50ms      920ms    136:		headers[strings.ToLower(protocol.MosnHeaderHostKey)] = conn.connection.RemoteAddr().String()
 ```
 
@@ -445,7 +445,7 @@ MOSN 中不少代码在处理逻辑时，会打很多 Trace 级别的日志，�
 
 通过配置中心下发配置或者增加大促开关，允许 API 调用这些 Feature 的开关。
 
-```
+```plain
 /api/v1/downgrade/on
 /api/v1/downgrade/off
 ```
@@ -473,7 +473,7 @@ MOSN 中在做路由前，需要做大量的 header 的 map 访问，比如 ldc�
 - 减少 connection 的 read 和 write 次数(syscall)；
 - 优化 IO 线程模型，减少携程和上下文切换等；
 
-作为结束，给出了最终优化后的火焰图 ，大部分卡点都在系统调用和网络读写,  请参考图1-4。
+作为结束，给出了最终优化后的火焰图 ，大部分卡点都在系统调用和网络读写,  请参考图 1-4。
 
 ![图1-4优化后的火焰图](https://cdn.nlark.com/yuque/0/2020/png/226702/1591269032530-5a6bea4b-0573-4944-9a67-14af2bf960bf.png)
 

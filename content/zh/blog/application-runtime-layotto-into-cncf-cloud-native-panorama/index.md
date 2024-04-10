@@ -15,7 +15,7 @@ Layotto 正式加入 CNCF 云原生全景图!
 
 分类在 Serverless framework 板块下，详情见 ：[https://l.cncf.io/serverless](https://l.cncf.io/serverless)
 
-意味着 Layotto 正式成为了CNCF 认可的构建云原生最佳实践中的一环。
+意味着 Layotto 正式成为了 CNCF 认可的构建云原生最佳实践中的一环。
 
 ![图片](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*aWLASbfTsPYAAAAAAAAAAAAAARQnAQ)
 

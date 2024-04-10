@@ -41,7 +41,7 @@ SOFAJRaft：[https://github.com/sofastack/sofa-jraft](https://github.com/sofasta
 
 A：可以看下 com.alipay.sofa.runtime.invoke.DynamicJvmServiceProxyFinder 这个类。
 
-> 懂了，原来在这之上还有个 SofaFramework维护一个静态变量，真巧妙，用这个来解决多个 spring 容器里的 rpc 调用问题吗？
+> 懂了，原来在这之上还有个 SofaFramework 维护一个静态变量，真巧妙，用这个来解决多个 spring 容器里的 rpc 调用问题吗？
 
 A：多个 spring 容器之间的调用，不是 rpc 调用，是进程内调用。
 
@@ -50,7 +50,7 @@ A：多个 spring 容器之间的调用，不是 rpc 调用，是进程内调用
 A：这个会打包成一个插件，放在 ark plugin 层。
 ![image.png](https://cdn.nlark.com/yuque/0/2019/png/226702/1572587349035-310c5ab8-b760-411c-86f9-a8f5cc4d5e02.png)
 
-> 既然说插件之间是隔离的，那你把 SofaFramework 打在插件里，别的 biz 包启动时从会从 plugin里拿一个 SofaFramework ，互相不可见，这不是有问题吗？
+> 既然说插件之间是隔离的，那你把 SofaFramework 打在插件里，别的 biz 包启动时从会从 plugin 里拿一个 SofaFramework ，互相不可见，这不是有问题吗？
 
 A：不同 biz 会共享同一个。
 SOFAArk：[https://github.com/sofastack/sofa-ark](https://github.com/sofastack/sofa-ark)

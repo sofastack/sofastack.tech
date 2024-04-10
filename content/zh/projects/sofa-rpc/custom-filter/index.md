@@ -24,14 +24,14 @@ public class CustomFilter extends Filter {
 }
 ```
 2. 生效该自定义 Filter 到拦截器链中。这一步具体方式有三种。
-  方式1：API方式。该种方式能够生效到指定的 provider 或 consumer 。
+方式 1：API 方式。该种方式能够生效到指定的 provider 或 consumer 。
 ```java
 // 服务提供者
 providerConfig.setFilterRef(Arrays.asList(new CustomFilter()));
 // 服务调用者
 consumerConfig.setFilterRef(Arrays.asList(new CustomFilter()));
 ```
-  方式2：在类上加上 @Extension 注解+配置扩展文件方式。
+  方式 2：在类上加上 @Extension 注解+配置扩展文件方式。
 ```java
 @Extension("customer")
 public class CustomFilter extends Filter {    
@@ -47,7 +47,7 @@ public class CustomFilter extends Filter {
 }
 ```
 新建扩展文件 META-INF/services/sofa-rpc/com.alipay.sofa.rpc.filter.Filter 。内容如下：
-```
+```plain
 customer=com.alipay.sofa.rpc.custom.CustomFilter
 ```
 编码注入。

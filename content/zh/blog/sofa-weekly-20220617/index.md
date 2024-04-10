@@ -25,7 +25,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 1.@魏顺利 提问：
 
->生成的 ark-biz.jar 这个怎么打到 maven 仓库？
+> 生成的 ark-biz.jar 这个怎么打到 maven 仓库？
 
 A：加上<attach>true</attach>配置然后 mvn install/deploy，参考：
 
@@ -35,11 +35,11 @@ A：加上<attach>true</attach>配置然后 mvn install/deploy，参考：
 
 2.@寒鸦少年 提问：
 
->请教个问题，SOFAStack 商业版里面，SOFABoot 在集成中间件的时候，中间件的客户端咱这边有自己封装的版本，还是纯走开源的那些客户端比如 Jedis 之类的。
+> 请教个问题，SOFAStack 商业版里面，SOFABoot 在集成中间件的时候，中间件的客户端咱这边有自己封装的版本，还是纯走开源的那些客户端比如 Jedis 之类的。
 
 A：SOFAStack 有些中间件会有自己的封装，也会有独立的客户端。
 
->可以给个列表么，具体有哪些独立的客户端和开源版本的升级点对比之类的？
+> 可以给个列表么，具体有哪些独立的客户端和开源版本的升级点对比之类的？
 
 A：可以看下这个：
 

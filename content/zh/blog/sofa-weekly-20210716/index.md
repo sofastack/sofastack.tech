@@ -27,7 +27,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 1、@陈拥军 提问：
 
->我想求教一个问题，非 Spring 工程中使用 SOFARPC 的泛化调用是否可行？
+> 我想求教一个问题，非 Spring 工程中使用 SOFARPC 的泛化调用是否可行？
 
 A：使用 SOFARPC 的 API 方式构造 泛化 Reference 就可以。
 
@@ -35,7 +35,7 @@ SOFARPC：[https://github.com/sofastack/sofa-rpc](https://github.com/sofastack/s
 
 2、@孙明 提问：
 
->请教大家，SOFARPC 可以相互依赖吗？比如 a 依赖 b，同时 b 也依赖 a。
+> 请教大家，SOFARPC 可以相互依赖吗？比如 a 依赖 b，同时 b 也依赖 a。
 
 A：只要不是应用启动期的循环依赖，都是可以的。
 
@@ -43,7 +43,7 @@ SOFARPC：[https://github.com/sofastack/sofa-rpc](https://github.com/sofastack/s
 
 3、@周杰慧 提问：
 
->请教个问题，使用 shardingsphere 与 Seata AT 模式结合，我看 Seata 源代码回滚时用主键更新，但对于数据库分片来讲更新时 where 条件需要带上分片的列，这样的话我应该怎么解决这个问题呢？
+> 请教个问题，使用 shardingsphere 与 Seata AT 模式结合，我看 Seata 源代码回滚时用主键更新，但对于数据库分片来讲更新时 where 条件需要带上分片的列，这样的话我应该怎么解决这个问题呢？
 
 A：看他们的 demo 来集成。
 
@@ -51,9 +51,9 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 4、@Q 提问：
 
->eureka 做注册中心，TC 高可用时，如何在 TC 端覆盖 eureka 属性？
+> eureka 做注册中心，TC 高可用时，如何在 TC 端覆盖 eureka 属性？
 
-A：在 seata\conf 目录下新增 eureka-client.properties 文件，添加要覆盖的 eureka 属性即可。例如，要覆盖 eureka.instance.lease-renewal-interval-in-seconds 和 eureka.instance.lease-expiration-duration-in-seconds添加如下内容：
+A：在 seata\conf 目录下新增 eureka-client.properties 文件，添加要覆盖的 eureka 属性即可。例如，要覆盖 eureka.instance.lease-renewal-interval-in-seconds 和 eureka.instance.lease-expiration-duration-in-seconds 添加如下内容：
 
 eureka.lease.renewalInterval=1
 
@@ -75,4 +75,4 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 更多文章请扫码关注“金融级分布式架构”公众号
 
->![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*s3UzR6VeQ6cAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*s3UzR6VeQ6cAAAAAAAAAAAAAARQnAQ)

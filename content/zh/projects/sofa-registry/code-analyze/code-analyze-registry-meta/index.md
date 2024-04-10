@@ -225,9 +225,9 @@ step4：如果 leader 发生切换，通知 xxx
 
 | ip            | 角色     | 备注                                                         |
 | ------------- | -------- | ------------------------------------------------------------ |
-| 10.177.41.99  | follower | competeLockOnUpdate执行失败，即 term 、term_duration匹配不上，sql没有修改行数据 |
+| 10.177.41.99  | follower | competeLockOnUpdate 执行失败，即 term 、term_duration 匹配不上，sql 没有修改行数据 |
 | 10.177.41.100 |          | kill                                                         |
-| 10.181.160.18 | leader   | competeLockOnUpdate执行成功，即 term 、term_duration匹配的上，即当选leader，之后term 递增 |
+| 10.181.160.18 | leader   | competeLockOnUpdate 执行成功，即 term 、term_duration 匹配的上，即当选 leader，之后 term 递增 |
 
 ![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*V0uGSqlpWD0AAAAAAAAAAAAAARQnAQ)
 
@@ -237,7 +237,7 @@ step4：如果 leader 发生切换，通知 xxx
 
 | ip            | 角色   | 备注                                    |
 | ------------- | ------ | --------------------------------------- |
-| 10.177.41.99  | leader | competeLockOnUpdate执行成功，当选leader |
+| 10.177.41.99  | leader | competeLockOnUpdate 执行成功，当选 leader |
 | 10.177.41.100 |        | kill                                    |
 | 10.181.160.18 |        | kill                                    |
 

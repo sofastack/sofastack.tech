@@ -28,7 +28,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **1、@缪文** 提问:
 
-> SOFA-Boot 框架，模块隔离时，子 module 中引入 mybatis 框架，@MapperScan 注解是在RootContext 中扫描，还是在子 module 中扫描？
+> SOFA-Boot 框架，模块隔离时，子 module 中引入 mybatis 框架，@MapperScan 注解是在 RootContext 中扫描，还是在子 module 中扫描？
 
 A:  非 auto 的 configuration 都是在对应模块进行解析的。
 
@@ -44,7 +44,7 @@ A：可以实现 transactionhook 这个类，然后在 tm 发起者里加入到 
 
 > 本地事务与全局事务一起开启会有问题吗？
 
-A：全局事务要在本地事务的外层,就是包裹本地事务，不能由本地事务包裹全局事务。本地事务出异常都不会进行注册，也就代表本地事务如果出问题本地事务自行会回滚(基础知识)，如果本地事务提交了，其它服务的本地事务出现异常，或者业务代码出现异常，将有 Seata来负责把已提交的事务回滚。
+A：全局事务要在本地事务的外层,就是包裹本地事务，不能由本地事务包裹全局事务。本地事务出异常都不会进行注册，也就代表本地事务如果出问题本地事务自行会回滚(基础知识)，如果本地事务提交了，其它服务的本地事务出现异常，或者业务代码出现异常，将有 Seata 来负责把已提交的事务回滚。
 
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 

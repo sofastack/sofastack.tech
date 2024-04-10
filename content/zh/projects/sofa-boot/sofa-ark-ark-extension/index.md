@@ -125,7 +125,7 @@ public interface ClassLoaderHook<T> {
 
 #### 扩展实现 PluginClassLoader 加载逻辑
 
-定义对 PluginClassLoader 的扩展实现，需要指定 extension 名为 `plugin-classloader-hook`; 这是因为目前 SOFAArk 的策略只允许一个Plugin ClassLoaderHook 扩展实现生效，如果同时定义多个扩展类，优先级最高的生效。
+定义对 PluginClassLoader 的扩展实现，需要指定 extension 名为 `plugin-classloader-hook`; 这是因为目前 SOFAArk 的策略只允许一个 Plugin ClassLoaderHook 扩展实现生效，如果同时定义多个扩展类，优先级最高的生效。
 
 ```java
 @Extension("plugin-classloader-hook")
@@ -135,7 +135,7 @@ public class TestPluginClassLoaderHook implements ClassLoaderHook<Plugin> {
 
 #### 扩展实现 BizClassLoader 加载逻辑
 
-定义对 BizClassLoader 的扩展实现，需要指定 extension 名为 `biz-classloader-hook`; 理由同上，目前 SOFAArk 的策略只允许一个Biz ClassLoaderHook 扩展实现生效，如果同时定义多个扩展类，优先级最高的生效。
+定义对 BizClassLoader 的扩展实现，需要指定 extension 名为 `biz-classloader-hook`; 理由同上，目前 SOFAArk 的策略只允许一个 Biz ClassLoaderHook 扩展实现生效，如果同时定义多个扩展类，优先级最高的生效。
 
 ```java
 @Extension("biz-classloader-hook")
@@ -242,4 +242,4 @@ ClassLoaderHook 从 sofa-ark 0.6 版本就已经提供了，其主要目的是�
 3、getJdkResource: 加载不到
 4、getExportResource: 这里会尝试使用插件 pluginClassLoader 来加载
 5、pluginClassLoader.getResources
-6、preFindResource: 这里委托给宿主 bizClassLoader 加载，bizClassLoader.getResources -> getInternalResouces->getExportResource->pluginClassLoader.getResources->hook preFindResource -> 委托给宿主 bizClassLoader 加载 -> ....
+6、preFindResource: 这里委托给宿主 bizClassLoader 加载，bizClassLoader.getResources -> getInternalResouces->getExportResource->pluginClassLoader.getResources->hook preFindResource -> 委托给宿主 bizClassLoader 加载 -> ……

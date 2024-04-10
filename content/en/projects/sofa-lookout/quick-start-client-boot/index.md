@@ -57,7 +57,7 @@ After adding a new indicator, you can choose to connect to the Spring Boot Actua
 
 After adding the above dependency, you can launch the application locally, visit `http://localhost:8080/metrics`, and you can see the metrics added earlier, as follows:
 
-```
+```plain
 "http_requests_total.instant-MacBook-Pro-4.local": 1,
 ```
 

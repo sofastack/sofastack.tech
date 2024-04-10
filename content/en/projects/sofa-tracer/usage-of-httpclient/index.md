@@ -95,7 +95,7 @@ When you construct the HttpClient via the SofaTracerHttpClientBuilder (clientBui
 
 Start Current SOFABoot Application. You will see the log about startup in the console:
 
-```
+```plain
 2018-09-27 20:31:21.465  INFO 33277 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
 2018-09-27 20:31:21.599  INFO 33277 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
 2018-09-27 20:31:21.608  INFO 33277 --- [           main] c.a.s.t.e.h.HttpClientDemoApplication    : Started HttpClientDemoApplication in 5.949 seconds (JVM running for 6.573)
@@ -103,7 +103,7 @@ Start Current SOFABoot Application. You will see the log about startup in the co
 
 If there is a log similar to the followings, it indicates that the call to HttpClient succeeded:
 
-```
+```plain
 2018-09-27 20:31:22.336  INFO 33277 --- [           main] c.a.s.t.e.h.HttpClientDemoApplication    : Response is {"count":1,"name":"httpclient"}
 2018-09-27 20:31:22.453  INFO 33277 --- [           main] c.a.s.t.e.h.HttpClientDemoApplication    : Async Response is {"count":2,"name":"httpclient"}
 ```
@@ -113,7 +113,7 @@ If there is a log similar to the followings, it indicates that the call to HttpC
 
 In the `application.properties`, the log printing directory we configured is `./logs`, which is the root directory of the current application (we can configure it based on actual situation). Thus, in the root directory of the current project, you can see log files in the structure similar to the followings:
 
-```
+```plain
 ./logs
 ├── spring.log
 └── tracelog

@@ -61,7 +61,7 @@ MOSN：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 
 ### 本周推荐文章
 
-- [10年后，阿里给千万开源人写了一封信](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247485785&idx=1&sn=1baf4886ae680cdc018f39ec6c5643c4&chksm=faa0e683cdd76f9568ea394ee387dc12b1df5bdf00e2de5c5642e2c814dae0a6b2c921d56c29&scene=21)
+- [10 年后，阿里给千万开源人写了一封信](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247485785&idx=1&sn=1baf4886ae680cdc018f39ec6c5643c4&chksm=faa0e683cdd76f9568ea394ee387dc12b1df5bdf00e2de5c5642e2c814dae0a6b2c921d56c29&scene=21)
 - [蚂蚁金服消息队列 SOFAMQ 加入 OpenMessaging 开源标准社区](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247485771&idx=1&sn=e76fc52d9dfe71fcd2832e41298c159e&chksm=faa0e691cdd76f87374992934ef6d0cf41e11e2aa6d9f7f8dc156e8f2885921922fcc9eb8b7f&scene=21)
 - [蚂蚁金服 API Gateway Mesh 思考与实践](/blog/service-mesh-meetup-9-retrospect-api-gateway-mesh/)
 
@@ -75,7 +75,7 @@ SOFAArk 是一款基于 Java 实现的轻量级类隔离容器，主要提供类
 
 **主题**：SOFAChannel#11：从一个例子开始体验轻量级类隔离容器 SOFAArk
 
-**时间**：2020年2月13日（周四）19:00-20:00
+**时间**：2020 年 2 月 13 日（周四）19:00-20:00
 
 **嘉宾**：玄北，蚂蚁金服技术专家 SOFAArk 开源负责人
 

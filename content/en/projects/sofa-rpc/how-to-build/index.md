@@ -9,7 +9,7 @@ aliases: "/sofa-rpc/docs/How-To-Build"
 
 Download the codes directly and execute the following commands:
 
-```
+```plain
 cd sofa-rpc
 mvn clean install
 ```

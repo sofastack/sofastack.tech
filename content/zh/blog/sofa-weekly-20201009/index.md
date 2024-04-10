@@ -26,7 +26,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 我们会筛选重点问题通过 " SOFA WEEKLY " 的形式回复
 
 **1、@叶翔宇** 提问：
-> 想请教一个问题，使用 MOSN 的过程中，我们想通过 request 的 header 中带的 version 信息来实现灰度的机制。比如：目标 service 有 3 个 host，其中一台版本1.0，其他两个版本2.0。
+> 想请教一个问题，使用 MOSN 的过程中，我们想通过 request 的 header 中带的 version 信息来实现灰度的机制。比如：目标 service 有 3 个 host，其中一台版本 1.0，其他两个版本 2.0。
 
 A：你这个加一个 route 的判断就可以路由到不同的 cluster 了。
 

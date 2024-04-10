@@ -22,7 +22,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563274331359-e7803f14-cae
 
 ## 数据透传介绍
 
-首先，我们介绍一下数据透传的概念，我们知道，在 RPC调用中，数据的传递，是通过接口方法参数来传递的，需要接口方定义好一些参数允许传递才可以，在一些场景下，我们希望，能够更通用的传递一些参数，比如一些标识性的信息。业务方可能希望，在每一次调用请求中都能够传递一些自定义的信息到下游。甚至也希望下游能够将一些数据传递回来。
+首先，我们介绍一下数据透传的概念，我们知道，在 RPC 调用中，数据的传递，是通过接口方法参数来传递的，需要接口方定义好一些参数允许传递才可以，在一些场景下，我们希望，能够更通用的传递一些参数，比如一些标识性的信息。业务方可能希望，在每一次调用请求中都能够传递一些自定义的信息到下游。甚至也希望下游能够将一些数据传递回来。
 
 而数据透传功能，就是指数据不需要以作为方法参数的形式在调用链路中进行传递，而是直接存储到调用上下文中，之后通过 RPC 的内置对象，进行传递，调用双端可从上下文中获取数据而不需要去关注数据的传输过程。
 
@@ -50,7 +50,7 @@ SOFARPC 提供的数据透传支持请求数据透传（客户端向服务端）
 
 #### 接口服务
 
-```
+```plain
 public interface HelloService {
     String sayHello(String string);
 }
@@ -58,7 +58,7 @@ public interface HelloService {
 
 #### 服务实现
 
-```
+```plain
 public class HelloServiceImpl implements HelloService {
     @Override
     public String sayHello(String string) {
@@ -86,13 +86,13 @@ public class HelloServiceImpl implements HelloService {
 
 #### 请求透传数据
 
-1. 客户端首先在 main 线程（图中的user thread）中设置请求透传数据到其调用上下文`RpcInvokeContext.requestBaggage`属性中，之后在调用过程中从`requestBaggage`中取出请求透传数据并设置到`SofaRequest.requestProps`属性中；
+1. 客户端首先在 main 线程（图中的 user thread）中设置请求透传数据到其调用上下文`RpcInvokeContext.requestBaggage`属性中，之后在调用过程中从`requestBaggage`中取出请求透传数据并设置到`SofaRequest.requestProps`属性中；
 2. 服务端接收到请求`SofaRequest`对象后，在其调用链中的 `ProviderBaggageFilter#invoke` 方法中会先从`SofaRequest.requestProps`中取出请求透传数据并设置到当前服务端线程的调用上下文`RpcInvokeContext.requestBaggage`属性中，最后业务代码就可以从调用上下文中获取请求透传数据了。
 
 #### 响应透传数据
 
 1. 服务端设置响应透传数据到其调用上下文`RpcInvokeContext.responseBaggage`属性中，之后在`ProviderBaggageFilter#invoke` 方法中先从`responseBaggage`中取出响应透传数据并设置到`SofaResponse.responseProps`属性中；
-2. 客户端main线程被唤醒后，先从`SofaResponse.responseProps`中获取响应透传数据，之后将响应透传数据设置到其调用上下文`RpcInvokeContext.responseBaggage`中，最后业务代码就可以从调用上下文中获取响应透传数据了。
+2. 客户端 main 线程被唤醒后，先从`SofaResponse.responseProps`中获取响应透传数据，之后将响应透传数据设置到其调用上下文`RpcInvokeContext.responseBaggage`中，最后业务代码就可以从调用上下文中获取响应透传数据了。
 
 ## oneway 调用下的透传
 
@@ -118,7 +118,7 @@ public class HelloServiceImpl implements HelloService {
 
 #### 客户端获取响应透传数据
 
-future 模式在 SOFARPC 内部会被转化为 callback 的方式进行调用，在 callback 对象中会存储main线程的调用上下文；当客户端接收到响应时，会执行该 callback 对象的回调函数，在其回调函数中，对于响应透传数据，会做如下操作：
+future 模式在 SOFARPC 内部会被转化为 callback 的方式进行调用，在 callback 对象中会存储 main 线程的调用上下文；当客户端接收到响应时，会执行该 callback 对象的回调函数，在其回调函数中，对于响应透传数据，会做如下操作：
 
 1. 从`SofaResponse.responseProps`中获取响应透传数据
 
@@ -141,7 +141,7 @@ future 模式在 SOFARPC 内部会被转化为 callback 的方式进行调用，
 
 ![callback 调用下的透传 原理剖析](https://cdn.nlark.com/yuque/0/2018/png/162694/1536993542518-429b9e4e-d58c-4fbd-870b-a2f0d3c694f2.png)
 
-与 future 模式原理一样，只是最终业务代码中是从回调线程而不是main线程的调用上下文中获取响应透传数据。
+与 future 模式原理一样，只是最终业务代码中是从回调线程而不是 main 线程的调用上下文中获取响应透传数据。
 
 ## 与 SOFATracer 的比较
 

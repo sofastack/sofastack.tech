@@ -77,7 +77,7 @@ ii. 日志新增 Alertf 接口
 
 iii. 支持 SDS 方式获取证书
 
-iv. Metrics统计与输出优化
+iv. Metrics 统计与输出优化
 
 v. IO 协程优化
 

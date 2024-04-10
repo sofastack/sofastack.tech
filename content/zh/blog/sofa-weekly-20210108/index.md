@@ -32,7 +32,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 A：Occlum 对硬件也是有要求的。这个机器需要支持 Intel SGX 技术。简单得说，就是必须可以安装 SGX 驱动。 Guest OS 是虚拟机的概念，从 guest OS 的角度看，OS 依然运行在 kernel 态。简单来说，如果想使用 Occlum，那么建议方案：
 1 . 找一台 SGX 机器 （比如 W55）；
-2. 安装一个OS，并且装上 SGX 驱动；
+2. 安装一个 OS，并且装上 SGX 驱动；
 3. 安装 Occlum；
 
 > Occlum 相对于 Docker 有哪些优势，比 Docker 快吗?

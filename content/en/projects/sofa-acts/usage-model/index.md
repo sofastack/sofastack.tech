@@ -37,7 +37,7 @@ You can view existing models under the resource/model directory of the test modu
 
 **1. Validation flag description**
 
-    Y: indicates that the data is to be inserted.
+   plain Y: indicates that the data is to be inserted.
     N: indicates that the data is not to be inserted.
     C: indicates that ACTS will clean the inserted data by taking this value as the where condition.
     F: indicates that the value of this column is a database function.

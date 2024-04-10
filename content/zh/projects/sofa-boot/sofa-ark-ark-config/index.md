@@ -60,7 +60,7 @@ SOFAArk 容器日志内部实现使用 logback,  日志配置参数包括：
 
 **注：如果同时配置了这两个属性，以 ark.plugin.active.include 为准**
 
-### biz配置
+### biz 配置
 + ark.biz.active.include
 > 指定激活哪些 Biz，多个 Biz 使用 ',' 分隔；默认激活 Ark 包中所有的 Biz.
 

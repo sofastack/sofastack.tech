@@ -16,7 +16,7 @@ RegistryConfig registryConfig = new RegistryConfig()
             .setProtocol("zookeeper")
             .setAddress("127.0.0.1:2181")
 ```
-RegistryConfig 表示注册中心。如上声明了服务注册中心的地址和端口是127.0.0.1:2181，协议是 Zookeeper。
+RegistryConfig 表示注册中心。如上声明了服务注册中心的地址和端口是 127.0.0.1:2181，协议是 Zookeeper。
 
 **2. ServerConfig**
 
@@ -26,7 +26,7 @@ ServerConfig serverConfig = new ServerConfig()
             .setProtocol("bolt");
 ```
 
-ServerConfig 表示服务运行容器。如上声明了一个使用8803端口和 bolt 协议的 server 。
+ServerConfig 表示服务运行容器。如上声明了一个使用 8803 端口和 bolt 协议的 server 。
 
 **3. ProviderConfig**
 ```java

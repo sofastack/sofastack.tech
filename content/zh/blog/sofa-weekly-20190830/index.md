@@ -29,7 +29,7 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 
 **1、@柴炜晨 **提问：
 
-> 求问下 SOFAJRaft rhea split 后，原片1 [0,100) 分裂为 1 [0, 50) , 新片 2[50, 100)，新片 2 上的初始数据是从怎么来的呢？
+> 求问下 SOFAJRaft rhea split 后，原片 1 [0,100) 分裂为 1 [0, 50) , 新片 2[50, 100)，新片 2 上的初始数据是从怎么来的呢？
 
 A：一个 store 里的所有 region 实际上是共享一个存储，split 只是新增一个逻辑 region 并修改被分裂的和新 region 的 range，后续的 snoapshot ，副本迁移等就均以新的 region 为最小单位了。
 
@@ -49,7 +49,7 @@ A：如果你说的 ttl 值是指 pub 数据的生存时间，是有的，我们
 
 > Data 节点是通过广播的方式来通知每个 session 节点？那每个 session 节点是否会存在所有服务的全量 Pub 数据？ 这对内存及网络资源消耗会不会过大？
 
-A：Data 是通过广播方式通知每个 session 节点，session上有订阅关系按照自己订阅关系判断是否需要推送给客户端。每个 session 没有全量的 pub 数据，但会存在和其连接部分客户端发布数据作为一致性备份回放使用。这个堆内存目前看压力还是可以的。
+A：Data 是通过广播方式通知每个 session 节点，session 上有订阅关系按照自己订阅关系判断是否需要推送给客户端。每个 session 没有全量的 pub 数据，但会存在和其连接部分客户端发布数据作为一致性备份回放使用。这个堆内存目前看压力还是可以的。
 
 SOFARegistry：[https://github.com/sofastack/sofa-registry](https://github.com/sofastack/sofa-registry)
 

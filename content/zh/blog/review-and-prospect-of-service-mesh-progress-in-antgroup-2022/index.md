@@ -41,7 +41,7 @@ cover: "https://cdn.nlark.com/yuque/0/2022/png/153624/1652759667758-9ac6d8d5-e82
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/153624/1652758504319-72804307-117c-431e-9ad8-fb3828195c97.png#clientId=u1f24bd9c-2055-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=1120&id=pXRe9&margin=%5Bobject%20Object%5D&name=image.png&originHeight=1120&originWidth=1710&originalType=binary&ratio=1&rotation=0&showTitle=false&size=123638&status=done&style=none&taskId=u99d70eb8-6ad0-4bed-ba07-5d06167b087&title=&width=1710)
 ## 三、东西向流量规模化挑战
 
-Mesh 化后的数据面 MOSN 承载了应用间非常核心的东西向通信链路，目前在蚂蚁集团内部覆盖应用数千，覆盖容器数十W+，海量的规模带来了如长连接膨胀、服务发现数据量巨大、服务治理困难等问题。接下来我们来聊一聊我们在演进的过程中遇到并解决掉的一些经典问题。
+Mesh 化后的数据面 MOSN 承载了应用间非常核心的东西向通信链路，目前在蚂蚁集团内部覆盖应用数千，覆盖容器数十 W+，海量的规模带来了如长连接膨胀、服务发现数据量巨大、服务治理困难等问题。接下来我们来聊一聊我们在演进的过程中遇到并解决掉的一些经典问题。
 
 ### 3.1 长连接膨胀问题
 
@@ -59,7 +59,7 @@ Mesh 化后的数据面 MOSN 承载了应用间非常核心的东西向通信链
 
 #### 3.1.1 心跳退避
 
-由于心跳的主要作用是尽可能早的发现长连接是否已不可用，通常我们认为经过 3 次心跳超时即可判定一条长连接不可用，在一条长连接的生命周期里，不可用的场景占比是非常低的，如果我们把长连接的检测周期拉长一倍就可以减少50%的心跳 CPU 损耗。为了保障检测的及时性，当出现心跳异常（如心跳超时等）场景时，再通过降低心跳周期来提高长连接不可用时的判定效率，基于以上思路我们设计了 MOSN 里的长连接心跳退避策略：
+由于心跳的主要作用是尽可能早的发现长连接是否已不可用，通常我们认为经过 3 次心跳超时即可判定一条长连接不可用，在一条长连接的生命周期里，不可用的场景占比是非常低的，如果我们把长连接的检测周期拉长一倍就可以减少 50%的心跳 CPU 损耗。为了保障检测的及时性，当出现心跳异常（如心跳超时等）场景时，再通过降低心跳周期来提高长连接不可用时的判定效率，基于以上思路我们设计了 MOSN 里的长连接心跳退避策略：
 
 1. 当长连接上无业务请求且心跳正常响应时，逐步将心跳周期拉长 15s -> 90s 
 
@@ -92,7 +92,7 @@ MOSN 的服务发现能力没有使用 Pilot，而是在内部直接和 SOFARegi
 1. SOFARegistry 和 MOSN 之间把全量推送改造为增量推送
 1. 服务发现模型从接口级切换为应用级
 
-其中第一点能带来的效果是每次列表推送变化为原推送规模的 1/N，N 取决于应用变更时的分组数。第二点能带来的变化是更加明显的，我们假设一个应用会发布 20个接口，100个应用的 Pod 产生的服务发现数据是 `20*100=2000` 条数据，接口粒度服务发现的数据总量会随着应用接口数量的增长数倍于应用节点数的规模持续增长；而应用级服务发现可以把节点总量控制在应用 Pod 数这个级别。
+其中第一点能带来的效果是每次列表推送变化为原推送规模的 1/N，N 取决于应用变更时的分组数。第二点能带来的变化是更加明显的，我们假设一个应用会发布 20 个接口，100 个应用的 Pod 产生的服务发现数据是 `20*100=2000` 条数据，接口粒度服务发现的数据总量会随着应用接口数量的增长数倍于应用节点数的规模持续增长；而应用级服务发现可以把节点总量控制在应用 Pod 数这个级别。
 
 #### 3.2.1 应用级服务发现演进
 
@@ -138,7 +138,7 @@ SOFAGW 基于 MOSN 2.0 架构打造，既能使用 Golang 做高效研发，同�
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/153624/1652758508226-198d983d-6a6b-47c2-9f99-661c26858d9e.png#clientId=u1f24bd9c-2055-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=85&id=u223e7f33&margin=%5Bobject%20Object%5D&name=image.png&originHeight=123&originWidth=1089&originalType=binary&ratio=1&rotation=0&showTitle=false&size=30871&status=done&style=none&taskId=udc87e123-ae68-4ab5-b14f-cb11936906e&title=&width=751.5)
 简单介绍一下 MOSN 2.0 架构，Envoy 提供了可扩展的 Filter 机制，来让用户可以在协议处理链路中插入自己的逻辑，MOSN 通过实现一层基于 CGO 的 Filter 扩展层，将 Envoy 的 Filter 机制进行了升级，我们可以用 Golang 来写 Filter 然后嵌入 Envoy 被 CGO 的 Filter 调用。
 ![image.png](https://cdn.nlark.com/yuque/0/2022/png/153624/1652758508198-288f8de3-740f-4975-86e2-274fd59a6a60.png#clientId=u1f24bd9c-2055-4&crop=0&crop=0&crop=1&crop=1&from=paste&height=349&id=u9422a228&margin=%5Bobject%20Object%5D&name=image.png&originHeight=518&originWidth=1112&originalType=binary&ratio=1&rotation=0&showTitle=false&size=108857&status=done&style=none&taskId=u2c68fa54-2209-448f-b903-9eb97b11bc5&title=&width=749)
-SOFAGW 在 MOSN 2.0 之上构建了自己的网关代理模型，通过 SOFA 的 Golang 客户端和控制面交互获取配置信息、服务发现信息等，然后重组成 Envoy 的 Cluster 模型通过 Admin API 插入 Envoy 实例中。通过 Golang 的 Filter 扩展机制，SOFAGW 实现了蚂蚁集团内部的 LDC 服务路由、压测流量识别、限流、身份认证、流量复制、调用审计等能力。由于 Envoy 的 Http2 协议处理性能相比纯 Golang GRPC 实现高出 2～4倍，SOFAGW 选择将 Triple （Http2 on GRPC）协议处理交给 Envoy 来处理，将 Bolt （SOFA RPC 私有协议）协议的处理依然交给 MOSN 来处理。
+SOFAGW 在 MOSN 2.0 之上构建了自己的网关代理模型，通过 SOFA 的 Golang 客户端和控制面交互获取配置信息、服务发现信息等，然后重组成 Envoy 的 Cluster 模型通过 Admin API 插入 Envoy 实例中。通过 Golang 的 Filter 扩展机制，SOFAGW 实现了蚂蚁集团内部的 LDC 服务路由、压测流量识别、限流、身份认证、流量复制、调用审计等能力。由于 Envoy 的 Http2 协议处理性能相比纯 Golang GRPC 实现高出 2～4 倍，SOFAGW 选择将 Triple （Http2 on GRPC）协议处理交给 Envoy 来处理，将 Bolt （SOFA RPC 私有协议）协议的处理依然交给 MOSN 来处理。
 
 通过上述架构，SOFAGW 实现了蚂蚁集团内部的全主体可信互通，在高性能和快速迭代开发间也取得了不错的平衡。
 

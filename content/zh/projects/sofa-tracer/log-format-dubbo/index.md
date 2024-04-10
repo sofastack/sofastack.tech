@@ -76,7 +76,7 @@ key | 表达含义
 
 ### Dubbo 统计日志
 
-`stat.key` 即本段时间内的统计关键字集合，统一关键字集合唯一确定一组统计数据，包含local.app、service、和 method 字段.
+`stat.key` 即本段时间内的统计关键字集合，统一关键字集合唯一确定一组统计数据，包含 local.app、service、和 method 字段.
 
 <table>
    <tr>

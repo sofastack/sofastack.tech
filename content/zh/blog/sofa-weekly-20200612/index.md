@@ -21,7 +21,7 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 
 ### 这里有个机会和 SOFAStack 一起玩，你要不要来？
 
-阿里巴巴编程之夏（Alibaba Summer of Code，以下简称 ASoC）是面向全球18岁及以上本科、硕士、博士高校学生的编程普惠计划，鼓励高校学生深度参与开源开发活动，以第一视角感受开源世界的魅力，成为开源社区新鲜“血液”。
+阿里巴巴编程之夏（Alibaba Summer of Code，以下简称 ASoC）是面向全球 18 岁及以上本科、硕士、博士高校学生的编程普惠计划，鼓励高校学生深度参与开源开发活动，以第一视角感受开源世界的魅力，成为开源社区新鲜“血液”。
 
 **今年 SOFAStack 开源社区也加入了选题，有兴趣的同学可以尝试下以下 feature：**
 
@@ -37,7 +37,7 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 
 是基于 Netty 最佳实践的轻量、易用、高性能、易扩展的通信框架。 这些年我们在微服务与消息中间件在网络通信上解决过很多问题，我们把总结出的解决方案沉淀到 SOFABolt 这个基础组件里，让更多的使用网络通信的场景能够统一受益。
 
-- Feature：当前的SOFABolt实现中私有协议是直接和整体框架耦合在一起的，在使用SOFABolt的同时需要使用提供的私有协议，当用户希望使用自己的自定义协议时需要进行比较有挑战的代码拓展才能实现。因此我们希望对SOFABolt的协议框架做一些重构以支持快速方便的集成用户的自定义协议。这个 feature 稍有难度，欢迎尝试，[https://github.com/sofastack/sofa-bolt/issues/224](https://github.com/sofastack/sofa-bolt/issues/224)
+- Feature：当前的 SOFABolt 实现中私有协议是直接和整体框架耦合在一起的，在使用 SOFABolt 的同时需要使用提供的私有协议，当用户希望使用自己的自定义协议时需要进行比较有挑战的代码拓展才能实现。因此我们希望对 SOFABolt 的协议框架做一些重构以支持快速方便的集成用户的自定义协议。这个 feature 稍有难度，欢迎尝试，[https://github.com/sofastack/sofa-bolt/issues/224](https://github.com/sofastack/sofa-bolt/issues/224)
 
 ### 每周读者问答提炼
 

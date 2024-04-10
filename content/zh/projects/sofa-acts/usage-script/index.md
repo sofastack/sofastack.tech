@@ -50,7 +50,7 @@ aliases: "/sofa-acts/docs/Usage-Script"
 默认每个测试脚本的所有用例数据保存在同一个 YAML 中，ACTS 支持用例数据根据开关 `spilt_yaml_by_case` 来决定同一测试脚本的所有用例数据存储在一个 YAML 中还是每个用例存储为一个 YAML。
 开关默认为关闭，即同一测试脚本的所有测试数据存储在一个 YAML 文件中。
 
-在 `acts-config.properities` 中设置 `spilt_yaml_by_case=true` 即可打开开关，之后新生成测试脚本时每个用例对应一个单独的以 caseId 命名的 YAML文件，拆分的方式可以降低多人研发同一接口带来的文件冲突问题。 
+在 `acts-config.properities` 中设置 `spilt_yaml_by_case=true` 即可打开开关，之后新生成测试脚本时每个用例对应一个单独的以 caseId 命名的 YAML 文件，拆分的方式可以降低多人研发同一接口带来的文件冲突问题。 
 
 此外，为了支持将老的 YAML 文件按用例拆分，ACTS 提供了工具类，如下，支持将指定脚本下，指定路径的 YAML 文件按用例拆分。
 

@@ -8,7 +8,7 @@ aliases: "/sofa-bolt/docs/Functions"
 
 ![Introduction](intro.png)
 
-## SOFABolt provides the following basic features:
+## SOFABolt provides the following basic features
 
 * Basic communication functions (remoting-core)
    * Netty-based, highly-effective network I/O and thread model practice

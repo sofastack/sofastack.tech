@@ -12,7 +12,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*Nk8-RoLjjy4AAAAAA
 
 文｜余硕
 
-上海交通大学22届毕业生阿里云开发工程师
+上海交通大学 22 届毕业生阿里云开发工程师
 
 *从事云原生底层系统的开发和探索工作。*  
 

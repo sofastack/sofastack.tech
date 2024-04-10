@@ -6,14 +6,14 @@ aliases: "/sofa-rpc/docs/Registry-Zookeeper"
 
 
 使用 Zookeeper 作为服务注册中心只需要在 application.properties 中如下配置即可：
-```
+```plain
 com.alipay.sofa.rpc.registry.address=zookeeper://127.0.0.1:2181
 ```
 
 注意：考虑掉服务的实时性，以下特性暂不支持
 
 SOFABoot RPC 也提供一个缓存文件(目前暂不支持)，当 Zookeeper 不可用时，使用该缓存文件进行服务发现。配置该缓存文件的方式如下：
-```
+```plain
 com.alipay.sofa.rpc.registry.address=zookeeper://xxx:2181?file=/home/admin/registry
 ```
 
@@ -26,7 +26,7 @@ com.alipay.sofa.rpc.registry.address=zookeeper://xxx:2181?file=/home/admin/regis
 
 #### SOFARPC API 支持
 
-在构造注册中心的时候，将Auth添加上
+在构造注册中心的时候，将 Auth 添加上
 
 ```java
 parameters.put("scheme", "digest");
@@ -39,7 +39,7 @@ registryConfig = new RegistryConfig()
 .setParameters(parameters);
 ```
 
-之后其他没有使用正确auth的，将无法访问authtest目录
+之后其他没有使用正确 auth 的，将无法访问 authtest 目录
 
 
 #### XML 方式支持

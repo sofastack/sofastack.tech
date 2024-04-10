@@ -25,7 +25,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 1.@魏顺利 提问：
 
->runtime-sofa-boot-starter 和 rpc-sofa-boot-starter 区别是什么？
+> runtime-sofa-boot-starter 和 rpc-sofa-boot-starter 区别是什么？
 
 A：runtime-sofa-boot-starter 是 SOFA 的核心能力 starter，rpc-sofa-boot-starter 是 SOFARPC 能力的 starter。
 
@@ -33,11 +33,11 @@ A：runtime-sofa-boot-starter 是 SOFA 的核心能力 starter，rpc-sofa-boot-s
 
 2.@寒鸦少年 提问：
 
->请问 Plugin 是一个微服务的概念吗，是否提供 HTTP 接口呢？
+> 请问 Plugin 是一个微服务的概念吗，是否提供 HTTP 接口呢？
 
 A：Plugin 自己管理的依赖，通过 ark 中提到的 导出机制，将其自己管理的类能够暴露给 biz 使用 *（多 biz 可以共享某个 plugin 导出的类）* ；plugin 和 biz 之间更多说的是类加载的委托关系，biz 之间是通信。
 
->那 biz 的 class loader 的加载逻辑应该很复杂吧，因为它要区分什么类自己加载，什么类委托 plugin 加载。
+> 那 biz 的 class loader 的加载逻辑应该很复杂吧，因为它要区分什么类自己加载，什么类委托 plugin 加载。
 
 A：可以看下这个，*[https://www.sofastack.tech/projects/sofa-boot/sofa-ark-migration-guide/](https://www.sofastack.tech/projects/sofa-boot/sofa-ark-migration-guide/)*
 

@@ -29,7 +29,7 @@ Module-Name 是 SOFABoot 模块的名称，也是 SOFABoot 模块的唯一标示
 
 #### Require-Module
 
-Require-Module 用于定义模块之间的依赖顺序，值是以逗号分隔的 SOFABoot 模块名列表，比如上面的配置中，就表示本模块依赖于 com.alipay.test.biz.shared 模块。对于这种依赖关系的处理，SOFABoot 会将 com.alipay.test.biz.shared 模块在本模块之前启动，即com.alipay.test.biz.shared 模块将先启动 Spring 上下文。
+Require-Module 用于定义模块之间的依赖顺序，值是以逗号分隔的 SOFABoot 模块名列表，比如上面的配置中，就表示本模块依赖于 com.alipay.test.biz.shared 模块。对于这种依赖关系的处理，SOFABoot 会将 com.alipay.test.biz.shared 模块在本模块之前启动，即 com.alipay.test.biz.shared 模块将先启动 Spring 上下文。
 
 一般情况下，是不需要为模块定义 Require-Module 的，只有当模块的 Spring 上下文的启动依赖于另一个模块的 Spring 上下文的启动时，才需要定义 Require-Module。举一个例子，如果你在 A 模块中发布了一个 SOFA JVM Service。在 B 模块的某一个 Bean 的 init 方法里面，需要使用 SOFA Reference 调用这个 JVM Service。假设 B 模块在 A 模块之前启动了，那么 B 模块的 Bean 就会因为 A 模块的 JVM Service 没有发布而 init 失败，导致 Spring 上下文启动失败。这个时候，我们就可以使用 Require-Module 来强制 A 模块在 B 模块之前启动。
 

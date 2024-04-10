@@ -63,11 +63,11 @@ If you want to switch back to the branch, execute the following command:
 git checkout -b "branchName"
 ```
 
-### Modify the code and submit it locally.
+### Modify the code and submit it locally
 
 After a branch is pulled, you can modify the code.
 
-#### When modifying the code, note the following:
+#### When modifying the code, note the following
 
 * Keep the code style consistent. SOFAArk uses the Maven plug-in to keep the code style consistent. Before submitting the code, execute the following commands locally:
   
@@ -91,7 +91,7 @@ After a branch is pulled, you can modify the code.
 
 After the code is modified, run the following command to submit all modifications to the local repository:
 
-  ```
+  ```plain
   git commit -am 'comment'
   ```
 
@@ -99,7 +99,7 @@ After the code is modified, run the following command to submit all modification
 
 After being submitted to the local repository, the code is synchronized to the remote repository. Execute the following command to submit the local modification to github:
 
-```
+```plain
 git push origin "branchname"
 ```
 

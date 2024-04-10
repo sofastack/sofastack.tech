@@ -5,7 +5,7 @@ aliases: "/sofa-rpc/docs/Programing-SOFA-BOOT-Annotation"
 ---
 ## 注解服务发布与服务引用
 
-除了常规的 xml 方式发布服务外，我们也支持在SOFABoot 环境下，注解方式的发布与引用，同 xml 类似，我们有
+除了常规的 xml 方式发布服务外，我们也支持在 SOFABoot 环境下，注解方式的发布与引用，同 xml 类似，我们有
 `@SofaService` 和 `@SofaReference`，同时对于多协议，存在`@SofaServiceBinding` 和 `@SofaReferenceBinding` 注解。
 
 ### 服务发布

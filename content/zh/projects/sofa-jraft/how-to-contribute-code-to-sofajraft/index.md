@@ -10,7 +10,7 @@ title: "如何参与 SOFAJRaft 代码贡献"
 
 ## GitHub 贡献代码流程
 
-### 提交issue
+### 提交 issue
 
 不论您是修复 SOFAJRaft 的 bug 还是新增 SOFAJRaft 的功能，在您提交代码之前，在 SOFAJRaft 的 GitHub 上提交一个 issue，描述您要修复的问题或者要增加的功能。这么做有几个好处:
 - 不会与其它开发者或是他们对这个项目的计划发生冲突，产生重复工作。
@@ -27,7 +27,7 @@ title: "如何参与 SOFAJRaft 代码贡献"
 
 SOFAJRaft 所有修改都在分支上进行，修改完后提交 pull request，在 Code Review 后由项目维护人员 Merge  到主干。
 因此，在获取源码步骤介绍后，您需要：
-- 下载代码到本地，这一步您可以选择git/https方式。
+- 下载代码到本地，这一步您可以选择 git/https 方式。
 
   ```text
   git clone https://github.com/您的账号名/sofa-jraft
@@ -79,7 +79,7 @@ SOFAJRaft 所有修改都在分支上进行，修改完后提交 pull request，
   mvn clean test
   ```
 
-  也可以通过IDE来辅助运行。
+  也可以通过 IDE 来辅助运行。
 
 #### 其它注意事项
 

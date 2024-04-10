@@ -8,12 +8,12 @@ date: 2019-06-07T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1562902599427-d421bc4c-ee82-416a-87a9-090ff3f85c98.png"
 ---
 
-> 由蚂蚁金服主办的 SOFAStack Cloud Native Workshop 将在 6月24日于 KubeCon + CloudNativeCon + Open Source Summit China 大会的同场活动中进行，欢迎报名参与，更多信息可见此[链接](https://www.sofastack.tech/activities/sofastack-cloud-native-workshop)。
+> 由蚂蚁金服主办的 SOFAStack Cloud Native Workshop 将在 6 月 24 日于 KubeCon + CloudNativeCon + Open Source Summit China 大会的同场活动中进行，欢迎报名参与，更多信息可见此[链接](https://www.sofastack.tech/activities/sofastack-cloud-native-workshop)。
 > 欢迎加入 SOFA 钉钉互动群（钉钉搜索群号）：23195297
 
 ## 楔子
 
-为支撑业务高速发展并积极拥抱主流技术，我们从 2017 年开始探索并构建以Kubernetes为核心的云原生应用 PaaS 平台。在 2018 年，我们已在**网商银行**顺利落地了 K8S 容器引擎，并顺利支撑了 2018 年双十一。2019 年伊始，**国泰产险**作为互金行业的典型代表，正基于 [SOFAStack](https://www.sofastack.tech/) 容器应用服务和监控分析产品探索云原生架构转型。时至今日，已完成了关键业务 [SOFABoot](https://www.sofastack.tech/sofa-boot/docs/Home) 应用的容器化改造，在开发、测试乃至灰度生产环境践行云原生的运维实践。
+为支撑业务高速发展并积极拥抱主流技术，我们从 2017 年开始探索并构建以 Kubernetes 为核心的云原生应用 PaaS 平台。在 2018 年，我们已在**网商银行**顺利落地了 K8S 容器引擎，并顺利支撑了 2018 年双十一。2019 年伊始，**国泰产险**作为互金行业的典型代表，正基于 [SOFAStack](https://www.sofastack.tech/) 容器应用服务和监控分析产品探索云原生架构转型。时至今日，已完成了关键业务 [SOFABoot](https://www.sofastack.tech/sofa-boot/docs/Home) 应用的容器化改造，在开发、测试乃至灰度生产环境践行云原生的运维实践。
 
 这将是一系列技术分享文章的开端，基于在实际金融机构和场景中落地的云原生产品项目经验，我们希望和大家一起分享从中获得的洞察和总结，探讨我们的产品观点、技术实现，并非常期待大家的建议和指点，欢迎一起交流共创。
 
@@ -75,7 +75,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1562902599427-d421bc4c-ee8
 
 同时，还通过 CafeDeployment 里的灰度发布策略，保证发布态时线上系统的水位不会过低，防止出现流量过载，造成系统异常。
 
-对于运行态，要考虑以下几个方面：Pod 异常退出后的重新上线，Node 故障后的 Pod 的迁移，机房级故障后系统仍然可用。对于第一点，Kubernetes 本身已经有了较好的机制；第二点，我们做了增强，使用自定义的 NodeLifecycle Controller 结合更加详细的监控信息来判断Node是否出现故障，然后做 Pod 迁移；第三点，从 Scheduler 方面进行保障，CafeDeployment 可以定义相应的高可用拓扑结构，以同城双活为例，在创建 Pod 时，调度器会根据定义好的拓扑信息尽量将 Pod 均分到不同的可用区，达到同城双活的状态。
+对于运行态，要考虑以下几个方面：Pod 异常退出后的重新上线，Node 故障后的 Pod 的迁移，机房级故障后系统仍然可用。对于第一点，Kubernetes 本身已经有了较好的机制；第二点，我们做了增强，使用自定义的 NodeLifecycle Controller 结合更加详细的监控信息来判断 Node 是否出现故障，然后做 Pod 迁移；第三点，从 Scheduler 方面进行保障，CafeDeployment 可以定义相应的高可用拓扑结构，以同城双活为例，在创建 Pod 时，调度器会根据定义好的拓扑信息尽量将 Pod 均分到不同的可用区，达到同城双活的状态。
 
 ### 四 一致的验证授权体验
 
@@ -91,7 +91,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1562902599427-d421bc4c-ee8
 
 针对这种场景，APaaS 平台提供以下能力帮助客户解决痛点。
 
-**第一，**支持经典与云原生的互访，拉齐两种模式的基础网络、应用层流量和接入层流量。在基础网络层面，采用VPC  Router 或者 ENI 方式，在几乎没有额外网络开销的前提下保证虚拟机和 Pod 可以互通；在应用层，虚拟机和Pod可以使用同一套中间件做服务注册与发现，并且可以相互调用；在接入层，虚拟机可通过 loadbalancer 类型的 Service 访问后端的 Pod，甚至不在 VPC 内的 on permise 应用也可通过公网类型 loadbalancer Service 访问到 Pod。
+**第一，**支持经典与云原生的互访，拉齐两种模式的基础网络、应用层流量和接入层流量。在基础网络层面，采用 VPC  Router 或者 ENI 方式，在几乎没有额外网络开销的前提下保证虚拟机和 Pod 可以互通；在应用层，虚拟机和 Pod 可以使用同一套中间件做服务注册与发现，并且可以相互调用；在接入层，虚拟机可通过 loadbalancer 类型的 Service 访问后端的 Pod，甚至不在 VPC 内的 on permise 应用也可通过公网类型 loadbalancer Service 访问到 Pod。
 
 ![图三 经典与云原生的互访](https://cdn.nlark.com/yuque/0/2019/png/226702/1559726974025-0593aec3-db4f-4c05-acd7-721f22228303.png)
 

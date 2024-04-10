@@ -101,7 +101,7 @@ CafeDeployment 支持跨部署单元的分组扩容，Pod 调度，分组发布�
 
 - **Batch 分组**
 
-即根据 BatchSize 将 Pod 分为多个批次，每批中的 Pod 会同时发布。待用户确认（needWaitingForConfirm=true时）无误时，或当前批次所有 Pod 都 ready 后（needWaitingForConfirm=false 时），则会开始进行下一组的发布。
+即根据 BatchSize 将 Pod 分为多个批次，每批中的 Pod 会同时发布。待用户确认（needWaitingForConfirm=true 时）无误时，或当前批次所有 Pod 都 ready 后（needWaitingForConfirm=false 时），则会开始进行下一组的发布。
 
 在分组暂停时，CafeDeployment 会被打上 Annotation: cafe.sofastack.io/upgrade-confirmed=false，用户可通过将 Annotation 的值改为 true，确认当前分组。<br />
 
@@ -226,4 +226,4 @@ CafeDeploymentController 本身只提供了发布策略和跨部署单元管理�
 
 CafeDeployment 的设计与实现，并非一日之功，我们走过弯路，也受到过质疑。但我们仍然坚信，在金融场景下需要这样的一种工作负载，因为无论是 Deployment、StatefulSet 还是 InPlaceSet，为了实现高可用和无损发布，都无疑需要付出比 apply yaml 更多的精力，而这些往往都不是一个业务开发所关心的。
 
-目前，CafeDeployment所提供的各种发布策略，灵活的分组发布，高可用和无损升级的能力已成为了金融云应用发布的重要一环，为产品层提供容器云原生的部署能力，并给我们用户的生产力和效率带来极大提升。后续我们将会继续增强 CafeDeployment 的能力，比如提供更灵活的自定义拓扑结构、机房/部署单元内更灵活的部署策略以满足更多的高可用发布场景的需求等。
+目前，CafeDeployment 所提供的各种发布策略，灵活的分组发布，高可用和无损升级的能力已成为了金融云应用发布的重要一环，为产品层提供容器云原生的部署能力，并给我们用户的生产力和效率带来极大提升。后续我们将会继续增强 CafeDeployment 的能力，比如提供更灵活的自定义拓扑结构、机房/部署单元内更灵活的部署策略以满足更多的高可用发布场景的需求等。

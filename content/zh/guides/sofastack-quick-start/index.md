@@ -17,8 +17,8 @@ projects: [
 
 - [必选]部署注册中心：https://www.sofastack.tech/projects/sofa-registry/server-quick-start/
 - [必须]部署数据库：本地自行搭建数据库，然后导入 [DDL.sql](https://github.com/sofastack-guides/kc-sofastack-demo/blob/master/DDL.sql)
-- [可选]部署LookoutServer：https://www.sofastack.tech/projects/sofa-lookout/quick-start-metrics-server/
-- [可选]部署Zipkin：https://zipkin.io/pages/quickstart.html
+- [可选]部署 LookoutServer：https://www.sofastack.tech/projects/sofa-lookout/quick-start-metrics-server/
+- [可选]部署 Zipkin：https://zipkin.io/pages/quickstart.html
 
 ## 实验内容
 
@@ -106,7 +106,7 @@ balance-mng 工程需要将配置添加至 balance-mng/balance-mng-bootstrap/src
 ![pic](https://gw.alipayobjects.com/mdn/rms_c69e1f/afts/img/A*aI0nT4hu2sYAAAAAAAAAAABkARQnAQ)
 
 另外数据库配置修改为自己的数据库信息：
-```
+```plain
 # database config
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.datasource.url=jdbc:mysql://localhost:3306/stock_db
@@ -119,7 +119,7 @@ stock-mng 工程需要将配置添加至 stock-mng/src/main/resources/applicatio
 ![pic](https://gw.alipayobjects.com/mdn/rms_c69e1f/afts/img/A*MVm1TIODuNYAAAAAAAAAAABkARQnAQ)
 
 另外数据库配置修改为自己的数据库信息：
-```
+```plain
 # database config
 spring.datasource.driver-class-name=com.mysql.cj.jdbc.Driver
 spring.datasource.url=jdbc:mysql://localhost:3306/stock_db

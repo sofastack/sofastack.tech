@@ -54,7 +54,7 @@ public class CustomFilter extends Filter {
 ```
 Create a new extension file `META-INF/services/sofa-rpc/com.alipay.sofa.rpc.filter.Filter` with the following content:
 
-```
+```plain
 customer=com.alipay.sofa.rpc.custom.CustomFilter
 ```
 

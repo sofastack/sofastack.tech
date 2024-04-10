@@ -11,7 +11,7 @@ SOFALookout is a lightweight and open source middleware service of Ant Financial
 
 SOFALookout Client is a Java SDK that helps developers log events of metrics in project code. It also allows you to view real-time status information for the Java application.
 
-```
+```plain
        +------------------+                      Reg:
  API:  | dimension meters +--------+
        +------------------+        |   flatmap   +---------------------------+

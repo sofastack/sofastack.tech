@@ -95,7 +95,7 @@ CloseableHttpAsyncClient asyncHttpclient = httpAsyncClientBuilder.setDefaultRequ
 
 启动 SOFABoot 应用，在控制台中看到启动打印的日志如下：
 
-```
+```plain
 2018-09-27 20:31:21.465  INFO 33277 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
 2018-09-27 20:31:21.599  INFO 33277 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
 2018-09-27 20:31:21.608  INFO 33277 --- [           main] c.a.s.t.e.h.HttpClientDemoApplication    : Started HttpClientDemoApplication in 5.949 seconds (JVM running for 6.573)
@@ -103,7 +103,7 @@ CloseableHttpAsyncClient asyncHttpclient = httpAsyncClientBuilder.setDefaultRequ
 
 当有类似如下的日志时，说明 HttpClient 的调用成功：
 
-```
+```plain
 2018-09-27 20:31:22.336  INFO 33277 --- [           main] c.a.s.t.e.h.HttpClientDemoApplication    : Response is {"count":1,"name":"httpclient"}
 2018-09-27 20:31:22.453  INFO 33277 --- [           main] c.a.s.t.e.h.HttpClientDemoApplication    : Async Response is {"count":2,"name":"httpclient"}
 ```
@@ -112,7 +112,7 @@ CloseableHttpAsyncClient asyncHttpclient = httpAsyncClientBuilder.setDefaultRequ
 
 在上面的 `application.properties` 里面，我们配置的日志打印目录是 `./logs` 即当前应用的根目录（我们可以根据自己的实践需要进行配置），在当前工程的根目录下可以看到类似如下结构的日志文件：
 
-```
+```plain
 ./logs
 ├── spring.log
 └── tracelog

@@ -254,7 +254,7 @@ KusionStack 目前处于十分早期的开源阶段，还有许多工作是亟�
 
 **Roadmap：** *[http://KusionStack.io/docs/governance/intro/roadmap](http://KusionStack.io/docs/governance/intro/roadmap)*
 
-### 了解更多…
+### 了解更多……
 
 **KusionStack Star 一下✨：** *[https://github.com/KusionStack/Kusion](https://github.com/KusionStack/Kusion)*
 

@@ -34,7 +34,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **1. 小白**
 
->在蚂蚁内部目前中间件升级采用的是业务方修改 POM 依赖的方式吗？
+> 在蚂蚁内部目前中间件升级采用的是业务方修改 POM 依赖的方式吗？
 
 A：是以这个方式为主的
 
@@ -42,7 +42,7 @@ A：是以这个方式为主的
 
 **2. 肖文璧 提问** 
 
->Unrecognized VM option 'CMSParallelRemarkEnabled' Error: Could not create the Java Virtual Machine. Error: A fatal exception has occurred. Program will exit.导致 Seata-Server 无法启动是怎么回事？
+> Unrecognized VM option 'CMSParallelRemarkEnabled' Error: Could not create the Java Virtual Machine. Error: A fatal exception has occurred. Program will exit.导致 Seata-Server 无法启动是怎么回事？
 
 A：A：这个是因为使用了高版本的 JDK 导致。高版本的 JDK 取消了 CMS 处理器，转而采用了 ZGC 代替它。 解决方案有两个，选其中之一便可：1、降级 JDK 版本；2、在 Seata 的启动脚本中删除 CMS 的 JDK 命令。
 

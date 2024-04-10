@@ -28,7 +28,7 @@ The project architecture is as follows:
 ### 1. Preparation
 Clone the demo from GitHub to local
 
-```
+```plain
 git clone https://github.com/sofastack-guides/kc-sofastack-dynamic-demo.git
 ```
 
@@ -71,7 +71,7 @@ As shown in the following screenshot, add the Ark package plugin in the POM file
 </plugin>
 ```
 
-#### Step 2: Run mvn clean package to package the project. 
+#### Step 2: Run mvn clean package to package the project 
 
 The successfully packaged JAR file is as shown in the following screenshot:
 

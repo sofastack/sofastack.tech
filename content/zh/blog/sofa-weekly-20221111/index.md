@@ -30,7 +30,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **1. 奇奇** 提问：
 
->Seata 可以用于生产环境吗？
+> Seata 可以用于生产环境吗？
 
 A：0.4.2 版本之后就可以上生产环境。
 
@@ -38,7 +38,7 @@ A：0.4.2 版本之后就可以上生产环境。
 
 **2. 牛康龙** 提问：
 
->在使用时遇到了如下图这个问题，请问该如何解决啊？
+> 在使用时遇到了如下图这个问题，请问该如何解决啊？
 ![](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*ip37T5HibbcAAAAAAAAAAAAADrGAAQ/original)
 
 A：换 Hikari Durid 的 bug 。

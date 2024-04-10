@@ -7,7 +7,7 @@ aliases: "/sofa-rpc/docs/Http-Json"
 
 ## Http 协议基本使用
 
-在 SOFARPC (非SOFABoot 环境)中，当使用Http作为服务端协议的时候，支持Json作为序列化方式，作为一些基础的测试方式使用。
+在 SOFARPC (非 SOFABoot 环境)中，当使用 Http 作为服务端协议的时候，支持 Json 作为序列化方式，作为一些基础的测试方式使用。
 
 ### SOFARPC API 使用
 
@@ -35,7 +35,7 @@ providerConfig.export();
 
 #### 服务引用
 
-因为是Http+Json，所以引用方可以直接通过HttpClient进行调用,以下为一段测试代码。
+因为是 Http+Json，所以引用方可以直接通过 HttpClient 进行调用,以下为一段测试代码。
 
 ```java
 private ObjectMapper mapper = new ObjectMapper();

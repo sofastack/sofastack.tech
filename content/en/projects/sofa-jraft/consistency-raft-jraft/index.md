@@ -37,7 +37,7 @@ In addition, a leader must always remain active by sending heartbeats to followe
 
 ##  Replicated state machine
 
-Assume we have an infinitely incrementing sequence (system) a[1, 2, 3…]. If for any integer i, the value of a[i] meets the distributed consensus requirement, the system meets the requirement of a consensus state machine.
+Assume we have an infinitely incrementing sequence (system) a[1, 2, 3……]. If for any integer i, the value of a[i] meets the distributed consensus requirement, the system meets the requirement of a consensus state machine.
 Basically, all real life systems are subject to continuous operations, and reaching consensus on a single value is definitely not enough. To make sure all replicas of a real life system are consistent, we usually convert the operations into entries of a [write-ahead-log](https://en.wikipedia.org/wiki/Write-ahead_logging)(WAL). Then, we make sure all replicas of the system reach a consensus on the WAL entries, so that each replica performs operations of the WAL entries in order. As a result, the replicas are in consistent states.
 
 ![st.png | left | 450x250](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*OiwGTZnO2uMAAAAAAAAAAABjARQnAQ)

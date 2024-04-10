@@ -30,7 +30,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **1. 孙春明** 提问：
 
->请问这个 mosnd 是做什么的？我如果想重新做 mosnio/proxyv2:v1.0.0-1.10.6 镜像，需要怎么处理呢？
+> 请问这个 mosnd 是做什么的？我如果想重新做 mosnio/proxyv2:v1.0.0-1.10.6 镜像，需要怎么处理呢？
 
 ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*hsZEQL7rsygAAAAAAAAAAAAAARQnAQ)
 
@@ -40,7 +40,7 @@ A：这个 mosnd 只是 mosn 的拷贝，可以看下这个文档：[https://mos
 
 **2. 胡** 提问：
 
->请问这边有现成用 SOFAStack 搭建的框架包吗，内容涉及 SOFABoot、SOFARegistry、SOFARPC 的？
+> 请问这边有现成用 SOFAStack 搭建的框架包吗，内容涉及 SOFABoot、SOFARegistry、SOFARPC 的？
 
 A：现成的框架包的话，你可以从 SOFABoot 开始，参考这个：[https://www.sofastack.tech/projects/sofa-boot/quick-start/](https://www.sofastack.tech/projects/sofa-boot/quick-start/)
 

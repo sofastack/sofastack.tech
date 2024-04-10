@@ -130,7 +130,7 @@ starting in sample ark plugin activator
 
 Select `mvn clean install` to package the project into a fat jar with class isolation features. The packaged file format is like this:
 
-```
+```plain
 .
 ├── classes
 │   └── com
@@ -161,7 +161,7 @@ Select `mvn clean install` to package the project into a fat jar with class isol
 
 Here, `sofabot-sample-with-isolation-2.4.0-executable-ark` is a Fat Jar with the class isolation capability, so we can simply start it up with the `java -jar` command. Execute `java -jar sofaboot-sample-with-isolation-2.4.0-executable-ark` on the server or console, and a successful startup log will appear like this:
 
-```
+```plain
 2018-04-07 10:57:48.033  INFO 8488 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
 2018-04-07 10:57:48.042  INFO 8488 --- [           main] .i.SofaBootClassIsolationDemoApplication : Started SofaBootClassIsolationDemoApplication in 7.432 seconds (JVM running for 8.99)
 Ark container started in 8797 ms.

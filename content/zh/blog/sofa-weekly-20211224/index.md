@@ -35,7 +35,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **@微光** 提问：
 
->有一个嵌入式分布式 KV 存储需求，JRaft RheaKV 能用在生产吗？
+> 有一个嵌入式分布式 KV 存储需求，JRaft RheaKV 能用在生产吗？
 
 A：我们的时序数据库集群基于 RheaKV  做元数据存储和集群调度。
 
@@ -47,7 +47,7 @@ A：我们的时序数据库集群基于 RheaKV  做元数据存储和集群调�
 
 **@微光** 提问：
 
->RheaKV 中这样移除一个节点 Node，好像不行。在 DefaultRheaKVCliService 中是否可以提供动态上线 Node 和下线 Node 的 API？
+> RheaKV 中这样移除一个节点 Node，好像不行。在 DefaultRheaKVCliService 中是否可以提供动态上线 Node 和下线 Node 的 API？
 
 ![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*gSWGQYuwwmkAAAAAAAAAAAAAARQnAQ)
 
@@ -59,7 +59,7 @@ issue 详细回复：[https://github.com/sofastack/sofa-jraft/issues/747](https:
 
 **@苏泽东** 提问：
 
->哪位老师帮我解答下这个 Endstream 方法?
+> 哪位老师帮我解答下这个 Endstream 方法?
 
 ![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*t4j4Q5U36WEAAAAAAAAAAAAAARQnAQ)
 
@@ -69,12 +69,12 @@ A：这个主要是请求发出去后，一直等到收到响应后，记录下 
 
 **@火种** 提问：
 
->咨询一个问题：看 MOSN 的源码，如果非 netpoll，是通过在 startRWLoop 来实现的，如果是使用 netpoll 的情况下，长链接是怎么迁移的？
+> 咨询一个问题：看 MOSN 的源码，如果非 netpoll，是通过在 startRWLoop 来实现的，如果是使用 netpoll 的情况下，长链接是怎么迁移的？
 
 A：[https://mp.weixin.qq.com/s/ts_qsUee6mUFv0FpykaOXQ](https://mp.weixin.qq.com/s/ts_qsUee6mUFv0FpykaOXQ)
 推荐你看下这个文件。
 
->startRWloop 会调用 startreadloop 和 startwriteloop，在这两个函数中进行了长链接的数据的交换，但是使用 netpoll 后，代码分支就变成 netpoll 相应的分支了，不会进入上述两个函数了。
+> startRWloop 会调用 startreadloop 和 startwriteloop，在这两个函数中进行了长链接的数据的交换，但是使用 netpoll 后，代码分支就变成 netpoll 相应的分支了，不会进入上述两个函数了。
 
 A：没有支持 netpoll 模式的迁移。
 

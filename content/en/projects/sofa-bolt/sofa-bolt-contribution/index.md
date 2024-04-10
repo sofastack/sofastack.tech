@@ -78,7 +78,7 @@ git clone -b branchname https://xxx.git
 
 After a branch is pulled, you can modify the code.
 
-#### When modifying the code, note the following:
+#### When modifying the code, note the following
 
 * Keep the code style consistent.
 Bolt uses the Maven plug-in to keep the code style consistent. Before submitting the code, be sure to execute the following command locally.

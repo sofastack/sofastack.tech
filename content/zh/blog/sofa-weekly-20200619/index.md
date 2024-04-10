@@ -66,15 +66,15 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 - read-index 线性一致读请求提供请求超时（timeout）配置；
 - 几个 corner case 修复，比如 replicate logs 如果比 appliedIndex（follower）更小，那么可以认为是成功的；
 - 致谢（排名不分先后）
-[@shibd ](https://github.com/shibd)、[@SteNicholas ](https://github.com/SteNicholas)、[@killme2008 ](https://github.com/killme2008)、[@zongtanghu ](https://github.com/zongtanghu)
+[@shibd](https://github.com/shibd)、[@SteNicholas](https://github.com/SteNicholas)、[@killme2008](https://github.com/killme2008)、[@zongtanghu](https://github.com/zongtanghu)
 
 详细发布报告：
 [https://github.com/sofastack/sofa-jraft/releases/tag/1.3.2](https://github.com/sofastack/sofa-jraft/releases/tag/1.3.2)
 
 **2、发布 Occlum v0.13.0 版本，主要变更如下：**
 
-- 扩展了Occlum.json的配置格式，更强大，更易读；
-- 增加了3个新的系统调用；
+- 扩展了 Occlum.json 的配置格式，更强大，更易读；
+- 增加了 3 个新的系统调用；
 - 增强了编程语言支持：支持了 Rust、改进了 Python 和 Go 的 demo；
 
 详细发布报告：

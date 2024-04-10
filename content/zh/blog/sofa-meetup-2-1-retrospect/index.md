@@ -13,7 +13,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563421066935-d18db741-90e
 
 本文作者：玄北（曹杰），蚂蚁金服 SOFAStack 开源组核心成员。
 
-本文根据 5月26日 SOFA Meetup#2 上海站 《当 Spring Cloud 遇上 SOFAStack》主题分享整理，主要来聊聊 spring-cloud-antfin 包含的主要特性及如何使用 SOFAStack 和 SpringCloud 快读构建微服务系统。
+本文根据 5 月 26 日 SOFA Meetup#2 上海站 《当 Spring Cloud 遇上 SOFAStack》主题分享整理，主要来聊聊 spring-cloud-antfin 包含的主要特性及如何使用 SOFAStack 和 SpringCloud 快读构建微服务系统。
 
 现场回顾视频以及 PPT 见文末链接。
 
@@ -142,7 +142,7 @@ spring-cloud-antfin 目前已经在内部公测中，预计 7 月份发布，虽
 
 ![SOFAStack Cloud Native Workshop](https://cdn.nlark.com/yuque/0/2019/png/226702/1559287183237-44c03c7a-1fe0-49b0-838c-c582a57982fd.png)
 
-6月24日（周一）KubeCon China 来了。KubeCon + CloudNativeCon + Open Source Summit China 2019，蚂蚁金服核心技术团队将举办一场全天的 Workshop，给大家分享分布式架构 SOFAStack、Service Mesh、Serverless、分布式事务 Seata 的实践案例，跟大家一起轻松上手云原生技术。
+6 月 24 日（周一）KubeCon China 来了。KubeCon + CloudNativeCon + Open Source Summit China 2019，蚂蚁金服核心技术团队将举办一场全天的 Workshop，给大家分享分布式架构 SOFAStack、Service Mesh、Serverless、分布式事务 Seata 的实践案例，跟大家一起轻松上手云原生技术。
 
 **主题：《蚂蚁金服 SOFAStack 云原生工作坊》（KubeCon China 2019 同场活动）**
 

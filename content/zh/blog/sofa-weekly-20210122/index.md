@@ -45,10 +45,10 @@ SOFARegistry：[https://github.com/sofastack/sofa-registry](https://github.com/s
 
 **@田冲** 提问：
 
-> 现象：canal 监听到某个被分布式事务控制的表的 insert-binlog 日志后再去查询 MySQL 表里数据时发现这条数据不存在，延迟1秒钟左右再查询就能查询到。
+> 现象：canal 监听到某个被分布式事务控制的表的 insert-binlog 日志后再去查询 MySQL 表里数据时发现这条数据不存在，延迟 1 秒钟左右再查询就能查询到。
 > 疑问：seata-at 模式-两阶段提交的设计会出现 MySQL 先生成了 binlog 日志，后提交事务的情况吗？
 
-A：这个问题其实很简单，你 canal 读不到，那你自己应用本地事务提交后马上读这个 insert 的数据看能不能读到；如果读到，理论上来说这个过程不可能超过一秒，所以如果你应用能查到，你canal查不到，排查canal的问题，而不是 Seata 的问题；Seata 最后也只不过做了 connection.commit；最后事务的提交落库是数据库方本地事务流程落库，Seata 不会起到任何干扰，Seata 代理的是 jdbc 层的处理；redo 后写 binlog 时马上就会广播的，而不是事务提交才把 binlog 广播出去；所以内 xa 的二阶段没提交你就去查主库，由于隔离级别不一定查得到。
+A：这个问题其实很简单，你 canal 读不到，那你自己应用本地事务提交后马上读这个 insert 的数据看能不能读到；如果读到，理论上来说这个过程不可能超过一秒，所以如果你应用能查到，你 canal 查不到，排查 canal 的问题，而不是 Seata 的问题；Seata 最后也只不过做了 connection.commit；最后事务的提交落库是数据库方本地事务流程落库，Seata 不会起到任何干扰，Seata 代理的是 jdbc 层的处理；redo 后写 binlog 时马上就会广播的，而不是事务提交才把 binlog 广播出去；所以内 xa 的二阶段没提交你就去查主库，由于隔离级别不一定查得到。
 
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 

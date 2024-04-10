@@ -108,7 +108,7 @@ Seata 会有 4 种分布式事务解决方案，分别是 AT 模式、TCC 模式
 
 ![AT 模式](https://cdn.nlark.com/yuque/0/2019/png/226702/1561961547361-8de31ff9-ea86-4eef-828e-691576285ae2.png)
 
-##### AT 模式如何做到对业务的无侵入 ：
+##### AT 模式如何做到对业务的无侵入 
 
 - 一阶段：
 
@@ -175,7 +175,7 @@ Saga 模式下分布式事务通常是由事件驱动的，各个参与者之间
 
 XA 模式是 Seata 将会开源的另一种无侵入的分布式事务解决方案，任何实现了 XA 协议的数据库都可以作为资源参与到分布式事务中，目前主流数据库，例如 MySql、Oracle、DB2、Oceanbase 等均支持 XA 协议。
 
-XA 协议有一系列的指令，分别对应一阶段和二阶段操作。“xa start”和 “xa end”用于开启和结束XA 事务；“xa prepare” 用于预提交 XA 事务，对应一阶段准备；“xa commit”和“xa rollback”用于提交、回滚 XA 事务，对应二阶段提交和回滚。
+XA 协议有一系列的指令，分别对应一阶段和二阶段操作。“xa start”和 “xa end”用于开启和结束 XA 事务；“xa prepare” 用于预提交 XA 事务，对应一阶段准备；“xa commit”和“xa rollback”用于提交、回滚 XA 事务，对应二阶段提交和回滚。
 
 在 XA 模式下，每一个 XA 事务都是一个事务参与者。分布式事务开启之后，首先在一阶段执行“xa start”、“业务 SQL”、“xa end”和 “xa prepare” 完成 XA 事务的执行和预提交；二阶段如果提交的话就执行 “xa commit”，如果是回滚则执行“xa rollback”。这样便能保证所有 XA 事务都提交或者都回滚。
 
@@ -243,7 +243,7 @@ XA 模式下，用户只需关注“业务 SQL”，Seata 会自动生成一阶�
 
 最后一部分，分享了蚂蚁金服具体的实践。为了支持双十一的高性能需求，对分布式事务进行了极致的性能优化，例如同库模式、二阶段异步执行。为了使金融服务的可用性达到 99.99%，蚂蚁金服分布式事务采用三地五中心架构，异地多活的部署模式保障了分布式事务服务的高可用。
 
-## 相关链接：
+## 相关链接
 
 - 开源分布式事务 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 - 蚂蚁金服分布式事务（Distributed Transaction-eXtended）产品链接：[https://tech.antfin.com/products/DTX](https://tech.antfin.com/products/DTX)

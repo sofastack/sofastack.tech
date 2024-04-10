@@ -87,7 +87,7 @@ c31aa26549dd: Already exists
 
 可以分析得出，在 Docker pull 时，先会判断本地是否存在当前层，如果没有则从远端服务器拉取层。
 
-### Dragonfly  架构**
+### Dragonfly  架构
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/cb1178aab8db4dc187fb7f396b0e5304~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=985&h=618&s=100887&e=png&b=fbfbfb)
 
@@ -220,7 +220,7 @@ docker run --rm --name jaeger \
 
 私有仓库的情况下，需要给 Dragonfly 代理也配置一个私有证书；如果不配置，在拉取过程中，会偶发 pull 失败的情况，报错如下：
 
--
+
 
 ```Java
 http: server gave HTTP response to HTTPS client
@@ -228,7 +228,7 @@ http: server gave HTTP response to HTTPS client
 
 生成一个 CA 证书私钥。
 
--
+
 
 ```Java
 openssl genrsa -out ca.key 2048

@@ -30,7 +30,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 @曹飞提问：
 
->MOSN 集成 prometheus 是怎么使用呢？看到读取相应配置，是在自定义配置里面吗？
+> MOSN 集成 prometheus 是怎么使用呢？看到读取相应配置，是在自定义配置里面吗？
 
 A：你可以自定义收集指标，然后通过 promoetheus 格式输出。在配置加这个 metric 的就行了。[https://github.com/mosn/mosn/blob/f3248bf2ed6c5d13635e8ce4af921f665ccdf96c/configs/mosn_config_dev.json#L69](https://github.com/mosn/mosn/blob/f3248bf2ed6c5d13635e8ce4af921f665ccdf96c/configs/mosn_config_dev.json#L69)
 
@@ -38,7 +38,7 @@ A：你可以自定义收集指标，然后通过 promoetheus 格式输出。在
 
 @沈冰 提问：
 
->SOFAArk 2.0 怎么创建 ark-plugin? 使用的场景是做类隔离。
+> SOFAArk 2.0 怎么创建 ark-plugin? 使用的场景是做类隔离。
 
 A：当前这个还和 1.0 的使用方式一致的，完全按照 1.0 的方式来。[https://developer.aliyun.com/article/625338](https://developer.aliyun.com/article/625338)
 
@@ -92,7 +92,7 @@ SOFARPC
 
 1.文件能力增加了七牛云 oss、hdfs、腾讯云 oss 的实现；
 
-  同时增加了Java SDK 的实现
+  同时增加了 Java SDK 的实现
 
 2.支持 API 插件和自定义组件能力
 
@@ -120,4 +120,4 @@ SOFARPC
 
 更多文章请扫码关注“金融级分布式架构”公众号
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*8G5NRZ7UEToAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*8G5NRZ7UEToAAAAAAAAAAAAAARQnAQ)

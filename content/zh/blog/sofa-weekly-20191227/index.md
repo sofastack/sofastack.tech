@@ -63,7 +63,7 @@ A：是的。
 
 A：没有和文档不一致的属性吧。你看到的设计器生成的 json，是因为它带了布局信息，它的 stateProps 是和文档是一致的，其它属性是设计器生成的，不需要关心。
 
-> 我没有找到 startState 属性，然后我以为要自己写 next 属性，好像是连线解决了这个问题，还有一点不太明白，就是一个事务只用设计一个 compensationTrigger么？
+> 我没有找到 startState 属性，然后我以为要自己写 next 属性，好像是连线解决了这个问题，还有一点不太明白，就是一个事务只用设计一个 compensationTrigger 么？
 
 A：是的，是用 Start 后面的连线解决，所以不需要 startState 属性了。 compensationTrigger 可以有任意多个，看怎么画好看就行。
 
@@ -104,12 +104,12 @@ A： 是一样的，都是发起方加 GlobalTransactional 注解，对于 TCC 
 
 ![image.png](https://cdn.nlark.com/yuque/0/2019/png/226702/1576469907431-7bfc401e-fe31-46a7-9c90-391e8aace845.png)
 
-就在明天，Service Mesh Meetup 第9期杭州站，本期与滴滴联合举办，将深入 Service Mesh 的落地实践，并带领大家探索 Service Mesh 在更广阔领域的应用，现场还有机会获得 **Istio 官方 T 恤** 以及 **相关技术书籍**。明天，不见不散~
+就在明天，Service Mesh Meetup 第 9 期杭州站，本期与滴滴联合举办，将深入 Service Mesh 的落地实践，并带领大家探索 Service Mesh 在更广阔领域的应用，现场还有机会获得 **Istio 官方 T 恤** 以及 **相关技术书籍**。明天，不见不散~
 
 **主题**：Service Mesh Meetup#9 杭州站：To Infinity and Beyond
 
-**时间**：2019年12月28日（明天）13:00-17:30
+**时间**：2019 年 12 月 28 日（明天）13:00-17:30
 
-**地点**：杭州西湖区紫霞路西溪谷G座8楼
+**地点**：杭州西湖区紫霞路西溪谷 G 座 8 楼
 
 **报名方式**：点击“[这里](https://tech.antfin.com/community/activities/1056)”，即可报名

@@ -53,7 +53,7 @@ Seata：https://github.com/seata/seata
 
 **Occlum 发布 v0.19.1 版本，主要变更如下：**
 
-i.同时兼容 Glibc 和 musl libc的应用
+i.同时兼容 Glibc 和 musl libc 的应用
 
 ii. 支持基于 DCAP (Intel SGX Data Center Attestation Primitives) 的远程验证
 

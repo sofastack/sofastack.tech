@@ -45,7 +45,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*G6AeQZFaW6MAAAAAA
 
 下面给出一个完整的 demo，展示一下在 Rust 应用中如何进行动态的内存 profile。
 
-本文章，我会采用``` jemalloc-sys``` ``` jemallocator``` ``` jemalloc-ctl``` 这三个 Rust 库来进行内存的 profile，这三个库的功能主要是：
+本文章，我会采用```jemalloc-sys``` ```jemallocator``` ```jemalloc-ctl``` 这三个 Rust 库来进行内存的 profile，这三个库的功能主要是：
 
 ```jemalloc-sys```: 封装 jemalloc。
 
@@ -68,7 +68,7 @@ debug = true
 
 ```
 
-其中比较关键的是``` jemalloc-sys``` 的几个 features 需要打开，否则后续的 profile 会遇到失败的情况，另外需要强调的是 demo 的运行环境是在 Linux 环境下运行的。
+其中比较关键的是```jemalloc-sys``` 的几个 features 需要打开，否则后续的 profile 会遇到失败的情况，另外需要强调的是 demo 的运行环境是在 Linux 环境下运行的。
 
 然后 demo 的 src/main.rs 的代码如下：
 
@@ -208,7 +208,7 @@ fn main() {
 }
 ```
 
-比起上一个 demo 长了一点，但是思路非常简单，只要简单说明一下 jemalloc-ctl 的一个使用注意点即可，在获取新的统计信息之前，必须先调用一下``` epoch.advance() ```。
+比起上一个 demo 长了一点，但是思路非常简单，只要简单说明一下 jemalloc-ctl 的一个使用注意点即可，在获取新的统计信息之前，必须先调用一下```epoch.advance()```。
 
 下面是我的编译后运行的输出信息：
 

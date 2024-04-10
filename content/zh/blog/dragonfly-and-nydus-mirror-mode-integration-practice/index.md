@@ -11,7 +11,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*MtLSSKurEhcAAAAAA
 
 文｜戚文博 *（花名：百蓦）*
 
-Dragonfly Maintainer蚂蚁集团软件工程师
+Dragonfly Maintainer 蚂蚁集团软件工程师
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bd5eb6f417f843fba85968c7a3754a04~tplv-k3u1fbpfcp-zoom-1.image)
 
@@ -329,7 +329,7 @@ Oct 19 08:01:00 kvm-gaius-0 systemd[1]: Started nydus snapshotter.Oct 19 08:01:0
 
 转换 `python:latest` 镜像为 Nydus 格式镜像, 可以直接使用已经转换好的 
 
-`dragonflyoss/python-nydus:latest` 镜像, 跳过该步骤。转换工具可以使用Nydusify[3] 也可以使用 acceld[4]。
+`dragonflyoss/python-nydus:latest` 镜像, 跳过该步骤。转换工具可以使用 Nydusify[3] 也可以使用 acceld[4]。
 
 **登陆 Dockerhub**
 
@@ -375,7 +375,7 @@ $ grep mirrors /var/lib/containerd-nydus/logs/**/*log[2022-10-19 10:16:13.276548
 
 ●**Hit Nydus Cache**: 使用 Containerd 通过 Nydus 拉取镜像，并且基于 Nydus Mirror 模式流量转发至 Dragonfly P2P，在命中 Nydus 的本地缓存的情况下并且成功启动的数据。
 
-测试结果表明 Nydus Mirror 模式和 Dragonfly P2P 集成。使用 Nydus 下载镜像对比OCIv1的模式，能够有效减少镜像下载时间。Nydus 冷启动和 Nydus & Dragonfly 冷启动数据基本接近。
+测试结果表明 Nydus Mirror 模式和 Dragonfly P2P 集成。使用 Nydus 下载镜像对比 OCIv1 的模式，能够有效减少镜像下载时间。Nydus 冷启动和 Nydus & Dragonfly 冷启动数据基本接近。
 
 其他命中 Dragonfly Cache 的结果均好于只使用 Nydus 的情况。最重要的是如果很大规模集群使用 Nydus 拉取镜像，会将每个镜像层的下载分解按需产生很多 Range 请求。增加镜像仓库源站 QPS 。
 
@@ -421,7 +421,7 @@ Github 库:
 
 Slack Channel:   *#nydus*
 
-**点击原文，了解更多…**
+**点击原文，了解更多……**
 
 **Dragonfly Star 一下✨：**  
 

@@ -24,4 +24,4 @@ SOFAArk 允许将多个应用（Biz 包）合并打入到 Ark 包中，当启动
 宿主应用是相对合并部署而言，在打包 Ark 包时，至少有一个 Biz 包被打入，如果应用引入了其他 Biz 包，则 Ark 包中会存在多个 Biz 包。当只有一个 Biz 包时，默认将其设置为宿主应用；如果存在多个 Biz 包，则需要配置指定宿主应用。宿主应用相对其他 Biz 包最大的不同，即不允许被卸载。
 
 
-简单总结下，在 SOFAArk 框架中，应用(配置、源码、依赖)被打包成 Biz 包组织在一起，但是特殊的依赖（Ark Plugin 和其他应用 Biz 包）不会被打入 Biz 包中，Biz 包是**不可执行的 Fat Jar**; Ark Plugin 是特殊的二方包，可以将多个二方依赖打包成 Plugin，运行时由独立的 PluginClassLoader 加载，根据打包时配置的导出导入资源、类，构建运行时类加载模型；Ark 包是**可执行 Fat Jar**，一般由 Ark Container、Ark Plugin(0个或多个)、Ark Biz(至少一个)。
+简单总结下，在 SOFAArk 框架中，应用(配置、源码、依赖)被打包成 Biz 包组织在一起，但是特殊的依赖（Ark Plugin 和其他应用 Biz 包）不会被打入 Biz 包中，Biz 包是**不可执行的 Fat Jar**; Ark Plugin 是特殊的二方包，可以将多个二方依赖打包成 Plugin，运行时由独立的 PluginClassLoader 加载，根据打包时配置的导出导入资源、类，构建运行时类加载模型；Ark 包是**可执行 Fat Jar**，一般由 Ark Container、Ark Plugin(0 个或多个)、Ark Biz(至少一个)。

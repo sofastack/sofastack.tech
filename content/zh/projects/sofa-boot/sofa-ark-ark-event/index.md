@@ -186,7 +186,7 @@ public String customEvent(){
 
 ## 事件使用注意
 
-1. 所有的事件都会发送给每个 Biz 的每个Handler，如果想处理发送到具体 Biz 的事件，需要在事件Handler 里添加这段逻辑进行过滤
+1. 所有的事件都会发送给每个 Biz 的每个 Handler，如果想处理发送到具体 Biz 的事件，需要在事件 Handler 里添加这段逻辑进行过滤
 
 ```java
 // 获取事件源所属的 Biz

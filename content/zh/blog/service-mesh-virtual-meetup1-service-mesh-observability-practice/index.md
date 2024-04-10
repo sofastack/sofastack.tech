@@ -13,15 +13,15 @@ cover: "https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1590737231249-c86acab6-bd
 
 Service Mesh Virtual Meetup 是 ServiceMesher 社区和 CNCF 联合主办的线上系列直播。本期为 Service Mesh Virtual Meetup#1 ，邀请了四位来自不同公司的嘉宾，从不同角度展开了 Service Mesh 的应用实践分享，分享涵盖如何使用 SkyWalking 来观测 Service Mesh，来自陌陌和百度的 Service Mesh 生产实践，Service Mesh 的可观察性和生产实践以及与传统微服务监控的区别。
 
-本文根据5月14日晚，G7 微服务架构师叶志远的主题分享《Service Mesh 高可用在企业级生产中的实践》整理。文末包含本次分享的视频回顾链接以及 PPT 下载地址。
+本文根据 5 月 14 日晚，G7 微服务架构师叶志远的主题分享《Service Mesh 高可用在企业级生产中的实践》整理。文末包含本次分享的视频回顾链接以及 PPT 下载地址。
 
 ## 前言
 
-谈到 Service Mesh，人们总是想起微服务和服务治理，从 Dubbo 到 Spring Cloud (2016开始进入国内研发的视野，2017年繁荣)再到 Service Mesh (2018年开始被大家所熟悉)，正所谓长江后浪推前浪，作为后浪，Service Mesh 别无选择，而 Spring Cloud 对 Service Mesh 满怀羡慕，微服务架构的出现与繁荣，是互联网时代架构形式的巨大突破。Service Mesh 具有一定的学习成本，实际上在国内的落地案例不多，大多是云商与头部企业，随着性能与生态的完善以及各大社区推动容器化场景的落地，Service Mesh 也开始在大小公司生根发芽，弥补容器层与 Kubernetes 在服务治理方面的短缺之处。本次将以一个选型调研者的视角，来看看 Service Mesh 中的可观察性主流实践方案。
+谈到 Service Mesh，人们总是想起微服务和服务治理，从 Dubbo 到 Spring Cloud (2016 开始进入国内研发的视野，2017 年繁荣)再到 Service Mesh (2018 年开始被大家所熟悉)，正所谓长江后浪推前浪，作为后浪，Service Mesh 别无选择，而 Spring Cloud 对 Service Mesh 满怀羡慕，微服务架构的出现与繁荣，是互联网时代架构形式的巨大突破。Service Mesh 具有一定的学习成本，实际上在国内的落地案例不多，大多是云商与头部企业，随着性能与生态的完善以及各大社区推动容器化场景的落地，Service Mesh 也开始在大小公司生根发芽，弥补容器层与 Kubernetes 在服务治理方面的短缺之处。本次将以一个选型调研者的视角，来看看 Service Mesh 中的可观察性主流实践方案。
 
 ## 可观察性的哲学
 
-可观察性（Observability）不是一个新名词，它在很久之前就已经诞生了，但是它在 IT 领域却是一个新兴事物。可观察性在维基百科中原文是这样定义的：“In [control theory](https://en.wikipedia.org/wiki/Control_theory), **observability** is a measure of how well internal states of a [system](https://en.wikipedia.org/wiki/System) can be inferred from knowledge of its external outputs. ”。云原生领域第一次出现这个词，是在云原生理念方兴未艾的2017年，在云原生的思潮之下，运用传统的描述方式已经不足以概括这个时代的监控诉求，而 Observability 就显得贴切许多。
+可观察性（Observability）不是一个新名词，它在很久之前就已经诞生了，但是它在 IT 领域却是一个新兴事物。可观察性在维基百科中原文是这样定义的：“In [control theory](https://en.wikipedia.org/wiki/Control_theory), **observability** is a measure of how well internal states of a [system](https://en.wikipedia.org/wiki/System) can be inferred from knowledge of its external outputs. ”。云原生领域第一次出现这个词，是在云原生理念方兴未艾的 2017 年，在云原生的思潮之下，运用传统的描述方式已经不足以概括这个时代的监控诉求，而 Observability 就显得贴切许多。
 
 ![可观察性定义](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1590746737165-6c3ec86a-5372-49d1-9fe3-3812817ff626.jpeg)
 
@@ -31,13 +31,13 @@ Service Mesh Virtual Meetup 是 ServiceMesher 社区和 CNCF 联合主办的线�
 
 ![可观察性与传统监控](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1590746756450-008131a8-ab19-41c9-8ba8-f26f62786754.jpeg)
 
-关于可观察性在云原生领域是何时开始流行起来的，没有一个很明确的时间。业界认为可观察性最早是由 Cindy Sridharan 提出的，其实一位德国柏林的工程师 Peter Bourgon 早在2017年2月就已经有文章在讨论可观察性了，Peter 算是业界最早讨论可观察性的开发者，他写的著名的博文《Metrics, Tracing, and Logging》被翻译成了多种语言。真正可观察性成为一种标准，是来自 Pivotal 公司的 Matt Stine 定义的云原生标准，可观察性位列其中，由此可观察性就成为了云原生时代一个标准主题。
+关于可观察性在云原生领域是何时开始流行起来的，没有一个很明确的时间。业界认为可观察性最早是由 Cindy Sridharan 提出的，其实一位德国柏林的工程师 Peter Bourgon 早在 2017 年 2 月就已经有文章在讨论可观察性了，Peter 算是业界最早讨论可观察性的开发者，他写的著名的博文《Metrics, Tracing, and Logging》被翻译成了多种语言。真正可观察性成为一种标准，是来自 Pivotal 公司的 Matt Stine 定义的云原生标准，可观察性位列其中，由此可观察性就成为了云原生时代一个标准主题。
 
 ![业界早期的探讨](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1590746772206-45f47955-adc7-4e86-8cc7-a2d3c5dbabea.jpeg)
 
 Peter Bourgon 提出的可观察性三大支柱围绕 Metrics、Tracing 和 Logging 展开，这三个维度几乎涵盖了应用程序的各种表征行为，开发人员通过收集并查看这三个维度的数据就可以做各种各样的事情，时刻掌握应用程序的运行情况，关于三大支柱的理解如下：
 
-- Metrics：Metrics 是一种聚合态的数据形式，日常中经常会接触到的 QPS、TP99、TP95 等等都属于Metrics 的范畴，它和统计学的关系最为密切，往往需要使用统计学的原理来做一些设计；
+- Metrics：Metrics 是一种聚合态的数据形式，日常中经常会接触到的 QPS、TP99、TP95 等等都属于 Metrics 的范畴，它和统计学的关系最为密切，往往需要使用统计学的原理来做一些设计；
 - Tracing：Tracing 这个概念几乎是由 SOA 时代带来的复杂性补偿，服务化带来的长调用链，仅仅依靠日志是很难去定位问题的，因此它的表现形式比 Metrics 更复杂，好在业界涌现出来了多个协议以支撑 Tracing 维度的统一实现；
 - Logging：Logging 是由请求或者事件触发，应用程序当中用以记录状态快照信息的一种形式，简单说就是日志，但这个日志不仅仅是打印出来这么简单，它的统一收集、存储以及解析都是一个有挑战的事情，比如结构化(Structured)与非结构化(Unstructed)的日志处理，往往需要一个高性能的解析器与缓冲器；
 
@@ -45,7 +45,7 @@ Peter Bourgon 提出的可观察性三大支柱围绕 Metrics、Tracing 和 Lo
 
 ![可观察性三大支柱](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1590746786889-8212991d-4e05-4f14-ab5d-686d513bf51d.jpeg)
 
-Peter Bourgon 关于可观察性三大支柱的思考不止于此，他还在2018年的 GopherCon EU 的分享上面再次讨论了 Metrics、Tracing 和 Logging 在工业生产当中的深层次意义，这次他探讨了4个维度。
+Peter Bourgon 关于可观察性三大支柱的思考不止于此，他还在 2018 年的 GopherCon EU 的分享上面再次讨论了 Metrics、Tracing 和 Logging 在工业生产当中的深层次意义，这次他探讨了 4 个维度。
 
 - CapEx：表示指标初始收集成本，很明显日志的成本最低，埋点即可；其次是 Metrics，最难是 Tracing 数据，在有了协议支撑的情况下，依然要定义许多数据点，以完成链路追踪必须的元数据定义收集；
 - OpEx：表示运维成本，一般指存储成本，这个之前已经讨论过；
@@ -54,7 +54,7 @@ Peter Bourgon 关于可观察性三大支柱的思考不止于此，他还在201
 
 ![可观察性三大支柱的优缺点](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1590746803815-12b2058c-b2dc-4e51-8272-707a88ef4e76.jpeg)
 
-在 CNCF Landscape 当中，有一块区域专门用作展示云原生场景下的可观察性解决方案，里面又分为好几个维度，图中是截至2020年5月14日的最新版图，未来还会有更多优秀的解决方案涌现出来。CNCF 目前毕业的10个项目库当中，有3个是和可观察性有关的，可见 CNCF 对可观察性的重视程度。
+在 CNCF Landscape 当中，有一块区域专门用作展示云原生场景下的可观察性解决方案，里面又分为好几个维度，图中是截至 2020 年 5 月 14 日的最新版图，未来还会有更多优秀的解决方案涌现出来。CNCF 目前毕业的 10 个项目库当中，有 3 个是和可观察性有关的，可见 CNCF 对可观察性的重视程度。
 
 ![CNCF Observability Landscape ](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1590746820366-12645ff8-9323-4d0b-a207-db0852b3a706.jpeg)
 
@@ -64,7 +64,7 @@ OpenTracing 可以说是目前使用最广的分布式链路追踪协议了，�
 
 OpenCensus 是谷歌提出的一个针对 Tracing 和 Metrics 场景的协议，背靠 Dapper 的加持与历史背景，就连微软也十分拥护，目前在商用领域十分流行。
 
-其他的协议比如 W3C Trace Context，呼声也很高，它甚至对数据在头部进行了压缩，与实现层无关。也许 CNCF 意识到各种协议又在层出不穷，以后各成气候，群雄逐鹿，每一个中间件都要做许多兼容，这对整个技术生态本身不利，因此 OpenTelemetry 横空出世。从字面意思就知道，CNCF 会将可观察性的“遥测”进行到底，它融合了 OpenTracing 和 OpenCensus 的协议内容，旨在提高云原生时代可观察性指标的统一收集与处理，目前 OpenTelemetry 已经进入 beta 版本，其中令人欣喜的是，Java 版本的 SDK 已经有一个类似 SkyWalking 的基于 byte-buddy 框架的无侵入式探针。目前已经可以从47种 Java 库当中自动探测获取遥测数据，另外推出了可供使用的 Erlang、Go、Java、JavaScript、Python 的 API 和 SDK。此外，数据收集器 OpenTelemetry Collector 也可以使用了，可以用它接收 OpenTelemetry client 发射过来的数据，统一收集处理。目前 CNCF 对 Logging 相关的协议制定暂缓，但是有一个工作小组也在做这方面规范的事情。
+其他的协议比如 W3C Trace Context，呼声也很高，它甚至对数据在头部进行了压缩，与实现层无关。也许 CNCF 意识到各种协议又在层出不穷，以后各成气候，群雄逐鹿，每一个中间件都要做许多兼容，这对整个技术生态本身不利，因此 OpenTelemetry 横空出世。从字面意思就知道，CNCF 会将可观察性的“遥测”进行到底，它融合了 OpenTracing 和 OpenCensus 的协议内容，旨在提高云原生时代可观察性指标的统一收集与处理，目前 OpenTelemetry 已经进入 beta 版本，其中令人欣喜的是，Java 版本的 SDK 已经有一个类似 SkyWalking 的基于 byte-buddy 框架的无侵入式探针。目前已经可以从 47 种 Java 库当中自动探测获取遥测数据，另外推出了可供使用的 Erlang、Go、Java、JavaScript、Python 的 API 和 SDK。此外，数据收集器 OpenTelemetry Collector 也可以使用了，可以用它接收 OpenTelemetry client 发射过来的数据，统一收集处理。目前 CNCF 对 Logging 相关的协议制定暂缓，但是有一个工作小组也在做这方面规范的事情。
 
 ![OpenTracing & OpenCensus](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1590746863290-37fa738b-737b-40e1-ac65-86b9781324ea.jpeg)
 
@@ -78,11 +78,11 @@ OpenCensus 是谷歌提出的一个针对 Tracing 和 Metrics 场景的协议，
 
 Linkerd 是由 Buoyant 开发维护，算是 Service Mesh 领域第一代的产品，Linkerd1.x 基于 Scala 编写，可基于主机运行，大家都知道 Scala 运行环境依赖 JDK，因此对资源的消耗相对较大。随后官方进行了整改，推出了新一代的数据平面组件 Conduit，基于 Rust 和 Go 编写，与 Linkerd 双剑合璧，成为 Linkerd2.x。总体来说，Linkerd2.x 性能有了较大的提升，也有可视化界面供操作，但是在国内就是不愠不火的，社区始终发展不起来。
 
-转头看2017年出现的 Istio，也算是含着金汤匙出生的，由谷歌、IBM、Lyft 发起，虽然晚了 Linkerd 一年，但是一经推出，就受到广泛的关注与追捧。Istio 基于 Golang 编写，完美契合 Kubernetes 环境，数据平面整合 Envoy，在服务治理方面职责分明，国内落地案例相较 Linkerd 更加广泛。
+转头看 2017 年出现的 Istio，也算是含着金汤匙出生的，由谷歌、IBM、Lyft 发起，虽然晚了 Linkerd 一年，但是一经推出，就受到广泛的关注与追捧。Istio 基于 Golang 编写，完美契合 Kubernetes 环境，数据平面整合 Envoy，在服务治理方面职责分明，国内落地案例相较 Linkerd 更加广泛。
 
 ![常见的 Service Mesh](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1590746919857-51068123-05d8-42ab-b9e2-0e6a69044deb.jpeg)
 
-Istio 目前总体还算是一个年轻的开源中间件，大版本之间的组件架构有比较大的区别，比如 1.0 引入了Galley（如图左），1.5 去掉了 Mixer，并且控制平面整合成单体，增加了 WASM 扩展机制（如图右）。总体的架构形式没有太大变化，数据面还是关注流量的劫持与转发策略的执行，控制面依然做遥测收集、策略下发、安全的工作。目前国内业界对于 Istio 的使用上，云商与头部公司处于领先位置，比如蚂蚁金服自研了自己基于 Golang 的数据平面 MOSN，兼容 Istio，做了许多优化工作，对 Istio 在国内落地做出了表率，更多的信息可以深入了解，看如何打造更适合国内互联网的 Service Mesh 架构。
+Istio 目前总体还算是一个年轻的开源中间件，大版本之间的组件架构有比较大的区别，比如 1.0 引入了 Galley（如图左），1.5 去掉了 Mixer，并且控制平面整合成单体，增加了 WASM 扩展机制（如图右）。总体的架构形式没有太大变化，数据面还是关注流量的劫持与转发策略的执行，控制面依然做遥测收集、策略下发、安全的工作。目前国内业界对于 Istio 的使用上，云商与头部公司处于领先位置，比如蚂蚁金服自研了自己基于 Golang 的数据平面 MOSN，兼容 Istio，做了许多优化工作，对 Istio 在国内落地做出了表率，更多的信息可以深入了解，看如何打造更适合国内互联网的 Service Mesh 架构。
 
 ![Istio 架构](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1590746938660-125df706-ca90-44be-ab62-b83cfdc054ff.jpeg)
 
@@ -102,7 +102,7 @@ Istio 目前总体还算是一个年轻的开源中间件，大版本之间的�
 
 下图是 TraceSpan 模板，熟悉 OpenTracing 的同学可能对映射内容比较熟悉，很多信息都是 OpenTracing 协议的标准值，比如 Span 的各种描述信息以及 http.method、http.status_code 等等，感兴趣的同学也可以去看看 OpenTracing 的标准定义。
 
-另外在Service Mesh中对于链路追踪普遍有一个问题，就是无论你在数据平面如何做流量劫持，如何透传信息，以及如何生成或者继承Span，入口流量和出口流量都有一个无法串联的问题，这个问题要解决还是需要服务主容器来埋点透传，将链路信息透传到下一次请求当中去，这个问题是无法避免的，而OpenTelemetry的后续推行，可以解决这方面的标准化问题。
+另外在 Service Mesh 中对于链路追踪普遍有一个问题，就是无论你在数据平面如何做流量劫持，如何透传信息，以及如何生成或者继承 Span，入口流量和出口流量都有一个无法串联的问题，这个问题要解决还是需要服务主容器来埋点透传，将链路信息透传到下一次请求当中去，这个问题是无法避免的，而 OpenTelemetry 的后续推行，可以解决这方面的标准化问题。
 
 ![TraceSpan 模板](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1590746978777-d36daf52-ebbb-4d6f-8081-3c12e9e78b51.jpeg)
 
@@ -110,9 +110,9 @@ Istio 目前总体还算是一个年轻的开源中间件，大版本之间的�
 
 在 Istio Mixer Adapter 当中我们可以获知，Istio 支持 Apache SKyWalking、Zipkin、Jaeger 的链路追踪，这三个中间件都支持 OpenTracing 协议，所以使用 TraceSpan 模板同时接入也没有什么问题。三者稍有不同的地方是：
 
-- Zipkin 算是老牌的链路追踪中间件了，项目发起时间是2012年，新版的功能也比较好用；
-- Jaeger 是2016年发起的新兴项目，使用 Go 编写，但是由于云原生的加持，致力于解决云原生时代的链路追踪问题，所以发展很快，它在 Istio 中集成极为简易，也是 Istio 官方推荐的方案
-- SkyWalking 是2015年开始开源，目前正在蓬勃发展的一个项目，但是稍有不同的是，目前它与 Istio 的结合是通过进程外适配的方式，接入损耗稍微大一些，在最新的8.0版本（还未发布）当中有相应的解决方案；
+- Zipkin 算是老牌的链路追踪中间件了，项目发起时间是 2012 年，新版的功能也比较好用；
+- Jaeger 是 2016 年发起的新兴项目，使用 Go 编写，但是由于云原生的加持，致力于解决云原生时代的链路追踪问题，所以发展很快，它在 Istio 中集成极为简易，也是 Istio 官方推荐的方案
+- SkyWalking 是 2015 年开始开源，目前正在蓬勃发展的一个项目，但是稍有不同的是，目前它与 Istio 的结合是通过进程外适配的方式，接入损耗稍微大一些，在最新的 8.0 版本（还未发布）当中有相应的解决方案；
 
 ![Istio Tracing](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1590746999508-04cefb9a-783b-465c-b025-cf48f0ea93e1.jpeg)
 
@@ -120,7 +120,7 @@ Istio 目前总体还算是一个年轻的开源中间件，大版本之间的�
 
 Skywalking 提供了 Java、.NET、NodeJS、PHP、Python 的无侵入式插桩 SDK，另外提供 Golang 和 Lua 的有侵入式 SDK。
 
-为什么 Golang 不能做成无侵入式的？这还得从语言特性说起，通常编程语言分为编译型语言、解释型语言、中间型语言，像 Java 这种语言，在编译的时候是编译成字节码，然后运行时再通过 JVM 去运行字节码，这样就可以在这其中做很多的事情，可以在编译的过程中把原本的代码改掉。而像 Python、PHP、JS 和 Erlang，是使用的时候才会进行逐行翻译，所以也可以在用的时候去加入一些额外的代码。Golang、C、C++ 则是编译型语言，在编译与链接的时候已经将源码转换成了机器码，所以在运行的时候是很难去改动的，这也就是 Golang 为什么不能做自动探针的原因。另外 SkyWalking 是由国人发起的，所以用户群体基数非常大，迭代也非常地快，7.0版本以前支持基于 Mixer 的遥测与显示，8.0之后又加入了从 Prometheus 或 Spring Sleuth 当中收集数据，另外8.0之后支持 Envoy ALS(access log service)，不过需要开启 ALS 接收器。
+为什么 Golang 不能做成无侵入式的？这还得从语言特性说起，通常编程语言分为编译型语言、解释型语言、中间型语言，像 Java 这种语言，在编译的时候是编译成字节码，然后运行时再通过 JVM 去运行字节码，这样就可以在这其中做很多的事情，可以在编译的过程中把原本的代码改掉。而像 Python、PHP、JS 和 Erlang，是使用的时候才会进行逐行翻译，所以也可以在用的时候去加入一些额外的代码。Golang、C、C++ 则是编译型语言，在编译与链接的时候已经将源码转换成了机器码，所以在运行的时候是很难去改动的，这也就是 Golang 为什么不能做自动探针的原因。另外 SkyWalking 是由国人发起的，所以用户群体基数非常大，迭代也非常地快，7.0 版本以前支持基于 Mixer 的遥测与显示，8.0 之后又加入了从 Prometheus 或 Spring Sleuth 当中收集数据，另外 8.0 之后支持 Envoy ALS(access log service)，不过需要开启 ALS 接收器。
 
 在 SkyWalking 的使用上，基本是使用 ES 来做存储，但是有一些改动，将 service、endpoint、instance 这些信息放到关系数据库，各个插桩 SDK 也加入到基础镜像，也可以基于 SkyWalking 轻松实现服务接口粒度的调用次数统计。
 
@@ -133,8 +133,8 @@ Skywalking 提供了 Java、.NET、NodeJS、PHP、Python 的无侵入式插桩
 传统的日志解决方案，ELK 可以说是家喻户晓的，从 Spring Cloud 盛行开始，它便是日志解决方案的优良选择。随着技术的发展，近几年又出现了 EFK 这种解决方案，存储组件 ElasticSearch 和界面 Kibana 倒是没有什么特别大的变化，但是在严苛的线上环境与容器环境中，以及各种对资源敏感的场景下，对于日志采集组件的要求也越来越高，目前比较流行的方案是使用 Fluentd 或者 Filebeat 替代 Logstash，下面是它们三者的一些介绍：
 
 - Logstash：Java 编写，资源消耗大，现在一般不主张用作日志采集；
-- Fluentd：主体由 C 编写，插件由 Ruby 编写，2019年4月从 CNCF 毕业，资源消耗非常小，通常占用内存在30MB左右，可以将日志发射到多个缓冲器，也就是多个接收端，目前在容器内比较常用的组件；
-- Filebeat：Go 编写，但是线上出现过拉高底层资源 load average 的问题以及资源消耗较大，是 Fluentd 的10倍左右，在 Fluentd 出现之前，其被广泛运用在虚拟机当中；
+- Fluentd：主体由 C 编写，插件由 Ruby 编写，2019 年 4 月从 CNCF 毕业，资源消耗非常小，通常占用内存在 30MB 左右，可以将日志发射到多个缓冲器，也就是多个接收端，目前在容器内比较常用的组件；
+- Filebeat：Go 编写，但是线上出现过拉高底层资源 load average 的问题以及资源消耗较大，是 Fluentd 的 10 倍左右，在 Fluentd 出现之前，其被广泛运用在虚拟机当中；
 
 对于 Istio 中的日志解决方案，尽管 Mixer 当中有提供 Fluentd Adapter，但是日志的量级大家也知道，这种方式并不好，所以从 Envoy 去拿到原始的属性日志再进行加工发射到存储端对应用是比较友好的，可以节省出很大一部分资源。
 
@@ -144,13 +144,13 @@ Skywalking 提供了 Java、.NET、NodeJS、PHP、Python 的无侵入式插桩
 
 那么 Fluentd 就是最好的日志收集和发射解决方案了吗？
 
-不是。Fluentd 的研发团队又推出了更加轻量级的 Fluent Bit，它是使用纯C编写的，占用资源更加少，从Fluentd 的 MB 级别直接降为 KB 级别，更加适合作为日志收集器。而 Fluentd 插件种类非常繁多，目前共有接近上千种的插件了，所以它更适合作为日志的聚合处理器，在日志收集之后的加工与传输中使用。在实际应用中，使用 Fluent Bit 可能会遇到一些问题，使用比较早期的版本可能会有配置动态加载的问题，解决方法就是另起一个进程控制 Fluent Bit 的启停，同时监听配置的变化，有变化则 reload。
+不是。Fluentd 的研发团队又推出了更加轻量级的 Fluent Bit，它是使用纯 C 编写的，占用资源更加少，从 Fluentd 的 MB 级别直接降为 KB 级别，更加适合作为日志收集器。而 Fluentd 插件种类非常繁多，目前共有接近上千种的插件了，所以它更适合作为日志的聚合处理器，在日志收集之后的加工与传输中使用。在实际应用中，使用 Fluent Bit 可能会遇到一些问题，使用比较早期的版本可能会有配置动态加载的问题，解决方法就是另起一个进程控制 Fluent Bit 的启停，同时监听配置的变化，有变化则 reload。
 
 ![Istio Logging](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1590747055333-2067499c-7515-47a4-9945-7f7f2952d126.jpeg)
 
-关于上图中的 Loki，它的核心思想正如项目介绍，“Like Prometheus, but for logs”，类似于 prometheus 的聚合日志解决方案，2018年12月开源，短短两年，却已有接近1万个 Star 了！它由 Grafana 团队开发，由此可以看出 Grafana 对于一统云原生可观察性的目的。
+关于上图中的 Loki，它的核心思想正如项目介绍，“Like Prometheus, but for logs”，类似于 prometheus 的聚合日志解决方案，2018 年 12 月开源，短短两年，却已有接近 1 万个 Star 了！它由 Grafana 团队开发，由此可以看出 Grafana 对于一统云原生可观察性的目的。
 
-在云原生时代，像以前那样用昂贵的全文索引，如 ES，或者列式存储，如 HBase，将大量的原始日志直接存储到昂贵的存储介质之中的做法，似乎已经不太妥当。因为原始日志99%是不会被查询到的，所以日志也是需要做一些归并，归并之后压缩成 gzip，并且打上各式标签，这样可能会更加符合云原生时代精细化运作的原则。
+在云原生时代，像以前那样用昂贵的全文索引，如 ES，或者列式存储，如 HBase，将大量的原始日志直接存储到昂贵的存储介质之中的做法，似乎已经不太妥当。因为原始日志 99%是不会被查询到的，所以日志也是需要做一些归并，归并之后压缩成 gzip，并且打上各式标签，这样可能会更加符合云原生时代精细化运作的原则。
 
 而 Loki 可以将大量的日志存储于廉价的对象存储中，并且它为日志打标归并成日志流的这种方式得以让我们快速地检索到对应的日志条目。但是注意一点，想要使用 Loki 替代 EFK 是不明智的，它们针对的场景不一样，对数据的完整性保证和检索能力也有差别。
 
@@ -158,7 +158,7 @@ Skywalking 提供了 Java、.NET、NodeJS、PHP、Python 的无侵入式插桩
 
 自从 Prometheus 出现以来，就牢牢占据着监控指标的主要地位。Prometheus 应该是当前应用最广的开源系统监控和报警平台了，随着以 Kubernetes 为核心的容器技术的发展，Prometheus 强大的多维度数据模型、高效的数据采集能力、灵活的查询语法，以及可扩展、方便集成的特点，尤其是和云原生生态的结合，使其获得了越来越广泛的应用。
 
-Prometheus 于2015年正式发布，于2016年加入 CNCF，并于2018年成为第2个从 CNCF 毕业的项目（第一个是 Kubernetes，其影响力可见一斑）。目前 Envoy 支持 TCP 和 UDP statsd 协议，首先让 Envoy 推送指标到 statsd，然后可以使用 Prometheus 从 statsd 拉取指标，以供 Grafana 可视化展示。另外我们也可以提供 Mixer Adapter，接收处理遥测数据供 Prometheus 采集。
+Prometheus 于 2015 年正式发布，于 2016 年加入 CNCF，并于 2018 年成为第 2 个从 CNCF 毕业的项目（第一个是 Kubernetes，其影响力可见一斑）。目前 Envoy 支持 TCP 和 UDP statsd 协议，首先让 Envoy 推送指标到 statsd，然后可以使用 Prometheus 从 statsd 拉取指标，以供 Grafana 可视化展示。另外我们也可以提供 Mixer Adapter，接收处理遥测数据供 Prometheus 采集。
 
 在 Prometheus 的实际使用当中可能会存在一些问题，比如 pod 被杀掉需要另外启一个，导致 Prometheus 数据丢失，这就需要一个 Prometheus 的数据可持久化的高可用方案。CNCF 的沙箱项目里面有一个项目叫做 Thanos，它的核心思想相当于是在 Prometheus 之上做了一个类似数据库 sharding 的方案，它有两种架构模式：Sidecar 与 Receiver。目前官方的架构图用的 Sidecar 方案，Receiver 是一个暂时还没有完全发布的组件，Sidecar 方案相对成熟一些，更加高效也更容易扩展。
 

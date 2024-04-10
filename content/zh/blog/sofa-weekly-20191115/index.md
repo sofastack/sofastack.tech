@@ -40,7 +40,7 @@ SOFARPC：[https://github.com/sofastack/sofa-rpc](https://github.com/sofastack/s
 
 > 指定的 IP 地址。
 
-A：一种方法本地调用方直接配开发环境的机器直连调用， 另外一个方法就是开发环境统一使用一个 uniqueId，和本地用不同的uniqueId。
+A：一种方法本地调用方直接配开发环境的机器直连调用， 另外一个方法就是开发环境统一使用一个 uniqueId，和本地用不同的 uniqueId。
 
 **2、@温明磊** 提问：
 
@@ -73,7 +73,7 @@ A：是的。提个 issue，修改一下。
 
 你提的那个 issue 修复了 ，[https://github.com/seata/seata/pull/1893](https://github.com/seata/seata/pull/1893) 同时做了一个优化，重试和补偿服务不向 Seata server 注册分支事务，仅原始服务注册分支事务，重试和补偿服务执行完成时向原始服务注册的分支事务上报成功与否的状态。
 
-Retry 功能，"BackoffRate": 1.5，表示重试间隔增量，1.5表示本次重试间隔是上次的1.5倍：[https://github.com/seata/seata/issues/1899](https://github.com/seata/seata/issues/1899)
+Retry 功能，"BackoffRate": 1.5，表示重试间隔增量，1.5 表示本次重试间隔是上次的 1.5 倍：[https://github.com/seata/seata/issues/1899](https://github.com/seata/seata/issues/1899)
 
 还有一个点，当重试过程中生了别的异常，框架会重新匹配这个异常对应的重试规则，并按新规则来重试，但同一种规则的总次数的不会超过它配置的 MaxAttempts，避免不同异常来回切换而一直重试。
 
@@ -103,7 +103,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 ### 双十一落地实践特辑阅读
 
 - [蚂蚁金服 Service Mesh 大规模落地系列 - 核心篇](/blog/service-mesh-practice-in-production-at-ant-financial-part1-core/)
-- [万字长文丨1分36秒，100亿，支付宝技术双11答卷：没有不可能](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247485556&idx=1&sn=7eb759d359ded477aee58ed287b5bf98&chksm=faa0e7aecdd76eb891bed7c82e91849a3b7560108147ebd7aab2dfed0e0cad2e6d874a5ada2e&scene=21)
+- [万字长文丨 1 分 36 秒，100 亿，支付宝技术双 11 答卷：没有不可能](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247485556&idx=1&sn=7eb759d359ded477aee58ed287b5bf98&chksm=faa0e7aecdd76eb891bed7c82e91849a3b7560108147ebd7aab2dfed0e0cad2e6d874a5ada2e&scene=21)
 
 ### SOFA 项目进展
 
@@ -139,8 +139,8 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 - 蚂蚁金服首次 Service Mesh 大规模落地经验
 - 阿里巴巴超大规模神龙裸金属 K8s 集群运维实践经验
 
-时间：2019年11月24日（周日）9:30-16:30
+时间：2019 年 11 月 24 日（周日）9:30-16:30
 
-地点：北京市朝阳区大望京科技商务园区宏泰东街浦项中心B座2层多功能厅
+地点：北京市朝阳区大望京科技商务园区宏泰东街浦项中心 B 座 2 层多功能厅
 
 报名方式：点击“[这里](https://tech.antfin.com/community/activities/985)”即可锁定席位

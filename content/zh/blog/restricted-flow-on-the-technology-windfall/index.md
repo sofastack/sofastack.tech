@@ -29,7 +29,7 @@ Service Mesh 作为 sidecar 运行，对应用程序来说是透明，所有应�
 
 在实践中，Service Mesh 通常**以轻量级网络代理阵列**的形式实现，这些代理与应用程序代码部署在一起，对应用程序来说无需感知代理的存在。
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*dz-fRImoXD4AAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*dz-fRImoXD4AAAAAAAAAAAAAARQnAQ)
 
 相较于传统的限流组件，Mesh 限流具备很多优势，在研发效能和研发成本上都取得了明显的收益：
 
@@ -41,7 +41,7 @@ Service Mesh 作为 sidecar 运行，对应用程序来说是透明，所有应�
 
 **「背景业务」**
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*kGiuT4VDNxIAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*kGiuT4VDNxIAAAAAAAAAAAAAARQnAQ)
 
 在 Mesh 统一限流实现前，蚂蚁集团内部存在多个不同的限流产品，分别提供不同的流量控制策略：
 
@@ -87,11 +87,11 @@ MOSN 作为一款蚂蚁自研的基于 Golang 技术建设的 Mesh 开源框架�
 
 基于 Sentinel 良好的扩展能力，我们对单机限流、服务熔断、集群限流、自适应限流等都做了蚂蚁自己的实现，也将部分通用的改动反哺到了开源社区，同时配套建设了统一的日志监控报警、统一限流中心。
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*61VEQrkG6y4AAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*61VEQrkG6y4AAAAAAAAAAAAAARQnAQ)
 
 最终我们在 MOSN 里将各种能力都完成了建设，下表展示了 MOSN 限流和其他限流组件的能力对比：
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Tte4RauXe6oAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Tte4RauXe6oAAAAAAAAAAAAAARQnAQ)
 
 ## 奥卡姆剃刀
 
@@ -99,7 +99,7 @@ MOSN 作为一款蚂蚁自研的基于 Golang 技术建设的 Mesh 开源框架�
 
 *如无必要，勿增实体* 
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*BecDSaGdDXQAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*BecDSaGdDXQAAAAAAAAAAAAAARQnAQ)
 
 一个限流策略就配套一个 SDK 和一个管理后台七零八落，交互体验参差不齐，文档和操作手册质量也良莠不齐，交由不同的团队维护和答疑，如果你全都体验过一遍一定会深恶痛绝。
 
@@ -109,7 +109,7 @@ MOSN 作为一款蚂蚁自研的基于 Golang 技术建设的 Mesh 开源框架�
 
 **-** *流量控制的管控台全部收口到统一限流中心*
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*fHE-SYAWyLYAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*fHE-SYAWyLYAAAAAAAAAAAAAARQnAQ)
 
 这应该是我们造的最后一个限流轮子了吧
 
@@ -131,7 +131,7 @@ MOSN 作为一款蚂蚁自研的基于 Golang 技术建设的 Mesh 开源框架�
 
 在此需求背景下我们实现了一套符合成熟云原生定义的自检测、自调节的限流策略。
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*r7b5RIrIZ28AAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*r7b5RIrIZ28AAAAAAAAAAAAAARQnAQ)
 
 自适应限流的实现原理并不复杂，朴素的解释就是，***触发限流后实时检测系统整体水位，同时秒级按比例调节流量***。
 
@@ -149,7 +149,7 @@ MOSN 作为一款蚂蚁自研的基于 Golang 技术建设的 Mesh 开源框架�
 
 如果有基线数据则对比当前并发是否超过基线数据，根据实际情况决策是否允许该请求通过。
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*sTquSrlyqJcAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*sTquSrlyqJcAAAAAAAAAAAAAARQnAQ)
 
 这套自主实现的自适应限流有如下几点优势:
 
@@ -169,13 +169,13 @@ MOSN 作为一款蚂蚁自研的基于 Golang 技术建设的 Mesh 开源框架�
 
 考虑一下以下场景：
 
-**-**假设业务希望配置的总限流阈值小于机器总量，例如业务有 1000 台机器，但希望限制 QPS总量为 500，均摊到每台机器 QPS\<1，单机限流的值该怎么配置呢？
+**-**假设业务希望配置的总限流阈值小于机器总量，例如业务有 1000 台机器，但希望限制 QPS 总量为 500，均摊到每台机器 QPS<1，单机限流的值该怎么配置呢？
 
 **-** 假设业务希望限制 QPS 总量为 1000，一共有 10 台机器，但分布到每台机器上的业务流量不是绝对均匀的，单机限流的值又该怎么配置呢？*
 
 计算机科学领域的任何问题都可以通过增加一个间接的中间层来解决，我们很容易想到通过一个统一的外部的计数器来存储限流统计数据，这就是集群限流的基本思想。
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*4I6KQol6T58AAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*4I6KQol6T58AAAAAAAAAAAAAARQnAQ)
 
 不过每个请求都去同步请求缓存存在一些问题：
 
@@ -185,7 +185,7 @@ MOSN 作为一款蚂蚁自研的基于 Golang 技术建设的 Mesh 开源框架�
 
 **- **我们在集群限流中提供了同步限流和异步限流两种模式。针对流量很大或耗时敏感的情况我们设计了一个二级缓存方案，不再每次都请求缓存，而是在本地做一个累加，达到一定的份额后或者达到一定时间间隔后再咨询缓存，如果远端份额已扣减完，则将阻止流量再进入，直到下一个时间窗口后恢复。异步限流模式在大流量场景下对集群限流的性能和精度实现了尽可能的平衡。
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*SHgsTIxniMMAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*SHgsTIxniMMAAAAAAAAAAAAAARQnAQ)
 
 **精细化限流**
 
@@ -193,13 +193,13 @@ MOSN 作为一款蚂蚁自研的基于 Golang 技术建设的 Mesh 开源框架�
 
 **精细化限流就是为了解决这样的复杂限流配置而设计的。**
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*mxBPT7CRB7cAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*mxBPT7CRB7cAAAAAAAAAAAAAARQnAQ)
 
 我们先梳理一下业务同学可能希望支持的条件有哪些，基本上概括起来有几类：
 
 1. **按业务来源**
 
-例如 A 应用对外提供的服务被B、C、D 三个系统调用，希望只对来自 B 的流量做限制，C、D 不限制。
+例如 A 应用对外提供的服务被 B、C、D 三个系统调用，希望只对来自 B 的流量做限制，C、D 不限制。
 
 2. **按业务参数值**
 
@@ -209,7 +209,7 @@ MOSN 作为一款蚂蚁自研的基于 Golang 技术建设的 Mesh 开源框架�
 
 例如“花呗代扣”、“余额宝申购支付”等。
 
-**[注1]**：全链路业务标是根据业务配置的规则生成的标识，该标识会在 RPC 协议中透传，达到跨服务识别业务来源的目的。
+**[注 1]**：全链路业务标是根据业务配置的规则生成的标识，该标识会在 RPC 协议中透传，达到跨服务识别业务来源的目的。
 
 更复杂的场景下，可能上述条件还有一些逻辑运算关系，例如业务来源是 A 并且活动 ID 是 xxx 的流量，业务标是 A 或者 B 并且参数值是 xxx 等。
 
@@ -217,7 +217,7 @@ MOSN 作为一款蚂蚁自研的基于 Golang 技术建设的 Mesh 开源框架�
 
 流量条件规则就是让基本信息、业务信息等支持基本的逻辑运算，根据运算结果生成独立的子资源点。
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*mPyUR75CuYgAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*mPyUR75CuYgAAAAAAAAAAAAAARQnAQ)
 
 根据业务配置的条件规则将流量拆分成若干个子资源点，再针对“子资源点”配置独立的限流规则，从而实现了精细化限流的需求。
 
@@ -231,7 +231,7 @@ MOSN 作为一款蚂蚁自研的基于 Golang 技术建设的 Mesh 开源框架�
 
 限流解决的是总体的容量问题，对于强依赖的服务限流后业务仍然表现为失败，更好的办法是将流量快速转移到其他健康机器。
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*hOb2Trn0rH8AAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*hOb2Trn0rH8AAAAAAAAAAAAAARQnAQ)
 
 传统的自愈平台都是通过监控发现机器故障，继而执行后续的自愈动作，监控通常会有 2～3 分钟的数据延迟，如果在自适应限流触发后立即上报数据给自愈平台，自愈平台再进行判断确认是否是单机问题，随后执行自愈处理，则可以提高自愈的实效性，进一步提高业务可以率。
 
@@ -243,7 +243,7 @@ MOSN 作为一款蚂蚁自研的基于 Golang 技术建设的 Mesh 开源框架�
 
 更好的办法是**将请求转发到提前准备好的降级服务中**。
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Kks2S6XXyfIAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Kks2S6XXyfIAAAAAAAAAAAAAARQnAQ)
 
 基于 Serverless 平台实现的降级中台，可以将降级的一些通用逻辑下沉到基座中（例如：缓存记账、异步恢复等），业务可以根据实际需求实现自己的 Serverless 业务降级模块，这样即使在服务完全不可用的状态下，MOSN 仍然可以将请求转发到降级服务中，从而实现更高的业务可用率。
 
@@ -255,7 +255,7 @@ MOSN 作为一款蚂蚁自研的基于 Golang 技术建设的 Mesh 开源框架�
 
 希望大家一起努力, 共同进步。
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*bUt_RJfLnRkAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*bUt_RJfLnRkAAAAAAAAAAAAAARQnAQ)
 
 开源项目 MOSN 核心成员「张稀虹」，在 8 月 11 日 SOFAMeetup 「成都站」进行了《技术风口上的限流》分享，带领大家了解 Mesh 限流熔断未来的探索方向。
 
@@ -271,4 +271,4 @@ MOSN 作为一款蚂蚁自研的基于 Golang 技术建设的 Mesh 开源框架�
 
 更多文章请扫码关注“金融级分布式架构”公众号
 
->![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*5aK0RYuH9vgAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*5aK0RYuH9vgAAAAAAAAAAAAAARQnAQ)

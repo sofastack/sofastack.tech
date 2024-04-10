@@ -57,7 +57,7 @@ SOFAStack 社区：[https://www.sofastack.tech/awesome/](/awesome/)
 > 
 > 如果仅使用 reconfigerServer 作为交互通信会存在哪些问题？
 
-A：你的意思就是旧进程 reconfigerServer在收到 isReconfigure() 后，直接传输旧进程的fd给新进程。原理上也是可以的。这儿其实有个历史原因，最开始支持信号 fork 子进程的方式，是不需要 isReconfigure() 来判断是否存在旧进程的，通过环境变量就可以了，后来为了支持容器升级的方式，单独启一个新的进程，才需要一个机制来判断是否存在旧进程，为了改动更小，之前的逻辑不受影响，才加了这个新的 us 来通讯。
+A：你的意思就是旧进程 reconfigerServer 在收到 isReconfigure() 后，直接传输旧进程的 fd 给新进程。原理上也是可以的。这儿其实有个历史原因，最开始支持信号 fork 子进程的方式，是不需要 isReconfigure() 来判断是否存在旧进程的，通过环境变量就可以了，后来为了支持容器升级的方式，单独启一个新的进程，才需要一个机制来判断是否存在旧进程，为了改动更小，之前的逻辑不受影响，才加了这个新的 us 来通讯。
 
 > 翻了老版本代码阅读：
 > reconfigure 这块是基于环境变量设置 fd. fork exec 参数使用 sys.ProcAttr 继承 fd 信息。
@@ -79,7 +79,7 @@ A：你看到代码是 listen fd 的迁移，和 Envoy 最大的不同是我们�
 > 
 > MOSN 这里指的是拉起新容器, 容器间迁移数据？uds 的路径是挂载盘?
 
-A：Envoy 的方式不能用镜像来管理二进制了。MOSN 除了支持 Envoy 这种容器内热升级，也支持容器间。MOSN 会拉起新容器，然后做容器间的连接迁移，uds 的路径是共享卷，2个 container 共享。
+A：Envoy 的方式不能用镜像来管理二进制了。MOSN 除了支持 Envoy 这种容器内热升级，也支持容器间。MOSN 会拉起新容器，然后做容器间的连接迁移，uds 的路径是共享卷，2 个 container 共享。
 
 > 容器间迁移是否和业务场景有关，为何不是让旧容器自己销毁（摘掉服务发现, 并延迟一段时间自己销毁）？
 
@@ -112,7 +112,7 @@ MOSN：[https://github.com/sofastack/sofa-mosn](https://github.com/sofastack/sof
 
 #### 回顾
 
-11月24日 Kubernetes & Cloud Native X Service Mesh Meetup 活动回顾：
+11 月 24 日 Kubernetes & Cloud Native X Service Mesh Meetup 活动回顾：
 
 - [蚂蚁金服 Service Mesh 大规模落地系列 - RPC 篇](/blog/service-mesh-practice-in-production-at-ant-financial-part4-rpc/)（文末含分享视频回顾以及 PPT 查看地址）
 
@@ -127,7 +127,7 @@ Service Mesh 是蚂蚁金服下一代架构的核心，本期直播主要分享�
 - 蚂蚁金服 Service Mesh 架构双十一大规模落地实践案例分析；
 - 从核心、RPC、消息等模块分享蚂蚁金服 Service Mesh 落地实践细节；
 
-时间：2019年12月5日（周四）19:00-20:00
+时间：2019 年 12 月 5 日（周四）19:00-20:00
 
 形式：线上直播
 

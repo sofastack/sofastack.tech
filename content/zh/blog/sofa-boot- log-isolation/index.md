@@ -13,7 +13,7 @@ cover: "https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1582090700679-c0b8255c-ce
 
 ![日志隔离.jpg](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1581911050981-626f14d1-d990-4e2e-8213-7db06ebd26fd.jpeg)
 
-本文为《剖析 | SOFABoot 框架》第二篇，本篇作者盲僧，来自遨游酒店信息技术。《剖析 | SOFABoot 框架》系列由 SOFA 团队和源码爱好者们出品，项目代号：[SOFA:BootLab/]()，文章尾部有参与方式，欢迎同样对源码热情的你加入。
+本文为《剖析 | SOFABoot 框架》第二篇，本篇作者盲僧，来自遨游酒店信息技术。《剖析 | SOFABoot 框架》系列由 SOFA 团队和源码爱好者们出品，项目代号：[SOFA:BootLab/](https://example.com)，文章尾部有参与方式，欢迎同样对源码热情的你加入。
 
 SOFABoot 是蚂蚁金服开源的基于 SpringBoot 的研发框架，提供了诸如 Readiness Check、类隔离、日志空间隔离等能力，用于快速、敏捷地开发 Spring 应用程序，特别适合构建微服务系统。
 

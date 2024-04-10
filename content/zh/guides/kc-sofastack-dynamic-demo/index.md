@@ -219,7 +219,7 @@ git clone https://github.com/sofastack-guides/kc-sofastack-dynamic-demo.git
 
 ### 5、SOFADashboard 管控端添加版本
 
-在实际的操作中，一般需要手动录入动态模块信息，本次 workshop 中为了方便大家操作，已经事先将00-99 100 个插件录入到了数据库中。
+在实际的操作中，一般需要手动录入动态模块信息，本次 workshop 中为了方便大家操作，已经事先将 00-99 100 个插件录入到了数据库中。
 
 请先现场下载：`sofa-dashboard-web-1.0.0-SNAPSHOT.jar` 这个已经打包好的 sofa-dashborad 启动包。
 
@@ -231,7 +231,7 @@ git clone https://github.com/sofastack-guides/kc-sofastack-dynamic-demo.git
 
 ![image.png](https://gw.alipayobjects.com/mdn/rms_ff360b/afts/img/A*F-RGTLZJYj8AAAAAAAAAAABkARQnAQ)
 
-在查询框中输入你当前座位的编号，（例如你的编号为66）：
+在查询框中输入你当前座位的编号，（例如你的编号为 66）：
 
 ![image.png](https://gw.alipayobjects.com/mdn/rms_ff360b/afts/img/A*x836RaqJ9QkAAAAAAAAAAABkARQnAQ)
 
@@ -246,8 +246,8 @@ git clone https://github.com/sofastack-guides/kc-sofastack-dynamic-demo.git
 
 * 添加版本
 
-  目前 SOFADashboard 支持两种协议的文件获取方式，一种是基于 http 协议的，一种是基于 file 协议的。基于 http 协议即你可以将自己的动态模块包放在一个http
-  服务器上，例如：http://ip:port/filePth 类型路径；基于 file 协议则是直接从文件系统获取动态模块包，例如：file://filePath。这里因为都是基于本地打包，所以使用 file
+  目前 SOFADashboard 支持两种协议的文件获取方式，一种是基于 http 协议的，一种是基于 file 协议的。基于 http 协议即你可以将自己的动态模块包放在一个 http
+服务器上，例如：http://ip:port/filePth 类型路径；基于 file 协议则是直接从文件系统获取动态模块包，例如：file://filePath。这里因为都是基于本地打包，所以使用 file
   协议。
 
   ![image.png](https://gw.alipayobjects.com/mdn/rms_ff360b/afts/img/A*ce6hR79Z-eQAAAAAAAAAAABkARQnAQ)
@@ -269,7 +269,7 @@ git clone https://github.com/sofastack-guides/kc-sofastack-dynamic-demo.git
 
 ![image.png](https://gw.alipayobjects.com/mdn/rms_565baf/afts/img/A*9gkxSoxPnqUAAAAAAAAAAABkARQnAQ)
 
-然后点击安装，延迟1~2s之后，状态变更为 ACTIVATED ，为激活状态
+然后点击安装，延迟 1~2s 之后，状态变更为 ACTIVATED ，为激活状态
 
 ![image.png](https://gw.alipayobjects.com/mdn/rms_565baf/afts/img/A*Eft7SbV1xFEAAAAAAAAAAABkARQnAQ)
 

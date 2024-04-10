@@ -15,7 +15,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*PGCEQL8Cb_IAAAAAA
 
 - 活动时间：2021 年 03 月 21 日（周日）14:00-17:00
 
-- 活动地点：浙江杭州西湖区学院路77号黄龙万科中心-I座
+- 活动地点：浙江杭州西湖区学院路 77 号黄龙万科中心-I 座
 
 - 活动形式：线下活动
 
@@ -23,14 +23,14 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*PGCEQL8Cb_IAAAAAA
 
 ## 活动介绍
 
-SOFAMeetup 牛年首站：**3月21日 杭州见！**
+SOFAMeetup 牛年首站：**3 月 21 日 杭州见！**
 
 久别重逢，朋友们，SOFAMeetup 回来了。
 SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁集团自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，历经蚂蚁集团超过十年的业务历练。SOFAStack 于 2018 年 4 月宣布开源，并逐步开源 SOFABoot、SOFARPC、SOFALookout、SOFATracer、SOFAMosn、SOFAMesh 等组件。
 
 适合自身企业的技术架构才是最佳的方案，SOFAStack 提供了一套的金融级解决方案，提供多种场景下需要的多种组件。
 
-本期 SOFA Meetup 将带来 Service Mesh专题： Service Mesh 在蚂蚁、美团的落地后，如何开展能力及基础设施的建设？如何更好的支撑业务发展？在Service Mesh 大规模落地后，MOSN 如何解决变更风险和效率问题？ 如何支撑 Service Mesh 的演进与优化？本次分享将会提供我们一些思考和实践！
+本期 SOFA Meetup 将带来 Service Mesh 专题： Service Mesh 在蚂蚁、美团的落地后，如何开展能力及基础设施的建设？如何更好的支撑业务发展？在 Service Mesh 大规模落地后，MOSN 如何解决变更风险和效率问题？ 如何支撑 Service Mesh 的演进与优化？本次分享将会提供我们一些思考和实践！
 
 ### 活动议程
 

@@ -10,7 +10,7 @@ aliases: "/sofa-rpc/docs/How-To-Build"
 > 安装 JDK7 及以上，Maven 3.2.5 及以上。
 
 直接下载代码，然后执行如下命令：
-```
+```plain
 cd sofa-rpc
 mvn clean install
 ```

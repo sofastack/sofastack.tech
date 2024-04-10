@@ -34,7 +34,7 @@ SOFADashboard 作为一站式 SOFAStack 管控台，希望对 SOFAStack 各个�
 
 - Ant Design：基于 [React](http://facebook.github.io/react/)封装的一套 Ant Design 的组件库，主要用于研发企业级中后台产品。从产品成熟度、社区活跃度、框架上手难易程度等各个方面均有很好的表现。
 - SOFABoot：蚂蚁金服开源的基于 Spring Boot 的研发框架，它在 Spring Boot 的基础上，提供了诸如 Readiness Check，类隔离，日志空间隔离等能力。在增强了 Spring Boot 的同时，SOFABoot 提供了让用户可以在 Spring Boot 中非常方便地使用 SOFA 中间件的能力。
-- MyBatis：Mybatis 相对于 JPA 来说，上手难度略低，JPA 更加倾向于结合 DDD 使用(业务越复杂，对于DDD 的需求越高)；对于简单的增删改查业务操作，Mybatis  相对来说更灵活和可控。
+- MyBatis：Mybatis 相对于 JPA 来说，上手难度略低，JPA 更加倾向于结合 DDD 使用(业务越复杂，对于 DDD 的需求越高)；对于简单的增删改查业务操作，Mybatis  相对来说更灵活和可控。
 
 ## v1.0 发布
 

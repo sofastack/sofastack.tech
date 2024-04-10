@@ -21,7 +21,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*ZhNJQqxZo7YAAAAAA
 
 **SOFAStack:** *[https://github.com/sofastack](https://github.com/sofastack)*
 
-**SOFA社区会议回顾**  
+**SOFA 社区会议回顾**  
 
 **Layotto：**
 

@@ -72,13 +72,13 @@ All goroutines are asleep - deadlock
 
 眼下比较浅的安全机制，也足够解决大多数的问题了。
 
-**了解更多…**
+**了解更多……**
 
 **MOSN Star 一下🌟：**
 
 [https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 
-## 推荐阅读：
+## 推荐阅读
 
 [MoE 系列（一）｜如何使用 Golang 扩展 Envoy](https://mp.weixin.qq.com/s/GF5Pr2aAOe6NAdJ5VgfMvg)
 

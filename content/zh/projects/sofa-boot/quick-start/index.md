@@ -53,7 +53,7 @@ SOFABoot 是直接构建在 Spring Boot 之上，因此可以使用 [Spring Boot
 
 最后，在工程的 `application.properties` 文件下添加 SOFABoot 工程常用的参数配置，其中 `spring.application.name` 是必需的参数，用于标示当前应用的名称；`logging path` 用于指定日志的输出目录。
 
-```
+```plain
 # Application Name
 spring.application.name=SOFABoot Demo
 # logging path
@@ -64,7 +64,7 @@ logging.path=./logs
 
 可以将工程导入到 IDE 中运行生成的工程里面中的 `main` 方法（一般上在 XXXApplication 这个类中）启动应用，也可以直接在该工程的根目录下运行 `mvn spring-boot:run`，将会在控制台中看到启动打印的日志：
 
-```
+```plain
 2018-04-05 21:36:26.572  INFO ---- Initializing ProtocolHandler ["http-nio-8080"]
 2018-04-05 21:36:26.587  INFO ---- Starting ProtocolHandler [http-nio-8080]
 2018-04-05 21:36:26.608  INFO ---- Using a shared selector for servlet write/read
@@ -117,7 +117,7 @@ logging.path=./logs
 
 在上面的 `application.properties` 里面，我们配置的日志打印目录是 `./logs` 即当前应用的根目录（我们可以根据自己的实践需要配置），在当前工程的根目录下可以看到类似如下结构的日志文件：
 
-```
+```plain
 ./logs
 ├── health-check
 │   ├── sofaboot-common-default.log
@@ -267,7 +267,7 @@ public class PublishServiceWithClient implements ClientFactoryAware {
 }
 ```
 
-将 PublishServiceWithClient 配置为 Spring Bean，并设置 init-method ，使PublishServiceWithClient 在 Spring 刷新时发布服务:
+将 PublishServiceWithClient 配置为 Spring Bean，并设置 init-method ，使 PublishServiceWithClient 在 Spring 刷新时发布服务:
 
 ```xml
 <bean id="publishServiceWithClient" class="com.alipay.sofa.isle.sample.PublishServiceWithClient" init-method="init"/>

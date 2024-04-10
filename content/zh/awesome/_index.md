@@ -102,13 +102,13 @@ title: "Awesome SOFA"
   
 - 钉钉
   - 钉钉交流群：
-    - ~~金融级分布式架构 SOFAStack 1群，群号：23127468~~ 已满
-    - ~~金融级分布式架构 SOFAStack 2群，群号：23195297~~ 已满
-    - ~~金融级分布式架构 SOFAStack 3群，群号：23390449~~ 已满
-    - ~~金融级分布式架构 SOFAStack 4群，群号：23372465~~ 已满
-    - ~~金融级分布式架构 SOFAStack 5群，群号：30315793~~ 已满
-    - ~~金融级分布式架构 SOFAStack 6群，群号：34197075~~ 已满
-    - 金融级分布式架构 SOFAStack 7群，群号：44858463
+    - ~~金融级分布式架构 SOFAStack 1 群，群号：23127468~~ 已满
+    - ~~金融级分布式架构 SOFAStack 2 群，群号：23195297~~ 已满
+    - ~~金融级分布式架构 SOFAStack 3 群，群号：23390449~~ 已满
+    - ~~金融级分布式架构 SOFAStack 4 群，群号：23372465~~ 已满
+    - ~~金融级分布式架构 SOFAStack 5 群，群号：30315793~~ 已满
+    - ~~金融级分布式架构 SOFAStack 6 群，群号：34197075~~ 已满
+    - 金融级分布式架构 SOFAStack 7 群，群号：44858463
 
       <img alt="DingTalk" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*1DklS7SZFNMAAAAAAAAAAAAAARQnAQ" height="250" />
 

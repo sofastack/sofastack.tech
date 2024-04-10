@@ -92,7 +92,7 @@ Koupleless 技术体系是在业务发展、研发运维的复杂性和成本�
 
 此外，采用这种模式，小应用可以不走应用申请上线流程，也不需要申请机器，可以直接部署到业务通用基座之上，从而帮助小流量业务实现了快速创新。
 
-2023 年底 SOFAServerless 品牌全新升级为 Koupleless（GitHub页面：[https://github.com/koupleless/koupleless](https://github.com/koupleless/koupleless)）。
+2023 年底 SOFAServerless 品牌全新升级为 Koupleless（GitHub 页面：[https://github.com/koupleless/koupleless](https://github.com/koupleless/koupleless)）。
 
 企业里不同业务有不同的发展阶段，因此应用也拥有自己的生命周期。
 
