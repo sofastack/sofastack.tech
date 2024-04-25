@@ -10,7 +10,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*6qfxQLwIH6MAAAAAA
 
 ## 概要
 
-![](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*gQAiSJOQqecAAAAAAAAAAAAADrGAAQ/original)
+![](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*zYbUSKASWEQAAAAAAAAAAAAADrGAAQ/original)
 
 - 活动主题：SOFA 六周年，Hello SOFA World！
 
