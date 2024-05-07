@@ -1,0 +1,187 @@
+---
+title: "2024 开源之夏｜Hi 同学，快来认领你的开源任务！"
+authorlink: "https://github.com/sofastack"
+description: "2024 开源之夏｜Hi 同学，快来认领你的开源任务！"
+categories: "SOFAStack"
+tags: ["SOFAStack"]
+date: 2024-05-06T15:00:00+08:00
+cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*X1aZT6-t1gEAAAAAAAAAAAAADrGAAQ/original"
+---
+
+🚗这个夏天，SOFAStack 和 MOSN 又双叒叕参加了开源之夏，带着 6 个项目任务与大家见面啦！
+
+# 活动简介
+
+开源之夏是由中国科学院软件研究所“开源软件供应链点亮计划”发起并长期支持的一项暑期开源活动，旨在鼓励在校学生积极参与开源软件的开发维护，培养和发掘更多优秀的开发者，促进优秀开源软件社区的蓬勃发展，助力开源软件供应链建设。
+
+在开源之夏的活动中，学生们能够利用暑期时间参与到开源项目的建设，**提高个人技术能力、了解开源、结识开源圈的前辈**。此外，对于成功入选并完成结项的同学，还有**价值丰厚的现金奖励与荣誉证书**！
+
+# 社区介绍
+
+本次开源之夏，将有 Koupleless、SOFARPC、MOSN、Layotto 这些开源社区为大家发布任务。
+
+期待同学们的共建👀
+
+## Koupleless
+
+随着各行各业的信息化数字化转型，企业面临越来越多的研发效率、协作效率、资源成本和服务治理痛点，Koupleless 就是为解决这些痛点而生。
+
+Koupleless 是一种模块化应用架构，相较于微服务架构的应用拆分方式，Koupleless 将传统应用同时进行纵向和横向切分，实现业务开发者资源无感，轻松独立维护，让传统应用以较低成本演进并享受到 Serverless 研发模式好处，包括快速构建、秒级部署、秒级调度伸缩等能力，为用户提供极致的研发运维体验，最终帮助企业实现倍级降本增效。
+
+**Koupleless GitHub 地址：**
+
+[https://github.com/koupleless/koupleless](https://github.com/koupleless/koupleless)
+
+## SOFARPC
+
+SOFARPC 是由蚂蚁集团开源的一款 Java RPC 框架，具有高可扩展性、高性能和生产级特性。该框架旨在简化应用之间的 RPC 调用，并为应用提供便捷透明、稳定高效的点对点远程服务调用方案。为方便用户和开发者进行功能扩展，SOFARPC 提供了丰富的模型抽象和可扩展接口，包括过滤器、路由、负载均衡等。
+
+**SOFARPC GitHub 地址：**
+
+[https://github.com/sofastack/sofa-rpc](https://github.com/sofastack/sofa-rpc)
+
+## MOSN
+
+MOSN（Modular Open Smart Network）是一款主要使用 Go 语言开发的云原生网络代理平台，由蚂蚁集团开源并经过双 11 大促几十万容器的生产级验证。MOSN 为服务提供多协议、模块化、智能化、安全的代理能力，融合了大量云原生通用组件，同时也可以集成 Envoy 作为网络库，具备高性能、易扩展的特点。MOSN 可以和 Istio 集成构建 Service Mesh，也可以作为独立的四、七层负载均衡，API Gateway、云原生 Ingress 等使用。
+
+**MOSN GitHub 地址：**
+
+[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
+
+## Layotto
+
+Layotto(/leɪˈɒtəʊ/) 是一款使用 Golang 开发的应用运行时, 旨在帮助开发人员快速构建云原生应用，帮助应用和基础设施解耦。它为应用提供了各种分布式能力，比如状态管理、配置管理、事件发布订阅等能力，以简化应用的开发。
+
+**Layotto GitHub 地址：**
+
+[https://github.com/mosn/layotto](https://github.com/mosn/layotto)
+
+# 项目介绍
+
+今年，Koupleless、SOFARPC、MOSN 以及 Layotto 为同学们准备了** 6 个项目**。成功结项的同学将获得** ¥8,000—12,000 的奖金与荣誉证书**。
+
+## 项目 1 存量应用自动改造成模块｜Koupleless
+
+Koupleless 模块化研发框架中，模块的创建共有三种来源：
+
+  1. 大应用拆出多个模块 
+
+  2. 存量应用改造成一个模块
+
+  3. 直接脚手架生成
+
+「让存量应用能低成本地享受到 Serverless 收益」是Koupleless 模块化研发框架的愿景之一，也是 Koupleless 的特点所在。而拆分、改造（即上述第 1、2 种来源）的模块创建成本直接关系到这一愿景。
+
+其中，关于“存量应用改造成一个模块”目前 Koupleless 还未提供任何能力来降低成本，希望以这次活动为契机，建设相关能力，帮助存量应用低成本改造成模块。
+
+🧑🏻‍🏫项目导师：苟振东
+
+📮联系邮箱：gouzhendong.gzd@antgroup.com
+
+👾项目难度：进阶
+
+🏷️技术领域：Spring Boot、DevOps
+
+## 项目 2 Koupleless 模块打包插件 gradle 版本｜Koupleless
+
+在 Koupleless 模块化研发框架里，模块是普通 Spring Boot 或 Java 代码工程。通过使用 SOFAArk 模块打包插件构建出 jar 包，这个 jar 包就是我们的模块构建产物。通过在一个基座 JVM 里部署多个这样的模块 jar 包，在运行中，一个模块 = 一个 ClassLoader + 一个 SpringContext，通过多 ClassLoader 和 SpringContext 的隔离和共享来为模块开发提供最极致的研发效能和资源效能。Koupleless 目前提供 SOFAArk 打包插件，能够将传统 maven 工程打包成 SOFAArk 模块 jar 包，并且支持设置类的隔离与共享的配置能力（对象的隔离与共享不在该插件里配置）。
+
+当前，许多 gradle 用户也期望通过 SOFAArk 来享受到 Koupleless 模块化研发框架的收益，因此社区希望在本次活动中进一步完善 SOFAArk 打包插件以支持 gradle 版本。
+
+👩🏻‍🏫项目导师：梁栎鹏
+
+📮联系邮箱：lianglipeng.llp@antgroup.com
+
+👾项目难度：进阶
+
+🏷️技术领域：Spring Boot、DevOps
+
+## 项目 3 SOFARPC 动态配置能力完善｜SOFARPC
+
+RPC 动态配置能力是指运行时针对 RPC 相关的配置进行修改，使其能够按需动态调整行为，而无需重新启动服务或强制更新客户端应用程序。动态配置能力通常包括动态调整负载均衡策略、重试策略、超时设置、限流和熔断策略、序列化和反序列化配置等。
+
+当前 SOFARPC 简单集成了 Apollo 配置中心，期望梳理出 SOFARPC 相关需要支持的动态配置，完善对应的应用维度以及接口维度的动态配置能力。另外在此基础之上，期望在 SOFARPC 中集成 Nacos、ZooKeeper 等作为配置中心，支持对应的动态配置能力。
+
+🧑🏻‍🏫项目导师：刘建军
+
+📮联系邮箱：evenljj@163.com   
+
+👾项目难度：进阶 
+
+🏷️技术领域：ZooKeeper
+
+## 项目 4 HTNN controller 支持更多服务发现（如 Consul、Nacos v2）｜MOSN
+
+HTNN 是一个基于 Istio/Envoy 的网络流量管理平台。目前该平台已支持对接 Nacos v1 来获取部署在 K8s 以外的微服务网络地址，希望能够支持更多的服务发现系统，增强对接非 K8s 应用的能力。
+
+🧑🏻‍🏫项目导师：罗泽轩
+
+📮联系邮箱：spacewanderlzx@gmail.com
+
+👾项目难度：进阶
+
+🏷️技术领域：HTTP、Cloud Native
+
+## 项目 5 将 Sentinel-golang 流量控制能力集成进 MoE（MOSN on Enovy) 生态｜MOSN
+
+MoE（MOSN on Envoy）融合了 MOSN 和 Envoy 生态，能够打造高性能、高扩展性的数据平面。通过 MoE 技术，可以使用全功能的 Golang 编程语言来编写 Envoy 插件，极大提高了业务插件的开发效率。当前，MOSN 技术团队已经把 MoE 技术贡献到 Envoy 上游，用户可直接使用 Envoy 最新版本来开发。
+
+本项目期望使用 MoE 技术把 Sentinel-golang 项目和 Envoy 相融合，将 Sentinel 生态引入到 MoE 生态中。
+
+🧑🏻‍🏫项目导师：付建豪
+
+📮联系邮箱：fujianhao.fjh@antgroup.com
+
+👾项目难度：进阶 
+
+🏷️技术领域：HTTP、TCP/IP
+
+## 项目 6 对齐 Layotto 对 Dapr 的依赖｜Layotto
+
+相关背景：
+
+Layotto 在创建之初，目标就是兼容 Dapr 接口和 Dapr 相关的 component 的实现（详细设计可以参考 https://mosn.io/layotto/#/zh/design/api_plugin/dapr_api 文档），并在 22 年做了第一次的兼容。
+
+已有的工作：
+
+Layotto 当前已经兼容了 Dapr 的 v1.5.2 版本
+
+存在的不足：
+
+当前 Dapr 的版本已经走到了 v1.13.0，很多能力做了修复
+
+项目目标：
+
+将 Layotto 中 Dapr 的兼容版本升级到 v1.13.0
+
+🧑🏻‍🏫项目导师：王文学
+
+📮联系邮箱：wangwenxue.wwx@antgroup.com
+
+👾项目难度：基础
+
+🏷️技术领域：Programming Language、Dapr
+
+# 项目申报
+
+**04/30—06/04 **项目申报阶段，学生可挑选项目，与导师沟通并准备项目申请材料、提交项目申请。
+
+学生报名截止时间：06/03 15:00 UTC+8
+
+项目申请书提交截止时间：06/04 18:00 UTC+8  
+
+📍对以上 Koupleless、SOFARPC、MOSN、Layotto 项目感兴趣的同学，欢迎**通过邮箱直接沟通导师**。
+
+📍也可以扫码添加 SOFA 小编 0⃣️2⃣️，一起开启我们的开源之夏！
+
+![](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*MdKbRqnf57cAAAAAAAAAAAAADrGAAQ/original)
+
+我们在开源社区等你，一起开源，一起开心！
+
+项目申请入口：
+
+[https://summer-ospp.ac.cn/org/orglist](https://summer-ospp.ac.cn/org/orglist)
+
+👆搜索 **SOFAStack/MOSN**，即可查看/报名 Koupleless、SOFARPC、MOSN、Layotto 发布的项目任务！
+
+![](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*2sNgSqpZD6EAAAAAAAAAAAAADrGAAQ/original)
