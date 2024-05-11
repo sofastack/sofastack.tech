@@ -34,8 +34,8 @@ registryClient.register(registration, "10.10.1.1:12200?xx=yy");
 使用 SOFARegistry 发布数据一共包含三个步骤：
 
 1. 构建客户端实例;
-1. 构造发布者注册表;
-1. 将注册表注册进客户端并发布数据。
+2. 构造发布者注册表;
+3. 将注册表注册进客户端并发布数据。
 
 
 ### 2.1 构建客户端实例
@@ -76,7 +76,7 @@ registration.setScopeEnum(ScopeEnum.global);
 registryClient.register(registration);
 ```
 
-使用 SOFARegistry 发布数据一共包含三个步骤：
+使用 SOFARegistry 订阅数据一共包含四个步骤：
 
 1. 构建客户端实例;
 2. 创建 SubscriberDataObserver；
