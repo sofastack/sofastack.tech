@@ -4,7 +4,7 @@ aliases: "/sofa-rpc/docs/Fault-Hystrix"
 ---
 
 
-SOFARPC is integrated Hystrix provides fuse capability and is currently available in the first preview version. More information about Hystrix can be found in [Hystrix Official Documentation] (https://github.com/Netflix/Hystrix), Hystrix integration capabilities are provided primarily by [ScienJus] (https://github.com/ScienJus), thanks for contribution.
+SOFARPC is integrated Hystrix provides fuse capability and is currently available in the first preview version. More information about Hystrix can be found in [Hystrix Official Documentation] (<https://github.com/Netflix/Hystrix>), Hystrix integration capabilities are provided primarily by [ScienJus] (<https://github.com/ScienJus>), thanks for contribution.
 
 Next, let's talk about how to experience the fuse capability of Hystrix. The following example uses the `SOFARPC 5.5.0` version. More `Hystrix` configuration and `SOFABoot` integration usage will be provided in subsequent releases, so stay tuned.
 
@@ -75,4 +75,3 @@ In the implementation provided by default, `GroupKey` is `InterfaceId`, and `Com
 SOFARPC: [5.5.0](https://github.com/sofastack/sofa-rpc/releases), SOFABoot: [2.5.3](https://github.com/sofastack/sofa-boot/releases/)。
 
 SOAF RPC Integration Verification Hystrix version: `1.5.12`.
-

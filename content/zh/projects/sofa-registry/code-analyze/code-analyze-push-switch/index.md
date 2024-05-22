@@ -10,7 +10,7 @@ date: 2022-04-22T15:00:00+08:00
 
 ## 前言
 
-某些场景下 SOFARegistry 需要暂时关闭推送功能，这样集群内的业务可以利用 client 的缓存继续工作，比如说 SOFARegistry 需要进行不兼容升级，需要全集群下线，更新版本后再拉起。 
+某些场景下 SOFARegistry 需要暂时关闭推送功能，这样集群内的业务可以利用 client 的缓存继续工作，比如说 SOFARegistry 需要进行不兼容升级，需要全集群下线，更新版本后再拉起。
 
 推送开关的状态存储在数据库中，通过 Meta 修改数据后，Session 可以通过读取到推送开关的变更通知，并在对应的推送流程上进行切断。
 
@@ -61,18 +61,18 @@ public Result closePush() {
 可以看到，`closePush`函数主要做了三件事：
 
 1. 重设灰度推送开关
-   
+
    灰度推送开关中，存储着一个 IP 列表。灰度推送允许 SOFARegistry  即使在全局推送关闭的情况下，仍满足特定 IP 的推送请求。因此想要完全关闭推送功能，需要重设该开关，清空其中的 IP 列表。
 
 2. 重设全局推送开关
-   
+
    关闭推送功能，需要重设全局推送开关，保存开关配置为关闭的新数据。
 
 3. 发送数据变更通知
-   
+
    数据变更通知将告诉 Session，开关配置已经改变，需要进行更新。
 
-## Meta存储开关配置数据
+## Meta 存储开关配置数据
 
 我们以重设全局推送开关中，开关数据的存储为例：
 
@@ -160,7 +160,7 @@ public void broadcast(E event) {
 }
 ```
 
-3. 在消息交换类中，系统使用`getClientHandlers`得到了负责消息响应的handler。
+3. 在消息交换类中，系统使用`getClientHandlers`得到了负责消息响应的 handler。
 
 ```java
 public Response request(Request request) throws RequestException {
@@ -233,7 +233,7 @@ public boolean doFetch(String dataInfoId) {
 ```
 
 6. `AbstractFetchPersistenceSystemProperty`类，是最终负责更新的类
-   
+
    让我们分析一下它的结构
 
 ```java
@@ -267,7 +267,7 @@ protected final class WatchDog extends WakeUpLoopRunnable {
 
 <img title="" src="https://img-blog.csdnimg.cn/d0dabd391b9c49d0a463d414a72f2c63.png?x-oss-process=image/watermark,type_d3F5LXplbmhlaQ,shadow_50,text_Q1NETiBA5YWz5bGx5Y-j5aSn5ZK46bG8,size_1,color_FFFFFF,t_7,g_se,x_16" alt="" width="300" data-align="center">
 
-在父类`WakeUpLoopRunnable`中，维护了一个长度为1的阻塞队列`bell`。
+在父类`WakeUpLoopRunnable`中，维护了一个长度为 1 的阻塞队列`bell`。
 
 > **阻塞队列（BlockingQueue）** 是一个支持两个附加操作的队列。这两个附加的操作是：在队列为空时，获取元素的线程会等待队列变为非空。当队列满时，存储元素的线程会等待队列可用。阻塞队列常用于生产者和消费者的场景，生产者是往队列里添加元素的线程，消费者是从队列里拿元素的线程。阻塞队列就是生产者存放元素的容器，而消费者也只从容器里拿元素。
 
@@ -467,4 +467,3 @@ void firePush(......) {
 ```
 
 由此，关闭推送得到了实现。
-

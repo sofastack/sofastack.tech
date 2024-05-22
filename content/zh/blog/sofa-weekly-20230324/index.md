@@ -30,6 +30,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 钉钉入会链接：[dingtalk://dingtalkclient/page/videoConfFromCalendar?confId=1cebca80-e8cd-4f26-b529-79bac0ce7493&appendCalendarId=1&calendarId=2316789049](dingtalk://dingtalkclient/page/videoConfFromCalendar?confId=1cebca80-e8cd-4f26-b529-79bac0ce7493&appendCalendarId=1&calendarId=2316789049)
 
 议题：
+
 - 2023 开源之夏-课题/导师招募 #894
 - Discussion: 自建各种 Component #902
 - 希望 Layotto 提供高性能的通信交互能力 #867
@@ -37,7 +38,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 欢迎感兴趣同学参加，有任何想交流讨论的议题可以直接留言。
 想要参加社区建设的同学可以关注社区的新手任务列表，总有一个适合你。
 
-「Layotto」： 
+「Layotto」：
 
 [https://github.com/mosn/layotto/issues/907](https://github.com/mosn/layotto/issues/907)
 
@@ -51,17 +52,18 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 欢迎大家在 GitHub 提交 issue 与我们互动
 
-我们会筛选 issue 通过 
+我们会筛选 issue 通过
 
 " SOFA WEEKLY " 的形式回复
 
 **1.@kunple-w  #916**
 
->SpringBoot 2.2 废弃了 logging.path，2.3 已删除该属性，应使用 logging.file.pat。
+> SpringBoot 2.2 废弃了 logging.path，2.3 已删除该属性，应使用 logging.file.pat。
 Steps to reproduce the behavior：
+
 - 使用 SOFA 3.10.0，按照 SOFA guides 配置 logging.path，启动后并没有出现文档中的一些日志文件。
 - 降级为 sample 中的 3.2.0 版本，日志文件出现。
-截图如下（2个属性同时配置）:
+截图如下（2 个属性同时配置）:
 ![](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*5dIhTbzK7KcAAAAAAAAAAAAADrGAAQ/original)
 ![](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*5dIhTbzK7KcAAAAAAAAAAAAADrGAAQ/original)
 
@@ -69,9 +71,9 @@ A：SOFA 中间件中使用 sofa-common-tools 打印的日志，日志空间和 
 
 **「SOFABoot」**：*[https://github.com/sofastack/sofa-boot/issues/1061](https://github.com/sofastack/sofa-boot/issues/1061)*
 
-**2.@shuangchengsun  #263** 
+**2.@shuangchengsun  #263**
 
->客户端的上下线，Client1 处于下线过程，此时 Client1 在路由表中的状态是如何维护的？
+> 客户端的上下线，Client1 处于下线过程，此时 Client1 在路由表中的状态是如何维护的？
 ![](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*dsAsSK7YdF8AAAAAAAAAAAAADrGAAQ/original)
 
 A：data 上有一个定时器去维护每个 Session 相关数据的，如果 Session 挂了，data 大约 30s 后把挂掉的 Session 的数据清理掉，同时链接挂掉的 Session 上的的 Client（除掉了下的 Client） 会自动重新连接到其他 Session 上，然后会把数据增加一个版本重新注册到 Session 上，Session 会再发到那台数据上。

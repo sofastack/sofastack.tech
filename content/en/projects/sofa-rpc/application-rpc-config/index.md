@@ -1,16 +1,16 @@
 
 ---
+
 title: "RPC application parameter configuration"
 aliases: "/sofa-rpc/docs/Application-RPC-Config"
 ---
-
 
 In SOFABoot, the RPC framework provides some configuration parameters at the application level, and supports application-level parameter configuration, such as port and thread pool, which are bound by Spring Boot's `@ConfigurationProperties`. The binding attribute class is `com.alipay.sofa.rpc.boot.config.SofaBootRpcProperties`, and the configuration prefix is as follows:
 
 ```java
 
 static final String PREFIX = "com.alipay.sofa.rpc";
-``` 
+```
 
 Then in the `application.properties` file, you can currently configure the following options. Also, you can write the codes based on your own coding habits as well as according to the Spring Boot specification, camel, underline and so on.
 

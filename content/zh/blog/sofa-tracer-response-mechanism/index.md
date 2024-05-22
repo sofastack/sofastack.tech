@@ -10,11 +10,11 @@ cover: "/cover.jpg"
 ---
 
 > **SOFA** **S**calable **O**pen **F**inancial **A**rchitecture 是蚂蚁金服自主研发的金融级分布式中间件，包含了构建金融级云原生架构所需的各个组件，是在金融场景里锤炼出来的最佳实践。
-> 
+>
 > SOFATracer 是一个用于分布式系统调用跟踪的组件，通过统一的 TraceId 将调用链路中的各种网络调用情况以日志的方式记录下来，以达到透视化网络调用的目的，这些链路数据可用于故障的快速发现，服务治理等。
-> 
+>
 > 本文为《剖析 | SOFATracer 框架》第二篇。《剖析 | SOFATracer 框架》系列由 SOFA 团队和源码爱好者们出品，项目代号：**<SOFA:TracerLab/>**，目前领取已经完成，感谢大家的参与。
-> 
+>
 > SOFATracer：<https://github.com/sofastack/sofa-tracer>
 
 ![SOFATracer-数据上报.jpg](https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1547173396825-f25c0dcc-19c3-424d-9830-cfc4d923e0a0.jpeg)
@@ -23,7 +23,7 @@ cover: "/cover.jpg"
 
 在《[蚂蚁金服分布式链路跟踪组件 SOFATracer 总览|剖析](https://www.sofastack.tech/blog/sofa-tracer-overview/)》一文中已经对 SOFATracer 进行了概要性的介绍。从对 SOFATracer 的定义可以了解到，SOFATracer 作为一个分布式系统调用跟踪的组件，是通过统一的 TraceId 将调用链路中的各种网络调用情况以数据上报的方式记录下来，以达到透视化网络调用的目的。
 
-本篇将针对SOFATracer的数据上报方式进行详细分析，以帮助大家更好的理解 SOFATracer 在数据上报方面的扩展。
+本篇将针对 SOFATracer 的数据上报方式进行详细分析，以帮助大家更好的理解 SOFATracer 在数据上报方面的扩展。
 
 ## 1、Reporter 整体模型
 
@@ -92,7 +92,7 @@ public void finish(long endTime) {
 
 ## 2、日志落盘
 
-前面已经提到，SOFATracer 本身提供了两种上报模式，一种是落到磁盘，另外一种是上报到zipkin。在实现细节上，SOFATracer 没有将这两种策略分开以提供独立的功能支持，而是将两种上报方式组合在了一起，然后再通过配置参数来控制是否进行具体的上报逻辑，具体参考下图：
+前面已经提到，SOFATracer 本身提供了两种上报模式，一种是落到磁盘，另外一种是上报到 zipkin。在实现细节上，SOFATracer 没有将这两种策略分开以提供独立的功能支持，而是将两种上报方式组合在了一起，然后再通过配置参数来控制是否进行具体的上报逻辑，具体参考下图：
 
 ![image.png](https://cdn.nlark.com/yuque/0/2019/png/230565/1546932866244-20ee0441-fd38-48bb-9891-67d87691bb77.png)
 
@@ -106,7 +106,7 @@ public void finish(long endTime) {
 
 #### 2.1.1、消息事件模型
 
-SOFATracer 使用了两种不同的事件模型，一种是 SOFATracer 内部使用的 StringEvent，一种是外部扩展使用的SofaTacerSpanEvent。详见：[SofaTracerSpanEvent](https://github.com/sofastack/sofa-tracer/blob/master/tracer-core/src/main/java/com/alipay/common/tracer/core/appender/manager/SofaTracerSpanEvent.java) & [StringEvent](https://github.com/sofastack/sofa-tracer/blob/master/tracer-core/src/main/java/com/alipay/common/tracer/core/appender/manager/StringEvent.java) 。
+SOFATracer 使用了两种不同的事件模型，一种是 SOFATracer 内部使用的 StringEvent，一种是外部扩展使用的 SofaTacerSpanEvent。详见：[SofaTracerSpanEvent](https://github.com/sofastack/sofa-tracer/blob/master/tracer-core/src/main/java/com/alipay/common/tracer/core/appender/manager/SofaTracerSpanEvent.java) & [StringEvent](https://github.com/sofastack/sofa-tracer/blob/master/tracer-core/src/main/java/com/alipay/common/tracer/core/appender/manager/StringEvent.java) 。
 
 #### 2.1.2、Consumer 消费者
 
@@ -142,11 +142,11 @@ public void start(final String workerName) {
 ![image.png](https://cdn.nlark.com/yuque/0/2019/png/230565/1546945136281-8aa36dbe-e6a3-4799-9760-2608d75613a7.png)
 
 - CommonTracerManager : 这里面持有了 AsyncCommonDigestAppenderManager 类的一个单例对象，并且在 static 静态代码块中调用了 start 方法；这个用来输出普通中间件日志。
-- SofaTracerDigestReporterAsyncManager：这里类里面也是持有了AsyncCommonDigestAppenderManager 类的一个单例对像，并且提供了getSofaTracerDigestReporterAsyncManager 方法来获取该单例，在这个方法中调用了 start 方法；该对象用来输出摘要日志。
+- SofaTracerDigestReporterAsyncManager：这里类里面也是持有了 AsyncCommonDigestAppenderManager 类的一个单例对像，并且提供了 getSofaTracerDigestReporterAsyncManager 方法来获取该单例，在这个方法中调用了 start 方法；该对象用来输出摘要日志。
 
 #### 2.1.5、发布事件
 
-发布事件，也就意味着当前需要产生一个 span 记录，这个过程也是在 finish 方法的调用栈中，也就是上图中DiskReporterImpl#digestReport 这个方法。
+发布事件，也就意味着当前需要产生一个 span 记录，这个过程也是在 finish 方法的调用栈中，也就是上图中 DiskReporterImpl#digestReport 这个方法。
 
 ```java
 AsyncCommonDigestAppenderManager asyncDigestManager = SofaTracerDigestReporterAsyncManager
@@ -186,7 +186,7 @@ AbstractSofaTracerStatisticReporter 的 doReportStat 方法是个抽象方法，
 
 - xxxxxStatReporter : 插件扩展方实现的统计日志 Reporter 类，重写了 doStatReport 和 print 两个方法。
 - AbstractSofaTracerStatisticReporter ： 用于扩展的抽象类，xxxxxStatReporter 就是该类的子类；AbstractSofaTracerStatisticReporter 在其构造函数中，通过 SofaTracerStatisticReporterCycleTimesManager 将当前 statReporter 注册到 SofaTracerStatisticReporterManager 中，统一存放在 statReporters 集合中。
-- SofaTracerStatisticReporterManager ： 统计日志 reporter 管理器，所有插件扩展的 reporter 都会被注册到这个manager 类里面来。其内部类 StatReporterPrinter 实现了runnable 接口，并在 run 方法中遍历 statReporters，逐一调用 print 方法将数据刷到磁盘中。
+- SofaTracerStatisticReporterManager ： 统计日志 reporter 管理器，所有插件扩展的 reporter 都会被注册到这个 manager 类里面来。其内部类 StatReporterPrinter 实现了 runnable 接口，并在 run 方法中遍历 statReporters，逐一调用 print 方法将数据刷到磁盘中。
 
 SofaTracerStatisticReporterManager 在构造函数中初始化了任务执行的周期、ScheduledExecutorService 实例初始化，并且将 StatReporterPrinter 提交到定时任务线程池中，从而实现了周期性输出统计日志的功能。
 
@@ -196,11 +196,11 @@ SofaTracerStatisticReporterManager 在构造函数中初始化了任务执行的
 
 ### 3.1、上报 zipkin 的流程
 
-接着上面的分析，SOFATracer 中的数据上报策略是以组合的形式共存的，这里可以结合第2节的第一张图来看。这里先给出 zipkin 上报的流程，然后再结合流程展开分析：
+接着上面的分析，SOFATracer 中的数据上报策略是以组合的形式共存的，这里可以结合第 2 节的第一张图来看。这里先给出 zipkin 上报的流程，然后再结合流程展开分析：
 
 ![image.png](https://cdn.nlark.com/yuque/0/2019/png/230565/1546957272356-3f4c8bdc-59fe-4a43-9012-45d816721a39.png)
 
-- 在SofaTracer#reportSpan 中有一个方法是 invokeReportListeners；该方法的作用就是遍历当前所有的SpanReportListener 实现类，逐一回调 SpanReportListener 的 onSpanReport 方法。
+- 在 SofaTracer#reportSpan 中有一个方法是 invokeReportListeners；该方法的作用就是遍历当前所有的 SpanReportListener 实现类，逐一回调 SpanReportListener 的 onSpanReport 方法。
 - ZipkinSofaTracerSpanRemoteReporter 是 sofa-tracer-zipkin-plugin 插件中提供的一个实现了 SpanReportListener 接口的类，并在 onSpanReport 回调函数中通过 zipkin2.reporter.AsyncReporter 实例对象将 span 数据上报至 zipkin。
 - 虽然 SOFATracer 和 zipkin 均是基于 OpenTracing 规范，但是在具体实现上 SOFATracer 做了很多扩展，因此需要通过一个 ZipkinV2SpanAdapter 将 SofaTracerSpan 适配成 zipkin2.Span。
 
@@ -208,17 +208,17 @@ zipkin2.reporter.AsyncReporter 是 zipkin 提供的一个数据上报抽象类�
 
 ### 3.2、对非 SpringBoot 应用的上报支持
 
-上报 zipkin 的能力做过一次改动，主要是对于在非SpringBoot应用(也就是Spring工程)的支持，具体参考 [issue:](https://github.com/sofastack/sofa-tracer/issues/32)[建议不用spring boot也可以使用sofa-tracer并且上报zipkin](https://github.com/sofastack/sofa-tracer/issues/32) 。
+上报 zipkin 的能力做过一次改动，主要是对于在非 SpringBoot 应用(也就是 Spring 工程)的支持，具体参考 [issue:](https://github.com/sofastack/sofa-tracer/issues/32)[建议不用 spring boot 也可以使用 sofa-tracer 并且上报 zipkin](https://github.com/sofastack/sofa-tracer/issues/32) 。
 
-对于 SpringBoot 工程来说，引入 tracer-sofa-boot-starter 之后，自动配置类 SofaTracerAutoConfiguration 会将当前所有 SpanReportListener 类型的 bean 实例保存到 SpanReportListenerHolder 的 List 对象中。而SpanReportListener 类型的 Bean 会在 ZipkinSofaTracerAutoConfiguration 自动配置类中注入到当前 Ioc 容器中。这样 invokeReportListeners 被调用时，就可以拿到 zipkin 的上报类，从而就可以实现上报。
+对于 SpringBoot 工程来说，引入 tracer-sofa-boot-starter 之后，自动配置类 SofaTracerAutoConfiguration 会将当前所有 SpanReportListener 类型的 bean 实例保存到 SpanReportListenerHolder 的 List 对象中。而 SpanReportListener 类型的 Bean 会在 ZipkinSofaTracerAutoConfiguration 自动配置类中注入到当前 Ioc 容器中。这样 invokeReportListeners 被调用时，就可以拿到 zipkin 的上报类，从而就可以实现上报。
 
-对于非 SpringBoot 应用的上报支持，本质上是需要实例化 ZipkinSofaTracerSpanRemoteReporter 对象，并将此对象放在 SpanReportListenerHolder 的 List 对象中。所以 SOFATracer 在 zipkin 插件中提供了一个ZipkinReportRegisterBean，并通过实现 Spring 提供的 bean 生命周期接口 InitializingBean，在ZipkinReportRegisterBean 初始化之后构建一个 ZipkinSofaTracerSpanRemoteReporter 实例，并交给SpanReportListenerHolder 类管理。
+对于非 SpringBoot 应用的上报支持，本质上是需要实例化 ZipkinSofaTracerSpanRemoteReporter 对象，并将此对象放在 SpanReportListenerHolder 的 List 对象中。所以 SOFATracer 在 zipkin 插件中提供了一个 ZipkinReportRegisterBean，并通过实现 Spring 提供的 bean 生命周期接口 InitializingBean，在 ZipkinReportRegisterBean 初始化之后构建一个 ZipkinSofaTracerSpanRemoteReporter 实例，并交给 SpanReportListenerHolder 类管理。
 
 ### 3.3、Zipkin 上报案例及展示
 
 关于 SpringBoot 工程使用 zipkin 上报案例请参考：[上报数据到 zipkin](https://www.sofastack.tech/sofa-tracer/docs/ReportToZipkin)
 
-关于 spring 应用中使用 zipkin 上报插件请参考：[tracer-zipkin-plugin-demo](https://github.com/glmapper/tracer-zipkin-plugin-demo) 
+关于 spring 应用中使用 zipkin 上报插件请参考：[tracer-zipkin-plugin-demo](https://github.com/glmapper/tracer-zipkin-plugin-demo)
 
 - Services 展示
 
@@ -253,8 +253,8 @@ zipkin2.reporter.AsyncReporter 是 zipkin 提供的一个数据上报抽象类�
 
 - 分布式链路跟踪组件 `SOFATracer` 概述【已完成】
 - `SOFATracer` 数据上报机制和源码分析【已完成】
-- `SOFATracer API `组件埋点机制和源码分析【已领取】
-- `SOFATracer `链路透传原理与 `SLF4J MDC` 的扩展能力分析【已领取】
+- `SOFATracer API`组件埋点机制和源码分析【已领取】
+- `SOFATracer`链路透传原理与 `SLF4J MDC` 的扩展能力分析【已领取】
 - `SOFATracer` 的采样策略和源码分析【已领取】
 
 除了源码解析，也欢迎提交 issue 和 PR：

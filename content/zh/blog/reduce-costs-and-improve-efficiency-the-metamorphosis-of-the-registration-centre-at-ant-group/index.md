@@ -33,7 +33,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*lUtdQ5nNyZAAAAAAA
 
 ![img](https://gw.alipayobjects.com/zos/bmw-prod/25b09d49-ccc3-4289-b615-c5a3c3af0c26.webp)
 
-### V2：横向扩展 
+### V2：横向扩展
 
 ![img](https://gw.alipayobjects.com/zos/bmw-prod/126e1074-cdb1-4f48-a635-5c4a79b14e0d.webp)
 
@@ -41,7 +41,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*lUtdQ5nNyZAAAAAAA
 
 这个选择影响到若干年后的 SOFARegistry 和 Nacos 的存储架构。
 
-### V3 / V4：LDC 支持和容灾 
+### V3 / V4：LDC 支持和容灾
 
 ![img](https://gw.alipayobjects.com/zos/bmw-prod/02703b4c-2b2e-4358-842c-5577bd5121d0.webp)
 
@@ -69,7 +69,7 @@ V4 增加了决策机制和运行时列表，解决了单机宕机时需要人�
 
 这些目标部分实现了，部分实现的还不够好，例如运维痛点还残留一部分，跨集群服务发现在面对主站的大规模数据下稳定性挑战很大。
 
-### V6：SOFARegistry 6.0 
+### V6：SOFARegistry 6.0
 
 2020 年 11 月，SOFARegistry 总结和吸收内部/商业化打磨的经验，同时为了应对未来的挑战，启动了 6.0 版本大规模重构计划。
 
@@ -77,7 +77,7 @@ V4 增加了决策机制和运行时列表，解决了单机宕机时需要人�
 
 ## PART. 2 挑 战
 
-### 当下面临的问题 
+### 当下面临的问题
 
 #### 集群规模的挑战
 
@@ -117,7 +117,7 @@ SOFARegistryX 立项时的一个主要目标是具备比 confreg 更好的运维
 
 蚂蚁集团的同学对注册中心的运维公告应该是比较熟悉和痛恨的。因为业务的敏感性，注册中心之前一直是停机发布和运维，这个时候需要锁定全站的发布/重启动作。为了尽量少影响业务，注册中心相关的同学只能献祭一头黑发，在深夜低峰期做相关的操作。即使这样，仍然没办法做到对业务零打扰。
 
-### 云原生时代 naming 的挑战 
+### 云原生时代 naming 的挑战
 
 ![img](https://gw.alipayobjects.com/zos/bmw-prod/3fa22e06-08b1-45d3-8eb6-5c613c45ac09.webp)
 
@@ -147,7 +147,7 @@ SOFARegistry 6.0 相关的工作包括：
 
 ![img](https://gw.alipayobjects.com/zos/bmw-prod/392245c2-623f-4a1f-8acd-fe7e088b229e.webp)
 
-### 架构优化 
+### 架构优化
 
 架构的改造思路：在保留 V5 的存储分片架构的同时，重点的目标是优化元信息 meta 一致性和确保推送正确的数据。
 
@@ -191,7 +191,7 @@ meta 信息的使用建立在满足强一致性的情况下，如果出现网络
 
 - 大规模运维不需要深夜锁 PaaS，减少对业务打扰和保住运维人员头发，提升幸福感。
 
-#### 数据链路和 slot 调度：
+#### 数据链路和 slot 调度
 
 - slot 分片参考 Redis Cluster 的做法，采用虚拟哈希槽分区，所有的 dataId 根据哈希函数映射到 0 ~ N 整数槽内。
 
@@ -213,7 +213,7 @@ data 节点变动的数据迁移：
 
 同时我们也在线上验证横向扩展能力，集群尝试最大扩容到 session*370，data*60，meta*3 ；meta 因为要处理所有的节点心跳，CPU 达到 50%，需要 8C 垂直扩容或者进一步优化心跳开销。按照一个 data 节点的安全水位支撑 200w pub，一个 pub 大概 1.5K 开销，考虑容忍 data 节点宕机 1/3 仍然有服务能力，需要保留 pub 上涨的 buffer，该集群可支撑 1.2 亿的 pub，如果配置双副本则可支撑 6kw 的 pub。
 
-### 应用级服务发现 
+### 应用级服务发现
 
 注册中心对 pub 的格式保留很强的灵活性，部分 RPC 框架实现 RPC 服务发现时，采用一个接口一个 pub 的映射方式，SOFA/HSF/Dubbo2 都是采用这种模式，这种模型比较自然，但是会导致 pub/sub 和推送量膨胀非常厉害。
 
@@ -249,7 +249,7 @@ Dubbo3 提出了应用级服务发现和相关原理【1】。在实现上，SOF
 
 上图是一个集群切换应用级后的效果，其中切换后剩余部分接口级 pub 是为了兼容转换出来的数据，接口级 sub 没减少也是为了兼容接口级发布。如果不考虑兼容性，pub 数据减少高达 97%。极大的减轻了数据规模的对集群的压力。
 
-### SOFARegistryChaos：自动化测试 
+### SOFARegistryChaos：自动化测试
 
 注册中心的最终一致性的模型一直是个测试难题：
 
@@ -318,7 +318,7 @@ SOFARegistryChaos 实际上就可以作为一个注册中心的用户，并且�
 
 通过 SOFARegistryChaos，核心能力的验证效率极大提升，质量得到保障的同时，开发同学写代码也轻松了许多。从 7 月份到 10 月中的 3 个半月时间里，我们迭代并发布了 5 个版本，接近 3 周 1 个版本。这个开发效率在以前是不敢想象的，同时也获得完善的端到端告警能力。
 
-### 运维自动化 
+### 运维自动化
 
 #### nightly build
 
@@ -402,7 +402,7 @@ SOFARegistry 是一个开源项目，也是开源社区 SOFAStack 重要的一�
 
 欢迎对 Service Mesh/微服务/服务发现 等领域感兴趣的同学加入我们。
 
-联系邮箱： yuzhi.lyz@antgroup.com
+联系邮箱： <yuzhi.lyz@antgroup.com>
 
 ### 本周推荐阅读  
 

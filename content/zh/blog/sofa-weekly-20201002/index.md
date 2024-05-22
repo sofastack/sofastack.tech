@@ -25,16 +25,16 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 我们会筛选重点问题通过 " SOFA WEEKLY " 的形式回复
 
 **@周爽** 提问：
-> 我现在基于springcloud 集成 nacos,sentinel,zipkin,jpa,shardingjdbc，昨天说的做了防止重复代理，如果我是多数据源呢？后续1.3.1是配置也需要开启，代码也需要写代理吗？
+> 我现在基于 springcloud 集成 nacos,sentinel,zipkin,jpa,shardingjdbc，昨天说的做了防止重复代理，如果我是多数据源呢？后续 1.3.1 是配置也需要开启，代码也需要写代理吗？
 
 A：多数据源就关掉自动代理，自己手动
 
 > 就在我多数据源里面加上右边的 DataSourceProxy 就可以了吗？
-> @Primary 这个只需DataSource1Config加上，DataSource2Config是否需要加呢？
+@Primary 这个只需 DataSource1Config 加上，DataSource2Config 是否需要加呢？
 
 A：代理这个 reresult；
 
-> AT 和 XA 1.3版本可以理解为代码“使用”上就一个 new poxy 不同吗？
+> AT 和 XA 1.3 版本可以理解为代码“使用”上就一个 new poxy 不同吗？
 
 A：一个是 new DataSourceProxy，一个是 new DataSourceXAProxy
 
@@ -47,7 +47,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 - [蚂蚁宣布开源 KubeTEE：让机密计算支持大规模 K8s 集群](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247487020&idx=1&sn=fda0674ab5ba6ca08fe279178ffa2ea3&chksm=faa0e1f6cdd768e0eae59d2aa410c70ac9c89a67230b4824d697cb796e7199f1384663ea5644&scene=21)
 - [人人都可以“机密计算”：Occlum 使用入门和技术揭秘 | 开源](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247486732&idx=1&sn=d379f362145a485f4c4e02e05697b001&chksm=faa0e2d6cdd76bc03a8a71fbf78395c12279dd491825b2b0b94401e5ac226b4db4b9dd041bae&scene=21)
-- [SOFAEnclave：蚂蚁金服新一代可信编程环境，让机密计算为金融业务保驾护航102年](/blog/sofa-enclave-confidential-computing/)
+- [SOFAEnclave：蚂蚁金服新一代可信编程环境，让机密计算为金融业务保驾护航 102 年](/blog/sofa-enclave-confidential-computing/)
 
 ### SOFA 项目进展
 

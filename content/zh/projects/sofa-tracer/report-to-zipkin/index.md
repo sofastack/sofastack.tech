@@ -9,7 +9,6 @@ aliases: "/sofa-tracer/docs/ReportToZipkin"
 
 > 下面的示例中将分别演示在 SOFABoot/SpringBoot 工程中 以及 非 SOFABoot/SpringBoot 工程中如何使用。
 
-
 ## 依赖引入
 
 ### 添加 SOFATracer 依赖
@@ -61,7 +60,7 @@ com.alipay.sofa.tracer.zipkin.baseUrl=http://localhost:9411
 
 可以将工程导入到 IDE 中运行生成的工程里面中的 `main` 方法启动应用，也可以直接在该工程的根目录下运行 `mvn spring-boot:run`，将会在控制台中看到启动日志：
 
-```
+```plain
 2018-05-12 13:12:05.868  INFO 76572 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'SpringMvcSofaTracerFilter' to urls: [/*]
 2018-05-12 13:12:06.543  INFO 76572 --- [           main] s.w.s.m.m.a.RequestMappingHandlerMapping : Mapped "{[/helloZipkin]}" onto public java.util.Map<java.lang.String, java.lang.Object> com.alipay.sofa.tracer.examples.zipkin.controller.SampleRestController.helloZipkin(java.lang.String)
 2018-05-12 13:12:07.164  INFO 76572 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
@@ -71,9 +70,9 @@ com.alipay.sofa.tracer.zipkin.baseUrl=http://localhost:9411
 
 ```json
 {
-	content: "Hello, SOFATracer Zipkin Remote Report!",
-	id: 1,
-	success: true
+ content: "Hello, SOFATracer Zipkin Remote Report!",
+ id: 1,
+ success: true
 }
 ```
 
@@ -84,6 +83,3 @@ com.alipay.sofa.tracer.zipkin.baseUrl=http://localhost:9411
 ## Spring 工程运行
 
 对于一般的 Spring 工程，我们通常使用 tomcat/jetty 作为 servlet 容器来启动应用。具体工程参考 [在 Spring 工程中使用 SOFATracer](https://github.com/glmapper/tracer-zipkin-plugin-demo)
-
-
-

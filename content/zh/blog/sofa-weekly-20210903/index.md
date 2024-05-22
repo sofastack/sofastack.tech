@@ -22,7 +22,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 欢迎大家向公众号留言提问或在群里与我们互动
 
-我们会筛选重点问题通过 
+我们会筛选重点问题通过
 
 "SOFA WEEKLY" 的形式回复
 
@@ -32,7 +32,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 A：***pkg/server/handler.go\***，这里面可以看到设置进去的。
 
->![](https://gw.alipayobjects.com/zos/bmw-prod/5c029d9e-2fc7-4d61-ab13-df294fef22d7.webp)<br/>
+> ![](https://gw.alipayobjects.com/zos/bmw-prod/5c029d9e-2fc7-4d61-ab13-df294fef22d7.webp)<br/>
 >![](https://gw.alipayobjects.com/zos/bmw-prod/9cbf2b61-c7da-4d91-91e1-2e9f5e69fcb0.webp)
 
 MOSN：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
@@ -45,7 +45,7 @@ A：你配置的 listener 块里面有协议，就可以和 filter 对应上了�
 
 如果你怕别人误用，可以简单处理绕过。比如 dubbofilter 就是 Dubbo 协议自有的，怕其他协议误配置了，可以在代码跳过。
 
->![](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)
+> ![](data:image/gif;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAADUlEQVQImWNgYGBgAAAABQABh6FO1AAAAABJRU5ErkJggg==)
 
 MOSN：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 
@@ -55,7 +55,7 @@ MOSN：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 
 A：按照配置的顺序。
 
->![](https://gw.alipayobjects.com/zos/bmw-prod/514c5ac5-2afa-4ebe-a3fe-13184579995e.webp)<br/>
+> ![](https://gw.alipayobjects.com/zos/bmw-prod/514c5ac5-2afa-4ebe-a3fe-13184579995e.webp)<br/>
 **4、@楼政浩** 提问：<br/>
 > 往 raft 集群提交数据，都得通过 RPC 吗？<br/>
 > **如果我的 raft 节点的 fsm 又输出了 log，我想往集群提交这个 log，可以通过什么接口？**
@@ -97,7 +97,7 @@ A：超时回滚，如果 TM 是决议提交给了 TC，那么“是”提交，
 
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
- **SOFAStack & MOSN：新手任务计划** 
+ **SOFAStack & MOSN：新手任务计划**
 
 作为技术同学，你是否有过“想参与某个开源项目的开发、但是不知道从何下手”的感觉？
 

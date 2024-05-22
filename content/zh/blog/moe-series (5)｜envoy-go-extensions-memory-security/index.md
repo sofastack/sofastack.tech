@@ -74,7 +74,7 @@ PS：以前用 OpenResty 的时候，也是复制的玩法，只是有一点区�
 
 比较复杂的还是并发时的安全处理，这个我们下回再聊。
 
-## MOSN Star 一下✨：
+## MOSN Star 一下✨
 
 [https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 

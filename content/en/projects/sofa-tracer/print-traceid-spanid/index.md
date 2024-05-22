@@ -51,14 +51,14 @@ The corresponding TraceId and SpanId are printed based on [SLF4J MDC](https://ww
 / / Introduce interface
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-	
+ 
 / / Construct log printing instance
 private static final Logger logger = LoggerFactory.getLogger(XXX.class);
 ```
 
-Second, to correctly print the `TraceId` and `SpanId` parameters, we also need to configure the extra parameters of `PatternLayout` in the log configuration file. The two parameters are `%X{SOFA-TraceId}` and `%X. {SOFA-SpanId}`, whose values ​​can be obtained from MDC. 
+Second, to correctly print the `TraceId` and `SpanId` parameters, we also need to configure the extra parameters of `PatternLayout` in the log configuration file. The two parameters are `%X{SOFA-TraceId}` and `%X. {SOFA-SpanId}`, whose values ​​can be obtained from MDC.
 
-[ `pattern` parameter configured with `Logback` as an example](https://logback.qos.ch/):
+[`pattern` parameter configured with `Logback` as an example](https://logback.qos.ch/):
 
 ```xml
 <pattern>%d{yyyy-MM-dd HH:mm:ss.SSS} %5p  [%X{SOFA-TraceId},
@@ -75,7 +75,6 @@ Second, to correctly print the `TraceId` and `SpanId` parameters, we also need t
 [%X{SOFA-TraceId},%X{SOFA-SpanId}] ---- %m%n " />
 ```
 
-
 [Log4j PatternLayout configuration sample](https://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/PatternLayout.html):
 
 ```xml
@@ -85,6 +84,4 @@ Second, to correctly print the `TraceId` and `SpanId` parameters, we also need t
  </layout>
 ```
 
-
 > Note: `[%X{SOFA-TraceId},%X{SOFA-SpanId}]` is the recommended printing format, which can be customized based on your actual scenario requirements.
-

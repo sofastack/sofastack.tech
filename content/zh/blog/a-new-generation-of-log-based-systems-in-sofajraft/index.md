@@ -25,7 +25,7 @@ Github 主页｜[https://github.com/hzh0425](https://github.com/hzh0425)
 
 ▼
 
-## PART. 1 项目介绍 
+## PART. 1 项目介绍
 
 ### 1.1 SOFAJRaft 介绍
 
@@ -43,7 +43,7 @@ Github 地址：
 
 ## PART. 2 前置知识
 
-**Log Structured File Systems** 
+**Log Structured File Systems**
 
 如果学习过类似 Kafka 等消息队列的同学，对日志型系统应该并不陌生。
 
@@ -67,7 +67,7 @@ Github 地址：
 
 \- **Value_pos**: 存储在对应 File 中的哪个位置开始
 
-\- 其他的可能还有 crc，时间戳等......
+\- 其他的可能还有 crc，时间戳…….
 
 ![img](https://gw.alipayobjects.com/zos/bmw-prod/ad19776e-1429-4389-8920-077188313872.webp)
 
@@ -91,7 +91,7 @@ Github 地址：
 
 ![img](https://gw.alipayobjects.com/zos/bmw-prod/b0fffc01-fe33-432a-9502-e6cbc762f85f.webp)
 
- **内存映射技术 mmap** 
+ **内存映射技术 mmap**
 
 上文一直提到了一个技术：将文件映射到内存中，在内存中写 Active 文件，这也是日志型系统的一个关键技术，在 Unix/Linux 系统下读写文件，一般有两种方式。
 
@@ -205,7 +205,7 @@ boolean truncatePrefix(final long firstIndexKept);/*** Delete uncommitted logs f
 
 \- 一套代码可读性强的存储系统，代码需要符合 SOFAJRaft 的规范
 
-......
+……
 
 在本次任务中，我和导师在存储架构的设计上进行了多次的讨论与修改，最终设计出了一套完整的方案，能够完美的契合以上的所有要求。
 
@@ -484,13 +484,13 @@ public AbstractFile takeEmptyFile() throws Exception {
 
 后续，我计划为 SOFAJRaft 项目作出更多的贡献，期望于早日晋升成为社区 Committer。也将会借助 SOFAStack 社区的优秀项目，不断深入探索云原生!
 
-***- 鸣谢 -*** 
+***- 鸣谢 -***
 
 首先很幸运能参与本次开源之夏的活动，感谢冯家纯导师对我的耐心指导和帮助 !
 
 感谢开源软件供应链点亮计划和 SOFAStack 社区给予我的这次机会 !
 
-***本周推荐阅读*** 
+***本周推荐阅读***
 
 [SOFAJRaft 在同程旅游中的实践](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247495260&idx=1&sn=a56b0f82159e551dec4752b7290682cd&chksm=faa30186cdd488908a73792f9a1748cf74c127a792c5c484ff96a21826178e2aa35c279c41b3&scene=21)
 

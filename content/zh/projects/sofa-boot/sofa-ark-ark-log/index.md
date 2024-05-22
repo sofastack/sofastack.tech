@@ -1,13 +1,14 @@
 
 ---
+
 title: "Ark 日志"
 aliases: "/sofa-boot/docs/sofa-ark-ark-log"
 ---
 
-
 SOFAArk 容器使用了 logback 日志实现，并集成了 [sofa-common-tools](https://github.com/sofastack/sofa-common-tools)，日志相关配置可以参考 [配置文档](../sofa-ark-ark-config), 这里介绍 SOFAArk 三个日志文件：
 
 + sofa-ark/common-default.log
+
 > sofa-ark 默认日志，打印 SOFAArk 启动日志等，大概内容如下：
 
 ```text
@@ -31,6 +32,7 @@ SOFAArk 容器使用了 logback 日志实现，并集成了 [sofa-common-tools](
 ```
 
 + sofa-ark/common-error.log
+
 > sofa-ark 错误日志，打印 SOFAArk 容器运行时错误日志，例如 biz 启动失败日志等：
 
 ```text
@@ -66,6 +68,7 @@ Caused by: org.springframework.context.ApplicationContextException: Unable to st
 ```
 
 + sofa-ark/config-manage.log
+
 > sofa-ark 动态日志配置，打印 SOFAArk 运行时接受的动态配置信息，大概内容如下：
 
 ```text

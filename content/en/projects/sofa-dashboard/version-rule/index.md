@@ -25,4 +25,3 @@ For example, if the current version of the master branch code is `1.2.0`, the Bu
 * The develop branches use SNAPSHOT versions, for example, `1.0.0-SNAPSHOT`.
 * Upon formal release, the snapshot version is modified to the formal version, for example `1.0.0`.
 * After the formal release, the next version is pulled, for example, `1.0.1-SNAPSHOT`.
-

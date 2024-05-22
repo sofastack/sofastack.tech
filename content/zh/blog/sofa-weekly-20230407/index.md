@@ -37,7 +37,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **议题：**
 
-\- 2023开源之夏-课题/导师招募 #894；
+\- 202 3开源之夏-课题/导师招募 #894；
 
 \- Discussion: 自建各种 Component #902；
 
@@ -47,17 +47,17 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 [*https://github.com/mosn/layotto/issues/907*](https://github.com/mosn/layotto/issues/907)
 
- **社区本周贡献** 
+ **社区本周贡献**
 
 ![图片](https://mmbiz.qpic.cn/mmbiz_png/nibOZpaQKw0ic2YjalJGHD6heUMn87Ot7QVlx9uP7sc0w1gL6hD7pIDAt5zCWZFecOeeKw6SbSkAic9yqwQ3bpdEQ/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
 
- **SOFAStack GitHub issue 精选** 
+ **SOFAStack GitHub issue 精选**
 
 **本周各项目回复 issue 共计 2 条**
 
 欢迎大家在 GitHub 提交 issue 与我们互动
 
-我们会筛选 issue 通过 
+我们会筛选 issue 通过
 
 " SOFA WEEKLY " 的形式回复
 
@@ -101,7 +101,7 @@ A：这个方法：
 
 「**SOFAJRaft**」：[*https://github.com/sofastack/sofa-jraft/issues/956*](https://github.com/sofastack/sofa-jraft/issues/956)
 
-  **本周推荐阅读** 
+  **本周推荐阅读**
 
 [《MoE 系列（一）｜如何使用 Golang 扩展 Envoy》](https://mp.weixin.qq.com/s/GF5Pr2aAOe6NAdJ5VgfMvg)
 

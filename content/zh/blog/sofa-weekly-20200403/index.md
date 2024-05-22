@@ -17,9 +17,9 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 
 SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 
-**SOFAStack 官网: **[https://www.sofastack.tech](https://www.sofastack.tech/)
+**SOFAStack 官网:**[https://www.sofastack.tech](https://www.sofastack.tech/)
 
-**SOFAStack: **[https://github.com/sofastack](https://github.com/sofastack)
+**SOFAStack:**[https://github.com/sofastack](https://github.com/sofastack)
 
 ### 每周读者问答提炼
 
@@ -54,7 +54,7 @@ A：可以详细看一下这个 issue：
 
 A：也可以这么说，Saga 框架上没有加锁，AT 有加锁，事实上 Seata Saga 是一个具备“服务编排”和“Saga 分布式事务”能力的产品。
 
-**4、@全 **提问：
+**4、@全**提问：
 
 > 麻烦问一下，Seata TCC 只支持 Dubbo、SOFARPC 吗？
 
@@ -105,7 +105,7 @@ MOSN 作为云原生的网络数据平面，旨在为服务提供多协议，�
 本期直播包含 Demo，可以先下载 Demo，提前体验 MOSN 拓展机制的使用（报名页面有详细 Demo 链接）。
 
 - 主题：SOFAChannel#14：云原生网络代理 MOSN 的扩展机制解析
-- 时间：2020年4月9日（下周四）19:00-20:00
+- 时间：2020 年 4 月 9 日（下周四）19:00-20:00
 - 嘉宾：永鹏 蚂蚁金服高级开发工程师、MOSN Committer
 - 形式：线上直播
 - 报名方式：点击“[这里](https://tech.antfin.com/community/live/1152)”，即可报名

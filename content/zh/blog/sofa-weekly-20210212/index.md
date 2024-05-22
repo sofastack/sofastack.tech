@@ -14,7 +14,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*T6yDTKfrBaAAAAAAA
 大家好，我是鲁直，有段时间没有和大家见面，今天是农历一年的起点，首先祝大家新年快乐，在新的一年牛气冲天！在这样特别的日子里，我想和大家分享对于 Service Mesh 未来方向的思考，再谈谈 SOFAStack 社区接下来计划做的一些事情，希望大家接下来能够在社区里面玩得开心，let's have fun together!
 ![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Cl6LR4AMi0AAAAAAAAAAAAAAARQnAQ)
 
-### 
+###
 
 **Service Mesh 是否已经解决了所有问题？**
 2020 年， SOFA 团队宋顺（花名齐天，当前蚂蚁集团 Service Mesh 负责人）在 QCon 上海站分享了《蚂蚁 Service Mesh 大规模落地实践与展望》，详细讲述了 Service Mesh 在蚂蚁集团的进展和未来规划。
@@ -34,7 +34,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*T6yDTKfrBaAAAAAAA
 
 这种模式之所以可以称之为 Cloud Native Application Runtime，关键还是 Sidecar 定义了一套面向应用的 API，这套 API 正是解耦应用和基础设施的关键。有了这套 API Spec，就相当于在应用和基础设施之间构建了一层防腐层，只要这一层 API Spec 能够持续往前保持兼容，后面的基础设施不断地演进和变化，都不会动到应用侧，基础设施和应用之间才能够实现更加彻底的分离，未来基础设施无缝升级才会成为可能。未来云原生的应用在不同的云之间迁移，甚至基于多朵云来构建应用，应用这一侧也不用重复进行适配的工作，应该说，这种模式也是符合未来混合云的方向的。所以，我们大胆的预测，未来 Service Mesh 持续往前继续演进，必然会发展到 Cloud Native Application Runtime 这样的方向。
 
-基于这样的思考，在 2021 年，SOFAStack 社区一方面会**继续推进已有的项目的健康发展**，另一方面在**继续在Service Mesh 的方向上深耕**：继续分享在 Service Mesh 领域上的一些新思考之外，比如 Service Mesh 大规模落地之后的研发效率和运维效率的解决思路，我们也会和社区中的其他的组织一起通过 Service Mesh 的 Meetup 等活动继续推动 Service Mesh 的理念在国内的影响力，以及企业落地实践。（PS：最近 MOSN 刚刚公布了 2021 年的 RoadMap，欢迎大家关注：<https://github.com/mosn/mosn/issues/1559>，其他项目的 RoadMap 也会在春节后陆续和社区讨论然后公布；我们计划在 3 月份举办一次 Service Mesh 的 Meetup，欢迎感兴趣的社区同学报名)。
+基于这样的思考，在 2021 年，SOFAStack 社区一方面会**继续推进已有的项目的健康发展**，另一方面在**继续在 Service Mesh 的方向上深耕**：继续分享在 Service Mesh 领域上的一些新思考之外，比如 Service Mesh 大规模落地之后的研发效率和运维效率的解决思路，我们也会和社区中的其他的组织一起通过 Service Mesh 的 Meetup 等活动继续推动 Service Mesh 的理念在国内的影响力，以及企业落地实践。（PS：最近 MOSN 刚刚公布了 2021 年的 RoadMap，欢迎大家关注：<https://github.com/mosn/mosn/issues/1559>，其他项目的 RoadMap 也会在春节后陆续和社区讨论然后公布；我们计划在 3 月份举办一次 Service Mesh 的 Meetup，欢迎感兴趣的社区同学报名)。
 
 SOFAStack 开源社区即将成立三周年，SOFA 团队深刻地体会到一个开源项目的持续健康地发展，关键在于社区和社区中的每一位开发者，是你们每一个 star，每一个 issue 和 PR 推动着项目的成长。特别感谢接近三年时间，大家一同参与社区建设，感谢一起帮助社区成长的小伙伴们。SOFAStack 开源社区还有很长的路要和你们走，我们也会联合其他社区**一起推动 Cloud Native Application Runtime 的理念的落地和实践**，希望有更多开发者可以和我们一起去探索 Service Mesh 的未来形态，一起推动其成为云原生应用构建的一种标准方式。
 

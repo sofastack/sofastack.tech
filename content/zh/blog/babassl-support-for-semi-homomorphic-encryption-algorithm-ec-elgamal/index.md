@@ -17,7 +17,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*ob-pQINDNtcAAAAAA
 
 —— 数据不出域、可用不可见
 
-## 01背 景
+## 01 背 景
 
 随着大数据与人工智能的快速发展，个人隐私数据泄露和滥用时有发生，隐私安全问题也越来越被重视。
 
@@ -179,7 +179,7 @@ ElGamal 加密算法是基于 Diffie-Hellman 密钥交换的非对称加密算�
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f6e9edceb68946949c2d298d072ad01e~tplv-k3u1fbpfcp-zoom-1.image)
 
-3.如上公式与明文m2m1的同态加密结果一致：
+3.如上公式与明文 m2m1 的同态加密结果一致：
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/4a152da644914cb192e5ea62239f9da7~tplv-k3u1fbpfcp-zoom-1.image)
 
@@ -305,4 +305,4 @@ BabaSSL 是 OpenSSL 的衍生版，内部支持了很多椭圆曲线算法的实
 
 [揭秘 AnolisOS 国密生态，想要看懂这一篇就够了](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247488577&idx=1&sn=172642c14cc511e27aa882ca7586a4c4&chksm=faa0fb9bcdd7728db0fdceec44b44bb93f36664cbb33e3c50e61fcc05dbc2647ff65dfcda3ee&scene=21)
 
-![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*tvfDQLxTbsgAAAAAAAAAAAAAARQnAQ) 
+![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*tvfDQLxTbsgAAAAAAAAAAAAAARQnAQ)

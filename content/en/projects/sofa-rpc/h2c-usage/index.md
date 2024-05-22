@@ -1,9 +1,9 @@
 
 ---
+
 title: "Basic usage of H2C protocol"
 aliases: "/sofa-rpc/docs/H2c-Usage"
 ---
-
 
 In SOFARPC, to use different communication protocols, it is only required to use different Bindings. If you need to use the H2C protocol, just set Binding to H2C. The following shows an example using Annotation. For other usage methods, refer to [Basic usage of Bolt protocol](../bolt-usage).
 

@@ -6,7 +6,7 @@ aliases: "/sofa-tracer/docs/Usage_Of_HttpClient"
 
 # HttpClient Integration
 
-In this document will demonstrate how to use SOFATracer to track of HttpClient, this example [address] (https://github.com/sofastack-guides/sofa-tracer-guides/tree/master/tracer-sample-with-httpclient).
+In this document will demonstrate how to use SOFATracer to track of HttpClient, this example [address] (<https://github.com/sofastack-guides/sofa-tracer-guides/tree/master/tracer-sample-with-httpclient>).
 
 Assuming you have built a simple Spring Web project based on SOFABoot, Then you can be operated by the following steps:
 
@@ -32,6 +32,7 @@ Assuming you have built a simple Spring Web project based on SOFABoot, Then you 
     <version>4.1.3</version>
 </dependency>
 ```
+
 ## Project Configuration
 
 Then, add the parameters to be used by SOFATracer under the project's `application.properties` file, including `spring.application.name` that indicates the current application name and `logging.path` that specifies the log output directory.
@@ -42,6 +43,7 @@ spring.application.name=HttpClientDemo
 # logging path
 logging.path=./logs
 ```
+
 ## Add a Controller that provides RESTful service
 
 ```java
@@ -95,7 +97,7 @@ When you construct the HttpClient via the SofaTracerHttpClientBuilder (clientBui
 
 Start Current SOFABoot Application. You will see the log about startup in the console:
 
-```
+```plain
 2018-09-27 20:31:21.465  INFO 33277 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
 2018-09-27 20:31:21.599  INFO 33277 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
 2018-09-27 20:31:21.608  INFO 33277 --- [           main] c.a.s.t.e.h.HttpClientDemoApplication    : Started HttpClientDemoApplication in 5.949 seconds (JVM running for 6.573)
@@ -103,17 +105,16 @@ Start Current SOFABoot Application. You will see the log about startup in the co
 
 If there is a log similar to the followings, it indicates that the call to HttpClient succeeded:
 
-```
+```plain
 2018-09-27 20:31:22.336  INFO 33277 --- [           main] c.a.s.t.e.h.HttpClientDemoApplication    : Response is {"count":1,"name":"httpclient"}
 2018-09-27 20:31:22.453  INFO 33277 --- [           main] c.a.s.t.e.h.HttpClientDemoApplication    : Async Response is {"count":2,"name":"httpclient"}
 ```
-
 
 ## View log
 
 In the `application.properties`, the log printing directory we configured is `./logs`, which is the root directory of the current application (we can configure it based on actual situation). Thus, in the root directory of the current project, you can see log files in the structure similar to the followings:
 
-```
+```plain
 ./logs
 ├── spring.log
 └── tracelog

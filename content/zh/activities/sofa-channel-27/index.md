@@ -10,7 +10,7 @@ description: "2022 年 5 月 26 日 19：00 - 20：00  ，线上直播第 27 期
 
 ## 概要
 
-- 活动主题：SOFAChannel#27:深入 HTTP/3｜从QUIC-TLS 看协议的安全设计
+- 活动主题：SOFAChannel#27:深入 HTTP/3｜从 QUIC-TLS 看协议的安全设计
 
 - 活动时间：05 月 26 日，周四晚 19 点
 
@@ -20,7 +20,7 @@ description: "2022 年 5 月 26 日 19：00 - 20：00  ，线上直播第 27 期
 
 - B 站直播间地址：[http://live.bilibili.com/21954520](http://live.bilibili.com/21954520)
 
-- B 站直播ID：21954520
+- B 站直播 ID：21954520
 
 ## 介绍
 
@@ -50,7 +50,7 @@ description: "2022 年 5 月 26 日 19：00 - 20：00  ，线上直播第 27 期
 
 ## 议程
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*MmuGRZU7ICIAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*MmuGRZU7ICIAAAAAAAAAAAAAARQnAQ)
 
 ## 直播回放
 

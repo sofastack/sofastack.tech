@@ -28,7 +28,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **1、@孙运盛** 提问：
 
->我想咨询大家一个问题，假如二阶段提交或者回滚的方法里，再发生异常的话，应该如何处理呢？
+> 我想咨询大家一个问题，假如二阶段提交或者回滚的方法里，再发生异常的话，应该如何处理呢？
 
 A：这个异常后，重新捞取之前没结束的事务，重试就可以了吧，二阶段反正已经不阻塞其它一阶段的流程了。
 
@@ -36,7 +36,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 **2、@胡希国** 提问：
 
->我想请教一个问题，这里 New MOSN 收到 Old MOSN 传来的监听文件描述符之后，利用 filelistener 函数产生一个 listener 的作用是和 bind 一样么？就在 New MOSN 上开始监听了是吗？那这时候 Old MOSN 不也同时在监听么，这里的内部逻辑是什么样的？
+> 我想请教一个问题，这里 New MOSN 收到 Old MOSN 传来的监听文件描述符之后，利用 filelistener 函数产生一个 listener 的作用是和 bind 一样么？就在 New MOSN 上开始监听了是吗？那这时候 Old MOSN 不也同时在监听么，这里的内部逻辑是什么样的？
 
 A：跟 bind 不一样，这儿是同一个 fd，两个进程都监听，常规操作。你可以想象成 Nginx 的多个进程都可以监听一个 listen 一样。
 
@@ -44,7 +44,7 @@ MOSN：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 
 **3、@胡希国** 提问：
 
->MOSN 的 forkexec 是个怎么样的方式呢？它也和 Envoy 一样有一个独立的 python（envoy）进程来负责产生新的 MOSN 进程么？
+> MOSN 的 forkexec 是个怎么样的方式呢？它也和 Envoy 一样有一个独立的 python（envoy）进程来负责产生新的 MOSN 进程么？
 
 A：MOSN 启动起来之后检查到有 socket 文件，然后和 Old MOSN 通信继承 fd，继承完了通知 Old MOSN 退出，所以你可以直接启动一个 MOSN 来。
 
@@ -52,7 +52,7 @@ MOSN：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 
 **4、@胡希国** 提问：
 
->想请问下 MOSN 实现的过程为什么没有采用直接 fork 父进程的方式呢？
+> 想请问下 MOSN 实现的过程为什么没有采用直接 fork 父进程的方式呢？
 
 A：容器间升级是不能 fork 的。
 
@@ -60,7 +60,7 @@ MOSN：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 
 **5、@ch** 提问：
 
->今天发生了一个 rollback status: TimeoutRollbacking 超时问题。
+> 今天发生了一个 rollback status: TimeoutRollbacking 超时问题。
 描述: Seata 提示 rollback status: TimeoutRollbacking。
 出现原因：全局事务在执行 order 库和 account 库，因为 account 库被 IO 堵死 导致业务超时执行了 70s。
 然后 Seata 就报 timeout 导致 order 库回滚了数据 account 没有回滚数据（account 已经被 IO 流撑死,无法读写数据）。
@@ -100,4 +100,4 @@ Layotto 新手任务：
 
 更多文章请扫码关注“金融级分布式架构”公众号
 
->![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*5aK0RYuH9vgAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*5aK0RYuH9vgAAAAAAAAAAAAAARQnAQ)

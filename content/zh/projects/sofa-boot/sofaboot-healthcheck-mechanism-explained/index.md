@@ -10,7 +10,7 @@ date: 2022-06-15T15:00:00+08:00
 
 ## 前言
 
-> spring-boot-starter-actuator模块为 Spring Boot 应用提供了监控能力，内置一系列健康指标，如数据源、磁盘空间等，并且允许开发者自定义健康指标。Spring Boot 提供 health 端点，将所有健康指标聚合，当应用中有一个组件状态异常，那么应用的整体状态视为down，开发者可以访问 health 端点来了解应用当前的运行状况。
+> spring-boot-starter-actuator 模块为 Spring Boot 应用提供了监控能力，内置一系列健康指标，如数据源、磁盘空间等，并且允许开发者自定义健康指标。Spring Boot 提供 health 端点，将所有健康指标聚合，当应用中有一个组件状态异常，那么应用的整体状态视为 down，开发者可以访问 health 端点来了解应用当前的运行状况。
 
 SOFABoot 基于 actuator 模块扩展了健康指标，为应用提供 SOFA 组件的健康检查能力。同时，在 Spring Boot 原生的健康检查能力基础之上，增加了 Readiness Check 的能力。在这里我们做一个区分，Spring Boot 原生的健康检查称为 Liveness Check，SOFABoot 增加的健康检查称为 Readiness Check。Liveness Check 关注应用运行是否正常，如果 Liveness 状态异常，表示这个应用已经无法对外提供服务；Readiness Check 则关注的是应用有没有启动完成，是否进入“准备就绪”状态，能否对外提供服务。
 
@@ -25,9 +25,9 @@ SOFABoot 基于 actuator 模块扩展了健康指标，为应用提供 SOFA 组�
 | org.springframework.boot.actuate.health.HealthIndicator | Spring Boot 原生的健康检查接口，想要新增一个自定义健康指标，可以直接扩展此接口 |
 | com.alipay.sofa.healthcheck.core.HealthChecker | SOFABoot 提供的健康检查接口，相比 HealthIndicator 接口，增加了一些扩展参数，如失败重试次数，超时时间等 |
 | com.alipay.sofa.boot.health.NonReadinessCheck | SOFABoot 默认会将所有 HealthIndicator 和 HealthChecker 纳入 Readiness Check 中，可以实现该接口将指标项标记为不参与 Readiness Check |
-| com.alipay.sofa.healthcheck.startup.ReadinessCheckCallback | SOFABoot在 Readiness Check 之后会回调这个接口，如果想要在健康检查后做一些处理，可以直接扩展此接口 |
+| com.alipay.sofa.healthcheck.startup.ReadinessCheckCallback | SOFABoot 在 Readiness Check 之后会回调这个接口，如果想要在健康检查后做一些处理，可以直接扩展此接口 |
 
-SOFABoot 的健康检查是基于 Spring 事件机制实现的，核心是 com.alipay.sofa.healthcheck.ReadinessCheckListener。ReadinessCheckListener 类实现了 GenericApplicationListener 接口，并监听 ContextRefreshedEvent事件，当 Spring 上下文刷新时触发健康检查流程：
+SOFABoot 的健康检查是基于 Spring 事件机制实现的，核心是 com.alipay.sofa.healthcheck.ReadinessCheckListener。ReadinessCheckListener 类实现了 GenericApplicationListener 接口，并监听 ContextRefreshedEvent 事件，当 Spring 上下文刷新时触发健康检查流程：
 
 ```java
 public void onContextRefreshedEvent(ContextRefreshedEvent event) {
@@ -42,7 +42,7 @@ public void onContextRefreshedEvent(ContextRefreshedEvent event) {
 ```
 
 1. 初始化 HealthCheckerProcessor：在 Spring 上下文中查找所有 HealthChecker 类型的 Bean；
-1. 初始化 HealthIndicatorProcessor：在 Spring 上下文中查找所有 HealthIndicator 类型的 Bean，并排除掉不参与 Readiness Check 的Bean。默认会排除 NonReadinessCheck 类型的 Bean，还可以通过参数com.alipay.sofa.boot.excludedIndicators 配置要排除的类型；
+1. 初始化 HealthIndicatorProcessor：在 Spring 上下文中查找所有 HealthIndicator 类型的 Bean，并排除掉不参与 Readiness Check 的 Bean。默认会排除 NonReadinessCheck 类型的 Bean，还可以通过参数 com.alipay.sofa.boot.excludedIndicators 配置要排除的类型；
 1. 初始化 AfterReadinessCheckCallbackProcessor：在 Spring 上下文中查找所有 ReadinessCheckCallback 类型的 Bean ；
 1. 执行 Readiness Check
 
@@ -66,8 +66,8 @@ public void readinessHealthCheck() {
 }
 ```
 
-Readiness Check 的主要流程是依次执行 HealthChecker 和 HealthIndicator 的检查，如果所有健康指标状态均正常，才会执行ReadinessCheckCallback 回调。最后聚合所有指标状态，判断应用是否准备就绪。
-健康检查的核心逻辑就在三个处理器HealthCheckerProcessor、HealthIndicatorProcessor和AfterReadinessCheckCallbackProcessor中，接下来我们依次分析一下。
+Readiness Check 的主要流程是依次执行 HealthChecker 和 HealthIndicator 的检查，如果所有健康指标状态均正常，才会执行 ReadinessCheckCallback 回调。最后聚合所有指标状态，判断应用是否准备就绪。
+健康检查的核心逻辑就在三个处理器 HealthCheckerProcessor、HealthIndicatorProcessor 和 AfterReadinessCheckCallbackProcessor 中，接下来我们依次分析一下。
 
 ## HealthCheckerProcessor
 
@@ -77,10 +77,10 @@ Readiness Check 的主要流程是依次执行 HealthChecker 和 HealthIndicator
 | --- | --- |
 | Health isHealthy() | 指标项检查，返回值标识指标项状态是否正常 |
 | String getComponentName() | 指标项名称 |
-| int getRetryCount() | 失败重试次数，在大于0的情况，指标项状态异常时可以重试检查。接口中提供了默认实现，返回0，即不重试 |
-| long getRetryTimeInterval() | 重试时间间隔，单位是毫秒。接口中提供了默认实现，返回0，即不等待立刻重试 |
-| boolean isStrictCheck() | 严格检查：true，使用 isHealthy() 的最终结果作为指标项的检查结果；false，则不管 isHealthy() 的最终结果是什么，都认为指标项是健康的，但会打印异常日志。接口中提供了默认实现，返回true，即严格检查 |
-| int getTimeout() | 检查超时时间，单位是毫秒。如果健康检查超时，认为指标项状态是不健康的（未知状态，UNKNOWN)。接口中提供了默认实现，返回0 |
+| int getRetryCount() | 失败重试次数，在大于 0 的情况，指标项状态异常时可以重试检查。接口中提供了默认实现，返回 0，即不重试 |
+| long getRetryTimeInterval() | 重试时间间隔，单位是毫秒。接口中提供了默认实现，返回 0，即不等待立刻重试 |
+| boolean isStrictCheck() | 严格检查：true，使用 isHealthy() 的最终结果作为指标项的检查结果；false，则不管 isHealthy() 的最终结果是什么，都认为指标项是健康的，但会打印异常日志。接口中提供了默认实现，返回 true，即严格检查 |
+| int getTimeout() | 检查超时时间，单位是毫秒。如果健康检查超时，认为指标项状态是不健康的（未知状态，UNKNOWN)。接口中提供了默认实现，返回 0 |
 
 在初始化阶段，HealthCheckerProcessor 已经拿到 Spring 上下文中所有 HealthChecker 类型的 Bean。执行检查实际上就是遍历这些 Bean ，调用检查方法，将每个指标项的检查结果聚合到 healthMap 中，最后返回整体的健康状态。这里需要注意的是，如果有一个指标项状态异常，整体状态就认为是异常的。
 
@@ -99,7 +99,7 @@ public boolean readinessHealthCheck(Map<String, Health> healthMap) {
 }
 ```
 
-在检查之前，HealthCheckerProcessor 对 HealthChecker 做了一次过滤，排除了 NonReadinessCheck 类型的Bean。将 HealthChecker 委托给 doHealthCheck 方法，执行具体指标项的健康检查。
+在检查之前，HealthCheckerProcessor 对 HealthChecker 做了一次过滤，排除了 NonReadinessCheck 类型的 Bean。将 HealthChecker 委托给 doHealthCheck 方法，执行具体指标项的健康检查。
 
 > 为什么 HealthIndicatorProcessor 在初始化阶段就已经进行了过滤操作，而 HealthCheckerProcessor 的过滤操作要放到 readinessHealthCheck 方法中呢？这里我们先记下这个问题，在后续的分析中将会解答这个问题。
 
@@ -140,12 +140,12 @@ private boolean doHealthCheck(String beanId, HealthChecker healthChecker, boolea
 }
 ```
 
-HealthCheckExecutor 是健康检查使用的线程池，将 HealthChecker 的 isHealthy 方法提交到线程池中执行，通过 future.get 的方式获取健康状态，同时也能够控制方法执行时间，如果超时将抛出TimeoutException，将状态设置为UNKNOWN。当健康状态是DOWN或者UNKNOWN时，将开始反复重试，重试前会等待一段时间，时长由 getRetryTimeInterval 方法决定，重试次数由 getRetryCount 方法决定。最后，调用 isStrictCheck 方法判断是否是严格检查，如果是严格检查，将返回最终的健康状态；如果不是严格检查，将直接返回 true。
+HealthCheckExecutor 是健康检查使用的线程池，将 HealthChecker 的 isHealthy 方法提交到线程池中执行，通过 future.get 的方式获取健康状态，同时也能够控制方法执行时间，如果超时将抛出 TimeoutException，将状态设置为 UNKNOWN。当健康状态是 DOWN 或者 UNKNOWN 时，将开始反复重试，重试前会等待一段时间，时长由 getRetryTimeInterval 方法决定，重试次数由 getRetryCount 方法决定。最后，调用 isStrictCheck 方法判断是否是严格检查，如果是严格检查，将返回最终的健康状态；如果不是严格检查，将直接返回 true。
 
-> 1. 只有健康状态是 UP 时，才认为指标是正常的。超时的状态是UNKNOWN，因此也认为是不健康的。
+> 1. 只有健康状态是 UP 时，才认为指标是正常的。超时的状态是 UNKNOWN，因此也认为是不健康的。
 > 1. 当 HealthChecker 不是严格检查时，并不会丢弃真实的健康状况，只是使 doHealthCheck 方法的返回值为 true，使当前指标项的状态不影响应用的状态。健康状态详情会输出到日志中，同时也会原封不动放到健康检查结果集 healthMap 里，在调用 readiness 端点时能够看到原始的健康状态详情。
 
-当 HealthChecker 未定义超时时间时，将使用健康检查默认超时时间，默认为60秒，可通过参数com.alipay.sofa.healthcheck.default.timeout进行配置
+当 HealthChecker 未定义超时时间时，将使用健康检查默认超时时间，默认为 60 秒，可通过参数 com.alipay.sofa.healthcheck.default.timeout 进行配置
 
 ```java
 @Value("${" + SofaBootConstants.SOFABOOT_HEALTH_CHECK_DEFAULT_TIMEOUT + ":"
@@ -205,7 +205,7 @@ public boolean doHealthCheck(String beanId, HealthIndicator healthIndicator,
 }
 ```
 
-这里的健康检查流程相对简单，将 HealthIndicator 的 health 方法提交到线程池执行，通过 future.get 的方式等待健康检查结果，超时将抛出TimeoutException，返回false，未超时则返回实际的健康状态。
+这里的健康检查流程相对简单，将 HealthIndicator 的 health 方法提交到线程池执行，通过 future.get 的方式等待健康检查结果，超时将抛出 TimeoutException，返回 false，未超时则返回实际的健康状态。
 
 > HealthIndicator 是 Spring Boot 原生提供的接口，因此没有做重试、严格检查等处理。
 
@@ -217,7 +217,7 @@ com.alipay.sofa.healthcheck.indicator.timeout.${beanId} = 10000
 com.alipay.sofa.healthcheck.indicator.timeout.dbHealthIndicator = 10000
 ```
 
-未对 HealthIndicator 单独配置超时时间时，使用健康检查默认超时时间，默认为60秒，可通过参数com.alipay.sofa.healthcheck.default.timeout进行配置。
+未对 HealthIndicator 单独配置超时时间时，使用健康检查默认超时时间，默认为 60 秒，可通过参数 com.alipay.sofa.healthcheck.default.timeout 进行配置。
 
 ```java
 @Value("${" + SofaBootConstants.SOFABOOT_HEALTH_CHECK_DEFAULT_TIMEOUT + ":"
@@ -259,7 +259,7 @@ public boolean afterReadinessCheckCallback(Map<String, Health> healthMap) {
 }
 ```
 
-与 HealthCheckerProcessor 和 HealthIndicatorProcessor 不同的是，AfterReadinessCheckCallbackProcessor在处理时，采用的是快速失败的策略，当有一个 ReadinessCheckCallback 返回状态异常时，剩余的回调都不再执行，快速返回失败的状态。
+与 HealthCheckerProcessor 和 HealthIndicatorProcessor 不同的是，AfterReadinessCheckCallbackProcessor 在处理时，采用的是快速失败的策略，当有一个 ReadinessCheckCallback 返回状态异常时，剩余的回调都不再执行，快速返回失败的状态。
 
 将 ReadinessCheckCallback 委托给 doHealthCheckCallback 方法，执行具体的回调。
 
@@ -316,7 +316,7 @@ public void onApplicationEvent(SofaBootRpcStartEvent event) {
 }
 ```
 
-SofaBootRpcStartListener 将会获取所有的服务提供者配置信息，启动 SOFARPC 服务（bolt server、REST server等），并将服务提供者信息发布到注册中心。
+SofaBootRpcStartListener 将会获取所有的服务提供者配置信息，启动 SOFARPC 服务（bolt server、REST server 等），并将服务提供者信息发布到注册中心。
 
 我们可以总结一下， RpcAfterHealthCheckCallback 的作用就是待所有指标项检查通过，应用准备就绪后，启动 SOFARPC 服务，并向注册中心发布服务信息，此时流量才能够通过服务发现进入到应用中。如果前面的健康检查有未通过的指标项，那么 SOFARPC 服务不会启动，也不会将服务信息上报到注册中心上，从而实现了流量控制。
 
@@ -377,7 +377,7 @@ public boolean readinessHealthCheck(Map<String, Health> healthMap) {
 }
 ```
 
-在readinessHealthCheck中，首先对 HealthChecker 做了一次过滤，排除掉 NonReadinessCheck 类型的Bean。然后再将 HealthChecker 委托给 doHealthCheck 方法，执行具体指标项的健康检查。
+在 readinessHealthCheck 中，首先对 HealthChecker 做了一次过滤，排除掉 NonReadinessCheck 类型的 Bean。然后再将 HealthChecker 委托给 doHealthCheck 方法，执行具体指标项的健康检查。
 
 > 为什么 HealthIndicatorProcessor 在初始化阶段就已经进行了过滤操作，而 HealthCheckerProcessor 的过滤操作要放到 readinessHealthCheck 方法中呢？
 
@@ -385,7 +385,7 @@ public boolean readinessHealthCheck(Map<String, Health> healthMap) {
 
 ## 启动加速
 
-SOFABoot提供了并行健康检查的能力，用于加快应用启动速度。并行检查可以通过开关参数启用，参数名格式如下：
+SOFABoot 提供了并行健康检查的能力，用于加快应用启动速度。并行检查可以通过开关参数启用，参数名格式如下：
 
 ```properties
 com.alipay.sofa.boot.timeout.healthCheckParallelEnable = true
@@ -487,7 +487,7 @@ public boolean livenessHealthCheck(Map<String, Health> healthMap) {
 
 1. Readiness Check 和 Liveness Check 的区别
 
-    readiness 表示应用启动完成之后，在某一瞬间应用的状态是否健康，用来表示应用是否 ready，是否能接受和处理流量请求。这个健康状态会保存下来，不管应用后续的运行情况如何，readiness 状态是不会改变的。而 liveness 是随着应用的运行情况，实时反馈结果。因此会存在一种情况，readiness 是 UP 而liveness 是DOWN，这个时候就需要额外的手段或者人工介入。
+    readiness 表示应用启动完成之后，在某一瞬间应用的状态是否健康，用来表示应用是否 ready，是否能接受和处理流量请求。这个健康状态会保存下来，不管应用后续的运行情况如何，readiness 状态是不会改变的。而 liveness 是随着应用的运行情况，实时反馈结果。因此会存在一种情况，readiness 是 UP 而 liveness 是 DOWN，这个时候就需要额外的手段或者人工介入。
 
 2. 如何扩展健康检查指标
 3. 如何通过 Readiness Check 控制流量

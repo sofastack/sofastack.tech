@@ -40,11 +40,11 @@ AT 模式是一种二阶段提交的分布式事务模式，它采用了本地 u
 
 数据库事务要满足原子性、一致性、持久性以及隔离性四个性质，即 ACID 。在分布式事务场景下，一般地，首先保证原子性和持久性，其次保证一致性，隔离性则因为其使用的不同数据库的锁、数据 MVCC 机制以及相关事务模式的差异， 具有多种隔离级别，如 MySQL 自身事务就有读未提交（Read Uncommitted）、读已提交（Read Committed）、可重复读（Repeatable Read）、序列化（Serializable）等四种隔离级别。
 
-#### 2.1.1 AT模式的读隔离
+#### 2.1.1 AT 模式的读隔离
 
 在数据库本地事务隔离级别**读已提交（Read Committed）** 或以上的基础上，Seata（AT 模式）的默认全局隔离级别是**读未提交（Read Uncommitted）** 。
 
-如果应用在特定场景下，必须要求全局的**读已提交**，目前 Seata 的方式是通过 SELECT FOR UPDATE 语句的代理。 
+如果应用在特定场景下，必须要求全局的**读已提交**，目前 Seata 的方式是通过 SELECT FOR UPDATE 语句的代理。
 
 SELECT FOR UPDATE 语句的执行会查询**全局锁**，如果**全局锁**被其他事务持有，则释放本地锁（回滚 SELECT FOR UPDATE 语句的本地执行）并重试。这个过程中，查询是被 block 住的，直到**全局锁**拿到，即读取的相关数据是**已提交**的，才返回。
 
@@ -80,14 +80,14 @@ AT 模式默认优先保证 CP，但提供了配置通道让用户在 CP 和 AP 
 
 ## 3、AT 数据源代理
 
-在 AT 模式中，用户只需要配置好 AT 的代理数据源即可， AT 的所有流程都在代理数据源中完成，对用户无感知。 
+在 AT 模式中，用户只需要配置好 AT 的代理数据源即可， AT 的所有流程都在代理数据源中完成，对用户无感知。
 
 AT 数据源代理的整体类结构如下图：
 
 ![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6c080b82054b4f1aa46fe0e899f3bfc1~tplv-k3u1fbpfcp-zoom-1.image)
 
  AT 事务数据源代理类结构图【from *[https://seata.io/zh-cn/docs/dev/mode/xa-mode.html](https://seata.io/zh-cn/docs/dev/mode/xa-mode.html)*】
- 
+
 AT 的数据源代理中，分别对目标数据库的 DataSource 、 Connection 和 Statement  进行了代理，在执行目标 SQL 动作之前，完成了 RM 资源注册、 undo log 生成、分支事务注册、分支事务提交/回滚等操作，而这些操作对用户并无感知。
 
 下面的时序图中，展示了 AT 模式在执行过程中，这几个代理类的动作细节：
@@ -130,7 +130,7 @@ AT 模式的二阶段提交，TC 侧会将该事务的锁删除，然后通知 R
 
 ![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/bdfd453ba59e40e3b4781cd77c5f6fa2~tplv-k3u1fbpfcp-zoom-1.image)
 
-### 5.1 Undo log数据格式
+### 5.1 Undo log 数据格式
 
 undo log 存在表 undo_log 表中，undo_log 表的表结构如下：
 
@@ -327,7 +327,7 @@ AsyncWorker 是用来做异步执行的，用来做分支事务提交和 undo lo
 
 近期  Seata 社区发现有同行，在未详细分析 Java 版本 AT 模式的代码的详细实现的情况下，仅对某个早期的 Go 版本的 Seata 进行短链接压测后，质疑 AT 模型的性能及其数据安全性，请具有一定思辨能力的用户朋友们在接受这个结论前仔细查阅其测试方法与测试对象，区分好 “李鬼” 与 “李逵”。
 
-实际上，这个早期的 Go 版本实现仅参照了 Seata v1.4.0，且未严格把 Seata AT 模式的所有功能都予以实现。话说回来，即便其推崇的 Seata XA 模式，其也依赖于单 DB 的XA 模式。而当下最新版本的 MySQL XA 事务模式的 BUG 依然很多，这个地基并没有其想象中的那样百分百稳固。
+实际上，这个早期的 Go 版本实现仅参照了 Seata v1.4.0，且未严格把 Seata AT 模式的所有功能都予以实现。话说回来，即便其推崇的 Seata XA 模式，其也依赖于单 DB 的 XA 模式。而当下最新版本的 MySQL XA 事务模式的 BUG 依然很多，这个地基并没有其想象中的那样百分百稳固。
 
 由阿里与蚂蚁集团共建的 Seata，是我们多年内部分布式事务工程实践与技术经验的结晶，开源出来后得到了多达 150+ 以上行业同行生产环境的验证。开源大道既长且宽，这个道路上可以有机动车道也有非机动车道，还可以有人行道，大家携手把道路拓宽延长，而非站在人行道上宣传机动车道危险性高且车速慢。
 
@@ -339,11 +339,10 @@ Seata AT 模式依赖于各个 DB 厂商的不同版本的 DB Driver（数据库
 
 ## 本周推荐阅读
 
-[Go内存泄漏，pprof 够用了么？](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247516046&idx=1&sn=c8ed0fbbc18b4377778c2ed06c7332ba&chksm=faa35054cdd4d9425b6780ae5ed1a6b83ab16afd9d870affba350c8002a2c4e2efdb85abc603&scene=21)
+[Go 内存泄漏，pprof 够用了么？](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247516046&idx=1&sn=c8ed0fbbc18b4377778c2ed06c7332ba&chksm=faa35054cdd4d9425b6780ae5ed1a6b83ab16afd9d870affba350c8002a2c4e2efdb85abc603&scene=21)
 
 [Go 原生插件使用问题全解析](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247512138&idx=1&sn=851abb8d07d47f703e33978c9c125c59&chksm=faa35f90cdd4d6869c6cd4934c042484dbe1063c3fb85462d2f33e936b96240ae33d02d18c3a&scene=21)
 
 [Go 代码城市上云--KusionStack 实践](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247515572&idx=1&sn=8fffc0fb13ffc8346e3ab151978d947f&chksm=faa3526ecdd4db789035b4c297811524cdf3ec6b659e283b0f9858147c7e37c4fea8b14b2fc6&scene=21)
 
 [Seata-php 半年规划](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247515039&idx=1&sn=e6068fc1b925e71eb8550c8c41296c6d&chksm=faa35445cdd4dd53b450c96f6077b161026a62e451c7c4b8288364b137b3786bbe3d5ea0340a&scene=21#wechat_redirect)
-

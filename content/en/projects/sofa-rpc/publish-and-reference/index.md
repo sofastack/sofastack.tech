@@ -1,9 +1,9 @@
 
 ---
+
 title: "Service publishing and reference"
 aliases: "/sofa-rpc/docs/Publish-And-Reference"
 ---
-
 
 The basic configuration for SOFARPC service publishing and reference is described in the "Programming Interface" chapter. Here are some of the features of service publishing and referencing.
 

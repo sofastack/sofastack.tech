@@ -31,17 +31,17 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **@冷建伟** 提问：
 
->启动 SOFABoot 报错：Can not found binding converter for binding type bolt。跟到源码发现：bindingTypeBindingConverterMap 只有 jvm，没有 bolt。跟到源码发现 SPI load 的 converter 只有 JVM。版本：runtime-sofa-boot-starter-3.1.4.jar。想问下是不是要升级我的 SOFA SDK 版本 ？
+> 启动 SOFABoot 报错：Can not found binding converter for binding type bolt。跟到源码发现：bindingTypeBindingConverterMap 只有 jvm，没有 bolt。跟到源码发现 SPI load 的 converter 只有 JVM。版本：runtime-sofa-boot-starter-3.1.4.jar。想问下是不是要升级我的 SOFA SDK 版本 ？
 
 A：这个引入 rpc starter 即可。
 
 **@leon** 提问：
 
->SOFARegistry  是不需要用 K8s 吗？
+> SOFARegistry  是不需要用 K8s 吗？
 
 A：SOFARegistry 在内部是基于 K8s 部署的，提供更细粒度更高性能的服务发现。
 
->为什么不是想办法优化 K8s 服务发现性能，而是搞代码侵入性的方案？
+> 为什么不是想办法优化 K8s 服务发现性能，而是搞代码侵入性的方案？
 
 A：基于 K8s 的实现的无侵入式服务发现是云原生下的一套较为后期和理想的方案，这也是 SOFARegistry 后续演进的规划之一。
 
@@ -51,7 +51,7 @@ A：基于 K8s 的实现的无侵入式服务发现是云原生下的一套较�
 
 **@来永国** 提问：
 
->SOFATracer 加了 sofa-tracer-rocketmq-plugin 扩展包，还需要做什么配置吗？
+> SOFATracer 加了 sofa-tracer-rocketmq-plugin 扩展包，还需要做什么配置吗？
 
 A：需要配置一下 SendMessageHook 和 ConsumeMessageHook 这两个 hook，分别是：SofaTracerSendMessageHook、SofaTracerConsumeMessageHook。
 
@@ -87,7 +87,7 @@ ARM 平台上提供 SM3 和 SM4 的性能优化
 
 SM4 算法逻辑优化以提升性能 [zzl360]
 
-### SOFAStack&MOSN:新手任务计划 
+### SOFAStack&MOSN:新手任务计划
 
 作为技术同学，你是否有过“想参与某个开源项目的开发、但是不知道从何下手”的感觉？
 
@@ -137,7 +137,7 @@ SOFARPC
 
 4. 支持动态设置上游协议，使用 transcoder filter 来替换 Proxy 中的协议转换
 
-5. 其他优化与BUG Fix
+5. 其他优化与 BUG Fix
 
 「详细参考」：
 

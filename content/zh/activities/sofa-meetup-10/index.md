@@ -21,21 +21,21 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*kvWHQ5NzzsUAAAAAA
 
 - 资料下载：<br/>
 [《从云原生视角，解读 Erda 微服务观测系统的实现》](https://gw.alipayobjects.com/os/bmw-prod/75201cac-3aff-499b-8715-8809c00ae977.pdf)<br/>
-[《Service Mesh落地之后：为 sidecar 注入灵魂》](https://gw.alipayobjects.com/os/bmw-prod/ce6c26b1-c98e-4d9f-b9ef-21ad42e012c7.pdf)<br/>
+[《Service Mesh 落地之后：为 sidecar 注入灵魂》](https://gw.alipayobjects.com/os/bmw-prod/ce6c26b1-c98e-4d9f-b9ef-21ad42e012c7.pdf)<br/>
 [《技术风口上的限流—蚂蚁集团的 Mesh 限流落地与实践 》](https://gw.alipayobjects.com/os/bmw-prod/82be6ceb-89e0-4d4e-9cc9-42128fc2491f.pdf)<br/>
 [《Erda 关于云原生数据开发平台的思考和实践》](https://gw.alipayobjects.com/os/bmw-prod/26189392-95ec-403c-9187-b8af6a22ee95.pdf)
 
 ## 活动议程
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*OEPXQoXiFB0AAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*OEPXQoXiFB0AAAAAAAAAAAAAARQnAQ)
 
-## 活动回顾 
+## 活动回顾
 
 **《从云原生视角，解读 Erda 微服务观测系统的实现》**
 
 **嘉宾介绍**
 
-刘浩杨，Erda 微服务和监控团队负责人，主要负责云原生 PaaS 的架构设计、微服务观测治理平台的产品技术规划等工作，对分布式、可观察性、云原生等方向有深入的研究和实践经验。同时也是开源爱好者，Apache SkyWalking PMC 成员，在 Apache SkyWalking 的多语言生态和社区建设中起到重要作用。 
+刘浩杨，Erda 微服务和监控团队负责人，主要负责云原生 PaaS 的架构设计、微服务观测治理平台的产品技术规划等工作，对分布式、可观察性、云原生等方向有深入的研究和实践经验。同时也是开源爱好者，Apache SkyWalking PMC 成员，在 Apache SkyWalking 的多语言生态和社区建设中起到重要作用。
 
 **议题简介**
 
@@ -46,24 +46,24 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*kvWHQ5NzzsUAAAAAA
 
 可快速了解监控和可观测性技术的发展历程，了解云原生场景下可观测性的痛点和解决方案，及获取 Erda 微服务观测平台的功能特性。
 
-**《Service Mesh落地之后：为 sidecar 注入灵魂》**
+**《Service Mesh 落地之后：为 sidecar 注入灵魂》**
 
 **嘉宾介绍**
 
-周群力（花名：仪式），开源爱好者, co-founder of Layotto，Dapr contributor。目前在蚂蚁中间件团队工作，对SOFAStack和MOSN的开源影响力负责。虽然工作是做云原生基础设施，但业余时间也喜欢折腾前端和数据。
+周群力（花名：仪式），开源爱好者, co-founder of Layotto，Dapr contributor。目前在蚂蚁中间件团队工作，对 SOFAStack 和 MOSN 的开源影响力负责。虽然工作是做云原生基础设施，但业余时间也喜欢折腾前端和数据。
 
 **议题简介**
 
-- 随着Service Mesh在蚂蚁集团内部的大规模落地，我们逐渐遇到了新的挑战，这让我们迫切的寻找新的解决方案。<br/>
-Service Mesh通过引入sidecar来简化服务治理，但是随着探索实践，我们发现 sidecar 能做的事情远不止于此。一方面，给 sidecar 添加 Multi-Runtime 能力可以帮助基础设施团队更好的和业务团队解耦，简化多语言治理；另一方面，中立的 Runtime API 可以抽象基础设施、简化编程，帮助 K8s 生态成为真正的“分布式操作系统”，也帮助应用彻底和厂商解绑，保证多云环境的可移植性；与此同时，在 WebAssembly 日益火爆的当下，WASM 也能帮助 sidecar 实现 FaaS、业务系统 sdk 下沉等功能。<br/>
-那么，Service Mesh落地之后，架构演进的思路是什么？我们的思路是：为sidecar注入灵魂。
+- 随着 Service Mesh 在蚂蚁集团内部的大规模落地，我们逐渐遇到了新的挑战，这让我们迫切的寻找新的解决方案。<br/>
+Service Mesh 通过引入 sidecar 来简化服务治理，但是随着探索实践，我们发现 sidecar 能做的事情远不止于此。一方面，给 sidecar 添加 Multi-Runtime 能力可以帮助基础设施团队更好的和业务团队解耦，简化多语言治理；另一方面，中立的 Runtime API 可以抽象基础设施、简化编程，帮助 K8s 生态成为真正的“分布式操作系统”，也帮助应用彻底和厂商解绑，保证多云环境的可移植性；与此同时，在 WebAssembly 日益火爆的当下，WASM 也能帮助 sidecar 实现 FaaS、业务系统 sdk 下沉等功能。<br/>
+那么，Service Mesh 落地之后，架构演进的思路是什么？我们的思路是：为 sidecar 注入灵魂。
 
 **听众收获**
 
-- 了解蚂蚁集团在Service Mesh大规模落地以后遇到的新问题以及对于如何解决这些问题的思考。
-- 了解Multi-Runtime解决的问题及实践经验。
-- 了解中立的Runtime API解决什么问题，以及相关实践经验
-- 了解WASM在FaaS等方向的探索。
+- 了解蚂蚁集团在 Service Mesh 大规模落地以后遇到的新问题以及对于如何解决这些问题的思考。
+- 了解 Multi-Runtime 解决的问题及实践经验。
+- 了解中立的 Runtime API 解决什么问题，以及相关实践经验
+- 了解 WASM 在 FaaS 等方向的探索。
 
 **《技术风口上的限流—蚂蚁集团的 Mesh 限流落地与实践 》**
 
@@ -102,4 +102,4 @@ Service Mesh通过引入sidecar来简化服务治理，但是随着探索实践�
 
 或微信扫码关注“金融级分布式架构”微信公众号👇
 
->![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*5aK0RYuH9vgAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*5aK0RYuH9vgAAAAAAAAAAAAAARQnAQ)

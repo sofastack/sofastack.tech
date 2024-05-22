@@ -22,7 +22,7 @@ SOFAStack 社区开源负责人
 
 # 01
 
-## 回顾开源这五年 
+## 回顾开源这五年
 
 回想起 2018 年 4 月 19 日 SOFAStack 首次开源，当时的官宣文章中就提到了我们开源的初心：
 
@@ -74,7 +74,7 @@ SOFAStack 社区开源负责人
 
 # 02
 
-## 展望下一个五年 
+## 展望下一个五年
 
 聊完了过去五年的过程和收获，对 SOFAStack 而言，下一个五年的主要方向就比较明确：我们还是会着重放在产品力的提升上，希望能持续解决分布式场景中的核心问题。
 
@@ -106,7 +106,7 @@ SOFAStack 社区开源负责人
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/da083ed4d12f4b30a9235aef0d1c6d55~tplv-k3u1fbpfcp-zoom-1.image)
 图 10 - Service Mesh 演进架构
 
-项目地址：[https://github.com/mosn/mosn](https://github.com/mosn/mosn) 
+项目地址：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 
 在实际场景中，除了微服务之外，业务往往还会使用其它的中间件能力。例如动态配置、消息、缓存、数据库等，如何降低这些中间件和业务应用的耦合是一个新的问题。另外，在多语言场景，我们仍然要为每种语言开发一套轻量 SDK 来实现通信协议和编解码逻辑，这部分也有很高的成本。所以我们如何进一步去降低多语言的支持成本是另一个亟待解决的问题。
 
@@ -156,25 +156,25 @@ SOFAStack 社区开源负责人
 
 考虑到函数粒度是非常小的，FaaS 的应用范围是相对有限的。我们认为下面这些场景是比较适合 FaaS 研发模式的：
 
--   碎片化需求场景：例如 BFF，大多是胶水代码，逻辑简单，不过需求变化快，通过函数实现组装式开发，从而助力业务创新
--   事件驱动场景：例如音视频转码，大多是 CPU 密集型，对处理时间不是特别敏感，而且有着比较明显的波峰和波谷
--   中台业务场景：例如算法平台，它的的算子逻辑比较独立，但是参与研发人数多，所以代码逻辑不可控，需要更好的隔离能力
+- 碎片化需求场景：例如 BFF，大多是胶水代码，逻辑简单，不过需求变化快，通过函数实现组装式开发，从而助力业务创新
+- 事件驱动场景：例如音视频转码，大多是 CPU 密集型，对处理时间不是特别敏感，而且有着比较明显的波峰和波谷
+- 中台业务场景：例如算法平台，它的的算子逻辑比较独立，但是参与研发人数多，所以代码逻辑不可控，需要更好的隔离能力
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/b2ff86b186f948e09f1da4a362a160d0~tplv-k3u1fbpfcp-zoom-1.image)
 图 15 - FaaS 适用场景
 
 目前我们也在公司内部探索 FaaS ，整体产品架构如图 16 所示，未来我们也会逐步地去开源相应的组件。
 
--   触发源支持 RPC、HTTP、Message、Cron 等
--   冷启动采用了 Cache pool、 Fork 等技术实现加速，对简单的 Node.js 和 Java 函数可以实现几百毫秒冷启动
--   提供了 Layotto 作为 Sidecar 帮助函数轻松访问各类 BaaS 服务，同时具备完善的治理能力
+- 触发源支持 RPC、HTTP、Message、Cron 等
+- 冷启动采用了 Cache pool、 Fork 等技术实现加速，对简单的 Node.js 和 Java 函数可以实现几百毫秒冷启动
+- 提供了 Layotto 作为 Sidecar 帮助函数轻松访问各类 BaaS 服务，同时具备完善的治理能力
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/2905feb8fe1f492eb163d6b63b0623be~tplv-k3u1fbpfcp-zoom-1.image)
 图 16 - SOFA Function 产品架构
 
 # 03
 
-## 致谢 
+## 致谢
 
 最后，值此 SOFAStack 开源五周年，还是要对大家表示感谢。
 
@@ -190,19 +190,19 @@ SOFAStack 社区开源负责人
 
 最后，我还要感谢所有关注和关心 SOFAStack 社区的朋友们，正是因为有了你们的鼓励和期待，才让 SOFAStack 社区持续保持活力。
 
-那让我们保持初心，一起把 SOFAStack 社区建设得更开放、更有趣！ 
+那让我们保持初心，一起把 SOFAStack 社区建设得更开放、更有趣！
 
-观看现场 live 的请点击 👇🏻 
+观看现场 live 的请点击 👇🏻
 
-[SOFAStack 的下一个五年](https://mp.weixin.qq.com/s/5aVtoQzJoyblBcbEDg0vXA) 
+[SOFAStack 的下一个五年](https://mp.weixin.qq.com/s/5aVtoQzJoyblBcbEDg0vXA)
 
 ## 了解更多
 
-### Layotto Star  一下 
+### Layotto Star  一下
 
 [https://github.com/mosn/layotto](https://github.com/mosn/layotto)
 
-### 本周推荐阅读 
+### 本周推荐阅读
 
 [![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/65cbbd221f5f4404844f671d42713072~tplv-k3u1fbpfcp-zoom-1.image)](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247520348&idx=1&sn=459c9262761bd719a028c8ea27f56591&chksm=faa37f86cdd4f690cefbcb8564ab79b327512e409ada02870561ece96c6fc07c050fdc3b7f66&scene=21)
 

@@ -1,9 +1,9 @@
 
 ---
+
 title: "Publish and reference JVM services"
 aliases: "/sofa-boot/docs/Module-Service"
 ---
-
 
 ﻿SOFABoot provides developers with three ways to publish and reference JVM services
 
@@ -25,7 +25,7 @@ Then, publish the Bean as a SOFA JVM service by using the Spring extension tag p
 
 ```xml
 <sofa:service interface="com.alipay.sofa.runtime.test.service.SampleService" ref="sampleService">
-	<sofa:binding.jvm/>
+ <sofa:binding.jvm/>
 </sofa:service>
 ```
 
@@ -39,7 +39,7 @@ We can also reference a JVM service by using the Spring extension tag provided b
 
 ```xml
 <sofa:reference interface="com.alipay.sofa.runtime.test.service.SampleService" id="sampleServiceRef">
-	<sofa:binding.jvm/>
+ <sofa:binding.jvm/>
 </sofa:reference>
 ```
 
@@ -142,7 +142,7 @@ SampleService proxy = referenceClient.reference(referenceParam);
 Similar to publishing a service, to reference a JVM service, simply retrieve the ReferenceClient from the ClientFactory object, construct a ReferenceParam, configure the service interface, and call the reference method of ReferenceClient.
 
 > **Prompt**
-> 
+>
 > The Reference object created by dynamic client is very heavy. Do not create it frequently in actual practice and cache it in advance, otherwise there may be a risk of memory leak.
 
 ### uniqueId

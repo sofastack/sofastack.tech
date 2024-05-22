@@ -14,9 +14,9 @@ SOFAMesh 是基于 [Istio](https://istio.io) 改进和扩展而来的 Service Me
 - 增强 Pilot 以实现更灵活的服务发现机制
 - 增加对 [SOFA RPC](https://github.com/sofastack/sofa-rpc)、Dubbo 的支持
 
-初始版本由蚂蚁金服和阿里大文娱UC事业部携手贡献。
+初始版本由蚂蚁金服和阿里大文娱 UC 事业部携手贡献。
 
-下图展示了SOFAMesh 和 Istio 在架构上的不同：
+下图展示了 SOFAMesh 和 Istio 在架构上的不同：
 
 <img alt="SOFAMesh 架构图" src="sofa-mesh-arch.png" width="60%">
 

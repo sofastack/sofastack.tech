@@ -44,7 +44,7 @@ SOFATracer：[https://github.com/sofastack/sofa-tracer](https://github.com/sofas
 
 > 我有个关于 Seata 的疑问：A -> B->C 的时候，不管 B 有没有本地事务，如果 C 失败了 B 的都会回滚，那么 B 的本地事务的作用是什么呢？
 
-A：分布式事务认为由若干个分支事务（本地事务）构成的，如果加了 autocommit=false，那么 B 服务的几条 sql构成一个本地事务，如果不加那么每条 DML 语句都是一个本地事务。本地事务越少那么与 TC 的交互次数越少。
+A：分布式事务认为由若干个分支事务（本地事务）构成的，如果加了 autocommit=false，那么 B 服务的几条 sql 构成一个本地事务，如果不加那么每条 DML 语句都是一个本地事务。本地事务越少那么与 TC 的交互次数越少。
 
 **3、@徐成阳** 提问：
 
@@ -79,11 +79,12 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 **日程主题**：**OceanBaseDev Meetup#1 上海站「深入分布式数据库：事务·高可用·云原生」**
 
 **出品人：**
+
 - 杨传辉（花名：日照）蚂蚁集团研究员、OceanBase 总架构师
 - 韩富晟（花名：颜然）蚂蚁集团资深技术专家、OceanBase 事务研发负责人
 
 **日程时间：2020-09-20 本周日** 13:00-17:30
 
-**日程地点：**上海市杨浦区政学路77号 InnoSpace+
+**日程地点：**上海市杨浦区政学路 77 号 InnoSpace+
 
 **日程详情：**点击“[这里](https://www.huodongxing.com/event/5562442480600)”，了解日程详情

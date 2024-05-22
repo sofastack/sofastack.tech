@@ -65,7 +65,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 ![CSDI summit 中国软件研发管理行业技术峰会](https://cdn.nlark.com/yuque/0/2020/png/226702/1601189501239-6958d749-c5d6-4584-b3e2-4d4410b9b4f7.png)
 
-CSDI summit 中国软件研发管理行业技术峰会（Software development management industry technology summit）由国内专业咨询机构百林哲匠心打造的软件行业技术领域顶级盛会，将于2020年9月24-27日举办。
+CSDI summit 中国软件研发管理行业技术峰会（Software development management industry technology summit）由国内专业咨询机构百林哲匠心打造的软件行业技术领域顶级盛会，将于 2020 年 9 月 24-27 日举办。
 话题涵盖：组织数字化转型、研发效能、产品创新、用户增长、云原生、架构创新、微服务、AI 大数据、数据安全和云安全、AIOT 实践等方面。蚂蚁集团也应邀参与本次大会分享。
 
 **分享主题**：**金融级云原生 PaaS 实践之路**

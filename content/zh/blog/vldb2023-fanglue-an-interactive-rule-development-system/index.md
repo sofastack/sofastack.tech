@@ -54,7 +54,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*byB8Q68O4HoAAAAAA
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/479e2fd870ff4df6b0b700a05a8bd9bc~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1080&h=581&s=126498&e=png&b=ffffff)
 
-（图 2） 
+（图 2）
 
 在安全风控场景下，当规则中存在一些容易被攻击的条件时 *（例如拦截规则里有条件：转账金额>=500，欺诈方只需要使得转账金额小于 500 就可以绕过拦截规则）* ，风控专家会希望通过寻找“语义上相似”的条件来增加另一层保护。为了加强规则的鲁棒性，方略提出并引入了近似条件。假设当前的规则是 C1 and C2 and C3，覆盖的样本集为 A，我们希望在 C2 上增加近似条件，那么方略会在 C1 and C3 的基础上遍历所有的候选条件 *（特征、运算符、值）* ，每个候选条件都会覆盖数据的一个子集，记为 B。一个理想的近似条件应该在 A 和 B 之间具有高重叠度，同时又不引入太多额外的白样本。方略基于图 3 所示的公式衡量条件的相似度，其中![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7e0c058a4f9f4bd39670b72362ac1d54~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=88&h=58&s=8354&e=png&b=fffefe)表示![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/00d8740e858f410dbc3570d2ba9f3c7f~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=48&h=52&s=7224&e=png&b=fffefe)中带有正标签的子集，![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0907429ba6ac4e5c9c3701d4f2151232~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=96&h=54&s=8551&e=png&b=fffefe)表示![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8116369e66c64e0788bdb9f5cd776007~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=48&h=52&s=7224&e=png&b=fffefe)中带有负标签的子集。
 
@@ -85,7 +85,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*byB8Q68O4HoAAAAAA
 ## 5｜总结&未来计划  
 
 当前方略已经应用到蚂蚁集团内部的安全风控场景中，也输出给了外部的金融机构。这种算法与专家领域知识相结合的交互式规则研发方式，不仅提高了规则的研发效率，降低了研发成本，也通过探索更广的规则空间提高了规则的准确度。
- 
+
 下一步我们会针对推荐算法和评估指标做优化与扩展，以满足更多复杂多变场景的需求。
 
 欢迎大家多关注蚂蚁集团 AI Infra 团队后续的工作。
@@ -102,7 +102,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*byB8Q68O4HoAAAAAA
 [DLRover：蚂蚁开源大规模智能分布式训练系统](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247526048&idx=1&sn=3b15877be6c51d7faf0cb0def8dd8f2c&chksm=faa3897acdd4006c3d4e9984ff8d2c48198aca74115e03ac0becddbbe649a2494ba66f81e26f&scene=21)
 
 [Hybrid Embedding：蚂蚁集团万亿参数稀疏 CTR 模型解决方案](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247538202&idx=1&sn=3821df8df57526b223e2fb0a12c3674e&chksm=faa3b9c0cdd430d674d5449404c5a7349b89a9e6e334a6e206f23ed30d62023639d7540dcf25&scene=21)
- 
+
 [降本增效: 蚂蚁在 Sidecarless 的探索和实践](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247517989&idx=1&sn=1b49b68c9281d0c2514fa4caa38284fb&chksm=faa368ffcdd4e1e9fa5361d6ea376bbc426272c7a32250cc67ae27dcd84a6113b4a016a1518d&scene=21)
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/6430b24ce7a44459abb84aaf2e991383~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1080&h=792&s=66602&e=jpg&b=fefefe)

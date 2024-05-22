@@ -32,13 +32,13 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **1. 清源** 提问：
 
->咨询个问题，MOSN 能做协议转换吗？类似于 API 网关那种功能，像 HTTP 调 Dubbo 的服务。
+> 咨询个问题，MOSN 能做协议转换吗？类似于 API 网关那种功能，像 HTTP 调 Dubbo 的服务。
 
 A：可以的哈，这里是一个 HTTP 到 SOFA 的例子，
 
 *[https://github.com/mosn/mosn/tree/master/pkg/filter/stream/transcoder/http2bolt](https://github.com/mosn/mosn/tree/master/pkg/filter/stream/transcoder/http2bolt)*
 
->我看了下，例子中并没有对 buf 做编解码，是 Bolt 自动识别 HTTP 的报文吗？
+> 我看了下，例子中并没有对 buf 做编解码，是 Bolt 自动识别 HTTP 的报文吗？
 
 A：这个 filter 就是把 HTTP 的字段转换为 Bolt 的哟，这还有个 Spring Cloud 到 Dubbo 的转换，MOSN 已经对 buf 解码好了，暴露给你的是 HTTP 解码之后的 header 和 body，
 
@@ -50,7 +50,7 @@ A：这个 filter 就是把 HTTP 的字段转换为 Bolt 的哟，这还有个 S
 
 **2. 国奇** 提问：
 
->你好，请问有能用的 SOFARegistry 安装步骤吗？
+> 你好，请问有能用的 SOFARegistry 安装步骤吗？
 
 A：用 start_dev 启动 integrate 模式，registry-run.sh 是给其他脚本调用的：
 
@@ -66,13 +66,13 @@ A：用 start_dev 启动 integrate 模式，registry-run.sh 是给其他脚本�
 
 **3. 国奇** 提问：
 
->你好，发现一个问题，比如 A 应用 1.0 升级到 2.0 得改 webContextPath 才可以。也就是说要升级版本，要改版本号，还需要改 webContextPath 对吧？
+> 你好，发现一个问题，比如 A 应用 1.0 升级到 2.0 得改 webContextPath 才可以。也就是说要升级版本，要改版本号，还需要改 webContextPath 对吧？
 
 A：按这里文章介绍的，不引入 web-ark-plugin 的话，就用不同的端口来部署多个 web 服务。你们可以保留这个使用方式，就不需要改 webContextPath，
 
 *[https://github.com/WuHang1/sofa-ark/blob/code_analyse_multi_web_deploy/doc/CODE_ANALYSE_MULTI_WEB.md](https://github.com/WuHang1/sofa-ark/blob/code_analyse_multi_web_deploy/doc/CODE_ANALYSE_MULTI_WEB.md)*
 
->发布就会更改不同的端口号，否则端口号被占用。可不可以，我自己不用改端口号，也不用改 webContextPath？
+> 发布就会更改不同的端口号，否则端口号被占用。可不可以，我自己不用改端口号，也不用改 webContextPath？
 
 A：目前不可以，你可以看下之前介绍 SOFAArk Web 插件的文档，里面介绍了必须要改这两个中的其中一个。如果有方案能做到这点那是挺好的，可以提个 proposal。
 

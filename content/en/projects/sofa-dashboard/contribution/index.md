@@ -39,21 +39,25 @@ Therefore, after getting familiar with how to get the source code, you need to:
    ```bash
    git clone https://github.com/your account name/sofa-dashboard.git
    ```
+
 * Pull a branch to prepare for code modification.
 
    ```bash
    git branch add_xxx_feature
    ```
+
 * After the preceding command is executed, your code repository is switched to the corresponding branch. To view the current branch, execute the following command:
 
    ```bash
    git branch -a
    ```
+
 * If you want to switch back to the master branch, execute the following command:
 
    ```bash
    git checkout -b master
    ```
+
 * If you want to switch back to the branch, execute the following command:
 
    ```bash
@@ -64,7 +68,7 @@ Therefore, after getting familiar with how to get the source code, you need to:
 
 After a branch is pulled, you can modify the code.
 
-#### When modifying the code, note the following:
+#### When modifying the code, note the following
 
 * Keep the code style consistent.
 
@@ -121,4 +125,3 @@ The person will leave a comment containing the code review suggestions on the co
 #### Merge the code into the master branch
 
 After your code passes the review, the SOFADashboard maintenance personnel merge it into the master branch. You do not need to get involved in this step. After the code is merged, you will receive a message indicating a successful merge.
-

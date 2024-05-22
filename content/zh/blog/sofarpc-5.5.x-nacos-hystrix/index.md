@@ -12,7 +12,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1564392994334-a78d9821-c56
 > **SOFA**
 > **S**calable **O**pen **F**inancial **A**rchitecture
 > 是蚂蚁金服自主研发的金融级分布式中间件，包含了构建金融级云原生架构所需的各个组件，是在金融场景里锤炼出来的最佳实践。
-> 
+>
 > SOFA 文档: <http://www.sofastack.tech/>
 > SOFA: <https://github.com/alipay>
 
@@ -37,8 +37,8 @@ SOFABoot 从 2.5.3 开始已集成 SOFARPC 对 Nacos 的配置支持，假如开
 根据 RPC 的[示例工程](https://github.com/alipay/sofa-rpc-boot-projects/tree/master/sofa-boot-samples)创建一个 SOFABoot 工程，SOFABoot 工程使用 2.5.3。
 
 ```bash
-$ git clone git@github.com:alipay/sofa-rpc-boot-projects.git
-$ git checkout 5.x
+git clone git@github.com:alipay/sofa-rpc-boot-projects.git
+git checkout 5.x
 ```
 
 在 application.properties 中配置服务注册中心地址信息，就能够使用 Nacos 作为注册中心。
@@ -54,7 +54,7 @@ com.alipay.sofa.rpc.registry.address=nacos://127.0.0.1:8848
 run com.alipay.sofa.rpc.samples.invoke.InvokeServerApplication
 ```
 
-启动成功后即可在 Nacos 服务端看到服务注册信息：[Nacos 服务列表](http://127.0.0.1:8848/nacos/#/serviceManagement?dataId=&group=&appName=&namespace=) （注：如果用户自己部署了nacos 的服务端，可以通过这个地址访问）
+启动成功后即可在 Nacos 服务端看到服务注册信息：[Nacos 服务列表](http://127.0.0.1:8848/nacos/#/serviceManagement?dataId=&group=&appName=&namespace=) （注：如果用户自己部署了 nacos 的服务端，可以通过这个地址访问）
 
 ![Nacos 服务端](https://cdn.nlark.com/yuque/0/2019/png/153624/1551615172121-bf7d15c6-c8a8-450a-ab72-b2960589571e.png)
 
@@ -189,7 +189,7 @@ Hystrix 默认使用 Archaius 作为配置管理，当 Spring Cloud Netflix 也�
 
 此外如果项目中使用了 Spring Boot Actuator，Hystrix 就可以通过 Actuator 内置的 /metrics Endpoint 暴露出 RPC 调用的相关指标，包括请求数、成功率和延时等信息，可以非常方便的集成于现有的监控系统中。
 
-如果使用了 Hystrix Dashboard 或是 Turbine，可以获得一个开箱即用的使用了 Hystrix Dashboard 或是 Turbine将这些指标展示出来，如下图所示。
+如果使用了 Hystrix Dashboard 或是 Turbine，可以获得一个开箱即用的使用了 Hystrix Dashboard 或是 Turbine 将这些指标展示出来，如下图所示。
 
 ![使用了 Hystrix Dashboard 或是 Turbine](https://cdn.nlark.com/yuque/0/2019/jpeg/280280/1551704450755-2b501398-f9aa-435e-a11e-c68a4ff3094f.jpeg)
 

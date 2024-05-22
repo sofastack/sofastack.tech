@@ -33,19 +33,19 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **@黄润良** 提问：
 
->有什么办法可以获取日志的这两个值吗？
+> 有什么办法可以获取日志的这两个值吗？
 
 ![weekly.jpg](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*9ve_QatXBYEAAAAAAAAAAAAAARQnAQ)
 
 A：可以参考下图
 
->![weekly.jpg](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*w00zSLw8IKUAAAAAAAAAAAAAARQnAQ)
+> ![weekly.jpg](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*w00zSLw8IKUAAAAAAAAAAAAAARQnAQ)
 
 MOSN：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 
 **@爱德华** 提问：
 
->请教一下，SOFAJRaft 在 leader 晋升后，给每个 follower 发送的探测请求是什么？是 Raft 论文中，为了“提交上一个 term 日志项”，才发送的空请求吗？
+> 请教一下，SOFAJRaft 在 leader 晋升后，给每个 follower 发送的探测请求是什么？是 Raft 论文中，为了“提交上一个 term 日志项”，才发送的空请求吗？
 
 A：是为了探测该 follower 与 leader 的日志差异。找对 nextIndex 对吧？提交上一个 term 要通过 noop 日志。Raft 论文里有个 nextIndex，你可以看看相关内容， 日志复制那个小节。
 
@@ -53,7 +53,7 @@ SOFAJRaft：[https://github.com/sofastack/sofa-jraft](https://github.com/sofasta
 
 **@Bazingga** 提问：
 
->源码里面是怎么支持的呀，RheaKV 是使用了这个功能是吧。
+> 源码里面是怎么支持的呀，RheaKV 是使用了这个功能是吧。
 
 A：可以参考下这个
 [https://blog.csdn.net/SOFAStack/article/details/91458041](https://blog.csdn.net/SOFAStack/article/details/91458041)
@@ -62,7 +62,7 @@ SOFAJRaft：[https://github.com/sofastack/sofa-jraft](https://github.com/sofasta
 
 **@爱德华** 提问：
 
->我请教一下关于 follower 截断日志的问题。leader 拥有日志：101,102,103，它们的 term 为 2；follower 拥有日志：101,102,103,104，它们的 term 为 2；按照正常逻辑，follower 应该截断 104 的日志。根据上面的代码，在探测消息中，这种情况，follower 会返回了 success=true，并携带 lastLogIndex=104。那么 follower 是在什么时候截断 104 的呢？<br>
+> 我请教一下关于 follower 截断日志的问题。leader 拥有日志：101,102,103，它们的 term 为 2；follower 拥有日志：101,102,103,104，它们的 term 为 2；按照正常逻辑，follower 应该截断 104 的日志。根据上面的代码，在探测消息中，这种情况，follower 会返回了 success=true，并携带 lastLogIndex=104。那么 follower 是在什么时候截断 104 的呢？<br>
 >![weekly.jpg](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*lJZfTpxjNkoAAAAAAAAAAAAAARQnAQ)
 
 A：checkAndResolveConflict 方法。
@@ -123,7 +123,7 @@ fail fast，让 Layotto 启动报错时自杀
 
 [https://github.com/mosn/layotto/issues/108#issuecomment-872779356](https://github.com/mosn/layotto/issues/108#issuecomment-872779356)
 
-### 本周推荐阅读 
+### 本周推荐阅读
 
 - [rometheus on CeresDB 演进之路](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247497779&idx=1&sn=3c47ec0f1af6b5f0278010720c52a7fc&chksm=faa317e9cdd49eff0eb65e69e3ce40254100848556eca075ef24f3ce4527d906ce67c2487f94&token=709289858&lang=zh_CN#rd)
 
@@ -133,4 +133,4 @@ fail fast，让 Layotto 启动报错时自杀
 
 - [终于！SOFATracer 完成了它的链路可视化之旅](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247496554&idx=1&sn=b6c292ee9b983a2344f2929390fe15c4&chksm=faa31cb0cdd495a6770720e631ff338e435998f294145da18c04bf34b82e49d2f028687cad7f&scene=21)
 
->![weekly.jpg](https://gw.alipayobjects.com/zos/bmw-prod/5f2e9662-eff8-4b6b-abb6-08799da42fcc.webp)
+> ![weekly.jpg](https://gw.alipayobjects.com/zos/bmw-prod/5f2e9662-eff8-4b6b-abb6-08799da42fcc.webp)

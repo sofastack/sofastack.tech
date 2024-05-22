@@ -1,9 +1,9 @@
 
 ---
+
 title: "序列化协议"
 aliases: "/sofa-rpc/docs/Serialization"
 ---
-
 
 SOFARPC 可以在使用 Bolt 通信协议的情况下，可以选择不同的序列化协议，**目前支持 hessian2 和 protobuf**。
 

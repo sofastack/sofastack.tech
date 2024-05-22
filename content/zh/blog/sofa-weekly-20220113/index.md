@@ -30,21 +30,21 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 欢迎大家在 GitHub 提交 issue 与我们互动
 
-我们会筛选 issue 通过 
+我们会筛选 issue 通过
 
 " SOFA WEEKLY " 的形式回复
 
 **1. @dengqian #2203**
 
->是否支持应用级服务发现，若支持能够给提供者和消费者的代号示例吗？
+> 是否支持应用级服务发现，若支持能够给提供者和消费者的代号示例吗？
 
 A：SOFARegistry 本身是比较存粹的服务发布和订阅功能，应用级和接口级的区别在于 Client 发送给 Registry 的是应用级的 Publisher 还是接口级的 Publisher。所以相关的应用级 Publisher 聚合以及应用级 Subscriber 订阅的逻辑主要是在 Mesh 端，而这部分 Mesh 代码暂时还没开源。稍后我们会整理完整的应用级服务上线的过程以及设计方案，发布到社区文档中。
 
 **「SOFARegistry」**：*[https://github.com/sofastack/sofa-registry/](https://github.com/sofastack/sofa-registry/)*
 
-**2. @yemoli #1290** 
+**2. @yemoli #1290**
 
->请问 MOSN 支持增加订阅 xDS  吗？gRPC DeltaAggregatedResources。
+> 请问 MOSN 支持增加订阅 xDS  吗？gRPC DeltaAggregatedResources。
 
 A：xDS 这个块还不支持，不过底层的资源是支持增加更新的，感兴趣的话语，欢迎共建~
 

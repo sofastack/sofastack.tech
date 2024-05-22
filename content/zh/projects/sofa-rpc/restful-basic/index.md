@@ -1,9 +1,9 @@
 
 ---
+
 title: "RESTful 协议基本使用"
 aliases: "/sofa-rpc/docs/RESTful-Basic"
 ---
-
 
 在 SOFARPC 中，使用不同的通信协议即使用不同的 Binding 即可，如果需要使用 RESTful 协议，只要将 Binding 设置为 REST 即可。
 
@@ -41,7 +41,7 @@ public class RestfulSampleServiceImpl implements SampleService {
 
 在发布服务之后，用户可以通过浏览器来直接访问服务，对于上面的服务，访问的地址如下：
 
-```
+```plain
 http://localhost:8341/sample/hello
 ```
 

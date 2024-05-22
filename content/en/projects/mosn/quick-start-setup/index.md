@@ -18,7 +18,6 @@ Note: MOSN is developed based on Go 1.12.7 and uses dep for dependency managemen
 
 The codes for the MOSN project are hosted in [GitHub](https://github.com/mosn/mosn) and can be obtained in the following way:
 
-
 ```bash
 go get mosn.io/mosn
 ```
@@ -52,6 +51,7 @@ In the project root directory, select the following command to compile the MOSN 
 ```bash
 make build // compile linux 64bit executable binary
 ```
+
 **non-docker, local compilation**
 
 Compile local executable binary files.
@@ -59,16 +59,19 @@ Compile local executable binary files.
 ```bash
 make build-local
 ```
+
 Non-Linux machine compiles Linux 64-bit executable binary files crosswise.
 
 ```bash
 make build-linux64
 ```
+
 Non-Linux machine compiles Linux 32-bit executable binary files crosswise.
 
 ```bash
 make build-linux32
 ```
+
 Once compiled, the compiled binary files can be found in the `build/bundles/${version}/binary` directory.
 
 ## Create image

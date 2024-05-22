@@ -24,7 +24,8 @@ IDEA workspace 的编码：
 ## 数据源配置
 
 ACTS 配置数据源的目的，是为了在数据准备、数据清理、数据校验阶段，能够使用系统的数据源正确的进行 DB 增删改查。
-#### 数据源配置 
+
+#### 数据源配置
 
 在 `src/test/resource/config/acts-config.properties` 中配置 dal 层的 ModuleName、数据源以及表的对应关系，以 ds_ 开头，如下：
 
@@ -57,11 +58,11 @@ xxx_password = mypswd
 
 #### Java 类
 
- + AppNameActsBaseUtils.java
++ AppNameActsBaseUtils.java
 
     测试脚本编写过程中常用的从框架中获取各种数据的工具类，初始化搭建只提供了常用的方法，可自行添加。
 
- + AppNameActsTestBase.java
++ AppNameActsTestBase.java
 
     封装后的应用测试基类，业务系统如有特殊需求可在其上自行封装，如果没有则可以忽略此文件。
 

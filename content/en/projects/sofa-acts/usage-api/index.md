@@ -206,4 +206,3 @@ public void afterCheck(ActsRuntimeContext actsRuntimeContext) {
 ```
 
 You can simply annotate the method that you want to execute. Arguments of annotated methods must be consistent with those in the preceding example. ActsRuntimeContext is automatically passed to the annotated method for use by the ACTS framework.
-

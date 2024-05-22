@@ -91,7 +91,7 @@ Raft 算法是一种“共识性”算法，这里所谓的“共识性”主要
 
 ### 三、SOFAJRaft 优先级选举机制的实践示例
 
-在 SOFAJRaft 的 GitHub上有比较详细的 example 示例，链接：
+在 SOFAJRaft 的 GitHub 上有比较详细的 example 示例，链接：
 [https://github.com/sofastack/sofa-jraft/tree/master/jraft-example/src/main/java/com/alipay/sofa/jraft/example/priorityelection](https://github.com/sofastack/sofa-jraft/tree/master/jraft-example/src/main/java/com/alipay/sofa/jraft/example/priorityelection)
 
 其中的启动代码如下：
@@ -117,7 +117,7 @@ Raft 算法是一种“共识性”算法，这里所谓的“共识性”主要
 
 allowLaunchElection() 方法中定义了当前 Node 节点判断 priority 值与本地全局变量 targetPriority 值的逻辑。同时，如果在上一轮选举周期内没有选举出 Leader 角色的节点，那么执行目标优先级衰减降级方法，并设置相关的变量值。
 
-另外，还有一个问题需要注意，在 NodeImpl 中的 stepDown() 方法会调用stopAllAndFindTheNextCandidate()  方法去暂停所有日志复制的 Replicator 线程，同时找到下一个具有最完备日志的节点作为最后可能接任下一任 Leader 角色的 Candicate 候选人。所以引入优先级选举的概念后，除了需要比较日志的 log_index 值大小以外，如果两个节点的 log_index 值是相等的，那么还需要再判断 priority 值。具体的代码如下所示：
+另外，还有一个问题需要注意，在 NodeImpl 中的 stepDown() 方法会调用 stopAllAndFindTheNextCandidate()  方法去暂停所有日志复制的 Replicator 线程，同时找到下一个具有最完备日志的节点作为最后可能接任下一任 Leader 角色的 Candicate 候选人。所以引入优先级选举的概念后，除了需要比较日志的 log_index 值大小以外，如果两个节点的 log_index 值是相等的，那么还需要再判断 priority 值。具体的代码如下所示：
 
 ![SOFAJRaft_findTheNextCandidate](https://cdn.nlark.com/yuque/0/2020/png/439987/1587957589067-f76b8fea-0c44-4fb0-a2d3-a97e51e55c60.png)
 

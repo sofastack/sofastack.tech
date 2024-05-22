@@ -30,13 +30,13 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 欢迎大家在 GitHub 提交 issue 与我们互动
 
-我们会筛选 issue 通过 
+我们会筛选 issue 通过
 
 " SOFA WEEKLY " 的形式回复
 
 **1. @dengqian #2203**
 
->Why pprof debug server do not support hot upgrade?
+> Why pprof debug server do not support hot upgrade?
 
 A：Debug server init here：
 
@@ -77,9 +77,9 @@ func (m *Mosn) inheritConfig(c *v2.MOSNConfig) (err error) {
 
 **「MOSN」**：*[https://github.com//mosn/mosn/](https://github.com//mosn/mosn/)*
 
-**2. @yemoli #1290** 
+**2. @yemoli #1290**
 
->SOFARPC 发现了安全漏洞在哪提交呢？
+> SOFARPC 发现了安全漏洞在哪提交呢？
 
 A：可以邮件给：[khotyn.huangt@antgroup.com](khotyn.huangt@antgroup.com)。
 

@@ -21,7 +21,7 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 
 ### 这里有个机会和 SOFAStack 一起玩，你要不要来？
 
-阿里巴巴编程之夏（Alibaba Summer of Code，以下简称 ASoC）是面向全球18岁及以上本科、硕士、博士高校学生的编程普惠计划，鼓励高校学生深度参与开源开发活动，以第一视角感受开源世界的魅力，成为开源社区新鲜“血液”。
+阿里巴巴编程之夏（Alibaba Summer of Code，以下简称 ASoC）是面向全球 18 岁及以上本科、硕士、博士高校学生的编程普惠计划，鼓励高校学生深度参与开源开发活动，以第一视角感受开源世界的魅力，成为开源社区新鲜“血液”。
 
 **今年 SOFAStack 开源社区也加入了选题，有兴趣的同学可以尝试下以下 feature：**
 
@@ -31,13 +31,13 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 
 - Feature1:当前 LogStorage 的实现，采用 index 与 data 分离的设计，我们将 key 和 value 的 offset 作为索引写入 rocksdb，同时日志条目（data）写入 Segnemt Log，因为使用 SOFAJRaft 的用户经常也使用了不同版本的 rocksdb，这就要求用户不得不更换自己的 rocksdb 版本来适应 SOFAJRaft， 所以我们希望做一个改进：移除对 rocksdb 的依赖，构建出一个纯 java 实现的索引模块。这个 feature 难度适中，[https://github.com/sofastack/sofa-jraft/issues/453](https://github.com/sofastack/sofa-jraft/issues/453)
 
--  Feature2:这个 feature 更有挑战些，在 multi raft group 场景中，可能有多个 raft node 在同一个进程中并且很多都是 leader，当他们各自向自己的 followers 发送心跳时会过多的消耗 CPU 和网络 IO。例如我们可以在同一个进程内共享心跳计时器并将这些 leaders 发往同一台机器的心跳请求合并起来发送出去，以此来减少系统消耗，当然你还可以提供更多的优化方案。欢迎尝试 [https://github.com/sofastack/sofa-jraft/issues/454](https://github.com/sofastack/sofa-jraft/issues/454)
+- Feature2:这个 feature 更有挑战些，在 multi raft group 场景中，可能有多个 raft node 在同一个进程中并且很多都是 leader，当他们各自向自己的 followers 发送心跳时会过多的消耗 CPU 和网络 IO。例如我们可以在同一个进程内共享心跳计时器并将这些 leaders 发往同一台机器的心跳请求合并起来发送出去，以此来减少系统消耗，当然你还可以提供更多的优化方案。欢迎尝试 [https://github.com/sofastack/sofa-jraft/issues/454](https://github.com/sofastack/sofa-jraft/issues/454)
 
 **SOFABolt**
 
 是基于 Netty 最佳实践的轻量、易用、高性能、易扩展的通信框架。 这些年我们在微服务与消息中间件在网络通信上解决过很多问题，我们把总结出的解决方案沉淀到 SOFABolt 这个基础组件里，让更多的使用网络通信的场景能够统一受益。
 
-- Feature：当前的SOFABolt实现中私有协议是直接和整体框架耦合在一起的，在使用SOFABolt的同时需要使用提供的私有协议，当用户希望使用自己的自定义协议时需要进行比较有挑战的代码拓展才能实现。因此我们希望对SOFABolt的协议框架做一些重构以支持快速方便的集成用户的自定义协议。这个 feature 稍有难度，欢迎尝试，[https://github.com/sofastack/sofa-bolt/issues/224](https://github.com/sofastack/sofa-bolt/issues/224)
+- Feature：当前的 SOFABolt 实现中私有协议是直接和整体框架耦合在一起的，在使用 SOFABolt 的同时需要使用提供的私有协议，当用户希望使用自己的自定义协议时需要进行比较有挑战的代码拓展才能实现。因此我们希望对 SOFABolt 的协议框架做一些重构以支持快速方便的集成用户的自定义协议。这个 feature 稍有难度，欢迎尝试，[https://github.com/sofastack/sofa-bolt/issues/224](https://github.com/sofastack/sofa-bolt/issues/224)
 
 ### 每周读者问答提炼
 

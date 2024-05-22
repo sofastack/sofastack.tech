@@ -26,7 +26,6 @@ date: 2022-03-18T15:00:00+08:00
 | gmt_create     | Date    | create time       |
 | gmt_modified   | Date    | last update time  |
 
-
 ## 写入
 
 ### 写入缓存
@@ -52,7 +51,7 @@ public V execute(K key, Callable<V> callable) throws Exception {
 }
 ```
 
-二参数的 **execute** 统计修订号revision的命中和未命中次数统计 **metrics**，在通讯数据压缩暴露到 **prometheus**。
+二参数的 **execute** 统计修订号 revision 的命中和未命中次数统计 **metrics**，在通讯数据压缩暴露到 **prometheus**。
 
 ### 写入数据
 
@@ -155,7 +154,7 @@ if (entry.getGmtCreate().getTime() >= now.getTime() - DB_INSERT_DELAY_MS) {
 
 **为什么是 1s？**
 
-内部是分布式数据库，表内数据会被拆分到多个机器上，每台机器批量获取 id 属性，此时如果大量并发插入，可能产生 id 值高的已经入库，而低 id 还没有完全写入，这时 watch 方式会出现问题，漏掉低 id 值的数据，直到 list 调用才能被重新填入。而这种问题产生的间隔很短，因此 1s 的间隔能保证id值较低的数据已经被填入。
+内部是分布式数据库，表内数据会被拆分到多个机器上，每台机器批量获取 id 属性，此时如果大量并发插入，可能产生 id 值高的已经入库，而低 id 还没有完全写入，这时 watch 方式会出现问题，漏掉低 id 值的数据，直到 list 调用才能被重新填入。而这种问题产生的间隔很短，因此 1s 的间隔能保证 id 值较低的数据已经被填入。
 
 **listToTail** 方法返回当前最大可靠 id 值
 
@@ -244,7 +243,6 @@ public List<AppRevision> getExpired(Date beforeTime, int limit) {
 
 ## 总结
 
-**SOFARegistry** 内部的部分配置的更新需要及时感知，比如应用级服务发现的元数据变更，常见数据库并没有数据表变化通知的接口，**SOFARegistry** 实现了对于数据表更新实时watch的机制。
+**SOFARegistry** 内部的部分配置的更新需要及时感知，比如应用级服务发现的元数据变更，常见数据库并没有数据表变化通知的接口，**SOFARegistry** 实现了对于数据表更新实时 watch 的机制。
 
-**watch** 通过更新缓存id实现实时检测增量变化，实时感知失效数据。**list** 提供定时全量修正机制，补足 **watch** 对于的不足，缓存机制能防止大量节点同时上传大量相同数据造成可能的宕机。
-
+**watch** 通过更新缓存 id 实现实时检测增量变化，实时感知失效数据。**list** 提供定时全量修正机制，补足 **watch** 对于的不足，缓存机制能防止大量节点同时上传大量相同数据造成可能的宕机。

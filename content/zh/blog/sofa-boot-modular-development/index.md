@@ -31,7 +31,7 @@ SOFABoot 是蚂蚁金服中间件团队开源的基于 Spring Boot 的一个开�
 
 ![SOFABoot 模块化开发](https://gw.alipayobjects.com/zos/nemopainter_prod/f6372d29-cb2f-488f-a858-46f97a610e7c/sofastack-blog/resources-2018-07-2018-07-21-01-01.png)
 
-SOFABoot 模块是模块化开发的最小单元，每个 SOFABoot 模块是一个独立的 Spring 上下文，在 SOFABoot 模块中我们可以定义Bean、发布 RPC 服务、连接数据库等等。
+SOFABoot 模块是模块化开发的最小单元，每个 SOFABoot 模块是一个独立的 Spring 上下文，在 SOFABoot 模块中我们可以定义 Bean、发布 RPC 服务、连接数据库等等。
 
 由于上下文隔离，模块与模块之间的 Bean 无法通过 @Autowired 依赖注入，我们提供了 JVM Service/Reference 的方式进行模块间通信。SOFABoot 提供了两种形式的服务发布和引用，用于解决不同级别的模块间调用问题：
 
@@ -138,7 +138,7 @@ Demo [工程地址](https://github.com/caojie09/sofaboot-module-run)
 </parent>
 ```
 
-替换为: 
+替换为:
 
 ```xml
 <parent>
@@ -190,9 +190,8 @@ public class HelloController {
 }
 ```
 
-访问 http://localhost:8080/hello-sofamodule ，可以看到 HelloController 成功调用到了 service-provide 发布的服务。
+访问 <http://localhost:8080/hello-sofamodule> ，可以看到 HelloController 成功调用到了 service-provide 发布的服务。
 
 ## 5. 总结
 
 本文主要介绍了使用 SOFABoot 进行上下文隔离的模块化开发，通过两个简单的用例工程，分别介绍了如何开发一个 SOFABoot 模块以及如何在 Spring Boot 快速集成模块化开发能力。每个 SOFABoot 模块都是独立的 Spring 上下文，SOFABoot 模块不仅仅包括代码，还包括 Spring 配置文件，用户在引用 SOFABoot 模块时，只需简单增加依赖即可，由框架负责刷新模块上下文，无需在 Spring 中新增任何 Bean 定义，简化了接入流程，降低了出错几率。
-

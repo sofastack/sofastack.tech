@@ -1,9 +1,9 @@
 
 ---
+
 title: "Bolt 协议超时控制"
 aliases: "/sofa-rpc/docs/Bolt-Timeout"
 ---
-
 
 ## 超时控制
 

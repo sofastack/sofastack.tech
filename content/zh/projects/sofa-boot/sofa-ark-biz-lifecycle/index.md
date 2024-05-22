@@ -32,18 +32,23 @@ SOFAArk 合并部署时，除了宿主应用，其他 Biz 允许运行时动态�
 ![installation flow](installation-flow.png)
 
 + 解析模块
+
 > SOFAArk 容器会解析文件流，读取 Biz 配置，创建 BizClassLoader 等，生成 Biz 运行时模型
 
 + 注册模块
+
 > 注册解析后的 Biz 模型，设置状态为 resolved
 
 + 启动模块
+
 > 执行 Biz 的入口方法，完成上下文的刷新，如果报错则对外抛出异常
 
 + 健康检查
+
 > 启动完成，此时 Biz 还没有切换至下一个状态，将会执行应用健康检查，健康检查[参考 SOFABoot 文档](https://www.sofastack.tech/sofa-boot/docs/HealthCheck)，健康检查失败则抛出异常，如果应用没有引入 SOFABoot 健康检查依赖，则跳过
 
 + 切换状态
+
 > 健康检查成功，会切换 Biz 状态；如果不存在其他版本 Biz 处于激活状态，则切换状态至 Activated，否则切换状态至 DeActivated
 
 **注意：启动模块时抛出异常，均导致 Biz 启动失败，可以查看 sofa-ark/common-error.log 日志**
@@ -55,21 +60,27 @@ SOFAArk 合并部署时，除了宿主应用，其他 Biz 允许运行时动态�
 ![uninstallation-flow](uninstallation-flow.png)
 
 + 切换 Biz 状态至少 deactivated
+
 > 钝化 Biz, 防止流量进入正在卸载的 Biz
 
 + 关闭 ApplicationContext
+
 > 关闭 Biz 的 Spring 上下文，如果用户需要自定义卸载操作，可以监听 `ContextClosedEvent` 事件
 
 + 注销 JVM 服务
+
 > SOFAArk 运行时注销 Biz 发布的 JVM 服务
 
 + 发送卸载事件
+
 > 通知所有 Ark Plugin 和 Ark Biz，正在卸载某个 Biz
 
 + 清楚缓存
+
 > SOFAArk 运行时注销所有和该 Biz 相关的缓存
 
 + 切换 Biz 状态为 unresolved
+
 > Biz 执行完所有卸载操作时，将状态置为 unresolved
 
 #### 卸载面临的挑战

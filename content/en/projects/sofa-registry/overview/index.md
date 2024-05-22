@@ -34,7 +34,7 @@ A client provides basic APIs to allow applications to access SOFARegistry. The c
 
 ### SessionServer
 
-The SessionServer grants clients access to SessionServer, and accepts service publishing and subscription requests from clients. It also serves as an intermediate layer to forward the published data to DataServer for storage. The SessionServer can be infinitely scaled up to support connection with large amounts of clients. 
+The SessionServer grants clients access to SessionServer, and accepts service publishing and subscription requests from clients. It also serves as an intermediate layer to forward the published data to DataServer for storage. The SessionServer can be infinitely scaled up to support connection with large amounts of clients.
 
 ### DataServer
 
@@ -43,4 +43,3 @@ The DataServer is responsible for storing data published by clients. The data is
 ### MetaServer
 
 The MetaServer is responsible for maintaining the consistency lists of the SessionServer and DataServer within the cluster, and immediately notify other nodes in the case of any node changes. MetaServer ensures high availability and consistency based on [SOFAJRaft](https://github.com/sofastack/sofa-jraft).
-

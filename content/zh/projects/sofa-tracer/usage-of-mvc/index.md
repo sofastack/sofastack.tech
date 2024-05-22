@@ -67,9 +67,9 @@ public class SampleRestController {
 
 ```json
 {
-	content: "Hello, SOFATracer SpringMVC DEMO!",
-	id: 1,
-	success: true
+ content: "Hello, SOFATracer SpringMVC DEMO!",
+ id: 1,
+ success: true
 }
 ```
 

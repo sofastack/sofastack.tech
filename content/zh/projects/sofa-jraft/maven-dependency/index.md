@@ -2,7 +2,7 @@
 title: "Maven 依赖说明"
 ---
 
-## pom依赖
+## pom 依赖
 
 ```xml
     <!-- jraft -->

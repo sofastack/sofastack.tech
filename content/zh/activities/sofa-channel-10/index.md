@@ -22,7 +22,7 @@ description: "1 月 9 日周四晚 7 点，线上直播第 10 期。"
 
 ### | SOFAChannel
 
-`<SOFA:Channel/>` 有趣实用的分布式架构频道：前沿技术、直播 Coding、观点“抬杠”，多种形式。 
+`<SOFA:Channel/>` 有趣实用的分布式架构频道：前沿技术、直播 Coding、观点“抬杠”，多种形式。
 
 `<SOFA:Channel/>` 将作为 SOFA 所有在线内容的承载，包含直播/音视频教程，集中体现 SOFAStack 的能力全景图。
 
@@ -50,7 +50,7 @@ SOFAGirl 主持人
 
 屹远 蚂蚁金服分布式事务核心研发、Seata Committer
 
-### 本期分享大纲：
+### 本期分享大纲
 
 - 金融分布式应用开发的痛点
 - Seata Saga 理论基础以及使用场景

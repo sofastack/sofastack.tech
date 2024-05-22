@@ -9,9 +9,9 @@ date: 2021-05-25T15:00:00+08:00
 cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*nergRo8-RI0AAAAAAAAAAAAAARQnAQ"
 ---
 
->Mesh 模式的引入是实现应用云原生的关键路径，蚂蚁集团已在内部实现大规模落地。随着 Message、DB、Cache Mesh 等更多的中间件能力的下沉，从 Mesh 演进而来的应用运行时将是中间件技术的未来形态。应用运行时旨在帮助开发人员快速的构建云原生应用，帮助应用和基础设施进一步解耦，而应用运行时最核心是 API 标准，期望社区一起共建。
+> Mesh 模式的引入是实现应用云原生的关键路径，蚂蚁集团已在内部实现大规模落地。随着 Message、DB、Cache Mesh 等更多的中间件能力的下沉，从 Mesh 演进而来的应用运行时将是中间件技术的未来形态。应用运行时旨在帮助开发人员快速的构建云原生应用，帮助应用和基础设施进一步解耦，而应用运行时最核心是 API 标准，期望社区一起共建。
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*nergRo8-RI0AAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*nergRo8-RI0AAAAAAAAAAAAAARQnAQ)
 
 ### 蚂蚁集团 Mesh 化介绍
 
@@ -28,7 +28,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*nergRo8-RI0AAAAAA
 
 2018 年，蚂蚁的业务不仅仅是数字金融，还有数字生活、国际化等一些新战略的出现，促使我们要有更加高效的技术架构能让业务跑得更快更稳，所以蚂蚁结合业界比较流行的云原生的理念，在内部进行了 Service Mesh、Serverless、可信原生方向的一些落地。
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*KCSVTZWSf8wAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*KCSVTZWSf8wAAAAAAAAAAAAAARQnAQ)
 
 可以看到蚂蚁的技术架构也是跟随公司的业务创新不断演进的，前面的从集中式到 SOA 再到微服务的过程，相信搞过微服务的同学都深有体会，而从微服务到云原生的实践是蚂蚁近几年自己探索出来的。
 
@@ -36,7 +36,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*nergRo8-RI0AAAAAA
 
 蚂蚁既然有一套完整的微服务治理中间件，那为什么还需要引入 Service Mesh 呢？
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Sq7oR6eO2QAAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Sq7oR6eO2QAAAAAAAAAAAAAAARQnAQ)
 
 拿蚂蚁自研的服务框架 SOFARPC 为例，它是一个功能强大的 SDK，包含了服务发现、路由、熔断限流等一系列能力。在一个基本的 SOFA(Java) 应用里，业务代码集成了 SOFARPC 的 SDK，两者在一个进程里运行。在蚂蚁的大规模落地微服务之后，我们就面临了如下的一些问题：
 
@@ -64,7 +64,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*nergRo8-RI0AAAAAA
 
 目前 Mesh 化在蚂蚁落地规模是应用约数千个，容器数十万的级别，这个规模的落地，在业界是数一数二的，根本就没有前人的路可以学习，所以蚂蚁在落地过程中，也建设一套完整的研发运维体系去支撑蚂蚁的 Mesh 化。
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*eAlMT7SMTpMAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*eAlMT7SMTpMAAAAAAAAAAAAAARQnAQ)
 
 蚂蚁 Mesh 架构大概如图所示，底下是我们的控制平面，里面部署了服务治理中心、PaaS、监控中心等平台的服务端，都是现有的一些产品。还有就是我们的运维体系，包括研发平台和 PaaS 平台。那中间是我们的主角数据平面 MOSN，里面管理了 RPC、消息、MVC、任务四种流量，还有健康检查、监控、配置、安全、技术风险都下沉的基础能力，同时 MOSN 也屏蔽了业务和基础平台的一些交互。DBMesh 在蚂蚁是一个独立的产品，图里就没画出来。然后最上层是我们的一些应用，目前支持 Java、Nodejs 等多种语言的接入。
 对应用来说，Mesh 虽然能做到基础设施解耦，但是接入还是需要一次额外的升级成本，所以为了推进应用的接入，蚂蚁做了整个研发运维流程的打通，包括在现有框架上做最简化的接入，通过分批推进把控风险和进度，让新应用默认接入 Mesh 化等一些事情。
@@ -82,7 +82,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*nergRo8-RI0AAAAAA
 
 从 Service Mesh 到 Multi-Mesh：蚂蚁最早的场景是 Service Mesh，MOSN 通过网络连接代理的方式进行了流量拦截，其它的中间件都是通过原始的 SDK 与服务端进行交互。而现在的 MOSN 已经不仅仅是 Service Mesh 了，而是 Multi-Mesh，因为除了 RPC，我们还支持了更多中间件的 Mesh 化落地，包括消息、配置、缓存的等等。可以看到每个下沉的中间件，在应用侧几乎都有一个对应的轻量级 SDK 存在，这个在结合刚才的第一问题，就发现有非常多的轻量级 SDK 需要维护。为了保持功能不互相影响，每个功能它们开启不同的端口，通过不同的协议去和 MOSN 进行调用。例如 RPC 用的 RPC 协议，消息用的 MQ 协议，缓存用的 Redis 协议。然后现在的 MOSN 其实也不仅仅是面向流量了，例如配置就是暴露了一下 API 给业务代码去使用。
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*80o8SYwyHJoAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*80o8SYwyHJoAAAAAAAAAAAAAARQnAQ)
 
 为了解决刚才的问题和场景，我们就在思考如下的几个点：
 
@@ -94,13 +94,13 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*nergRo8-RI0AAAAAA
 
 4.底层的实现是否可以替换？
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*hsZBQJg0VnoAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*hsZBQJg0VnoAAAAAAAAAAAAAARQnAQ)
 
 ### 蚂蚁云原生应用运行时架构
 
 从去年的 3 月份开始，经过内部的多轮讨论，以及对业界一些新理念的调研，我们提出了一个“云原生应用运行时”（下称运行时）的概念。顾名思义，我们希望这个运行时能够包含应用所关心的所有分布式能力，帮助开发人员快速的构建云原生应用，帮助应用和基础设施进一步解耦！
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*iqQoTYAma4YAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*iqQoTYAma4YAAAAAAAAAAAAAARQnAQ)
 
 云原生应用运行时设计里核心的几个点如下：
 
@@ -112,10 +112,9 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*nergRo8-RI0AAAAAA
 
 **第四**，能力后面对应的组件实现是可以替换的，例如注册服务的提供者可以是 SOFARegistry，也可以是 Nacos 或者 Zookeeper。
 
-
 **运行时能力抽象**
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*hWIVR6ccduYAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*hWIVR6ccduYAAAAAAAAAAAAAARQnAQ)
 
 为了抽象出云原生应用最需要的一些能力，我们先定了几个原则：
 
@@ -127,33 +126,33 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*nergRo8-RI0AAAAAA
 
 这三个 proto 的示例可以看下图：
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*J76nQoLLYWgAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*J76nQoLLYWgAAAAAAAAAAAAAARQnAQ)
 
 **运行时组件管控**
 
 另外一方面，为了实现运行时的实现可替换，我们也在 MOSN 提了两个概念，我们把一个个分布式能力称为 Service，然后有不同的 Component 去实现这个 Service，一个 Service 可以有多个组件实现它，一个组件可以实现多个 Service。例如图里的示例就是有“MQ-pub” 这个发消息的 Service 有 SOFAMQ 和 Kafka 两个 Component 去实现，而 Kafka Component 则实现了发消息和健康检查两个 Service。
 当业务真正通过 gRPC 生成的客户端发起请求的时候，数据就会通过 gRPC 协议发送给 Runtime，并且分发到后面一个具体的实现上去。这样的话，应用只需要使用同一套 API，通过请求里的参数或者运行时的配置，就对接到不同的实现。
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*dK9rRLTvtlMAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*dK9rRLTvtlMAAAAAAAAAAAAAARQnAQ)
 
 **运行时和 Mesh 的对比**
 
 综上所述， 云原生应用运行时和刚才 Mesh 简单对比如下：
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*xyu9T74SD9MAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*xyu9T74SD9MAAAAAAAAAAAAAARQnAQ)
 
 云原生应用运行时落地场景
 从去年中开始研发，运行时目前在蚂蚁内部主要落地了下面几个场景。
 
 **异构技术栈接入**
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*8UJhRbBg3zsAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*8UJhRbBg3zsAAAAAAAAAAAAAARQnAQ)
 
 在蚂蚁，不同的语言的应用除了 RPC 服务治理、消息等的需求之外，还希望使用上蚂蚁统一的中间件等基础设施能力，Java 和 Nodejs 是有对应的 SDK 的，而其他语言是没有的对应的 SDK 的。有了应用运行时之后，这些异构语言就可以直接通过 gRPC Client 调用运行时，对接上蚂蚁的基础设施。
 
 **解除厂商绑定**
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*eVoqRbkTFFwAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*eVoqRbkTFFwAAAAAAAAAAAAAARQnAQ)
 
 刚才提到，蚂蚁的区块链、风控、智能客服、金融中台等等业务是既在主站部署，又有阿里云或者专有云部署的场景。有了运行时之后，应用可以一套代码和运行时一起出一个镜像，通过配置去决定调用哪个底层的实现，不跟具体的实现绑定。例如在蚂蚁内部对接的是 SOFARegistry 和 SOFAMQ 等产品，而到云上对接的是 Nacos、RocketMQ 等产品，到专有云对接的又是 Zookeeper、Kafka 等。这个场景我们正在落地当中。当然这个也可以用在遗留系统治理上，例如从 SOFAMQ 1.0 升级到 SOFAMQ 2.0，接了运行时的应用也无需升级。
 
@@ -167,13 +166,13 @@ FaaS 冷启预热池也是我们近期在探索的一个场景，大家知道 Fa
 
 运行时里最主要的一部分就是 API 的定义，为了落地内部，我们已经有一套较为完整的 API，但是我们也看到业界的很多产品有类似的诉求，例如 dapr、envoy 等等。所以接下来我们会去做的一件事情就是联合各个社区去推出一套大家都认可的云原生应用 API。
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*d2BORogVotoAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*d2BORogVotoAAAAAAAAAAAAAARQnAQ)
 
 **持续开源**
 
 另外我们近期也会将内部的运行时实践逐步开发出来，预计五六月份会发布 0.1 版本，并保持每月发布一个小版本的节奏，争取年底之前发布 1.0 版本。
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Kgr9QLc5TH4AAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Kgr9QLc5TH4AAAAAAAAAAAAAARQnAQ)
 
 ### 总结
 
@@ -199,6 +198,4 @@ FaaS 冷启预热池也是我们近期在探索的一个场景，大家知道 Fa
 
 - [Protocol Extension Base On Wasm——协议扩展篇](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247487546&idx=1&sn=72c3f1ede27ca4ace7988e11ca20d5f9&chksm=faa0ffe0cdd776f6d17323466b500acee50a371663f18da34d8e4cbe32304d7681cf58ff9b45&scene=21)
 
->![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*s3UzR6VeQ6cAAAAAAAAAAAAAARQnAQ)
-
-
+> ![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*s3UzR6VeQ6cAAAAAAAAAAAAAARQnAQ)

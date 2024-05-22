@@ -6,7 +6,7 @@ aliases: "/sofa-tracer/docs/Usage_Of_OkHttp"
 
 # OkHttp Integration
 
-In this document will demonstrate how to use SOFATracer to track of OkHttp, this example [address] (https://github.com/sofastack-guides/sofa-tracer-guides/tree/sofaboot-2.x/tracer-sample-with-okhttp).
+In this document will demonstrate how to use SOFATracer to track of OkHttp, this example [address] (<https://github.com/sofastack-guides/sofa-tracer-guides/tree/sofaboot-2.x/tracer-sample-with-okhttp>).
 
 Assuming you have built a simple Spring Web project based on SOFABoot, Then you can be operated by the following steps:
 
@@ -25,6 +25,7 @@ Assuming you have built a simple Spring Web project based on SOFABoot, Then you 
     <version>3.12.1</version>
 </dependency>
 ```
+
 ## Project Configuration
 
 Then, add the parameters to be used by SOFATracer in the project's `application.properties` file, including `spring.application.name` that indicates the name of the current application and `logging.path` that specifies the log output directory.
@@ -62,6 +63,7 @@ public class SampleRestController {
     }
 }
 ```
+
 ## Construct OkHttp to initiate a call to the RESTful service above
 
 The code example is as follows:
@@ -78,7 +80,7 @@ String responseStr = httpClient.executeGet(httpGetUrl);
 
 Start the SOFABoot app and see the log in the console as follows:
 
-```
+```plain
 2019-04-12 13:38:09.896  INFO 51193 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
 2019-04-12 13:38:09.947  INFO 51193 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8081 (http)
 2019-04-12 13:38:09.952  INFO 51193 --- [           main] c.a.s.t.e.okhttp.OkHttpDemoApplication   : Started OkHttpDemoApplication in 3.314 seconds (JVM running for 4.157)
@@ -86,7 +88,7 @@ Start the SOFABoot app and see the log in the console as follows:
 
 When there is a log similar to the following, the call to OkHttp is successful:
 
-```
+```plain
 2019-04-12 13:38:10.205  INFO 51193 --- [           main] c.a.s.t.e.okhttp.OkHttpDemoApplication   : Response is {"count":1,"name":"sofa"}
 ```
 
@@ -94,7 +96,7 @@ When there is a log similar to the following, the call to OkHttp is successful:
 
 In the `application.properties`, the log printing directory we configured is `./logs`, which is the root directory of the current application (we can configure it based on actual situation). In the root directory, you can see log files in the structure similar to the followings:
 
-```
+```plain
 ./logs
 ├── spring.log
 └── tracelog
@@ -106,7 +108,7 @@ In the `application.properties`, the log printing directory we configured is `./
     └── tracer-self.log
 ```
 
-In the example, you can see logs like the following in okhttp-digest. 
+In the example, you can see logs like the following in okhttp-digest.
 
 ```json
 {"time":"2019-04-12 13:38:10.187","local.app":"OkHttpDemo","traceId":"0a0fe85a1555047489980100151193","spanId":"0","request.url":"http://localhost:8081/okhttp?name=sofa","method":"GET","result.code":"200","req.size.bytes":0,"resp.size.bytes":0,"time.cost.milliseconds":207,"current.thread.name":"main","remote.app":"","baggage":""}

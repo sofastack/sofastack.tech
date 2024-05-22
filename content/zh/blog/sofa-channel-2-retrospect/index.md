@@ -53,7 +53,7 @@ Router 是路由层，主要是做寻址，这里可能是 Zk，也可能是 LVS
 
 首先我想介绍一下自定义通讯协议。
 
-在说明自定义通讯协议之前，我先简单介绍一下通讯协议。在TCP之上，RPC框架通常还需要将请求和响应数据进行一定的封装，组装成 Packet，然后发送出去。这样，服务端收到之后，才能正确识别整个 TCP 发过来的字节流中，哪一部分是我们可以进行处理的一个完整单位。反之，客户端收到服务端的TCP 数据流也是如此。
+在说明自定义通讯协议之前，我先简单介绍一下通讯协议。在 TCP 之上，RPC 框架通常还需要将请求和响应数据进行一定的封装，组装成 Packet，然后发送出去。这样，服务端收到之后，才能正确识别整个 TCP 发过来的字节流中，哪一部分是我们可以进行处理的一个完整单位。反之，客户端收到服务端的 TCP 数据流也是如此。
 
 有了上面的共识之后，我们要回答下面两个问题：
 
@@ -84,7 +84,7 @@ Http2 虽然更为通用，但是一方面，出现较晚，迁移转换成本�
 关于 SOFABolt 相关的源码解析，也可以通过这个系列来了解。
 
 SOFABolt  源码解析系列：点击【剖析 | SOFABOLT 框架】即可查看）
-[https://www.sofastack.tech/blog](https://www.sofastack.tech/blog) 
+[https://www.sofastack.tech/blog](https://www.sofastack.tech/blog)
 
 ## Netty 性能参数优化
 
@@ -92,19 +92,19 @@ SOFABolt  源码解析系列：点击【剖析 | SOFABOLT 框架】即可查�
 
 直接使用是比较简单的。在 Netty 的 Bootstrap 的设置中，有一些可选的优化项，有必要跟大家分享一下。
 
-**1. SO_REUSEPORT/SO_REUSEADDR - 端口复用(允许多个 socket 监听同一个IP+端口)**
+**1. SO_REUSEPORT/SO_REUSEADDR - 端口复用(允许多个 socket 监听同一个 IP+端口)**
 
 SO_REUSEPORT 支持多个进程或者线程绑定到同一端口，提高服务器的接收链接的并发能力，由内核层面实现对端口数据的分发的负载均衡，在服务器 socket 上没有了锁的竞争。
 
-同时 SO_REUSEADDR也要打开，这样针对 time-wait 链接 ，可以确保 server 重启成功。在一些服务端启动很快的情况下，可以防止启动失败。
+同时 SO_REUSEADDR 也要打开，这样针对 time-wait 链接 ，可以确保 server 重启成功。在一些服务端启动很快的情况下，可以防止启动失败。
 
-**2. TCP_FASTOPEN - 3次握手时也用来交换数据**
+**2. TCP_FASTOPEN - 3 次握手时也用来交换数据**
 
 三次握手的过程中，当用户首次访问服务端时，发送 syn 包，server 根据客户端 IP 生成 cookie ，并与 syn+ack 一同发回客户端；客户端再次访问服务端时，在 syn 包携带 TCP cookie；如果服务端校验合法，则在用户回复 ack 前就可以直接发送数据；否则按照正常三次握手进行。也就是说，如果客户端中途断开，再建联的时候，会同时发送数据，会有一定的性能提升。
 
 TFO 提高性能的关键是省去了热请求的三次握手，这在小对象传输较多的移动应用场景中，能够极大提升性能。
 
-Netty 中仅在 Epoll 的时候可用 Linux特性，不能在 Mac/Windows 上使用，SOFARPC 未开启。
+Netty 中仅在 Epoll 的时候可用 Linux 特性，不能在 Mac/Windows 上使用，SOFARPC 未开启。
 
 **3. TCP_NODELAY-关闭 (纳格) Nagle 算法，再小的包也发送，而不是等待**
 
@@ -120,17 +120,17 @@ TCP/IP 协议中针对 TCP 默认开启了 [Nagle](https://en.wikipedia.org/wik
 
 **6. workerGroup**
 
-worker 线程数设置 处理器+1，Netty 默认是线程数*2，可以根据自己的压测情况来判断。Boss Group 用于服务端处理建立连接的请求，WorkGroup 用于处理I/O。为了避免线程上下文切换，只要能满足要求，这个值一般越少越好。
+worker 线程数设置 处理器+1，Netty 默认是线程数*2，可以根据自己的压测情况来判断。Boss Group 用于服务端处理建立连接的请求，WorkGroup 用于处理 I/O。为了避免线程上下文切换，只要能满足要求，这个值一般越少越好。
 
 **7. ioRadio 设置**
 
-EventLoop#ioRatio 的设置(默认50), 这是 EventLoop 执行 IO 任务和非 IO 任务的一个时间比例上的控制，BOLT 最佳实践是70，表示70%的时间在执行 IO 任务。
+EventLoop#ioRatio 的设置(默认 50), 这是 EventLoop 执行 IO 任务和非 IO 任务的一个时间比例上的控制，BOLT 最佳实践是 70，表示 70%的时间在执行 IO 任务。
 
 **8、SO_BACKLOG 设置**
 
-在 Linux 系统内核中维护了两个队列：syns queue 和 accept queue。第一个是半连接队列，保存收到客户端 syn 之后，进入 syn_recv 状态的这些连接，默认 netty 中是128，`io.netty.util.NetUtil#SOMAXCONN` ，然后读取``/proc/sys/net/core/somaxconn``  来继续确定，之后还有一些系统级别的覆盖逻辑。
+在 Linux 系统内核中维护了两个队列：syns queue 和 accept queue。第一个是半连接队列，保存收到客户端 syn 之后，进入 syn_recv 状态的这些连接，默认 netty 中是 128，`io.netty.util.NetUtil#SOMAXCONN` ，然后读取``/proc/sys/net/core/somaxconn``  来继续确定，之后还有一些系统级别的覆盖逻辑。
 
-在一些场景下，如果客户端远远多余服务端，并发建联，可能不够。这个值也不能太大，否则会无法防止 SYN-Flood 攻击。Bolt 中目前这个值修改成了1024。通过设置之后，由于自己设置的和系统的取小，所以自己设置的值相当于设置了上限。如果 Linux 系统运维某些设置错误，也能通过代码层面进行避免。
+在一些场景下，如果客户端远远多余服务端，并发建联，可能不够。这个值也不能太大，否则会无法防止 SYN-Flood 攻击。Bolt 中目前这个值修改成了 1024。通过设置之后，由于自己设置的和系统的取小，所以自己设置的值相当于设置了上限。如果 Linux 系统运维某些设置错误，也能通过代码层面进行避免。
 
 目前我们的 Linux 层面，通常设置的是 128，最终经过计算会设置为 128。
 
@@ -145,21 +145,21 @@ Netty 设置基本 ok，协议也确定之后，连接的保持就比较重要�
 1. 如何解决初次建联的问题？
 1. 心跳是单向还是双向？
 
-前面我们说过了，Keep Alive 已经打开了。不过，Keep Alive 还不够，主要是经过很多网络设备之后，Keep Alive可能失效，另外 Keep Alive 是一个 Linux 层面的设置，有时候整个系统并未打开。这些不可控的因素都会导致我们的连接管理失效。
+前面我们说过了，Keep Alive 已经打开了。不过，Keep Alive 还不够，主要是经过很多网络设备之后，Keep Alive 可能失效，另外 Keep Alive 是一个 Linux 层面的设置，有时候整个系统并未打开。这些不可控的因素都会导致我们的连接管理失效。
 
 ![Keep Alive 图](https://cdn.nlark.com/yuque/0/2019/png/226702/1550734947410-5fca8399-eaaf-4fd0-827a-cb4d3dafd6c1.png)
 
 上面是 Keep Alive 的处理，主要是在没有读写事件一段时间后，进行数据包的发送来保活。
 
-因为我们需要更通用的连接保持方案。连接管理核心的基于 Netty 的 Idle 事件来做。BOLT 的设置为单向心跳，客户端发，服务端收，减少心跳数据在网络上的传输量。有些 RPC 框架会使用双向心跳，同时，BOLT 在连接管理上，也允许一个地址，建立多个连接，这样可以在发送时，最大限度的利用网卡。默认为1，连接数在满足传输吞吐量的情况下越少越好。
+因为我们需要更通用的连接保持方案。连接管理核心的基于 Netty 的 Idle 事件来做。BOLT 的设置为单向心跳，客户端发，服务端收，减少心跳数据在网络上的传输量。有些 RPC 框架会使用双向心跳，同时，BOLT 在连接管理上，也允许一个地址，建立多个连接，这样可以在发送时，最大限度的利用网卡。默认为 1，连接数在满足传输吞吐量的情况下越少越好。
 
-但是这里要注意，如果你的场景是有大量的服务端，那么这个数据不建议进行扩大。因为 tcp 连接会成倍增长，反而带来性能下降。目前蚂蚁这边大部分也多为1。
+但是这里要注意，如果你的场景是有大量的服务端，那么这个数据不建议进行扩大。因为 tcp 连接会成倍增长，反而带来性能下降。目前蚂蚁这边大部分也多为 1。
 
 ![RPC 连接管理](https://cdn.nlark.com/yuque/0/2019/png/226702/1550734947428-27804e30-d8a1-4ade-b1eb-3e2780bd3570.png)
 
 在 BOLT 连接管理的基础上，RPC 为了避免第一次用户请求，进行建联并发送的延迟，RPC 还有一个连接管理的线程，会异步的进行连接初始化。这样，当真正的请求发起的时候，连接已经准备好了，可以减少一次建联的耗时对业务的影响。
 
-对于 LVS 和 VIP 的场景下，由于长连接的特性，即使后端有 100个 IP，对客户端来说，也只能和一个 IP 进行通信，因为这些设备是建联层面的，并非通信层面的。所以对这种情况。，一个 RPC 框架也要考虑支持定时断链和重连。
+对于 LVS 和 VIP 的场景下，由于长连接的特性，即使后端有 100 个 IP，对客户端来说，也只能和一个 IP 进行通信，因为这些设备是建联层面的，并非通信层面的。所以对这种情况。，一个 RPC 框架也要考虑支持定时断链和重连。
 
 ## 序列化选择
 
@@ -209,7 +209,7 @@ DEMO 链接：[https://github.com/leizhiyuan/rpcchannel](https://github.com/leiz
 
 我们自己的测试数据显示 Javassist Bytecode 的方式是除了 Asm 之外，性能最好的。Asm 由于使用写法非常反人类，所以我们目前还是使用的 Javassist Bytecode 的方式。
 
-| **Benchmark                                   ** | **Mode  ** | **Cnt  ** | Score | Error | **Units** |
+| **Benchmark** | **Mode** | **Cnt** | Score | Error | **Units** |
 | --- | --- | --- | --- | --- | --- |
 | ProxyInvokeBenchmark.invokeByAsm             | avgt   | 10 | 7.865 | ±0.028 | ns/op |
 | ProxyInvokeBenchmark.invokeByBytebuddy       | avgt   | 10 | 14.318 | ± 0.41 | ns/op |
@@ -220,7 +220,7 @@ DEMO 链接：[https://github.com/leizhiyuan/rpcchannel](https://github.com/leiz
 
 可优先选择 javassist bytecode，有一定的性能优势，性能测试可以根据自己的情况，使用 JMH 进行测试。测试代码和版本在 DEMO 中提供。
 
-## 总结 
+## 总结
 
 得益于 Java 社区的发展以及前辈们的贡献，目前写一个 RPC 框架并不是很难。但是作为一个 RPC 框架，需要在可维护性的基础上，尽可能提高自身性能，将在实际过程中遇到的一些场景和异常情况进行修复和优化，并进行更好的代码设计和实现。对于性能上的数据，可以多使用 JMH 并结合实际业务场景，进行相应的测试。
 
@@ -228,7 +228,7 @@ DEMO 链接：[https://github.com/leizhiyuan/rpcchannel](https://github.com/leiz
 
 ## 直播报名
 
-下期我们将在本月28号与大家见面， SOFARPC 性能优化（下），我们会带来关于线程池隔离，Server Fail Fast，内存操作优化，用户可调节参数等方面的介绍。
+下期我们将在本月 28 号与大家见面， SOFARPC 性能优化（下），我们会带来关于线程池隔离，Server Fail Fast，内存操作优化，用户可调节参数等方面的介绍。
 
 大家可以点击链接进行报名。
 

@@ -35,18 +35,18 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **@来永国** 提问：
 
->想问下，发现在 SOFA 的 spi 加载扩展的时候，是有做到 getExtensionLoader 遍历 META-INF 的，但是没搞懂是怎么做到的。br/
+> 想问下，发现在 SOFA 的 spi 加载扩展的时候，是有做到 getExtensionLoader 遍历 META-INF 的，但是没搞懂是怎么做到的。br/
 >![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*eHKJSaw91Y8AAAAAAAAAAAAAARQnAQ)
 
 A：在这个方法里: com.alipay.sofa.rpc.ext.ExtensionLoader#loadFromFile，getResource 这边可以获得多个文件。
 
 **@半个馒头** 提问：
 
->多次提交 raft 日志会自动触发 jraft 的 leader 转移吗？
+> 多次提交 raft 日志会自动触发 jraft 的 leader 转移吗？
 
 A：不会，可能是其他场景触发的。
 
->steps down when alive nodes don't satisfy quorum.
+> steps down when alive nodes don't satisfy quorum.
 
 A：是 leader 中发现半数节点在心跳周期内没有心跳了。
 

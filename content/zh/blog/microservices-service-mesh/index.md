@@ -34,7 +34,7 @@ cover: "https://cdn.nlark.com/yuque/0/2020/png/226702/1594722961910-8729a230-c26
 
 ## Service Mesh 定义
 
-Service Mesh 一词最早由开发 Linkerd 的 Buoyant 公司提出，并于 2016 年 9 月29 日第一次公开使用了这一术语。William Morgan，Buoyant CEO，对 Service Mesh 这一概念定义如下：
+Service Mesh 一词最早由开发 Linkerd 的 Buoyant 公司提出，并于 2016 年 9 月 29 日第一次公开使用了这一术语。William Morgan，Buoyant CEO，对 Service Mesh 这一概念定义如下：
 
 > A service mesh is a dedicated infrastructure layer for handling service-to-service communication. It’s responsible for the reliable delivery of requests through the complex topology of services that comprise a modern, cloud native application. In practice, the service mesh is typically implemented as an array of lightweight network proxies that are deployed alongside application code, without the application needing to be aware.
 
@@ -101,7 +101,7 @@ Service Mesh 是一个专门处理服务通讯的基础设施层。它的职责�
 
 ServiceMesher 社区从成立以来，举办过九场线下 Meetup 以及一场线上 Virtual Meetup，来自蚂蚁集团、网易、阿里集团、新浪、美团、百度等一线互联网公司分别都分享了各自公司关于服务网格的设计、实践与落地挑战，业界知名技术大会，也经常能看到大厂的专家与架构师分享服务网格落地相关的主题。可谓是**百花齐放，百家争鸣**！这些技术方案不外乎三种：其一，借鉴服务网格通信代理的思想，基于公司内部服务框架改革而来，强依赖内部 RPC 框架与协议，仅适用于本公司的服务网格技术方案；其二，基于服务网格开源框架 Istio 与 知名数据面开源项目 Envoy 进行改版，以适配公司内部通信与安全协议，兼容内部注册中心与配置中心，具有一定普适性的企业级服务网格解决方案；其三，自研数据面（如蚂蚁集团的 MOSN），或者完全自研数据面与控制面，去除外部依赖，支持快速迭代与自由扩展，追求实际业务收益最大化。
 
-然而，各大厂对服务网格的探索有一段时间了，实际的大规模落地案例却不多。我们不禁反思，**火了2年的服务网格究竟给微服务带来了什么？**我们很难在此刻去判定上述三个方案的优劣，但是有一点，服务网格作为第二代微服务框架的地位是一贯且明确的。此外，不管直接采用开源方案还是完全自研，知名开源项目体现出来的架构思想与理念值得所有云原生技术人员学习和参考。当然开源项目也需要大家共建，希望更多大厂内部的优秀实践能不断反馈到社区里面来，共同促进服务网格的发展与繁荣。
+然而，各大厂对服务网格的探索有一段时间了，实际的大规模落地案例却不多。我们不禁反思，**火了 2 年的服务网格究竟给微服务带来了什么？**我们很难在此刻去判定上述三个方案的优劣，但是有一点，服务网格作为第二代微服务框架的地位是一贯且明确的。此外，不管直接采用开源方案还是完全自研，知名开源项目体现出来的架构思想与理念值得所有云原生技术人员学习和参考。当然开源项目也需要大家共建，希望更多大厂内部的优秀实践能不断反馈到社区里面来，共同促进服务网格的发展与繁荣。
 
 ## 总结
 

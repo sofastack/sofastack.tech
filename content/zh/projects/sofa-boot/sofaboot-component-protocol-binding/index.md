@@ -10,7 +10,7 @@ date: 2022-07-19T15:00:00+08:00
 
 ## 前言
 
-SOFABoot 提供两种服务通信能力，一种是 JVM 服务，用于同一应用内不同模块间的通信，一种是 RPC 服务，用于不同应用间的通信。SOFABoot 提供三种方式实现服务的发布和引用，分别是XML 配置文件、注解和 API 的方式，本文从源码角度解析从服务的发布和引用到组件协议 binding 机制的实现原理。
+SOFABoot 提供两种服务通信能力，一种是 JVM 服务，用于同一应用内不同模块间的通信，一种是 RPC 服务，用于不同应用间的通信。SOFABoot 提供三种方式实现服务的发布和引用，分别是 XML 配置文件、注解和 API 的方式，本文从源码角度解析从服务的发布和引用到组件协议 binding 机制的实现原理。
 
 ## 服务发布与引用
 
@@ -389,16 +389,16 @@ public class ReferenceClientImpl implements ReferenceClient {
 
 ## 组件协议 binding
 
-在介绍组件协议 binding 机制之前，先看一下binding机制中的一些重要接口
+在介绍组件协议 binding 机制之前，先看一下 binding 机制中的一些重要接口
 
 | 接口类 | 说明 |
 | --- | --- |
-| com.alipay.sofa.runtime.spi.binding.Binding | SOFA 组件协议接口，表示服务绑定了哪些协议，对外提供哪些协议的服务调用方式。SOFABoot 内置 JVM协议、RPC协议（bolt、dubbo等） |
-| com.alipay.sofa.runtime.api.client.param.BindingParam | SOFA 组件协议参数接口，每种服务协议都需要配置一些参数，比如RPC协议通常需要配置超时时间、负载均衡算法等 |
-| com.alipay.sofa.runtime.spi.service.BindingConverter | Binding转换器接口，用于将服务协议配置转换为具体的Binding |
-| com.alipay.sofa.runtime.spi.service.BindingConverterFactory | Binding转换器工厂，能够通过协议名获取Binding转换器 |
-| com.alipay.sofa.runtime.spi.binding.BindingAdapter | Binding适配器，用于将Binding服务发布出去或生成服务引用 |
-| com.alipay.sofa.runtime.spi.binding.BindingAdapterFactory | Binding适配器工厂，能够通过协议名获取Binding适配器 |
+| com.alipay.sofa.runtime.spi.binding.Binding | SOFA 组件协议接口，表示服务绑定了哪些协议，对外提供哪些协议的服务调用方式。SOFABoot 内置 JVM 协议、RPC 协议（bolt、dubbo 等） |
+| com.alipay.sofa.runtime.api.client.param.BindingParam | SOFA 组件协议参数接口，每种服务协议都需要配置一些参数，比如 RPC 协议通常需要配置超时时间、负载均衡算法等 |
+| com.alipay.sofa.runtime.spi.service.BindingConverter | Binding 转换器接口，用于将服务协议配置转换为具体的 Binding |
+| com.alipay.sofa.runtime.spi.service.BindingConverterFactory | Binding 转换器工厂，能够通过协议名获取 Binding 转换器 |
+| com.alipay.sofa.runtime.spi.binding.BindingAdapter | Binding 适配器，用于将 Binding 服务发布出去或生成服务引用 |
+| com.alipay.sofa.runtime.spi.binding.BindingAdapterFactory | Binding 适配器工厂，能够通过协议名获取 Binding 适配器 |
 
 组件协议 binding 是服务发布和引用流程的一部分，因此我们从这两个角度分别看一下实现方式。
 
@@ -525,7 +525,7 @@ private void resolveBinding() {
 }
 ```
 
-BindingAdapter 的 preOutBinding 方法有两个实现，一个是 JVM 协议的 JvmBindingAdapter，但方法中没有具体实现代码，也就是说预发布 JVM 协议的服务不需要做特殊处理；另外一个是 RPC 协议的 RpcBindingAdapter，将 Binding 转换为服务提供者信息ProviderConfig，并将 ProviderConfig 添加到ProviderConfigContainer。
+BindingAdapter 的 preOutBinding 方法有两个实现，一个是 JVM 协议的 JvmBindingAdapter，但方法中没有具体实现代码，也就是说预发布 JVM 协议的服务不需要做特殊处理；另外一个是 RPC 协议的 RpcBindingAdapter，将 Binding 转换为服务提供者信息 ProviderConfig，并将 ProviderConfig 添加到 ProviderConfigContainer。
 
 ```java
 public void preOutBinding(Object contract, RpcBinding binding, Object target,
@@ -617,7 +617,7 @@ public Object outBinding(Object contract, RpcBinding binding, Object target,
 
 #### ServiceClient
 
-在分析过 ServiceFactoryBean 之后，再来看 ServiceClient的源码，binding 的实现是相似的：通过 BindingConverter 工厂获取组件协议的 BindingConverter，调用 convert 方法将配置转换为组件协议 Binding。与 ServiceFactoryBean 不同的是，不管是否绑定了其他组件协议都会默认绑定 JVM 协议。调用 ComponentManager 的 register 方法，注册 ServiceComponent，从而实现服务的发布。
+在分析过 ServiceFactoryBean 之后，再来看 ServiceClient 的源码，binding 的实现是相似的：通过 BindingConverter 工厂获取组件协议的 BindingConverter，调用 convert 方法将配置转换为组件协议 Binding。与 ServiceFactoryBean 不同的是，不管是否绑定了其他组件协议都会默认绑定 JVM 协议。调用 ComponentManager 的 register 方法，注册 ServiceComponent，从而实现服务的发布。
 
 ```java
 public void service(ServiceParam serviceParam) {
@@ -695,7 +695,7 @@ protected void doAfterPropertiesSet() {
 }
 ```
 
-在 ReferenceRegisterHelper 的 registerReference 方法中，如果服务引用绑定协议是 JVM 以外的协议，且配置了 JVM 调用优先，那么就在绑定协议中再追加一个 JVM协议。再调用 ComponentManager 的 registerAndGet 方法，注册 ReferenceComponent。
+在 ReferenceRegisterHelper 的 registerReference 方法中，如果服务引用绑定协议是 JVM 以外的协议，且配置了 JVM 调用优先，那么就在绑定协议中再追加一个 JVM 协议。再调用 ComponentManager 的 registerAndGet 方法，注册 ReferenceComponent。
 
 ```java
 public class ReferenceRegisterHelper {
@@ -730,7 +730,7 @@ public class ReferenceRegisterHelper {
 }
 ```
 
-这里与服务发布的流程一样，在ComponentManager 的注册方法中：调用 ReferenceComponent 的 register 方法，将组件状态更新为 REGISTERED。调用resolve 方法，将组件状态更新为 RESOLVED。调用 activate 方法，激活组件，创建服务引用客户端代理，并将组件状态更新为 ACTIVATED。
+这里与服务发布的流程一样，在 ComponentManager 的注册方法中：调用 ReferenceComponent 的 register 方法，将组件状态更新为 REGISTERED。调用 resolve 方法，将组件状态更新为 RESOLVED。调用 activate 方法，激活组件，创建服务引用客户端代理，并将组件状态更新为 ACTIVATED。
 
 ```java
 public ComponentInfo registerAndGet(ComponentInfo componentInfo) {

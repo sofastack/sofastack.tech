@@ -24,16 +24,22 @@ SOFAMosn can not only support the standard Istio deployment mode, but also suppo
     ```SHELL
     export PATH=$PWD/bin;$PATH
     ```
+
 4. Pull up the Istio control plane container:
+
     ```SHELL
     docker-compose -f install/zookeeper/istio.yaml up -d
     ```
+
 5. Ensure that all Docker containers are running:
+
    ```SHELL
    docker ps -a
    ```
+
     If the Istio pilot container terminates unexpectedly, you can run the `istioctl context-create` command and re-execute the previous command.
 6. Configure istioctl to use the Istio API server:
+
     ```bash
     istioctl context-create -context istio-local --api-server
     ```

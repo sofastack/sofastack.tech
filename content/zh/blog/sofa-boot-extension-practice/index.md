@@ -18,7 +18,6 @@ cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1563455530059-b90e96a5-b1
 
 > 后面拿枪的就是"逼着"我写文章的五花肉，上次 SOFATracer 采样用的是刀，这次用了枪！
 
-
 ## 模块化与扩展点
 
 言归正传，节前 SOFABoot 发布了 [2.6.x 系列版本](https://github.com/alipay/sofa-boot/releases)，新特性也是相当给力，这里简单罗列下新特性：
@@ -42,13 +41,13 @@ cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1563455530059-b90e96a5-b1
 那么这里我们就可以选择使用 SOFABoot 扩展点来实现，这里有两个比较重要的概念，也是扩展点区别于 SPI 的主要特性：
 
 - 可以在基于 Spring 上下文隔离的情况下实现扩展
-- 扩展的是 Spring Bean 
+- 扩展的是 Spring Bean
 
 下面基于这两个点，来完成自定义扩展点的一个案例。在实现上述案例之前我们需要先构建一个基于 Spring 上下文隔离的模块化工程，然后再简单介绍下扩展点的基本使用方式。
 
 ## 构建模块化工程
 
-SOFABoot 开源版本中并没有给出扩展点相关的案例工程，只是在测试用例中进行了详细的测试，有兴趣的同学可以看下相关测试用例代码。实际上测试用例中也没有涉及到在模块化的场景下使用扩展点，测试用例都是基于同一个Spring 上下文来完成的。本篇文章将先搭建一个简单的模块化工程，然后基于此工程来实现扩展点的能力。
+SOFABoot 开源版本中并没有给出扩展点相关的案例工程，只是在测试用例中进行了详细的测试，有兴趣的同学可以看下相关测试用例代码。实际上测试用例中也没有涉及到在模块化的场景下使用扩展点，测试用例都是基于同一个 Spring 上下文来完成的。本篇文章将先搭建一个简单的模块化工程，然后基于此工程来实现扩展点的能力。
 
 本工程主要包括 4 个模块：
 
@@ -97,7 +96,7 @@ SOFABoot 开源版本中并没有给出扩展点相关的案例工程，只是�
 - ref：为扩展点所作用在的 bean
 - object：为扩展点的贡献点具体的描述，这个描述是通过 XMap 的方式来进行的（XMap 的作用是将 Java 对象和 XML 文件进行映射，这里建议通过在网上搜索下 XMap 的文档来了解 XMap）
 
-至此服务提供端已经暴露出了扩展点，那么在服务使用端，也就是需要扩展这个 bean 的使用方就可以扩展这个bean 了。
+至此服务提供端已经暴露出了扩展点，那么在服务使用端，也就是需要扩展这个 bean 的使用方就可以扩展这个 bean 了。
 
 ### 定义扩展
 
@@ -119,13 +118,13 @@ SOFABoot 开源版本中并没有给出扩展点相关的案例工程，只是�
 
 ![报错](https://cdn.nlark.com/yuque/0/2019/png/226702/1550127041932-de5235d4-2aaf-49bc-987c-e43f41b63ab0.png)
 
-没有找到 extension 这个 bean ，但是实际上我们在前面 **定义提供扩展能力的 bean **小结中已经将 extension 配置成一个 bean 了。
+没有找到 extension 这个 bean ，但是实际上我们在前面 **定义提供扩展能力的 bean**小结中已经将 extension 配置成一个 bean 了。
 
 > 原因在于，glmapper-sofa-provider 是一个 SOFABoot 模块，它有自己独立的 Spring 上下文环境，web 模块这里作为根上下文无法感知到这个 bean 的存在，所以这里还需要将 extension 这个发布成一个 JVM 服务，然后才能正常启动。具体就是在 IExtensionImpl 类上加上 @SofaService 注解。然后在 TestController 中，将@Autowired 改成 @SofaReference 。
 
 另外，因为 glmapper-sofa-web 不是一个 SOFABoot 模块（这里特指的是 isle 模块），在  resources/META-INF/spring/web-home.xml 定义的扩展无法直接被 spring 扫到，因此还要在启动类上使用 @ImportResource 来指定当前 web 模块的 xml 文件位置，否则工程可以正常运行，但是基于此工程扩展点扩展的能力是无效的。
 
-### registerExtension 
+### registerExtension
 
 细心的同学可以注意到了一个点，就是前面扩展点实现 IExtensionImpl 这个类中有一个特殊的方法，在整个案例演示中其实都是没有用到的。
 
@@ -221,15 +220,15 @@ public class OracleDatasourceBean implements DatasourceBean {
 
 > 详细代码见：[glmapper-sofa-extension](https://github.com/glmapper/glmapper-sofa-extension) 。
 
-下面开始启动项目工程，首先将扩展部分注释掉，执行 http://localhost:8080/extension ，查看控制台打印结果如下：
+下面开始启动项目工程，首先将扩展部分注释掉，执行 <http://localhost:8080/extension> ，查看控制台打印结果如下：
 
-```
+```plain
 mysql datasource
 ```
 
 打开扩展部分注释，重新启动，刷新地址，查看控制台打印结果如下：
 
-```
+```plain
 oracle datasource
 ```
 

@@ -35,7 +35,7 @@ With reference to [How to reform common Spring Boot applications](../sofa-jarsli
   > Biz count=2  
   > bizName='test-biz', bizVersion='1.0.0', bizState='activated'  
   > bizName='spring-boot-transform-sample', bizVersion='1.0.0', bizState='activated'
-  > 
+  >
   > sofa-ark>
 
 + Execute the uninstall -b -n -v uninstallation command, and the result is as follows:
@@ -48,8 +48,7 @@ With reference to [How to reform common Spring Boot applications](../sofa-jarsli
   > sofa-ark>check -b  
   > Biz count=1  
   > bizName='spring-boot-transform-sample', bizVersion='1.0.0', bizState='activated'
-  > 
+  >
   > sofa-ark>
   
   For use of more commands, refer to [Interactive Commands](../sofa-jarslink-jarslink-instruction).
-

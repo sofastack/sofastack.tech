@@ -22,8 +22,7 @@ aliases: "/sofa-rpc/docs/Getting-Started-With-RPC"
 </dependency>
 ```
 
-注：最新版本可以从 https://github.com/sofastack/sofa-rpc/releases 里找到。
-
+注：最新版本可以从 <https://github.com/sofastack/sofa-rpc/releases> 里找到。
 
 ## 编写服务端实现
 

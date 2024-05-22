@@ -38,37 +38,37 @@ To modify or add a feature after submitting an issue, click the fork button in t
 All Bolt modifications are performed on branches. After the modification, submit a pull request. The modifications will then be merged into the master branch by the project maintenance personnel after the code review.
 Therefore, after getting familiar with the getting source code step, you need to:
 
-* Download the code locally. You may select the git/https mode in this step.
+- Download the code locally. You may select the git/https mode in this step.
 
 ```bash
 git clone https://github.com/sofastack/sofa-bolt.git
 ```
 
-* Pull a branch to prepare for code modification.
+- Pull a branch to prepare for code modification.
 
 ```java
 git branch add_xxx_feature
 ```
 
-* After the preceding command is executed, your code repository is switched to the corresponding branch. To view the current branch, execute the following command:
+- After the preceding command is executed, your code repository is switched to the corresponding branch. To view the current branch, execute the following command:
 
 ```java
 git branch -a
 ```
 
-* If you want to switch back to the master branch, execute the following command:
+- If you want to switch back to the master branch, execute the following command:
 
 ```java
 git checkout -b master
 ```
 
-* If you want to switch back to your branch, execute the following command:
+- If you want to switch back to your branch, execute the following command:
 
 ```java
 git checkout -b "branchName"
 ```
 
-* If you want to directly pull a branch from GitHub, execute the following command:
+- If you want to directly pull a branch from GitHub, execute the following command:
 
 ```java
 git clone -b branchname https://xxx.git
@@ -78,18 +78,18 @@ git clone -b branchname https://xxx.git
 
 After a branch is pulled, you can modify the code.
 
-#### When modifying the code, note the following:
+#### When modifying the code, note the following
 
-* Keep the code style consistent.
+- Keep the code style consistent.
 Bolt uses the Maven plug-in to keep the code style consistent. Before submitting the code, be sure to execute the following command locally.
 
 ```java
 mvn clean package
 ```
 
-* Add the unit test code.
-* Modifications should have passed existing unit tests.
-* You should provide a new unit test to prove that the previous code has bugs and the bugs have been fixed in the new code.
+- Add the unit test code.
+- Modifications should have passed existing unit tests.
+- You should provide a new unit test to prove that the previous code has bugs and the bugs have been fixed in the new code.
 
 Execute the following command to run all tests:
 
@@ -101,10 +101,10 @@ You can also use IDE to help run a test.
 
 #### Other do's and don'ts
 
-* Retain the original style of the code you are editing, especially the usage of spaces and line feeds in the code.
-* Delete unnecessary comments.
-* Add comments where the logic and functionality are difficult to understand.
-* Update documents in a timely manner.
+- Retain the original style of the code you are editing, especially the usage of spaces and line feeds in the code.
+- Delete unnecessary comments.
+- Add comments where the logic and functionality are difficult to understand.
+- Update documents in a timely manner.
 After the code is modified, execute the following command to submit all modifications to the local repository:
 
 ```java
@@ -123,7 +123,7 @@ If you clicked the 'fork' button to get the source code, the modified code is pu
 
 ### Submit a request for merging the code into the master branch
 
-After submitting the code to GitHub, you can send a request to merge your modified code into Bolt's master branch. To do so, enter the corresponding repository on your GitHub and click the Pull Request button in the upper right corner. Select the target branch (usually master), 
+After submitting the code to GitHub, you can send a request to merge your modified code into Bolt's master branch. To do so, enter the corresponding repository on your GitHub and click the Pull Request button in the upper right corner. Select the target branch (usually master),
 and the system will notify the Bolt maintenance personnel, who will review your code and merge it into Bolt's master branch code if it meets the requirements.
 
 #### Code review
@@ -173,4 +173,3 @@ paragraph on what the class is for.
 7. When writing a commit message please follow [these conventions](https://tbaggery.com/2008/04/19/a-note-about-git-commit-messages.html), if
 you are fixing an existing issue please add Fixes gh-XXXX at the end
 of the commit message (where XXXX is the issue number).
-

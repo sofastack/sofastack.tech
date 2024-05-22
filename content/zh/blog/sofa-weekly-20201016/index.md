@@ -27,7 +27,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 
 **1、@谢子华** 提问：
 
-> > SOFARPC 客户端A调用服务端 B，B在方法中想异步调用C（不同步等结果），在callback里面才响应结果返回给A。这种有 Demo 吗？
+> > SOFARPC 客户端 A 调用服务端 B，B 在方法中想异步调用 C（不同步等结果），在 callback 里面才响应结果返回给 A。这种有 Demo 吗？
 
 A：链路异步吗？ 可直接看测试用例  [https://github.com/sofastack/sofa-rpc/blob/master/test/test-integration/src/test/java/com/alipay/sofa/rpc/test/async/AsyncChainTest.java](https://github.com/sofastack/sofa-rpc/blob/master/test/test-integration/src/test/java/com/alipay/sofa/rpc/test/async/AsyncChainTest.java)
 
@@ -49,7 +49,7 @@ A：全局事务是回滚时，需要回滚的数据被改动。
 
 > 通常报错的就是并发情况下扣减库存，操作同一条 update 库存数量语句。
 
-A：比如 a=1，update 后时 a=2。此时其他的分支事务异常，导致全局事务决议时回滚，这个时候 a 被改为了3，这个 a 的数据脏了，隔离性没被保证。此时回滚的时候会校验 a 还是不是当前事务修改的值，如果不是，说明这个数据脏了，已经不正确了，不能盲目的直接回滚成1，说明隔离性没保证，有数据被 Seata 全局事务外的地方修改了，如果想保证隔离性，就需要保证任何一个写场景，都被全局事务注解覆盖。
+A：比如 a=1，update 后时 a=2。此时其他的分支事务异常，导致全局事务决议时回滚，这个时候 a 被改为了 3，这个 a 的数据脏了，隔离性没被保证。此时回滚的时候会校验 a 还是不是当前事务修改的值，如果不是，说明这个数据脏了，已经不正确了，不能盲目的直接回滚成 1，说明隔离性没保证，有数据被 Seata 全局事务外的地方修改了，如果想保证隔离性，就需要保证任何一个写场景，都被全局事务注解覆盖。
 
 > 我们这边的更新场景都有加全局事务的注解，好像没有起作用，还有别的不起作用的情况吗？
 

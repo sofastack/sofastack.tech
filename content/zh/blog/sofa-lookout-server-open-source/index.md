@@ -61,15 +61,15 @@ SOFALookout 安装文档：[https://www.sofastack.tech/sofa-lookout/docs/quickst
 
 目前 SOFALookout 支持灵活的 metrics 数据存储选型。但开源版本我们暂时只支持了 Elasticsearch 作为存储的方案（后续可能继续支持 Cassandra,InfluxDB...），其他存储地适配我们希望更多同学能参与共建和支持。优先支持 Elasticsearch 是因为我们考虑到了 ELK 解决方案在业界已经广泛使用，尤其是日志数据。
 
-为了开箱即用，同时考虑到不熟悉 Elasticsearch 的同学的使用，SOFALookout已经内置了关于 metrics 数据存储的自动化运维工具，可以免除大家自己建 Index，和日常维护 ES Index 的麻烦，更多细节后续单独讲解。
+为了开箱即用，同时考虑到不熟悉 Elasticsearch 的同学的使用，SOFALookout 已经内置了关于 metrics 数据存储的自动化运维工具，可以免除大家自己建 Index，和日常维护 ES Index 的麻烦，更多细节后续单独讲解。
 
 ## 本次新增开源模块
 
 ### 一、SOFALookout Gateway 模块
 
-SOFALookout Gateway 轻量的数据管道，它提供丰富的协议接入支持，包括自有SDK（SOFALookout Client）上报协议，还支持 Prometheus 的数据协议（推模式和拉模式），Metricbeat 协议（版本是6），[OpenTSDB](http://opentsdb.net/) 写入协议。每种数据来源对应于一个 Importer 的概念。
+SOFALookout Gateway 轻量的数据管道，它提供丰富的协议接入支持，包括自有 SDK（SOFALookout Client）上报协议，还支持 Prometheus 的数据协议（推模式和拉模式），Metricbeat 协议（版本是 6），[OpenTSDB](http://opentsdb.net/) 写入协议。每种数据来源对应于一个 Importer 的概念。
 
-SOFALookout Gateway 对于远程（推模式）上报提供本地硬盘缓冲的支持。Gateway 总体设计是围绕数据加工的Pipeline 形式，包括前置后置的数据过滤器方便进行开发者数据加工。 另外 Gateway 可以支持自定义 Exporter，默认提供了 Elasticsearch Exporter，Standard Exporter(用于 Gateway 间数据中继)，开发者也可以自定义其他存储的 或 Kafka 等各式各样 Exporter。
+SOFALookout Gateway 对于远程（推模式）上报提供本地硬盘缓冲的支持。Gateway 总体设计是围绕数据加工的 Pipeline 形式，包括前置后置的数据过滤器方便进行开发者数据加工。 另外 Gateway 可以支持自定义 Exporter，默认提供了 Elasticsearch Exporter，Standard Exporter(用于 Gateway 间数据中继)，开发者也可以自定义其他存储的 或 Kafka 等各式各样 Exporter。
 
 ### 二、SOFALookout Server 模块
 
@@ -79,7 +79,7 @@ SOFALookout Server 兼容和增强了 Prometheus 的数据及元数据查询的 
 
 ![使用 Grafana 进行数据展示](https://cdn.nlark.com/yuque/0/2019/png/226702/1559274714875-0b357052-723a-42d0-9a66-c4c215437d33.png)
 
-我们还是推荐大家使用 Grafana 进行数据展示。Grafana 集成 SOFALookout 很简单，只需要选择 Prometheus 作为数据源协议即可（SOFALookout默认查询端口也是: 9090）。下图展示 Grafana 新增数据源配置：
+我们还是推荐大家使用 Grafana 进行数据展示。Grafana 集成 SOFALookout 很简单，只需要选择 Prometheus 作为数据源协议即可（SOFALookout 默认查询端口也是: 9090）。下图展示 Grafana 新增数据源配置：
 
 ![Grafana 新增数据源配置](https://cdn.nlark.com/yuque/0/2019/png/226702/1559274714921-2adeb4d2-0d38-4b01-9c6c-c05c11d4163a.png)
 

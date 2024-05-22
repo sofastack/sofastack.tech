@@ -11,7 +11,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563854530875-3a06f007-33d
 
 ## 前言
 
-本文内容整理自5月25日在 Kubernetes & Cloud Native Meetup 上海站发表的主题演讲，主要介绍了 ServiceMesh 最新的产品动态，分析其发展趋势和未来走向；结合蚂蚁金服的上云实践，阐述在云原生背景下 Service Mesh 的核心价值，以及对云原生落地的关键作用。
+本文内容整理自 5 月 25 日在 Kubernetes & Cloud Native Meetup 上海站发表的主题演讲，主要介绍了 ServiceMesh 最新的产品动态，分析其发展趋势和未来走向；结合蚂蚁金服的上云实践，阐述在云原生背景下 Service Mesh 的核心价值，以及对云原生落地的关键作用。
 
 内容主要有三个部分：
 
@@ -23,13 +23,13 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563854530875-3a06f007-33d
 
 ### Istio1.1 发布
 
-Istio 是目前 Service Mesh 社区最引人注目的开源项目，在今年的3月份发布了期待已久的 Istio 1.1 版本，我们来看看 Istio 最近几个版本的发布情况：
+Istio 是目前 Service Mesh 社区最引人注目的开源项目，在今年的 3 月份发布了期待已久的 Istio 1.1 版本，我们来看看 Istio 最近几个版本的发布情况：
 
-- 2018年6月1日，Istio 发布了 0.8 版本，这是 Istio 历史上第一个 LTS 版本，也是 Istio 历史上变动最大的一个版本；
-- 2018年7月31日，Istio 发布了 1.0 版本，号称 "Product Ready"；
-- 然后就是漫长的等待，Istio 1.0 系列以每个月一个小版本的方式一路发布了 1.0.1 到 1.0.6，然后才开始 1.1.0 snapshot 1 到 6，再 1.1.0-rc 1 到 6，终于在 2019年3月20日 发布了 1.1 版本，号称 "Enterprise Ready"。
+- 2018 年 6 月 1 日，Istio 发布了 0.8 版本，这是 Istio 历史上第一个 LTS 版本，也是 Istio 历史上变动最大的一个版本；
+- 2018 年 7 月 31 日，Istio 发布了 1.0 版本，号称 "Product Ready"；
+- 然后就是漫长的等待，Istio 1.0 系列以每个月一个小版本的方式一路发布了 1.0.1 到 1.0.6，然后才开始 1.1.0 snapshot 1 到 6，再 1.1.0-rc 1 到 6，终于在 2019 年 3 月 20 日 发布了 1.1 版本，号称 "Enterprise Ready"。
 
-从 Istio 1.0 到 Istio 1.1，中间的时间跨度高达9个月！我们来看看经过这漫长的开发时间才发布的 Istio 1.1 版本带来了哪些新的东西：
+从 Istio 1.0 到 Istio 1.1，中间的时间跨度高达 9 个月！我们来看看经过这漫长的开发时间才发布的 Istio 1.1 版本带来了哪些新的东西：
 
 ![istio1.1-new-feature](https://cdn.nlark.com/yuque/0/2019/png/226702/1559010229093-9d1ef58d-fc9b-4cf9-8f4f-44c2734456e5.png)
 
@@ -41,25 +41,25 @@ Istio 是目前 Service Mesh 社区最引人注目的开源项目，在今年的
 
 ![istio-constructure](https://cdn.nlark.com/yuque/0/2019/png/226702/1559010397177-bc253838-bf7d-4859-bcce-3508a41a3ee1.png)
 
-Istio 1.1 的第一个架构变化来自 Galley：在 Istio 1.1 的架构图中增加了 Galley 组件。但是实际上在 Istio 1.0 版本中 Gallay 组件就已经存在，只是当时 Galley 的功能非常简单，只是做配置更新之后的验证（Validation），在 Istio 1.0 的架构图中都没有出现。而在 Istio 1.1 版本之后，Galley 的定位发生了巨大的变化：Galley开始分担 Pilot/Mixer 的职责。
+Istio 1.1 的第一个架构变化来自 Galley：在 Istio 1.1 的架构图中增加了 Galley 组件。但是实际上在 Istio 1.0 版本中 Gallay 组件就已经存在，只是当时 Galley 的功能非常简单，只是做配置更新之后的验证（Validation），在 Istio 1.0 的架构图中都没有出现。而在 Istio 1.1 版本之后，Galley 的定位发生了巨大的变化：Galley 开始分担 Pilot/Mixer 的职责。
 
-在 Istio 1.1 版本之前的设计中，Istio 的三大组件 Pilot/Mixer/Citadel 都需要访问 Kubernetes 的 API Server，以获取服务注册信息和配置信息，包括 Kubernetes 原生资源如 service/deployment/pod 等，还有 Istio 的自定义资源（数量多达50多个的 CRD） 。这个设计导致 Istio 的各个组件都不得不和 Kubernetes 的 API Server产生强绑定，不仅仅代码大量冗余，而且在测试中也因为需要和 Kubernetes 的 API Server 交互导致 Pilot/Mixer 模块测试困难。
+在 Istio 1.1 版本之前的设计中，Istio 的三大组件 Pilot/Mixer/Citadel 都需要访问 Kubernetes 的 API Server，以获取服务注册信息和配置信息，包括 Kubernetes 原生资源如 service/deployment/pod 等，还有 Istio 的自定义资源（数量多达 50 多个的 CRD） 。这个设计导致 Istio 的各个组件都不得不和 Kubernetes 的 API Server 产生强绑定，不仅仅代码大量冗余，而且在测试中也因为需要和 Kubernetes 的 API Server 交互导致 Pilot/Mixer 模块测试困难。
 
 为了解决这个问题，在 Istio 1.1 之后，访问 Kubernetes 的 API Server 的工作将逐渐交给 Galley 组件，而其他组件如 Pilot/Mixer 就会和  Kubernetes 解耦。
 
 ![galley](https://cdn.nlark.com/yuque/0/2019/png/226702/1559010407768-a3445073-6c1e-47d6-b06c-e30e865bdb19.png)
 
-这个工作还在进行中，目前 Istio 的 CRD 已经修改为由 Galley 读取，而 K8s 的原生资源（Service / Deployment / Pod等），暂时还是由 Pilot 读取。
+这个工作还在进行中，目前 Istio 的 CRD 已经修改为由 Galley 读取，而 K8s 的原生资源（Service / Deployment / Pod 等），暂时还是由 Pilot 读取。
 
-为了方便在各个组件中同步数据，Istio 引入了MCP（Mesh Configuration Protocol）协议。在 Istio 1.1 版本中，Pilot 通过 MCP 协议从 Galley 同步数据。MCP 是受 xDS v2 协议（准确说是 aDS）的启发而制定的新协议，用于在Istio 各模块之间同步数据。
+为了方便在各个组件中同步数据，Istio 引入了 MCP（Mesh Configuration Protocol）协议。在 Istio 1.1 版本中，Pilot 通过 MCP 协议从 Galley 同步数据。MCP 是受 xDS v2 协议（准确说是 aDS）的启发而制定的新协议，用于在 Istio 各模块之间同步数据。
 
 Istio 1.1 的第二个架构变化来自于 Mixer，在 Istio 1.1 版本中，推荐使用 Out-of-Process Adapter，即进程外适配器。Istio 预计下一个版本将弃用 In-Proxy Adapter，目前所有的 Adapter 都将改为 Out-of-Process adapter。
 
-什么是 In-Proxy Adapter？下图是 Mixer 的架构图，在 Istio 的设计中，Mixer 是一个独立进程，Proxy 通过远程调用来和 Mixer 交互。而 Mixer 的实现了 Adapter 模式，定义了 Adapter API，然后内建了数量非常多的各种Adapter。这些 Adatper 的代码存放在 Mixer 代码中，运行时也在 Mixer 的进程内，因此称为 In-Process Adapter。
+什么是 In-Proxy Adapter？下图是 Mixer 的架构图，在 Istio 的设计中，Mixer 是一个独立进程，Proxy 通过远程调用来和 Mixer 交互。而 Mixer 的实现了 Adapter 模式，定义了 Adapter API，然后内建了数量非常多的各种 Adapter。这些 Adatper 的代码存放在 Mixer 代码中，运行时也在 Mixer 的进程内，因此称为 In-Process Adapter。
 
 ![in-process-adapter](https://cdn.nlark.com/yuque/0/2019/png/226702/1559010437785-78661317-24a7-4c6c-a4c1-975f084aa83e.png)
 
-In-Process Adapter 的问题在于所有的 Adapter 的实现都和 Mixer 直接绑定，包括代码和运行时。因此当 Adapter 需要更新时就需要更新整个 Mixer，任意一个 Adapter 的实现出现问题也会影响整个 Mixer，而且数量众多的 Adapter 也带来了数量众多的CRD。为此，Istio 1.1 版本中通过引入 Out-of-Process Adapter 来解决这个问题。
+In-Process Adapter 的问题在于所有的 Adapter 的实现都和 Mixer 直接绑定，包括代码和运行时。因此当 Adapter 需要更新时就需要更新整个 Mixer，任意一个 Adapter 的实现出现问题也会影响整个 Mixer，而且数量众多的 Adapter 也带来了数量众多的 CRD。为此，Istio 1.1 版本中通过引入 Out-of-Process Adapter 来解决这个问题。
 
 ![out-of-process-adapter](https://cdn.nlark.com/yuque/0/2019/png/226702/1559010472135-a49d7343-f601-4055-b68b-ba6adb04d4af.png)
 
@@ -73,24 +73,24 @@ Out-of-Process Adapter 以独立进程的方式运行在 Mixer 进程之外，�
 
 对此有兴趣的朋友可以通过阅读下面的文章获取更详细的信息（发表于一年前，但是依然有效）：
 
-- [大规模微服务架构下的Service Mesh探索之路](https://skyao.io/talk/201806-service-mesh-explore/)： 第二节架构设计中的"合并部分Mixer功能"
-- [Service Mesh架构反思：数据平面和控制平面的界线该如何划定？](https://skyao.io/post/201804-servicemesh-architecture-introspection/)
-- [Mixer Cache: Istio的阿克琉斯之踵?](https://skyao.io/post/201804-istio-achilles-heel/) ： 系列文章，有两篇
-- [Istio Mixer Cache工作原理与源码分析](https://skyao.io/post/201804-istio-mixer-cache-concepts/): 系列文章，有四篇
+- [大规模微服务架构下的 Service Mesh 探索之路](https://skyao.io/talk/201806-service-mesh-explore/)： 第二节架构设计中的"合并部分 Mixer 功能"
+- [Service Mesh 架构反思：数据平面和控制平面的界线该如何划定？](https://skyao.io/post/201804-servicemesh-architecture-introspection/)
+- [Mixer Cache: Istio 的阿克琉斯之踵?](https://skyao.io/post/201804-istio-achilles-heel/) ： 系列文章，有两篇
+- [Istio Mixer Cache 工作原理与源码分析](https://skyao.io/post/201804-istio-mixer-cache-concepts/): 系列文章，有四篇
 
 目前 Mixer v2 的规划还处于 Review 状态，实现方式尚未有明确决定。如果要合并 Mixer，考虑到目前 Mixer 是基于 Golang 编写，而 Envoy 是基于 C++，这意味着需要用 C++ 重写所有的 Adapter，工作量巨大，恐怕不是短期之内能够完成的。当然也有另外一个新颖（或者说脑洞大开）的思路：引入 Web Assembly（WASM）。目前 Envoy 在进行支持 Web Assembly 的尝试，如果成功，则通过 Web Assembly 的方式来支持 Mixer Adapter 不失为一个好选择。
 
 ### 其他社区产品动态
 
-最近，CNCF 在筹建 Universal Data Plane API （UDPA/通用数据平面 API）工作组，以制定数据平面的标准 API，为 L4/L7 数据平面配置提供事实上的标准。Universal Data Plane API 的创意来自 Envoy，实现为 xDS API。而目前 xDS v2 API 已经是数据平面API的事实标准，这次的 UDPA 会以 xDS v2 API 为基础。工作组的初始成员来自包括 Envoy 和 gRPC 项目的代表，蚂蚁金服也在积极参与 UDPA 工作组，目前还处于非常早期的筹备阶段。
+最近，CNCF 在筹建 Universal Data Plane API （UDPA/通用数据平面 API）工作组，以制定数据平面的标准 API，为 L4/L7 数据平面配置提供事实上的标准。Universal Data Plane API 的创意来自 Envoy，实现为 xDS API。而目前 xDS v2 API 已经是数据平面 API 的事实标准，这次的 UDPA 会以 xDS v2 API 为基础。工作组的初始成员来自包括 Envoy 和 gRPC 项目的代表，蚂蚁金服也在积极参与 UDPA 工作组，目前还处于非常早期的筹备阶段。
 
-Linkerd2 在 2019年4月17日 发布了最新的稳定版本 Linkerd 2.3 版本。Linkerd2 是目前开源产品中唯一正面对抗 Istio 的存在，不过在国内知名度不高，使用者也很少。比较有意思的是，开发 Linkerd2 的初创公司 Buoyant 最近的 B 轮融资来自 Google 的投资部门。
+Linkerd2 在 2019 年 4 月 17 日 发布了最新的稳定版本 Linkerd 2.3 版本。Linkerd2 是目前开源产品中唯一正面对抗 Istio 的存在，不过在国内知名度不高，使用者也很少。比较有意思的是，开发 Linkerd2 的初创公司 Buoyant 最近的 B 轮融资来自 Google 的投资部门。
 
 ### 云厂商的产品动态
 
 随着 Service Mesh 技术的发展，和各方对 Service Mesh 前景的看好，各大主流云提供商都开始在 Service Mesh 技术上发力。
 
-首先看 AWS，在2019年4月，AWS 宣布 App Mesh GA。App Mesh 是 AWS 推出的 AWS 原生服务网格，与 AWS 完全集成，包括：
+首先看 AWS，在 2019 年 4 月，AWS 宣布 App Mesh GA。App Mesh 是 AWS 推出的 AWS 原生服务网格，与 AWS 完全集成，包括：
 
 - 网络（AWS cloud map）
 - 计算（Amazon EC2 和 AWS Fargate）
@@ -98,23 +98,23 @@ Linkerd2 在 2019年4月17日 发布了最新的稳定版本 Linkerd 2.3 版本�
 
 ![appmesh](https://cdn.nlark.com/yuque/0/2019/png/226702/1559010545501-2d733216-4f4a-47d7-8a3d-5187977312c1.png)
 
-App Mesh的数据平面采用 Envoy，产品非常有创意的同时支持VM和容器，支持多种产品形态，如上图所示。
+App Mesh 的数据平面采用 Envoy，产品非常有创意的同时支持 VM 和容器，支持多种产品形态，如上图所示。
 
-> AWS App Mesh 的更多详细内容，请浏览文章 [用AWS App Mesh重新定义应用通讯](https://skyao.io/post/201904-aws-app-mesh/)。
+> AWS App Mesh 的更多详细内容，请浏览文章 [用 AWS App Mesh 重新定义应用通讯](https://skyao.io/post/201904-aws-app-mesh/)。
 
-Google 的打法则是围绕 Istio 。首先是在2018年底推出了 Istio on GKE，即"一键集成Istio"，并提供遥测、日志、负载均衡、路由和mTLS 安全能力。接着 Google 又推出 Google Cloud Service Mesh，这是 Istio的完全托管版本，不仅仅提供Istio开源版本的完整特性，还集成了 Google Cloud上的重要产品 Stackdriver 。
+Google 的打法则是围绕 Istio 。首先是在 2018 年底推出了 Istio on GKE，即"一键集成 Istio"，并提供遥测、日志、负载均衡、路由和 mTLS 安全能力。接着 Google 又推出 Google Cloud Service Mesh，这是 Istio 的完全托管版本，不仅仅提供 Istio 开源版本的完整特性，还集成了 Google Cloud 上的重要产品 Stackdriver 。
 
-近期，Google推出 Traffic Director 的 beta 测试版本，Traffic Director 是完全托管的服务网格流量控制平面，支持全局负载均衡，适用于虚拟机和容器，提供混合云和多云支持、集中式健康检查和流量控制，还有一个非常特别的特性：支持基于流量的自动伸缩。
+近期，Google 推出 Traffic Director 的 beta 测试版本，Traffic Director 是完全托管的服务网格流量控制平面，支持全局负载均衡，适用于虚拟机和容器，提供混合云和多云支持、集中式健康检查和流量控制，还有一个非常特别的特性：支持基于流量的自动伸缩。
 
 ![google-traffic-director](https://cdn.nlark.com/yuque/0/2019/png/226702/1559010568917-7c48a68e-be4f-408d-a934-0d4080313645.png)
 
-> Google Traffic Director 的详细介绍，请查看我之前的博客文章 [Google Traffic Director详细介绍](https://skyao.io/post/201905-google-traffic-director-detail/)。
+> Google Traffic Director 的详细介绍，请查看我之前的博客文章 [Google Traffic Director 详细介绍](https://skyao.io/post/201905-google-traffic-director-detail/)。
 
-微软则推出了Service Fabric Mesh。Azure Service Fabric 是Microsoft的微服务框架，设计用于公共云，内部部署以及混合和多云架构。而 Service Fabric Mesh 是 Azure 完全托管的产品，在 2018年8月 推出预览版。
+微软则推出了 Service Fabric Mesh。Azure Service Fabric 是 Microsoft 的微服务框架，设计用于公共云，内部部署以及混合和多云架构。而 Service Fabric Mesh 是 Azure 完全托管的产品，在 2018 年 8 月 推出预览版。
 
 ![service-fabric-mesh](https://cdn.nlark.com/yuque/0/2019/png/226702/1559010587912-9668083d-21e3-4915-8084-cbd08b43615f.png)
 
-上周（5月21号）最新消息，微软在 KubeConf 上推出 Service Mesh Interface。SMI 是在 Kubernetes 上运行服务网格的规范，定义了由各种供应商实现的通用标准，使得最终用户的标准化和服务网格供应商的创新可以两全其美，SMI 预期将为 Service Mesh 带来了灵活性和互通性。
+上周（5 月 21 号）最新消息，微软在 KubeConf 上推出 Service Mesh Interface。SMI 是在 Kubernetes 上运行服务网格的规范，定义了由各种供应商实现的通用标准，使得最终用户的标准化和服务网格供应商的创新可以两全其美，SMI 预期将为 Service Mesh 带来了灵活性和互通性。
 
 SMI 是一个开放项目，由微软、Linkerd、HashiCorp、Solo、Kinvolk 和 Weaveworks 联合启动；并得到了 Aspen Mesh、Canonical、Docker、Pivotal、Rancher、Red Hat 和 VMware 的支持。
 
@@ -124,7 +124,7 @@ SMI 是一个开放项目，由微软、Linkerd、HashiCorp、Solo、Kinvolk 和
 
 在分享完最近半年 Service Mesh 产品的动态之后，我们来分析探讨 Service Mesh 的发展趋势。
 
-### 趋势1：上云+托管
+### 趋势 1：上云+托管
 
 在微服务/容器这些年的发展历程中，我们会发现一个很有意思（甚至有些哭笑不得）的现象：
 
@@ -144,9 +144,9 @@ SMI 是一个开放项目，由微软、Linkerd、HashiCorp、Solo、Kinvolk 和
 
 **几乎所有的主要公有云提供商都在提供（或者准备提供）Service Mesh 托管方案。**
 
-### 趋势2：VM和容器混用
+### 趋势 2：VM 和容器混用
 
-第二个趋势就是VM和容器混用，即 Service Mesh 对服务的运行环境的支持，不仅支持容器（尤其指 k8s），也支持虚拟机，而且支持运行在这两个环境下的服务相互访问，甚至直接在产品层面上屏蔽两者的差异。
+第二个趋势就是 VM 和容器混用，即 Service Mesh 对服务的运行环境的支持，不仅支持容器（尤其指 k8s），也支持虚拟机，而且支持运行在这两个环境下的服务相互访问，甚至直接在产品层面上屏蔽两者的差异。
 
 比如 Google 的 Traffic Director 产品：
 
@@ -158,7 +158,7 @@ AWS 的 App Mesh 产品：
 
 都是在产品层面直接提供 VM 和容器混用的支持，不管应用是运行在 VM 上还是容器内都可以支持，而且可以方便的迁移。
 
-### 趋势3：混合云和多云支持
+### 趋势 3：混合云和多云支持
 
 混合云和多云支持最近正成为一个新的技术热点和商业模式，甚至 Google Cloud 都喊出口号，要 "All in Hybrid Cloud"！
 
@@ -172,7 +172,7 @@ Google Traffic Director 旗帜鲜明的表达了 Google Cloud 对混合云的重
 
 Service Mesh 毫无疑问是实现上述转型并提供混合云和多云支持的一个非常理想的解决方案。
 
-### 趋势4：和 Serverless 的结合
+### 趋势 4：和 Serverless 的结合
 
 Service Mesh 技术和 Serverless 技术是工作在不同纬度的两个技术：
 
@@ -188,7 +188,7 @@ Service Mesh 技术和 Serverless 技术是工作在不同纬度的两个技术�
 
 ![servicemesh-serverless](https://cdn.nlark.com/yuque/0/2019/png/226702/1559010718818-6d857363-a565-4705-b422-809b2988f8b3.png)
 
-### 趋势5：Mesh 模式延伸
+### 趋势 5：Mesh 模式延伸
 
 回顾一下 Service Mesh 模式的核心，其基本原理在于将客户端 SDK 剥离，以 Proxy 独立进程运行；目标是将原来存在于 SDK 中的各种能力下沉，为应用减负，以帮助应用云原生化。
 
@@ -204,7 +204,7 @@ Service Mesh 技术和 Serverless 技术是工作在不同纬度的两个技术�
 
 通过更多的 Mesh 模式，我们可以覆盖更多的场景，从而实现让应用在各个方面都做到减负，而不仅仅是 Service Mesh 对应的服务间通讯，从而为后续的应用云原生化奠定基础。
 
-### 趋势6：标准化，不锁定
+### 趋势 6：标准化，不锁定
 
 云原生的一个重要主张，就是希望在云上为用户提供一致的用户体验，提倡标准化，避免供应商绑定（Not Lock-In）。
 
@@ -219,7 +219,7 @@ Service Mesh 技术和 Serverless 技术是工作在不同纬度的两个技术�
 
 ![Service Mesh 社区两个标准化](https://cdn.nlark.com/yuque/0/2019/png/226702/1559010733587-ab1add61-438b-4af4-afbb-9efc9f2a08a1.png)
 
-其中，Universal Data Plane API 是数据平面的标准，控制平面通过这个API来控制数据平面的行为。而 Service Mesh Interface 是控制平面的标准，上层的应用/工具/生态体系通过 Service Mesh Interface 来实现跨不同的 Service Mesh 实现为最终用户提供一致性的体验。
+其中，Universal Data Plane API 是数据平面的标准，控制平面通过这个 API 来控制数据平面的行为。而 Service Mesh Interface 是控制平面的标准，上层的应用/工具/生态体系通过 Service Mesh Interface 来实现跨不同的 Service Mesh 实现为最终用户提供一致性的体验。
 
 当然这两个标准化 API 都刚刚起步，而且，标准化的工作通常不仅仅是技术问题，涉及到复杂的利益关系，具体未来走向现在难于推断，只能密切关注。
 
@@ -265,12 +265,12 @@ Service Mesh 技术和 Serverless 技术是工作在不同纬度的两个技术�
 
 **实现业务逻辑和非业务逻辑的分离**
 
-将非业务逻辑的功能实现，从客户端SDK中剥离出来，放到独立的 Proxy 进程中，这是 Service Mesh 在技术实现上走出的第一步，也是至关重要的第一步：因为这一步，实现了**业务逻辑**和**非业务逻辑**的分离，而且是最彻底的物理分离，哪怕需要为此付出一次远程调用的代价。
+将非业务逻辑的功能实现，从客户端 SDK 中剥离出来，放到独立的 Proxy 进程中，这是 Service Mesh 在技术实现上走出的第一步，也是至关重要的第一步：因为这一步，实现了**业务逻辑**和**非业务逻辑**的分离，而且是最彻底的物理分离，哪怕需要为此付出一次远程调用的代价。
 
 而这一步迈出之后，前面就是海阔天空：
 
 - 业务逻辑和非业务逻辑分离之后，我们就可以将这些非业务逻辑继续下沉
-- 下沉到基础设施，基础设施可以是基于VM的，可以是基于容器和k8s的；也可以是VM和容器混合
+- 下沉到基础设施，基础设施可以是基于 VM 的，可以是基于容器和 k8s 的；也可以是 VM 和容器混合
 - 基础设施也可以以云的形式提供，可以是公有云、私有云，也可以是混合云、多云；
 - 可以选择云上托管，完全托管也好，部分托管也好，产品形态可以很灵活
 
@@ -282,7 +282,7 @@ Service Mesh 技术和 Serverless 技术是工作在不同纬度的两个技术�
 
 > 备注：这里说的上云，指的是上云原生(Cloud Native)的云，而不是上云就绪(Cloud Ready)的云。
 
-### Mesh化 是云原生落地的关键步骤
+### Mesh 化 是云原生落地的关键步骤
 
 在过去一年中，蚂蚁金服一直在努力探索云原生落地的方式，在这个过程中，我们有一些感悟，其中非常重要的一条就是：Mesh 化是云原生落地的关键步骤。
 

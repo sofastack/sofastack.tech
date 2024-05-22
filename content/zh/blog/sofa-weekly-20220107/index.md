@@ -36,18 +36,18 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **@王勇旭** 提问：
 
->com.alipay.sofa.rpc.boot.runtime.adapter.processor.ConsumerConfigProcessor 没有提供注解上的支持，自己实现来处理吗？Cluster 指定 failover、failfast 或者自己实现，这种在 SOFA 中是怎么使用的呢？<br/>
+> com.alipay.sofa.rpc.boot.runtime.adapter.processor.ConsumerConfigProcessor 没有提供注解上的支持，自己实现来处理吗？Cluster 指定 failover、failfast 或者自己实现，这种在 SOFA 中是怎么使用的呢？<br/>
 ![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Po9JTL2ggu4AAAAAAAAAAAAAARQnAQ)
 
 A：这种的话，单个注解的 API 是不支持的。不过可以通过调整整体的 RPC 的配置，来实现切换到你想使用的 Cluster 上。具体如何配置可以看代码这里，支持自定义的配置文件，也支持 -D 环境变量的方式传入，key 为 consumer.Cluster。
 
 ![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*jSmlQbm9FN4AAAAAAAAAAAAAARQnAQ)
 
->为啥不支持单个 API 的配置啊，是出于某种考虑吗?
+> 为啥不支持单个 API 的配置啊，是出于某种考虑吗?
 
 A：单个 API 的话，可以单独通过 ConsumerConfig 的 setCluster(String Cluster)去设置。但是不是通用功能，所以没加到 annotation 上。
 
->感觉和 loadbalance 是差不多同一级的，注解上 lD 支持，Cluster 不支持...
+> 感觉和 loadbalance 是差不多同一级的，注解上 lD 支持，Cluster 不支持...
 
 A：这个功能感觉更偏全局一些，当然也是有单个 API 自定义的需求，之前的设计可能也是基于这个考量。
 
@@ -55,12 +55,12 @@ A：这个功能感觉更偏全局一些，当然也是有单个 API 自定义�
 
 **@崔伟协** 提问：
 
->所有整个流程里的异常返回（那些没转发到 Upstream/或者转发失败的，直接返回给 client)都会经过这里吗？<br/>
+> 所有整个流程里的异常返回（那些没转发到 Upstream/或者转发失败的，直接返回给 client)都会经过这里吗？<br/>
 [https://github.com/mosn/mosn/blob/master/pkg/proxy/downstream.go#L1359](https://github.com/mosn/mosn/blob/master/pkg/proxy/downstream.go#L1359)
 
 A：也不一定，你的诉求是啥呢？但是所有请求基本都会走 filter，你可以在 append filter 劫持返回的请求。
 
->就是捕获一波没转发的或者转发失败的，不包括已经转发的然后返回失败的。
+> 就是捕获一波没转发的或者转发失败的，不包括已经转发的然后返回失败的。
 
 A：这个可能还不太好区分，超时也算是转发的了，但超时之后也会调用 hijack。返回的包是不是 Upstream 发过来是可以判断的， 你写一个 append filter，然后判断 types.VarProxyIsDirectResponse 这个变量。
 
@@ -68,7 +68,7 @@ A：这个可能还不太好区分，超时也算是转发的了，但超时之�
 
 **@我是一个小胖子** 提问：
 
->这个统一路由框架，已经 ready，还是在计划中？
+> 这个统一路由框架，已经 ready，还是在计划中？
 
 A：[https://mosn.io/blog/posts/how-use-dynamic-metadata/](https://mosn.io/blog/posts/how-use-dynamic-metadata/)
 
@@ -78,7 +78,7 @@ A：[https://mosn.io/blog/posts/how-use-dynamic-metadata/](https://mosn.io/blog/
 
 **@Noob Xu** 提问：
 
->请问一下，MOSN 的国密 TLS 支持，是不是先用 --prefix=/usr/local/BabaSSL/linux_BabaSSL_lib 构建 BabaSSL，然后用 CGO_ENABLED=1 go build -tags BabaSSL 构建 MOSN，是不是就支持 TLS 1.3 + 国密单证书了 ？
+> 请问一下，MOSN 的国密 TLS 支持，是不是先用 --prefix=/usr/local/BabaSSL/linux_BabaSSL_lib 构建 BabaSSL，然后用 CGO_ENABLED=1 go build -tags BabaSSL 构建 MOSN，是不是就支持 TLS 1.3 + 国密单证书了 ？
 
 A：在/usr/local/BabaSSL/linux_BabaSSL_lib 这个路径下放上 BabaSSL 的 lib，比如/usr/local/BabaSSL/linux_BabaSSL_lib，然后 CGO_ENABLED=1 go build -tags=BabaSSL 之后配置里 TLS 的 CipherSuite 按照 MOSN 支持的几种格式配置，比如 ECDHE-RSA-SM4-SM3 就可以了。在 MOSN 和 MOSN 之间的 TLS 通信就可以走 1.3 和国密了。
 

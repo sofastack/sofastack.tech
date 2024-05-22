@@ -61,8 +61,8 @@ Machine CRD 定义如下图所示，spec 中描述了节点需要安装的组件
 
 ![节点终态管理的机制](https://cdn.nlark.com/yuque/0/2019/png/226702/1572234385120-a8b94e13-7214-45ca-800a-f75c2f279c30.png)
 
-- **全量 ReadinessGates: **记录节点可调度需要检查的 Condition 列表；
-- **Condition ConfigMap: **各节点运维 Operators 终态状态上报 ConfigMap；
+- **全量 ReadinessGates:**记录节点可调度需要检查的 Condition 列表；
+- **Condition ConfigMap:**各节点运维 Operators 终态状态上报 ConfigMap；
 
 协作关系：
 

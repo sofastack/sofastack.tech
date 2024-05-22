@@ -1,9 +1,9 @@
 
 ---
+
 title: "Integrate with Swagger"
 aliases: "/sofa-rpc/docs/RESTful-Swagger"
 ---
-
 
 Since `rpc-sofa-boot-starter` version 6.0.1, SOFARPC provide the ability to integrate RESTful service with [Swagger](https://swagger.io/) easily.
 

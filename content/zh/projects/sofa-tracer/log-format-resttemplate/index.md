@@ -1,9 +1,9 @@
 
 ---
+
 title: "RestTemplate 日志"
 aliases: "/sofa-tracer/docs/Log_Format_RestTemplate"
 ---
-
 
 SOFATracer 集成 RestTemplate 后输出请求的链路数据格式，默认为 `JSON` 数据格式。
 
@@ -36,7 +36,7 @@ key | 表达含义
 
 ### RestTemplate 统计日志（resttemplate-stat.log）
 
-`stat.key` 即本段时间内的统计关键字集合，统一关键字集合唯一确定一组统计数据，包含local.app、request.url、和 method 字段.
+`stat.key` 即本段时间内的统计关键字集合，统一关键字集合唯一确定一组统计数据，包含 local.app、request.url、和 method 字段.
 
 <table>
    <tr>
@@ -83,4 +83,3 @@ key | 表达含义
 ```json
 {"time":"2019-09-03 10:34:04.130","stat.key":{"method":"GET","local.app":"RestTemplateDemo","request.url":"http://localhost:8801/asyncrest"},"count":1,"total.cost.milliseconds":5009,"success":"true","load.test":"F"}
 ```
-

@@ -17,9 +17,9 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 
 SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 
-**SOFAStack 官网: **[https://www.sofastack.tech](https://www.sofastack.tech/)
+**SOFAStack 官网:**[https://www.sofastack.tech](https://www.sofastack.tech/)
 
-**SOFAStack: **[https://github.com/sofastack](https://github.com/sofastack)
+**SOFAStack:**[https://github.com/sofastack](https://github.com/sofastack)
 
 ### 每周读者问答提炼
 
@@ -40,7 +40,7 @@ A：MOSN 配置信息已更新到文档中：[https://www.sofastack.tech/project
 A：[https://www.sofastack.tech/projects/sofa-rpc/application-rpc-config/](https://www.sofastack.tech/projects/sofa-rpc/application-rpc-config/)
 com.alipay.sofa.rpc.enabled.ip.range # 多网卡 ip 范围
 com.alipay.sofa.rpc.bind.network.interface # 绑定网卡
-可以通过网卡/ip段过滤；
+可以通过网卡/ip 段过滤；
 
 SOFARPC：[https://github.com/sofastack/sofa-rpc](https://github.com/sofastack/sofa-rpc)
 
@@ -128,12 +128,12 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 ![Service Mesh Meetup#9](https://cdn.nlark.com/yuque/0/2019/png/226702/1576469907431-7bfc401e-fe31-46a7-9c90-391e8aace845.png)
 
-下周六 Service Mesh Meetup 第9期杭州站来啦，本期与滴滴联合举办，将深入 Service Mesh 的落地实践，并带领大家探索 Service Mesh 在更广阔领域的应用。欢迎参加~
+下周六 Service Mesh Meetup 第 9 期杭州站来啦，本期与滴滴联合举办，将深入 Service Mesh 的落地实践，并带领大家探索 Service Mesh 在更广阔领域的应用。欢迎参加~
 
 **主题**：Service Mesh Meetup#9 杭州站：To Infinity and Beyond
 
-**时间**：2019年12月28日（下周六）13:00-17:30
+**时间**：2019 年 12 月 28 日（下周六）13:00-17:30
 
-**地点**：杭州西湖区紫霞路西溪谷G座8楼
+**地点**：杭州西湖区紫霞路西溪谷 G 座 8 楼
 
 **报名方式**：点击“[这里](https://tech.antfin.com/community/activities/1056)”，即可报名

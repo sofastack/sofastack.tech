@@ -20,7 +20,7 @@ description: "03 月 17 日周四晚 19 点，线上直播第 26 期。"
 
 - B 站直播间地址：[http://live.bilibili.com/21954520](http://live.bilibili.com/21954520)
 
-- B 站直播ID：21954520
+- B 站直播 ID：21954520
 
 ## 介绍
 
@@ -52,7 +52,7 @@ BabaSSL 自 2020 年开源以来，在行业内得到了广大用户的使用和
 
 ## 议程
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*zkUmQ62jM68AAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*zkUmQ62jM68AAAAAAAAAAAAAARQnAQ)
 
 ### 18:50-19:00  主持人开场
 

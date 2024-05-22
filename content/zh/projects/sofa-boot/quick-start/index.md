@@ -9,14 +9,15 @@ aliases: "/sofa-boot/docs/QuickStart"
 ## 环境准备
 
 要使用 SOFABoot，需要先准备好基础环境，SOFABoot 依赖以下环境：
-- JDK7 或 JDK8 
+
+- JDK7 或 JDK8
 - 需要采用 Apache Maven 3.2.5 或者以上的版本来编译
 
 ## 创建工程
 
 SOFABoot 是直接构建在 Spring Boot 之上，因此可以使用 [Spring Boot 的工程生成工具](http://start.spring.io/) 来生成，在本文档中，我们需要添加一个 Web 的依赖，以便最后在浏览器中查看效果。
 
-## 引入 SOFABoot 
+## 引入 SOFABoot
 
 在创建好一个 Spring Boot 的工程之后，接下来就需要引入 SOFABoot 的依赖，首先，需要将上文中生成的 Spring Boot 工程的 `zip` 包解压后，修改 maven 项目的配置文件 `pom.xml`，将
 
@@ -38,7 +39,9 @@ SOFABoot 是直接构建在 Spring Boot 之上，因此可以使用 [Spring Boot
     <version>${sofa.boot.version}</version>
 </parent>
 ```
+
 这里的 `${sofa.boot.version}` 指定具体的 SOFABoot 版本，参考[发布历史](https://github.com/sofastack/sofa-boot/releases)。 然后，添加 SOFABoot 健康检查扩展能力的依赖及 Web 依赖(方便查看健康检查结果)：
+
 ```xml
 <dependency>
     <groupId>com.alipay.sofa</groupId>
@@ -53,7 +56,7 @@ SOFABoot 是直接构建在 Spring Boot 之上，因此可以使用 [Spring Boot
 
 最后，在工程的 `application.properties` 文件下添加 SOFABoot 工程常用的参数配置，其中 `spring.application.name` 是必需的参数，用于标示当前应用的名称；`logging path` 用于指定日志的输出目录。
 
-```
+```plain
 # Application Name
 spring.application.name=SOFABoot Demo
 # logging path
@@ -64,7 +67,7 @@ logging.path=./logs
 
 可以将工程导入到 IDE 中运行生成的工程里面中的 `main` 方法（一般上在 XXXApplication 这个类中）启动应用，也可以直接在该工程的根目录下运行 `mvn spring-boot:run`，将会在控制台中看到启动打印的日志：
 
-```
+```plain
 2018-04-05 21:36:26.572  INFO ---- Initializing ProtocolHandler ["http-nio-8080"]
 2018-04-05 21:36:26.587  INFO ---- Starting ProtocolHandler [http-nio-8080]
 2018-04-05 21:36:26.608  INFO ---- Using a shared selector for servlet write/read
@@ -86,6 +89,7 @@ logging.path=./logs
   }
 ]
 ```
+
 **注: 在 SOFABoot 3.x 中调整了 endpoint 路径，sofaboot/versions 更改为 actuator/versions**
 
 可以通过在浏览器中输入 [http://localhost:8080/health/readiness](http://localhost:8080/health/readiness) 查看应用 Readiness Check 的状况，类似如下：
@@ -107,6 +111,7 @@ logging.path=./logs
   }
 }
 ```
+
 **注: 在 SOFABoot 3.x 中调整了 endpoint 路径，health/readiness 更改为 actuator/readiness**
 
 `status: "UP"` 表示应用 Readiness Check 健康的。可以通过在浏览器中输入 `http://localhost:8080/health` 来查看应用的运行时健康状态（可能会随着时间发生变化）。  
@@ -117,7 +122,7 @@ logging.path=./logs
 
 在上面的 `application.properties` 里面，我们配置的日志打印目录是 `./logs` 即当前应用的根目录（我们可以根据自己的实践需要配置），在当前工程的根目录下可以看到类似如下结构的日志文件：
 
-```
+```plain
 ./logs
 ├── health-check
 │   ├── sofaboot-common-default.log
@@ -131,6 +136,7 @@ logging.path=./logs
 如果应用启动失败或者健康检查返回失败，可以通过相应的日志文件找到错误的原因，有些需要关注 `common-error.log` 日志。
 
 ## 测试
+
 我们知道，SpringBoot 官方提供了和 JUnit4 集成的 `SpringRunner`, 用于集成测试用例的编写； 在 SOFABoot 中，依然可以使用原生的 `SpringRunner`， 但是推荐使用 SOFABoot 自带的 `SofaBootRunner` 以及 `SofaJUnit4Runner` 编写集成测试和单元测试；应用需要额外引入如下 Starter:
 
 ```xml
@@ -267,7 +273,7 @@ public class PublishServiceWithClient implements ClientFactoryAware {
 }
 ```
 
-将 PublishServiceWithClient 配置为 Spring Bean，并设置 init-method ，使PublishServiceWithClient 在 Spring 刷新时发布服务:
+将 PublishServiceWithClient 配置为 Spring Bean，并设置 init-method ，使 PublishServiceWithClient 在 Spring 刷新时发布服务:
 
 ```xml
 <bean id="publishServiceWithClient" class="com.alipay.sofa.isle.sample.PublishServiceWithClient" init-method="init"/>
@@ -300,7 +306,7 @@ Require-Module=com.alipay.sofa.service-provider
 
 #### Annotation 方式引用服务
 
-定义 JvmServiceConsumer 类，并在其 sampleJvmServiceAnnotationImpl 属性上增加 @SofaReference 注解: 
+定义 JvmServiceConsumer 类，并在其 sampleJvmServiceAnnotationImpl 属性上增加 @SofaReference 注解:
 
 ```java
 public class JvmServiceConsumer implements ClientFactoryAware {

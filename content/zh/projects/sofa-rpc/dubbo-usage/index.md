@@ -1,9 +1,9 @@
 
 ---
+
 title: "Dubbo 协议基本使用"
 aliases: "/sofa-rpc/docs/Dubbo-Usage"
 ---
-
 
 在 SOFARPC 中，使用不同的通信协议只要设置使用不同的 Binding 即可，如果需要使用 Dubbo 协议，只要将 Binding 设置为 Dubbo 即可。下面使用以注解的方式来例举，其他的使用方式可以参考 [Bolt 协议基本使用](../bolt-usage)，这里不再重复说明。：
 

@@ -132,4 +132,3 @@ public void beforeActsTest(ActsRuntimeContext actsRuntimeContext) {
 ## What should I do in the case of failure to save property values when I edit class properties in ACTS IDE?
 
 Default classes in ACTS IDE use the standard JavaBean format. You can call the set method of the properties to set their values. If the set method does not exist, the values cannot be saved.
-

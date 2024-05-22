@@ -16,7 +16,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*VSMJT7-nwu0AAAAAA
 
 以下内容整理自 SOFAStack 四周年的分享
 
-**本文 5332字 阅读** **10 分钟**
+**本文 5332 字 阅读** **10 分钟**
 
 ## MOSN 1.0 发布
 
@@ -58,7 +58,7 @@ MOSN 除了在蚂蚁内部全面铺开，以及商业化的落地实践，还有
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f383080c77d64536929d71e773473c74~tplv-k3u1fbpfcp-zoom-1.image)
 
-社区除了在 MOSN 项目的贡献之外，还有对其他项目/社区的贡献，包括Holmes、BabaSSL、Proxy-Wasm 等项目，以及跟其他生态项目的对接。
+社区除了在 MOSN 项目的贡献之外，还有对其他项目/社区的贡献，包括 Holmes、BabaSSL、Proxy-Wasm 等项目，以及跟其他生态项目的对接。
 
 总体来说，MOSN 现在足够成熟稳定，有商业化的落地，有社区、有周边、有生态，所以我们选择这个时间点发布 MOSN 1.0 版本。
 
@@ -228,4 +228,4 @@ MOSN GitHub 地址：[https://github.com/mosn](https://github.com/mosn)
 
 更多文章请扫码关注“金融级分布式架构”公众号
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*8G5NRZ7UEToAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*8G5NRZ7UEToAAAAAAAAAAAAAARQnAQ)

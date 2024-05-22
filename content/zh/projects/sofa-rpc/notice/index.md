@@ -1,9 +1,9 @@
 
 ---
+
 title: "依赖组件版权说明"
 aliases: "/sofa-rpc/docs/NOTICE"
 ---
-
 
 SOFARPC 使用了一些三方开源组件，他们分别是：
 
@@ -15,7 +15,6 @@ SOFARPC 使用了一些三方开源组件，他们分别是：
 - [Javassist](https://github.com/jboss-javassist/javassist) under `Apache License 2.0`
 - [Resteasy](https://github.com/resteasy/Resteasy) under `Apache License 2.0`
 - [SOFA Hessian](https://github.com/sofastack/sofa-hessian) under `Apache License 2.0`
-
 
 一些扩展依赖：
 

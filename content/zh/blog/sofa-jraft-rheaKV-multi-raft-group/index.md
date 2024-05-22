@@ -42,6 +42,7 @@ MULTI-RAFT-GROUP 正是通过把整个数据从横向做切分，分为多个 Re
 RheaKV 主要由 3 个角色组成：PlacementDriver（以下成为 PD） 、Store、Region。由于 RheaKV 支持多组 Raft，所以比单组场景多出一个 PD 角色，用来调度以及收集每个 Store 及 Region 的基础信息。
 
 ![raft 相关图](https://cdn.nlark.com/yuque/0/2019/png/325890/1563956510930-911f3edf-137f-4e64-a685-131a85933217.png)
+
 ### PlacementDriver
 
 PD 负责整个集群的管理调度、Region ID 生成等。此组件非必须的，如果不使用 PD，设置 PlacementDriverOptions 的 fake 属性为 true 即可。PD 一般通过 Region 的心跳返回信息进行对 Region 调度，Region 处理完后，PD 则会在下一个心跳返回中收到 Region 的变更信息来更新路由及状态表。
@@ -52,7 +53,7 @@ PD 负责整个集群的管理调度、Region ID 生成等。此组件非必须
 
 ### Region
 
-Region 是数据存储、搬迁的最小单元，对应的是 Store 里某个实际的数据区间。每个 Region 会有多个副本，每个副本存储在不同的 Store，一起组成一个Raft Group。Region 中的 Leader 会向 PD 主动上报 RegionHeartbeatRequest 心跳，交由 PD 的 handleRegionHeartbeat 处理，而 PD 是通过 Region的Epoch 感知 Region 是否有变化。
+Region 是数据存储、搬迁的最小单元，对应的是 Store 里某个实际的数据区间。每个 Region 会有多个副本，每个副本存储在不同的 Store，一起组成一个 Raft Group。Region 中的 Leader 会向 PD 主动上报 RegionHeartbeatRequest 心跳，交由 PD 的 handleRegionHeartbeat 处理，而 PD 是通过 Region 的 Epoch 感知 Region 是否有变化。
 
 ## RegionRouteTable 路由表组件
 
@@ -102,7 +103,7 @@ Region.peers：peers 则指的是当前 Region 所包含的节点信息，Peer.i
 
 ### 读与写 Read / Write
 
-由于数据被拆分到不同 Region 上，所以在进行多 key 的读、写、更新操作时需要操作多个 Region，这时操作前我们需要得到具体的 Region，然后再单独对不同 Region 进行操作。我们以在多 Region上 scan 操作为例, 目标是返回某个 key 区间的所有数据： 
+由于数据被拆分到不同 Region 上，所以在进行多 key 的读、写、更新操作时需要操作多个 Region，这时操作前我们需要得到具体的 Region，然后再单独对不同 Region 进行操作。我们以在多 Region 上 scan 操作为例, 目标是返回某个 key 区间的所有数据：
 
 **我们首先看 scan 方法的核心调用方法 internalScan 的异步实现：**
 
@@ -124,7 +125,7 @@ Region.peers：peers 则指的是当前 Region 所包含的节点信息，Peer.i
 
 ![查询每个 Region 的结果](https://cdn.nlark.com/yuque/0/2019/png/325890/1557635018508-ec082ace-0bba-4a69-bd3c-94edc1ef7629.png)
 
-这里也同样有一个重试处理，可以看到代码中根据当前是否为 Region 节点来决定是本机查询还是通过RPC进行查询，如果是本机则调用 rawKVStore.scan() 进行本地直接查询，反之通过 rheaKVRpcService 进行 RPC 远程节点查询。最后每个 Region 查询都返回为一个 future，通过 FutureHelper.joinList 工具类 CompletableFuture.allOf 异步并发返回结果 `List<KVEntry>`。
+这里也同样有一个重试处理，可以看到代码中根据当前是否为 Region 节点来决定是本机查询还是通过 RPC 进行查询，如果是本机则调用 rawKVStore.scan() 进行本地直接查询，反之通过 rheaKVRpcService 进行 RPC 远程节点查询。最后每个 Region 查询都返回为一个 future，通过 FutureHelper.joinList 工具类 CompletableFuture.allOf 异步并发返回结果 `List<KVEntry>`。
 
 **我们再看看写入具体流程。**相比 scan 读，put 写相对比较简单，只需要针对 key 计算出对应 Region 再进行存储即可，我们可以看一个异步 put 的例子。
 
@@ -184,12 +185,12 @@ DefaultRegionKVService 是 RegionKVService 的默认实现类，主要处理对 
 
 需要特别讲到的是，在具体的 RheaKV 操作时，FailoverClosure 担任着比较重要的角色，也给整个系统增加了一定的容错性。假如在一次 scan 操作中，如果跨 Store 需要多节点 scan 数据的时候，任何网络抖动都会造成数据不完整或者失败情况，所以允许一定次数的重试有利于提高系统的可用性，但是重试次数不宜过高，如果出现网络堵塞，多次 timeout 级别失败会给系统带来额外的压力。这里只需要在 DefaultRheaKVStore 中，进行配置 failoverRetries 设置次数即可。
 
-## RheaKV PD 之 PlacementDriverClient 
+## RheaKV PD 之 PlacementDriverClient
 
 PlacementDriverClient 接口主要由 AbstractPlacementDriverClient 实现，然后 FakePlacementDriverClient、RemotePlacementDriverClient 为主要功能。FakePlacementDriverClient 是当系统不需要 PD 的时候进行 PD 对象的模拟，这里主要讲到 RemotePlacementDriverClient。
 
-1. RemotePlacementDriverClient 通过PlacementDriverOptions 进行加载，并根据基础配置刷新路由表；
-1. RemotePlacementDriverClient 承担着对路由表RegionRouteTable 的管控，例如获取Store、路由、Leader节点信息等；
+1. RemotePlacementDriverClient 通过 PlacementDriverOptions 进行加载，并根据基础配置刷新路由表；
+1. RemotePlacementDriverClient 承担着对路由表 RegionRouteTable 的管控，例如获取 Store、路由、Leader 节点信息等；
 1. RemotePlacementDriverClient 还包含着 CliService，通过 CliService 外部可对复制节点进行操作运维，如 addReplica、removeReplica、transferLeader。
 
 ## 总结

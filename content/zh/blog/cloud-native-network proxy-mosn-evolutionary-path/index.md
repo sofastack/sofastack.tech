@@ -157,9 +157,9 @@ MOSN 在功能上对齐 Istio 后，就可以使用其进行微服务治理了�
 
 通过 MOSN 作为 Istio 的数据平面运行 Bookinfo 事例，实现如下服务治理通用能力：
 
-- 按 version路由能力
+- 按 version 路由能力
 - 按照权重路由能力
-- 按照特定 header路由能力
+- 按照特定 header 路由能力
 - 故障注入能力
 - 服务熔断自护能力
 - 透明劫持能力
@@ -226,7 +226,7 @@ MOSN 中提供 Kubernes 和 非 Kubernes 体系下的 Dubbo 服务治理方案�
 
 ![mosn-istio-reply](https://cdn.nlark.com/yuque/0/2020/png/226702/1599018134039-b8b96e4c-f738-46de-b067-28be52c0a59d.png)
 
-经过 MOSN 社区不断的努力，在 7月底，Istio 官方博客正式上线了 [在 Istio 中使用 MOSN：另一个数据平面](https://istio.io/latest/zh/blog/2020/mosn-proxy/) 博文，取到了 Istio 官方的一定认可。
+经过 MOSN 社区不断的努力，在 7 月底，Istio 官方博客正式上线了 [在 Istio 中使用 MOSN：另一个数据平面](https://istio.io/latest/zh/blog/2020/mosn-proxy/) 博文，取到了 Istio 官方的一定认可。
 
 ## 总结及展望
 

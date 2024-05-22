@@ -1,9 +1,9 @@
 
 ---
+
 title: "版权声明"
 aliases: "/sofa-boot/docs/notice"
 ---
-
 
 SOFABoot 使用了一些三方开源组件，他们分别是：
 

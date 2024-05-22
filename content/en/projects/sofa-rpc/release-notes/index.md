@@ -1,5 +1,6 @@
 
 ---
+
 title: "Release notes"
 aliases: "/sofa-rpc/docs/ReleaseNotes"
 ---

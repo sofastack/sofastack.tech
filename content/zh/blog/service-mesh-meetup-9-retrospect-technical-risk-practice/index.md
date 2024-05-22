@@ -187,13 +187,13 @@ Service Mesh 是深度参与业务流量的，最初的 Sidecar 的升级方式
 
 ## 技术风险建设-我们如何保障 Service Mesh 的生产稳定
 
-### 监控与定位能力 
+### 监控与定位能力
 
 Service Mesh 为监控与定位提供的数据包括：
 
 - Metrics：实时的业务统计数据；
 - 错误码：Service Mesh 的运行时的分类错误日志；
-- 业务监控：tracing与业务错误日志；
+- 业务监控：tracing 与业务错误日志；
 
 基于这些数据，我们期望回答三个问题：
 
@@ -246,8 +246,8 @@ Service Mesh 是非常基础的组件，目前的应急手段主要是重启：
 
 攻击能力主要指两个层面：
 
-- 对Service Mesh本身的攻击演练能力
-- 在Service Mesh中提供细粒度的业务攻击服务
+- 对 Service Mesh 本身的攻击演练能力
+- 在 Service Mesh 中提供细粒度的业务攻击服务
 
 一方面是常态化验证 Service Mesh 自身的稳定性，另一方面则对于全站层面的技术风险能力的深入提供基础能力。
 
@@ -266,11 +266,11 @@ Service Mesh 在快速落地的过程中，遇到并解决了一系列的问题
 
 ![Service Mesh Meetup 合集](https://cdn.nlark.com/yuque/0/2020/png/226702/1579142930594-646e45cb-d69b-488a-b4c4-37e512f3c7bc.png)
 
-本期是 Service Mesh Meetup 第9期杭州站，2018年4月杭州的第一期 Service Mesh Meetup 开启了 ServiceMesher 社区的全国技术交流之旅，至今已经快2年了，我们走过了北京、上海、深圳、广州、成都、杭州等六座城市，累计举办9期线下活动。
+本期是 Service Mesh Meetup 第 9 期杭州站，2018 年 4 月杭州的第一期 Service Mesh Meetup 开启了 ServiceMesher 社区的全国技术交流之旅，至今已经快 2 年了，我们走过了北京、上海、深圳、广州、成都、杭州等六座城市，累计举办 9 期线下活动。
 
 同时，感谢滴滴、华为、网易、酷家乐、中兴通讯、美团、唯品会、七牛、谐云科技、慧择网、虎牙、才云、京东、新浪微博、联邦车网、JEX、Apache SkyWalking、知群等公司的支持，参与技术分享、共同组织活动。
 
-2020年，社区希望走到更多的城市，与更多对 Service Mesh 感兴趣的技术同学们交流、探讨想法。
+2020 年，社区希望走到更多的城市，与更多对 Service Mesh 感兴趣的技术同学们交流、探讨想法。
 
 We are ServiceMesher! May the Mesh be with you!
 

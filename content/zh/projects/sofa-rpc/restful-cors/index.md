@@ -1,12 +1,11 @@
 
 ---
+
 title: "REST 跨域"
 aliases: "/sofa-rpc/docs/RESTful-Cors"
 ---
 
-
 对于 REST，我们内置了一个跨域 Filter 的支持。
-
 
 ### SOFARPC API 使用
 
@@ -21,6 +20,7 @@ serverConfig.setParameters(parameters);
 ### XML 方式使用
 
 直接通过配置
+
 ```xml
 com.alipay.sofa.rpc.rest.allowed.origins=a.com,b.com
 

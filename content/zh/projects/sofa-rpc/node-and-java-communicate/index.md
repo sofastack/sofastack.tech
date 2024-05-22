@@ -1,12 +1,11 @@
 
 ---
-title: "Node跨语言调用"
+
+title: "Node 跨语言调用"
 aliases: "/sofa-rpc/docs/Node-And-Java-Communicate"
 ---
 
-
 ## 快速上手
-
 
 如果你有通过 NodeJs 调用 SOFARPC 的需求.可以按照如下的文档来开始.
 
@@ -14,16 +13,18 @@ aliases: "/sofa-rpc/docs/Node-And-Java-Communicate"
 
 首先按照文档安装
 
-`https://github.com/sofastack/sofa-rpc-node` 
+`https://github.com/sofastack/sofa-rpc-node`
 
 使用命令.
+
 ```bash
-$ npm install sofa-rpc-node --save
+npm install sofa-rpc-node --save
 ```
 
 ## 代码示例
 
 ### 暴露一个 RPC 服务，并发布到注册中心
+
 ```js
 'use strict';
 
@@ -61,6 +62,7 @@ server.start()
 ```
 
 ### 调用 RPC 服务（从注册中心获取服务列表）
+
 ```js
 'use strict';
 
@@ -96,6 +98,7 @@ invoke().catch(console.error);
 ```
 
 ### 调用 RPC 服务（直连模式）
+
 ```js
 'use strict';
 
@@ -122,10 +125,10 @@ invoke().catch(console.error);
 
 ## 暴露和调用 protobuf 接口
 
-
 ### 接口定义
 
 通过 *.proto 来定义接口
+
 ```proto
 syntax = "proto3";
 

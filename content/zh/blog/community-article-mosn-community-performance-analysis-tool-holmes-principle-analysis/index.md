@@ -13,7 +13,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*KZNFTIMOxVgAAAAAA
 
 Shopee Digital Purchase & Local Services Engineering
 
-本文1743字 阅读 6分钟
+本文 1743 字 阅读 6 分钟
 
 ## 贡献者前言
 
@@ -71,11 +71,11 @@ MOSN 社区的 Holmes 是一个基于 Golang 实现的轻量级性能监控系�
 
 Holmes 支持以下五种 Profile 类型，用户可以按需配置。
 
-Mem: 内存分配    
+Mem: 内存分配
 
-CPU: CPU 使用率      
+CPU: CPU 使用率
 
-Thread: 线程数    
+Thread: 线程数
 
 Goroutine: 协程数
 
@@ -166,7 +166,7 @@ h.Set(
         WithGoroutineDump(10, 10, 50, 90, time.Minute))
 ```
 
-## 落地案例 
+## 落地案例
 
 利用 Holmes 的 Set 方法，可以轻松地对接自己公司的配置中心，比如，将 Holmes 作为数据面，配置中心作为控制面。并对接告警系统(邮件/短信等)搭建一套简单的监控系统。
 
@@ -214,4 +214,4 @@ Holmes 是 MOSN 社区开源的 GO 语言 Continous Profiling 组件，可以自
 
 [SOFAArk Committer 专访｜看它不爽，就直接动手改！](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247503819&idx=1&sn=8dfd99fac47b7c9c6e4f507db5d7a11f&chksm=faa32011cdd4a9070e80c69d21fbab7a16047d307907b61ed7c3bdf588d7d57af2cd41fffa26&scene=21)
 
-![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*8G5NRZ7UEToAAAAAAAAAAAAAARQnAQ) 
+![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*8G5NRZ7UEToAAAAAAAAAAAAAARQnAQ)

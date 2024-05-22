@@ -28,19 +28,20 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 **@Zhengguang**  提问：
 
 > 想问下，默认的 RMClient.init(applicationId, txServiceGroup);  这个方式启动 RM 的时候有个问题，它传递的 resourceId 为 null 也就是说 RM 初始化的时候虽然在 TC 注册了，但是注册的信并非之前断开始后那个 resourceId，所以 RM 重启后并不会立即收到来自 TC 的 retry。  
-> 
+>
 > 以下是日志，可以看到默认 RM 初始化的时候 resourceIds 是空的：
 > [timeoutChecker_2] INFO io.seata.core.rpc.netty.NettyPoolableFactory - NettyPool create channel to transactionRole:RMROLE,address:127.0.0.1:8091,msg:< RegisterRMRequest{resourceIds='null', applicationId='api', transactionServiceGroup='my_test_tx_group'} >
-> 
+>
 > 使用 API 方式，跑的是 seata-sample-api 这个 demo，AT 模式。
 
-A：1.其实 RMClient.init 的时候，并不会进行注册，真正进行注册的是初始化 DataSourceProxy的 时候。
+A：1.其实 RMClient.init 的时候，并不会进行注册，真正进行注册的是初始化 DataSourceProxy 的 时候。
 2.如果注册的时候 resourceIds='null'，很有可能你的 DataSourceProxy 没有初始化，也即是数据源没代理成功。
 
 > 是的我观察到的就是这个现象，我这边项目更希望在 API 模式下使用 Seata，所以并没有通过 spring 启动，可能 DataSourceProxy 没有自动初始化，所以这里是不是应该有什么方式可以手动触发 DataSourceProxy 初始化的过程。
 
 A：手动配置一样就可以了，像这样子：
-```
+
+```plain
 <bean id="dataSourceProxy" class="io.seata.rm.datasource.DataSourceProxy">
     <constructor-arg ref="dataSource" />
 </bean>
@@ -65,7 +66,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 - 支持检查连接并异步创建连接；
 - 支持用户设置 UserProcessor 的 ClassLoader；
-- 修复 URL 对象默认连接数为0导致不创建连接的问题；
+- 修复 URL 对象默认连接数为 0 导致不创建连接的问题；
 - 修复无可用连接的 ConnectionPool 无法被回收的问题；
 
 详细发布报告：[https://github.com/sofastack/sofa-bolt/releases/tag/v1.6.2](https://github.com/sofastack/sofa-bolt/releases/tag/v1.6.2)

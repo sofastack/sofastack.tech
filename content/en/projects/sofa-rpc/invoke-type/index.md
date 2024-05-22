@@ -1,9 +1,9 @@
 
 ---
+
 title: "Calling type"
 aliases: "/sofa-rpc/docs/Invoke-Type"
 ---
-
 
 SOFARPC provides a variety of calling types under the Bolt protocol to meet different scenarios.
 

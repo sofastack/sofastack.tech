@@ -17,9 +17,9 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 
 SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 
-**SOFAStack 官网: **[https://www.sofastack.tech](https://www.sofastack.tech/)
+**SOFAStack 官网:**[https://www.sofastack.tech](https://www.sofastack.tech/)
 
-**SOFAStack: **[https://github.com/sofastack](https://github.com/sofastack)
+**SOFAStack:**[https://github.com/sofastack](https://github.com/sofastack)
 
 ### 每周读者问答提炼
 
@@ -37,7 +37,7 @@ A：这儿，协议支持了：[https://github.com/mosn/mosn/tree/master/pkg/pro
 > 已经生产就绪了吗？
 
 A：如果是 Dubbo 的话，目前还没有生产可用，主要是相关生态还没对齐，我们正在推进 Dubbo WG kick off，有兴趣可以加入一起完善。
-如果指 MOSN 的话，我们去年双11已经线上部署几十万容器，生产可用。
+如果指 MOSN 的话，我们去年双 11 已经线上部署几十万容器，生产可用。
 MOSN：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 
 **2、@Liang** 提问：
@@ -73,7 +73,7 @@ Server 事务恢复的逻辑是：
 
 A：不允许这样设计，业务流水，必须先扣，再充，必须要遵循“宁可长款，不可短款”的原则。
 
-> 意思是分成两个独立的事务，Saga 模式中不定义在同一个状态机流程里？先把B的扣钱流程执行完，再去执行 A 的充值流程 ？
+> 意思是分成两个独立的事务，Saga 模式中不定义在同一个状态机流程里？先把 B 的扣钱流程执行完，再去执行 A 的充值流程 ？
 
 A：不是，是在同一个事务里，同一个流程，要先进行扣 B 的款，再给 A 充值，那和如果充值失败，可以回滚 B。
 
@@ -116,7 +116,7 @@ MOSN 作为云原生的网络数据平面，旨在为服务提供多协议，�
 本期直播包含 Demo，可以先下载 Demo，提前体验 MOSN 拓展机制的使用（报名页面有详细 Demo 链接）。
 
 - 主题：SOFAChannel#14：云原生网络代理 MOSN 的扩展机制解析
-- 时间：2020年4月9日（周四）19:00-20:00
+- 时间：2020 年 4 月 9 日（周四）19:00-20:00
 - 嘉宾：永鹏 蚂蚁金服高级开发工程师、MOSN Committer
 - 形式：线上直播
 - 报名方式：点击“[这里](https://tech.antfin.com/community/live/1152)”，即可报名

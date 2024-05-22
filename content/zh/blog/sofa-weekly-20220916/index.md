@@ -30,11 +30,11 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **1.杜鑫** 提问：
 
->想问下 MOSN 的基于 Go plugin 实现的插件机制，有相关文档介绍嘛，源码大概在哪个部分呀？想接入下试试。
+> 想问下 MOSN 的基于 Go plugin 实现的插件机制，有相关文档介绍嘛，源码大概在哪个部分呀？想接入下试试。
 
 A：有好几种，有 Go plugin 独立进程的，有 Go so 编译的，我发你文档先看看。
 
->这个看啦，我看文档里说 so 的方式还在 beta，没有详细介绍，想了解下 so 方式的介绍。
+> 这个看啦，我看文档里说 so 的方式还在 beta，没有详细介绍，想了解下 so 方式的介绍。
 
 A：so 的，我们最近有位同学才分享了，干货满满：[https://mp.weixin.qq.com/s/VAYrtYBdzvcAOa7G_cMZRg](https://mp.weixin.qq.com/s/VAYrtYBdzvcAOa7G_cMZRg) ，这里有个 demo，[https://github.com/mosn/mosn/tree/master/examples/cn_readme/mosn-extensions](https://github.com/mosn/mosn/tree/master/examples/cn_readme/mosn-extensions) 以及一些插件的实现，[https://github.com/mosn/extensions/tree/master/go-plugin](https://github.com/mosn/extensions/tree/master/go-plugin)
 
@@ -42,7 +42,7 @@ A：so 的，我们最近有位同学才分享了，干货满满：[https://mp.w
 
 **2.林楠** 提问：
 
->有一个问题，动态部署时报找不到 CommonLoggingApplicationListener 类，这个类在基座中有这个类 [https://github.com/sofastack/sofa-ark/issues/561](https://github.com/sofastack/sofa-ark/issues/561)
+> 有一个问题，动态部署时报找不到 CommonLoggingApplicationListener 类，这个类在基座中有这个类 [https://github.com/sofastack/sofa-ark/issues/561](https://github.com/sofastack/sofa-ark/issues/561)
 
 A：说明这个类没有成功委托给基座加载，可以断下 BizClassLoader.loadClassInternal 方法，看下模块类加载的寻找过程。
 

@@ -25,7 +25,7 @@ SOFA 星球在等你加入呀！
 
 只要我们一起就能所向披靡
 
-### 谁是SOFA“星途者”
+### 谁是 SOFA“星途者”
 
 SOFA 星途者是一群对开源宇宙感兴趣，希望在这片“宇宙”其中探索到更多“星辰”的人。SOFA 星途者们能够为千千万万的开发者们，提供丰富的 Meetup 及线上直播等交流平台。
 
@@ -55,21 +55,21 @@ SOFA 陆续在全国各地组织了多场 Meetup 活动，活动全程直播，�
 
 **杭州站**
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*FgLlQ6jJ86wAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*FgLlQ6jJ86wAAAAAAAAAAAAAARQnAQ)
 
 **上海站**
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*FPv3SoeBf84AAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*FPv3SoeBf84AAAAAAAAAAAAAARQnAQ)
 
 **北京站**
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*PnGoRovUKvAAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*PnGoRovUKvAAAAAAAAAAAAAAARQnAQ)
 
 **合肥站**
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*-iy2QqHprZgAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*-iy2QqHprZgAAAAAAAAAAAAAARQnAQ)
 
-### 召唤装备！
+### 召唤装备
 
 在 SOFA 星球，大家不仅能够与每个领域的技术大牛面对面交流技术、认识新朋友，更能够收获 SOFA 星途者的周边衣服、杯子、双肩包等……
 
@@ -83,7 +83,7 @@ SOFA 星途者的成员在参加 SOFA 的活动时可享受 VIP 通道，也会�
 
 扫描下方二维码
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*bXXLTY8o7CAAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*bXXLTY8o7CAAAAAAAAAAAAAAARQnAQ)
 
 勇敢迈出成为“星途者”的第一步
 

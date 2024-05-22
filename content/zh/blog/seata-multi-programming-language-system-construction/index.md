@@ -22,7 +22,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*bsyZTJzHmNkAAAAAA
 
 分布式事务是微服务技术体系中非常关键的的一个技术节点，当下最流行且经过大规模生产验证的高质量分布式事务实现无疑是 Seata。Seata 社区过去四年长期专注于 Java 语言实现，在 Java 领域是事实上的分布式事务技术标准平台。
 
-在诸如 gRPC 等微服务体系都在进行多语言建设的当下，分布式事务也应该有多种语言支持。所以在规划 2022 年 Seata  Roadmap 时，其中一个非常的关键点就是 Seata 的多语言技术体系建设。在经过半年的准备特别是完成了 Seata v1.5.2 发版后，社区在今年 *（2022年）* 下半年的重点任务就是全力建设 Seata 的多语言实现。
+在诸如 gRPC 等微服务体系都在进行多语言建设的当下，分布式事务也应该有多种语言支持。所以在规划 2022 年 Seata  Roadmap 时，其中一个非常的关键点就是 Seata 的多语言技术体系建设。在经过半年的准备特别是完成了 Seata v1.5.2 发版后，社区在今年 *（2022 年）* 下半年的重点任务就是全力建设 Seata 的多语言实现。
 
 ## PART. 1--关键技术点
 
@@ -128,7 +128,7 @@ Seata Java 支持的注册中心有 File 、Nacos 、Eureka、Redis、Zk、Cons
 
 同理于配置中心，Seata 的注册中心也可以复用其所在的微服务框架的注册中心，如 Nacos、Etcd、Zookeeper 等。运行在 Kubernetes 平台上时，把 API server 当作注册中心，多语言版本的 Seata 优先实现 File 类型，配置 API server 地址即可。
 
-Seata server *（就是 TC）* 可以多 namespace 部署，每个 namespace 下可以有多个 TC 集群，Seata Client *（包括 TM 和 RM）* 可以通过 service 形式获取 TC 集群地址，这样既达到了 TC 高可用的目的，也方便在客户端层面对 TC 集群进行负载均衡。 
+Seata server *（就是 TC）* 可以多 namespace 部署，每个 namespace 下可以有多个 TC 集群，Seata Client *（包括 TM 和 RM）* 可以通过 service 形式获取 TC 集群地址，这样既达到了 TC 高可用的目的，也方便在客户端层面对 TC 集群进行负载均衡。
 
 ## PART. 2--总结
 

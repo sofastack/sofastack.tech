@@ -21,7 +21,7 @@ sofa-dashboard-frontend uses the [Ant Design Pro](https://github.com/ant-design/
 
 SOFAArk control uses MySQL for resource data storage. You can find the SofaDashboardDB.sql script under the project directory and run this script to initialize database tables.
 
-### ZooKeeper 
+### ZooKeeper
 
 > ZooKeeper 3.4.x and ZooKeeper 3.5.x
 
@@ -46,4 +46,3 @@ sofa-dashboard-front is the frontend code-based project of SOFADashboard. It is 
 > npm i
 > npm start
 ```
-

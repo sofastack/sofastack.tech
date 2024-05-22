@@ -1,15 +1,16 @@
 
 ---
+
 title: "Client built-in extension metrics"
 aliases: "/sofa-lookout/docs/client-ext-metrics"
 ---
-
 
 # Client built-in extension metrics
 
 The extension modules currently in effect by default are lookout-ext-jvm and lookout-ext-os (from v1.5.0).
 
 ## JVM thread
+
 | metric name |  metric tags |  specification |
 | --- |  --- |  --- |
 | jvm.threads.totalStarted |   |  --- |
@@ -18,6 +19,7 @@ The extension modules currently in effect by default are lookout-ext-jvm and loo
 | jvm.threads.daemon |   |  --- |
 
 ## JVM class loading
+
 | metric name |   metric tags |  specification |
 | --- |  --- |  --- |
 | jvm.classes.unloaded |   |  --- |
@@ -25,6 +27,7 @@ The extension modules currently in effect by default are lookout-ext-jvm and loo
 | jvm.classes.total |  |  --- |
 
 ## JVM memory
+
 | metric name |   metric tags |  specification |
 | --- |  --- |  --- |
 | jvm.memory.heap.init |  |  --- |
@@ -33,6 +36,7 @@ The extension modules currently in effect by default are lookout-ext-jvm and loo
 | jvm.memory.heap.committed | |  --- |
 
 ## JVM garbage recycling
+
 | metric name |   metric tags |  specification |
 | --- |  --- |  --- |
 | jvm.gc.young.time |  |  --- |
@@ -41,6 +45,7 @@ The extension modules currently in effect by default are lookout-ext-jvm and loo
 | jvm.gc.old.count |   |  --- |
 
 ## Machine file system information
+
 | metric name |   metric tags |  specification |
 | --- |  --- |  --- |
 | instance.file.system.free.space | root（the available filesystem roots）|  --- |
@@ -48,6 +53,7 @@ The extension modules currently in effect by default are lookout-ext-jvm and loo
 | instance.file.system.usabe.space | root  |  --- |
 
 ## Machine information
+
 | metric name |   metric tags |  specification |
 | --- |  --- |  --- |
 | instance.mem.free |   |  --- |
@@ -57,6 +63,7 @@ The extension modules currently in effect by default are lookout-ext-jvm and loo
 | instance.systemload.average |   |  --- |
 
 ## Linux operating system information (enabled by default after version 1.5.0)
+
 | metric name |   metric tags |  specification |
 | --- |  --- |  --- |
 | os.systemload.average.1min |   |  --- |

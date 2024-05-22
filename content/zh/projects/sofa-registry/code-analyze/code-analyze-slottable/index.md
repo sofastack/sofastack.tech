@@ -12,11 +12,11 @@ SOFARegistry 对于服务数据是分片进行存储的，因此每一个 data s
 
 维护 SlotTable 是由 Meta 的 leader 负责的，Meta 会维护 data 的列表，会利用这份列表以及 data 上报的监控数据创建 SlotTable，后续 data 的上下线会触发 Meta 修改 SlotTable， SlotTable 会通过心跳分发给集群中各个节点。
 
-### 1. DataServer 更新SlotTable 路由表过程。
+### 1. DataServer 更新 SlotTable 路由表过程
 
 ![image.png](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*B7ydQ6LBu-IAAAAAAAAAAAAAARQnAQ)
 
-如上图所示 session 和 data 节点定时会向 Meta 节点上报心跳、Meta节点维护了 data 以及 session 节点列表信息、并且在心跳请求中将返回 SlotTable 路由表信息、data 节点将路由表 SlotTable 保存在本地中。
+如上图所示 session 和 data 节点定时会向 Meta 节点上报心跳、Meta 节点维护了 data 以及 session 节点列表信息、并且在心跳请求中将返回 SlotTable 路由表信息、data 节点将路由表 SlotTable 保存在本地中。
 
 ### 2. SlotTable 更新平衡算法
 
@@ -36,7 +36,7 @@ SOFARegistry 采用预分配的方式。
 
 ![image.png](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*KJSMRblolhsAAAAAAAAAAAAAARQnAQ)
 
-实际上上述 **Slot** 和 **节点 **的映射关系在源码中以 **SlotTable 和 Slot **的方式进行表达。源码如下代码块所示。
+实际上上述 **Slot** 和 **节点**的映射关系在源码中以 **SlotTable 和 Slot**的方式进行表达。源码如下代码块所示。
 
 ```java
 
@@ -62,11 +62,11 @@ public final class Slot implements Serializable, Cloneable {
 }
 ```
 
-由于节点在动态变化中、所以 Slot 和 节点的映射也在时刻变化中、那么我们接下来的重点就是 SlotTable 的变更过程。SlotTable 的变更是在 Meta 节点中触发、当有服务上下线的时候会触发SlotTable 的变更、除此之外也会定期执执行 SlotTable的变更。
+由于节点在动态变化中、所以 Slot 和 节点的映射也在时刻变化中、那么我们接下来的重点就是 SlotTable 的变更过程。SlotTable 的变更是在 Meta 节点中触发、当有服务上下线的时候会触发 SlotTable 的变更、除此之外也会定期执执行 SlotTable 的变更。
 
-SlotTable的整个同步更新步骤如图所示。
+SlotTable 的整个同步更新步骤如图所示。
 
-代码参考 
+代码参考
 `com.alipay.sofa.registry.server.Meta.slot.arrange.ScheduledSlotArranger#arrangeSync.`
 
 SlotTable 的定期变更是通过在初始化 ScheduledSlotArranger 时候实例化守护线程不断的 定期执行 内部任务 Arranger 的 arrangeSync 方法来实现 SlotTable 变更的。大致流程如下所示。
@@ -75,11 +75,11 @@ SlotTable 的定期变更是通过在初始化 ScheduledSlotArranger 时候实�
 
 因为负责 SlotTable 的更新是在 MetaServer 中的主节点更新的。
 
-所以更新 SlotTable的第一步就是判断是否是主节点。主节点才负责真正的 SlotTable 变更步骤。
+所以更新 SlotTable 的第一步就是判断是否是主节点。主节点才负责真正的 SlotTable 变更步骤。
 
 第二步是获取最新的 DataServer 节点，因为 重新分配 SlotTable 本质上是 对 DataServer 节点和 slot 槽位之间的映射关系进行重新分配。所以肯定需要获取到当前正在存活的 DataServer 节点信息，从而方便的对之进行 slot 分配。
 
-(这里获取正在存活的 DataServer 也就是有和 MetaServer 维持心跳的 DataServer, 底层是从 
+(这里获取正在存活的 DataServer 也就是有和 MetaServer 维持心跳的 DataServer, 底层是从
 `com.alipay.sofa.registry.server.Meta.lease.impl.SimpleLeaseManager`中获取，感兴趣可以查看相关源码) 。
 
 第三部是分配前置校验，实际上一些边界条件的判断、例如 DataServer 是否为空、 DataServer 的大小是否大于配置的 minDataNodeNum，只有满足这些条件才进行变更。
@@ -92,7 +92,7 @@ SlotTable 的定期变更是通过在初始化 ScheduledSlotArranger 时候实�
 private final Lock lock = new ReentrantLock();
 ```
 
-随后便是根据当前的 Data 节点信息创建 SlotTableBuilder、这里的 SlotTableBuilder 又是何方神圣呢？回到 SlotTable 更新的方式、一般是创建一个新的 SlotTable 对象、然后用这个新创建的对象去代替老的 SlotTable 对象、从而完成变更 SlotTable 操作、一般不会直接对老的SlotTable直接进行增删该 操作、这样并发导致的一致性问题很难控制。所以基于此、SlotTableBuilder 从它的名称就可以看出 它是 SlotTable 的创建者、内部聚合了SlotBuilder 对象。其实和 SlotTable 类似的、SlotTable 内部聚合了 Slot 信息。
+随后便是根据当前的 Data 节点信息创建 SlotTableBuilder、这里的 SlotTableBuilder 又是何方神圣呢？回到 SlotTable 更新的方式、一般是创建一个新的 SlotTable 对象、然后用这个新创建的对象去代替老的 SlotTable 对象、从而完成变更 SlotTable 操作、一般不会直接对老的 SlotTable 直接进行增删该 操作、这样并发导致的一致性问题很难控制。所以基于此、SlotTableBuilder 从它的名称就可以看出 它是 SlotTable 的创建者、内部聚合了 SlotBuilder 对象。其实和 SlotTable 类似的、SlotTable 内部聚合了 Slot 信息。
 
 在查看 SlotTable 变更算法之前、我们先了解一下 SlotTableBuilder 的创建过程。SlotBuilder 的结构如下所示。
 
@@ -111,7 +111,7 @@ public class SlotTableBuilder {
 }
 ```
 
-从 **SlotTableBuilder** 可以看出内部聚合了一个 **buildingSlots** 、标识正在创建的 **Slot**。因为 **SlotTable** 是由 **Slot** 构成的、这点也很容易理解。除此之外 SlotTableBuilder 内部也聚合了一个 reverseMap，代表反向查询索引，这个映射的 key是 dataServer、value是 DataNodeSlot 对象. DataNodeSlot 源码如下。
+从 **SlotTableBuilder** 可以看出内部聚合了一个 **buildingSlots** 、标识正在创建的 **Slot**。因为 **SlotTable** 是由 **Slot** 构成的、这点也很容易理解。除此之外 SlotTableBuilder 内部也聚合了一个 reverseMap，代表反向查询索引，这个映射的 key 是 dataServer、value 是 DataNodeSlot 对象. DataNodeSlot 源码如下。
 
 ```java
 /**
@@ -127,10 +127,10 @@ public final class DataNodeSlot  {
 }
 ```
 
-用一张图来表达 DataNodeSlot 如下所示。可见它和图1是刚好相反的映射。通过节点查找 与该节点有关联的 slot信息、因为后面要经常用到这一层查询、所以直接将这种关系保存下来。为了后面陈述方便、这里统计几种陈述方式。
+用一张图来表达 DataNodeSlot 如下所示。可见它和图 1 是刚好相反的映射。通过节点查找 与该节点有关联的 slot 信息、因为后面要经常用到这一层查询、所以直接将这种关系保存下来。为了后面陈述方便、这里统计几种陈述方式。
 
-1. 节点被作为leader 的slot集合我们称为 : 节点 leader 的slot集合。
-1. 节点被作为follow 的slot集合我们称为  : 节点 follow 的slot集合。
+1. 节点被作为 leader 的 slot 集合我们称为 : 节点 leader 的 slot 集合。
+1. 节点被作为 follow 的 slot 集合我们称为  : 节点 follow 的 slot 集合。
 1. SlotTable 关联的所有节点统称为:  SlotTable 的节点列表
 
 ![image.png](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*sjBXRqVWggMAAAAAAAAAAAAAARQnAQ)
@@ -179,9 +179,9 @@ SlotTableBuilder 的 init 源码如下。
   }
 ```
 
-由上面的代码可以看出实际上init做了这么一件事情: 初始化 SlotBuilder 内部的 slotBuilder对象、并且将原来旧的 SlotTable  的 leader和follow节点全部拷贝过去了。注意在实例化 SlotTableBuilder 的时候传入了旧的 SlotTable也就是这里的 initSlotTable 对象。
+由上面的代码可以看出实际上 init 做了这么一件事情: 初始化 SlotBuilder 内部的 slotBuilder 对象、并且将原来旧的 SlotTable  的 leader 和 follow 节点全部拷贝过去了。注意在实例化 SlotTableBuilder 的时候传入了旧的 SlotTable 也就是这里的 initSlotTable 对象。
 
-init 方法最后一步的 initReverseMap 从名称可以看出构建了一个实例化反向路由表、反向查找表、从Node节点到Slot的查找功能、因为在之后的处理当中经常会用到 某一个 data节点负责了那些slot的leader角色、以及哪些slot的follow角色. 所以这里做了一层索引处理。
+init 方法最后一步的 initReverseMap 从名称可以看出构建了一个实例化反向路由表、反向查找表、从 Node 节点到 Slot 的查找功能、因为在之后的处理当中经常会用到 某一个 data 节点负责了那些 slot 的 leader 角色、以及哪些 slot 的 follow 角色. 所以这里做了一层索引处理。
 
 再回到 ScheduledSlotArranger 类中 createSlotTableBuilder 方法最后一步，此时 SlotTableBulder 内部已经完成了 旧的 SlotTable 的数据拷贝。
 
@@ -191,7 +191,7 @@ comparator.getRemoved().forEach(slotTableBuilder::removeDataServerSlots);
 
 上文我们说过  comparator 对象内部保存了 新的 dataServer 和旧的 'SlotTable 的节点列表' 比较信息。
 
-所以在新的 dataServer 中已经删除的节点、我们需要从 SlotTableBuilder 中删除。内部的删除逻辑也是迭代所有的 SlotBuilder 比较 leader 和当前节点是否相同、相同则删除、follow同理。
+所以在新的 dataServer 中已经删除的节点、我们需要从 SlotTableBuilder 中删除。内部的删除逻辑也是迭代所有的 SlotBuilder 比较 leader 和当前节点是否相同、相同则删除、follow 同理。
 
 ```java
 public void removeDataServerSlots(String dataServer) {
@@ -208,12 +208,12 @@ public void removeDataServerSlots(String dataServer) {
 }
 ```
 
-总结来说创建 SlotTableBuilder 的过程就是根据旧的 SlotTable 实例化 SlotTableBuilder (内部的 SlotBuilder)、计算 旧的 'SlotTable 的节点列表' 和当前最新的 dataServer的差异值、更新 SlotTableBuilder 内部的 SlotBuilder 相关的 leader 和follow值。
+总结来说创建 SlotTableBuilder 的过程就是根据旧的 SlotTable 实例化 SlotTableBuilder (内部的 SlotBuilder)、计算 旧的 'SlotTable 的节点列表' 和当前最新的 dataServer 的差异值、更新 SlotTableBuilder 内部的 SlotBuilder 相关的 leader 和 follow 值。
 
 ![image.png](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*_m4FSZ8rmnQAAAAAAAAAAAAAARQnAQ)
 
 到这一步实际上已经做完了 SlotTableBuilder 的构建过程。到这里想想接下来该做什么呢？
-可以想想，如果我们触发 SlotTable 重新分配的是某一个 dataA 节点下线了，那么在 slotTableBuilder::removeDataServerSlots 这一步会将我们正在创建的 SlotTableBuilder 中的 dataA 所管理的 Slot 的 leader 或者 follow 删除掉，那么该 Slot 的 leader 或者 follow 很可能就会变成空。也就是说该 Slot 没有 data 节点处理请求。于是我们根据当前 SlotBuilder 中是否有为完成分配的 Slot 来决定是否进行重新分配操作, 是否有未完成分配的Slot代码块如下。
+可以想想，如果我们触发 SlotTable 重新分配的是某一个 dataA 节点下线了，那么在 slotTableBuilder::removeDataServerSlots 这一步会将我们正在创建的 SlotTableBuilder 中的 dataA 所管理的 Slot 的 leader 或者 follow 删除掉，那么该 Slot 的 leader 或者 follow 很可能就会变成空。也就是说该 Slot 没有 data 节点处理请求。于是我们根据当前 SlotBuilder 中是否有为完成分配的 Slot 来决定是否进行重新分配操作, 是否有未完成分配的 Slot 代码块如下。
 
 ```java
   public boolean hasNoAssignedSlots() {
@@ -237,7 +237,7 @@ public void removeDataServerSlots(String dataServer) {
 
 由图可知分配过程最后委托给 DefaultSlotAssigner ，DefaultSlotAssigner 在构造方法中实例化了 当前正在创建的 **SlotTableBuilder /currentDataServers 的视图/MigrateSlotGroup**, 其中 **MigrateSlotGroup**
 
-内部保存的是那些缺少 **leader **以及 **follow**的 **Slot**
+内部保存的是那些缺少 **leader**以及 **follow**的 **Slot**
 
 ```java
 public class MigrateSlotGroup {
@@ -248,7 +248,7 @@ public class MigrateSlotGroup {
 }
 ```
 
-assign 代码如下. 代码中先分配 缺少leader的 slot、随后分配缺少 follow 的 slot
+assign 代码如下. 代码中先分配 缺少 leader 的 slot、随后分配缺少 follow 的 slot
 
 ```java
 public SlotTable assign() {
@@ -309,7 +309,7 @@ private boolean tryAssignLeaderSlots(int highWatermark) {
               .select(currentDataNodes);
 ```
 
-通过 Selectors 选择一个 合适的 leader节点。
+通过 Selectors 选择一个 合适的 leader 节点。
 
 继续追踪 DefaultSlotLeaderSelector.select 方法内部。同理我们采用代码注释的方式来解释具体实现。
 
@@ -338,7 +338,7 @@ public String select(Collection<String> candidates) {
 ```
 
 通过上面 select 方法源码注释相信可以很容易理解 SOFARegistry 的做法。总结来说，就是首先从 当前 slot 的 follow 节点中找出 leader，因为在此情况下不需要做数据迁移，相当于主节点挂了，提升备份节点为主节点实现高可用。但是具体选择哪一个，SOFARegistry 采取的策略是
-在所有的 follow 节点中找出最 "闲"的那一个，但是如果它所有的 follow 节点作为 leader 节点管理的 Slot 个数大于 highWaterMark，那么证明该 Slot 的所有 follow 节点都太"忙"了，那么就会从全部存活的机器中选择一个 "当作为 leader 节点管理的 Slot个数"最少的那一个，但是这种情况其实有数据同步开销的。
+在所有的 follow 节点中找出最 "闲"的那一个，但是如果它所有的 follow 节点作为 leader 节点管理的 Slot 个数大于 highWaterMark，那么证明该 Slot 的所有 follow 节点都太"忙"了，那么就会从全部存活的机器中选择一个 "当作为 leader 节点管理的 Slot 个数"最少的那一个，但是这种情况其实有数据同步开销的。
 
 #### follow 节点分配
 
@@ -393,11 +393,11 @@ public String select(Collection<String> candidates) {
 
 #### SlotTable 平衡算法
 
-了解完 SlotTable 的变更过程以及算法之后、相信大家对此有了自己的理解。那么SlotTable 的平衡过程其实也是类似的。详情可以参考源码`com.alipay.sofa.registry.server.Meta.slot.balance.DefaultSlotBalancer。`
+了解完 SlotTable 的变更过程以及算法之后、相信大家对此有了自己的理解。那么 SlotTable 的平衡过程其实也是类似的。详情可以参考源码`com.alipay.sofa.registry.server.Meta.slot.balance.DefaultSlotBalancer。`
 
 因为在节点的频繁上下线过程中、势必会导致某一些节点的负载(负责的 slot 管理数量)过高、某些节点的负载又很低、这样需要一种动态平衡机制来保证节点的相对负载均衡。
 
-入口在 DefaultSlotBalancer.balance方法内部
+入口在 DefaultSlotBalancer.balance 方法内部
 
 ```java
 public SlotTable balance() {
@@ -554,7 +554,7 @@ public SlotTable balance() {
 
 ```
 
-至此我们完成了 高负载 leader 节点的替换、在此过程中如果有替换过、那么直接返回、如果没有替换过、我们会继续执行 DefaultSlotBalancer 中的 migrateHighLeaders 操作。因为如果经过 DefaultSlotBalancer 中的 upgradeHighLeaders 操作之后没有进行过任何leader的替换、那么证明 高负载的 leader 节点同样它的 follow 节点也很忙、所以需要做得就是对这些忙的 follow 节点也要进行迁移。我们继续通过源码注释的方式来查看具体的过程。
+至此我们完成了 高负载 leader 节点的替换、在此过程中如果有替换过、那么直接返回、如果没有替换过、我们会继续执行 DefaultSlotBalancer 中的 migrateHighLeaders 操作。因为如果经过 DefaultSlotBalancer 中的 upgradeHighLeaders 操作之后没有进行过任何 leader 的替换、那么证明 高负载的 leader 节点同样它的 follow 节点也很忙、所以需要做得就是对这些忙的 follow 节点也要进行迁移。我们继续通过源码注释的方式来查看具体的过程。
 
 ```java
 private boolean migrateHighLeaders(int ceilAvg) {

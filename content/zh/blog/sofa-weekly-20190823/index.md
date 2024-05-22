@@ -16,9 +16,9 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 
 SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 
-**SOFAStack 官网: **[https://www.sofastack.tech](https://www.sofastack.tech/)
+**SOFAStack 官网:**[https://www.sofastack.tech](https://www.sofastack.tech/)
 
-**SOFAStack: **[https://github.com/sofastack](https://github.com/sofastack)
+**SOFAStack:**[https://github.com/sofastack](https://github.com/sofastack)
 
 ### 每周读者问答提炼
 
@@ -42,13 +42,13 @@ A：这段是 wakeup replicators，复制日志到 follower 都是在 Replicator
 
 A：当 registry.type=file 时会用到，其他时候不读。
 
->  default.grouplist 的值列表是否可以配置多个？
+> default.grouplist 的值列表是否可以配置多个？
 
 A：可以配置多个，配置多个意味着集群，但当 store.mode=file 时，会报错。原因是在 file 存储模式下未提供本地文件的同步，所以需要使用 store.mode=db，通过 db 来共享 TC 集群间数据
 
 > 是否推荐使用 default.grouplist？
 
-A：不推荐，如问题1，当 registry.type=file 时会用到，也就是说这里用的不是真正的注册中心，不具体服务的健康检查机制当tc不可用时无法自动剔除列表，推荐使用 nacos 、eureka、redis、zk、consul、etcd3、sofa。registry.type=file 或 config.type=file 设计的初衷是让用户再不依赖第三方注册中心或配置中心的前提下，通过直连的方式，快速验证 Seata 服务。
+A：不推荐，如问题 1，当 registry.type=file 时会用到，也就是说这里用的不是真正的注册中心，不具体服务的健康检查机制当 tc 不可用时无法自动剔除列表，推荐使用 nacos 、eureka、redis、zk、consul、etcd3、sofa。registry.type=file 或 config.type=file 设计的初衷是让用户再不依赖第三方注册中心或配置中心的前提下，通过直连的方式，快速验证 Seata 服务。
 
 **3、关于 Seata 事务分组：**
 
@@ -81,14 +81,14 @@ A：这里多了一层获取事务分组到映射集群的配置。这样设计�
 **2、发布 SOFAARK v1.0.0 版本，主要变更如下：**
 
 - 支持插件批量导出资源和 ark-biz 禁止批量导入资源
-- 支持指定版本调用，解决对于非激活状态的ark-biz服务访问问题（主要用于灰度验证，测试等）
-- 支持打包时跳过打ark-executable 包的过程（优化）
+- 支持指定版本调用，解决对于非激活状态的 ark-biz 服务访问问题（主要用于灰度验证，测试等）
+- 支持打包时跳过打 ark-executable 包的过程（优化）
 - 支持从目录运行启动
 - ArkClient api 支持指定 biz 的 arguments 参数
 - 使用 netty 代替 java NIO 实现 telnet server
 - 支持 SpringBoot testNG
 - 优化示例工程
-- 
+
 详细发布报告：[https://github.com/sofastack/sofa-ark/releases/tag/v1.0.0](https://github.com/sofastack/sofa-ark/releases/tag/v1.0.0)
 
 ### SOFA 活动推荐
@@ -99,7 +99,7 @@ A：这里多了一层获取事务分组到映射集群的配置。这样设计�
 8 月 29 日周四晚 7 点，将邀请 SOFAJRaft 开源负责人力鲲，从一个 SOFAJRaft 实例出发，带大家体验 SOFAJRaft 的应用。
 
 - **本期主题**：SOFAChannel#8：**从一个例子开始体验 SOFAJRaft**
-**直播时间**：8 月 29 日下周四晚 7点
+**直播时间**：8 月 29 日下周四晚 7 点
 - **你将收获**：
   - 如何使用 SOFAJRaft 实现自己的分布式应用
   - 基于实例理解 SOFAJRaft 中的概念和术语

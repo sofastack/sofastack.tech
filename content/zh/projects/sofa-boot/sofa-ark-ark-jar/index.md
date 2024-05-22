@@ -1,13 +1,14 @@
 
 ---
+
 title: "Ark 包"
 aliases: "/sofa-boot/docs/sofa-ark-ark-jar"
 ---
 
-
 本小节将介绍标准 `Ark 包` 的目录结构，以及如何使用官方插件 `sofa-ark-maven-plugin` 打包并发布 `Ark 包`。
 
 ## Maven 插件
+
 官方提供 `Maven` 插件 `sofa-ark-maven-plugin` 可以将普通 Java 工程或者 Spring Boot 工程打包成标准格式 `Ark 包` ；基于 [Fat Jar](https://docs.spring.io/spring-boot/docs/current/reference/html/executable-jar.html#executable-jar-jar-file-structure) 技术，使用 `java -jar` 命令可以直接启动 `Ark 包` 。 `Maven` 插件坐标为：
 
 ```xml
@@ -19,6 +20,7 @@ aliases: "/sofa-boot/docs/sofa-ark-ark-jar"
 ```
 
 ## Goals
+
 `sofa-ark-maven-plugin` 插件提供 `goal: repackage`， 可以将工程打包成可执行的 `Ark 包`，如下配置：
 
 ```xml
@@ -41,7 +43,9 @@ aliases: "/sofa-boot/docs/sofa-ark-ark-jar"
     </plugin>
 </build>
 ```
+
 ## 完整配置模板
+
 完整的 `sofa-ark-maven-plguin` 插件配置模板如下：
 
 ```xml
@@ -139,17 +143,22 @@ aliases: "/sofa-boot/docs/sofa-ark-ark-jar"
     </plugin>
 </plugins>
 ```
+
 配置项含义可以参考上述注释。
 
 ## 构建
+
 以 Spring Boot Web 工程为例，为了生成标准的 `Ark 包`，只需要两步操作
+
 * 参考配置模板，在 Web 模块的 pom.xml 文件中配置 `sofa-ark-maven-plugin` 插件；
 * 在 Web 模块目录或应用根目录中敲击 `mvn pacakge` 命令，即可在配置的 `outputDirectory` 目录中生成 `Ark 包` 和 `Ark Biz` 文件；默认命名分别为 Web 模块 `${artifactId}` 和 `${artifactId}-ark-biz` ; 也可以分别通过 `arkClassifier` 和 `bizClassifier` 设置 classifier；敲击 `mvn install` 命令，则会安装 `Ark 包` 到本地仓库，如果设置了 `attach` 为 `true`, 会同时把 `ark biz` 安装到本地仓库；
 
 ## 发布
+
 在工程主 pom 中配置仓库地址，然后敲击 `mvn deploy`命令，即可发布该 `Ark 包`；需要强调的是，如果设置了 `attach` 为 `true`，`Ark Biz` 也会发布到仓库，此外 `Ark Biz` 发布包默认会带上 `classifier = ark-biz`，可以通过 `bizClassifier` 设置 `ark biz` 的 classifier ；
 
 ## Ark 包典型目录结构
+
 以 [快速开始](../sofa-ark-ark-demo) 为例，普通的 `Spring Boot Web` 应用打包生成的 `Ark 包` 目录结构如下：
 
 ```text

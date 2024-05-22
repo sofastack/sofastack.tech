@@ -1,9 +1,9 @@
 
 ---
+
 title: "SOFATracer 工具类"
 aliases: "/sofa-tracer/docs/Utils"
 ---
-
 
 ## 通过 SOFATracer 上下文获取 Span
 
@@ -15,7 +15,7 @@ SofaTraceContext sofaTraceContext = SofaTraceContextHolder.getSofaTraceContext()
 
 SOFATracer 上下文 `SofaTraceContext` 通过这个实例，可以对其缓存的 Span 执行增、删、改、查和清空操作。作为组件集成的同学在集成过程中我们会对 SOFATracer 上下文做增、删、改和查等操作来集成分布式链路跟踪的能力；但是作为直接使用 SOFATracer 的应用开发者，我们只需要能够获取相应的 Span 即可，即只需要在获取上下文后使用如下的方法：
 
-```
+```plain
 SofaTracerSpan sofaTracerSpan = sofaTraceContext.getCurrentSpan();
 ```
 
@@ -23,7 +23,7 @@ SofaTracerSpan sofaTracerSpan = sofaTraceContext.getCurrentSpan();
 
 在使用相应的组件如 Spring MVC 时，该组件集成了 SOFATracer 的能力后可以在获取到 Span 后获取到 Span 中的所有信息，具体获取方式示例（前提 Span 不为空即相应组件已经集成 SOFATracer）：
 
-### 获取 TraceId 和 SpanId ：
+### 获取 TraceId 和 SpanId
 
 ```java
 SofaTracerSpanContext sofaTracerSpanContext = currentSpan.getSofaTracerSpanContext();
@@ -51,9 +51,9 @@ List<LogData> logDataList = sofaTracerSpan.getLogs();
 
 Baggage 元素是一个键值对集合，其携带的是需要透传的数据。SOFATracer 中将 Baggage 数据分为 sysBaggage 和 bizBaggage；sysBaggage 主要是指系统维度的透传数据，bizBaggage 主要是指业务的透传数据。
 
-### 设置和获取 BaggageItem 
+### 设置和获取 BaggageItem
 
-BaggageItem 是 Baggage集合中的数据元素。
+BaggageItem 是 Baggage 集合中的数据元素。
 
 1、通过标准接口设置相应的 BaggageItem 数据：
 
@@ -107,5 +107,3 @@ Iterable<Map.Entry<String, String>> entrySet = sofaTracerSpanContext.baggageItem
 ```
 
 注：遍历 Baggage 数据返回的是 sysBaggage 和 bizBaggage 的合集。
-
-

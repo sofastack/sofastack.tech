@@ -306,7 +306,7 @@ Nydus 镜像文件触发了 Containerd 守护进程的某种 GC 操作。我使�
 
 Containerd 是当前最流行的容器运行时之一，Nerdctl 作为 Containerd 的社区中的核心项目提供了完善的使用体验。它们都是容器领域中非常重要的基础项目。
 
-通过本次项目的开发工作，我逐渐了解了 OCI 镜像的组成部分，每部分的作用和基本格式；知道了以及 Nydus 镜像和 OCI 镜像之间的差异，并且理解了 Nydus镜像中 Blob layer 和 Bootstrap layer 之间的区别；能够通过检查本地镜像相关文件排查一些简单的程序 bug。
+通过本次项目的开发工作，我逐渐了解了 OCI 镜像的组成部分，每部分的作用和基本格式；知道了以及 Nydus 镜像和 OCI 镜像之间的差异，并且理解了 Nydus 镜像中 Blob layer 和 Bootstrap layer 之间的区别；能够通过检查本地镜像相关文件排查一些简单的程序 bug。
 
 在项目进行的过程中，我阅读了 Nerdctl 和 Containerd 的代码，学到了一些实用的编程技巧，并最终向 Nerdctl 提交并成功合入了两个 PR。在向 Nerdctl 提交和修改 PR 的过程中，Nerdctl 的 Maintainer 们对待代码的严谨态度让我大受裨益———他们甚至会 review `go.sum` 每一行改动！
 

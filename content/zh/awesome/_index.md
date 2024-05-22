@@ -97,18 +97,18 @@ title: "Awesome SOFA"
 - [Github Community](https://github.com/sofastack/community)
 - 微信
   - 公众号：金融级分布式架构（Antfin_SOFA）：致力于打造一流的分布式技术在金融场景应用实践的技术交流平台，专注于交流金融科技行业内最前沿、可供参考的技术方案与实施路线。
-    
+
     <img alt="Wechat" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*LVCnR6KtEfEAAAAAAAAAAABjARQnAQ" height="250" />
   
 - 钉钉
   - 钉钉交流群：
-    - ~~金融级分布式架构 SOFAStack 1群，群号：23127468~~ 已满
-    - ~~金融级分布式架构 SOFAStack 2群，群号：23195297~~ 已满
-    - ~~金融级分布式架构 SOFAStack 3群，群号：23390449~~ 已满
-    - ~~金融级分布式架构 SOFAStack 4群，群号：23372465~~ 已满
-    - ~~金融级分布式架构 SOFAStack 5群，群号：30315793~~ 已满
-    - ~~金融级分布式架构 SOFAStack 6群，群号：34197075~~ 已满
-    - 金融级分布式架构 SOFAStack 7群，群号：44858463
+    - ~~金融级分布式架构 SOFAStack 1 群，群号：23127468~~ 已满
+    - ~~金融级分布式架构 SOFAStack 2 群，群号：23195297~~ 已满
+    - ~~金融级分布式架构 SOFAStack 3 群，群号：23390449~~ 已满
+    - ~~金融级分布式架构 SOFAStack 4 群，群号：23372465~~ 已满
+    - ~~金融级分布式架构 SOFAStack 5 群，群号：30315793~~ 已满
+    - ~~金融级分布式架构 SOFAStack 6 群，群号：34197075~~ 已满
+    - 金融级分布式架构 SOFAStack 7 群，群号：44858463
 
       <img alt="DingTalk" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*1DklS7SZFNMAAAAAAAAAAAAAARQnAQ" height="250" />
 

@@ -1,9 +1,9 @@
 
 ---
+
 title: "Ark 容器插件机制"
 aliases: "/sofa-boot/docs/sofa-ark-plugin"
 ---
-
 
 ## Ark 插件启动
 
@@ -72,11 +72,11 @@ Ark 之间的通信是通过服务来完成的， 在上述启动接口方法的
 ```
 
 插件服务是以接口为粒度的，针对同一个接口：
+
 * 每一个插件只允许发布一个服务，重复发布则会直接返回已经发布服务的引用
 * 当多有个插件发布服务时，若通过 `referenceService`  引用单个服务
   * 当不指定 pluginName 时，则返回优先级最高的服务
   * 当指定 pluginName 时，则返回该插件发布的服务
-
 
 返回的服务引用 `ServiceReference` 定义如下:
 
@@ -121,10 +121,9 @@ public interface ServiceMetadata {
 ```
 
 其中通过
+
 * `getService()` 可以获取到服务的实体 (也即发布服务时的 implObject)
 * `getServiceMetadata()` 可以获取到服务的元数据信息，包括
   * 服务名：即服务的接口名
   * 服务接口
   * 服务的提供方：包括提供方名字(插件名等)、提供方优先级(插件优先级)
-
-

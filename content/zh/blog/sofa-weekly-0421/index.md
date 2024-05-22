@@ -21,7 +21,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*ZhNJQqxZo7YAAAAAA
 
 **SOFAStack:** *[https://github.com/sofastack](https://github.com/sofastack)*
 
-**SOFA社区会议回顾**  
+**SOFA 社区会议回顾**  
 
 **Layotto：**
 
@@ -37,7 +37,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*ZhNJQqxZo7YAAAAAA
 
 「**会议回放**」：[*https://www.bilibili.com/video/BV1aT411p7cr/?share_source=copy_web&vd_source=802e089175dbc2ea677914f78683b18a*](https://www.bilibili.com/video/BV1aT411p7cr/?share_source=copy_web&vd_source=802e089175dbc2ea677914f78683b18a)
 
-**SOFA 社区会议预告** 
+**SOFA 社区会议预告**
 
 **Layotto：**
 
@@ -98,7 +98,7 @@ SOFA 五周年资料已上传 SOFAStack 官网
 1. @LY1806620741 #1061
 
 > com.alipay.sofa.rpc.enable-swagger 是否已经废弃？在 3.16.3
-> 
+>
 > com.alipay.sofa.rpc.enable-swagger=true 配置使用了 Objectway 的 ASM，与 Spring Boot 的 ASM 冲突。
 
 A：可以手动增加一个依赖。

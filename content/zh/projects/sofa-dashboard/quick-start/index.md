@@ -20,7 +20,7 @@ sofa-dashboard-frontend 使用了 [Ant Design Pro](https://github.com/ant-design
 
 SOFAArk 管控需要依赖 MySQL 进行资源数据存储，工程目录下有一个 SofaDashboardDB.sql 脚本文件，可以通过执行这个脚本文件进行数据库表的初始化。
 
-### Zookeeper 
+### Zookeeper
 
 > ZooKeeper 3.4.x and ZooKeeper 3.5.x
 
@@ -49,5 +49,3 @@ sofa-dashboard-front 是 SOFADashboard 的前端代码工程，基于蚂蚁金
 ## 案例工程
 
 * [sofastack-dashboard-guides](https://github.com/sofastack-guides/sofastack-dashboard-guides)
-
-

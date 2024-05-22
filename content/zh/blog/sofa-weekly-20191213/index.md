@@ -17,9 +17,9 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 
 SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 
-**SOFAStack 官网: **[https://www.sofastack.tech](https://www.sofastack.tech/)
+**SOFAStack 官网:**[https://www.sofastack.tech](https://www.sofastack.tech/)
 
-**SOFAStack: **[https://github.com/sofastack](https://github.com/sofastack)
+**SOFAStack:**[https://github.com/sofastack](https://github.com/sofastack)
 
 ### 每周读者问答提炼
 
@@ -29,14 +29,14 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 
 **1、@温明磊** 提问：
 
-> 我用的 ShardingSqhere 分库分表，按照各个业务方分库。> 所以我们项目里所有分库的表都带了业务方字段biz_code，这个字段的值也就是虚库的名字，都是写在配置里的。
+> 我用的 ShardingSqhere 分库分表，按照各个业务方分库。> 所以我们项目里所有分库的表都带了业务方字段 biz_code，这个字段的值也就是虚库的名字，都是写在配置里的。
 A：从你的需求看，比较简单只是需要按业务方进行分库，而 biz_code 不在状态机日志表的字段里，你可以考虑先算好分库位，然后用 ShadingJDBC 的 hint 功能来设置分库位即可。
 
 A：我看了一下 ShardingJDBC 也是用的 ThreadLocal 来设置 hint：[https://shardingsphere.apache.org/document/current/cn/manual/sharding-jdbc/usage/hint/](https://shardingsphere.apache.org/document/current/cn/manual/sharding-jdbc/usage/hint/)
 
 > ShadingJDBC 的 hint 功能是基于 ThreadLocal 的，Saga 异步的方式不能用 sharding jdbc 的吗?
 
-A：有一个优雅的办法：你实现 StateLogStore 接口，然后代理 Seata Saga 的DbAndReportTcStateLogStore，在每个方法前后加上：hintManager.addDatabaseShardingValue();、hintManager.close()，这样就和同步异步没有关系了，因为设置 hint 和 sql 执行都在同一个线程。
+A：有一个优雅的办法：你实现 StateLogStore 接口，然后代理 Seata Saga 的 DbAndReportTcStateLogStore，在每个方法前后加上：hintManager.addDatabaseShardingValue();、hintManager.close()，这样就和同步异步没有关系了，因为设置 hint 和 sql 执行都在同一个线程。
 
 另外，DbAndReportTcStateLogStore 如何传到你自己实现的 StateLogStore 里，你需要继承 DbStateMachineConfig，然后在 afterProperties 方法，先调 super.afterProperties 方法，然后 getStateLogStore()，传入你自己实现的 StateLogStore 里，然后把自己实现的 StateLogStore 调 setStateLogStore 覆盖。
 
@@ -57,7 +57,7 @@ A：事实上 Seata Saga 模式 是一个具备“服务编排”和“Saga 分�
 
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
-**3、@anorqiu9 **提问：
+**3、@anorqiu9**提问：
 
 > 关于 MOSN 我们目前遇到一个架构方面的问题，就是原基于 Dubbo 的服务和现在基于 Spring Cloud 的服务互调如何做？一种方案设计服务同时开启两个服务框架的服务接口为两个框架的服务同时提供服务;另一种方案是异构系统基于网关交互.这两种方案有什么优缺点？大家有没有碰到过类似的场景，是如何处理的？谢谢！
 
@@ -84,7 +84,7 @@ MOSN：[https://github.com/sofastack/sofa-mosn](https://github.com/sofastack/sof
 
 **本周发布详情如下：**
 
-**1、发布SOFARPC v5.6.3，主要变更如下：**
+**1、发布 SOFARPC v5.6.3，主要变更如下：**
 
 - 试验性支持 grpc；
 - 试验性支持 H2 的 tls；
@@ -100,8 +100,8 @@ MOSN：[https://github.com/sofastack/sofa-mosn](https://github.com/sofastack/sof
 
 - 支持在 Biz 中使用 Ark 扩展点机制；
 - 修复遗漏处理加载 ark spi 类资源 bug；
-- 提供全新的biz/plugin 生命周期事件；
-- 优化SOFAArk 自身日志输出；
+- 提供全新的 biz/plugin 生命周期事件；
+- 优化 SOFAArk 自身日志输出；
 - 优化 SOFAArk 与 SOFABoot 日志依赖管控；
 - telnet 服务支持退出指令；
 - 升级 netty 版本到 4.1.42.Final；
@@ -131,12 +131,12 @@ MOSN：[https://github.com/sofastack/sofa-mosn](https://github.com/sofastack/sof
 
 ![Service Mesh Meetup#9](https://cdn.nlark.com/yuque/0/2019/png/226702/1576469907431-7bfc401e-fe31-46a7-9c90-391e8aace845.png)
 
-本期为 Service Mesh Meetup 第9期，将与滴滴联合举办，将深入 Service Mesh 的落地实践，并带领大家探索 Service Mesh 在更广阔领域的应用。诚邀您参加~
+本期为 Service Mesh Meetup 第 9 期，将与滴滴联合举办，将深入 Service Mesh 的落地实践，并带领大家探索 Service Mesh 在更广阔领域的应用。诚邀您参加~
 
 **主题**：Service Mesh Meetup#9 杭州站：To Infinity and Beyond
 
-**时间**：2019年12月28日13:00-17:30
+**时间**：2019 年 12 月 28 日 13:00-17:30
 
-**地点**：杭州西湖区紫霞路西溪谷G座8楼
+**地点**：杭州西湖区紫霞路西溪谷 G 座 8 楼
 
 **报名方式**：点击“[这里](https://tech.antfin.com/community/activities/1056)”，即可报名

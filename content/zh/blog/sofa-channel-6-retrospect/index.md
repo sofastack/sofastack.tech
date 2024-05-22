@@ -64,7 +64,7 @@ SOFALookout 是蚂蚁金服开源的一款解决系统的度量和监控问题�
 
 这种做法很快会导致一个问题，我们来看下一个例子： `shanghai.host1.foo.exporter.bar` 。 只看这个名字的话几乎很难知道这个 Metrics 统计的是什么。这是因为它并没有把字段对应的 Key 编码到名字里，所以在缺少一些上下文的情况下，我们很难读懂它的含义。
 
-另外，字段的顺序也是很重要的，不能写错，这是因为编码到 Name 里的只有 Tag 的 Value，Key 不在里面，于是又有了另外一种编码方式：`zone.shanghai.host.host1.app.foo.counters.exporter.bar` 。这种方式将 Tag 的 Key 也编码在Name 里。但带来的问题也很明显：Name 越来越长。
+另外，字段的顺序也是很重要的，不能写错，这是因为编码到 Name 里的只有 Tag 的 Value，Key 不在里面，于是又有了另外一种编码方式：`zone.shanghai.host.host1.app.foo.counters.exporter.bar` 。这种方式将 Tag 的 Key 也编码在 Name 里。但带来的问题也很明显：Name 越来越长。
 
 我们再看下一个例子： `login.success.h5`，它想表达来自 H5 平台登录成功的次数。假设我们还有其他平台，比如安卓、IOS，我们想求所有平台的总登录成功次数，那么就需要做一个聚合操作。通常时序数据库会提供型号来匹配所有值。
 
@@ -115,7 +115,7 @@ registry.counter(reqId).increment();
 
 可以看到它们都显式支持了 Metrics 2.0 的概念。
 
-这里我们花了点时间强调传统 Metrics 与 Metrics 2.0版本的区别，主要是想强调合理使用 Name 和 Tags，避免将 Tags 都编码在 Name 里的传统做法。现在基本上流行的开源时序数据库都通过自己的方式支持了Metrics 2.0 的概念。
+这里我们花了点时间强调传统 Metrics 与 Metrics 2.0 版本的区别，主要是想强调合理使用 Name 和 Tags，避免将 Tags 都编码在 Name 里的传统做法。现在基本上流行的开源时序数据库都通过自己的方式支持了 Metrics 2.0 的概念。
 
 ## 2 SOFALookout 的客户端使用
 
@@ -159,7 +159,7 @@ Server 提供了与普罗米修斯一致的 HTTP API，它负责分析收到的 
 
 这里我提一下为什么我们选择适配普罗米修斯的 API，而不是其他时序数据库的 API：其中一个重要原因是它的查询能力明显比其他时序数据库的查询能力强大，也比较简洁，特别是在跨多个 Metrics 查询时。
 
-举一个例子，假设我们有一个 Metrics 记录了成功数，有另一个 Metrics 记录了总数，想求成功率。显然就是两个Metrics 除一下就行了，比如下方的代码，就是表达了这个意思：
+举一个例子，假设我们有一个 Metrics 记录了成功数，有另一个 Metrics 记录了总数，想求成功率。显然就是两个 Metrics 除一下就行了，比如下方的代码，就是表达了这个意思：
 
 ```java
 sum(success{zone="..."}) by(service{zone="..."}) / sum(total{zone="..."}) by(service)
@@ -202,7 +202,7 @@ gateway.metrics.exporter.es.host=es
 metrics-server.spring.data.jest.uri=http://es:9200
 ```
 
-然后启动SOFALookout容器, 将该配置文件挂到指定路径, 并且使用 Docker 的 link 参数来引用 es 容器的地址：
+然后启动 SOFALookout 容器, 将该配置文件挂到指定路径, 并且使用 Docker 的 link 参数来引用 es 容器的地址：
 
 ```bash
 docker run -it \

@@ -1,9 +1,9 @@
 
 ---
+
 title: "SOFARPC architecture"
 aliases: "/sofa-rpc/docs/Structure-Intro"
 ---
-
 
 SOFARPC is divided into two layers from bottom to top:
 

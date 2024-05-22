@@ -142,7 +142,7 @@ public Biz createBiz(File file) throws IOException {
 }
 ```
 
-1. 从 Manifest 清单文件中解析基本信息（如MainClass），根据基本信息创建 BizModel，将 Ark Biz 的状态设置为 resolved
+1. 从 Manifest 清单文件中解析基本信息（如 MainClass），根据基本信息创建 BizModel，将 Ark Biz 的状态设置为 resolved
 2. 创建 ClassLoader 设置到 BizModel 中
 
 ```java
@@ -602,7 +602,7 @@ public static List<ClientResponse> process(List<BizOperation> bizOperations) {
 
 ### check
 
-Zookeeper 动态下发指令支持 check指令，check 指令用于查询 Ark Biz 安装情况。
+Zookeeper 动态下发指令支持 check 指令，check 指令用于查询 Ark Biz 安装情况。
 
 入口方法 ArkClient#checkOperation 中调用 checkBiz 方法，进入查询 Biz 流程。
 

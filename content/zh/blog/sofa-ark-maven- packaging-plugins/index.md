@@ -25,7 +25,7 @@ SOFAArk 是 SOFA 团队开源的又一款扛鼎力作，它是一款基于 Java
 
 SOFAArk biz 的打包插件是 sofa-ark-maven-plugin ，它可以将普通 Java 工程或者 Spring Boot 工程打包成标准格式的 Ark 包或者 Ark Biz 包，关于 Ark 包和 Ark Biz 包可以参考这里：
 
--  Ark 包：[https://www.sofastack.tech/projects/sofa-boot/sofa-ark-ark-jar/](https://www.sofastack.tech/projects/sofa-boot/sofa-ark-ark-jar/)
+- Ark 包：[https://www.sofastack.tech/projects/sofa-boot/sofa-ark-ark-jar/](https://www.sofastack.tech/projects/sofa-boot/sofa-ark-ark-jar/)
 - Ark Biz：[https://www.sofastack.tech/projects/sofa-boot/sofa-ark-ark-biz/](https://www.sofastack.tech/projects/sofa-boot/sofa-ark-ark-biz/)
 
 本文将从如下三个方面进行介绍：先对插件的使用和打包出来的产物做一个简单介绍，然后告诉大家调试插件的方法，最后对整个插件的原理做一个流程图和阐述。

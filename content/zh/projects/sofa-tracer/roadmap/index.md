@@ -27,7 +27,7 @@ aliases: "/sofa-tracer/docs/roadmap"
 | 代码 | SOFATracer 支持 Oracle JDBC Driver                           | 中     |              |              |              |                                                              |                                                              |
 | 代码 | SOFATracer 支持 Dubbo                                        | 中     |              |              |              |                                                              |                                                              |
 | 代码 | SOFATracer 支持 RestTemplate 和 AsyncRestTemplate            | 中     |              |              |              | 已经完成 |                                                              |
-| 代码 | SOFATracer 支持标准Servlet                                   | 中     |              |              |              | 已经完成，见对于标准 servlet 容器的支持（ tomcat/jetty 等） |                                                              |
+| 代码 | SOFATracer 支持标准 Servlet                                   | 中     |              |              |              | 已经完成，见对于标准 servlet 容器的支持（ tomcat/jetty 等） |                                                              |
 | 代码 | SOFATracer 支持单机版链路分析并给用户通过注解使用的埋点方式，数据汇报到 Zipkin | 中     |              |              |              |                                                              |                                                              |
 | 代码 | SOFATracer 支持 Kafka                                        | 中     |              |              |              |                                                              |                                                              |
 | 代码 | SOFATracer 支持 Redis                                        | 中     |              |              |              |                                                              |                                                              |
@@ -39,19 +39,19 @@ aliases: "/sofa-tracer/docs/roadmap"
 ### 2.2.0
 
 * SOFATracer 支持 JDBC 数据源
-    * SOFATracer 支持 Mysql Driver
-    * SOFATracer 支持 [Sharding-JDBC](https://github.com/sharding-sphere/sharding-sphere)
-    * SOFATracer 支持  Mysql-JDBC
-    * SOFATracer 支持  Druid
-    * SOFATracer 支持  c3p0
-    * SOFATracer 支持  Tomcat-JDBC
-    * SOFATracer 支持  HikariCP
+  * SOFATracer 支持 Mysql Driver
+  * SOFATracer 支持 [Sharding-JDBC](https://github.com/sharding-sphere/sharding-sphere)
+  * SOFATracer 支持  Mysql-JDBC
+  * SOFATracer 支持  Druid
+  * SOFATracer 支持  c3p0
+  * SOFATracer 支持  Tomcat-JDBC
+  * SOFATracer 支持  HikariCP
 * SOFATracer 支持 HttpClient
 * SOFATracer 支持 Zipkin 2.X.X 版本，开发验证并测试
 
 ### 2.3.0
 
-* SOFATracer 支持RestTemplate 和 AsyncRestTemplate
+* SOFATracer 支持 RestTemplate 和 AsyncRestTemplate
 * SOFATracer 支持提供采样能力
 * SOFATracer 支持标准 servlet 容器
 * SOFATracer 支持 Zipkin UI 中文界面

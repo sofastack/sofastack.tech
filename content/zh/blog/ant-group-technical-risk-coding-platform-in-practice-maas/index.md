@@ -69,7 +69,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*PhN5Sp2T9NYAAAAAAA
 
 ## PART. 1 平台技术概览
 
- ***能力服务化*** 
+ ***能力服务化***
 
 监控的服务化能力整体包含这么几部分，数据服务化、配置服务化、计算、存储服务化、算法服务化、通知、云原生服务化等等，也包括一些外部能力集成比如消息缓存等等。
 
@@ -81,7 +81,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*PhN5Sp2T9NYAAAAAAA
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/0a706e1483f54610989a45eb8921dd83.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6JqC6JqB6YeR5pyNIFNPRkFTdGFjaw==,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
 
- ***数据服务化*** 
+ ***数据服务化***
 
 能力服务化中非常重要的一环就是数据服务化，因为数据是所有监控分析的基础，数据服务化主要分成两部分。
 
@@ -103,7 +103,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*PhN5Sp2T9NYAAAAAAA
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/7eb47e6032fc47ba8e6265079b7629c7.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6JqC6JqB6YeR5pyNIFNPRkFTdGFjaw==,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
 
- ***研发效能*** 
+ ***研发效能***
 
 - 大库管理，我们设计了一种可以支持服务沉淀、权限隔离（可以独立按目录管理 CR）、逻辑复用的代码结构，比如缓存 Tbase 的研发 + SRE 可以共同在 cache 目录里面定义缓存问题的发现、分析、恢复。同时可以复用到 core-service 里面的比如容器是否健康，网络是否异常等标准服务。平台能够提供一致的多环境调试能力，方便监控分析逻辑可以直接运行在本地 IDE 环境中，我们通过动态代理的模式把本地访问的数据、函数服务代理到服务端，从而达到了本地跟线上完全一致的研发体验。这项能力极大地提高了研发效率，研发过程中可以直接 debug 线上数据，比传统的日志模式的调试方式有非常大的效率提升，一个基础的分析函数基本可以在小时级别内完成。
 
@@ -111,7 +111,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*PhN5Sp2T9NYAAAAAAA
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/0c390e36fa994555a1273a49ceb30621.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6JqC6JqB6YeR5pyNIFNPRkFTdGFjaw==,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
 
- ***多语言 Runtime*** 
+ ***多语言 Runtime***
 
 我们在初期建设的时候函数是都运行在一个集群里面，经常会遇到例如：死循环、OOM、线程频繁创建等等性能问题，因为业务代码不可控，CR 不能完全杜绝这类问题，这样我们就需要完全隔离的函数运行环境，从图中可以看到，每个函数至少具备 2 个独立的容器（容灾的需要），函数 1OOM（Out Of Memory），不会影响到函数 2。这样我们就可以基本做到函数级别的执行层隔离，我们通过 SLO 的度量，平台稳定性有了非常大的提升。
 
@@ -125,8 +125,8 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*PhN5Sp2T9NYAAAAAAA
 
 ## PART. 2 应用场景
 
- ***变更监控*** 
- 
+ ***变更监控***
+
 蚂蚁变更故障占比是整体故障占比的三分之一，而监控是变更过程中非常重要的一环，当前面临很多问题，当一个变更发起的时候，我们拿到根据变更的范围，自动化的生成核心的系统、业务指标比如应用的 gc 、CPU 、服务成功率，错误数据等等，解决第一个不知道变更看什么指标的问题。我们的 MaaS 计算服务会根据变更范围动态生成一组指标的实时计算，（变更前、变更后，变更组、非变更组）等等，因为是根据变更范围动态生成的计算，所以解决了监控粒度粗的问题，这些数据产出后，根据我们的异常检测算法，得出本次变更过程是否有指标异常，解决不知道怎么看的问题，我们通过函数编排的方式同变更核心流程打通，整个过程无需用户参与，如果变更监控发现异常会自动触发拦截阻塞异常。
 
 - 有效：全年累计拦截真实故障 163 笔，变更监控拦截 75 笔，占总体拦截数的 46.01%。
@@ -137,7 +137,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*PhN5Sp2T9NYAAAAAAA
 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/18e96f8daa854fcdb7d3df4e24dab7aa.png?x-oss-process=image/watermark,type_ZHJvaWRzYW5zZmFsbGJhY2s,shadow_50,text_Q1NETiBA6JqC6JqB6YeR5pyNIFNPRkFTdGFjaw==,size_20,color_FFFFFF,t_70,g_se,x_16#pic_center)
 
-***业务链路报警分析*** 
+***业务链路报警分析***
 
 常态情况下业务告警噪音的比例达到了 66%，对日常研发、SRE 同学的打扰非常高，不利于业务的应急流程、稳定性建设。其实 SRE 同学有非常多的噪音判定经验，但是降噪逻辑没法自定义，导致降噪非常困难。
 
@@ -159,7 +159,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*PhN5Sp2T9NYAAAAAAA
 
 - SRE 从整体构思到第一个 Poc 实现只花了 2 周时间。
 
- ***配置代码化*** 
+ ***配置代码化***
 
 这个场景主要是要解决批量化覆盖的效率问题，比如仿真建站，应用监控规则自动覆盖等场景，我们通过服务化的方式把这些能力暴露出来达到一个提效的效果。简单拿应用监控规则覆盖来说，代码逻辑是通过先配置好模板，然后经过一些配置替换，最后批量大规模覆盖。在仿真环境建设过程中，做到了根据流量实时调整阈值，0 人工配置，重庆消金建站，5 人天的配置工作降低到 0 人工监控配置。应用规则自动化覆盖也是从往年 527 的几十人日，降低到 1 小时。
 
@@ -169,11 +169,11 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*PhN5Sp2T9NYAAAAAAA
 
 全站应用规则覆盖降低到 1 小时，527 国际应用告警 0 人工配置。
 
-- xx 业务建站： 
+- xx 业务建站：
 
 中间件 10+ 产品 降低到 0 人工监控配置。
 
-- 仿真环境建设： 
+- 仿真环境建设：
 
 仿真规则自动化覆盖、阈值动态调整，0 人工配置。
 

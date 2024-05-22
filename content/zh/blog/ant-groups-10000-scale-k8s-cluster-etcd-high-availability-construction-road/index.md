@@ -9,17 +9,17 @@ date: 2021-07-26T15:00:00+08:00
 cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*PhN5Sp2T9NYAAAAAAAAAAAAAARQnAQ"
 ---
 
-蚂蚁集团运维着可能是全球最大的 K8s 集群：K8s 官方以 5k node 作为 K8s 规模化的顶峰，而蚂蚁集团事实上运维着规模达到 10k node 规模的 K8s 集群。一个形象的比喻就是，如果官方以及跟着官方的 K8s 使用者能想象到的 K8s 的集群规模是泰山，那么蚂蚁集团在官方的解决方案之上已经实现了一个珠穆朗玛峰，引领了 K8s 规模化技术的提升。 
+蚂蚁集团运维着可能是全球最大的 K8s 集群：K8s 官方以 5k node 作为 K8s 规模化的顶峰，而蚂蚁集团事实上运维着规模达到 10k node 规模的 K8s 集群。一个形象的比喻就是，如果官方以及跟着官方的 K8s 使用者能想象到的 K8s 的集群规模是泰山，那么蚂蚁集团在官方的解决方案之上已经实现了一个珠穆朗玛峰，引领了 K8s 规模化技术的提升。
 
 这个量级的差异，不仅仅是量的差异，更是 K8s 管理维护的质的提升。能维护有如此巨大挑战巨量规模的 K8s 集群，其背后原因是蚂蚁集团付出了远大于 K8s 官方的优化努力。
 
 所谓万丈高楼平地起，本文着重讨论下蚂蚁集团的在 K8s 的基石 --- etcd 层面做出的高可用建设工作：只有 etcd 这个基石稳当了，K8s 这栋高楼大厦才保持稳定性，有 tidb 大佬黄东旭朋友圈佐证【图片已获黄总授权】。
 
->![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*cbuiSovI2zYAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*cbuiSovI2zYAAAAAAAAAAAAAARQnAQ)
 
 ### 面临的挑战
 
-etcd 首先是 K8s 集群的 KV 数据库。 
+etcd 首先是 K8s 集群的 KV 数据库。
 从数据库的角度来看，K8s 整体集群架构各个角色如下：
 
 1. etcd 集群的数据库
@@ -196,7 +196,7 @@ compaction 本质是一次写动作，在大规模集群中频繁地执行 compa
 
 为了防止单次 compaction 任务一直占用 boltdb 的读写锁，每次执行一批固定量【compaction batch limit】的磁盘 KV 压缩任务后，etcd 会释放读写锁 sleep 一段时间【compaction sleep interval】。
 
-在 v3.5 之前，compaction sleep interval 固定为 10 ms，在 v3.5 之后 etcd 已经把这个参数开放出来方便大规模 K8s 集群进行调参。类似于 batch write 的 interval 和 number，单次 compaction 的 sleep interval 和 batch limit 也需要不同的集群规模设定不同的参数，以保证 etcd 平稳运行和 kube-apiserver 的读写 RT 指标平稳无毛刺。 
+在 v3.5 之前，compaction sleep interval 固定为 10 ms，在 v3.5 之后 etcd 已经把这个参数开放出来方便大规模 K8s 集群进行调参。类似于 batch write 的 interval 和 number，单次 compaction 的 sleep interval 和 batch limit 也需要不同的集群规模设定不同的参数，以保证 etcd 平稳运行和 kube-apiserver 的读写 RT 指标平稳无毛刺。
 
 ### 运维平台
 
@@ -216,7 +216,7 @@ compaction 本质是一次写动作，在大规模集群中频繁地执行 compa
 
 2. top N KV --- 段时间内访问次数最多的 N 个 KV
 
-3. top N namespace --- KV 数目最多的 N 个 namespace 
+3. top N namespace --- KV 数目最多的 N 个 namespace
 
 4. verb + resoure --- 外部访问的动作和资源统计
 
@@ -276,7 +276,7 @@ K8s 平台运维人员一般都有这样一条经验：etcd 集群如果发生�
 
 通过 etcd 运维平台提供的每个 etcd 的连接负载压力，可以实时获取集群连接的均衡性，进而决定运维介入的时机，保证 etcd 集群整体的健康度。
 
-其实最新的 etcd v3.5 版本已经提供了 etcd 客户端和 etcd 节点之间的自动负载均衡功能，但这个版本才发布没多久，目前最新版本的 K8s 尚未支持这个版本，可以及时跟进 K8s 社区对这个版本的支持进度以及时获取这一技术红利，减轻平台运维压力。 
+其实最新的 etcd v3.5 版本已经提供了 etcd 客户端和 etcd 节点之间的自动负载均衡功能，但这个版本才发布没多久，目前最新版本的 K8s 尚未支持这个版本，可以及时跟进 K8s 社区对这个版本的支持进度以及时获取这一技术红利，减轻平台运维压力。
 
 ### 未来之路
 
@@ -324,13 +324,13 @@ proxyless etcd 分布式集群的缺点是如果把 proxy 的路由逻辑放入 
 
 欢迎对 Serverless 自动伸缩技术、自适应混合部署技术以及 Kata/Nanovisor 等安全容器技术感兴趣的同行或者 2022 届应届毕业生加入我们。
 
-联系邮箱 xiaoyun.maoxy@antgroup.com 或者 yuyu.zx@antgroup.com。
+联系邮箱 <xiaoyun.maoxy@antgroup.com> 或者 <yuyu.zx@antgroup.com>。
 
 ### 本周推荐阅读
 
 - [我们做出了一个分布式注册中心](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247491198&idx=1&sn=a4607e6a8492e8749f31022ea9e22b80&chksm=faa0f1a4cdd778b214403e36fb4322f91f3d1ac47361bf752c596709f8453b8482f582fe7e2e&token=154358414)
 
-- [还在为多集群管理烦恼吗？OCM来啦！](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247490574&idx=1&sn=791b8d49759131ea1feb5393e1b51e7c&chksm=faa0f3d4cdd77ac2316b179a24b7c3ac90a08d3768379795d97c18b14a9c69e4b82012c3c097)
+- [还在为多集群管理烦恼吗？OCM 来啦！](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247490574&idx=1&sn=791b8d49759131ea1feb5393e1b51e7c&chksm=faa0f3d4cdd77ac2316b179a24b7c3ac90a08d3768379795d97c18b14a9c69e4b82012c3c097)
 
 - [RFC8998+BabaSSL---让国密驶向更远的星辰大海](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247490428&idx=1&sn=8ca31baa5c99e0790cdee8a075a7c046&chksm=faa0f4a6cdd77db07f3fb1149b7f6505fe6b8eca5b2e2a724960aee76d9667e3e970c44eef5a)
 
@@ -338,4 +338,4 @@ proxyless etcd 分布式集群的缺点是如果把 proxy 的路由逻辑放入 
 
 更多文章请扫码关注“金融级分布式架构”公众号
 
->![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*5aK0RYuH9vgAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*5aK0RYuH9vgAAAAAAAAAAAAAARQnAQ)

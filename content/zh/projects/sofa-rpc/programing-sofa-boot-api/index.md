@@ -1,5 +1,6 @@
 
 ---
+
 title: "SOFABoot 环境动态 API 使用"
 aliases: "/sofa-rpc/docs/Programing-SOFA-BOOT-API"
 ---
@@ -36,9 +37,9 @@ serviceClient.service(serviceParam);
 
 上面的代码中
 
-1.  首先通过 clientFactory 获得 ServiceClient 对象
-2.  然后构造 ServiceParam 对象，ServiceParam 对象包含发布服务所需参数，通过 setInstance 方法来设置需要被发布成 RPC 服务的对象，setInterfaceType 来设置服务的接口
-3.  最后，调用 ServiceClient 的 service 方法，发布一个 RPC 服务
+1. 首先通过 clientFactory 获得 ServiceClient 对象
+2. 然后构造 ServiceParam 对象，ServiceParam 对象包含发布服务所需参数，通过 setInstance 方法来设置需要被发布成 RPC 服务的对象，setInterfaceType 来设置服务的接口
+3. 最后，调用 ServiceClient 的 service 方法，发布一个 RPC 服务
 
 通过编程 API 方式引用 RPC 服务的代码也是类似的：
 

@@ -40,7 +40,7 @@ A：Select for update 的时候，首先 Seata 会代理这个语句，去查询
 不是允许脏读，是读已提交。读未提交是默认的，所以只有在你 update 的时候（update 是当前读），但是如果你的 update 是基于快照度的 select 结果，可能会出现事与愿违的结果，如果你要基于某个数据来 update，要么 for update 来读分布式下的已提交，要么就用 update x=x-1 之类的写法，因为提交时会抢占全局锁，没抢到会 rollback，释放当前锁进行重试，这样就能保证抢到锁的时候，update 的数据当前读是分布式下的读已提交并修改
 目前好像没人写关于 AT 行锁及全局锁部分源码有分析讲解的资料，如果感兴趣可以去阅读一下，写出来投稿给我们。
 
-Seata：https://github.com/seata/seata
+Seata：<https://github.com/seata/seata>
 
 ### 本周推荐阅读
 
@@ -53,7 +53,7 @@ Seata：https://github.com/seata/seata
 
 **Occlum 发布 v0.19.1 版本，主要变更如下：**
 
-i.同时兼容 Glibc 和 musl libc的应用
+i.同时兼容 Glibc 和 musl libc 的应用
 
 ii. 支持基于 DCAP (Intel SGX Data Center Attestation Primitives) 的远程验证
 

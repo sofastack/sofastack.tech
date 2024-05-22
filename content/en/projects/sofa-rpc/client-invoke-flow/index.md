@@ -7,5 +7,4 @@ The client module is a complex module which contains cluster, router, address ho
 
 See the following flow chart:
 
-
 ![client component](client-component.png)

@@ -24,7 +24,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **1、@藜蒿** 提问：
 
->请问一下，SOFATracer+SpringBoot 如何在 spring-mvc-digest.log 增加 rest 请求的请求体数据在 json 日志中。需要打印 request 数据，不单单是 url 上的，可能是 post 请求放在 body 里面的。A：可以用这里的命名空间：<br />
+> 请问一下，SOFATracer+SpringBoot 如何在 spring-mvc-digest.log 增加 rest 请求的请求体数据在 json 日志中。需要打印 request 数据，不单单是 url 上的，可能是 post 请求放在 body 里面的。A：可以用这里的命名空间：<br />
 
 A：这个暂时不行，不过你可以通过手动埋点的方式去拿这些信息，可以提个 issue ，详细描述下场景诉求。<br />
 SOFATracer：[https://github.com/sofastack/sofa-tracer](https://github.com/sofastack/sofa-tracer)<br />
@@ -40,14 +40,14 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)<br />
 
 **3、@姜广兴** 提问：
 
->saga 模式 demo 中的服务都有对应的补偿服务，如果对接外部系统，没有提供相应的补偿服务，还可以使用 saga 模式吗？
+> saga 模式 demo 中的服务都有对应的补偿服务，如果对接外部系统，没有提供相应的补偿服务，还可以使用 saga 模式吗？
 
 A：可以，没有补偿服务就不补偿，可以向前重试。<br />
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)<br />
 
 **4、@彭勃** 提问：
 
->看到这段，我请教一下。目前，我们自己通过再加一个 mysql MGR 集群去回避这个外部持久化单点故障的问题请问有人有过相关实践吗？您觉得可行吗？<br />
+> 看到这段，我请教一下。目前，我们自己通过再加一个 mysql MGR 集群去回避这个外部持久化单点故障的问题请问有人有过相关实践吗？您觉得可行吗？<br />
 ![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*TzGXS558iF0AAAAAAAAAAAAAARQnAQ)
 
 A：可以这么做，MGR 的话性能应该就比单 DB 要下降了，但是比主备要靠谱，主备的话还是有可能丢数据，MGR 有一致性协议存在，理论上没什么大问题。<br />

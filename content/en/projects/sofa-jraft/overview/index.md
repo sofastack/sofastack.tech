@@ -17,7 +17,7 @@ Assume that, all processes of a distributed system needs to determine a value V.
 
 ## Consensus state machine
 
-Assume we have an infinitely incrementing sequence (system) a[1, 2, 3…]. If for any integer i, the value of a[i] meets the distributed consensus requirement, the system meets the requirement of a consensus state machine.
+Assume we have an infinitely incrementing sequence (system) a[1, 2, 3……]. If for any integer i, the value of a[i] meets the distributed consensus requirement, the system meets the requirement of a consensus state machine.
 Basically, all systems are subject to continuous operations, and reaching consensus on a single value is definitely not enough. To make sure all replicas of a real-life system are consistent, we usually convert the operations into entries of a [write-ahead-log](https://en.wikipedia.org/wiki/Write-ahead_logging)(WAL). Then, we make sure all replicas of the system reach a consensus on the WAL entries, so that each process will perform operations corresponding to the WAL entries in order. As a result, the replicas are in consistent states.
 
 ![Raft](raft.png)
@@ -62,4 +62,3 @@ JRaft is a [Raft](https://raft.github.io/) implementation that is completely bas
 ## Contact us
 
 Welcome to join our DingTalk chat group: 23127468.
-

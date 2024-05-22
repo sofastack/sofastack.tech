@@ -14,8 +14,8 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*iJG-TaOH9Z0AAAAAA
 
 这意味着 KCL 得到了云原生开源社区的认可，保障了项目的中立性，有利于开发者、合作伙伴等共同参与项目建设，协作共赢，并为云原生应用交付带来动态配置管理和自动化能力迈出了重要一步！
 
--   项目地址：*[https://github.com/kcl-lang/kcl](https://github.com/kcl-lang/kcl)*
--   项目官网：*[https://kcl-lang.io](https://kcl-lang.io)*
+- 项目地址：*[https://github.com/kcl-lang/kcl](https://github.com/kcl-lang/kcl)*
+- 项目官网：*[https://kcl-lang.io](https://kcl-lang.io)*
 
 通过进入 CNCF 沙盒，KCL 社区将更多吸引更多开发者和用户参与共建，进一步推动项目在云原生业务场景的成熟应用，此外加入 CNCF 将为 KCL 提供一个增强的协作和创新平台。它提供了与处于云原生技术前沿的多元化开发者、组织和行业专家社区进行交流的机会。我们期待与其他 CNCF 项目进行更多合作，贡献我们的技术专业知识，并探索更多 CNCF 项目集成的可能性。
 
@@ -43,9 +43,9 @@ KCL 是一个开源的基于约束的记录及函数语言，期望通过成熟�
 
 项目主要里程碑如下：
 
--   2022 年 5 月，KCL 正式开源；
--   2023 年 6 月，KCL 正式成为 CNCF Landscape 项目；
--   2023 年 9 月，KCL 由 CNCF 应用交付 TAG 进行审核并通过 TOC 投票，顺利成为 CNCF Sandbox 项目 - [https://github.com/cncf/sandbox/issues/48](https://github.com/cncf/sandbox/issues/48)
+- 2022 年 5 月，KCL 正式开源；
+- 2023 年 6 月，KCL 正式成为 CNCF Landscape 项目；
+- 2023 年 9 月，KCL 由 CNCF 应用交付 TAG 进行审核并通过 TOC 投票，顺利成为 CNCF Sandbox 项目 - [https://github.com/cncf/sandbox/issues/48](https://github.com/cncf/sandbox/issues/48)
 
 ## 为什么需要 KCL
 
@@ -53,25 +53,25 @@ KCL 是一个开源的基于约束的记录及函数语言，期望通过成熟�
 
 此外，KCL 期望通过更现代化的声明式配置语言和工具，在**轻量级客户端云原生动态配置领域**填补配置语言及工具的空白并解决如下问题：
 
--   **维度爆炸**: 大多数静态配置如云原生领域的 Kubernetes YAML 配置需要为每个环境单独进行配置；在最糟糕的情况下，它可能引入涉及环境交叉链接的难以调试的错误，稳定性和扩展性都较差。
--   **配置漂移**: 对于不同环境的静态管理应用程序和基础设施配置的方式，往往没有标准的方式去管理这些动态的不同环境的配置，采用非标准化的方法比如脚本和胶水代码的拼盘，会导致复杂度呈指数增长，并导致配置漂移。
--   **认知负担**: Kubernetes 等作为构建平台的平台技术手段在底层统一基础架构细节方面出色，但是缺乏更上层的应用软件交付抽象，对于普通开发者认知负担较高，影响了更上层应用开发者的软件交付体验。
+- **维度爆炸**: 大多数静态配置如云原生领域的 Kubernetes YAML 配置需要为每个环境单独进行配置；在最糟糕的情况下，它可能引入涉及环境交叉链接的难以调试的错误，稳定性和扩展性都较差。
+- **配置漂移**: 对于不同环境的静态管理应用程序和基础设施配置的方式，往往没有标准的方式去管理这些动态的不同环境的配置，采用非标准化的方法比如脚本和胶水代码的拼盘，会导致复杂度呈指数增长，并导致配置漂移。
+- **认知负担**: Kubernetes 等作为构建平台的平台技术手段在底层统一基础架构细节方面出色，但是缺乏更上层的应用软件交付抽象，对于普通开发者认知负担较高，影响了更上层应用开发者的软件交付体验。
 
 针对如上问题，KCL 期望提供如下能力:
 
--   通过**代码抽象**等手段屏蔽基础设施和平台的细节和复杂性，降低研发者**认知负担；**
--   **编辑**和**校验**已有的存量配置或模版，直接解决云原生小配置场景问题如 Helm Chart 配置硬编码问题，但远不止如此；
--   通过配置语言无副作用地**管理跨团队的大规模配置数据**，提升团队协作效率。
+- 通过**代码抽象**等手段屏蔽基础设施和平台的细节和复杂性，降低研发者**认知负担；**
+- **编辑**和**校验**已有的存量配置或模版，直接解决云原生小配置场景问题如 Helm Chart 配置硬编码问题，但远不止如此；
+- 通过配置语言无副作用地**管理跨团队的大规模配置数据**，提升团队协作效率。
 
 具体来说，KCL 可以：
 
--   在代码层面提升**配置语义验证**的能力，比如 Schema 定义、字段可选/必选、类型、范围等配置检查校验能力；
--   提供**配置分块编写、组合和抽象的能力**，比如结构定义、结构继承、约束定义和配置策略合并等能力；
--   用**现代编程语言的方式**以**编写代码**的方式提升配置的灵活度，比如条件语句、循环、函数、包管理等特性提升配置重用的能力；
--   提供**完备的工具链支持**，丰富的 IDE 插件、语言和生态工具链支持用以降低上手门槛，提升使用体验；
--   通过**包管理工具**和 **OCI Registry** 使得配置以更简单的方式在不同团队/角色之间分享，传播和交付；
--   提供**高性能**的编译器满足规模化配置场景诉求，比如满足由一份基线配置根据部署上下文生成不同环境不同拓扑的配置的渲染性能以及配置自动化修改性能诉求；
--   通过**多语言 SDK，KCL 语言插件**等手段提升其**自动化**集成能力，在发挥配置及策略编写价值的同时显著降低 KCL 的学习成本。
+- 在代码层面提升**配置语义验证**的能力，比如 Schema 定义、字段可选/必选、类型、范围等配置检查校验能力；
+- 提供**配置分块编写、组合和抽象的能力**，比如结构定义、结构继承、约束定义和配置策略合并等能力；
+- 用**现代编程语言的方式**以**编写代码**的方式提升配置的灵活度，比如条件语句、循环、函数、包管理等特性提升配置重用的能力；
+- 提供**完备的工具链支持**，丰富的 IDE 插件、语言和生态工具链支持用以降低上手门槛，提升使用体验；
+- 通过**包管理工具**和 **OCI Registry** 使得配置以更简单的方式在不同团队/角色之间分享，传播和交付；
+- 提供**高性能**的编译器满足规模化配置场景诉求，比如满足由一份基线配置根据部署上下文生成不同环境不同拓扑的配置的渲染性能以及配置自动化修改性能诉求；
+- 通过**多语言 SDK，KCL 语言插件**等手段提升其**自动化**集成能力，在发挥配置及策略编写价值的同时显著降低 KCL 的学习成本。
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/f5a075ec253e4a70af625c570fa9be41~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=702&h=419&s=47026&e=png&a=1&b=ccd7e2)
 
@@ -79,7 +79,7 @@ KCL 是一个开源的基于约束的记录及函数语言，期望通过成熟�
 
 ## KCL 能做什么
 
--   **动态配置管理**
+- **动态配置管理**
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/42f66480cc1e4962ad8e9ef229fd0742~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1080&h=573&s=234283&e=png&b=fcfafa)
 
@@ -89,7 +89,7 @@ KCL 是一个开源的基于约束的记录及函数语言，期望通过成熟�
 
 此外，KCL 还支持与 Kubernetes Resource Model  *(KRM)* 规范直接集成，KRM KCL 是一个通用的配置模型规范，用于描述和管理各种云原生资源，如容器、Pod、服务的配置操作和抽象等。KRM KCL 规范提供了一种统一的方式来定义和管理这些资源，使得它们可以在不同的环境中进行移植和复用。它建立在一个完全开放的 Kubernetes 世界当中，几乎不与任何编排/引擎工具或者 Kubernetes 控制器绑定，它在关注点分离的基础上允许平台人员扩展自己的抽象，配置编辑和验证逻辑，并提供一个开发者友好的配置管理界面。
 
--   **GitOps 集成**
+- **GitOps 集成**
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/42d9c282f8de4fe2b80e1311035789d0~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1080&h=504&s=234297&e=png&b=fefefe)
 
@@ -103,9 +103,9 @@ KCL 是一个开源的基于约束的记录及函数语言，期望通过成熟�
 
 除了与 ArgoCD 等 GitOps 自动化工具进行集成，作为 CNCF 的项目，KCL 还与 CNCF 其他众多生态项目进行了集成，比如为现有的 CNCF 生态配置管理工具项目如 Helm、Kustomize、kpt 等提供 KCL 插件，在运行时提供 KCL Kubernetes Operator，以满足不同场景的配置管理需求等。此外我们还提供如下集成支持：
 
--   **多语言支持**：我们提供了多语言 SDK，帮助用户以不同的语言操作 KCL，并将其集成到自己的应用程序中。
--   **包管理支持**：我们提供了 KPM 包管理工具可以将 KCL 配置通过 Docker Hub，GitHub 容器注册表进行分发和复用。
--   **Schema 生态支持**：我们支持其他生态系统的 Schema 一键迁移到 KCL Schema，如 Go/Rust 结构定义、JsonSchema、Protobuf、OpenAPI、Terraform Provider Schema 等。
+- **多语言支持**：我们提供了多语言 SDK，帮助用户以不同的语言操作 KCL，并将其集成到自己的应用程序中。
+- **包管理支持**：我们提供了 KPM 包管理工具可以将 KCL 配置通过 Docker Hub，GitHub 容器注册表进行分发和复用。
+- **Schema 生态支持**：我们支持其他生态系统的 Schema 一键迁移到 KCL Schema，如 Go/Rust 结构定义、JsonSchema、Protobuf、OpenAPI、Terraform Provider Schema 等。
 
 ## 落地实践
 
@@ -135,12 +135,12 @@ KCL 是一个开源的基于约束的记录及函数语言，期望通过成熟�
 
 ## 其他资源
 
--   KCL 网站：[https://kcl-lang.io/](https://kcl-lang.io/)
--   KusionStack 网站：[https://kusionstack.io/](https://kusionstack.io/)
--   KCL 社区：[https://github.com/kcl-lang/community](https://github.com/kcl-lang/community)
--   KCL 2023 路线规划：[https://kcl-lang.io/docs/community/release-policy/roadmap](https://kcl-lang.io/docs/community/release-policy/roadmap)
--   KCL GitHub Issues：[https://github.com/kcl-lang/kcl/issues](https://github.com/kcl-lang/kcl/issues)
--   KCL GitHub Discussion：[https://github.com/orgs/kcl-lang/discussions](https://github.com/orgs/kcl-lang/discussions)
+- KCL 网站：[https://kcl-lang.io/](https://kcl-lang.io/)
+- KusionStack 网站：[https://kusionstack.io/](https://kusionstack.io/)
+- KCL 社区：[https://github.com/kcl-lang/community](https://github.com/kcl-lang/community)
+- KCL 2023 路线规划：[https://kcl-lang.io/docs/community/release-policy/roadmap](https://kcl-lang.io/docs/community/release-policy/roadmap)
+- KCL GitHub Issues：[https://github.com/kcl-lang/kcl/issues](https://github.com/kcl-lang/kcl/issues)
+- KCL GitHub Discussion：[https://github.com/orgs/kcl-lang/discussions](https://github.com/orgs/kcl-lang/discussions)
 
 ## ✨参与 KCL 开源共建
 

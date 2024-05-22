@@ -26,7 +26,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 我们会筛选重点问题通过 " SOFA WEEKLY " 的形式回复
 
 **1、@王钢** 提问：
-> [https://github.com/sofastack-guides/kc-sofastack-dynamic-demo/issues/11](https://github.com/sofastack-guides/kc-sofastack-dynamic-demo/issues/11) 基于 SOFAArk 和 SOFADashboard 实现动态模块管控时遇到宿主应用能够下载biz安装成功，但是不能在zookeeper下生成对应的/apps/biz节点，导致管理端不能更新状态，不知道应该怎么排查解决。使用的 ZK 版本是 3.4.10。
+> [https://github.com/sofastack-guides/kc-sofastack-dynamic-demo/issues/11](https://github.com/sofastack-guides/kc-sofastack-dynamic-demo/issues/11) 基于 SOFAArk 和 SOFADashboard 实现动态模块管控时遇到宿主应用能够下载 biz 安装成功，但是不能在 zookeeper 下生成对应的/apps/biz 节点，导致管理端不能更新状态，不知道应该怎么排查解决。使用的 ZK 版本是 3.4.10。
 
 A：可以 debug 下写 /apps/biz 的逻辑，这里是不是宿主客户端没有连接上来，具体可以看一下：[https://github.com/sofastack/sofa-dashboard-client](https://github.com/sofastack/sofa-dashboard-client)
 SOFADashboard 之前只做了一个简单的模型，后面陆续其他同学也在上面做了一些开发，如果有兴趣可以一起参与共建哈。
@@ -65,8 +65,8 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 详细参考：
 [https://github.com/mosn/holmes/blob/master/readme.md](https://github.com/mosn/holmes/blob/master/readme.md)
 
-
 ### SOFA 直播预告
+
 ![Service Mesh Webinar#4](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1604051618877-1f760465-fd0e-483f-b9a4-9f02e31e7248.jpeg)
 
 传统 CDN 节点内组件间通信通过 IP 分组渲染的方式实现，当更多参差不齐的异构节点资源出现的时候则不再能很好地满足我们的需求。

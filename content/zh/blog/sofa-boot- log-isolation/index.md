@@ -13,7 +13,7 @@ cover: "https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1582090700679-c0b8255c-ce
 
 ![日志隔离.jpg](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1581911050981-626f14d1-d990-4e2e-8213-7db06ebd26fd.jpeg)
 
-本文为《剖析 | SOFABoot 框架》第二篇，本篇作者盲僧，来自遨游酒店信息技术。《剖析 | SOFABoot 框架》系列由 SOFA 团队和源码爱好者们出品，项目代号：[SOFA:BootLab/]()，文章尾部有参与方式，欢迎同样对源码热情的你加入。
+本文为《剖析 | SOFABoot 框架》第二篇，本篇作者盲僧，来自遨游酒店信息技术。《剖析 | SOFABoot 框架》系列由 SOFA 团队和源码爱好者们出品，项目代号：[SOFA:BootLab/](https://example.com)，文章尾部有参与方式，欢迎同样对源码热情的你加入。
 
 SOFABoot 是蚂蚁金服开源的基于 SpringBoot 的研发框架，提供了诸如 Readiness Check、类隔离、日志空间隔离等能力，用于快速、敏捷地开发 Spring 应用程序，特别适合构建微服务系统。
 
@@ -101,7 +101,7 @@ public class ApmLoggerFactory {
 }
 ```
 
-#### 监控工具类-Metrics 
+#### 监控工具类-Metrics
 
 模拟 APM 对外提供的一个工具类，提供了一个 metrics 埋点的 API ，其内部主要是通过 ApmMetrics 类进行埋点。
 
@@ -239,7 +239,7 @@ public class UserServiceTest {
 
 对于文件中的日志呢？我们先把 `application.properties` 中的配置先注释，再运行一次测试用例，让它生成文件日志。我们去中间件的日志目录和业务的日志目录，可以看到生成了两份日志，日志隔离效果生效。
 
-![](https://cdn.nlark.com/yuque/0/2020/png/432786/1579284926104-e74804fe-4964-4bd3-9dd3-5ecdfe663e7c.png) 
+![](https://cdn.nlark.com/yuque/0/2020/png/432786/1579284926104-e74804fe-4964-4bd3-9dd3-5ecdfe663e7c.png)
 
 ## 源码解析
 
@@ -301,8 +301,8 @@ public class UserServiceTest {
 
 - **【已完成】SOFABoot 总览**
 - **【已完成】SOFABoot 日志隔离解析**
-- 【已领取】SOFABoot HealthCheck 机制解析	
-- 【已领取】SOFABoot runtime 机制解析	
+- 【已领取】SOFABoot HealthCheck 机制解析
+- 【已领取】SOFABoot runtime 机制解析
 - 【待领取】SOFABoot 上下文隔离机制解析
 
 如果有同学对以上某个主题特别感兴趣的，可以留言讨论，我们会适当根据大家的反馈调整文章的顺序，谢谢大家关注 SOFAStack ，关注 SOFABoot，我们会一直与大家一起成长的。

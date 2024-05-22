@@ -15,16 +15,19 @@ cover: "/kubernetes-logo.jpg"
 2. Kubernetes 通过 `http://localhost:8080/health/readiness` 访问到 SOFABoot 的 Readiness 检查的结果之后，不会将 Pod 挂到对应的 Service 之上，防止 Kubernetes 上的流量进入。
 
 ## 准备一个 Kubernetes 的环境
+
 为了演示在 Kubernetes 中使用 SOFABoot 的 Readiness Check 的能力，首先需要准备好一个 Kubernetes 的环境，在这个例子中，我们直接选择在本机安装一个 minikube，minikube 是 Kubernetes 为了方便研发人员在自己的研发机器上尝试 Kubernetes 而准备的一个工具，对于学习 Kubernetes 的使用非常方便。关于如何在本机安装 minikube，大家参考这个官方的安装教程即可。
 
 安装完成以后，大家可以直接终端中使用 `minikube start`来启动 minikube。
 
 <em>需要注意的是，由于国内网络环境的问题，直接用 </em><code><em>minikube start</em></code><em> 可能会无法启动 minikube，如果遇到无法启动 minikube 的问题，可以尝试加上代理的设置，大家可以参考以下的命令来设置代理服务器的地址：</em>
+
 ```powershell
 minikube start --docker-env HTTP_PROXY=http://xxx.xxx.xxx.xxx:6152 --docker-env HTTPS_PROXY=http://xxx.xxx.xxx.xxx:6152
 ```
 
 ## 在 Kubernetes 上安装一个 ZooKeeper
+
 在准备好了 Kubernetes 的环境之后，我们接下来需要在 Kubernetes 上安装一个 ZooKeeper 作为 SOFARPC 的服务自动发现的组件。首先我们需要有一个 ZooKeeper 的 Deployment：
 
 ```yaml
@@ -73,9 +76,11 @@ spec:
 这个 Service 直接将 2181 端口映射到 ZooKeeper 的 2181 端口上，这样，我们就可以在应用中直接通过 __`zookeeper-service:2181`__ 来访问了。
 
 ## 准备一个 SOFABoot 的应用
+
 在前面的两步都 OK 之后，我们需要准备好一个 SOFABoot 的应用，并且在这个应用中发布一个 SOFARPC 的服务。首先，我们需要从 start.spring.io 上生成一个工程，例如 GroupId 设置为 <span data-type="color" style="color: rgb(36, 41, 46);">com.alipay.sofa，ArtifactId 设置为 rpcserver。</span>
 
 <span data-type="color" style="color: rgb(36, 41, 46);">生成好了之后，接下来，我们需要把 SOFABoot 的依赖加上，将 pom.xml 中的 parent 修改成：</span>
+
 ```xml
 <parent>
     <groupId>com.alipay.sofa</groupId>
@@ -85,6 +90,7 @@ spec:
 ```
 
 然后，增加一个 SOFARPC 的 Starter 的依赖：
+
 ```xml
 <dependency>
     <groupId>com.alipay.sofa</groupId>
@@ -93,6 +99,7 @@ spec:
 ```
 
 接着，在 application.properties 里面加上我们的配置，包括应用名和 ZooKeeper 的地址：
+
 ```plain
 # Application Name
 spring.application.name=SOFABoot Demo
@@ -122,6 +129,7 @@ public class SampleServiceImpl implements SampleService {
 ```
 
 接下来，将这个接口和实现发布成一个 SOFARPC 的服务，我们可以新建一个 `src/main/resources/spring/rpc-server.xml` 的文件：
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -292,6 +300,7 @@ kubectl describe service rpc-server-service
 也可以看到红框中有一个节点的信息。
 
 ## Readiness Check 失败的节点挂载情况
+
 在上面，我们已经看到了 Readiness Check 成功之后，可以在 ZooKeeper 里面和 Service 的 EndPoints 里面都可以看到节点的信息，现在来看下 Readiness Check 失败后的情况。
 
 为了让 Readiness Check 失败，要将之前写的 SampleHealthIndicator 改成 Down，代码如下：
@@ -358,6 +367,7 @@ spec:
 通过 `kubectl describe service rpc-server-service` 也可以看到 Service 下面的 EndPoint 还是之前的那个，新的并没有挂载上去。
 
 ## 总结
+
 本文中，我们演示了如何通过 Readiness Check 来控制应用的流量，在 Readiness Check 失败的情况下，让流量不进入应用，防止业务受损。在上面的例子中，我们通过 Readiness Check 完成了两个部分的流量的控制，一个是 Readiness Check 失败之后，SOFARPC 不会将服务的地址上报到对应的服务注册中心上，控制通过自动服务发现进入的流量，另一个方面，Kubernetes 也不会将 Pod 挂到对应额 Service 之上，防止负载均衡器进入的流量。
 
 虽然 SOFABoot 提供了 Readiness Check 的能力，并且对应的中间件也已经实现了根据 SOFABoot 的 Readiness Check 的结果来控制流量，但是完整的流量控制，还需要外围的平台进行配合，比如负载均衡的流量就需要 Kubernetes 的 Readiness Check 的能力来一起配合才可以完成控制。

@@ -52,7 +52,7 @@ We plan to solve the these problems in V1.6.0 by extracting a set of stable APIs
 
 Currently, Bolt supports the following configuration methods:
 
-* ProtocolSwitch: supports protocol configuration (enabling or disabling CRC validation), and creates configuration objects by static means. 
+* ProtocolSwitch: supports protocol configuration (enabling or disabling CRC validation), and creates configuration objects by static means.
 * GlobalSwitch: offers instance-level configuration, and offers GlobalSwitch configuration items to every AbstractConfigurableInstance. The default value is taken from the SystemProperty, and the configuration can be adjusted through an API.
 * ConfigItem: enumerates Netty-related configuration items that cannot be inherited or extended before you modify the source code.
 * ConfigManager: reads SystemProperty configurations by static means.
@@ -67,4 +67,3 @@ We plan to adjust the configuration module in V1.6.0, and make some changes whil
 * Converge configuration methods, and provide a unified configuration programing interface that is similar to Option in Netty.
 * Support configuration isolation where different configuration items are used for different Bolt instances.
 * Improve the configuration scalability.
-

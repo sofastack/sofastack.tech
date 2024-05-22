@@ -22,6 +22,7 @@ SOFABoot 提供了模块并行启动以及 Spring Bean 异步初始化能力，�
 ```
 
 ## 使用方法
+
 异步初始化 Bean 的原理是开启单独线程负责执行 Bean 的初始化方法（init-method）。因此，除了引入上述依赖，还需要在 Bean 的 XML 定义中配置 async-init="true" 属性，用于指定是否异步执行该 Bean 的初始化方法，例如：
 
 ```xml
@@ -31,16 +32,17 @@ SOFABoot 提供了模块并行启动以及 Spring Bean 异步初始化能力，�
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xmlns:sofa="http://sofastack.io/schema/sofaboot"
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
-	               http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
-				   http://sofastack.io/schema/sofaboot   http://sofastack.io/schema/sofaboot.xsd"
+                http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd
+       http://sofastack.io/schema/sofaboot   http://sofastack.io/schema/sofaboot.xsd"
        default-autowire="byName">
-	   
+    
     <!-- async init  test -->
     <bean id="testBean" class="com.alipay.sofa.runtime.beans.TimeWasteBean" init-method="init" async-init="true"/>
 </beans>
 ```
 
 ## 属性配置
+
 SOFABoot 异步初始化能力提供两个属性配置，用于指定负责异步执行 Bean 初始化方法（init-method）的线程池大小：
 
 - `com.alipay.sofa.boot.asyncInitBeanCoreSize`：线程池基本大小，默认值为 CPU 核数加一。

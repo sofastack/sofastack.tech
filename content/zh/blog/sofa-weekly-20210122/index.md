@@ -45,19 +45,19 @@ SOFARegistry：[https://github.com/sofastack/sofa-registry](https://github.com/s
 
 **@田冲** 提问：
 
-> 现象：canal 监听到某个被分布式事务控制的表的 insert-binlog 日志后再去查询 MySQL 表里数据时发现这条数据不存在，延迟1秒钟左右再查询就能查询到。
+> 现象：canal 监听到某个被分布式事务控制的表的 insert-binlog 日志后再去查询 MySQL 表里数据时发现这条数据不存在，延迟 1 秒钟左右再查询就能查询到。
 > 疑问：seata-at 模式-两阶段提交的设计会出现 MySQL 先生成了 binlog 日志，后提交事务的情况吗？
 
-A：这个问题其实很简单，你 canal 读不到，那你自己应用本地事务提交后马上读这个 insert 的数据看能不能读到；如果读到，理论上来说这个过程不可能超过一秒，所以如果你应用能查到，你canal查不到，排查canal的问题，而不是 Seata 的问题；Seata 最后也只不过做了 connection.commit；最后事务的提交落库是数据库方本地事务流程落库，Seata 不会起到任何干扰，Seata 代理的是 jdbc 层的处理；redo 后写 binlog 时马上就会广播的，而不是事务提交才把 binlog 广播出去；所以内 xa 的二阶段没提交你就去查主库，由于隔离级别不一定查得到。
+A：这个问题其实很简单，你 canal 读不到，那你自己应用本地事务提交后马上读这个 insert 的数据看能不能读到；如果读到，理论上来说这个过程不可能超过一秒，所以如果你应用能查到，你 canal 查不到，排查 canal 的问题，而不是 Seata 的问题；Seata 最后也只不过做了 connection.commit；最后事务的提交落库是数据库方本地事务流程落库，Seata 不会起到任何干扰，Seata 代理的是 jdbc 层的处理；redo 后写 binlog 时马上就会广播的，而不是事务提交才把 binlog 广播出去；所以内 xa 的二阶段没提交你就去查主库，由于隔离级别不一定查得到。
 
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 ### 本周推荐阅读
 
--  [Kubernetes 是下一代操作系统 | 面向 Kubernetes 编程](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247484759&idx=1&sn=25df16461d0ea9f49fd5c36101f8b2ea&chksm=faa0ea8dcdd7639b1e2439f2fc3ddbdd3c690ea016069b77a842ddb9b02b85f4a7ce5f5f6790&scene=21)
+- [Kubernetes 是下一代操作系统 | 面向 Kubernetes 编程](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247484759&idx=1&sn=25df16461d0ea9f49fd5c36101f8b2ea&chksm=faa0ea8dcdd7639b1e2439f2fc3ddbdd3c690ea016069b77a842ddb9b02b85f4a7ce5f5f6790&scene=21)
 
--  [蚂蚁集团生产级 Raft 算法库 SOFAJRaft 存储模块剖析 | SOFAJRaft 实现原理](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247485000&idx=1&sn=42b6f967b2ad43dd82983929d5800a33&chksm=faa0e992cdd7608499b5d58a65334653059acc2e35381157724c55d6a50743ba024298c63384&scene=21)
+- [蚂蚁集团生产级 Raft 算法库 SOFAJRaft 存储模块剖析 | SOFAJRaft 实现原理](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247485000&idx=1&sn=42b6f967b2ad43dd82983929d5800a33&chksm=faa0e992cdd7608499b5d58a65334653059acc2e35381157724c55d6a50743ba024298c63384&scene=21)
 
--  [蚂蚁集团服务注册中心 MetaServer 功能介绍和实现剖析 | SOFARegistry 解析](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247485415&idx=1&sn=7e006e90d8ca713fa560921a1c2c06e6&chksm=faa0e83dcdd7612b1d6269b25dcde34541a42782b519e4a9f942fbf0f8d7d7967dadbec8bfa9&scene=21)
+- [蚂蚁集团服务注册中心 MetaServer 功能介绍和实现剖析 | SOFARegistry 解析](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247485415&idx=1&sn=7e006e90d8ca713fa560921a1c2c06e6&chksm=faa0e83dcdd7612b1d6269b25dcde34541a42782b519e4a9f942fbf0f8d7d7967dadbec8bfa9&scene=21)
 
--  [开箱即用的 Java Kubernetes Operator 运行时](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247485792&idx=1&sn=dd7201a60249b5c2946e2f398928f4a1&chksm=faa0e6bacdd76fac685ec5a202b217f5c6c14338f8fc37effdc001375a0942b18eca8091cc26&scene=21)
+- [开箱即用的 Java Kubernetes Operator 运行时](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247485792&idx=1&sn=dd7201a60249b5c2946e2f398928f4a1&chksm=faa0e6bacdd76fac685ec5a202b217f5c6c14338f8fc37effdc001375a0942b18eca8091cc26&scene=21)

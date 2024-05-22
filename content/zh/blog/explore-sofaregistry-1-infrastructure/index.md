@@ -256,7 +256,7 @@ Session 在进行路由的时候，根据 DataInfoId 的 Hash 值确定数据所
 
 下一篇将会开始介绍如何开发 SOFARegistry 以及各个代码模块的介绍，欢迎大家继续关注 SOFARegistry ～
 
-对中间件感兴趣的话 
+对中间件感兴趣的话
 
 👏 等你加入我们！
 

@@ -9,7 +9,7 @@ date: 2021-07-20T15:00:00+08:00
 cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*Bw1FSIjlWZcAAAAAAAAAAAAAARQnAQ"
 ---
 
->作者简介：冯泳（花名鹿惊），资深技术专家，拥有西北工业大学计算机科学博士学位，在高性能计算，大数据和云计算领域拥有十多年的设计开发经验，专注于调度，资源和应用管理领域。也深度参与相关开源项目的开发和商业化，例如 OpenStack, Mesos, Swarm, Kubernetes, Spark 等，曾在 IBM 领导过相关的开发团队。
+> 作者简介：冯泳（花名鹿惊），资深技术专家，拥有西北工业大学计算机科学博士学位，在高性能计算，大数据和云计算领域拥有十多年的设计开发经验，专注于调度，资源和应用管理领域。也深度参与相关开源项目的开发和商业化，例如 OpenStack, Mesos, Swarm, Kubernetes, Spark 等，曾在 IBM 领导过相关的开发团队。
 
 ## 前言
 
@@ -19,7 +19,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*Bw1FSIjlWZcAAAAAAA
 
 项目官网：[https://open-cluster-management.io/](https://open-cluster-management.io/)
 
->![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*HmiPQ7LHmSAAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*HmiPQ7LHmSAAAAAAAAAAAAAAARQnAQ)
 
 ## 多集群管理发展历史
 
@@ -69,7 +69,7 @@ OCM 采用了 hub-agent 的架构，包含了几项多集群管理的原语和�
 
 架构如下图所示，其中 registration 负责集群注册、集群生命周期管理、管理插件的注册和生命周期管理；work 负责资源的分发；placement 负责集群负载的调度。在这之上，开发者或者 SRE 团队能够基于 OCM 提供的 API 原语在不同的场景下方便的开发和部署管理工具。
 
->![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NfxfTa0VAOoAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NfxfTa0VAOoAAAAAAAAAAAAAARQnAQ)
 
 通过利用 OCM 的 API 原语，可以简化许多其他开源多集群管理项目的部署和运维，也可以拓展许多 Kubernetes 的单集群管理工具的多集群管理能力。例如：
 
@@ -81,7 +81,7 @@ OCM 采用了 hub-agent 的架构，包含了几项多集群管理的原语和�
 
 OCM 还内置了两个管理插件分别用来进行应用部署和安全策略管理。其中应用部署插件采用了订阅者模式，可以通过定义订阅通道（Channel）从不同的源获取应用部署的资源信息，其架构如下图所示：
 
->![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*diCqSaZRkNgAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*diCqSaZRkNgAAAAAAAAAAAAAARQnAQ)
 
 同时为了和 kubernetes 生态系统紧密结合，OCM 实现了 kubernetes sig-multicluster 的多个设计方案，包括 KEP-2149 Cluster ID：
 [https://github.com/Kubernetes/enhancements/tree/master/keps/sig-multicluster/2149-clusterid](https://github.com/Kubernetes/enhancements/tree/master/keps/sig-multicluster/2149-clusterid)
@@ -159,9 +159,9 @@ OCM 技术已经应用到蚂蚁集团的基础设施中，作为第一步，通�
 [https://groups.google.com/g/open-cluster-management](https://groups.google.com/g/open-cluster-management)
 
 ●访问社区官网获取更多信息：
-[https://open-cluster-management.io/](https://open-cluster-management.io/](https://open-cluster-management.io/](https://open-cluster-management.io/)
+[https://open-cluster-management.io/](<https://open-cluster-management.io/>](<https://open-cluster-management.io/>](<https://open-cluster-management.io/>)
 
-今年 9 月 10日 INCLUSION·外滩大会将如期举行，作为全球金融科技盛会，它将继续保持科技·让技术更普惠的初心。11 日下午的多集群、混合云架构开源专场，OCM 社区的主要开发人员会为大家带来围绕 OCM 构建的多集群、混合云最佳实践，欢迎你届时线下参加，面对面交流。
+今年 9 月 10 日 INCLUSION·外滩大会将如期举行，作为全球金融科技盛会，它将继续保持科技·让技术更普惠的初心。11 日下午的多集群、混合云架构开源专场，OCM 社区的主要开发人员会为大家带来围绕 OCM 构建的多集群、混合云最佳实践，欢迎你届时线下参加，面对面交流。
 感谢你对 OCM 的关注与参与，欢迎分享给有同样需求的更多朋友，让我们共同为多集群、混合云的使用体验更进一步而添砖加瓦！
 
 ### 本周推荐阅读
@@ -176,4 +176,4 @@ OCM 技术已经应用到蚂蚁集团的基础设施中，作为第一步，通�
 
 更多文章请扫码关注“金融级分布式架构”公众号
 
->![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*s3UzR6VeQ6cAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*s3UzR6VeQ6cAAAAAAAAAAAAAARQnAQ)

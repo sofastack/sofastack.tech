@@ -30,21 +30,21 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 欢迎大家在 GitHub 提交 issue 与我们互动
 
-我们会筛选 issue 通过 
+我们会筛选 issue 通过
 
 " SOFA WEEKLY " 的形式回复
 
 **1.@wwg2017  #5222**
 
->如果二阶段提交 ：1.服务端没有接收到 TM 请求 report ；2. 服务端请求没有下发下来客户端没有接收到；3.客户端接收到了执行失败了。请问上面三种情况的话，对数据订单影响是什么？
+> 如果二阶段提交 ：1.服务端没有接收到 TM 请求 report ；2. 服务端请求没有下发下来客户端没有接收到；3.客户端接收到了执行失败了。请问上面三种情况的话，对数据订单影响是什么？
 
 A：第一种情况会等到超时时间，默认是 60 秒后进行回滚。在 AT 模式下，订单数据由于是一个一阶段提交会有短暂的读未提交问题，这个需要按 @globallock 注解 +select for update 达到分布式下读已提交，但是会被阻塞到事务回滚后才可读到（默认 60s）。后面两种情况都会进行无限间隔 1s 的重试直至成功回滚/提交。
 
 **「Seata」**：*[https://github.com/seata/seata](https://github.com/seata/seata)*
 
-**2.@antjack  #2197** 
+**2.@antjack  #2197**
 
->Allow Setting Cluster Idle Timeout to Zero to Indicate Never Timeout.This issue requests the ability to set an idle_timeout = 0, to indicate the indefinite idle timeout for upstream connection timeout.
+> Allow Setting Cluster Idle Timeout to Zero to Indicate Never Timeout.This issue requests the ability to set an idle_timeout = 0, to indicate the indefinite idle timeout for upstream connection timeout.
 
 ![image.png](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*F7scS5hPz7MAAAAAAAAAAAAADrGAAQ/original)
 

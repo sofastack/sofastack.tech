@@ -20,13 +20,13 @@ description: "4 月 18 日周四晚 7 点，线上直播第 4 期。"
 
 ### | SOFAChannel
 
-`<SOFA:Channel/>` 有趣实用的分布式架构频道：前沿技术、直播 Coding、观点“抬杠”，多种形式。 
+`<SOFA:Channel/>` 有趣实用的分布式架构频道：前沿技术、直播 Coding、观点“抬杠”，多种形式。
 
 `<SOFA:Channel/>` 将作为 SOFA 所有在线内容的承载，包含直播/音视频教程，集中体现 SOFAStack 的能力全景图。
 
 ### | SOFAChannel#4：分布式事务 Seata TCC 模式深度解析
 
-4月初，分布式事务 Fescar 宣布进行品牌升级为 Seata，Seata 意为：Simple Extensible Autonomous Transaction Architecture，是一套一站式分布式事务解决方案。蚂蚁金服在 Seata 0.4.0 版本加入了 TCC 模式，后续也会持续输入。
+4 月初，分布式事务 Fescar 宣布进行品牌升级为 Seata，Seata 意为：Simple Extensible Autonomous Transaction Architecture，是一套一站式分布式事务解决方案。蚂蚁金服在 Seata 0.4.0 版本加入了 TCC 模式，后续也会持续输入。
 
 本期为 SOFAChannel 线上直播第 4 期，将邀请 蚂蚁金服 技术专家 & Seata Committer 觉生 和大家一起探讨 《分布式事务 Seata  TCC 模式深度解析》。
 
@@ -56,7 +56,7 @@ SOFAGirl 主持人
 
 觉生 蚂蚁金服 技术专家 / Seata Committer
 
-### 本期分享大纲：
+### 本期分享大纲
 
 - TCC 模式基本原理解析
 - 分布式事务并发控制解析

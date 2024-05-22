@@ -1,19 +1,21 @@
 
 ---
+
 title: "Get started with SOFABoot"
 aliases: "/sofa-rpc/docs/Getting-Started-With-SOFA-Boot"
 ---
-This document introduces how to use SOFARPC for service publishing and reference in SOFABoot. 
+
+This document introduces how to use SOFARPC for service publishing and reference in SOFABoot.
 
 You can get the code sample of this document by clicking [here](https://github.com/sofastack-guides/sofa-rpc-guides). Note that the code sample requires a local installation of the zookeeper environment. If not, you need to remove the `com.alipay.sofa.rpc.registry.address` configuration in `application.properties` to use the local file as a registry center.
 
-## Create a project 
+## Create a project
 
-1. Prepare environment: SOFABoot requires JDK7 or JDK8 and needs to be compiled with Apache Maven 2.2.5 or above. 
-2. Build SOFABoot project: SOFABoot is based on Spring Boot. So you can use [Spring Boot's project generation tool](http://start.spring.io/) to generate a standard Spring Boot project. 
-3. Add SOFABoot dependency: The generated standard Spring Boot project directly uses Spring parent dependency, which should be changed to the parent dependency provided by SOFABoot. The parent dependency provides and manages a variety of starters provided by SOFABoot. 
+1. Prepare environment: SOFABoot requires JDK7 or JDK8 and needs to be compiled with Apache Maven 2.2.5 or above.
+2. Build SOFABoot project: SOFABoot is based on Spring Boot. So you can use [Spring Boot's project generation tool](http://start.spring.io/) to generate a standard Spring Boot project.
+3. Add SOFABoot dependency: The generated standard Spring Boot project directly uses Spring parent dependency, which should be changed to the parent dependency provided by SOFABoot. The parent dependency provides and manages a variety of starters provided by SOFABoot.
 
-```xml 
+```xml
 <parent> 
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId> 
@@ -22,9 +24,9 @@ You can get the code sample of this document by clicking [here](https://github.c
 </parent> 
 ```
 
-Replace the above with the followings: 
+Replace the above with the followings:
 
-```xml 
+```xml
 <parent> 
     <groupId>com.alipay.sofa</groupId> 
     <artifactId>sofaboot-dependencies</artifactId> 
@@ -35,7 +37,7 @@ Replace the above with the followings:
 Here, '${sofa-boot.version}' specifies the specific SOFABoot version. Refer to [Release History](https://github.com/sofastack/sofa-boot/releases).
 
 4. Configure `application.properties`:
-`application.properties` is the configuration file in SOFABoot project. Here you need to configure the application name. 
+`application.properties` is the configuration file in SOFABoot project. Here you need to configure the application name.
 
 ``` xml
 spring.application.name=AppName 
@@ -43,16 +45,16 @@ spring.application.name=AppName
 
 5. Introduce RPC starter:
 
-```xml 
+```xml
 <dependency>
      <groupId>com.alipay.sofa</groupId>
      <artifactId>rpc-sofa-boot-starter</artifactId>
 </dependency> 
 ```
 
-## Define service interface and implementation 
+## Define service interface and implementation
 
-```java 
+```java
 public interface AnnotationService {
 
     String sayAnnotation(String string);
@@ -63,7 +65,7 @@ public interface AnnotationService {
 ## Publish service on server
 
 Publish the service through '@SofaService' annotation, as shown in the following code:
-SOFABoot registers the service implementation on the server, communicates with the client by bolt protocol, and publishes metadata such as address to registry center (local file is used as registry center by default). 
+SOFABoot registers the service implementation on the server, communicates with the client by bolt protocol, and publishes metadata such as address to registry center (local file is used as registry center by default).
 
 ```java
 import com.alipay.sofa.runtime.api.annotation.SofaService;
@@ -83,7 +85,7 @@ public class AnnotationServiceImpl implements AnnotationService {
 ## Reference service by client
 
 The reference service is annotated with '@SofaReference', as shown in the following code:
-SOFABoot will generate a RPC proxy bean for 'AnnotationService', it also specifies the bolt protocol to communicate with the server. This allows you to use the bean directly in the code for remote call. 
+SOFABoot will generate a RPC proxy bean for 'AnnotationService', it also specifies the bolt protocol to communicate with the server. This allows you to use the bean directly in the code for remote call.
 
 ```java
 import com.alipay.sofa.runtime.api.annotation.SofaReference;
@@ -108,7 +110,7 @@ public class AnnotationClientImpl {
 The startup class of SpringBoot is coded as follows:
 Start the server
 
-```java 
+```java
 @SpringBootApplication
 public class AnnotationServerApplication {
 
@@ -141,7 +143,7 @@ public class AnotationClientApplication {
 }
 ```
 
-The output result is as follows: 
+The output result is as follows:
 
 ``` java
 invoke result:annotation

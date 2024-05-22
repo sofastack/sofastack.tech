@@ -30,7 +30,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **1.康恒政** 提问：
 
->MOSN 之间是维持长链接的吗，然后像 Spring Cloud、Dubbo、Bolt 协议的数据在这个长链接上面传递吗？
+> MOSN 之间是维持长链接的吗，然后像 Spring Cloud、Dubbo、Bolt 协议的数据在这个长链接上面传递吗？
 
 A：支持的，MOSN 原生就支持 Dubbo，Bolt 协议。
 
@@ -38,7 +38,7 @@ A：支持的，MOSN 原生就支持 Dubbo，Bolt 协议。
 
 **2.康恒政** 提问：
 
->注册中心是不是可以支持其他种类的，比如 ZooKeeper、Eureka 什么的？
+> 注册中心是不是可以支持其他种类的，比如 ZooKeeper、Eureka 什么的？
 
 A：可以的，可以自己扩展，默认支持了 ZK 。
 
@@ -52,7 +52,7 @@ A：可以的，可以自己扩展，默认支持了 ZK 。
 
 [从规模化平台工程实践，我们学到了什么？](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247516354&idx=1&sn=804c45c191a9e319d4a47135e301f91a&chksm=faa36f18cdd4e60e445dd9b4acfe51e40e2060349199e6160811ca069c2c54270d42ec0ca2b7&scene=21)
 
-[直播预告丨SOFAChannel#30《Nydus 开源容器镜像加速服务的演进与未来》](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247516955&idx=1&sn=85dbd9fae42df3c4a6d96eb712aac250&chksm=faa36cc1cdd4e5d74ee6aeaa887070b4854703dbe2ecc430e2af1acf11b9b1226d5d12a801af&scene=21)
+[直播预告丨 SOFAChannel#30《Nydus 开源容器镜像加速服务的演进与未来》](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247516955&idx=1&sn=85dbd9fae42df3c4a6d96eb712aac250&chksm=faa36cc1cdd4e5d74ee6aeaa887070b4854703dbe2ecc430e2af1acf11b9b1226d5d12a801af&scene=21)
 
 欢迎扫码关注：
 

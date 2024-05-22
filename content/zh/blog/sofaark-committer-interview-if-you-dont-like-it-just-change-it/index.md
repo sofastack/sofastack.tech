@@ -106,4 +106,4 @@ Q:作为业务研发，最开始我对 ark 也不是很了解的，刚接手 ark
 
 [恭喜 吕冰洁 成为 SOFAStack committer！](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247502520&idx=1&sn=45bc1b879e3014b18f3fc3ee6a10277e&chksm=faa32562cdd4ac74657f95e7f3e1cfad7619638a08fb9f8754e5539f2fdf05718c87436c5c5e&scene=21)
 
-![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*tvfDQLxTbsgAAAAAAAAAAAAAARQnAQ) 
+![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*tvfDQLxTbsgAAAAAAAAAAAAAARQnAQ)

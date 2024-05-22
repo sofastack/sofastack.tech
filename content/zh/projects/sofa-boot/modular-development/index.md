@@ -1,9 +1,9 @@
 
 ---
+
 title: "模块化开发概述"
 aliases: "/sofa-boot/docs/Modular-Development"
 ---
-
 
 SOFABoot 从 2.4.0 版本开始支持基于 Spring 上下文隔离的模块化开发能力。为了更好的理解 SOFABoot 模块化开发的概念，我们来区分几个常见的模块化形式：
 
@@ -20,6 +20,7 @@ SOFABoot 模块化开发属于第二种模块化形式 —— 基于 Spring 上�
 ![modular development](modular-development.png)
 
 ### 依赖引入
+
 使用 SOFABoot 模块化开发方案，需要引入如下依赖：
 
 ```xml
@@ -42,7 +43,7 @@ SOFABoot 模块的格式定义见: [模块配置](../sofaboot-module)。
 
 ### SOFABoot 模块间通信
 
-上下文隔离后，模块与模块间的 Bean 无法直接注入，模块间需要通过 SOFA 服务进行通信，目前SOFABoot 提供了两种形式的服务发布和引用，用于解决不同级别的模块间调用的问题：
+上下文隔离后，模块与模块间的 Bean 无法直接注入，模块间需要通过 SOFA 服务进行通信，目前 SOFABoot 提供了两种形式的服务发布和引用，用于解决不同级别的模块间调用的问题：
 
 - JVM 服务发布和引用：解决一个 SOFABoot 应用内部各个 SOFABoot 模块之间的调用问题， [JVM 服务发布与引用](../module-service)
 - RPC 服务发布和引用：解决多个 SOFABoot 应用之间的远程调用问题，[RPC 服务发布与引用](https://github.com/sofastack/sofa-rpc/wiki/Publish-And-Reference)。

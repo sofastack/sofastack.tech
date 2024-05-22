@@ -10,14 +10,14 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*Qq3VRZ9oRgEAAAAAA
 
 ![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c99aeb03ebbe450685b3827108cda237~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=638&h=90&s=206394&e=gif&f=120&b=ffffff)
 
--   如果你是企业经营者，在为企业降本增效而发愁；
--   如果你是企业的开发、运维或架构同学，在日常工作中被开发效率、交付问题等困扰……
+- 如果你是企业经营者，在为企业降本增效而发愁；
+- 如果你是企业的开发、运维或架构同学，在日常工作中被开发效率、交付问题等困扰……
 
 欢迎来了解 Koupleless *（原 SOFAServerless）*！
 
 ![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/79c9cc98a9ef4518b4baeef649d0fd07~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1080&h=192&s=49473&e=png&a=1&b=2157ee)
 
-现在，Koupleless 重磅发布了[1.0 版本](https://github.com/koupleless/koupleless/releases/tag/v1.0.0)！（👈点击查看 release note） 
+现在，Koupleless 重磅发布了[1.0 版本](https://github.com/koupleless/koupleless/releases/tag/v1.0.0)！（👈点击查看 release note）
 
 那么，Koupleless 是什么？又将如何为你解决以上问题？除了以上这几种情境，Koupleless 还有哪些能力呢？欢迎你来社区探索发现。
 
@@ -37,7 +37,7 @@ Koupleless 由 SOFAServerless 品牌升级而来，是一款模块化研发框�
 - 微服务链路过长，调用性能不高；
 - 微服务拆分、演进成本高；
 
-如果你也被以上问题所困扰，那么欢迎来了解 Koupleless 给出的解决方案。 本模式在蚂蚁集团内部历经 4-5 年时间孵化而成，当前已经帮助 70W 核业务量完成 10 倍级降本增效，可以帮助应用做到秒级启动，只占 20M 内存。 
+如果你也被以上问题所困扰，那么欢迎来了解 Koupleless 给出的解决方案。 本模式在蚂蚁集团内部历经 4-5 年时间孵化而成，当前已经帮助 70W 核业务量完成 10 倍级降本增效，可以帮助应用做到秒级启动，只占 20M 内存。
 
 性能对比示例如下图👇。
 
@@ -51,7 +51,7 @@ Koupleless 由 SOFAServerless 品牌升级而来，是一款模块化研发框�
 
 ## 我们为什么开源？
 
-关注应用架构领域的同学，应该知道微服务很好地解决了组织分布式协作难题，但同时也带来了一些问题，并且这些问题正日益获得更多关注。 有人说，[2023 年是微服务的转折年](https://thenewstack.io/year-in-review-was-2023-a-turning-point-for-microservices/)[1]，其中一些科技巨头*（如 Amazon 和 Google ）*已经开始尝试去解决和完善微服务带来的问题，例如 [service weaver](https://serviceweaver.dev/)[2]，[amazon prime video](https://www.infoq.cn/article/nu2y3xiazg1cqianoxxa)[3]的架构改造，甚至直接回归单体。
+关注应用架构领域的同学，应该知道微服务很好地解决了组织分布式协作难题，但同时也带来了一些问题，并且这些问题正日益获得更多关注。 有人说，[2023 年是微服务的转折年][https://thenewstack.io/year-in-review-was-2023-a-turning-point-for-microservices/](1)，其中一些科技巨头*（如 Amazon 和 Google ）*已经开始尝试去解决和完善微服务带来的问题，例如 [service weaver][https://serviceweaver.dev/](2)，[amazon prime video][https://www.infoq.cn/article/nu2y3xiazg1cqianoxxa](3)的架构改造，甚至直接回归单体。
 
 ![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/71a3103cb9f04d2e9b686705c5fa1cb6~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=299&h=219&s=112905&e=png&b=d6eddd)
 
@@ -63,7 +63,7 @@ Koupleless 由 SOFAServerless 品牌升级而来，是一款模块化研发框�
 
 ![](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0897b44fd2ec4522ad2784184dfacbad~tplv-k3u1fbpfcp-jj-mark:0:0:0:0:q75.image#?w=1080&h=381&s=77370&e=png&a=1&b=e5d8d8)
 
-- 研发工具 Arkctl一键构建、部署和发布模块，方便用于本地开发测试验证。
+- 研发工具 Arkctl 一键构建、部署和发布模块，方便用于本地开发测试验证。
 - Arklet、SOFAArk 和 Runtime 组件为多种研发框架如 Spring Boot、SOFABoot、Dubbo 提供多模块运行容器环境，适配 30+ 组件，沉淀 25+ samples 用例。
 - 控制面组件 ModuleControllerModuleDeployment，提供模块发布与运维能力； ModuleScheduler，提供模块基础调度能力； ModuleScaler，提供模块扩缩容能力。
 
@@ -71,15 +71,15 @@ Koupleless 由 SOFAServerless 品牌升级而来，是一款模块化研发框�
 
 ## 挑战与亮点
 
-这套模式最大的挑战来自于将多个应用或代码片段合并在一起，在隔离与共享上如何找到最佳的平衡点，使得在存量应用低成本接入的同时，能享受到隔离的带来稳定可靠的好处，也能享受到共享的高性能、低资源消耗的收益。 
+这套模式最大的挑战来自于将多个应用或代码片段合并在一起，在隔离与共享上如何找到最佳的平衡点，使得在存量应用低成本接入的同时，能享受到隔离的带来稳定可靠的好处，也能享受到共享的高性能、低资源消耗的收益。
 
-隔离可以确保运行时的稳定可靠，但带来了性能的下降、资源利用率的损失；共享提升了性能和资源利用率，但也带来了运行时的一些问题，例如 static 变量可能带来互相影响的问题。我们采用了模块化技术来解决这类问题。在 Java 领域模块化技术并不是我们首创的，20 年前就有了 OSGl 技术，那为什么我们的模块化技术能在蚂蚁内部规模化落地呢？我们是做了哪些工作来解决存量应用低成本接入和共享后的一些问题的呢？ 
+隔离可以确保运行时的稳定可靠，但带来了性能的下降、资源利用率的损失；共享提升了性能和资源利用率，但也带来了运行时的一些问题，例如 static 变量可能带来互相影响的问题。我们采用了模块化技术来解决这类问题。在 Java 领域模块化技术并不是我们首创的，20 年前就有了 OSGl 技术，那为什么我们的模块化技术能在蚂蚁内部规模化落地呢？我们是做了哪些工作来解决存量应用低成本接入和共享后的一些问题的呢？
 
 要解决这类问题，我们并没有太多可参考的行业案例，相当于是在无人区里摸索，除了解决隔离与共享的核心问题外，还要解决配套设施的建设、用户心智的培养等，这些都需要一个笃定的心力和持续的过程，这些问题就是这套模式的挑战所在。 好在最终，我们拨云见日探索了出来。我们在隔离和共享之间找到了一个最佳的平衡点，并且能让存量业务低成本的接入，这也是我们最自豪的地方。我们在蚂蚁集团用事实证明了模块化技术并不是停留在设计稿里的技术，或者小部分人才能使用的技术，它的问题和挑战并不可怕，是有固定模式的，可以通过工具和流程逐步治理、收敛的，现在将此模式进行开源分享，是希望可以帮助其他企业少走弯路，和社区一起把这套模式心智在行业里树立起来。
 
 ## Koupleless 已接入 15+ 企业
 
-当前在统计内的，有 15+ 企业在使用 Koupleless 接入线上或者用于交付，还有 17+ 企业正在试用或者接入中，还有一些因为信息缺失未统计到的。详细企业接入列表可以查看[官网信息](https://koupleless.gitee.io/user-cases/all-users/)[4]。 很高兴 Koupleless 能帮助到他们，也十分欢迎这些企业探索的更多使用场景，也欢迎更多企业开发者一起参与社区建设，推广这套技术。
+当前在统计内的，有 15+ 企业在使用 Koupleless 接入线上或者用于交付，还有 17+ 企业正在试用或者接入中，还有一些因为信息缺失未统计到的。详细企业接入列表可以查看[官网信息][https://koupleless.gitee.io/user-cases/all-users/](4)。 很高兴 Koupleless 能帮助到他们，也十分欢迎这些企业探索的更多使用场景，也欢迎更多企业开发者一起参与社区建设，推广这套技术。
 
 ## Koupleless 未来的规划
 

@@ -123,7 +123,7 @@ Import acts-bom to the pom.xml file of the test module.
 
 ## 3. Initialize the ACTS test framework
 
-You can complete the initialization with a few clicks as shown in the following figures. In figure 3.2, correctly enter the **application name** and select the **encoding format** that is suitable for your application.
+You can complete the initialization with a few clicks as shown in the following figures. In figure 3.2, correctly enter the __application name__ and select the __encoding format__ that is suitable for your application.
 
 For more information about the usage of files generated during initialization, see Framework preparation in the ACTS documentation.
 
@@ -150,4 +150,3 @@ Right click the tested method, and choose ACTS Function > Generate Test Case. Co
 ![Test script generation wizard](test-script-generation-wizard.png)
 
 ![Generated content](generated-content.png)
-

@@ -275,7 +275,7 @@ Node node = RaftServiceFactory.createAndInitRaftNode(groupId, serverId, nodeOpts
 
 ### 3.4 RPC 服务
 
-单纯一个 raft node 是没有什么用，测试可以是单个节点，但是正常情况下一个 raft grup 至少应该是三个节点，如果考虑到异地多机房容灾，应该扩展到5个节点。
+单纯一个 raft node 是没有什么用，测试可以是单个节点，但是正常情况下一个 raft grup 至少应该是三个节点，如果考虑到异地多机房容灾，应该扩展到 5 个节点。
 
 节点之间的通讯使用 bolt 框架的 RPC 服务。
 
@@ -715,7 +715,7 @@ append-logs
             99.9% <= 3.00 milliseconds
 ```
 
-指标含义如下：(所有指标都包含min/max/avg/p95/p99等)
+指标含义如下：(所有指标都包含 min/max/avg/p95/p99 等)
 
 <div class="bi-table">
   <table>
@@ -1060,7 +1060,7 @@ NodeOptions 有一个 `raftOptions` 选项，用于设置跟性能和数据可�
 #### 9.2.2 RPC 建议
 
 * 建议开启 CliService 服务，方便查询和管理 RAFT 集群。
-* 是否复用 RPC Server取决于应用，如果都使用 bolt RPC，建议复用，减少资源占用。
+* 是否复用 RPC Server 取决于应用，如果都使用 bolt RPC，建议复用，减少资源占用。
 * Task 的 data 序列化采用性能和空间相对均衡的方案，例如 protobuf 等。
 * 业务 RPC processor 不要与 JRaft RPC processor 共用线程池，避免影响 RAFT 内部协议交互。
 
@@ -1077,7 +1077,7 @@ NodeOptions 有一个 `raftOptions` 选项，用于设置跟性能和数据可�
 从 1.3.10 开始， jraft 引入了一个枚举类 `com.alipay.sofa.jraft.option.ApplyTaskMode`，它包含下列选项：
 
 * `ApplyTaskMode.Blocking`，阻塞模式，当节点过载的时候，将阻塞 `apply` 方法调用，直到处理能力缓解。
-* `ApplyTaskMode.NonBlocking`，非阻塞模式，也是**默认模式**，当节点过载的时候， 调用 `apply` 方法将立即失败返回，抛出异常或者执行 `closure#run(status)` 并传入错误状态。
+* `ApplyTaskMode.NonBlocking`，非阻塞模式，也是__默认模式__，当节点过载的时候， 调用 `apply` 方法将立即失败返回，抛出异常或者执行 `closure#run(status)` 并传入错误状态。
 
 默认模式是 `ApplyTaskMode.NonBlocking`，你可以通过 `NodeOptions#setApplyTaskMode(ApplyTaskMode)` 改变。
 
@@ -1143,7 +1143,7 @@ public @interface SPI {
 ## 11. 排查故障工具
 
 在程序运行时，可以利用 Linux 平台的 SIGUSR2 信号输出节点的状态信息以及 metric 数据，具体执行方式: `kill -s SIGUSR2 pid`
-相关信息会输出到指定目录，默认在程序工作目录（cwd:  lsof -p $pid | grep cwd）生成 3 个文件：node_metrics.log，node_describe.log以及  thread_pool_metrics.log， 其中 node_metrics.log 存储节点 metric 数据，node_describe.log 存储节点状态信息， thread_pool_metrics.log 存储线程池信息
+相关信息会输出到指定目录，默认在程序工作目录（cwd:  lsof -p $pid | grep cwd）生成 3 个文件：node_metrics.log，node_describe.log 以及  thread_pool_metrics.log， 其中 node_metrics.log 存储节点 metric 数据，node_describe.log 存储节点状态信息， thread_pool_metrics.log 存储线程池信息
 
 <div class="bi-table">
   <table>

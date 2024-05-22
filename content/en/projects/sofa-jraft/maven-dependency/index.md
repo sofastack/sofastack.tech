@@ -87,4 +87,3 @@ title: "Maven dependencies"
         <version>4.0.2</version>
     </dependency>
 ```
-

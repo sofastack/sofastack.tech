@@ -14,13 +14,13 @@ categories: "SOFARPC"
 
 RPC 框架作为分布式技术的基石，在分布式和微服务环境下，扮演着非常重要的角色。
 
-在蚂蚁金服的分布式技术体系下，我们大量的技术产品（非网关类产品），都需要在内网，进行节点间通信。底层通信框架，已经在蚂蚁自研的 BOLT中的进行了实践，[BOLT](https://mp.weixin.qq.com/s/JRsbK1Un2av9GKmJ8DK7IQ) 提供了优秀的通信协议与通信框架，在 BOLT 的基础上，我们研发了自己的 RPC 框架，提供了负载均衡，流量转发，链路追踪，链路数据透传，故障剔除等基础能力，本文将从以下几个方面介绍目前已经开源的 SOFARPC 框架。
+在蚂蚁金服的分布式技术体系下，我们大量的技术产品（非网关类产品），都需要在内网，进行节点间通信。底层通信框架，已经在蚂蚁自研的 BOLT 中的进行了实践，[BOLT](https://mp.weixin.qq.com/s/JRsbK1Un2av9GKmJ8DK7IQ) 提供了优秀的通信协议与通信框架，在 BOLT 的基础上，我们研发了自己的 RPC 框架，提供了负载均衡，流量转发，链路追踪，链路数据透传，故障剔除等基础能力，本文将从以下几个方面介绍目前已经开源的 SOFARPC 框架。
 
 1. RPC 是什么
 2. 通用 RPC 框架原理
 3. SOFARPC 框架设计
 
-## RPC是什么
+## RPC 是什么
 
 RPC 这个概念术语在上世纪 80 年代由 [Bruce Jay Nelson](https://en.wikipedia.org/wiki/Bruce_Jay_Nelson) 提出，在 Nelson 的论文 ["Implementing Remote Procedure Calls"](http://birrell.org/andrew/papers/ImplementingRPC.pdf) 中他提到了几点：
 
@@ -28,7 +28,7 @@ RPC 这个概念术语在上世纪 80 年代由 [Bruce Jay Nelson](https://en.w
 2. 高效：在使用方看来,十分简单而且高效。
 3. 通用：通用,适用于各种不同的远程通信调用。
 
-这里面Nelson提出了一个 RPC框架应该包含的几个部分。
+这里面 Nelson 提出了一个 RPC 框架应该包含的几个部分。
 
 1. User
 2. User-stub
@@ -40,7 +40,7 @@ RPC 这个概念术语在上世纪 80 年代由 [Bruce Jay Nelson](https://en.w
 
 ![典型的 RPC 调用](https://cdn.nlark.com/lark/0/2018/png/886/1533126860674-81625d5d-7bf4-4c68-b887-8b2bc0e03577.png)
 
-当 Client 想发起一个远程调用时，实际是通过本地调用 Client-stub，而 Client-stub 负责将调用的接口、方法和参数通过约定的协议规范进行编码并通过本地的 RPC-Runtime 实例传输到远端的实例。远端 RPC-Runtime 实例收到请求后交给 Server-stub 进行解码后发起本地端调用，在 Java中可以认为就是反射调用,调用结果再返回给 Client 端。
+当 Client 想发起一个远程调用时，实际是通过本地调用 Client-stub，而 Client-stub 负责将调用的接口、方法和参数通过约定的协议规范进行编码并通过本地的 RPC-Runtime 实例传输到远端的实例。远端 RPC-Runtime 实例收到请求后交给 Server-stub 进行解码后发起本地端调用，在 Java 中可以认为就是反射调用,调用结果再返回给 Client 端。
 
 从上文可以看到，一个典型的 RPC 调用过程还是相对简单的。但是实际上，一个真正的 RPC 框架要做的远不止这些。
 
@@ -76,7 +76,7 @@ RPC 这个概念术语在上世纪 80 年代由 [Bruce Jay Nelson](https://en.w
 
 当然 SOFARPC 的功能不止这些,在解决了这些问题之后，根据业务的需求和实际的线上情况，我们也开发了熔断,限流,故障剔除,数据透传等能力，下面我会来介绍 SOFARPC 的框架设计。
 
-## SOFARPC框架设计
+## SOFARPC 框架设计
 
 ### SOFARPC RoadMap
 
@@ -92,7 +92,7 @@ RPC 这个概念术语在上世纪 80 年代由 [Bruce Jay Nelson](https://en.w
 
 ![SOFARPC 项目结构](https://cdn.nlark.com/lark/0/2018/png/886/1533125873287-2d6cb058-aa5d-4bb3-819b-9cefc8880153.png)
 
-其中 core和 core-impl 是核心的功能，包含 API 和一些扩展机制，extension-impl 中，则包含了不同的实现和扩展，比如对 http，rest，对 metrics，以及其他注册中心的集成和扩展。
+其中 core 和 core-impl 是核心的功能，包含 API 和一些扩展机制，extension-impl 中，则包含了不同的实现和扩展，比如对 http，rest，对 metrics，以及其他注册中心的集成和扩展。
 
 如 bootstrap 中对协议的支持，remoting 中对网络传输的支持，registry 中对注册中心的支持等。
 
@@ -126,9 +126,9 @@ RPC 这个概念术语在上世纪 80 年代由 [Bruce Jay Nelson](https://en.w
 
 ### 可扩展的机制
 
-从上面的流程中，可以看到，每个部分基本都有多种实现可选，这得益于RPC的扩展机制。
+从上面的流程中，可以看到，每个部分基本都有多种实现可选，这得益于 RPC 的扩展机制。
 
-为了对 RPC 各个环节的都有充足的可扩展性，提供 SPI 的能力，所以内部的实现和第三方实现都是**绝对平等**的。 
+为了对 RPC 各个环节的都有充足的可扩展性，提供 SPI 的能力，所以内部的实现和第三方实现都是**绝对平等**的。
 
 相比原生 SPI，我们实现了更强大的功能
 
@@ -159,7 +159,7 @@ RPC 这个概念术语在上世纪 80 年代由 [Bruce Jay Nelson](https://en.w
 
 3. 循环加载这个文件下的扩展描述文件，按行读取。（同一个接口的同一个别名对应唯一的一个实现类，可以重复，允许覆盖。）
 
-4. 保存扩展实现类的alias和实现类的对应关系。
+4. 保存扩展实现类的 alias 和实现类的对应关系。
 
 5. 如果 ExtensionLoaderListener 不为空，则通知 Listener。
 

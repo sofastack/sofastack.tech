@@ -29,7 +29,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 
 > 请问 Seata 的全局锁粒度是数据库级别还是表级别？全局锁会带来并发的问题吧？如何权衡的呢？
 
-A：全局锁是行级别的；如果2个事务在同时更新同一行，会出现锁竞争问题，所以 AT 模式的适用场景是并发请求较低，不会产生行锁竞争的业务场景。
+A：全局锁是行级别的；如果 2 个事务在同时更新同一行，会出现锁竞争问题，所以 AT 模式的适用场景是并发请求较低，不会产生行锁竞争的业务场景。
 
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
@@ -37,7 +37,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 - [少年五年升阿里 P8，他如何从低谷登上“光明顶”？](/blog/five-years-to-ali-p8/)
 - [支付宝资深技术专家尹博学：新一代金融核心突破之全分布式单元化技术架构](/blog/antgroup-yinboxue-fully-distributed-unitized-technology-architecture/)
-- [Forrester中国首席分析师戴鲲：云原生技术趋向成熟，金融企业选择云原生平台需满足三大要求](/blog/forrester-daipeng-white-paper-cloud-native/)
+- [Forrester 中国首席分析师戴鲲：云原生技术趋向成熟，金融企业选择云原生平台需满足三大要求](/blog/forrester-daipeng-white-paper-cloud-native/)
 
 ### 组件解析部分合辑
 
@@ -59,7 +59,6 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 ![CSDI summit](https://cdn.nlark.com/yuque/0/2020/png/226702/1598601873628-336c1d81-2c48-4121-9b8e-0ff56f706f4f.png)
 
 CSDI summit 中国软件研发管理行业技术峰会（Software development management industry technology summit）是软件行业技术领域顶级盛会，协同国内外知名软件、互联网等企业研发一线技术专家从 AI 和大数据、产业变革、技术创新、生态发展、业务创新、商业模式等方面重点研讨软件研发趋势。**蚂蚁集团也受邀参与**本次峰会分享“**云原生**”相关主题。
-
 
 **分享主题：金融级云原生 PaaS 实践之路**
 

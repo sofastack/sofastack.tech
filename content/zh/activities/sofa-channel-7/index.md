@@ -20,7 +20,7 @@ description: "7 月 18 日周四晚 7 点，线上直播第 7 期。"
 
 ### | SOFAChannel
 
-`<SOFA:Channel/>` 有趣实用的分布式架构频道：前沿技术、直播 Coding、观点“抬杠”，多种形式。 
+`<SOFA:Channel/>` 有趣实用的分布式架构频道：前沿技术、直播 Coding、观点“抬杠”，多种形式。
 
 `<SOFA:Channel/>` 将作为 SOFA 所有在线内容的承载，包含直播/音视频教程，集中体现 SOFAStack 的能力全景图。
 
@@ -54,7 +54,7 @@ SOFAGirl 主持人
 
 枫晟 蚂蚁金服 SOFAStack-CAFE 云应用引擎 容器应用服务研发负责人
 
-### 本期分享大纲：
+### 本期分享大纲
 
 - Kubernetes Deployment 发展历史与现状
 - Kubernetes Deployment 在互联网金融云场景下的问题与挑战

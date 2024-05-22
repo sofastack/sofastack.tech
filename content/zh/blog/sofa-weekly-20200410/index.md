@@ -17,15 +17,14 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 
 SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 
-**SOFAStack 官网: **[https://www.sofastack.tech](https://www.sofastack.tech/)
+**SOFAStack 官网:**[https://www.sofastack.tech](https://www.sofastack.tech/)
 
-**SOFAStack: **[https://github.com/sofastack](https://github.com/sofastack)
+**SOFAStack:**[https://github.com/sofastack](https://github.com/sofastack)
 
 ### 每周读者问答提炼
 
 欢迎大家向公众号留言提问或在群里与我们互动
 我们会筛选重点问题通过 " SOFA WEEKLY " 的形式回复
-
 
 **1、@熊胜 提问：**
 
@@ -85,7 +84,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 **发布 SOFATracer v3.0.12 版本，主要变更如下：**
 
-- 2个 Dubbo 插件融合, 新的用户请直接使用 sofa-tracer-dubbo-common-plugin；
+- 2 个 Dubbo 插件融合, 新的用户请直接使用 sofa-tracer-dubbo-common-plugin；
 - 修复 Dubbo 插件传递错误 spanId 的问题；
 
 详细发布报告：
@@ -100,7 +99,7 @@ SOFATracer 是蚂蚁金服开源的基于 OpenTracing 规范 的分布式链路�
 本期直播将通过具体 Demo 带你快速上手 SOFATracer，同时将介绍 SOFATracer 具体功能，并详细介绍其核心关键「埋点机制」的原理。
 
 - 主题：SOFAChannel#15：分布式链路组件 SOFATracer 埋点机制解析
-- 时间：2020年4月23日（周四）19:00-20:00
+- 时间：2020 年 4 月 23 日（周四）19:00-20:00
 - 嘉宾：卫恒 SOFATracer 开源负责人
 - 形式：线上直播
 - 报名方式：点击“[这里](https://tech.antfin.com/community/live/1167)”，即可报名

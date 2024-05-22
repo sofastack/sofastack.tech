@@ -20,7 +20,7 @@ description: "12 月 09 日周三晚 19 点，线上直播第 23 期。"
 
 - B 站直播间地址：[http://live.bilibili.com/21954520](http://live.bilibili.com/21954520)
 
-- B 站直播ID：21954520
+- B 站直播 ID：21954520
 
 ## 介绍
 

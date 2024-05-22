@@ -22,7 +22,6 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 ### 每周读者问答提炼
 
-
 欢迎大家向公众号留言提问或在群里与我们互动
 我们会筛选重点问题
 通过 " SOFA WEEKLY " 的形式回复
@@ -39,7 +38,7 @@ A：Spring 本地事务注解本身就不支持多数据源事务，且如果你
 
 A：不会，另一个线程也要记得加上 globaltransactional 注解就行了。在 a 线程要提交之前要去尝试拿到它修改数据的全局锁的，如果 a 拿到了，但是还没到二阶段提交，b 也是要去尝试拿，拿不到就会不执行 SQL，等待全局锁释放了，也就是 a 发起的事务结束了，b 才能执行 SQL 提交。这样就保证了利用全局锁（粒度行级），来达到隔离性。
 
-Seata：https://github.com/seata/seata
+Seata：<https://github.com/seata/seata>
 
 ### 相关推荐阅读
 
@@ -54,7 +53,7 @@ Seata：https://github.com/seata/seata
 
 **本周发布详情如下：**
 
-**SOFA-Common-Tools 发布1.3.0 版本，主要变更如下：**
+**SOFA-Common-Tools 发布 1.3.0 版本，主要变更如下：**
 
 - SOFA 线程池支持 ScheduledThreadPoolExecutor 与 ThreadPoolTaskScheduler
 - 新增 SofaConfigs 支持统一的配置获取

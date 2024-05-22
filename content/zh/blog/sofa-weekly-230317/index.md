@@ -20,7 +20,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **SOFAStack:** *[https://github.com/sofastack](https://github.com/sofastack)*
 
-**SOFA 社区会议** 
+**SOFA 社区会议**
 
 **MOSN**
 
@@ -55,7 +55,7 @@ Discussion: 自建各种 Component  #902
 欢迎感兴趣同学参加，有任何想交流讨论的议题可以直接留言。
 想要参加社区建设的同学可以关注社区的新手任务列表，总有一个适合你。
 
-**「Layotto」**： 
+**「Layotto」**：
 *[https://github.com/mosn/layotto/issues/902](https://github.com/mosn/layotto/issues/902)*
 *[https://github.com/mosn/layotto/issues/867](https://github.com/mosn/layotto/issues/867)*
 
@@ -69,7 +69,7 @@ Discussion: 自建各种 Component  #902
 
 欢迎大家在 GitHub 提交 issue 与我们互动
 
-我们会筛选 issue 通过 
+我们会筛选 issue 通过
 
 " SOFA WEEKLY " 的形式回复
 
@@ -86,7 +86,7 @@ com.alipay.sofa.rpc.enable-swagger 在 3.16.3 是否已经废弃
 
 配置 com.alipay.sofa.rpc.enable-swagger=true
 
-启动并访问*[http://localhost:8341/swagger/bolt/api](http://localhost:8341/swagger/bolt/api) *
+启动并访问*[http://localhost:8341/swagger/bolt/api](http://localhost:8341/swagger/bolt/api)*
 
 debug 可以看到找不到 class objectway.classvisitor
 

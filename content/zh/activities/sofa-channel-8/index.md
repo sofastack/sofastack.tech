@@ -22,7 +22,7 @@ description: "8 月 29 日周四晚 7 点，线上直播第 8 期。"
 
 ### | SOFAChannel
 
-`<SOFA:Channel/>` 有趣实用的分布式架构频道：前沿技术、直播 Coding、观点“抬杠”，多种形式。 
+`<SOFA:Channel/>` 有趣实用的分布式架构频道：前沿技术、直播 Coding、观点“抬杠”，多种形式。
 
 `<SOFA:Channel/>` 将作为 SOFA 所有在线内容的承载，包含直播/音视频教程，集中体现 SOFAStack 的能力全景图。
 
@@ -52,7 +52,7 @@ SOFAGirl 主持人
 
 力鲲 SOFAJRaft 开源负责人
 
-### 本期分享大纲：
+### 本期分享大纲
 
 - 如何使用 SOFAJRaft 实现自己的分布式应用
 - 基于实例理解 SOFAJRaft 中的概念和术语

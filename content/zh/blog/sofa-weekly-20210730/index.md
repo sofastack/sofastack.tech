@@ -31,7 +31,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 1、@张鹏 提问：
 
->比如我在新模块中添加 Service 实现，宿主应用没有调用相关的 Service 啊，我其实想实现代码的热部署通过 SOFAArk 可以？
+> 比如我在新模块中添加 Service 实现，宿主应用没有调用相关的 Service 啊，我其实想实现代码的热部署通过 SOFAArk 可以？
 
 A：可以动态部署的（所有的 bean 会刷新，服务会发布），跟宿主应用有没有调用没有关系的。
 
@@ -39,7 +39,7 @@ SOFAArk：[https://github.com/sofastack/sofa-ark](https://github.com/sofastack/s
 
 2、@周永平 提问：
 
->我想请教下，SOFABoot 如果使用 Spring 的 event，跨模块会被通知到吗？
+> 我想请教下，SOFABoot 如果使用 Spring 的 event，跨模块会被通知到吗？
 
 A：默认情况下，Spring 事件只在本模块中，不会传递的。
 
@@ -47,7 +47,7 @@ SOFABoot：[https://github.com/sofastack/sofa-boot](https://github.com/sofastack
 
 3、@孙力 提问：
 
->蚂蚁内部与 MOSN 对应的应该是有统一的控制面吗？其中熔断限流组件是使用的 sentinel 吗？控制面与 MOSN 中的 sentinel-client 对接更新限流规则，使用的 sentienl 的 dynamic-rule，还是 xds 下发的？
+> 蚂蚁内部与 MOSN 对应的应该是有统一的控制面吗？其中熔断限流组件是使用的 sentinel 吗？控制面与 MOSN 中的 sentinel-client 对接更新限流规则，使用的 sentienl 的 dynamic-rule，还是 xds 下发的？
 
 A：我们内部是有统一的控制面的，我们的限流熔断算法是基于 sentinel 去扩展实现的，底层的限流框架是基于 sentinel 的，更新规则时我们用的是我们内部的一套配置管理中间件。
 
@@ -55,7 +55,7 @@ MOSN：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 
 4、@孟晓冬 提问：
 
->目前的问题是，Dubbo 应用在注入 MOSN 时，MOSN 启动时，要么报权限问题，要么报各种 not support，想请教一下是什么原因？
+> 目前的问题是，Dubbo 应用在注入 MOSN 时，MOSN 启动时，要么报权限问题，要么报各种 not support，想请教一下是什么原因？
 
 A：你用的 1.7.x 的 Istio 的话，那要用对应分支的 MOSN 版本镜像。
 
@@ -107,7 +107,7 @@ MOSN：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 4. 修复 Ark 环境处理注解时抛出 TypeNotPresentExceptionProxy 异常的问题
 
 **详细参考：**
-https://github.com/sofastack/sofa-boot
+<https://github.com/sofastack/sofa-boot>
 
 ### 本周推荐阅读
 
@@ -115,10 +115,10 @@ https://github.com/sofastack/sofa-boot
 
 - [我们做出了一个分布式注册中心](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247491198&idx=1&sn=a4607e6a8492e8749f31022ea9e22b80&chksm=faa0f1a4cdd778b214403e36fb4322f91f3d1ac47361bf752c596709f8453b8482f582fe7e2e&scene=21)
 
-- [还在为多集群管理烦恼吗？OCM来啦！](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247490574&idx=1&sn=791b8d49759131ea1feb5393e1b51e7c&chksm=faa0f3d4cdd77ac2316b179a24b7c3ac90a08d3768379795d97c18b14a9c69e4b82012c3c097&token=1804015466)
+- [还在为多集群管理烦恼吗？OCM 来啦！](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247490574&idx=1&sn=791b8d49759131ea1feb5393e1b51e7c&chksm=faa0f3d4cdd77ac2316b179a24b7c3ac90a08d3768379795d97c18b14a9c69e4b82012c3c097&token=1804015466)
 
 - [MOSN 子项目 Layotto：开启服务网格+应用运行时新篇章](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247488835&idx=1&sn=d645b9abc866048e679b56bfe3b72482&chksm=faa0fa99cdd7738ff1749ae75b1670f953c92b70dcf0358337977438fd74b632b21a7b17ece3&scene=21)
 
 更多文章请扫码关注“金融级分布式架构”公众号
 
->![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*5aK0RYuH9vgAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*5aK0RYuH9vgAAAAAAAAAAAAAARQnAQ)

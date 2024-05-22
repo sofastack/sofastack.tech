@@ -1,16 +1,15 @@
 
 ---
+
 title: "Ark 容器类加载机制"
 aliases: "/sofa-boot/docs/sofa-ark-classloader"
 ---
-
 
 # Ark 容器类加载机制
 
 Ark 容器中会管理插件和业务，整体的类加载机制可见如下图描述：
 
 ![undefined](https://gw.alipayobjects.com/zos/skylark/7dfdc66f-a70d-4ef0-9de3-92b72bf2caf7/2018/png/77f10035-a6c3-4bab-bff3-a2c9a986561f.png)
-
 
 ## Ark 插件类加载机制
 
@@ -28,11 +27,12 @@ Ark 容器中会管理插件和业务，整体的类加载机制可见如下图�
 
 ## Ark 业务类加载机制
 
-每个 Ark 业务都拥有一个独立的类加载器， Ark 业务类加载机制基本上与 Ark 插件保持一致，在上述的7步中，主要是第5步不一样：
+每个 Ark 业务都拥有一个独立的类加载器， Ark 业务类加载机制基本上与 Ark 插件保持一致，在上述的 7 步中，主要是第 5 步不一样：
 
 对于 Ark 业务而言，并没有提供 import 的配置，而是认为默认 import 所有插件 export 出来的类；但为了一些特殊的业务场景，我们提供了 Deny-import 的配置让业务可以排除掉某些插件导出的类
 
 # Ark 插件资源加载机制
+
 Ark 插件支持导入导出资源，需要在 `sofa-ark-plugin-maven-plugin` 配置相关的导入导出配置；在使用 ClassLoader 加载资源时，存在两种方式查找资源，`ClassLoader.getResource(String)` 和 `ClassLoader.getResources(String)`；
 
 + `ClassLoader.getResource(String)`: Ark Plugin 在查找单个资源时，会优先委托导出该资源的 Ark Plugin 加载，如果有多个插件同时导出，则优先级高的插件优先导出；如果加载失败或者没有其他 Ark Plugin 导出，则尝试在本 Ark Plugin 查找加载；
@@ -40,4 +40,5 @@ Ark 插件支持导入导出资源，需要在 `sofa-ark-plugin-maven-plugin` �
 + `ClassLoader.getResources(String)`: Ark Plugin 在查找多个资源时，会从所有导出该资源的 Ark Plugin 加载，同时也会从本 Ark Plugin 加载资源；
 
 # Ark 业务资源加载机制
+
 默认情况下，Ark Biz 会优先加载 Ark Plugin 导出的资源；如果开发者希望只在工程应用内部查找，则可以通过 `sofa-ark-maven-plugin` 配置 `denyImportResources`；如此，Ark Biz 不会从 Ark Plugin 查找该资源，只会在 Ark Biz 内部查找。

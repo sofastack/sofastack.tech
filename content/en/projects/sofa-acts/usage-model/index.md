@@ -13,7 +13,7 @@ In conventional test case compilation, data preparation of models, such as datab
 * Omissions may occur and troubleshooting takes a lot of time for a large number of tables.
 * Field names of tables are difficult to remember, and spelling errors frequently occur.
 * The large number and complex types of interface request parameters are frustrating.
-*  There are so many class properties that important properties are prone to omission.
+* There are so many class properties that important properties are prone to omission.
 * Object construction with nested structures requires continuous effort in creating and setting values.
 * Important properties are easily omitted when the inheritance and implementation relationships are complex.
 
@@ -37,12 +37,11 @@ You can view existing models under the resource/model directory of the test modu
 
 **1. Validation flag description**
 
-    Y: indicates that the data is to be inserted.
+   plain Y: indicates that the data is to be inserted.
     N: indicates that the data is not to be inserted.
     C: indicates that ACTS will clean the inserted data by taking this value as the where condition.
     F: indicates that the value of this column is a database function.
     L: indicates that a large field data record requires line wrap. The preparation method for this data record is: A=B;C=D.
-    
 
 **2. Quickly import data from models during test case editing**
 
@@ -99,6 +98,7 @@ ACTS uses models to quickly import data and edit complex objects (including requ
 ### Generate object model
 
 You can generate an object model by using one of the following methods:
+
 1. Right click any method defined in the class that you want to generate the object model for.
 1. Right click any method defined in the interface as shown in the following figure.
 
@@ -117,4 +117,3 @@ If you use IDEA, ensure that your code has been compiled. IDEA does not automati
 ![Interface](interface.png)
 
 <p align="center">Figure 15</p>
-

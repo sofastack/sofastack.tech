@@ -4,11 +4,11 @@ aliases: "/sofa-mosn/docs/docs-reference-PerformanceReport010"
 ---
 
 
-## Instructions on performance report 
+## Instructions on performance report
 
 The following performance report presents the performance comparison data of MOSN 0.1.0 with envoy in terms of pure TCP forwarding for Bolt and HTTP1.x protocols, mainly including QPS, RTT, failure rate, success rate and other indicators.
 
-It is significant to note the following optimizations in v0.1.0 which are intended to improve the forwarding performance of MOSN. 
+It is significant to note the following optimizations in v0.1.0 which are intended to improve the forwarding performance of MOSN.
 
 - For thread model, MOSN uses the worker goroutine pool to handle stream events, and uses two independent goroutines to handle read and write IO separately.
 - For single-core forwarding, in the case of specifying `P=1`, MOSN binds CPU with cores to improve the call execution efficiency of the system and the locality affinity of cache.
@@ -128,7 +128,7 @@ Since the HTTP/1.1 request response model is PING-PONG, QPS is positively correl
 
 When the upper-layer protocol is HTTP/1.X., a certain gap exists between MOSN and Envoy in terms of performance.
 
-The preliminary conclusion is that in the PING-PONG package delivery model, MOSN cannot merge the read/write system calls. In the scenario where SOFARPC can merge the calls, MOSN's HTTP performance is weaker than that of Envoy because the syscall count significantly increases. 
+The preliminary conclusion is that in the PING-PONG package delivery model, MOSN cannot merge the read/write system calls. In the scenario where SOFARPC can merge the calls, MOSN's HTTP performance is weaker than that of Envoy because the syscall count significantly increases.
 
 This problem will be optimized in version 0.2.0.
 

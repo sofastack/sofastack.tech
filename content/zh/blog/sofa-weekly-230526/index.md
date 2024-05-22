@@ -46,7 +46,7 @@ SOFAChannel 第 33 期邀请到了 **LibOS 项目的 Contributor** **惠春阳**
 
 「**会议回放**」：[*https://www.bilibili.com/video/BV1XM4y1v7A9/?spm_id_from=333.999.0.0&vd_source=65cf108a3fb8e9985d41bd64c5448f63*](https://www.bilibili.com/video/BV1XM4y1v7A9/?spm_id_from=333.999.0.0&vd_source=65cf108a3fb8e9985d41bd64c5448f63)
 
- **SOFA 社区会议预告** 
+ **SOFA 社区会议预告**
 
 **Layotto：**
 
@@ -73,7 +73,7 @@ SOFAChannel 第 33 期邀请到了 **LibOS 项目的 Contributor** **惠春阳**
 
 ![图片](https://mmbiz.qpic.cn/mmbiz_jpg/nibOZpaQKw0ic8ljx9hw61LFGRmnarGELgVjibQXC8gKLKobSRdsW1Yj5GARrqFz4ic0kfpF5ZLdeSUbxhx1o0qiaMg/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1)
 
-  **本周推荐阅读** 
+  **本周推荐阅读**
 
 [直播预告 | SOFAChannel#33《Occlum x EDMM=更安全好用的机密计算 LibOS》](https://mp.weixin.qq.com/s/8oDJNhPBly85Hf1_kBBZbQ)
 

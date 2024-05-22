@@ -1,9 +1,9 @@
 
 ---
+
 title: "健康检查"
 aliases: "/sofa-boot/docs/HealthCheck"
 ---
-
 
 SOFABoot 为 Spring Boot 的健康检查能力增加了 Readiness Check 的能力。如果你需要使用 SOFA 中间件，那么建议使用 SOFABoot 的健康检查能力的扩展，来更优雅的上线应用实例
 
@@ -20,7 +20,6 @@ SOFABoot 为 Spring Boot 的健康检查能力增加了 Readiness Check 的能�
 
 **如果不引入 SOFABoot 的健康检查扩展，用户依然可以直接依赖 HealthIndicator 接口进行原生的 Spring Boot Actuator 的 Liveness Check。**
 
-
 ## 安全提醒
 
 从 SOFABoot 2.3.0 开始，由于健康检查能力依赖于 SpringBoot 1.4.x 里的 `Actuator` 组件，而 `Actuator` 会默认开启很多 [EndPoint](https://docs.spring.io/spring-boot/docs/1.4.2.RELEASE/reference/html/production-ready-endpoints.html)，例如 `/dump`，`/trace` 等等，可能存在安全风险，可以参照官方文档里的[安全建议](https://docs.spring.io/spring-boot/docs/1.4.2.RELEASE/reference/html/production-ready-endpoints.html#_security_with_healthindicators)进行设置。
@@ -33,7 +32,7 @@ SOFABoot 为 Spring Boot 的健康检查能力增加了 Readiness Check 的能�
 
 除了通过 URL 来查看健康检查的结果之外，在 SOFABoot 中，还可以通过查看具体的日志来确定健康检查的结果，日志的目录位于 `health-check` 目录下，日志的内容大概如下：
 
-```
+```plain
 2018-04-06 23:29:50,240 INFO  main                             - Readiness check result: success
 ```
 

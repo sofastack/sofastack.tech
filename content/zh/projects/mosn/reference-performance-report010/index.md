@@ -20,22 +20,24 @@ aliases: "/sofa-mosn/docs/docs-reference-PerformanceReport010"
 
 ### 部署模式
 
-压测采用纯代理模式部署，client 进程通过 MOSN 进程作为转发代理访问server进程。其中，client 进程，MOSN 进程，server 进程分别运行在属于不同网段的机器中。client 直连访问 server 网络延时为 2.5ms 左右。
+压测采用纯代理模式部署，client 进程通过 MOSN 进程作为转发代理访问 server 进程。其中，client 进程，MOSN 进程，server 进程分别运行在属于不同网段的机器中。client 直连访问 server 网络延时为 2.5ms 左右。
 
 ## 客户端
 
 ### Bolt 协议（发送 1K 字符串）
 
-发送 Bolt 协议数据的客户端使用 "蚂蚁金服"内部开发的线上压力机，并部署 sofa rpc client。 通过压力机的性能页面，可反映压测过程中的QPS、成功/失败次数，以及RT等参数。
+发送 Bolt 协议数据的客户端使用 "蚂蚁金服"内部开发的线上压力机，并部署 sofa rpc client。 通过压力机的性能页面，可反映压测过程中的 QPS、成功/失败次数，以及 RT 等参数。
 
 ### HTTP1.1 协议（发送 1K 字符串）
 
 使用 ApacheBench/2.3, 测试指令:
+
 ```bash
 ab -n $RPC -c $CPC -p 1k.txt -T "text/plain" -k http://11.166.161.136:12200/tcp_bench > ab.log.$CPU_IDX &
 ```
 
 ## Service mesh 运行机器规格
+
 Service mesh 运行在容器中，其中 CPU 为独占的一个逻辑核，具体规格如下：
 
 | 类别 | 信息 |
@@ -63,13 +65,13 @@ Service mesh 运行在容器中，其中 CPU 为独占的一个逻辑核，具�
 
 ### 结论
 
-可以看到，在单核 TCP 转发场景下，MOSN 0.1.0 版本和 Envoy 1.7版本，在满负载情况下的 QPS、RTT、成功数/失败数等性能数据上相差不大，后续版本我们会继续优化。
+可以看到，在单核 TCP 转发场景下，MOSN 0.1.0 版本和 Envoy 1.7 版本，在满负载情况下的 QPS、RTT、成功数/失败数等性能数据上相差不大，后续版本我们会继续优化。
 
 ## HTTP/1.1 测试结果
 
 由于 HTTP/1.1 的请求响应模型为 PING-PONG，因此 QPS 与并发数会呈现正相关。下面分别进行不同并发数的测试。
 
-### 并发20
+### 并发 20
 
 | 指标 | MOSN | Envoy|
 | -------- | -------- | -------- |
@@ -81,7 +83,7 @@ Service mesh 运行在容器中，其中 CPU 为独占的一个逻辑核，具�
 | MEM      | 24m      |23m       |
 | CPU      | 40%      |20%       |
 
-### 并发40
+### 并发 40
 
 | 指标 | MOSN | Envoy|
 | -------- | -------- | -------- |
@@ -93,7 +95,7 @@ Service mesh 运行在容器中，其中 CPU 为独占的一个逻辑核，具�
 | MEM      | 34m      |24m       |
 | CPU      | 70%      |40%       |
 
-### 并发200
+### 并发 200
 
 | 指标 | MOSN | Envoy|
 | -------- | -------- | -------- |
@@ -105,7 +107,7 @@ Service mesh 运行在容器中，其中 CPU 为独占的一个逻辑核，具�
 | MEM      | 96m      |24m       |
 | CPU      | 100%      |95%       |
 
-### 并发220
+### 并发 220
 
 | 指标 | MOSN | Envoy |
 | -------- | -------- | -------- |
@@ -127,7 +129,6 @@ Service mesh 运行在容器中，其中 CPU 为独占的一个逻辑核，具�
 
 - version：1.7
 - tag：1ef23d481a4701ad4a414d1ef98036bd2ed322e7
-
 
 ## Envoy TCP 测试配置
 

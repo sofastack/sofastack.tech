@@ -9,7 +9,8 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       # deploy
-      - uses: 15669072513/gitdoc-build-upload-oss@main
+      - uses: 15669072513/website-build-upload-oss@main
+#      - uses: Ant-OSS-Utility-Set/website-build-upload-oss@main
         with:
           access_key: ${{ secrets.OSS_ACCESS_KEY_ID }}
           access_secret: ${{ secrets.OSS_ACCESS_KEY_SECRET }}

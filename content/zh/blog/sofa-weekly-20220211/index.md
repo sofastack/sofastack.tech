@@ -36,7 +36,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **@小楼** 提问：
 
->请问 session 是如何支持 Dubbo 的元数据的？
+> 请问 session 是如何支持 Dubbo 的元数据的？
 
 A：Registery 的元数据现在不是通用的，只针对 SOFARPC。
 
@@ -56,7 +56,7 @@ A：client 会有缓存的。
 
 A：有的，有个从单机 session 获取数据的接口 curl localhost:9603/digest/pub/data/query?dataInfoId=com.test.SimpleService#@#DEFAULT_INSTANCE_ID#@#DEFAULT_GROUP dataInfoId 参数需要进行 url encode 应该还没公开的 API 文档，获取数据的 HTTP 接口也不太易用，我最近会补一下文档还有方便使用的接口。
 
->那看样子这个相当于是指定搜索了吗？
+> 那看样子这个相当于是指定搜索了吗？
 
 A：是的，目前没有模糊查询的接口， curl localhost:9603/digest/getDataInfoIdList 你可以用这个 API grep 一下。
 

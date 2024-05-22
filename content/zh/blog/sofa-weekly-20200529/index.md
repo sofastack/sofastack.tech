@@ -60,7 +60,7 @@ SOFARPC：[https://github.com/sofastack/sofa-rpc](https://github.com/sofastack/s
 
 > 请问，配置 Nacos，如果 Nacos 是集群部署的话，那 Seata 配置 Nacos 地址的时候是不是只需要填写 Nacos 集群地址就行了，不要三个都填的吧？
 
-A：Nacos 集群不是填3个地址嘛？你自己做了前端负载？
+A：Nacos 集群不是填 3 个地址嘛？你自己做了前端负载？
 
 > 用 Nginx 去做了，在 Nacos 之上加入了 Nginx 做了负载均衡，那在 Seata 配置上是不是只需要配置负载均衡的地址就可以了是吗？如果不做负载的话，那填三个地址是逗号隔开吗？
 
@@ -72,7 +72,7 @@ A：是的。
 
 > 另外，请问 Seata 对服务器有最低要求吗？
 
-A：server 推荐 2C4G+ 吧，jvm 内存2G+。
+A：server 推荐 2C4G+ 吧，jvm 内存 2G+。
 
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
@@ -84,8 +84,8 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 ### 剖析 SOFARPC 框架
 
-- [【剖析 | SOFARPC 框架】系列之SOFARPC 序列化比较](/blog/sofa-rpc-serialization-comparison/)
-- [【剖析 | SOFARPC 框架】系列之SOFARPC跨语言支持剖析](/blog/sofa-rpc-cross-language-support/)
+- [【剖析 | SOFARPC 框架】系列之 SOFARPC 序列化比较](/blog/sofa-rpc-serialization-comparison/)
+- [【剖析 | SOFARPC 框架】系列之 SOFARPC 跨语言支持剖析](/blog/sofa-rpc-cross-language-support/)
 - [【剖析 | SOFARPC 框架】系列之 SOFARPC 注解支持剖析](/blog/sofa-rpc-annotation-support/)
 - [【剖析 | SOFARPC 框架】系列之 SOFARPC 路由实现剖析](/blog/sofa-rpc-routing-implementation/)
 - [【剖析 | SOFARPC 框架】系列之 SOFARPC 优雅关闭剖析](/blog/sofa-rpc-graceful-exit/)

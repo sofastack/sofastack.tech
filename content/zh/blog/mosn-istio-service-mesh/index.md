@@ -13,7 +13,7 @@ cover: "https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1595586118880-cd902cce-f4
 
 ![Service Mesh Webinar#2](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1595505317715-2f108d91-4018-414c-833c-cbfc907c7880.jpeg)
 
-本文根据7月22日晚 Service Mesh Webinar#2 有米科技高级后端工程师、MOSN Committer 姚昌宇，线上主题分享《基于 MOSN 和 Istio Service Mesh 的服务治理实践》整理，文末包含本次分享的视频回顾链接以及 PPT 下载地址。
+本文根据 7 月 22 日晚 Service Mesh Webinar#2 有米科技高级后端工程师、MOSN Committer 姚昌宇，线上主题分享《基于 MOSN 和 Istio Service Mesh 的服务治理实践》整理，文末包含本次分享的视频回顾链接以及 PPT 下载地址。
 
 ## 前言
 
@@ -63,13 +63,13 @@ Service Mesh 主要解决了之前的服务间通信方案的几个问题：
 
 ### 社区共建经历分享
 
-那了这么多，那我是如何从关注 Service Mesh 社区，到参与到 MOSN 开源共建的呢？觉得整个过程可以概括成3点：
+那了这么多，那我是如何从关注 Service Mesh 社区，到参与到 MOSN 开源共建的呢？觉得整个过程可以概括成 3 点：
 
 - 找到组织；
 - 知识积累；
 - 参与贡献；
 
-其实一开始我也是一个初学者，刚接触到 Service Mesh 也会被一大堆不知名的名词砸得晕头转向的，像是 xDS、控制面、metrics tracing 之类的名词。所幸的是，ServiceMesher 的中文社区相当完善和活跃。我相信有了解过 Service mesh 的同学，肯定有加过2个微信 -- 一个就是宋净超宋大的微信，一个就是 ServiceMesher 社区的微信群。也是得益于众多的前辈将 ServiceMesher 中文社区维护的这么好，将各种内部实践分享出去，以及外部一手资讯搬运甚至翻译过来，乃至是这样子的不定期的线上线下分享。这些都是非常好的资源。只要你想去学，就肯定有方法的。而对于新人的疑问，社区里的大神们也是非常乐意解答。
+其实一开始我也是一个初学者，刚接触到 Service Mesh 也会被一大堆不知名的名词砸得晕头转向的，像是 xDS、控制面、metrics tracing 之类的名词。所幸的是，ServiceMesher 的中文社区相当完善和活跃。我相信有了解过 Service mesh 的同学，肯定有加过 2 个微信 -- 一个就是宋净超宋大的微信，一个就是 ServiceMesher 社区的微信群。也是得益于众多的前辈将 ServiceMesher 中文社区维护的这么好，将各种内部实践分享出去，以及外部一手资讯搬运甚至翻译过来，乃至是这样子的不定期的线上线下分享。这些都是非常好的资源。只要你想去学，就肯定有方法的。而对于新人的疑问，社区里的大神们也是非常乐意解答。
 
 既然有了目标和资源，那就差去做了。接下来我通过不断的去理解这些新领域的概念，理解它们的含义和背后的设计目的以及应用场景，再加上源码分析和动手实践，慢慢也就搭建起了整个关于 Service Mesh 的知识体系。
 
@@ -78,7 +78,7 @@ Service Mesh 主要解决了之前的服务间通信方案的几个问题：
 1. 第一是 MOSN 是使用 Golang 实现的，这一点和个人的技术栈比较吻合；
 1. 那第二点，我认为 Sidecar 在 Mesh 的位置是比较关键的。在大型的集群里，上百万的 Sidecar 在集群里互相通信，为业务进程转发处理数据包，其稳定性、性能要求和灵活性都是比较高的；
 
-近期我也参与到了 MOSN 的 Istio Roadmap 开发中，主要目标是将 MOSN无 缝地接入到 Istio 里，成为在里面可以工作的 Sidecar。我主要做的几个功能是pilot-agent 的适配以及一致性哈希负载均衡功能的开发。其实和做业务需求是类似的，首先要知道功能要达到什么目的，然后预演改动的地方，最后实践：fork 一份 MOSN、开发代码、完善单元测试、提交 PR。在做一致性哈希功能预演的时候，由于会用到 Google 的 maglev 算法，我还去看了一遍这个算法的细则。后期实践的时候，发现了一个用到的第三方的库，有一些的性能问题。由于这个功能工作在一个请求的--路由处理的过程，一定不能给请求增加太长的 RTT，我还把第三方库做了一轮性能优化，最后达到可用的状态，给第三方库提了个 PR。
+近期我也参与到了 MOSN 的 Istio Roadmap 开发中，主要目标是将 MOSN 无 缝地接入到 Istio 里，成为在里面可以工作的 Sidecar。我主要做的几个功能是 pilot-agent 的适配以及一致性哈希负载均衡功能的开发。其实和做业务需求是类似的，首先要知道功能要达到什么目的，然后预演改动的地方，最后实践：fork 一份 MOSN、开发代码、完善单元测试、提交 PR。在做一致性哈希功能预演的时候，由于会用到 Google 的 maglev 算法，我还去看了一遍这个算法的细则。后期实践的时候，发现了一个用到的第三方的库，有一些的性能问题。由于这个功能工作在一个请求的--路由处理的过程，一定不能给请求增加太长的 RTT，我还把第三方库做了一轮性能优化，最后达到可用的状态，给第三方库提了个 PR。
 
 最大的收获，我觉得是和大神们共事带来的技术提升以及成就感。
 
@@ -90,13 +90,13 @@ Service Mesh 主要解决了之前的服务间通信方案的几个问题：
 
 实操的第一步，首先是把环境跑起来。我的开发环境选择的是 Linux。我主要考虑的点是，Linux 环境和生产环境更相似，而且可以直接使用宿主机跑 Docker 和 K8s，直接运行宿主机打包出来的镜像。而 Mac 和 Windows  平台下 Docker 和宿主机是隔了一层虚拟机的，而且 K8s 环境也比较难安装。这样只要打包好 MOSN 镜像，配置好 MOSN 结合 Istio 的 yaml 配置，对 MOSN 的调试就只剩下编译和执行两个步骤了，可以省去在 Mac 和 Windows 平台还要 push、pull 镜像的耗时过程。
 
-对于编译 MOSN，我 hack 了一句 MOSN 的 makefile，主要是加了 me 这样的一个任务，首先他会去 build-local， 也就是将 MOSN 的 go 源码编译成 MOSN 二进制文件，然后将二进制文件打包进 MOSN proxyv2 的镜像里面。这个 proxyv2 和 Isito的 proxyv2 镜像是类似的，只不过里面的 Sidecar 换成了 MOSN。
+对于编译 MOSN，我 hack 了一句 MOSN 的 makefile，主要是加了 me 这样的一个任务，首先他会去 build-local， 也就是将 MOSN 的 go 源码编译成 MOSN 二进制文件，然后将二进制文件打包进 MOSN proxyv2 的镜像里面。这个 proxyv2 和 Isito 的 proxyv2 镜像是类似的，只不过里面的 Sidecar 换成了 MOSN。
 
 第三步，编译一遍 pilot-agent。由于 MOSN 在 Istio 里面是由 pilot-agent 启动的，在调试 MOSN 结合 Istio 的功能时，有时也需要在 pilot-agent 里打日志，比如看一下 pilotagent 有没有正常启动 MOSN。所以我也将 Isito 的源码克隆了下来，并且在需要的时候重新编译 pilot-agent。
 
 最后是第四步，重启对应的 pod。比如这里就将 ingressgateway 删掉重新启动。由于需要调试 MOSN 的功能，在安装好 Istio 后我会将 ingressgateway 的镜像也改为我调试 MOSN 的镜像。
 
-MOSN 目前支持 Istio1.5 的版本，所以我这次演示的本地环境也是 1.5 版本的。我们还需要修改一下 Isito Sidecar 注入的 configmap，这样我们在执行 Istioctl kube-inject 给业务注入 Sidecar 的时候，也能用上 MOSN 作为 Sidecar 代理。具体是在这里，加上 binaryPath 的参数，以及将这里的 tag 改成我编译出来的镜像tag，1.5.2-mosn-dist。
+MOSN 目前支持 Istio1.5 的版本，所以我这次演示的本地环境也是 1.5 版本的。我们还需要修改一下 Isito Sidecar 注入的 configmap，这样我们在执行 Istioctl kube-inject 给业务注入 Sidecar 的时候，也能用上 MOSN 作为 Sidecar 代理。具体是在这里，加上 binaryPath 的参数，以及将这里的 tag 改成我编译出来的镜像 tag，1.5.2-mosn-dist。
 
 那么经过上面的步骤，一个 MOSN 结合 Istio 的环境就跑起来了。
 
@@ -118,7 +118,7 @@ Demo：[https://github.com/trainyao/webinar2_democode](https://github.com/trainy
 
 ## 总结
 
-本次 Webinar 也差不多接近尾声了。最后来总结一下这次分享的内容，首先简单介绍 Service Mesh de基本概念以及诞生是为了解决什么具体问题：微服务治理的语言绑定、更新困难、以及标准不统一的问题。后面还介绍了我从关注到参与社区开发的过程和一些思考。
+本次 Webinar 也差不多接近尾声了。最后来总结一下这次分享的内容，首先简单介绍 Service Mesh de 基本概念以及诞生是为了解决什么具体问题：微服务治理的语言绑定、更新困难、以及标准不统一的问题。后面还介绍了我从关注到参与社区开发的过程和一些思考。
 
 然后到了现场撸码的部分，展示了如何将 MOSN 结合 Istio 运行起来并且搭建一个本地的开发调试环境。之后还展示了然后使用 MOSN 在 Istio 里实现服务治理的功能，包括流量管理和服务可视化的功能。
 
@@ -126,24 +126,23 @@ Demo：[https://github.com/trainyao/webinar2_democode](https://github.com/trainy
 
 那么在最后还想分享一下 MOSN 的近况，也就是新版本的功能以及未来计划。
 
-MOSN 最近发布了0.14.0版本，具体信息大家也可以在 MOSN 的 github release note 看到。
+MOSN 最近发布了 0.14.0 版本，具体信息大家也可以在 MOSN 的 github release note 看到。
 
 ![MOSN v0.14.0](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1595504088467-939d58b3-b045-4989-a5b1-01a17c9f2253.jpeg)
 
 [https://github.com/mosn/mosn/releases/tag/v0.14.0](https://github.com/mosn/mosn/releases/tag/v0.14.0)
 
-
 这个版本主要是做了比较多支持 Istio 的工作，比如支持 Istio 1.5 版本，升级了 go-control-plane，sourcelabel 支持，一致性哈希负载均衡等等，也优化了性能和修复了已知的 bug。同时，我们也在推动 Istio 官方去促进通用数据面标准的制定，在不久的将来，Isito 或者是 Service Mesh 用户也不再会受限于 Envoy，在数据面上会有更多的选择。
 
 接下来，MOSN 也会继续对齐 Istio 的功能，成为可以在 Service Mesh 里工作的安全、稳定、功能强大的云原声数据面代理。也如前面的分享内容所见，MOSN 还有很多可以完善的地方，也欢迎各位有想法有兴趣的小伙伴加入，给 MOSN 提 issue 和 PR 吧。
 
-本次的分享就到这里了，感谢你的聆听。更多有关于 Service Mesh 和活动的信息，大家可以关注 SOFAStack“金融级分布式架构”和“ ServiceMesher”的微信公众号，里面有各种 Service Mesh 的一手资讯。另外在8月15号在深圳，蚂蚁集团的 MOSN 负责人毅松会带来一场主题分享《云原生网络代理MOSN的进化之路》，感兴趣的小伙伴也可以了解一下。
+本次的分享就到这里了，感谢你的聆听。更多有关于 Service Mesh 和活动的信息，大家可以关注 SOFAStack“金融级分布式架构”和“ ServiceMesher”的微信公众号，里面有各种 Service Mesh 的一手资讯。另外在 8 月 15 号在深圳，蚂蚁集团的 MOSN 负责人毅松会带来一场主题分享《云原生网络代理 MOSN 的进化之路》，感兴趣的小伙伴也可以了解一下。
 
 活动详情：[http://giac.msup.com.cn/Giac/schedule/course?id=14579](http://giac.msup.com.cn/Giac/schedule/course?id=14579)
 
 ### 作者介绍
 
-姚昌宇，有米科技高级后端工程师、MOSN Committer，多年后端开发经验、云原生爱好者。目前负责公司内部数据和算法能力接口的服务治理相关的开发工作，2018年起关注并参与 ServiceMesher 社区发起的各种活动，近期参与 MOSN v0.14.0 版本功能的开发。
+姚昌宇，有米科技高级后端工程师、MOSN Committer，多年后端开发经验、云原生爱好者。目前负责公司内部数据和算法能力接口的服务治理相关的开发工作，2018 年起关注并参与 ServiceMesher 社区发起的各种活动，近期参与 MOSN v0.14.0 版本功能的开发。
 
 ### 本期直播视频回顾地址
 

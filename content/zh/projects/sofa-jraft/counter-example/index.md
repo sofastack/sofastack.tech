@@ -52,7 +52,7 @@ public class GetValueRequest implements Serializable {
 1. success　是否成功
 2. value 成功情况下返回的最新值
 3. errorMsg 失败情况下的错误信息
-4. redirect　发生了重新选举，需要跳转的新的leader节点。
+4. redirect　发生了重新选举，需要跳转的新的 leader 节点。
 
 ```java
 public class ValueResponse implements Serializable {
@@ -178,7 +178,7 @@ public class CounterStateMachine extends StateMachineAdapter {
 
 ### CounterServer
 
-启动一个 raft node节点，提供分布式计数器服务，内部使用 jraft 提供的 `RaftGroupService` 服务框架：
+启动一个 raft node 节点，提供分布式计数器服务，内部使用 jraft 提供的 `RaftGroupService` 服务框架：
 
 ```java
 public class CounterServer {
@@ -286,7 +286,7 @@ public class CounterServer {
 
 启动三个节点的参数类似：
 
- **windows 用户请注意第一个参数的数据目录设置** 
+ **windows 用户请注意第一个参数的数据目录设置**
 
 ```sh
 /tmp/server1 counter 127.0.0.1:8081 127.0.0.1:8081,127.0.0.1:8082,127.0.0.1:8083
@@ -294,7 +294,7 @@ public class CounterServer {
 /tmp/server3 counter 127.0.0.1:8083 127.0.0.1:8081,127.0.0.1:8082,127.0.0.1:8083
 ```
 
-分别为 server1/server2/server3三个目录，raft group名称为 counter，节点ip也分别为
+分别为 server1/server2/server3 三个目录，raft group 名称为 counter，节点 ip 也分别为
 
 ```text
 127.0.0.1:8081,127.0.0.1:8082,127.0.0.1:8083
@@ -370,7 +370,7 @@ public class IncrementAndGetRequestProcessor extends AsyncUserProcessor<Incremen
 
 ## 客户端
 
-客户端 CounterClient 比较简单，主要使用 jraft 提供的 `RouteTable` 来刷新获取最新的 leader 节点，然后发送请求到 leader节点即可：
+客户端 CounterClient 比较简单，主要使用 jraft 提供的 `RouteTable` 来刷新获取最新的 leader 节点，然后发送请求到 leader 节点即可：
 
 ```java
 public class CounterClient {
@@ -456,12 +456,12 @@ private static void incrementAndGet(BoltCliClientService cliClientService, PeerI
 
 ## Snapshot 实现
 
-为了避免每次节点重启的时候，重新应用一遍所有的日志，并且避免保存所有的日志，可以使用 snapshot 机制，也就是为状态机做一个 checkpoint，保存当时状态机的状态，删除在此之前的所有日志，核心是实现 StateMachine的两个方法：
+为了避免每次节点重启的时候，重新应用一遍所有的日志，并且避免保存所有的日志，可以使用 snapshot 机制，也就是为状态机做一个 checkpoint，保存当时状态机的状态，删除在此之前的所有日志，核心是实现 StateMachine 的两个方法：
 
 1. `onSnapshotLoad`，启动或者安装 snapshot 后加载 snapshot
 2. `onSnapshotSave` ，定期保存 snapshot
 
-我们先为 Counter实现一个snapshot数据文件：
+我们先为 Counter 实现一个 snapshot 数据文件：
 
 ```java
 public class CounterSnapshotFile {
@@ -504,7 +504,7 @@ public class CounterSnapshotFile {
 
 保存到指定的 `path` 。
 
-然后实现 StateMachine的两个方法：
+然后实现 StateMachine 的两个方法：
 
 ```java
     public boolean onSnapshotLoad(SnapshotReader reader) {

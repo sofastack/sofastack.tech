@@ -11,7 +11,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*jR46Q5l39RkAAAAAA
 
 ![图片](https://mmbiz.qpic.cn/mmbiz_gif/nibOZpaQKw09ARcsGuzib3ttcN4LZpdAC0n9KTQp7uibF8ia0ibk3Olf3sib50ExibicicOrzCOVrOyUD2dFib84f0fTx5uA/640?wx_fmt=gif&wxfrom=5&wx_lazy=1)
 
-文｜黄逸炀 
+文｜黄逸炀
 
 Dragonfly Maintainer
 
@@ -247,7 +247,7 @@ TensorFlow Pod 分别并发 50、100、200、500 的回源流量。
 
 **OCI**
 
-Open Container Initiative，开放容器计划是一个 Linux 基金会项目，由Docker在2015年6月启动，旨在为操作系统级虚拟化（*最重要的是 Linux 容器）*设计开放标准。
+Open Container Initiative，开放容器计划是一个 Linux 基金会项目，由 Docker 在 2015 年 6 月启动，旨在为操作系统级虚拟化（*最重要的是 Linux 容器）*设计开放标准。
 
 **OCI Artifact**
 
@@ -263,7 +263,7 @@ Open Container Initiative，开放容器计划是一个 Linux 基金会项目，
 
 **ECS**
 
-是一种由CPU、内存、云盘组成的资源集合，每一种资源都会逻辑对应到数据中心的计算硬件实体。
+是一种由 CPU、内存、云盘组成的资源集合，每一种资源都会逻辑对应到数据中心的计算硬件实体。
 
 **CR**
 
@@ -285,7 +285,7 @@ Open Container Initiative，开放容器计划是一个 Linux 基金会项目，
 
 **Private Zone**
 
-基于专有网络VPC*（Virtual Private Cloud）*环境的私有DNS服务。该服务允许在自定义的一个或多个VPC中将私有域名映射到IP地址。
+基于专有网络 VPC*（Virtual Private Cloud）*环境的私有 DNS 服务。该服务允许在自定义的一个或多个 VPC 中将私有域名映射到 IP 地址。
 
 **P2P**
 

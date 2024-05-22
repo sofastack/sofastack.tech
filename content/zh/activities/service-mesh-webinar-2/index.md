@@ -20,7 +20,7 @@ description: "7 月 22 日周四晚 8 点，Service Mesh Webinar#2 线上直播�
 
 ## 介绍
 
-### Service Mesh Webinar 
+### Service Mesh Webinar
 
 Service Mesh Webinar 是由 ServiceMesher 社区和 CNCF 联合发起的线上直播活动，活动将不定期举行，邀请社区成员为大家带来 Service Mesh 领域的知识和实践分享。
 
@@ -36,9 +36,9 @@ Service Mesh Webinar#2，邀请有米科技高级后端工程师姚昌宇，带�
 
 **分享嘉宾：**
 
-姚昌宇 有米科技高级后端工程师、MOSN committer。多年后端开发经验、云原生爱好者。目前负责公司内部数据和算法能力接口的服务治理相关的开发工作，2018年起关注并参与 ServiceMesher 社区发起的各种活动，近期参与 MOSN v0.14.0 版本功能的开发。
+姚昌宇 有米科技高级后端工程师、MOSN committer。多年后端开发经验、云原生爱好者。目前负责公司内部数据和算法能力接口的服务治理相关的开发工作，2018 年起关注并参与 ServiceMesher 社区发起的各种活动，近期参与 MOSN v0.14.0 版本功能的开发。
 
-**直播时间：**2020年5月28日（周四）20:00-21:00
+**直播时间：**2020 年 5 月 28 日（周四）20:00-21:00
 
 **大纲：**
 

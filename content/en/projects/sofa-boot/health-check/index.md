@@ -18,7 +18,6 @@ To enable the Health Check feature in SOFABoot, you only need to import the foll
 
 **Without the Health Check extension, users still can perform Liveness Check with native Spring Boot Actuator directly relying on the HealthIndicator interface.**
 
-
 ## Security alert
 
 From SOFABoot 2.3.0 on, the Health Check depends on the `Actuator` component in SpringBoot 1.4.x, and the component opens a lot of [EndPoint](https://docs.spring.io/spring-boot/docs/1.4.2.RELEASE/reference/html/production-ready-endpoints.html) such as '/dump ' and '/trace'. So there may be a security risk. Refer to the [Security Recommendations](https://docs.spring.io/spring-boot/docs/1.4.2.RELEASE/reference/html/production-ready-endpoints.html#_security_with_healthindicators) in the official document for settings.
@@ -31,15 +30,15 @@ After adding the Health Check extension, you can directly browser [http://localh
 
 In SOFABoot, you can also view Health Check results by checking the specific logs in the `health-check` directory. Generally, such logs contain the following content:
 
-```
+```plain
 2018-04-06 23:29:50,240 INFO  main                             - Readiness check result: success
 ```
 
 At present, the SOFA middleware has controlled upstream traffic access through the Readiness Check offered by SOFABoot. But, apart from the middleware, traffic of an application may come from other sources such as the load balancer. To control such traffic, users are advised to view the Readiness Check results by PAAS and determine whether to launch corresponding nodes in the load balancer based on the results.
 
-** Note: Versions after SOFABoot 2.x no longer indirectly introduce spring-boot-starter-web dependencies. To view Health Check results in the browser, you need to introduce Web container dependencies in the project. **
+**Note: Versions after SOFABoot 2.x no longer indirectly introduce spring-boot-starter-web dependencies. To view Health Check results in the browser, you need to introduce Web container dependencies in the project.**
 
-** Note: In SOFABoot 3.x, the endpoint path has been changed from health/readiness to actuator/readiness**
+**Note: In SOFABoot 3.x, the endpoint path has been changed from health/readiness to actuator/readiness**
 
 ## Readiness Check extension
 
@@ -75,4 +74,3 @@ com.alipay.sofa.healthcheck.component.check.retry.count | The number of componen
 com.alipay.sofa.healthcheck.component.check.retry.interval | Interval between component Health Check retries | 1,000 (ms) | 2.4.10 (the value is 0 in previous versions)
 com.alipay.sofa.healthcheck.module.check.retry.count | the number of sofaboot module Health Check retries | 0 | 2.4.10
 com.alipay.sofa.healthcheck.module.check.retry.interval | Interval between sofaboot module Health Check retries | 1,000 (ms) | 2.4.10 (the value is 0 in previous versions)
-

@@ -13,7 +13,7 @@ cover: "/cover.jpg"
 >
 > SOFATracer 是一个用于分布式系统调用跟踪的组件，通过统一的 TraceId 将调用链路中的各种网络调用情况以日志的方式记录下来，以达到透视化网络调用的目的，这些链路数据可用于故障的快速发现，服务治理等。
 >
-本文为《剖析 | SOFATracer 框架》第三篇。《剖析 | SOFATracer 框架》系列由 SOFA 团队和源码爱好者们出品，项目代号：SOFA:TracerLab/**，**目前领取已经完成，感谢大家的参与。 
+本文为《剖析 | SOFATracer 框架》第三篇。《剖析 | SOFATracer 框架》系列由 SOFA 团队和源码爱好者们出品，项目代号：SOFA:TracerLab/**，**目前领取已经完成，感谢大家的参与。
 SOFATracer：<https://github.com/sofastack/sofa-tracer>
 
 ![SOFATracer-数据上报.jpg](https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1550742047257-362367aa-5c4a-45bc-ab40-cd6fdfe74c09.jpeg)
@@ -84,7 +84,7 @@ SOFATracer 中跨进程传输的总体流程如下图所示：
 {"time":"2019-01-07 20:14:52.628","stat.key":{"method":"GET","local.app":"HttpClientDemo","request.url":"http://localhost:8080/httpclient"},"count":2,"total.cost.milliseconds":111,"success":"true","load.test":"F"}
 ```
 
-透传链路如下： 
+透传链路如下：
 ![img](https://cdn.nlark.com/yuque/0/2019/jpeg/111154/1547518277511-75574ab0-6f9e-4d7e-9bc7-431710822416.jpeg)
 
 ##### 1、客户端
@@ -173,7 +173,7 @@ try{
 - 1、显示的申明一个 Span ，如上面代码段中 1 的位置。这样 Span 的作用域足够大，可以在 finally 中通过显示调用 span#finish 来结束。
 - 2、使用 ThreadLocal 机制，在 serverReceive 中将当前 Span 放到 ThreadLocal 中，httpclientSpan 作用时，从 ThreadLocal 中先拿出 mvcSpan，然后作为 httpclientSpan 的父 Span 。此时将 httpclientSpan 塞到 ThreadLocal 中。当 httpclientSpan 结束时，再将 mvcSpan 复原到 ThreadLocal 中。
 
-对于解法1 ，如果想在 httpclientSpan 的处理逻辑中使用 mvcSpan 怎么办呢？通过参数传递？那如果链路很长呢？显然这种方式是不可取的。因此 SOFATracer 在实现上是基于 解法2 的方案来实现的。
+对于解法 1 ，如果想在 httpclientSpan 的处理逻辑中使用 mvcSpan 怎么办呢？通过参数传递？那如果链路很长呢？显然这种方式是不可取的。因此 SOFATracer 在实现上是基于 解法 2 的方案来实现的。
 
 综合上面的案例，线程透传可以从以下两个角度来理解：
 
@@ -209,7 +209,7 @@ public SofaTracerSpan serverReceive(SofaTracerSpanContext sofaTracerSpanContext)
 - 通过 SofaTraceContextHolder 或到 SofaTraceContext  的实例对象，本质上就是 SofaTracerThreadLocalTraceContext 的单例对象
 - 将当前 Span 放入到 SofaTracerThreadLocalTraceContext，也就是存入 ThreadLocal 中
 
-如果在后面的业务处理过程中需要用到此 Span ，那么就可以通过SofaTraceContextHolder.getSofaTraceContext().getCurrentSpan() 这样简单的方式获取到当前 Span 。
+如果在后面的业务处理过程中需要用到此 Span ，那么就可以通过 SofaTraceContextHolder.getSofaTraceContext().getCurrentSpan() 这样简单的方式获取到当前 Span 。
 
 那么既然是通过 ThreadLocal 来进行 tracer 上下文的存储，为了保证 ThreadLocal 不被污染，同时防止内存泄漏，需要在当前 Span 结束时清理掉当前 线程上下文 中的数据。下面通过 AbstractTracer#serverSend 代码片段来看下 SOFATracer 中清理线程上下文中透传数据的逻辑：
 
@@ -227,7 +227,7 @@ public void serverSend(String resultCode) {
     serverSpan.log(LogData.SERVER_SEND_EVENT_VALUE);
     // 结果码
     serverSpan.setTag(CommonSpanTags.RESULT_CODE, resultCode);
-    serverSpan.finish();	
+    serverSpan.finish(); 
     } finally {
       //处理完成要清空 TL
       this.clearTreadLocalContext();
@@ -237,7 +237,7 @@ public void serverSend(String resultCode) {
 
 所以在整个线程处理过程中，SOFATracer 在 tracer 上下文 处理上均是基于 Threadlocal 来完成的。
 
-> PS：SofaTraceContext  中封装了一系列用于操作 threadlocal 的工具方法，上面提到的 getCurrentSpan 和 pop 的区别在于，getCurrentSpan 从 threadlocal 中取出 Span 信息之后不会清理，也就是后面还可以通过getCurrentSpan 拿到当前线程上下文中的 Span 数据，因此在业务处理过程中，如果需要向 Span 中添加一些链路数据，可以通过 getCurrentSpan 方法进行设置。pop 方法与 getCurrentSpan 实际上都是通过 threadlocal#get 来取数据的，当时 pop 取完之后会进行 clear 操作，因此 pop 一般用于在请求结束时使用。 SpringMvcSofaTracerFilter 中在 finally 块中调用了 serverSend ，serverSend 中就是使用的 pop 方法。
+> PS：SofaTraceContext  中封装了一系列用于操作 threadlocal 的工具方法，上面提到的 getCurrentSpan 和 pop 的区别在于，getCurrentSpan 从 threadlocal 中取出 Span 信息之后不会清理，也就是后面还可以通过 getCurrentSpan 拿到当前线程上下文中的 Span 数据，因此在业务处理过程中，如果需要向 Span 中添加一些链路数据，可以通过 getCurrentSpan 方法进行设置。pop 方法与 getCurrentSpan 实际上都是通过 threadlocal#get 来取数据的，当时 pop 取完之后会进行 clear 操作，因此 pop 一般用于在请求结束时使用。 SpringMvcSofaTracerFilter 中在 finally 块中调用了 serverSend ，serverSend 中就是使用的 pop 方法。
 
 #### 跨线程透传
 
@@ -270,7 +270,7 @@ public SofaTracerSpanContext cloneInstance() {
 
 ```java
 private void initRunnable(Runnable wrappedRunnable, SofaTraceContext traceContext) {
-	// 任务 runnable
+ // 任务 runnable
   this.wrappedRunnable = wrappedRunnable;
   // tracer 上下文，可以由外部指定，如果没有指定则使用 SofaTraceContextHolder 获取
   this.traceContext = traceContext;
@@ -283,7 +283,7 @@ private void initRunnable(Runnable wrappedRunnable, SofaTraceContext traceContex
 }
 ```
 
-这上面这段代码片段来看，在构建 SofaTracerRunnable 对象实例时，会把当前父线程中的 traceContext 、currentSpan 等传递到子线程中。SofaTracerRunnable#run 方法中，会根据线程 ID 进行判断，如果与父线程的线程ID不等，则会将 currentSpan push 到 traceContext (注：currentSpan 和 traceContext 均是子线程属性)，run 方法则是委托给用户传递进来的 wrappedRunnable 来执行。
+这上面这段代码片段来看，在构建 SofaTracerRunnable 对象实例时，会把当前父线程中的 traceContext 、currentSpan 等传递到子线程中。SofaTracerRunnable#run 方法中，会根据线程 ID 进行判断，如果与父线程的线程 ID 不等，则会将 currentSpan push 到 traceContext (注：currentSpan 和 traceContext 均是子线程属性)，run 方法则是委托给用户传递进来的 wrappedRunnable 来执行。
 
 #### Opentracing 0.30.x 版本对于线程透传的支持
 
@@ -299,7 +299,7 @@ private void initRunnable(Runnable wrappedRunnable, SofaTraceContext traceContex
 
 由于栈的特性是 FILO ，因此当 span C 出栈时就意味着 span C 的生命周期结束了，此时会触发 Span 数据的上报。这里其实也很好的解释了 ChildOf 这种关系的描述：父级 Span 某种程度上取决于子 Span  (子 Span 的结果可能会对父 Span 产生影响) ；父 Span 的生命周期时间是包含了子 Span 生命周期时间的。
 
-在 SOFATracer 0.30.x 版本中提供了对上述思路的封装，用于解决 Span 在线程中传递的问题。两个核心的接口是Scope 和 ScopeManager ，Opentracing 中对这两个接口均提供了默认的实现类：ThreadLocalScope 和 ThreadLocalScopeManager 。
+在 SOFATracer 0.30.x 版本中提供了对上述思路的封装，用于解决 Span 在线程中传递的问题。两个核心的接口是 Scope 和 ScopeManager ，Opentracing 中对这两个接口均提供了默认的实现类：ThreadLocalScope 和 ThreadLocalScopeManager 。
 
 - 使用 ThreadLocal 来存储不同线程的 Scope 对象，在多线程环境下可以通过获取到当前线程的 Scope 来获取当前线程的活动的 Span。
 - 管理着当前线程所有曾被激活还未释放的 Span（处于生命周期内的 Span ）
@@ -394,5 +394,5 @@ SOFATracer 对 MDC 的扩展在 com.alipay.common.tracer.extensions.log.MDCSpanE
 
 - 在 OT 原文描述 传送门 <https://opentracing.io/docs/overview/inject-extract/>
 - SOFATracer 源码：<https://github.com/sofastack/sofa-tracer>
-- SOFAtrace的异步处理：<https://www.sofastack.tech/sofa-tracer/docs/Async>
+- SOFAtrace 的异步处理：<https://www.sofastack.tech/sofa-tracer/docs/Async>
 - SOFATracer 的测试用例 :<https://github.com/sofastack/sofa-tracer/tree/master/tracer-core/src/test/java/com/alipay/common/tracer/core/async>

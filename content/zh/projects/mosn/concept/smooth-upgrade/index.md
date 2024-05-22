@@ -8,9 +8,9 @@ Service Mesh 中 Sidecar 运维一直是一个比较棘手的问题，数据平�
 
 本文介绍 MOSN 支持平滑升级的原因和解决方案，对于平滑升级的一些基础概念，大家可以通过 [Nginx vs Enovy vs Mosn 平滑升级原理解析](../nginx-envoy-mosn-hot-upgrade/)了解。
 
-先简单介绍一下为什么 Nginx 和 Envoy 不需要具备 MOSN 这样的连接无损迁移方案，主要还是跟业务场景相关，Nginx 和 Envoy 主要支持的是 HTTP1 和 HTTP2 协议，HTTP1使用 connection: Close，HTTP2 使用 Goaway Frame 都可以让 Client 端主动断链接，然后新建链接到新的 New process，但是针对 Dubbo、SOFA PRC 等常见的多路复用协议，它们是没有控制帧，Old process 的链接如果断了就会影响请求的。
+先简单介绍一下为什么 Nginx 和 Envoy 不需要具备 MOSN 这样的连接无损迁移方案，主要还是跟业务场景相关，Nginx 和 Envoy 主要支持的是 HTTP1 和 HTTP2 协议，HTTP1 使用 connection: Close，HTTP2 使用 Goaway Frame 都可以让 Client 端主动断链接，然后新建链接到新的 New process，但是针对 Dubbo、SOFA PRC 等常见的多路复用协议，它们是没有控制帧，Old process 的链接如果断了就会影响请求的。
 
-一般的升级做法就是切走应用的流量，比如自己UnPub掉服务，等待一段时间没有请求之后，升级MOSN，升级好之后再Pub服务，整个过程比较耗时，并且会有一段时间是不提供服务的，还要考虑应用的水位，在大规模场景下，就很难兼顾评估。MOSN 为了满足自身业务场景，开发了长连接迁移方案，把这条链接迁移到 New process 上，整个过程对 Client 透明，不需要重新建链接，达到请求无损的平滑升级。
+一般的升级做法就是切走应用的流量，比如自己 UnPub 掉服务，等待一段时间没有请求之后，升级 MOSN，升级好之后再 Pub 服务，整个过程比较耗时，并且会有一段时间是不提供服务的，还要考虑应用的水位，在大规模场景下，就很难兼顾评估。MOSN 为了满足自身业务场景，开发了长连接迁移方案，把这条链接迁移到 New process 上，整个过程对 Client 透明，不需要重新建链接，达到请求无损的平滑升级。
 
 ![MOSN 的请求无损的平滑升级过程](reqeust-smooth-upgrade-process.png)
 
@@ -34,7 +34,7 @@ Service Mesh 中 Sidecar 运维一直是一个比较棘手的问题，数据平�
 1. MOSN 对 SIGHUP 做了监听，发送 SIGHUP 信号给 MOSN 进程，通过 ForkExec 生成一个新的 MOSN 进程。
 1. 直接重新启动一个新 MOSN 进程。
 
-为什么提供两种方式？最开始我们支持的是方法1，也就是 nginx 和 Envoy 使用的方式，这个在虚拟机或者容器内替换 MOSN 二级制来升级是可行的，但是我们的场景需要满足容器间的升级，所以需要新拉起一个容器，就需要重新启动一个新的 MOSN 进程来做平滑升级，所以后续又支持了方法2。容器间升级还需要 operator 的支持，本文不展开叙述。
+为什么提供两种方式？最开始我们支持的是方法 1，也就是 nginx 和 Envoy 使用的方式，这个在虚拟机或者容器内替换 MOSN 二级制来升级是可行的，但是我们的场景需要满足容器间的升级，所以需要新拉起一个容器，就需要重新启动一个新的 MOSN 进程来做平滑升级，所以后续又支持了方法 2。容器间升级还需要 operator 的支持，本文不展开叙述。
 
 ### 交互流程
 
@@ -74,7 +74,7 @@ func GetInheritListeners() ([]net.Listener, net.Conn, error) {
 }
 ```
 
-如果进入迁移流程，新的 MOSN 将监听一个新的 Domain Socket（`listen.sock`），用于老的 MOSN 传递 listen FD 到新的 MOSN。FD 的传递使用了sendMsg 和 recvMsg。在收到 listen FD 之后，调用 `net.FileListener()` 函数生产一个 Listener。此时，新老 MOSN 都同时拥有了相同的 Listen 套接字。
+如果进入迁移流程，新的 MOSN 将监听一个新的 Domain Socket（`listen.sock`），用于老的 MOSN 传递 listen FD 到新的 MOSN。FD 的传递使用了 sendMsg 和 recvMsg。在收到 listen FD 之后，调用 `net.FileListener()` 函数生产一个 Listener。此时，新老 MOSN 都同时拥有了相同的 Listen 套接字。
 
 ```go
 // FileListener returns a copy of the network listener corresponding
@@ -282,7 +282,7 @@ func transferHandler(c net.Conn, handler types.ConnectionHandler, transferMap *s
 
 ![残留响应迁移过程](remaining-responses-migrating-process.png)
 
-大家想想为什么还有残留响应的迁移流程？因为多路复用协议，在之前读连接迁移流程的时候，TCP2 上还有之前残留的响应需要回复给Client，如果同时 MOSN 和 New MOSN 都进行 Write 操作 TCP1，数据可能会乱序，所以需要让New MOSN来统一处理之前 TCP2 上残留的响应。
+大家想想为什么还有残留响应的迁移流程？因为多路复用协议，在之前读连接迁移流程的时候，TCP2 上还有之前残留的响应需要回复给 Client，如果同时 MOSN 和 New MOSN 都进行 Write 操作 TCP1，数据可能会乱序，所以需要让 New MOSN 来统一处理之前 TCP2 上残留的响应。
 
 1. Server 回复残留的响应到 MOSN
 1. MOSN 把之前从 New MOSN 获取的 Connection id 和响应数据，通过 domain socket(conn.sock) 传递给 New MOSN
@@ -311,7 +311,7 @@ func transferWrite(c *connection, id uint64) error {
 }
 ```
 
-我们构造了一个简单的写迁移协议, 主要包括了TCP原始数据长度, connection ID，TCP原始数据。
+我们构造了一个简单的写迁移协议, 主要包括了 TCP 原始数据长度, connection ID，TCP 原始数据。
 
 ```go
 /*
@@ -328,13 +328,13 @@ func transferWrite(c *connection, id uint64) error {
 **/
 ```
 
-在New MOSN的transferHandler()函数中，会判断出写迁移协议，然后 `transferFindConnection()` 函数通过 connection ID 找到 TCP1 连接，然后直接把数据写入即可。
+在 New MOSN 的 transferHandler()函数中，会判断出写迁移协议，然后 `transferFindConnection()` 函数通过 connection ID 找到 TCP1 连接，然后直接把数据写入即可。
 
-这儿需要说明一点，新请求Request的转发已经使用了 TCP3，TCP2 上只会有之前请求的 Response 响应，如果在整个迁移期间 2 * TransferTimeout 都没有回复响应，那么这个请求将会超时失败。
+这儿需要说明一点，新请求 Request 的转发已经使用了 TCP3，TCP2 上只会有之前请求的 Response 响应，如果在整个迁移期间 2 * TransferTimeout 都没有回复响应，那么这个请求将会超时失败。
 
 ### 连接状态数据
 
-在连接迁移时，除了TCP FD的迁移，还有连接状态的迁移，这样New MOSN才知道怎样去初始化这个新的连接。
+在连接迁移时，除了 TCP FD 的迁移，还有连接状态的迁移，这样 New MOSN 才知道怎样去初始化这个新的连接。
 
 主要有如下几个状态：
 
@@ -346,15 +346,15 @@ func transferWrite(c *connection, id uint64) error {
 
 在迁移之后，MOSN 收到的响应数据。
 
-**TLS状态迁移**
+**TLS 状态迁移**
 
 如果是 TLS 加密请求，需要迁移 TLS 的状态，有如下状态需要迁移：
 
 1. 加密秘钥
-1. Seq序列
+1. Seq 序列
 1. 读缓存数据（加密和未加密）
-1. cipher类型
-1. TLS版本
+1. cipher 类型
+1. TLS 版本
 
 ```go
 type TransferTLSInfo struct {

@@ -21,21 +21,21 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **SOFAStack:** *[https://github.com/sofastack](https://github.com/sofastack)*
 
-**社区本周贡献** 
+**社区本周贡献**
 
 ![图片](https://mmbiz.qpic.cn/mmbiz_jpg/nibOZpaQKw09t9c3svD0QAtJibIL9KtH4AicXF6iaLNkW1qR3n5uHydbmJ9zLfnVicGiab0oN0ljmR7ou6yOOVX2sFaQ/640?wx_fmt=jpeg&wxfrom=5&wx_lazy=1&wx_co=1)
 
- **SOFAStack GitHub issue 精选** 
+ **SOFAStack GitHub issue 精选**
 
 **本周各项目回复 issue 共计 2 条**
 
 欢迎大家在 GitHub 提交 issue 与我们互动
 
-我们会筛选 issue 通过 
+我们会筛选 issue 通过
 
 " SOFA WEEKLY " 的形式回复
 
-**1.@SOFAJRaft **#965 提问：
+**1.@SOFAJRaft**#965 提问：
 
 @a364176773
 
@@ -61,7 +61,7 @@ A：看上去获取不到服务和 JDK17 并没有直接的联系。可以先确
 
 「**SOFARPC**」：[https://github.com/sofastack/sofa-rpc/issues/1320](https://github.com/sofastack/sofa-rpc/issues/1320)
 
-  **本周推荐阅读** 
+  **本周推荐阅读**
 
 [缘起｜蚂蚁应用级服务发现的实践之路](https://mp.weixin.qq.com/s/-oVOeakwefgvlFyi6yYgKA)
 

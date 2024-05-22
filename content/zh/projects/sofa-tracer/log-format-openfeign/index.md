@@ -1,9 +1,9 @@
 
 ---
+
 title: "OpenFeign 日志"
 aliases: "/sofa-tracer/docs/Log_Format_OpenFeign"
 ---
-
 
 SOFATracer 集成 Spring Cloud OpenFeign 后输出请求的链路数据格式，默认为 `JSON` 数据格式。
 
@@ -37,7 +37,7 @@ key | 表达含义
 
 ### Spring Cloud OpenFeign 统计日志（feign-stat.log）ls
 
-`stat.key` 即本段时间内的统计关键字集合，统一关键字集合唯一确定一组统计数据，包含local.app、request.url、和 method 字段.
+`stat.key` 即本段时间内的统计关键字集合，统一关键字集合唯一确定一组统计数据，包含 local.app、request.url、和 method 字段.
 
 <table>
    <tr>

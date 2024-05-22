@@ -17,8 +17,8 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 
 SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 
-- **SOFAStack 官网: **[https://www.sofastack.tech](https://www.sofastack.tech/)
-- **SOFAStack: **[https://github.com/sofastack](https://github.com/sofastack)
+- **SOFAStack 官网:**[https://www.sofastack.tech](https://www.sofastack.tech/)
+- **SOFAStack:**[https://github.com/sofastack](https://github.com/sofastack)
 
 ### 每周读者问答提炼
 
@@ -57,13 +57,11 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 - [云原生网络代理 MOSN 透明劫持技术解读 | 开源](/blog/mosn-transparent-hijacking/)
 - [不得不说的云原生隔离性 | SOFAChannel#16 直播回顾](/blog/sofa-channel-16-retrospect/)
 
-
-
 ### SOFA 项目进展
 
 **本周发布详情如下：**
 
-**1、发布 Occlum v0.12.0版，主要更新如下：**
+**1、发布 Occlum v0.12.0 版，主要更新如下：**
 
 - 支持 Go 语言，并增加了 Demo；
 - 新增三个命令行子命令：start, exec 和 stop；
@@ -81,21 +79,27 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 将从以下几个方面，与大家交流分享：
 
 1. 传统微服务架构与 Service Mesh 架构
+
 - 传统微服务架构在多点遇到的痛点；
 - Service Mesh 架构能带来的福利；
+
 2. Istio 技术点介绍
 3. 在 Dubbo 场景下的改造分析
+
 - 对比 MOSN 和 Envoy 对现有场景的支持；
 - Istio+MOSN 和 Istio+Envoy 在 Dubbo 场景下如何改造；
+
 4. MOSN + Istio 具体实现探索
+
 - MOSN 配置文件介绍、从一个流量进来到转发到具体的远端的流程分析；
 - Provider 配置信息如何下发到 Sidecar；
 - 从多点现在的实际场景对现有的 Dubbo 改造方案；
+
 5. Demo 演示
 
 **直播主题：** Service Mesh Webinar#1：多点生活在 Service Mesh 上的实践——Istio + MOSN 在 Dubbo 场景下的探索之路
 
-**分享嘉宾**：陈鹏，多点生活平台架构组研发工程师，开源项目与云原生爱好者，有多年的网上商城、支付系统相关开发经验，2019年至今从事云原生和 Service Mesh 相关开发工作。
+**分享嘉宾**：陈鹏，多点生活平台架构组研发工程师，开源项目与云原生爱好者，有多年的网上商城、支付系统相关开发经验，2019 年至今从事云原生和 Service Mesh 相关开发工作。
 
 **直播时间：**2020/5/28（周四）20:00-21:00
 

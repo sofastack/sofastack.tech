@@ -1,8 +1,10 @@
 
 ---
+
 title: "注册中心扩展指南"
 aliases: "/sofa-rpc/docs/Registry-Extension-Guide"
 ---
+
 如果你要扩展一个注册中心，我们先看下注册中心的抽象类。
 
 ```java

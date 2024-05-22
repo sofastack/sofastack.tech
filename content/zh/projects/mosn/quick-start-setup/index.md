@@ -11,7 +11,7 @@ aliases: "/sofa-mosn/docs/docs-quickstart-Setup"
 
 + 如果您使用容器运行 MOSN，请先 [安装 docker](https://docs.docker.com/install/)
 + 如果您使用本地机器，请使用类 Unix 环境
-+ 安装 Go 的编译环境 
++ 安装 Go 的编译环境
 + 安装 dep : 参考[官方安装文档](https://golang.github.io/dep/docs/installation.html)
 
 ## 获取代码
@@ -38,7 +38,7 @@ cd mosn
 
 最终 MOSN 的源代码代码路径为 `$GOPATH/src/mosn.io/mosn`
 
-## 导入IDE
+## 导入 IDE
 
 使用您喜爱的 Go IDE 导入 `$GOPATH/src/mosn.io/mosn` 项目，推荐 Goland。
 

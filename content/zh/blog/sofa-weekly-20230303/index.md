@@ -30,7 +30,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*rGyJS61au0QAAAAAA
 
 欢迎大家在 GitHub 提交 issue 与我们互动
 
-我们会筛选 issue 通过 
+我们会筛选 issue 通过
 
 " SOFA WEEKLY " 的形式回复
 
@@ -48,7 +48,7 @@ com.alipay.sofa.rpc.server.ServerFactory#resolveServerConfig
 
 **「SOFARPC」:**  *[https://github.com/sofastack/sofa-rpc/issues/1313](https://github.com/sofastack/sofa-rpc/issues/1313)*
 
-**2.@hanzhihua ** **#934**
+**2.@hanzhihua** **#934**
 
 > 咨询一个问题，Closure Threadpool 使用 SynchronousQueue 而不使用其他的有缓存的 Queue，是怎么考虑的呢？
 
@@ -64,7 +64,7 @@ A：由于你的宿主应用 @ComPonentScan 扫描了 “com.alipay.sofa”，�
 
 **「SOFAArk」：** *[https://github.com/sofastack/sofa-ark/issues/612](https://github.com/sofastack/sofa-ark/issues/612)*
 
-  **本周推荐阅读** 
+  **本周推荐阅读**
 
 [SOFARegistry | 聊一聊服务发现的数据一致性](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247520348&idx=1&sn=459c9262761bd719a028c8ea27f56591&chksm=faa37f86cdd4f690cefbcb8564ab79b327512e409ada02870561ece96c6fc07c050fdc3b7f66&scene=21)
 

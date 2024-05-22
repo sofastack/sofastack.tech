@@ -20,7 +20,7 @@ description: "2022 年 12 月 15 日 19：00 - 20：00  ，线上直播第 31 �
 
 - B 站直播间地址：[http://live.bilibili.com/21954520](http://live.bilibili.com/21954520)
 
-- B 站直播ID：21954520
+- B 站直播 ID：21954520
 
 ## 介绍
 
@@ -48,7 +48,7 @@ description: "2022 年 12 月 15 日 19：00 - 20：00  ，线上直播第 31 �
 
 ## 议程
 
->![](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*GQs2Q5ubrqEAAAAAAAAAAAAADrGAAQ/original)
+> ![](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*GQs2Q5ubrqEAAAAAAAAAAAAADrGAAQ/original)
 
 ## 直播回放
 

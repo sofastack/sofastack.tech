@@ -24,7 +24,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **@姚远** 提问：
 
->请问下 SOFAArk，master-biz 是个 Spring Boot 应用，A-biz 是个普通的Spring，一起打成一个 Executable-Ark 包。那么 Spring 相关的 Jar 是不是就要加载 2 次。
+> 请问下 SOFAArk，master-biz 是个 Spring Boot 应用，A-biz 是个普通的 Spring，一起打成一个 Executable-Ark 包。那么 Spring 相关的 Jar 是不是就要加载 2 次。
 A：如果没有下沉插件的话，是会加载两次。
 
 SOFAArk：[https://github.com/sofastack/sofa-ark](https://github.com/sofastack/sofa-ark)
@@ -38,7 +38,7 @@ MOSN：[https://github.com/mosn/mosn/](https://github.com/mosn/mosn/)
 
 **@colin** 提问：
 
->这种场景，推荐用网关还是 service-mesh？目前我们是自己的内部网关来做的，网络不隔离，只是 jvm 进程隔离。
+> 这种场景，推荐用网关还是 service-mesh？目前我们是自己的内部网关来做的，网络不隔离，只是 jvm 进程隔离。
 >![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*iZ-6QaXysYUAAAAAAAAAAAAAARQnAQ)
 A：如果逻辑上也不隔离，互相能够服务发现，互相信任不需要额外鉴权的话，可以认为是内部流量，走 mesh 比走集中式的网关更合适。如果逻辑隔离，那么走网关比较合理。
 
@@ -53,7 +53,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 **@贾云森** 提问：
 
-> Could not commit JDBC transaction; 
+> Could not commit JDBC transaction;
 >nested exception is io.seata.rm.datasource.exec.LockConflictException: get global lock fail, xid:192.168.3.239:8092:138223831620784128, lockKeys:outpat_medical:135231296034705408,135231296034705409,135231296034705410,135231296034705411,135231296034705412,135231296034705413)","code":85550,"data":null,"time":"2021-05-19 10:12:10"
 想问一下为什么会发生这种异常啊？
 A：正常输出，竞争锁没竞争到。

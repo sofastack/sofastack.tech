@@ -1,9 +1,9 @@
 
 ---
+
 title: "SOFABoot profile"
 aliases: "/sofa-boot/docs/SOFABoot-Profile"
 ---
-
 
 ﻿Since 3.1.X Spring framework has started to support the profile function: [Bean Definition Profiles](https://docs.spring.io/spring/docs/3.1.0.RELEASE/reference/htmlsingle/#d0e1293), SOFABoot support modular-level profiling, it will determine whether a module can be started when each module is getting started.
 
@@ -69,7 +69,7 @@ Module-Profile=!product
 
 This will activate the module when the com.alipay.sofa.boot.active-profiles does not contain product. Since it is specified as dev, this module will be activated.
 
-### Set the spring.profiles.active property that is used to activate the Spring context of the module.
+### Set the spring.profiles.active property that is used to activate the Spring context of the module
 
 Add the following configurations to the application.properties file:
 

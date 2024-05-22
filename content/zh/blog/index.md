@@ -30,18 +30,18 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 欢迎大家在 GitHub 提交 issue 与我们互动
 
-我们会筛选 issue 通过 
+我们会筛选 issue 通过
 
 " SOFA WEEKLY " 的形式回复
 
 **1.@dbl-x #287**
 
->Publisher、UnPublisher、Subscriber、Watcher 这四个类的定义都在 model..common.model.Store 中，所以他们都是存储相关的模型吗？
+> Publisher、UnPublisher、Subscriber、Watcher 这四个类的定义都在 model..common.model.Store 中，所以他们都是存储相关的模型吗？
 但是他们中又带有业务逻辑，比如：
 
 ![](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*xin6TZ-SxEEAAAAAAAAAAAAADrGAAQ/original)
 
->如果他们是业务模型，但它们似乎又都用户数据传输相关的操作。另外 UnPublisher 作为一个模型对象本身是不合适的吧？
+> 如果他们是业务模型，但它们似乎又都用户数据传输相关的操作。另外 UnPublisher 作为一个模型对象本身是不合适的吧？
 
 A：最早是 V5 的时候，有 Watcher、Publisher 和 Subscriber 等概念，作为几种不同类型的客户端，存储在不同的“Store”里面，这么设计也是最初 V5 使用了多个线程池，通过 task 对象进行解耦，所以，将元信息封装在“model”对象中。而 V6 我们改版时候，经过压测等手段，发现异步解耦有如下问题：
 
@@ -52,9 +52,9 @@ A：最早是 V5 的时候，有 Watcher、Publisher 和 Subscriber 等概念，
 **「SOFARegistry」**
 [https://github.com/sofastack/sofa-registry](https://github.com/sofastack/sofa-registry)
 
-**2. @LinhuiG #845 ** 
+**2. @LinhuiG #845**
 
->一个集群中创建多个 Raft 实例（通过 groupId 区分），对其进行压力的时候，总是会出现领导者转移现象（Raft node receives higher term RequestVoteRequest），CPU 负载不到 70%，网络未拥堵，状态机内部使用了线程池异步处理。是否因为业务队列满载导致领导者心跳失效？
+> 一个集群中创建多个 Raft 实例（通过 groupId 区分），对其进行压力的时候，总是会出现领导者转移现象（Raft node receives higher term RequestVoteRequest），CPU 负载不到 70%，网络未拥堵，状态机内部使用了线程池异步处理。是否因为业务队列满载导致领导者心跳失效？
 
 A：这个问题可以通过一些限流来缓解, RaftOptions 里的：
 

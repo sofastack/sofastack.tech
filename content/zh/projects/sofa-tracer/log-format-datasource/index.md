@@ -1,9 +1,9 @@
 
 ---
+
 title: "DataSource 日志"
 aliases: "/sofa-tracer/docs/Log_Format_Datasource"
 ---
-
 
 SOFATracer 对标准的 JDBC 数据源进行埋点，输出 SQL 语句执行链路数据，默认日志输出为 `JSON` 数据格式。
 
@@ -22,11 +22,11 @@ key | 表达含义
  current.thread.name | 当前线程名
  time.cost.milliseconds | span 耗时
  database.name | 数据库名称
- sql | sql执行语句
- connection.establish.span | sql执行建连时间
- db.execute.cost | sql执行时间
+ sql | sql 执行语句
+ connection.establish.span | sql 执行建连时间
+ db.execute.cost | sql 执行时间
  database.type | 数据库类型
- database.endpoint | 数据库url
+ database.endpoint | 数据库 url
  sys.baggage | 系统透传的 baggage 数据
  biz.baggage | 业务透传的 baggage 数据
 
@@ -39,7 +39,7 @@ CREATE TABLE TEST(ID INT PRIMARY KEY%2C NAME VARCHAR(255));","connection.establi
 
 ### DataSource 统计日志（datasource-client-stat.log）
 
-`stat.key` 即本段时间内的统计关键字集合，统一关键字集合唯一确定一组统计数据，包含local.app、database.name、和 sql 字段.
+`stat.key` 即本段时间内的统计关键字集合，统一关键字集合唯一确定一组统计数据，包含 local.app、database.name、和 sql 字段.
 
 <table>
    <tr>

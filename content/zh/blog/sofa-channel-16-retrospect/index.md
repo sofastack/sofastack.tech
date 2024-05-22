@@ -123,7 +123,7 @@ Kata Containers：[https://github.com/kata-containers/kata-containers](https://g
 - Kata 官网：[https://katacontainers.io/](https://katacontainers.io/)
 - GitHub: [https://github.com/kata-containers](https://github.com/kata-containers)
 - IRC freenode:#kata-dev
-- Slack Invite (bridged to IRC): http://bit.ly/katacontainersslack
+- Slack Invite (bridged to IRC): <http://bit.ly/katacontainersslack>
 - Twitter: @katacontainers
 - Mailing-list: lists.katacontainers.io
 

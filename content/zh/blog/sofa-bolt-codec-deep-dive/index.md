@@ -20,7 +20,7 @@ Bolt 名字取自迪士尼动画-闪电狗，是一个基于 Netty 最佳实践�
 
 # 前言
 
-SOFABolt 提供了设计良好、使用便捷的编解码功能。本篇我们会依次介绍编解码的概念， TCP 粘包拆包问题，SOFABolt 私有通信协议的设计，以及SOFABolt 编解码原理，最后还会介绍一下相较于 Netty，我们做出的优化。欢迎大家与我们讨论交流。
+SOFABolt 提供了设计良好、使用便捷的编解码功能。本篇我们会依次介绍编解码的概念， TCP 粘包拆包问题，SOFABolt 私有通信协议的设计，以及 SOFABolt 编解码原理，最后还会介绍一下相较于 Netty，我们做出的优化。欢迎大家与我们讨论交流。
 
 # 编解码介绍
 
@@ -81,7 +81,7 @@ SOFABolt 提供了设计良好、使用便捷的编解码功能。本篇我们�
 
 - ProtocolVersion ：确定了某一种通信协议后，我们还需要考虑协议的微小调整需求，因此需要增加一个 version 的字段，方便在协议上追加新的字段
 - Switch ：协议开关，用于一些协议级别的开关控制，比如 CRC 校验，安全校验等。
-- CRC32 ：CRC校验码，这也是通信场景里必不可少的一部分，而我们金融业务属性的特征，这个显得尤为重要。
+- CRC32 ：CRC 校验码，这也是通信场景里必不可少的一部分，而我们金融业务属性的特征，这个显得尤为重要。
 
 ### 响应命令（协议头长度：22 byte）
 
@@ -98,7 +98,7 @@ SOFABolt 针对 RpcProtocol 和 RpcProtocolV2 这两种协议，提供了两组�
 - RpcCodec 是工厂类，创建 ProtocolCodeBasedEncoder 和 ProtocolCodeBasedDecoder（实际上是其子类），二者被设置为 netty 的编解码器 handler - 工厂模式
 - MessageToByteEncoder 提供了编码模板，该类由 netty 本身提供；AbstractBatchDecoder 提供了解码模板，由 SOFABolt 提供，该类是 ByteToMessageDecoder 的 hack 版本，相较于 netty 提供了批量提交的功能 - 模板模式
 - ProtocolCodeBasedEncoder 和 ProtocolCodeBasedDecoder 分别是 CommandEncoder 和 CommandDecoder 的代理类，通过不同的 protocol 协议，指定使用不同的编解码器 - 代理模式和策略模式
-- 最下层的四个编解码器：Xxx 是 RpcProtocol 协议数据的编解码器；XxxV2 是RpcProtocolV2 协议数据的编解码器
+- 最下层的四个编解码器：Xxx 是 RpcProtocol 协议数据的编解码器；XxxV2 是 RpcProtocolV2 协议数据的编解码器
 
 ## 编码原理
 
@@ -130,10 +130,10 @@ SOFABolt 的解码器 ProtocolCodeBasedDecoder 是继承 AbstractBatchDecoder �
 
 1. 创建或者从 netty 的回收池中获取一个 RecyclableArrayList 实例，用于存储最终的解码数据
 1. 将传入的 ByteBuf 添加到 Cumulator 累加器实例中
-1. 之后不断的从 ByteBuf 中读取数据：首先解码出protocolCode，之后从协议管理器中获取相应的协议对象，再从协议对象中获取相应的 CommandDecoder 实现类实例
+1. 之后不断的从 ByteBuf 中读取数据：首先解码出 protocolCode，之后从协议管理器中获取相应的协议对象，再从协议对象中获取相应的 CommandDecoder 实现类实例
 1. 使用 CommandDecoder 实现类实例按照上文所介绍的协议规则进行解码，将解码好的数据放到 RecyclableArrayList 实例中，需要注意的是在解码之前必须先记录当前 ByteBuf 的 readerIndex，如果发现数据不够一个整包长度（发生了拆包粘包问题），则将当前 ByteBuf 的 readerIndex 复原到解码之前，然后直接返回，等待读取更多的数据
-1. 为了防止发送端发送数据太快导致OOM，会清理 Cumulator 累加器实例或者其空间，将已经读取的字节删除，向左压缩 ByteBuf 空间
-1. 判断 RecyclableArrayList 中的元素个数，如果是1个，则将这个元素单个发送给 pipeline 的下一个 handler；如果元素大于1个，则将整个 RecyclableArrayList 以 List 形式发送给 pipeline 的下一个 handler。后续的 handler 就可以以如下的方式进行消息的处理。
+1. 为了防止发送端发送数据太快导致 OOM，会清理 Cumulator 累加器实例或者其空间，将已经读取的字节删除，向左压缩 ByteBuf 空间
+1. 判断 RecyclableArrayList 中的元素个数，如果是 1 个，则将这个元素单个发送给 pipeline 的下一个 handler；如果元素大于 1 个，则将整个 RecyclableArrayList 以 List 形式发送给 pipeline 的下一个 handler。后续的 handler 就可以以如下的方式进行消息的处理。
 
 ![消息处理](https://cdn.nlark.com/yuque/0/2018/png/162694/1539872080196-1a03b3ef-ba62-4dcb-bfa6-f87317d462ae.png)
 
@@ -155,5 +155,4 @@ Netty 提供了一个方便的解码工具类 ByteToMessageDecoder ，如图上�
 
 - [蚂蚁通信框架实践](https://mp.weixin.qq.com/s/JRsbK1Un2av9GKmJ8DK7IQ)
 - [nio-trick-and-trap](http://jm.taobao.org/2013/11/25/java-nio-trick-and-trap/)
-- 《netty实战》
-
+- 《netty 实战》

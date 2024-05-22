@@ -99,4 +99,3 @@ You can call this operation to clear all sub and pub data of a client based on i
 ```shell
 curl -X POST "http://<session_ip>:9603/api/clients/off" -H "Content-Type: application/json" -d '{"connectIds": ["<clientIP>:<client port>"]}'
 ```
-

@@ -30,7 +30,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **1.小白** 提问：
 
->运行之后我发现和文档写的不一样 biz 和宿主的 Spring Boot 没有隔开，文档上写的是 2.6.6 和 2.5.0 但是实际启动都是 2.6.6，这是怎么回事？
+> 运行之后我发现和文档写的不一样 biz 和宿主的 Spring Boot 没有隔开，文档上写的是 2.6.6 和 2.5.0 但是实际启动都是 2.6.6，这是怎么回事？
 
 A：不建议用不同 Spring Boot，多 host 模式只要不使用 Web-Ark-Plugin 是可以的；我用 Sofa-Ark-Spring-Guides 试了一下，可以设置不同的 host。
 
@@ -38,11 +38,11 @@ A：不建议用不同 Spring Boot，多 host 模式只要不使用 Web-Ark-Plug
 
 **2.吴东梁** 提问：
 
->保存在内存里的事务信息多久会删除一次，来避免 OOM？
+> 保存在内存里的事务信息多久会删除一次，来避免 OOM？
 
 A：结束就删。
 
->那如果在事务结束之后只删内存的数据，不删除数据库里面数据会不会产生问题？
+> 那如果在事务结束之后只删内存的数据，不删除数据库里面数据会不会产生问题？
 
 A：没有内存和数据库共用的版本，不会的。
 

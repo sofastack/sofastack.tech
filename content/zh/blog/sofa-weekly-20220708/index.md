@@ -30,7 +30,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **1. 何烨** 提问：
 
->请问一下这个配置现在支持 Nacos 了吗？
+> 请问一下这个配置现在支持 Nacos 了吗？
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/16d02a814f4448b693a0f9b2c184957a~tplv-k3u1fbpfcp-zoom-1.image)
 
@@ -40,7 +40,7 @@ A：SOFABoot 已经支持 Nacos 了。
 
 **2. 鲍之知** 提问：
 
->下图中这个 SOFATracer 日志默认是生成在哪里呀？
+> 下图中这个 SOFATracer 日志默认是生成在哪里呀？
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fd6d2926b64742c6b10b0a714feff0ed~tplv-k3u1fbpfcp-zoom-1.image)
 
@@ -50,11 +50,11 @@ A：~/logs。
 
 **3. Philip Guan** 提问：
 
->请问 biz 可以独立引入 master biz 中没有的依赖吗？例如 Hutool、master biz 没有，希望在 biz 里使用。
+> 请问 biz 可以独立引入 master biz 中没有的依赖吗？例如 Hutool、master biz 没有，希望在 biz 里使用。
 
 A：可以的，打包完后可以 check 一下是否 /biz/ 里有这个包。如果没有的话，可以在 master biz 里引入这个依赖，在 biz 里引入但设置 <scope> 为 provided 也可以使用。
 
->期望是 master biz 不引入 Hutool 的情况下，在 biz 里使用 Hutool。
+> 期望是 master biz 不引入 Hutool 的情况下，在 biz 里使用 Hutool。
 
 A：可以的。
 

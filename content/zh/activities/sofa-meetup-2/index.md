@@ -12,7 +12,7 @@ description: "SOFA Meetup#2 上海站-使用 SOFAStack 快速构建微服务，5
 
 - 活动主题：SOFA Meetup#2 上海站-使用 SOFAStack 快速构建微服务
 - 活动时间：5 月 26 日周日下午 13 点
-- 活动地点：上海市徐汇区田林路200号A7栋一楼
+- 活动地点：上海市徐汇区田林路 200 号 A7 栋一楼
 - 活动形式：线下活动
 - 报名方式：<https://tech.antfin.com/community/activities/576>
 
@@ -34,7 +34,7 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 
 建议：参会者可带上电脑，现场有 Demo 实操环节~
 
-## 加入 SOFA 钉钉互动群 
+## 加入 SOFA 钉钉互动群
 
 欢迎加入直播互动钉钉群：23195297（搜索群号加入即可）
 
