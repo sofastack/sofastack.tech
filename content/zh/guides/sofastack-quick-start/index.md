@@ -8,3 +8,5 @@ projects: [
   {name: "SOFALookout", link: "https://github.com/sofastack/sofa-lookout/"},
 ]
 ---
+
+https://github.com/sofastack-guides/kc-sofastack-demo
