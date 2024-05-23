@@ -18,7 +18,7 @@ jobs:
         with:
           hugo-version: '0.55.5'
           extended: true
-      - run: npm install && npm run build && hugo
+      - run: sh ./scripts/install-dependency.sh && sh ./scripts/build-site.sh && hugo server
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         with:
