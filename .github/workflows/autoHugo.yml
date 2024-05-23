@@ -1,0 +1,27 @@
+name: build-and-deploy
+on: 
+ push:
+   branshes:
+      master
+jobs:
+  deploy:
+    runs-on: ubuntu-20.04
+    steps:
+      - name: Git checkout
+        uses: actions/checkout@v2
+      - name: Use Node.js
+        uses: actions/setup-node@v1
+        with:
+          node-version: 8.9.4
+      - name: Setup hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.55.5'
+          extended: true
+      - run: npm install && npm run build && hugo
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+           github_token: ${{ secrets.GITHUB_TOKEN }}
+           publish_dir: ./public
+           enable_jekyll: true
