@@ -57,7 +57,7 @@ jobs:
           HUGO_ENV: production
         run: |
           hugo \
-            --baseURL "${{ steps.pages.outputs.base_url }}/"
+            --baseURL "${{ steps.pages.outputs.base_url }}/" && ls ./public/css
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
         with:
