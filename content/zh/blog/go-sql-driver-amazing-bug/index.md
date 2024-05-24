@@ -20,7 +20,7 @@ Seata-go 项目共同发起人
 
 本文 **3482** 字 阅读 **7** 分钟
 
->对于 Go CURD Boy 来说，相信 `github.com/go-sql-driver/mysql` 这个库都不会陌生。基本上 Go 的 CURD 都离不开这个特别重要的库。我们在开发 Seata-go 时也使用了这个库。不过最近在使用 go-sql-driver/mysql 查询 MySQL 的时候，就出现一个很有意思的 bug, 觉得有必要分享出来，以防止后来者再次踩坑。
+> 对于 Go CURD Boy 来说，相信 `github.com/go-sql-driver/mysql` 这个库都不会陌生。基本上 Go 的 CURD 都离不开这个特别重要的库。我们在开发 Seata-go 时也使用了这个库。不过最近在使用 go-sql-driver/mysql 查询 MySQL 的时候，就出现一个很有意思的 bug, 觉得有必要分享出来，以防止后来者再次踩坑。
 
 ## PART. 1 问题详述
 
@@ -193,13 +193,13 @@ func parseDateTime(b []byte, loc *time.Location) (time.Time, error) {  const bas
 
 在 MySQL 中读写 timestamp 类型数据时，有如下注意事项：
 
-1.  默认约定：写入 MySQL 时间时，把当前时区的时间转换为 UTC + 00:00（世界标准时区）的值，读取后在前端展示时再次进行转换；
+1. 默认约定：写入 MySQL 时间时，把当前时区的时间转换为 UTC + 00:00（世界标准时区）的值，读取后在前端展示时再次进行转换；
 
-1.  如果不愿意使用默认约定，在现阶段使用 go-sql-driver 的时候，一定要特别注意，需要在 DSN 字符串加上 "loc=true&time_zone=*" , 和数据的时区保持一致，不然的话就会导致 timestamp 字段解析错误。
+1. 如果不愿意使用默认约定，在现阶段使用 go-sql-driver 的时候，一定要特别注意，需要在 DSN 字符串加上 "loc=true&time_zone=*" , 和数据的时区保持一致，不然的话就会导致 timestamp 字段解析错误。
 
 **| 参考文档 |**  
 
-《The date, datetime, and timestamp Types》 
+《The date, datetime, and timestamp Types》
 
 *[https://dev.mysql.com/doc/refman/8.0/en/datetime.html](https://dev.mysql.com/doc/refman/8.0/en/datetime.html)*  
 

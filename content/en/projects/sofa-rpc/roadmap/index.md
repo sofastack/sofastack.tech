@@ -31,14 +31,12 @@ The features that have been implemented are listed in the following table. You a
 - Integrate Hystrix
 - Support Consul registry center
 
-
 ### v5.6.0
 
 - Support GRPC communication layer
 - Support etcd registry center
 - Support SOFAMesh
 - Implement BOLT version negotiation and CRC verification
-
 
 ### v5.7.0
 

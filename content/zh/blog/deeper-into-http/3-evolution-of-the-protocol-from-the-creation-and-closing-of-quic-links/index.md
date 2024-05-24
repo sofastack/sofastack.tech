@@ -37,7 +37,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*q7-nSooP704AAAAAA
 
 ## PART. 2 链接建立
 
-### 2.1 重温 TCP 
+### 2.1 重温 TCP
 
 “TCP 为什么要三次握手？”
 
@@ -67,7 +67,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*q7-nSooP704AAAAAA
 
 当然，协议的设计者肯定也想过这个方案，至于为什么没这么实现，我们在下一章来看看 TCP 面临什么样的问题。
 
-### 2.2 TCP 面临的问题 
+### 2.2 TCP 面临的问题
 
 #### 2.2.1 seq 攻击
 
@@ -117,7 +117,7 @@ seq 的二义性问题：设想这样的一个场景，发送端发送了一个 
 
 了解了 TCP 的这些问题，我们就能从 QUIC 的一系列复杂的机制中抽丝剥茧，看清 QUIC 本身设计的源头思路。
 
-### 2.3 QUIC 的建联设计 
+### 2.3 QUIC 的建联设计
 
 和 TCP 一样，QUIC 的首要目标也是提供一个可靠、有序的流式传输协议。不仅如此，QUIC 还要保证原生的数据安全以及传输的高效。
 
@@ -141,7 +141,7 @@ seq 的二义性问题：设想这样的一个场景，发送端发送了一个 
 
 1.图中多了"init packet"、"handshake packet"、"short-header packet"的概念；
 
-2.图中多了 pkt_number的概念以及stream+offset的概念；
+2.图中多了 pkt_number 的概念以及 stream+offset 的概念；
 
 3.pkt_number 的下标变化似乎有些奇怪。
 
@@ -157,7 +157,7 @@ pkt_number 从流程图看起来，和 TCP 的 seq 字段比较类似，然而�
 
 2. 加密 pkt_number 以保障安全
 
-当然 pkt_number 从 0 开始技术便也就遇上了和 TCP一样的安全问题，解决方案也很简单，就是用为 pkt_number 加密，pkt_number 加密后，中间人便无法获取到加密的 pkt_number 的 key，便也无法获取到真实的 pkt_number，也就无法通过观测 pkt_number 来预测后续的数据发送。而这里又引申出了另一个问题，TLS 需要握手完成后才能得到中间人无法获取的 key，而 pkt_number 又在 TLS 握手之前又存在，这看起来又是一个鸡和蛋的问题，至于其解决方案，这里先卖一个关子，留到后面 QUIC-TLS 的专题文章再讲。
+当然 pkt_number 从 0 开始技术便也就遇上了和 TCP 一样的安全问题，解决方案也很简单，就是用为 pkt_number 加密，pkt_number 加密后，中间人便无法获取到加密的 pkt_number 的 key，便也无法获取到真实的 pkt_number，也就无法通过观测 pkt_number 来预测后续的数据发送。而这里又引申出了另一个问题，TLS 需要握手完成后才能得到中间人无法获取的 key，而 pkt_number 又在 TLS 握手之前又存在，这看起来又是一个鸡和蛋的问题，至于其解决方案，这里先卖一个关子，留到后面 QUIC-TLS 的专题文章再讲。
 
 3. 细粒度的 pkt_number space 的设计
 
@@ -165,17 +165,17 @@ TLS 严格来说并不是一个状态严格递进的协议，每进入一个新�
 
 举个例子，TLS1.3 引入了一个 0-RTT 的技术，该技术允许 client 在通过 clientHello 发起 TLS 请求时，同时发送一些应用层数。我们当然期望这个应用层数据的过程相对于握手过程来说是异步且互不干扰的，而如果他们都是用同一个 pkt_number 来标示，那么应用层数据的丢包势必会导致对握手过程的影响。所以，QUIC 针对握手的状态设计了三种不同的 pkt_number space：
 
-(1) init; 
+(1) init;
 
-(2) Handshake; 
+(2) Handshake;
 
 (3) Application Data。
 
 分别对应：
 
-(1) TLS 握手中的明文数据传输，即图中的 init packet; 
+(1) TLS 握手中的明文数据传输，即图中的 init packet;
 
-(2) TLS 中通过 traffic secret 加密的握手数据传输，即图中 handshake packet; 
+(2) TLS 中通过 traffic secret 加密的握手数据传输，即图中 handshake packet;
 
 (3)握手完成后的应用层数据传输及 0-RTT 数据传输，即图中的 short header packet 以及图中暂未画出的 0-RTT packet。
 
@@ -229,7 +229,7 @@ RFC9000 中花了一章节来介绍这个机制，但其本质来说只是针对
 
 ## PART. 3 链接关闭
 
-### 从 TCP 看 QUIC 链接的优雅关闭 
+### 从 TCP 看 QUIC 链接的优雅关闭
 
 链接关闭是一个简单的诉求，可以简单梳理为两个目标：
 
@@ -273,7 +273,7 @@ RFC9000 中花了一章节来介绍这个机制，但其本质来说只是针对
 
 更简单的是，CONNECTION_CLOSE 是一个不需要被 ACK 的指令，也就意味着不需要重传。因为从链接维度而言，我们只需要保证最后能成功关闭的链接，并且新的链接不被老的关闭指令影响即可，这种简单的 CONNECTION_CLOSE 指令就能实现所有的诉求。
 
-### 3.2 更安全的 reset 的方式 
+### 3.2 更安全的 reset 的方式
 
 当然，链接关闭也分为多种情况，和 TCP 一样，除了上一节提到的 QUIC 一端主动关闭链接的模式，QUIC 也需要提供无法回复响应时的，直接 reset 对端链接的能力。
 
@@ -285,7 +285,7 @@ RFC9000 中花了一章节来介绍这个机制，但其本质来说只是针对
 
 因此 stateless reset 被限定为 QUIC 链接关闭的最后手段，并且也只能在只能使用在客户端和服务端均处于一个相对正常的情况下正常工作，比如这样的情况 stateless reset 就不适用，服务端并没有监听在 443 端口，但客户端发送数据到 443 端口，而这种情况在 TCP 协议栈下是可以 RST 掉的。
 
-### 3.3 工程考量的超时断链 
+### 3.3 工程考量的超时断链
 
 keepalive 机制本身并没有什么花样，都是一个计时器加探测报文即可搞定，而 QUIC 得益于链接和数据流的拆分，关闭链接变成了一个非常简单的事情，keepalive 也就变得更简单易用，QUIC 在链接维度上提供了名为 PING frame 的控制指令，用于主动探测保活。
 
@@ -321,4 +321,4 @@ keepalive 机制本身并没有什么花样，都是一个计时器加探测报�
 
 [Service Mesh 在中国工商银行的探索与实践](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247499122&idx=1&sn=9733d1c015e7b0e8e64bd5cf44118b10&chksm=faa312a8cdd49bbec97612e9756ef4372c446c410518a04bd0ae990a60fea9b8e78025e60c6d&scene=21)
 
-![img](https://gw.alipayobjects.com/zos/bmw-prod/75d7bde6-1f48-4f28-80a4-215f8ec811bd.webp) 
+![img](https://gw.alipayobjects.com/zos/bmw-prod/75d7bde6-1f48-4f28-80a4-215f8ec811bd.webp)

@@ -50,7 +50,7 @@ Lunettes 基于上述特性的考虑，整体采用旁路数据采集、数据�
 
 2. Lunettes 会近实时从 ES 拉取审计数据，审计进入 Lunettes 后首先会被 Share Processor 处理，这里处理主要分为 Pod 元数据信息提取、超事件（HyperEvent）抽象、以及并发反序列化审计请求中的 Raw Data，前置反序列化是为了减少后续  SLO、Trace 等业务处理时重复处理，提升性能。
 
-3. 数据经过 Share Processor之后，进入核心的交付分析模块，核心包括交付生命周期 Trace、交付 SLO 分析、交付原因分析及容器基础信息搜集，数据在模块之前按照需求做依赖 DAG，最终将产出 OTel、ES Table、Metrics 三种数据写入相关的数据服务。
+3. 数据经过 Share Processor 之后，进入核心的交付分析模块，核心包括交付生命周期 Trace、交付 SLO 分析、交付原因分析及容器基础信息搜集，数据在模块之前按照需求做依赖 DAG，最终将产出 OTel、ES Table、Metrics 三种数据写入相关的数据服务。
 
 4. 存储到 ES、jaeger 和 prometheus 的数据，会被 Lunettes Rest API 和 Grafana di 处理，转换为 OpenAPI 数据接口和 Grafana Portal 上的数据进行展示。Grafana Portal 中一站式集成了 Lunettes 所有的功能，用户使用更便捷。
 

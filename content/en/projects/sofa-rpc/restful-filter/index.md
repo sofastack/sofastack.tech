@@ -1,10 +1,9 @@
 
 ---
+
 title: "REST filter"
 aliases: "/sofa-rpc/docs/RESTful-Filter"
 ---
-
-
 
 For REST, we designed a JAXRSProviderManager manager class. It takes effect on the server when the service starts.
 
@@ -17,6 +16,7 @@ For the user-defined Filter class, you can call it after the initialization is c
 ```java
 com.alipay.sofa.rpc.config.JAXRSProviderManager#registerCustomProviderInstance
 ```
+
 To register filter, since the custom Filter follows REST specification, you need to implement the following interface:
 
 ```java

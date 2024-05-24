@@ -40,6 +40,7 @@ PRIORITY enumeration level: HIGH, NORMAL, LOW.
 ```java
 id.withTag(LookoutConstants.LOW_PRIORITY_TAG);
 ```
+
 It is recommended that you do not add this tag, the default level will be NORMAL. The level represents the collection interval (HIGH: 2s, NORMAL: 30s, LOW: 1min).
 
 #### 2.2 About tags
@@ -55,6 +56,7 @@ Specialized TAG name "priority" indicates priority.
 ### 3. Accessible Statistics (Metric) Type API
 
 #### Counter
+
 - Scenario: Number of method calls;
 - Actively reported data includes: count, rate (namely qps);
 - How to use:
@@ -65,6 +67,7 @@ counter.inc();
 ```
 
 #### Timer
+
 - Scenario: Statistical tasks, method time-consuming, support bucket statistics
 - Actively reported data includes: elapPerExec (single execution time), total time-consuming, Max time-consuming, in seconds;
 - How to use:
@@ -75,6 +78,7 @@ timer.record(2, TimeUnit.SECONDS);
 ```
 
 #### DistributionSummary
+
 - Scenario: such as IO traffic, support bucket statistics
 - Actively reported data includes: count, total(size), max(size);
 - How to use:
@@ -85,6 +89,7 @@ distributionSummary.record(1024);
 ```
 
 #### Gauge (real-time data observation)
+
 - Scenario: Real-time values ​​such as thread pools, memory values.
 - Actively reported data includes: value;
 When the new gauge is registered in the registry, if the ID values ​​are the same, the registry continues to use the existing ones (ignoring the new ones);

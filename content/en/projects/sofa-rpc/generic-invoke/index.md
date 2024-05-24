@@ -1,9 +1,9 @@
 
 ---
+
 title: "Generic call"
 aliases: "/sofa-rpc/docs/Generic-Invoke"
 ---
-
 
 Generic calls provide the ability for clients to initiate calls without having to rely on the server`s interface. Currently, the generic call of SOFARPC only supports using Hessian2 as the serialization protocol under the Bolt communication protocol.
 
@@ -23,6 +23,7 @@ There is nothing special about publishing a service. Just publish the service no
 ```
 
 ### Reference Service
+
 ```xml
 <sofa:reference jvm-first="false" id="sampleGenericServiceReference" interface="com.alipay.sofa.rpc.api.GenericService">
     <sofa:binding.bolt>
@@ -43,9 +44,7 @@ The `jvm-first` can be left empty according to the actual situation. The interfa
             new Object[] { genericObject });
 ````
 
-## RPC API 
-
-
+## RPC API
 
 ```java
 ConsumerConfig<GenericService> consumerConfig = new ConsumerConfig<GenericService>()
@@ -55,9 +54,11 @@ GenericService testService = consumerConfig.refer();
 
 String result = (String) testService.$invoke("sayHello", new String[] { "java.lang.String" },new Object[] { "1111" });
 ```
+
 You can set the service as a generic service and set the interface name of the server by `setGeneric` as above. `GenericService` is used as a generic service, and GenericService can initiate generic calls. You need to pass in the method name, method type, and method parameters when invoking a call.
 
 If the parameter or return result is also required to be generalized on the client side, you can achieve this with `GenericObject`.
+
 ```java
 GenericObject genericObject = new GenericObject("com.alipay.sofa.rpc.invoke.generic.TestObj");
               
@@ -71,7 +72,9 @@ GenericObject result = (GenericObject) testService.$genericInvoke("echoObj",
 String str = result.getField("str");
 String num = result.getField("num");
 ```
+
 The serialization result can be obtained as above. The instructions for the complete generalization call are as follows:
+
 ```java
 /**
 * Java Bean
@@ -115,7 +118,7 @@ public class ConsumerClass {
       
       // 2.3 make a call with the return type specified.
       People people = genericService.$genericInvoke("hello", new String[]{"com.alipay.sofa.rpc.test.generic.bean.People"}, new Object[] { genericObject }, People.class);
-	  
+   
       // 2.4 make a call, and the parameter type is array.
       String[] result = (String[]) proxy.$genericInvoke("hello", new String[]{new String[0].getClass().getName()}, new Object[]{ new String[]{"args"} });
    }

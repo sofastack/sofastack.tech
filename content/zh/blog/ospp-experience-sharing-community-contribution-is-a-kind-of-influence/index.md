@@ -46,6 +46,7 @@ TorchServe 通过集成 Dragonfly Endpoint 插件，发送模型下载请求到 
 1、TorchServe 发起模型下载请求到 Dragonfly Peer。
 2、Dragonfly Peer 会到 Dragonfly Scheduler 注册任务。
 3、返回拥有资源的候选的父节点。
+
 - Scheduler 服务发现本地 Cache 对这个任务是缓存未命中状态，就触发从 Seed Peer 进行文件下载。
 - Seed Peer 如果对于任务也是缓存未命中状态，就会触发回源下载，即到对应的对象存储下载模型文件。
 4、到对应的候选的父节点进行分片下载文件。

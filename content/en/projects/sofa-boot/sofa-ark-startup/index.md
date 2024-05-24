@@ -1,9 +1,9 @@
 
 ---
+
 title: "Ark container startup process"
 aliases: "/sofa-boot/docs/sofa-ark-startup"
 ---
-
 
 # Ark container start process
 
@@ -40,14 +40,16 @@ After the service implements the preceding lifecycle interface, the Ark Service 
 Pipeline is also a service registered in the Ark Service container. The service itself has no order or priority. The service is assembled in the Pipeline while the entire Ark container starts.
 
 ### Archive parsing
+
 At the very beginning of Pipeline, the running fatjar will be resolved into the models required for runtime, including the Ark plug-in model and the Ark business model, which are registered to the `PluginManagerService` and the `BizManagerService` in the Ark Service.
 
 ### Deploy the Ark plug-in
+
 Get all the Ark plug-ins from the `PluginManagerService` in the order of their priorities:
+
 * ClassloaderService prepares for the map mapping of plug-in export class
 * PluginDeployService starts `com.alipay.sofa.Ark.spi.service.PluginActivator`
 
-
 ### Start the Ark business
-Get all the Ark business from the `BizManagerService`, and execute the entry main function provided by the business configuration in the Main-Class attribute of MANIFEST.MF.
 
+Get all the Ark business from the `BizManagerService`, and execute the entry main function provided by the business configuration in the Main-Class attribute of MANIFEST.MF.

@@ -1,9 +1,9 @@
 
 ---
+
 title: "SOFATracer configuration items"
 aliases: "/sofa-tracer/docs/Configuration"
 ---
-
 
 # SOFATracer configuration item
 

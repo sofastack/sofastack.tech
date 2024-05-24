@@ -6,6 +6,7 @@ aliases: "/sofa-acts/docs/Usage-Script"
 ## 快速理解 ACTS 中的脚本
 
 如果你是一个经常编写测试用例的同学，是不是经常苦于这样的问题：
+
 * 不断的 assertEquals 写得快吐了，重复性编码毫无创意；
 * 少一个 assert 容易假绿，错一个败坏心情；
 * 场景一旦复杂，测试代码比业务代码还要长，写起来痛不欲生；
@@ -50,7 +51,7 @@ aliases: "/sofa-acts/docs/Usage-Script"
 默认每个测试脚本的所有用例数据保存在同一个 YAML 中，ACTS 支持用例数据根据开关 `spilt_yaml_by_case` 来决定同一测试脚本的所有用例数据存储在一个 YAML 中还是每个用例存储为一个 YAML。
 开关默认为关闭，即同一测试脚本的所有测试数据存储在一个 YAML 文件中。
 
-在 `acts-config.properities` 中设置 `spilt_yaml_by_case=true` 即可打开开关，之后新生成测试脚本时每个用例对应一个单独的以 caseId 命名的 YAML文件，拆分的方式可以降低多人研发同一接口带来的文件冲突问题。 
+在 `acts-config.properities` 中设置 `spilt_yaml_by_case=true` 即可打开开关，之后新生成测试脚本时每个用例对应一个单独的以 caseId 命名的 YAML 文件，拆分的方式可以降低多人研发同一接口带来的文件冲突问题。
 
 此外，为了支持将老的 YAML 文件按用例拆分，ACTS 提供了工具类，如下，支持将指定脚本下，指定路径的 YAML 文件按用例拆分。
 
@@ -61,23 +62,24 @@ aliases: "/sofa-acts/docs/Usage-Script"
 ## 编码方式准备数据
 
 ACTS 提供了数据自定义 API 接口，封装于 ActsRuntimeContext 类中，如下：
-+ 快速获取和设置自定义参数
+
+* 快速获取和设置自定义参数
   
-    获取全部自定义参数：`getParamMap getParamMap()` 
-    按 key 获取：`Object getParamByName(String paraName)` 
-    新增自定义参数：`void addOneParam(String paraName, Object paraObj)` 
-    替换自定义参数：`void setParamMap(Map<String, Object> paramMap)` 
+    获取全部自定义参数：`getParamMap getParamMap()`
+    按 key 获取：`Object getParamByName(String paraName)`
+    新增自定义参数：`void addOneParam(String paraName, Object paraObj)`
+    替换自定义参数：`void setParamMap(Map<String, Object> paramMap)`
     泛型方式获取自定义参数：`T getParamByNameWithGeneric(String paraName)`
 
-+ 快速获取和设置用例入参
+* 快速获取和设置用例入参
 
-    获取所有入参：`List getInputParams()` 
-    按位置获取：`Object getInputParamByPos(int i)` 
-    新增用例参数：`void addInputParam(Object obj)` 
+    获取所有入参：`List getInputParams()`
+    按位置获取：`Object getInputParamByPos(int i)`
+    新增用例参数：`void addInputParam(Object obj)`
 
-+ 快速获取和设置期望结果
+* 快速获取和设置期望结果
 
-    获取期望结果：`Object getExpectResult()` 
+    获取期望结果：`Object getExpectResult()`
     设置期望结果：`Boolean setExpectResult(Object objToSet)`
 
 ## Mock 功能使用
@@ -95,7 +97,9 @@ Mock 功能目前是采用 Mockito 的方案，具体资料见  [Mockito 英文�
     <scope>test</scope>
 </dependency>
 ```
+
 默认 spring test 依赖的 mockito 版本是 1.x，想要升级的可以排除后再引入相应的版本
+
 ```xml
 <dependency>
     <groupId>org.mockito</groupId>

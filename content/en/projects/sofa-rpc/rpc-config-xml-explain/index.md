@@ -22,7 +22,7 @@ This document describes the complete SOFARPC service publishing and reference in
 
 | Attribute | Name | Default value | Comment |
 |:--------------|:-----------------------|:-------------------|:---------------------------------------------------------------------------|
-| id            | ID                     | bean名              |                                                                            |
+| id            | ID                     | bean 名              |                                                                            |
 | class | Class | None | |
 | ref | Service interface implementation class | | |
 | interface | Service interface (unique identifier) | | Use actual interface class for both normal calls and return calls |

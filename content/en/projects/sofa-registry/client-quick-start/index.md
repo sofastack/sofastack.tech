@@ -63,9 +63,9 @@ registryClient.init();
 
 // Create SubscriberDataObserver. 
 SubscriberDataObserver subscriberDataObserver = new SubscriberDataObserver() {
-  	public void handleData(String dataId, UserData userData) {
-    		System.out.println("receive data success, dataId: " + dataId + ", data: " + userData);
-  	}
+   public void handleData(String dataId, UserData userData) {
+      System.out.println("receive data success, dataId: " + dataId + ", data: " + userData);
+   }
 };
 
 // Create a subscriber registry and specify the subscription level. ScopeEnum covers three subscription levels: zone, dataCenter, and global.
@@ -113,4 +113,3 @@ If we run first the data publication program and then the data subscription prog
 ```plain
 receive data success, dataId: com.alipay.test.demo.service:1.0@DEFAULT, data: DefaultUserData{zoneData={DEFAULT_ZONE=[10.10.1.1:12200?xx=yy]}, localZone='DEFAULT_ZONE'}
 ```
-

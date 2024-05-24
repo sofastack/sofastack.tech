@@ -1,9 +1,9 @@
 
 ---
+
 title: "服务器端 Grafana 使用指南"
 aliases: "/sofa-lookout/docs/useguide-grafana"
 ---
-
 
 由于 SOFALookout Metrics Server 兼容 Prometheus API,所以 Grafana 集成 Lookout 很简单，只需要选择 Prometheus 作为数据源协议即可
 （注意 Lookout Server 的默认查询端口也是: 9090）。

@@ -20,7 +20,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **SOFAStack:** *[https://github.com/sofastack](https://github.com/sofastack)*
 
-**SOFA** **社区会议预告** 
+**SOFA** **社区会议预告**
 
 **Layotto：**
 
@@ -67,7 +67,7 @@ Layotto：
 
 ![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/nibOZpaQKw0ib1KnTcDMKHFiaf7PISbwbjI4M5WJPl42keXc8Y4WM3vSbpJcmSHzgg6eULqlQacW6asQwu6VMtWww/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
 
- **本周推荐阅读** 
+ **本周推荐阅读**
 
 [SOFAStack 的下一个五年](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247537465&idx=1&sn=0b8bde29e8631437f8aa813c3481f144&chksm=faa3bce3cdd435f57264a152134ca2c6c2a2acf1e178a40f797dc4750ca54f215ee6fc96bd49&scene=21)
 

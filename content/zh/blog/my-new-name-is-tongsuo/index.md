@@ -62,7 +62,7 @@ BabaSSL 于 2019 年诞生在蚂蚁和阿里集团内部，是基于 OpenSSL 1.1
 
 **a.** 现有的 master 分支更名为 master-babassl，并设置为只读模式，即不再接受新的代码合并，只留做参考用；
 
-**b.** 将 master-tongsuo 分支更名为 master，作为下个大版本 tongsuo-8.4.0 的开发分支。由于新的 master 分支和旧的 master 分支之间没有代码提交的逻辑关系，因此需要用户手动重新检出新的master 分支并覆盖本地的旧 master 分支内容。在此过程中如果你的本地 master 分支存在代码修改，请注意保存以免代码修改丢失。
+**b.** 将 master-tongsuo 分支更名为 master，作为下个大版本 tongsuo-8.4.0 的开发分支。由于新的 master 分支和旧的 master 分支之间没有代码提交的逻辑关系，因此需要用户手动重新检出新的 master 分支并覆盖本地的旧 master 分支内容。在此过程中如果你的本地 master 分支存在代码修改，请注意保存以免代码修改丢失。
 
 **「网站改名」**
 
@@ -92,7 +92,7 @@ BabaSSL 于 2019 年诞生在蚂蚁和阿里集团内部，是基于 OpenSSL 1.1
 
 > *铜锁（BabaSSL）的更名涉及到较多的现有资产名称变更事宜，例如代码库改名、文档内容名称替换等。具体的相关进展和状态，我们会及时在上述钉钉群中向大家通告。*
 
-**了解更多…**
+**了解更多……**
 
 **铜锁/Tongsuo Star 一下✨：**
 *[https://github.com/BabaSSL/BabaSSL](https://github.com/BabaSSL/BabaSSL)*

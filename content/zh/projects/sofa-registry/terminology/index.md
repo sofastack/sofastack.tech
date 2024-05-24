@@ -25,7 +25,7 @@ aliases: "/sofa-registry/docs/Terminology"
 | 订阅者（Subscriber） | 从 SOFARegistry 订阅数据的节点。在服务发现场景下，服务消费者就是“服务提供者的网络地址及其它附加信息”的订阅者。 |
 | 数据标识（DataId） | 用来标识数据的字符串。在服务发现场景下，通常由服务接口名、协议、版本号等信息组成，作为服务的标识。 |
 | 分组标识（GroupId） | 用于为数据归类的字符串，可以作为数据标识的命名空间，即只有 DataId、GroupId、InstanceId 都相同的服务，才属于同一服务。 |
-| 实例 ID（InstanceId） | 实例 ID，可以作为数据标识的命名空间，即只有DataId、GroupId、InstanceId都相同的服务，才属于同一服务。 |
+| 实例 ID（InstanceId） | 实例 ID，可以作为数据标识的命名空间，即只有 DataId、GroupId、InstanceId 都相同的服务，才属于同一服务。 |
 | 会话服务器（SessionServer） | SOFARegistry 内部负责跟客户端建立 TCP 长连接、进行数据交互的一种服务器角色。 |
 | 数据服务器（DataServer） | SOFARegistry 内部负责数据存储的一种服务器角色。 |
 | 元信息服务器（MetaServer） | SOFARegistry 内部基于 Raft 协议，负责集群内一致性协调的一种服务器角色。 |

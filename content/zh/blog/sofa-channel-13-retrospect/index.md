@@ -63,7 +63,7 @@ MOSN：[https://github.com/mosn](https://github.com/mosn)
 ![协议扩展框架 - Enovy](https://cdn.nlark.com/yuque/0/2020/png/226702/1585209248576-01797bba-8a94-4960-be17-1c87c725a75a.png)
 注：图片来自 Envoy 分享资料
 
-第一个要介绍的是目前发展势头强劲的 Envoy。从图上可以看出，Envoy 支持四层的读写过滤器扩展、基于 HTTP 的七层读写过滤器扩展以及对应的 Router/Upstream 实现。如果想要基于 Envoy 的扩展框架实现 L7 协议接入，目前的普遍做法是基于 L4 filter 封装相应的 L7 codec，在此基础之上再实现对应的协议路由等能力，无法复用 HTTP L7 的扩展框架。 
+第一个要介绍的是目前发展势头强劲的 Envoy。从图上可以看出，Envoy 支持四层的读写过滤器扩展、基于 HTTP 的七层读写过滤器扩展以及对应的 Router/Upstream 实现。如果想要基于 Envoy 的扩展框架实现 L7 协议接入，目前的普遍做法是基于 L4 filter 封装相应的 L7 codec，在此基础之上再实现对应的协议路由等能力，无法复用 HTTP L7 的扩展框架。
 
 ### 协议扩展框架 - Nginx
 
@@ -220,7 +220,7 @@ Demo 地址：[https://github.com/mosn/mosn/tree/master/examples/codes/sofarpc-w
 
 ![统一路由框架 -  层级路由](https://cdn.nlark.com/yuque/0/2020/png/226702/1585209248832-20483dc3-e959-4cf4-aecd-cbe5ba37b4fb.png)
 
-在引入「基于属性的匹配」之后，我们发现了一个问题，那就是由于属性本身的扁平化，其内在并不包含层级关系。如果没有层级关系，会导致匹配时需要遍历所有可能的情况组合，大量条件的场景下匹配性能近似于线性的 O(n)，这显然是无法接受的。 
+在引入「基于属性的匹配」之后，我们发现了一个问题，那就是由于属性本身的扁平化，其内在并不包含层级关系。如果没有层级关系，会导致匹配时需要遍历所有可能的情况组合，大量条件的场景下匹配性能近似于线性的 O(n)，这显然是无法接受的。
 
 举例来说，对于 HTTP 协议，我们总是习惯与以下的匹配步骤：
 
@@ -280,10 +280,10 @@ Demo 地址：[https://github.com/mosn/mosn/tree/master/examples/codes/sofarpc-w
 
 ## MOSN Logo 社区投票结果公示
 
-MOSN 的 Logo 升级，在进过社区投票后，在本期直播结束后截止。截止 2020年3月26日20:00，有效票数 35 票。方案一 25 票，占比 71.43%；方案二 2 票，占比 5.71%；方案三 8 票，占比 22.86%。最终，方案一大比分胜出，**方案一 为 MOSN 最终 Logo **。感谢大家参与社区投票～
+MOSN 的 Logo 升级，在进过社区投票后，在本期直播结束后截止。截止 2020 年 3 月 26 日 20:00，有效票数 35 票。方案一 25 票，占比 71.43%；方案二 2 票，占比 5.71%；方案三 8 票，占比 22.86%。最终，方案一大比分胜出，**方案一 为 MOSN 最终 Logo**。感谢大家参与社区投票～
 
 ![MOSN logo](https://cdn.nlark.com/yuque/0/2020/png/226702/1585209248937-7adc6883-27ef-4f59-acce-20183b5a0407.png)
 
-恭喜以下社区同学，你们投票与最终结果一致～Github ID： [@CodingSinger](https://github.com/CodingSinger) [@trainyao](https://github.com/trainyao) [@JasonRD](https://github.com/JasonRD) [@taoyuanyuan](https://github.com/taoyuanyuan) [@wangfakang](https://github.com/wangfakang) [@ujjboy](https://github.com/ujjboy) [@InfoHunter](https://github.com/InfoHunter) [@Tony-Hangzhou](https://github.com/Tony-Hangzhou) [@GLYASAI](https://github.com/GLYASAI) [@carolove](https://github.com/carolove) [@tanjunchen ](https://github.com/tanjunchen)[@bruce-sha](https://github.com/bruce-sha) [@hb-chen](https://github.com/hb-chen) [@luxious](https://github.com/luxious) [@echooymxq](https://github.com/echooymxq) [@qunqiang](https://github.com/qunqiang) [@f2h2h1](https://github.com/f2h2h1) [@sunny0826](https://github.com/sunny0826) [@token01](https://github.com/token01) [@Ayi- ](https://github.com/Ayi-)[@cytyikai](https://github.com/cytyikai) [@fanyanming2016](https://github.com/fanyanming2016) [@inkinworld](https://github.com/inkinworld) [@dllen](https://github.com/dllen) [@meua](https://github.com/meua)
+恭喜以下社区同学，你们投票与最终结果一致～Github ID： [@CodingSinger](https://github.com/CodingSinger) [@trainyao](https://github.com/trainyao) [@JasonRD](https://github.com/JasonRD) [@taoyuanyuan](https://github.com/taoyuanyuan) [@wangfakang](https://github.com/wangfakang) [@ujjboy](https://github.com/ujjboy) [@InfoHunter](https://github.com/InfoHunter) [@Tony-Hangzhou](https://github.com/Tony-Hangzhou) [@GLYASAI](https://github.com/GLYASAI) [@carolove](https://github.com/carolove) [@tanjunchen](https://github.com/tanjunchen)[@bruce-sha](https://github.com/bruce-sha) [@hb-chen](https://github.com/hb-chen) [@luxious](https://github.com/luxious) [@echooymxq](https://github.com/echooymxq) [@qunqiang](https://github.com/qunqiang) [@f2h2h1](https://github.com/f2h2h1) [@sunny0826](https://github.com/sunny0826) [@token01](https://github.com/token01) [@Ayi-](https://github.com/Ayi-)[@cytyikai](https://github.com/cytyikai) [@fanyanming2016](https://github.com/fanyanming2016) [@inkinworld](https://github.com/inkinworld) [@dllen](https://github.com/dllen) [@meua](https://github.com/meua)
 
 具体 issue 地址：[https://github.com/mosn/community/issues/2](https://github.com/mosn/community/issues/2)

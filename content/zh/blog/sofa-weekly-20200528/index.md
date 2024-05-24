@@ -27,11 +27,12 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 1、@非余 提问：
 
 > 对于 Kata 我有些地方还是不太理解，我现在说说我的理解，麻烦你看对不 对，我的理解是 Kata 有两个缓存：
+>
 > 1. virtiofs 需要一个缓存。virtiofsd 和 guest 交互需要缓存做文件系统 buffer ，这个缓存的对应 qemu 的参数就是 memory-backend-file 。（这个缓存和 vhost-user 使用的 vring 是不是同一个？每一个 vm
 > 有自己的缓存空间 ） 在 Kata 配置文件对应的是 default_memory。缓存策略是 virtio_fs_cache。
 > 2. dax 缓存，对应的参数是 virtio_fs_cache_size，没有缓存策略控制。
 
-A：1、是的；2、dax的缓存控制是依靠guest的文件系统语义实现的。
+A：1、是的；2、dax 的缓存控制是依靠 guest 的文件系统语义实现的。
 
 SOFAStack：[https://github.com/sofastack](https://github.com/sofastack)
 
@@ -46,7 +47,7 @@ SOFAStack：[https://github.com/sofastack](https://github.com/sofastack)
 
 3、@jueming 提问：
 
-> 请问一下 sofa-rpc和 Dubbo 区别在哪呢，是不是可以无缝接入 mosn sidecar？
+> 请问一下 sofa-rpc 和 Dubbo 区别在哪呢，是不是可以无缝接入 mosn sidecar？
 
 A: 核心差别目前主要是在协议上吧，协议的可扩展性双方都有，SOFARPC 的 Bolt 协议是基于最早 HSF 协议的一些痛点做了改良设计，整个协议的请求头是能包含更多信息，比如在 MOSN 里支持 Bolt 协议，整个请求在 MOSN 内只解析 header 就可以拿到足够信息做路由，header 的解析也是类似简单 kv 的方式，Dubbo 使用的协议在 Mosn 或者 Envoy 里需要做 Hessian 反序列化才能拿到足够的信息，性能损耗会稍微大一点，其他方面的扩展性上机制略有不同，但是都有比较强的扩展能力。
 
@@ -62,14 +63,13 @@ A：因为是 begin 时的异常，所以没有 xid，begin 成功了才有 Comm
 
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
-
 5、@贾云森 提问
 
 > 常见的就是并没有对 Select 语句进行 forupdate,如果你不开启 forupdate,Seata 默认是遇到并发性竞争锁并不会去尝试重试,导致拿不到 lock 当前事务进行回滚.不影响一致性,如果你想没 forupdate
-> 也开启竞争锁client.rm.lock.retryPolicyBranchRollbackOnConflict 设置为
-> false（有死锁风险）。 请问是参数开启会出现死锁风险，还是自己手动添加 forupdate ，也会出现死锁风险呢？
+也开启竞争锁 client.rm.lock.retryPolicyBranchRollbackOnConflict 设置为
+false（有死锁风险）。 请问是参数开启会出现死锁风险，还是自己手动添加 forupdate ，也会出现死锁风险呢？
 
-A：不加for update，也会竞争锁。但是因为可能存在二阶段需要回滚的事务，所以retryPolicyBranchRollbackOnConflict 为 true 的时候，优先会给需要回滚的事务进行回滚，所以需要放弃锁，这是 at 模式的一个缺陷。因为 at 就是 2 个锁，1 先获取数据库本地锁，2 获取全局，此事后如果获取全局锁后会释放本地锁，造成了死锁。所以 at 上出现 get global lock fail 是正常的，自己应该在业务上做好重试，当一个全局事务因为获取锁失败的时候，应该重新完整的发起，所谓的完整应该是从 globaltransational 的 tm 端重新发起。
+A：不加 for update，也会竞争锁。但是因为可能存在二阶段需要回滚的事务，所以 retryPolicyBranchRollbackOnConflict 为 true 的时候，优先会给需要回滚的事务进行回滚，所以需要放弃锁，这是 at 模式的一个缺陷。因为 at 就是 2 个锁，1 先获取数据库本地锁，2 获取全局，此事后如果获取全局锁后会释放本地锁，造成了死锁。所以 at 上出现 get global lock fail 是正常的，自己应该在业务上做好重试，当一个全局事务因为获取锁失败的时候，应该重新完整的发起，所谓的完整应该是从 globaltransational 的 tm 端重新发起。
 
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
@@ -93,5 +93,3 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 详细参考：
 [https://github.com/sofastack/sofa-rpc/releases/tag/v5.7.8](https://github.com/sofastack/sofa-rpc/releases/tag/v5.7.8)
-
-

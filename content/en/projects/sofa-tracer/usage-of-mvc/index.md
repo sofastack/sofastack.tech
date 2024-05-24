@@ -59,7 +59,7 @@ public class SampleRestController {
 
 Start Current SOFABoot Application. You will see the log about startup in the console:
 
-```
+```plain
 2018-05-11 11:55:11.932  INFO 66490 --- [ost-startStop-1] o.s.b.w.servlet.FilterRegistrationBean   : Mapping filter: 'SpringMvcOpenTracingFilter' to urls: [/*]
 2018-05-11 11:55:13.961  INFO 66490 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
 2018-05-11 11:55:13.970  INFO 66490 --- [           main] c.a.s.t.e.springmvc.DemoApplication      : Started DemoApplication in 8.361 seconds (JVM running for 9.34)
@@ -69,9 +69,9 @@ You can access the REST service by visiting [http://localhost:8080/springmvc](ht
 
 ```json
 {
-	content: "Hello, SOFATracer SpringMVC DEMO!",
-	id: 1,
-	success: true
+ content: "Hello, SOFATracer SpringMVC DEMO!",
+ id: 1,
+ success: true
 }
 ```
 
@@ -79,7 +79,7 @@ You can access the REST service by visiting [http://localhost:8080/springmvc](ht
 
 In the `application.properties`, the log printing directory we configured is `./logs`, which is the root directory of the current application (we can configure it based on actual situation). In the root directory, you can see log files in the structure similar to the followings:
 
-```
+```plain
 ./logs
 ├── spring.log
 └── tracelog

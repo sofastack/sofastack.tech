@@ -1,9 +1,9 @@
 
 ---
+
 title: "安装指南"
 aliases: "/sofa-mesh/docs/pilot-setup-zookeeper-installation"
 ---
-
 
 在非 Kubernetes 环境下使用 Istio 需要达成以下的关键任务：
 

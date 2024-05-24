@@ -1,9 +1,9 @@
 
 ---
+
 title: "H2C"
 aliases: "/sofa-rpc/docs/H2c"
 ---
-
 
 ## H2C protocol
 

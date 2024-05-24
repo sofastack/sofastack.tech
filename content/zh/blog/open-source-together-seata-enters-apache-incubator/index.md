@@ -10,7 +10,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*PH0mSqHeR_IAAAAAA
 
 北京时间 2023 年 10 月 29 日，分布式事务开源项目 Seata 通过 Apache 基金会的投票决议，以全票通过的优秀表现正式成为 Apache 孵化器项目！
 
-根据 Apache基金会邮件列表显示，包含 13 个约束性投票（binding votes）和 6 个无约束性投票（non-binding votes）的投票全部持赞同意见，无弃权票和反对票，投票顺利通过。
+根据 Apache 基金会邮件列表显示，包含 13 个约束性投票（binding votes）和 6 个无约束性投票（non-binding votes）的投票全部持赞同意见，无弃权票和反对票，投票顺利通过。
 
 “Welcome Seata to the ASF incubator.”
 
@@ -160,7 +160,7 @@ Seata 作为一个强大而稳定的开源分布式事务解决方案，为广�
 
 为促进分布式事务技术的普及和实践，增进 Apache Seata（incubating）使用者的交流与学习，我们将定期邀请业内资深的技术专家，分享实战经验。
 
-欢迎订阅 dev-subscribe@seata.apache.org 邮件组，关注 Apache Seata（incubating）社区技术发展。
+欢迎订阅 <dev-subscribe@seata.apache.org> 邮件组，关注 Apache Seata（incubating）社区技术发展。
 
 欢迎持续关注 Seata！
 

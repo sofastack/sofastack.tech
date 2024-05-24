@@ -49,6 +49,5 @@ HikariCP | [doc link](../log-format-datasource/) | 2.2.0
 HttpClient | [doc link](../log-format-datasource/) | 2.2.0
 OkHttp | [doc link](../log-format-okhttp/) | 2.3.2
 Dubbo | [doc link](../log-format-dubbo/) | 2.4.0
-Redis | TODO | 
-MQ | TODO | 
-
+Redis | TODO |
+MQ | TODO |

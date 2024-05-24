@@ -28,9 +28,9 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **@潘麒安** 提问：
 
-> 请教下 session-server 报这个错，是需要扩更多的 session 么，但是 session进程本身 CPU 和内存占用不高。
+> 请教下 session-server 报这个错，是需要扩更多的 session 么，但是 session 进程本身 CPU 和内存占用不高。
 > ![](https://cdn.nlark.com/yuque/0/2021/png/12405317/1611911810538-0a3d61c9-11fc-4398-9dbe-b1d1033e79d8.png)
-A：看错误是把 session 发向 data 的处理队列打满了，可以排查一下，检查一下使用的版本，data 的资源使用和common-error.log 下的错误日志。
+A：看错误是把 session 发向 data 的处理队列打满了，可以排查一下，检查一下使用的版本，data 的资源使用和 common-error.log 下的错误日志。
 
 SOFARegistry：[https://github.com/sofastack/sofa-registry](https://github.com/sofastack/sofa-registry)
 

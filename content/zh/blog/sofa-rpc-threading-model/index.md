@@ -51,7 +51,7 @@ I/O 多路复用(I/O multiplexing)会用到 select 或者 poll 或者 epoll 函�
 
 信号驱动 I/O(signal-driver I/O)使用信号，让内核在描述符就绪时发送 SIGIO 信号通知我们进行处理，这时候我们就可以开始真正的读了。
 
-###  异步 I/O
+### 异步 I/O
 
 ![异步 I/O](https://cdn.nlark.com/yuque/0/2018/png/156121/1536484800026-c94d6d86-9249-4be3-8335-20c31cf5e5d8.png)
 
@@ -70,15 +70,16 @@ I/O 多路复用(I/O multiplexing)会用到 select 或者 poll 或者 epoll 函�
 在了解了内核层面上这几个线程模型之后，我们要给大家介绍下 JAVA BIO 和 JAVA NIO。
 
 ### JAVA BIO
+
 首先我们给大家看一个直接使用  JAVA BIO 写得一个服务端。
 
 ![JAVA BIO 写的一个服务端](https://cdn.nlark.com/yuque/0/2018/png/156121/1536722399340-1e5efe3b-33a2-48f0-9242-7f255d9b06c0.png)
 
-传统的BIO里面socket.read()，如果TCP RecvBuffer里没有数据，调用会一直阻塞，直到收到数据，返回读到的数据。
+传统的 BIO 里面 socket.read()，如果 TCP RecvBuffer 里没有数据，调用会一直阻塞，直到收到数据，返回读到的数据。
 
 ### JAVA NIO
 
-对于 NIO，如果 TCP 的 buffer 中有数据，就把数据从网卡读到内存，并且返回给用户；反之则直接返回0，永远不会阻塞。下面是一段比较典型的 NIO 的处理代码。
+对于 NIO，如果 TCP 的 buffer 中有数据，就把数据从网卡读到内存，并且返回给用户；反之则直接返回 0，永远不会阻塞。下面是一段比较典型的 NIO 的处理代码。
 
 ![JAVA NIO](https://cdn.nlark.com/yuque/0/2018/png/156121/1536722387417-731a3788-c013-4476-914f-e826c152176f.png)
 
@@ -112,19 +113,19 @@ I/O 多路复用(I/O multiplexing)会用到 select 或者 poll 或者 epoll 函�
 
 而一个标准的操作流程则是：
 
-- 步骤1：等待事件到来（Reactor 负责）。
+- 步骤 1：等待事件到来（Reactor 负责）。
 
-- 步骤2：将读就绪事件分发给用户定义的处理器（Reactor 负责）。
+- 步骤 2：将读就绪事件分发给用户定义的处理器（Reactor 负责）。
 
-- 步骤3：读数据（用户处理器负责）。
+- 步骤 3：读数据（用户处理器负责）。
 
-- 步骤4：处理数据（用户处理器负责）。
+- 步骤 4：处理数据（用户处理器负责）。
 
 在这个标准之下，Reactor 有几种演进模式可以选择。注意 Reactor 重点描述的是 IO 部分的操作，包括两部分，连接建立和 IO 读写。
 
 ### 单线程模型
 
-Reactor 单线程模型指的是所有的 IO 操作都在同一个NIO 线程上面完成，NIO 线程的职责如下：
+Reactor 单线程模型指的是所有的 IO 操作都在同一个 NIO 线程上面完成，NIO 线程的职责如下：
 
 1. 作为 NIO 服务端，接收客户端的 TCP 连接；
 
@@ -138,7 +139,7 @@ Reactor 单线程模型指的是所有的 IO 操作都在同一个NIO 线程上�
 
 这是最基本的单 Reactor 单线程模型。其中 Reactor 线程，负责多路分离套接字，有新连接到来触发 connect 事件之后，交由 Acceptor 进行处理，有 IO 读写事件之后交给 hanlder 处理。
 
-Acceptor 主要任务就是构建 handler，在获取到和 client 相关的 SocketChannel 之后 ，绑定到相应的 handler上，对应的 SocketChannel 有读写事件之后，基于 reactor 分发，hanlder 就可以处理了（所有的 IO 事件都绑定到 selector 上，由 Reactor 分发）。
+Acceptor 主要任务就是构建 handler，在获取到和 client 相关的 SocketChannel 之后 ，绑定到相应的 handler 上，对应的 SocketChannel 有读写事件之后，基于 reactor 分发，hanlder 就可以处理了（所有的 IO 事件都绑定到 selector 上，由 Reactor 分发）。
 
 该模型 适用于处理器链中业务处理组件能快速完成的场景。不过，这种单线程模型不能充分利用多核资源，所以实际使用的不多。
 
@@ -160,7 +161,7 @@ Reactor 多线程模型的特点：
 
 Reactor 主从多线程模型的特点：
 
-服务端用于接收客户端连接的不再是个1个单独的 NIO 线程，而是一个独立的 NIO 线程池。
+服务端用于接收客户端连接的不再是个 1 个单独的 NIO 线程，而是一个独立的 NIO 线程池。
 
 ![主从多线程模型](https://cdn.nlark.com/yuque/0/2018/png/156121/1536532679974-bccc45b0-60da-4213-b197-9b3fc9b6a362.png)
 
@@ -168,7 +169,7 @@ Reactor 主从多线程模型的特点：
 
 1. MainReactor 将连接事件分发给 Acceptor
 
-2. Acceptor 接收到客户端 TCP 连接请求处理完成后(可能包含接入认证，黑名单等)，将新创建的 SocketChannel 注册到 IO 线程池(sub reactor线程池)的某个 IO 线程上，Acceptor 线程池仅仅只用于客户端的登陆、握手和安全认证。
+2. Acceptor 接收到客户端 TCP 连接请求处理完成后(可能包含接入认证，黑名单等)，将新创建的 SocketChannel 注册到 IO 线程池(sub reactor 线程池)的某个 IO 线程上，Acceptor 线程池仅仅只用于客户端的登陆、握手和安全认证。
 
 3. SubReactor 负责 SocketChannel 的读写和编解码工作。其 IO 线程负责后续的 IO 操作。
 
@@ -195,11 +196,11 @@ Reactor 主从多线程模型的特点：
      - 序列化请求/反序列化响应：发起请求的线程，如果是 callback，是新的一个线程。
      - 心跳：Netty-Worker 线程
 - 服务端
-     - 端口：Netty-Boss 线程
-     - 长连接：Netty-Worker 线程
-     - 心跳：Netty-Worker 线程
-     - 反序列化请求Header：Netty-Worker 线程
-     - 反序列化请求Body/序列化响应：SOFARPC 业务线程池
+  - 端口：Netty-Boss 线程
+  - 长连接：Netty-Worker 线程
+  - 心跳：Netty-Worker 线程
+  - 反序列化请求 Header：Netty-Worker 线程
+  - 反序列化请求 Body/序列化响应：SOFARPC 业务线程池
 
 ### 自定义业务线程池
 
@@ -242,6 +243,6 @@ UserThreadPoolManager 注册线程池。
 
 ## 总结
 
-通过这篇文章，我们介绍了几种常见的 IO 模型，介绍了 JAVA 中的 IO和 NIO，同时也介绍了 IO 模型在工程上实践不错的 Reactor 模型。
+通过这篇文章，我们介绍了几种常见的 IO 模型，介绍了 JAVA 中的 IO 和 NIO，同时也介绍了 IO 模型在工程上实践不错的 Reactor 模型。
 
 最后，介绍了 SOFARPC 的线程模型，希望大家对整个线程模型有一定的理解，如果对 SOFARPC 线程模型和自定义线程池有疑问的，也欢迎留言与我们讨论。

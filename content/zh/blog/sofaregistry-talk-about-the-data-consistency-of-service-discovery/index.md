@@ -136,7 +136,7 @@ Etcd 默认的读数据流程是 Linearizability Read，那么怎么样才能读
 - 这是 Raft 论文中提到过的一种优化方案，具体来说：
 
 - Leader 将当前自己 Log 的 Commit Index 记录到一个 local 变量 Read Index 里面；
- 
+
 - 向其它节点发起一次 Heartbeat，如果大多数节点返回了对应的 Heartbeat Response，那么 Leader 就能够确定现在自己仍然是 Leader；
 
 - Leader 等待自己的状态机执行，直到 Apply Index 超过了 Read Index，这样就能够安全的提供 Linearizable Read 了；
@@ -472,7 +472,7 @@ throw new DistroException(String.format("Get data from %s failed.", key.getTarge
 
 - Nacos-A 发送 CheckSum 请求时，将自己作为 Leader 的 A_SERVICE_XXX 分别计算 md5code；
 
-- md5code 生成规则：ip.getIp() + ":" + ip.getPort() + "_" + ip.getWeight() + "_" + ip.isHealthy() + "_" + ip.getClusterName()；
+- md5code 生成规则：ip.getIp() + ":" + ip.getPort() + "*" + ip.getWeight() + "*" + ip.isHealthy() + "_" + ip.getClusterName()；
 
 - 在 Nacos-B 中计算出有差异的 A_SERVICE_XXX，对于需要 Update 的从 Nacos-A 中进行全量数据拉取；对于需要 Remove 的从内存中删除。
 
@@ -480,7 +480,7 @@ throw new DistroException(String.format("Get data from %s failed.", key.getTarge
 
 - 区别于 v1 版本的实现，v2 中以 ClientId 维度进行 CheckSum；
 
-- Nacos-1 对于本节点的所有 ClientId，每个 ClientId都包装成一个 Task 任务，使用 gRPC 发送给所有的 Distro 节点；
+- Nacos-1 对于本节点的所有 ClientId，每个 ClientId 都包装成一个 Task 任务，使用 gRPC 发送给所有的 Distro 节点；
 
 ```Java
 @Overridepublic List<DistroData> getVerifyData() { 
@@ -512,7 +512,7 @@ return result;
 
 **1. V1 Distro 最终数据一致性：**
 
-- 计算每个 Service 的 CheckSum 时，使用的是 ip.getIp() + ":" + ip.getPort() + "_" + ip.getWeight() + "_" + ip.isHealthy() + "_" + ip.getClusterName() 进行 CheckSum 计算；
+- 计算每个 Service 的 CheckSum 时，使用的是 ip.getIp() + ":" + ip.getPort() + "*" + ip.getWeight() + "*" + ip.isHealthy() + "_" + ip.getClusterName() 进行 CheckSum 计算；
 
 - 对于需要更新的数据，向原节点全量拉取 Service 的数据；可以考虑优化成差量拉取。
 
@@ -526,7 +526,7 @@ return result;
 
 1. Client 发起服务注册数据 Publisher 给 SessionServer，SessionServer 接收成功；
 
-2. SessionServer 接收到 Publisher 数据后，首先写入内存  *(Client 发送过来的 Publisher 数据，SessionServer 都会存储到内存，用于后续可以跟 DataServer 做定期检查)* ，然后将 Publisher 数据发送给 DataServer，DataServer收到 Session 的 Pub 之后，修改 Datum 的版本号；
+2. SessionServer 接收到 Publisher 数据后，首先写入内存  *(Client 发送过来的 Publisher 数据，SessionServer 都会存储到内存，用于后续可以跟 DataServer 做定期检查)* ，然后将 Publisher 数据发送给 DataServer，DataServer 收到 Session 的 Pub 之后，修改 Datum 的版本号；
 
 3. DataServer 先对 Notify 的请求做 merge 操作 *（等待 1000ms）* ，然后将数据的变更事件通知给所有 SessionServer *(事件内容是 ID 和版本号信息和版本号信息：<dataInfoId> 和 <version>)* ；
 
@@ -564,7 +564,7 @@ return result;
 
 4. 当 Data-B2 中收到本机房 Session 的 Pub、ubPub、Client_off 请求后，完成本机房 Datum 数据处理；然后将 Datum.Version 通知给本机房 Session，同时将具体的 Pub、ubPub、Client_off 请求发送给 Data-A1；
 
-5. Data-A1定时将 SlotId=1 的摘要数据发送给 Data-B2，将 SlotId=2 的摘要数据发送给 Data-B3，返回有差异的 DataInfoId 列表；再将差异 DataInfoId 进行性细的 Pub 摘要对比，确保数据最终一致；
+5. Data-A1 定时将 SlotId=1 的摘要数据发送给 Data-B2，将 SlotId=2 的摘要数据发送给 Data-B3，返回有差异的 DataInfoId 列表；再将差异 DataInfoId 进行性细的 Pub 摘要对比，确保数据最终一致；
 
 6. Data-A1 将变化的 DataInfoId 以及 Datum Version 通知给本集群所有的 Session，将 DataCenterB 的数据变化推送给 DataCenterA 的所有 Client。
 
@@ -580,7 +580,7 @@ return result;
 
 *[https://github.com/sofastack/sofa-registry/](https://github.com/sofastack/sofa-registry/)*
 
-** 本周推荐阅读**
+**本周推荐阅读**
 
 [SOFARegistry | 大规模集群优化实践](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247517005&idx=1&sn=685cea90982f8ecec5ffc56880d63175&chksm=faa36c97cdd4e58163830407bd827838f6ecb0a5b0e22130b507141fe9a24b2e645666fc0571&scene=21)
 

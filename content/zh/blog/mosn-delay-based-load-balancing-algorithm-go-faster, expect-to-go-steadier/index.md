@@ -27,7 +27,7 @@ MOSN 项目 Committer
 
 ### 什么是负载均衡
 
-Wikipedia中 [Load Balancing (Computing)](https://en.wikipedia.org/wiki/Load_balancing_(computing)) 词条是这样介绍负载均衡的：
+Wikipedia 中 [Load Balancing (Computing)](https://en.wikipedia.org/wiki/Load_balancing_(computing)) 词条是这样介绍负载均衡的：
 
 > 负载均衡是将一组任务分配到一组资源（计算单元）上的过程，目的是使它们的整体处理更有效率。负载均衡可以优化响应时间，避免负载不均匀导致一些计算节点过载而其他计算节点处于空闲状态
 

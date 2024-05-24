@@ -1,16 +1,18 @@
 
 ---
+
 title: "SOFABoot 方式快速入门"
 aliases: "/sofa-rpc/docs/Getting-Started-with-SOFA-Boot"
 ---
+
 本文档将演示了如何在 SOFABoot 环境下应用 SOFARPC 进行服务的发布和引用。
 您可以直接在工程下找到本文档的[示例代码](https://github.com/sofastack-guides/sofa-rpc-guides)。注意，示例代码中需要本地安装 zookeeper 环境，如果没有安装。需要将`application.properties`中的`com.alipay.sofa.rpc.registry.address` 配置注释掉，走本地文件注册中心的方式。
 
 ## 创建工程
 
 1. 环境准备：SOFABoot 需要 JDK7 或者 JDK8 ，需要采用 Apache Maven 2.2.5 或者以上的版本来编译。
-2. 工程构建：SOFABoot 构建在 Spring Boot 之上。因此可以使用 [Spring&nbsp;Boot&nbsp;的工程生成工具](http://start.spring.io/)来生成一个标准的Spring Boot 工程。
-3. 引入 SOFABoot 环境：生成的 Spring Boot 标准工程直接使用的 Spring Boot 的 parent 依赖，改为 SOFABoot 提供的 parent 依赖，该parent 提供并管控了多种 SOFABoot 提供的 starter。
+2. 工程构建：SOFABoot 构建在 Spring Boot 之上。因此可以使用 [Spring&nbsp;Boot&nbsp;的工程生成工具](http://start.spring.io/)来生成一个标准的 Spring Boot 工程。
+3. 引入 SOFABoot 环境：生成的 Spring Boot 标准工程直接使用的 Spring Boot 的 parent 依赖，改为 SOFABoot 提供的 parent 依赖，该 parent 提供并管控了多种 SOFABoot 提供的 starter。
 
 ```xml
 <parent>

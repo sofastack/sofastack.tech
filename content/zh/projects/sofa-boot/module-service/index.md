@@ -1,9 +1,9 @@
 
 ---
+
 title: "JVM 服务发布与引用"
 aliases: "/sofa-boot/docs/Module-Service"
 ---
-
 
 SOFABoot 提供三种方式给开发人员发布和引用 JVM 服务
 
@@ -25,7 +25,7 @@ SOFABoot 提供三种方式给开发人员发布和引用 JVM 服务
 
 ```xml
 <sofa:service interface="com.alipay.sofa.runtime.test.service.SampleService" ref="sampleService">
-	<sofa:binding.jvm/>
+ <sofa:binding.jvm/>
 </sofa:service>
 ```
 
@@ -33,11 +33,11 @@ SOFABoot 提供三种方式给开发人员发布和引用 JVM 服务
 
 #### 服务引用
 
-使用 SOFA 提供的 Spring 扩展标签引用服务: 
+使用 SOFA 提供的 Spring 扩展标签引用服务:
 
 ```xml
 <sofa:reference interface="com.alipay.sofa.runtime.test.service.SampleService" id="sampleServiceRef">
-	<sofa:binding.jvm/>
+ <sofa:binding.jvm/>
 </sofa:reference>
 ```
 
@@ -96,6 +96,7 @@ public class SampleServiceRef {
 ```
 
 使用 @SofaService 注解发布服务时，需要在实现类上打上 @SofaService 注解；在 Spring Boot 使用 Bean Method 创建 Bean 时，会导致 @Bean 和 @SofaService 分散在两处，而且无法对同一个实现类使用不同的 unique id。因此自 SOFABoot v2.6.0 及 v3.1.0 版本起，支持 @SofaService 作用在 Bean Method 之上，例如：
+
 ```java
 @Configuration
 public class SampleSofaServiceConfiguration {
@@ -108,6 +109,7 @@ public class SampleSofaServiceConfiguration {
 ```
 
 同样为了方便在 Spring Boot Bean Method 使用注解 @SofaReference 引用服务，自 SOFABoot v2.6.0 及 v3.1.0 版本起，支持在 Bean Method 参数上使用 @SofaReference 注解引用 JVM 服务，例如：
+
 ```java
 @Configuration
 public class MultiSofaReferenceConfiguration {
@@ -147,9 +149,9 @@ serviceClient.service(serviceParam);
 
 上面的代码中
 
-1.  首先通过 clientFactory 获得 ServiceClient 对象
-2.  然后构造 ServiceParam 对象，ServiceParam 对象包含发布服务所需参数，通过 setInstance 方法来设置需要被发布成 JVM 服务的对象，setInterfaceType 来设置服务的接口
-3.  最后，调用 ServiceClient 的 service 方法，发布一个 JVM 服务
+1. 首先通过 clientFactory 获得 ServiceClient 对象
+2. 然后构造 ServiceParam 对象，ServiceParam 对象包含发布服务所需参数，通过 setInstance 方法来设置需要被发布成 JVM 服务的对象，setInterfaceType 来设置服务的接口
+3. 最后，调用 ServiceClient 的 service 方法，发布一个 JVM 服务
 
 通过编程 API 方式引用 JVM 服务的代码也是类似的：
 
@@ -164,7 +166,7 @@ SampleService proxy = referenceClient.reference(referenceParam);
 同样，引用一个 JVM 服务只需从 ClientFactory 中获取一个 ReferenceClient ，然后和发布一个服务类似，构造出一个 ReferenceParam，然后设置好服务的接口，最后调用 ReferenceClient 的 reference 方法即可。
 
 > **提示**
-> 
+>
 > 通过动态客户端创建的 Reference 对象是一个非常重的对象，请大家在使用的时候不要频繁创建，自行做好缓存，否则可能存在内存溢出的风险。
 
 除了实现 ClientFactoryAware 接口用于获取 ServiceClient 和 ReferenceClient 对象，还可以使用简便的注解 `@SofaClientFactory` 获取编程 API，例如
@@ -222,4 +224,4 @@ public class ClientBean {
 </sofa:reference>
 ```
 
-上面说的是在 XML 的方式中使用 uniqueId。当你用 Annotation 的方式发布 JVM 服务和引用的时候，可以通过设置 @SofaService 和 @SofaReference 的 uniqueId 属性来设置 uniqueId。当你用编程 API 的方式发布或者引用 JVM 服务的时候，可以通过 ServiceParam 和 ReferenceParam 的 setUniqueId 方法来设置 uniqueId。 
+上面说的是在 XML 的方式中使用 uniqueId。当你用 Annotation 的方式发布 JVM 服务和引用的时候，可以通过设置 @SofaService 和 @SofaReference 的 uniqueId 属性来设置 uniqueId。当你用编程 API 的方式发布或者引用 JVM 服务的时候，可以通过 ServiceParam 和 ReferenceParam 的 setUniqueId 方法来设置 uniqueId。

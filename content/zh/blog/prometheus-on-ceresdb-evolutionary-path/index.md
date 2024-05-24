@@ -75,13 +75,13 @@ sum(rate(write_duration_sum[5m])) / sum(rate(write_duration_count[5m])) 的执�
 
 按照 PromQL 中涉及到的分片数，可以将下推优化分为两类：单分片下推与多分片下推。
 
-### 单分片下推 
+### 单分片下推
 
 对于单分片来说，数据存在于一台机器中，所以只需把 Prometheus 中的函数在 datanode 层实现后，即可进行下推。这里重点介绍一下 subquery【1】 的下推支持，因为它的下推有别于一般函数，其他不了解其用法的读者可以参考 Subquery Support【2】。
 
 subquery 和 query_range【3】 接口（也称为区间查询）类似，主要有 start/end/step 三个参数，表示查询的区间以及数据的步长。对于 instant 查询来说，其 time 参数就是 subquery 中的 end ，没有什么争议，但是对于区间查询来说，它本身也有 start/end/step 这三个参数，怎么和 subquery 中的参数对应呢？
 
-假设有一个步长为 10s 、查询区间为 1h 的区间查询，查询语句是 
+假设有一个步长为 10s 、查询区间为 1h 的区间查询，查询语句是
 
 ![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Fp36R70RqbsAAAAAAAAAAAAAARQnAQ)
 
@@ -99,7 +99,7 @@ subquery 和 query_range【3】 接口（也称为区间查询）类似，主要
 
 需要 t=83, 88, 83, 98, 103 这五个时刻的点
 
-可以看到每一步都需要错开的点，但是如果忽略区间查询的步长，先计算 subquery ，之后再把 subquery 的结果作为 range vector 传给上一层，区间查询的每一步看到的点都是 t=80, 85, 90, 95, 100, 105…，这样就又和步长一致的逻辑相同了。此外，这么处理后，subquery 和其他的返回 range vector 的函数没有什么区别，在下推时，只需要把它封装为一个 call （即函数）节点来处理，只不过这个 call 节点没有具体的计算，只是重新根据步长来组织数据而已。
+可以看到每一步都需要错开的点，但是如果忽略区间查询的步长，先计算 subquery ，之后再把 subquery 的结果作为 range vector 传给上一层，区间查询的每一步看到的点都是 t=80, 85, 90, 95, 100, 105……，这样就又和步长一致的逻辑相同了。此外，这么处理后，subquery 和其他的返回 range vector 的函数没有什么区别，在下推时，只需要把它封装为一个 call （即函数）节点来处理，只不过这个 call 节点没有具体的计算，只是重新根据步长来组织数据而已。
 
 ```java
 call: avg_over_time step:3
@@ -111,7 +111,7 @@ call: avg_over_time step:3
 
 在上线该优化前，带有 subquery 的查询无法下推，这样不仅耗时长，而且还会生产大量中间结果，内存波动较大；上线该功能后，不仅有利于内存控制，查询耗时基本也都提高了 2-5 倍。
 
-### 多分片下推 
+### 多分片下推
 
 对于一个分布式系统来说，真正的挑战在于如何解决涉及多个分片的查询性能。在 CeresDB 中，基本的分片方式是按照 metric 名称，对于那些量大的指标，采用 metric + tags 的方式来做路由，其中的 tags 由用户指定。
 

@@ -1,9 +1,9 @@
 
 ---
+
 title: "参与贡献"
 aliases: "/sofa-boot/docs/sofa-ark-contribution"
 ---
-
 
 > 可以先去 [发展路线](../sofa-ark-roadmap) 内了解下开发任务及未来规划。
 
@@ -11,19 +11,18 @@ aliases: "/sofa-boot/docs/sofa-ark-contribution"
 
 贡献代码前需要先了解 git 工具的使用和 GitHub 网站的使用。
 
-* git 工具用法可以查看 [git官方书籍](http://git-scm.com/book/zh/v1)，需要阅读前几章来熟悉。
-* git 协作流程可以查看这篇文章 [Git协作流程](http://www.ruanyifeng.com/blog/2015/12/git-workflow.html)。
+* git 工具用法可以查看 [git 官方书籍](http://git-scm.com/book/zh/v1)，需要阅读前几章来熟悉。
+* git 协作流程可以查看这篇文章 [Git 协作流程](http://www.ruanyifeng.com/blog/2015/12/git-workflow.html)。
 
 ## GitHub 贡献代码流程
 
-### 提交issue
+### 提交 issue
 
 不论您是修复 SOFAArk 的 bug 还是新增 SOFAArk 的功能，在您提交代码之前，在 SOFAArk 的 [GitHub 地址](https://github.com/sofastack/sofa-ark)上提交一个 issue，描述您要修复的问题或者要增加的功能。这么做有几个好处:
 
 * 不会与其它开发者或是他们对这个项目的计划发生冲突，产生重复工作.
-* SOFAArk 的维护人员会对您提的bug或者新增功能进行相关讨论，确定该修改是不是必要，有没有提升的空间或更好的办法。
-* 在达成一致后再开发,并提交代码，减少双方沟通成本，也减少pull request被拒绝的情况。
-
+* SOFAArk 的维护人员会对您提的 bug 或者新增功能进行相关讨论，确定该修改是不是必要，有没有提升的空间或更好的办法。
+* 在达成一致后再开发,并提交代码，减少双方沟通成本，也减少 pull request 被拒绝的情况。
 
 ### 获取源码
 
@@ -34,34 +33,33 @@ aliases: "/sofa-boot/docs/sofa-ark-contribution"
 SOFAArk 所有修改都在分支上进行，修改完后提交 `pull request`， 在 Code Review 后由项目维护人员 Merge 到主干。  
 因此，在获取源码步骤介绍后，您需要：
 
-* 下载代码到本地,这一步您可以选择git/https方式.
+* 下载代码到本地,这一步您可以选择 git/https 方式.
 
-
-  ```
+  ```plain
   git clone https://github.com/您的账号名/sofa-ark.git
   ```
 
 * 拉分支准备修改代码
 
-  ```
+  ```plain
   git branch add_xxx_feature
   ```
 
   执行完上述命令后，您的代码仓库就切换到相应分支了。执行如下命令可以看到您当前分支：
 
-  ```
+  ```plain
   git branch -a
   ```
 
   如果您想切换回主干，执行下面命令:
 
-  ```
+  ```plain
   git checkout -b master
   ```
 
   如果您想切换回分支，执行下面命令：
 
-  ```
+  ```plain
   git checkout -b "branchName"
   ```
 
@@ -84,11 +82,12 @@ SOFAArk 所有修改都在分支上进行，修改完后提交 `pull request`，
 * 应该提供新的单元测试来证明以前的代码存在 bug，而新的代码已经解决了这些 bug
 
   您可以用如下命令运行所有测试
-  ```
+
+  ```plain
   mvn clean test
   ```
 
-  也可以通过IDE来辅助运行。
+  也可以通过 IDE 来辅助运行。
 
 #### 其它注意事项
 
@@ -99,7 +98,7 @@ SOFAArk 所有修改都在分支上进行，修改完后提交 `pull request`，
 
 修改完代码后，执行如下命令提交所有修改到本地:
 
-  ```
+  ```plain
   git commit -am '添加xx功能'
   ```
 
@@ -107,7 +106,7 @@ SOFAArk 所有修改都在分支上进行，修改完后提交 `pull request`，
 
 在代码提交到本地后，就是与远程仓库同步代码了。执行如下命令提交本地修改到 github 上：
 
-```
+```plain
 git push origin "branchname"
 ```
 

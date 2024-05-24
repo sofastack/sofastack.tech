@@ -26,7 +26,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1571295410250-183069b1-613
 
 这里我们着重分享蚂蚁金服正在实践的几项云原生安全技术，包括云原生网络安全 Service Mesh，安全容器，以及机密计算。
 
-## 云原生网络安全：SOFAMesh 
+## 云原生网络安全：SOFAMesh
 
 当前，云原生里除了容器之外第二大技术其实就是 Service Mesh，从蚂蚁的实践来看，其实它对金融安全有非常高的帮助。它至少可以做到三点：
 
@@ -40,13 +40,13 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1571295410250-183069b1-613
 
 蚂蚁金服在对 Service Mesh 的探索中，推出了自己用 Golang 打造的 SOFAMesh，并且已经对外开源，希望和社区一起努力，让 Service Mesh 的理念和技术更加普及。
 
-SOFAMesh 是基于 Istio 改进和扩展而来的 Service Mesh 大规模落地实践方案。在继承 Istio 强大功能和丰富特性的基础上，为满足大规模部署下的性能要求以及应对落地实践中的实际情况，所做的改进包括采用 Golang 编写的 SOFAMosn 取代  Envoy，极大降低了 Mesh 本身的开发难度，并做了一些创新性工作，例如合并Mixer到数据平面以解决性能瓶颈，增强 Pilot 以实现更灵活的服务发现机制，增加对 SOFARPC、Dubbo 的支持，等等。
+SOFAMesh 是基于 Istio 改进和扩展而来的 Service Mesh 大规模落地实践方案。在继承 Istio 强大功能和丰富特性的基础上，为满足大规模部署下的性能要求以及应对落地实践中的实际情况，所做的改进包括采用 Golang 编写的 SOFAMosn 取代  Envoy，极大降低了 Mesh 本身的开发难度，并做了一些创新性工作，例如合并 Mixer 到数据平面以解决性能瓶颈，增强 Pilot 以实现更灵活的服务发现机制，增加对 SOFARPC、Dubbo 的支持，等等。
 
 更多详情可查看 SOFAMesh 的 GitHub 主页：<https://github.com/sofastack/sofa-mesh>
 
-蚂蚁金服率先在生产环境中大规模落地 SOFAMesh，超过 10W+ 容器做到了 Mesh 化，平稳支撑了 618 大促，给我们带来了多协议支持、UDPA、平滑升级、安全等多方面的好处，并且对性能仅有轻微的影响，单跳 CPU 增加 5% 损耗，RT增加不到 0.2ms，甚至部分业务经过 Mesh 化改造将业务链路下沉，RT 反而下降 7%。
+蚂蚁金服率先在生产环境中大规模落地 SOFAMesh，超过 10W+ 容器做到了 Mesh 化，平稳支撑了 618 大促，给我们带来了多协议支持、UDPA、平滑升级、安全等多方面的好处，并且对性能仅有轻微的影响，单跳 CPU 增加 5% 损耗，RT 增加不到 0.2ms，甚至部分业务经过 Mesh 化改造将业务链路下沉，RT 反而下降 7%。
 
-## 安全容器：Kata Containers 
+## 安全容器：Kata Containers
 
 ![传统容器架构](https://cdn.nlark.com/yuque/0/2019/png/226702/1571121897038-b337be81-b59d-4915-9b34-848a3e55af1a.png)
 
@@ -75,7 +75,7 @@ Kata Containers 安全容器是 OpenStack 基金会的顶级开放基础设施�
 
 ![Enclave架构](https://cdn.nlark.com/yuque/0/2019/png/226702/1571122017001-856a861f-789d-4d83-a927-ae16b68ab782.png)
 
-Enclave架构
+Enclave 架构
 
 Enclave 是运行时的双向保护，比如说你的金融业务跑在 Enclave 上的时候，操作系统都看不到 Enclave 里的内存，同时会进行完整性检查，保证访问 Enclave 的代码不被替换。
 
@@ -91,7 +91,7 @@ SOFAEnclave 架构
 
 SOFAEnclave 由三个组件组成，第一个是 Occlum LibOS，另外一个是 SOFAst，以及 KubeTEE。Occlum 是蚂蚁和英特尔、清华主导开发的一个内存安全的多任务 Enclave 内核，把系统内核的功能通过 lib 的方式链接过去，通过这种方式给 Enclave 增加功能。同时我们也创新性的解决了在 Enclave 跑多进程的方式，让 Enclave 真正适配大型的应用。
 
-想详细了解 SOFAEnclave 的技术细节，可以参考这篇文章：《[SOFAEnclave：蚂蚁金服新一代可信编程环境，让机密计算为金融业务保驾护航102年](/blog/sofa-enclave-confidential-computing/)》
+想详细了解 SOFAEnclave 的技术细节，可以参考这篇文章：《[SOFAEnclave：蚂蚁金服新一代可信编程环境，让机密计算为金融业务保驾护航 102 年](/blog/sofa-enclave-confidential-computing/)》
 
 SOFAEnclave 开源组件 Occlum GitHub 主页：[https://github.com/occlum/occlum](https://github.com/occlum/occlum)
 
@@ -107,7 +107,7 @@ SOFAEnclave 开源组件 Occlum GitHub 主页：[https://github.com/occlum/occ
 
 [https://github.com/sofastack/sofa-mosn](https://github.com/sofastack/sofa-mosn)
 
-SOFAMosn(Modular Observable Smart Network)，是一款采用 GoLang 开发的 Service Mesh 数据平面代理，旨在为服务提供分布式、模块化、可观察、智能化的代理能力。SOFAMosn 通过 XDS API 与 SOFAMesh 集成，同时 SOFAMosn 可以作为独立的4、7层负载均衡使用，未来 SOFAMosn 将支持更多云原生场景，并支持 nginx 的核心转发功能。
+SOFAMosn(Modular Observable Smart Network)，是一款采用 GoLang 开发的 Service Mesh 数据平面代理，旨在为服务提供分布式、模块化、可观察、智能化的代理能力。SOFAMosn 通过 XDS API 与 SOFAMesh 集成，同时 SOFAMosn 可以作为独立的 4、7 层负载均衡使用，未来 SOFAMosn 将支持更多云原生场景，并支持 nginx 的核心转发功能。
 
 今年 618 蚂蚁金服已经完成核心系统上到 SOFAMosn 的验证工作，在马上来临的今年的双 11，阿里巴巴和蚂蚁金服将会在核心系统大规模上线 Service Mesh。
 

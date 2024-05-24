@@ -19,7 +19,6 @@ Provides the ability to count metrics by a time window. It is divided into two m
 
      This mode can be activated through [Client Configuration], and HTTP service is provided on port 19399.
 
-
 ### 2. Connect to Prometheus
 
 The data of SOFALookout can be shared with [Prometheus](https://prometheus.io/). In order to connect to Prometheus, you first need to add dependencies to your project:
@@ -50,7 +49,7 @@ scrape_configs:
 
 With the above configuration file, you can start Prometheus locally via Docker:
 
-```
+```plain
 docker run -d -p 9090:9090 -v $PWD/prometheus.yml:/etc/prometheus/prometheus.yml  --name prom prom/prometheus:master
 ```
 
@@ -69,4 +68,4 @@ In addition to Prometheus, SOFALookout can be integrated with the Actuator of Sp
 </dependency>
 ```
 
-Then, start and visit http://localhost:8080/metrics to see the data of events logged by the SOFALookout API.
+Then, start and visit <http://localhost:8080/metrics> to see the data of events logged by the SOFALookout API.

@@ -48,7 +48,7 @@ Sidecar: req=512M, limit=512M
 
 很快我们就发现了这种分配方案带来的问题，一方面部分流量比较高的应用的 MOSN 容器，出现了严重的内存不足甚至 OOM；另一方面注入进去的 Sidecar 容器额外向调度器申请了一部分内存资源，这部分资源脱离了业务的 quota 管控。
 
-因此，为了消除内存 OOM 风险和避免业务资源容量规划上的偏差，我们制定了新的“共享内存”策略。在这个策略下，Sidecar 的内存 request 被置为0，不再向调度器额外申请资源；同时 limit 被设置为应用的 1/4，保障 Sidecar 在正常运行的情况下，有充足的内存可用。为了确实达到“共享”的效果，蚂蚁金服 sigma 团队针对 kubelet 做了调整，使之在设置 Sidecar 容器 cgroups limit 为应用 1/4 的同时，保证整个 Pod 的 limit 没有额外增加（细节这里不展开）。
+因此，为了消除内存 OOM 风险和避免业务资源容量规划上的偏差，我们制定了新的“共享内存”策略。在这个策略下，Sidecar 的内存 request 被置为 0，不再向调度器额外申请资源；同时 limit 被设置为应用的 1/4，保障 Sidecar 在正常运行的情况下，有充足的内存可用。为了确实达到“共享”的效果，蚂蚁金服 sigma 团队针对 kubelet 做了调整，使之在设置 Sidecar 容器 cgroups limit 为应用 1/4 的同时，保证整个 Pod 的 limit 没有额外增加（细节这里不展开）。
 
 当然，Sidecar 与应用“共享”分配到的内存资源，也导致了在异常情况（比如内存泄露）下，sidecar 跟应用抢内存资源的风险。如何应对这个风险？我们的做法是，通过扩展 Pod Spec（及相应的 apiserver, kubelet 链路），我们为 Sidecar 容器额外设置了 Linux oom_score_adj 这个属性，以保障在内存耗尽的情况下，Sidecar 容器会被 OOM Killer 更优先选中，以发挥 sidecar 比应用能够更快速重启，从而更快恢复到正常服务的优势。
 
@@ -143,12 +143,12 @@ SOFAStack 部分开源项目地址：
 
 ![Service Mesh Meetup#9](https://cdn.nlark.com/yuque/0/2019/png/226702/1576469907431-7bfc401e-fe31-46a7-9c90-391e8aace845.png)
 
-本期为 Service Mesh Meetup 第9期，将与滴滴联合举办，将深入 Service Mesh 的落地实践，并带领大家探索 Service Mesh 在更广阔领域的应用。诚邀您参加~
+本期为 Service Mesh Meetup 第 9 期，将与滴滴联合举办，将深入 Service Mesh 的落地实践，并带领大家探索 Service Mesh 在更广阔领域的应用。诚邀您参加~
 
 **主题**：Service Mesh Meetup#9 杭州站：To Infinity and Beyond
 
-**时间**：2019年12月28日13:00-17:30
+**时间**：2019 年 12 月 28 日 13:00-17:30
 
-**地点**：杭州西湖区紫霞路西溪谷G座8楼
+**地点**：杭州西湖区紫霞路西溪谷 G 座 8 楼
 
 **报名方式**：点击“[这里](https://tech.antfin.com/community/activities/1056)”，即可报名

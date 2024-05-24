@@ -27,16 +27,15 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 1、@证道者 提问：
 
->应用调用端多语言可以，Layotto 服务能力是不是目前只能 golang 开发，java 可以开发服务能力集成到 Layotto 里吗？还有就是 Layotto 底座是 MOSN 可以不用这个吗？我目前有一个需要处理，就是数据库单表 crud，跨表的 crud，自己分页检索这个能力可以用 Layotto 吗？
+> 应用调用端多语言可以，Layotto 服务能力是不是目前只能 golang 开发，java 可以开发服务能力集成到 Layotto 里吗？还有就是 Layotto 底座是 MOSN 可以不用这个吗？我目前有一个需要处理，就是数据库单表 crud，跨表的 crud，自己分页检索这个能力可以用 Layotto 吗？
 
 A：如果想用别的语言给 Layotto 做扩展的话，目前感觉可行的方法就是借助 wasm，但具体的方案我们还得调研一下，目前是只能用 golang 开发。 至于你说的这个需求，可应该以作为 Layotto state API 的一种实现组件。
 
 Layotto：[https://github.com/mosn/layotto](https://github.com/mosn/layotto)
 
-
 2、@证道者 提问：
 
->目前提供 pub/sub 能力，流 stream 能力，状态能力，以后也会将一些通用的业务能力抽象下移到 Layotto 吗？我觉得有点像组件化，面向能力编程。
+> 目前提供 pub/sub 能力，流 stream 能力，状态能力，以后也会将一些通用的业务能力抽象下移到 Layotto 吗？我觉得有点像组件化，面向能力编程。
 
 A：是的，主要就是希望业务同学可以面向能力编程，比如只需要考虑自己是否需要 pub/sub 能力就行，而不需要管背后是 kafka 还是 rocketMQ 之类的，我们目前在规划的有分布式锁、可观测性能力的下沉，其他的能力会参考社区的反馈。
 
@@ -44,7 +43,7 @@ Layotto：[https://github.com/mosn/layotto](https://github.com/mosn/layotto)
 
 3、@证道者 提问：
 
->所有的都在 Layotto 里面跑，pubsub PRC 不会相互干扰吗?
+> 所有的都在 Layotto 里面跑，pubsub PRC 不会相互干扰吗?
 
 A：你指的是资源使用上的互相争抢是吧，目前我们 Service Mesh 落地，Sidecar 也是集成的有 RPC 和 消息能力的，Sidecar 本身主要还是一个转发通道，本身资源占用还是极少的，目前生产上也没有因为同时 Run RPC 和 消息导致互相干扰的现象产生。在 Layotto 这也是类似的场景，大部分业务在单机维度很难跑到极限性能峰值，基本上不会有互相干扰的情况出现。
 
@@ -60,7 +59,6 @@ Layotto：[https://github.com/mosn/layotto](https://github.com/mosn/layotto)
 
 - [带你走进云原生技术：云原生开放运维体系探索和实践](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247488044&idx=1&sn=ef6300d4b451723aa5001cd3deb17fbc&chksm=faa0fdf6cdd774e03ccd9130099674720a81e7e109ecf810af147e08778c6582636769646490&scene=21)
 
-
 更多文章请扫码关注“金融级分布式架构”公众号
 
->![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*s3UzR6VeQ6cAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*s3UzR6VeQ6cAAAAAAAAAAAAAARQnAQ)

@@ -16,8 +16,7 @@ SOFATracer uses TraceId to concatenate the call logs of a request on each server
 - The next 4 digits `1003` is an auto-incrementing sequence that increases from 1000 to 9000. After reaching 9000, it returns to 1000 and then restarts to increase.
 - The last 5 digits `56696` is the current process ID. Its role in tracerId is to prevent the TraceId conflicts caused by multiple processes in a single machine.
 
-> Currently, TraceId's generated rules refer to Taobao's Hawkeye components. 
-
+> Currently, TraceId's generated rules refer to Taobao's Hawkeye components.
 
 ### SpanId generation rule
 
@@ -25,6 +24,6 @@ The SpanId in SOFATracer represents where the current call is in the entire call
 
 We assume that the TraceId generated in a distributed call is `0a1234` (much longer in practice). Then, according to the generation process of SpanId, the call link tree is as shown in the following figure:
 
-![traceId](https://gw.alipayobjects.com/mdn/rms_432828/afts/img/A*bF9uQJdD2v4AAAAAAAAAAABjARQnAQ) 
+![traceId](https://gw.alipayobjects.com/mdn/rms_432828/afts/img/A*bF9uQJdD2v4AAAAAAAAAAABjARQnAQ)
 
-> Currently, SpanId's generated rules refer to Taobao's Hawkeye components. 
+> Currently, SpanId's generated rules refer to Taobao's Hawkeye components.

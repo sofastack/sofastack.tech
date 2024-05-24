@@ -1,13 +1,15 @@
 
 ---
+
 title: "Use XML in SOFABoot"
 aliases: "/sofa-rpc/docs/Programing-SOFA-BOOT-XML"
 ---
+
 ## XML mode
 
-Declare the xsd file of SOFABoot: In the XML configuration file to be used, configure the declaration of the header xsd file to the followings. This enables development using the XML elements defined by SOFABoot. 
+Declare the xsd file of SOFABoot: In the XML configuration file to be used, configure the declaration of the header xsd file to the followings. This enables development using the XML elements defined by SOFABoot.
 
-```xml 
+```xml
 <?xml version="1.0" encoding="UTF-8"?> 
 <beans xmlns="http://www.springframework.org/schema/beans" 
        xmlns:xsi="http://www .w3.org/2001/XMLSchema-instance" 

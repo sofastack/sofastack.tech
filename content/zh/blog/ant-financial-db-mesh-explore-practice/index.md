@@ -9,7 +9,7 @@ date: 2019-12-10T21:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1576054625484-31e903eb-08a5-4da6-8267-041b5dfaef8d.jpeg"
 ---
 
-蚂蚁金服数据访问层有三个核心组件：数据访问框架 ZDAL、[数据访问代理 DBP](https://tech.antfin.com/docs/2/56297) 和 OceanBase 代理服务器 OBProxy。本篇主要涉及 ZDAL 和 OBProxy 两个组件。ZDAL 作为全站数据访问的标准组件，不仅提供了分库分表、读写分离、分布式 Sequence等标准的应用能力，还提供了链路跟踪、影子压测、单元化、容灾切换等技术风险能力 。OBProxy 作为 OceanBase 的访问入口，提供了 OceanBase 路由寻址、读写分离等数据库能力，同时从执行效率和资源成本角度考虑，从 OBProxy 诞生那天我们就采用了近应用的独立进程部署模式，目前生产环境上保持在几十万级别的进程数。
+蚂蚁金服数据访问层有三个核心组件：数据访问框架 ZDAL、[数据访问代理 DBP](https://tech.antfin.com/docs/2/56297) 和 OceanBase 代理服务器 OBProxy。本篇主要涉及 ZDAL 和 OBProxy 两个组件。ZDAL 作为全站数据访问的标准组件，不仅提供了分库分表、读写分离、分布式 Sequence 等标准的应用能力，还提供了链路跟踪、影子压测、单元化、容灾切换等技术风险能力 。OBProxy 作为 OceanBase 的访问入口，提供了 OceanBase 路由寻址、读写分离等数据库能力，同时从执行效率和资源成本角度考虑，从 OBProxy 诞生那天我们就采用了近应用的独立进程部署模式，目前生产环境上保持在几十万级别的进程数。
 
 本篇文章通过介绍当前蚂蚁金服数据访问层遇到的问题，解决的思路，演进的方向三个方面，期望能够用阐述下 DB Mesh 发展的一些思考并让更多同学认识到 DB Mesh。期望能够 DB Mesh 的方式将数据访问层下沉到统一的基础设施之上，让新业务快速使用上全站多年的技术风险能力，并能够持续享受到更多的性能、资源等技术红利。
 
@@ -35,7 +35,7 @@ OBProxy 的核心逻辑：
 
 可以看出，OBProxy 和 ZDAL 这两个组件的执行路径有一定的重复度，比如两个组件都做了 SQL 解析，并分析表名和字段。这对性能带来一定的损耗，而且这种重复给研发迭代带来更多的工作量。
 
-![ZDAL 和 OBProxy](https://cdn.nlark.com/yuque/0/2019/png/226702/1575957783679-9ecd666a-9df4-4299-b36f-b58e76d393d9.png)    
+![ZDAL 和 OBProxy](https://cdn.nlark.com/yuque/0/2019/png/226702/1575957783679-9ecd666a-9df4-4299-b36f-b58e76d393d9.png)
 
 基于前面的考虑将 ZDAL 和 OBProxy 两者合并成一个组件的是一个自然的方案，通过将 ZDAL 逻辑下沉到 OBProxy 中，让 OBProxy 提供了分库分表、读写分离、分布式序列等中间件能力，这个组件我们命名为 ODP（Open Database Proxy）。
 

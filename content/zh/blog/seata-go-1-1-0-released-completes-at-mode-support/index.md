@@ -31,7 +31,7 @@ Seata-go 1.1.0 版本补齐了 AT 模式下对 Multi Delete、Multi Update、Ins
 
 ## 版本的主要更新如下
 
-### Feature：
+### Feature
 
 [#491] 支持查询全局事务锁
 [https://github.com/seata/seata-go/pull/491](https://github.com/seata/seata-go/pull/491)

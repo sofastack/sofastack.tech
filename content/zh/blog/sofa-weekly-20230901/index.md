@@ -44,7 +44,7 @@ SOFABoot 是蚂蚁集团开源的基于 Spring Boot 的研发框架。近期，S
 
 **议题：**
 
-- 8月回顾
+- 8 月回顾
 
   - Arklet 待完成的动作
 
@@ -69,21 +69,21 @@ SOFABoot 是蚂蚁集团开源的基于 Spring Boot 的研发框架。近期，S
     - 基座模块 1:1 复用 ClassLoader
   
     - 支持 SOFABoot 4
-   
+
   - SOFAServerless
 
     - 支持中间件列表与优先级，排摸支持情况，设计评测标准
 
     - 基座 Starter，Arklet 的打包发布
-   
+
   - ModuleController
-    
+
     - 新扩后缩
-      
+
     - 模块回滚
-    
+
     - 模块流量 Service
-   
+
   - Arklet
 
     - 服务的跨 Spring Context 发现与调用
@@ -118,7 +118,7 @@ SOFABoot 是蚂蚁集团开源的基于 Spring Boot 的研发框架。近期，S
 
 「*Layotto*」：[https://github.com/mosn/layotto/issues/984](https://github.com/mosn/layotto/issues/984)
 
-## SOFA 社区会议回顾 
+## SOFA 社区会议回顾
 
 **Layotto：**
 
@@ -131,11 +131,11 @@ SOFABoot 是蚂蚁集团开源的基于 Spring Boot 的研发框架。近期，S
 - 下半年规划与展望
 
   - SDK 模式、公有云部署的两个方向明确
-    
+
 - 开源之夏
   
   - Layotto K8s 集成：关于动态配置注入思路的讨论
-    
+
   - 短信邮件 API：API 适配不同云厂商的组件具体开发
 
 「*Layotto*」：[https://github.com/mosn/layotto/issues/984](https://github.com/mosn/layotto/issues/984)
@@ -176,7 +176,7 @@ SOFABoot 是蚂蚁集团开源的基于 Spring Boot 的研发框架。近期，S
 
 详细发布报告：[https://github.com/sofastack/sofa-hessian/releases/tag/v3.5.0](https://github.com/sofastack/sofa-hessian/releases/tag/v3.5.0)
 
-## SOFAStack 社区本周贡献 
+## SOFAStack 社区本周贡献
 
 ![图片](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*CCrZQb3SEekAAAAAAAAAAAAADrGAAQ/original)
 

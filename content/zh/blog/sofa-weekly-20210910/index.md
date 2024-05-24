@@ -11,7 +11,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*_ewiQbuzeOQAAAAAA
 
 SOFA WEEKLY | 每周精选，筛选每周精华问答
 
->![weekly.jpg](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAAAAAAAAARQnAQ)
+> ![weekly.jpg](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAAAAAAAAARQnAQ)
 
 同步开源进展，欢迎留言互动
 
@@ -25,7 +25,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 欢迎大家向公众号留言提问或在群里与我们互动
 
-我们会筛选重点问题通过 
+我们会筛选重点问题通过
 
 " SOFA WEEKLY " 的形式回复
 
@@ -37,7 +37,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 A：迁移连接之后，创建连接最后就会 start 了。
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*lVjzSLZiztAAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*lVjzSLZiztAAAAAAAAAAAAAAARQnAQ)
 
 **2、@胡希国** 提问：
 
@@ -49,7 +49,7 @@ A：是的，每个连接都有 readloop 的， WaitConnectionsDone 就是等他
 
 这篇文章里面有写的。
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*u4reRpA5n30AAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*u4reRpA5n30AAAAAAAAAAAAAARQnAQ)
 
 **3、@汪晓涛** 提问：
 
@@ -65,7 +65,7 @@ A：目前是七层扩展哈，对接 dapr 是四层，这个月底应该就可�
 
 A：不影响，直接升级最新的 spring-cloud-starter-alibaba-seata 和最新的 seata-all 或者 seata-spring-boot-starter 即可，只是一个日志警告。
 
-**5、@北京jht** 提问：
+**5、@北京 jht** 提问：
 
 > 如果想了解一下这个组件对系统带来的开销和性能，可能会出现在哪个问题上。
 
@@ -87,4 +87,4 @@ A：你算 RPC 一次 1ms tm begin 1ms rmregisty 1ms 如果有 3 个 rm，就是
 
 更多文章请扫码关注“金融级分布式架构”公众号
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*weuLRqbBWEkAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*weuLRqbBWEkAAAAAAAAAAAAAARQnAQ)

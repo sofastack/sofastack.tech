@@ -36,7 +36,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **@李雪涛** 提问：
 
->请问 MOSN 插件的管理接口应该怎么调用，里面的 IP 和 port，IP 应该指的是 Pod 的 IP 吧，那 port 指的是什么呢?br/
+> 请问 MOSN 插件的管理接口应该怎么调用，里面的 IP 和 port，IP 应该指的是 Pod 的 IP 吧，那 port 指的是什么呢?br/
 ![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*o77dT7Ptr-8AAAAAAAAAAAAAARQnAQ)
 
 A：通过 admin 得配置。
@@ -48,7 +48,7 @@ A：通过 admin 得配置。
 
 **@李雪涛** 提问：
 
->我的插件参考的：
+> 我的插件参考的：
 [https://github.com/mosn/mosn/blob/istio-1.10/examples/codes/plugin/pluginfilter/pluginfilter.go](https://github.com/mosn/mosn/blob/istio-1.10/examples/codes/plugin/pluginfilter/pluginfilter.go)
 
 但是我利用 admin 接口 enable 的时候输出的是插件未注册的错误，能帮我看一下我的插件注册部分哪里写的不对吗？
@@ -57,6 +57,7 @@ A：通过 admin 得配置。
 [https://www.codepile.net/pile/EK6Om3A6](https://www.codepile.net/pile/EK6Om3A6)
 
 A：镜像的配置有这个 plugin 吗？或者你先别用那个 Istio，现本地打包测试下，直接二进制启动试试：
+
 1. 看配置，有没有 paper 的 filter 配置
 2. MOSN 的 main 文件需要 import 你的 paper 文件，因为注册用的 init
 3. 看下启动日志：
@@ -66,11 +67,11 @@ A：镜像的配置有这个 plugin 吗？或者你先别用那个 Istio，现�
 
 **@来永国** 提问：
 
->我把透传写在 SOFARPC 拦截器里，服务端接收不到客户端透传的参数。
+> 我把透传写在 SOFARPC 拦截器里，服务端接收不到客户端透传的参数。
 
 A：确实是这样，baggage 处理在 filter 之前。
 
->还有什么更优雅的方式吗？那我非要只在 filter 里加透传要怎么做呢？
+> 还有什么更优雅的方式吗？那我非要只在 filter 里加透传要怎么做呢？
 
 A：非要在 filter 里面处理 baggage 的话,可以直接操作 SOFARequest 对象的 RequestProp. RemotingConstants.RPC_REQUEST_BAGGAGE，可以参考 com.alipay.sofa.rpc.context.BaggageResolver#carryWithRequest 类。
 

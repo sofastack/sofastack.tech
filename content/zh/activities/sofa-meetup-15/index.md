@@ -23,7 +23,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*nrA_RKaAZycAAAAAA
 
 [《云原生应用配置代码化实践》](https://gw.alipayobjects.com/os/bmw-prod/b9eee439-0868-4edb-a21a-49cd3cbb63ef.pdf)<br/>
 
-## 活动回顾 
+## 活动回顾
 
 直播回放：
 
@@ -33,7 +33,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*nrA_RKaAZycAAAAAA
 
 ## 活动议程
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*1AmpTr9Cj9YAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*1AmpTr9Cj9YAAAAAAAAAAAAAARQnAQ)
 
 ## 了解更多技术干货
 
@@ -41,4 +41,4 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*nrA_RKaAZycAAAAAA
 
 或微信扫码关注“金融级分布式架构”微信公众号👇
 
->![](https://gw.alipayobjects.com/zos/bmw-prod/75d7bde6-1f48-4f28-80a4-215f8ec811bd.webp)
+> ![](https://gw.alipayobjects.com/zos/bmw-prod/75d7bde6-1f48-4f28-80a4-215f8ec811bd.webp)

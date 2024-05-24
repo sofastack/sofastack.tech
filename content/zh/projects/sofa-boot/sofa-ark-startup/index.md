@@ -1,9 +1,9 @@
 
 ---
+
 title: "Ark 容器启动流程"
 aliases: "/sofa-boot/docs/sofa-ark-startup"
 ---
-
 
 Ark 应用的整体启动流程如下图所述：
 
@@ -51,12 +51,13 @@ Pipeline 也是注册在 Ark Service 容器中的一个服务，服务本身是�
 
 在 Ark 容器中会发布一些服务供其它的插件来使用，比如 `BizDeployer` 来让 SOFAArk 官方插件 [sofa-jarslink](https://github.com/sofastack/sofa-jarslink) 来完成 biz 的动态加载/卸载等
 
-
 ### 部署 Ark 插件
+
 从 `PluginManagerService` 中获取到所有的 Ark 插件，并按照插件优先级顺序：
+
 * ClassloaderService 准备插件 export 类的 map 映射
 * PluginDeployService 启动插件的 `com.alipay.sofa.ark.spi.service.PluginActivator`
 
-
 ### 启动 Ark 业务
+
 从 `BizManagerService` 中获取到所有的 Ark 业务，并执行业务配置在 MANIFEST.MF 属性 Main-Class 中提供的入口 main 函数

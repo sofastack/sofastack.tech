@@ -140,7 +140,7 @@ Scaling up registry-data is simple. You can simply add a node to the cluster by 
 
 **Step 1. Deploy the new registry-data node**
 
-First, deploy `registry-data.tgz` on the newDataNode by referencing the [Deployment](../deployment) topic. You can simply set the nodes.metaNode configuration item on the newDataNode to the same metaNode server list as that of other registry-data nodes. 
+First, deploy `registry-data.tgz` on the newDataNode by referencing the [Deployment](../deployment) topic. You can simply set the nodes.metaNode configuration item on the newDataNode to the same metaNode server list as that of other registry-data nodes.
 
 ```bash
 nodes.metaNode=DefaultDataCenter:<metaNode1>,<metaNode2>,<metaNode3>
@@ -158,7 +158,7 @@ Scaling up registry-session is simple. You can simply add a node to the cluster 
 
 **Step 1. Deploy the new registry-session node**
 
-First, deploy `registry-session.tgz` on the newSessionNode by referencing the [Deployment](../deployment) topic. You can simply set the nodes.metaNode configuration item on the newSessionNode to the same metaNode server list as that of other registry-session nodes. 
+First, deploy `registry-session.tgz` on the newSessionNode by referencing the [Deployment](../deployment) topic. You can simply set the nodes.metaNode configuration item on the newSessionNode to the same metaNode server list as that of other registry-session nodes.
 
 ```bash
 nodes.metaNode=DefaultDataCenter:<metaNode1>,<metaNode2>,<metaNode3>
@@ -167,4 +167,3 @@ nodes.metaNode=DefaultDataCenter:<metaNode1>,<metaNode2>,<metaNode3>
 ### 2.6 Scale down registry-session
 
 Scaling down registry-session is simple. You can simply close the corresponding session node, which will then be automatically removed from the cluster (due to a heartbeat timeout). You do not have to call the changePeer operation.
-

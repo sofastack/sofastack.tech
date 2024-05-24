@@ -3,7 +3,7 @@ title: "内置扩展 Metrics 指标"
 aliases: "/sofa-lookout/docs/client-ext-metrics"
 ---
 
-> 目前默认生效的的扩展模块是：`lookout-ext-jvm`，` lookout-ext-os(from v1.5.0)`。
+> 目前默认生效的的扩展模块是：`lookout-ext-jvm`，`lookout-ext-os(from v1.5.0)`。
 
 ## JVM 线程
 
@@ -58,7 +58,7 @@ aliases: "/sofa-lookout/docs/client-ext-metrics"
 | instance.uptime |   |  --- |
 | instance.systemload.average |   |  --- |
 
-## Linux 操作系统信息 （1.5.0版本之后默认启用）
+## Linux 操作系统信息 （1.5.0 版本之后默认启用）
 
 | metric name |   metric tags |  specification |
 | --- |  --- |  --- |

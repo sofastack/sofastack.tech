@@ -64,7 +64,7 @@ In addition, ACTS provides a utility class that allows you split a legacy YAML f
 
 ACTS provides context APIs in the ActsRuntimeContext class for data preparation as follows:
 
-+ Quickly get and set custom parameters:
+* Quickly get and set custom parameters:
 
    Get all custom parameters: `getParamMap getParamMap()`
 Get custom parameters by key: `Object getParamByName(String paraName)`
@@ -72,13 +72,13 @@ Add custom parameters: `void addOneParam(String paraName, Object paraObj)`
 Replace custom parameters: `void setParamMap(Map<String, Object> paramMap)`
 Get custom parameters by using a generic method: `T getParamByNameWithGeneric(String paraName)`
 
-+ Quickly get and set test case request parameters
+* Quickly get and set test case request parameters
 
    Get all request parameters: `List getInputParams()`
 Get request parameters by position: `Object getInputParamByPos(int i)`
 Add request parameters for the test case: `void addInputParam(Object obj)`
 
-+ Quickly get and set response expectations
+* Quickly get and set response expectations
 
    Get response expectations: `Object getExpectResult()`
 Set response expectations: `Boolean setExpectResult(Object objToSet)`
@@ -146,4 +146,3 @@ public class RegisterUserActsTest extends ActsTestBase {
     }
 }
 ```
-

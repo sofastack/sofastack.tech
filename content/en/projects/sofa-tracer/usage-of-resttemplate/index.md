@@ -10,7 +10,7 @@ In this document will demonstrate how to use SOFATracer to track of RestTemplate
 
 Assuming you have built a simple Spring Web project based on SOFABoot, Then you can be operated by the following steps:
 
-## Introduce dependency 
+## Introduce dependency
 
 ```xml
 <dependency>
@@ -19,6 +19,7 @@ Assuming you have built a simple Spring Web project based on SOFABoot, Then you 
     <!-- SOFABoot version unified management -->
 </dependency>
 ```
+
 ## Project Configuration
 
 Then, add the parameters to be used by SOFATracer in the project's `application.properties` file, including `spring.application.name` that indicates the name of the current application and `logging.path` that specifies the log output directory.
@@ -81,12 +82,11 @@ ListenableFuture<ResponseEntity<String>> forEntity = asyncRestTemplate.getForEnt
 RestTemplate             restTemplate;
 ```
 
-
 ## Run the project
 
 Start the SOFABoot app and see the log in the console as follows:
 
-```
+```plain
 2018-10-24 10:45:28.683  INFO 5081 --- [           main] o.s.j.e.a.AnnotationMBeanExporter        : Registering beans for JMX exposure on startup
 2018-10-24 10:45:28.733  INFO 5081 --- [           main] s.b.c.e.t.TomcatEmbeddedServletContainer : Tomcat started on port(s): 8080 (http)
 2018-10-24 10:45:28.736  INFO 5081 --- [           main] c.a.s.t.e.r.RestTemplateDemoApplication  : Started RestTemplateDemoApplication in 2.163 seconds (JVM running for 3.603)
@@ -94,7 +94,7 @@ Start the SOFABoot app and see the log in the console as follows:
 
 Successful call：
 
-```
+```plain
 2018-10-24 10:45:28.989  INFO 5081 --- [           main] c.a.s.t.e.r.RestTemplateDemoApplication  : Response is {"count":1}
 2018-10-24 10:45:34.014  INFO 5081 --- [           main] c.a.s.t.e.r.RestTemplateDemoApplication  : Async Response is {"count":2}
 2018-10-24 10:45:34.014  INFO 5081 --- [           main] c.a.s.t.e.r.RestTemplateDemoApplication  : test finish .......
@@ -104,7 +104,7 @@ Successful call：
 
 In the `application.properties`, the log printing directory we configured is `./logs`, which is the root directory of the current application (we can configure it based on actual situation). In the root directory, you can see log files in the structure similar to the followings:
 
-```
+```plain
 ./logs
 ├── spring.log
 └── tracelog
@@ -115,7 +115,6 @@ In the `application.properties`, the log printing directory we configured is `./
     ├── static-info.log
     └── tracer-self.log
 ```
-
 
 In the example, a call to the same RESTful service is initiated by constructing two RestTemplates (one synchronous one asynchronous),After the call is completed, you can see a log similar to the following in the restTemplate-digest.log:
 

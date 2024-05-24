@@ -60,7 +60,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1564366619384-9412bd5f-516
 
 1. RequestVote RPC：由 Candidate 发出，用于发送投票请求；
 1. AppendEntries (Heartbeat) RPC：由 Leader 发出，用于 Leader 向 Followers 复制日志条目，也会用作 Heartbeat （日志条目为空即为 Heartbeat）；
-1. InstallSnapshot RPC：由 Leader 发出，用于快照传输，虽然多数情况都是每个服务器独立创建快照，但是Leader 有时候必须发送快照给一些落后太多的 Follower，这通常发生在 Leader 已经丢弃了下一条要发给该Follower 的日志条目(Log Compaction 时清除掉了) 的情况下。
+1. InstallSnapshot RPC：由 Leader 发出，用于快照传输，虽然多数情况都是每个服务器独立创建快照，但是 Leader 有时候必须发送快照给一些落后太多的 Follower，这通常发生在 Leader 已经丢弃了下一条要发给该 Follower 的日志条目(Log Compaction 时清除掉了) 的情况下。
 
 #### 任期逻辑时钟
 
@@ -88,10 +88,10 @@ SOFAJRaft 是从百度的 [braft](https://github.com/brpc/braft) 移植而来�
 
 2. Log replication and recovery：日志复制和日志恢复。
 
-  - Log replication 就是要保证已经被 commit 的数据一定不会丢失，即一定要成功复制到多数派。
-  - Log recovery 包含两个方面：
-    - Current term 日志恢复：主要针对一些 Follower 节点重启加入集群或者是新增 Follower 节点后如何追日志；
-    - Prev term 日志恢复：主要针对 Leader 切换前后的日志一致性。
+- Log replication 就是要保证已经被 commit 的数据一定不会丢失，即一定要成功复制到多数派。
+- Log recovery 包含两个方面：
+  - Current term 日志恢复：主要针对一些 Follower 节点重启加入集群或者是新增 Follower 节点后如何追日志；
+  - Prev term 日志恢复：主要针对 Leader 切换前后的日志一致性。
 
 3. Snapshot and log compaction：定时生成 snapshot，实现 log compaction 加速启动和恢复，以及 InstallSnapshot 给 Followers 拷贝数据，如下图：
 
@@ -120,23 +120,25 @@ SOFAJRaft 是从百度的 [braft](https://github.com/brpc/braft) 移植而来�
   在 SOFAJRaft 中增加了一个 tick 的检查，每个 follower 维护一个时间戳记录下收到 leader 上数据更新的时间(也包括心跳)，只有超过 election timeout 之后才允许接受 request-vote 请求。
 
 8. Fault tolerance：容错性，少数派故障不影响系统整体可用性，包括但不限于：
-  - 机器掉电
-  - 强杀应用
-  - 慢节点(GC, OOM 等)
-  - 网络故障
-  - 其他各种奇葩原因导致 raft 节点无法正常工作
+
+- 机器掉电
+- 强杀应用
+- 慢节点(GC, OOM 等)
+- 网络故障
+- 其他各种奇葩原因导致 raft 节点无法正常工作
 
 9. Workaround when quorate peers are dead：多数派故障时，整个 grop 已不具备可用性，安全的做法是等待多数节点恢复，只有这样才能保证数据安全；但是如果业务更加追求系统可用性，可以放弃数据一致性的话，SOFAJRaft 提供了手动触发 reset_peers 的指令以迅速重建整个集群，恢复集群可用。
 
 10. Metrics：SOFAJRaft 内置了基于 [Metrics](https://metrics.dropwizard.io/4.0.0/getting-started.html) 类库的性能指标统计，具有丰富的性能统计指标，利用这些指标数据可以帮助用户更容易找出系统性能瓶颈。
 
 11. Jepsen：除了几百个单元测试以及部分 chaos 测试之外, SOFAJRaft 还使用 [jepsen](https://github.com/jepsen-io/jepsen) 这个分布式验证和故障注入测试框架模拟了很多种情况，都已验证通过：
-  - 随机分区，一大一小两个网络分区
-  - 随机增加和移除节点
-  - 随机停止和启动节点
-  - 随机 kill -9 和启动节点
-  - 随机划分为两组，互通一个中间节点，模拟分区情况
-  - 随机划分为不同的 majority 分组
+
+- 随机分区，一大一小两个网络分区
+- 随机增加和移除节点
+- 随机停止和启动节点
+- 随机 kill -9 和启动节点
+- 随机划分为两组，互通一个中间节点，模拟分区情况
+- 随机划分为不同的 majority 分组
 
 #### 性能优化
 
@@ -145,21 +147,23 @@ SOFAJRaft 是从百度的 [braft](https://github.com/brpc/braft) 移植而来�
 这里挑重点介绍几个优化点：
 
 1. Batch： 我们知道互联网两大优化法宝便是 Cache 和 Batch，SOFAJRaft 在 Batch 上花了较大心思，整个链路几乎都是 Batch 的，依靠 disruptor 的 MPSC 模型批量消费，对整体性能有着极大的提升，包括但不限于：
-  - 批量提交 task
-  - 批量网络发送
-  - 本地 IO batch 写入
+
+- 批量提交 task
+- 批量网络发送
+- 本地 IO batch 写入
     要保证日志不丢，一般每条 log entry 都要进行 fsync 同步刷盘，比较耗时，SOFAJRaft 中做了合并写入的优化。
-  - 批量应用到状态机
-  - 需要说明的是，虽然 SOFAJRaft 中大量使用了 Batch 技巧，但对单个请求的延时并无任何影响，SOFAJRaft 中不会对请求做延时的攒批处理。
+- 批量应用到状态机
+- 需要说明的是，虽然 SOFAJRaft 中大量使用了 Batch 技巧，但对单个请求的延时并无任何影响，SOFAJRaft 中不会对请求做延时的攒批处理。
 
 2. Replication pipeline：流水线复制，通常 Leader 跟 Followers 节点的 Log 同步是串行 Batch 的方式，每个 Batch 发送之后需要等待 Batch 同步完成之后才能继续发送下一批(ping-pong)，这样会导致较长的延迟。SOFAJRaft 中通过 Leader 跟 Followers 节点之间的 pipeline 复制来改进，非常有效降低了数据同步的延迟, 提高吞吐。经我们测试，开启 pipeline 可以将吞吐提升 30% 以上，详细数据请参照 [Benchmark](https://github.com/alipay/sofa-jraft/wiki/Benchmark-%E6%95%B0%E6%8D%AE)。
 
 3. Append log in parallel：在 SOFAJRaft 中 Leader 持久化 log entries 和向 Followers 发送 log entries 是并行的。
 
 4. Fully concurrent replication：Leader 向所有 Follwers 发送 Log 也是完全相互独立和并发的。
-  - Asynchronous：SOFAJRaft 中整个链路几乎没有任何阻塞，完全异步的，是一个完全的 callback 编程模型。
-  - ReadIndex：优化 Raft read 走 Raft log 的性能问题，每次 read，仅记录 commitIndex，然后发送所有 peers heartbeat 来确认 Leader 身份，如果 Leader 身份确认成功，等到 appliedIndex >= commitIndex，就可以返回 Client read 了，基于 ReadIndex Follower 也可以很方便的提供线性一致读，不过 commitIndex 是需要从 Leader 那里获取，多了一轮 RPC；关于线性一致读文章后面会详细分析。
-  - Lease Read：SOFAJRaft 还支持通过租约 (lease) 保证 Leader 的身份，从而省去了 ReadIndex 每次 heartbeat 确认 Leader 身份，性能更好，但是通过时钟维护 lease 本身并不是绝对的安全（时钟漂移问题，所以 SOFAJRaft 中默认配置是 ReadIndex，因为通常情况下 ReadIndex 性能已足够好。
+
+- Asynchronous：SOFAJRaft 中整个链路几乎没有任何阻塞，完全异步的，是一个完全的 callback 编程模型。
+- ReadIndex：优化 Raft read 走 Raft log 的性能问题，每次 read，仅记录 commitIndex，然后发送所有 peers heartbeat 来确认 Leader 身份，如果 Leader 身份确认成功，等到 appliedIndex >= commitIndex，就可以返回 Client read 了，基于 ReadIndex Follower 也可以很方便的提供线性一致读，不过 commitIndex 是需要从 Leader 那里获取，多了一轮 RPC；关于线性一致读文章后面会详细分析。
+- Lease Read：SOFAJRaft 还支持通过租约 (lease) 保证 Leader 的身份，从而省去了 ReadIndex 每次 heartbeat 确认 Leader 身份，性能更好，但是通过时钟维护 lease 本身并不是绝对的安全（时钟漂移问题，所以 SOFAJRaft 中默认配置是 ReadIndex，因为通常情况下 ReadIndex 性能已足够好。
 
 ### SOFAJRaft 设计
 
@@ -168,25 +172,29 @@ SOFAJRaft 是从百度的 [braft](https://github.com/brpc/braft) 移植而来�
 1. Node：Raft 分组中的一个节点，连接封装底层的所有服务，用户看到的主要服务接口，特别是 `apply(task)`用于向 raft group 组成的复制状态机集群提交新任务应用到业务状态机。
 
 2. 存储：上图靠下的部分均为存储相关。
-  - Log 存储，记录 Raft 用户提交任务的日志，将日志从 Leader 复制到其他节点上。
-     - LogStorage 是存储实现，默认实现基于 RocksDB 存储，你也可以很容易扩展自己的日志存储实现；
-     - LogManager 负责对底层存储的调用，对调用做缓存、批量提交、必要的检查和优化。
-  - Metadata 存储，元信息存储，记录 Raft 实现的内部状态，比如当前 term、投票给哪个节点等信息。
-  - Snapshot 存储，用于存放用户的状态机 snapshot 及元信息，可选：
-     - SnapshotStorage 用于 snapshot 存储实现；
-     - SnapshotExecutor 用于 snapshot 实际存储、远程安装、复制的管理。
+
+- Log 存储，记录 Raft 用户提交任务的日志，将日志从 Leader 复制到其他节点上。
+  - LogStorage 是存储实现，默认实现基于 RocksDB 存储，你也可以很容易扩展自己的日志存储实现；
+  - LogManager 负责对底层存储的调用，对调用做缓存、批量提交、必要的检查和优化。
+- Metadata 存储，元信息存储，记录 Raft 实现的内部状态，比如当前 term、投票给哪个节点等信息。
+- Snapshot 存储，用于存放用户的状态机 snapshot 及元信息，可选：
+  - SnapshotStorage 用于 snapshot 存储实现；
+  - SnapshotExecutor 用于 snapshot 实际存储、远程安装、复制的管理。
 
 3. 状态机
-  - StateMachine：用户核心逻辑的实现，核心是 `onApply(Iterator)` 方法, 应用通过 `Node#apply(task)` 提交的日志到业务状态机；
-  - FSMCaller:封装对业务 StateMachine 的状态转换的调用以及日志的写入等,一个有限状态机的实现,做必要的检查、请求合并提交和并发处理等。
+
+- StateMachine：用户核心逻辑的实现，核心是 `onApply(Iterator)` 方法, 应用通过 `Node#apply(task)` 提交的日志到业务状态机；
+- FSMCaller:封装对业务 StateMachine 的状态转换的调用以及日志的写入等,一个有限状态机的实现,做必要的检查、请求合并提交和并发处理等。
 
 4. 复制
-  - Replicator：用于 Leader 向 Followers 复制日志，也就是 Raft 中的 AppendEntries 调用，包括心跳存活检查等；
-  - ReplicatorGroup：用于单个 Raft group 管理所有的 replicator，必要的权限检查和派发。
+
+- Replicator：用于 Leader 向 Followers 复制日志，也就是 Raft 中的 AppendEntries 调用，包括心跳存活检查等；
+- ReplicatorGroup：用于单个 Raft group 管理所有的 replicator，必要的权限检查和派发。
 
 5. RPC：RPC 模块用于节点之间的网络通讯
-  - RPC Server：内置于 Node 内的 RPC 服务器，接收其他节点或者客户端发过来的请求，转交给对应服务处理；
-  - RPC Client：用于向其他节点发起请求，例如投票、复制日志、心跳等。
+
+- RPC Server：内置于 Node 内的 RPC 服务器，接收其他节点或者客户端发过来的请求，转交给对应服务处理；
+- RPC Client：用于向其他节点发起请求，例如投票、复制日志、心跳等。
 
 6. KV Store：KV Store 是各种 Raft 实现的一个典型应用场景，SOFAJRaft 中包含了一个嵌入式的分布式 KV 存储实现（SOFAJRaft-RheaKV）。
 
@@ -225,27 +233,29 @@ SOFAJRaft 是从百度的 [braft](https://github.com/brpc/braft) 移植而来�
   这一定是可以的，但性能上显然不会太出色，走 Raft Log 不仅仅有日志落盘的开销，还有日志复制的网络开销，另外还有一堆的 Raft “读日志” 造成的磁盘占用开销，这在读比重很大的系统中通常是无法被接受的。
 
 3. ReadIndex Read
-  - 这是 Raft 论文中提到的一种优化方案，具体来说：
-     - Leader 将自己当前 Log 的 commitIndex 记录到一个 Local 变量 ReadIndex 里面；
-     - 接着向 Followers 发起一轮 heartbeat，如果半数以上节点返回了对应的 heartbeat response，那么 Leader 就能够确定现在自己仍然是 Leader (证明了自己是自己)；
-     - Leader 等待自己的状态机执行，直到 applyIndex 超过了 ReadIndex，这样就能够安全的提供 Linearizable Read 了，也不必管读的时刻是否 Leader 已飘走 (思考：为什么等到 applyIndex 超过了 ReadIndex 就可以执行读请求?)；
-     - Leader 执行 read 请求，将结果返回给 Client。
-  - 通过ReadIndex，也可以很容易在 Followers 节点上提供线性一致读：
-     - Follower 节点向 Leader 请求最新的 ReadIndex；
-     - Leader 执行上面前 3 步的过程(确定自己真的是 Leader)，并返回 ReadIndex 给 Follower；
-     - Follower 等待自己的 applyIndex 超过了 ReadIndex；
-     - Follower 执行 read 请求，将结果返回给 Client。（SOFAJRaft 中可配置是否从 Follower 读取，默认不打开）
-  - ReadIndex小结：
-     - 相比较于走 Raft Log 的方式，ReadIndex 省去了磁盘的开销，能大幅度提升吞吐，结合 SOFAJRaft 的 batch + pipeline ack + 全异步机制，三副本的情况下 Leader 读的吞吐可以接近于 RPC 的吞吐上限；
-     - 延迟取决于多数派中最慢的一个 heartbeat response，理论上对于降低延时的效果不会非常显著。
+
+- 这是 Raft 论文中提到的一种优化方案，具体来说：
+  - Leader 将自己当前 Log 的 commitIndex 记录到一个 Local 变量 ReadIndex 里面；
+  - 接着向 Followers 发起一轮 heartbeat，如果半数以上节点返回了对应的 heartbeat response，那么 Leader 就能够确定现在自己仍然是 Leader (证明了自己是自己)；
+  - Leader 等待自己的状态机执行，直到 applyIndex 超过了 ReadIndex，这样就能够安全的提供 Linearizable Read 了，也不必管读的时刻是否 Leader 已飘走 (思考：为什么等到 applyIndex 超过了 ReadIndex 就可以执行读请求?)；
+  - Leader 执行 read 请求，将结果返回给 Client。
+- 通过 ReadIndex，也可以很容易在 Followers 节点上提供线性一致读：
+  - Follower 节点向 Leader 请求最新的 ReadIndex；
+  - Leader 执行上面前 3 步的过程(确定自己真的是 Leader)，并返回 ReadIndex 给 Follower；
+  - Follower 等待自己的 applyIndex 超过了 ReadIndex；
+  - Follower 执行 read 请求，将结果返回给 Client。（SOFAJRaft 中可配置是否从 Follower 读取，默认不打开）
+- ReadIndex 小结：
+  - 相比较于走 Raft Log 的方式，ReadIndex 省去了磁盘的开销，能大幅度提升吞吐，结合 SOFAJRaft 的 batch + pipeline ack + 全异步机制，三副本的情况下 Leader 读的吞吐可以接近于 RPC 的吞吐上限；
+  - 延迟取决于多数派中最慢的一个 heartbeat response，理论上对于降低延时的效果不会非常显著。
 
 4. Lease Read
-  - Lease Read 与 ReadIndex 类似，但更进一步，不仅省去了 Log，还省去了网络交互。它可以大幅提升读的吞吐也能显著降低延时。
-  - 基本的思路是 Leader 取一个比 election timeout 小的租期(最好小一个数量级)，在租约期内不会发生选举，这就确保了 Leader 不会变，所以可以跳过 ReadIndex 的第二步，也就降低了延时。可以看到 Lease Read 的正确性和时间是挂钩的，因此时间的实现至关重要，如果时钟漂移严重，这套机制就会有问题。
-  - 实现方式：
-     - 定时 heartbeat 获得多数派响应，确认 Leader 的有效性 (在 SOFAJRaft 中默认的 heartbeat 间隔是 election timeout 的十分之一)；
-     -  在租约有效时间内，可以认为当前 Leader 是 Raft Group 内的唯一有效 Leader，可忽略 ReadIndex 中的 heartbeat 确认步骤(2)；
-     -  Leader 等待自己的状态机执行，直到 applyIndex 超过了 ReadIndex，这样就能够安全的提供 Linearizable Read 了 。
+
+- Lease Read 与 ReadIndex 类似，但更进一步，不仅省去了 Log，还省去了网络交互。它可以大幅提升读的吞吐也能显著降低延时。
+- 基本的思路是 Leader 取一个比 election timeout 小的租期(最好小一个数量级)，在租约期内不会发生选举，这就确保了 Leader 不会变，所以可以跳过 ReadIndex 的第二步，也就降低了延时。可以看到 Lease Read 的正确性和时间是挂钩的，因此时间的实现至关重要，如果时钟漂移严重，这套机制就会有问题。
+- 实现方式：
+  - 定时 heartbeat 获得多数派响应，确认 Leader 的有效性 (在 SOFAJRaft 中默认的 heartbeat 间隔是 election timeout 的十分之一)；
+  - 在租约有效时间内，可以认为当前 Leader 是 Raft Group 内的唯一有效 Leader，可忽略 ReadIndex 中的 heartbeat 确认步骤(2)；
+  - Leader 等待自己的状态机执行，直到 applyIndex 超过了 ReadIndex，这样就能够安全的提供 Linearizable Read 了 。
 
 在 SOFAJRaft 中发起一次线性一致读请求的代码展示：
 
@@ -321,7 +331,7 @@ public void readFromQuorum(String key, AsyncContext asyncContext) {
 - 自驱动
 - 自诊断, 自优化, 自决策
 
-以上几点(尤其2、3) 基本都是依托于 SOFAJRaft 自身的功能来实现，详细介绍请参考 [SOFAJRaft 文档](https://github.com/alipay/sofa-jraft/wiki) 。
+以上几点(尤其 2、3) 基本都是依托于 SOFAJRaft 自身的功能来实现，详细介绍请参考 [SOFAJRaft 文档](https://github.com/alipay/sofa-jraft/wiki) 。
 
 ## 致谢
 

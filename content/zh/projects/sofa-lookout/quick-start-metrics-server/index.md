@@ -52,7 +52,7 @@ java -Dcom.alipay.sofa.ark.master.biz=lookoutall -Dlookoutall.config-file=abc.pr
 
 `-Dlookoutall.config-file`（如果你本地启动 ES 测试的话则该配置项可以忽略！），该配置项制定的文件暂时只能引用文件系统上的 properties 文件(没有像 spring-boot 支持那么丰富），配置项必须以应用名开头，从而提供隔离能力。
 
-例如：在fat-jar同目录下创建一个`abc.properties`配置文件, 用于存放存放配置文件(下面列出了必须的配置项,用于指向使用的 ES 服务地址）：
+例如：在 fat-jar 同目录下创建一个`abc.properties`配置文件, 用于存放存放配置文件(下面列出了必须的配置项,用于指向使用的 ES 服务地址）：
 
 ```properties
 gateway.metrics.exporter.es.host=localhost
@@ -64,7 +64,7 @@ metrics-server.spring.data.jest.uri=http://localhost:9200
 
 如何获得 all-in-one-bootstrap 编译后的 fat-jar。
 
-**方式1：本地编译**
+**方式 1：本地编译**
 
 ```bash
 ./boot/all-in-one-bootstrap/build.sh
@@ -72,17 +72,17 @@ metrics-server.spring.data.jest.uri=http://localhost:9200
 
 > 打包结果在`boot/all-in-one-bootstrap/target/allinone-executable.jar`
 
-**方式2：发布报告中附件获取**
+**方式 2：发布报告中附件获取**
 
-临时方式（针对 1.6.0）暂时提供一个 v1.6.0的snapshot包，下载后（保证ES服务已经单独启动）运行：
+临时方式（针对 1.6.0）暂时提供一个 v1.6.0 的 snapshot 包，下载后（保证 ES 服务已经单独启动）运行：
 
 ```bash
 java -Dcom.alipay.sofa.ark.master.biz=lookoutall -jar lookout-all-1.6.0.snapshot.jar
 ```
 
-**方式3：使用docker镜像**
+**方式 3：使用 docker 镜像**
 
-服务端默认会连接到 `localhost:9200` 的ES实例, 而我所用的开发机器是MacOS，无法使用 `--net=host` 模式启动容器，因此在容器内无法通过 `localhost:9200` 连接ES，需要使用如下方式绕过去：
+服务端默认会连接到 `localhost:9200` 的 ES 实例, 而我所用的开发机器是 MacOS，无法使用 `--net=host` 模式启动容器，因此在容器内无法通过 `localhost:9200` 连接 ES，需要使用如下方式绕过去：
 
 编辑一个配置文件，比如 `foo.properties`：
 
@@ -105,5 +105,5 @@ docker run -it \
 xzchaoo/lookout-allinone:1.6.0-SNAPSHOT
 ```
 
-> 这里利用了docker的--link参数使得应用可以访问到ES实例
-这里做测试用，所以不用-d参数在后台运行
+> 这里利用了 docker 的--link 参数使得应用可以访问到 ES 实例
+这里做测试用，所以不用-d 参数在后台运行

@@ -6,11 +6,11 @@ aliases: "/sofa-boot/docs/sofa-jarslink-jarslink-readme"
 ## Introduction
 
 Jarslink2.0 is a functional [SOFABoot](https://github.com/sofastack/sofa-boot) plugin developed based on [SOFAArk](https://github.com/sofastack/sofa-ark). It manages the merged deployment of multiple applications on top of the SOFAArk container, with the following features:
+
 + It supports runtime dynamic installation and uninstallation of applications.
 + It supports runtime application hot replacement capability to ensure service continuity.
 + For cross-application communication, it supports the JVM services publish and reference. Cross-application communication can base on RPC framework or internal JVM services.
 + It supports application Health Check.
-
 
 ## Background
 
@@ -38,7 +38,7 @@ Jarslink2.0 is an [Ark Plugin](../sofa-ark-ark-plugin) developed based on SOFAAr
 
 Jarslink2.0 supports multiple Ark Biz packages running on top of the SOFAArk container to achieve merged deployment of multiple applications. The applications can quickly publish services or reference services published by other applications in the form of annotations to achieve intercommunication. The following is the structure chart of multi-application merged deployment at runtime:
 
-![undefined](../resources/jarslink-runtime.png) 
+![undefined](../resources/jarslink-runtime.png)
 
 As you can see from the chart, the use of Jarslink2.0 usually requires the introduction of two Ark Plugins, and we will describe their roles.
 
@@ -65,6 +65,3 @@ As you can see from the chart, the use of Jarslink2.0 usually requires the intro
     <classifier>ark-plugin</classifier>
 </dependency>
 ```
-
-
-

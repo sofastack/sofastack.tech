@@ -21,11 +21,13 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 
 - **SOFAStack：**[https://github.com/sofastack](https://github.com/sofastack)
 
-### 社区 Big News 
+### 社区 Big News
 
 SOFAStack 获得 2020 年度 OSC 中国开源项目评选**「优秀 Gitee 组织」**，感谢所有开发者们的支持和喜爱，SOFA 团队会继续努力，提供更好的开源产品和服务，也期待大家的持续共建。
 [2020 年度 OSC 中国开源项目评选结果公布](https://www.oschina.net/question/2918182_2320117)
-### 
+
+###
+
 ### 每周读者问答提炼
 
 欢迎大家向公众号留言提问或在群里与我们互动
@@ -44,7 +46,7 @@ SOFARPC：[https://github.com/sofastack/sofa-rpc](https://github.com/sofastack/s
 **2、@徐泽唯** 提问：
 > 自动降级以后如果调用的服务抛错了  数据是不是就不对了？
 
-A：自动降级只是发起者那边发现 SeataServer 不可用后，不去走 begin 。你业务数据就完全没全局事务的允许运行，是会出现数据不一致。比如seata-server宕机了，后续的服务因为 Seata-Server 宕机，不走分布式事务，此时全局事务有部分数据是需要回滚的，但是由于Seata-Server宕机了，导致没法回滚，这个时候不经过全局事务的事务执行就会导致数据不一致。所以说，tc 最好集群搭建，以免宕机后，降级代表了你允许 at 模式下数据不一致。
+A：自动降级只是发起者那边发现 SeataServer 不可用后，不去走 begin 。你业务数据就完全没全局事务的允许运行，是会出现数据不一致。比如 seata-server 宕机了，后续的服务因为 Seata-Server 宕机，不走分布式事务，此时全局事务有部分数据是需要回滚的，但是由于 Seata-Server 宕机了，导致没法回滚，这个时候不经过全局事务的事务执行就会导致数据不一致。所以说，tc 最好集群搭建，以免宕机后，降级代表了你允许 at 模式下数据不一致。
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 ### 相关推荐阅读
@@ -57,12 +59,14 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 **本周发布详情如下：**
 **1、SOFAJRaft 发布了 1.3.5 版本：**
-- 增加对IPv6的支持＃526 ＃527
-- 升级'rocksdb'到5.18.4以支持AArch64
+
+- 增加对 IPv6 的支持＃526 ＃527
+- 升级'rocksdb'到 5.18.4 以支持 AArch64
 - 优化：心跳响应不经过管道直接发送，避免管道影响心跳响应的及时性
-- 
+
 详细参考：[https://github.com/sofastack/sofa-jraft/releases/tag/1.3.5](https://github.com/sofastack/sofa-jraft/releases/tag/1.3.5)
 **2、SOFABoot 发布 3.4.6 版本:**
+
 - 支持手动 readiness 回调（健康检查二阶段）
 - 扩展点失败反馈健康检查，默认为否
 - 提供上下文隔离场景下获取所有 Spring 上下文的标准方法

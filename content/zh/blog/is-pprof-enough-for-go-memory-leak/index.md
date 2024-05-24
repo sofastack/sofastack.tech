@@ -121,7 +121,7 @@ MOSN 用户钉钉群：**33547952**
 
 [3] 《Go 语言，如何做逆向类型推导》：*[https://uncledou.site/2022/go-type-derivation/](https://uncledou.site/2022/go-type-derivation/)*
 
-### 了解更多…
+### 了解更多……
 
 **MOSN Star 一下✨：** *[https://github.com/mosn/mosn](https://github.com/mosn/mosn)*
 

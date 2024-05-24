@@ -210,7 +210,7 @@ Lock 模块也就是 Seata 实现隔离级别的核心模块。在 Lock 模块�
 
 ![线程模型](https://cdn.nlark.com/yuque/0/2019/png/226702/1554712795955-0bbdffe0-f9ab-4a97-bea4-56c2caf86675.png)
 
-如果采用默认的基本配置那么会有一个 Acceptor 线程用于处理客户端的链接，会有 cpu x 2 数量的 NIO-Thread，再这个线程中不会做业务太重的事情，只会做一些速度比较快的事情，比如编解码，心跳事件和TM注册。一些比较费时间的业务操作将会交给业务线程池，默认情况下业务线程池配置为最小线程为 100，最大为 500。
+如果采用默认的基本配置那么会有一个 Acceptor 线程用于处理客户端的链接，会有 cpu x 2 数量的 NIO-Thread，再这个线程中不会做业务太重的事情，只会做一些速度比较快的事情，比如编解码，心跳事件和 TM 注册。一些比较费时间的业务操作将会交给业务线程池，默认情况下业务线程池配置为最小线程为 100，最大为 500。
 
 这里需要提一下的是 Seata 的心跳机制，这里是使用 Netty 的 IdleStateHandler 完成的，如下：
 
@@ -234,7 +234,7 @@ step2：如果是则断开链接，关闭资源。
 
 step1：客户端发布信息的时候根据 TranscationId 保证同一个 Transcation 是在同一个 Master 上，通过多个 Master 水平扩展，提供并发处理性能。
 
-step2：在 Server 端中一个 Master 有多个 Slave，Master 中的数据近实时同步到 Slave上，保证当 Master 宕机的时候，还能有其他 Slave 顶上来可以用。
+step2：在 Server 端中一个 Master 有多个 Slave，Master 中的数据近实时同步到 Slave 上，保证当 Master 宕机的时候，还能有其他 Slave 顶上来可以用。
 
 当然上述一切都是猜测，具体的设计实现还得等 0.5 版本之后。目前有一个 Go 版本的 Seata-Server 也捐赠给了 Seata (还在流程中)，其通过 Raft 实现副本一致性，其他细节不是太清楚。
 
@@ -256,13 +256,13 @@ step1：创建一个 RpcServer，再这个里面包含了我们网络的操作�
 
 step2：解析端口号和文件地址。
 
-step3：初始化 SessionHoler，其中最重要的重要就是重我们 dataDir 这个文件夹中恢复我们的数据，重建我们的Session。
+step3：初始化 SessionHoler，其中最重要的重要就是重我们 dataDir 这个文件夹中恢复我们的数据，重建我们的 Session。
 
-step4：创建一个CoorDinator,这个也是我们事务协调器的逻辑核心代码，然后将其初始化，其内部初始化的逻辑会创建四个定时任务：
+step4：创建一个 CoorDinator,这个也是我们事务协调器的逻辑核心代码，然后将其初始化，其内部初始化的逻辑会创建四个定时任务：
 
 - retryRollbacking：重试 rollback 定时任务，用于将那些失败的 rollback 进行重试的，每隔 5ms 执行一次。
-- retryCommitting：重试 commit 定时任务，用于将那些失败的commit 进行重试的，每隔 5ms 执行一次。
-- asyncCommitting：异步 commit 定时任务，用于执行异步的commit，每隔 10ms 一次。
+- retryCommitting：重试 commit 定时任务，用于将那些失败的 commit 进行重试的，每隔 5ms 执行一次。
+- asyncCommitting：异步 commit 定时任务，用于执行异步的 commit，每隔 10ms 一次。
 - timeoutCheck：超时定时任务检测，用于检测超时的任务，然后执行超时的逻辑，每隔 2ms 执行一次。
 
 step5： 初始化 UUIDGenerator 这个也是我们生成各种 ID(transcationId,branchId) 的基本类。
@@ -291,7 +291,7 @@ step3：开启 Globalsession：
 
 ![开启 Globalsession](https://cdn.nlark.com/yuque/0/2019/png/226702/1554712795950-4ffc9045-28ee-489a-8a70-2774d9c514a7.png)
 
-这一步会把状态变为 Begin，记录开始时间,并且调用 RootSessionManager的onBegin 监听方法，将 Session 保存到 Map 并写入到我们的文件。
+这一步会把状态变为 Begin，记录开始时间,并且调用 RootSessionManager 的 onBegin 监听方法，将 Session 保存到 Map 并写入到我们的文件。
 
 step4：最后返回 XID，这个 XID 是由 ip+port+transactionId 组成的，非常重要，当 TM 申请到之后需要将这个 ID 传到 RM 中，RM 通过 XID 来决定到底应该访问哪一台 Server。
 
@@ -325,7 +325,7 @@ step2：关闭  GloabSession 防止再次有新的 branch 进来。
 
 step3：如果 status 是等于 Begin，那么久证明还没有提交过，改变其状态为 Committing 也就是正在提交。
 
-step4：判断是否是可以异步提交，目前只有AT模式可以异步提交，因为是通过 Undolog 的方式去做的。MT 和 TCC 都需要走同步提交的代码。
+step4：判断是否是可以异步提交，目前只有 AT 模式可以异步提交，因为是通过 Undolog 的方式去做的。MT 和 TCC 都需要走同步提交的代码。
 
 step5：如果是异步提交，直接将其放进 ASYNC_COMMITTING_SESSION_MANAGER，让其再后台线程异步去做  step6，如果是同步的那么直接执行 step6。
 

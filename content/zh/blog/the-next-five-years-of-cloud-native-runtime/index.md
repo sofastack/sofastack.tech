@@ -57,7 +57,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*WEOFQZCGzoQAAAAAA
 
 在 RPC 能力完成 Mesh 化改造之后，我们进行了快速推广，如今达到了数千个应用，数十万个容器的生产规模。与此同时，全站升级频率最快可以达到 1~2 次/月，这跟传统微服务架构下 1~2 次/年的升级频率相比达到了一个质的提升。
 
-### B、蚂蚁初步泛 Mesh 化的探索 
+### B、蚂蚁初步泛 Mesh 化的探索
 
 ![img](https://gw.alipayobjects.com/zos/bmw-prod/ba3b521f-0633-4def-b3aa-20a3cc3c2a02.webp)
 
@@ -85,7 +85,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*WEOFQZCGzoQAAAAAA
 
 ## PART. 2 重新定义基础设施边界
 
-### A、如何看待 Dapr 
+### A、如何看待 Dapr
 
 Dapr 项目由微软牵头，于 19 年下半年正式开源，作为分布式应用运行时的一种实现方案登上舞台，引起了广泛关注，它向我们展示了如何定义应用跟基础设施之间的边界。
 
@@ -105,7 +105,7 @@ Dapr 本身的优势非常明显，不过 Service Mesh 所提供的丰富的网�
 
 与此同时 Dapr 跟基础设施的交互也无法离不开网络，因此有没有一种解决方案可以让应用运行时跟 Service Mesh 双剑合璧，降低应用开发成本的同时保留丰富的网络治理能力？
 
-### B、Layotto：Servcie Mesh & 应用运行时双剑合璧 
+### B、Layotto：Servcie Mesh & 应用运行时双剑合璧
 
 ![img](https://gw.alipayobjects.com/zos/bmw-prod/f79c06cf-44f6-4674-baae-b1e950c84c6b.webp)
 
@@ -113,7 +113,7 @@ Layotto 作为 Dapr 之外的一个应用运行时实现方案，目的就是希
 
 此外基于蚂蚁集团内部的生产运维经验，Layotto 还抽象了一套面向 PaaS 的 API，主要目的是希望把应用跟 Layotto 本身的运行状态透出给 PaaS 平台，让 SRE 可以快速了解应用的运行状态，降低日常运维的成本。
 
-### C、API 标准化：跨平台部署利器 
+### C、API 标准化：跨平台部署利器
 
 ![img](https://gw.alipayobjects.com/zos/bmw-prod/66050c82-e186-42ac-a0bc-0dbb3a0b6653.webp)
 
@@ -121,7 +121,7 @@ Layotto 作为 Dapr 之外的一个应用运行时实现方案，目的就是希
 
 而一旦完成标准化建设，对于所有基于这套 API 开发的应用来说，它们不仅不需要为适配各种平台之间的差异而烦恼，甚至也可以在 Layotto 跟 Dapr 之间无缝切换，彻底打消商业化用户对产品绑定带来的顾虑。
 
-### D、为什么不在一个 Sidecar 里解决所有？ 
+### D、为什么不在一个 Sidecar 里解决所有？
 
 ![img](https://gw.alipayobjects.com/zos/bmw-prod/f902bdda-3b16-4433-b6b8-8e40209c7b0e.webp)
 
@@ -129,7 +129,7 @@ Dapr 项目给我们最大的启示在于，它定义了应用跟基础设施之
 
 以当前 Sidecar 思路的落地情况来看，无论是 Dapr，MOSN 还是 Envoy，解决的都是应用到基础设施的问题。而对于系统调用，资源限制等方面仍旧由应用自己完成，这部分操作不需要经过任何中间环节，而没有被接管就意味着很难统一治理，类似网络流量如果没有统一的出入口，治理起来自然会困难重重。同时如果不能对应用可访问的系资源进行精细化控制，那始终会存在安全隐患。
 
-### E、统一的边界：Layotto 的野望 
+### E、统一的边界：Layotto 的野望
 
 ![img](https://gw.alipayobjects.com/zos/bmw-prod/78eb21d7-f75d-45cf-945c-06ec8c0e1b0f.webp)
 
@@ -147,7 +147,7 @@ Dapr 项目给我们最大的启示在于，它定义了应用跟基础设施之
 
 ## PART. 3 未来五年：函数是不是下一站？
 
-### A、Layotto 与蚂蚁函数化的明天 
+### A、Layotto 与蚂蚁函数化的明天
 
 相信大家对函数计算并不陌生，但函数本身除了作为独立进程运行以外还有没有其他更好的方式可以尝试？为了回答这个问题，我们首先回顾一下虚拟化技术的发展。
 
@@ -181,7 +181,7 @@ Dapr 项目给我们最大的启示在于，它定义了应用跟基础设施之
 
 为了实现上述目标，我们需要找到一种技术来作为函数的载体，让一个进程中的不同函数之间具有良好的隔离性、移植性、安全性。正因为如此，当下越来越火的 WebAssembly 技术成为了我们重点考虑的对象。
 
-### C、风口浪尖上的 WebAssembly（wasm） 
+### C、风口浪尖上的 WebAssembly（wasm）
 
 ![img](https://gw.alipayobjects.com/zos/bmw-prod/0cb4bbfd-d822-4715-b590-b17eeba4f2fb.webp)
 
@@ -221,7 +221,7 @@ WebAssembly 作为当前一项炙手可热的技术宠儿，与生俱来就有�
 
 虽然 WebAssembly 在大火的同时也有很多不足，但随着社区的发展，相信上述提到问题都会逐步解决，重要的是我们相信这项技术的前景，我们也会参与到整个 WebAssembly 社区的推广建设中。
 
-### D、Layotto 与蚂蚁函数化应用的明天 
+### D、Layotto 与蚂蚁函数化应用的明天
 
 如果未来以函数作为跟当前微服务架构具有同等地位的另一种基础研发模型，我们就需要考虑整个函数模式的生态建设问题，而这个建设其实就是围绕极致的迭代效率来打造，包括但不限于下面几点：
 
@@ -289,13 +289,13 @@ K8s 的调度单位是 Pod，如何优雅的把调度 Pod 桥接到调度 wasm �
 
 前文中提到的未来研发模式中其实依赖很多技术领域的发展，这些技术的成熟依赖整个技术社区的发展，这也是 Layotto 选择开源的一个重要背景，因此我们跟多个社区都进行了交流，希望一起推动未来研发模型依赖的各项技术走向成熟。
 
-### A、Dapr 社区：API 标准化 
+### A、Dapr 社区：API 标准化
 
 ![img](https://gw.alipayobjects.com/zos/bmw-prod/56189f89-4ce6-45a1-8dd8-a92c9d441089.webp)
 
 Dapr 除了定义应用跟基础设施之间的服务边界以外，它还有一套 Runtime API 被人们广为接受，上图是我们在内部实际落地过程中针对这些 API 提出的各种修正建议，我们希望跟 Dapr 社区、阿里巴巴一起对这套 API 进行标准化建设。
 
-### B、WebAssembly 社区：生态建设 
+### B、WebAssembly 社区：生态建设
 
 对于 WebAssembly 社区来说，我们会持续关注这项技术的整个生态发展，大体上分为以下几类：
 

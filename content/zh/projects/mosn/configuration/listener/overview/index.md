@@ -5,7 +5,7 @@ title: "Listener 配置"
 本文描述的是 MOSN listener 配置。
 
 - Listener 配置详细描述了 MOSN 启动时监听的端口，以及对应的端口对应不同逻辑的配置。
-- Listener 的配置可以通过Listener动态接口进行添加和修改。
+- Listener 的配置可以通过 Listener 动态接口进行添加和修改。
 
 ```json
 {
@@ -36,7 +36,7 @@ title: "Listener 配置"
 
 ## bind_port
 
-bool 类型，表示 Listener 是否会占用 address 配置的地址，通常情况下都需要配置为true。
+bool 类型，表示 Listener 是否会占用 address 配置的地址，通常情况下都需要配置为 true。
 
 ## use_original_dst
 

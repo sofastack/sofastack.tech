@@ -13,7 +13,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*qxhbQ7tFYjYAAAAAAA
 
 微服务架构带来很多好处的同时也让系统的复杂度提升了，传统的单体应用按照不同的维度拆分成一个一个分布式微服务，不同的微服务甚至可能采用不同的语言编写；此外，服务的部署往往都是分布式的，可能有几千台服务器，横跨多个不同的城市数据中心。下图是一个典型的微服务架构，图中的节点数还比较少，在支付宝，一个线下支付整体交易付款链路，涉及上百个节点。
 
->![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*eFuvQ4DZYkYAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*eFuvQ4DZYkYAAAAAAAAAAAAAARQnAQ)
 
 图片来源：[https://www.splunk.com/en_us/data-insider/what-is-distributed-tracing.html#benefits-of-distributed-tracing](https://www.splunk.com/en_us/data-insider/what-is-distributed-tracing.html#benefits-of-distributed-tracing)
 
@@ -55,7 +55,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*qxhbQ7tFYjYAAAAAAA
 
 一个 Trace 是一个有向无环图，一次调用的拓扑可以如下展示：
 
->![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*72y-SIgDU2wAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*72y-SIgDU2wAAAAAAAAAAAAAARQnAQ)
 
 图中的 SpanContext 是一次请求中会共享的数据，因此叫做 Span 上下文，一个服务节点在上下文中放入的数据对于后续的所有节点都可见，因此可以用来做信息传递。
 
@@ -71,7 +71,7 @@ TraceId 收集一次请求中的所有服务节点。其生成规则需要避免
 
 前 8 位 0ad1348f 即产生 TraceId 的机器的 IP，这是一个十六进制的数字，每两位代表 IP 中的一段，我们把这个数字，按每两位转成 10 进制即可得到常见的 IP 地址表示方式 10.209.52.143，大家也可以根据这个规律来查找到请求经过的第一个服务器。 后面的 13 位 1403169275002 是产生 TraceId 的时间。 之后的 4 位 1003 是一个自增的序列，从 1000 涨到 9000，到达 9000 后回到 1000 再开始往上涨。 最后的 5 位 56696 是当前的进程 ID，为了防止单机多进程出现 TraceId 冲突的情况，所以在 TraceId 末尾添加了当前的进程 ID。
 
->![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*zw6TSqtB2ZAAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*zw6TSqtB2ZAAAAAAAAAAAAAAARQnAQ)
 
 伪代码如下：
 
@@ -90,11 +90,11 @@ SpanId 记录服务调用拓扑，在 SOFATracer 中：
 
 3. SpanId 由客户端创建
 
->SOFATracer 中 TraceId 和 SpanId 的生成规则参考了阿里的鹰眼组件
+> SOFATracer 中 TraceId 和 SpanId 的生成规则参考了阿里的鹰眼组件
 
 合并调用 Span 和被调 Span，结合 TraceId 和 SpanId 就能构建完整的服务调用拓扑：
 
->![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*-7sgRZX0DX8AAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*-7sgRZX0DX8AAAAAAAAAAAAAARQnAQ)
 
 ### Trace 埋点
 
@@ -106,7 +106,7 @@ SpanId 记录服务调用拓扑，在 SOFATracer 中：
 
 并且 Trace 采集器还要做到自动、低侵入和低开销等。典型的 Trace 采集器结构如下，其在业务逻辑之前埋点：
 
->![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*5YyqTb2kLz4AAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*5YyqTb2kLz4AAAAAAAAAAAAAARQnAQ)
 
 1. Server Received (SR), 创建一个新的父 Span 或者从上下文中提取
 
@@ -136,7 +136,7 @@ b.ByteCode generating
 
 Java 语言中，SkyWalking 和 PinPoint 都使用 javaagent 方式做到自动、无侵入埋点。典型的，SOFATracer 实现 Spring MVC 的 Trace 埋点如下：
 
->![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*VSRrS6Y1mnYAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*VSRrS6Y1mnYAAAAAAAAAAAAAARQnAQ)
 
 SOFATracer 的 Span 100% 创建，只是 log/report 支持采样，相对来说，log/report 的 overhead 更高，更容易在大流量/负载下成为性能瓶颈。而其他 Trace 系统，Span 是采样生成的，但为了在调用出错的情况下能 100% 有 Trace，他们采用了逆向采样的策略。
 
@@ -156,7 +156,7 @@ SOFATracer 默认把 Trace 信息打印到日志文件中
 
 一个典型的 Trace 系统，除了 Trace 的采集上报之外，还会有收集器（Collector）、存储（Storage）和展示（API & UI）：Application Performance Management，简称 APM，如下图所示：
 
->![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*ZRv0SLPa1asAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*ZRv0SLPa1asAAAAAAAAAAAAAARQnAQ)
 
 图片来源：[https://pinpoint-apm.github.io/pinpoint/overview.html](https://pinpoint-apm.github.io/pinpoint/overview.html)
 
@@ -172,13 +172,13 @@ Trace 数据上报一般要求包括实时性、一致性等，SOFATracer 默认
 
 5. 按照 IP 查询
 
->![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NVinRqBSgOIAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NVinRqBSgOIAAAAAAAAAAAAAARQnAQ)
 
 图片来源：[https://pinpoint-apm.github.io/pinpoint/images/ss_server-map.png](https://pinpoint-apm.github.io/pinpoint/images/ss_server-map.png)
 
 在蚂蚁集团内部，我们没有采用 Span 上报，而是 Span 打印到日志之后按需采集，其架构如下：
 
->![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*Z23GQII4djkAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*Z23GQII4djkAAAAAAAAAAAAAARQnAQ)
 
 （其中 Relic 和 Antique 不是真实的系统名。）
 
@@ -196,13 +196,13 @@ Trace 数据上报一般要求包括实时性、一致性等，SOFATracer 默认
 
 在蚂蚁集团内部，我们有专门的压测平台，平台发起压测流量的时候，会自带人为构造的 TraceId、SpanId 和透传数据（压测标志），实现日志分开打印。欢迎选用 SOFATracer 作为全链路追踪工具，SOFATracer 的快速开始指南 Link：
 
->![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*WMGcTohMAPMAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*WMGcTohMAPMAAAAAAAAAAAAAARQnAQ)
 
 ## 展望
 
 SOFATracer 的未来发展规划如下，欢迎大家参与贡献！项目 Github 链接。
 
->![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*W0ZpTaDfwkAAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*W0ZpTaDfwkAAAAAAAAAAAAAAARQnAQ)
 
 ## 相关链接
 
@@ -222,9 +222,8 @@ OpenTelemetry：[https://opentelemetry.io/](https://opentelemetry.io/)
 
 - [我们做出了一个分布式注册中心](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247491198&idx=1&sn=a4607e6a8492e8749f31022ea9e22b80&chksm=faa0f1a4cdd778b214403e36fb4322f91f3d1ac47361bf752c596709f8453b8482f582fe7e2e&token=154358414)
 
-- [还在为多集群管理烦恼吗？OCM来啦！](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247490574&idx=1&sn=791b8d49759131ea1feb5393e1b51e7c&chksm=faa0f3d4cdd77ac2316b179a24b7c3ac90a08d3768379795d97c18b14a9c69e4b82012c3c097)
+- [还在为多集群管理烦恼吗？OCM 来啦！](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247490574&idx=1&sn=791b8d49759131ea1feb5393e1b51e7c&chksm=faa0f3d4cdd77ac2316b179a24b7c3ac90a08d3768379795d97c18b14a9c69e4b82012c3c097)
 
 更多文章请扫码关注“金融级分布式架构”公众号
 
->![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*5aK0RYuH9vgAAAAAAAAAAAAAARQnAQ)
-
+> ![](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*5aK0RYuH9vgAAAAAAAAAAAAAARQnAQ)

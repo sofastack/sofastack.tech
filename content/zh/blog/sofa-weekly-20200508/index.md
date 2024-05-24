@@ -17,9 +17,9 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 
 SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 
-**SOFAStack 官网: **[https://www.sofastack.tech](https://www.sofastack.tech/)
+**SOFAStack 官网:**[https://www.sofastack.tech](https://www.sofastack.tech/)
 
-**SOFAStack: **[https://github.com/sofastack](https://github.com/sofastack)
+**SOFAStack:**[https://github.com/sofastack](https://github.com/sofastack)
 
 ### 社区大事件
 
@@ -35,14 +35,13 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 
 MOSN：[https://github.com/mosn/mosn](https://github.com/mosn/mosn)
 
-
 ### 每周读者问答提炼
 
 欢迎大家向公众号留言提问或在群里与我们互动
 
 我们会筛选重点问题通过 " SOFA WEEKLY " 的形式回复
 
-**1、@chromosome **提问：
+**1、@chromosome**提问：
 
 > 这个视频中提到因为 log server 中存储得到 commitedId 和 applyId 不是任意时刻都同步的，这样的话，如果说状态机的 apply 速度较慢，很可能 client 的 read request 并不能读取到状态机最新 committed 的操作的结果。
 > [https://tech.antfin.com/community/live/821/data/902](https://tech.antfin.com/community/live/821/data/902)
@@ -55,7 +54,7 @@ A：是的。
 
 SOFAJRaft：[https://github.com/sofastack/sofa-jraft](https://github.com/sofastack/sofa-jraft)
 
-2、**@王勇 **提问：
+2、**@王勇**提问：
 
 > 在 AT 模式下，事务的回滚如何补偿三方的缓存操作呢？有没有额外的接口，还是只能是变成 TC 模式，或是自己写 aop？
 
@@ -76,8 +75,8 @@ A：可以这么说，如果 TCC 触发二阶段是回滚，你就把缓存删�
 > TCC 模式下 AT 是默认的吗？对于大事务，Saga 模式，您用过吗？
 
 A：一、首先需要创建状态机引擎的 bean。
-1.2.0里，状态机引擎的 bean 需要自己创建的。
-1.3.0里，spring-boot-starter-seata 里会提供自动配置类。（可以先参考我修改过的代码吧。[https://github.com/wangliang1986/seata）](https://github.com/wangliang1986/seata）)
+1.2.0 里，状态机引擎的 bean 需要自己创建的。
+1.3.0 里，spring-boot-starter-seata 里会提供自动配置类。（可以先参考我修改过的代码吧。[https://github.com/wangliang1986/seata）](https://github.com/wangliang1986/seata）)
 二、需要创建 Saga 模式所需的三张表。github 上可以找到建表 SQL。
 三、使用 Seata 的在线状态机设计器来定义流程。地址：[http://seata.io/saga_designer/index.html](http://seata.io/saga_designer/index.html)
 四、将设计器生成的 json 文件放到自己项目的 resources 中，由状态机引擎去加载它。状态机配置类中有一个配置项可以配置 json 文件路径。
@@ -94,14 +93,13 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 **本周发布详情如下：**
 
-**1、发布SOFARPC v5.7.0,主要变更如下：**
+**1、发布 SOFARPC v5.7.0,主要变更如下：**
 
 - 支持基于 grpc 的 triple 协议；
 - 重构项目模块结构；
 
 详细发布报告：
 [https://github.com/sofastack/sofa-rpc/releases/tag/v5.7.0](https://github.com/sofastack/sofa-rpc/releases/tag/v5.7.0)
-
 
 **2、发布 SOFA MOSN v0.12.0，主要变更如下：**
 
@@ -124,7 +122,6 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 本次线直播分享涵盖 Service Mesh 的可观察性和生产实践，为大家介绍 Service Mesh 中的可观察性与传统微服务中可观察性的区别，如何使用 SkyWalking 来观测 Service Mesh，还有来自百度和陌陌的 Service Mesh 生产实践。
 
 本系列采用线上直播的形式，从 5 月 6 日开始到 5 月 14 日，每周三、周四晚上  19:00-20:00 我们相约进行一个主题分享。
-
 
 | 时间 | 分享主题 | 分享嘉宾 | 嘉宾介绍 |
 | --- | --- | --- | --- |

@@ -27,8 +27,8 @@ RheaKV is a lightweight, distributed, and embedded KV storage library, which is 
 ## Storage design
 
 * The storage layer adopts a pluggable design and supports both MemoryDB and RocksDB currently:
-   * MemoryDB is implemented based on ConcurrentSkipListMap and provides better performance. However, its independent storage capacity is restricted by the memory.
-   * [RocksDB](https://github.com/facebook/rocksdb) is suitable for scenarios with large data volumes, because its storage capacity is only restricted by the disk.
+  * MemoryDB is implemented based on ConcurrentSkipListMap and provides better performance. However, its independent storage capacity is restricted by the memory.
+  * [RocksDB](https://github.com/facebook/rocksdb) is suitable for scenarios with large data volumes, because its storage capacity is only restricted by the disk.
 * Strong data consistency is ensured. RheaKV synchronizes data to other replicas with the help of JRaft, and each data change is recorded as a Raft log entry. The log replication feature of Raft ensures all data is securely and reliably synchronized to all nodes within the same Raft group.
 
 ## Scenarios
@@ -377,7 +377,7 @@ MetadataClient is responsible for obtaining cluster meta information and the reg
 * HeartbeatSender is responsible for sending the heartbeats of the current Store node. The heartbeats contain some state information, and there are two types of heartbeats: StoreHeartbeat and RegionHeartbeat.
 * PD continuously receives these two types of heartbeat messages from the RheaKV cluster. PD issues specific scheduling instructions in the heartbeat response to the region leaders, and then uses this information as the decision-making basis. In addition, PD should be able to receive additional operation instructions through the management interface for more accurate manual decision making.
 * The detailed content of state information contained in these two types of heartbeats is as follows:
-   * StoreHeartbeat
+  * StoreHeartbeat
 
       ```java
          public class StoreStats implements Serializable {
@@ -413,7 +413,7 @@ MetadataClient is responsible for obtaining cluster meta information and the reg
          }
       ```
 
-   * RegionHeartbeat
+  * RegionHeartbeat
 
       ```java
       public class RegionStats implements Serializable {
@@ -451,7 +451,7 @@ Responsible for storage and query of meta information of the cluster. The storag
 
 ### Client routing
 
-#### __Sharding logic: RegionRouteTable__
+#### **Sharding logic: RegionRouteTable**
 
 ![Sharding logic](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*NySFTZrZ8l4AAAAAAAAAAABjARQnAQ)
 
@@ -462,27 +462,27 @@ We choose the key of the RegionRouteTable for some reason. Which should we use, 
 * Assume that region2 [startKey2, endKey2) splits.
 * It splits into two regions, region2 [startKey2, splitKey) and region3 [splitKey, endKey2).
 * Take another look at the above figure, you will understand that we only need to add one element <region3, splitKey> to the RegionRouteTable. Data of the original region2 does not need to be modified.
-   * __Write operation__
-      * The routing logic of single-key<span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)"> write requests is very simple: query for the region based on the key, and initiate a request to the region.</span></span>
-      * A batch write request, for example __ __put(List), must perform the split operation on all keys, group them, and send parallel requests to their corresponding region engines. Note that transaction guarantee cannot be provided in this case.
-   * __Read operation__
-      * The routing logic of single-key read requests is very simple, too: <span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)">query for the region based on the key, and initiate a request to the region.</span></span>
-      * <span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)">In the case of a batch read request, for example </span></span>scan(startKey, endKey),<span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)"> it needs to perform the split operation on all keys, group them, and send parallel requests to their corresponding region engines.</span></span>
+  * **Write operation**
+    * The routing logic of single-key<span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)"> write requests is very simple: query for the region based on the key, and initiate a request to the region.</span></span>
+    * A batch write request, for example ____put(List), must perform the split operation on all keys, group them, and send parallel requests to their corresponding region engines. Note that transaction guarantee cannot be provided in this case.
+  * **Read operation**
+    * The routing logic of single-key read requests is very simple, too: <span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)">query for the region based on the key, and initiate a request to the region.</span></span>
+    * <span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)">In the case of a batch read request, for example </span></span>scan(startKey, endKey),<span data-type="color" style="color:rgb(38, 38, 38)"><span data-type="background" style="background-color:rgb(255, 255, 255)"> it needs to perform the split operation on all keys, group them, and send parallel requests to their corresponding region engines.</span></span>
 
 #### Failover
 
-__RheaKV provides asynchronous APIs to clients, which means the failover process must also be asynchronous. It increases the design difficulty and implementation complexity.__
+**RheaKV provides asynchronous APIs to clients, which means the failover process must also be asynchronous. It increases the design difficulty and implementation complexity.**
 
-__RheaKV must solve the following problems:__
+**RheaKV must solve the following problems:**
 
 1. Retry after asynchronous failure.
 2. In the case of membership change, RheaKV must refresh the membership before retry.
 3. In the case of automatic region split during the operation on multiple keys (for example range scan), RheaKV must also be able to automatically split (increase) the requests during a retry, and asynchronously combine multiple responses.
 4. The previous operation may be a local call, but the retry may involve a remote call, or the other way around. These two cases must both be considered and supported.
 
-__RheaKV divides requests into two types, requiring different failover logic:__
+**RheaKV divides requests into two types, requiring different failover logic:**
 
-* __Single-key operation requests (only one key)__:
+* **Single-key operation requests (only one key)**:
 Retry depends on a callback class named FailoverClosure, the general logic of which is as follows:
 
    ```java
@@ -523,13 +523,13 @@ Table 2
 
 ---
 
-* __Multi-Key operation requests (multiple keys or a key range)__
+* **Multi-Key operation requests (multiple keys or a key range)**
 
-   1. For a multi-key request, split the keys first. Each region contains some of the keys, and has a separate failover process. In this case, the FailoverClosure class can only handle error types in table 1, and the processing logic is the same as that of __single-key-operation requests__.
+   1. For a multi-key request, split the keys first. Each region contains some of the keys, and has a separate failover process. In this case, the FailoverClosure class can only handle error types in table 1, and the processing logic is the same as that of **single-key-operation requests**.
 
-   2. The FailoverClosure class cannot handle the three errors listed in Table 2, because region split may have occurred upon epoch changes, which means the previous regions may have doubled. Now, the failover process has to not only request for the region information from the PD, but also deal with increased requests (requests increase with the regions). Therefore, a few __failover futures__ are introduced to deal with the logic with increased requests.
+   2. The FailoverClosure class cannot handle the three errors listed in Table 2, because region split may have occurred upon epoch changes, which means the previous regions may have doubled. Now, the failover process has to not only request for the region information from the PD, but also deal with increased requests (requests increase with the regions). Therefore, a few **failover futures** are introduced to deal with the logic with increased requests.
 
-   3. The main logic of the failover future of __scan(startKey, endKey)__ is as follows. You can see that the entire process is fully asynchronous.
+   3. The main logic of the failover future of **scan(startKey, endKey)** is as follows. You can see that the entire process is fully asynchronous.
 
       ```java
       @Override
@@ -565,28 +565,27 @@ Table 2
 
 #### For example: a scan procedure
 
-* __Determine the list of regions covered by the key range [startKey, endKey).__
-   * RegionRouteTable#findRegionsByKeyRange(startKey, endKey)
-   * RegionRouteTable is a region routing table stored in a red/black tree structure. startKey is used as the key of the red/black tree. Look for the sub-view of [startKey, endKey) and then add a floorEntry (startKey).
-   * As shown in the following example, RheaKV works out that the range [startKey, endKey) crosses three regions: region1, region2, and region3 (region1 is the floor entry, and region2 and region3 are the sub-views).
+* **Determine the list of regions covered by the key range [startKey, endKey).**
+  * RegionRouteTable#findRegionsByKeyRange(startKey, endKey)
+  * RegionRouteTable is a region routing table stored in a red/black tree structure. startKey is used as the key of the red/black tree. Look for the sub-view of [startKey, endKey) and then add a floorEntry (startKey).
+  * As shown in the following example, RheaKV works out that the range [startKey, endKey) crosses three regions: region1, region2, and region3 (region1 is the floor entry, and region2 and region3 are the sub-views).
 
 ![Region list](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*5gBCRJZjEqAAAAAAAAAAAABjARQnAQ)
 
-* __Request split: scan -> multi-region scan__
-   * region1 -> regionScan(startKey, regionEndKey1)
-   * region2 -> regionScan(regionStartKey2, regionEndKey2)
-   * region3 -> regionScan(regionStartKey3, endKey)
+* **Request split: scan -> multi-region scan**
+  * region1 -> regionScan(startKey, regionEndKey1)
+  * region2 -> regionScan(regionStartKey2, regionEndKey2)
+  * region3 -> regionScan(regionStartKey3, endKey)
 
 ![Request split](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*BLVgSaFlAgoAAAAAAAAAAABjARQnAQ)
 
-* __Encounter region split (the sign of split is region epoch change)__
-   * Refresh RegionRouteTable, and get the latest route table from the PD. For example, region 2 in the following figure has been split into region 2 and region 5.
-      * region2 -> regnonScan(regionStartKey2, regionEndKey2) splits requests and retries
-         * region2 -> regionScan(regionStartKey2, newRegionEndKey2)
-         * region5 -> regionScan(regionStartKey5, regionEndKey5)
+* **Encounter region split (the sign of split is region epoch change)**
+  * Refresh RegionRouteTable, and get the latest route table from the PD. For example, region 2 in the following figure has been split into region 2 and region 5.
+    * region2 -> regnonScan(regionStartKey2, regionEndKey2) splits requests and retries
+      * region2 -> regionScan(regionStartKey2, newRegionEndKey2)
+      * region5 -> regionScan(regionStartKey5, regionEndKey5)
 
 ![Region split](https://gw.alipayobjects.com/mdn/rms_da499f/afts/img/A*Cr5gT4FFs3QAAAAAAAAAAABjARQnAQ)
 
-* __Encounter Invalid Peer (errors such as NOT\_LEADER)__
-   * This is simple. It requests for the information of the latest leader of the Raft group of the current key range, and initiates calls again.
-
+* **Encounter Invalid Peer (errors such as NOT\_LEADER)**
+  * This is simple. It requests for the information of the latest leader of the Raft group of the current key range, and initiates calls again.

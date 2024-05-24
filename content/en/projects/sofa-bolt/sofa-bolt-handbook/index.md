@@ -15,7 +15,7 @@ aliases: "/sofa-bolt/docs/sofa-bolt-handbook"
 </dependency>
 ```
 
->Check [release notes](https://github.com/sofastack/sofa-bolt/releases) for the version information.
+> Check [release notes](https://github.com/sofastack/sofa-bolt/releases) for the version information.
 
 ## 1. Basic functions
 
@@ -70,7 +70,7 @@ SOFABolt only depends on SLF4J as the logging facade. Three types of log templat
 * connection-event.log: The connection event log
 * remoting-rpc.log: The log related to the RPC protocol
 
-For log dependencies, refer to [ Log implementation dependencies](https://github.com/sofastack/sofa-bolt/wiki/log_implementation_jar).
+For log dependencies, refer to [Log implementation dependencies](https://github.com/sofastack/sofa-bolt/wiki/log_implementation_jar).
 
 ## 2. Advanced functions
 
@@ -87,8 +87,8 @@ During the call process, we provide the InvokeContext API and pass it down. It c
 
 In addition to the server side being able to register user request processors, our client side can also register user request processors. When registered, the server side can initiate calls to the client side. It can also use [1.4](https://github.com/sofastack/sofa-bolt/wiki/SOFA-Bolt-Handbook##14-%E5%9F%BA%E7%A1%80%E9%80%9A%E4%BF%A1%E6%A8%A1%E5%9E%8B) to refer to any type of communication model.
 
-* [Sample 1: Use the Connection object's duplex communication ](https://github.com/sofastack/sofa-bolt/blob/master/src/test/java/com/alipay/remoting/demo/BasicUsageDemoByJunit.java##L223). Note: When using the Connection object's duplex communication, the server side needs to save the Connection object through the event monitoring processor or the user request processor.
-* [Sample 2: Use the Address duplex communication ](https://github.com/sofastack/sofa-bolt/blob/master/src/test/java/com/alipay/remoting/demo/BasicUsageDemoByJunit.java##L263). Note: When using the address method's duplex communication, when you initialize the RpcServer, enable manageConnection to indicate that the server side will maintain the mapping relationship between an address and the connection according to the connection initiated by the client side. When duplex communication is not needed by default, this function is disabled.
+* [Sample 1: Use the Connection object's duplex communication](https://github.com/sofastack/sofa-bolt/blob/master/src/test/java/com/alipay/remoting/demo/BasicUsageDemoByJunit.java##L223). Note: When using the Connection object's duplex communication, the server side needs to save the Connection object through the event monitoring processor or the user request processor.
+* [Sample 2: Use the Address duplex communication](https://github.com/sofastack/sofa-bolt/blob/master/src/test/java/com/alipay/remoting/demo/BasicUsageDemoByJunit.java##L263). Note: When using the address method's duplex communication, when you initialize the RpcServer, enable manageConnection to indicate that the server side will maintain the mapping relationship between an address and the connection according to the connection initiated by the client side. When duplex communication is not needed by default, this function is disabled.
 
 ### 2.3 Establishing multiple connections and connection warm-up
 
@@ -197,4 +197,3 @@ In scenarios where communications are relatively simple, we use the RPC communic
 * [Ant Financial communication framework practices](https://mp.weixin.qq.com/s/JRsbK1Un2av9GKmJ8DK7IQ)
 * [Analysis | Overall design and scaling mechanism of the SOFARPC framework](https://mp.weixin.qq.com/s/ZKUmmFT0NWEAvba2MJiJfA)
 * [SOFABolt lab](https://www.sofastack.tech/categories/sofabolt/)
-

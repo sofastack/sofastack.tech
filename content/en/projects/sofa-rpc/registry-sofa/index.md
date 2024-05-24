@@ -3,7 +3,7 @@ title: "SOFARegistry"
 aliases: "/sofa-rpc/docs/Registry-SOFA"
 ---
 
-SOFARPC already supports using SOFARegistry as a service registry. Suppose you have deployed SOFARegistry Server locally according to SOFARegistry's [Quick Start] (https://www.sofastack.tech/sofa-registry/docs/Server-QuickStart), and the service discovery port is set to `9603` by default.
+SOFARPC already supports using SOFARegistry as a service registry. Suppose you have deployed SOFARegistry Server locally according to SOFARegistry's [Quick Start] (<https://www.sofastack.tech/sofa-registry/docs/Server-QuickStart>), and the service discovery port is set to `9603` by default.
 
 To use SOFARegistry as a service registry in SOFARPC, you only need to add the following configuration to `application.properties`:
 

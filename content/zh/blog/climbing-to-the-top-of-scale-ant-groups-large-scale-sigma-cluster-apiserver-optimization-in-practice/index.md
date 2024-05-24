@@ -67,7 +67,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*9RzaQYsl9pYAAAAAA
 
 - 还有非常重要的一点，在更大的集群中可以通过更加丰富的编排调度手段来更为有效地提升集群整体的资源利用率。
 
-## PART. 3 SigmaApiServer性能优化
+## PART. 3 SigmaApiServer 性能优化
 
 Sigma apiserver 组件是 Kubernetes 集群的所有外部请求访问入口，以及 Kubernetes 集群内部所有组件的协作枢纽。apiserver 具备了以下几方面的功能:
 
@@ -93,11 +93,11 @@ Sigma apiserver 组件是 Kubernetes 集群的所有外部请求访问入口，�
 
 - 减少客户端的超时以及超时导致的各种问题；在现有资源下提供更多的流量接入能力；
 
- **整体优化思路** 
+ **整体优化思路**
 
 构建一个大规模的 Kubernetes 集群以及性能优化不是一件容易的事，如 Google Kubernetes Engine K8s 规模化文章所言：
 
-「The scale of a Kubernetes cluster is like a multidimensional object composed of all the cluster’s resources—and scalability is an envelope that limits how much you can stretch that cube. The number of pods and containers, the frequency of scheduling events, the number of services and endpoints in each service—these and many others are good indicators of a cluster’s scale. 
+「The scale of a Kubernetes cluster is like a multidimensional object composed of all the cluster’s resources—and scalability is an envelope that limits how much you can stretch that cube. The number of pods and containers, the frequency of scheduling events, the number of services and endpoints in each service—these and many others are good indicators of a cluster’s scale.
 
 The control plane must also remain available and workloads must be able to execute their tasks.
 
@@ -105,7 +105,7 @@ What makes operating at a very large scale harder is that there are dependencies
 
 也就是说，集群的规模化和性能优化需要考虑集群中各个维度的信息，包括 pod、node、configmap、service、endpoint 等资源的数量，pod 创建/调度的频率，集群内各种资源的变化率等等，同时需要考虑这些不同维度之间的互相的依赖关系，不同维度的因素彼此之间构成了一个多维的空间。
 
->![图片](https://gw.alipayobjects.com/zos/bmw-prod/56328339-77a8-4a9c-90d2-7fa2805cd195.webp)
+> ![图片](https://gw.alipayobjects.com/zos/bmw-prod/56328339-77a8-4a9c-90d2-7fa2805cd195.webp)
 
 为了应对如此多的变量对大规模集群带来的复杂影响，我们采用了探索问题本质以不变应万变的方法。为了可以全面而且系统化地对 apiserver 进行优化，我们由下到上把 apiserver 整体分为三个层面，分别为存储层（storage）、缓存层（cache）、访问层（registry/handler）。
 
@@ -117,13 +117,13 @@ What makes operating at a very large scale harder is that there are dependencies
 
 针对上面提出的不同层面，一些可能的优化项如下：
 
->![图片](https://gw.alipayobjects.com/zos/bmw-prod/d861fe12-8f4b-4004-957f-a4d2961ec5a8.webp)
+> ![图片](https://gw.alipayobjects.com/zos/bmw-prod/d861fe12-8f4b-4004-957f-a4d2961ec5a8.webp)
 
 同时，为了更好地衡量 apiserver 的性能，我们为 Kubernetes apiserver 制定了详细的 SLO，包括 create/update/delete 等操作的 P99 RT 指标，list 在不同规模资源情况下的 P99 RT 指标等。
 
 同时，在 SLO 的牵引下对 apiserver 进行优化，让我们可以在一个更大规模的 Kubernetes 集群下依然为用户提供更好的 API 服务品质。
 
-### 缓存层优化 
+### 缓存层优化
 
 **「List 走 watchCache」**
 
@@ -145,7 +145,7 @@ What makes operating at a very large scale harder is that there are dependencies
 
 在这些优化和改动之后，客户端的 watch error（too old resource version）几乎消失了。
 
->![图片](https://gw.alipayobjects.com/zos/bmw-prod/55fee62e-a37f-4594-8d11-0abfdb4c3967.webp)
+> ![图片](https://gw.alipayobjects.com/zos/bmw-prod/55fee62e-a37f-4594-8d11-0abfdb4c3967.webp)
 
 **「增加 watchCache index」**
 
@@ -155,15 +155,15 @@ What makes operating at a very large scale harder is that there are dependencies
 
 下图为上述 watchCache 优化内容简介:
 
->![图片](https://gw.alipayobjects.com/zos/bmw-prod/846c757e-1660-40f2-8cc9-2dafc6981070.webp)
+> ![图片](https://gw.alipayobjects.com/zos/bmw-prod/846c757e-1660-40f2-8cc9-2dafc6981070.webp)
 
-### 存储层优化 
+### 存储层优化
 
 在资源更新频率比较快的情况下，GuaranteedUpdate 会进行大量的重试，同时造成不必要的 etcd 的压力。Sigma 给 GuaranteedUpdate 增加了指数退避的重试策略，减少了 update 操作的冲突次数，也减少了 apiserver 对于 etcd 的更新压力。
 
 在大规模高流量集群中，我们发现  apiserver 的一些不合理的日志输出会造成 apiserver 严重的性能抖动。例如，我们调整了 GuaranteedUpdate/delete 等操作在更新或者删除冲突时的日志输出级别。这减少了磁盘 io 操作，降低了客户端访问 apiserver 的请求响应时间。此外，在集群资源变化率很高的情况下，" fast watch slow processing" 的日志也会非常多。这主要是表明 apiserver 从 etcd watch 事件之后，在缓存里面构建 watchCache 的速率低于从 etcd watch 到事件的速率，在不修改 watchCache 数据结构的情况下暂时是无法改进的。因此我们也对 slow processing 日志级别进行了调整，减少了日志输出。
 
-### 接入层优化 
+### 接入层优化
 
 Golang profiling 一直是用于对 Go 语言编写的应用的优化利器。在对 apiserver 进行线上 profiling 的时候，我们也发现了不少热点，并对其进行了优化。
 
@@ -171,11 +171,11 @@ Golang profiling 一直是用于对 Go 语言编写的应用的优化利器。�
 
 - 在用户 list event 时可以看到 events.GetAttrs/ToSelectableFields 会占用很多的 CPU，我们修改了 ToSelectableFields， 单体函数的 CPU util 提升 30%，这样在 list event 时候 CPU util 会有所提升。
 
->![图片](https://gw.alipayobjects.com/zos/bmw-prod/11c89953-0858-49cf-b140-53f3a0e99081.webp)
+> ![图片](https://gw.alipayobjects.com/zos/bmw-prod/11c89953-0858-49cf-b140-53f3a0e99081.webp)
 
 - 另外，通过 profiling 可以发现，当 metrics 量很大的时候会占用很多 CPU，在削减了 apiserver metrics 的量之后，大幅度降低了 CPU util。
 
->![图片](https://gw.alipayobjects.com/zos/bmw-prod/2f42ffbc-9357-44d1-aee8-e7a821442588.webp)
+> ![图片](https://gw.alipayobjects.com/zos/bmw-prod/2f42ffbc-9357-44d1-aee8-e7a821442588.webp)
 
 - Sigma apiserver 对于鉴权模型采用的是 Node、RBAC、Webhook，对于节点鉴权，apiserver 会在内存当中构建一个相对来说很大的图结构，用来对 Kubelet 对 apiserver 的访问进行鉴权。
 
@@ -187,7 +187,7 @@ etcd 对于每个存储的资源都会有 1.5MB 大小的限制，并在请求�
 
 ### etcd 拆分相关优化
 
-除此之外，etcd 拆分对于客户端访问 apiserver 的请求的 RT 也有很大提升。在大规模集群中，我们采用了多份拆分方式，其中一份 etcd 是 Pod。在 etcd 拆分的过程中，我们发现拆分出来的 etcd 的 resource version 会小于原有 apiserver 的resource version，因此会导致客户端 list-watch apiserver 时长时间 hang ，无法收到新的 Pod 相关的事件。
+除此之外，etcd 拆分对于客户端访问 apiserver 的请求的 RT 也有很大提升。在大规模集群中，我们采用了多份拆分方式，其中一份 etcd 是 Pod。在 etcd 拆分的过程中，我们发现拆分出来的 etcd 的 resource version 会小于原有 apiserver 的 resource version，因此会导致客户端 list-watch apiserver 时长时间 hang ，无法收到新的 Pod 相关的事件。
 
 为了解决这个 etcd 拆分时遇到的问题，我们对 apiserver 的 watch 接口进行了修改，增加了 watch 操作的 timeout 机制。客户端的 watch 操作最多等待 3s，如果 resource version 不匹配，直接返回 error 让 客户端进行重新 list ，以此避免了在 etcd 拆分过程中造成的客户端因 resource version hang 住的问题。
 
@@ -201,21 +201,21 @@ etcd 对于每个存储的资源都会有 1.5MB 大小的限制，并在请求�
 
 下图分别为我们两个集群分钟级别流量的对比，其中一个集群的业务由于业务合并有了一个跨越式的增长，集群的节点规模范围，超过万台。可以看出来，随着业务的逐渐上升，集群的压力出现了数倍的压力提升。各类写请求都有明显的上升。其中 create 和 delete 请求比较明显，create 请求由每分钟 200 个左右上升到了每分钟 1000 个左右，delete 请求由每分钟 2.7K 个 上升到了 5.9K 个。经过我们的优化，随着业务方面的迁移逐步推进，在规模和负载持续上升的背景下，整体集群运行平稳，基本上达成了集群优化的预期。
 
->![图片](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*tEIXQq8h7x4AAAAAAAAAAAAAARQnAQ)
+> ![图片](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*tEIXQq8h7x4AAAAAAAAAAAAAARQnAQ)
 
-### 基础资源 
+### 基础资源
 
-在各类型的流量随着业务增长有不同程度的上升的情况下，经过优化，apiserver CPU 利用率下降了约 7%。但是在内存上，增多了 20% 左右，这是因为 watchCache 在开启动态调整后相比之前缓存了更多的不同类别资源（node/pod等）的对象。
+在各类型的流量随着业务增长有不同程度的上升的情况下，经过优化，apiserver CPU 利用率下降了约 7%。但是在内存上，增多了 20% 左右，这是因为 watchCache 在开启动态调整后相比之前缓存了更多的不同类别资源（node/pod 等）的对象。
 
 缓存更多资源对象带来的收益是，减少了客户端的重连并且降低了 list 操作个数，同时也间接减少了客户端各类操作的 RT，提升了整体集群和运行的业务的稳定性。当然后续也会继续针对减少 apiserver 的内存使用量进行优化。
 
->![图片](https://gw.alipayobjects.com/zos/bmw-prod/76129a02-be81-4bde-9ef7-2a4c123a7394.webp)
+> ![图片](https://gw.alipayobjects.com/zos/bmw-prod/76129a02-be81-4bde-9ef7-2a4c123a7394.webp)
 
 ### RT
 
 写请求的 RT 对于集群和业务的稳定性是最关键的指标之一。经优化过后，客户端访问 apiserver 的各类写请求的 P99，P90，P50 RT 均有明显的下降，并且数值更加趋于平稳，表明 apiserver 在向着高效且稳定的方向发展。
 
->![图片](https://gw.alipayobjects.com/zos/bmw-prod/34482827-5e0f-40af-8de7-8b94d7aaa0b2.webp)
+> ![图片](https://gw.alipayobjects.com/zos/bmw-prod/34482827-5e0f-40af-8de7-8b94d7aaa0b2.webp)
 
 （注：RT 对比在包括 etcd 拆分之后进行）
 
@@ -225,7 +225,7 @@ etcd 对于每个存储的资源都会有 1.5MB 大小的限制，并在请求�
 
 在优化之后，pod 的每分钟 watch error 的个数下降约 25%，node 的 watch error 下降为 0；相应的 list 操作个数每分钟也下降了 1000 个以上。
 
->![图片](https://gw.alipayobjects.com/zos/bmw-prod/8ffedb09-78b7-435f-8313-3d27d54fa0ee.webp)
+> ![图片](https://gw.alipayobjects.com/zos/bmw-prod/8ffedb09-78b7-435f-8313-3d27d54fa0ee.webp)
 
 ## PART. 4 未来之路
 
@@ -239,7 +239,7 @@ etcd 对于每个存储的资源都会有 1.5MB 大小的限制，并在请求�
 
 对应到 apiserver 的性能优化来说，未来我们还将从以下几个方面继续深入：
 
->![图片](https://gw.alipayobjects.com/zos/bmw-prod/82717309-8f99-45c2-9031-4136e65f5a15.webp)
+> ![图片](https://gw.alipayobjects.com/zos/bmw-prod/82717309-8f99-45c2-9031-4136e65f5a15.webp)
 
 1. 针对 apiserver 自身，一些可能的优化点包括：优化 apiserver 启动总时间，提升 watchCache 构建速度；threadSafeStore 数据结构优化；对 get 操作采用缓存；对 apiserver 存入 etcd 的数据进行压缩，减小数据大小，借此提升 etcd 性能 等等。
 
@@ -279,9 +279,9 @@ etcd 对于每个存储的资源都会有 1.5MB 大小的限制，并在请求�
 
 蚂蚁集团 Kubernetes 集群调度系统支撑了蚂蚁集团在线、实时业务的百万级容器资源调度, 向上层各类金融业务提供标准的容器服务及动态资源调度能力, 肩负蚂蚁集团资源成本优化的责任。我们有业界规模最大 Kubernetes 集群，最深入的云原生实践，最优秀的调度技术。欢迎有意在 Kubernetes/云原生/容器/内核隔离混部/调度/集群管理深耕的同学加入，北京、上海、杭州期待大家的加入。
 
-联系邮箱 ***xiaoyun.maoxy@antgroup.com***
+联系邮箱 ***<xiaoyun.maoxy@antgroup.com>***
 
- **本周推荐阅读** 
+ **本周推荐阅读**
 
 [SOFAJRaft 在同程旅游中的实践](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247495260&idx=1&sn=a56b0f82159e551dec4752b7290682cd&chksm=faa30186cdd488908a73792f9a1748cf74c127a792c5c484ff96a21826178e2aa35c279c41b3&scene=21)
 

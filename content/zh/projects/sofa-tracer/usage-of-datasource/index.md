@@ -15,59 +15,64 @@ aliases: "/sofa-tracer/docs/Usage_Of_Datasource"
 
 ```xml
 <dependency>
-	<groupId>com.alipay.sofa</groupId>
-	<artifactId>tracer-sofa-boot-starter</artifactId>
+ <groupId>com.alipay.sofa</groupId>
+ <artifactId>tracer-sofa-boot-starter</artifactId>
 </dependency>
 ```
 
 ### 引入 h2database 依赖
 
 为了方便，我们使用 h2database 内存数据库测试，引入如下依赖：
+
 ```xml
 <dependency>
-	<groupId>com.h2database</groupId>
-	<artifactId>h2</artifactId>
-	<scope>runtime</scope>
+ <groupId>com.h2database</groupId>
+ <artifactId>h2</artifactId>
+ <scope>runtime</scope>
 </dependency>
 
 <dependency>
-	<groupId>mysql</groupId>
-	<artifactId>mysql-connector-java</artifactId>
+ <groupId>mysql</groupId>
+ <artifactId>mysql-connector-java</artifactId>
 </dependency>
 ```
 
 ### 引入所需的连接池依赖
+
 用户引入所需的连接池依赖包，如 druid, c3p0, tomcat, dbcp, Hikari 等。
+
 ```xml
 <dependency>
-	<groupId>com.alibaba</groupId>
-	<artifactId>druid</artifactId>
-	<version>1.0.12</version>
+ <groupId>com.alibaba</groupId>
+ <artifactId>druid</artifactId>
+ <version>1.0.12</version>
 </dependency>
 <dependency>
-	<groupId>c3p0</groupId>
-	<artifactId>c3p0</artifactId>
-	<version>0.9.1.1</version>
+ <groupId>c3p0</groupId>
+ <artifactId>c3p0</artifactId>
+ <version>0.9.1.1</version>
 </dependency>
 <dependency>
-	<groupId>org.apache.tomcat</groupId>
-	<artifactId>tomcat-jdbc</artifactId>
-	<version>8.5.31</version>
+ <groupId>org.apache.tomcat</groupId>
+ <artifactId>tomcat-jdbc</artifactId>
+ <version>8.5.31</version>
 </dependency>
 <dependency>
-	<groupId>commons-dbcp</groupId>
-	<artifactId>commons-dbcp</artifactId>
-	<version>1.4</version>
+ <groupId>commons-dbcp</groupId>
+ <artifactId>commons-dbcp</artifactId>
+ <version>1.4</version>
 </dependency>
 <dependency>
-	<groupId>com.zaxxer</groupId>
-	<artifactId>HikariCP-java6</artifactId>
-	<version>2.3.8</version>
+ <groupId>com.zaxxer</groupId>
+ <artifactId>HikariCP-java6</artifactId>
+ <version>2.3.8</version>
 </dependency>
 ```
 
 ## 配置数据源
+
 我们以 `HikariCP` 为例，新建一个名为`datasource.xml` Spring 配置文件，定义如下内容:
+
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>
 <beans xmlns="http://www.springframework.org/schema/beans"
@@ -84,9 +89,11 @@ aliases: "/sofa-tracer/docs/Usage_Of_Datasource"
 ```
 
 ## 应用配置
+
 + 必要配置
 
 需要注意一点，引入 SOFATracer 需要强制配置应用名，否则应用启动失败。这一属性和 SOFABoot 框架要求一致，配置如下：
+
 ```text
 spring.application.name=SOFATracerDataSource
 ```
@@ -94,6 +101,7 @@ spring.application.name=SOFATracerDataSource
 + 非必要配置
 
 为了该演示工程正常运行，需要配置 h2database 属性；另为了方便查看日志，配置日志路径。如下：
+
 ```text
 # logging path
 logging.path=./logs
@@ -145,28 +153,36 @@ public class SimpleRestController {
 可以看到该 Rest 服务执行了一个建表操作。
 
 ## 演示
+
 启动应用，访问 `localhost:8080/create` 执行上述 Rest 服务，可以在 `./logs/datasource-client-digest.log` 和 `./logs/datasource-client-stat.log` 看到 sql 执行的 tracer 日志：
+
 + datasource-client-digest.log
+
 ```json
 {"time":"2019-09-02 21:31:31.566","local.app":"SOFATracerDataSource","traceId":"0a0fe91d156743109138810017302","spanId":"0.1","span.kind":"client","result.code":"00","current.thread.name":"http-nio-8080-exec-1","time.cost.milliseconds":"15ms","database.name":"test","sql":"DROP TABLE IF EXISTS TEST;
 CREATE TABLE TEST(ID INT PRIMARY KEY%2C NAME VARCHAR(255));","connection.establish.span":"128ms","db.execute.cost":"15ms","database.type":"h2","database.endpoint":"jdbc:h2:~/test:-1","sys.baggage":"","biz.baggage":""}
 ```
 
-+ datasource-client-stat.log (默认60s打印一次，)
++ datasource-client-stat.log (默认 60s 打印一次，)
+
 ```json
 {"time":"2019-09-02 21:31:50.435","stat.key":{"local.app":"SOFATracerDataSource","database.name":"test","sql":"DROP TABLE IF EXISTS TEST;
 CREATE TABLE TEST(ID INT PRIMARY KEY%2C NAME VARCHAR(255));"},"count":1,"total.cost.milliseconds":15,"success":"true","load.test":"F"}
 ```
 
 ## 其他
+
 在 Spring Boot 工程引入 SOFATracer 依赖，会自动开启 DataSource 的埋点，可以通过设置如下开关禁止启动 DataSource 埋点，默认是打开的：
+
 ```text
 com.alipay.sofa.tracer.datasource.enable=false
 ```
 
 ## 注意
+
 + 引入 SOFATracer 需要强制配置应用名，否则应用启动失败。属性名称为：`spring.application.name`
-+ SOFATracer 2.2.0基于标准的 JDBC 接口实现，理论上支持对所有标准的数据库连接池（如 DBCP，BoneCP 等）埋点。在 Spring Boot 环境，对于 DBCP、Druid、c3p0、tomcat、HikariCP 五种连接池支持自动埋点，即用户只需要引入 SOFATracer 依赖即可。在非 Spring Boot 环境或者对其他连接池（如 BoneCP）还需要增加手动配置，比如：
++ SOFATracer 2.2.0 基于标准的 JDBC 接口实现，理论上支持对所有标准的数据库连接池（如 DBCP，BoneCP 等）埋点。在 Spring Boot 环境，对于 DBCP、Druid、c3p0、tomcat、HikariCP 五种连接池支持自动埋点，即用户只需要引入 SOFATracer 依赖即可。在非 Spring Boot 环境或者对其他连接池（如 BoneCP）还需要增加手动配置，比如：
+
 ```xml
 <bean id="smartDataSource" class="com.alipay.sofa.tracer.plugins.datasource.SmartDataSource" init-method="init">
     <property name="delegate" ref="simpleDataSource"/>
@@ -186,4 +202,5 @@ com.alipay.sofa.tracer.datasource.enable=false
     ...
 </bean>
 ```
+
 即需要额外配置 SOFATracer 提供的 `com.alipay.sofa.tracer.plugins.datasource.SmartDataSource`

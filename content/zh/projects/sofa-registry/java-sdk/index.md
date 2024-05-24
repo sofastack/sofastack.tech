@@ -14,6 +14,7 @@ aliases: "/sofa-registry/docs/JAVA-SDK"
 ```
 
 ## 2. 创建 SOFARegistry 客户端实例
+
 构建 SOFARegistry 客户端实例的关键代码如下：
 
 ```java
@@ -45,7 +46,7 @@ public class DefaultRegistryClientConfigBuilder {
 
 | 属性名 | 属性类型 | 描述 |
 | --- | --- | --- |
-| instanceId | String | 实例ID，发布订阅时需要使用相同值，数据唯一标识由dataId+group+instanceId组成，默认值 DEFAULT_INSTANCE_ID。 |
+| instanceId | String | 实例 ID，发布订阅时需要使用相同值，数据唯一标识由 dataId+group+instanceId 组成，默认值 DEFAULT_INSTANCE_ID。 |
 | zone | String | 单元化所属 zone，默认值 DEFAULT_ZONE。 |
 | registryEndpoint | String | 服务端任一 Session 节点地址。 |
 | registryEndpointPort | int | Session 节点配置的 session.server.httpServerPort 端口值，默认值 9603。 |
@@ -61,6 +62,7 @@ public class DefaultRegistryClientConfigBuilder {
 | syncConfigRetryInterval | int | 同步服务端列表间隔时间，默认值 30000ms。 |
 
 ## 3. 发布数据
+
 发布数据的关键代码如下：
 
 ```java
@@ -80,12 +82,12 @@ publisher.republish("10.10.1.1:12200?xx=zz");
 
 | 属性名 | 属性类型 | 描述 |
 | --- | --- | --- |
-| dataId | String | 数据ID，发布订阅时需要使用相同值，数据唯一标识由 dataId + group + instanceId 组成。 |
+| dataId | String | 数据 ID，发布订阅时需要使用相同值，数据唯一标识由 dataId + group + instanceId 组成。 |
 | group | String | 数据分组，发布订阅时需要使用相同值，数据唯一标识由 dataId + group + instanceId 组成，默认值 DEFAULT_GROUP。 |
 | appName | String | 应用 appName。 |
 
-
 ## 4. 订阅数据
+
 订阅数据的关键代码如下：
 
 ```java
@@ -111,6 +113,7 @@ Subscriber subscriber = registryClient.register(registration);
 订阅数据需要创建两个关键类，分别是 SubscriberDataObserver 和 SubscriberRegistration，前者是收到服务端数据后的回调接口，后者是订阅者注册表，用于向服务端注册订阅信息。
 
 ### 4.1 SubscriberDataObserver
+
 SubscriberDataObserver 仅包含一个方法：
 
 ```java
@@ -121,7 +124,7 @@ void handleData(String dataId, UserData data);
 
 | 名称 | 类型 | 描述 |
 | :--- | :--- | --- |
-| dataId | String | 数据ID |
+| dataId | String | 数据 ID |
 | data | UserData | 数据内容 |
 
 UserData 包装了数据内容，该类包含以下方法：
@@ -133,21 +136,23 @@ public interface UserData {
 }
 ```
 
-* getLocalZone: 返回当前zone；
+* getLocalZone: 返回当前 zone；
 * getZoneData: 返回以 zone 为 key，每个 zone 的数据为 value 的数据。
 
 ### 4.2 SubscriberRegistration
+
 SubscriberRegistration 包含以下四个属性：
 
 | 属性名 | 属性类型 | 描述 |
 | --- | --- | --- |
-| dataId | String | 数据ID，发布订阅时需要使用相同值，数据唯一标识由 dataId + group + instanceId 组成。 |
+| dataId | String | 数据 ID，发布订阅时需要使用相同值，数据唯一标识由 dataId + group + instanceId 组成。 |
 | group | String | 数据分组，发布订阅时需要使用相同值，数据唯一标识由 dataId + group + instanceId 组成，默认值 DEFAULT_GROUP。 |
-| appName | String | 应用appName |
+| appName | String | 应用 appName |
 | scopeEnum | ScopeEnum | 枚举值，表示 Zone、DataCenter、Global 三种维度之一。 |
 | subscriberDataObserver | SubscriberDataObserver | 服务端数据后的回调接口。 |
 
 ## 5. 注销发布及订阅
+
 取消发布订阅的接口如下：
 
 ```java
@@ -158,7 +163,7 @@ int unregister(String dataId, String group, RegistryType registryType);
 
 | 参数名 | 参数类型 | 描述 |
 | --- | --- | --- |
-| dataId | String | 数据ID。 |
+| dataId | String | 数据 ID。 |
 | group | String | 数据分组。 |
 | registryType | RegistryType | 枚举值，表示 PUBLISHER、SUBSCRIBER、CONFIGURATOR 三者维度之一。 |
 

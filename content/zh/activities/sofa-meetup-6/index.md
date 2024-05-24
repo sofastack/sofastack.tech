@@ -37,11 +37,12 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*XB9ESa8q8PwAAAAAA
 
 **嘉宾介绍**
 
-李枫，先后就职于摩托罗拉, 三星等IT公司, 现为独立开发者。在移动平台上积累了十年以上的研发经验, 近几年主要专注于云计算/边缘计算基础设施领域。是《灰帽黑客 第4版：正义黑客的道德规范、渗透测试、攻击方法和漏洞分析技术》和《恶意网络环境下的Linux防御之道 》中文版的主要译者。对技术创新具有浓厚的兴趣和实践能力，热心参与开源社区的各种活动，多次参加各种IT会议并作技术分享。
+李枫，先后就职于摩托罗拉, 三星等 IT 公司, 现为独立开发者。在移动平台上积累了十年以上的研发经验, 近几年主要专注于云计算/边缘计算基础设施领域。是《灰帽黑客 第 4 版：正义黑客的道德规范、渗透测试、攻击方法和漏洞分析技术》和《恶意网络环境下的 Linux 防御之道 》中文版的主要译者。对技术创新具有浓厚的兴趣和实践能力，热心参与开源社区的各种活动，多次参加各种 IT 会议并作技术分享。
 
 **议题简介**
 
 - Kata Containers 具有的轻量和高安全等特性使它在资源受限和安全性需求的物联网/边缘计算领域有很好的应用前景, 并且可以与其他轻量级解决方案（如 K3S 等）进一步结合使用。本话题包含下列子话题：
+
 1) LF Edge（由 Akraino 和 EdgeX 合并而成）中的 Kata Containers；
 2) 打造轻量级 K8S 集群--Kata-Containers 与 K3S 的结合；
 3) 在 ACRN 中运行 Kata Containers；
@@ -74,17 +75,17 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*XB9ESa8q8PwAAAAAA
 
 **嘉宾介绍**
 
-王鑫，英特尔高级工程经理，WAMR(WebAssembly Micro Runtime)项目的创建者，主要工作集中在管理语言运行时和Web技术，2009年以来领导了Java和WebAssembly虚拟机运行时开发、V8 JavaScript引擎的性能优化等相关工作。加入英特尔之前，在摩托罗拉主要作为技术Leader，负责无线基站系统相关的工作。
+王鑫，英特尔高级工程经理，WAMR(WebAssembly Micro Runtime)项目的创建者，主要工作集中在管理语言运行时和 Web 技术，2009 年以来领导了 Java 和 WebAssembly 虚拟机运行时开发、V8 JavaScript 引擎的性能优化等相关工作。加入英特尔之前，在摩托罗拉主要作为技术 Leader，负责无线基站系统相关的工作。
 
 **议题简介**
 
-- 近年来WebAssembly在服务器侧及云原生场景中越来越流行，WAMR(WebAssembly Micro Runtime)是字节码联盟(Bytecode Alliance)旗下的WebAssembly独立运行时开源项目，支持多种软硬件平台，支持解释器/AOT/JIT等多种执行方式，性能优异，资源占用少，对多线程和SIMD也有良好的支持。这次分享将介绍WAMR的架构、特性、社区合作及在云原生场景中的应用。
+- 近年来 WebAssembly 在服务器侧及云原生场景中越来越流行，WAMR(WebAssembly Micro Runtime)是字节码联盟(Bytecode Alliance)旗下的 WebAssembly 独立运行时开源项目，支持多种软硬件平台，支持解释器/AOT/JIT 等多种执行方式，性能优异，资源占用少，对多线程和 SIMD 也有良好的支持。这次分享将介绍 WAMR 的架构、特性、社区合作及在云原生场景中的应用。
 
 **听众收获**
 
-- 了解WebAssembly这一新兴技术 
-- 了解WAMR开源项目的架构、特性及社区合作 
-- 了解WAMR在云原生场景中的应用实例
+- 了解 WebAssembly 这一新兴技术
+- 了解 WAMR 开源项目的架构、特性及社区合作
+- 了解 WAMR 在云原生场景中的应用实例
 
 **《WebAssembly 在 MOSN 中的探索与实践》**
 

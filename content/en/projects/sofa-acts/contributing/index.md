@@ -32,30 +32,31 @@ Therefore, after getting familiar with how to get the source code, you need to:
 
 * Download the code locally. You may select the git/https mode in this step.
 
-   ```
+   ```plain
    Git clone https://github.com/your account name/acts.git
    ```
+
 * Pull a branch to prepare for code modification.
 
-   ```
+   ```plain
    git branch add_xxx_feature
    ```
 
    After the preceding command is executed, your code repository will switch to the corresponding branch. To view the current branch, execute the following command:
 
-   ```
+   ```plain
    git branch -a
    ```
 
    If you want to switch back to the master branch, execute the following command:
 
-   ```
+   ```plain
    git checkout -b master
    ```
 
    If you want to switch back to the branch, execute the following command:
 
-   ```
+   ```plain
    git checkout -b "branchName"
    ```
 
@@ -65,24 +66,25 @@ After a branch is pulled, you can modify the code.
 
 * After modifying the code, execute the following command to submit all modifications to your local repository:
 
-   ```
+   ```plain
    git commit -am 'Add xx feature'
    ```
 
-#### When modifying the code, note the following:
+#### When modifying the code, note the following
 
 * Keep the code style consistent.
 * ACTS uses the Maven plug-in to keep the code style consistent. Before submitting the code, be sure to execute the following command locally.
 
-   ```
+   ```plain
    mvn clean compile
    ```
+
 * Supplement unit test code.
 * New modifications should have passed existing unit tests.
 * Provide a new unit test to prove that the previous code has bugs and the bugs have been fixed in the new code.
 Execute the following command to run all tests:
 
-   ```
+   ```plain
    mvn clean test
    ```
 
@@ -101,7 +103,7 @@ After being submitted to the local repository, the code is synchronized to a rem
 
 * Execute the following command to submit the local modification to GitHub:
 
-   ```
+   ```plain
    git push origin "branchname"
    ```
 
@@ -120,4 +122,3 @@ The person will leave a comment containing the code review suggestions on the co
 #### Merge the code into the trunk
 
 After your code passes the review, the ACTS maintenance personnel will merge it into the ACTS' master branch. You do not need to get involved in this step. After the code is merged, you will receive a message indicating a successful merge.
-

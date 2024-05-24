@@ -16,9 +16,9 @@ descripton: "欢迎参与 SOFABoot 源码解析系列文章共建。"
 
 `<SOFA:BootLab/>`是《剖析 | SOFABoot  框架》系列，会逐步详细介绍 SOFABoot 各个部分的代码设计和实现，欢迎领取文章进行共建。
 
-### | SOFABoot 
+### | SOFABoot
 
-SOFABoot 是蚂蚁金服开源的基于 Spring Boot 的研发框架，它在 Spring Boot 的基础上，提供了诸如 Readiness Check，类隔离，日志空间隔离等能力。在增强了 Spring Boot 的同时，SOFABoot 提供了让用户可以在 Spring Boot 中非常方便地使用 SOFA 中间件的能力。 
+SOFABoot 是蚂蚁金服开源的基于 Spring Boot 的研发框架，它在 Spring Boot 的基础上，提供了诸如 Readiness Check，类隔离，日志空间隔离等能力。在增强了 Spring Boot 的同时，SOFABoot 提供了让用户可以在 Spring Boot 中非常方便地使用 SOFA 中间件的能力。
 
 SOFABoot :<https://github.com/sofastack/sofa-boot>
 

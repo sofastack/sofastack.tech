@@ -38,13 +38,13 @@ Layotto*（/leɪˈɒtəʊ/）* 是一款使用 Golang 开发的应用运行时, 
 
 项目链接：[*https://summer-ospp.ac.cn/org/orgdetail/f0813e66-fa19-4302-a3e3-e6f2d210c83d?lang=zh*](https://summer-ospp.ac.cn/org/orgdetail/f0813e66-fa19-4302-a3e3-e6f2d210c83d?lang=zh)
 
- **MOSN** 
+ **MOSN**
 
 Go、HTTP、Security
 
 **项目社区导师：罗泽轩**
 
-spacewanderlzx@gmail.com
+<spacewanderlzx@gmail.com>
 
 **基于 Coraza 和 MOSN on Envoy 开发 Envoy 的 WAF 插件**
 
@@ -57,13 +57,13 @@ Coraza 是一个用 Go 实现的 WAF 引擎，我们希望能够借助 MOSN on E
 - 实现一个基本可用的 WAF 插件*（需要有详尽的文档+测试）*，并与 Wasm 版本做对比，输出一份比较报告。
 - 了解 MOSN、Envoy 和 WAF，能够用 Go 写代码。
 
- **MOSN** 
+ **MOSN**
 
 Go、Software-Defined Networking
 
 **项目社区导师：纪卓志**
 
-jizhuozhi.george@gmail.com
+<jizhuozhi.george@gmail.com>
 
 **为 Envoy Go 扩展建设插件市场**
 
@@ -89,13 +89,13 @@ Envoy 是当前最流行的网络代理之一，Go 扩展是 MOSN 社区为 Envo
 
 - 熟悉 Git 和 GitHub 工作流程*（分支、版本、合并请求等）*。
 
- **Layotto** 
+ **Layotto**
 
 Go、gRPC
 
 **项目社区导师：wenxuwan**
 
-wangwenxue.wwx@antgroup.com
+<wangwenxue.wwx@antgroup.com>
 
 **Layotto Support Pluggable Components**
 

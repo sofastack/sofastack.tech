@@ -300,7 +300,7 @@ java.lang.IllegalArgumentException: object is not an instance of declaring class
 
 - 发布服务指定跳过序列化
 
-默认情况下，通过注解或者xml发布 JVM 服务，在跨 Biz 调用时，都会走序列化，如果想跳过，需要在发布服务时，指定 `serialize = false`
+默认情况下，通过注解或者 xml 发布 JVM 服务，在跨 Biz 调用时，都会走序列化，如果想跳过，需要在发布服务时，指定 `serialize = false`
 
 1、注解指定
 

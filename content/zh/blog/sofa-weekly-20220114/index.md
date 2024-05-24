@@ -21,7 +21,7 @@ SOFAStack 官网: [https://www.sofastack.tech](https://www.sofastack.tech/)
 
 SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
-### SOFAStack 社区本周 Contributor 
+### SOFAStack 社区本周 Contributor
 
 ![weekly.jpg](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*qJt2Rbr8e-AAAAAAAAAAAAAAARQnAQ)
 
@@ -35,7 +35,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **@王家爵** 提问：
 
->SOFABoot 项目要一两分钟才能启动，目前这边有监控工具可以看到启动过程中各个步骤的耗时吗？
+> SOFABoot 项目要一两分钟才能启动，目前这边有监控工具可以看到启动过程中各个步骤的耗时吗？
 
 A：3.6.0 之后可以通过 actuator/startup 查看启动的耗时分布。
 
@@ -43,7 +43,7 @@ A：3.6.0 之后可以通过 actuator/startup 查看启动的耗时分布。
 
 **@东仔** 提问：
 
->SOFABolt 的最新分支是哪个？
+> SOFABolt 的最新分支是哪个？
 
 A：master 就是最新分支。[https://github.com/sofastack/sofa-bolt](https://github.com/sofastack/sofa-bolt)
 
@@ -51,11 +51,11 @@ A：master 就是最新分支。[https://github.com/sofastack/sofa-bolt](https:/
 
 **我是一个小胖子** 提问：
 
->请问现在已经支持自适应限流了吗？
+> 请问现在已经支持自适应限流了吗？
 
 A：开源版本里有基于 sentinel 的自适应限流，这个你可以看看 sentinel-golang 的文档，但是和我们内部用的自适应限流有一些差异。
 
->你们内部不用 sentinel 是吗？
+> 你们内部不用 sentinel 是吗？
 
 A：也用，我们基于 sentinel 做了一些扩展。
 
@@ -63,15 +63,15 @@ A：也用，我们基于 sentinel 做了一些扩展。
 
 **来永国** 提问：
 
->为什么我起了 RPC 服务端客户端和注册中心，然后连接调用是可以的，然后我把注册中心关了，它还是跑得通？
+> 为什么我起了 RPC 服务端客户端和注册中心，然后连接调用是可以的，然后我把注册中心关了，它还是跑得通？
 
 A：client 会有缓存的。
 
->获取注册中心的服务有 API 接口吗?
+> 获取注册中心的服务有 API 接口吗?
 
 A：有的，有个从单机 session 获取数据的接口 curl localhost:9603/digest/pub/data/query?dataInfoId=com.test.SimpleService#@#DEFAULT_INSTANCE_ID#@#DEFAULT_GROUP dataInfoId 参数需要进行 url encode 应该还没公开的 API 文档，获取数据的 HTTP 接口也不太易用，我最近会补一下文档还有方便使用的接口。
 
->那看样子这个相当于是指定搜索了吗？
+> 那看样子这个相当于是指定搜索了吗？
 
 A：是的，目前没有模糊查询的接口， curl localhost:9603/digest/getDataInfoIdList 你可以用这个 API grep 一下。
 

@@ -1,8 +1,10 @@
 
 ---
+
 title: "依赖管理"
 aliases: "/sofa-boot/docs/DependencyManagement"
 ---
+
 SOFABoot 是在 Spring Boot 的基础上提供的功能扩展。基于 Spring Boot 的机制，SOFABoot 管理了 SOFA 中间件的依赖，并且提供了 Spring Boot 的 Starter，方便用户在 Spring Boot 中使用 SOFA 中间件。
 
 ## SOFABoot 依赖管理 -- Maven
@@ -100,7 +102,7 @@ SOFABoot 基于 Spring Boot 提供了健康检查，模块隔离，类隔离等�
 
 SOFABoot 提供了类隔离组件 [SOFAArk](../sofa-ark-readme)，借助 SOFAArk 容器，用户可以将依赖冲突的三方包打包成 ark 插件。运行时，ark 插件使用单独的类加载器加载，可以和其他 ark 插件以及业务依赖隔离，解决类冲突问题。SOFABoot 官方提供了 SOFARPC 和 SOFATracer 的 ark 插件，例如在应用中引入 SOFARPC ark 插件依赖替代 SOFARPC starter，从而隔离应用和 SOFARPC 及其间接依赖。目前管控的 ark 插件列表如下:
 
-|Ark插件|plugin|
+|Ark 插件|plugin|
 |:---:|:---:|
 |SOFARPC|rpc-sofa-boot-plugin|
 |SOFATracer|tracer-sofa-boot-plugin|

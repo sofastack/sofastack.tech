@@ -11,27 +11,29 @@ aliases: "/posts/2018-04-26-01"
 
 [SOFARPC](https://github.com/sofastack/sofa-rpc) 是近期蚂蚁金服开源的一个高可扩展性、高性能、生产级的 Java RPC 框架。在蚂蚁金服 SOFARPC 已经经历了十多年及五代版本的发展。SOFARPC 致力于简化应用之间的 RPC 调用，为应用提供方便透明、稳定高效的点对点远程服务调用方案。为了用户和开发者方便的进行功能扩展，SOFARPC 提供了丰富的模型抽象和可扩展接口，包括过滤器、路由、负载均衡等等。
 
-SOFARPC 可以集成多种注册中心实现，其中一种就是常用的 [ZooKeeper](http://zookeeper.apache.org/)。 
+SOFARPC 可以集成多种注册中心实现，其中一种就是常用的 [ZooKeeper](http://zookeeper.apache.org/)。
 
 ZooKeeper 作为一个开源的分布式应用协调系统，已经用到了许多分布式项目中，用来完成统一命名服务、状态同步服务、集群管理、分布式应用配置项的管理等工作。
 
 本文将介绍 SOFARPC 是使用 ZooKeeper 作为注册中心的用法。
 
 ## 1. ZooKeeper 注册中心安装
+
 这里介绍下 Zookeeper 单机模式两种安装方式，集群模式请参考下其他文档。
 
 ### 1.1 基于压缩包安装
+
 第一步：去官网下载 [http://zookeeper.apache.org/releases.html#download](http://zookeeper.apache.org/releases.html#download)
 例如目前最新版是 v3.4.11，我们下载压缩包`zookeeper-3.4.11.tar.gz`，然后解压到文件夹下，例如 `/home/admin/zookeeper-3.4.11`。
 
 第二步：设置配置文件，可以直接从样例复制一份。
 
 ```bash
-$ cd /home/admin/zookeeper-3.4.11
-$ cp conf/zoo_sample.cfg conf/zoo.cfg
+cd /home/admin/zookeeper-3.4.11
+cp conf/zoo_sample.cfg conf/zoo.cfg
 ```
 
-第三步：到 Zookeeper 安装目录下直接启动Zookeeper。
+第三步：到 Zookeeper 安装目录下直接启动 Zookeeper。
 
 ```bash
 $ cd /home/admin/zookeeper-3.4.11
@@ -62,11 +64,12 @@ WatchedEvent state:SyncConnected type:None path:null
 ```
 
 ### 1.2 基于 Docker 安装
+
 如果您已安装了 `Docker`，那么可以选择使用镜像启动 Zookeeper。
 
 ```bash
-$ docker image pull zookeeper:3.4.11
-$ docker run -i -t  --name my_zookeeper -p2181:2181 -d zookeeper:3.4.11
+docker image pull zookeeper:3.4.11
+docker run -i -t  --name my_zookeeper -p2181:2181 -d zookeeper:3.4.11
 ```
 
 我们查看下启动日志：
@@ -79,6 +82,7 @@ Using config: /conf/zoo.cfg
 ......
 2018-04-16 07:23:41,187 [myid:] - INFO  [main:NIOServerCnxnFactory@89] - binding to port 0.0.0.0/0.0.0.0:2181
 ```
+
 可以看到端口已经启动并发布，我们使用四字命令检查下。
 
 ```bash
@@ -109,11 +113,12 @@ WatchedEvent state:SyncConnected type:None path:null
 [zookeeper]
 ```
 
-
 ## 2. SOFARPC 集成 Zookeeper 注册中心
+
 Demo 工程参见: [sofa-rpc-zookeeper-demo](https://github.com/ujjboy/sofa-rpc-zookeeper-demo)
 
 ### 2.1 新建工程
+
 运行需要 JDK 6 及以上、 Maven 3.2.5 以上。
 
 首先我们在 IDE 里新建一个普通 Maven 工程，然后在 `pom.xml` 中引入如下 RPC 和 Zookeeper 相关依赖：
@@ -132,7 +137,9 @@ Demo 工程参见: [sofa-rpc-zookeeper-demo](https://github.com/ujjboy/sofa-rpc-
     </dependency>
 </dependencies>
 ```
+
 ### 2.2 编写服务提供端
+
 第一步：创建接口
 
 ```java
@@ -185,6 +192,7 @@ public class ServerMain {
 ```
 
 ### 2.3 编写服务调用端
+
 我们拿到了服务端的接口，就可以编写服务端调用端代码
 
 ```java
@@ -221,7 +229,8 @@ public class ClientMain {
 ```
 
 ### 2.4 运行
-我们先运行服务提供端程序 `ServerMain`，然后去 ZooKeeper上看下服务订阅情况。
+
+我们先运行服务提供端程序 `ServerMain`，然后去 ZooKeeper 上看下服务订阅情况。
 
 ```bash
 $ sh bin/zkCli.sh
@@ -236,14 +245,14 @@ WatchedEvent state:SyncConnected type:None path:null
 
 运行结果如下：
 
-```
+```plain
 hello world
 hello world
 hello world
 hello world
 ```
 
-我们也可以去 ZooKeeper上看下服务订阅情况，
+我们也可以去 ZooKeeper 上看下服务订阅情况，
 
 ```bash
 sh bin/zkCli.sh
@@ -257,20 +266,23 @@ WatchedEvent state:SyncConnected type:None path:null
 至此，使用 ZooKeeper 作为 SOFARPC 的注册中心介绍完了。
 
 ## 3. 在 SOFABoot 使用 SOFARPC 及 ZooKeeper 注册中心
+
 [SOFABoot](https://github.com/sofastack/sofa-boot) 是蚂蚁金服开源的基于 Spring Boot 的研发框架，它在增强了 Spring Boot 的同时，SOFABoot 提供了让用户可以在 Spring Boot 中非常方便地使用 SOFAStack 相关中间件的能力。
 
-SOFARPC 也实现以一个 `rpc-sofa-boot-starter` 可以方便的集成到 SOFABoot 应用。目前只支持Spring XML 方式发布和引用服务，下一个版本将支持 Annotation 方式发布和引用服务。
+SOFARPC 也实现以一个 `rpc-sofa-boot-starter` 可以方便的集成到 SOFABoot 应用。目前只支持 Spring XML 方式发布和引用服务，下一个版本将支持 Annotation 方式发布和引用服务。
 
 Demo 工程参见: [sofa-rpc-sofa-boot-zookeeper-demo](https://github.com/ujjboy/sofa-rpc-sofa-boot-zookeeper-demo)
 
 ### 3.1 创建 SpringBoot 工程
+
 SOFABoot 运行需要 JDK 7 及以上、 Maven 3.2.5 以上。
 
-我们可以使用 Spring Boot 的[工程生成工具](http://start.spring.io/) 来生成一个标准的Spring Boot 工程。
+我们可以使用 Spring Boot 的[工程生成工具](http://start.spring.io/) 来生成一个标准的 Spring Boot 工程。
 
-![undefined](https://cdn.yuque.com/lark/0/2018/png/9439/1523969432790-d0c3cb6d-dd2d-4c45-8dd5-d595e2395c1b.png) 
+![undefined](https://cdn.yuque.com/lark/0/2018/png/9439/1523969432790-d0c3cb6d-dd2d-4c45-8dd5-d595e2395c1b.png)
 
 ### 3.2 引入 SOFABoot 和 rpc-sofa-boot-starter
+
 我们将工程导入到 IDE 中，然后在 `pom.xml` 将 Spring Boot 工程转为一个 SOFABoot 工程，很简单，只要加入依赖管控即可。
 
 ```xml
@@ -291,16 +303,16 @@ SOFABoot 运行需要 JDK 7 及以上、 Maven 3.2.5 以上。
 
 ```xml
 <dependencies>
-	<dependency>
-		<groupId>com.alipay.sofa</groupId>
-		<artifactId>rpc-sofa-boot-starter</artifactId>
-		<version>5.3.1</version>
-	</dependency>
+ <dependency>
+  <groupId>com.alipay.sofa</groupId>
+  <artifactId>rpc-sofa-boot-starter</artifactId>
+  <version>5.3.1</version>
+ </dependency>
 </dependencies>
 ```
 
-
 ### 3.3 编写服务提供端
+
 第一步：创建接口
 
 ```java
@@ -344,7 +356,6 @@ public class HelloServiceImpl implements HelloService {
 </beans>
 ```
 
-
 ### 3.4 编写服务调用端
 
 同样服务端调用端也通过 SpringBean 的方式引用一个服务。新建一个 Spring 的 xml，例如 `src/main/resource/rpc-client.xml`，注意文件头要保持一致。
@@ -368,6 +379,7 @@ public class HelloServiceImpl implements HelloService {
 ```
 
 ### 3.5 指定注册中心地址
+
 我们需要在 `src/main/resource/application.properties` 里指定我们的应用名和注册中心地址
 
 ```ini
@@ -380,6 +392,7 @@ com.alipay.sofa.rpc.registry.address=zookeeper://127.0.0.1:2181
 ```
 
 ### 3.6 运行
+
 我们在生成代码里找到了默认的启动类 `XXXApplication.java`，名字自动生成的，例如本例是为：`org.howtimeflies.sofa.rpc.SofaRpcSofaBootZookeeperDemoApplication`。
 
 它的原始内容如下：
@@ -392,11 +405,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
 public class SofaRpcSofaBootZookeeperDemoApplication {
-	public static void main(String[] args) {
-		SpringApplication.run(SofaRpcSofaBootZookeeperDemoApplication.class, args);
-	}
+ public static void main(String[] args) {
+  SpringApplication.run(SofaRpcSofaBootZookeeperDemoApplication.class, args);
+ }
 }
 ```
+
 可以看到里面并未指定加载的文件，我们将启动类改造下，引入 Spring XML 的配置，以及我们的调用代码，如下:
 
 ```java
@@ -414,7 +428,7 @@ public class SofaRpcSofaBootZookeeperDemoApplication {
     public static void main(String[] args) {
         ApplicationContext context = 
                 SpringApplication.run(SofaRpcSofaBootZookeeperDemoApplication.class, args);
-		// 等待ZooKeeper下发地址
+  // 等待ZooKeeper下发地址
         try {
             Thread.sleep(2000);
         } catch (Exception e) {
@@ -430,7 +444,7 @@ public class SofaRpcSofaBootZookeeperDemoApplication {
 
 直接运行 `SofaRpcSofaBootZookeeperDemoApplication`，结果如下：
 
-```
+```plain
   .   ____          _            __ _ _
  /\\ / ___'_ __ _ _(_)_ __  __ _ \ \ \ \
 ( ( )\___ | '_ | '_| | '_ \/ _` | \ \ \ \
@@ -447,8 +461,8 @@ hello world
 
 DEMO：
 
- - [sofa-rpc-zookeeper-demo](https://github.com/ujjboy/sofa-rpc-zookeeper-demo)
- - [sofa-rpc-sofa-boot-zookeeper-demo](https://github.com/ujjboy/sofa-rpc-sofa-boot-zookeeper-demo)
+- [sofa-rpc-zookeeper-demo](https://github.com/ujjboy/sofa-rpc-zookeeper-demo)
+- [sofa-rpc-sofa-boot-zookeeper-demo](https://github.com/ujjboy/sofa-rpc-sofa-boot-zookeeper-demo)
 
 源码：
 

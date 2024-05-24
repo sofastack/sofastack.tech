@@ -10,9 +10,9 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1564389345682-0d130dcb-468
 ---
 
 > 崔秀龙，HPE 软件分析师，Kubernetes 权威指南作者之一，Kubernetes、Istio 项目成员。
-> 
+>
 > 本文根据崔秀龙在 2019 广州 Service Mesh Meetup#5 分享整理，完整的分享 PPT 获取方式见文章底部。
-> 
+>
 > 本文内容收录在崔秀龙的新书：《深入浅出 Istio - Service Mesh 快速入门与实践》的第十章，该书将于近期由博文视点出版发行，敬请关注。
 
 ![Service Mesh Meetup 分享现场图](https://cdn.nlark.com/yuque/0/2019/jpeg/226702/1547173724138-2dd495ad-ea26-45eb-8d9b-6306df9c7855.jpeg)
@@ -49,9 +49,9 @@ Service Mesh 概念在 Linkerd 落地之后，让一直漂浮在空中的微服�
 ## Istio 的问题
 
 - API 稳定性可能是最严重的一个问题。目前最成熟的功能组别应该是流量控制，其版本号也仅是 v1alpha3，一般来说，alpha 阶段的产品，代表着不提供向后兼容的承诺，流量控制 API 在从 v1alpha2 升级为 v1alpha3 的过程中，API 几乎全部改写，使得很多早期用户的精力投入付诸东流。核心功能尚且如此，遑论相对比较边缘的 Mixer、Citadel 以及 Galley 组件的相关内容。
-- 发布节奏和发布质量的问题也相当严重。Istio并不算长的历史中，出现了多次版本撤回、大版本严重延期、发布质量低下无法使用以及 Bug 反复等状况，这无疑会让每次升级尝试都充满了不确定性，会很大的影响生产过程的连续性。
+- 发布节奏和发布质量的问题也相当严重。Istio 并不算长的历史中，出现了多次版本撤回、大版本严重延期、发布质量低下无法使用以及 Bug 反复等状况，这无疑会让每次升级尝试都充满了不确定性，会很大的影响生产过程的连续性。
 - Mixer 是一个问题焦点，其数据模型较为复杂，并且集中了所有应用的流量于一点，虽然其中加入了各种缓存等技术来降低延迟，但是其独特地位决定了 Mixer 始终处于一个高风险的位置。同时其 API 结构稍显混乱，重构风险较大。
-- Pilot的性能方面也经常为人诟病，虽然经过几次升级，但是即使是 1.0 之后，还是出现了两次 Pilot 在集群中服务/Pod 过多的情况下会超量消耗资源的问题。
+- Pilot 的性能方面也经常为人诟病，虽然经过几次升级，但是即使是 1.0 之后，还是出现了两次 Pilot 在集群中服务/Pod 过多的情况下会超量消耗资源的问题。
 - 安全、物理机和虚拟机的支持以及网格边缘通信这三组功能，目前用户较少，质量尚不明确。
 - 最后就是 Istio 的 Sidecar 注入模式，这种模式一定会增加服务间调用的网络延迟，在目前阶段这是一个痼疾，Sidecar 的固定延迟和 Mixer 的不确定行为相结合，有可能会产生严重后果。
 
@@ -161,5 +161,5 @@ Istio 提供的众多功能对每个公司或者项目，都会有不同价值�
 **延伸阅读**
 
 - [蚂蚁金服 Service Mesh 渐进式迁移方案|Service Mesh Meetup 实录](https://www.sofastack.tech/blog/service-mesh-meetup-5-retrospect/)
-- [蚂蚁金服Service Mesh新型网络代理的思考与实践 | GIAC 分享实录](https://www.sofastack.tech/blog/service-mesh-giac-2018/)
+- [蚂蚁金服 Service Mesh 新型网络代理的思考与实践 | GIAC 分享实录](https://www.sofastack.tech/blog/service-mesh-giac-2018/)
 - [蚂蚁金服 Service Mesh 实践探索](https://mp.weixin.qq.com/s?__biz=MjM5MDE0Mjc4MA==&mid=2651010202&idx=1&sn=742179879a25d526402a5b561b769ed1&scene=21)

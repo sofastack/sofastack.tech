@@ -30,7 +30,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **1. 罗坤** 提问：
 
->您好，请问一下可以用 SOFATracer 的摘要日志是 result.code 判断交易是否成功来告警么？result.code 有哪些状态？
+> 您好，请问一下可以用 SOFATracer 的摘要日志是 result.code 判断交易是否成功来告警么？result.code 有哪些状态？
 
 A：是可以的，如果是监控，可以用 stat 日志。
 
@@ -38,7 +38,7 @@ A：是可以的，如果是监控，可以用 stat 日志。
 
 **2. xiaoyu** 提问：
 
->咨询一个问题，现在使用 MOSN 作为 Istio 数据面，还是只能使用 Istio 1.10.6 版本吗？
+> 咨询一个问题，现在使用 MOSN 作为 Istio 数据面，还是只能使用 Istio 1.10.6 版本吗？
 
 A：是的，目前支持的这个版本。
 
@@ -46,13 +46,13 @@ A：是的，目前支持的这个版本。
 
 **3. 高岩** 提问：
 
->请教下， MOSN 官网的集成 Istio 的例子，在 Katacoda 上练习 step 4 的测试 curl productpage 时失败，然后在我本地 Minikube 的环境测试结果也一样，请问下这个 demo 问题怎么排查？
+> 请教下， MOSN 官网的集成 Istio 的例子，在 Katacoda 上练习 step 4 的测试 curl productpage 时失败，然后在我本地 Minikube 的环境测试结果也一样，请问下这个 demo 问题怎么排查？
 
 A：我试了一下，这个 Katacode 上执行 grep 会报错，但是不执行就没问题。
 
 ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*y2abQ6qNObwAAAAAAAAAAAAAARQnAQ)
 
->好的，我再试一下，感谢。
+> 好的，我再试一下，感谢。
 
 A：如果遇到问题，可以看一下 MOSN 的日志。kubectl logs $pod -c istio-proxy 就可以了，还有问题可以建个 issue。
 

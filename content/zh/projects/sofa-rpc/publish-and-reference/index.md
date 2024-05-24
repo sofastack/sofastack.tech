@@ -1,8 +1,10 @@
 
 ---
+
 title: "服务发布与引用"
 aliases: "/sofa-rpc/docs/Publish-And-Reference"
 ---
+
 SOFARPC 的服务发布和引用的基本配置已经在「编程界面」章节中说明，这里主要介绍服务发布和引用的一些特性。
 
 ### 同一服务发布多种协议
@@ -62,7 +64,7 @@ providerConfig.setRegistry(registryConfigs);
 
 如果是使用 XML 的方式
 
-需要在properties里配置注册中心
+需要在 properties 里配置注册中心
 
 ```java
 com.alipay.sofa.rpc.registries.zookeeper=zookeeper://127.0.0.1:2181
@@ -80,7 +82,7 @@ com.alipay.sofa.rpc.registries.nacos=nacos://127.0.0.1:8848
 
 如果使用 Annotation 的方式
 
-需要在properties里配置注册中心
+需要在 properties 里配置注册中心
 
 ```java
 com.alipay.sofa.rpc.registries.zookeeper=zookeeper://127.0.0.1:2181

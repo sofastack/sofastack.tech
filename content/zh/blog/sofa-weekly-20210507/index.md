@@ -31,7 +31,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)<br />
 
 **2、@洪波森** 提问：
 
->这算一个 bug 吗，永远跑不进来？<br />
+> 这算一个 bug 吗，永远跑不进来？<br />
 >![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*XOvFQoDU2SwAAAAAAAAAAAAAARQnAQ)
 
 A：不是，读不到你事务分组对应的值，就是 null。<br />
@@ -39,14 +39,14 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)<br />
 
 **3、@陈承邦** 提问：
 
->sharding-transaction-base-seata-at 这个包只对 Seata 做了代理，我看了一早上源码，直接用 Seata 包 好像也不影响 分布式事务
+> sharding-transaction-base-seata-at 这个包只对 Seata 做了代理，我看了一早上源码，直接用 Seata 包 好像也不影响 分布式事务
 
 A：Seata 无法找到具体那个 datasource，Seata 只能代理 sharding-jdbc 最外层的 datasource，这个 datasource 里面有 N 个 datasource 来实现分库分表的功能，这个才是真正对数据库的 <br />
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)<br />
 
 **4、@杨政伟** 提问：
 
->请教一个问题，如果 A 方法调用 B 方法，B 方法启用了事务，并发生异常时，但 B 方法并没有回滚，怎么能实现 B 方法的回滚？<br />
+> 请教一个问题，如果 A 方法调用 B 方法，B 方法启用了事务，并发生异常时，但 B 方法并没有回滚，怎么能实现 B 方法的回滚？<br />
 >![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*BBW6RIUrAtgAAAAAAAAAAAAAARQnAQ)
 
 A：在同一个类里面被其他方法调用，是不能开启事务的，看一下 aop 的机制。a 是个实例  cglib 代理了 a 成为了一个包装了它的实例，此时你直接调了内部的实例，怎么走到它的切面去呢？<br />
@@ -61,4 +61,3 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)<br />
 - [Rust 大展拳脚的新兴领域：机密计算](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247487576&idx=1&sn=0d0575395476db930dab4e0f75e863e5&chksm=faa0ff82cdd77694a6fc42e47d6f20c20310b26cedc13f104f979acd1f02eb5a37ea9cdc8ea5&scene=21)
 
 - [WebAssembly 在 MOSN 中的实践 - 基础框架篇](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247487508&idx=1&sn=4b725ef4d19372f1711c2eb066611acf&chksm=faa0ffcecdd776d81c3d78dbfff588d12ef3ec3c5607036e3994fee3e215695279996c045dbc&scene=21)
-

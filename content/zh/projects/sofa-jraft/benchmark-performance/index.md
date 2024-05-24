@@ -14,22 +14,22 @@ title: "Benchmark 数据"
 
 目前的测试场景比较简单，以后会增加更多测试场景
 
-# 测试场景1
+# 测试场景 1
 
-## 场景1: 测试条件
+## 场景 1: 测试条件
 
 | Client 数量 | Client-Batching | Storage-Type | 读写比例 | Replicator-Pipeline | key 大小 | value 大小 |
 | ---------- | --------------- | ------------ | -------- | ---------- | -------- | ---------- |
-|     8      | **开启**            | MemoryDB     | 1:9      | **开启**  | 16 字节 | 16字节 |
+|     8      | **开启**            | MemoryDB     | 1:9      | **开启**  | 16 字节 | 16 字节 |
 
-## 场景1: 结果汇总：
+## 场景 1: 结果汇总
 
 * 8 个 client 一共达到 40w+ ops，p95 RT 在 8ms 以内
 * 3 个 server 节点负载没达到极限 load 15 左右，cpu 40% 左右
 
-### 场景1: 3 个 server 机器负载：
+### 场景 1: 3 个 server 机器负载
 
-#### 场景1: server1
+#### 场景 1: server1
 
 ```text
 top - 20:11:14 up 10 days, 23:09,  1 user,  load average: 12.29, 6.92, 4.00
@@ -57,7 +57,7 @@ KiB Swap:  2097148 total,  2097148 free,        0 used.  6854596 avail Mem
  15682 root      20   0 12.853g 8.859g  24064 S 708.7 14.8  26:49.38 java
 ```
 
-#### 场景1: server2
+#### 场景 1: server2
 
 ```text
 top - 20:11:47 up 10 days, 23:03,  1 user,  load average: 17.68, 8.50, 4.56
@@ -85,7 +85,7 @@ KiB Swap:  2097148 total,  2097148 free,        0 used.  6522696 avail Mem
 118164 root      20   0 12.987g 6.889g  24140 S 729.9 11.5  30:59.19 java
 ```
 
-#### 场景1: server3
+#### 场景 1: server3
 
 ```text
 top - 20:12:14 up 6 days,  4:11,  1 user,  load average: 13.60, 7.80, 4.29
@@ -113,7 +113,7 @@ KiB Swap:  2097148 total,  2097148 free,        0 used. 34784900 avail Mem
  14040 root      20   0 12.893g 7.562g  24064 S 651.5 12.6  34:19.05 java
 ```
 
-### 场景1: 8 个 client 的 ops 数据：
+### 场景 1: 8 个 client 的 ops 数据
 
 #### client1：6.6w ops
 
@@ -541,22 +541,22 @@ put_benchmark_timer
             99.9% <= 511.03 milliseconds
 ```
 
-# 测试场景2
+# 测试场景 2
 
-## 场景2: 测试条件
+## 场景 2: 测试条件
 
 | Client 数量 | Client-Batching | Storage-Type | 读写比例 | Replicator-Pipeline | key 大小 | value 大小 |
 | ---------- | --------------- | ------------ | -------- | ---------- | -------- | ---------- |
-|     8      | **开启**          | RocksDB     | 1:9      | **开启**  | 16 字节 | 16字节 |
+|     8      | **开启**          | RocksDB     | 1:9      | **开启**  | 16 字节 | 16 字节 |
 
-## 场景2: 结果汇总
+## 场景 2: 结果汇总
 
 * 8 个 client 一共达到 25w+ ops, p95 RT 在 20ms 以内
 * 3 个 server 节点负载没达到极限 load 10 左右，cpu 30% 左右，还可以增加 client，client 发送能力受限
 
-### 场景2: 3 个 server 机器负载
+### 场景 2: 3 个 server 机器负载
 
-#### 场景2: server1
+#### 场景 2: server1
 
 ```text
 top - 21:01:33 up 10 days, 23:59,  1 user,  load average: 10.52, 9.01, 5.85
@@ -584,7 +584,7 @@ KiB Swap:  2097148 total,  2097148 free,        0 used.  3414404 avail Mem
  33887 root      20   0 13.831g 9.054g  24048 S 513.6 15.1  77:08.73 java
 ```
 
-#### 场景2: server2
+#### 场景 2: server2
 
 ```text
 top - 21:02:18 up 10 days, 23:53,  1 user,  load average: 9.57, 9.66, 6.38
@@ -612,7 +612,7 @@ KiB Swap:  2097148 total,  2097148 free,        0 used.  3618372 avail Mem
   5610 root      20   0 13.875g 7.683g  24144 S 397.7 12.8  78:40.24 java
 ```
 
-#### 场景2: server3
+#### 场景 2: server3
 
 ```text
 top - 21:02:40 up 6 days,  5:01,  1 user,  load average: 10.67, 9.64, 6.02
@@ -640,7 +640,7 @@ KiB Swap:  2097148 total,  2097148 free,        0 used. 25306552 avail Mem
  28781 root      20   0 14.315g 7.042g  23948 S 436.0 11.7  83:37.86 java
 ```
 
-### 场景2: 8 个 client 的 ops 数据
+### 场景 2: 8 个 client 的 ops 数据
 
 #### client1：3.4w ops
 
@@ -1071,23 +1071,23 @@ put_benchmark_timer
             99.9% <= 655.09 milliseconds
 ```
 
-# 测试场景3
+# 测试场景 3
 
-## 场景3: 测试条件
+## 场景 3: 测试条件
 
 | Client 数量 | Client-Batching | Storage-Type | 读写比例 | Replicator-Pipeline | key 大小 | value 大小 |
 | ---------- | --------------- | ------------ | -------- | ---------- | -------- | ---------- |
-|     2      | **关闭**         | Memory     | 1:9      | **开启**  | 16 字节 | 16字节 |
+|     2      | **关闭**         | Memory     | 1:9      | **开启**  | 16 字节 | 16 字节 |
 
-## 场景3: 结果汇总
+## 场景 3: 结果汇总
 
 * 2 个 client 一共达到 10w+ ops，p95 RT 在 10ms 以内
 * 3 个 server 节点负载达到极限 load 接近 20，cpu 超过 50%
 * ops 降低的原因在于关闭了 client-batching 后 RPC(bolt) 层面也出现了瓶颈，所以还是建议打开 client-batching 开关，client-batching 没有副作用，完全不会影响单个消息的延迟
 
-### 场景3: 3 个 server 机器负载
+### 场景 3: 3 个 server 机器负载
 
-#### 场景3: server1
+#### 场景 3: server1
 
 ```text
 top - 22:39:42 up 11 days,  1:37,  1 user,  load average: 15.82, 8.18, 4.28
@@ -1115,7 +1115,7 @@ KiB Swap:  2097148 total,  2097148 free,        0 used. 23990152 avail Mem
  93733 root      20   0 10.266g 6.475g  23748 S 968.0 10.8  13:03.22 java
 ```
 
-#### 场景3: server2
+#### 场景 3: server2
 
 ```text
 top - 22:39:55 up 11 days,  1:31,  1 user,  load average: 17.92, 9.24, 4.61
@@ -1143,7 +1143,7 @@ KiB Swap:  2097148 total,  2097148 free,        0 used. 24122012 avail Mem
  64477 root      20   0 10.243g 6.651g  24096 S  1108 11.1  15:44.10 java
 ```
 
-#### 场景3: server3
+#### 场景 3: server3
 
 ```text
 top - 22:40:06 up 6 days,  6:39,  1 user,  load average: 18.66, 8.40, 4.05
@@ -1171,7 +1171,7 @@ KiB Swap:  2097148 total,  2097148 free,        0 used. 46373164 avail Mem
  80602 root      20   0 10.248g 6.683g  23852 S 892.4 11.1  17:00.73 java
 ```
 
-### 场景3: 2 个 client 的 ops 数据
+### 场景 3: 2 个 client 的 ops 数据
 
 #### client1：6.7w ops
 
@@ -1281,23 +1281,23 @@ put_benchmark_timer
             99.9% <= 180.62 milliseconds
 ```
 
-# 场景4: 测试场景4
+# 场景 4: 测试场景 4
 
-## 场景4: 测试条件
+## 场景 4: 测试条件
 
 | Client 数量 | Client-Batching | Storage-Type | 读写比例 | Replicator-Pipeline | key 大小 | value 大小 |
 | ---------- | --------------- | ------------ | -------- | ---------- | -------- | ---------- |
-|     2      | **关闭**         | Memory     | 1:9      | **关闭**  | 16 字节 | 16字节 |
+|     2      | **关闭**         | Memory     | 1:9      | **关闭**  | 16 字节 | 16 字节 |
 
-## 场景4: 结果汇总
+## 场景 4: 结果汇总
 
 * 2 个 client 一共达到 7.5w ops，p95 RT 在 15ms 以内
 * 3 个 server 节点负载达到极限 load 接近 20 (有一台超过 20), cpu 超过 50%
 * ops 降低的原因在于关闭了 client-batching 后 RPC(bolt) 层面也出现了瓶颈，所以还是建议打开 client-batching 开关，client-batching 没有副作用，完全不会影响单个消息的延迟
 
-### 场景4: 3 个 server 机器负载
+### 场景 4: 3 个 server 机器负载
 
-#### 场景4: server1
+#### 场景 4: server1
 
 ```text
 top - 23:19:52 up 11 days,  2:18,  1 user,  load average: 17.16, 9.82, 5.15
@@ -1325,7 +1325,7 @@ KiB Swap:  2097148 total,  2097148 free,        0 used. 21751724 avail Mem
 112036 root      20   0 10.756g 6.728g  23928 S 556.8 11.2  33:35.32 java
 ```
 
-#### 场景4: server2
+#### 场景 4: server2
 
 ```text
 top - 23:20:07 up 11 days,  2:11,  1 user,  load average: 11.21, 8.29, 5.24
@@ -1353,7 +1353,7 @@ KiB Swap:  2097148 total,  2097148 free,        0 used. 22364924 avail Mem
  82346 root      20   0 10.710g 7.086g  23864 S 770.7 11.8  27:31.04 java
 ```
 
-#### 场景4: server3
+#### 场景 4: server3
 
 ```text
 top - 23:20:36 up 6 days,  7:19,  1 user,  load average: 23.60, 11.37, 5.58
@@ -1381,7 +1381,7 @@ KiB Swap:  2097148 total,  2097148 free,        0 used. 44333956 avail Mem
  94729 root      20   0 10.931g 7.454g  23852 S  1300 12.4  39:10.99 java
 ```
 
-### 场景4: 2 个 client 的 ops 数据
+### 场景 4: 2 个 client 的 ops 数据
 
 #### client1：5w ops
 
@@ -1491,4 +1491,3 @@ put_benchmark_timer
               99% <= 71.10 milliseconds
             99.9% <= 192.06 milliseconds
 ```
-

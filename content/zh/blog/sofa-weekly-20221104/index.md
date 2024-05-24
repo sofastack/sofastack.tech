@@ -30,14 +30,14 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **1.康政恒** 提问：
 
->MOSN 做链路追踪是否需要 APP 配合传递 traceID、spanID 这些吗?
+> MOSN 做链路追踪是否需要 APP 配合传递 traceID、spanID 这些吗?
 A：链路追踪都需要 APP 配合的，这是业务决定，跟是不是 MOSN 没关系。
 
 **「MOSN」**：*[https://github.com/mosn/mosn/](https://github.com/mosn/mosn/)*
 
 **2.康政恒** 提问：
 
->MOSN 是否和 APP 也保持长链接呀，这样可以知道 APP 的存活状态。
+> MOSN 是否和 APP 也保持长链接呀，这样可以知道 APP 的存活状态。
 A：保持长链接。
 
 **「MOSN」**：*[https://github.com/mosn/mosn/](https://github.com/mosn/mosn/)*

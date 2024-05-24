@@ -34,7 +34,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **@zjw** 提问：
 
->请教个 SOFARegistry 的问题，sessionServer 启动后，地址是上报给 Meta 的吗？如果 sessionServer 意外关闭，地址是什么时候怎么摘除的？
+> 请教个 SOFARegistry 的问题，sessionServer 启动后，地址是上报给 Meta 的吗？如果 sessionServer 意外关闭，地址是什么时候怎么摘除的？
 
 A：session 会定时向 Meta 发送请求对自己的地址进行心跳续约，session 宕机后，Meta 端一段时间接收不到心跳就会摘除宕机的 session，然后广播给所有其他的 session。目前是靠心跳，超时之后 Meta 会把 session 或者 data 剔除。
 
@@ -42,7 +42,7 @@ A：session 会定时向 Meta 发送请求对自己的地址进行心跳续约�
 
 **@滕川** 提问：
 
->如果 leader 节点挂了，新选举的 leader 节点如何知道各个 follower 节点的 match index。
+> 如果 leader 节点挂了，新选举的 leader 节点如何知道各个 follower 节点的 match index。
 
 A：leader 不需要知道，leader 节点就直接发 appendEtries 即可。如果哪个 follower 还缺更之前的 log，那么它拒绝掉这次 appendEntries 就可以了， leader 会有相应的回退处理逻辑。
 
@@ -50,7 +50,7 @@ A：leader 不需要知道，leader 节点就直接发 appendEtries 即可。如
 
 **@橙橙不是澄澄** 提问：
 
->Raft 里面为什么不要 observer 呢？恰好之前看到 ZooKeeper 里面有这个角色。
+> Raft 里面为什么不要 observer 呢？恰好之前看到 ZooKeeper 里面有这个角色。
 
 A：Raft 里面可以有类似的角色，叫 learner。learner 不参与选举，只接收 leader 日志，JRaft 也支持 learner。
 
@@ -58,7 +58,7 @@ A：Raft 里面可以有类似的角色，叫 learner。learner 不参与选举�
 
 **@邓君武** 提问：
 
->SOFAJRaft 文档中说支持 MULTI-RAFT-GROUP，目前 SOFAJRaft-RheaKV 这个存储组件中用到了。那么如果我想根据 SOFAJRaft 实现一个分布式的业务系统，MULTI-RAFT-GROUP 该怎么用呢？
+> SOFAJRaft 文档中说支持 MULTI-RAFT-GROUP，目前 SOFAJRaft-RheaKV 这个存储组件中用到了。那么如果我想根据 SOFAJRaft 实现一个分布式的业务系统，MULTI-RAFT-GROUP 该怎么用呢？
 
 A：MULTI-RAFT-GROUP 主要用于解决 SIGLE-RAFT-GROUP 单点瓶颈问题（存储或是吞吐），多个 group 中每个 group 都有一个 leader，可以把 leader 打散到不同的机器上，提高并发度。JRaft 天然支持 MULTI-RAFT-GROUP ，使用的话可以参考 RheaKV。
 
@@ -124,4 +124,4 @@ fail fast，让 Layotto 启动报错时自杀
 
 - [蚂蚁集团技术风险代码化平台实践（MaaS）](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247495808&idx=1&sn=88246170520e1e3942f069a559200ea4&chksm=faa31f5acdd4964c877ccf2a5ef27e3c9acd104787341e43b2d4c01bed01c91f310262fb0ec4&scene=21#wechat_redirect)
 
->![weekly.jpg](https://gw.alipayobjects.com/zos/bmw-prod/5f2e9662-eff8-4b6b-abb6-08799da42fcc.webp)
+> ![weekly.jpg](https://gw.alipayobjects.com/zos/bmw-prod/5f2e9662-eff8-4b6b-abb6-08799da42fcc.webp)

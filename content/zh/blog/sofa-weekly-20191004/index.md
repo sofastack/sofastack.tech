@@ -16,9 +16,9 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 
 SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 
-**SOFAStack 官网: **[https://www.sofastack.tech](https://www.sofastack.tech/)
+**SOFAStack 官网:**[https://www.sofastack.tech](https://www.sofastack.tech/)
 
-**SOFAStack: **[https://github.com/sofastack](https://github.com/sofastack)
+**SOFAStack:**[https://github.com/sofastack](https://github.com/sofastack)
 
 ### SOFALab 系列文章
 
@@ -42,17 +42,17 @@ SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主�
 
 #### <SOFA:BoltLab/> 系列文章
 
-- [蚂蚁金服通信框架SOFABolt解析 | 编解码机制](https://www.sofastack.tech/blog/sofa-bolt-codec-deep-dive/)
-- [蚂蚁金服通信框架SOFABolt解析 | 序列化机制(Serializer)](https://www.sofastack.tech/blog/sofa-bolt-serialization-deep-dive/)
-- [蚂蚁金服通信框架SOFABolt解析 | 协议框架解析](https://www.sofastack.tech/blog/sofa-bolt-framework-deep-dive/)
-- [蚂蚁金服通信框架SOFABolt解析 | 连接管理剖析](https://www.sofastack.tech/blog/sofa-blot-connection-management-deep-dive/)
-- [蚂蚁金服通信框架SOFABolt解析 | 超时控制机制及心跳机制](https://www.sofastack.tech/blog/sofa-bolt-timeout-and-heart-beat-deep-dive/)
+- [蚂蚁金服通信框架 SOFABolt 解析 | 编解码机制](https://www.sofastack.tech/blog/sofa-bolt-codec-deep-dive/)
+- [蚂蚁金服通信框架 SOFABolt 解析 | 序列化机制(Serializer)](https://www.sofastack.tech/blog/sofa-bolt-serialization-deep-dive/)
+- [蚂蚁金服通信框架 SOFABolt 解析 | 协议框架解析](https://www.sofastack.tech/blog/sofa-bolt-framework-deep-dive/)
+- [蚂蚁金服通信框架 SOFABolt 解析 | 连接管理剖析](https://www.sofastack.tech/blog/sofa-blot-connection-management-deep-dive/)
+- [蚂蚁金服通信框架 SOFABolt 解析 | 超时控制机制及心跳机制](https://www.sofastack.tech/blog/sofa-bolt-timeout-and-heart-beat-deep-dive/)
 
 #### <SOFA:TracerLab/> 系列文章
 
 - [蚂蚁金服分布式链路跟踪组件 SOFATracer 总览 | 剖析](https://www.sofastack.tech/blog/sofa-tracer-overview/)
 - [蚂蚁金服分布式链路跟踪组件 SOFATracer 数据上报机制和源码分析 | 剖析](https://www.sofastack.tech/blog/sofa-tracer-response-mechanism/)
-- [蚂蚁金服分布式链路跟踪组件链路透传原理与SLF4J MDC的扩展能力分析 | 剖析](https://www.sofastack.tech/blog/sofa-tracer-unvarnished-transmission-slf4j-mdc/)
+- [蚂蚁金服分布式链路跟踪组件链路透传原理与 SLF4J MDC 的扩展能力分析 | 剖析](https://www.sofastack.tech/blog/sofa-tracer-unvarnished-transmission-slf4j-mdc/)
 - [蚂蚁金服分布式链路跟踪组件采样策略和源码 | 剖析](https://www.sofastack.tech/blog/sofa-tracer-sampling-tracking-deep-dive/)
 - [蚂蚁金服分布式链路跟踪组件埋点机制 | 剖析](https://www.sofastack.tech/blog/sofa-tracer-event-tracing-deep-dive/)
 

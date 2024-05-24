@@ -1,9 +1,9 @@
 
 ---
+
 title: "集成 SOFARPC RESTful 服务和 Swagger"
 aliases: "/sofa-rpc/docs/RESTful-Swagger"
 ---
-
 
 从 `rpc-sofa-boot-starter` 6.0.1 版本开始，SOFARPC 提供了 RESTful 服务和 [Swagger](https://swagger.io/) 的一键集成的能力。
 

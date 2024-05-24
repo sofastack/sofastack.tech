@@ -22,7 +22,6 @@ Whether you want to fix a bug of SOFAArk or add a new feature of SOFAArk, you ha
 * The maintenance personnel of SOFAArk will discuss about the bug or new function you submitted, to determine if the modification is necessary, or if there is any room for improvement or any better solution.
 * Start developing and submitting code after agreement to reduce the cost of communication between both parties as well as the number of rejected pull requests.
 
-
 ### Getting the source code
 
 To modify or add a function, click the `fork` button in the upper left corner to copy a SOFAArk trunk code to your code repository, after submitting an issue.
@@ -44,7 +43,6 @@ Therefore, after getting the introduction to source code steps, you need to:
   git branch add_xxx_feature
   ```
   
-
 After the preceding command is executed, your code repository will switch to the corresponding branch. To view the current branch, execute the following command:
 
 ```text
@@ -63,11 +61,11 @@ If you want to switch back to the branch, execute the following command:
 git checkout -b "branchName"
 ```
 
-### Modify the code and submit it locally.
+### Modify the code and submit it locally
 
 After a branch is pulled, you can modify the code.
 
-#### When modifying the code, note the following:
+#### When modifying the code, note the following
 
 * Keep the code style consistent. SOFAArk uses the Maven plug-in to keep the code style consistent. Before submitting the code, execute the following commands locally:
   
@@ -78,6 +76,7 @@ After a branch is pulled, you can modify the code.
 * Supplement unit test code.
 * New modifications should have passed existing unit tests.
 * You should provide the new unit test to prove that the previous code has bugs and the new code has fixed such bugs. Execute the following command to run all tests:
+
   ```text
   mvn clean test
   ```
@@ -91,7 +90,7 @@ After a branch is pulled, you can modify the code.
 
 After the code is modified, run the following command to submit all modifications to the local repository:
 
-  ```
+  ```plain
   git commit -am 'comment'
   ```
 
@@ -99,7 +98,7 @@ After the code is modified, run the following command to submit all modification
 
 After being submitted to the local repository, the code is synchronized to the remote repository. Execute the following command to submit the local modification to github:
 
-```
+```plain
 git push origin "branchname"
 ```
 

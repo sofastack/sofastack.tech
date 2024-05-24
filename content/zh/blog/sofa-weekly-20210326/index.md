@@ -24,7 +24,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **1、@明惑** 提问：
 
->使用 jraft 跨 IDC 搭建了集群，一旦读 follower 节点，有 13ms 的网络延迟，用了lease read，读 leader 还好，直接返回。读 follower，要和 leader 通信，hreadb 有跨机房部署的场景吗？
+> 使用 jraft 跨 IDC 搭建了集群，一旦读 follower 节点，有 13ms 的网络延迟，用了 lease read，读 leader 还好，直接返回。读 follower，要和 leader 通信，hreadb 有跨机房部署的场景吗？
 
 A：ollower 节点提供读能力，属于额外赠送的能力，其实 readIndex 的实现必须要和 leader 现有一个通信，这个没办法；我们不开 follower 读，从 leader 读；etcd 的 read-index 也是一样的原理，都需要请求一次 leader，  zk 我了解貌似还不支持 follower 读；当然如果你不要求线性一致读，那么你绕开 raft 状态机，直接从你的存储里面读就好，如果你要的是最终一致性，那么你直接从 follower 节点上绕过 raft 直接读。</br>
 A：核心就是：follower 节点必须知道 leader 此时的 applyIndex 到哪里，然后需要再等待自己状态机的 applyIndex 也到达这个位置了才能提供读，否则就有可能一个数据 leader 上有，follower 上没有，这就很明显违背了线性一致读，所以和 leader 的这一次通信必须有，不过数据包很小，通常应该很快。</br>
@@ -40,11 +40,12 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)</br>
 </br>
 **3、@彭勃** 提问：
 
->我在启动 Seata server 的时候，日志里报告了这种找不到 zookeeper 相关节点的异常；KeeperErrorCode = NoNode for /seata/store.mode。
+> 我在启动 Seata server 的时候，日志里报告了这种找不到 zookeeper 相关节点的异常；KeeperErrorCode = NoNode for /seata/store.mode。
 
-A：应该是用了zk 当配置中心，但是又没有写配置进去。</br>
+A：应该是用了 zk 当配置中心，但是又没有写配置进去。</br>
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)</br>
 </br>
+
 ### 本周推荐阅读
 
 - [MOSN 的无人值守变更实践](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247487479&idx=1&sn=e5972cbc1d8c04cff843380117158539&chksm=faa0e02dcdd7693b965e35014cfef4dc3be84e477e0c74694421658a2570162ad73883e7b054&scene=21)

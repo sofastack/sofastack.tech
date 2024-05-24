@@ -9,7 +9,7 @@ date: 2020-02-14T16:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2020/png/226702/1581677125104-48ea37ce-53d5-4665-ad38-e55c8442cfb7.png"
 ---
 
-2020 年 2 月 4 日到 2 月11 日，ServiceMesher 社区发起了 Service Mesh 终端用户调查，以下为问卷调查结果。
+2020 年 2 月 4 日到 2 月 11 日，ServiceMesher 社区发起了 Service Mesh 终端用户调查，以下为问卷调查结果。
 
 ## 参与问卷调查的人员情况
 

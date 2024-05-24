@@ -20,7 +20,7 @@ description: "01 月 20 日周四晚 19 点，线上直播第 24 期。"
 
 - B 站直播间地址：[http://live.bilibili.com/21954520](http://live.bilibili.com/21954520)
 
-- B 站直播ID：21954520
+- B 站直播 ID：21954520
 
 ## 介绍
 
@@ -49,7 +49,8 @@ HTTP/3 协议栈可以说是当前 4/7 层协议的集大成者，它浓缩了�
 - 负责蚂蚁集团的接入层建设工作，主要方向为高性能安全网络协议的设计及优化
 
 ## 议程
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*YuaoS5ioB_8AAAAAAAAAAAAAARQnAQ)
+>
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*YuaoS5ioB_8AAAAAAAAAAAAAARQnAQ)
 
 ### 18:50-19:00  主持人开场
 
@@ -61,9 +62,9 @@ SOFA 社区小助手-泡椒 主持人
 
 ### 你将收获
 
-- 了解4/7层协议的发展历程
-- 了解HTTP/3解决的问题
-- 一起展望HTTP/3的未来
+- 了解 4/7 层协议的发展历程
+- 了解 HTTP/3 解决的问题
+- 一起展望 HTTP/3 的未来
 
 ## 了解更多技术干货
 

@@ -145,7 +145,7 @@ HTTP/1.1 200 OK
 
 [*https://github.com/doujiang24/envoy-go-filter-example/tree/master/example-1*](https://github.com/doujiang24/envoy-go-filter-example/tree/master/example-1)
 
-**了解更多…**
+**了解更多……**
 
 **MOSN Star 一下✨：**
 [*https://github.com/mosn/mosn*](https://github.com/mosn/mosn)

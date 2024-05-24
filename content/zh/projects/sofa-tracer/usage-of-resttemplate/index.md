@@ -100,7 +100,7 @@ RestTemplate             restTemplate;
 
 在上面的 `application.properties` 里面，我们配置的日志打印目录是 `./logs` 即当前应用的根目录（我们可以根据自己的实践需要进行配置），在当前工程的根目录下可以看到类似如下结构的日志文件：
 
-```
+```plain
 ./logs
 ├── spring.log
 └── tracelog

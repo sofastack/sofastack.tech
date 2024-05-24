@@ -11,7 +11,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563874034945-7e7f9e20-215
 
 作者：卫恒（宋国磊），SOFATracer 以及 SOFADashboard 开源负责人。
 
-本文根据 5月26日 SOFA Meetup#2上海站 《使用 SOFAStack 快速构建微服务》主题分享整理，着重分享如何使用 SOFADashboard 来管控 SOFAArk ，对于 SOFAArk 中的一些基础概念和知识不过多涉及；建议大家在阅读之前，先了解下 SOFAArk 的相关基本知识。
+本文根据 5 月 26 日 SOFA Meetup#2 上海站 《使用 SOFAStack 快速构建微服务》主题分享整理，着重分享如何使用 SOFADashboard 来管控 SOFAArk ，对于 SOFAArk 中的一些基础概念和知识不过多涉及；建议大家在阅读之前，先了解下 SOFAArk 的相关基本知识。
 
 现场回顾视频以及 PPT 见文末链接。
 
@@ -31,7 +31,7 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563874034945-7e7f9e20-215
 
 ## 案例模型
 
-本篇所演示案例是上图的一个简化版，从整体上可以体现 SOFAArk多应用合并部署的能力。主要包括已经几个工程：
+本篇所演示案例是上图的一个简化版，从整体上可以体现 SOFAArk 多应用合并部署的能力。主要包括已经几个工程：
 
 - sofa-dashboard-ark-hostapp : 宿主应用
 - sofa-dashboard-ark-facade   : 提供接口 API
@@ -261,7 +261,7 @@ com.alipay.sofa.ark.master.biz 默认情况下是宿主应用的 artifactId。�
 
 #### 3、状态查看
 
-SOFAArk 提供了 /bizState 这样一个 endpoint 用来获取当前插件的版本及状态信息。这里就在宿主应用中引入actuator 依赖并进行相关配置。
+SOFAArk 提供了 /bizState 这样一个 endpoint 用来获取当前插件的版本及状态信息。这里就在宿主应用中引入 actuator 依赖并进行相关配置。
 
 ```xml
  <!-- 引用 actuator -->
@@ -299,7 +299,7 @@ com.alipay.sofa.ark.config.address=zookeeper://localhost:2181
 
 基于上述所有的配置，将 host-app 打包，然后运行。
 
-- mvn clean install 
+- mvn clean install
 - java -jar sofa-dashboard-ark-hostapp-1.0.0.jar
 
 下面可以通过 SOFAArk 提供的 endpoint 来查看下当前应用的 biz state 信息：

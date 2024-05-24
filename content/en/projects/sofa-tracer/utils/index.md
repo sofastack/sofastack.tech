@@ -1,9 +1,9 @@
 
 ---
+
 title: "SOFATracer Tools"
 aliases: "/sofa-tracer/docs/Utils"
 ---
-
 
 # SOFATracer Tools
 
@@ -25,7 +25,7 @@ SofaTracerSpan sofaTracerSpan = sofaTraceContext.getCurrentSpan();
 
 When using the SOFATracer plugin component, such as Spring MVC, the component integrates the capabilities of SOFATracer. So it can get all the information in the Span after getting Span. The specific acquisition method example (it demands that Span is not empty, namely that the corresponding component has integrated SOFATracer) is as follow:
 
-### Get TraceId and SpanId:
+### Get TraceId and SpanId
 
 ```java
 SofaTracerSpanContext sofaTracerSpanContext = currentSpan.getSofaTracerSpanContext();
@@ -53,7 +53,7 @@ List <LogData> logDataList = sofaTracerSpan.getLogs ();
 
 Baggage element is a collection of key-value pairs that carries data to be transparently transmitted. In SOFATracer, Baggage data is divided into sysBaggage and bizBaggage; sysBaggage mainly refers to transparently transmitted system data, and bizBaggage mainly refers to transparently transmitted business data.
 
-### Configure and get BaggageItem 
+### Configure and get BaggageItem
 
 BaggageItem is a data element in the Baggage collection.
 

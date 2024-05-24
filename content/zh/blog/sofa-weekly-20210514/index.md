@@ -21,15 +21,15 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 **每周读者问答提炼**
 
 欢迎大家向公众号留言提问或在群里与我们互动
-我们会筛选重点问题通过 
+我们会筛选重点问题通过
 " SOFA WEEKLY " 的形式回复
 
 **1、@张思雨**提问：
 
-> 我配置中心里加了 
-> transport.threadFactory.clientSelectorThreadSize...设置了个 100，这个值是不是一般设置成 cpu 核数*2 就够了啊？ 
+> 我配置中心里加了
+> transport.threadFactory.clientSelectorThreadSize...设置了个 100，这个值是不是一般设置成 cpu 核数*2 就够了啊？
 > 我之前遇到了 tc 调客户端的 commit 超时。我就把这种值都调大了试试效果 ，
-> transport.threadFactory.clientSelectorThreadSize 100 
+> transport.threadFactory.clientSelectorThreadSize 100
 > transport.threadFactory.workerThreadSize 3000
 
 A：线程数这个东西这不该开放出去，很危险，对 netty 了解一点应该也知道 NioEventLoopGroup 的最多应该就核心数的两倍。<br/>

@@ -25,7 +25,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 ![图片](https://mmbiz.qpic.cn/sz_mmbiz_png/nibOZpaQKw0icGB1iaZylkWh7pq6xEmChibMpKkvZoJRrfkcLzBrDSxLkdwKTMP4Cyviaje6GK2oOmUGvZ1KF2FZwjw/640?wx_fmt=png&wxfrom=5&wx_lazy=1&wx_co=1)
 
-**SOFA** **社区会议预告** 
+**SOFA** **社区会议预告**
 
 **Layotto：**
 

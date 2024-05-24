@@ -39,9 +39,9 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*NvcQR7StDvMAAAAAA
 
 2.计算![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/33226221bf4a4c9c9ce6438a25d4f054~tplv-k3u1fbpfcp-zoom-1.image)以及 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/0c6d2fd8ed93460e942706a6d6224f85~tplv-k3u1fbpfcp-zoom-1.image)，![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/959df152d0014fe092e5c3ebca70293a~tplv-k3u1fbpfcp-zoom-1.image)表示最小公倍数；
 
-3.随机选择整数![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/20039f7b06684d1a8bb8de394e060653~tplv-k3u1fbpfcp-zoom-1.image)，一般 g 的计算公式如下：    
+3.随机选择整数![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/20039f7b06684d1a8bb8de394e060653~tplv-k3u1fbpfcp-zoom-1.image)，一般 g 的计算公式如下：
 
-a. 随机选择整数![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ad4416bcde9d4738aa7c43b94dd647e3~tplv-k3u1fbpfcp-zoom-1.image)；    
+a. 随机选择整数![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/ad4416bcde9d4738aa7c43b94dd647e3~tplv-k3u1fbpfcp-zoom-1.image)；
 
 b. 计算：![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/fdc727ac97864eb297cd6fbc594a9bca~tplv-k3u1fbpfcp-zoom-1.image)，为了简化和提高性能，k 一般选 1，g=1+n；
 
@@ -99,7 +99,7 @@ a. 判定合数剩余类问题是指 n=pq，其中：p、q 为大素数，任�
 
 b. 第 n 项剩余的集合是 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/58eb549438fa4b2e8cdf6c64a9213573~tplv-k3u1fbpfcp-zoom-1.image) 的一个![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/c98a8b7da91b4896a847bc47ce764f27~tplv-k3u1fbpfcp-zoom-1.image) 阶乘法子集；
 
-c. 每个第 n 项剩余 z 都正好拥有 n 个 n 阶的根，其中只有一个是严格小于 n 的 *（即* *![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/64c4fe9b60724de08b88d3f87e2a0801~tplv-k3u1fbpfcp-zoom-1.image)）* ；d. 第n项剩余都可以写成 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dd33d4d3618c42af8911b045e084bd1e~tplv-k3u1fbpfcp-zoom-1.image)的形式。  
+c. 每个第 n 项剩余 z 都正好拥有 n 个 n 阶的根，其中只有一个是严格小于 n 的 *（即* *![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/64c4fe9b60724de08b88d3f87e2a0801~tplv-k3u1fbpfcp-zoom-1.image)）* ；d. 第 n 项剩余都可以写成 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/dd33d4d3618c42af8911b045e084bd1e~tplv-k3u1fbpfcp-zoom-1.image)的形式。  
 
 ● 正确性验证  
 
@@ -125,7 +125,7 @@ c. 每个第 n 项剩余 z 都正好拥有 n 个 n 阶的根，其中只
 
 ### 4.1 接口定义
 
-●对象相关接口 
+●对象相关接口
 
 ○公/私钥对象：`PAILLIER_KEY` ，该对象用来保存 Paillier 公钥和私钥的基本信息，比如 p、q、n、g、λ、μ 等信息，私钥保存所有字段，公钥只保存 n、g，其他字段为空或者 0。相关接口如下：
 
@@ -291,11 +291,11 @@ arg2          The second argument of a homomorphic operation
 
 **- key：** 文本显示 Paillier 私钥；
 
-**- pub：** 文本显示 Paillier 公钥； 
+**- pub：** 文本显示 Paillier 公钥；
 
 **- encrypt：** 对数字进行加密，输出 Paillier 加密的结果，需要通过参数 -key_in 参数指定 Paillier 公钥文件路径，如果加密负数则需要将 `-` 用 `_` 代替，因为 `-` 会被 OpenSSL 解析成预定义参数了 *（下同）* ；
 
-**- decrypt：** 对 Paillier 密文进行解密，输出解密结果，需要通过-key_in参数指定 Paillier 私钥文件路径；  
+**- decrypt：** 对 Paillier 密文进行解密，输出解密结果，需要通过-key_in 参数指定 Paillier 私钥文件路径；  
 
 **- add：** 对两个 Paillier 密文进行同态加法操作，输出同态加法密文结果，需要通过参数 -key_in 参数指定 Paillier 公钥文件路径；
 

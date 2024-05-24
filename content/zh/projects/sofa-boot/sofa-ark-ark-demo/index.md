@@ -9,7 +9,7 @@ aliases: "/sofa-boot/docs/sofa-ark-ark-demo"
 
 ## 准备
 
-因该样例工程依赖 sample-ark-plugin，因此需要提前在本地安装该 `Ark Plugin` 
+因该样例工程依赖 sample-ark-plugin，因此需要提前在本地安装该 `Ark Plugin`
 
 ## 工具
 
@@ -35,7 +35,7 @@ aliases: "/sofa-boot/docs/sofa-ark-ark-demo"
 
 ### 引入 sample-ark-plugin
 
-在工程主 `pom.xml` 中如下配置，添加另一个样例工程打包生成的 `Ark Plugin` 依赖，[参考文档](../sofa-ark-ark-plugin-demo) 
+在工程主 `pom.xml` 中如下配置，添加另一个样例工程打包生成的 `Ark Plugin` 依赖，[参考文档](../sofa-ark-ark-plugin-demo)
 
 ```xml
 <dependency>
@@ -83,6 +83,7 @@ aliases: "/sofa-boot/docs/sofa-ark-ark-demo"
 ```
 
 在该样例工程中，我们只配置了一部分配置项，这已经足够生成一个可用的可执行 `Ark` 包，各配置项含义如下：
+
 * outputDirectory: `mvn package` 打包后，输出的 `Ark` 包文件存放目录；
 
 * arkClassifier: 指定发布的 `Ark` 包其 `Maven` 坐标包含的 `classifier` 值，默认为空；

@@ -1,8 +1,10 @@
 
 ---
+
 title: "SOFABoot 环境 XML 配置使用"
 aliases: "/sofa-rpc/docs/Programing-SOFA-BOOT-XML"
 ---
+
 声明 SOFABoot 的 xsd 文件：在要使用的 XML 配置文件中将头部 xsd 文件的声明设置为如下。这样就能够使用 SOFABoot 定义的 XML 元素进行开发。
 
 ```xml
@@ -16,7 +18,7 @@ aliases: "/sofa-rpc/docs/Programing-SOFA-BOOT-XML"
        default-autowire="byName">
 ```
 
-在xml方式中发布和引用服务的方式如下。 sofa:service 元素表示发布服务， sofa:reference 元素表示引用服务。 sofa:binding 表示服务发布或引用的协议。
+在 xml 方式中发布和引用服务的方式如下。 sofa:service 元素表示发布服务， sofa:reference 元素表示引用服务。 sofa:binding 表示服务发布或引用的协议。
 
 ```xml
 <bean id="personServiceImpl" class="com.alipay.sofa.boot.examples.demo.rpc.bean.PersonServiceImpl"/>

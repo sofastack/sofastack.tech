@@ -20,7 +20,7 @@ description: "05 月 19 日周三晚 19 点，线上直播第 20 期。"
 
 - B 站直播间地址：[http://live.bilibili.com/21954520](http://live.bilibili.com/21954520)
 
-- B 站直播ID：21954520
+- B 站直播 ID：21954520
 
 ## 介绍
 
@@ -56,7 +56,7 @@ SOFAGirl 主持人
 
 ### 你将收获
 
-- 了解Intel SGX 技术和蚂蚁开源的 Occlum 产品。
+- 了解 Intel SGX 技术和蚂蚁开源的 Occlum 产品。
 - 了解如何用 Occlum 来保护已有的 SOFABoot 应用。
 
 ## 了解更多技术干货

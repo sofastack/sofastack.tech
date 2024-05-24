@@ -1,7 +1,7 @@
 ---
 
 title: "SOFAActs overview"
-aliases: "/sofa-acts/docs/Home"
+aliases: "/sofa-acts/docs/Home/"
 ---
 
 AntCoreTest (ACTS) is a white-box test framework developed by Ant Financial based on years' testing knowledge and experience with the financial-level distributed architecture for the purpose of providing enterprises with a highly efficient, precise, and automated interface testing services.
@@ -58,4 +58,3 @@ The configuration file provides extensive configuration options to help you cust
 ## Scenarios
 
 ACTS supports quick compilation and running of interface test cases for SOFABoot-based applications in the Intellij IDEA development environment. We recommend that you use Intellij IDEA 2017 for better compatibility with ACTS IDE.
-

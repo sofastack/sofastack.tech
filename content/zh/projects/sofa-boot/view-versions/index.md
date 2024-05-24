@@ -1,9 +1,9 @@
 
 ---
+
 title: "版本查看"
 aliases: "/sofa-boot/docs/ViewVersions"
 ---
-
 
 通过 SOFABoot，我们可以直接在浏览器中就可以查看 SOFA 中间件的版本等详细信息。
 
@@ -35,4 +35,5 @@ aliases: "/sofa-boot/docs/ViewVersions"
   }
 ]
 ```
+
 **注: 在 SOFABoot 3.x 中调整了 endpoint 路径，sofaboot/versions 更改为 actuator/versions**

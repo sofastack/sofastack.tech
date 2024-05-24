@@ -27,10 +27,10 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 1、@刘世杰 提问：
 
->新接触 SOFABoot，有 2 个问题想请教一下：
+> 新接触 SOFABoot，有 2 个问题想请教一下：
 >1.如何根据不同的贡献方选择对应的扩展实现？贡献方有多个的情况下，覆盖了原始的对象，没看到如何根据身份定位具体实现的逻辑，不知道是遗漏了什么说明文档，我看的这个文档：[https://www.sofastack.tech/projects/sofa-boot/extension/](https://www.sofastack.tech/projects/sofa-boot/extension/)
 
->2.如何确保贡献方提供的 jar 包不对服务提供方产生影响？如果多个贡献方提供的  jar 包里间接依赖了不同版本的二三方的 jar 包。在同一个 classloader 下只能加载一个版本的 class，那对某些贡献方的逻辑处理可能会出现 NoClassDefFoundError 类的异常。SOFAArk 是具备了这种隔离的能力的，是否需要引入这种方式？
+> 2.如何确保贡献方提供的 jar 包不对服务提供方产生影响？如果多个贡献方提供的  jar 包里间接依赖了不同版本的二三方的 jar 包。在同一个 classloader 下只能加载一个版本的 class，那对某些贡献方的逻辑处理可能会出现 NoClassDefFoundError 类的异常。SOFAArk 是具备了这种隔离的能力的，是否需要引入这种方式？
 
 A：1.如果有多个扩展点 x 的扩展地方，那么 A 的 registerExtension 就会被调用多次（与被扩展的次数一样，这个方法需要线程安全）；框架无法获知扩展者的身份，这个就需要扩展点提供方自行甄别。
 
@@ -40,9 +40,9 @@ SOFABoot：[https://github.com/sofastack/sofa-boot](https://github.com/sofastack
 
 2、@刘世杰 提问：
 
->1.按照官网的 Demo，如果有多个贡献方 A、B、C，按照顺序执行了 registerExtension 方法，那 word 的值会以 C 为准吗？意思是不是说在运行时一个扩展点只有一个贡献方？
+> 1.按照官网的 Demo，如果有多个贡献方 A、B、C，按照顺序执行了 registerExtension 方法，那 word 的值会以 C 为准吗？意思是不是说在运行时一个扩展点只有一个贡献方？
 
->2.如果贡献方比较多的话，这个后期的解决冲突的成本会不会比较高。还有些比较隐蔽的实现，可能不是太好测试出来，到生产才发现问题。另外，如果做动态的话在 SOFABoot 的技术栈里是扩展点 +Ark 的方式？
+> 2.如果贡献方比较多的话，这个后期的解决冲突的成本会不会比较高。还有些比较隐蔽的实现，可能不是太好测试出来，到生产才发现问题。另外，如果做动态的话在 SOFABoot 的技术栈里是扩展点 +Ark 的方式？
 
 A：1.这个顺序是没有保证的，SOFABoot 为了启动速度，并行化了上下文刷新的，因此可能是 A、B、C 顺序，也有可能是 C、B、A；运行时可以有多个实现的，这个取决于你的服务类型，以及如何实现的。
 
@@ -52,7 +52,7 @@ SOFABoot：[https://github.com/sofastack/sofa-boot](https://github.com/sofastack
 
 3、@证道者 提问：
 
->MOSN mirror 功能是只能转发 Dubbo 的流量么？
+> MOSN mirror 功能是只能转发 Dubbo 的流量么？
 
 A：不是只能转发 Dubbo，都可以的。
 
@@ -70,4 +70,4 @@ MOSN：[https://github.com/mosn/mosn/](https://github.com/mosn/mosn/)
 
 更多文章请扫码关注“金融级分布式架构”公众号
 
->![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*s3UzR6VeQ6cAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*s3UzR6VeQ6cAAAAAAAAAAAAAARQnAQ)

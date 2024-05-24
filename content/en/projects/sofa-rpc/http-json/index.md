@@ -1,14 +1,13 @@
 
 ---
+
 title: "Basic usage of HTTP protocol"
 aliases: "/sofa-rpc/docs/Http-Json"
 ---
 
-
 In SOFARPC (Not In SOFABoot/SpringBoot)，when use Http as a protocol of server，we can use Json as the way of serialization，for some basic test scenes.
 
 ### SOFARPC API Usage
-
 
 #### Service Publish
 

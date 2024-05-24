@@ -22,7 +22,6 @@ Introduce the following dependency in `pom.xml`:
 
 In case of Spring Boot project, it is required to specify a [version](http://mvnrepository.com/artifact/com.alipay.sofa.lookout/lookout-sofa-boot-starter).
 
-
 ## Create a Metrics indicator
 
 After completing the introduction of dependencies, you can add the following methods to the startup class in Spring Boot:
@@ -57,7 +56,7 @@ After adding a new indicator, you can choose to connect to the Spring Boot Actua
 
 After adding the above dependency, you can launch the application locally, visit `http://localhost:8080/metrics`, and you can see the metrics added earlier, as follows:
 
-```
+```plain
 "http_requests_total.instant-MacBook-Pro-4.local": 1,
 ```
 

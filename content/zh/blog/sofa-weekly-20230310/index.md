@@ -30,13 +30,13 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 欢迎大家在 GitHub 提交 issue 与我们互动
 
-我们会筛选 issue 通过 
+我们会筛选 issue 通过
 
 " SOFA WEEKLY " 的形式回复
 
 **1.@linkoog #602**
 
->首先我使用了 Ark-Guides 和 Ark-biz 的示例进行操作。
+> 首先我使用了 Ark-Guides 和 Ark-biz 的示例进行操作。
 可以正常加载模板，但配置文件加载不到。
 Start 是启动模块，
 Config 是配置的存储释放模块。
@@ -58,7 +58,7 @@ A：配置文件的配置应和 Spring Boot 应用保持一致，建议把配置
 
 **2.@SpringLin97 #928**
 
->Jraft 支持 IPV6 组建集群吗？
+> Jraft 支持 IPV6 组建集群吗？
 
 ![图片](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*kCp0RKmQYLgAAAAAAAAAAAAADrGAAQ/original)
 

@@ -82,7 +82,7 @@ Dockerfile 最佳实践原则: [*https://docs.docker.com/develop/develop-images/
 
 **1. 使用 Nydus 镜像进行块级别数据去重**
 
-传统 OCI 镜像，不同镜像之间可以共享的最小单位是镜像中的层，在 deduplication 上的效率是非常低的，层内部存在重复的数据，层与层之间可能存在大量重复的数据，即使有微小的差别，也会被作为不同的层，根据 OCI Image Spec 对删除文件和 Hard Link 的设计，一个镜像内部可能存在已经被上层删除的文件仍然存在于下层中，并包含在镜像中。另外 OCI Image 使用了 tar+gzip 格式来表达镜像中的层，而 tar 格式并不区分 tar archive entries ordering，这带来一个问题即如果用户在不同机器上 build 去同一个镜像，最终可能会因为使用了不同的文件系统而得到不同的镜像，但若干不同镜像的实质内容是完全相同的情况，导致上传下载数据量飙增。   
+传统 OCI 镜像，不同镜像之间可以共享的最小单位是镜像中的层，在 deduplication 上的效率是非常低的，层内部存在重复的数据，层与层之间可能存在大量重复的数据，即使有微小的差别，也会被作为不同的层，根据 OCI Image Spec 对删除文件和 Hard Link 的设计，一个镜像内部可能存在已经被上层删除的文件仍然存在于下层中，并包含在镜像中。另外 OCI Image 使用了 tar+gzip 格式来表达镜像中的层，而 tar 格式并不区分 tar archive entries ordering，这带来一个问题即如果用户在不同机器上 build 去同一个镜像，最终可能会因为使用了不同的文件系统而得到不同的镜像，但若干不同镜像的实质内容是完全相同的情况，导致上传下载数据量飙增。
 
 OCIv1 存在的问题与 OCIv2 提案：[*https://hackmd.io/@cyphar/ociv2-brainstorm*](https://hackmd.io/@cyphar/ociv2-brainstorm)
 
@@ -100,13 +100,13 @@ Nydus 镜像块共享
 
 i. 镜像仓库转换
 
-普通镜像构建完成并 push 到镜像仓库后，触发镜像仓库的转换动作，完成镜像转换。这种方案的缺点在于，构建和转换往往在不同机器上进行。镜像构建并 push 后，还需要 pull 到转换机并将产出 push 到镜像仓库，需要增加一次完整的镜像流转过程，延迟较高，而且还占用镜像仓库的网络资源。在加速镜像转换完成前，应用发布并无法享受加速效果，仍需要完整 pull 镜像。 
+普通镜像构建完成并 push 到镜像仓库后，触发镜像仓库的转换动作，完成镜像转换。这种方案的缺点在于，构建和转换往往在不同机器上进行。镜像构建并 push 后，还需要 pull 到转换机并将产出 push 到镜像仓库，需要增加一次完整的镜像流转过程，延迟较高，而且还占用镜像仓库的网络资源。在加速镜像转换完成前，应用发布并无法享受加速效果，仍需要完整 pull 镜像。
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9c6763a9f63b41bdb8e961fb101ff31b~tplv-k3u1fbpfcp-zoom-1.image)
 
 ii. 双版本构建
 
-在普通镜像构建完成后，在构建机本地直接转换。为提高效率，可以在每层构建完成后即开始对该层进行转换，加速镜像生成延迟可以大幅降低。这个方案，无需等待普通镜像上传即可开始转换，而且在本地转换，相比较方案 1，可以省掉的转换机镜像传输的开销。如果基础镜像对应的加速镜像不存在，则将其转换出来；如果存在，pull 可以忽略不计，但是无可避免的是 push 总是需要双份。 
+在普通镜像构建完成后，在构建机本地直接转换。为提高效率，可以在每层构建完成后即开始对该层进行转换，加速镜像生成延迟可以大幅降低。这个方案，无需等待普通镜像上传即可开始转换，而且在本地转换，相比较方案 1，可以省掉的转换机镜像传输的开销。如果基础镜像对应的加速镜像不存在，则将其转换出来；如果存在，pull 可以忽略不计，但是无可避免的是 push 总是需要双份。
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d04dea6f79e4453f8de63f8ed9d1ad42~tplv-k3u1fbpfcp-zoom-1.image)
 
@@ -128,7 +128,7 @@ iii. 直接构建
 
 Nydus 镜像格式
 
-RAFS 镜像格式[6]是 Nydus 提出的存档压缩格式。其中将容器镜像文件系统的数据 *（* *Blobs）* 和元数据 *（* *Bootstrap）* 分离，让原来的镜像层只存储文件的数据部分。并且把文件以 Chunk 为粒度分割，每层 Blob 存储对应的 Chunk 数据；因为采用了 Chunk 粒度，这细化了去重粒度，Chunk 级去重让层与层之间，镜像与镜像之间共享数据更容易，也更容易实现按需加载。原来的镜像层只存储文件的数据部分 *（也就是图中的 Blob 层）* 。Blob 层存储的是文件数据的切块 *（Chunk）* ，例如将一个 10MB 的文件，切割成 10 个 1MB 的块，于是就可以将 Chunk 的 Offset 记录在一个索引中，容器在请求文件的部分数据时，通过结合 OCI/Docker 镜像仓库规范支持的 HTTP Range Request，容器运行时可以有选择地从镜像仓库中获取文件，如此一来节省不必要的网络开销。关于 Nydus 镜像格式的更多细节，请参考 Nydus Image Service 项目[7]。 
+RAFS 镜像格式[6]是 Nydus 提出的存档压缩格式。其中将容器镜像文件系统的数据 *（* *Blobs）* 和元数据 *（* *Bootstrap）* 分离，让原来的镜像层只存储文件的数据部分。并且把文件以 Chunk 为粒度分割，每层 Blob 存储对应的 Chunk 数据；因为采用了 Chunk 粒度，这细化了去重粒度，Chunk 级去重让层与层之间，镜像与镜像之间共享数据更容易，也更容易实现按需加载。原来的镜像层只存储文件的数据部分 *（也就是图中的 Blob 层）* 。Blob 层存储的是文件数据的切块 *（Chunk）* ，例如将一个 10MB 的文件，切割成 10 个 1MB 的块，于是就可以将 Chunk 的 Offset 记录在一个索引中，容器在请求文件的部分数据时，通过结合 OCI/Docker 镜像仓库规范支持的 HTTP Range Request，容器运行时可以有选择地从镜像仓库中获取文件，如此一来节省不必要的网络开销。关于 Nydus 镜像格式的更多细节，请参考 Nydus Image Service 项目[7]。
 
 元数据和 Chunk 的索引加在一起，就组成了上图中的 Meta 层，它是所有镜像层堆叠后容器能看到的整个 Filesystem 结构，包含目录树结构，文件元数据，Chunk 信息 *（块的大小和偏移量，以及每个文件的元数据（名称、文件类型、所有者等））* 。有了 Meta 之后，就可以在不扫描整个存档文件的情况下提取需要的文件。另外，Meta 层包含了 Hash 树以及 Chunk 数据块的 Hash，以此来保证我们可以在运行时对整颗文件树校验，以及针对某个 Chunk 数据块做校验，并且可以对整个 Meta 层签名，以保证运行时数据被篡改后依然能够被检查出来。
 
@@ -182,11 +182,11 @@ Dragonfly P2P 镜像加速拉取
 
 借助云原生满足客户急速增长资源扩容，利用弹性降低成本，在云上需要极速伸缩虚拟机，并将其加入到集群内部。ContainerOS 通过简化 OS 启动流程，预置集群管控必备组件的容器镜像以减少节点启动过程中因镜像拉取而带来的耗时，极大地提高了 OS 启动速度，降低了 ACK 链路中的节点扩容时间。ContainerOS 从如下几个方面进行了优化：
 
--   ContainerOS 通过简化 OS 启动流程，有效降低 OS 启动时间。ContainerOS 的定位是跑在云上虚拟机的操作系统，不会涉及到太多的硬件驱动，因此 ContainerOS 将必要的内核驱动模块修改为 built-in 模式。此外，ContainerOS 去除了 initramfs，且 udev 规则也被大大简化，此时 OS 启动速度得到了大幅提升。以 ecs.g7.large 规格的 ECS 实例为例，LifseaOS 的首次启动时间保持在 2s 左右，而 Alinux3 则需要 1min 以上。
+- ContainerOS 通过简化 OS 启动流程，有效降低 OS 启动时间。ContainerOS 的定位是跑在云上虚拟机的操作系统，不会涉及到太多的硬件驱动，因此 ContainerOS 将必要的内核驱动模块修改为 built-in 模式。此外，ContainerOS 去除了 initramfs，且 udev 规则也被大大简化，此时 OS 启动速度得到了大幅提升。以 ecs.g7.large 规格的 ECS 实例为例，LifseaOS 的首次启动时间保持在 2s 左右，而 Alinux3 则需要 1min 以上。
 
--   ContainerOS 通过预置集群管控必备组件的容器镜像以减少节点启动过程中因镜像拉取而带来的耗时。ECS 节点启动完成后需要拉取部分组件的容器镜像，这些组件负责在 ACK 场景下执行一些基础性的工作。例如 Terway 组件负责网络，节点必须在 Terway 组件的容器就绪的情况下才能转换为就绪状态。因此，既然网络拉取的长尾效应会带来极大的耗时，那么可以通过预置的方式提前将此组件提前安装在 OS 内部，此时可直接从本地目录获取，避免网络拉取镜像耗时。
+- ContainerOS 通过预置集群管控必备组件的容器镜像以减少节点启动过程中因镜像拉取而带来的耗时。ECS 节点启动完成后需要拉取部分组件的容器镜像，这些组件负责在 ACK 场景下执行一些基础性的工作。例如 Terway 组件负责网络，节点必须在 Terway 组件的容器就绪的情况下才能转换为就绪状态。因此，既然网络拉取的长尾效应会带来极大的耗时，那么可以通过预置的方式提前将此组件提前安装在 OS 内部，此时可直接从本地目录获取，避免网络拉取镜像耗时。
 
--   ContainerOS 也会通过结合 ACK 管控链路优化，提高节点弹性性能。
+- ContainerOS 也会通过结合 ACK 管控链路优化，提高节点弹性性能。
 
 最终，统计了从空的 ACK 节点池扩容的端到端的 P90 耗时，从下发扩容请求开始计时，到 90% 的节点处于就绪状态结束计时，并对比了 CentOS、Alinux2 Optimized-OS[11]方案，ContainerOS 性能优势明显，具体数据如下图所示。
 
@@ -200,15 +200,15 @@ Dragonfly P2P 镜像加速拉取
 
 <p align=center>ZOLOZ 公有云应用部署整体方案</p>
 
--   通过精简基础镜像以及遵循 Dockerfile 规约，对镜像大小进行精简。
+- 通过精简基础镜像以及遵循 Dockerfile 规约，对镜像大小进行精简。
 
--   利用蚂蚁托管的 BuildKit 对镜像进行 Multistage 并行构建，在重复构建时采用缓存加快镜像构建。直接构建 Nydus 加速镜像时通过镜像之间重复分析进行去重，仅上传镜像之间差异的块到远程镜像仓库。
+- 利用蚂蚁托管的 BuildKit 对镜像进行 Multistage 并行构建，在重复构建时采用缓存加快镜像构建。直接构建 Nydus 加速镜像时通过镜像之间重复分析进行去重，仅上传镜像之间差异的块到远程镜像仓库。
 
--   通过 ACR 全球加速同步的能力，将镜像分发到全球不同的镜像仓库中，进行就近拉取。
+- 通过 ACR 全球加速同步的能力，将镜像分发到全球不同的镜像仓库中，进行就近拉取。
 
--   通过 Dragonfly P2P 网络对 Nydus 镜像块进行按需加速拉取。
+- 通过 Dragonfly P2P 网络对 Nydus 镜像块进行按需加速拉取。
 
--   节点上使用 ContainerOS 操作系统，提高 OS 启动速度以及镜像启动速度。
+- 节点上使用 ContainerOS 操作系统，提高 OS 启动速度以及镜像启动速度。
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/5cbf06446ed840b5b36819ac98a0135d~tplv-k3u1fbpfcp-zoom-1.image)
 
@@ -267,45 +267,45 @@ ContainerOS 目前仅支持 Kubernetes 1.24.6 及以上版本，需要在创建 
 
 **参考资料**
 
--   [*https://github.com/containerd/containerd*](https://github.com/containerd/containerd)
+- [*https://github.com/containerd/containerd*](https://github.com/containerd/containerd)
 
--   [*https://github.com/dragonflyoss/Dragonfly2*](https://github.com/dragonflyoss/Dragonfly2)
+- [*https://github.com/dragonflyoss/Dragonfly2*](https://github.com/dragonflyoss/Dragonfly2)
 
--   [*https://d7y.io/*](https://d7y.io/)
+- [*https://d7y.io/*](https://d7y.io/)
 
--   [*https://github.com/dragonflyoss/image-service*](https://github.com/dragonflyoss/image-service)
+- [*https://github.com/dragonflyoss/image-service*](https://github.com/dragonflyoss/image-service)
 
--   [*https://nydus.dev/*](https://nydus.dev/)
+- [*https://nydus.dev/*](https://nydus.dev/)
 
--   [*https://github.com/goharbor/harbor*](https://github.com/goharbor/harbor)
+- [*https://github.com/goharbor/harbor*](https://github.com/goharbor/harbor)
 
--   [*https://www.alibabacloud.com/help/zh/container-registry*](https://www.alibabacloud.com/help/zh/container-registry)
+- [*https://www.alibabacloud.com/help/zh/container-registry*](https://www.alibabacloud.com/help/zh/container-registry)
 
--   [*https://github.com/moby/moby/tree/master/image/spec*](https://github.com/moby/moby/tree/master/image/spec)
+- [*https://github.com/moby/moby/tree/master/image/spec*](https://github.com/moby/moby/tree/master/image/spec)
 
--   [*https://docs.docker.com/registry/spec/manifest-v2-1/*](https://docs.docker.com/registry/spec/manifest-v2-1/)
+- [*https://docs.docker.com/registry/spec/manifest-v2-1/*](https://docs.docker.com/registry/spec/manifest-v2-1/)
 
--   [*https://docs.docker.com/registry/spec/manifest-v2-2/*](https://docs.docker.com/registry/spec/manifest-v2-2/)
+- [*https://docs.docker.com/registry/spec/manifest-v2-2/*](https://docs.docker.com/registry/spec/manifest-v2-2/)
 
--   [*https://github.com/opencontainers/image-spec/blob/main/layer.md#representing-changes*](https://github.com/opencontainers/image-spec/blob/main/layer.md#representing-changes)
+- [*https://github.com/opencontainers/image-spec/blob/main/layer.md#representing-changes*](https://github.com/opencontainers/image-spec/blob/main/layer.md#representing-changes)
 
--   [*https://github.com/opencontainers/image-spec/blob/main/manifest.md*](https://github.com/opencontainers/image-spec/blob/main/manifest.md)
+- [*https://github.com/opencontainers/image-spec/blob/main/manifest.md*](https://github.com/opencontainers/image-spec/blob/main/manifest.md)
 
--   [*https://www.usenix.org/conference/fast16/technical-sessions/presentation/harter*](https://www.usenix.org/conference/fast16/technical-sessions/presentation/harter)
+- [*https://www.usenix.org/conference/fast16/technical-sessions/presentation/harter*](https://www.usenix.org/conference/fast16/technical-sessions/presentation/harter)
 
--   [*https://www.kernel.org/doc/html/latest/filesystems/fuse.html*](https://www.kernel.org/doc/html/latest/filesystems/fuse.html)
+- [*https://www.kernel.org/doc/html/latest/filesystems/fuse.html*](https://www.kernel.org/doc/html/latest/filesystems/fuse.html)
 
--   [*https://virtio-fs.gitlab.io/*](https://virtio-fs.gitlab.io/)
+- [*https://virtio-fs.gitlab.io/*](https://virtio-fs.gitlab.io/)
 
--   [*https://www.kernel.org/doc/html/latest/filesystems/erofs.html*](https://www.kernel.org/doc/html/latest/filesystems/erofs.html)
+- [*https://www.kernel.org/doc/html/latest/filesystems/erofs.html*](https://www.kernel.org/doc/html/latest/filesystems/erofs.html)
 
--   [*https://github.com/dragonflyoss/image-service/blob/fscache/docs/nydus-fscache.md*](https://github.com/dragonflyoss/image-service/blob/fscache/docs/nydus-fscache.md)
+- [*https://github.com/dragonflyoss/image-service/blob/fscache/docs/nydus-fscache.md*](https://github.com/dragonflyoss/image-service/blob/fscache/docs/nydus-fscache.md)
 
--   [*https://mp.weixin.qq.com/s/w7lIZxT9Wk6-zJr23oBDzA*](https://mp.weixin.qq.com/s/w7lIZxT9Wk6-zJr23oBDzA)
+- [*https://mp.weixin.qq.com/s/w7lIZxT9Wk6-zJr23oBDzA*](https://mp.weixin.qq.com/s/w7lIZxT9Wk6-zJr23oBDzA)
 
--   [*https://static.sched.com/hosted_files/kccncosschn21/fd/EROFS_What_Are_We_Doing_Now_For_Containers.pdf*](https://static.sched.com/hosted_files/kccncosschn21/fd/EROFS_What_Are_We_Doing_Now_For_Containers.pdf)
+- [*https://static.sched.com/hosted_files/kccncosschn21/fd/EROFS_What_Are_We_Doing_Now_For_Containers.pdf*](https://static.sched.com/hosted_files/kccncosschn21/fd/EROFS_What_Are_We_Doing_Now_For_Containers.pdf)
 
--   [*https://github.com/imeoer/buildkit/tree/nydus-compression-type*](https://github.com/imeoer/buildkit/tree/nydus-compression-type)
+- [*https://github.com/imeoer/buildkit/tree/nydus-compression-type*](https://github.com/imeoer/buildkit/tree/nydus-compression-type)
 
 **参考链接**
 

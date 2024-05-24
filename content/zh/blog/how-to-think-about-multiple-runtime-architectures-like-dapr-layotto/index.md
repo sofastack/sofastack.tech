@@ -52,7 +52,7 @@ Dapr 项目是业界第一个 Multi-Runtime 实践项目，Dapr 的 Sidecar，�
 
 **Layotto**
 
-Layotto 是由蚂蚁集团 2021 年开源的一个实现 Multi-Runtime 架构的项目，核心思想是在 Service Mesh 的数据面（MOSN里支持 Dapr API 和 WebAssembly 运行时，实现一个 Sidecar 同时作为 Service Mesh 数据面、多运行时 Runtime、FaaS 运行时。项目地址为：[https://github.com/mosn/layotto](https://github.com/mosn/layotto)
+Layotto 是由蚂蚁集团 2021 年开源的一个实现 Multi-Runtime 架构的项目，核心思想是在 Service Mesh 的数据面（MOSN 里支持 Dapr API 和 WebAssembly 运行时，实现一个 Sidecar 同时作为 Service Mesh 数据面、多运行时 Runtime、FaaS 运行时。项目地址为：[https://github.com/mosn/layotto](https://github.com/mosn/layotto)
 
 以上是本文背景，接下来是本次主题分享。
 
@@ -442,10 +442,10 @@ Femas 项目地址：[https://github.com/polarismesh/femas](https://github.com/p
 
 [蚂蚁集团 Service Mesh 进展回顾与展望](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247509391&idx=1&sn=95883f61905cc4de15125ffd2183b801&chksm=faa34a55cdd4c3434a0d667f8ed57e59c2fc747315f947b19b23f520786130446b6828a68069&scene=21)
 
-[应用运行时 Layotto 进入CNCF 云原生全景图]()
+[应用运行时 Layotto 进入 CNCF 云原生全景图](https://example.com)
 
 [云原生运行时的下一个五年](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247498935&idx=1&sn=7b9976f41a35eba7db6025ff42ba7086&chksm=faa3136dcdd49a7b67baf40f78cf50cbd45d560a249d2d94af85af9fb9cf63b9e7be59f3dcc8&scene=21)
 
 [MOSN 文档使用指南](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247507103&idx=1&sn=e8da41af0ceaa18ae13f31ca2905da8e&chksm=faa33345cdd4ba5397a43adfe8cabdc85321d3f9f14066c470885b41e2f704ec505a9f086cec&scene=21)
 
-![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*8G5NRZ7UEToAAAAAAAAAAAAAARQnAQ) 
+![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*8G5NRZ7UEToAAAAAAAAAAAAAARQnAQ)

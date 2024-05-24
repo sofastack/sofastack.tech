@@ -1,9 +1,9 @@
 
 ---
+
 title: "Sampling modes"
 aliases: "/sofa-tracer/docs/Sampler"
 ---
-
 
 # Sampling
 
@@ -32,7 +32,7 @@ The result is verified by requesting 10 times.
 
 1、When the sample rate is set to 100, the digest log is printed each time.
 
-Start the project and enter in the browser:http://localhost:8080/springmvc ,And refresh the address 10 times, check the log as follows:
+Start the project and enter in the browser:<http://localhost:8080/springmvc> ,And refresh the address 10 times, check the log as follows:
 
 ```json
 {"time":"2018-11-09 11:54:47.643","local.app":"SOFATracerSpringMVC","traceId":"0a0fe8ec154173568757510019269","spanId":"0.1","request.url":"http://localhost:8080/springmvc","method":"GET","result.code":"200","req.size.bytes":-1,"resp.size.bytes":0,"time.cost.milliseconds":68,"current.thread.name":"http-nio-8080-exec-1","baggage":""}
@@ -49,7 +49,7 @@ Start the project and enter in the browser:http://localhost:8080/springmvc ,And 
 
 2、When the sample rate is set to 0, the digest log is not printed.
 
-Start the project and enter in the browser:http://localhost:8080/springmvc ,And refresh the address 10 times, 
+Start the project and enter in the browser:<http://localhost:8080/springmvc> ,And refresh the address 10 times,
 View the ./logs/tracerlog/ directory without the spring-mvc-digest.log log file
 
 3、Print by probability when the sampling rate is set between 0 and 100.
@@ -71,6 +71,7 @@ Set the sampling rate to 20
 {"time":"2018-11-09 12:15:22.439","local.app":"SOFATracerSpringMVC","traceId":"0a0fe8ec154173692243810359846","spanId":"0.1","request.url":"http://localhost:8080/springmvc","method":"GET","result.code":"200","req.size.bytes":-1,"resp.size.bytes":0,"time.cost.milliseconds":1,"current.thread.name":"http-nio-8080-exec-6","baggage":""}
 {"time":"2018-11-09 12:15:22.817","local.app":"SOFATracerSpringMVC","traceId":"0a0fe8ec154173692281510379846","spanId":"0.1","request.url":"http://localhost:8080/springmvc","method":"GET","result.code":"200","req.size.bytes":-1,"resp.size.bytes":0,"time.cost.milliseconds":2,"current.thread.name":"http-nio-8080-exec-8","baggage":""}
 ```
+
 > The test results are for reference only
 
 ## Custom sampling mode
@@ -111,6 +112,7 @@ public class CustomOpenRulesSamplerRuler implements Sampler {
     }
 }
 ```
+
 In the sample method, the user can decide whether to print based on the information provided by the current sofaTracerSpan. This case determines whether to sample by isServer, isServer=true, does not sample, otherwise samples.
 
 ### Add sampling related configuration items in application.properties
@@ -120,6 +122,3 @@ com.alipay.sofa.tracer.samplerName.samplerCustomRuleClassName=com.alipay.sofa.tr
 ```
 
 The relevant test results can be verified by yourself.
-
-
-

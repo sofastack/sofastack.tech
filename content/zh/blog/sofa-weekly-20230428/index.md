@@ -21,7 +21,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 **SOFAStack:** *[https://github.com/sofastack](https://github.com/sofastack)*
 
- **SOFA 社区会议预告** 
+ **SOFA 社区会议预告**
 
 **SOFAArk：**
 
@@ -94,7 +94,7 @@ A: Data 上有一个定时器去维护每个 Session 相关数据的。如果 Se
 
 「**SOFARegistry**」：[*https://github.com/sofastack/sofa-registry/issues/263*](https://github.com/sofastack/sofa-registry/issues/263)
 
-  **本周推荐阅读** 
+  **本周推荐阅读**
 
 [缘起｜蚂蚁应用级服务发现的实践之路](https://mp.weixin.qq.com/s/-oVOeakwefgvlFyi6yYgKA)
 

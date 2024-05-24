@@ -1,9 +1,9 @@
 
 ---
+
 title: "Extension mechanism"
 aliases: "/sofa-rpc/docs/Extension-Loader"
 ---
-
 
 # ExtensionLoader
 
@@ -16,7 +16,6 @@ This extension mechanism abstracts the interaction method of SPI. If you have re
 The following sections introduce how to extend through the SPI interaction method.
 
 SOFARPC provides the capabilities of ExtensionLoader.
-
 
 ## Design extension points
 

@@ -12,19 +12,19 @@ sidebar:
 - title: 'Introduction'
   sub:
     - title: 'Overview'
-      link: 'overview'
+      link: 'overview/'
     - title: 'Terminology'
-      link: 'terminology'
+      link: 'terminology/'
 - title: 'Quick start'
   sub:
     - title: 'Server deployment'
-      link: 'server-quick-start'
+      link: 'server-quick-start/'
     - title: 'Client usage'
-      link: 'client-quick-start'
+      link: 'client-quick-start/'
 - title: 'Developer guide'
   sub:
     - title: 'JAVA SDK'
-      link: 'java-sdk'
+      link: 'java-sdk/'
 
 ---
 

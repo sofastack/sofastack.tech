@@ -11,7 +11,7 @@ aliases: "/sofa-tracer/docs/Usage_Of_openfeign"
 
 * Spring Cloud Greenwich.RELEASE
 * SOFABoot 3.1.1/SpringBoot 2.1.0.RELEASE
-* SOFATracer 3.0.4 
+* SOFATracer 3.0.4
 * JDK 8
 
 本案例包括两个子工程：
@@ -41,6 +41,7 @@ aliases: "/sofa-tracer/docs/Usage_Of_openfeign"
     <version>${sofa.boot.version}</version>
 </parent>
 ```
+
 这里的 ${sofa.boot.version} 指定具体的 SOFABoot 版本，参考[发布历史](https://github.com/sofastack/sofa-build/releases)。
 
 ## 新建 tracer-sample-with-openfeign-provider
@@ -61,6 +62,7 @@ aliases: "/sofa-tracer/docs/Usage_Of_openfeign"
         <artifactId>spring-cloud-starter-openfeign</artifactId>
     </dependency>
     ```
+
     > SOFATracer 版本受 SOFABoot 版本管控，如果使用的 SOFABoot 版本不匹配，则需要手动指定 tracer 版本，且版本需高于 3.0.4.
 
 * 在工程的 `application.properties` 文件下添加相关参数
@@ -72,6 +74,7 @@ aliases: "/sofa-tracer/docs/Usage_Of_openfeign"
     spring.cloud.zookeeper.discovery.enabled=true
     spring.cloud.zookeeper.discovery.instance-id=tracer-provider
     ```
+
 * 简单的资源类
 
     ```java
@@ -83,6 +86,7 @@ aliases: "/sofa-tracer/docs/Usage_Of_openfeign"
         }
     }
     ```
+
 ## 新建 tracer-sample-with-openfeign-consumer
 
 * 在工程模块的 pom 文件中添加 SOFATracer 依赖
@@ -111,6 +115,7 @@ aliases: "/sofa-tracer/docs/Usage_Of_openfeign"
     spring.cloud.zookeeper.discovery.enabled=true
     spring.cloud.zookeeper.discovery.instance-id=tracer-consumer
     ```
+
 * 定义 feign 资源
 
     ```java
@@ -120,7 +125,8 @@ aliases: "/sofa-tracer/docs/Usage_Of_openfeign"
         String testFeign();
     }
     ```
-* 开启服务发现和feign注解
+
+* 开启服务发现和 feign 注解
 
     ```java
     @SpringBootApplication
@@ -146,11 +152,11 @@ aliases: "/sofa-tracer/docs/Usage_Of_openfeign"
 ## 测试
 
 先后启动 tracer-sample-with-openfeign-provider 和 tracer-sample-with-openfeign-consumer 两个工程; 然后浏览器访问：
-http://localhost:8082/ 。然后查看日志：
+<http://localhost:8082/> 。然后查看日志：
 
 在上面的 `application.properties` 里面，我们配置的日志打印目录是 `./logs` 即当前应用的根目录（我们可以根据自己的实践需要进行配置），在当前工程的根目录下可以看到类似如下结构的日志文件：
 
-```
+```plain
 ./logs
 ├── spring.log
 └── tracelog

@@ -12,9 +12,9 @@ This article introduces how to use MOSN to build the Service Mesh development en
 
 ## Relationship between MOSN and SOFAMesh
 
-As mentioned in [MOSN introduction](../overview), MOSN is a Service Mesh data plane agent developed with Golang, and SOFAMesh is a large-scale implementation solution for Service Mesh, which is improved and extended based on Istio. Serving as a critical component of SOFAMesh, MOSN is used to complete data plane forwarding.
+As mentioned in [MOSN introduction](../overview/), MOSN is a Service Mesh data plane agent developed with Golang, and SOFAMesh is a large-scale implementation solution for Service Mesh, which is improved and extended based on Istio. Serving as a critical component of SOFAMesh, MOSN is used to complete data plane forwarding.
 
-The following figure shows the workflow chart of MOSN based on the overall SOFAMesh framework. 
+The following figure shows the workflow chart of MOSN based on the overall SOFAMesh framework.
 
 Note: Currently, MOSN cannot be directly used in the native Istio.
 
@@ -28,12 +28,12 @@ This guide supposes you are using macOS. For other operating systems, you can in
 
 Install [docker-for-mac](https://store.docker.com/editions/community/docker-ce-desktop-mac), and then  [install driver](https://github.com/kubernetes/minikube/blob/master/docs/drivers.md).
 
-#### 1.1 Install Docker 
+#### 1.1 Install Docker
 
 Download the Docker software package to install it or run the following command to install it:
 
 ```bash
-$ brew cask install docker
+brew cask install docker
 ```
 
 #### 1.2 Install driver
@@ -51,7 +51,7 @@ $ curl -LO https://storage.googleapis.com/minikube/releases/latest/docker-machin
 It is recommended to use Minikube V0.28 or later, see  [https://github.com/kubernetes/minikube](https://github.com/kubernetes/minikube).
 
 ```bash
-$ brew cask install minikube
+brew cask install minikube
 ```
 
 ### 3. Start Minikube
@@ -59,13 +59,13 @@ $ brew cask install minikube
 Note that Pilot requires at least 2G memory, so you can add resources to Minikube by adding parameters at startup. If your machine has insufficient resources, it is recommended to use the commercial version of the k8s cluster.
 
 ```bash
-$ minikube start --memory=8192 --cpus=4 --kubernetes-version=v1.15.0 --vm-driver=hyperkit
+minikube start --memory=8192 --cpus=4 --kubernetes-version=v1.15.0 --vm-driver=hyperkit
 ```
 
 Create Istio namespace
 
 ```bash
-$ kubectl create namespace istio-system
+kubectl create namespace istio-system
 ```
 
 ### 4. Install kubectl command line tool
@@ -73,7 +73,7 @@ $ kubectl create namespace istio-system
 kubectl is a command line interface used to run commands for k8s cluster. For how to install it, see [https://kubernetes.io/docs/tasks/tools/install-kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl).
 
 ```bash
-$ brew install kubernetes-cli
+brew install kubernetes-cli
 ```
 
 ### 5. Install Helm
@@ -81,7 +81,7 @@ $ brew install kubernetes-cli
 Helm is a package management tool for k8s. For how to install it, see [https://docs.helm.sh/using\_helm/#installing-helm](https://docs.helm.sh/using_helm/#installing-helm).
 
 ```bash
-$ brew install kubernetes-helm
+brew install kubernetes-helm
 ```
 
 ## Deploy SOFAMesh with source codes
@@ -89,26 +89,25 @@ $ brew install kubernetes-helm
 ### 1. Download SOFAMesh source codes
 
 ```bash
-$ git clone git@github.com:sofastack/sofa-mesh.git
+git clone git@github.com:sofastack/sofa-mesh.git
 ```
 
 ### 2. Use Helm to install SOFAMesh
 
-
 You should change directory to sofa-mesh source code, and then use helm template to install isito crd and istio
 
-    ```
+   plain ```
     $ cd sofa-mesh
     $ helm template install/kubernetes/helm/istio-init --name istio-init --namespace istio-system | kubectl apply -f -
     $ helm template install/kubernetes/helm/istio --name istio --namespace istio-system | kubectl apply -f -
     ```
 
-Uninstall 
+Uninstall
 
-    ```
+   plain ```
     $ helm template install/kubernetes/helm/istio --name istio --namespace istio-system | kubectl delete -f -
     $ kubectl delete namespace istio-system
-    ```    
+    ```
 
 ### 3. Verify installation
 
@@ -134,10 +133,10 @@ prometheus-84bd4b9796-nq8lg                 1/1     Running   0          5m
 
 BookInfo is a book application like Douban. It contains four basic services.
 
-* Product Page: Homepage, which is developed with Python, shows all book information and calls the Reviews and Details services.
-* Reviews: Comment, which is developed with Java, shows book reviews and calls the Ratings service.
-* Ratings: Rating service, which is developed with Nodejs.
-* Details: Book details, which is developed with Ruby.
++ Product Page: Homepage, which is developed with Python, shows all book information and calls the Reviews and Details services.
++ Reviews: Comment, which is developed with Java, shows book reviews and calls the Ratings service.
++ Ratings: Rating service, which is developed with Nodejs.
++ Details: Book details, which is developed with Ruby.
 
 <img src="bookinfo.png" width = "550" height = "400">
 
@@ -148,12 +147,13 @@ BookInfo is a book application like Douban. It contains four basic services.
 + Inject to MOSN
 
 ```bash
-$ kubectl label namespace default istio-injection=enabled
+kubectl label namespace default istio-injection=enabled
 ```
+
 + Deploy Bookinfo
 
 ```bash
-$ kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
+kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
 ```
 
 + Verify if the deployment is successful
@@ -183,7 +183,7 @@ reviews-v3-1813607990-8ch52                 2/2       Running   0          6m
 
 ### 2. Access BookInfo service
 
-* Enable gateway mode
++ Enable gateway mode
 
 ```bash
 $ kubectl apply -f samples/bookinfo/networking/bookinfo-gateway.yaml
@@ -192,28 +192,27 @@ NAME               AGE
 bookinfo-gateway   24m
 ```
 
-* Set gateway address
++ Set gateway address
 
-See the details for set gateway address in https://istio.io/docs/tasks/traffic-management/ingress/ingress-control/#determining-the-ingress-ip-and-ports
+See the details for set gateway address in <https://istio.io/docs/tasks/traffic-management/ingress/ingress-control/#determining-the-ingress-ip-and-ports>
 
 ```bash
-$ export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].nodePort}')
-$ export SECURE_INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="https")].nodePort}')
-$ export INGRESS_HOST=$(minikube ip)
-$ export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
+export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].nodePort}')
+export SECURE_INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="https")].nodePort}')
+export INGRESS_HOST=$(minikube ip)
+export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
 ```
 
-* Verify if the gateway takes effect 
++ Verify if the gateway takes effect
 
 ```bash
 $ curl -o /dev/null -s -w "%{http_code}\n"  http://$GATEWAY_URL/productpage   //If 200 is output, it means a success 
 200
 ```
 
-* Observe the page status
++ Observe the page status
 
-
-Visit http://$GATEWAY_URL/productpage. Note that, you need to replace `$GATEWAY_URL` with the address you set. Normally, you can see the following BookInfo interface after refreshing the page. There are three versions of Book Reviews. After refreshing, you can see them in turn. To learn why these three versions appear, view the configuration in `samples/bookinfo/platform/kube/bookinfo.yaml`.
+Visit http://$GATEWAY_URL/productpage. Note that, you need to replace `$GATEWAY_URL`with the address you set. Normally, you can see the following BookInfo interface after refreshing the page. There are three versions of Book Reviews. After refreshing, you can see them in turn. To learn why these three versions appear, view the configuration in`samples/bookinfo/platform/kube/bookinfo.yaml`.
 
 + Interface of version 1
 ![](v1.png)
@@ -229,13 +228,13 @@ Visit http://$GATEWAY_URL/productpage. Note that, you need to replace `$GATEWAY_
 + Firstly, create a series of destination rules for BookInfo's services.
 
 ```bash
-$ kubectl apply -f samples/bookinfo/networking/destination-rule-all.yaml
+kubectl apply -f samples/bookinfo/networking/destination-rule-all.yaml
 ```
 
 + Specify reviews service to access v1 only.
 
 ```bash
-$ kubectl apply -f samples/bookinfo/networking/virtual-service-all-v1.yaml
+kubectl apply -f samples/bookinfo/networking/virtual-service-all-v1.yaml
 ```
 
 Visit http://$GATEWAY_URL/productpage, and find that the reviews are fixed in the following version 1 page and no longer change.
@@ -247,7 +246,7 @@ Visit http://$GATEWAY_URL/productpage, and find that the reviews are fixed in th
 + Allocate 50% traffic respectively to v1 and v3
 
 ```bash
-$ kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-50-v3.yaml
+kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-50-v3.yaml
 ```
 
 Access http://$GATEWAY_URL/productpage, and find that the probability for v1 and v3 to appear respectively is 1/2.
@@ -257,7 +256,7 @@ Access http://$GATEWAY_URL/productpage, and find that the probability for v1 and
 + There is a login entrance in the upper right corner of the BookInfo system. After you log in, the request carries the custom parameter `end-user` of which the value is user name. Mosn supports routing by the value of this header. For example, route the user Jason to the v2 while other users to v1 (both username and password are Jason, why this user can view the corresponding yaml file).
 
 ```bash
-$ kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-test-v2.yaml
+kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-test-v2.yaml
 ```
 
 When you access http://$GATEWAY_URL/productpage:

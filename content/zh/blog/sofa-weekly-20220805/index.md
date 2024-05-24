@@ -25,11 +25,12 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/9bebad7229b9454b8e0b135e043714af~tplv-k3u1fbpfcp-zoom-1.image)
 
 ### 每周读者问答提炼
+
 欢迎大家向公众号留言提问或在群里与我们互动我们会筛选重点问题通过 " SOFA WEEKLY " 的形式回复
 
 **1. 吴宇奇** 提问：
 
->请问下，Bolt 协议里面的这个 cmdCode，除了心跳、request、response，还有别的用法吗？
+> 请问下，Bolt 协议里面的这个 cmdCode，除了心跳、request、response，还有别的用法吗？
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/7aab0097fa244d0ba7f0b5584677a748~tplv-k3u1fbpfcp-zoom-1.image)
 
 A：举个例子，新增 goaway 扩展。*[https://github.com/sofastack/sofa-bolt/issues/278](https://github.com/sofastack/sofa-bolt/issues/278)*
@@ -38,16 +39,16 @@ A：举个例子，新增 goaway 扩展。*[https://github.com/sofastack/sofa-
 
 **2. bobtthp** 提问：
 
->大佬们问下动态路由这块，有 example 可以看看嘛？
+> 大佬们问下动态路由这块，有 example 可以看看嘛？
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/02ddb6b7c1ee45b089990cc6ee1c97a8~tplv-k3u1fbpfcp-zoom-1.image)
 
 A：这篇文章就是例子哟，*[https://mosn.io/blog/posts/how-use-dynamic-metadata/#%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1-cluster](https://mosn.io/blog/posts/how-use-dynamic-metadata/#%E5%8A%A8%E6%80%81%E8%B7%AF%E7%94%B1-cluster)* ，原理就是 route 的配置是变量，然后 streamfilter 根据业务逻辑修改这个变量的值，很方便试试。
 
->好的，这个我有一个疑问。这个变量如何注入进去呢？我理解应该每一个节点的变量都不一样嘛？还有一个疑问是，如果需要和配置中心交互这块是怎么做的，可以借鉴一下吗？
+> 好的，这个我有一个疑问。这个变量如何注入进去呢？我理解应该每一个节点的变量都不一样嘛？还有一个疑问是，如果需要和配置中心交互这块是怎么做的，可以借鉴一下吗？
 
 A：变量就是 streamfilter 模块分配的，然后他来设置这个变量的值，值就是 cluster 的名字；后面那个问题指的是 cluster host 的更新吗？
 
->指的是如果需要外部的配置中心那可能需要监听配置的动态变化；第一个这块我好像没理解好，我举个例子：如果是多个应用，那是不是我要设置多个变量？
+> 指的是如果需要外部的配置中心那可能需要监听配置的动态变化；第一个这块我好像没理解好，我举个例子：如果是多个应用，那是不是我要设置多个变量？
 
 A：比如你 A 应用的 cluster 名字是 A，B 应用的 cluster 名字是 B， 那么这个变量只需要一个，只是 value 你可以根据逻辑设置为 A 或者 B。
 

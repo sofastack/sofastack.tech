@@ -1,13 +1,14 @@
 
 ---
+
 title: "Telnet 指令"
 aliases: "/sofa-boot/docs/sofa-ark-ark-telnet"
 ---
 
-
 SOFAArk 容器提供了一个简单的 telnet 服务端小工具，用于运行时查看容器状态，目前支持查看 Plugin 和 Biz 相关信息。
 
 ### 使用方式
+
 使用 telnet 连接服务端，端口号为 1234， 例如：
 
 > telnet localhost 1234
@@ -54,6 +55,7 @@ sofa-ark>
 ```
 
 ### Plugin 命令
+
 如提示信息所说，plugin 支持查看插件相关信息，包括类(资源)导入导出配置、插件打包配置等。例如：
 
 ```text
@@ -81,6 +83,7 @@ sofa-ark>
 其他命令可以查看提示信息，暂时不支持 `-s` 选项查看服务。
 
 ### Biz 命令
+
 biz 命令支持查看 biz 相关信息，也支持安装、卸载、激活等 biz 操作指令。例如
 
 ```text

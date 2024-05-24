@@ -30,7 +30,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 
 A：先 read 再 decode 的呀，你说的阻塞在 read 是阻塞在哪？
 
-> read 方法已经正常调用，并且 decode了，但是没有触发写事件，consumer端 会一直在等待。 然后又会到这里卡住直到超时
+> read 方法已经正常调用，并且 decode 了，但是没有触发写事件，consumer 端 会一直在等待。 然后又会到这里卡住直到超时
 > ![源码](https://cdn.nlark.com/yuque/0/2020/png/226702/1603443347425-b57afdc3-e2e6-43a6-a904-4caf22660a69.png)
 
 A：数据 read 了没有新数据，这里就是会超时啊。你要看 decode 之后做了什么。
@@ -72,7 +72,7 @@ Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 - 升级 sofa-ark 版本至 1.1.5；
 - 升级 junit 版本至 4.13.1；
 - 修复 jvm filter npe 问题；
-- 修复http server 线程池配置问题；
+- 修复 http server 线程池配置问题；
 
 详细发布报告：
 [https://github.com/sofastack/sofa-boot/releases/tag/v3.4.5](https://github.com/sofastack/sofa-boot/releases/tag/v3.4.5)

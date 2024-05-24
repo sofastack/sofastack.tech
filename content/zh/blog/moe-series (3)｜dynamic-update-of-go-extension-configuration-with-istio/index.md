@@ -37,7 +37,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*2o6cQI-j4qkAAAAAA
 配置好了之后，简单测试一下：
 
 ```bash
-$ curl -s -I -HHost:httpbin.example.com "http://$INGRESS_HOST:$INGRESS_PORT/status/200"HTTP/1.1 200 OKserver: istio-envoydate: Fri, 10 Mar 2023 15:49:37 GMT
+curl -s -I -HHost:httpbin.example.com "http://$INGRESS_HOST:$INGRESS_PORT/status/200"HTTP/1.1 200 OKserver: istio-envoydate: Fri, 10 Mar 2023 15:49:37 GMT
 ```
 
 基本的 Ingress 已经跑起来了。

@@ -1,11 +1,11 @@
 
 ---
+
 title: "Development guide"
 aliases: "/sofa-lookout/docs/development-useguide"
 ---
 
-
-# Develope guide of code contribution 
+# Develope guide of code contribution
 
 ## First refer to the basic [Notes for code contribution](https://github.com/sofastack/sofa-lookout/blob/master/CONTRIBUTING.md)
 

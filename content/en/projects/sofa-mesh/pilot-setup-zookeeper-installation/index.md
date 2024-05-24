@@ -1,11 +1,12 @@
 
 ---
+
 title: "Installation guide"
 aliases: "/sofa-mesh/docs/pilot-setup-zookeeper-installation"
 ---
 
-
 # Installation guide
+
 To use Istio in a non-Kubernetes environment, you must complete the following critical tasks first:
 
 1. Configure the Istio API server for the Istio control plane. You can also use MemStore to launch Pilot for demonstration purpose.

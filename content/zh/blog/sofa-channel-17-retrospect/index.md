@@ -75,13 +75,13 @@ oneway 调用的场景非常明确，当调用方不需要拿到调用结果的�
 
 在上一部分的通信模型中，除了 oneway 之后，其他三种（sync、future、callback）都需要进行超时控制，因为用户需要在预期的时间内拿到结果。超时控制简单来说就是在用户发起调用后，在预期的时间内如果没有拿到服务端响应的结果，那么这次调用就超时了，需要让用户感知到超时，避免一直阻塞调用线程或者 callback 永远得不到执行。
 
-在通信框架中，超时控制必须要满足高效、准确的要求，因为通信框架是分布式系统的基础组件，一旦通信框架出现性能问题，那么上层系统的性能显然是无法提升的。超时控制的准确性也非常重要，比如用户预期一次调用最多只能执行3秒，因为超时控制不准确导致用户调用时线程被阻塞了4秒，这显然是不能接受的。
+在通信框架中，超时控制必须要满足高效、准确的要求，因为通信框架是分布式系统的基础组件，一旦通信框架出现性能问题，那么上层系统的性能显然是无法提升的。超时控制的准确性也非常重要，比如用户预期一次调用最多只能执行 3 秒，因为超时控制不准确导致用户调用时线程被阻塞了 4 秒，这显然是不能接受的。
 
 ![超时控制](https://cdn.nlark.com/yuque/0/2020/png/226702/1593573337097-81dd7b4b-61b0-4eea-9e37-ce56c851748d.png)
 
-SOFABolt 的超时控制采用了 Netty 中的 HashedWheelTimer，其原理如上图。假设一次 tick 表示100毫秒，那么上面的时间轮 tick 一轮表示800毫秒，如果需要在300毫秒后触发超时，那么这个超时任务会被放到'2'的 bucket 中，等到 tick 到'2'时则被触发。如果一个超时任务需要在900毫秒后触发，那么它会被放到如'0'的 bucket 中，并标记 task 的 remainingRounds=1，当第一次 tick 到'0'时发现 remainingRounds 不等于0，会对 remainingRounds 进行减1操作，当第二次 tick 到'0'，发现这个任务的 remainingRounds 是0，则触发这个任务。
+SOFABolt 的超时控制采用了 Netty 中的 HashedWheelTimer，其原理如上图。假设一次 tick 表示 100 毫秒，那么上面的时间轮 tick 一轮表示 800 毫秒，如果需要在 300 毫秒后触发超时，那么这个超时任务会被放到'2'的 bucket 中，等到 tick 到'2'时则被触发。如果一个超时任务需要在 900 毫秒后触发，那么它会被放到如'0'的 bucket 中，并标记 task 的 remainingRounds=1，当第一次 tick 到'0'时发现 remainingRounds 不等于 0，会对 remainingRounds 进行减 1 操作，当第二次 tick 到'0'，发现这个任务的 remainingRounds 是 0，则触发这个任务。
 
-如果将时间轮的一次 tick 设置为1秒，ticksPerWheel 设置为60，那么就是现实时钟的秒针，走完一圈代表一分钟。如果一个任务需要再1分15秒后执行，就是标记为秒针走一轮之后指向第15格时触发。关于时间轮的原理推荐阅读下面这篇论文：
+如果将时间轮的一次 tick 设置为 1 秒，ticksPerWheel 设置为 60，那么就是现实时钟的秒针，走完一圈代表一分钟。如果一个任务需要再 1 分 15 秒后执行，就是标记为秒针走一轮之后指向第 15 格时触发。关于时间轮的原理推荐阅读下面这篇论文：
 《Hashed and Hierarchical Timing Wheels: data structures to efficiently implement a timer facility》。
 
 ### 快速失败机制
@@ -117,14 +117,14 @@ SOFABolt 中包含的协议命令如上图所示。在 RPC 版本的协议命令
 整个请求和响应的过程设计的核心组件如上图所示，其中：
 
 - 客户端侧：
-   - Connection 连接对象的封装，封装对底层网络的操作；
-   - CommandEncoder 负责编码 RemotingCommand，将 RemotingCommand 按照私有协议编码成 byte 数据；
-   - RpcResponseProcessor 负责处理服务端的响应；
+  - Connection 连接对象的封装，封装对底层网络的操作；
+  - CommandEncoder 负责编码 RemotingCommand，将 RemotingCommand 按照私有协议编码成 byte 数据；
+  - RpcResponseProcessor 负责处理服务端的响应；
 - 服务端侧：
-   - CommandDecoder 分别负责解码 byte 数据，按照私有协议将 byte 数据解析成 RemotingCommand 对象；
-   - RpcHandler 按照协议码将 RemotingCommand 转发到对应的 CommandHandler 处理；
-   - CommandHandler 按照 CommandCode 将 RemotingCommand 转发到对应的 RpcRequestProcessor 处理；
-   - RpcRequestProcessor 按照 RemotingCommand 携带对象的 Class 将请求转发到用户的 UserProcessor 执行业务逻辑，并将结果通过 CommandDecoder 编码后返回给客户端；
+  - CommandDecoder 分别负责解码 byte 数据，按照私有协议将 byte 数据解析成 RemotingCommand 对象；
+  - RpcHandler 按照协议码将 RemotingCommand 转发到对应的 CommandHandler 处理；
+  - CommandHandler 按照 CommandCode 将 RemotingCommand 转发到对应的 RpcRequestProcessor 处理；
+  - RpcRequestProcessor 按照 RemotingCommand 携带对象的 Class 将请求转发到用户的 UserProcessor 执行业务逻辑，并将结果通过 CommandDecoder 编码后返回给客户端；
 
 ## 私有协议实现
 
@@ -149,7 +149,7 @@ SOFABolt 除了提供基础通信能力外，内置了私有协议的实现，�
 - className：业务请求类的类名；
 - header：业务请求头；
 - content：业务请求体；
-- CRC32：CRC校验码；
+- CRC32：CRC 校验码；
 
 ### 实现自定义协议
 

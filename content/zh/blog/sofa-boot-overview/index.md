@@ -13,7 +13,7 @@ cover: "https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1581406634429-5b05c174-c4
 
 ![SOFABoot 总览](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1580792540251-7775f63c-5cb6-4b12-9731-4a9b5fa6298c.jpeg)
 
-本文为《剖析 | SOFABoot 框架》第一篇，本篇作者纶珥，来自蚂蚁金服。《剖析 | SOFABoot 框架》系列由 SOFA 团队和源码爱好者们出品，项目代号：[SOFA:BootLab/]()，文章尾部有参与方式，欢迎同样对源码热情的你加入。
+本文为《剖析 | SOFABoot 框架》第一篇，本篇作者纶珥，来自蚂蚁金服。《剖析 | SOFABoot 框架》系列由 SOFA 团队和源码爱好者们出品，项目代号：[SOFA:BootLab/](https://example.com)，文章尾部有参与方式，欢迎同样对源码热情的你加入。
 
 SOFABoot 是蚂蚁金服开源的基于 SpringBoot 的研发框架，提供了诸如 Readiness Check、类隔离、日志空间隔离等能力，用于快速、敏捷地开发 Spring 应用程序，特别适合构建微服务系统。
 
@@ -150,9 +150,9 @@ SOFABoot 通过 [SOFAArk](https://github.com/sofastack/sofa-ark) 提供类隔离
 本文为 SOFABoot 的初步介绍，希望大家对 SOFABoot 有一个初步的认识和了解。同时，我们开启了《剖析 | SOFABoot 框架》系列，会逐步详细介绍各个部分的代码设计和实现，预计按照如下的目录进行：
 
 - **【已完成】SOFABoot 总览**
-- 【已领取】SOFABoot HealthCheck 机制解析	
+- 【已领取】SOFABoot HealthCheck 机制解析
 - 【已领取】SOFABoot 日志隔离解析
-- 【待领取】SOFABoot runtime 机制解析	
+- 【待领取】SOFABoot runtime 机制解析
 - 【待领取】SOFABoot 上下文隔离机制解析
 
 如果有同学对以上某个主题特别感兴趣的，可以留言讨论，我们会适当根据大家的反馈调整文章的顺序，谢谢大家关注 SOFA ，关注 SOFABoot，我们会一直与大家一起成长的。

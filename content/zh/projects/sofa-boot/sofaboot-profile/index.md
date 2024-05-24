@@ -1,9 +1,9 @@
 
 ---
+
 title: "SOFABoot Profile"
 aliases: "/sofa-boot/docs/SOFABoot-Profile"
 ---
-
 
 Spring 框架从 3.1.X 版本开始提供了 profile 功能: [Bean Definition Profiles](https://docs.spring.io/spring/docs/3.1.0.RELEASE/reference/htmlsingle/#d0e1293)，SOFABoot 支持模块级 profile 能力，即在各个模块启动的时候决定模块是否能够启动。
 
@@ -77,7 +77,7 @@ application.properties 中增加配置如下：
 com.alipay.sofa.boot.active-profiles=dev,test
 ```
 
-该配置表示激活 profile 为 dev 或者 test 的模块，当一个模块满足上面的激活条件时，这个模块就会被启动，同时 Spring 上下文的环境信息 spring.profiles.active 也被设置为了 dev,test ，这样如下的配置 beanId 为 devBeanId 和 testBeanId 的bean都会被激活。
+该配置表示激活 profile 为 dev 或者 test 的模块，当一个模块满足上面的激活条件时，这个模块就会被启动，同时 Spring 上下文的环境信息 spring.profiles.active 也被设置为了 dev,test ，这样如下的配置 beanId 为 devBeanId 和 testBeanId 的 bean 都会被激活。
 
 ```xml
 <?xml version="1.0" encoding="UTF-8"?>

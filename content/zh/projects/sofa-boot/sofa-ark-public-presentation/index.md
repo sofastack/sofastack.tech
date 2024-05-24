@@ -1,8 +1,10 @@
 
 ---
+
 title: "SOFAArk 相关公开分享材料"
 aliases: "/sofa-boot/docs/sofa-ark-public-presentation"
 ---
+
 ## 【SOFAChannel 分享】SOFAArk 类隔离框架设计原理
 
 [https://www.bilibili.com/video/BV1gS4y1i7Fg/?spm_id_from=333.999.0.0](https://www.bilibili.com/video/BV1gS4y1i7Fg/?spm_id_from=333.999.0.0)

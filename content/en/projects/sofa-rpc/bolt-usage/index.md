@@ -1,9 +1,9 @@
 
 ---
+
 title: "Basic usage of Bolt protocol"
 aliases: "/sofa-rpc/docs/Bolt-Usage"
 ---
-
 
 ### Publish Service
 
@@ -30,7 +30,7 @@ Public class SampleServiceImpl implements SampleService {
 }
 ```
 
-#### API in Spring environment 
+#### API in Spring environment
 
 To publish a Bolt-protocol service in Spring or Spring Boot environment, just add `BoltBindingParam` to `ServiceParam`:
 
@@ -88,7 +88,7 @@ To reference a Bolt-protocol service using Annotation, just set the `bindingType
 Private SampleService sampleService;
 ```
 
-#### API in Spring environment 
+#### API in Spring environment
 
 To reference a Bolt-protocol service in a Spring or Spring Boot environment, simply add a `BoltBindingParam` to `ReferenceParam`:
 

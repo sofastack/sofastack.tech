@@ -39,7 +39,7 @@ description: "2022 年 9 月 14 日 19：00 - 20：00  ，Talk 第 1 期。"
 
 ## 嘉宾海报
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*-NFTR6z3POgAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*-NFTR6z3POgAAAAAAAAAAAAAARQnAQ)
 
 ## 了解更多技术干货
 

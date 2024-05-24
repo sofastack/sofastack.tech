@@ -24,7 +24,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 @周衡 提问：
 
->请问一下，我需要调度 RPC 的上下文是哪一个类？有一些参数想直接通过上下文传递。
+> 请问一下，我需要调度 RPC 的上下文是哪一个类？有一些参数想直接通过上下文传递。
 
 A：RpcInvokeContextv6
 
@@ -32,7 +32,7 @@ A：RpcInvokeContextv6
 
 @bobtthp 提问：
 
->MOSN 对接 dubbo 目前注册中心支持 zk 吗？
+> MOSN 对接 dubbo 目前注册中心支持 zk 吗？
 
 A：FaaS 示例么？那个还没上过生产，还在探索阶段。支持的，可以参考这个文档：[https://www.github.com/mosn/mosn/tree/master/pkg%2Fupstream%2Fservicediscovery%2Fdubbod%2Fcommon.go](https://www.github.com/mosn/mosn/tree/master/pkg%2Fupstream%2Fservicediscovery%2Fdubbod%2Fcommon.go)
 
@@ -92,4 +92,4 @@ SOFARPC
 
 更多文章请扫码关注“金融级分布式架构”公众号
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*8G5NRZ7UEToAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*8G5NRZ7UEToAAAAAAAAAAAAAARQnAQ)

@@ -3,7 +3,7 @@ title: "使用 MOSN 搭建 Service Mesh 平台"
 aliases: "/sofa-mosn/docs/docs-quickstart-RunWithSOFAMesh"
 ---
 
-本文将介绍如何使用 MOSN 在 SOFAMesh 框架下搭建 Service Mesh 的开发环境，并验证 MOSN 的一些基础路由能力、负载均衡能力等。本文介绍的内容将包括 : 
+本文将介绍如何使用 MOSN 在 SOFAMesh 框架下搭建 Service Mesh 的开发环境，并验证 MOSN 的一些基础路由能力、负载均衡能力等。本文介绍的内容将包括 :
 
 - MOSN 与 SOFAMesh 的关系
 - 准备工作
@@ -12,7 +12,7 @@ aliases: "/sofa-mosn/docs/docs-quickstart-RunWithSOFAMesh"
 
 ## MOSN 与 SOFAMesh 的关系
 
-我们曾在 [MOSN 介绍](../overview)中介绍过，MOSN 是一款采用 Go 语言开发的 Service Mesh 数据平面代理。而 SOFAMesh 则是基于 Istio 改进和扩展而来的 Service Mesh 大规模落地实践方案，MOSN 作为 SOFAMesh 的关键组件用来完成数据面的转发。
+我们曾在 [MOSN 介绍](../overview/)中介绍过，MOSN 是一款采用 Go 语言开发的 Service Mesh 数据平面代理。而 SOFAMesh 则是基于 Istio 改进和扩展而来的 Service Mesh 大规模落地实践方案，MOSN 作为 SOFAMesh 的关键组件用来完成数据面的转发。
 
 下图是 SOFAMesh 整体框架下，MOSN 的工作示意图。
 
@@ -33,7 +33,7 @@ aliases: "/sofa-mosn/docs/docs-quickstart-RunWithSOFAMesh"
 下载软件包安装，或者使用如下的命令安装。
 
 ```bash
-$ brew cask install docker
+brew cask install docker
 ```
 
 #### 1.2 安装驱动
@@ -51,7 +51,7 @@ $ curl -LO https://storage.googleapis.com/minikube/releases/latest/docker-machin
 推荐使用 Minikube v0.28 以上来体验，请参考 [https://github.com/kubernetes/minikube](https://github.com/kubernetes/minikube)
 
 ```bash
-$ brew cask install minikube
+brew cask install minikube
 ```
 
 ### 3. 启动 Minikube
@@ -59,13 +59,13 @@ $ brew cask install minikube
 注意，pilot 至少需要 2G 内存，所以在启动的时候，可以通过加参数的方法给 minikube 添加分配的资源，如果你机器的资源不够，推荐使用商业版本的 k8s 集群。
 
 ```bash
-$ minikube start --memory=8192 --cpus=4 --kubernetes-version=v1.15.0 --vm-driver=hyperkit
+minikube start --memory=8192 --cpus=4 --kubernetes-version=v1.15.0 --vm-driver=hyperkit
 ```
 
-创建istio 命名空间
+创建 istio 命名空间
 
-```
-$ kubectl create namespace istio-system
+```plain
+kubectl create namespace istio-system
 ```
 
 ### 4. 安装 kubectl 命令行工具
@@ -73,7 +73,7 @@ $ kubectl create namespace istio-system
 kubectl 是用于针对 k8s 集群运行命令的命令行接口，安装参考 [https://kubernetes.io/docs/tasks/tools/install-kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl)。
 
 ```bash
-$ brew install kubernetes-cli
+brew install kubernetes-cli
 ```
 
 ### 5. 安装 Helm
@@ -81,7 +81,7 @@ $ brew install kubernetes-cli
 Helm 是一个 k8s 的包管理工具，安装参考 [https://docs.helm.sh/using\_helm/#installing-helm](https://docs.helm.sh/using_helm/#installing-helm)
 
 ```bash
-$ brew install kubernetes-helm
+brew install kubernetes-helm
 ```
 
 ## 源码方式部署 SOFAMesh
@@ -89,26 +89,25 @@ $ brew install kubernetes-helm
 ### 1. 下载 SOFAMesh 源码
 
 ```bash
-$ git clone https://github.com/sofastack/sofa-mesh.git
+git clone https://github.com/sofastack/sofa-mesh.git
 ```
 
 ### 2. 通过 Helm 安装 SOFAMesh
 
-
 **使用 `helm template` 安装**
 
-首先需要切换到SOFAMesh源码所在目录，然后使用Helm安装istio CRD以及各个组件 
+首先需要切换到 SOFAMesh 源码所在目录，然后使用 Helm 安装 istio CRD 以及各个组件
 
 ```bash
-$ cd sofa-mesh 
-$ helm template install/kubernetes/helm/istio-init --name istio-init --namespace istio-system | kubectl apply -f -
-$ helm template install/kubernetes/helm/istio --name istio --namespace istio-system | kubectl apply -f -
+cd sofa-mesh 
+helm template install/kubernetes/helm/istio-init --name istio-init --namespace istio-system | kubectl apply -f -
+helm template install/kubernetes/helm/istio --name istio --namespace istio-system | kubectl apply -f -
 ```
 
 ### 3. 验证安装
 
 `istio-system` 命名空间下的 pod 状态都是 Running 时，说明已经部署成功。
-如果仅仅是为了运行bookinfo，只需要pilot,injector,citadel这三个pods运行成功就可以满足最低要求
+如果仅仅是为了运行 bookinfo，只需要 pilot,injector,citadel 这三个 pods 运行成功就可以满足最低要求
 
 ```bash
 $ kubectl get pods -n istio-system
@@ -127,21 +126,21 @@ prometheus-84bd4b9796-nq8lg                 1/1     Running   0          5m
 
 ### 4. 卸载安装
 
-卸载SOFAMesh
+卸载 SOFAMesh
 
 ```bash
-$ helm template install/kubernetes/helm/istio --name istio --namespace istio-system | kubectl delete -f -
-$ kubectl delete namespace istio-system
+helm template install/kubernetes/helm/istio --name istio --namespace istio-system | kubectl delete -f -
+kubectl delete namespace istio-system
 ```
 
 ## BookInfo 实验
 
 BookInfo 是一个类似豆瓣的图书应用，它包含四个基础服务：
 
--  Product Page：主页，由 python 开发，展示所有图书信息，它会调用 Reviews 和 Details 服务
--  Reviews：评论，由 java 开发，展示图书评论，会调用 Ratings 服务
--  Ratings：评分服务，由 nodejs 开发
--  Details：图书详情，由 ruby 开发
+- Product Page：主页，由 python 开发，展示所有图书信息，它会调用 Reviews 和 Details 服务
+- Reviews：评论，由 java 开发，展示图书评论，会调用 Ratings 服务
+- Ratings：评分服务，由 nodejs 开发
+- Details：图书详情，由 ruby 开发
 
 <div align=center><img src="bookinfo.png" width = "550" height = "400" alt="bookinfo" /></div>
 ### 1. 部署 BookInfo 应用并注入 SOFA-Mosn
@@ -151,13 +150,13 @@ BookInfo 是一个类似豆瓣的图书应用，它包含四个基础服务：
 注入 MOSN。
 
 ```bash
-$ kubectl label namespace default istio-injection=enabled
+kubectl label namespace default istio-injection=enabled
 ```
 
 部署 Bookinfo。
 
 ```bash
-$ kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
+kubectl apply -f samples/bookinfo/platform/kube/bookinfo.yaml
 ```
 
 验证部署是否成功。
@@ -196,13 +195,13 @@ NAME               AGE
 bookinfo-gateway   24m
 ```
 
-设置GATEWAY_URL,参考文档 https://istio.io/docs/tasks/traffic-management/ingress/ingress-control/#determining-the-ingress-ip-and-ports
+设置 GATEWAY_URL,参考文档 <https://istio.io/docs/tasks/traffic-management/ingress/ingress-control/#determining-the-ingress-ip-and-ports>
 
 ```bash
-$ export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].nodePort}')
-$ export SECURE_INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="https")].nodePort}')
-$ export INGRESS_HOST=$(minikube ip)
-$ export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
+export INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="http2")].nodePort}')
+export SECURE_INGRESS_PORT=$(kubectl -n istio-system get service istio-ingressgateway -o jsonpath='{.spec.ports[?(@.name=="https")].nodePort}')
+export INGRESS_HOST=$(minikube ip)
+export GATEWAY_URL=$INGRESS_HOST:$INGRESS_PORT
 ```
 
 验证 gateway 是否生效。
@@ -234,13 +233,13 @@ $ curl -o /dev/null -s -w "%{http_code}\n"  http://$GATEWAY_URL/productpage   //
 首先为 BookInfo 的 service 创建一系列的 destination rules。
 
 ```bash
-$ kubectl apply -f samples/bookinfo/networking/destination-rule-all.yaml
+kubectl apply -f samples/bookinfo/networking/destination-rule-all.yaml
 ```
 
 指定 reviews 服务只访问 v1 版本。
 
 ```bash
-$ kubectl apply -f samples/bookinfo/networking/virtual-service-all-v1.yaml
+kubectl apply -f samples/bookinfo/networking/virtual-service-all-v1.yaml
 ```
 
 访问 `http://$GATEWAY_URL/productpage` 发现 reviews 固定在如下版本一的页面不再变化
@@ -252,7 +251,7 @@ $ kubectl apply -f samples/bookinfo/networking/virtual-service-all-v1.yaml
 我们通过下面操作将 v1 和 v3 版本各分配 50% 的流量。
 
 ```bash
-$ kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-50-v3.yaml
+kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-50-v3.yaml
 ```
 
 访问 `http://$GATEWAY_URL/productpage` 这次 v1 和 v3 各有 1/2 几率出现
@@ -262,7 +261,7 @@ $ kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-50-v3.yam
 BookInfo 系统右上角有一个登陆的入口，登陆以后请求会带上 end-user 这个自定义，值是 user name，Mosn 支持根据这个 header 的值来做路由。比如，我们尝试将 jason 这个用户路由到 v2 版本，其他的路由到 v1 版本（用户名和密码均是：jason，为什么是这个用户可以查看对应的 yaml 文件）。
 
 ```bash
-$ kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-test-v2.yaml
+kubectl apply -f samples/bookinfo/networking/virtual-service-reviews-test-v2.yaml
 ```
 
 访问 `http://$GATEWAY_URL/productpage` 时：

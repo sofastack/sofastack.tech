@@ -2,7 +2,7 @@
 	title = "金融级云原生架构"
 	description = "SOFAStack™（Scalable Open Financial Architecture Stack）是一套用于快速构建金融级云原生架构的中间件，也是在金融场景里锤炼出来的最佳实践。"
 	quick_start_text = "快速开始"
-	quick_start_link = "/guides/sofastack-quick-start"
+	quick_start_link = "guides/sofastack-quick-start/"
 	github_link = "https://github.com/sofastack"
 
 [[feature]]

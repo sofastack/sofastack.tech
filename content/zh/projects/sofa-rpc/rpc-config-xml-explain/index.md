@@ -1,10 +1,9 @@
 
 ---
+
 title: "SOFABoot 环境发布订阅说明"
 aliases: "/sofa-rpc/docs/RPC-Config-Xml-Explain"
 ---
-
-
 
 这部分介绍在 SOFABoot 环境下,完整的 SOFARPC 服务发布与引用说明
 
@@ -25,7 +24,7 @@ aliases: "/sofa-rpc/docs/RPC-Config-Xml-Explain"
 
 | 属性           | 名称                    | 默认值              | 备注                                                                       |
 |:--------------|:-----------------------|:-------------------|:---------------------------------------------------------------------------|
-| id            | ID                     | bean名              |                                                                            |
+| id            | ID                     | bean 名              |                                                                            |
 | class         |  类                    |               无    |                                 |
 | ref           | 服务接口实现类           |                    |                                                                            |
 | interface     | 服务接口（唯一标识元素）  |                     | 不管是普通调用和返回调用，这里都设置实际的接口类                                 |
@@ -67,7 +66,7 @@ aliases: "/sofa-rpc/docs/RPC-Config-Xml-Explain"
 | registry | 服务端注册中心 |  | List |
 | method | 方法级配置 |  | 说明同上 |
 | serialize-type | 序列化协议 | hessian2 |  |
-| target-url | 直连地址 |  | 直连后register |
+| target-url | 直连地址 |  | 直连后 register |
 | generic-interface | 泛化接口 |  |  |
 | connect.timeout | 建立连接超时时间 | 3000(cover 5000) |  |
 | connect.num | 连接数 | 1 |  |
@@ -77,6 +76,6 @@ aliases: "/sofa-rpc/docs/RPC-Config-Xml-Explain"
 | lazy | 是否延迟建立长连接 | false |  |
 | address-wait-time | 等待地址获取时间 | -1 | 取决于实现，可能不生效。 |
 | timeout | 调用超时时间 | 3000(cover 5000) |  |
-| retries | 失败后重试次数 | 0 | 跟集群模式有关，failover读取此参数。 |
+| retries | 失败后重试次数 | 0 | 跟集群模式有关，failover 读取此参数。 |
 | callback-class | callback 回调类 | 无 |  callback 才可用 |
 | callback-ref | callback 回调类 | 无 |  callback 才可用 |

@@ -14,6 +14,3 @@ SOFADashboard uses some third-party open-source components, including but not li
 * [SOFABolt](https://github.com/sofastack/sofa-bolt) under `Apache License 2.0`
 * [SOFABolt](https://github.com/sofastack/sofa-bolt) under `Apache License 2.0`
 * [Curator](https://github.com/apache/curator/) under `Apache License 2.0`
-
-
-

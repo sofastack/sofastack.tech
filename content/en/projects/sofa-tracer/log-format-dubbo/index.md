@@ -1,11 +1,12 @@
 
 ---
+
 title: "Dubbo log"
 aliases: "/sofa-tracer/docs/Log_Format_Dubbo"
 ---
 
-
 # Dubbo Log Format
+
 SOFATracer integrates Dubbo and outputs the requested link log data format. The default is `JSON` data format.
 
 ### Dubbo service consumer digest log（dubbo-client-digest.log）
@@ -40,6 +41,7 @@ Example:
 ```json
 {"time":"2019-04-03 11:36:01.909","traceId":"0a0fe8451554262561656100126684","spanId":"0","span.kind":"client","local.app":"dubbo-consumer","protocol":"dubbo","service":"com.alipay.sofa.tracer.examples.dubbo.facade.HelloService","method":"SayHello","invoke.type":"sync","remote.host":"10.15.232.69","remote.port":"20880","local.host":"10.15.232.69","client.serialize.time":35,"client.deserialize.time":0,"req.size.bytes":323,"resp.size.bytes":323,"result.code":"00","current.thread.name":"main","time.cost.milliseconds":252,"baggage":""}
 ```
+
 ### Dubbo service provider digest log（dubbo-server-digest.log）
 
 The data is output in JSON format. Each key meaning is as follows:
@@ -70,6 +72,7 @@ Example
 ```
 
 ### Dubbo stat
+
 `stat.key` is the collection of statistical keywords in this period, which uniquely determines a set of statistical data, including local.app, service, and method field.
 
 <table>
@@ -115,11 +118,13 @@ Example
 Example:
 
 * dubbo-client-stat.log
+
 ```json
 {"time":"2019-04-03 11:37:01.650","stat.key":{"method":"SayHello","local.app":"dubbo-consumer","service":"com.alipay.sofa.tracer.examples.dubbo.facade.HelloService"},"count":1,"total.cost.milliseconds":252,"success":"Y"}
 ```
 
 * dubbo-server-stat.log
+
 ```json
 {"time":"2019-04-03 11:37:01.872","stat.key":{"method":"SayHello","remote.app":"dubbo-provider","service":"com.alipay.sofa.tracer.examples.dubbo.facade.HelloService"},"count":1,"total.cost.milliseconds":3,"success":"Y"}
 ```

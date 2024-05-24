@@ -17,8 +17,8 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 
 **SOFA**Stack（**S**calable **O**pen Financial **A**rchitecture Stack）是蚂蚁集团自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 
-- **SOFAStack 官网: **[https://www.sofastack.tech](https://www.sofastack.tech/)
-- **SOFAStack: **[https://github.com/sofastack](https://github.com/sofastack)
+- **SOFAStack 官网:**[https://www.sofastack.tech](https://www.sofastack.tech/)
+- **SOFAStack:**[https://github.com/sofastack](https://github.com/sofastack)
 
 ### 每周读者问答提炼
 
@@ -51,15 +51,15 @@ A：XA 协议本来就是由数据库方进行的支持。
 
 A：多个 TC 会出现资源争抢冲突，倒是不影响一致性。
 
-> 多个 TC 会对同一个 XID 做 retryCommitingg 操作吧，2个 TC 会做2次，3个 TC 会做3次？
+> 多个 TC 会对同一个 XID 做 retryCommitingg 操作吧，2 个 TC 会做 2 次，3 个 TC 会做 3 次？
 
 A：是的，没有分布式任务调度。
 
-> 2个事务分支，TC 在发起提交请求后，分支一正常提交，分支二网络波动没有收到提交请求。 这个时候 TC 会尝试重试提交。 如果一直重试失败，会因为全局事务 timeout 发起回滚请求吗？
+> 2 个事务分支，TC 在发起提交请求后，分支一正常提交，分支二网络波动没有收到提交请求。 这个时候 TC 会尝试重试提交。 如果一直重试失败，会因为全局事务 timeout 发起回滚请求吗？
 
 A：提交一阶段就是持久化了，不会影响。
 
-> 但是全局事务会有个超时检查，超时的事务处理方式就是回滚，会不会这样？分支二的提交重试一直不能成功，最后global 会话超时的吧？这时候分支一已经 commit，再做 rollback 肯定不行了。
+> 但是全局事务会有个超时检查，超时的事务处理方式就是回滚，会不会这样？分支二的提交重试一直不能成功，最后 global 会话超时的吧？这时候分支一已经 commit，再做 rollback 肯定不行了。
 
 A：二阶段结果已经出现了，已经决议好了的，二阶段的提交只不过是空提交而已，异步的。
 
@@ -69,14 +69,14 @@ A：XA 模式确实是这样的。
 
 > 那参与者中有人收到 commit 请求了，有人没收到，最后 global 超时，是不是也没法回滚了？
 
-A：XA 一阶段只是做了预备数据的持久化，保持操作，并没有真正入库，等到 commit 的时候才会入库，每个模式2阶段都不一样。
+A：XA 一阶段只是做了预备数据的持久化，保持操作，并没有真正入库，等到 commit 的时候才会入库，每个模式 2 阶段都不一样。
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 ### 本周推荐阅读
 
 - [Kata Containers 2.0 的进击之路](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247486638&idx=1&sn=e684736dac39b1c23ceb1b1346cf52e3&chksm=faa0e374cdd76a62b3fbec88e00d284229710fe37f1f476d69f78451d3f9d53aba6a49b837ed&scene=21)
 - [Kata Containers 创始人：安全容器导论](/blog/kata-container-introduction-to-safe-containers/)
-- [Kata创始人王旭：远程工作可以从开源中借鉴哪些经验？](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247485887&idx=1&sn=ae5efe4c0903ce642779c91a3d87e9f0&chksm=faa0e665cdd76f7343067d9a569aba6f599cd942e4b1b2753d6e50ef63debf5b031d3478c6d7&scene=21)
+- [Kata 创始人王旭：远程工作可以从开源中借鉴哪些经验？](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247485887&idx=1&sn=ae5efe4c0903ce642779c91a3d87e9f0&chksm=faa0e665cdd76f7343067d9a569aba6f599cd942e4b1b2753d6e50ef63debf5b031d3478c6d7&scene=21)
 
 ### SOFA 项目进展
 

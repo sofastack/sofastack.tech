@@ -1,9 +1,9 @@
 
 ---
+
 title: "Basic usage of RESTful protocol"
 aliases: "/sofa-rpc/docs/RESTful-Basic"
 ---
-
 
 In SOFARPC, using different communication protocols is equal to using different Bindings. If you need to use the RESTful protocol, just set Binding to REST.
 
@@ -41,7 +41,7 @@ If you want to publish the service by other methods, please refer to [Basic usag
 
 After the service is published, you can directly access the service through the browser. For the above service, the access address is as follows:
 
-```
+```plain
 http://localhost:8341/sample/hello
 ```
 

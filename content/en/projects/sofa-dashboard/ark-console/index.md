@@ -65,4 +65,3 @@ Click Install. The page is refreshed after about 1s to 1.5s.
 ![image.png](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*yDJEQJHJTDsAAAAAAAAAAABjARQnAQ)
 
 > Application-based command push is similar.
-

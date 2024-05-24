@@ -37,7 +37,7 @@ Prometheus 本身是一款单机监控产品，在蚂蚁庞大的高可用集群
 
 今年大促，我们成功地将 Sigma 集群监控（蚂蚁原生的集群管理和资源调度平台）完整迁移至 AntMonitor。配合告警和大盘，实现了 Sigma 监控的覆盖。AntMonitor 凭借 Sigma 监控的迁移，成功孵化了完善的的云原生 Prometheus  监控能力。
 
-本文简要介绍了AntMonitor 对 Prometheus 监控功能的支持，以及 Sigma 监控的落地实践。
+本文简要介绍了 AntMonitor 对 Prometheus 监控功能的支持，以及 Sigma 监控的落地实践。
 
 ## PART. 1 海量数据下的采集架构
 
@@ -75,7 +75,7 @@ AntMonitor 现有的数据链路大致为由 agent 采集日志数据缓存于�
 
 该套方案已经成功用于蚂蚁 Sigma 等多个技术栈和基础设施的 Prometheus 采集，目前每分钟处理上亿条指标数据。
 
-### 1.2 基于 Spark 的聚合数据采集 
+### 1.2 基于 Spark 的聚合数据采集
 
 以 Sigma 为代表的基础设施监控，对单机明细数据有较大需求。但是保留明细数据也有较大的缺点，例如：数据量庞大，对存储消耗较高；数据查询时，耗时和数据读取量巨大。
 
@@ -97,7 +97,7 @@ AntMonitor 现有的数据链路大致为由 agent 采集日志数据缓存于�
 
 AntMonitor 在日志监控的现有基础上，建设有一套较为完善的元数据维表体系，包含了 SOFA、Spanner、OB 等多个蚂蚁技术栈元数据。元数据告诉我们去哪里采集监控数据，对应原生的服务发现机制。为了拉齐原生功能，我们对部分维表进行了必要改造，此处我们以 Sigma 监控的落地实践为例，简要介绍下我们的元数据同步流程。
 
-### 2.1 Sigma 元数据同步 
+### 2.1 Sigma 元数据同步
 
 AntMonitor 进行 Sigma 监控的前提是要获取元数据，元数据告诉我们去哪里采集监控数据。
 
@@ -167,7 +167,7 @@ Antmonitor SLO 服务需要计算服务各项指标不同时间段内的表现�
 
 SLO 的 RR 具有一定规律，大部分是 sum_over_time() 形式。针对这一特点，Rule 执行引擎实现了基于滑动窗口的计算方式，并克服了由此因为滑动引发的各种计算误差问题，有效降低了下游计算压力。
 
-### 5.2 可回放的 Recording Rules 
+### 5.2 可回放的 Recording Rules
 
 Rule 执行引擎除了支持实时的 RR 计算外，还支持历史 RR 重计算，可以自动检测历史计算结果并重计算覆盖。主要应对以下场景：
 
@@ -205,4 +205,4 @@ Rule 执行引擎除了支持实时的 RR 计算外，还支持历史 RR 重计�
 
 [蚂蚁大规模 Sigma 集群 Etcd 拆分实践](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247500192&idx=1&sn=7ceb084796e30cb4d387ede22b45d7f5&chksm=faa32e7acdd4a76c94fa2b2bb022d85f3daa78b1b3c2d4dae78b9cc5d77011eecddfd12df1c2&scene=21)
 
-![img](https://gw.alipayobjects.com/zos/bmw-prod/75d7bde6-1f48-4f28-80a4-215f8ec811bd.webp) 
+![img](https://gw.alipayobjects.com/zos/bmw-prod/75d7bde6-1f48-4f28-80a4-215f8ec811bd.webp)

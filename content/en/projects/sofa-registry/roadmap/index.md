@@ -42,4 +42,3 @@ We have some internal implementations of some new features, which will be releas
 
 * Support for Docker & Kubernetes
 * Multi-language client support
-

@@ -24,14 +24,14 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **1、@闫文超** 提问：
 
->问下 SOFARPC 注册到 nacos 上，可以指定 group 的名字吗？想用于不同租户的隔离的功能。<br />
+> 问下 SOFARPC 注册到 nacos 上，可以指定 group 的名字吗？想用于不同租户的隔离的功能。<br />
 
 A：可以用这里的命名空间：<br />namespace :com.alipay.sofa.rpc.registry.nacos.NacosRegistry。<br />![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*EnAeR57WiW4AAAAAAAAAAAAAARQnAQ)
 <br /> SOFAJRaft：[https://github.com/sofastack/sofa-jraft](https://github.com/sofastack/sofa-jraft)<br />
 
 **2、@霂白** 提问：
 
-> 注解方式发布的服务，有插件能自动生成给其他语言使用的 protobuf 的文件吗？Java 已经写了接口和 bean 的结构，直接转换为对应 pb 的文件。现在有 pb的定义文件转换注解方式的，Java 的代码的 maven 插件吗？写 pb 转 Java  或者写 Java 转 pb 两个方向总有一个通的吧，不然又写 Java，又写pb？<br />
+> 注解方式发布的服务，有插件能自动生成给其他语言使用的 protobuf 的文件吗？Java 已经写了接口和 bean 的结构，直接转换为对应 pb 的文件。现在有 pb 的定义文件转换注解方式的，Java 的代码的 maven 插件吗？写 pb 转 Java  或者写 Java 转 pb 两个方向总有一个通的吧，不然又写 Java，又写 pb？<br />
 ![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*9KamToue8TwAAAAAAAAAAAAAARQnAQ)<br />
 
 A：这个我理解目前应该是没有的，不过确实是一个比较有意思的方向。<br />A：pb 转 Java 问题不大，有现成的工具， 自己写一个也不是很复杂，Java 转 pb 不太兼容；pb 不支持两个参数，这里的问题在于传输协议，不在于代码格式，有需要我们开个 issue 详细聊下 ，鉴权这块后续应该会交给 MOSN 来做。
@@ -39,7 +39,7 @@ A：这个我理解目前应该是没有的，不过确实是一个比较有意�
 
 **3、@阿怪** 提问：
 
->请教大佬一个问题：TCC 模式，事务异常，回滚走自定义实现的 cancel 方法，这个方法里面操作了数据库回滚并且报错，有两个问题：
+> 请教大佬一个问题：TCC 模式，事务异常，回滚走自定义实现的 cancel 方法，这个方法里面操作了数据库回滚并且报错，有两个问题：
 > 1.重试次数如何配置？
 > 2.线程的 ThreadLocal 的数据无法获取，BusinessActionContext 这个类获取不到，可不可以配置？<br />
 
@@ -48,7 +48,7 @@ A：那就用 localtcc，一开始的 TCC 不支持 spring cloud，后续开发�
 
 **4、@冯明明** 提问：
 
->我用的是最新版的 spring-cloud-ablibaba rpc 使用的 Dubbo 。截图中这种依赖方式，必须在接口上增加@LocalTcc 才能应用 TCC 模式。我看源码 这种依赖生成的是 xxx.proxy0 这种实现类不能被 RemotingParser解析，接口提供者倒是能被解析，但 DubboRemotingParser 生成的 RemoteSpec 的 protocol 属性是 Dubbo，源码中只有 injvm 能走 TCC 的相关逻辑，请问我是哪里没有配置正确吗 ?<br />
+> 我用的是最新版的 spring-cloud-ablibaba rpc 使用的 Dubbo 。截图中这种依赖方式，必须在接口上增加@LocalTcc 才能应用 TCC 模式。我看源码 这种依赖生成的是 xxx.proxy0 这种实现类不能被 RemotingParser 解析，接口提供者倒是能被解析，但 DubboRemotingParser 生成的 RemoteSpec 的 protocol 属性是 Dubbo，源码中只有 injvm 能走 TCC 的相关逻辑，请问我是哪里没有配置正确吗 ?<br />
 ![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*wmiTRZxN9oMAAAAAAAAAAAAAARQnAQ)
 
 A：1.方便以后出控制台可以实时查看分支事务状态； 2.比如某些分支吞了异常后，有 report 的情况下方便判断。比如：a 调 b 再调 c，b 其实已经出现异常并且本地事务下已经回滚了，此时 c 响应给 a，a 做后续处理的时候异常，此时 TC 发现 b 已经由本地事务回滚了，就无需驱动了，这样就减少了下发的数量。
@@ -56,7 +56,7 @@ A：1.方便以后出控制台可以实时查看分支事务状态； 2.比如�
 
 **5、@张红亮** 提问：
 
->能在 service 实现里再次调用的方法上加 @GlobalTransactional 吗？<br />
+> 能在 service 实现里再次调用的方法上加 @GlobalTransactional 吗？<br />
 ![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*WcvTTZsXge0AAAAAAAAAAAAAARQnAQ)
 ![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*R59sQJyrxo4AAAAAAAAAAAAAARQnAQ)
 

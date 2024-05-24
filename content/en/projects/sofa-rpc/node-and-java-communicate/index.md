@@ -1,9 +1,9 @@
 
 ---
+
 title: "NodeJS support"
 aliases: "/sofa-rpc/docs/Node-And-Java-Communicate"
 ---
-
 
 If you need to call SOFARPC through NodeJs, you can start by following this document.
 
@@ -11,16 +11,18 @@ If you need to call SOFARPC through NodeJs, you can start by following this docu
 
 First install the SOFARPC Node.
 
-`https://github.com/sofastack/sofa-rpc-node` 
+`https://github.com/sofastack/sofa-rpc-node`
 
 Use the following command:
+
 ```bash
-$ npm install sofa-rpc-node --save
+npm install sofa-rpc-node --save
 ```
 
 ## Code sample
 
 ### Expose an RPC service and publish it to registry center
+
 ```js
 'use strict';
 
@@ -58,6 +60,7 @@ server.start()
 ```
 
 ### Call RPC service (Get service list from registry center)
+
 ```js
 'use strict';
 
@@ -93,6 +96,7 @@ invoke().catch(console.error);
 ```
 
 ### Call RPC service (direct call)
+
 ```js
 'use strict';
 
@@ -119,10 +123,10 @@ invoke().catch(console.error);
 
 ## Expose and call the protobuf interface
 
-
 ### Define interface
 
 Define the interface with *.proto
+
 ```proto
 syntax = "proto3";
 

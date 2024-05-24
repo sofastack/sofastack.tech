@@ -20,7 +20,7 @@ description: "2022 年 6 月 09 日 19：00 - 20：00  ，线上直播第 28 期
 
 - B 站直播间地址：[http://live.bilibili.com/21954520](http://live.bilibili.com/21954520)
 
-- B 站直播ID：21954520
+- B 站直播 ID：21954520
 
 ## 介绍
 
@@ -48,7 +48,7 @@ SOFAArk 是一款基于 Java 实现的轻量级类隔离框架，主要提供类
 
 ## 议程
 
->![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*yoLAQqsVG-AAAAAAAAAAAAAAARQnAQ)
+> ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*yoLAQqsVG-AAAAAAAAAAAAAAARQnAQ)
 
 ## 直播回放
 

@@ -101,6 +101,7 @@ ACTS 测试脚本指定的 Application 启动类中缺少 acts-core.xml，如图
 - 解法二：删除生成的测试脚本和 YAML 文件，首先生成入参的模版，再重新生成测试脚本即可，YAML 中会默认带入参设置；
 
 ## Q：报错 argument type mismatch
+
 该问题一般是被测接口有多个同名重载方法导致的，从而引发反射时参数不匹配错误。
 
 ![参数不匹配](argument-type-mismatch.png)

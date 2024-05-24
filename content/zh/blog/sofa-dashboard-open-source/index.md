@@ -9,10 +9,10 @@ date: 2019-05-05T15:00:00+08:00
 cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563868284867-44971797-275e-4d71-a20e-bbdc89cba861.png"
 ---
 
-> **SOFA**Stack 
+> **SOFA**Stack
 > **S**calable **O**pen **F**inancial **A**rchitecture Stack 是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，是在金融场景里锤炼出来的最佳实践。
 > 为了建设更完整的 SOFAStack 微服务体系，我们计划发起 SOFADashboard 项目，计划通过社区的方式共建，将其打造为一站式的 SOFAStack 管控平台。欢迎共建~
-> SOFADashboard：[https://github.com/sofastack/sofa-dashboard](https://github.com/sofastack/sofa-dashboard) 
+> SOFADashboard：[https://github.com/sofastack/sofa-dashboard](https://github.com/sofastack/sofa-dashboard)
 
 ## 背景
 
@@ -34,13 +34,13 @@ SOFADashboard 作为一站式 SOFAStack 管控台，希望对 SOFAStack 各个�
 
 - Ant Design：基于 [React](http://facebook.github.io/react/)封装的一套 Ant Design 的组件库，主要用于研发企业级中后台产品。从产品成熟度、社区活跃度、框架上手难易程度等各个方面均有很好的表现。
 - SOFABoot：蚂蚁金服开源的基于 Spring Boot 的研发框架，它在 Spring Boot 的基础上，提供了诸如 Readiness Check，类隔离，日志空间隔离等能力。在增强了 Spring Boot 的同时，SOFABoot 提供了让用户可以在 Spring Boot 中非常方便地使用 SOFA 中间件的能力。
-- MyBatis：Mybatis 相对于 JPA 来说，上手难度略低，JPA 更加倾向于结合 DDD 使用(业务越复杂，对于DDD 的需求越高)；对于简单的增删改查业务操作，Mybatis  相对来说更灵活和可控。
+- MyBatis：Mybatis 相对于 JPA 来说，上手难度略低，JPA 更加倾向于结合 DDD 使用(业务越复杂，对于 DDD 的需求越高)；对于简单的增删改查业务操作，Mybatis  相对来说更灵活和可控。
 
 ## v1.0 发布
 
 4 月 30 日，我们上传了第一个 SOFADashboard 版本，主要能力包括：应用信息、服务查看、动态模块管控等。
 
-目前演示地址：[http://dashboard.dev.sofastack.tech:8000/](http://dashboard.dev.sofastack.tech:8000/) 
+目前演示地址：[http://dashboard.dev.sofastack.tech:8000/](http://dashboard.dev.sofastack.tech:8000/)
 
 ![SOFADashboard](https://cdn.nlark.com/yuque/0/2019/png/226702/1556525347731-24fa1d1e-555f-44f0-a275-f188e35cbba8.png)
 

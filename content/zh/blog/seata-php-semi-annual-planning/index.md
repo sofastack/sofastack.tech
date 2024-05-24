@@ -66,7 +66,7 @@ Hyperf 框架是近年内出现的由国人基于 Swoole 开发的一个微服�
 
 **3.** Hyperf 的对请求的处理过程借鉴了 Go 语言机制，其 runtime 层面以异步方式执行上层的用户同步调用，相比 Lumen 其吞吐率高而延迟低。例如在同样环境下使用 Hyperf 实现同样的 echo HTTP 服务，可以轻松达到 60K QPS；
 
-除了 Hyperf 自身稳定性与高性能外，依赖于 Hyperf 服务进程常驻内存的特点，TC 可以很方便的对seata-php 的 RM 发起二阶段事务处理，即作为 Server 的 Java TC 对作为 Client 的 PHP 版本的 RM 发起 RPC 回调。如果使用 Lumen 作为 seata-php 的微服务框架，几乎不可能实现这个技术点。
+除了 Hyperf 自身稳定性与高性能外，依赖于 Hyperf 服务进程常驻内存的特点，TC 可以很方便的对 seata-php 的 RM 发起二阶段事务处理，即作为 Server 的 Java TC 对作为 Client 的 PHP 版本的 RM 发起 RPC 回调。如果使用 Lumen 作为 seata-php 的微服务框架，几乎不可能实现这个技术点。
 
 ## PART. 3--快速入门 seata-php
 

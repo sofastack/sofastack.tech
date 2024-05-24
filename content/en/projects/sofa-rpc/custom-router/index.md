@@ -1,9 +1,9 @@
 
 ---
+
 title: "Custom router"
 aliases: "/sofa-rpc/docs/Custom-Router"
 ---
-
 
 The route service address in SOFARPC is abstracted into a processing chain, and is processed by each router. Like filter, SOFARPC provides the same extensibility for router.
 
@@ -28,7 +28,7 @@ public class CustomerRouter extends Router {
 
 Create a extension file `META-INF/services/sofa-rpc/com.alipay.sofa.rpc.client.Router` with the following content:
 
-```
+```plain
 customerRouter=com.alipay.sofa.rpc.custom.CustomRouter
 ```
 

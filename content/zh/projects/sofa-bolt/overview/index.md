@@ -19,4 +19,3 @@ Bolt 名字取自迪士尼动画-闪电狗，是一个基于 Netty 最佳实践�
 * [node](https://github.com/alipay/sofa-bolt-node)
 * [python](https://github.com/alipay/sofa-bolt-python)
 * [cpp](https://github.com/alipay/sofa-bolt-cpp)
-

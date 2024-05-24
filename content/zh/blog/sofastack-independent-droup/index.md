@@ -17,11 +17,11 @@ cover: "https://cdn.nlark.com/yuque/0/2019/png/226702/1563434064351-472db69f-36f
 
 ## 背景：分布式架构 SOFAStack 开源历史
 
-金融级分布式架构 SOFAStack 产生于蚂蚁金服内部需求，起初是为了解决高速发展下的业务问题。到 2019 年，已经历12年的业务锤炼，变成了一套成熟的金融级最佳实践。
+金融级分布式架构 SOFAStack 产生于蚂蚁金服内部需求，起初是为了解决高速发展下的业务问题。到 2019 年，已经历 12 年的业务锤炼，变成了一套成熟的金融级最佳实践。
 
 SOFAStack 的发展受益于开源社区的优秀产品，我们也决定结合我们的实践积累，把这些技术反馈给开源社区。
 
-2018 年 4 月，SOFAStack 宣布开源。这一年，SOFAStack 逐步开源 SOFABoot、SOFARPC、SOFALookout、SOFATracer、SOFABolt、SOFAMosn、SOFAMesh、SOFAJRaft、SOFAActs、SOFARegistry、SOFADashboard 等组件。2019 年 3 月，蚂蚁金服加入分布式事务Seata的社区共建中，并贡献其 TCC 模式。
+2018 年 4 月，SOFAStack 宣布开源。这一年，SOFAStack 逐步开源 SOFABoot、SOFARPC、SOFALookout、SOFATracer、SOFABolt、SOFAMosn、SOFAMesh、SOFAJRaft、SOFAActs、SOFARegistry、SOFADashboard 等组件。2019 年 3 月，蚂蚁金服加入分布式事务 Seata 的社区共建中，并贡献其 TCC 模式。
 
 SOFAStack 未来也将持续开源，丰富生态。
 

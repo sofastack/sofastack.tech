@@ -19,5 +19,4 @@ Some sample projects are provided in the source project to assist in the use of 
 
   The sample project demonstrates how to use and configure the client to use prometheus in a SpringBoot (or SofaBoot) project.
 
-
 ## Server-side sample project

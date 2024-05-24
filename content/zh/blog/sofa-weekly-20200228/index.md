@@ -17,18 +17,18 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 
 SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 
-**SOFAStack 官网: **[https://www.sofastack.tech](https://www.sofastack.tech/)
+**SOFAStack 官网:**[https://www.sofastack.tech](https://www.sofastack.tech/)
 
-**SOFAStack: **[https://github.com/sofastack](https://github.com/sofastack)
+**SOFAStack:**[https://github.com/sofastack](https://github.com/sofastack)
 
 ### 每周读者问答提炼
 
 欢迎大家向公众号留言提问或在群里与我们互动
 我们会筛选重点问题通过 " SOFA WEEKLY " 的形式回复
 
-**1、@朱楠 **提问：
+**1、@朱楠**提问：
 
-> SpringBoot 集成 Seata Saga 模式后启动报了这个错，有谁知道是什么情况吗？不知道问题出在哪，我就参照Saga 的 demo 来配置的。
+> SpringBoot 集成 Seata Saga 模式后启动报了这个错，有谁知道是什么情况吗？不知道问题出在哪，我就参照 Saga 的 demo 来配置的。
 > ![部分代码](https://cdn.nlark.com/yuque/0/2020/png/226702/1582871098524-c92690e9-49c5-47be-b141-65c12b8f85f6.png)
 
 A：这个事务异常了，然后 server 端出发了事务恢复，但是这条事务在客户端已经没有了。
@@ -109,7 +109,7 @@ SOFAChannel#12 线上直播将邀请蚂蚁金服分布式事务核心开发仁�
 
 **主题**：SOFAChannel#12：蚂蚁金服分布式事务实践解析
 
-**时间**：2020年3月12日（周四）19:00-20:00
+**时间**：2020 年 3 月 12 日（周四）19:00-20:00
 
 **嘉宾**：仁空，蚂蚁金服分布式事务核心开发
 

@@ -9,7 +9,7 @@ aliases: "/sofa-lookout/docs/client-configuration"
 lookoutConfig.setProperty(LookoutConfig.LOOKOUT_AGENT_HOST_ADDRESS,"127.0.0.1");
 ```
 
-## Description of server configuration item 
+## Description of server configuration item
 
 | Configuration item | Corresponding SpringBoot configuration item | Default value | Description |
 | ---| --- | ---| ---|

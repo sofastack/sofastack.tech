@@ -9,7 +9,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*J10BS4pE_rwAAAAAA
 
 ---
 
-## 
+##
 
 文｜朱德江（GitHub ID：doujiang24)
 
@@ -162,7 +162,7 @@ Go 扩展的开发者，不需要关心配置的动态更新，只需要解析�
 
 *[https://github.com/doujiang24/envoy-go-filter-example/tree/master/example-basic-auth](https://github.com/doujiang24/envoy-go-filter-example/tree/master/example-basic-auth)*
 
-**了解更多…**
+**了解更多……**
 
 **MOSN Star 一下✨：**
 [*https://github.com/mosn/mosn*](https://github.com/mosn/mosn)

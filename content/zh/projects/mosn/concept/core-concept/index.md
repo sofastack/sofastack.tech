@@ -31,13 +31,13 @@ MOSN 作为底层的高性能安全网络代理，支撑了 RPC、消息（Messa
 
 MOSN 支持以下两种 IO 模型：
 
--  **Golang 经典 netpoll 模型**：goroutine-per-connection，适用于在连接数不是瓶颈的情况。
+- **Golang 经典 netpoll 模型**：goroutine-per-connection，适用于在连接数不是瓶颈的情况。
 
--  **RawEpoll 模型**：也就是 Reactor 模式，I/O 多路复用（I/O multiplexing）+ 非阻塞 I/O（non-blocking I/O）的模式。对于接入层和网关有大量长链接的场景，更加适合于 RawEpoll 模型。
+- **RawEpoll 模型**：也就是 Reactor 模式，I/O 多路复用（I/O multiplexing）+ 非阻塞 I/O（non-blocking I/O）的模式。对于接入层和网关有大量长链接的场景，更加适合于 RawEpoll 模型。
 
 ### netpoll 模型
 
-![MOSN netpoll 模型](netpoll-model.jpg) 
+![MOSN netpoll 模型](netpoll-model.jpg)
 
 MOSN 的 netpoll 模型如上图所示，协程数量与链接数量成正比，大量链接场景下，协程数量过多，存在以下开销：
 
@@ -47,7 +47,7 @@ MOSN 的 netpoll 模型如上图所示，协程数量与链接数量成正比，
 
 ### RawEpoll 模型
 
-![MOSN RawEpoll 模型](raw-epoll-model.jpg) 
+![MOSN RawEpoll 模型](raw-epoll-model.jpg)
 
 RawEpoll 模型如上图所示，使用 epoll 感知到可读事件之后，再从协程池中为其分配协程进行处理，步骤如下：
 
@@ -60,7 +60,7 @@ RawEpoll 模型如上图所示，使用 epoll 感知到可读事件之后，再�
 
 MOSN 的协程模型如下图所示。
 
-![MSON 协程模型](mosn-goroutine-model.jpg) 
+![MSON 协程模型](mosn-goroutine-model.jpg)
 
 - 一条 TCP 连接对应一个 Read 协程，执行收包、协议解析；
 - 一个请求对应一个 worker 协程，执行业务处理，proxy 和 Write 逻辑；
@@ -93,14 +93,14 @@ MOSN 通过提供 stream filter 注册机制以及统一的 stream send/receive 
 
 ## TLS 安全链路
 
-通过测试，原生的 Go 的 TLS 经过了大量的汇编优化，在性能上是 Nginx（OpenSSL）的80%，Boring 版本的 Go（使用 cgo 调用 BoringSSL）因为 cgo 的性能问题， 并不占优势，所以我们最后选择使用原生 Go 的 TLS，相信 Go Runtime 团队后续会有更多的优化，我们也会有一些优化计划。
+通过测试，原生的 Go 的 TLS 经过了大量的汇编优化，在性能上是 Nginx（OpenSSL）的 80%，Boring 版本的 Go（使用 cgo 调用 BoringSSL）因为 cgo 的性能问题， 并不占优势，所以我们最后选择使用原生 Go 的 TLS，相信 Go Runtime 团队后续会有更多的优化，我们也会有一些优化计划。
 
 Go vs Nginx 测试结果如下图所示：
 
-![Go vs Nginx TLS 性能](mosn-tls-1.png) 
+![Go vs Nginx TLS 性能](mosn-tls-1.png)
 
 - Go 在 RSA 上没有太多优化，go-boring（CGO）的能力是 Go 的两倍。
-- p256 在 Go 上有汇编优化，ECDSA 优于go-boring。
+- p256 在 Go 上有汇编优化，ECDSA 优于 go-boring。
 - 在 AES-GCM 对称加密上，Go 的能力是 go-boring 的 20 倍。
 - 在 SHA、MD 等 HASH 算法也有对应的汇编优化。
 

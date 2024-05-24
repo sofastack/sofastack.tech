@@ -17,9 +17,9 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 
 SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 
-**SOFAStack 官网: **[https://www.sofastack.tech](https://www.sofastack.tech/)
+**SOFAStack 官网:**[https://www.sofastack.tech](https://www.sofastack.tech/)
 
-**SOFAStack: **[https://github.com/sofastack](https://github.com/sofastack)
+**SOFAStack:**[https://github.com/sofastack](https://github.com/sofastack)
 
 ### 社区 Big News
 
@@ -34,7 +34,7 @@ SOFA Community 期待你的加入：[https://www.sofastack.tech/community/](/com
 欢迎大家向公众号留言提问或在群里与我们互动
 我们会筛选重点问题通过 " SOFA WEEKLY " 的形式回复
 
-**1、@包和平 **提问：
+**1、@包和平**提问：
 
 > 请问 Seata Saga 状态机可以跨服务来配置吗？案例中的 springcloud-eureka-feign-mybatis-seata 这个和我们的情况类似。这个默认的不是 AT 模式吗？我想使用 Saga 的状态机来配置整个流程，这个情况就涉及了三个服务 storage   order  account，我看 demo 中都是在单个服务中配置的状态机，所以想询问一下怎么配置。
 > ![image.png](https://cdn.nlark.com/yuque/0/2019/png/226702/1577429204441-8a4c9aa6-ddf8-40e1-88d1-0f23077af4f9.png)
@@ -63,7 +63,7 @@ A：是的。
 
 A：没有和文档不一致的属性吧。你看到的设计器生成的 json，是因为它带了布局信息，它的 stateProps 是和文档是一致的，其它属性是设计器生成的，不需要关心。
 
-> 我没有找到 startState 属性，然后我以为要自己写 next 属性，好像是连线解决了这个问题，还有一点不太明白，就是一个事务只用设计一个 compensationTrigger么？
+> 我没有找到 startState 属性，然后我以为要自己写 next 属性，好像是连线解决了这个问题，还有一点不太明白，就是一个事务只用设计一个 compensationTrigger 么？
 
 A：是的，是用 Start 后面的连线解决，所以不需要 startState 属性了。 compensationTrigger 可以有任意多个，看怎么画好看就行。
 
@@ -104,12 +104,12 @@ A： 是一样的，都是发起方加 GlobalTransactional 注解，对于 TCC 
 
 ![image.png](https://cdn.nlark.com/yuque/0/2019/png/226702/1576469907431-7bfc401e-fe31-46a7-9c90-391e8aace845.png)
 
-就在明天，Service Mesh Meetup 第9期杭州站，本期与滴滴联合举办，将深入 Service Mesh 的落地实践，并带领大家探索 Service Mesh 在更广阔领域的应用，现场还有机会获得 **Istio 官方 T 恤** 以及 **相关技术书籍**。明天，不见不散~
+就在明天，Service Mesh Meetup 第 9 期杭州站，本期与滴滴联合举办，将深入 Service Mesh 的落地实践，并带领大家探索 Service Mesh 在更广阔领域的应用，现场还有机会获得 **Istio 官方 T 恤** 以及 **相关技术书籍**。明天，不见不散~
 
 **主题**：Service Mesh Meetup#9 杭州站：To Infinity and Beyond
 
-**时间**：2019年12月28日（明天）13:00-17:30
+**时间**：2019 年 12 月 28 日（明天）13:00-17:30
 
-**地点**：杭州西湖区紫霞路西溪谷G座8楼
+**地点**：杭州西湖区紫霞路西溪谷 G 座 8 楼
 
 **报名方式**：点击“[这里](https://tech.antfin.com/community/activities/1056)”，即可报名

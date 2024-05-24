@@ -13,7 +13,7 @@ cover: "https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1590737231249-c86acab6-bd
 
 Service Mesh Virtual Meetup 是 ServiceMesher 社区和 CNCF 联合主办的线上系列直播。本期为 Service Mesh Virtual Meetup#1 ，邀请了四位来自不同公司的嘉宾，从不同角度展开了 Service Mesh 的应用实践分享，分享涵盖 Service Mesh 的可观察性和生产实践以及与传统微服务中可观察性的区别，还有如何使用 SkyWalking 来观测 Service Mesh，来自陌陌和百度的 Service Mesh 生产实践。
 
-本文根据5月7日晚，美国 Service Mesh 服务商 Tetrate 创始工程师高洪涛的主题分享《Apache SkyWalking 在 Service Mesh 中的可观察性应用》整理。文末包含本次分享的视频回顾链接以及 PPT 下载地址。
+本文根据 5 月 7 日晚，美国 Service Mesh 服务商 Tetrate 创始工程师高洪涛的主题分享《Apache SkyWalking 在 Service Mesh 中的可观察性应用》整理。文末包含本次分享的视频回顾链接以及 PPT 下载地址。
 
 ## 前言
 
@@ -27,14 +27,14 @@ Service Mesh Virtual Meetup 是 ServiceMesher 社区和 CNCF 联合主办的线�
 
 ![SkyWalking 的历史沿革](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1590571638488-c7006a05-1db4-4b33-ae84-259a8381bb6d.jpeg)
 
-SkyWalking 项目的建设目的是为了解决在微服务环境下，如何快速的定位系统稳定性问题。创始团队于2016年启动项目，经过一年的努力完善了最初的版本。2017年，团队启动将项目捐献给 Apache 基金会的流程。在 Apache 基金会孵化器内，经过了多轮系统升级迭代，并获得近乎翻倍的贡献者和关注度，于2019年顺利毕业。经过经年的升级与维护，SkyWalking 从最开始专注于分布式追踪系统的单一平台，发展为包含多个门类并拥有丰富的功能的全领域 APM 系统。
+SkyWalking 项目的建设目的是为了解决在微服务环境下，如何快速的定位系统稳定性问题。创始团队于 2016 年启动项目，经过一年的努力完善了最初的版本。2017 年，团队启动将项目捐献给 Apache 基金会的流程。在 Apache 基金会孵化器内，经过了多轮系统升级迭代，并获得近乎翻倍的贡献者和关注度，于 2019 年顺利毕业。经过经年的升级与维护，SkyWalking 从最开始专注于分布式追踪系统的单一平台，发展为包含多个门类并拥有丰富的功能的全领域 APM 系统。
 
 ![Architecture](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1590571660622-717a5e16-8ec6-4a24-a661-c0d3e47e7962.jpeg)
 
 SkyWalking 整体的系统架构包括有三个部分:
 
 - 第一个是数据采集端，可以使用语言探针对系统的监控指标进行采集，同时也提供了一套完整的数据采集协议。第三方系统可以使用协议将相关的监控数据上报到分析平台。
-- 第二部是分析平台，主要包括对监控指标数据的搜集，流式化处理，最终将数据写到存储引擎之中。存储引擎可使用Elasticsearch，MySQL数据库等多种方案。
+- 第二部是分析平台，主要包括对监控指标数据的搜集，流式化处理，最终将数据写到存储引擎之中。存储引擎可使用 Elasticsearch，MySQL 数据库等多种方案。
 - 第三部分是 UI。UI 组件有丰富的数据展示功能，包含指标展板，调用拓扑图，跟踪数据查询，指标比较和告警等功能。
 
 在此基础上，SkyWalking 本身组件具有丰富的定制功能，方便用户去进行二次开发以支持自己特有的场景。
@@ -143,13 +143,13 @@ Mixer 是基于访问日志进行指标生成的，也就是说服务与服务�
 
 ![Tracing-协议支撑](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1590571955506-d7a9c65b-47bd-43df-8866-214dc02a0632.jpeg)
 
-另外，Envoy 和 Istio 本身不支持 Skywalking 的远程 Tracing 协议。目前社区已经尝试进行 nginx 和 MOSN 等Mesh 环境中常用的 Proxy 的协议支持，后续也会尝试将 Skywalking 协议添加到 Envoy 中（使用 WASM 插件）。
+另外，Envoy 和 Istio 本身不支持 Skywalking 的远程 Tracing 协议。目前社区已经尝试进行 nginx 和 MOSN 等 Mesh 环境中常用的 Proxy 的协议支持，后续也会尝试将 Skywalking 协议添加到 Envoy 中（使用 WASM 插件）。
 
 ## 维度匹配
 
 ![纬度匹配](https://cdn.nlark.com/yuque/0/2020/jpeg/226702/1590571930956-8a8749bb-375b-42cc-a8ea-d0b98228d49c.jpeg)
 
-从安装过程可以发现，服务 Service 在 Mixer 和 ALS 中的规则为 ReplicaSet+Namespace 的形式。其很难反映 Istio 实际的维度情况。后续在 TelemetryV2 中将会获得真实的 Istio 服务间映射。同时也会尝试增加如下的命名规则以区分跨Cluster的情况：“Version|App|Namespace|Cluster”。
+从安装过程可以发现，服务 Service 在 Mixer 和 ALS 中的规则为 ReplicaSet+Namespace 的形式。其很难反映 Istio 实际的维度情况。后续在 TelemetryV2 中将会获得真实的 Istio 服务间映射。同时也会尝试增加如下的命名规则以区分跨 Cluster 的情况：“Version|App|Namespace|Cluster”。
 
 ## 总结
 

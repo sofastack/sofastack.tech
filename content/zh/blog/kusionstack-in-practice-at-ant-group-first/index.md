@@ -46,7 +46,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*ZOfNTo_9J2kAAAAAA
 
 带着上面这些问题，我们在业界做了一些对标和学习:
 
-1.在 Google的《The Site Reliability Workbook》这本书中，Google 同学从自身的实践中总结出一些常见问题，其中非常重要的一点是：**在做配置管理过程中，没有意识到，大规模配置管理问题的本质是编程语言问题。**配置需求的声明、校验都可以通过语言来解决。
+1.在 Google 的《The Site Reliability Workbook》这本书中，Google 同学从自身的实践中总结出一些常见问题，其中非常重要的一点是：**在做配置管理过程中，没有意识到，大规模配置管理问题的本质是编程语言问题。**配置需求的声明、校验都可以通过语言来解决。
 
 ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*UypxQboOiFQAAAAAAAAAAAAAARQnAQ)
 
@@ -96,7 +96,7 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*ZOfNTo_9J2kAAAAAA
 
 回顾下我们开始提到的几个问题：
 
-**1. 灵活性：** 即对各种灵活定制化需求的支持; 
+**1. 灵活性：** 即对各种灵活定制化需求的支持;
 
 **2. 开放性：** 通过 KCL 语言及开放配置大库，用户的基础设施配置通过新的用户界面即可自主完成，不需要等待配置管理平台开发人员进行开发；
 
@@ -137,4 +137,3 @@ cover: "https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*ZOfNTo_9J2kAAAAAA
 **欢迎扫码关注我们的公众号**
 
 ![](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*OvOsRLqjPgQAAAAAAAAAAAAAARQnAQ)
-

@@ -1,9 +1,9 @@
 
 ---
+
 title: "Basic usage of Dubbo protocol"
 aliases: "/sofa-rpc/docs/Dubbo-Usage"
 ---
-
 
 In SOFARPC, to use different communication protocols, it is only required to use different Bindings. If you need to use the Dubbo protocol, just set Binding to Dubbo. The following shows an example using Annotation. For other usage methods, refer to [Basic usage of Bolt protocol](../bolt-usage).
 

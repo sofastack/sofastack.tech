@@ -37,7 +37,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 「**会议回放**」：*[https://www.bilibili.com/video/BV1Qs4y1D7Lv/?spm_id_from=333.999.0.0&vd_source=65cf108a3fb8e9985d41bd64c5448f63](https://www.bilibili.com/video/BV1Qs4y1D7Lv/?spm_id_from=333.999.0.0&vd_source=65cf108a3fb8e9985d41bd64c5448f63)*
 
-  **SOFA 社区会议预告** 
+  **SOFA 社区会议预告**
 
 **Layotto：**
 
@@ -64,7 +64,7 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/3748c0e9de55431f90efb93d4ae027c9~tplv-k3u1fbpfcp-zoom-1.image)
 
-  **本周推荐阅读** 
+  **本周推荐阅读**
 
 [【开源之夏 2023】欢迎报名 SOFAStack 社区项目！](https://mp.weixin.qq.com/s/OMm01cUTmFTuAfiPw_0c7Q)
 

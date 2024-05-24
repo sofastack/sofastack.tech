@@ -3,7 +3,7 @@ title: "应用日志打印 traceId 和 spanId"
 aliases: "/sofa-tracer/docs/PrintTraceIdSpanId"
 ---
 
-SLF4J 提供了 MDC （Mapped Diagnostic Contexts）功能，可以支持用户定义和修改日志的输出格式以及内容。本文将介绍 SOFATracer 集成的 SLF4J MDC功能，方便用户在只简单修改日志配置文件的前提下输出当前 SOFATracer 上下文 `TraceId` 以及 `SpanId` 。
+SLF4J 提供了 MDC （Mapped Diagnostic Contexts）功能，可以支持用户定义和修改日志的输出格式以及内容。本文将介绍 SOFATracer 集成的 SLF4J MDC 功能，方便用户在只简单修改日志配置文件的前提下输出当前 SOFATracer 上下文 `TraceId` 以及 `SpanId` 。
 
 ## 使用前提
 
@@ -53,7 +53,7 @@ import org.slf4j.LoggerFactory;
 private static final Logger logger = LoggerFactory.getLogger(XXX.class);
 ```
 
-其次，我们为了正确打印 `TraceId` 和 `SpanId` 参数，我们还需要在日志的配置文件中配置 `PatternLayout` 的额外参数，这两个参数是 `%X{SOFA-TraceId}` 和 `%X{SOFA-SpanId}`，参数值我们均是从 MDC 中获取的值。 
+其次，我们为了正确打印 `TraceId` 和 `SpanId` 参数，我们还需要在日志的配置文件中配置 `PatternLayout` 的额外参数，这两个参数是 `%X{SOFA-TraceId}` 和 `%X{SOFA-SpanId}`，参数值我们均是从 MDC 中获取的值。
 
 [以 `Logback` 为例配置的 `pattern` 参数](https://logback.qos.ch/)：
 
@@ -84,5 +84,3 @@ private static final Logger logger = LoggerFactory.getLogger(XXX.class);
 > 需要注意的是：`[%X{SOFA-TraceId},%X{SOFA-SpanId}]` 使我们推荐的打印格式，用户可以根据自己的实际需求场景进行定制
 
 [附:基于 Log4j2  示例工程的源代码地址](https://github.com/glmapper/tracer-mdc-log4j2-demo)。
-
-

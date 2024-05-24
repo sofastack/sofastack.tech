@@ -24,7 +24,7 @@ SOFAStack: [https://github.com/sofastack](https://github.com/sofastack)
 
 **1、@谭新宇** 提问：
 
->请教 SOFAJRaft 的问题：默认的 election timeout 这么小嘛？业务压力比较大的话感觉很可能发生超过 1s 的 STW GC 吧，这时会不会导致频繁换主。<br />
+> 请教 SOFAJRaft 的问题：默认的 election timeout 这么小嘛？业务压力比较大的话感觉很可能发生超过 1s 的 STW GC 吧，这时会不会导致频繁换主。<br />
 
 A：最好调整下默认参数，不过 1s 的 STW 实际上也不太正常，需要优化。<br />
 SOFAJRaft：[https://github.com/sofastack/sofa-jrafta](https://github.com/sofastack/sofa-jraft)<br />
@@ -38,14 +38,14 @@ MOSN:[https://github.com/mosn/mosn](https://github.com/mosn/mosn)<br />
 
 **3、@王哲** 提问：
 
->问下 MOSN 对 Kubernetes 版本有限制么？
+> 问下 MOSN 对 Kubernetes 版本有限制么？
 
 A：MOSN 对 K8s 没有强制版本要求，不过 Istio 是对其有版本要求的，具体可以看文档：[https://istio.io/latest/about/supported-releases/#support-status-of-istio-releases](https://istio.io/latest/about/supported-releases/#support-status-of-istio-releases)。<br />
 MOSN:[https://github.com/mosn/mosn](https://github.com/mosn/mosn)<br />
 
 **4、@王哲** 提问：
 
->我试了下 mosn bookinfo出现了这个问题：那个 demo Istio 注入后 yaml 文件是 OK 的，但是运行时 describe pod 看 binaryPath 又变成了 envoy，下面是运行时的，不知道是不是因为这个问题？<br />
+> 我试了下 mosn bookinfo 出现了这个问题：那个 demo Istio 注入后 yaml 文件是 OK 的，但是运行时 describe pod 看 binaryPath 又变成了 envoy，下面是运行时的，不知道是不是因为这个问题？<br />
 >![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*cbZ7TodQ6WAAAAAAAAAAAAAAARQnAQ)
 >![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*4jQOQb6d0FcAAAAAAAAAAAAAARQnAQ)
 >![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*H69VTamyMxoAAAAAAAAAAAAAARQnAQ)
@@ -55,21 +55,21 @@ MOSN:[https://github.com/mosn/mosn](https://github.com/mosn/mosn)<br />
 
 **5、@朱闯** 提问：
 
->请教个问题：saga 模式下是无锁的，一阶段就提交了本地事务，那么也会出现脏写而导致没法正常回滚事务的情况吧。<br />
+> 请教个问题：saga 模式下是无锁的，一阶段就提交了本地事务，那么也会出现脏写而导致没法正常回滚事务的情况吧。<br />
 
 A：所以允许向前重试，最终一致。向前是最终一致，没有脏写。<br />
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 **6、@何凯博** 提问：
 
->请教下各位大佬，xa 模式下 Seata 是怎么实现事务隔离的？<br />
+> 请教下各位大佬，xa 模式下 Seata 是怎么实现事务隔离的？<br />
 
 A：xa 就是本地事务隔离，把本地事务 prepare，到二阶段再提交或者回滚。<br />
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
 **7、@谢太阳** 提问：
 
->A 项目独立库，B 项目用 sharding jdbc 分库分表，A 项目发起分布式事务，出现异常，B 项目不回滚，请教这个一般是什么问题呢？上面是 A 调用 B 的日志，没有分支的回滚记录。下面 B 调用 A 是正常的。<br />
+> A 项目独立库，B 项目用 sharding jdbc 分库分表，A 项目发起分布式事务，出现异常，B 项目不回滚，请教这个一般是什么问题呢？上面是 A 调用 B 的日志，没有分支的回滚记录。下面 B 调用 A 是正常的。<br />
 >![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*cLaoQoWOaX0AAAAAAAAAAAAAARQnAQ)
 
 A：xid 传递检查一下，数据源代理没成功，或者 xid 没传递。<br />

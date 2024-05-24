@@ -42,7 +42,7 @@ SOFABoot 将会发布 4.0 版本，适配最新发布的 Spring Boot 3.0。回�
 
 **MOSN 2.0**
 
-MOSN 将会发布 2.0 的版本，MoE 架构将会正式和大家见面。随着我们和 Envoy 社区的重要的合作点Envoy's L7 Go extension API，我们 MOSN 2.0 的开发和测试工作也已经接近尾声，新的架构将会给 MOSN 带来更多的可能性。
+MOSN 将会发布 2.0 的版本，MoE 架构将会正式和大家见面。随着我们和 Envoy 社区的重要的合作点 Envoy's L7 Go extension API，我们 MOSN 2.0 的开发和测试工作也已经接近尾声，新的架构将会给 MOSN 带来更多的可能性。
 
 ![图片](https://p3-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/d8ed8eb4e59a4365b610ef6c2fbea0e0~tplv-k3u1fbpfcp-zoom-1.image)
 

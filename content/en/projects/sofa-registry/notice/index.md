@@ -18,4 +18,3 @@ SOFARegistry uses some third-party open-source components, including but not lim
 * [SOFAHessian](https://github.com/sofastack/sofa-hessian) under `Apache License 2.0`
 
 If you find anything we have missed, please let us know.
-

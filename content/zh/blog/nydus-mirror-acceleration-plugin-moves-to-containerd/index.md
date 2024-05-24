@@ -87,15 +87,15 @@ Nydus 有如下重要的特性：
 
 Nydus 将与 Containerd 社区紧密合作，致力于提供更优秀的容器镜像加速方案，提高镜像的存储和分发效率，提供安全可靠的容器镜像服务。
 
-## 求贤若渴：
+## 求贤若渴
 
 关于蚂蚁集团可信原生技术部安全容器和存储团队
 
 在蚂蚁集团内部主要负责公司内部容器运行时和云原生存储技术，是公司数据链路的守护者，运行时环境的看门人。我们团队也是 Kata Containers 的创立者，镜像加速服务 Nydus 的发起者，分布式事务服务 Seata 的维护者，也维护着公司内数据访问组件 ZDal/ZCache/XTS 等产品。
 
-我们是开源精神的信徒，也是实现开源软件和公司业务双赢的践行者。我们是一个关注业务、关注业界前沿、关注基础设施技术，更关心成员成长的团队。目前我们正在招收 2023 届实习生，有兴趣的可以参考蚂蚁集团2023届实习生招聘。
+我们是开源精神的信徒，也是实现开源软件和公司业务双赢的践行者。我们是一个关注业务、关注业界前沿、关注基础设施技术，更关心成员成长的团队。目前我们正在招收 2023 届实习生，有兴趣的可以参考蚂蚁集团 2023 届实习生招聘。
 
-联系邮箱：liyuming.lym@antgroup.com
+联系邮箱：<liyuming.lym@antgroup.com>
 
 ### 本周推荐阅读  
 
@@ -107,4 +107,4 @@ Nydus 将与 Containerd 社区紧密合作，致力于提供更优秀的容器�
 
 [BabaSSL：支持半同态加密算法 EC-ElGamal](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247502645&idx=1&sn=efb490d530f4254a8b12dff89714ace7&chksm=faa324efcdd4adf9119222551a407da68e388fd1b3f652fc034860fee9d687311e2136bbd28c&scene=21)
 
-![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*8G5NRZ7UEToAAAAAAAAAAAAAARQnAQ) 
+![img](https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*8G5NRZ7UEToAAAAAAAAAAAAAARQnAQ)

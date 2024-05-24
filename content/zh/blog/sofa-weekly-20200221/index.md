@@ -17,18 +17,18 @@ cover: "https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*Ig-jSIUZWx0AAAAAA
 
 SOFAStack（Scalable Open Financial Architecture Stack）是蚂蚁金服自主研发的金融级分布式架构，包含了构建金融级云原生架构所需的各个组件，包括微服务研发框架，RPC 框架，服务注册中心，分布式定时任务，限流/熔断框架，动态配置推送，分布式链路追踪，Metrics 监控度量，分布式高可用消息队列，分布式事务框架，分布式数据库代理层等组件，也是在金融场景里锤炼出来的最佳实践。
 
-**SOFAStack 官网: **[https://www.sofastack.tech](https://www.sofastack.tech/)
+**SOFAStack 官网:**[https://www.sofastack.tech](https://www.sofastack.tech/)
 
-**SOFAStack: **[https://github.com/sofastack](https://github.com/sofastack)
+**SOFAStack:**[https://github.com/sofastack](https://github.com/sofastack)
 
 ### 每周读者问答提炼
 
 欢迎大家向公众号留言提问或在群里与我们互动
 我们会筛选重点问题通过 " SOFA WEEKLY " 的形式回复
 
-**1、@朱楠 **提问：
+**1、@朱楠**提问：
 
-> 请教下，我看文档上有说json可以热部署，有demo吗，没怎么看明白如何热部署
+> 请教下，我看文档上有说 json 可以热部署，有 demo 吗，没怎么看明白如何热部署
 > ![image.png](https://cdn.nlark.com/yuque/0/2020/png/226702/1582270528773-c95ddf2a-cf84-43a1-a063-feeef533d096.png)
 
 A：就是用这个回答里的这个方法 registerByResource，Java 代码的热部署可以用 SOFAArk，stateMachineEngine 是一个 bean，可以在代码里注入这个 bean，然后你可以实现一个 web 页面，可以上传 json 文件和 jar 包，调用图片中的方法注册状态机，用 SOFAArk 注册 jar 包。
@@ -41,9 +41,9 @@ A：注册了 json，如果数据库里有名称相同的，它会对比字节�
 
 A：因为状态机里定义了要调用服务，这个服务可能是目前在系统里没有引用，所以需要上传 jar。
 
-2、**@刘川江 **提问：
+2、**@刘川江**提问：
 
-> Seata Saga 模式服务（ServiceTask）之间如何在运行时传递业务参数？如将服务A运行后的生成的业务对象传递到后续的服务中进行处理。
+> Seata Saga 模式服务（ServiceTask）之间如何在运行时传递业务参数？如将服务 A 运行后的生成的业务对象传递到后续的服务中进行处理。
 
 A：用 Output 和 Input 属性：
 Input: 调用服务的输入参数列表, 是一个数组, 对应于服务方法的参数列表, $.表示使用表达式从状态机上下文中取参数，表达使用的 SpringEL, 如果是常量直接写值即可；
@@ -54,13 +54,13 @@ Ouput: 将服务返回的参数赋值到状态机上下文中, 是一个 map 结
 A: 支持的，可以用 Status 属性来判断 Service 是否执行成功。
 Status: 服务执行状态映射，框架定义了三个状态，SU 成功、FA 失败、UN 未知, 我们需要把服务执行的状态映射成这三个状态，帮助框架判断整个事务的一致性，是一个 map 结构，key 是条件表达式，一般是取服务的返回值或抛出的异常进行判断，默认是 SpringEL 表达式判断服务返回参数，带 $Exception{ 开头表示判断异常类型。value 是当这个条件表达式成立时则将服务执行状态映射成这个值。
 
-> 是否支持状态机中的部分服务开启事务。如状态机配置了服务流程A->B->C，只在服务B和C上开启分布式事务。
+> 是否支持状态机中的部分服务开启事务。如状态机配置了服务流程 A->B->C，只在服务 B 和 C 上开启分布式事务。
 
 A：可以，比如 A 是一个查询类的服务，可以将 A 设置成 IsForUpdate=false，如果这个服务不想记录执行日志，可以设置这个服务为 IsPersist=false。
 
 Seata：[https://github.com/seata/seata](https://github.com/seata/seata)
 
-**3、@SUNBIAO **提问：
+**3、@SUNBIAO**提问：
 
 > 请问 SOFA 消费者端可以同时配置多个注册中心嘛？例如一个 web 控制器接入端当作消费者，配置连接多个注册中心，订阅不同注册中心上的生产者服务，但是这个消费者端不同的具体消费者调用不同注册中心的服务，前提是注册中心不能合成一个，现实有多个不同的注册中心。
 
@@ -68,7 +68,7 @@ A：可以的，可以看这个类 com.alipay.sofa.rpc.config.AbstractInterfaceC
 
 SOFARPC：[https://github.com/sofastack/sofa-rpc](https://github.com/sofastack/sofa-rpc)
 
-4、**@七美 **提问：
+4、**@七美**提问：
 
 > SOFATracer 目前落盘的摘要 log 是固定格式的，能否直接以 zipkin 的 json 数据格式落盘？如果可以如何操作？
 
@@ -90,16 +90,16 @@ SOFATracer：[https://github.com/sofastack/sofa-tracer](https://github.com/sofas
 - 支持 postgreSQL；
 - 支持自定义 Saga 恢复策略超时时间；
 - 支持 Saga 模式跳过成功分支事务的 report；
-- 支持httpClient 自动集成；
+- 支持 httpClient 自动集成；
 
 详情发布报告：[https://seata.io/zh-cn/blog/download.html](https://seata.io/zh-cn/blog/download.html)
 
 **2、发布 SOFARPC v5.6.4 版本，主要变更如下：**
 
 - 试验性支持 RPC 可能的多版本发布；
-- 升级 Dubbo 依赖版本到2.6.7；
+- 升级 Dubbo 依赖版本到 2.6.7；
 - 优化 gRPC 支持代码；
-- 升级 Netty 版本4.1.44.final，解决安全问题；
+- 升级 Netty 版本 4.1.44.final，解决安全问题；
 - 修复 Tracer 采样兼容问题；
 - 修复注册中心虚拟端口的问题；
 
@@ -133,7 +133,7 @@ SOFATracer：[https://github.com/sofastack/sofa-tracer](https://github.com/sofas
 
 **主题**：SOFAChannel#12：蚂蚁金服分布式事务实践解析
 
-**时间**：2020年3月12日（周四）19:00-20:00
+**时间**：2020 年 3 月 12 日（周四）19:00-20:00
 
 **嘉宾**：仁空，蚂蚁金服分布式事务核心开发
 

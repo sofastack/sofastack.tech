@@ -1,9 +1,9 @@
 
 ---
+
 title: "客户端快速开始 - 普通 Java 项目"
 aliases: "/sofa-lookout/docs/quickstart-client-java"
 ---
-
 
 ## 普通 Java 项目
 
@@ -32,6 +32,7 @@ client.addRegistry(lookoutRegistry);
 //(可选)对已加入或后续加入的客户端的 registry 实例，统一注册扩展模块的 metrics
 client.registerExtendedMetrics();
 ```
+
 然后通过客户端拿取 Registry 实例，进行使用：
 
 ```java
@@ -42,6 +43,5 @@ Id id = registry.createId("http_requests_total");
 Counter counter = registry.counter(id);
 counter.inc();
 ```
+
 客户端的使用，可以详细参考[样例工程](https://github.com/sofastack/sofa-lookout/tree/master/samples/metrics/client/lookout-client-samples-java)。
-
-

@@ -34,12 +34,12 @@ cover: "https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8751bce7c2484ee79b7b21
 
 对于 perldoc 所支持的 pod 格式的文件，可以被编译成多种不同最终格式的文档，这其中以 man 手册和 html 文件为主。  
 
-综上所述，所以铜锁项目在早期延续了编写 pod 文件并编译成 html 和 man 手册的这种模式，随着项目的发展，我们发现此模式存在若干不足，例如： 
+综上所述，所以铜锁项目在早期延续了编写 pod 文件并编译成 html 和 man 手册的这种模式，随着项目的发展，我们发现此模式存在若干不足，例如：
 
-1. perldoc 这套体系过于古老，文档的编写依旧停留在“非可视化”的状态。且编译过程较为复杂，和 markdown 等相比不具备优势，也不够通用； 
+1. perldoc 这套体系过于古老，文档的编写依旧停留在“非可视化”的状态。且编译过程较为复杂，和 markdown 等相比不具备优势，也不够通用；
 
-2. man 手册也比较古老，是单机的本地模式。查询文档的功能较弱，效率较低，不如 readthedocs 这种可视化的查询文档的方式来得便捷； 
- 
+2. man 手册也比较古老，是单机的本地模式。查询文档的功能较弱，效率较低，不如 readthedocs 这种可视化的查询文档的方式来得便捷；
+
 3. OpenSSL 的文档组织形式更多的是以 API 为出发点，而不是以“教程”为出发点，这对于很多新手用户来说无从下手。  
 
 **3 早前的一些改进**
@@ -76,7 +76,7 @@ cover: "https://p1-juejin.byteimg.com/tos-cn-i-k3u1fbpfcp/8751bce7c2484ee79b7b21
 
 [你好，我的新名字叫“铜锁/Tongsuo”](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247513818&idx=1&sn=e0884180a5401d4972bd9a8d3ed150be&chksm=faa35900cdd4d01669f732eb662e7c644caa663f6ae41dd3e3f8b28e77d72763e34c1935fe0d&scene=21)
 
-[BabaSSL：支持半同态加密算法 EC-ElGamal](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247502645&idx=1&sn=efb490d530f4254a8b12dff89714ace7&chksm=faa324efcdd4adf9119222551a407da68e388fd1b3f652fc034860fee9d687311e2136bbd28c&scene=21) 
+[BabaSSL：支持半同态加密算法 EC-ElGamal](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247502645&idx=1&sn=efb490d530f4254a8b12dff89714ace7&chksm=faa324efcdd4adf9119222551a407da68e388fd1b3f652fc034860fee9d687311e2136bbd28c&scene=21)
 
 [BabaSSL 发布 8.3.0｜实现相应隐私计算的需求](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247502271&idx=1&sn=861bcea32cc766721bb6fd95361ef6eb&chksm=faa32665cdd4af73dcc42c51f79e6c61035cddf95ecad822ea6e85cb188c60cb85c9b8027484&scene=21)
 

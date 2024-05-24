@@ -28,21 +28,21 @@ cover: "https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*NAHaRrQqGzAAAAAAAA
 
 欢迎大家向公众号留言提问或在群里与我们互动
 
-我们会筛选重点问题通过 
+我们会筛选重点问题通过
 
 " SOFA WEEKLY " 的形式回复
 
 **1. 小白**
 
->SOFAArk 可以把 2 个端口不一样的 Spring Boot 微服务合并到一起部署吗？比如一个是 8080 另一个端口是 8081，2 个服务都有各自的接口， 合并部署后还可以通过对应的端口来进行访问嘛？
+> SOFAArk 可以把 2 个端口不一样的 Spring Boot 微服务合并到一起部署吗？比如一个是 8080 另一个端口是 8081，2 个服务都有各自的接口， 合并部署后还可以通过对应的端口来进行访问嘛？
 
 A：不使用 Web-Ark-Plugin 插件，每个模块会启动新的 Tomcat 实例，可以让服务用不同的 port。
 
 **「SOFAArk」**：*[https://github.com/sofastack/sofa-ark](https://github.com/sofastack/sofa-ark)*
 
-**2. 肖文璧 提问** 
+**2. 肖文璧 提问**
 
->Seata 对 Java17 的版本有支持吗？
+> Seata 对 Java17 的版本有支持吗？
 
 A：A：需要 v1.6.0 版本。
 

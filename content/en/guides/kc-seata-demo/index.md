@@ -131,11 +131,9 @@ public static class DataSourceConfig {
 
 Note that the above dataSource method returns the data source of the DataSourceProxy.
 
-
 #### 3. Configure @GlobalTransactional annotation to validate the distributed transaction effective
 
 Add the @GlobalTransactional annotation to the purchase method in the BookStoreControllerImpl class:
-
 
 ```java
 ...
@@ -152,7 +150,6 @@ public Success purchase(String body) {
 #### 4. Configure Seata server
 
 For simplicity, start Seata server together with BalanceMngApplication, and add the code to start Seata server in the BalanceMngApplication class:
-
 
 ```java
 ...
@@ -325,8 +322,7 @@ CREATE TABLE `undo_log` (
 
 1. Run the main method of BalanceMngApplication class (including starting Seata server)
 1. Run the main method of StockMngApplication class
-1. Visit http://127.0.0.1:8080/ in the browser
-
+1. Visit <http://127.0.0.1:8080/> in the browser
 
 ## TCC mode
 
@@ -443,7 +439,6 @@ public boolean minusBalanceRollback(BusinessActionContext context) {
 
 The TCC mode does not need proxy data source, since there is no need to parse sql, generate an undo log, and comment out the dataSource and createDataSource methods in the BalanceMngApplication class:
 
-
 ```java
 ...
 @Configuration
@@ -475,7 +470,7 @@ public static class DataSourceConfig {
 
 ```
 
-#### 4、Change BookStoreControllerImpl purchase method to the BalanceMngFacade.minusBalancePrepare method:
+#### 4、Change BookStoreControllerImpl purchase method to the BalanceMngFacade.minusBalancePrepare method
 
 ```java
 @Override
@@ -531,7 +526,6 @@ BalanceMngFacade is an RPC interface. In the previous example, it is introduced 
 
 2. Add @ImportResource annotation on the StockMngApplication class to load the above spring configuration file:
 
-
 ```java
 ...
 @SpringBootApplication
@@ -552,7 +546,8 @@ private BalanceMngFacade balanceMngFacade;
 
 ```
 
-#### 6. Start Seata server, stock-mng and balance-mng applications:
+#### 6. Start Seata server, stock-mng and balance-mng applications
+
 1. Run the main method in BalanceMngApplication class (including starting Seata server)
 1. Run the main method in StockMngApplication class
-1. Visit http://127.0.0.1:8080/ in the browser
+1. Visit <http://127.0.0.1:8080/> in the browser

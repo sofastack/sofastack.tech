@@ -1,9 +1,9 @@
 
 ---
+
 title: "发展路线"
 aliases: "/sofa-boot/docs/sofa-ark-roadmap"
 ---
-
 
 ![SOFAArk roadmap](sofa-ark-roadmap.png)
 
@@ -19,11 +19,11 @@ aliases: "/sofa-boot/docs/sofa-ark-roadmap"
 
 ## 版本迭代计划
 
-### v0.5.0 
+### v0.5.0
+
 + 支持多个 Web 应用合并部署，采用多 Host/单 Host 两种模式
 
 ### v0.6.0
+
 + 支持 telnet 指令查看 ark plugin；
 + 支持 telnet 指令查看 jvm/rpc 服务；
-
-

@@ -38,9 +38,9 @@ SOFARegistry：[https://github.com/sofastack/sofa-registry](https://github.com/s
 
 **2、@刘明** 提问：
 
-> Seata 的 XA 模式做了一个压测，tps=1000，开始报错，ORA-24756：事务处理不存在。 看了下数据库global_table，状态是 3。 3 是 CommitRetrying ， 这说明 phase 1 阶段过了，2 阶段提交报事务不存在。 目前 global_table 里有700多条记录，95%是状态3，还有状态1的。
+> Seata 的 XA 模式做了一个压测，tps=1000，开始报错，ORA-24756：事务处理不存在。 看了下数据库 global_table，状态是 3。 3 是 CommitRetrying ， 这说明 phase 1 阶段过了，2 阶段提交报事务不存在。 目前 global_table 里有 700 多条记录，95%是状态 3，还有状态 1 的。
 
-A：应该是一个原因，很可能就是2阶段提交失败了。begin 的你查看下他的分支事务状态是什么。
+A：应该是一个原因，很可能就是 2 阶段提交失败了。begin 的你查看下他的分支事务状态是什么。
 
 > begin 的分支表里没有数据，可能注册就失败了。
 
@@ -54,7 +54,7 @@ A：select for update 或者 update x=x+n 这样写法一般没事。
 
 A：不锁住怎么保证隔离性。这个 for update xa 没提交前会锁住的，这个锁由数据库方自己已经实现了。
 
-> 是的，那1阶段已经过了，记录会一直锁在那里了吗？
+> 是的，那 1 阶段已经过了，记录会一直锁在那里了吗？
 
 A：二阶段没提交，锁在数据库肯定没释放。不过看起来你应该提交了吧，因为已经提示你事务不存在了。
 

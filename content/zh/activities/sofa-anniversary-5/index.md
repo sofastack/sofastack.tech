@@ -20,11 +20,11 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*qnntSam867oAAAAAA
 
   [《SOFAStack 的下一个五年》](https://mdn.alipayobjects.com/huamei_soxoym/afts/file/A*mIlUTZ-iot4AAAAAAAAAAAAADrGAAQ/%E8%AE%AE%E9%A2%98%E4%B8%80%20%E5%AE%8B%E9%A1%BASOFAStack%20%E7%9A%84%E4%B8%8B%E4%B8%80%E4%B8%AA%E4%BA%94%E5%B9%B4%200411.pdf)
 
-  [《京东搜索基于Service Mesh的微服务治理探索与实践》](https://mdn.alipayobjects.com/huamei_soxoym/afts/file/A*WTt0QINQx-AAAAAAAAAAAAAADrGAAQ/%E8%AE%AE%E9%A2%98%E4%BA%8C%20%E7%8E%8B%E5%BF%97%E9%BE%99%20%E4%BA%AC%E4%B8%9C%E6%90%9C%E7%B4%A2%E5%9F%BA%E4%BA%8EService%20Mesh%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86%E6%8E%A2%E7%B4%A2%E4%B8%8E%E5%AE%9E%E8%B7%B5%E2%80%94%E2%80%94latest.pdf)
+  [《京东搜索基于 Service Mesh 的微服务治理探索与实践》](https://mdn.alipayobjects.com/huamei_soxoym/afts/file/A*WTt0QINQx-AAAAAAAAAAAAAADrGAAQ/%E8%AE%AE%E9%A2%98%E4%BA%8C%20%E7%8E%8B%E5%BF%97%E9%BE%99%20%E4%BA%AC%E4%B8%9C%E6%90%9C%E7%B4%A2%E5%9F%BA%E4%BA%8EService%20Mesh%E7%9A%84%E5%BE%AE%E6%9C%8D%E5%8A%A1%E6%B2%BB%E7%90%86%E6%8E%A2%E7%B4%A2%E4%B8%8E%E5%AE%9E%E8%B7%B5%E2%80%94%E2%80%94latest.pdf)
 
   [《顺丰应用运行时落地实践》](https://mdn.alipayobjects.com/huamei_soxoym/afts/file/A*hwzsSrlrdrgAAAAAAAAAAAAADrGAAQ/%E8%AE%AE%E9%A2%98%E4%B8%89%20%E6%9D%A8%E5%AE%9A%E6%9C%9D%20%E9%A1%BA%E4%B8%B0%E5%BA%94%E7%94%A8%E8%BF%90%E8%A1%8C%E6%97%B6%E8%90%BD%E5%9C%B0%E5%AE%9E%E8%B7%B50412.pdf)
 
-  [《Seata发展之路——昨天、今天、明天》](https://mdn.alipayobjects.com/huamei_soxoym/afts/file/A*9GHZS7VIm2YAAAAAAAAAAAAADrGAAQ/%E8%AE%AE%E9%A2%98%E5%9B%9B%20%E6%9D%8E%E5%AE%97%E6%9D%B0%20Seata%E5%8F%91%E5%B1%95%E4%B9%8B%E8%B7%AF%E2%80%94%E2%80%94%E6%98%A8%E5%A4%A9%E3%80%81%E4%BB%8A%E5%A4%A9%E3%80%81%E6%98%8E%E5%A4%A90406.pdf)
+  [《Seata 发展之路——昨天、今天、明天》](https://mdn.alipayobjects.com/huamei_soxoym/afts/file/A*9GHZS7VIm2YAAAAAAAAAAAAADrGAAQ/%E8%AE%AE%E9%A2%98%E5%9B%9B%20%E6%9D%8E%E5%AE%97%E6%9D%B0%20Seata%E5%8F%91%E5%B1%95%E4%B9%8B%E8%B7%AF%E2%80%94%E2%80%94%E6%98%A8%E5%A4%A9%E3%80%81%E4%BB%8A%E5%A4%A9%E3%80%81%E6%98%8E%E5%A4%A90406.pdf)
 
   [《蚂蚁注册中心建设的思考与实践》](https://mdn.alipayobjects.com/huamei_soxoym/afts/file/A*CqwrS5Qb2IwAAAAAAAAAAAAADrGAAQ/%E8%AE%AE%E9%A2%98%E4%BA%94%20%E8%82%96%E5%81%A5%20SOFARegistry%E5%88%86%E4%BA%ABV2.pdf)
 
@@ -58,7 +58,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*qnntSam867oAAAAAA
 
 ## 议程
 
->![](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*ufkZQJRyOdQAAAAAAAAAAAAADrGAAQ/original)
+> ![](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*ufkZQJRyOdQAAAAAAAAAAAAADrGAAQ/original)
 
 ## 直播回放
 

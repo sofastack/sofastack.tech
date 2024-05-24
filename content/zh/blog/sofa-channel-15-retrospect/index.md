@@ -87,7 +87,7 @@ public class DubboSofaTracerFilter implements Filter {
 
 SOFATracer 中用于处理 Dubbo 2.6.x 版本中异步回调处理的核心代码：
 
-> Dubbo 异步处理依赖 ResponseFuture 接口，但是 ResponseFuture 在核心链路上并非是以数据或者 list 的形式存在，所以在链路上只会存在一个 ResponseFuture，因此如果我自定义一个类来实现 ResponseFuture 接口是没法达到预期目的的，因为运行期会存在覆盖 ResponseFuture 的问题。所以在设计上，SOFATracer 会通过 ResponseFuture 构建一个新的 FutureAdapter出来用于传递。
+> Dubbo 异步处理依赖 ResponseFuture 接口，但是 ResponseFuture 在核心链路上并非是以数据或者 list 的形式存在，所以在链路上只会存在一个 ResponseFuture，因此如果我自定义一个类来实现 ResponseFuture 接口是没法达到预期目的的，因为运行期会存在覆盖 ResponseFuture 的问题。所以在设计上，SOFATracer 会通过 ResponseFuture 构建一个新的 FutureAdapter 出来用于传递。
 
 ```java
 boolean ensureSpanFinishes(Future<Object> future, Invocation invocation, Invoker<?> invoker) {

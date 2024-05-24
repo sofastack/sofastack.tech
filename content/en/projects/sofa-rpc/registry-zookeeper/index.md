@@ -1,23 +1,25 @@
 
 ---
+
 title: "Zookeeper"
 aliases: "/sofa-rpc/docs/Registry-Zookeeper"
 ---
 
-
 To use Zookeeper as service registry center, you only need to configure it in `application.properties` as follows:
-```
+
+```plain
 com.alipay.sofa.rpc.registry.address=zookeeper://127.0.0.1:2181
 ```
 
 Note: Considering the real-time nature of the service, the following features are not supported currently.
 
 SOFABoot RPC also provides a cache file (not supported  currently), which is used for service discovery when ZooKeeper is not available. The way to configure this cache file is as follows:
-```
+
+```plain
 com.alipay.sofa.rpc.registry.address=zookeeper://xxx:2181?file=/home/admin/registry
 ```
 
-### Zookeeper Auth 
+### Zookeeper Auth
 
 When users need to auth the providers and consumers, they can use a auth key to write or read the dictionary normally,
 only when they use the same key, zookeeper server will process these requests.
@@ -36,11 +38,13 @@ registryConfig = new RegistryConfig()
 .setAddress("127.0.0.1:2181/authtest")
 .setParameters(parameters);
 ```
+
 then if another provider or consumer use a different auth info, they will not access these providers or consumers.
 
 #### XML Usage
 
-You only need to set it in `application.properties`    
+You only need to set it in `application.properties`
+
 ```xml
 com.alipay.sofa.rpc.registry.address=zookeeper://xxx:2181?file=/home/admin/registry&scheme=digest&addAuth=sofazk:rpc1
 ```

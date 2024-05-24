@@ -13,9 +13,9 @@ Introduce SOFATracer dependency in the new Spring Boot project:
 
 ```xml
 <dependency>
-	<groupId>com.alipay.sofa</groupId>
-	<artifactId>tracer-sofa-boot-starter</artifactId>
-	<version>2.2.0</version>
+ <groupId>com.alipay.sofa</groupId>
+ <artifactId>tracer-sofa-boot-starter</artifactId>
+ <version>2.2.0</version>
 </dependency>
 ```
 
@@ -25,14 +25,14 @@ For convenience, we use the h2database memory database for test. So, we need to 
 
 ```xml
 <dependency>
-	<groupId>com.h2database</groupId>
-	<artifactId>h2</artifactId>
-	<scope>runtime</scope>
+ <groupId>com.h2database</groupId>
+ <artifactId>h2</artifactId>
+ <scope>runtime</scope>
 </dependency>
 
 <dependency>
-	<groupId>mysql</groupId>
-	<artifactId>mysql-connector-java</artifactId>
+ <groupId>mysql</groupId>
+ <artifactId>mysql-connector-java</artifactId>
 </dependency>
 ```
 
@@ -42,33 +42,34 @@ Introduce the required connection pool dependency packages, such as druid, c3p0,
 
 ```xml
 <dependency>
-	<groupId>com.alibaba</groupId>
-	<artifactId>druid</artifactId>
-	<version>1.0.12</version>
+ <groupId>com.alibaba</groupId>
+ <artifactId>druid</artifactId>
+ <version>1.0.12</version>
 </dependency>
 <dependency>
-	<groupId>c3p0</groupId>
-	<artifactId>c3p0</artifactId>
-	<version>0.9.1.1</version>
+ <groupId>c3p0</groupId>
+ <artifactId>c3p0</artifactId>
+ <version>0.9.1.1</version>
 </dependency>
 <dependency>
-	<groupId>org.apache.tomcat</groupId>
-	<artifactId>tomcat-jdbc</artifactId>
-	<version>8.5.31</version>
+ <groupId>org.apache.tomcat</groupId>
+ <artifactId>tomcat-jdbc</artifactId>
+ <version>8.5.31</version>
 </dependency>
 <dependency>
-	<groupId>commons-dbcp</groupId>
-	<artifactId>commons-dbcp</artifactId>
-	<version>1.4</version>
+ <groupId>commons-dbcp</groupId>
+ <artifactId>commons-dbcp</artifactId>
+ <version>1.4</version>
 </dependency>
 <dependency>
-	<groupId>com.zaxxer</groupId>
-	<artifactId>HikariCP-java6</artifactId>
-	<version>2.3.8</version>
+ <groupId>com.zaxxer</groupId>
+ <artifactId>HikariCP-java6</artifactId>
+ <version>2.3.8</version>
 </dependency>
 ```
 
 ## Configure data source
+
 Taking `HikariCP` as the example, we create a new  Spring configuration file named `datasource.xml`, which defines the followings:
 
 ```xml
@@ -87,6 +88,7 @@ Taking `HikariCP` as the example, we create a new  Spring configuration file nam
 ```
 
 ## Application configuration
+
 + Required configuration
 
 It should be noted that it is required to configure the application name when introducing SOFATracer; otherwise, the application may fails to start. This property is consistent with the SOFABoot framework requirements and is configured as follows:
@@ -117,6 +119,7 @@ spring.datasource.driver-class-name=org.h2.Driver
 ```
 
 ## Create a new Rest Service
+
 In order to achieve the demo effect, we create a new Rest service and trigger SQL statement execution to view the tracer records of sql. The Rest service is created as follows:
 
 ```java
@@ -151,6 +154,7 @@ You can see that the Rest service has created a table.
 ## Demonstration
 
 Start the application and visit `localhost:8080/create` to execute the above Rest service. You can see the Tracer log of sql execution in `./logs/datasource-client-digest.log` and `./logs/datasource-client-stat.log`:
+
 + datasource-client-digest.log
 
 ```json

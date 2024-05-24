@@ -1,18 +1,19 @@
 
 ---
+
 title: "Ark Plugin"
 aliases: "/sofa-boot/docs/sofa-ark-ark-plugin"
 ---
 
-
 本小节将介绍 `Ark Plugin` 的标准规范和目录结构，以及如何使用官方插件 `sofa-ark-plugin-maven-plugin` 打包发布 `Ark Plugin`。
 
 ## 插件规范
+
 标准的 `Ark Plugin` 需要满足以下规范：
 
 * 插件必须配置插件名，默认为 `${artifactId}` ；运行时，不允许存在同名的插件，可以认为它是 `Ark Plugin` 的唯一 ID;
 
-* 插件必须配置优先级，默认为1000，数字越低表示优先级越高；
+* 插件必须配置优先级，默认为 1000，数字越低表示优先级越高；
 
 * 插件最多配置一个入口类 `activator` ，它是容器启动插件的入口，统一实现 `com.alipay.sofa.ark.spi.service.PluginActivator` 接口类；优先级高的插件优先启动；
 
@@ -24,8 +25,8 @@ aliases: "/sofa-boot/docs/sofa-ark-ark-plugin"
 
 * 支持导出 classpath 中资源，不支持通配符；优先级高的插件优先导出；
 
-
 ## Maven 插件
+
 官方提供 `Maven` 插件 `sofa-ark-plugin-maven-plugin` 可以将工程打包成标准格式的 `Ark Plugin` ； `Maven` 插件坐标为：
 
 ```xml
@@ -37,6 +38,7 @@ aliases: "/sofa-boot/docs/sofa-ark-ark-plugin"
 ```
 
 ## Goals
+
 `sofa-ark-plugin-maven-plugin` 插件提供 `goal: ark-plugin`，可以将工程打包成标准格式的 `Ark Plugin`, 如下配置：
 
 ```xml
@@ -163,32 +165,35 @@ aliases: "/sofa-boot/docs/sofa-ark-ark-plugin"
 ```
 
 配置项含义如下：
-+ `outputDirectory`: 指定打包的 ${pluginName}.ark.plugin 存放目录; 默认放在 ${project.build.directory};
 
-+ `attach`: 是否把 ark plugin 安装、发布到仓库，默认为true; 
+* `outputDirectory`: 指定打包的 ${pluginName}.ark.plugin 存放目录; 默认放在 ${project.build.directory};
 
-+ `activator`: ark plugin 最多仅能指定一个 `com.alipay.sofa.ark.spi.service.PluginActivator` 接口实现类;
+* `attach`: 是否把 ark plugin 安装、发布到仓库，默认为 true;
 
-+ `priority`: 配置优先级，数字越小，优先级越高，优先启动，优先导出类，默认1000;
+* `activator`: ark plugin 最多仅能指定一个 `com.alipay.sofa.ark.spi.service.PluginActivator` 接口实现类;
 
-+ `pluginName`: 配置插件的名字，务必配置对，运行时，是插件的唯一标识 ID。比如 sofa-rpc 插件，可以配置为 sofa-rpc; 默认为 ${artifactId};
+* `priority`: 配置优先级，数字越小，优先级越高，优先启动，优先导出类，默认 1000;
 
-+ `imported`: 配置导入类、资源；需要注意一点，配置 package 级别的导入类时，如果包名末尾带通配符 `*`，则表示满足该 package 前缀的包或者类全部被导入。如果不带通配符 `*`，则表示满足该 package 前缀的类才会被导入，而子包不会被导入。
+* `pluginName`: 配置插件的名字，务必配置对，运行时，是插件的唯一标识 ID。比如 sofa-rpc 插件，可以配置为 sofa-rpc; 默认为 ${artifactId};
 
-+ `exported`: 配置导出类、资源；同样需要注意一点，配置 package 级别的导出类时，如果包名末尾带通配符 `*`，则表示满足该 package 前缀的包或者类全部被导出。如果不带通配符 `*`，则表示满足该 package 前缀的类才会被导出，而子包不会被导出。
+* `imported`: 配置导入类、资源；需要注意一点，配置 package 级别的导入类时，如果包名末尾带通配符 `*`，则表示满足该 package 前缀的包或者类全部被导入。如果不带通配符 `*`，则表示满足该 package 前缀的类才会被导入，而子包不会被导入。
 
-+ `excludes`: 打包插件时，排除指定的包依赖；格式为: ${groupId:artifactId} 或者 ${groupId:artifactId:classifier}；
+* `exported`: 配置导出类、资源；同样需要注意一点，配置 package 级别的导出类时，如果包名末尾带通配符 `*`，则表示满足该 package 前缀的包或者类全部被导出。如果不带通配符 `*`，则表示满足该 package 前缀的类才会被导出，而子包不会被导出。
 
-+ `excludeGroupIds`: 打包插件时，排除和指定 groupId 相同的包依赖；
+* `excludes`: 打包插件时，排除指定的包依赖；格式为: ${groupId:artifactId} 或者 ${groupId:artifactId:classifier}；
 
-+ `excludeArtifactIds`: 打包插件时，排除和指定 artifactId 相同的包依赖；
+* `excludeGroupIds`: 打包插件时，排除和指定 groupId 相同的包依赖；
 
-+ `classifier`: 如非必要，建议不用设置，默认为空，只会打包生成 ark plugin; 如果配置不为空，则会额外打包生成普通的 Jar 包。
+* `excludeArtifactIds`: 打包插件时，排除和指定 artifactId 相同的包依赖；
 
-+ `shades`: 打包插件时，将指定的 Jar 包 shade 进入 ark plugin.
+* `classifier`: 如非必要，建议不用设置，默认为空，只会打包生成 ark plugin; 如果配置不为空，则会额外打包生成普通的 Jar 包。
+
+* `shades`: 打包插件时，将指定的 Jar 包 shade 进入 ark plugin.
 
 ## 构建
+
 对于普通的 Java 工程，为了生成标准的 `Ark Plugin` ，只需要三步操作：
+
 * 在工程根目录中新建一个空模块打包 `Ark Plugin`，定义插件坐标，假设为：
 
 ```xml
@@ -203,9 +208,10 @@ aliases: "/sofa-boot/docs/sofa-ark-ark-plugin"
 
 * 在该模块目录或工程根目录中敲击 `mvn package` 命令，即可在配置的 `outputDirectory` 目录中生成 `ark-plugin-demo.ark.plugin` 插件文件；敲击 `mvn install` 命令，则会安装到本地 `Maven` 仓库；
 
-
 ## 发布
+
 在工程主 pom 中配置仓库地址，然后敲击 `mvn deploy` 命令，即可发布该 `Ark Plugin` ;需要指出的是，如果没有设置 `classifier`，则生成的 ark plugin 坐标为：
+
 ```xml
 <dependency>
     <groupId>com.alipay.sofa</groupId>
@@ -228,6 +234,7 @@ aliases: "/sofa-boot/docs/sofa-ark-ark-plugin"
 其他应用通过该坐标即可引用该插件。
 
 ## Ark Plugin 典型目录结构
+
 以 [快速开始](../sofa-ark-ark-plugin-demo) 为例，该 Demo 打包生成的 ark plugin 目录结构如下：
 
 ```text
@@ -261,6 +268,7 @@ aliases: "/sofa-boot/docs/sofa-ark-ark-plugin"
 * `com/alipay/sofa/ark/plugin/mark` ：标记文件，标记该 Jar 包是 `sofa-ark-plugin-maven-plugin` 打包生成的 `Ark Plugin` 文件。
 
 * `META-INF/MANIFEST.MF` ：记录插件元信息，内容类似如下：
+
 ```manifest
 Manifest-Version: 1.0
 groupId: com.alipay.sofa
