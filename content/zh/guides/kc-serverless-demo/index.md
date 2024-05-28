@@ -81,7 +81,7 @@ github: "https://github.com/sofastack-guides/kc-serverless-demo"
 
 <a name="epfI5"></a>
 
-### 讲师演示
+### 讲师演示2
 
 <a name="liSO7"></a>
 
@@ -123,7 +123,7 @@ github: "https://github.com/sofastack-guides/kc-serverless-demo"
 
 <a name="KESa0"></a>
 
-### 讲师演示
+### 讲师演示3
 
 <a name="BdZ6q"></a>
 
@@ -139,7 +139,7 @@ github: "https://github.com/sofastack-guides/kc-serverless-demo"
 - 按照前文步骤，尝试自己创建一个新的前端应用
 - 测试执行应用服务
 
-#### 快速发布前端 NodeJS 应用
+#### 快速发布前端 NodeJS应用
 
 - 选择创建应用服务
 - 创建应用，选择技术栈为 NodeJS

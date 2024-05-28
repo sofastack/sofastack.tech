@@ -12,7 +12,7 @@ projects: [{name: "Seata", link: "https://github.com/seata/seata"}]
 
 ## AT 模式
 
-#### 1、引入 maven 依赖
+### 1、引入 maven 依赖
 
 将下面的依赖引入到父工程的 pom 文件中（kc-sofastack-demo/pom.xml）:
 
@@ -339,7 +339,7 @@ CREATE TABLE `undo_log` (
 
 ## TCC 模式
 
-#### 1、引入 maven 依赖
+### 1、引入 maven依赖
 
 见上文 AT 模式的 1、引入 maven 依赖
 
@@ -562,7 +562,7 @@ private BalanceMngFacade balanceMngFacade;
 
 ```
 
-#### 6、启动 Seata server 和 stock-mng、balance-mng 应用
+#### 6、启动 Seata server 和 stock-mng、balance-mng 应用：
 
 1. 运行 BalanceMngApplication 类的 main 方法(包含启动 Seata server)
 2. 运行 StockMngApplication 类的 main 方法

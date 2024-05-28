@@ -15,7 +15,7 @@ projects: [
 
 # SOFAStack-Demos
 
-### 分布式链路组件 SOFATracer 埋点机制 Demo
+## 分布式链路组件 SOFATracer 埋点机制 Demo
 
 - Demo 地址：[https://github.com/glmapper/tracers-guides](https://github.com/glmapper/tracers-guides)
 - 相关文章：[https://www.sofastack.tech/blog/sofa-channel-15-retrospect/](https://www.sofastack.tech/blog/sofa-channel-15-retrospect/)
