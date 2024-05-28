@@ -31,8 +31,13 @@ check_pull_request_content() {
     echo
     
     if [[ "${#CHANGED_MARKDOWN_FILES[@]}" != "0" ]]; then
-        echo "${CHANGED_MARKDOWN_FILES[@]}" | xargs mdl --ignore-front-matter --style mdl_style.rb
-        if [[ "$?" != "0" ]]; then
+        echo "${CHANGED_MARKDOWN_FILES[@]}" | xargs mdl --ignore-front-matter --style mdl_style.rb > "$log_file"
+        mdl_exit_code=$?  # Get the exit code of the mdl command
+        # Print the log from the log file
+        cat "$log_file"
+        # Check the exit code and set FAILED flag if necessary
+        if [[ "$mdl_exit_code" != "0" ]]; then
+            echo "mdl command failed with exit code $mdl_exit_code."
             FAILED=1
         fi
     else
