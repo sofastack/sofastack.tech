@@ -9,7 +9,7 @@ jobs:
     - checkout
     - run:
         name: Running markdown spell check
-        command: scripts/mdspell-check.sh
+        command: ls && pwd && scripts/mdspell-check.sh
   markdown-style-check:
     docker:
 #    - image: jimmysong/website-builder:2019-07-18
