@@ -10,7 +10,7 @@ jobs:
     - checkout
     - run:
         name: Running markdown spell check
-        command: ls && pwd && ls ./scripts && scripts/mdspell-check.sh
+        command: chmod +x scripts && chmod +x scripts/mdspell-check.sh && scripts/mdspell-check.sh
   markdown-style-check:
     docker:
     - image: circleci/ruby
