@@ -4,6 +4,7 @@ jobs:
     docker:
 #    - image: jimmysong/website-builder:2019-07-18
     - image: registry.gitlab.com/pipeline-components/markdownlint:latest
+    - image: circleci/ruby
     working_directory: ~/site
     steps:
     - checkout
@@ -12,8 +13,7 @@ jobs:
         command: ls && pwd && scripts/mdspell-check.sh
   markdown-style-check:
     docker:
-#    - image: jimmysong/website-builder:2019-07-18
-    - image: registry.gitlab.com/pipeline-components/markdownlint:latest
+    - image: circleci/ruby
     working_directory: ~/site
     steps:
     - checkout
