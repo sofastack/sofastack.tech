@@ -169,6 +169,6 @@ Dubbo 3.0 的柔性服务，基本上可以理解为反压技术。Dubbo 与 Dub
 
 - [还在为多集群管理烦恼吗？OCM来啦！](https://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247490574&idx=1&sn=791b8d49759131ea1feb5393e1b51e7c&chksm=faa0f3d4cdd77ac2316b179a24b7c3ac90a08d3768379795d97c18b14a9c69e4b82012c3c097&token=1804015466)
 
-更多文章请扫码关注“金融级分布式架构”公众号，修改为了验证以前的校验是否正确
+更多文章请扫码关注“金融级分布式架构”公众号
 
 >![](https://gw.alipayobjects.com/mdn/rms_95b965/afts/img/A*s3UzR6VeQ6cAAAAAAAAAAAAAARQnAQ)
