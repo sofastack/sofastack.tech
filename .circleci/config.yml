@@ -3,7 +3,7 @@ jobs:
   markdown-spell-check:
     docker:
 #    - image: jimmysong/website-builder:2019-07-18
-    - image: pipelinecomponents/markdownlint:0.13.3
+    - image: polishchuk/ruby-node
     working_directory: ~/site
     steps:
     - checkout
@@ -13,7 +13,7 @@ jobs:
   markdown-style-check:
     docker:
 #    - image: jimmysong/website-builder:2019-07-18
-    - image: pipelinecomponents/markdownlint:0.13.3
+    - image: polishchuk/ruby-node
     working_directory: ~/site
     steps:
     - checkout
