@@ -10,7 +10,7 @@ jobs:
     - checkout
     - run:
         name: Running markdown spell check
-        command: gem install mdl && sudo  chmod +x scripts/mdspell-check.sh  && cd scripts && ls && bash -c scripts/mdspell-check.sh
+        command: gem install mdl &&   chmod +x scripts/mdspell-check.sh  && cd scripts && ls && bash -c scripts/mdspell-check.sh
   markdown-style-check:
     docker:
     - image: circleci/ruby
