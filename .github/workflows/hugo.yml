@@ -33,14 +33,15 @@ jobs:
     env:
       HUGO_VERSION: 0.55.5
     steps:
-      - name: Install Hugo CLI
-        run: |
-          wget -O ${{ runner.temp }}/hugo.deb https://github.com/gohugoio/hugo/releases/download/v${HUGO_VERSION}/hugo_extended_${HUGO_VERSION}_Linux-64bit.deb \
-          && sudo dpkg -i ${{ runner.temp }}/hugo.deb
+      - name: Setup Hugo
+        uses: peaceiris/actions-hugo@v2
+        with:
+          hugo-version: '0.55.5'
+          extended: true
       - name: Use Node.js
         uses: actions/setup-node@v1
         with:
-          node-version: 8.9.4
+          node-version: 12.22.12
       - name: Checkout
         uses: actions/checkout@v4
         with:
@@ -57,7 +58,6 @@ jobs:
           HUGO_ENV: production
         run: |
           hugo \
-            --minify \
             --baseURL "${{ steps.pages.outputs.base_url }}/"
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
