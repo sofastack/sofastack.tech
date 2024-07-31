@@ -8,6 +8,7 @@ aliases: "/sofa-boot/docs/sofa-ark-readme"
 ﻿## Product description
 SOFAArk is a light-weight，java based classloader isolation framework 
 open sourced by Ant Financial. Based on  [Fat Jar](https://docs.spring.io/spring-boot/docs/current/reference/html/executable-jar.html#executable-jar-jar-file-structure) technology, the container can pack simple single-module Java applications or Spring Boot applications into a self-contained executable Fat Jar, known as an Ark package. When the `java -jar` command is used to start an Ark package embedded with the SOFAArk class isolation container, the SOFAArk container will start, and it then starts each Ark plugin and application.
+If you want to merge multi app into one jvm, please go and refer to [koupleless](https://github.com/koupleless/koupleless) which based on SOFAArk; if you want to just isolate class by classLoader then you can read docs in this site, and focus on sofaArk Plugin.
 
 ## Background
 In Java world, dependency is always a problem, and can cause various errors, such as `LinkageError`, `NoSuchMethodError` etc. There are many ways to solve the dependency problems, the Spring Boot's way is using a dependency management to manage all the dependencies, make sure that all the dependencies in the dependency management will not conflict and can work pretty well. This is quite a simple and efficient way, it can cover most scenario, but there is some exceptions.
