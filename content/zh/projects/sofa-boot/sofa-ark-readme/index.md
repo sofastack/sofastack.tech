@@ -3,7 +3,7 @@ title: "SOFAArk 介绍"
 aliases: "/sofa-boot/docs/sofa-ark-readme"
 ---
 
-SOFAArk 是一款基于 Java 实现的轻量级类隔离容器，主要提供类隔离和应用(模块)合并部署能力，由蚂蚁金服公司开源贡献；
+SOFAArk 是一款基于 Java 实现的轻量级类隔离容器，主要提供类隔离和应用(模块)合并部署能力，由蚂蚁金服公司开源贡献，目前已经基于 SOFAArk 提供了模块化合并部署的完整解决方案 [koupleless](https://github.com/koupleless/koupleless), 如果想要使用合并部署能力，建议查看 [Koupleless 使用文档](https://koupleless.io/)，如果只是想要使用的类隔离能力可以查看 SOFAArk Plugin 能力，继续查看本站点相关文档；
 
 在大型软件开发过程中，通常会推荐底层功能插件化，业务功能模块化的开发模式，以期达到低耦合、高内聚、功能复用的优点。基于此，SOFAArk 提供了一套较为规范化的插件化、模块化的开发方案，产品能力主要包括：
 
