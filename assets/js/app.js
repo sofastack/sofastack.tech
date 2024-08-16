@@ -36,5 +36,5 @@ const main = () => {
 
   })
 }
-// listener
+// addListener
 document.addEventListener('DOMContentLoaded', main)
