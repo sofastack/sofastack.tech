@@ -61,7 +61,7 @@ SOFAArk版本号第一位为大版本号，当为1.x.x时为SOFAArk1.0版，当�
 
 ## 打包插件
 
-在SOFAArk1.0中使用sofa-ark-maven-plugin打包，在SOFAArk2.0中采用spring-boot原生打包插件spring-boot-maven-plugin打包
+对于基座来说，在SOFAArk1.0中使用sofa-ark-maven-plugin打包，在SOFAArk2.0中采用spring-boot原生打包插件spring-boot-maven-plugin打包对于模块来说，则继续使用 sofa-ark-maven-plugin 来打包。
 
 ```xml
 <build>
@@ -136,8 +136,6 @@ Ark包是可执行Jar，可直接使用Java -jar的方式启动，先使用 mvn 
 
 ## 示例工程
 
-[SOFAArk1.0示例工程](https://github.com/sofastack-guides/sofa-ark-guides/tree/master/sample-ark-springboot) ：SOFAArk1.0接入方式
-
-[SOFAArk2.0示例工程](https://github.com/sofastack-guides/sofa-ark-spring-guides) ：SOFAArk2.0接入方式
+[SOFAArk2.0示例工程](https://github.com/sofastack-guides/sofa-ark-guides/tree/master/sample-ark-springboot) ：SOFAArk2.0接入方式。另外 SOFAArk 作为 [Koupleless](https://github.com/koupleless/koupleless) 类隔离组件，也可以查看 [Koupleless 合并部署的 samples](https://github.com/koupleless/samples/blob/main/springboot-samples/web/tomcat/README-zh_CN.md)
 
 
