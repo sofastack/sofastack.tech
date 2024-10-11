@@ -36,11 +36,11 @@
 	]
 
 [[qrcode]]
-	img = "img/qrcode/qrcode_video.png"
+	img = "img/qrcode/qrcode_video_2024.jpg"
 	description = "微信视频号"
 	
 [[qrcode]]
-	img = "img/qrcode/qrcode_1.png"
+	img = "img/qrcode/qrcode_1_2024.jpg"
 	description = "微信公众号"
 
 [[qrcode]]
