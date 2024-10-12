@@ -122,6 +122,8 @@ sidebar:
         link: 'upgrade_2_5_x'
       - title: 'SOFABoot 3.0 升级注意事项'  	
         link: 'upgrade_3_x'
+      - title: 'SOFABoot 4.0 升级注意事项'  	
+        link: 'upgrade_4_x'
   - title: '常见问题'  	
     link: 'faq'
   - title: '版权声明'  	

@@ -1,7 +1,7 @@
 ---
-title: "SOFA Weekly｜SOFA 开源五周年来自社区家人的祝福、社区本周贡献 & issue 精选"
+title: "SOFA Weekly｜SOFA 开源五周年活动报名、Layotto 会议预告、社区本周贡献 & issue 精选"
 authorlink: "https://github.com/sofastack"
-description: "SOFA Weekly｜SOFA 开源五周年来自社区家人的祝福、社区本周贡献 & issue 精选"
+description: "SOFA Weekly｜SOFA 开源五周年活动报名、Layotto 会议预告、社区本周贡献 & issue 精选"
 categories: "SOFA Weekly"
 tags: ["SOFA Weekly"]
 date: 2023-04-07T15:00:00+08:00

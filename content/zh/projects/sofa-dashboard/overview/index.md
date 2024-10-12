@@ -9,7 +9,7 @@ SOFADashboard 致力于对 SOFA 框架中组件进行统一管理，包括服务
 
 ## 架构简图
 
-![image.png](https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*uVAiQKWS4G4AAAAAAAAAAABjARQnAQ)
+![image.png](https://img.alicdn.com/imgextra/i3/O1CN01qFO3qa282LVHXDfKH_!!6000000007874-2-tps-1040-548.png)
 
 SOFADashboard 目前服务治理与 SOFAArk 管控都是面向 Zookeeper 来编程实现的。
 
@@ -19,4 +19,4 @@ SOFADashboard 目前服务治理与 SOFAArk 管控都是面向 Zookeeper 来编�
   * rpc provider : SOFARPC 的服务提供方，会将服务注册到 Zookeeper 上。
   * rpc consumer : SOFARPC 的服务消费方，会从 Zookeeper 上订阅服务。
   * client : SOFADashboard 客户端，引入 sofa-dashboard-client 包即可。目前仅提供将应用的健康检查状态及端口信息注册到 Zookeeper ，后面将会演化成 SOFABoot client，上报更丰富的应用数据。
-  * ark-biz 宿主应用: 参考 [SOFAArk ](https://www.sofastack.tech/sofa-boot/docs/sofa-ark-ark-config)。
+  * ark-biz 宿主应用: 参考 [SOFAArk](https://www.sofastack.tech/sofa-boot/docs/sofa-ark-ark-config) 。
