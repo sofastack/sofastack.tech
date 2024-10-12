@@ -10,6 +10,7 @@ open sourced by Ant Financial. Based on  [Fat Jar](https://docs.spring.io/spring
 If you want to merge multi app into one jvm, please go and refer to [koupleless](https://github.com/koupleless/koupleless) which based on SOFAArk; if you want to just isolate class by classLoader then you can read docs in this site, and focus on sofaArk Plugin.
 
 ## Background
+
 In Java world, dependency is always a problem, and can cause various errors, such as `LinkageError`, `NoSuchMethodError` etc. There are many ways to solve the dependency problems, the Spring Boot's way is using a dependency management to manage all the dependencies, make sure that all the dependencies in the dependency management will not conflict and can work pretty well. This is quite a simple and efficient way, it can cover most scenario, but there is some exceptions.
 
 For example, there is a project that need protobuf version 2 and protobuf version 3, and because protobuf version 3 is not compatible with version 2, so the project can not simply upgrade the protobuf to version 3 to solve the problem. There is same problem for hessian version 3 and version 4.
@@ -39,6 +40,7 @@ In runtime, `Ark Container` would automatically recognize `Ark-Plugin` and `Ark-
 isolated well. For example, if a project has two dependencies of A and B, but A depends on C (version = 0.1) and B depends on C (version = 0.2), so conflicts maybe emerge.
 
 ## Scenario
+
 SOFAArk was originally designed to resolve package conflicts, but when and how can you use SOFAArk? Assume that a project needs to introduce two third-party packages A and B; package A needs to depend on package C with the version number 0.1, whereas package B needs to depend on package C with the version number 0.2; the two versions of package C are incompatible, illustrated as follows:
 
 ![conflict](https://cdn.yuque.com/lark/2018/png/590/1523868150329-41ea3982-4783-49b0-a1e6-ffffddbe0886.png)
