@@ -130,7 +130,7 @@ Koupleless 是一种多应用的架构，而传统的中间件可能只考虑了
 
 - **logback 通过 condition 进行适配**
 
-```
+```Java
  <if condition='property("sofa.ark.embed.enable").contains("true")'>
         <then>
             <springProperty scope="context" name="APP_NAME" source="spring.application.name" defaultValue="NO_APP_CONFIG"/>
@@ -145,7 +145,7 @@ Koupleless 是一种多应用的架构，而传统的中间件可能只考虑了
 
 - **log4j 通过 properties 进行适配**
 
-```
+```Java
 <Property name="loggingRoot">${sys:user.home}/logs/${spring:tuya.sofa.ark.app:-}</Property>
 ```
 
