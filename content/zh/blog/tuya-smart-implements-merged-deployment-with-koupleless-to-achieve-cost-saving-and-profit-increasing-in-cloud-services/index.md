@@ -26,7 +26,7 @@ Koupleless 在涂鸦智能的落地效果探讨
 
 涂鸦智能是全球领先的云平台服务提供商，致力于构建智慧解决方案的开发者生态，赋能万物智能。基于全球公有云，涂鸦开发者平台实现了智慧场景和智能设备的互联互通，承载着每日数以亿计的设备请求交互；拥有亿级海量数据并发处理能力，为用户提供高稳定性的不间断计算服务。
 
-![](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*KyYCQL-KpqwAAAAAAAAAAAAADrGAAQ/original\)
+![](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*KyYCQL-KpqwAAAAAAAAAAAAADrGAAQ/original)
 
 涂鸦智能不仅服务于公有云用户，同时也为大客户提供混合云及私有云解决方案，满足不同层次客户的需求。因此，涂鸦需要同时关注公有云和私有云服务中潜在的问题。
 
@@ -58,7 +58,7 @@ Koupleless 在涂鸦智能的落地效果探讨
 
 从上面分析可以看出，除了业务应用代码本身和业务流量处理之外，其他的内存占用当然是越少越好。一个简单的控制台应用内存占用如下图所示：
 
-![](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*GQ0vQ6WzZvsAAAAAAAAAAAAADrGAAQ/original\)
+![](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*GQ0vQ6WzZvsAAAAAAAAAAAAADrGAAQ/original)
 
 在微服务架构的视角下，Java 应用不但没有百多兆的 JRE 和框架之类的基础内存需要问题，更重要的是，单个微服务也不再需要再数十 GB 的内存。有了高可用的服务集群，也无须追求单个服务 7×24 小时不间断运行，在一天内随着业务流量的波动、高峰和低谷，服务随时可以进行弹性扩缩容。
 
@@ -86,7 +86,7 @@ Koupleless 是一种模块化的 Serverless 技术解决方案，它能让普通
 - **插件机制：** 通过插件机制解决依赖冲突问题；
 - **基座和模块：** 可以将中间件和基础框架下沉到基座，框架与中间件升级维护成本降低。通过进程内 JVM 调用替代远程调用，节省网络 IO 和序列化反序列化成本，提升性能和稳定性。见下图：
 
-![ ](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*LrWRQYFn4MUAAAAAAAAAAAAADrGAAQ/original\)
+![ ](https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*LrWRQYFn4MUAAAAAAAAAAAAADrGAAQ/original)
 
 - **静态合并部署：** 方便快速验证，简化部署，适合私有云环境；
 - **动态合并部署：** 支持模块的热更新，提高发布效率，降低启动时间，适合公有云环境。
@@ -130,17 +130,24 @@ Koupleless 是一种多应用的架构，而传统的中间件可能只考虑了
 
 - **logback 通过 condition 进行适配**
 
-'''java
-<if condition='property("sofa.ark.embed.enable").contains("true")'>        <then>            <springProperty scope="context" name="APP_NAME" source="spring.application.name" defaultValue="NO_APP_CONFIG"/>            <property name="BASE_PATH" value="${user.home}/logs/${APP_NAME}"/>        </then>
-            <else>            <springProperty scope="context" name="loggingRoot" source="logging.file.path"/>            <property name="BASE_PATH" value="${loggingRoot}/"/>        </else>
-        </if>
-'''
+```
+ <if condition='property("sofa.ark.embed.enable").contains("true")'>
+        <then>
+            <springProperty scope="context" name="APP_NAME" source="spring.application.name" defaultValue="NO_APP_CONFIG"/>
+            <property name="BASE_PATH" value="${user.home}/logs/${APP_NAME}"/>
+        </then>
+        <else>
+            <springProperty scope="context" name="loggingRoot" source="logging.file.path"/>
+            <property name="BASE_PATH" value="${loggingRoot}/"/>
+        </else>
+    </if>
+```
 
 - **log4j 通过 properties 进行适配**
 
-'''java
-    <Property name="loggingRoot">${sys:user.home}/logs/${spring:tuya.sofa.ark.app:-}</Property>
-'''
+```
+<Property name="loggingRoot">${sys:user.home}/logs/${spring:tuya.sofa.ark.app:-}</Property>
+```
 
 - **log4j2 和 logback 日志在同一个基座中混用**
 
