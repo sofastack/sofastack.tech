@@ -10,7 +10,7 @@ cover: "https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*drudT5lwAVAAAAAAA
 
 ## 作者简介
 
-文｜八幡、朵拉
+文｜八幡、朵拉 
 
 杭州涂鸦智能技术专家,主要研究微服务与可观测、消息引擎、任务调度、数据层中间件等领域。 
 
