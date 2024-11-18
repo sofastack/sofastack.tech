@@ -108,11 +108,13 @@ title: "Awesome SOFA"
     - ~~金融级分布式架构 SOFAStack 4群，群号：23372465~~ 已满
     - ~~金融级分布式架构 SOFAStack 5群，群号：30315793~~ 已满
     - ~~金融级分布式架构 SOFAStack 6群，群号：34197075~~ 已满
-    - 金融级分布式架构 SOFAStack 7群，群号：44858463
+    - ~~金融级分布式架构 SOFAStack 7群，群号：44858463~~ 已满
+    - 🆕金融级分布式架构 SOFAStack 8群，群号：88800020698 
 
-      <img alt="DingTalk" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*1DklS7SZFNMAAAAAAAAAAAAAARQnAQ" height="250" />
+      <img alt="DingTalk" src="https://mdn.alipayobjects.com/huamei_soxoym/afts/img/A*7SDYR6L3bDgAAAAAAAAAAAAADrGAAQ/original" height="250" />
 
   - 钉钉交流群：SOFAStack 金牌用户服务群，如果您已经在生产环境使用了 SOFAStack 相关组件，还请告知我们，我们将会邀请您加入到此群中，以便更加快捷的沟通和更加高效的线上使用问题支持。
+- [知乎](https://www.zhihu.com/people/antfin-sofa)
 - [新浪微博](https://weibo.com/sofastack)
 - [掘金](https://juejin.im/user/5a42596ff265da43062b06e8)
 - [twitter](https://twitter.com/sofastack_io)
@@ -745,7 +747,3 @@ title: "Awesome SOFA"
 </table>
 
 想要参与贡献，可以直接去[项目列表](/projects)找到您关注的项目。
-
-## 用户登记{#registration}
-
-如果您已经在生产环境使用了 SOFAStack 相关组件，请在[这里](https://github.com/sofastack/sofastack.tech/issues/5)登记告诉我们，方便我们更好地为您服务。
