@@ -5,7 +5,7 @@ title: "SOFAStack 社区"
 
 Hello~欢迎来到 SOFAStack 开源社区，首先感谢一直以来支持 SOFAStack 的你们 ❤
 
-社区随时都欢迎各种贡献，无论是**简单的错别字修正**、**bug 修复**还是**增加新功能**，欢迎提 issue 或 pull request 至 Github 社区，也可以加入钉钉群：群号 44858463 联系我们。
+社区随时都欢迎各种贡献，无论是**简单的错别字修正**、**bug 修复**还是**增加新功能**，欢迎提 issue 或 pull request 至 Github 社区，也可以加入钉钉群：群号 88800020698 联系我们。
 
 项目地址：[https://github.com/sofastack](https://github.com/sofastack)
 
@@ -40,7 +40,7 @@ Hello~欢迎来到 SOFAStack 开源社区，首先感谢一直以来支持 SOFAS
 - [SOFAMeetup](/tags/sofameetup/)：线下高质量的云原生架构面基活动，将以每 2 月一场的频次，在全国各个城市站，举行线下技术交流会；
 - [SOFAChannel](/tags/sofachannel/)：有趣实用的分布式架构频道，将以每月一场的频次，在线上展开直播活动，分享技术干货；
 
-有想要交流的话题或者想要举办的城市，非常欢迎告诉我们，加入互动钉钉群：群号 44858463 与我们交流。
+有想要交流的话题或者想要举办的城市，非常欢迎告诉我们，加入互动钉钉群：群号 88800020698 与我们交流。
 
 ## SOFAStack 社区组织架构
 
