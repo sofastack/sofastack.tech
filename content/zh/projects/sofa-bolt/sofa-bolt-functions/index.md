@@ -11,7 +11,7 @@ aliases: "/sofa-bolt/docs/Functions"
 
 * 基础通信功能 ( remoting-core )
     * 基于 Netty 高效的网络 IO 与线程模型运用
-    * 连接管理 (无锁建连，定时断链，自动重连)
+    * 连接管理 (无锁建连，定时断连，自动重连)
     * 基础通信模型 ( oneway，sync，future，callback )
     * 超时控制
     * 批量解包与批量提交处理器
