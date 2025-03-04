@@ -10,7 +10,7 @@
 
 **本文2773字，预计阅读 7 分钟**
 
-本文属于 Koupleless 进阶系列文章第五篇，默认读者对 Koupleless 的基础概念、能力都已经了解。如果还未了解过的可以在文末**​「阅读原文」​**​​**查看官网**​ *（https://koupleless.io/ ​）*。
+本文属于 Koupleless 进阶系列文章第五篇，默认读者对 Koupleless 的基础概念、能力都已经了解。如果还未了解过的可以在文末**​「阅读原文」​**​​**查看官网**​ [*https://koupleless.io/​*](https://koupleless.io/)。
 
 进阶系列一：[Koupleless 内核系列｜模块化隔离与共享带来的收益与挑战](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247552272&idx=1&sn=fa4b3336127fb8e391d43ff25f49a5f4&chksm=faa3e2cacdd46bdcb801a8fc948057b581574cff39c194e2f977842131d89ca273ba6c79fb5b&scene=21#wechat_redirect)
 
