@@ -15,7 +15,8 @@ cover: "[https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Rap6SJnP9f0AAAAA
 1. 扩展性尽可能强。扩展能力是插件的根基。如果一个插件机制一无所长、处处碰壁，那么其他能力再好也拯救不了它。
 2. 开发效率尽可能高。大部分功能都是通过插件来实现的，所以插件机制的开发效率越高，整体的功能迭代速度就越快。
 
-**GitHub: ​**https://github.com/mosn/htnn
+
+**GitHub**: https://github.com/mosn/htnn
 
 ## FilterPolicy CRD
 
@@ -64,6 +65,7 @@ targetRef 可以指向不同种类、层次各异的资源。我们可以用 tar
 
 filters 的类型是`map[string]Plugin`的KV 对。Key 是插件名，Value 是 Plugin。Plugin 不关心具体有什么配置，只是个载体：
 
+
 ```
 type Plugin struct {
     Config runtime.RawExtension `json:"config"`
@@ -104,5 +106,6 @@ type Plugin struct {
 **欢迎大家加入社区与我们交流**
 
 **GitHub**
+
 
 https://github.com/mosn/htnn
