@@ -1,6 +1,6 @@
 # 如何在一个基座上安装更多的 Koupleless 模块？
 
-**文|梁栎鹏（立蓬）**
+**文|梁栎鹏（立蓬）** 
 
 蚂蚁集团技术工程师
 
@@ -16,7 +16,7 @@
 
 进阶系列二：[Koupleless 单进程多应用如何解决兼容问题](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247552463&idx=1&sn=945889ddc42baf19cb7c2311a613fc38&chksm=faa3e215cdd46b0308579a7558198fbd4e790bdf618a1b058c8b283649772671f7662def339c&scene=21#wechat_redirect)
 
-进阶系列三：[Koupleless 内核系列 | 一台机器内 Koupleless 模块数量的极限在哪里？](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247552624&idx=1&sn=68663f07f8b79efe64ac9942f137e316&chksm=faa3e1aacdd468bc28edc9a449c452f516e7676e18968e39f26bbc41565d0251adfff2159dbe&scene=21#wechat_redirect)
+进阶系列三：[Koupleless 内核系列|一台机器内 Koupleless 模块数量的极限在哪里？](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247552624&idx=1&sn=68663f07f8b79efe64ac9942f137e316&chksm=faa3e1aacdd468bc28edc9a449c452f516e7676e18968e39f26bbc41565d0251adfff2159dbe&scene=21#wechat_redirect)
 
 进阶系列四：[Koupleless 可演进架构的设计与实践｜当我们谈降本时，我们谈些什么](http://mp.weixin.qq.com/s?__biz=MzUzMzU5Mjc1Nw==&mid=2247553424&idx=1&sn=94db1883e3e0eed3f2cb0b19728030c0&chksm=faa3fe4acdd4775c2501457f064fe0473188e5a2fd24131ddc1c1cf4544d6605ec8d35e9ef05&scene=21#wechat_redirect)
 
