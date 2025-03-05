@@ -1,3 +1,13 @@
+---
+title: "喜报！Apache Seata (incubating) 荣获 2024 开源创新榜单“年度开源项目”！"
+authorlink: "https://github.com/sofastack"
+description: "恭喜 Apache Seata (incubating) 荣获 2024 开源创新榜单“年度开源项目”！"
+categories: "SOFAStack"
+tags: ["SOFAStack"]
+date: 2024-12-24T15:00:00+08:00
+cover: "https://img.alicdn.com/imgextra/i1/O1CN01AZV4c427kwbqEG0sE_!!6000000007836-0-tps-1080-540.jpg"
+---
+
 # 喜报！Apache Seata (incubating) 荣获 2024 开源创新榜单“年度开源项目”！
 
 **恭喜 Apache Seata (incubating) 荣获 2024 开源创新榜单“年度开源项目”！**
