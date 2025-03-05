@@ -1,5 +1,15 @@
 # 开源之夏经验分享｜MOSN 社区韦鑫：做自己认为很酷的事
 
+---
+title: "开源之夏经验分享｜MOSN 社区韦鑫：做自己认为很酷的事"
+authorlink: "https://github.com/sofastack"
+description: "MoE*​（MOSN on Envoy）​*融合了 MOSN 和 Envoy 生态，打造高性能、高扩展性的数据平面，MOSN 技术团队已经把 MoE 技术贡献到 Envoy 上游，可直接使用 Envoy 最新版本来开发。"
+categories: "SOFAStack"
+tags: ["SOFAStack"]
+date: 2024-12-10T15:00:00+08:00
+cover: "[https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Rap6SJnP9f0AAAAAAAAAAAAAARQnAQ](https://img.alicdn.com/imgextra/i1/O1CN01lLtyJs1k5y0irosCL_!!6000000004633-0-tps-1218-516.jpg)"
+---
+
 **文|韦鑫** 
 计算机科学与技术学院
 HTNN 社区贡献者
