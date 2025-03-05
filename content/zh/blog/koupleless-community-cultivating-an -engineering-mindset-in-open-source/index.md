@@ -1,9 +1,7 @@
 # 开源之夏经验分享｜Koupleless 社区黄兴抗：在开源中培养工程思维
 
-**文|黄兴抗**
-
+**文|黄兴抗** 
 电子信息工程专业
-
 Koupleless 社区贡献者
 
 就读于南昌师范学院，电子信息工程专业的大三学生。
@@ -54,7 +52,7 @@ Koupleless 社区贡献者
 **1. 模块打包插件的引入**
 POM 文件中的关键配置如下：
 
-```
+```bash
 <plugin>
 <groupId>com.alipay.sofa</groupId>
 <artifactId>sofa-ark-maven-plugin</artifactId>
@@ -71,7 +69,7 @@ POM 文件中的关键配置如下：
 **2. 模块瘦身的必要性**
 模块瘦身配置示例：
 
-```
+```bash
 slimming.excludeGroupIds=org.springframework,org.apache.commons
 slimming.excludeArtifactIds=commons-lang,commons-io
 ```
@@ -82,7 +80,7 @@ slimming.excludeArtifactIds=commons-lang,commons-io
 **3. 配置文件改造的意义**
 配置文件处理的核心逻辑如下：
 
-```
+```bash
 public static void modifyApplicationProperties(String directoryPath, String applicationName) {
 Properties props = new Properties();
 props.setProperty("spring.application.name", applicationName);
