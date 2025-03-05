@@ -1,3 +1,13 @@
+---
+title: "如何在一个基座上安装更多的 Koupleless 模块？"
+authorlink: "https://github.com/sofastack"
+description: "本文属于 Koupleless 进阶系列文章第五篇，默认读者对 Koupleless 的基础概念、能力都已经了解。如果还未了解过的可以查看官网"
+categories: "SOFAStack"
+tags: ["SOFAStack"]
+date: 2024-11-19T15:00:00+08:00
+cover: "https://img.alicdn.com/imgextra/i1/O1CN01dTwGEx1m9I7KOmUlD_!!6000000004911-0-tps-1216-521.jpg"
+---
+
 # 如何在一个基座上安装更多的 Koupleless 模块？
 
 **文 梁栎鹏（立蓬）** 
