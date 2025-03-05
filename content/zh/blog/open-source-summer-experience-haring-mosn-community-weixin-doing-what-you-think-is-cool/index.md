@@ -1,5 +1,3 @@
-# 开源之夏经验分享｜MOSN 社区韦鑫：做自己认为很酷的事
-
 ---
 title: "开源之夏经验分享｜MOSN 社区韦鑫：做自己认为很酷的事"
 authorlink: "https://github.com/sofastack"
@@ -9,6 +7,8 @@ tags: ["SOFAStack"]
 date: 2024-12-10T15:00:00+08:00
 cover: "https://img.alicdn.com/imgextra/i1/O1CN01lLtyJs1k5y0irosCL_!!6000000004633-0-tps-1218-516.jpg"
 ---
+
+# 开源之夏经验分享｜MOSN 社区韦鑫：做自己认为很酷的事
 
 **文|韦鑫** 
 计算机科学与技术学院
