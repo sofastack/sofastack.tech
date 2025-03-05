@@ -1,3 +1,13 @@
+---
+title: "开源之夏经验分享｜Koupleless 社区黄兴抗：在开源中培养工程思维"
+authorlink: "https://github.com/sofastack"
+description: "本项目的核心目标是建设存量应用的自动化模块改造工具，使得应用能够实现传统应用向模块化的低成本升级，兼顾代码兼容性，同时支持独立启动与合并部署。"
+categories: "SOFAStack"
+tags: ["SOFAStack"]
+date: 2024-12-31T15:00:00+08:00
+cover: "https://img.alicdn.com/imgextra/i2/O1CN01j3AhW71OAA5e138g4_!!6000000001664-0-tps-1215-517.jpg"
+---
+
 # 开源之夏经验分享｜Koupleless 社区黄兴抗：在开源中培养工程思维
 
 **文|黄兴抗** 
