@@ -7,7 +7,7 @@ description: "MoE*​（MOSN on Envoy）​*融合了 MOSN 和 Envoy 生态，�
 categories: "SOFAStack"
 tags: ["SOFAStack"]
 date: 2024-12-10T15:00:00+08:00
-cover: "[https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Rap6SJnP9f0AAAAAAAAAAAAAARQnAQ](https://img.alicdn.com/imgextra/i1/O1CN01lLtyJs1k5y0irosCL_!!6000000004633-0-tps-1218-516.jpg)"
+cover: "https://img.alicdn.com/imgextra/i1/O1CN01lLtyJs1k5y0irosCL_!!6000000004633-0-tps-1218-516.jpg"
 ---
 
 **文|韦鑫** 
