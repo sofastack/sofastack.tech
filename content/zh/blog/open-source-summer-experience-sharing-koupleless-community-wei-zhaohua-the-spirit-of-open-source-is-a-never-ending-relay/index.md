@@ -1,5 +1,3 @@
-# 开源之夏经验分享｜Koupleless 社区魏照华：开源精神是场永不停歇的接力
-
 ---
 title: "开源之夏经验分享｜Koupleless 社区魏照华：开源精神是场永不停歇的接力"
 authorlink: "https://github.com/sofastack"
@@ -9,6 +7,8 @@ tags: ["SOFAStack"]
 date: 2025-02-18T15:00:00+08:00
 cover: "https://img.alicdn.com/imgextra/i1/O1CN01tgLCeN1Hv9PsqFE6B_!!6000000000819-0-tps-1217-516.jpg"
 ---
+
+# 开源之夏经验分享｜Koupleless 社区魏照华：开源精神是场永不停歇的接力
 
 > 魏照华
 > 
