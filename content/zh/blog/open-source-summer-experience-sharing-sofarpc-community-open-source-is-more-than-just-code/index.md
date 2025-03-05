@@ -1,5 +1,16 @@
 # 开源之夏经验分享｜SOFARPC 社区郑佳莉：开源的收获不止代码
 
+---
+title: "开源之夏经验分享｜SOFARPC 社区郑佳莉：开源的收获不止代码"
+authorlink: "https://github.com/sofastack"
+description: "RPC 动态配置能力是指运行时针对 RPC 相关的配置进行修改，使其能够根据需要动态调整行为，而无需重新启动服务或强制更新客户端应用程序。动态配置能力通常包括动态调整负载均衡策略、重试策略、超时设置、限流和熔断策略、序列化和反序列化配置等。
+当前 SOFARPC 简单集成了 Apollo 配置中心，期望梳理出 SOFARPC 相关需要支持的动态配置，完善对应的接口维度的动态配置能力。另外，在此基础之上，期望在 SOFARPC 中集成 Nacos、Zookeeper 等作为配置中心，支持对应的动态配置能力。"
+categories: "SOFAStack"
+tags: ["SOFAStack"]
+date: 2024-02-11T15:00:00+08:00
+cover: "https://img.alicdn.com/imgextra/i2/O1CN01oZDNj71Ri0ChbhCcH_!!6000000002144-0-tps-1216-515.jpg"
+---
+
 > **文|郑佳莉**
 > 计算机学院研二在读
 > SOFARPC 社区贡献者
