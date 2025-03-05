@@ -1,5 +1,15 @@
 # 开源之夏经验分享｜Koupleless 社区魏照华：开源精神是场永不停歇的接力
 
+---
+title: "开源之夏经验分享｜Koupleless 社区魏照华：开源精神是场永不停歇的接力"
+authorlink: "https://github.com/sofastack"
+description: "SOFAArk 打包插件就是将传统 Maven 工程打包成 SOFAArk 模块 jar 包的插件，并且支持设置类的隔离与共享的配置能力（对象的隔离与共享不在该插件里配置）。但是当前 SOFAArk 打包插件只支持 Maven 版本，不支持 Gradle 版本，导致很多 Gradle 的用户无法使用 SOFAArk 来享受到 Koupleless 模块化研发框架的收益。"
+categories: "SOFAStack"
+tags: ["SOFAStack"]
+date: 2025-02-18T15:00:00+08:00
+cover: "https://img.alicdn.com/imgextra/i1/O1CN01tgLCeN1Hv9PsqFE6B_!!6000000000819-0-tps-1217-516.jpg"
+---
+
 > 魏照华
 > 
 > Computer Science
