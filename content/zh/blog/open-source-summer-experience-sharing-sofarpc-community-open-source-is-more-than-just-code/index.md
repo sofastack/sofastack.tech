@@ -1,5 +1,3 @@
-# 开源之夏经验分享｜SOFARPC 社区郑佳莉：开源的收获不止代码
-
 ---
 title: "开源之夏经验分享｜SOFARPC 社区郑佳莉：开源的收获不止代码"
 authorlink: "https://github.com/sofastack"
@@ -10,6 +8,8 @@ tags: ["SOFAStack"]
 date: 2024-02-11T15:00:00+08:00
 cover: "https://img.alicdn.com/imgextra/i2/O1CN01oZDNj71Ri0ChbhCcH_!!6000000002144-0-tps-1216-515.jpg"
 ---
+
+# 开源之夏经验分享｜SOFARPC 社区郑佳莉：开源的收获不止代码
 
 > **文|郑佳莉**
 > 计算机学院研二在读
