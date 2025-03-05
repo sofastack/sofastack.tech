@@ -1,3 +1,13 @@
+---
+title: "Koupleless 2024 年度报告 & 2025 规划展望"
+authorlink: "https://github.com/sofastack"
+description: "Koupleless 是一个基于模块化技术的企业级解决方案，涉及的组件和功能较多，包括研发框架、运维调度、研发工具、生态治理工具链等。从 2023 年经过半年的建设到 24 年初基本框架成型发布 1.0.0 版本"
+categories: "SOFAStack"
+tags: ["SOFAStack"]
+date: 2025-02-18T15:00:00+08:00
+cover: "https://img.alicdn.com/imgextra/i1/O1CN01tgLCeN1Hv9PsqFE6B_!!6000000000819-0-tps-1217-516.jpg"
+---
+
 # Koupleless 2024 年度报告 & 2025 规划展望
 
 > **赵真灵** *（花名：有济）*
