@@ -1,3 +1,13 @@
+---
+title: "开源之夏经验分享｜Layotto 社区 郑浩宁：尝试，就会有收获！"
+authorlink: "https://github.com/sofastack"
+description: "Layotto 在创建之初，目标就是需要兼容 Dapr 接口和 Dapr 相关的 component 的实现，并且在 22 年，对 Dapr 的 v1.5.2 版本做了第一次的兼容。但是当前 Dapr 的版本已经走到了 v1.13.0，很多能力做了修复，就需要我们将 Layotto 中 Dapr 的兼容版本升级到 v1.13.0。"
+categories: "SOFAStack"
+tags: ["SOFAStack"]
+date: 2024-12-17T15:00:00+08:00
+cover: "https://img.alicdn.com/imgextra/i4/O1CN01tv0Mrm1z0DGuwoHTc_!!6000000006651-0-tps-1215-518.jpg"
+---
+
 # 开源之夏经验分享｜Layotto 社区 郑浩宁：尝试，就会有收获！
 
 **文 郑浩宁** 
