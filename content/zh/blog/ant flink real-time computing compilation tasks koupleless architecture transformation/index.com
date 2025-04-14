@@ -71,7 +71,7 @@ Flink 提交作业的核心在于编译用户提交过来的代码，这个过�
 2. 基于请求依赖的 UDF 包，构建请求级别的 ClassLoader
 3. 启动线程执行编译逻辑，并且回收 UDF ClassLoader
 
-![图片][https://i.postimg.cc/zGBXNDz2/image.png](https://i.postimg.cc/qBwWcsrS/image.png)
+![图片](https://i.postimg.cc/qBwWcsrS/image.png)
 
 Flink 编译任务进行 Koupleless 改造后的线程模型：
 
