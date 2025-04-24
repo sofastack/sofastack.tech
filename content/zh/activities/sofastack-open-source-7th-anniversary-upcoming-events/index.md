@@ -5,7 +5,7 @@ description: "SOFAStack 开源七周年啦，诚邀您来参加！"
 categories: "SOFAStack"
 tags: ["SOFAStack"]
 date: 2025-04-22T15:00:00+08:00
-cover: "[https://img.alicdn.com/imgextra/i3/O1CN01CkM7ve1YXCBFZ38zG_!!6000000003068-2-tps-1080-540.png](https://img.alicdn.com/imgextra/i3/O1CN01CkM7ve1YXCBFZ38zG_!!6000000003068-2-tps-1080-540.png)"
+cover: "https://img.alicdn.com/imgextra/i3/O1CN01CkM7ve1YXCBFZ38zG_!!6000000003068-2-tps-1080-540.png"
 ---
 
 # SOFAStack 开源七周年活动预告
