@@ -5,7 +5,7 @@ description: "SOFAStack 开源七周年啦，诚邀您来参加！"
 categories: "SOFAStack"
 tags: ["SOFAStack"]
 date: 2025-04-22T15:00:00+08:00
-cover: "[https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Rap6SJnP9f0AAAAAAAAAAAAAARQnAQ](https://img.alicdn.com/imgextra/i3/O1CN01CkM7ve1YXCBFZ38zG_!!6000000003068-2-tps-1080-540.png)"
+cover: "[https://img.alicdn.com/imgextra/i3/O1CN01CkM7ve1YXCBFZ38zG_!!6000000003068-2-tps-1080-540.png](https://img.alicdn.com/imgextra/i3/O1CN01CkM7ve1YXCBFZ38zG_!!6000000003068-2-tps-1080-540.png)"
 ---
 
 # SOFAStack 开源七周年活动预告
@@ -36,7 +36,7 @@ cover: "[https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*Rap6SJnP9f0AAAAA
 * 你想让协作开发不再阻塞，合作效率提升 10 倍吗？
 * 你想用 1/5 的成本实现架构代际升级吗？
 
-Koupleless 创新性地设计了对传统微服务架构的升级，解决以上痛点，提供同时拥有“Speed as you need（多人协作无阻塞、秒级应用构建启动）”“Pay as you need（资源复用、按需部署）““Deploy as you need（部分变更）”"Evolution as you need（轻松演进为微服务或回到单体应用）” 特性的架构演进方式：Koupleless 模块化，实现平滑升级。
+Koupleless 创新性地设计了对传统微服务架构的升级，解决以上痛点，提供同时拥有“Speed as you need（多人协作无阻塞、秒级应用构建启动）”、“Pay as you need（资源复用、按需部署）”、“Deploy as you need（部分变更）”、"Evolution as you need（轻松演进为微服务或回到单体应用）” 特性的架构演进方式：Koupleless 模块化，实现平滑升级。
 
 本次议题将深度解密 Koupleless 在蚂蚁集团支撑了 100+ 万核机器的应用程序的实战经验，分享如何通过 Koupleless 实现构建产物从 GB 减少到 MB，业务启动时间从分钟级降到秒级，平均迭代效率提升 10+ 倍。
 
@@ -79,10 +79,10 @@ Koupleless PMC 成员，主要研究方向是云原生领域，参与维护与�
 
 ![图4](https://img.alicdn.com/imgextra/i1/O1CN01N4yOCO22bGASmDwEs_!!6000000007138-2-tps-990-814.png)
 
-*（图片仅供参考，以收到实物为准）*
+（图片仅供参考，以收到实物为准）
 
 欢迎**扫描下方二维码**报名
 
 ![图5](https://img.alicdn.com/imgextra/i4/O1CN01pVlWFz1c47V50PG9V_!!6000000003546-2-tps-430-430.png)
 
-*（提交报名后，经主办方等审核并通过后可获得入场电子票）*
+（提交报名后，经主办方等审核并通过后可获得入场电子票）
