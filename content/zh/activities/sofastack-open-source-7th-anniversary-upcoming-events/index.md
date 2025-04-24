@@ -26,8 +26,6 @@ cover: "[https://img.alicdn.com/imgextra/i3/O1CN01CkM7ve1YXCBFZ38zG_!!6000000003
 
 梁栎鹏，蚂蚁研发工程师，Koupleless PMC
 
-![图2](https://img.alicdn.com/imgextra/i1/O1CN01BDsfzi1x1T8eYU409_!!6000000006383-2-tps-1080-1088.png)
-
 #### 议题简介
 
 在云原生技术重塑应用架构的今天，单体应用和微服务应用向 Serverless 架构的迁移仍面临困局：大应用存在启动慢、多人协作冲突和交付效率低问题，难以快速弹性伸缩、快速迭代；微服务拆出应用过多导致资源和管理成本高，难以节省机器成本；老应用演进到新架构的改造成本和风险高，难以演进到 Serverless。
@@ -47,9 +45,6 @@ Koupleless PMC 成员，主要研究方向是云原生领域，参与维护与�
 ### 智算时代的流量枢纽：蚂蚁 AI Gateway 如何提升大模型推理效能
 
 罗泽轩，蚂蚁研发工程师，MOSN 社区核心成员
-
-![图3](https://img.alicdn.com/imgextra/i1/O1CN01DKLwx41xXWrZrGHtX_!!6000000006453-2-tps-1080-1110.png)
-
 
 #### 议题简介
 
