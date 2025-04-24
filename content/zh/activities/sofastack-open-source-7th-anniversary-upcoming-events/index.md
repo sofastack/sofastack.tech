@@ -9,6 +9,7 @@ cover: "https://img.alicdn.com/imgextra/i3/O1CN01CkM7ve1YXCBFZ38zG_!!60000000030
 ---
 
 # SOFAStack 开源七周年活动预告
+
 明天就是 SOFAStack 的七岁生日啦！
 
 自 2018 年 4 月 19 日起，七年的时间，无数 SOFAer 怀揣着对技术的热忱，用一行行代码、一次次贡献，让 SOFAStack 从一颗小小的种子成长为枝繁叶茂的大树，构建起了一个生机勃勃、充满创新活力的 SOFA 社区。
