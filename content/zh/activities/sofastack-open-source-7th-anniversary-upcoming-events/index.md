@@ -97,6 +97,6 @@ Koupleless PMC 成员，主要研究方向是云原生领域，参与维护与�
 
 本次活动 Koupleless 和 MOSN 议题相关分享资料点击查看👉
 
-[梁栎鹏-Koupleless如何助力应用低成本演进至 Serverless](https://mdn.alipayobjects.com/huamei_soxoym/afts/file/A*VVjQSZCgZI8AAAAAAAAAAAAAerGAAQ/%E3%80%90ppt%E7%BB%88%E7%A8%BF%E3%80%91%E6%A2%81%E6%A0%8E%E9%B9%8F-Koupleless%E5%A6%82%E4%BD%95%E5%8A%A9%E5%8A%9B%E5%BA%94%E7%94%A8%E4%BD%8E%E6%88%90%E6%9C%AC%E6%BC%94%E8%BF%9B%E8%87%B3%20Serverless.pptx)
+[梁栎鹏-Koupleless如何助力应用低成本演进至 Serverless](https://mdn.alipayobjects.com/huamei_soxoym/afts/file/A*ViDWRp3BnbwAAAAAAAAAAAAAerGAAQ/%E3%80%90PDF%E3%80%91%E6%A2%81%E6%A0%8E%E9%B9%8F-Koupleless%E5%A6%82%E4%BD%95%E5%8A%A9%E5%8A%9B%E5%BA%94%E7%94%A8%E4%BD%8E%E6%88%90%E6%9C%AC%E6%BC%94%E8%BF%9B%E8%87%B3%20Serverless.pdf)
 
-[罗泽轩-智算时代的流量枢纽-蚂蚁 AI Gateway 如何提升大模型推理效能](https://mdn.alipayobjects.com/huamei_soxoym/afts/file/A*-HCbSbWiwKEAAAAAAAAAAAAAerGAAQ/%E3%80%90ppt%E7%BB%88%E7%A8%BF%E3%80%91%E7%BD%97%E6%B3%BD%E8%BD%A9-%E6%99%BA%E7%AE%97%E6%97%B6%E4%BB%A3%E7%9A%84%E6%B5%81%E9%87%8F%E6%9E%A2%E7%BA%BD-%E8%9A%82%E8%9A%81%20AI%20Gateway%20%E5%A6%82%E4%BD%95%E6%8F%90%E5%8D%87%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8E%A8%E7%90%86%E6%95%88%E8%83%BD.pptx)
+[罗泽轩-智算时代的流量枢纽-蚂蚁 AI Gateway 如何提升大模型推理效能](https://mdn.alipayobjects.com/huamei_soxoym/afts/file/A*qxBzRoZf_sEAAAAAAAAAAAAAerGAAQ/%E3%80%90PDF%E3%80%91%E7%BD%97%E6%B3%BD%E8%BD%A9-%E6%99%BA%E7%AE%97%E6%97%B6%E4%BB%A3%E7%9A%84%E6%B5%81%E9%87%8F%E6%9E%A2%E7%BA%BD-%E8%9A%82%E8%9A%81%20AI%20Gateway%20%E5%A6%82%E4%BD%95%E6%8F%90%E5%8D%87%E5%A4%A7%E6%A8%A1%E5%9E%8B%E6%8E%A8%E7%90%86%E6%95%88%E8%83%BD.pdf)
