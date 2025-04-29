@@ -1,7 +1,7 @@
 ---
 title: "SOFAStack 开源七周年「七年同行，依然热爱」"
 authorlink: "https://github.com/sofastack"
-description: "七年同行，初心如磐，依然热爱。愿未来的每一行代码，仍与你共写；愿下一个七年，热爱依旧，探索不止。七周年活动议题相关资料文末自取哦~"
+description: "2025 年 4 月 26 日我们举办了SOFAStack七周年生日活动。七年同行，依然热爱，期待 SOFA 未来能够吸引更多的开发者，服务更多的用户。"
 categories: "SOFAStack"
 tags: ["SOFAStack"]
 date: 2025-04-22T15:00:00+08:00
