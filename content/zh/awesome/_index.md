@@ -100,6 +100,10 @@ title: "Awesome SOFA"
     
     <img alt="Wechat" src="https://gw.alipayobjects.com/mdn/sofastack/afts/img/A*LVCnR6KtEfEAAAAAAAAAAABjARQnAQ" height="250" />
   
+  - 视频号：SOFAGirl：走进 SOFA 团队，带你了解不一样的技术信息
+    
+    <img alt="Wechat" src="https://gw.alipayobjects.com/mdn/rms_1c90e8/afts/img/A*rhbMRoFunTIAAAAAAAAAAAAAARQnAQ" height="250" />
+
 - 钉钉
   - 钉钉交流群：
     - ~~金融级分布式架构 SOFAStack 1群，群号：23127468~~ 已满
