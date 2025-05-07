@@ -1,7 +1,7 @@
 ---
-title: "SOFAStack 开源七周年活动预告"
+title: "SOFAStack 开源七周年「七年同行，依然热爱」"
 authorlink: "https://github.com/sofastack"
-description: "SOFAStack 开源七周年啦，诚邀您来参加！"
+description: "2025 年 4 月 26 日我们举办了SOFAStack七周年生日活动。七年同行，依然热爱，期待 SOFA 未来能够吸引更多的开发者，服务更多的用户。"
 categories: "SOFAStack"
 tags: ["SOFAStack"]
 date: 2025-04-22T15:00:00+08:00
@@ -18,16 +18,6 @@ cover: "https://img.alicdn.com/imgextra/i3/O1CN01CkM7ve1YXCBFZ38zG_!!60000000030
 ![图1](https://img.alicdn.com/imgextra/i3/O1CN01U3OTyt1rJQyqNCLB5_!!6000000005610-0-tps-1600-1066.jpg)
 
 接下来就让我们看看本次生日会有哪些精彩内容吧！
-
-## 活动议程
-
-![图](https://img.alicdn.com/imgextra/i1/O1CN01KTy6wK1CApI2TH0z1_!!6000000000041-0-tps-1080-4737.jpg)
-
-## 活动日程
-
-📅 ​**时间**​：2025/4/26 15:00-18:00
-
-📍 **​地址：​**浙江省杭州市 · 云栖小镇国际会展中心 A 馆 1 F 慧云厅
 
 ## SOFAStack 议题
 
@@ -93,9 +83,9 @@ Koupleless PMC 成员，主要研究方向是云原生领域，参与维护与�
 愿未来的每一行代码，仍与你共写；
 愿下一个七年，热爱依旧，探索不止。
 
-![](https://img.alicdn.com/imgextra/i3/O1CN01LEIAKi1ZOmWMNwXIZ_!!6000000003185-0-tps-720-484.jpg)
+![图片](https://img.alicdn.com/imgextra/i3/O1CN01EDHYBu1FPtACB0sHe_!!6000000000480-0-tps-3998-2690.jpg)
 
-本次活动 Koupleless 和 MOSN 议题相关分享资料点击查看👉
+本次活动 Koupleless 和 MOSN 议题相关分享资料点击查看👇🏼
 
 [梁栎鹏-Koupleless如何助力应用低成本演进至 Serverless](https://mdn.alipayobjects.com/huamei_soxoym/afts/file/A*ViDWRp3BnbwAAAAAAAAAAAAAerGAAQ/%E3%80%90PDF%E3%80%91%E6%A2%81%E6%A0%8E%E9%B9%8F-Koupleless%E5%A6%82%E4%BD%95%E5%8A%A9%E5%8A%9B%E5%BA%94%E7%94%A8%E4%BD%8E%E6%88%90%E6%9C%AC%E6%BC%94%E8%BF%9B%E8%87%B3%20Serverless.pdf)
 
