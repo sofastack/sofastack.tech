@@ -12,6 +12,8 @@ aliases: "/sofa-boot/docs/sofa-ark-spring-boot-demo"
 5. 如何执行 Spring Boot 业务应用
 6. 多 Host 与单 Host 模式
 7. 如何动态卸载 Spring Boot 业务应用
+8. 日志配置
+9. 其它最佳实践
 
 ## 1. 简介
 
@@ -53,7 +55,7 @@ aliases: "/sofa-boot/docs/sofa-ark-spring-boot-demo"
           <bizName>spring-boot-ark-biz</bizName> <!-- Ark Biz 名字-->
 <!-- webContextPath 是单 host 模式下的必要配置，详细配置见 5. 多 host 模式与单 host 模式 -->
           <webContextPath>biz</webContextPath>  <!-- 同一个host中设置不同的webContextPath-->
-<!-- declaredMode 开启后，业务应用可以使用自己声明过的、且宿主应用拥有的通用依赖-->
+<!-- declaredMode 开启后，业务应用可以使用自己声明过的、且宿主应用拥有的通用依赖，详细见：https://github.com/sofastack/sofa-ark/milestone/21 -->
           <declaredMode>true</declaredMode> <!-- 使用宿主应用的通用依赖-->
         </configuration>
       </plugin>
@@ -86,7 +88,23 @@ aliases: "/sofa-boot/docs/sofa-ark-spring-boot-demo"
 </dependency>
 ```
 
-### 2.2 打包
+### 2.2 修改 Spring Boot 启动类
+
+由于配置了 declaredMode，需要让模块导入资源时，优先从模块里查找，因此需要配置业务应用的资源加载器，定制化启动 Spring Boot 业务应用，如下：
+
+```java
+public static void main(String[] args) {
+    SpringApplicationBuilder builder = new SpringApplicationBuilder(SpringBootArkBizApplication.class).web(WebApplicationType.SERVLET);
+
+    // set biz to use resource loader.
+    ResourceLoader resourceLoader = new DefaultResourceLoader(SpringBootArkBizApplication.class.getClassLoader());
+    builder.resourceLoader(resourceLoader);
+    // run springboot application.
+    ConfigurableApplicationContext context = builder.build().run(args);
+    }
+```
+
+### 2.3 打包
 
 首先，使用 maven 打包业务应用，如下：
 
@@ -340,4 +358,24 @@ logging.file.path=./logs
 
 ## 7. 如何动态卸载 Spring Boot 业务应用
 
-目前 Spring boot 不支持动态卸载。如果要动态卸载，需要注册一个卸载的事件handler，请参考 sofaboot 的代码：[SofaBizUninstallEventHandler](https://github.com/sofastack/sofa-boot/blob/master/sofa-boot-project/sofa-boot-core/runtime-sofa-boot/src/main/java/com/alipay/sofa/runtime/SofaBizUninstallEventHandler.java)。
+目前 Sofa Boot 支持动态卸载，而 Spring boot 不支持动态卸载。如果要动态卸载，需要注册一个卸载的事件handler，请参考 sofaboot 的代码：[SofaBizUninstallEventHandler](https://github.com/sofastack/sofa-boot/blob/master/sofa-boot-project/sofa-boot-core/runtime-sofa-boot/src/main/java/com/alipay/sofa/runtime/SofaBizUninstallEventHandler.java)。
+
+同理，如果业务应用卸载时存在资源未释放情况，可以注册一个监听模块卸载事件或者 spring 上下文关闭事件，来动态释放 socket 和 定时任务以及类似的例如缓存、线程池等。
+
+## 8. 日志配置
+
+- logback 框架配置日志参数
+
+一般而言，建议业务应用使用 application.properties 配置日志参数，**不要写在 logback-spring.xml 中**。因为业务应用使用的 LoggerContext 是宿主应用的 LoggerContext（由宿主的类加载器加载），LoggerContext 只会在初始化时读取一次宿主应用的 logback-spring.xml，所以业务应用即使配置了 logback-spring.xml 也不会被读取。
+
+- 切换至 log4j2 框架
+
+排除项目各项依赖中的 logback 依赖，添加 log4j2依赖。
+
+- SOFAArk 容器日志
+
+参考 [Ark 日志说明](../sofa-ark-ark-log) 和 [配置文档](../sofa-ark-ark-config).
+
+## 9. 其它最佳实践
+
+建议 Spring Boot 业务应用 使用的 Spring Boot 版本和 Spring Boot 宿主应用保持一致。SofaArk 不支持业务应用和宿主应用使用启动框架的不同版本，也不建议用这种使用方式。
