@@ -69,9 +69,9 @@ Koupleless 所支持的智能体研发范式并不是固定的，由于模块和
 
 本文简要讲述了 ​**Koupleless 高效支撑智能体迭代的 3 种研发范式**​，这些范式在蚂蚁集团内部积累了不少成功实践的案例，希望这篇文章能对已经或者将要开发智能体的你带来新思路和新方法，也希望 Koupleless 在 AI 时代下能助力多语言开发者去更高效地迭代 AI 应用的功能与效果。欢迎大家加入 Koupleless 社区与我们一同交流讨论！
 
-🌐 社区官网：*https://koupleless.io/*
+🌐 社区官网：[https://koupleless.io/](https://koupleless.io/)
 
-🌐 Github 官网：https://github.com/koupleless/koupleless/issues
+🌐 Github 官网：[https://github.com/koupleless/koupleless/issues](https://github.com/koupleless/koupleless/issues)
 
 ![图片](https://img.alicdn.com/imgextra/i3/O1CN01Nkj7tS1jLi5875a3M_!!6000000004532-2-tps-782-375.png)
 
