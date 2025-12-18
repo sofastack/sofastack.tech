@@ -5,7 +5,7 @@ description: "Koupleless 是一个基于模块化技术的企业级解决方案�
 categories: "SOFAStack"
 tags: ["SOFAStack"]
 date: 2025-02-18T15:00:00+08:00
-cover: "https://img.alicdn.com/imgextra/i1/O1CN01tgLCeN1Hv9PsqFE6B_!!6000000000819-0-tps-1217-516.jpg"
+cover: "https://img.alicdn.com/imgextra/i1/O1CN01UhTxPl1IDvefXlSVg_!!6000000000860-0-tps-1215-521.jpg"
 ---
 
 # Koupleless 2024 年度报告 & 2025 规划展望
