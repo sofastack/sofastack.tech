@@ -45,22 +45,22 @@
 
     <script>
         const issueData = [
-            // SOFA Registry (7 items)
-            { project: 'SOFA Registry', level: 'Easy', title: '[docs] Session Auto-Batching Duration', desc: 'Session 自动控制攒批时长机制文档', url: 'https://github.com/sofastack/sofa-registry/issues/386' },
-            { project: 'SOFA Registry', level: 'Easy', title: '[docs] Improve Documentation - Admin API', desc: '文档完善（Admin API 文档）', url: 'https://github.com/sofastack/sofa-registry/issues/385' },
-            { project: 'SOFA Registry', level: 'Easy', title: 'Log4j2 Strings Util Dependency Fix', desc: '替换使用的 StringUtils 工具类', url: 'https://github.com/sofastack/sofa-registry/issues/345' },
-            { project: 'SOFA Registry', level: 'Easy', title: 'CacheCountTask Memory Optimization', desc: '打印 Publisher 数量统计日志内存优化', url: 'https://github.com/sofastack/sofa-registry/issues/317' },
-            { project: 'SOFA Registry', level: 'Easy', title: 'DataPos RegisterId WordCache', desc: 'BaseInfo setDataInfoId 使用 WordCache', url: 'https://github.com/sofastack/sofa-registry/issues/312' },
-            { project: 'SOFA Registry', level: 'Hard', title: 'Session Watch provide_data Thread', desc: 'Session 到 Meta 查询配置的线程使用优化', url: 'https://github.com/sofastack/sofa-registry/issues/210' },
-            { project: 'SOFA Registry', level: 'Easy', title: 'PublisherRegistration hashcode/equals', desc: '为 PublisherRegistration 增加基础方法', url: 'https://github.com/sofastack/sofa-registry/issues/47' },
+            // SOFARegistry (7 items)
+            { project: 'SOFARegistry', level: 'Easy', title: '[docs] Session Auto-Batching Duration', desc: 'Session 自动控制攒批时长机制文档', url: 'https://github.com/sofastack/sofa-registry/issues/386' },
+            { project: 'SOFARegistry', level: 'Easy', title: '[docs] Improve Documentation - Admin API', desc: '文档完善（Admin API 文档）', url: 'https://github.com/sofastack/sofa-registry/issues/385' },
+            { project: 'SOFARegistry', level: 'Easy', title: 'Log4j2 Strings Util Dependency Fix', desc: '替换使用的 StringUtils 工具类', url: 'https://github.com/sofastack/sofa-registry/issues/345' },
+            { project: 'SOFARegistry', level: 'Easy', title: 'CacheCountTask Memory Optimization', desc: '打印 Publisher 数量统计日志内存优化', url: 'https://github.com/sofastack/sofa-registry/issues/317' },
+            { project: 'SOFARegistry', level: 'Easy', title: 'DataPos RegisterId WordCache', desc: 'BaseInfo setDataInfoId 使用 WordCache', url: 'https://github.com/sofastack/sofa-registry/issues/312' },
+            { project: 'SOFARegistry', level: 'Hard', title: 'Session Watch provide_data Thread', desc: 'Session 到 Meta 查询配置的线程使用优化', url: 'https://github.com/sofastack/sofa-registry/issues/210' },
+            { project: 'SOFARegistry', level: 'Easy', title: 'PublisherRegistration hashcode/equals', desc: '为 PublisherRegistration 增加基础方法', url: 'https://github.com/sofastack/sofa-registry/issues/47' },
 
-            // SOFA JRaft (6 items)
-            { project: 'SOFA JRaft', level: 'Medium', title: 'Sync Recycler from Netty', desc: '修复内存泄漏，同步 Netty 实现', url: 'https://github.com/sofastack/sofa-jraft/issues/1240' },
-            { project: 'SOFA JRaft', level: 'Medium', title: 'Critical Vulnerability Fix (CVE)', desc: '升级 hession/commons-* 跨大版本升级', url: 'https://github.com/sofastack/sofa-jraft/issues/1218' },
-            { project: 'SOFA JRaft', level: 'Medium', title: 'Upgrade Third-party Libs', desc: '升级 RocksDB/protobuf/Disruptor 等', url: 'https://github.com/sofastack/sofa-jraft/issues/1211' },
-            { project: 'SOFA JRaft', level: 'Easy', title: 'Proposal: Cleanup unused imports', desc: '全项目清理 unused 代码', url: 'https://github.com/sofastack/sofa-jraft/issues/1173' },
-            { project: 'SOFA JRaft', level: 'Medium', title: 'AssertionError in AppendEntries', desc: '并发 shutdown 下的 null 检查与降级', url: 'https://github.com/sofastack/sofa-jraft/issues/1091' },
-            { project: 'SOFA JRaft', level: 'Medium', title: 'jraft-rheakv gRPC Communication', desc: 'rheakv 支持直接使用 grpc 进行通信', url: 'https://github.com/sofastack/sofa-jraft/issues/885' },
+            // SOFAJRaft (6 items)
+            { project: 'SOFAJRaft', level: 'Medium', title: 'Sync Recycler from Netty', desc: '修复内存泄漏，同步 Netty 实现', url: 'https://github.com/sofastack/sofa-jraft/issues/1240' },
+            { project: 'SOFAJRaft', level: 'Medium', title: 'Critical Vulnerability Fix (CVE)', desc: '升级 hession/commons-* 跨大版本升级', url: 'https://github.com/sofastack/sofa-jraft/issues/1218' },
+            { project: 'SOFAJRaft', level: 'Medium', title: 'Upgrade Third-party Libs', desc: '升级 RocksDB/protobuf/Disruptor 等', url: 'https://github.com/sofastack/sofa-jraft/issues/1211' },
+            { project: 'SOFAJRaft', level: 'Easy', title: 'Proposal: Cleanup unused imports', desc: '全项目清理 unused 代码', url: 'https://github.com/sofastack/sofa-jraft/issues/1173' },
+            { project: 'SOFAJRaft', level: 'Medium', title: 'AssertionError in AppendEntries', desc: '并发 shutdown 下的 null 检查与降级', url: 'https://github.com/sofastack/sofa-jraft/issues/1091' },
+            { project: 'SOFAJRaft', level: 'Medium', title: 'jraft-rheakv gRPC Communication', desc: 'rheakv 支持直接使用 grpc 进行通信', url: 'https://github.com/sofastack/sofa-jraft/issues/885' },
 
             // SOFARPC (10 items)
             { project: 'SOFARPC', level: 'Easy', title: 'Serialization Type in Tracelog', desc: '在 tracelog 中记录序列化类型', url: 'https://github.com/sofastack/sofa-rpc/issues/1552' },
