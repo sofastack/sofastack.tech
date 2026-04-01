@@ -14,7 +14,7 @@ cover: "https://img.alicdn.com/imgextra/i4/O1CN01nQV4rg21PysXLl52c_!!60000000069
 
 **不办 Meetup，开挑战赛！**
 
-![](https://intranetproxy.alipay.com/skylark/lark/0/2026/jpeg/174756364/1774512094901-705edd72-62b5-4a14-9d09-5bc738f361c6.jpeg)
+![](https://img.alicdn.com/imgextra/i4/O1CN01nQV4rg21PysXLl52c_!!6000000006978-0-tps-2001-1127.jpg)
 
 ## 🦐 养虾修代码 —— SOFAStack PR Challenge
 
@@ -50,7 +50,7 @@ cover: "https://img.alicdn.com/imgextra/i4/O1CN01nQV4rg21PysXLl52c_!!60000000069
 
 ## 🛠️ 挑战赛任务池
 
-**本次活动涵盖 ​** SOFARegistry、SOFAJRaft、SOFARPC、SOFABoot 四个开源项目，共 32 个 issue 可供大家选择。，并划分了难度等级，大家可以选择适合自己的 issue 进行挑战。
+**本次活动涵盖 ​** SOFARegistry、SOFAJRaft、SOFARPC、SOFABoot 四个开源项目共 32 个 issue ，并划分了难度等级，大家可以选择适合自己的 issue 进行挑战。
 
 ​**参与建议**​：
 
@@ -58,7 +58,7 @@ cover: "https://img.alicdn.com/imgextra/i4/O1CN01nQV4rg21PysXLl52c_!!60000000069
 
 🟡🔴 **进阶者**​​​ (Medium /Hard )​：挑战内核并发、内存溢出修复或新特性实现，展示深度人机交互。
 
-#### SOFARegistry
+### SOFARegistry
 
 🟢 **​Admin API 文档完善：​**增加 Session 自动控制攒批时长机制的说明文档
 
@@ -66,7 +66,7 @@ cover: "https://img.alicdn.com/imgextra/i4/O1CN01nQV4rg21PysXLl52c_!!60000000069
 
 [`>> 更多 Issue`](https://github.com/sofastack/sofa-registry/issues?q=state%3Aopen%20label%3A%22SOFA-8th-Challenge%22)
 
-#### **SOFAJRaft**
+### **SOFAJRaft**
 
 🟢 ​**清理项目未使用代码**​：全局清理 Unused Imports，提升代码整洁度
 
@@ -74,7 +74,7 @@ cover: "https://img.alicdn.com/imgextra/i4/O1CN01nQV4rg21PysXLl52c_!!60000000069
 
 [`>> 更多 Issue`](https://github.com/sofastack/sofa-jraft/issues?q=state%3Aopen%20label%3A%22SOFA-8th-Challenge%22)
 
-#### **SOFARPC**
+### **SOFARPC**
 
 🟢 ​**AI 辅助文档优化**​：使用 AI 翻译和优化文档，并提供可运行示例
 
@@ -82,13 +82,13 @@ cover: "https://img.alicdn.com/imgextra/i4/O1CN01nQV4rg21PysXLl52c_!!60000000069
 
 [`>> 更多 Issue`](https://github.com/sofastack/sofa-rpc/issues?q=state%3Aopen%20label%3A%22SOFA-8th-Challenge%22)
 
-#### **SOFABoot**
+### **SOFABoot**
 
 🟢 ​**Spring Boot 版本升级**​：将底层框架平滑升级至 Spring Boot 3.5.12
 
 🟡 ​**运行时诊断端点**​：新增 SofaDiagnosticEndpoint 辅助线上问题排查
 
-[`>> 更多 Issue`](https://github.com/sofastack/sofa-rpc/issues?q=state%3Aopen%20label%3A%22SOFA-8th-Challenge%22)
+[`>> 更多 Issue`](https://github.com/sofastack/sofa-boot/issues?q=state%3Aopen%20label%3A%22SOFA-8th-Challenge%22)
 
 ## 🏆 荣誉奖项
 
@@ -100,7 +100,7 @@ cover: "https://img.alicdn.com/imgextra/i4/O1CN01nQV4rg21PysXLl52c_!!60000000069
 
 🎁 ​**锦鲤奖**​​（5位）：成功参与的新人中随机抽取
 
-![](https://img.alicdn.com/imgextra/i4/O1CN01nQV4rg21PysXLl52c_!!6000000006978-0-tps-2001-1127.jpg)
+![](https://img.alicdn.com/imgextra/i3/O1CN019CyTRw20qiNiLUJBR_!!6000000006901-2-tps-1200-1200.png)
 
 ## ⚠️ 活动守则
 
@@ -108,11 +108,11 @@ cover: "https://img.alicdn.com/imgextra/i4/O1CN01nQV4rg21PysXLl52c_!!60000000069
 * ​**质量门槛**​：机器人初审不通过*​（如无法编译或通过 CI 、Lint 规范检查等）​*将被直接关闭
 * ​**版权说明**​：参与者需确保代码无版权争议，最终解释权归SOFAStack 社区所有
 
-#### 💬 有问题？ 进群聊！
+### 💬 有问题？ 进群聊！
 
 欢迎加入 SOFAStack 用户群
 
-![](https://intranetproxy.alipay.com/skylark/lark/0/2026/png/174756364/1774519903504-602171e4-5b4b-42b5-9982-a55d5310a2a4.png?x-oss-process=image%2Fcrop%2Cx_160%2Cy_185%2Cw_309%2Ch_271)
+![](https://img.alicdn.com/imgextra/i3/O1CN01nNH1DF1ZJHqe3FtsP_!!6000000003173-2-tps-348-346.png)
 
 【钉钉群号： 88800020698】
 
