@@ -111,6 +111,10 @@ sidebar:
             link: 'node-and-java-communicate'
           - title: 'Graceful shutdown'
             link: 'graceful-shutdown'
+          - title: 'Deadline timeout control'
+            link: 'deadline-usage'
+          - title: 'Dynamic configuration'
+            link: 'dynamic-config'
       - title: 'Configuration parameters'
         sub:
           - title: 'Service publishing and reference in SOFABoot'
