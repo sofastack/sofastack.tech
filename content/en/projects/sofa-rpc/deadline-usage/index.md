@@ -3,11 +3,9 @@ title: "RPC Call Deadline Timeout Control"
 aliases: "/sofa-rpc/docs/Deadline-Usage"
 ---
 
-# RPC Call Deadline Timeout Control
-
 SOFARPC supports **Deadline** mechanism since v5.14.1, allowing you to set an absolute expiration timestamp on RPC calls, rather than just a relative timeout.
 
-### Deadline vs Timeout
+## Deadline vs Timeout
 
 | Feature | Timeout | Deadline |
 |---------|---------|----------|
@@ -16,7 +14,7 @@ SOFARPC supports **Deadline** mechanism since v5.14.1, allowing you to set an ab
 | Chain Propagation | Not automatically propagated | Automatically propagated to downstream services |
 | Cascading Control | Each call timed independently | Global unified timing, prevents cascading timeout amplification |
 
-### Use Case
+## Use Case
 
 When your service needs to call multiple downstream services, using Deadline ensures the total call chain duration stays within budget. For example:
 
@@ -24,9 +22,9 @@ When your service needs to call multiple downstream services, using Deadline ens
 - With Timeout: A→B sets 3s, B→C sets 2s, B→D sets 2s → total can reach 7s
 - With Deadline: A sets 5s deadline → entire chain guaranteed to complete or timeout within 5s
 
-### Code Example
+## Code Example
 
-#### Setting Deadline
+### Setting Deadline
 
 ```java
 // Get deadline as current time + 5 seconds (nanosecond timestamp)
@@ -40,7 +38,7 @@ SampleService service = ...;
 String result = service.sayHello("world");
 ```
 
-#### Propagating Deadline in Call Chain
+### Propagating Deadline in Call Chain
 
 SOFARPC automatically propagates the Deadline to downstream service calls. When a downstream service receives a request, it can check the remaining time:
 
@@ -57,11 +55,11 @@ if (deadline != null) {
 }
 ```
 
-### Configuration
+## Configuration
 
 The Deadline feature is enabled by default in SOFABoot. No additional configuration is needed - just set the deadline via `RpcInvokeContext` at call time.
 
-### Notes
+## Notes
 
 1. **Time Unit**: Deadline uses nanosecond timestamps from `System.nanoTime()`
 2. **Propagation**: Deadline value is automatically propagated through the call chain
