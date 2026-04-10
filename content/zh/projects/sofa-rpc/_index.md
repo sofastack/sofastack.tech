@@ -106,6 +106,10 @@ sidebar:
         link: 'node-and-java-communicate'
       - title: '优雅关闭'
         link: 'graceful-shutdown'
+      - title: 'Deadline 超时控制'
+        link: 'deadline-usage'
+      - title: '动态配置中心'
+        link: 'dynamic-config'
   - title: '配置参考手册'
     sub:
       - title: 'SOFABoot 环境发布订阅说明'
