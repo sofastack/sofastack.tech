@@ -1,10 +1,9 @@
-
 ---
 title: "RPC Call Deadline Timeout Control"
 aliases: "/sofa-rpc/docs/Deadline-Usage"
 ---
 
-## RPC Call Deadline Timeout Control
+# RPC Call Deadline Timeout Control
 
 SOFARPC supports **Deadline** mechanism since v5.14.1, allowing you to set an absolute expiration timestamp on RPC calls, rather than just a relative timeout.
 

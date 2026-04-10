@@ -1,10 +1,9 @@
-
 ---
 title: "RPC 调用 Deadline 超时控制"
 aliases: "/sofa-rpc/docs/Deadline-Usage"
 ---
 
-## RPC 调用 Deadline 超时控制
+# RPC 调用 Deadline 超时控制
 
 SOFARPC 自 v5.14.1 版本起支持 **Deadline** 机制，允许在 RPC 调用时设置一个绝对截止时间戳，而不仅仅是相对超时时间。
 

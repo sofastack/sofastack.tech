@@ -1,10 +1,9 @@
-
 ---
 title: "动态配置中心（Zookeeper & Nacos）"
 aliases: "/sofa-rpc/docs/Dynamic-Config"
 ---
 
-## 动态配置中心（Zookeeper & Nacos）
+# 动态配置中心（Zookeeper & Nacos）
 
 SOFARPC 自 v5.14.0 版本起支持基于 Zookeeper 和 Nacos 的**接口级别动态配置**能力，可以在运行时动态调整服务发布和引用的配置参数，无需重启应用。
 

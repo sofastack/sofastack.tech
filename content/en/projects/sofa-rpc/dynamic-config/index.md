@@ -1,10 +1,9 @@
-
 ---
 title: "Dynamic Configuration Center (Zookeeper & Nacos)"
 aliases: "/sofa-rpc/docs/Dynamic-Config"
 ---
 
-## Dynamic Configuration Center (Zookeeper & Nacos)
+# Dynamic Configuration Center (Zookeeper & Nacos)
 
 SOFARPC supports **interface-level dynamic configuration** based on Zookeeper and Nacos since v5.14.0, allowing you to dynamically adjust service publishing and reference configuration parameters at runtime without restarting the application.
 
