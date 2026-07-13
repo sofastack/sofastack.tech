@@ -4,11 +4,24 @@ title: "Telnet 指令"
 aliases: "/sofa-boot/docs/sofa-ark-ark-telnet"
 ---
 
-
 SOFAArk 容器提供了一个简单的 telnet 服务端小工具，用于运行时查看容器状态，目前支持查看 Plugin 和 Biz 相关信息。
 
+### 配置参数
+
+SOFAArk Telnet 服务端支持通过 JVM 参数（`-D`）或 `bootstrap.properties` 配置以下参数：
+
++ sofa.ark.telnet.server.enable
+> 是否启用 Telnet 服务端，默认为 `true`。生产环境若无需运行时查看，建议设为 `false` 直接关闭，避免暴露运行时入口。
+
++ sofa.ark.telnet.port
+> Telnet 监听端口，默认为 `1234`。未指定时会在以 `1234` 起始的端口范围内自动选择可用端口（最多尝试 100 个）。
+
++ sofa.ark.telnet.security.enable
+> 是否开启安全模式，默认为 `false`。开启后将进行两重限制：仅允许 `localhost` 来源的连接，并禁用 `biz -i`（install）、`biz -u`（uninstall）等写操作命令。生产环境建议开启。
+
 ### 使用方式
-使用 telnet 连接服务端，端口号为 1234， 例如：
+
+使用 telnet 连接服务端，默认端口为 1234（可通过 `sofa.ark.telnet.port` 修改），例如：
 
 > telnet localhost 1234
 
@@ -54,6 +67,7 @@ sofa-ark>
 ```
 
 ### Plugin 命令
+
 如提示信息所说，plugin 支持查看插件相关信息，包括类(资源)导入导出配置、插件打包配置等。例如：
 
 ```text
@@ -81,6 +95,7 @@ sofa-ark>
 其他命令可以查看提示信息，暂时不支持 `-s` 选项查看服务。
 
 ### Biz 命令
+
 biz 命令支持查看 biz 相关信息，也支持安装、卸载、激活等 biz 操作指令。例如
 
 ```text
