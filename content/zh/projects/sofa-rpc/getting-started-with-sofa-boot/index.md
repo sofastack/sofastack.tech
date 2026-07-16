@@ -3,7 +3,7 @@
 title: "SOFABoot 方式快速入门"
 aliases: "/sofa-rpc/docs/Getting-Started-with-SOFA-Boot"
 ---
-本文档将演示了如何在 SOFABoot 环境下应用 SOFARPC 进行服务的发布和引用。
+本文档将演示如何在 SOFABoot 环境下应用 SOFARPC 进行服务的发布和引用。
 您可以直接在工程下找到本文档的[示例代码](https://github.com/sofastack-guides/sofa-rpc-guides)。注意，示例代码中需要本地安装 zookeeper 环境，如果没有安装。需要将`application.properties`中的`com.alipay.sofa.rpc.registry.address` 配置注释掉，走本地文件注册中心的方式。
 
 ## 创建工程
