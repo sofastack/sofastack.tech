@@ -12,7 +12,7 @@ sidebar:
         link: 'getting-started-with-rpc'
       - title: 'SOFABoot 方式快速入门'
         link: 'getting-started-with-sofa-boot'
-  - title: '编程界面'
+  - title: '使用'
     sub:
       - title: '非 Spring 环境 API 使用'
         link: 'programing-rpc'
