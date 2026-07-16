@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SOFAStack 8周年：AI Agent PR 挑战赛任务池</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        body { background-color: #0d1117; font-family: 'Fira Code', monospace; color: #e6edf3; -webkit-tap-highlight-color: transparent; }
+        .glass-card { background: rgba(22, 27, 34, 0.8); backdrop-filter: blur(10px); border: 1px solid #30363d; border-radius: 12px; display: flex; flex-direction: column; transition: all 0.2s ease; height: 100%; }
+        .glass-card:hover { border-color: #58a6ff; box-shadow: 0 0 15px rgba(88, 166, 255, 0.15); }
+        .tag-easy { background: #238636; }
+        .tag-medium { background: #9e6a03; }
+        .tag-hard, .tag-difficulty { background: #da3633; }
+        .tab-btn { position: relative; padding: 10px 16px; transition: color 0.3s; white-space: nowrap; color: #8b949e; font-size: 14px; flex-shrink: 0; }
+        .tab-btn.active { color: #58a6ff; font-weight: bold; }
+        .tab-btn.active::after { content: ''; position: absolute; bottom: -2px; left: 0; width: 100%; height: 2px; background: #58a6ff; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+    </style>
+</head>
+<body class="p-4 md:p-8">
+
+    <header class="text-center mb-8">
+        <h1 class="text-3xl font-bold mb-2 tracking-tight" style="text-shadow: 0 0-10px rgba(88,166,255,0.5)">🦐 养虾修代码</h1>
+        <p class="text-blue-400 font-semibold mb-2">SOFAStack 8th Anniversary PR Challenge</p>
+        <p class="text-[10px] text-gray-500 uppercase tracking-widest italic">32 Real Issues Waiting for Your AI Agent</p>
+    </header>
+
+    <nav class="flex overflow-x-auto gap-2 mb-6 border-b border-gray-800 no-scrollbar sticky top-0 bg-[#0d1117] z-10 py-2 justify-start md:justify-center px-2">
+        <button onclick="filterProject('all', this)" class="tab-btn active">全部项目 (32)</button>
+        <button onclick="filterProject('SOFA Registry', this)" class="tab-btn">SOFA Registry (7)</button>
+        <button onclick="filterProject('SOFA JRaft', this)" class="tab-btn">SOFA JRaft (6)</button>
+        <button onclick="filterProject('SOFARPC', this)" class="tab-btn">SOFARPC (10)</button>
+        <button onclick="filterProject('SOFABoot', this)" class="tab-btn">SOFABoot (9)</button>
+    </nav>
+
+    <div id="issue-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 max-w-6xl mx-auto">
+        </div>
+
+    <footer class="mt-16 text-center pb-12 border-t border-gray-800 pt-8 text-gray-500">
+        <p class="text-sm tracking-widest">READY? LET'S HACK WITH AI! 🚀🦐</p>
+        <p class="text-[10px] mt-2 opacity-50">© 2026 SOFAStack Open Source Community</p>
+    </footer>
+
+    <script>
+        const issueData = [
+            // SOFARegistry (7 items)
+            { project: 'SOFARegistry', level: 'Easy', title: '[docs] Session Auto-Batching Duration', desc: 'Session 自动控制攒批时长机制文档', url: 'https://github.com/sofastack/sofa-registry/issues/386' },
+            { project: 'SOFARegistry', level: 'Easy', title: '[docs] Improve Documentation - Admin API', desc: '文档完善（Admin API 文档）', url: 'https://github.com/sofastack/sofa-registry/issues/385' },
+            { project: 'SOFARegistry', level: 'Easy', title: 'Log4j2 Strings Util Dependency Fix', desc: '替换使用的 StringUtils 工具类', url: 'https://github.com/sofastack/sofa-registry/issues/345' },
+            { project: 'SOFARegistry', level: 'Easy', title: 'CacheCountTask Memory Optimization', desc: '打印 Publisher 数量统计日志内存优化', url: 'https://github.com/sofastack/sofa-registry/issues/317' },
+            { project: 'SOFARegistry', level: 'Easy', title: 'DataPos RegisterId WordCache', desc: 'BaseInfo setDataInfoId 使用 WordCache', url: 'https://github.com/sofastack/sofa-registry/issues/312' },
+            { project: 'SOFARegistry', level: 'Hard', title: 'Session Watch provide_data Thread', desc: 'Session 到 Meta 查询配置的线程使用优化', url: 'https://github.com/sofastack/sofa-registry/issues/210' },
+            { project: 'SOFARegistry', level: 'Easy', title: 'PublisherRegistration hashcode/equals', desc: '为 PublisherRegistration 增加基础方法', url: 'https://github.com/sofastack/sofa-registry/issues/47' },
+
+            // SOFAJRaft (6 items)
+            { project: 'SOFAJRaft', level: 'Medium', title: 'Sync Recycler from Netty', desc: '修复内存泄漏，同步 Netty 实现', url: 'https://github.com/sofastack/sofa-jraft/issues/1240' },
+            { project: 'SOFAJRaft', level: 'Medium', title: 'Critical Vulnerability Fix (CVE)', desc: '升级 hession/commons-* 跨大版本升级', url: 'https://github.com/sofastack/sofa-jraft/issues/1218' },
+            { project: 'SOFAJRaft', level: 'Medium', title: 'Upgrade Third-party Libs', desc: '升级 RocksDB/protobuf/Disruptor 等', url: 'https://github.com/sofastack/sofa-jraft/issues/1211' },
+            { project: 'SOFAJRaft', level: 'Easy', title: 'Proposal: Cleanup unused imports', desc: '全项目清理 unused 代码', url: 'https://github.com/sofastack/sofa-jraft/issues/1173' },
+            { project: 'SOFAJRaft', level: 'Medium', title: 'AssertionError in AppendEntries', desc: '并发 shutdown 下的 null 检查与降级', url: 'https://github.com/sofastack/sofa-jraft/issues/1091' },
+            { project: 'SOFAJRaft', level: 'Medium', title: 'jraft-rheakv gRPC Communication', desc: 'rheakv 支持直接使用 grpc 进行通信', url: 'https://github.com/sofastack/sofa-jraft/issues/885' },
+
+            // SOFARPC (10 items)
+            { project: 'SOFARPC', level: 'Easy', title: 'Serialization Type in Tracelog', desc: '在 tracelog 中记录序列化类型', url: 'https://github.com/sofastack/sofa-rpc/issues/1552' },
+            { project: 'SOFARPC', level: 'Medium', title: 'Support Server Async Capability', desc: '支持服务端返回 CompletableFuture 模型', url: 'https://github.com/sofastack/sofa-rpc/issues/1550' },
+            { project: 'SOFARPC', level: 'Easy', title: 'AI Assisted Documentation Optimization', desc: '使用 AI 优化和翻译文档，支持中英双语', url: 'https://github.com/sofastack/sofa-rpc/issues/1547' },
+            { project: 'SOFARPC', level: 'Difficulty', title: 'Support TripleX - Multi-Transports', desc: 'Triple 协议支持 H1/H2/H3 传输层', url: 'https://github.com/sofastack/sofa-rpc/issues/1545' },
+            { project: 'SOFARPC', level: 'Medium', title: 'Support Apache Fury Serialization', desc: '迁移模块到 Apache Fury 并保持兼容', url: 'https://github.com/sofastack/sofa-rpc/issues/1544' },
+            { project: 'SOFARPC', level: 'Medium', title: 'AddressHolder/ConnectionHolder Update', desc: '修复提供者列表更新顺序导致的异常', url: 'https://github.com/sofastack/sofa-rpc/issues/1490' },
+            { project: 'SOFARPC', level: 'Easy', title: 'Fix Fury instance FGC issue', desc: 'ThreadLocalFury 导致的内存与 FGC 问题', url: 'https://github.com/sofastack/sofa-rpc/issues/1424' },
+            { project: 'SOFARPC', level: 'Easy', title: 'Javassist Interface Method Issue', desc: '处理接口重复方法，建议改用 Bytebuddy', url: 'https://github.com/sofastack/sofa-rpc/issues/1384' },
+            { project: 'SOFARPC', level: 'Medium', title: 'Support custom exception retry', desc: '允许用户灵活控制哪些异常可以重试', url: 'https://github.com/sofastack/sofa-rpc/issues/1362' },
+            { project: 'SOFARPC', level: 'Easy', title: 'Dubbo ProtocolConfig Fix', desc: '解决 Dubbo 协议注册中心地址错误问题', url: 'https://github.com/sofastack/sofa-rpc/issues/1119' },
+            { project: 'SOFARPC', level: 'Easy', title: 'ServerConfig Random Port Fix', desc: '解决随机端口下 getPort() 返回 0 的问题', url: 'https://github.com/sofastack/sofa-rpc/issues/1022' },
+
+            // SOFABoot (9 items)
+            { project: 'SOFABoot', level: 'Medium', title: '[Performance] Add Reflection Cache', desc: '添加反射缓存以提升运行时性能', url: 'https://github.com/sofastack/sofa-boot/issues/1409' },
+            { project: 'SOFABoot', level: 'Hard', title: '[Performance] Optimize Bean Async Init', desc: '智能分析优化 Bean 异步初始化', url: 'https://github.com/sofastack/sofa-boot/issues/1408' },
+            { project: 'SOFABoot', level: 'Medium', title: '[Feature] SofaDiagnosticEndpoint', desc: '添加用于运行时诊断的 Endpoint', url: 'https://github.com/sofastack/sofa-boot/issues/1406' },
+            { project: 'SOFABoot', level: 'Easy', title: '[Validation] Add @Validated Support', desc: '为配置属性添加校验框架支持', url: 'https://github.com/sofastack/sofa-boot/issues/1405' },
+            { project: 'SOFABoot', level: 'Easy', title: '[UX] Configuration Metadata Support', desc: '添加元数据以支持 IDE 自动补全', url: 'https://github.com/sofastack/sofa-boot/issues/1404' },
+            { project: 'SOFABoot', level: 'Medium', title: '[Feature] ProblemDetail (RFC 7807)', desc: '支持标准化错误响应', url: 'https://github.com/sofastack/sofa-boot/issues/1403' },
+            { project: 'SOFABoot', level: 'Medium', title: '[Feature] Structured Logging', desc: '支持 Spring Boot 结构化日志', url: 'https://github.com/sofastack/sofa-boot/issues/1402' },
+            { project: 'SOFABoot', level: 'Easy', title: '[Refactor] Migrate spring.factories', desc: '迁移至 AutoConfiguration.imports', url: 'https://github.com/sofastack/sofa-boot/issues/1401' },
+            { project: 'SOFABoot', level: 'Easy', title: '[Dependency] Upgrade Boot to 3.5.12', desc: '升级 Spring Boot 核心版本', url: 'https://github.com/sofastack/sofa-boot/issues/1400' }
+        ];
+
+        function filterProject(projectName, el) {
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+            el.classList.add('active');
+
+            const container = document.getElementById('issue-grid');
+            container.innerHTML = '';
+            
+            const filtered = projectName === 'all' 
+                ? issueData 
+                : issueData.filter(i => i.project === projectName);
+
+            filtered.forEach(item => {
+                const div = document.createElement('div');
+                div.className = 'glass-card p-5';
+                const lvl = item.level.toLowerCase();
+                
+                div.innerHTML = `
+                    <div class="flex-grow mb-4">
+                        <div class="flex justify-between items-start mb-3">
+                            <span class="text-[9px] font-bold text-blue-400 bg-blue-500/10 px-1.5 py-0.5 rounded border border-blue-500/20 uppercase tracking-tighter">${item.project}</span>
+                            <span class="px-1.5 py-0.5 rounded text-[8px] font-bold uppercase tag-${lvl}">${item.level}</span>
+                        </div>
+                        <h3 class="text-sm font-bold mb-2 leading-tight min-h-[2.5rem]">${item.title}</h3>
+                        <p class="text-gray-500 text-[11px] leading-relaxed line-clamp-2">${item.desc}</p>
+                    </div>
+                    <a href="${item.url}" target="_blank" class="block text-center w-full py-2.5 rounded bg-blue-600 hover:bg-blue-500 text-[11px] font-bold transition-all active:scale-95">
+                        VIEW ISSUE & CLAIM
+                    </a>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        // Initialize
+        filterProject('all', document.querySelector('.tab-btn'));
+    </script>
+</body>
+</html>
