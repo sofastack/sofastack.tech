@@ -3,9 +3,6 @@
 title: "SOFABoot 环境发布订阅说明"
 aliases: "/sofa-rpc/docs/RPC-Config-Xml-Explain"
 ---
-
-
-
 这部分介绍在 SOFABoot 环境下,完整的 SOFARPC 服务发布与引用说明
 
 ## 发布服务
@@ -60,7 +57,7 @@ aliases: "/sofa-rpc/docs/RPC-Config-Xml-Explain"
 |:---|:-----|:---|-----:|
 | id | ID | 自动生成 |  |
 | jvm-first | 是否优先本地 | true |  |
-| interface   | 服务接口（唯一标识元素）  |                    | 不管是普通调用和返回调用，这里都设置实际的接口类                                 |
+| interface   | 服务接口（唯一标识元素）  |                    | 不管是普通调用和泛化调用，这里都设置实际的接口类                                 |
 | unique-id      | 服务标签（唯一标识元素）  |                    |                                                                            |
 | type |  调用方式 |  sync |  callback,sync,future,oneway |
 | filter | 过滤器配置别名 |  | List |
